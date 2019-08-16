@@ -1,0 +1,15 @@
+{
+    "name": "serhii/portfolio",
+    "description": "Custom theme for portfolio.com.ua",
+    "autoload": {
+        "psr-4": {
+            "Portfolio\\": "app"
+        }
+    },
+    "authors": [
+        {
+            "name": "SerhiiCho",
+            "email": "serhiicho@protonmail.com"
+        }
+    ]
+}
