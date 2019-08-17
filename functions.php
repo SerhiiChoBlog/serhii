@@ -1,8 +1,10 @@
 <?php
 
-require_once get_template_directory() . '/vendor/autoload.php';
+use Portfolio\Hook;
 
-add_action('after_setup_theme', function () {
-    add_theme_support('post-thumbnails');
-});
+require_once 'vendor/autoload.php';
 
+(new Hook)
+    ->disableWordpressStuff()
+    ->addAfterThemeSupport()
+    ->registerAssets();
