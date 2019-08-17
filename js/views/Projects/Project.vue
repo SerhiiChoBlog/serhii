@@ -1,24 +1,17 @@
 <template>
     <div class="pt-3">
         <div v-if="project">
-            <div class="center">
-                <h4 main-title v-html="project.title"></h4>
-                <div class="row pt-3">
-                    <div class="col s12 m8">
-                        <img :src="project.imageUrl" :alt="project.title" main-image />
-                    </div>
-                    <div class="col s12 m4">
-                        <ProjectInfo :project="project"></ProjectInfo>
-                    </div>
-                </div>
-            </div>
-
             <div class="row pt-2">
                 <div class="col s12 m8">
+                    <div class="center">
+                        <img :src="project.fullImageUrl" :alt="project.title" main-image />
+                        <h4 main-title v-html="project.title"></h4>
+                    </div>
                     <p v-html="project.content" main-text></p>
                 </div>
+
                 <div class="col s12 m4">
-                    nice
+                    <ProjectInfo :project="project"></ProjectInfo>
                 </div>
             </div>
             <router-link to="/" exact class="btn btn-small transparent grey-text text-darken-4 z-depth-0">
@@ -50,6 +43,7 @@ export default {
 
 [main-image]
     width: 100%
+    margin-top: 15px
 
 [main-title]
     font-size: 27px
@@ -61,5 +55,10 @@ export default {
 
 .fa-angle-left
     font-size: 13px
+
+.collection
+    margin-top: 18px
+    background-color: white
+    border-radius: 4px
 
 </style>

@@ -23,6 +23,7 @@ export default {
                             title: data.title.rendered,
                             content: data.content.rendered,
                             imageUrl: data.image,
+                            fullImageUrl: data.fullImage,
                             tags: data.tags,
                             date: data.date,
                         }

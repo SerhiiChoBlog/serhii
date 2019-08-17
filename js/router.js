@@ -9,6 +9,9 @@ import Login from './views/auth/Login'
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
+    scrollBehavior() {
+        return { x: 0, y: 0 }
+    },
     mode: 'history',
     linkActiveClass: 'active',
     routes: [

@@ -8,5 +8,6 @@ require_once 'vendor/autoload.php';
     ->addThumbFieldToJsonObject()
     ->disableWordpressStuff()
     ->addAfterThemeSupport()
+    ->addNewImageSize()
     ->registerAssets();
 

@@ -4,7 +4,7 @@
             <router-link :to="`/project/${project.id}`">
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img :src="project.imageUrl" :alt="project.title">
+                        <img :src="project.imageUrl" :alt="project.title" main-image>
                     </div>
                     <div class="card-content">
                         <span class="card-title" v-html="project.title"></span>
@@ -39,9 +39,18 @@ export default {
 
 <style lang="sass" scoped>
 
+[main-image]
+    height: 210px
+    object-fit: cover
+    object-position: center
+
 .card-title
-    font-size: 22px
+    font-size: 20px
     line-height: 26px !important
     color: #333
+    text-align: center
+
+.card-content
+    min-height: 110px
 
 </style>
