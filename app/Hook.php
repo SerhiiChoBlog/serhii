@@ -16,6 +16,8 @@ final class Hook
             $thumb_id = get_post_thumbnail_id($post->ID);
             $data->data['image'] = wp_get_attachment_image_src($thumb_id, 'normal')[0];
             $data->data['fullImage'] = wp_get_attachment_image_src($thumb_id, 'large')[0];
+            $data->data['categoryNames'] = get_the_category($post->ID);
+            $data->data['tagNames'] = get_the_tags($post->ID);
 
             return $data;
         }, 10, 3);

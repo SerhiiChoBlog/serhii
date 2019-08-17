@@ -24,7 +24,8 @@ export default {
                             content: data.content.rendered,
                             imageUrl: data.image,
                             fullImageUrl: data.fullImage,
-                            tags: data.tags,
+                            tags: data.tagNames,
+                            categories: data.categoryNames,
                             date: data.date,
                         }
                         projects.push(project)

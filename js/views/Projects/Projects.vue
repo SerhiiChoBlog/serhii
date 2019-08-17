@@ -3,7 +3,10 @@
         <div class="col s12 m6 l4" v-for="project in projects" :key="project.id">
             <router-link :to="`/project/${project.id}`">
                 <div class="card hoverable">
-                    <div class="card-image waves-effect waves-block waves-light">
+                    <div language-logo>
+                        <span v-for="tag in project.tags" v-html="getTagIcon(tag.name)" :title="tag.name"></span>
+                    </div>
+                    <div class="card-image waves-effect waves-block waves-light position-relative">
                         <img :src="project.imageUrl" :alt="project.title" main-image>
                     </div>
                     <div class="card-content">
@@ -23,6 +26,15 @@
 
 <script>
 export default {
+    methods: {
+        getTagIcon(tagName) {
+            if (tagName === 'database') {
+                return '<i class="fas fa-database"></i>'
+            }
+            return `<i class="fab fa-${tagName}"></i>`
+        }
+    },
+
     computed: {
         projects() {
             return this.$store.getters.getProjects

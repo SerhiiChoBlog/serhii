@@ -18,5 +18,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import './assets/app';
+@import './assets/bootstrap';
+@import './assets/language-logo.sass';
 </style>
