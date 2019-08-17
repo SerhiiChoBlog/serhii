@@ -2,12 +2,14 @@
     <div class="pt-3">
         <div v-if="project">
             <div class="row pt-2">
+                <div class="col s12 center">
+                    <h4 main-title v-html="project.title"></h4>
+                </div>
                 <div class="col s12 m8">
                     <div class="center">
                         <img :src="project.fullImageUrl" :alt="project.title" main-image />
-                        <h4 main-title v-html="project.title"></h4>
                     </div>
-                    <p v-html="project.content" main-text></p>
+                    <div v-html="project.content" main-text></div>
                 </div>
 
                 <div class="col s12 m4">
@@ -41,17 +43,17 @@ export default {
 
 <style lang="sass" scoped>
 
+[main-text]
+    font-size: 20px
+    margin-top: 0
+
 [main-image]
     width: 100%
     margin-top: 15px
 
 [main-title]
-    font-size: 27px
+    font-size: 30px
     color: #444
-
-[main-text]
-    font-size: 20px
-    margin-top: 0
 
 .fa-angle-left
     font-size: 13px

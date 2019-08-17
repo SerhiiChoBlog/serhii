@@ -18,6 +18,9 @@ final class Hook
             $data->data['fullImage'] = wp_get_attachment_image_src($thumb_id, 'large')[0];
             $data->data['categoryNames'] = get_the_category($post->ID);
             $data->data['tagNames'] = get_the_tags($post->ID);
+            $data->data['client'] = get_post_meta($post->ID, 'client', true);
+            $data->data['github'] = get_post_meta($post->ID, 'github', true);
+            $data->data['site'] = get_post_meta($post->ID, 'site', true);
 
             return $data;
         }, 10, 3);

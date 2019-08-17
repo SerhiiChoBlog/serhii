@@ -27,6 +27,9 @@ export default {
                             tags: data.tagNames,
                             categories: data.categoryNames,
                             date: data.date,
+                            client: data.client,
+                            github: data.github,
+                            site: data.site,
                         }
                         projects.push(project)
                     })

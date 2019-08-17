@@ -14,10 +14,13 @@ export default {
     components: {
         Navbar,
     },
-};
+}
 </script>
 
-<style lang="scss">
-@import './assets/bootstrap';
-@import './assets/language-logo.sass';
+<style lang="sass">
+
+@import './assets/bootstrap.scss'
+@import './assets/language-logo'
+@import './assets/common'
+
 </style>
