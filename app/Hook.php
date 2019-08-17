@@ -4,6 +4,18 @@ namespace Portfolio;
 
 final class Hook
 {
+    public function addThumbFieldToJsonObject(): self
+    {
+        add_filter('rest_prepare_post', function ($data, $post, $request) {
+            $thumb_id = get_post_thumbnail_id($post->ID);
+            $data->data['image'] = wp_get_attachment_image_src($thumb_id, 'medium')[0];
+
+            return $data;
+        }, 10, 3);
+
+        return $this;
+    }
+
     public function registerAssets(): self
     {
         add_action('wp_enqueue_scripts', function () {
@@ -12,7 +24,8 @@ final class Hook
             wp_register_script('p-js', Helper::getDirUri('assets/main.js'), [], Helper::fileVersion('assets/main.js'), true);
 
             wp_localize_script('p-js', 'portfolio_globals', [
-                'ajax_url' => admin_url('admin-ajax.php'),
+                'ajax' => admin_url('admin-ajax.php'),
+                'api' => home_url('?rest_route=/wp/v2/'),
                 'nonce' => wp_create_nonce('portfolio'),
             ]);
 
