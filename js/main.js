@@ -12,7 +12,14 @@ new Vue({
     store,
     el: '#app',
     render: h => h(App),
+
     created() {
         this.$store.dispatch('loadProjects')
-    }
+    },
+
+    methods: {
+        isAuth() {
+            return portfolio_globals.is_auth == 1
+        }
+    },
 });

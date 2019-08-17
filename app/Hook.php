@@ -36,6 +36,7 @@ final class Hook
                 'ajax' => admin_url('admin-ajax.php'),
                 'api' => home_url('?rest_route=/wp/v2/'),
                 'nonce' => wp_create_nonce('portfolio'),
+                'is_auth' => is_user_logged_in(),
             ]);
 
             wp_deregister_script('jquery');

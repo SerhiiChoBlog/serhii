@@ -16,7 +16,7 @@
             </router-link>
         </div>
 
-        <div class="fixed-action-btn">
+        <div class="fixed-action-btn" v-if="$root.isAuth()">
             <router-link to="add-project" class="btn-floating btn-large green darken-2">
                 <i class="fas fa-plus"></i>
             </router-link>
