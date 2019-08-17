@@ -7,9 +7,7 @@
                         <img :src="project.imageUrl" :alt="project.title">
                     </div>
                     <div class="card-content">
-                        <span class="card-title">
-                            {{ project.title }}
-                        </span>
+                        <span class="card-title" v-html="project.title"></span>
                     </div>
                 </div>
             </router-link>

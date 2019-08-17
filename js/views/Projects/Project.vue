@@ -2,7 +2,7 @@
     <div class="pt-3">
         <div v-if="project">
             <div class="center">
-                <h4 main-title>{{ project.title }}</h4>
+                <h4 main-title v-html="project.title"></h4>
                 <div class="row pt-3">
                     <div class="col s12 m8">
                         <img :src="project.imageUrl" :alt="project.title" main-image />
