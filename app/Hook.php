@@ -6,7 +6,7 @@ final class Hook
 {
     public function addThumbFieldToJsonObject(): self
     {
-        add_filter('rest_prepare_post', function ($data, $post, $request) {
+        add_filter('rest_prepare_post', function ($data, $post) {
             $thumb_id = get_post_thumbnail_id($post->ID);
             $data->data['image'] = wp_get_attachment_image_src($thumb_id, 'medium')[0];
 
