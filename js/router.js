@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Cabinet from './views/Cabinet'
 import Projects from './views/Projects/Projects'
 import Project from './views/Projects/Project'
-import AddProject from './views/Projects/AddProject'
 import Login from './views/auth/Login'
 
 Vue.use(VueRouter);
@@ -27,10 +26,6 @@ export const router = new VueRouter({
         {
             path: '/login',
             component: Login,
-        },
-        {
-            path: '/add-project',
-            component: AddProject,
         },
         {
             path: '/cabinet',

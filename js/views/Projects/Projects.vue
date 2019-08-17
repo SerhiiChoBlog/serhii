@@ -1,5 +1,10 @@
 <template>
     <div class="row pt-5">
+        <!-- Spinner -->
+        <div class="col s12 center pt-5" v-if="$store.getters.getProcessing">
+            <div class="spinner"></div>
+        </div>
+
         <div class="col s12 m6 l4" v-for="project in projects" :key="project.id">
             <router-link :to="`/project/${project.id}`">
                 <div class="card hoverable">
@@ -17,9 +22,9 @@
         </div>
 
         <div class="fixed-action-btn" v-if="$root.isAuth()">
-            <router-link to="add-project" class="btn-floating btn-large green darken-2">
+            <a :href="addNewPostUrl" class="btn-floating btn-large green darken-2">
                 <i class="fas fa-plus"></i>
-            </router-link>
+            </a>
         </div>
     </div>
 </template>
@@ -39,6 +44,10 @@ export default {
         projects() {
             return this.$store.getters.getProjects
         },
+
+        addNewPostUrl() {
+            return portfolio_globals.add_new_post_url
+        }
     },
 
     filters: {

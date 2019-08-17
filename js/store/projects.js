@@ -2,17 +2,24 @@ import axios from 'axios'
 
 export default {
     state: {
-        projects: []
+        projects: [],
+        processing: false,
     },
 
     mutations: {
         setProjects(state, payload) {
             state.projects = payload
         },
+
+        setProcessing(state, payload) {
+            state.processing = payload
+        },
     },
 
     actions: {
         loadProjects({commit}) {
+            commit('setProcessing', true)
+
             axios.get(`${portfolio_globals.api}posts`)
                 .then(res => {
                     let projects = []
@@ -35,14 +42,17 @@ export default {
                     })
 
                     commit('setProjects', projects)
+                    commit('setProcessing', false)
                 })
-                .catch(err => console.error(err))
+                .catch(err => {
+                    console.error(err)
+                    commit('setProcessing', false)
+                })
         }
     },
 
     getters: {
-        getProjects(state) {
-            return state.projects
-        }
+        getProjects: state => state.projects,
+        getProcessing: state => state.processing
     },
 }
