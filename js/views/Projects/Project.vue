@@ -20,6 +20,13 @@
                     <i class="fas fa-angle-left left"></i> Go back to home page
             </router-link>
         </div>
+
+        <!-- Edit project button -->
+        <div class="fixed-action-btn" v-if="$root.isAuth()">
+            <a :href="editProjectUrl" class="btn-floating btn-large green darken-3" title="Edit this project">
+                <i class="fas fa-pen"></i>
+            </a>
+        </div>
     </div>
 </template>
 
@@ -32,6 +39,10 @@ export default {
     computed: {
         project() {
             return this.$store.getters.getProjects.find(b => b.id == this.id)
+        },
+
+        editProjectUrl() {
+            return `${portfolio_globals.admin_url}post.php?post=${this.id}&action=edit`
         }
     },
 

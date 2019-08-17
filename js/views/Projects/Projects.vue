@@ -21,8 +21,9 @@
             </router-link>
         </div>
 
+        <!-- Add new project button -->
         <div class="fixed-action-btn" v-if="$root.isAuth()">
-            <a :href="addNewPostUrl" class="btn-floating btn-large green darken-2">
+            <a :href="addNewPostUrl" class="btn-floating btn-large green darken-3" title="Add new project">
                 <i class="fas fa-plus"></i>
             </a>
         </div>
@@ -46,7 +47,7 @@ export default {
         },
 
         addNewPostUrl() {
-            return portfolio_globals.add_new_post_url
+            return portfolio_globals.admin_url + 'post-new.php'
         }
     },
 

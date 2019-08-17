@@ -40,7 +40,7 @@ final class Hook
                 'api' => home_url('?rest_route=/wp/v2/'),
                 'nonce' => wp_create_nonce('portfolio'),
                 'is_auth' => is_user_logged_in(),
-                'add_new_post_url' => admin_url('post-new.php'),
+                'admin_url' => admin_url(),
             ]);
 
             wp_deregister_script('jquery');
