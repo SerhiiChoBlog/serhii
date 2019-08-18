@@ -75,6 +75,7 @@ export default {
                 font-weight: bold
                 border-bottom: 2px solid #00000030
                 outline: none
+                user-select: none
 
                 &:hover
                     border-color: #333
