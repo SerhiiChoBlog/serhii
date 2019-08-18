@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="col s12 m6 l4" v-for="project in projects" :key="project.id">
+        <div class="col s12 m6 l4" v-for="project in paidProjects" :key="project.id">
             <router-link :to="`/project/${project.id}`">
                 <div class="card hoverable">
                     <div language-logo>
@@ -22,12 +22,6 @@
 import getTagIcon from '../../modules/getTagIcon'
 
 export default {
-    data() {
-        return {
-            //
-        }
-    },
-
     methods: {
         getTagIcon(tagName) {
             return getTagIcon(tagName)
@@ -37,5 +31,12 @@ export default {
     props: [
         'projects',
     ],
+
+    computed: {
+        paidProjects() {
+            console.log(this.projects)
+            return this.projects.filter(project => project.categories.indexOf('Paid projects') === 0)
+        }
+    }
 }
 </script>
