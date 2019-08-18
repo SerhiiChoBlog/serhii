@@ -28,13 +28,14 @@ export default {
         },
     },
 
-    props: [
-        'projects',
-    ],
+    props: {
+        projects: {
+            required: true,
+        },
+    },
 
     computed: {
         paidProjects() {
-            console.log(this.projects)
             return this.projects.filter(project => project.categories.indexOf('Paid projects') === 0)
         }
     }
