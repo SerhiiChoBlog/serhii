@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="col s12 m6 l4" v-for="project in paidProjects" :key="project.id">
+        <div class="col s12 m6 l4" v-for="project in projects" :key="project.id">
             <router-link :to="`/project/${project.id}`">
                 <div class="card hoverable">
                     <div language-logo>
@@ -33,11 +33,5 @@ export default {
             required: true,
         },
     },
-
-    computed: {
-        paidProjects() {
-            return this.projects.filter(project => project.categories.indexOf('Paid projects') === 0)
-        }
-    }
 }
 </script>
