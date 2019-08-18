@@ -3,7 +3,7 @@
         <ul class="_tabs row">
             <li v-for="(tab, i) in tabs" :key="i" class="col s12 m4">
                 <a :href="'#tab-' + (i + 1)"
-                   v-html="tab.name"
+                   v-html="`${tab.name} <b>${tab.count}</b>`"
                    :class="{ 'active': tab.active }"
                    @click="selectedTab(tab)"
                 >
@@ -76,6 +76,10 @@ export default {
                 border-bottom: 2px solid #00000030
                 outline: none
                 user-select: none
+
+                b
+                    font-size: 12px
+                    color: brown
 
                 &:hover
                     border-color: #333

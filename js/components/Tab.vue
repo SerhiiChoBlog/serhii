@@ -15,10 +15,11 @@ export default {
     props: {
         name: { required: true },
         selected: { default: false },
+        count: { required: true },
     },
 
     mounted() {
-        this.active = this.selected;
+        this.active = this.selected
     },
 }
 </script>

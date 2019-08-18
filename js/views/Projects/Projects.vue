@@ -9,6 +9,7 @@
             <Tab v-for="tab in tabs"
                 :key="tab.hash"
                 :name="tab.title"
+                :count="getProjectsWithCategory(projects, tab.title).length"
                 :hash="tab.hash"
                 :selected="tab.hash == '#tab-1'"
             >
