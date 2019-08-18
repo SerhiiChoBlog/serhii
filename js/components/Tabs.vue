@@ -1,9 +1,8 @@
 <template>
-    <div class="order-tabs">
-        <ul class="nav nav-tabs order-tabs__ul mb-4">
-            <li v-for="(tab, i) in tabs" :key="i" class="nav-item">
+    <div>
+        <ul class="_tabs row">
+            <li v-for="(tab, i) in tabs" :key="i" class="col s12 m4">
                 <a :href="'#tab-' + (i + 1)"
-                   class="nav-link"
                    v-html="tab.name"
                    :class="{ 'active': tab.active }"
                    @click="selectedTab(tab)"
@@ -49,3 +48,40 @@ export default {
     },
 };
 </script>
+
+<style lang="sass">
+
+    ._tabs
+        list-style: none
+        text-align: center
+        margin-bottom: 1.4em
+        padding-left: 0
+
+        li
+            margin: 5px 0
+
+            a
+                width: 90%
+                margin: 0 auto
+                color: #878787
+                max-width: 200px
+                letter-spacing: 1px
+                text-transform: uppercase
+                font-size: .7em
+                padding: 7px 18px
+                display: block
+                transition: border-bottom-color .2s,color .2s
+                position: relative
+                font-weight: bold
+                border-bottom: 2px solid #00000030
+                outline: none
+
+                &:hover
+                    border-color: #333
+
+                &.active
+                    border-color: #777
+                    color: #333
+
+
+</style>

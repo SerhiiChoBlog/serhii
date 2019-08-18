@@ -1,9 +1,5 @@
 <template>
     <div class="row pt-5">
-        <div class="col s12 center mb-3">
-            <h4 class="page-title">Paid projects</h4>
-        </div>
-
         <!-- Spinner -->
         <div class="col s12 center pt-4" v-if="$store.getters.getProcessing">
             <div class="spinner"></div>
@@ -40,6 +36,7 @@ export default {
             tabs: [
                 { title: 'Paid projects', hash: '#tab-1' },
                 { title: 'Personal projects', hash: '#tab-2' },
+                { title: 'Open source projects', hash: '#tab-3' },
             ],
         }
     },
