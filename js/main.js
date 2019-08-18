@@ -6,6 +6,7 @@ import axios from 'axios'
 import 'materialize-css/dist/css/materialize.min.css'
 
 Vue.prototype.$axios = axios
+Vue.config.productionTip = false
 
 new Vue({
     router,

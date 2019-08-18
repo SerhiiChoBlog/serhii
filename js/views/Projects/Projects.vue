@@ -1,25 +1,15 @@
 <template>
     <div class="row pt-5">
+        <div class="col s12 center mb-3">
+            <h4 class="page-title">Paid projects</h4>
+        </div>
+
         <!-- Spinner -->
         <div class="col s12 center pt-5" v-if="$store.getters.getProcessing">
             <div class="spinner"></div>
         </div>
 
-        <div class="col s12 m6 l4" v-for="project in projects" :key="project.id">
-            <router-link :to="`/project/${project.id}`">
-                <div class="card hoverable">
-                    <div language-logo>
-                        <span v-for="tag in project.tags" v-html="getTagIcon(tag.name)" :title="tag.name"></span>
-                    </div>
-                    <div class="card-image waves-effect waves-block waves-light position-relative">
-                        <img :src="project.imageUrl" :alt="project.title" main-image>
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title" v-html="project.title"></span>
-                    </div>
-                </div>
-            </router-link>
-        </div>
+        <PaidProjects :projects="projects"></PaidProjects>
 
         <!-- Add new project button -->
         <div class="fixed-action-btn" v-if="$root.isAuth()">
@@ -31,16 +21,9 @@
 </template>
 
 <script>
-export default {
-    methods: {
-        getTagIcon(tagName) {
-            if (tagName === 'database') {
-                return '<i class="fas fa-database"></i>'
-            }
-            return `<i class="fab fa-${tagName}"></i>`
-        }
-    },
+import PaidProjects from '../inc/PaidProjects'
 
+export default {
     computed: {
         projects() {
             return this.$store.getters.getProjects
@@ -56,23 +39,10 @@ export default {
             return string.substr(0, 170) + '...'
         }
     },
+
+    components: {
+        PaidProjects,
+    },
 }
 </script>
 
-<style lang="sass" scoped>
-
-[main-image]
-    height: 210px
-    object-fit: cover
-    object-position: center
-
-.card-title
-    font-size: 20px
-    line-height: 26px !important
-    color: #333
-    text-align: center
-
-.card-content
-    min-height: 110px
-
-</style>

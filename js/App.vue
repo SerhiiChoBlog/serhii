@@ -23,5 +23,6 @@ export default {
 @import './assets/language-logo'
 @import './assets/common'
 @import './assets/spinner'
+@import './assets/cards'
 
 </style>
