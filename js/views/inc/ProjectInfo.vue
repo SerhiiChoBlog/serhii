@@ -33,13 +33,8 @@ export default {
 
 <style lang="sass" scoped>
 
-.collection
-    border: none
-
-    &-item
-        min-height: 60px !important
-        background-color: transparent
-        border: none
-        text-align: left
+.collection-item
+    min-height: 60px !important
+    text-align: left
 
 </style>

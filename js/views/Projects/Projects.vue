@@ -9,11 +9,11 @@
             <Tab v-for="tab in tabs"
                 :key="tab.hash"
                 :name="tab.title"
-                :count="getProjectsWithCategory(projects, tab.title).length"
+                :count="filterProjectsByCategory(projects, tab.title).length"
                 :hash="tab.hash"
                 :selected="tab.hash == '#tab-1'"
             >
-                <ProjectsList :projects="getProjectsWithCategory(projects, tab.title)"></ProjectsList>
+                <ProjectsList :projects="filterProjectsByCategory(projects, tab.title)"></ProjectsList>
             </Tab>
         </Tabs>
 
@@ -30,6 +30,7 @@
 import ProjectsList from '../inc/ProjectsList'
 import Tabs from '../../components/Tabs'
 import Tab from '../../components/Tab'
+import filterProjectsByCategory from '../../modules/filterProjectsByCategory'
 
 export default {
     data() {
@@ -53,8 +54,8 @@ export default {
     },
 
     methods: {
-        getProjectsWithCategory(projects, category) {
-            return projects.filter(project => project.categories.indexOf(category) === 0)
+        filterProjectsByCategory(projects, category) {
+            return filterProjectsByCategory(projects, category)
         }
     },
 

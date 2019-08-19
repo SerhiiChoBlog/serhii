@@ -14,10 +14,13 @@
 
                 <div class="col s12 m4">
                     <ProjectInfo :project="project"></ProjectInfo>
+                    <ProjectOnSidebar category="Paid projects" icon-name="coins"></ProjectOnSidebar>
+                    <ProjectOnSidebar category="Personal projects" icon-name="user-alt"></ProjectOnSidebar>
+                    <ProjectOnSidebar category="Open source projects" icon-name="users"></ProjectOnSidebar>
                 </div>
             </div>
             <router-link to="/" exact class="btn btn-small transparent grey-text text-darken-4 z-depth-0">
-                    <i class="fas fa-angle-left left"></i> Go back to home page
+                <i class="fas fa-angle-left left"></i> Go back to home page
             </router-link>
         </div>
 
@@ -32,6 +35,7 @@
 
 <script>
 import ProjectInfo from '../inc/ProjectInfo'
+import ProjectOnSidebar from '../inc/ProjectOnSidebar'
 
 export default {
     props: ['id'],
@@ -48,6 +52,7 @@ export default {
 
     components: {
         ProjectInfo,
+        ProjectOnSidebar,
     },
 }
 </script>
@@ -61,6 +66,7 @@ export default {
 [main-image]
     width: 100%
     margin-top: 15px
+    box-shadow: 2px 2px 10px rgba(0,0,0,.1)
 
 [main-title]
     font-size: 30px
@@ -68,10 +74,5 @@ export default {
 
 .fa-angle-left
     font-size: 13px
-
-.collection
-    margin-top: 18px
-    background-color: white
-    border-radius: 4px
 
 </style>

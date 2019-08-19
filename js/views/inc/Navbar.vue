@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <div class="nav-wrapper px-5 white">
+        <div class="nav-wrapper px-5">
             <router-link to="/" button-back v-if="$route.name == 'single'">
                 <i class="fas fa-chevron-left"></i>
             </router-link>
@@ -32,14 +32,22 @@ export default {
 
 nav
     box-shadow: none
+    background-color: #eee
+    height: 74px
+    line-height: 74px
 
 .brand-logo
     font-size: 1.5em
     text-transform: uppercase
     font-weight: bold
 
-.nav-wrapper a
-    color: #333
+.nav-wrapper
+    background-color: #f9f9f9
+    box-shadow: 2px 2px 10px rgba(0,0,0,.07)
+    transform: rotate(-.4deg) translateY(-5px)
+
+    a
+        color: #333
 
 [button-back]
     opacity: .8
