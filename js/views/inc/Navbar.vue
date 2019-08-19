@@ -1,8 +1,8 @@
 <template>
     <nav>
-        <div class="nav-wrapper px-5 white position-relative">
+        <div class="nav-wrapper px-5 white">
             <router-link to="/" button-back v-if="$route.name == 'single'">
-                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-chevron-left"></i>
             </router-link>
             <router-link to="/" class="center brand-logo black-text">Portfolio</router-link>
         </div>
@@ -42,11 +42,13 @@ nav
     color: #333
 
 [button-back]
-    position: absolute
     opacity: .8
     transition: opacity 200ms
     animation-fill-mode: forwards
     animation: back-button-appear 500ms
+
+    i
+        font-size: 18px
 
     &:hover
         opacity: 1
