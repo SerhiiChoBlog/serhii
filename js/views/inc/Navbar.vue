@@ -1,11 +1,10 @@
 <template>
     <nav>
-        <div class="nav-wrapper px-5 white">
-            <router-link to="/" class="left brand-logo black-text">Portfolio</router-link>
-            <ul class="right" v-if="isAuth">
-                <router-link to="/cabinet" tag="li" exact><a>Cabinet</a></router-link>
-                <li><a @click="logOut">Exit</a></li>
-            </ul>
+        <div class="nav-wrapper px-5 white position-relative">
+            <router-link to="/" button-back v-if="$route.name == 'single'">
+                <i class="fas fa-arrow-left"></i>
+            </router-link>
+            <router-link to="/" class="center brand-logo black-text">Portfolio</router-link>
         </div>
     </nav>
 </template>
@@ -41,5 +40,15 @@ nav
 
 .nav-wrapper a
     color: #333
+
+[button-back]
+    position: absolute
+    opacity: .8
+    transition: opacity 200ms
+    animation-fill-mode: forwards
+    animation: back-button-appear 500ms
+
+    &:hover
+        opacity: 1
 
 </style>

@@ -20,6 +20,7 @@ export const router = new VueRouter({
             path: '/project/:id',
             component: Project,
             props: true,
+            name: 'single',
         },
         {
             path: '*',
