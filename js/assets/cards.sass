@@ -4,11 +4,21 @@
         object-fit: cover
         object-position: center
 
-    .card-title
+    &-title
         font-size: 20px !important
         line-height: 26px !important
         color: #333
         text-align: center
 
-    .card-content
-        min-height: 110px
+    &-content
+        min-height: 135px
+
+@media (max-width: 600px)
+    .card
+        &-content
+            min-height: auto
+
+@media (min-width: 1260px)
+    .card
+        &-content
+            min-height: 85px

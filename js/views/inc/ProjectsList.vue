@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="col s12 m6 l4" v-for="project in projects" :key="project.id">
+    <div class="row">
+        <div class="col s12 m6 l4" v-for="(project, i) in projects" :key="project.id">
             <router-link :to="`/project/${project.id}`">
                 <div class="card hoverable">
                     <div language-logo>
