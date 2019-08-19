@@ -54,9 +54,11 @@ nav
     transition: opacity 200ms
     animation-fill-mode: forwards
     animation: back-button-appear 500ms
+    transform: scaleX(1.9)
+    display: inline-block
 
     i
-        font-size: 18px
+        font-size: 14px
 
     &:hover
         opacity: 1
