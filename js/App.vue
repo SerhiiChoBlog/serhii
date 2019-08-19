@@ -2,7 +2,9 @@
     <div class="pb-5">
         <Navbar></Navbar>
         <div class="container">
-            <router-view></router-view>
+            <transition name="fade" mode="out-in">
+                <router-view></router-view>
+            </transition>
         </div>
     </div>
 </template>
@@ -25,5 +27,16 @@ export default {
 @import './assets/common'
 @import './assets/spinner'
 @import './assets/cards'
+
+.fade
+    &-enter-active,
+    &-leave-active
+        transition-duration: 0.1s
+        transition-property: opacity
+        transition-timing-function: ease
+
+    &-enter,
+    &-leave-active
+        opacity: 0
 
 </style>
