@@ -14,9 +14,9 @@
 
                 <div class="col s12 m4">
                     <ProjectInfo :project="project"></ProjectInfo>
-                    <ProjectOnSidebar category="Paid projects" icon-name="coins"></ProjectOnSidebar>
-                    <ProjectOnSidebar category="Personal projects" icon-name="user-alt"></ProjectOnSidebar>
-                    <ProjectOnSidebar category="Open source projects" icon-name="users"></ProjectOnSidebar>
+                    <ProjectsSection category="Paid projects" icon-name="coins"></ProjectsSection>
+                    <ProjectsSection category="Personal projects" icon-name="user-alt"></ProjectsSection>
+                    <ProjectsSection category="Open source projects" icon-name="users"></ProjectsSection>
                 </div>
             </div>
             <router-link to="/" exact class="btn btn-small transparent grey-text text-darken-4 z-depth-0">
@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import ProjectInfo from '../inc/ProjectInfo'
-import ProjectOnSidebar from '../inc/ProjectOnSidebar'
+import ProjectInfo from '../sidebar/ProjectInfo'
+import ProjectsSection from '../sidebar/ProjectsSection'
 
 export default {
     props: ['id'],
@@ -52,7 +52,7 @@ export default {
 
     components: {
         ProjectInfo,
-        ProjectOnSidebar,
+        ProjectsSection,
     },
 }
 </script>

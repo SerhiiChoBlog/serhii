@@ -2,7 +2,7 @@
     <div class="row pt-5">
         <!-- Spinner -->
         <div class="col s12 center pt-4" v-if="$store.getters.getProcessing">
-            <div class="spinner"></div>
+            <Preloader size="big"></Preloader>
         </div>
 
         <Tabs v-else>
@@ -30,6 +30,7 @@
 import ProjectsList from '../inc/ProjectsList'
 import Tabs from '../../components/Tabs'
 import Tab from '../../components/Tab'
+import Preloader from '../../components/Preloader'
 import filterProjectsByCategory from '../../modules/filterProjectsByCategory'
 
 export default {
@@ -67,6 +68,7 @@ export default {
 
     components: {
         ProjectsList,
+        Preloader,
         Tabs,
         Tab,
     },
