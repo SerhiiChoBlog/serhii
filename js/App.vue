@@ -1,20 +1,23 @@
 <template>
-    <div class="pb-5">
+    <div>
         <Navbar></Navbar>
         <div class="container">
             <transition name="fade" mode="out-in">
                 <router-view></router-view>
             </transition>
         </div>
+        <Footer></Footer>
     </div>
 </template>
 
 <script>
 import Navbar from './views/inc/Navbar'
+import Footer from './views/inc/Footer'
 
 export default {
     components: {
         Navbar,
+        Footer,
     },
 }
 </script>
