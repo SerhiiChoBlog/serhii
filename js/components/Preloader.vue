@@ -1,6 +1,6 @@
 <template>
     <div :class="`preloader-wrapper active ${size}`">
-        <div class="spinner-layer spinner-red-only">
+        <div class="spinner-layer">
             <div class="circle-clipper left">
                 <div class="circle"></div>
             </div><div class="gap-patch">
@@ -13,7 +13,12 @@
 </template>
 
 <script>
-    export default {
-        props: ['size'],
-    }
+export default {
+    props: ['size'],
+}
 </script>
+
+<style lang="sass" scoped>
+.spinner-layer
+    border-color: #444
+</style>

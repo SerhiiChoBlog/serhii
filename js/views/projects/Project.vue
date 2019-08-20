@@ -14,6 +14,7 @@
 
                 <div class="col s12 m4">
                     <ProjectInfo :project="project"></ProjectInfo>
+                    <TechnologiesSection :techs="project.tags"></TechnologiesSection>
                     <ProjectsSection category="Paid projects" icon-name="coins"></ProjectsSection>
                     <ProjectsSection category="Personal projects" icon-name="user-alt"></ProjectsSection>
                     <ProjectsSection category="Open source projects" icon-name="users"></ProjectsSection>
@@ -36,6 +37,7 @@
 <script>
 import ProjectInfo from '../sidebar/ProjectInfo'
 import ProjectsSection from '../sidebar/ProjectsSection'
+import TechnologiesSection from '../sidebar/TechnologiesSection'
 
 export default {
     props: ['id'],
@@ -53,12 +55,12 @@ export default {
     components: {
         ProjectInfo,
         ProjectsSection,
+        TechnologiesSection,
     },
 }
 </script>
 
 <style lang="sass" scoped>
-
 [main-text]
     font-size: 20px
     margin-top: 0
@@ -74,5 +76,4 @@ export default {
 
 .fa-angle-left
     font-size: 13px
-
 </style>

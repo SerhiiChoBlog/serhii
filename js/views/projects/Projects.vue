@@ -2,7 +2,7 @@
     <div class="row pt-5">
         <!-- Spinner -->
         <div class="col s12 center pt-4" v-if="$store.getters.getProcessing">
-            <Preloader size="big"></Preloader>
+            <Preloader size="medium"></Preloader>
         </div>
 
         <Tabs v-else>

@@ -29,7 +29,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-
 nav
     box-shadow: none
     background-color: #eee
@@ -62,5 +61,4 @@ nav
 
     &:hover
         opacity: 1
-
 </style>

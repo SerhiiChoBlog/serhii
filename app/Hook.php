@@ -41,6 +41,7 @@ final class Hook
                 'nonce' => wp_create_nonce('portfolio'),
                 'is_auth' => is_user_logged_in(),
                 'admin_url' => admin_url(),
+                'assets_uri' => get_template_directory_uri() . '/assets/',
             ]);
 
             wp_deregister_script('jquery');

@@ -20,7 +20,6 @@ export default {
 </script>
 
 <style lang="sass">
-
 @import './assets/animations'
 @import './assets/bootstrap.scss'
 @import './assets/language-logo'
@@ -37,5 +36,4 @@ export default {
     &-enter,
     &-leave-active
         opacity: 0
-
 </style>
