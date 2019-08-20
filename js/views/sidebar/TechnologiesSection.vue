@@ -3,7 +3,7 @@
         <li class="collection-header center">
             <h4><i class="fas fa-wrench mr-2"></i> Used technologies</h4>
         </li>
-        <li class="collection-item avatar" v-for="tech in techs" :key="tech.id" :title="tech.name">
+        <li class="collection-item avatar" v-for="tech in techs" :key="tech.id">
             <img :src="`${iconUri}${tech.name}.png`" class="circle">
             <span class="title">{{ tech.name }}</span>
         </li>
@@ -34,5 +34,5 @@ export default {
 
         .title
             text-transform: capitalize
-            line-height: 29px
+            line-height: 39px
 </style>

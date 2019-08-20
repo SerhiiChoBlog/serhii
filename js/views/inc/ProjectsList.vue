@@ -1,10 +1,12 @@
 <template>
     <div class="row">
-        <div class="col s12 m6 l4" v-for="(project, i) in projects" :key="project.id">
+        <div class="col s12 m6 l4" v-for="project in projects" :key="project.id">
             <router-link :to="`/project/${project.id}`">
                 <div class="card hoverable">
                     <div language-logo>
-                        <span v-for="tag in project.tags" v-html="getTagIcon(tag.name)" :title="tag.name"></span>
+                        <section v-for="tag in project.tags" :key="tag.id">
+                            <img :src="`${iconUri}${tag.name}.png`">
+                        </section>
                     </div>
                     <div class="card-image waves-effect waves-block waves-light position-relative">
                         <img :src="project.imageUrl" :alt="project.title" main-image>
@@ -19,13 +21,11 @@
 </template>
 
 <script>
-import getTagIcon from '../../modules/getTagIcon'
-
 export default {
-    methods: {
-        getTagIcon(tagName) {
-            return getTagIcon(tagName)
-        },
+    data() {
+        return {
+            iconUri: `${portfolio_globals.assets_uri}images/techs/`,
+        }
     },
 
     props: {
