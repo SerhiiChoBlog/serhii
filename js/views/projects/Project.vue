@@ -20,7 +20,7 @@
                     <ProjectsSection category="Open source projects" icon-name="users"></ProjectsSection>
                 </div>
             </div>
-            <router-link to="/" exact class="btn btn-small transparent grey-text text-darken-4 z-depth-0">
+            <router-link to="/" exact class="btn btn-small transparent grey-text text-darken-4 z-depth-0 mb-5">
                 <i class="fas fa-angle-left left"></i> Go back to home page
             </router-link>
         </div>
