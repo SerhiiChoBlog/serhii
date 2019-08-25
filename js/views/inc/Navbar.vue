@@ -1,9 +1,9 @@
 <template>
     <nav>
         <div class="nav-wrapper px-5">
-            <router-link to="/" button-back v-if="$route.name == 'single'">
+            <a href="javascript:;" button-back v-if="$route.name == 'single'" @click="goBack">
                 <i class="fas fa-chevron-left"></i>
-            </router-link>
+            </a>
             <router-link to="/" class="center brand-logo black-text">Portfolio</router-link>
         </div>
     </nav>
@@ -11,19 +11,10 @@
 
 <script>
 export default {
-    computed: {
-        isAuth() {
-            return this.$store.getters.isAuth
-        }, 
-    },
-
     methods: {
-        logOut() {
-            if (confirm('Are you sure to logout?')) {
-                this.$store.dispatch('logOut')
-                this.$router.push('/login')
-            }
-        },
+        goBack() {
+            window.history.go(-1)
+        }
     },
 }
 </script>
