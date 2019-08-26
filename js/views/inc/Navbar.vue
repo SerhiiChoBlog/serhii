@@ -1,7 +1,7 @@
 <template>
     <nav>
         <div class="nav-wrapper px-5">
-            <a href="javascript:;" button-back v-if="$route.name == 'single'" @click="goBack">
+            <a href="javascript:" button-back v-if="$route.name == 'single'" @click="goBack">
                 <i class="fas fa-chevron-left"></i>
             </a>
             <router-link to="/" class="center brand-logo black-text">Portfolio</router-link>

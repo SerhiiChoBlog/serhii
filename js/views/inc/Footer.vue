@@ -3,22 +3,16 @@
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h2 class="white-text">About me</h2>
                     <p class="grey-text text-lighten-4">
-                        ✔  How I started in web development. <br>
-                        In January 2017, I've started learning HTML and CSS and after couple months into PHP. The web was always something that I wanted to learn. <br><br>
+                        All information about me is available an my
 
-                        ✔ My goal. <br>
-                        My main goal is to become a valuable and respected programmer in a team of people who are passionate about web development in general.<br><br>
-
-                        Focused on languages: PHP, SQL <br>
-                        Backend framework: Laravel <br>
-                        Frontend framework: Vue <br>
+                        <a class="grey-text text-lighten-3" style="color:#a6e4e3!important;" href="https://www.linkedin.com/in/serhii-chornenkyi-573005187/" target="_blank">
+                            <i class="fab fa-linkedin-in"></i> LinkedIn page
+                        </a>
                     </p>
                 </div>
 
                 <div class="col l4 offset-l2 s12">
-                    <h2 class="white-text">Links</h2>
                     <ul>
                         <li>
                             <a class="grey-text text-lighten-3" href="https://github.com/SerhiiCho/" target="_blank">
