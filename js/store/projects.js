@@ -20,7 +20,7 @@ export default {
         loadProjects({commit}) {
             commit('setProcessing', true)
 
-            axios.get(`${portfolio_globals.api}posts`)
+            axios.get(`${portfolio_globals.api}posts&per_page=100`)
                 .then(res => {
                     let projects = []
 
