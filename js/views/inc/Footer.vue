@@ -4,10 +4,9 @@
             <div class="row">
                 <div class="col l6 s12">
                     <p class="grey-text text-lighten-4">
-                        All information about me is available an my
-
-                        <a class="grey-text text-lighten-3" style="color:#a6e4e3!important;" href="https://www.linkedin.com/in/serhii-chornenkyi-573005187/" target="_blank">
-                            <i class="fab fa-linkedin-in"></i> LinkedIn page
+                        In March 2018 I’ve become a freelancer and first my client became my client for many projects. Mostly I’ve worked with PHP and JavaScript. I was fortunate to have some challenging projects that I have in my portfolio.
+                        <a class="grey-text text-lighten-3" style="color:#a6e4e3!important;" href="javascript:" @click="$store.dispatch('showAboutMeModal')">
+                            Read more...
                         </a>
                     </p>
                 </div>

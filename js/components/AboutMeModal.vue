@@ -2,7 +2,7 @@
     <div>
         <div class="modal open" :style="showModal">
             <div class="modal-content">
-                <h4 v-html="pageContent.title"></h4>
+                <h1 v-html="pageContent.title" class="my-0"></h1>
                 <p v-html="pageContent.content"></p>
             </div>
         </div>
@@ -32,6 +32,7 @@
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
+        max-height: 80%
 
     .modal-overlay
         z-index: 1002
