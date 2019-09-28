@@ -2,8 +2,8 @@
     <div>
         <div class="modal open" :style="showModal">
             <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
+                <h4 v-html="pageContent.title"></h4>
+                <p v-html="pageContent.content"></p>
             </div>
         </div>
         <div class="modal-overlay" :style="showModal" @click="$store.dispatch('hideAboutMeModal')"><div></div></div>
@@ -15,6 +15,10 @@
         computed: {
             showModal() {
                 return this.$store.getters.isVisibleModal ? null : 'display:none'
+            },
+
+            pageContent() {
+                return this.$store.getters.getPageContent
             },
         }
     }

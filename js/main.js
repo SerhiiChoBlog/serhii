@@ -16,6 +16,7 @@ new Vue({
 
     created() {
         this.$store.dispatch('loadProjects')
+        this.$store.dispatch('getAboutMePageContent')
     },
 
     methods: {
