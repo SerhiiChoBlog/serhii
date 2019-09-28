@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="position-relative">
         <Navbar></Navbar>
         <div class="container">
             <transition name="fade" mode="out-in">
@@ -7,17 +7,22 @@
             </transition>
         </div>
         <Footer></Footer>
+
+        <a href="javascript:" class="about-me-button">About me</a>
+        <AboutMeModal :display="true"></AboutMeModal>
     </div>
 </template>
 
 <script>
 import Navbar from './views/inc/Navbar'
 import Footer from './views/inc/Footer'
+import AboutMeModal from './components/AboutMeModal'
 
 export default {
     components: {
         Navbar,
         Footer,
+        AboutMeModal,
     },
 }
 </script>
@@ -28,6 +33,7 @@ export default {
 @import './assets/language-logo'
 @import './assets/common'
 @import './assets/cards'
+@import './assets/about'
 
 .fade
     &-enter-active,
