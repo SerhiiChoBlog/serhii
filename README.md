@@ -4,4 +4,4 @@
 -----
 
 ### App requires to have
-* Page with the title "About"
+* Page with the title "About me"

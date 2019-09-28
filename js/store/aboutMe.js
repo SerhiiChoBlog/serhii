@@ -29,7 +29,7 @@ export default {
 
         getAboutMePageContent({commit}) {
             const handleNoPageFound = () => {
-                console.error("Page with title About is not found")
+                console.error("Page with title \"About me\" is not found")
                 commit('setContent', {title: 'Sorry. The page is not found', content: ''})
             }
 
@@ -42,7 +42,7 @@ export default {
 
             axios.get(`${portfolio_globals.api}pages`)
                 .then(res => {
-                    let filterPagesWithAbout = res.data.filter(page => page.title.rendered == 'About')
+                    let filterPagesWithAbout = res.data.filter(page => page.title.rendered === 'About me')
                     filterPagesWithAbout.length === 1 ? handlePageFound(filterPagesWithAbout) : handleNoPageFound()
                 })
                 .catch(err => console.error(err))
