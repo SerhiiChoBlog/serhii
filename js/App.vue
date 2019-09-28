@@ -1,5 +1,5 @@
 <template>
-    <div class="position-relative">
+    <div class="position-relative" @keydown.escape="$store.dispatch('hideAboutMeModal')">
         <Navbar></Navbar>
         <div class="container">
             <transition name="fade" mode="out-in">
@@ -8,8 +8,8 @@
         </div>
         <Footer></Footer>
 
-        <a href="javascript:" class="about-me-button">About me</a>
-        <AboutMeModal :display="true"></AboutMeModal>
+        <a href="javascript:" class="about-me-button" @click="$store.dispatch('showAboutMeModal')">About me</a>
+        <AboutMeModal></AboutMeModal>
     </div>
 </template>
 

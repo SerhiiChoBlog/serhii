@@ -10,10 +10,10 @@ export default {
     },
 
     actions: {
-        showModal({commit}) {
+        showAboutMeModal({commit}) {
             commit('setVisibility', true)
         },
-        hideModal({commit}) {
+        hideAboutMeModal({commit}) {
             commit('setVisibility', false)
         },
     },
