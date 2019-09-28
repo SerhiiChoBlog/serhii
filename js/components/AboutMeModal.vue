@@ -12,18 +12,12 @@
 
 <script>
     export default {
-        data() {
-            return {
-
-            }
-        },
-
-        props: ['display'],
-
         computed: {
             showModalStyles() {
-                return this.display ? 'z-index: 1003; display: block; opacity: 1; top: 10%; transform: scaleX(1) scaleY(1);' : null
-            }
+                return this.$store.getters.isVisibleModal
+                    ? 'z-index: 1003; display: block; opacity: 1; top: 10%; transform: scaleX(1) scaleY(1);'
+                    : null
+            },
         }
     }
 </script>
