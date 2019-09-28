@@ -10,4 +10,3 @@ require_once 'vendor/autoload.php';
     ->addAfterThemeSupport()
     ->addNewImageSize()
     ->registerAssets();
-
