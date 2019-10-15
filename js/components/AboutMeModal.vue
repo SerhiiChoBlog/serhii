@@ -37,6 +37,9 @@
         transform: translate(-50%, -50%)
         max-height: 80%
 
+        strong
+            font-weight: bold
+
         .my-image
             width: 65px
             border-radius: 50%
