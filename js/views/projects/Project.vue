@@ -17,7 +17,7 @@
                     <TechnologiesSection :techs="project.tags"></TechnologiesSection>
                     <ProjectsSection category="Paid projects" icon-name="coins"></ProjectsSection>
                     <ProjectsSection category="Other projects" icon-name="user-alt"></ProjectsSection>
-                    <ProjectsSection category="Open source projects" icon-name="users"></ProjectsSection>
+                    <ProjectsSection category="Open source" icon-name="users"></ProjectsSection>
                 </div>
             </div>
             <router-link to="/" exact class="btn btn-small transparent grey-text text-darken-4 z-depth-0 mb-5">

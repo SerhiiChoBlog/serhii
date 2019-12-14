@@ -39,7 +39,7 @@ export default {
             tabs: [
                 { title: 'Paid projects', hash: '#tab-1' },
                 { title: 'Other projects', hash: '#tab-2' },
-                { title: 'Open source projects', hash: '#tab-3' },
+                { title: 'Open source', hash: '#tab-3' },
             ],
         }
     },
