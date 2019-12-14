@@ -15,8 +15,8 @@
                 <div class="col s12 m4">
                     <ProjectInfo :project="project"></ProjectInfo>
                     <TechnologiesSection :techs="project.tags"></TechnologiesSection>
-                    <ProjectsSection category="Paid projects" icon-name="coins"></ProjectsSection>
-                    <ProjectsSection category="Other projects" icon-name="user-alt"></ProjectsSection>
+                    <ProjectsSection category="Professional" icon-name="coins"></ProjectsSection>
+                    <ProjectsSection category="Other" icon-name="user-alt"></ProjectsSection>
                     <ProjectsSection category="Open source" icon-name="users"></ProjectsSection>
                 </div>
             </div>
