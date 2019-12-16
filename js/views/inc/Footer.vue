@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col l6 s12">
                     <p class="grey-text text-lighten-4">
-                        In March 2018 I’ve become a freelancer and first my client became my client for many projects. Mostly I’ve worked with PHP and JavaScript. I was fortunate to have some challenging projects that I have in my portfolio.
+                        I’m mostly working with PHP, Go and JavaScript (Vue). I was fortunate to have some challenging projects on freelance. You can find them in my portfolio. There you can also check my open source packages... 
                         <a class="grey-text text-lighten-3" style="color:#a6e4e3!important;" href="javascript:" @click="$store.dispatch('showAboutMeModal')">
                             Read more...
                         </a>
