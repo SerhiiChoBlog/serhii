@@ -20,7 +20,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/serhii-chornenkyi-573005187/" target="_blank">
+                            <a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/serhiicho/" target="_blank">
                                 <i class="fab fa-linkedin-in mr-2"></i> 
                                 LinkedIn
                             </a>
