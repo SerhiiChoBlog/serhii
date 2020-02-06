@@ -38,6 +38,6 @@ export default {
 
 <style lang="scss" scoped>
 .card.hoverable {
-    min-height: 300px;
+    min-height: 320px;
 }
 </style>
