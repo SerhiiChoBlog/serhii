@@ -33,7 +33,7 @@ export default {
                             fullImageUrl: data.fullImage,
                             tags: data.tagNames,
                             categories: data.categoryNames.map(cat => cat.cat_name),
-                            date: data.date,
+                            date: data.post_date,
                             client: data.client,
                             github: data.github,
                             site: data.site,

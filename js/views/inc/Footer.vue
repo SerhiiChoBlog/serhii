@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col l6 s12">
                     <p class="grey-text text-lighten-4">
-                        I’m mostly working with PHP, Go and JavaScript (Vue). I was fortunate to have some challenging projects on freelance. You can find them in my portfolio. There you can also check my open source packages... 
+I’m a developer with 3+ years of experience. Mostly focusing on the server side of the programming world. Working with PHP, Go, and Node with TypeScript integration. I was fortunate to have some challenging projects on freelance. You can find them in my portfolio. There you can also check my open source packages and all information that you would need with links to projects, screenshots and small description.
                         <a class="grey-text text-lighten-3" style="color:#a6e4e3!important;" href="javascript:" @click="$store.dispatch('showAboutMeModal')">
                             Read more...
                         </a>

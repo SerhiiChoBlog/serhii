@@ -21,6 +21,7 @@ final class Hook
             $data->data['client'] = get_post_meta($post->ID, 'client', true);
             $data->data['github'] = get_post_meta($post->ID, 'github', true);
             $data->data['site'] = get_post_meta($post->ID, 'site', true);
+            $data->data['post_date'] = date('j F Y', strtotime($post->post_date));
 
             return $data;
         }, 10, 3);
