@@ -1,5 +1,5 @@
 <template>
-    <div class="row pt-5">
+    <div class="row pt-5" style="min-height:800px">
         <!-- Spinner -->
         <div class="col s12 center pt-4" v-if="$store.getters.getProcessing">
             <Preloader size="medium"></Preloader>
