@@ -2,7 +2,6 @@ import axios from 'axios'
 
 export default {
     state: {
-        isVisible: false,
         pageContent: {
             title: '',
             content: '',
@@ -10,23 +9,12 @@ export default {
     },
 
     mutations: {
-        setVisibility(state, payload) {
-            state.isVisible = payload
-        },
         setContent(state, payload) {
             state.pageContent = payload
         },
     },
 
     actions: {
-        showAboutMeModal({commit}) {
-            commit('setVisibility', true)
-        },
-
-        hideAboutMeModal({commit}) {
-            commit('setVisibility', false)
-        },
-
         getAboutMePageContent({commit}) {
             const handleNoPageFound = () => {
                 console.error("Page with title \"About me\" is not found")
@@ -50,7 +38,6 @@ export default {
     },
 
     getters: {
-        isVisibleModal: state => state.isVisible,
-        getPageContent: state => state.pageContent,
+        getPageContent: state => state.pageContent
     },
 }

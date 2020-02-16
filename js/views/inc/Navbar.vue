@@ -22,17 +22,14 @@
         </transition>
 
         <transition name="fade" mode="out-in">
-            <div v-if="showSidebar">
-                <ul class="sidenav">
-                    <router-link tag="li" to="/about" class="center black-text" exact><a>About</a></router-link>
-                    <router-link tag="li" to="/" class="center black-text" exact><a>Portfolio</a></router-link>
-                </ul>
-            </div>
+            <div v-if="showSidebar"><Sidenav></Sidenav></div>
         </transition>
     </div>
 </template>
 
 <script>
+import Sidenav from '../inc/Sidenav'
+
 export default {
     data() {
         return {
@@ -45,13 +42,14 @@ export default {
             this.showSidebar = !this.showSidebar
         }
     },
+
+    components: {
+        Sidenav,
+    }
 }
 </script>
 
 <style lang="sass" scoped>
-.sidenav
-    transform: translateX(0)
-
 .sidenav-overlay
     display: block
     opacity: 1

@@ -35,10 +35,6 @@
 <script>
     export default {
         computed: {
-            showModal() {
-                return this.$store.getters.isVisibleModal ? null : 'display:none'
-            },
-
             pageContent() {
                 return this.$store.getters.getPageContent
             },
