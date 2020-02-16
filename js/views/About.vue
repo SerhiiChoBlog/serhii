@@ -48,22 +48,3 @@ export default {
     }
 }
 </script>
-
-<style lang="sass" scoped>
-table
-    td
-        padding: 7px 5px
-
-.about-me-page
-    font-size: 1.3em
-    min-height: 800px
-
-    .my-image
-        width: 100%
-        border-radius: 3px
-
-@media(max-width: 600px)
-    .about-me-page
-        font-size: 1.1em
-
-</style>
