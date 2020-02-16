@@ -4,7 +4,7 @@
             <div class="nav-wrapper px-5">
                 <router-link to="/about" class="center brand-logo">Serhii Cho</router-link>
 
-                <a href="javascript:" class="sidenav-trigger" @click="showSidebar = !showSidebar">
+                <a href="javascript:" class="sidenav-trigger" @click="toggleModal">
                     <i class="fas fa-bars"></i>
                 </a>
 
@@ -17,7 +17,7 @@
 
         <transition name="fade" mode="out-in">
             <div v-if="showSidebar">
-                <div class="sidenav-overlay" @click="showSidebar = !showSidebar"></div>
+                <div class="sidenav-overlay" @click="toggleModal"></div>
             </div>
         </transition>
 
@@ -38,7 +38,13 @@ export default {
         return {
             showSidebar: false,
         }
-    }
+    },
+
+    methods: {
+        toggleModal() {
+            this.showSidebar = !this.showSidebar
+        }
+    },
 }
 </script>
 

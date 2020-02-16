@@ -36,8 +36,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.card.hoverable {
-    min-height: 320px;
-}
+<style lang="sass" scoped>
+.card.hoverable
+    min-height: 320px
+
+@media (max-width: 600px) 
+    .card.hoverable
+        min-height: auto
+
 </style>
