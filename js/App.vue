@@ -4,12 +4,6 @@
         <transition name="fade" mode="out-in">
             <router-view></router-view>
         </transition>
-
-        <footer class="page-footer blue-grey darken-2 p-0">
-            <div class="footer-copyright">
-                <div class="container">Serhii Cho | Developer since June 2017</div>
-            </div>
-        </footer>
     </div>
 </template>
 

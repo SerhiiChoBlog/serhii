@@ -1,8 +1,17 @@
 <template>
-    <div class="container pt-3" style="min-height:800px">
-        <h1 v-html="pageContent.title" class="m-0"></h1>
-        <img src="/wp-content/themes/portfolio/assets/images/me.jpg" class="my-image z-depth-1" alt="My photo">
-        <p v-html="pageContent.content"></p>
+    <div class="about-me-page pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col m12"><h1 v-html="pageContent.title" class="mb-2 mt-3"></h1></div>
+
+                <div class="col m12 l4 mt-3">
+                    <img src="/wp-content/themes/portfolio/assets/images/me.jpg" class="my-image z-depth-1" alt="My photo">
+                </div>
+                <div class="col m12 l8">
+                    <p v-html="pageContent.content"></p>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -15,3 +24,12 @@
         }
     }
 </script>
+
+<style lang="sass" scoped>
+.about-me-page
+    font-size: 1.1em
+    min-height: 800px
+
+    .my-image
+        width: 100%
+</style>
