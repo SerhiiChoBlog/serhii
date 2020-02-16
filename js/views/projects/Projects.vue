@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <div class="row pt-5" style="min-height:800px">
+    <div class="container pt-3" style="min-height:800px">
+        <div class="row">
             <!-- Spinner -->
             <div class="col s12 center pt-4" v-if="$store.getters.getProcessing">
                 <Preloader size="medium"></Preloader>

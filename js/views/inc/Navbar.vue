@@ -9,8 +9,9 @@
                 </a>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <router-link tag="li" to="/about" class="center black-text" exact><a>About</a></router-link>
-                    <router-link tag="li" to="/" class="center black-text" exact><a>Portfolio</a></router-link>
+                    <router-link tag="li" to="/" class="center black-text" exact><a>About</a></router-link>
+                    <router-link tag="li" to="/portfolio" class="center black-text" exact><a>Portfolio</a></router-link>
+                    <router-link tag="li" to="/contact" class="center black-text" exact><a>Contact</a></router-link>
                 </ul>
             </div>
         </nav>
@@ -38,7 +39,7 @@ export default {
     },
 
     created() {
-        Event.$on('new-view', () => this.toggleModal())
+        Event.$on('new-view', () => this.showSidebar = false)
     },
 
     methods: {

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Projects from './views/projects/Projects'
 import Project from './views/projects/Project'
 import About from './views/About'
+import Contact from './views/Contact'
 
 Vue.use(VueRouter)
 
@@ -15,11 +16,15 @@ const router = new VueRouter({
     routes: [
         {
             path: '/',
+            component: About,
+        },
+        {
+            path: '/portfolio',
             component: Projects,
         },
         {
-            path: '/about',
-            component: About,
+            path: '/contact',
+            component: Contact,
         },
         {
             path: '/project/:id',
