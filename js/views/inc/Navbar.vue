@@ -80,6 +80,11 @@ nav
     box-shadow: none
     background-color: #eee
 
+    li a
+        font-weight: bold
+        font-size: 1.2em
+        padding: 0 20px
+
 .brand-logo
     font-size: 1.5em
     text-transform: uppercase

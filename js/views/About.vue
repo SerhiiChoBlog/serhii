@@ -27,9 +27,15 @@
 
 <style lang="sass" scoped>
 .about-me-page
-    font-size: 1.1em
+    font-size: 1.3em
     min-height: 800px
 
     .my-image
-        width: 100%
+        width: 90%
+        border-radius: 3px
+
+@media(max-width: 600px)
+    .about-me-page
+        font-size: 1.1em
+
 </style>
