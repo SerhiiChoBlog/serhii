@@ -7,7 +7,7 @@
                 </div>
 
                 <div class="col m12 l4 mt-3">
-                    <img src="/wp-content/themes/portfolio/assets/images/me.jpg" class="my-image z-depth-1" alt="My photo">
+                    <img src="/wp-content/themes/portfolio/assets/images/me.png" class="my-image z-depth-1" alt="My photo">
 
                     <table class="mt-2">
                         <tr v-for="info in contactInfo" :key="info.type">
