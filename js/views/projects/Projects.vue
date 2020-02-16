@@ -1,21 +1,23 @@
 <template>
-    <div class="row pt-5" style="min-height:800px">
-        <!-- Spinner -->
-        <div class="col s12 center pt-4" v-if="$store.getters.getProcessing">
-            <Preloader size="medium"></Preloader>
-        </div>
+    <div class="container">
+        <div class="row pt-5" style="min-height:800px">
+            <!-- Spinner -->
+            <div class="col s12 center pt-4" v-if="$store.getters.getProcessing">
+                <Preloader size="medium"></Preloader>
+            </div>
 
-        <Tabs v-else>
-            <Tab v-for="tab in tabs"
-                :key="tab.hash"
-                :name="tab.title"
-                :count="filterProjectsByCategory(projects, tab.title).length"
-                :hash="tab.hash"
-                :selected="tab.hash == '#tab-1'"
-            >
-                <ProjectsList :projects="filterProjectsByCategory(projects, tab.title)"></ProjectsList>
-            </Tab>
-        </Tabs>
+            <Tabs v-else>
+                <Tab v-for="tab in tabs"
+                    :key="tab.hash"
+                    :name="tab.title"
+                    :count="filterProjectsByCategory(projects, tab.title).length"
+                    :hash="tab.hash"
+                    :selected="tab.hash == '#tab-1'"
+                >
+                    <ProjectsList :projects="filterProjectsByCategory(projects, tab.title)"></ProjectsList>
+                </Tab>
+            </Tabs>
+        </div>
 
         <!-- Add new project button -->
         <div class="fixed-action-btn" v-if="$root.isAuth()">

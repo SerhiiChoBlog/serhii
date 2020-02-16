@@ -1,30 +1,58 @@
 <template>
-    <nav>
-        <div class="nav-wrapper px-5">
-            <a href="javascript:" button-back v-if="$route.name == 'single'" @click="goBack">
-                <i class="fas fa-chevron-left"></i>
-            </a>
-            <router-link to="/" class="center brand-logo black-text">Portfolio</router-link>
-        </div>
-    </nav>
+    <div>
+        <nav>
+            <div class="nav-wrapper px-5">
+                <router-link to="/about" class="center brand-logo">Serhii Cho</router-link>
+
+                <a href="javascript:" class="sidenav-trigger" @click="showSidebar = !showSidebar">
+                    <i class="fas fa-bars"></i>
+                </a>
+
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <router-link tag="li" to="/about" class="center black-text" exact><a>About</a></router-link>
+                    <router-link tag="li" to="/" class="center black-text" exact><a>Portfolio</a></router-link>
+                </ul>
+            </div>
+        </nav>
+
+        <transition name="fade" mode="out-in">
+            <div v-if="showSidebar">
+                <div class="sidenav-overlay" @click="showSidebar = !showSidebar"></div>
+            </div>
+        </transition>
+
+        <transition name="fade" mode="out-in">
+            <div v-if="showSidebar">
+                <ul class="sidenav">
+                    <router-link tag="li" to="/about" class="center black-text" exact><a>About</a></router-link>
+                    <router-link tag="li" to="/" class="center black-text" exact><a>Portfolio</a></router-link>
+                </ul>
+            </div>
+        </transition>
+    </div>
 </template>
 
 <script>
 export default {
-    methods: {
-        goBack() {
-            window.history.go(-1)
+    data() {
+        return {
+            showSidebar: false,
         }
-    },
+    }
 }
 </script>
 
 <style lang="sass" scoped>
+.sidenav
+    transform: translateX(0)
+
+.sidenav-overlay
+    display: block
+    opacity: 1
+
 nav
     box-shadow: none
     background-color: #eee
-    height: 74px
-    line-height: 74px
 
 .brand-logo
     font-size: 1.5em
@@ -34,22 +62,7 @@ nav
 .nav-wrapper
     background-color: #f9f9f9
     box-shadow: 2px 2px 10px rgba(0,0,0,.07)
-    transform: rotate(-.4deg) translateY(-5px)
 
     a
         color: #333
-
-[button-back]
-    opacity: .8
-    transition: opacity 200ms
-    animation-fill-mode: forwards
-    animation: back-button-appear 500ms
-    transform: scaleX(1.9)
-    display: inline-block
-
-    i
-        font-size: 14px
-
-    &:hover
-        opacity: 1
 </style>
