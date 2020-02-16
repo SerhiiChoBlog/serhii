@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import App from './App.vue'
 import store from './store'
-import { router } from './router'
+import router from './router'
 import axios from 'axios'
 import 'materialize-css/dist/css/materialize.min.css'
 
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
+window.Event = new Vue()
 
 new Vue({
     router,

@@ -3,7 +3,7 @@
         <li>
             <div class="user-view">
                 <div class="background">
-                    <img src="/wp-content/themes/portfolio/assets/images/me.jpg">
+                    <img src="/wp-content/themes/portfolio/assets/images/me3.png">
                 </div>
                 <a href="#user"><img class="circle" src="/wp-content/themes/portfolio/assets/images/me.jpg"></a>
                 <a href="#name"><span class="white-text name">Serhii Cho</span></a>
@@ -22,5 +22,5 @@ export default {}
 
 <style lang="sass" scoped>
 .sidenav
-    transform: translateX(0)
+    transform: translateX(0) !important
 </style>

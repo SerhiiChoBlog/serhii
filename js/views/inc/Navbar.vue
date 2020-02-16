@@ -37,6 +37,10 @@ export default {
         }
     },
 
+    created() {
+        Event.$on('new-view', () => this.toggleModal())
+    },
+
     methods: {
         toggleModal() {
             this.showSidebar = !this.showSidebar

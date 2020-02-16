@@ -6,7 +6,7 @@ import About from './views/About'
 
 Vue.use(VueRouter)
 
-export const router = new VueRouter({
+const router = new VueRouter({
     scrollBehavior() {
         return { x: 0, y: 0 }
     },
@@ -32,4 +32,8 @@ export const router = new VueRouter({
             component: Projects,
         },
     ],
-});
+})
+
+router.afterEach((to, from) => Event.$emit('new-view'))
+
+export default router
