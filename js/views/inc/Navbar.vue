@@ -2,16 +2,33 @@
     <div>
         <nav>
             <div class="nav-wrapper px-5">
-                <router-link to="/about" class="center brand-logo">Serhii Cho</router-link>
-
                 <a href="javascript:" class="sidenav-trigger" @click="toggleModal">
                     <i class="fas fa-bars"></i>
                 </a>
 
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <router-link tag="li" to="/" class="center black-text" exact><a>About</a></router-link>
-                    <router-link tag="li" to="/portfolio" class="center black-text" exact><a>Portfolio</a></router-link>
-                    <router-link tag="li" to="/contact" class="center black-text" exact><a>Contact</a></router-link>
+                <router-link to="/about" class="center brand-logo">Serhii Cho</router-link>
+
+                <ul class="hide-on-med-and-down center">
+                    <router-link tag="li" to="/" class="black-text" exact><a>About</a></router-link>
+                    <router-link tag="li" to="/portfolio" class="black-text" exact><a>Portfolio</a></router-link>
+                </ul>
+
+                <ul class="hide-on-med-and-down right">
+                    <li>
+                        <a class="grey-text text-darken-2" href="https://github.com/SerhiiCho/" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="grey-text text-darken-2" href="https://www.linkedin.com/in/serhiicho/" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="grey-text text-darken-2" href="https://twitter.com/SerhiiCho/" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -71,6 +88,7 @@ nav
 .nav-wrapper
     background-color: #f9f9f9
     box-shadow: 2px 2px 10px rgba(0,0,0,.07)
+    overflow: hidden
 
     a
         color: #333

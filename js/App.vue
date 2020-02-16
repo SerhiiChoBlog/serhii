@@ -29,7 +29,6 @@ export default {
 @import './assets/language-logo'
 @import './assets/common'
 @import './assets/cards'
-@import './assets/about'
 
 .fade
     &-enter-active,
