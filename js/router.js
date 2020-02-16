@@ -2,8 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Projects from './views/projects/Projects'
 import Project from './views/projects/Project'
+import About from './views/About'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 export const router = new VueRouter({
     scrollBehavior() {
@@ -15,6 +16,10 @@ export const router = new VueRouter({
         {
             path: '/',
             component: Projects,
+        },
+        {
+            path: '/about',
+            component: About,
         },
         {
             path: '/project/:id',
