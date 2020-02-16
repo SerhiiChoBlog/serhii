@@ -8,11 +8,15 @@ export default [
         value: 'Chornenkyi',
     },
     {
+        type: 'Nationality',
+        value: 'Ukrainian',
+    },
+    {
         type: 'Birth day',
         value: '27.02.1990',
     },
     {
-        type: 'Current location',
+        type: 'Location',
         value: 'Kharkiv, Ukraine',
     },
     {
