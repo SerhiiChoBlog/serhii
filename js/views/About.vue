@@ -24,11 +24,18 @@
                 </div>
             </div>
         </div>
+
+        <div style="background:white">
+            <div class="container">
+                <ul>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import contact from '../store/contacts'
+import contact from '../staticStore/contacts'
 
 export default {
     data() {
