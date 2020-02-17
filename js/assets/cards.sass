@@ -10,15 +10,17 @@
         color: #333
         text-align: center
 
+        &:first-letter
+            font-weight: bold
+            font-size: 1.2em
+            color: #444
+
     &-content
-        min-height: 135px
+        min-height: 140px !important
+        display: flex
+        justify-content: center
+        align-items: center
 
 @media (max-width: 600px)
-    .card
-        &-content
-            min-height: auto
-
-@media (min-width: 1260px)
-    .card
-        &-content
-            min-height: 85px
+    .card-content
+        min-height: 0 !important
