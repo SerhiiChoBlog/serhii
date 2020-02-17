@@ -1,7 +1,7 @@
 <template>
     <div class="position-relative" @keydown.escape="$store.dispatch('hideAboutMeModal')">
         <Navbar></Navbar>
-        <vue-page-transition name="fade-in-up">
+        <vue-page-transition name="fade-in-left">
             <router-view></router-view>
         </vue-page-transition>
     </div>
