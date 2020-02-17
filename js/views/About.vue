@@ -1,5 +1,5 @@
 <template>
-    <div class="about-me-page pt-3">
+    <div component>
         <div class="container">
             <div class="row">
                 <div class="col m12">
@@ -41,6 +41,25 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.card
-    //
+[component]
+    background-color: white
+    padding: 50px 5px
+    font-size: 1.3em
+    min-height: 800px
+
+    table
+        td
+            padding: 7px 5px
+
+    strong,
+    b
+        font-weight: bold !important
+
+    .my-image
+        width: 100%
+        border-radius: 3px
+
+@media(max-width: 600px)
+    [component]
+        font-size: 1.1em
 </style>
