@@ -12,6 +12,6 @@ export default [
     {
         name: 'TypeScript',
         img: '/wp-content/themes/portfolio/assets/images/tools/ts.png',
-        desc: `I always wanted to have a tool that will reduce the amount of bugs in JavaScript. And since I know Vue.js, it is a perfect fit for the framework, especially from version 3.`,
+        desc: `I always wanted to have a tool that will reduce the amount of bugs in JavaScript. And since I know Vue.js, it is a perfect fit for the framework, especially from Vue version 3.`,
     },
 ]
