@@ -7,7 +7,7 @@ export default [
     {
         name: 'Go lang',
         img: '/wp-content/themes/portfolio/assets/images/tools/go.png',
-        desc: `I've started learning and working with Go lang because I wanted language that will be faster than PHP. Go is the perfect second language to know. Especially for PHP developers.`,
+        desc: `I've started learning and working with Go lang because I wanted language that will be faster than PHP. I don't have a lot of experience working with Go, but I hope to use it more in the next future.`,
     },
     {
         name: 'TypeScript',
