@@ -1,6 +1,8 @@
 <template>
-    <div component>
+    <section class="about-section">
         <div class="container">
+            <h1 class="about-section__title">Primary languages</h1>
+
             <div class="row">
                 <div class="col s12 l4" v-for="language in languagesInfo" :key="language.name">
                     <div class="card">
@@ -16,7 +18,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -36,9 +38,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-[component]
+.about-section
     background-color: white
-    padding: 50px 5px
 
     .card
         box-shadow: none

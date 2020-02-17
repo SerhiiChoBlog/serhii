@@ -1,11 +1,9 @@
 <template>
-    <div component>
+    <section class="about-section">
         <div class="container">
-            <div class="row">
-                <div class="col m12">
-                    <h1 v-html="pageContent.title" class="mb-2 mt-3"></h1>
-                </div>
+            <h1 v-html="pageContent.title" class="about-section__title"></h1>
 
+            <div class="row">
                 <div class="col m12 l4 mt-3">
                     <img src="/wp-content/themes/portfolio/assets/images/me.png" class="my-image z-depth-1" alt="My photo">
                     <Contacts></Contacts>
@@ -19,7 +17,7 @@
             </div>
         </div>
         <Languages></Languages>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -41,10 +39,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-[component]
-    background-color: white
-    padding: 50px 5px
-    font-size: 1.3em
+.about-section
     min-height: 800px
 
     table
