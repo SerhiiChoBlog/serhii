@@ -8,7 +8,7 @@ export default [
         value: 'Ukrainian',
     },
     {
-        type: 'Birth day',
+        type: 'Birthday',
         value: '27.02.1990',
     },
     {
