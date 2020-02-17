@@ -3,7 +3,7 @@
         <div class="container">
             <h1 class="about-section__title">Primary languages</h1>
 
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col s12 l4" v-for="language in languagesInfo" :key="language.name">
                     <div class="card">
                         <div class="card-image">
@@ -57,4 +57,5 @@ export default {
 
         &-content
             text-align: left
+            padding: 10px
 </style>

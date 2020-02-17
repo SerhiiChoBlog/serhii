@@ -40,14 +40,11 @@ export default {
 
 <style lang="sass" scoped>
 .about-section
-    min-height: 800px
-
     table
         td
             padding: 7px 5px
 
-    strong,
-    b
+    strong, b
         font-weight: bold !important
 
     .my-image
@@ -55,6 +52,6 @@ export default {
         border-radius: 3px
 
 @media(max-width: 600px)
-    [component]
+    .about-section
         font-size: 1.1em
 </style>
