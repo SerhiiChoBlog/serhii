@@ -23,5 +23,4 @@ export default {
 @import './assets/bootstrap.scss'
 @import './assets/language-logo'
 @import './assets/common'
-@import './assets/cards'
 </style>
