@@ -3,11 +3,14 @@ import App from './App.vue'
 import store from './store'
 import router from './router'
 import axios from 'axios'
+import VuePageTransition from 'vue-page-transition'
 import 'materialize-css/dist/css/materialize.min.css'
 
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 window.Event = new Vue()
+
+Vue.use(VuePageTransition)
 
 new Vue({
     router,

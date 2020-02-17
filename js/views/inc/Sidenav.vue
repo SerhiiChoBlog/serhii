@@ -24,6 +24,4 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.sidenav
-    transform: translateX(0) !important
 </style>

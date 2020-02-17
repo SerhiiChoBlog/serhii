@@ -32,15 +32,11 @@
             </div>
         </nav>
 
-        <transition name="fade" mode="out-in">
-            <div v-if="showSidebar">
-                <div class="sidenav-overlay" @click="toggleModal"></div>
-            </div>
-        </transition>
+        <div v-if="showSidebar">
+            <div class="sidenav-overlay" @click="toggleModal"></div>
+        </div>
 
-        <transition name="fade" mode="out-in">
-            <div v-if="showSidebar"><Sidenav></Sidenav></div>
-        </transition>
+        <div v-if="showSidebar"><Sidenav></Sidenav></div>
     </div>
 </template>
 
@@ -73,10 +69,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.sidenav-overlay
-    display: block
-    opacity: 1
-
 nav
     box-shadow: none
     background-color: #eee
