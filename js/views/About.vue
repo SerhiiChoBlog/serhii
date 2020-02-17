@@ -8,13 +8,7 @@
 
                 <div class="col m12 l4 mt-3">
                     <img src="/wp-content/themes/portfolio/assets/images/me.png" class="my-image z-depth-1" alt="My photo">
-
-                    <table class="mt-2">
-                        <tr v-for="info in contactInfo" :key="info.type">
-                            <td><b>{{ info.type }}:</b></td>
-                            <td>{{ info.value }}</td>
-                        </tr>
-                    </table>
+                    <Contacts></Contacts>
                 </div>
 
                 <div class="col m12 l8">
@@ -24,34 +18,29 @@
                 </div>
             </div>
         </div>
-
-        <div style="background:white">
-            <div class="container">
-                <ul>
-                </ul>
-            </div>
-        </div>
+        <Languages></Languages>
     </div>
 </template>
 
 <script>
-import contact from '../staticStore/contacts'
+import Languages from './inc/Languages'
+import Contacts from './inc/Contacts'
 
 export default {
-    data() {
-        return {
-            contactInfo: [],
-        }
-    },
-
-    created() {
-        this.contactInfo = contact
-    },
-
     computed: {
         pageContent() {
             return this.$store.getters.getPageContent
         },
+    },
+
+    components: {
+        Languages,
+        Contacts,
     }
 }
 </script>
+
+<style lang="sass" scoped>
+.card
+    //
+</style>
