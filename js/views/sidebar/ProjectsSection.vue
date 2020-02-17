@@ -5,11 +5,11 @@
         </li>
 
         <router-link :to="`/project/${project.id}/`"
-             v-for="project in filterProjectsByCategory(projects, category)"
-             :key="project.id"
-             v-html="project.title"
-             tag="li"
-             class="collection-item"
+            v-for="project in filterProjectsByCategory(projects, category)"
+            :key="project.id"
+            v-html="project.title"
+            tag="li"
+            class="collection-item"
         ></router-link>
     </ul>
 </template>

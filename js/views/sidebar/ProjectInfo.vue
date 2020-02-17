@@ -26,7 +26,7 @@
 <script>
 export default {
     props: {
-        project: { required: true, }
+        project: { required: true },
     },
 }
 </script>
