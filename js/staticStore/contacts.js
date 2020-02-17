@@ -1,11 +1,7 @@
 export default [
     {
-        type: 'First name',
-        value: 'Serhii',
-    },
-    {
-        type: 'Last name',
-        value: 'Chornenkyi',
+        type: 'Name',
+        value: 'Serhii Chornenkyi',
     },
     {
         type: 'Nationality',
