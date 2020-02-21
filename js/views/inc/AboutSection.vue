@@ -1,18 +1,18 @@
 <template>
-    <section class="about-section">
+    <section class="about-section" :class="{ 'dark-bg': darkBg }">
         <div class="container">
-            <h1 class="about-section__title">Primary languages</h1>
+            <h1 class="about-section__title">{{ headline }}</h1>
 
             <div class="row mt-2">
-                <div class="col s12 l4" v-for="language in languagesInfo" :key="language.name">
+                <div class="col s12 l4" v-for="card in cards" :key="card.name">
                     <div class="card">
                         <div class="card-image">
-                            <img :src="language.img">
+                            <img :src="card.img">
                         </div>
 
                         <div class="card-content">
-                            <span class="card-title">{{ language.name }}</span>
-                            <p>{{ language.desc }}</p>
+                            <span class="card-title">{{ card.name }}</span>
+                            <p>{{ card.desc }}</p>
                         </div>
                     </div>
                 </div>
@@ -22,24 +22,15 @@
 </template>
 
 <script>
-import languages from '../../staticStore/languages'
-
 export default {
-    data() {
-        return {
-            languagesInfo: [],
-        }
-    },
-
-    created() {
-        this.languagesInfo = languages
-    },
+    props: ['cards', 'headline', 'darkBg'],
 }
 </script>
 
 <style lang="sass" scoped>
 .about-section
-    background-color: white
+    .dark-bg
+        background-color: #f0f0f0
 
     .card
         box-shadow: none

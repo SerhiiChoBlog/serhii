@@ -16,23 +16,38 @@
                 </div>
             </div>
         </div>
-        <Languages></Languages>
+        <AboutSection :dark-bg="true" headline="Languages" :cards="languages"></AboutSection>
+        <AboutSection :dark-bg="false" headline="Frameworks" :cards="frameworks"></AboutSection>
     </section>
 </template>
 
 <script>
-import Languages from './inc/Languages'
+import AboutSection from './inc/AboutSection'
 import Contacts from './inc/Contacts'
+import languages from '../staticStore/languages'
+import frameworks from '../staticStore/frameworks'
 
 export default {
+    data() {
+        return {
+            frameworks: [],
+            languages: [],
+        }
+    },
+
     computed: {
         pageContent() {
             return this.$store.getters.getPageContent
         },
     },
 
+    created() {
+        this.languages = languages
+        this.frameworks = frameworks
+    },
+
     components: {
-        Languages,
+        AboutSection,
         Contacts,
     }
 }
