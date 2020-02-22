@@ -59,9 +59,6 @@ export default {
         td
             padding: 7px 5px
 
-    strong, b
-        font-weight: bold !important
-
     .my-image
         width: 100%
         border-radius: 3px
