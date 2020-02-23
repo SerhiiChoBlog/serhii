@@ -16,8 +16,8 @@
                 </div>
             </div>
         </div>
-        <AboutSection :dark-bg="true" headline="Languages" :cards="languages"></AboutSection>
-        <AboutSection :dark-bg="false" headline="Frameworks" :cards="frameworks"></AboutSection>
+        <AboutSection :dark-bg="true" headline="Languages I'm using" :cards="languages"></AboutSection>
+        <AboutSection :dark-bg="false" headline="Frameworks I've worked with" :cards="frameworks"></AboutSection>
     </section>
 </template>
 
