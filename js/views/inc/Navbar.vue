@@ -7,7 +7,9 @@
                         <i class="fas fa-bars"></i>
                     </a>
 
-                    <router-link to="/" class="center brand-logo">Serhii Cho</router-link>
+                    <router-link to="/" class="center brand-logo">
+                        <img src="/wp-content/themes/portfolio/assets/images/logo.png" alt="Serhii Cho" width="110">
+                    </router-link>
 
                     <div class="hide-on-med-and-down center"><NavLinks></NavLinks></div>
 
@@ -81,9 +83,10 @@ nav
         color: #444
 
 .brand-logo
-    font-size: 1.5em
-    font-weight: bold
-    color: #333
+    line-height: 30px
+
+    img
+        padding-top: 10px
 
 .nav-wrapper
     background-color: #f9f9f9

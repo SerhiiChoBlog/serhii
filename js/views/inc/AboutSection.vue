@@ -1,5 +1,5 @@
 <template>
-    <section class="about-section" :class="{ 'dark-bg': darkBg }">
+    <section :class="{ 'dark-bg': darkBg }">
         <div class="container">
             <h1 class="about-section__title">{{ headline }}</h1>
 
@@ -29,9 +29,6 @@ export default {
 
 <style lang="sass" scoped>
 .about-section
-    .dark-bg
-        background-color: #f0f0f0
-
     .card
         box-shadow: none
         background: transparent
