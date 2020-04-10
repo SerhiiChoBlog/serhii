@@ -24,11 +24,11 @@
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="https://twitter.com/SerhiiCho/" target="_blank">
                                 <i class="fab fa-twitter"></i>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
