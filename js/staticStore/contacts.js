@@ -1,7 +1,7 @@
 export default [
     {
         type: 'Name',
-        value: 'Serhii Chornenkyi',
+        value: 'Serhii Cho',
     },
     {
         type: 'Nationality',
