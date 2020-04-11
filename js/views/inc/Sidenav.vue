@@ -3,7 +3,7 @@
         <li>
             <div class="user-view">
                 <div class="background">
-                    <img src="/wp-content/themes/portfolio/assets/images/me2.png">
+                    <img src="/wp-content/themes/portfolio/assets/images/me3.png">
                 </div>
 
                 <a><span class="white-text name">Serhii Cho</span></a>
