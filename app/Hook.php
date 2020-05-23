@@ -32,21 +32,21 @@ final class Hook
     public function registerAssets(): self
     {
         add_action('wp_enqueue_scripts', function () {
-            wp_enqueue_style('p-style', Helper::getDirUri('style.css'), [], Helper::fileVersion('style.css'));
-            wp_enqueue_style('fa-style', Helper::getDirUri('assets/font-awesome/css/fontawesome.min.css'));
-            wp_register_script('p-js', Helper::getDirUri('assets/main.js'), [], Helper::fileVersion('assets/main.js'), true);
+            // wp_enqueue_style('p-style', Helper::getDirUri('style.css'), [], Helper::fileVersion('style.css'));
+            // wp_enqueue_style('fa-style', Helper::getDirUri('assets/font-awesome/css/fontawesome.min.css'));
+            // wp_register_script('p-js', Helper::getDirUri('assets/main.js'), [], Helper::fileVersion('assets/main.js'), true);
 
-            wp_localize_script('p-js', 'portfolio_globals', [
-                'ajax' => admin_url('admin-ajax.php'),
-                'api' => home_url('?rest_route=/wp/v2/'),
-                'nonce' => wp_create_nonce('portfolio'),
-                'is_auth' => is_user_logged_in(),
-                'admin_url' => admin_url(),
-                'assets_uri' => get_template_directory_uri() . '/assets/',
-            ]);
+            // wp_localize_script('p-js', 'portfolio_globals', [
+            //     'ajax' => admin_url('admin-ajax.php'),
+            //     'api' => home_url('?rest_route=/wp/v2/'),
+            //     'nonce' => wp_create_nonce('portfolio'),
+            //     'is_auth' => is_user_logged_in(),
+            //     'admin_url' => admin_url(),
+            //     'assets_uri' => get_template_directory_uri() . '/assets/',
+            // ]);
 
-            wp_deregister_script('jquery');
-            wp_enqueue_script('p-js');
+            // wp_deregister_script('jquery');
+            // wp_enqueue_script('p-js');
         });
 
         return $this;
