@@ -12,7 +12,7 @@
 
 <body <?php body_class(); ?>>
     <?php //<div id="app"><App></App></div> ?>
-    <h1 class="center">I'm not working for now</h1>
+    <h1 class="center">Currently I'm not looking for any jobs</h1>
 
     <?php wp_footer(); ?>
 </body>
