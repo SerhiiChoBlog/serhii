@@ -11,8 +11,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <?php //<div id="app"><App></App></div> ?>
-    <h1 class="center">Currently I'm not looking for any jobs</h1>
+    <div id="app"><App></App></div>
 
     <?php wp_footer(); ?>
 </body>
