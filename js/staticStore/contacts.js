@@ -7,10 +7,10 @@ export default [
         type: 'Nationality',
         value: 'Ukrainian',
     },
-    {
-        type: 'Birthday',
-        value: '27.02.1990',
-    },
+    // {
+    //     type: 'Birthday',
+    //     value: '27.02.1990',
+    // },
     {
         type: 'Location',
         value: 'Kharkiv, Ukraine',

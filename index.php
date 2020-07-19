@@ -11,7 +11,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <div id="app"><App></App></div>
+     <div id="app"><App></App></div>
 
     <?php wp_footer(); ?>
 </body>
