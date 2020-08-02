@@ -78,7 +78,7 @@ nav
     ul li a i
         color: #444
         font-size: 1.3em
-    
+
     .sidenav-trigger
         color: #444
 

@@ -24,7 +24,9 @@
     "license": "ISC",
     "dependencies": {
         "axios": "^0.18.1",
+        "date-diff": "^0.2.2",
         "materialize-css": "^1.0.0",
+        "pluralize": "^8.0.0",
         "vue": "^2.6.10",
         "vue-page-transition": "^0.2.2",
         "vue-router": "^3.1.3",
