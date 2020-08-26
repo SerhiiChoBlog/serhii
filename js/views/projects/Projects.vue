@@ -39,9 +39,9 @@ export default {
     data() {
         return {
             tabs: [
-                { title: 'Professional', hash: '#tab-1' },
-                { title: 'Open source', hash: '#tab-2' },
-                { title: 'Other', hash: '#tab-3' },
+                { title: 'Open source', hash: '#tab-1' },
+                { title: 'Other', hash: '#tab-2' },
+                { title: 'Professional', hash: '#tab-3' },
             ],
         }
     },
