@@ -2,7 +2,7 @@ export default [
     {
         name: 'PHP',
         img: '/wp-content/themes/portfolio/assets/images/tools/php.png',
-        desc: `I'm mostly working with Laravel framework and developing WordPress plugins. Love clean code, types, design patterns, testing and open source.`,
+        desc: `I'm mostly working with PHP in almost all of my projects. This is the language I feel myself the most confident. I'm always looking for ways to improve the quality of my code, make it more self-explanatory and robust.`,
     },
     {
         name: 'TypeScript',
