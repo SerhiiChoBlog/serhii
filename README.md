@@ -1,62 +1,101 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Serhii Cho
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Zoo-Zoo-Zoo Admin panel
 
-## About Laravel
+# Requirements
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [node](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/get-npm)
+- [composer](https://getcomposer.org/)
+- [php 8.0](https://www.php.net/)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Get started
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Install project
 
-## Learning Laravel
+```bash
+git clone https://github.com/Z00-Z00-Z00/admin-panel.git
+# or
+git clone git@github.com:SerhiiCho/serhii.git
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Create database
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Create empty database with the name of `serhii`
 
-## Laravel Sponsors
+## Create .env file
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Create `.env` file in the root of the project by copying `.env.example` file and saving it as `.env`.
 
-### Premium Partners
+```bash
+cp .env.example .env
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+## Fill in .env file
 
-## Contributing
+Fill in database credentials into .env file in the root of the project.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=serhii
+DB_USERNAME=
+DB_PASSWORD=
+```
 
-## Code of Conduct
+## Create all the tables in database
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+In the root of the project run `php artisan migrate` in order to create all the tables in the database.
 
-## Security Vulnerabilities
+```bash
+php artisan migrate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Install PHP dependencies
 
-## License
+Run `composer install` command in the root of the project to install all the dependencies. If you're installing project for production you can add `--no-dev` flag to the end of the command in order to install only production dependencies.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+composer install
+```
+
+## Generate key
+
+Generate encryption key into config file by running the artisan command:
+
+```bash
+php artisan key:generate
+```
+
+## Install npm dependencies
+
+In order to compile all the assets you need to install npm dependencies. Run:
+
+```bash
+npm i
+```
+
+## Compiled assets
+
+Compile all the assets by running npm or yarn command:
+
+```bash
+npm run prod
+```
+
+## Link storage to public directory
+
+In order to make images available on the frontend of the app you need to create a sym link that points to storage/app directory. Run `php artisan storage:link` in order to do that.
+
+```bash
+php artisan storage:link
+```
+
+## Serve the application
+
+Run `php artisan serve` in the directory of the project
+
+```bash
+php artisan serve
+```
+
