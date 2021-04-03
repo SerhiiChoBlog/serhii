@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::view('/', 'welcome');
+Route::view('/', 'home');
 Route::redirect('register', 'login');
 
 Route::middleware('auth')->group(function () {
