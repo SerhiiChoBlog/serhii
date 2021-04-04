@@ -10,7 +10,7 @@
                     Serhii Cho
                 </p>
                 <p class="subtitle">
-                    Software developer
+                    Professional software developer ❤️
                 </p>
             </div>
         </div>
