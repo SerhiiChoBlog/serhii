@@ -9,37 +9,82 @@
 </head>
 <body>
     <div id="app">
+        <nav class="navbar mb-4" style="border-bottom: 1px solid #eee">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="{{ route('home') }}">
+                        <b>SERHII CHO</b>
+                    </a>
+                    <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
 
-        <nav class="nav-extended">
-            <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Logo</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">JavaScript</a></li>
-                </ul>
-            </div>
-            <div class="nav-content">
-                <ul class="tabs tabs-transparent">
-                    <li class="tab"><a href="#test1">Test 1</a></li>
-                    <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-                    <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
-                    <li class="tab"><a href="#test4">Test 4</a></li>
-                </ul>
+                <div id="navbarExampleTransparentExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="https://bulma.io/">
+                            Home
+                        </a>
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link" href="https://bulma.io/documentation/overview/start/">
+                                @lang('')
+                            </a>
+                            <div class="navbar-dropdown is-boxed">
+                                <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
+                                    Overview
+                                </a>
+                                <a class="navbar-item" href="https://bulma.io/documentation/overview/modifiers/">
+                                    Modifiers
+                                </a>
+                                <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
+                                    Columns
+                                </a>
+                                <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
+                                    Layout
+                                </a>
+                                <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
+                                    Form
+                                </a>
+                                <hr class="navbar-divider">
+                                <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
+                                    Elements
+                                </a>
+                                <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
+                                    Components
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="field is-grouped">
+                                <p class="control">
+                                    <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+                                      <span class="icon">
+                                        <i class="fab fa-twitter"></i>
+                                      </span>
+                                        <span>
+                    Tweet
+                  </span>
+                                    </a>
+                                </p>
+                                <p class="control">
+                                    <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.9.2/bulma-0.9.2.zip">
+                  <span class="icon">
+                    <i class="fas fa-download"></i>
+                  </span>
+                                        <span>Download</span>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
-
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">JavaScript</a></li>
-        </ul>
-
-        <div id="test1" class="col s12">Test 1</div>
-        <div id="test2" class="col s12">Test 2</div>
-        <div id="test3" class="col s12">Test 3</div>
-        <div id="test4" class="col s12">Test 4</div>
 
         @yield('content')
     </div>

@@ -1,1 +1,1 @@
-import './libs/materialize.js'
+import './libs/highlight.min.js'
