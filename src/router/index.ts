@@ -1,10 +1,12 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
-import Home from '../views/Home.vue'
-import Blog from '../views/Blog.vue'
+import Home from '@/views/Home.vue'
+import Blog from '@/views/Blog.vue'
+import OpenSource from '@/views/OpenSource.vue'
 
 const routes: Array<RouteRecordRaw> = [
     { path: '/', component: Home },
     { path: '/blog', component: Blog },
+    { path: '/open-source', component: OpenSource },
     // {
     //     path: '/blog',
     //     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
