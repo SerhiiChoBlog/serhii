@@ -12,7 +12,6 @@ mix.js('resources/ts/app.ts', 'public/js')
             }
         }
     })
-    .sourceMaps()
     .disableNotifications()
     .webpackConfig({
         module: {
