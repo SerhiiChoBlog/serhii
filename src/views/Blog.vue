@@ -1,5 +1,5 @@
 <template>
-    <section class="hero is-dark" style="background: url(https://medicainstitute.com/wp-content/uploads/2017/10/blue-gradient-background-6517.jpeg); background-size: cover">
+    <section class="hero is-dark" hero>
         <div class="hero-head">
             <Navbar/>
         </div>
@@ -24,3 +24,8 @@ export default defineComponent({
 })
 </script>
 
+<style lang="sass" scoped>
+[hero]
+    background: url(../assets/images/heros/blog-hero.jpg) no-repeat center center
+    background-size: cover
+</style>

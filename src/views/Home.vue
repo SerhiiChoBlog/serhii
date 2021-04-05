@@ -1,5 +1,5 @@
 <template>
-    <section class="hero is-large is-dark" style="background: url(https://www.howtopython.org/wp-content/uploads/2020/04/laptops_python-1170x780.jpg); background-size: cover">
+    <section class="hero is-large is-dark" hero>
         <div class="hero-head">
             <Navbar/>
         </div>
@@ -18,12 +18,21 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
-import Navbar from "@/inc/Navbar.vue"
+import { defineComponent } from 'vue'
+import Navbar from '@/inc/Navbar.vue'
 
 export default defineComponent({
+    setup() {
+        //
+    },
     components: {
         Navbar,
     },
 })
 </script>
+
+<style lang="sass" scoped>
+[hero]
+    background: url(../assets/images/heros/home-hero.jpg) no-repeat top center
+    background-size: cover
+</style>

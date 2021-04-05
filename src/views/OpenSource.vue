@@ -1,5 +1,5 @@
 <template>
-    <section class="hero is-dark" style="background: url(https://wallpapercave.com/wp/wp2261119.jpg); background-size: cover">
+    <section class="hero is-dark" hero>
         <div class="hero-head">
             <Navbar/>
         </div>
@@ -24,3 +24,8 @@ export default defineComponent({
 })
 </script>
 
+<style lang="sass" scoped>
+[hero]
+    background: url(../assets/images/heros/open-source-hero.jpg) no-repeat center center
+    background-size: cover
+</style>
