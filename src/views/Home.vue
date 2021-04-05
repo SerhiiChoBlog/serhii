@@ -1,17 +1,11 @@
 <template>
     <section class="hero is-large is-dark" hero>
-        <div class="hero-head">
-            <Navbar/>
-        </div>
+        <div class="hero-head"><Navbar/></div>
 
         <div class="hero-body">
             <div class="container has-text-centered">
-                <p class="title">
-                    Serhii Cho
-                </p>
-                <p class="subtitle">
-                    Professional software developer ❤️
-                </p>
+                <p class="title">Serhii Cho</p>
+                <p class="subtitle">Professional software developer ❤️</p>
             </div>
         </div>
     </section>
