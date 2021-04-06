@@ -33,7 +33,7 @@ export default defineComponent({
         header: String,
     },
 
-    setup(props) {
+    setup() {
         return {
             getImageUrl,
         }
