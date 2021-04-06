@@ -1,6 +1,8 @@
 <template>
     <section class="section" :class="{ 'bg-dark': bgDark}">
         <div class="container">
+            <h2 class="is-size-3 has-text-centered mb-6">{{ header }}</h2>
+
             <div class="columns">
                 <div class="column" v-for="tech in techs" :key="tech.title">
                     <div class="card is-shadowless" tech-card>
@@ -28,6 +30,7 @@ export default defineComponent({
     props: {
         techs: Array,
         bgDark: Boolean,
+        header: String,
     },
 
     setup(props) {

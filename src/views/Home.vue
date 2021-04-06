@@ -6,17 +6,15 @@
             <div class="container has-text-centered">
                 <p class="title">Software developer ❤️</p>
                 <p class="subtitle">
-                    I’m a fullstack software developer who is mostly focusing on
-                    the backend.<br />I was fortunate to have challenging
-                    projects that helped me to try lots of different
-                    technologies
+                    I’m a fullstack software developer who is mostly focusing on the backend.<br />
+                    I was fortunate to have challenging projects that helped me to try lots of different technologies
                 </p>
             </div>
         </div>
     </section>
 
-    <CardsSection :techs="langs" :bg-dark="false"/>
-    <CardsSection :techs="frameworks" :bg-dark="true"/>
+    <CardsSection :techs="langs" :bg-dark="false" header="My languages of choice"/>
+    <CardsSection :techs="frameworks" :bg-dark="true" header="I'm working with"/>
 </template>
 
 <script lang="ts">
