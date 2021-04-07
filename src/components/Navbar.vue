@@ -17,7 +17,7 @@
                     <router-link to="/blog" class="navbar-item">Blog</router-link>
                     <router-link to="/open-source" class="navbar-item">Open source</router-link>
                     <div class="navbar-item">
-                        <router-link to="/contact" tag="div" class="button is-rounded is-info">Contact me</router-link>
+                        <div class="button is-rounded is-info">Contact me</div>
                     </div>
                 </div>
             </div>
