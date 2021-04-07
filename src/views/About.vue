@@ -4,8 +4,8 @@
 
         <div class="hero-body">
             <div class="container has-text-centered">
-                <p class="title">Serhii Cho</p>
-                <p class="subtitle">Professional software develper ❤️</p>
+                <p class="title">SERHII<span class="has-text-info">CHO</span></p>
+                <p class="subtitle">Professional software developer️ 💙</p>
             </div>
         </div>
     </section>
@@ -14,7 +14,7 @@
         <div class="container">
             <h2 class="is-size-2 mb-6">Hi, I’m Serhii. Nice to meet you.</h2>
             <p class="subtitle is-size-4">
-                I’m a freelance fullstack developer with <b :title="fullExp">{{ exp.roundYears }}</b> years experience
+                I’m a fullstack developer with <b :title="fullExp" class="has-text-info">{{ exp.roundYears }}</b> years experience
                 creating web applications. I was fortunate to have challenging projects that helped me to try lots of
                 different technologies. Since the beginning of my journey as a freelancer, I've done remote work for
                 companies based in Netherlands and Ukraine.
@@ -35,6 +35,13 @@ import CardsSection from "@/components/CardsSection.vue"
 import getDateDiff from "@/modules/getDateDiff";
 
 export default defineComponent({
+    created() {
+        fetch('https://api.github.com/users/SerhiiCho')
+            .then(res => res.json())
+            .then(res => console.log(res))
+            .catch(err => console.error(err))
+    },
+
     setup() {
         const exp = ref(getDateDiff(new Date(), new Date(2017, 5, 24)))
         const fullExp = ref(exp.value.years + ' years ' + exp.value.months + ' months')
@@ -51,7 +58,7 @@ export default defineComponent({
         Navbar,
         CardsSection,
     },
-});
+})
 </script>
 
 <style lang="sass" scoped>

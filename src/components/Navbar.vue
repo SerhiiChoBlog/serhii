@@ -2,7 +2,9 @@
     <nav class="navbar">
         <div class="container">
             <div class="navbar-brand">
-                <router-link logo to="/" class="navbar-item"><b>❤️ SERHII CHO</b></router-link>
+                <router-link logo to="/" class="navbar-item">
+                    <b>SERHII<span class="has-text-info">CHO</span></b>
+                </router-link>
                 <span class="navbar-burger">
                     <span></span>
                     <span></span>
