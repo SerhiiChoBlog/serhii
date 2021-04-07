@@ -10,5 +10,5 @@ export default defineComponent({
 </script>
 
 <style lang="sass">
-@import '~bulma'
+@import '@/assets/sass/main'
 </style>

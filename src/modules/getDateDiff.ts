@@ -8,8 +8,16 @@ export default (date1: Date, date2: Date): DateDiffInterface => {
         .toString()
         .split('.')
 
+    const years = parseInt(codingDiff[0])
+    const months = parseInt(codingDiff[1])
+    let roundYears = years
+
+    if (months > 6)
+        roundYears += 1
+
     return {
-        years: parseInt(codingDiff[0]),
-        months: parseInt(codingDiff[1]),
+        years,
+        months,
+        roundYears,
     }
 }
