@@ -10,24 +10,31 @@ export default () => {
         loading.value = true
 
         fetch('https://api.github.com/users/SerhiiCho/repos')
-            .then(res => res.json())
-            .then((res: GithubApiReposResponse[]) => {
-                const result: RepoItem[] = res.map(repo => {
-                    return {
-                        name: repo.name,
-                        htmlUrl: repo.html_url,
-                        description: repo.description,
-                        language: repo.language,
-                        stars: repo.stars,
-                        license: repo.license ? repo.license.key : null,
-                    }
-                })
-
-                list.value = result
+            .then(resp => resp.json())
+            .then((resp: GithubApiReposResponse[]) => {
+                const repoItems = remapGithubResponseIntoRepoItemsArray(resp)
+                list.value = keepOnlyReposWithMitLicence(repoItems)
             })
             .catch(err => console.error(err))
             .finally(() => loading.value = false)
     })
 
     return { list, loading }
+}
+
+function remapGithubResponseIntoRepoItemsArray(response: GithubApiReposResponse[]): RepoItem[] {
+    return response.map(repo => {
+        return {
+            name: repo.name,
+            htmlUrl: repo.html_url,
+            description: repo.description,
+            language: repo.language,
+            stars: repo.stars,
+            license: repo.license ? repo.license.key : null,
+        }
+    })
+}
+
+function keepOnlyReposWithMitLicence(repos: RepoItem[]): RepoItem[] {
+    return repos.filter(repo => repo.license === 'mit')
 }
