@@ -24,7 +24,7 @@
         </div>
     </nav>
 
-    <ContactModal />
+    <ContactModal @closeContactModalEvent="closeContactModal" />
 </template>
 
 <script lang="ts">
