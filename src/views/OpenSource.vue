@@ -10,11 +10,20 @@
         </div>
     </section>
 
-    <div class="content">
+    <div class="container">
         <p v-if="loading">Loading...</p>
-        <ul v-else>
-            <li v-for="item of list" :key="item">{{ item.name }}</li>
-        </ul>
+        <div v-else class="columns is-multiline">
+            <div class="column is-one-third" v-for="repo of list" :key="repo.name">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h5>{{ repo.name }}</h5>
+                            <p>{{ repo.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
