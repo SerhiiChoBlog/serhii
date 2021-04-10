@@ -35,13 +35,6 @@ import CardsSection from '@/components/CardsSection.vue'
 import getDateDiff from '@/modules/getDateDiff'
 
 export default defineComponent({
-    created() {
-        fetch('https://api.github.com/users/SerhiiCho')
-            .then(res => res.json())
-            .then(res => console.log(res))
-            .catch(err => console.error(err))
-    },
-
     setup() {
         const exp = ref(getDateDiff(new Date(), new Date(2017, 5, 24)))
         const fullExp = ref(exp.value.years + ' years ' + exp.value.months + ' months')
