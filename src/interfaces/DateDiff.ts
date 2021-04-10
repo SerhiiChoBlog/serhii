@@ -1,4 +1,4 @@
-export default interface DateDiffInterface {
+export default interface DateDiff {
     years: number
     months: number
     roundYears: number

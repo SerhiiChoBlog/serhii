@@ -1,8 +1,8 @@
-import DateDiffInterface from "@/interfaces/DateDiffInterface"
+import DateDiff from "@/interfaces/DateDiff"
 
 const dateDiff = require('date-diff')
 
-export default (date1: Date, date2: Date): DateDiffInterface => {
+export default (date1: Date, date2: Date): DateDiff => {
     const codingDiff = new dateDiff(date1, date2)
         .years()
         .toString()
