@@ -29,8 +29,8 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import Navbar from '@/components/Navbar.vue'
-import langs from '@/composables/langs'
-import frameworks from '@/composables/frameworks'
+import langs from '@/static/langs'
+import frameworks from '@/static/frameworks'
 import CardsSection from '@/components/CardsSection.vue'
 import getDateDiff from '@/modules/getDateDiff'
 
