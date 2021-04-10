@@ -11,9 +11,9 @@
     </section>
 
     <div class="content">
-        <p v-if="repos.loading">Loading...</p>
+        <p v-if="loading">Loading...</p>
         <ul v-else>
-            <li v-for="item of repos.list" :key="item">{{ item.full_name }}</li>
+            <li v-for="item of list" :key="item">{{ item.name }}</li>
         </ul>
     </div>
 </template>
@@ -26,7 +26,7 @@ import useFetchRepos from '@/composables/useFetchRepos'
 export default defineComponent({
     setup() {
         return {
-            ...useFetchRepos()
+            ...useFetchRepos(),
         }
     },
 
