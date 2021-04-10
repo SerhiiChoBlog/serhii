@@ -8,7 +8,7 @@
                     <div class="card is-shadowless" tech-card>
                         <div class="card-image">
                             <figure class="image is-4by3" tech-image>
-                                <img :src="getImageUrl(tech.imageName)" :alt="tech.title">
+                                <img :data-src="getImageUrl(tech.imageName)" :alt="tech.title" class="smooth-loader">
                             </figure>
                         </div>
                         <div class="card-content has-text-centered">
