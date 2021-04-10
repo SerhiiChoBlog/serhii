@@ -11,9 +11,9 @@
     </section>
 
     <div class="content">
-        <ul>
-            <li>first one</li>
-            <li v-for="item of list" :key="item">{{ item.full_name }}</li>
+        <p v-if="repos.loading">Loading...</p>
+        <ul v-else>
+            <li v-for="item of repos.list" :key="item">{{ item.full_name }}</li>
         </ul>
     </div>
 </template>

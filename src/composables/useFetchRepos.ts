@@ -1,18 +1,20 @@
-import { ref, onMounted } from 'vue'
+import { reactive, onMounted } from 'vue'
 
 export default () => {
-    const list = ref(null)
-    const loading = ref(false)
+    const repos = reactive({
+        list: [],
+        loading: false,
+    })
 
     onMounted(() => {
-        loading.value = true
+        repos.loading = true
 
         fetch('https://api.github.com/users/SerhiiCho/repos')
             .then(res => res.json())
-            .then(res => list.value = res)
+            .then(res => repos.list = res)
             .catch(err => console.error(err))
-            .finally(() => loading.value = false)
+            .finally(() => repos.loading = false)
     })
 
-    return { list, loading }
+    return { repos }
 }
