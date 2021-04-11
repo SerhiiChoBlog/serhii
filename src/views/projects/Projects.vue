@@ -14,16 +14,19 @@
         <p v-if="loading">Loading...</p>
         <div v-else class="columns is-multiline">
             <div class="column is-one-third" v-for="repo of list" :key="repo.name">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="content">
-                                <h5>{{ repo.name }} ({{ repo.language }})</h5>
-                                <p>{{ repo.description }}</p>
-                            </div>
-
-                            <router-link :to="'/project/' + repo.name" class="button">View</router-link>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h5>{{ repo.name }} ({{ repo.language }})</h5>
+                            <p>{{ repo.description }}</p>
                         </div>
+
+                        <router-link
+                            :to="'/project/' + repo.name"
+                            class="button"
+                        >View</router-link>
                     </div>
+                </div>
             </div>
         </div>
     </div>
