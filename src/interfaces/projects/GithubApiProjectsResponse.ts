@@ -1,4 +1,4 @@
-export default interface GithubApiReposResponse {
+export default interface GithubApiProjectsResponse {
     name: string
     html_url: string
     description: string

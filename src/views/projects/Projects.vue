@@ -21,7 +21,7 @@
                                 <p>{{ repo.description }}</p>
                             </div>
 
-                            <router-view :to="'/open-source/' + repo.name" class="button">View</router-view>
+                            <router-view :to="'/project/' + repo.name" class="button">View</router-view>
                         </div>
                     </div>
             </div>
@@ -49,6 +49,6 @@ export default defineComponent({
 
 <style lang="sass" scoped>
 [hero]
-    background: url(../assets/images/heros/open-source-hero.jpg) no-repeat center center
+    background: url(../../assets/images/heros/open-source-hero.jpg) no-repeat center center
     background-size: cover
 </style>

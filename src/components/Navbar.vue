@@ -15,7 +15,7 @@
                 <div class="navbar-end">
                     <router-link to="/" class="navbar-item">About</router-link>
                     <!-- <router-link to="/blog" class="navbar-item">Blog</router-link> -->
-                    <router-link to="/open-source" class="navbar-item">Open source</router-link>
+                    <router-link to="/projects" class="navbar-item">Open source</router-link>
                     <div class="navbar-item">
                         <div class="button is-rounded is-info" @click="openContactModal">Contact me</div>
                     </div>

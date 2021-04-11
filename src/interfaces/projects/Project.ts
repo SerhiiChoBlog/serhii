@@ -1,4 +1,4 @@
-export default interface RepoItem {
+export default interface Project {
     name: string
     htmlUrl: string
     description: string

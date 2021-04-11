@@ -1,9 +1,9 @@
-import GithubApiReposResponse from '@/interfaces/openSource/GithubApiReposResponse'
-import RepoItem from '@/interfaces/openSource/RepoItem'
+import GithubApiReposResponse from '@/interfaces/projects/GithubApiProjectsResponse'
+import Project from '@/interfaces/projects/Project'
 import { ref, onMounted } from 'vue'
 
 export default () => {
-    let list = ref<RepoItem[]>([])
+    let list = ref<Project[]>([])
     let loading = ref<boolean>(false)
 
     onMounted(() => {
@@ -12,8 +12,8 @@ export default () => {
         fetch('https://api.github.com/users/SerhiiCho/repos')
             .then(resp => resp.json())
             .then((resp: GithubApiReposResponse[]) => {
-                const repoItems = remapGithubResponseIntoRepoItemsArray(resp)
-                list.value = keepOnlyReposWithMitLicence(repoItems)
+                const projects = remapGithubResponseIntoProjectsArray(resp)
+                list.value = keepOnlyProjectsWithMitLicence(projects)
             })
             .catch(err => console.error(err))
             .finally(() => loading.value = false)
@@ -22,19 +22,19 @@ export default () => {
     return { list, loading }
 }
 
-function remapGithubResponseIntoRepoItemsArray(response: GithubApiReposResponse[]): RepoItem[] {
-    return response.map(repo => {
+function remapGithubResponseIntoProjectsArray(response: GithubApiReposResponse[]): Project[] {
+    return response.map(project => {
         return {
-            name: repo.name,
-            htmlUrl: repo.html_url,
-            description: repo.description,
-            language: repo.language,
-            stars: repo.stars,
-            license: repo.license ? repo.license.key : null,
+            name: project.name,
+            htmlUrl: project.html_url,
+            description: project.description,
+            language: project.language,
+            stars: project.stars,
+            license: project.license ? project.license.key : null,
         }
     })
 }
 
-function keepOnlyReposWithMitLicence(repos: RepoItem[]): RepoItem[] {
-    return repos.filter(repo => repo.license === 'mit')
+function keepOnlyProjectsWithMitLicence(projects: Project[]): Project[] {
+    return projects.filter(project => project.license === 'mit')
 }
