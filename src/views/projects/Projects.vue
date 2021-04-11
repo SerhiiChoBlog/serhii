@@ -21,7 +21,7 @@
                                 <p>{{ repo.description }}</p>
                             </div>
 
-                            <router-view :to="'/project/' + repo.name" class="button">View</router-view>
+                            <router-link :to="'/project/' + repo.name" class="button">View</router-link>
                         </div>
                     </div>
             </div>
