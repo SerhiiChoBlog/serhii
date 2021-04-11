@@ -4,7 +4,7 @@ import { ref, onMounted } from 'vue'
 
 export default () => {
     let list = ref<Project[]>([])
-    let loading = ref<boolean>(false)
+    let loading = ref(false)
 
     onMounted(() => {
         loading.value = true

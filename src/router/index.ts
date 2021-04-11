@@ -8,7 +8,7 @@ const routes: Array<RouteRecordRaw> = [
     { path: '/', component: About },
     { path: '/blog', component: Blog },
     { path: '/projects', component: Projects },
-    { path: '/project/:name', component: Project },
+    { path: '/project/:projectName', component: Project },
 ]
 
 const router = createRouter({
