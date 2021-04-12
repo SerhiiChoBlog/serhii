@@ -15,16 +15,9 @@
         <div v-else class="row">
             <div class="col-md-6 col-lg-4 col-xl-3" v-for="repo of list" :key="repo.name">
 
-                <router-link :to="'/project/' + repo.name">
+                <router-link :to="`/project/${repo.name}`">
                     <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                            </figure>
-                            <div language-image>
-                                <img :src="getLanguagesImages(repo.language.toLowerCase())">
-                            </div>
-                        </div>
+                        <img language-image :src="getLanguagesImages(repo.language.toLowerCase())">
 
                         <div class="card-content">
                             <div class="content">
@@ -76,29 +69,21 @@ export default defineComponent({
     min-height: 270px
     position: relative
     padding-bottom: 40px
+    padding-top: 20px
 
-[view-button]
-    position: absolute
-    bottom: 0
-    left: 0
-    width: 100%
+    [view-button]
+        position: absolute
+        bottom: 0
+        left: 0
+        width: 100%
 
-[card-title]
-    text-transform: capitalize
+    [card-title]
+        text-transform: capitalize
 
 [language-image]
+    width: 40px
+    height: 40px
     position: absolute
-    width: 50px
-    height: 50px
-    top: 10px
-    left: 10px
-    background-color: rgba(255, 255, 255, .5)
-    border-radius: 50%
-    display: flex
-    align-items: center
-    justify-content: center
-
-    img
-        width: 40px
-        height: 40px
+    top: 12px
+    right: 12px
 </style>
