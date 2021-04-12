@@ -12,19 +12,22 @@
 
     <div class="container mt-6">
         <div v-if="loading" class="has-text-centered"><Spinner /></div>
-        <div v-else class="columns is-multiline">
-            <div class="column is-one-third" v-for="repo of list" :key="repo.name">
+        <div v-else class="row">
+            <div class="col-md-6 col-lg-4 col-xl-3" v-for="repo of list" :key="repo.name">
                 <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+
                     <div class="card-content">
                         <div class="content">
-                            <h5>{{ repo.name }} ({{ repo.language }})</h5>
+                            <h5 card-title>{{ repo.title }} <span class="tag is-link is-normal">{{ repo.language }}</span></h5>
                             <p>{{ repo.description }}</p>
-                        </div>
 
-                        <router-link
-                            :to="'/project/' + repo.name"
-                            class="button"
-                        >View</router-link>
+                            <router-link :to="'/project/' + repo.name" view-button class="button is-rounded is-info is-block">View</router-link>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -56,4 +59,21 @@ export default defineComponent({
 [hero]
     background: url(../../assets/images/heros/open-source-hero.jpg) no-repeat center center
     background-size: cover
+
+.card
+    margin-bottom: 25px
+
+.content
+    min-height: 270px
+    position: relative
+    padding-bottom: 40px
+
+[view-button]
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 100%
+
+[card-title]
+    text-transform: capitalize
 </style>

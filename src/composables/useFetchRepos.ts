@@ -26,6 +26,7 @@ function remapGithubResponseIntoProjectsArray(response: GithubApiReposResponse[]
     return response.map(project => {
         return {
             name: project.name,
+            title: project.name.replace('-', ' '),
             htmlUrl: project.html_url,
             description: project.description,
             language: project.language,
