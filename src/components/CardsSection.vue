@@ -8,7 +8,7 @@
                     <div class="card is-shadowless" tech-card>
                         <div class="card-image">
                             <figure class="image is-4by3" tech-image>
-                                <img :src="getImageUrl(tech.imageName)" :alt="tech.title">
+                                <img :src="getToolsImages(tech.imageName)" :alt="tech.title">
                             </figure>
                         </div>
                         <div class="card-content has-text-centered">
@@ -24,7 +24,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import getImageUrl from '@/modules/getImageUrl'
+import { getToolsImages } from '@/modules/getImageUrl'
+import Project from '@/interfaces/projects/Project'
 
 export default defineComponent({
     props: {
@@ -35,7 +36,7 @@ export default defineComponent({
 
     setup() {
         return {
-            getImageUrl,
+            getToolsImages,
         }
     },
 })
