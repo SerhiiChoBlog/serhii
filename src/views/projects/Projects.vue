@@ -14,22 +14,28 @@
         <div v-if="loading" class="has-text-centered"><Spinner /></div>
         <div v-else class="row">
             <div class="col-md-6 col-lg-4 col-xl-3" v-for="repo of list" :key="repo.name">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                        </figure>
-                    </div>
 
-                    <div class="card-content">
-                        <div class="content">
-                            <h5 card-title>{{ repo.title }} <span class="tag is-link is-normal">{{ repo.language }}</span></h5>
-                            <p>{{ repo.description }}</p>
+                <router-link :to="'/project/' + repo.name">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                            </figure>
+                            <div language-image>
+                                <img :src="getLanguagesImages(repo.language.toLowerCase())">
+                            </div>
+                        </div>
 
-                            <router-link :to="'/project/' + repo.name" view-button class="button is-rounded is-info is-block">View</router-link>
+                        <div class="card-content">
+                            <div class="content">
+                                <h4 card-title>{{ repo.title }}</h4>
+                                <p>{{ repo.description }}</p>
+
+                                <div view-button class="button is-rounded is-info is-block">View</div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </router-link>
             </div>
         </div>
     </div>
@@ -40,11 +46,13 @@ import { defineComponent } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import useFetchRepos from '@/composables/useFetchRepos'
 import Spinner from '@/components/Spinner.vue'
+import { getLanguagesImages } from '@/modules/getImageUrl'
 
 export default defineComponent({
     setup() {
         return {
             ...useFetchRepos(),
+            getLanguagesImages,
         }
     },
 
@@ -62,6 +70,7 @@ export default defineComponent({
 
 .card
     margin-bottom: 25px
+    position: relative
 
 .content
     min-height: 270px
@@ -76,4 +85,20 @@ export default defineComponent({
 
 [card-title]
     text-transform: capitalize
+
+[language-image]
+    position: absolute
+    width: 50px
+    height: 50px
+    top: 10px
+    left: 10px
+    background-color: rgba(255, 255, 255, .5)
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+
+    img
+        width: 40px
+        height: 40px
 </style>
