@@ -11,7 +11,7 @@
     </section>
 
     <div class="container mt-6">
-        <p v-if="loading">Loading...</p>
+        <div v-if="loading" class="has-text-centered"><Spinner /></div>
         <div v-else class="columns is-multiline">
             <div class="column is-one-third" v-for="repo of list" :key="repo.name">
                 <div class="card">
@@ -36,6 +36,7 @@
 import { defineComponent } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import useFetchRepos from '@/composables/useFetchRepos'
+import Spinner from '@/components/Spinner.vue'
 
 export default defineComponent({
     setup() {
@@ -46,6 +47,7 @@ export default defineComponent({
 
     components: {
         Navbar,
+        Spinner,
     },
 })
 </script>

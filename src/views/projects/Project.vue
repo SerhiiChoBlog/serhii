@@ -11,34 +11,43 @@
     </section>
 
     <div class="container mt-6 pb-6">
-        <div class="content" v-html="content"></div>
+        <div v-if="loading" class="has-text-centered"><Spinner /></div>
+        <div v-else class="content" v-html="content"></div>
     </div>
 </template>
 
-<script>
-import { defineComponent, ref } from 'vue'
+<script lang="ts">
+import { defineComponent, ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import Navbar from '@/components/Navbar'
+import Navbar from '@/components/Navbar.vue'
+import Spinner from '@/components/Spinner.vue'
 import showdown from 'showdown'
 
 export default defineComponent({
     setup() {
         const { params } = useRoute()
         let content = ref('')
+        let loading = ref(false)
 
-        fetch(`https://raw.githubusercontent.com/SerhiiCho/${params.projectName}/master/README.md`)
-            .then(res => res.text())
-            .then(res => {
-                var converter = new showdown.Converter()
-                content.value = converter.makeHtml(res)
-            })
-            .catch(err => console.error(err))
+        onMounted(() => {
+            loading.value = true
 
-        return { content }
+            fetch(`https://raw.githubusercontent.com/SerhiiCho/${params.projectName}/master/README.md`)
+                .then(res => res.text())
+                .then(res => {
+                    var converter = new showdown.Converter()
+                    content.value = converter.makeHtml(res)
+                })
+                .catch(err => console.error(err))
+                .finally(() => loading.value = false)
+        })
+
+        return { content, loading }
     },
 
     components: {
         Navbar,
+        Spinner,
     },
 })
 </script>
