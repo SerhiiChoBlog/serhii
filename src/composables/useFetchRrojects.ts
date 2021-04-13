@@ -1,6 +1,7 @@
 import GithubApiReposResponse from '@/interfaces/projects/GithubApiProjectsResponse'
 import Project from '@/interfaces/projects/Project'
 import { ref, onMounted } from 'vue'
+import { getProjectsUrl } from '@/static/urls'
 
 export default () => {
     let list = ref<Project[]>([])
@@ -9,7 +10,7 @@ export default () => {
     onMounted(() => {
         loading.value = true
 
-        fetch('https://api.github.com/users/SerhiiCho/repos')
+        fetch(getProjectsUrl())
             .then(resp => resp.json())
             .then((resp: GithubApiReposResponse[]) => {
                 const projects = remapGithubResponseIntoProjectsArray(resp)

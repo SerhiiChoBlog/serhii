@@ -17,32 +17,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { defineComponent } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import Spinner from '@/components/Spinner.vue'
-import showdown from 'showdown'
+import useFetchProjectContent from '@/composables/useFetchProjectContent'
 
 export default defineComponent({
     setup() {
-        const { params } = useRoute()
-        let content = ref('')
-        let loading = ref(false)
-
-        onMounted(() => {
-            loading.value = true
-
-            fetch(`https://raw.githubusercontent.com/SerhiiCho/${params.projectName}/master/README.md`)
-                .then(res => res.text())
-                .then(res => {
-                    var converter = new showdown.Converter()
-                    content.value = converter.makeHtml(res)
-                })
-                .catch(err => console.error(err))
-                .finally(() => loading.value = false)
-        })
-
-        return { content, loading }
+        return {
+            ...useFetchProjectContent(),
+        }
     },
 
     components: {
