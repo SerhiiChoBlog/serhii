@@ -36,7 +36,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Navbar from '@/components/Navbar.vue'
-import useFetchProjects from '@/composables/useFetchRrojects'
+import useFetchProjects from '@/composables/projects/useFetchRrojects'
 import Spinner from '@/components/Spinner.vue'
 import { getLanguagesImages } from '@/modules/getImageUrl'
 

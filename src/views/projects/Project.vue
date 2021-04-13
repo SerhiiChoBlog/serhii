@@ -20,7 +20,7 @@
 import { defineComponent } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import Spinner from '@/components/Spinner.vue'
-import useFetchProjectContent from '@/composables/useFetchProjectContent'
+import useFetchProjectContent from '@/composables/projects/useFetchProjectContent'
 
 export default defineComponent({
     setup() {
