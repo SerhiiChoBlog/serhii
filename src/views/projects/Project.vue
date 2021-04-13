@@ -1,6 +1,6 @@
 <template>
     <section class="hero is-light" hero>
-        <div class="hero-head"><Navbar/></div>
+        <div class="hero-head"><Navbar /></div>
 
         <div class="hero-body">
             <div class="container has-text-centered">
