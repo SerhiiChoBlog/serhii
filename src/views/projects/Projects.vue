@@ -36,14 +36,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Navbar from '@/components/Navbar.vue'
-import useFetchRepos from '@/composables/useFetchRepos'
+import useFetchProjects from '@/composables/useFetchRrojects'
 import Spinner from '@/components/Spinner.vue'
 import { getLanguagesImages } from '@/modules/getImageUrl'
 
 export default defineComponent({
     setup() {
         return {
-            ...useFetchRepos(),
+            ...useFetchProjects(),
             getLanguagesImages,
         }
     },
@@ -68,7 +68,7 @@ export default defineComponent({
     min-height: 270px
     position: relative
     padding-bottom: 40px
-    padding-top: 20px
+    padding-top: 10px
 
     [view-button]
         position: absolute
