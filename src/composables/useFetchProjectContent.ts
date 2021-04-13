@@ -6,10 +6,10 @@ import { getProjectContentUrl } from '@/static/urls'
 export default () => {
     const { params } = useRoute()
     let content = ref('')
-    let loading = ref(false)
+    let contentLoading = ref(false)
 
     onMounted(() => {
-        loading.value = true
+        contentLoading.value = true
 
         fetch(getProjectContentUrl(params.projectName as string))
             .then(res => res.text())
@@ -18,8 +18,8 @@ export default () => {
                 content.value = converter.makeHtml(res)
             })
             .catch(err => console.error(err))
-            .finally(() => loading.value = false)
+            .finally(() => contentLoading.value = false)
     })
 
-    return { content, loading }
+    return { content, contentLoading }
 }

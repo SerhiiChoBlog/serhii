@@ -11,7 +11,7 @@
     </section>
 
     <div class="container mt-6 pb-6">
-        <div v-if="loading" class="has-text-centered"><Spinner /></div>
+        <div v-if="contentLoading" class="has-text-centered"><Spinner /></div>
         <div v-else class="content" v-html="content"></div>
     </div>
 </template>
