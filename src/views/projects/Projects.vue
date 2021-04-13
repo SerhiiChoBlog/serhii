@@ -1,6 +1,6 @@
 <template>
     <section class="hero is-dark" hero>
-        <div class="hero-head"><Navbar/></div>
+        <div class="hero-head"><Navbar /></div>
 
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -14,7 +14,6 @@
         <div v-if="loading" class="has-text-centered"><Spinner /></div>
         <div v-else class="row">
             <div class="col-md-6 col-lg-4 col-xl-3" v-for="repo of list" :key="repo.name">
-
                 <router-link :to="`/project/${repo.name}`">
                     <div class="card">
                         <img language-image :src="getLanguagesImages(repo.language.toLowerCase())">
