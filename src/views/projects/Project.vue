@@ -8,7 +8,7 @@
             </div>
             <div v-else class="container has-text-centered">
                 <p class="title">{{ project.title }}</p>
-                <p class="subtitle">{{ project.description }}</p>
+                <p class="subtitle has-text-left">{{ project.description }}</p>
                 <a :href="project.htmlUrl" target="_blank" class="button is-rounded is-dark">
                     <img src="../../assets/images/icons/github.png" width="20" />
                     <span class="ml-2">Open on Github</span>
@@ -48,4 +48,22 @@ export default defineComponent({
 <style lang="sass" scoped>
 .title
     text-transform: capitalize
+    margin-bottom: 40px
+    font-size: 2.2em
+
+.subtitle
+    font-size: 1.4em
+
+.content
+    font-size: 1.2em
+
+@media (max-width: 991px)
+    .title
+        font-size: 1.7em
+
+    .subtitle
+        font-size: 1.2em
+
+    .content
+        font-size: 1.1em
 </style>

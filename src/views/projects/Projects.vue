@@ -13,7 +13,7 @@
     <div class="container mt-6">
         <div v-if="loading" class="has-text-centered"><Spinner /></div>
         <div v-else class="row">
-            <div class="col-md-6 col-lg-4 col-xl-3" v-for="repo of list" :key="repo.name">
+            <div class="col-md-12 col-lg-6 col-xl-4" v-for="repo of list" :key="repo.name">
                 <router-link :to="`/projects/${repo.name}`">
                     <div class="card">
                         <img class="language-image" :src="getLanguagesImages(repo.language.toLowerCase())">
@@ -63,21 +63,24 @@ export default defineComponent({
 .card
     margin-bottom: 25px
     position: relative
+    font-size: 1.1em
 
-.content
-    min-height: 300px
-    position: relative
-    padding-bottom: 40px
-    padding-top: 10px
+    .content
+        min-height: 300px
+        position: relative
+        padding-bottom: 40px
+        padding-top: 10px
 
-    .view-button
-        position: absolute
-        bottom: 0
-        left: 0
-        width: 100%
+        .view-button
+            position: absolute
+            bottom: 0
+            left: 0
+            width: 100%
 
-    .card-title
-        text-transform: capitalize
+        .card-title
+            text-transform: capitalize
+            font-size: 1.4em
+            color: #444
 
 .language-image
     width: 40px
@@ -85,4 +88,9 @@ export default defineComponent({
     position: absolute
     top: 12px
     right: 12px
+
+@media (max-width: 991px)
+    .card
+        .content
+            min-height: auto
 </style>
