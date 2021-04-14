@@ -25,7 +25,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { getToolsImages } from '@/modules/getImageUrl'
-import Project from '@/interfaces/projects/Project'
 
 export default defineComponent({
     props: {
