@@ -2,22 +2,22 @@
     <nav class="navbar">
         <div class="container">
             <div class="navbar-brand">
-                <router-link logo to="/" class="navbar-item">
+                <router-link to="/" class="navbar-item logo">
                     <b>SERHII<span class="has-text-info">CHO</span></b>
                 </router-link>
-                <span class="navbar-burger">
+                <span class="navbar-burger" id="burger-button" @click="toggleMobileNavbar">
                     <span></span>
                     <span></span>
                     <span></span>
                 </span>
             </div>
-            <div class="navbar-menu">
+            <div class="navbar-menu" id="nav-menu">
                 <div class="navbar-end">
                     <router-link to="/" class="navbar-item">About</router-link>
                     <!-- <router-link to="/blog" class="navbar-item">Blog</router-link> -->
                     <router-link to="/projects" class="navbar-item">Open source</router-link>
                     <div class="navbar-item">
-                        <div class="button is-rounded is-info" @click="openContactModal">Contact me</div>
+                        <div class="button is-rounded is-info contact-me-button" @click="openContactModal">Contact me</div>
                     </div>
                 </div>
             </div>
@@ -51,9 +51,23 @@ export default defineComponent({
             })
         })
 
+        const toggleMobileNavbar = () => {
+            const burger = document.getElementById('burger-button')!
+            const navMenu = document.getElementById('nav-menu')!
+
+            if (burger.classList.contains('is-active')) {
+                burger.classList.remove('is-active')
+                navMenu.classList.remove('is-active')
+            } else {
+                burger.classList.add('is-active')
+                navMenu.classList.add('is-active')
+            }
+        }
+
         return {
             openContactModal,
             closeContactModal,
+            toggleMobileNavbar,
         }
     },
 
@@ -64,6 +78,15 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
-[logo]
+.logo
     background-color: transparent !important
+
+@media (max-width: 1041px)
+    .navbar-menu
+        position: absolute
+        left: 20px
+        right: 20px
+
+    .contact-me-button
+        width: 100%
 </style>
