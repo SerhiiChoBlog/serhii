@@ -9,6 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     { path: '/blog', component: Blog },
     { path: '/projects', component: Projects },
     { path: '/projects/:projectName', component: Project },
+    { path: '/:catchAll(.*)', component: About }
 ]
 
 const router = createRouter({
