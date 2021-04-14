@@ -4,6 +4,5 @@ export default interface Project {
     htmlUrl: string
     description: string
     language: string
-    stars: number
     license: string | null
 }
