@@ -1,5 +1,5 @@
 <template>
-    <section class="hero is-dark" hero>
+    <section class="hero is-dark">
         <div class="hero-head"><Navbar /></div>
 
         <div class="hero-body">
@@ -16,14 +16,14 @@
             <div class="col-md-6 col-lg-4 col-xl-3" v-for="repo of list" :key="repo.name">
                 <router-link :to="`/projects/${repo.name}`">
                     <div class="card">
-                        <img language-image :src="getLanguagesImages(repo.language.toLowerCase())">
+                        <img class="language-image" :src="getLanguagesImages(repo.language.toLowerCase())">
 
                         <div class="card-content">
                             <div class="content">
-                                <h4 card-title>{{ repo.title }}</h4>
+                                <h4 class="card-title">{{ repo.title }}</h4>
                                 <p>{{ repo.description }}</p>
 
-                                <div view-button class="button is-rounded is-info is-block">View</div>
+                                <div class="button is-rounded is-info is-block view-button">View</div>
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
-[hero]
+.hero
     background: url(../../assets/images/heros/open-source-hero.jpg) no-repeat center center
     background-size: cover
 
@@ -65,21 +65,21 @@ export default defineComponent({
     position: relative
 
 .content
-    min-height: 270px
+    min-height: 300px
     position: relative
     padding-bottom: 40px
     padding-top: 10px
 
-    [view-button]
+    .view-button
         position: absolute
         bottom: 0
         left: 0
         width: 100%
 
-    [card-title]
+    .card-title
         text-transform: capitalize
 
-[language-image]
+.language-image
     width: 40px
     height: 40px
     position: absolute

@@ -1,5 +1,5 @@
 <template>
-    <section class="hero is-large is-dark" hero>
+    <section class="hero is-large is-dark">
         <div class="hero-head"><Navbar /></div>
 
         <div class="hero-body">
@@ -55,7 +55,7 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
-[hero]
+.hero
     background: url(../assets/images/heros/home-hero.jpg) no-repeat top center
     background-size: cover
 </style>
