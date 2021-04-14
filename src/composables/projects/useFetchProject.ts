@@ -1,19 +1,31 @@
 import { useRoute } from 'vue-router'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, Ref } from 'vue'
 import { getProjectUrl } from '@/static/urls'
+import GithubApiProjectsResponse from '@/interfaces/projects/GithubApiProjectsResponse'
+import remapGithubResponseIntoProjectsArray from '@/modules/remapGithubRepoIntoProject'
+import Project from '@/interfaces/projects/Project'
 
 export default () => {
-    const { params } = useRoute()
-    let project = ref('')
+    const { params: { projectName } } = useRoute()
+
+    let project = ref<Project>({
+        title: '',
+        name: '',
+        htmlUrl: '',
+        description: '',
+        language: '',
+        license: '',
+    })
+
     let projectLoading = ref(false)
 
     onMounted(() => {
         projectLoading.value = true
 
-        fetch(getProjectUrl(params.projectName as string))
-            .then(res => res.json())
-            .then(res => {
-                project.value = res
+        fetch(getProjectUrl(projectName as string))
+            .then(resp => resp.json())
+            .then((resp: GithubApiProjectsResponse) => {
+                project.value = remapGithubResponseIntoProjectsArray(resp)
             })
             .catch(err => console.error(err))
             .finally(() => projectLoading.value = false)

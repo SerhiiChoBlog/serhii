@@ -2,6 +2,7 @@ import GithubApiReposResponse from '@/interfaces/projects/GithubApiProjectsRespo
 import Project from '@/interfaces/projects/Project'
 import { ref, onMounted } from 'vue'
 import { getProjectsUrl } from '@/static/urls'
+import remapGithubRepoIntoProject from '@/modules/remapGithubRepoIntoProject'
 
 export default () => {
     let list = ref<Project[]>([])
@@ -13,7 +14,7 @@ export default () => {
         fetch(getProjectsUrl())
             .then(resp => resp.json())
             .then((resp: GithubApiReposResponse[]) => {
-                const projects = remapGithubResponseIntoProjectsArray(resp)
+                const projects = resp.map(item => remapGithubRepoIntoProject(item))
                 list.value = keepOnlyProjectsWithMitLicence(projects)
             })
             .catch(err => console.error(err))
@@ -21,20 +22,6 @@ export default () => {
     })
 
     return { list, loading }
-}
-
-function remapGithubResponseIntoProjectsArray(response: GithubApiReposResponse[]): Project[] {
-    return response.map(project => {
-        return {
-            name: project.name,
-            title: project.name.replace('-', ' '),
-            htmlUrl: project.html_url,
-            description: project.description,
-            language: project.language,
-            stars: project.stars,
-            license: project.license ? project.license.key : null,
-        }
-    })
 }
 
 function keepOnlyProjectsWithMitLicence(projects: Project[]): Project[] {
