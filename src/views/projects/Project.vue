@@ -9,6 +9,10 @@
             <div v-else class="container has-text-centered">
                 <p class="title">{{ project.title }}</p>
                 <p class="subtitle">{{ project.description }}</p>
+                <a :href="project.htmlUrl" target="_blank" class="button is-rounded is-dark">
+                    <img src="../../assets/images/icons/github.png" width="20" />
+                    <span class="ml-2">Open on Github</span>
+                </a>
             </div>
         </div>
     </section>
