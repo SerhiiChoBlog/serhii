@@ -10,8 +10,6 @@
                         The fastest way to contact me is writing me an email at
                         <a href="mailto:serhiicho@protonmail.com" class="has-text-info">serhiicho@protonmail.com</a>
                     </p>
-
-                <br>social links here ...
                 </div>
             </div>
         </div>
