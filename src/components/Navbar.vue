@@ -81,6 +81,13 @@ export default defineComponent({
 .logo
     background-color: transparent !important
 
+.navbar-burger
+    color: #eee
+
+    span
+        width: 19px
+        height: 2px
+
 @media (max-width: 1041px)
     .navbar-menu
         position: absolute
