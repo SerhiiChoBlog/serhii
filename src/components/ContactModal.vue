@@ -1,5 +1,5 @@
 <template>
-    <div class="modal" id="contact-modal">
+    <div class="modal" :class="{ 'is-active': isOpen }">
         <div class="modal-background"></div>
 
         <div class="modal-content">
@@ -22,13 +22,20 @@
     </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts">
+import { computed, defineComponent } from 'vue'
+import { useStore } from 'vuex'
 
 export default defineComponent({
-    setup(props, { emit }) {
-        const closeContactModal = () => emit('closeContactModalEvent')
-        return { closeContactModal }
+    setup() {
+        const store = useStore()
+        const isOpen = computed(() => store.state.isOpen)
+
+        function closeContactModal(): void {
+            store.commit('CLOSE_CONTACT_MODAL')
+        }
+
+        return { closeContactModal, isOpen }
     },
 })
 </script>

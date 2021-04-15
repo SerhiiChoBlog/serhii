@@ -5,11 +5,8 @@
                 <router-link to="/" class="navbar-item logo">
                     <b>SERHII<span class="has-text-info">CHO</span></b>
                 </router-link>
-                <span
-                    class="navbar-burger"
-                    id="burger-button"
-                    @click="toggleMobileNavbar"
-                >
+
+                <span class="navbar-burger" id="burger-button" @click="toggleMobileNavbar">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -19,50 +16,43 @@
                 <div class="navbar-end">
                     <router-link to="/" class="navbar-item">About</router-link>
                     <!-- <router-link to="/blog" class="navbar-item">Blog</router-link> -->
-                    <router-link to="/projects" class="navbar-item"
-                        >Open source</router-link
-                    >
+                    <router-link to="/projects" class="navbar-item">Open source</router-link>
                     <div class="navbar-item">
-                        <div
-                            class="button is-rounded is-info contact-me-button"
-                            @click="openContactModal"
-                        >
-                            Contact me
-                        </div>
+                        <div class="button is-rounded is-info contact-me-button" @click="openContactModal">Contact me</div>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <ContactModal @closeContactModalEvent="closeContactModal" />
+    <ContactModal />
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
+import { defineComponent, computed } from 'vue'
+import { useStore } from 'vuex'
 import ContactModal from '@/components/ContactModal.vue'
 
 export default defineComponent({
     setup() {
-        const openContactModal = () => {
-            const elem = document.getElementById('contact-modal')!
-            elem.classList.add('is-active')
+        const store = useStore()
+        const isOpen = computed(() => store.state.isOpen)
+
+        function openContactModal(): void {
+            store.commit('OPEN_CONTACT_MODAL')
         }
 
-        const closeContactModal = () => {
-            const elem = document.getElementById('contact-modal')!
-            elem.classList.remove('is-active')
+        function closeContactModal(): void {
+            store.commit('CLOSE_CONTACT_MODAL')
         }
 
-        onMounted(() => {
-            window.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeContactModal()
-                }
-            })
+        window.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                closeContactModal()
+            }
         })
 
-        const toggleMobileNavbar = () => {
+        function toggleMobileNavbar() {
             const burger = document.getElementById('burger-button')!
             const navMenu = document.getElementById('nav-menu')!
 
@@ -79,6 +69,7 @@ export default defineComponent({
             openContactModal,
             closeContactModal,
             toggleMobileNavbar,
+            isOpen,
         }
     },
 
