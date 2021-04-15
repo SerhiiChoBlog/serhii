@@ -23,19 +23,12 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import { useStore } from 'vuex'
+import { defineComponent } from 'vue'
+import useContactModal from '@/composables/useContactModal'
 
 export default defineComponent({
     setup() {
-        const store = useStore()
-        const isOpen = computed(() => store.state.isOpen)
-
-        function closeContactModal(): void {
-            store.commit('CLOSE_CONTACT_MODAL')
-        }
-
-        return { closeContactModal, isOpen }
+        return { ...useContactModal() }
     },
 })
 </script>

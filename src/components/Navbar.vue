@@ -29,29 +29,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { useStore } from 'vuex'
+import { defineComponent } from 'vue'
 import ContactModal from '@/components/ContactModal.vue'
+import useContactModal from '@/composables/useContactModal'
 
 export default defineComponent({
     setup() {
-        const store = useStore()
-        const isOpen = computed(() => store.state.isOpen)
-
-        function openContactModal(): void {
-            store.commit('OPEN_CONTACT_MODAL')
-        }
-
-        function closeContactModal(): void {
-            store.commit('CLOSE_CONTACT_MODAL')
-        }
-
-        window.addEventListener('keydown', e => {
-            if (e.key === 'Escape') {
-                closeContactModal()
-            }
-        })
-
         function toggleMobileNavbar() {
             const burger = document.getElementById('burger-button')!
             const navMenu = document.getElementById('nav-menu')!
@@ -65,12 +48,7 @@ export default defineComponent({
             }
         }
 
-        return {
-            openContactModal,
-            closeContactModal,
-            toggleMobileNavbar,
-            isOpen,
-        }
+        return { toggleMobileNavbar, ...useContactModal() }
     },
 
     components: {
