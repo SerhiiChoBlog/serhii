@@ -14,7 +14,7 @@
         <div class="container">
             <h2 class="is-size-2 mb-6">Hi, I’m Serhii. Nice to meet you.</h2>
             <p class="subtitle is-size-4">
-                I’m a fullstack developer with <b :title="fullExp" class="has-text-info">{{ exp.roundYears }}</b> years experience
+                I’m a fullstack developer with <b :title="fullExperience" class="has-text-info">{{ experience.roundYears }}</b> years experience
                 creating web applications. I was fortunate to have challenging projects that helped me to try lots of
                 different technologies. Since the beginning of my journey as a freelancer, I've done remote work for
                 companies based in Netherlands and Ukraine.
@@ -27,23 +27,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import langs from '@/static/langs'
 import frameworks from '@/static/frameworks'
 import CardsSection from '@/components/CardsSection.vue'
-import getDateDiff from '@/modules/getDateDiff'
+import useExperienceCounter from '@/composables/about/useExperienceCounter'
 
 export default defineComponent({
     setup() {
-        const exp = ref(getDateDiff(new Date(), new Date(2017, 5, 24)))
-        const fullExp = ref(exp.value.years + ' years ' + exp.value.months + ' months')
-
         return {
             langs,
             frameworks,
-            exp,
-            fullExp,
+            ...useExperienceCounter(),
         }
     },
 
