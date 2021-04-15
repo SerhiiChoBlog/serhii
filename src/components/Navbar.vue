@@ -5,7 +5,11 @@
                 <router-link to="/" class="navbar-item logo">
                     <b>SERHII<span class="has-text-info">CHO</span></b>
                 </router-link>
-                <span class="navbar-burger" id="burger-button" @click="toggleMobileNavbar">
+                <span
+                    class="navbar-burger"
+                    id="burger-button"
+                    @click="toggleMobileNavbar"
+                >
                     <span></span>
                     <span></span>
                     <span></span>
@@ -15,9 +19,16 @@
                 <div class="navbar-end">
                     <router-link to="/" class="navbar-item">About</router-link>
                     <!-- <router-link to="/blog" class="navbar-item">Blog</router-link> -->
-                    <router-link to="/projects" class="navbar-item">Open source</router-link>
+                    <router-link to="/projects" class="navbar-item"
+                        >Open source</router-link
+                    >
                     <div class="navbar-item">
-                        <div class="button is-rounded is-info contact-me-button" @click="openContactModal">Contact me</div>
+                        <div
+                            class="button is-rounded is-info contact-me-button"
+                            @click="openContactModal"
+                        >
+                            Contact me
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,7 +55,7 @@ export default defineComponent({
         }
 
         onMounted(() => {
-            window.addEventListener('keydown', e => {
+            window.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeContactModal()
                 }
