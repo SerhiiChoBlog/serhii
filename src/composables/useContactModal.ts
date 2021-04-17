@@ -6,11 +6,11 @@ export default () => {
     const isOpen = computed(() => store.state.contactModal.isOpen)
 
     function openContactModal(): void {
-        store.commit('OPEN_CONTACT_MODAL')
+        store.dispatch('openContactModal')
     }
 
     function closeContactModal(): void {
-        store.commit('CLOSE_CONTACT_MODAL')
+        store.dispatch('closeContactModal')
     }
 
     window.addEventListener('keydown', e => {
