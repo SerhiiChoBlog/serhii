@@ -14,9 +14,9 @@
             </div>
             <div class="navbar-menu" :class="{ 'is-active': menuIsOpen }">
                 <div class="navbar-end">
-                    <router-link to="/" class="navbar-item">About</router-link>
-                    <!-- <router-link to="/blog" class="navbar-item">Blog</router-link> -->
-                    <router-link to="/projects" class="navbar-item">Open source</router-link>
+                    <router-link to="/" class="navbar-item has-stripe">About</router-link>
+                    <!-- <router-link to="/blog" class="navbar-item has-stripe">Blog</router-link> -->
+                    <router-link to="/projects" class="navbar-item has-stripe">Open source</router-link>
                     <div class="navbar-item">
                         <div class="button is-rounded is-info contact-me-button" @click="openContactModal">Contact me</div>
                     </div>
@@ -58,16 +58,38 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
-.logo
-    background-color: transparent !important
+.navbar
+    .logo
+        background-color: transparent !important
 
-.navbar-burger
-    span
-        width: 19px
-        height: 2px
+    .navbar-item
+        position: relative
 
-    &.burger-light
-        color: #dfdede
+        &.has-stripe
+            &::before
+                content: ""
+                height: 6px
+                position: absolute
+                left: 10px
+                right: 10px
+                bottom: 5px
+                background-color: var(--main-color)
+                opacity: 0
+                transition: opacity 200ms
+                border-radius: 8px
+
+            &:hover,
+            &.is-active
+                &::before
+                    opacity: 1
+
+    .navbar-burger
+        span
+            width: 19px
+            height: 2px
+
+        &.burger-light
+            color: #dfdede
 
 @media (max-width: 1041px)
     .navbar-menu
