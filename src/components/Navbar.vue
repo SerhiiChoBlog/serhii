@@ -6,13 +6,13 @@
                     <b>SERHII<span class="has-text-info">CHO</span></b>
                 </router-link>
 
-                <span class="navbar-burger" :class="{ 'burger-light': isLight }" id="burger-button" @click="toggleMobileNavbar">
+                <span class="navbar-burger" :class="{ 'burger-light': isLight, 'is-active': menuIsOpen }" @click="toggleMobileNavbar">
                     <span></span>
                     <span></span>
                     <span></span>
                 </span>
             </div>
-            <div class="navbar-menu" id="nav-menu">
+            <div class="navbar-menu" :class="{ 'is-active': menuIsOpen }">
                 <div class="navbar-end">
                     <router-link to="/" class="navbar-item">About</router-link>
                     <!-- <router-link to="/blog" class="navbar-item">Blog</router-link> -->
