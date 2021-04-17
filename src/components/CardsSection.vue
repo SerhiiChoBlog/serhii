@@ -62,5 +62,5 @@ export default defineComponent({
             margin: auto
 
 .bg-dark
-    background-color: #eee
+    background-color: var(--grey-color)
 </style>
