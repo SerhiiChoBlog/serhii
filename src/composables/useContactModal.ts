@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 export default () => {
     const store = useStore()
-    const isOpen = computed(() => store.state.isOpen)
+    const isOpen = computed(() => store.state.contactModal.isOpen)
 
     function openContactModal(): void {
         store.commit('OPEN_CONTACT_MODAL')
