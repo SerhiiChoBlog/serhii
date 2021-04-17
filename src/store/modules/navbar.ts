@@ -10,8 +10,21 @@ const navbar: Module<NavbarState, {}> = {
     },
 
     mutations: {
-        OPEN_NAV_MENU: state => state.menuIsOpen = true,
-        CLOSE_NAV_MENU: state => state.menuIsOpen = false,
+        OPEN_NAV_MENU(state) {
+            state.menuIsOpen = true
+        },
+        CLOSE_NAV_MENU(state) {
+            state.menuIsOpen = false
+        },
+    },
+
+    actions: {
+        openNavMenu({ commit }) {
+            commit('OPEN_NAV_MENU')
+        },
+        closeNavMenu({ commit }) {
+            commit('CLOSE_NAV_MENU')
+        },
     },
 }
 

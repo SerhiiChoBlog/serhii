@@ -7,8 +7,8 @@ export default () => {
 
     function toggleMobileNavbar() {
         menuIsOpen.value
-            ? store.commit('CLOSE_NAV_MENU')
-            : store.commit('OPEN_NAV_MENU')
+            ? store.dispatch('closeNavMenu')
+            : store.dispatch('openNavMenu')
     }
 
     return { menuIsOpen, toggleMobileNavbar }
