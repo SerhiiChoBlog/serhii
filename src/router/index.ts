@@ -3,6 +3,7 @@ import About from '@/views/About.vue'
 import Blog from '@/views/Blog.vue'
 import Projects from '@/views/projects/Projects.vue'
 import Project from '@/views/projects/Project.vue'
+import store from '@/store'
 
 const routes: Array<RouteRecordRaw> = [
     { path: '/', component: About },
@@ -16,6 +17,10 @@ const router = createRouter({
     linkActiveClass: 'is-active',
     history: createWebHistory(process.env.BASE_URL),
     routes,
+})
+
+router.beforeEach(() => {
+    store.dispatch('closeNavMenu')
 })
 
 export default router
