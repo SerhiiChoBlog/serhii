@@ -46,6 +46,9 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
+.hero
+    min-height: 19em
+
 .title
     text-transform: capitalize
     margin-bottom: 40px
