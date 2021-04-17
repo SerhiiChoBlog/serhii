@@ -1,16 +1,15 @@
-export default () => {
-    function toggleMobileNavbar() {
-        const burger = document.getElementById('burger-button')!
-        const navMenu = document.getElementById('nav-menu')!
+import { computed } from "@vue/runtime-core"
+import { useStore } from "vuex"
 
-        if (burger.classList.contains('is-active')) {
-            burger.classList.remove('is-active')
-            navMenu.classList.remove('is-active')
-        } else {
-            burger.classList.add('is-active')
-            navMenu.classList.add('is-active')
-        }
+export default () => {
+    const store = useStore()
+    const menuIsOpen = computed(() => store.state.navbar.menuIsOpen)
+
+    function toggleMobileNavbar() {
+        menuIsOpen.value
+            ? store.commit('CLOSE_NAV_MENU')
+            : store.commit('OPEN_NAV_MENU')
     }
 
-    return { toggleMobileNavbar }
+    return { menuIsOpen, toggleMobileNavbar }
 }
