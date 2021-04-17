@@ -6,7 +6,7 @@
                     <b>SERHII<span class="has-text-info">CHO</span></b>
                 </router-link>
 
-                <span class="navbar-burger" id="burger-button" @click="toggleMobileNavbar">
+                <span class="navbar-burger" :class="{ 'burger-light': isLight }" id="burger-button" @click="toggleMobileNavbar">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -35,10 +35,19 @@ import useContactModal from '@/composables/useContactModal'
 import useNavbarHamburger from '@/composables/useNavbarHamburger'
 
 export default defineComponent({
-    setup() {
+    props: {
+        isLight: {
+            type: Boolean,
+            default: true,
+            required: false,
+        },
+    },
+
+    setup({ isLight }) {
         return {
             ...useNavbarHamburger(),
             ...useContactModal(),
+            isLight,
         }
     },
 
@@ -53,11 +62,12 @@ export default defineComponent({
     background-color: transparent !important
 
 .navbar-burger
-    color: #eee
-
     span
         width: 19px
         height: 2px
+
+    &.burger-light
+        color: #dfdede
 
 @media (max-width: 1041px)
     .navbar-menu

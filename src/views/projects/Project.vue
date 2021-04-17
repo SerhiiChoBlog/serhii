@@ -1,6 +1,6 @@
 <template>
     <section class="hero is-light">
-        <div class="hero-head"><Navbar /></div>
+        <div class="hero-head"><Navbar :isLight="false" /></div>
 
         <div class="hero-body">
             <div v-if="projectLoading" class="container has-text-centered">
