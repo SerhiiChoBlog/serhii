@@ -91,11 +91,25 @@ export default defineComponent({
         &.burger-light
             color: #dfdede
 
-@media (max-width: 1041px)
+@media (max-width: 1024px)
     .navbar-menu
         position: absolute
         left: 20px
         right: 20px
+        padding: 0
+        border-radius: 5px
+        box-shadow: 2px 2px 9px -2px rgba(0, 0, 0, .5)
+
+        .navbar-item
+            padding: 20px 22px
+
+            &.has-stripe
+                &::before
+                    content: none
+
+                &:hover,
+                &.is-active
+                    background-color: rgba(0, 0, 0, .3) !important
 
     .contact-me-button
         width: 100%
