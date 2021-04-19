@@ -12,18 +12,18 @@
 
     <section class="section is-medium">
         <div class="container">
-            <h2 class="is-size-2 mb-6">Hi, I’m Serhii. Nice to meet you.</h2>
+            <h2 class="is-size-3 mb-4 has-text-centered">Nice to meet you</h2>
             <p class="subtitle is-size-4">
-                I’m a fullstack developer with <b :title="fullExperience" class="has-text-info">{{ experience.roundYears }}</b> years experience
+                I’m a fullstack developer with <b :title="fullExperience">{{ fullExperience }}</b> experience
                 creating web applications. I was fortunate to have challenging projects that helped me to try lots of
-                different technologies. Since the beginning of my journey as a freelancer, I've done remote work for
+                <b>different technologies</b>. Since the beginning of my journey as a freelancer, I've done remote work for
                 companies based in Netherlands and Ukraine.
             </p>
         </div>
     </section>
 
-    <CardsSection :techs="langs" :bg-dark="true" header="My languages of choice" />
-    <CardsSection :techs="frameworks" :bg-dark="false" header="I'm working with" />
+    <CardsSection :techs="langs" :bg-dark="true" header="Languages" />
+    <CardsSection :techs="frameworks" :bg-dark="false" header="Frameworks" />
 </template>
 
 <script lang="ts">
