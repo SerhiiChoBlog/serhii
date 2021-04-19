@@ -12,16 +12,17 @@
 
     <div class="container mt-6">
         <div v-if="loading" class="has-text-centered"><Spinner /></div>
+        <h4 v-else-if="projectsError" class="is-size-4 has-text-centered">😔 {{ projectsError }}</h4>
         <div v-else class="row">
-            <div class="col-md-12 col-lg-6 col-xl-4" v-for="repo of list" :key="repo.name">
-                <router-link :to="`/projects/${repo.name}`">
+            <div class="col-md-12 col-lg-6 col-xl-4" v-for="project of projects" :key="project.name">
+                <router-link :to="`/projects/${project.name}`">
                     <div class="card">
-                        <img class="language-image" :src="getLanguagesImages(repo.language.toLowerCase())">
+                        <img class="language-image" :src="getLanguagesImages(project.language.toLowerCase())">
 
                         <div class="card-content">
                             <div class="content">
-                                <h4 class="card-title">{{ repo.title }}</h4>
-                                <p>{{ repo.description }}</p>
+                                <h4 class="card-title">{{ project.title }}</h4>
+                                <p>{{ project.description }}</p>
 
                                 <div class="button is-rounded is-info is-block view-button">View</div>
                             </div>
