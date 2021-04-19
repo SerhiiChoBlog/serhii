@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/.htaccess"
   },
   {
-    "revision": "9e1520993357b45ad517",
+    "revision": "c1d02e82ec23606a9d21",
     "url": "/css/app.9e0bfcda.css"
   },
   {
@@ -52,12 +52,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/wordpress.f2fa6615.png"
   },
   {
-    "revision": "5f64b2afb8b1cc797119b5da20071b5c",
+    "revision": "8f3e3bc8f850a6d2ef99a4449df3159a",
     "url": "/index.html"
   },
   {
-    "revision": "9e1520993357b45ad517",
-    "url": "/js/app.5a336318.js"
+    "revision": "c1d02e82ec23606a9d21",
+    "url": "/js/app.3bafe9ce.js"
   },
   {
     "revision": "4febd3f0eb7e5ecbbbb3",

@@ -14,8 +14,10 @@ export default () => {
         fetch(getProjectsUrl())
             .then(resp => resp.json())
             .then((resp: GithubApiReposResponse[]) => {
-                const projects = resp.map(item => remapGithubRepoIntoProject(item))
-                list.value = keepOnlyProjectsWithMitLicence(projects)
+                if (resp) {
+                    const projects = resp.map(item => remapGithubRepoIntoProject(item))
+                    list.value = keepOnlyProjectsWithMitLicence(projects)
+                }
             })
             .catch(err => console.error(err))
             .finally(() => loading.value = false)
