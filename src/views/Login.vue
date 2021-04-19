@@ -5,30 +5,43 @@
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
-                <input class="input" type="text" />
+                <input class="input" type="text" v-model="email" required />
             </div>
         </div>
 
         <div class="field">
             <label class="label">Password</label>
             <div class="control">
-                <input class="input" type="password" />
+                <input class="input" type="password" v-model="password" required />
             </div>
         </div>
 
         <div class="field">
-            <button class="submit-button button is-info">Submit</button>
+            <button class="submit-button button is-info" @click="login">Submit</button>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import Navbar from '@/components/Navbar.vue'
+import { useStore } from 'vuex'
 
 export default defineComponent({
     setup() {
-        //
+        const email = ref<string>('')
+        const password = ref<string>('')
+        const store = useStore()
+
+        function login() {
+            store.dispatch('login', { email, password })
+        }
+
+        return {
+            email,
+            password,
+            login,
+        }
     },
 
     components: {
