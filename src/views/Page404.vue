@@ -14,16 +14,8 @@ import { defineComponent } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 
 export default defineComponent({
-    setup() {
-        //
-    },
-
     components: {
         Navbar,
     },
 })
 </script>
-
-<style lang="sass" scoped>
-
-</style>
