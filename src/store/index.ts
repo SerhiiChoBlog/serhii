@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import contactModal from '@/store/modules/contactModal'
 import navbar from '@/store/modules/navbar'
+import auth from '@/store/modules/auth'
 
 export default createStore({
     strict: true,
@@ -8,5 +9,6 @@ export default createStore({
     modules: {
         contactModal,
         navbar,
+        auth,
     },
 })
