@@ -1,3 +1,4 @@
+import 'highlight.js/styles/github-gist.css'
 import hljs from 'highlight.js'
 
 export default () => {
