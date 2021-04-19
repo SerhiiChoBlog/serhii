@@ -2,23 +2,25 @@
     <Navbar :isLight="false" />
 
     <div class="container mt-6">
-        <div class="field">
-            <label class="label">Email</label>
-            <div class="control">
-                <input class="input" type="text" v-model="email" required />
+        <form @submit.prevent="login">
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <input class="input" type="text" v-model="email" required />
+                </div>
             </div>
-        </div>
 
-        <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
-                <input class="input" type="password" v-model="password" required />
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" type="password" v-model="password" required />
+                </div>
             </div>
-        </div>
 
-        <div class="field">
-            <button class="submit-button button is-info" @click="login">Submit</button>
-        </div>
+            <div class="field">
+                <button type="submit" class="submit-button button is-info">Submit</button>
+            </div>
+        </form>
     </div>
 </template>
 
@@ -34,7 +36,10 @@ export default defineComponent({
         const store = useStore()
 
         function login() {
-            store.dispatch('login', { email, password })
+            store.dispatch('login', {
+                email: email.value,
+                password: password.value,
+            })
         }
 
         return {
