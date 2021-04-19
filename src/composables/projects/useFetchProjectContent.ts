@@ -2,6 +2,7 @@ import { useRoute } from 'vue-router'
 import { ref, onMounted } from 'vue'
 import showdown from 'showdown'
 import { getProjectContentUrl } from '@/static/urls'
+import loadHighlightJs from '@/modules/loadHighlightJs'
 
 export default () => {
     const { params } = useRoute()
@@ -16,6 +17,7 @@ export default () => {
             .then(res => {
                 var converter = new showdown.Converter()
                 content.value = converter.makeHtml(res)
+                loadHighlightJs()
             })
             .catch(err => console.error(err))
             .finally(() => contentLoading.value = false)
