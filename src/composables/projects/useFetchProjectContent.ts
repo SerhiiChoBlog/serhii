@@ -13,9 +13,7 @@ export default () => {
     onMounted(() => {
         contentLoading.value = true
 
-        fetch(getProjectContentUrl(params.projectName as string), {
-            headers: { Authorization: GITHUB_AUTH_TOKEN }
-        })
+        fetch(getProjectContentUrl(params.projectName as string))
             .then(res => res.text())
             .then(res => {
                 var converter = new showdown.Converter()
