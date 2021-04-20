@@ -1,4 +1,3 @@
-import 'highlight.js/styles/vs2015.css'
 import hljs from 'highlight.js'
 
 export default () => {
