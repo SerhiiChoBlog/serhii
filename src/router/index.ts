@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, NavigationGuardNext, RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
 import store from '@/store'
 import About from '@/views/About.vue'
 import Blog from '@/views/Blog.vue'
@@ -14,7 +14,11 @@ const routes: Array<RouteRecordRaw> = [
     { path: '/projects', component: Projects },
     { path: '/projects/:projectName', component: Project },
     { path: '/login', component: Login },
-    { path: '/dashboard', component: Dashboard },
+    {
+        path: '/dashboard',
+        component: Dashboard,
+        beforeEnter: authGuard,
+    },
     { path: '/:catchAll(.*)', component: Page404 }
 ]
 
@@ -27,5 +31,10 @@ const router = createRouter({
 router.beforeEach(() => {
     store.dispatch('closeNavMenu')
 })
+
+function authGuard(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext): void {
+    // @ts-ignore
+    store.state.auth.isAuth ? next() : next('/')
+}
 
 export default router
