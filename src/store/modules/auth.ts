@@ -1,5 +1,4 @@
 import { LoginCredentials } from "@/interfaces/auth/LoginCredentials"
-import User from "@/interfaces/auth/User"
 import { Module } from "vuex"
 import firebase from '@/firebase'
 import router from '@/router'
@@ -33,6 +32,9 @@ const auth: Module<AuthState, {}> = {
     },
 
     actions: {
+        changeAuthState({ commit }, payload): void {
+            commit('SET_IS_AUTH', payload)
+        },
         clearAuthError({ commit }) {
             commit('CLEAR_AUTH_ERROR')
         },
