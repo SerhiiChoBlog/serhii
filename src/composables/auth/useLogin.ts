@@ -3,8 +3,8 @@ import { useStore } from 'vuex'
 
 export default () => {
     const store = useStore()
-    const email = ref<string>('')
-    const password = ref<string>('')
+    const email = ref('')
+    const password = ref('')
     const processingAuth = computed<boolean>(() => store.state.auth.processingAuth)
     const errorAuth = computed<string | null>(() => store.state.auth.errorAuth)
 
