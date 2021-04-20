@@ -1,40 +1,14 @@
-import GithubApiReposResponse from '@/interfaces/projects/GithubApiProjectsResponse'
 import Project from '@/interfaces/projects/Project'
-import { ref, onMounted } from 'vue'
-import { getProjectsUrl } from '@/static/urls'
-import remapGithubRepoIntoProject from '@/modules/remapGithubRepoIntoProject'
-import { GITHUB_AUTH_TOKEN } from '@/config'
+import { computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
 
 export default () => {
-    let projects = ref<Project[]>([])
-    let loading = ref(false)
-    let projectsError = ref<string | null>(null)
+    const store = useStore()
+    const projects = computed<Project[]>(() => store.state.projects.projects)
+    const processingProjects = computed<boolean>(() => store.state.projects.processingProjects)
+    const projectsError = computed<string | null>(() => store.state.projects.projectsError)
 
-    onMounted(() => {
-        loading.value = true
+    onMounted(() => store.dispatch('fetchProjects'))
 
-        fetch(getProjectsUrl(), {
-            headers: { Authorization: GITHUB_AUTH_TOKEN }
-        })
-            .then(resp => resp.json())
-            .then((resp: GithubApiReposResponse[]) => {
-                if (resp && resp instanceof Array) {
-                    const repos = resp.map(item => remapGithubRepoIntoProject(item))
-                    projects.value = keepOnlyProjectsWithMitLicence(repos)
-                } else {
-                    projectsError.value = 'Sorry, but there is an error from Github'
-                }
-            })
-            .catch(err => {
-                console.error(err)
-                projectsError.value = 'Sorry, but there is an error from Github'
-            })
-            .finally(() => loading.value = false)
-    })
-
-    return { projects, loading, projectsError }
-}
-
-function keepOnlyProjectsWithMitLicence(projects: Project[]): Project[] {
-    return projects.filter(project => project.license === 'mit')
+    return { projects, processingProjects, projectsError }
 }

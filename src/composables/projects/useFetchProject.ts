@@ -2,7 +2,7 @@ import { useRoute } from 'vue-router'
 import { ref, onMounted, Ref } from 'vue'
 import { getProjectUrl } from '@/static/urls'
 import GithubApiProjectsResponse from '@/interfaces/projects/GithubApiProjectsResponse'
-import remapGithubResponseIntoProjectsArray from '@/modules/remapGithubRepoIntoProject'
+import remapGithubResponseIntoProjectsArray from '@/modules/projects/remapGithubRepoIntoProject'
 import Project from '@/interfaces/projects/Project'
 import { GITHUB_AUTH_TOKEN } from '@/config'
 
