@@ -44,10 +44,8 @@ const auth: Module<AuthState, {}> = {
             firebase.auth()
                 .signInWithEmailAndPassword(email, password)
                 .then(resp => {
-                    if (resp.user) {
-                        commit('SET_IS_AUTH', true)
+                    if (resp.user)
                         router.push('/dashboard')
-                    }
                 })
                 .catch(err => commit('SET_AUTH_ERROR', err.message))
                 .finally(() => commit('SET_AUTH_PROCESSING', false))
