@@ -1,6 +1,6 @@
 import { LoginCredentials } from '@/interfaces/auth/LoginCredentials'
 import { Module } from 'vuex'
-import firebase from '@/firebase'
+import firebase from '@/firebase/firebase'
 import router from '@/router'
 import AuthState from '@/store/interfaces/AuthState'
 import RootState from '@/store/interfaces/RootState'
