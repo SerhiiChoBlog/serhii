@@ -15,7 +15,6 @@
             <div class="navbar-menu" :class="{ 'is-active': menuIsOpen }">
                 <div class="navbar-end">
                     <router-link to="/" class="navbar-item has-stripe">About</router-link>
-                    <!-- <router-link to="/blog" class="navbar-item has-stripe">Blog</router-link> -->
                     <router-link to="/projects" class="navbar-item has-stripe">Open source</router-link>
                     <router-link to="/dashboard" v-if="user && user.isAuth" class="navbar-item has-stripe">Dashboard</router-link>
                     <div class="navbar-item">
