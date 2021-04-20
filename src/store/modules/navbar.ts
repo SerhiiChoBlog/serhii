@@ -1,10 +1,8 @@
 import { Module } from 'vuex'
+import NavbarState from '@/store/interfaces/NavbarState'
+import RootState from '@/store/interfaces/RootState'
 
-interface NavbarState {
-    menuIsOpen: boolean,
-}
-
-const navbar: Module<NavbarState, {}> = {
+const navbar: Module<NavbarState, RootState> = {
     state: {
         menuIsOpen: false,
     },

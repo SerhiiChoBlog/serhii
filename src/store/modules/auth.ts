@@ -2,15 +2,10 @@ import { LoginCredentials } from '@/interfaces/auth/LoginCredentials'
 import { Module } from 'vuex'
 import firebase from '@/firebase'
 import router from '@/router'
+import AuthState from '@/store/interfaces/AuthState'
+import RootState from '@/store/interfaces/RootState'
 
-interface AuthState {
-    processingAuth: boolean
-    errorAuth: string | null
-    isAuth: boolean
-    processingLogout: boolean
-}
-
-const auth: Module<AuthState, {}> = {
+const auth: Module<AuthState, RootState> = {
     state: {
         processingAuth: false,
         errorAuth: null,
