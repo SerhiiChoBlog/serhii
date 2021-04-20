@@ -6,7 +6,8 @@ export default () => {
     const processingLogout = computed<boolean>(() => store.state.auth.processingLogout)
 
     function logout(): void {
-        store.dispatch('logout')
+        if (confirm('Are you sure you want to logout?'))
+            store.dispatch('logout')
     }
 
     return {
