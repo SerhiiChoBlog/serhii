@@ -7,6 +7,7 @@ interface AuthState {
     processingAuth: boolean
     errorAuth: string | null
     isAuth: boolean
+    processingLogout: boolean
 }
 
 const auth: Module<AuthState, {}> = {
@@ -14,11 +15,15 @@ const auth: Module<AuthState, {}> = {
         processingAuth: false,
         errorAuth: null,
         isAuth: false,
+        processingLogout: false,
     },
 
     mutations: {
         SET_AUTH_PROCESSING(state, payload: boolean): void {
             state.processingAuth = payload
+        },
+        SET_LOGOUT_PROCESSING(state, payload: boolean): void {
+            state.processingLogout = payload
         },
         SET_AUTH_ERROR(state, payload: string): void {
             state.errorAuth = payload
@@ -50,6 +55,14 @@ const auth: Module<AuthState, {}> = {
                 })
                 .catch(err => commit('SET_AUTH_ERROR', err.message))
                 .finally(() => commit('SET_AUTH_PROCESSING', false))
+        },
+        logout({ commit }): void {
+            commit('SET_LOGOUT_PROCESSING', true)
+
+            firebase.auth()
+                .signOut()
+                .then(() => router.push('/'))
+                .finally(() => commit('SET_LOGOUT_PROCESSING', false))
         },
     },
 }
