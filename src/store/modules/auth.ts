@@ -18,23 +18,26 @@ const auth: Module<AuthState, {}> = {
     },
 
     mutations: {
-        SET_PROCESSING_AUTH({ processingAuth }, payload: boolean): void {
-            processingAuth = payload
+        SET_AUTH_PROCESSING(state, payload: boolean): void {
+            state.processingAuth = payload
         },
-        SET_ERROR_AUTH({ errorAuth }, payload: string): void {
-            errorAuth = payload
+        SET_AUTH_ERROR(state, payload: string): void {
+            state.errorAuth = payload
         },
-        CLEAR_ERROR_AUTH({ errorAuth }): void {
-            errorAuth = null
+        CLEAR_AUTH_ERROR(state): void {
+            state.errorAuth = null
         },
-        SET_AUTH_USER({ user }, payload: User): void {
-            user = payload
+        SET_AUTH_USER(state, payload: User): void {
+            state.user = payload
         },
     },
 
     actions: {
+        clearAuthError({ commit }) {
+            commit('CLEAR_AUTH_ERROR')
+        },
         login({ commit }, { email, password }: LoginCredentials): void {
-            commit('SET_PROCESSING_AUTH', true)
+            commit('SET_AUTH_PROCESSING', true)
 
             firebase.auth()
                 .signInWithEmailAndPassword(email, password)
@@ -44,8 +47,8 @@ const auth: Module<AuthState, {}> = {
                         router.push('/dashboard')
                     }
                 })
-                .catch(err => commit('SET_ERROR_AUTH', err.message))
-                .finally(() => commit('SET_PROCESSING_AUTH', false))
+                .catch(err => commit('SET_AUTH_ERROR', err.message))
+                .finally(() => commit('SET_AUTH_PROCESSING', false))
         },
     },
 }
