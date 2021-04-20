@@ -7,14 +7,14 @@ import router from '@/router'
 interface AuthState {
     processingAuth: boolean
     errorAuth: string | null
-    user: User | null
+    isAuth: boolean
 }
 
 const auth: Module<AuthState, {}> = {
     state: {
         processingAuth: false,
         errorAuth: null,
-        user: null,
+        isAuth: false,
     },
 
     mutations: {
@@ -27,8 +27,8 @@ const auth: Module<AuthState, {}> = {
         CLEAR_AUTH_ERROR(state): void {
             state.errorAuth = null
         },
-        SET_AUTH_USER(state, payload: User): void {
-            state.user = payload
+        SET_IS_AUTH(state, payload: boolean): void {
+            state.isAuth = payload
         },
     },
 
@@ -43,7 +43,7 @@ const auth: Module<AuthState, {}> = {
                 .signInWithEmailAndPassword(email, password)
                 .then(resp => {
                     if (resp.user) {
-                        commit('SET_AUTH_USER', { isAuth: true, userId: resp.user.uid })
+                        commit('SET_IS_AUTH', true)
                         router.push('/dashboard')
                     }
                 })
