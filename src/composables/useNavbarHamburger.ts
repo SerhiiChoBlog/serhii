@@ -5,7 +5,7 @@ export default () => {
     const store = useStore()
     const menuIsOpen = computed(() => store.state.navbar.menuIsOpen)
 
-    function toggleMobileNavbar() {
+    function toggleMobileNavbar(): void {
         menuIsOpen.value
             ? store.dispatch('closeNavMenu')
             : store.dispatch('openNavMenu')

@@ -15,7 +15,7 @@ export default () => {
         })
     }
 
-    function clearAuthError() {
+    function clearAuthError(): void {
         store.dispatch('clearAuthError')
     }
 
