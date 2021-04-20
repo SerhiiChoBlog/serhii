@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import store from '@/store'
 
 const firebaseConfig = {
     apiKey: 'AIzaSyACoEB8A2Wi999RUgqnLBYEmogK0np-8mo',
@@ -10,4 +11,10 @@ const firebaseConfig = {
     appId: '1:929831572941:web:ba82e0779c8620fa5ba084'
 }
 
-export default firebase.initializeApp(firebaseConfig)
+const firebaseApp = firebase.initializeApp(firebaseConfig)
+
+firebaseApp.auth().onAuthStateChanged((user) => {
+    store.dispatch('changeAuthState', user ? true : false)
+})
+
+export default firebaseApp
