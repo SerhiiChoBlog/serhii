@@ -18,34 +18,28 @@
             </div>
 
             <div class="field">
-                <button type="submit" class="submit-button button is-info">Submit</button>
+                <button type="submit"
+                    class="submit-button button is-info"
+                    :class="{ 'is-loading': processingAuth }"
+                >Submit</button>
             </div>
         </form>
+
+        <div v-if="errorAuth" class="notification is-danger mt-5" @click="clearAuthError">
+            <button class="delete"></button> {{ errorAuth }}
+        </div>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import Navbar from '@/components/Navbar.vue'
-import { useStore } from 'vuex'
+import useLogin from '@/composables/auth/useLogin'
 
 export default defineComponent({
     setup() {
-        const email = ref<string>('')
-        const password = ref<string>('')
-        const store = useStore()
-
-        function login() {
-            store.dispatch('login', {
-                email: email.value,
-                password: password.value,
-            })
-        }
-
         return {
-            email,
-            password,
-            login,
+            ...useLogin(),
         }
     },
 
