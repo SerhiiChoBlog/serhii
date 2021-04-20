@@ -1,10 +1,8 @@
 import { Module } from 'vuex'
+import ContactModalState from '@/store/interfaces/ContactModalState'
+import RootState from '@/store/interfaces/RootState'
 
-interface ContactModalState {
-    isOpen: boolean
-}
-
-const contactModal: Module<ContactModalState, {}> = {
+const contactModal: Module<ContactModalState, RootState> = {
     state: {
         isOpen: false,
     },

@@ -33,7 +33,6 @@ router.beforeEach(() => {
 })
 
 function authGuard(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext): void {
-    // @ts-ignore
     store.state.auth.isAuth ? next() : next('/')
 }
 
