@@ -4,6 +4,7 @@ import { getProjectUrl } from '@/static/urls'
 import GithubApiProjectsResponse from '@/interfaces/projects/GithubApiProjectsResponse'
 import remapGithubResponseIntoProjectsArray from '@/modules/remapGithubRepoIntoProject'
 import Project from '@/interfaces/projects/Project'
+import { GITHUB_AUTH_TOKEN } from '@/config'
 
 export default () => {
     const { params: { projectName } } = useRoute()
@@ -22,7 +23,9 @@ export default () => {
     onMounted(() => {
         projectLoading.value = true
 
-        fetch(getProjectUrl(projectName as string))
+        fetch(getProjectUrl(projectName as string), {
+            headers: { Authorization: GITHUB_AUTH_TOKEN }
+        })
             .then(resp => resp.json())
             .then((resp: GithubApiProjectsResponse) => {
                 project.value = remapGithubResponseIntoProjectsArray(resp)
