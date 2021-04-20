@@ -3,6 +3,7 @@ import Project from '@/interfaces/projects/Project'
 import { ref, onMounted } from 'vue'
 import { getProjectsUrl } from '@/static/urls'
 import remapGithubRepoIntoProject from '@/modules/remapGithubRepoIntoProject'
+import { GITHUB_AUTH_TOKEN } from '@/config'
 
 export default () => {
     let projects = ref<Project[]>([])
@@ -12,7 +13,9 @@ export default () => {
     onMounted(() => {
         loading.value = true
 
-        fetch(getProjectsUrl())
+        fetch(getProjectsUrl(), {
+            headers: { Authorization: GITHUB_AUTH_TOKEN }
+        })
             .then(resp => resp.json())
             .then((resp: GithubApiReposResponse[]) => {
                 if (resp && resp instanceof Array) {

@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import showdown from 'showdown'
 import { getProjectContentUrl } from '@/static/urls'
 import loadHighlightJs from '@/modules/loadHighlightJs'
+import { GITHUB_AUTH_TOKEN } from '@/config'
 
 export default () => {
     const { params } = useRoute()
@@ -12,7 +13,9 @@ export default () => {
     onMounted(() => {
         contentLoading.value = true
 
-        fetch(getProjectContentUrl(params.projectName as string))
+        fetch(getProjectContentUrl(params.projectName as string), {
+            headers: { Authorization: GITHUB_AUTH_TOKEN }
+        })
             .then(res => res.text())
             .then(res => {
                 var converter = new showdown.Converter()
