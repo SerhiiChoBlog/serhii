@@ -8,7 +8,10 @@ export default () => {
     const processingProjects = computed<boolean>(() => store.state.projects.processingProjects)
     const projectsError = computed<string | null>(() => store.state.projects.projectsError)
 
-    onMounted(() => store.dispatch('fetchProjects'))
+    onMounted(() => {
+        if (projects.value.length === 0)
+            store.dispatch('fetchProjects')
+    })
 
     return { projects, processingProjects, projectsError }
 }

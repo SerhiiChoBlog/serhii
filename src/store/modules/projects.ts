@@ -28,12 +28,7 @@ const projects: Module<ProjectsState, RootState> = {
     },
 
     actions: {
-        fetchProjects({ commit, state }): void {
-            if (state.projects.length > 0) {
-                commit('SET_PROJECTS', state.projects)
-                return
-            }
-
+        fetchProjects({ commit }): void {
             commit('SET_PROJECTS_PROCESSING', true)
 
             fetch(getProjectsUrl(), {
