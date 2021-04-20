@@ -1,5 +1,5 @@
-import { LoginCredentials } from "@/interfaces/auth/LoginCredentials"
-import { Module } from "vuex"
+import { LoginCredentials } from '@/interfaces/auth/LoginCredentials'
+import { Module } from 'vuex'
 import firebase from '@/firebase'
 import router from '@/router'
 
@@ -40,6 +40,7 @@ const auth: Module<AuthState, {}> = {
         },
         login({ commit }, { email, password }: LoginCredentials): void {
             commit('SET_AUTH_PROCESSING', true)
+            commit('CLEAR_AUTH_ERROR')
 
             firebase.auth()
                 .signInWithEmailAndPassword(email, password)
