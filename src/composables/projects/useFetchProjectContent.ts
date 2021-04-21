@@ -1,9 +1,8 @@
 import { useRoute } from 'vue-router'
 import { ref, onMounted } from 'vue'
 import showdown from 'showdown'
-import { getProjectContentUrl } from '@/static/urls'
+import { getProjectContentUrl } from '@/config'
 import loadHighlightJs from '@/modules/loadHighlightJs'
-import { GITHUB_AUTH_TOKEN } from '@/config'
 
 export default () => {
     const { params } = useRoute()
