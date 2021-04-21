@@ -16,7 +16,6 @@
                 <div class="navbar-end">
                     <router-link to="/" class="navbar-item has-stripe">About</router-link>
                     <router-link to="/projects" class="navbar-item has-stripe">Open source</router-link>
-                    <router-link to="/dashboard" v-if="isAuth" class="navbar-item has-stripe">Dashboard</router-link>
                     <div class="navbar-item">
                         <div class="button is-rounded is-info contact-me-button" @click="openContactModal">Contact me</div>
                     </div>
@@ -33,7 +32,6 @@ import { defineComponent } from 'vue'
 import ContactModal from '@/components/ContactModal.vue'
 import useContactModal from '@/composables/useContactModal'
 import useNavbarHamburger from '@/composables/useNavbarHamburger'
-import useAuth from '@/composables/auth/useAuth'
 
 export default defineComponent({
     props: {
@@ -48,7 +46,6 @@ export default defineComponent({
         return {
             ...useNavbarHamburger(),
             ...useContactModal(),
-            ...useAuth(),
             isLight,
         }
     },

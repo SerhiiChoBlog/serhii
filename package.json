@@ -12,7 +12,6 @@
     "core-js": "^3.6.5",
     "date-diff": "^0.2.2",
     "file-loader": "^6.2.0",
-    "firebase": "^8.4.1",
     "highlight.js": "^10.7.2",
     "register-service-worker": "^1.7.1",
     "showdown": "^1.9.1",
