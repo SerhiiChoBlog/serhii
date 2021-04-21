@@ -9,8 +9,9 @@ export default () => {
     const projectsError = computed<string | null>(() => store.state.projects.projectsError)
 
     onMounted(() => {
-        if (projects.value.length === 0)
+        if (projects.value.length === 0) {
             store.dispatch('fetchProjects')
+        }
     })
 
     return { projects, processingProjects, projectsError }
