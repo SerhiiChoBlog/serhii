@@ -5,7 +5,7 @@
   "homepage": "https://SerhiiCho.github.io/serhii",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --mode production",
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
