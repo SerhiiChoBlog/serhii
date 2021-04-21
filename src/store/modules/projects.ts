@@ -49,9 +49,7 @@ const projects: Module<ProjectsState, RootState> = {
             let projects: Project[] = []
 
             try {
-                const response = await fetch(getProjectsUrl(), {
-                    headers: { Authorization: GITHUB_AUTH_TOKEN }
-                })
+                const response = await fetch(getProjectsUrl())
 
                 const json = await response.json() as GithubApiReposResponse[]
 
