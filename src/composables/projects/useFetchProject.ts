@@ -1,37 +1,17 @@
 import { useRoute } from 'vue-router'
-import { ref, onMounted, Ref } from 'vue'
-import { getProjectUrl } from '@/static/urls'
-import GithubApiProjectsResponse from '@/interfaces/projects/GithubApiProjectsResponse'
-import remapGithubResponseIntoProjectsArray from '@/modules/projects/remapGithubRepoIntoProject'
+import { ref, onMounted, Ref, computed } from 'vue'
 import Project from '@/interfaces/projects/Project'
-import { GITHUB_AUTH_TOKEN } from '@/config'
+import { useStore } from 'vuex'
 
 export default () => {
+    const store = useStore()
     const { params: { projectName } } = useRoute()
 
-    let project = ref<Project>({
-        title: '',
-        name: '',
-        htmlUrl: '',
-        description: '',
-        language: '',
-        license: '',
-    })
-
-    let projectLoading = ref(false)
+    const project = computed<Project>(() => store.state.projects.project)
+    const projectLoading = computed<boolean>(() => store.state.projects.processingProject)
 
     onMounted(() => {
-        projectLoading.value = true
-
-        fetch(getProjectUrl(projectName as string), {
-            headers: { Authorization: GITHUB_AUTH_TOKEN }
-        })
-            .then(resp => resp.json())
-            .then((resp: GithubApiProjectsResponse) => {
-                project.value = remapGithubResponseIntoProjectsArray(resp)
-            })
-            .catch(err => console.error(err))
-            .finally(() => projectLoading.value = false)
+        store.dispatch('fetchProject', projectName)
     })
 
     return { project, projectLoading }
