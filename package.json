@@ -2,11 +2,10 @@
   "name": "serhii",
   "version": "0.0.10",
   "private": true,
-  "homepage": "https://SerhiiCho.github.io/serhii",
+  "homepage": "https://serhii.io",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --mode production",
-    "deploy": "yarn build && gh-pages -d dist && rm -r dist"
+    "build": "vue-cli-service build --mode production"
   },
   "devDependencies": {
     "@types/highlight.js": "^10.1.0",
