@@ -16,21 +16,16 @@
                 <div class="navbar-end">
                     <router-link to="/" class="navbar-item has-stripe">About</router-link>
                     <router-link to="/projects" class="navbar-item has-stripe">Open source</router-link>
-                    <div class="navbar-item">
-                        <div class="button is-rounded is-info contact-me-button" @click="openContactModal">Contact me</div>
-                    </div>
+                    <div class="navbar-item"><ContactModal /></div>
                 </div>
             </div>
         </div>
     </nav>
-
-    <ContactModal />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import ContactModal from '@/components/ContactModal.vue'
-import useContactModal from '@/composables/useContactModal'
 import useNavbarHamburger from '@/composables/useNavbarHamburger'
 
 export default defineComponent({
@@ -45,7 +40,6 @@ export default defineComponent({
     setup({ isLight }) {
         return {
             ...useNavbarHamburger(),
-            ...useContactModal(),
             isLight,
         }
     },
