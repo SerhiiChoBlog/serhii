@@ -28,12 +28,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { getToolsImages } from '@/modules/getImageUrl'
+import CardSectionTech from '@/interfaces/CardSectionTech'
 
 export default defineComponent({
     props: {
-        techs: Array,
+        techs: {
+            type: Array as PropType<CardSectionTech[]>,
+            required: true,
+        },
         bgDark: Boolean,
         header: String,
     },

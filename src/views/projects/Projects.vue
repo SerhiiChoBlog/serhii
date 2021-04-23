@@ -14,7 +14,7 @@
         <div v-if="processingProjects" class="has-text-centered"><Spinner /></div>
         <h4 v-else-if="projectsError" class="is-size-4 has-text-centered">😔 {{ projectsError }}</h4>
         <div v-else class="row">
-            <div class="col-md-12 col-lg-6 col-xl-4" v-for="project of projects" :key="project.name">
+            <div class="col-md-12 col-lg-6 col-xl-4" v-for="project in projects" :key="project.name">
                 <router-link :to="`/projects/${project.name}`">
                     <div class="card">
                         <img class="language-image" :src="getLanguagesImages(project.language.toLowerCase())">
