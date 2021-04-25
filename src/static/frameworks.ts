@@ -9,12 +9,12 @@ const langs = ref([
     {
         imageName: 'vue',
         title: 'Vue',
-        content: `I've been using Vue.js along with the VueRouter and Vuex mostly for building Single Page Applications.`,
+        content: `I've been using Vue along with the VueRouter and Vuex mostly for building Single Page Applications. This site is also written with Vue 3 as an SPA with TypeScript.`,
     },
     {
         imageName: 'wordpress',
         title: 'WordPress',
-        content: `As I'm working from home, I do a lot of WordPress development.`,
+        content: `As I'm working from home, I do a lot of WordPress development for a company from Netherlands. Mostly we are building plugins for syncing database, data collection and web hooks.`,
     },
 ])
 
