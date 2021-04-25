@@ -14,7 +14,7 @@
         <div class="container">
             <h2 class="is-size-3 mb-4 has-text-centered">Nice to meet you</h2>
             <p class="subtitle is-size-4">
-                I’m a fullstack developer with <b :title="fullExperience">{{ fullExperience }}</b> experience
+                I’m a fullstack developer with <b :title="fullExperience" class="experience">{{ roundYears }} years</b> experience
                 creating web applications. I was fortunate to have challenging projects that helped me to try lots of
                 <b>different technologies</b>. Since the beginning of my journey as a freelancer, I've done remote work for
                 companies based in Netherlands and Ukraine.
@@ -54,4 +54,11 @@ export default defineComponent({
 .hero
     background: url(../assets/images/heros/home-hero.jpg) no-repeat top center
     background-size: cover
+
+.experience
+    cursor: help
+    transition: color 200ms
+
+    &:hover
+        color: #3298dc
 </style>
