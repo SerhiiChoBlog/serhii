@@ -61,4 +61,7 @@ export default defineComponent({
 
     &:hover
         color: #3298dc
+
+.subtitle
+    line-height: 1.7
 </style>
