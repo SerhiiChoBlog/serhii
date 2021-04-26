@@ -1,8 +1,9 @@
 export default interface Project {
     name: string
     title: string
-    htmlUrl: string
     description: string
+    url: string
     language: string
-    license: string | null
+    stars: number
+    created_at: string
 }
