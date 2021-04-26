@@ -3,10 +3,6 @@ import RootState from '@/store/interfaces/RootState'
 import ProjectsState from '../interfaces/ProjectsState'
 import Project from '@/interfaces/projects/Project'
 import { getProjectsUrl } from '@/config'
-import { GITHUB_AUTH_TOKEN } from '@/config'
-import GithubApiReposResponse from '@/interfaces/projects/GithubApiProjectsResponse'
-import remapGithubRepoIntoProject from '@/modules/projects/remapGithubRepoIntoProject'
-import keepOnlyProjectsWithMitLicence from '@/modules/projects/keepOnlyProjectsWithMitLicence'
 
 const projects: Module<ProjectsState, RootState> = {
     state: {
@@ -14,12 +10,13 @@ const projects: Module<ProjectsState, RootState> = {
         projectsError: null,
         projects: [],
         project: {
-            title: '',
             name: '',
-            htmlUrl: '',
+            title: '',
             description: '',
+            url: '',
             language: '',
-            license: '',
+            stars: 0,
+            created_at: '',
         },
         processingProject: false,
     },
@@ -51,19 +48,16 @@ const projects: Module<ProjectsState, RootState> = {
             try {
                 const response = await fetch(getProjectsUrl())
 
-                const json = await response.json() as GithubApiReposResponse[]
+                const json = await response.json() as Project[]
 
                 if (json && json instanceof Array) {
-                    const repos = json.map(item => remapGithubRepoIntoProject(item))
-                    projects = keepOnlyProjectsWithMitLicence(repos)
-
-                    commit('SET_PROJECTS', projects)
+                    commit('SET_PROJECTS', json)
                 } else {
-                    commit('SET_PROJECTS_ERROR', 'Sorry, but there is an error from Github')
+                    commit('SET_PROJECTS_ERROR', 'Sorry, but there is an error')
                 }
             } catch (error) {
                 console.error(error)
-                commit('SET_PROJECTS_ERROR', 'Sorry, but there is an error from Github')
+                commit('SET_PROJECTS_ERROR', 'Sorry, but there is an error')
                 projects = []
             }
 

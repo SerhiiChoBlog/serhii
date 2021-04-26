@@ -79,7 +79,6 @@ export default defineComponent({
             width: 100%
 
         .card-title
-            text-transform: capitalize
             font-size: 1.4em
             color: #444
 

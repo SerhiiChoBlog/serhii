@@ -1,7 +1,5 @@
-export const GITHUB_AUTH_TOKEN = 'token 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'
-
 export function getProjectsUrl(): string {
-    return 'https://api.github.com/users/SerhiiCho/repos'
+    return 'https://api.serhii.io/api/projects'
 }
 
 export function getProjectContentUrl(projectSlug: string): string {
