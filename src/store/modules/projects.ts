@@ -52,12 +52,13 @@ const projects: Module<ProjectsState, RootState> = {
 
                 if (json && json instanceof Array) {
                     commit('SET_PROJECTS', json)
+                    projects = json
                 } else {
-                    commit('SET_PROJECTS_ERROR', 'Sorry, but there is an error')
+                    commit('SET_PROJECTS_ERROR', 'Sorry, but there is an error 🥺')
                 }
             } catch (error) {
                 console.error(error)
-                commit('SET_PROJECTS_ERROR', 'Sorry, but there is an error')
+                commit('SET_PROJECTS_ERROR', 'Sorry, but there is an error 🥺')
                 projects = []
             }
 
@@ -73,14 +74,13 @@ const projects: Module<ProjectsState, RootState> = {
             if (neededProject) {
                 commit('SET_PROJECT', neededProject)
                 commit('SET_PROJECT_PROCESSING', false)
-                return
+            } else {
+                const projects = await dispatch('fetchProjects') as Project[]
+                const project = projects.filter(project => project.name === projectName)[0] || null
+
+                commit('SET_PROJECT', project)
+                commit('SET_PROJECT_PROCESSING', false)
             }
-
-            const projects = await dispatch('fetchProjects') as Project[]
-            neededProject = projects.filter(project => project.name === projectName)[0] || null
-
-            commit('SET_PROJECT', neededProject)
-            commit('SET_PROJECT_PROCESSING', false)
         },
     },
 }

@@ -8,6 +8,7 @@ export default () => {
     const { params } = useRoute()
     let content = ref('')
     let contentLoading = ref(false)
+    let contentError = ref<string | null>('')
 
     onMounted(() => {
         contentLoading.value = true
@@ -19,9 +20,12 @@ export default () => {
                 content.value = converter.makeHtml(res)
                 loadHighlightJs()
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                console.error(err)
+                contentError.value = 'Error fetching readme content from Github 🥺'
+            })
             .finally(() => contentLoading.value = false)
     })
 
-    return { content, contentLoading }
+    return { content, contentLoading, contentError }
 }
