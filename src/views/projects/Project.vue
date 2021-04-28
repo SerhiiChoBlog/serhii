@@ -19,6 +19,7 @@
 
     <div class="container mt-6 pb-6">
         <div v-if="contentLoading" class="has-text-centered"><Spinner /></div>
+        <div v-else-if="contentError"><h3 class="is-size-4 has-text-centered">{{ contentError }}</h3></div>
         <div v-else class="content" v-html="content"></div>
     </div>
 </template>
