@@ -9,7 +9,7 @@
                 <div class="modal-content" v-if="isOpen">
                     <div class="box">
                         <div class="content">
-                            <h3>Contact me</h3>
+                            <h3 class="has-text-centered">Contact me</h3>
                             <p>
                                 The fastest way to contact me is writing me an email at
                                 <a href="mailto:serhiicho@protonmail.com" class="has-text-info">serhiicho@protonmail.com</a>
@@ -63,16 +63,49 @@ export default defineComponent({
 
 <style lang="sass" scoped>
 .social-links
+    display: flex
+    justify-content: center
+    align-items: center
+
     a
-        opacity: .8
-        transition: opacity 200ms
-        margin-right: 20px
+        opacity: .9
+        margin-right: 25px
+        animation: pulse 3s
+        animation-iteration-count: infinite
+        animation-direction: normal
+        position: relative
+
+        &:nth-child(2)
+            animation-delay: 100ms
+
+        &:nth-child(3)
+            animation-delay: 200ms
+
+        &:nth-child(4)
+            animation-delay: 300ms
+
+        &::before
+            content: ""
+            display: block
+            width: 0
+            height: 0
+            background-color: blue
+            border-radius: 50%
+            position: absolute
+            bottom: -4px
+            left: 50%
+            box-shadow: 0 0 3px 3px #3298dc
+            opacity: 0
+            transform: translateY(-15px)
+            transition: transform 300ms, opacity 600ms
 
         &:hover
-            opacity: 1
+            &::before
+                opacity: 1
+                transform: translateY(0)
 
         img
-            max-width: 40px
+            max-width: 35px
 
 .animate-modal
     &-enter-active
@@ -81,4 +114,9 @@ export default defineComponent({
     &-enter-from
         opacity: 0
         transform: translateX(14px)
+
+.modal
+    .box
+        margin: 10px
+        padding: 30px
 </style>
