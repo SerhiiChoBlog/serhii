@@ -4,8 +4,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/.htaccess"
   },
   {
-    "revision": "0bc5d771a14ef6f18612",
-    "url": "/css/app.ddb74a81.css"
+    "revision": "0e3ed9e7db8cb38277f9",
+    "url": "/css/app.f3f38309.css"
   },
   {
     "revision": "e1caef645de334fee2f25834b0d03c28",
@@ -22,6 +22,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "76505ead92ad22247cec057756fb7759",
     "url": "/img/home-hero.76505ead.jpg"
+  },
+  {
+    "revision": "f9abdd28edef446f6a886065ac87a7de",
+    "url": "/img/instagram.f9abdd28.png"
   },
   {
     "revision": "86b8cdde6580f26be00560285c590556",
@@ -48,16 +52,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/wordpress.f2fa6615.png"
   },
   {
-    "revision": "5530ab444a0cb073beb38420480996df",
+    "revision": "9ffb93b96524a9ad6d073c9674166c86",
     "url": "/index.html"
   },
   {
-    "revision": "0bc5d771a14ef6f18612",
-    "url": "/js/app.af16ea6a.js"
+    "revision": "0e3ed9e7db8cb38277f9",
+    "url": "/js/app.935e3c2f.js"
   },
   {
-    "revision": "ce43b933651ed46c70b7",
-    "url": "/js/chunk-vendors.fa0d4a60.js"
+    "revision": "41d143270c13bbf70186",
+    "url": "/js/chunk-vendors.b22d64d5.js"
   },
   {
     "revision": "cc7f4204ddea63eaa2275674672c2ed5",
