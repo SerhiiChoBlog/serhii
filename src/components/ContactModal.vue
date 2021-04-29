@@ -5,7 +5,7 @@
         <div class="modal is-active" v-show="isOpen">
             <div class="modal-background"></div>
 
-            <transition name="animate-modal">
+            <transition name="fade">
                 <div class="modal-content" v-if="isOpen">
                     <div class="box">
                         <div class="content">
@@ -106,14 +106,6 @@ export default defineComponent({
 
         img
             max-width: 35px
-
-.animate-modal
-    &-enter-active
-        transition: transform 500ms cubic-bezier(1, 0.5, 0.8, 1), opacity 700ms
-
-    &-enter-from
-        opacity: 0
-        transform: translateX(14px)
 
 .modal
     .box
