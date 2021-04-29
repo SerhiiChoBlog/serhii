@@ -13,7 +13,7 @@
     <div class="container mt-6">
         <transition name="slide-left" mode="out-in">
             <div v-if="processingProjects" class="has-text-centered"><Spinner /></div>
-            <h4 v-else-if="projectsError" class="is-size-4 has-text-centered">😔 {{ projectsError }}</h4>
+            <h4 v-else-if="projectsError" class="is-size-4 has-text-centered">{{ projectsError }}</h4>
             <div v-else class="row">
                 <div class="col-md-12 col-lg-6 col-xl-4" v-for="project in projects" :key="project.name">
                     <router-link :to="`/projects/${project.name}`">
