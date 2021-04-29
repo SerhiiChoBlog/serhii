@@ -4,8 +4,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/.htaccess"
   },
   {
-    "revision": "b6229572e88417d77fa4",
-    "url": "/css/app.5f25cd91.css"
+    "revision": "a5797be05cf9ba897a14",
+    "url": "/css/app.ac27aefc.css"
   },
   {
     "revision": "e1caef645de334fee2f25834b0d03c28",
@@ -52,16 +52,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/wordpress.f2fa6615.png"
   },
   {
-    "revision": "da2b26151908f586118ebd806558042f",
+    "revision": "7f70317b13d404792fd6694ddcaeeccd",
     "url": "/index.html"
   },
   {
-    "revision": "b6229572e88417d77fa4",
-    "url": "/js/app.7f8c2ebb.js"
+    "revision": "a5797be05cf9ba897a14",
+    "url": "/js/app.c3d57e9b.js"
   },
   {
-    "revision": "41d143270c13bbf70186",
-    "url": "/js/chunk-vendors.b22d64d5.js"
+    "revision": "b2b3eb20f1a47a50bc7e",
+    "url": "/js/chunk-vendors.e7dc2bc5.js"
   },
   {
     "revision": "cc7f4204ddea63eaa2275674672c2ed5",
