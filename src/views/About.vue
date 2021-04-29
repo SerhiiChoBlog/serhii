@@ -3,7 +3,7 @@
         <div class="hero-head"><Navbar /></div>
 
         <div class="hero-body">
-            <div class="container has-text-centered">
+            <div class="container has-text-centered" v-if="mounted">
                 <p class="title">SERHII<span class="has-text-info">CHO</span></p>
                 <p class="subtitle">Professional software developer️ 💙</p>
             </div>
@@ -11,15 +11,17 @@
     </section>
 
     <section class="section is-medium">
-        <div class="container">
-            <h2 class="is-size-3 mb-4 has-text-centered">Nice to meet you</h2>
-            <p class="subtitle is-size-4">
-                I’m a fullstack developer with <b :title="fullExperience" class="experience">{{ roundYears }} years</b> experience
-                creating web applications. I was fortunate to have challenging projects that helped me to try lots of
-                <b>different technologies</b>. Since the beginning of my journey as a freelancer, I've done remote work for
-                companies based in Netherlands and Ukraine.
-            </p>
-        </div>
+        <transition name="enter-from-top" mode="out-in">
+            <div class="container" v-if="mounted">
+                <h2 class="is-size-3 mb-4 has-text-centered">Nice to meet you</h2>
+                <p class="subtitle is-size-4">
+                    I’m a fullstack developer with <b :title="fullExperience" class="experience">{{ roundYears }} years</b> experience
+                    creating web applications. I was fortunate to have challenging projects that helped me to try lots of
+                    <b>different technologies</b>. Since the beginning of my journey as a freelancer, I've done remote work for
+                    companies based in Netherlands and Ukraine.
+                </p>
+            </div>
+        </transition>
     </section>
 
     <CardsSection :techs="langs" :bg-dark="true" header="Languages" />
@@ -27,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, onMounted } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import langs from '@/static/langs'
 import frameworks from '@/static/frameworks'
@@ -36,9 +38,14 @@ import useExperienceCounter from '@/composables/about/useExperienceCounter'
 
 export default defineComponent({
     setup() {
+        const mounted = ref(false)
+
+        onMounted(() => mounted.value = true)
+
         return {
             langs,
             frameworks,
+            mounted,
             ...useExperienceCounter(),
         }
     },
