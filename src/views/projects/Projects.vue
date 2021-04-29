@@ -67,6 +67,10 @@ export default defineComponent({
     margin-bottom: 25px
     position: relative
     font-size: 1.1em
+    transition: box-shadow 400ms
+
+    &:hover
+        box-shadow: 5px 5px 20px 10px rgba(10, 10, 10, .1)
 
     .content
         min-height: 300px
