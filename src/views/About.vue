@@ -81,11 +81,16 @@ export default defineComponent({
 
 .professional
     font-family: JetBrainsMono, monospace
+    font-size: 1.3em
 
 .cursor
     border-right: 12px solid #999
     margin-left: 4px
     animation: blink 1100ms linear infinite
     animation-timing-function: step-end
+
+@media (max-width: 768px)
+    .professional
+        font-size: .9em
 
 </style>
