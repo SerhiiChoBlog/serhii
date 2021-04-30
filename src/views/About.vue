@@ -5,7 +5,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <transition name="show-main-logo" mode="out-in">
-                    <p class="title" v-if="mounted">SERHII<span class="has-text-info">CHO</span></p>
+                    <p class="title main-logo" v-if="mounted">SERHII<span class="has-text-info">CHO</span></p>
                 </transition>
                 <p class="subtitle professional">
                     Professional {{ typewriter }}
@@ -18,8 +18,8 @@
     <section class="section is-medium">
         <transition name="enter-from-top" mode="out-in">
             <div class="container" v-if="mounted">
-                <h2 class="is-size-3 mb-4 has-text-centered">Nice to meet you</h2>
-                <p class="subtitle is-size-4">
+                <h2 class="title mb-6 has-text-centered">Nice to meet you</h2>
+                <p class="subtitle">
                     I’m a fullstack developer with <b :title="fullExperience" class="experience">{{ roundYears }} years</b> experience
                     creating web applications. I was fortunate to have challenging projects that helped me to try lots of
                     <b>different technologies</b>. Since the beginning of my journey as a freelancer, I've done remote work for
@@ -69,15 +69,15 @@ export default defineComponent({
     background: url(../assets/images/heros/home-hero.jpg) no-repeat top center
     background-size: cover
 
+.main-logo
+    font-size: 2em
+
 .experience
     cursor: help
     transition: color 200ms
 
     &:hover
         color: #3298dc
-
-.subtitle
-    line-height: 1.7
 
 .professional
     font-family: JetBrainsMono, monospace
@@ -89,8 +89,12 @@ export default defineComponent({
     animation: blink 1100ms linear infinite
     animation-timing-function: step-end
 
+
 @media (max-width: 768px)
     .professional
-        font-size: .9em
+        font-size: 1em
+
+    .main-logo
+        font-size: 1.5em
 
 </style>
