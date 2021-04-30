@@ -7,10 +7,10 @@
     &-leave-to
         opacity: 0
 
-.enter-from-bottom
+.show-projects
     &-enter-active,
     &-leave-active
-        transition: all 300ms ease
+        transition: all 100ms ease
 
     &-enter-from,
     &-leave-to
@@ -20,9 +20,19 @@
 .enter-from-top
     &-enter-active,
     &-leave-active
-        transition: all 300ms ease
+        transition: transform 500ms, opacity 1.2s
 
     &-enter-from,
     &-leave-to
         opacity: 0
-        transform: translateY(-30px)
+        transform: translateY(-80px)
+
+.show-main-logo
+    &-enter-active,
+    &-leave-active
+        transition: transform 500ms, opacity 1.2s
+
+    &-enter-from,
+    &-leave-to
+        opacity: 0
+        transform: translateY(20px)

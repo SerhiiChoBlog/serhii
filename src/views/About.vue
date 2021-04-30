@@ -3,10 +3,13 @@
         <div class="hero-head"><Navbar /></div>
 
         <div class="hero-body">
-            <div class="container has-text-centered" v-if="mounted">
-                <p class="title">SERHII<span class="has-text-info">CHO</span></p>
-                <p class="subtitle">
-                    Professional<span class="professional">{{ typewriter }}<span class="cursor"></span></span>
+            <div class="container has-text-centered">
+                <transition name="show-main-logo" mode="out-in">
+                    <p class="title" v-if="mounted">SERHII<span class="has-text-info">CHO</span></p>
+                </transition>
+                <p class="subtitle professional">
+                    Professional {{ typewriter }}
+                    <span class="cursor"></span>
                 </p>
             </div>
         </div>
@@ -78,7 +81,6 @@ export default defineComponent({
 
 .professional
     font-family: JetBrainsMono, monospace
-    margin-left: 12px
 
 .cursor
     border-right: 12px solid #999
