@@ -13,7 +13,7 @@
     <div class="container mt-6">
         <div v-if="processingProjects" class="has-text-centered"><Spinner /></div>
 
-        <transition name="enter-from-bottom" mode="out-in">
+        <transition name="show-projects" mode="out-in">
             <div v-if="processingProjects"></div>
             <h4 v-else-if="projectsError" class="is-size-4 has-text-centered">{{ projectsError }}</h4>
             <div v-else class="row">
