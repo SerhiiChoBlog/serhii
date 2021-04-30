@@ -5,7 +5,9 @@
         <div class="hero-body">
             <div class="container has-text-centered" v-if="mounted">
                 <p class="title">SERHII<span class="has-text-info">CHO</span></p>
-                <p class="subtitle">Professional software developer️ 💙</p>
+                <p class="subtitle">
+                    Professional<span class="professional">{{ typewriter }}<span class="cursor"></span></span>
+                </p>
             </div>
         </div>
     </section>
@@ -35,6 +37,7 @@ import langs from '@/static/langs'
 import frameworks from '@/static/frameworks'
 import CardsSection from '@/components/CardsSection.vue'
 import useExperienceCounter from '@/composables/about/useExperienceCounter'
+import useTypewriter from '@/composables/about/useTypewriter'
 
 export default defineComponent({
     setup() {
@@ -46,6 +49,7 @@ export default defineComponent({
             langs,
             frameworks,
             mounted,
+            ...useTypewriter(),
             ...useExperienceCounter(),
         }
     },
@@ -71,4 +75,15 @@ export default defineComponent({
 
 .subtitle
     line-height: 1.7
+
+.professional
+    font-family: JetBrainsMono, monospace
+    margin-left: 12px
+
+.cursor
+    border-right: 12px solid #999
+    margin-left: 4px
+    animation: blink 1100ms linear infinite
+    animation-timing-function: step-end
+
 </style>
