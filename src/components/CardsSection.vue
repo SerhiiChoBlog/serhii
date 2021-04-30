@@ -1,7 +1,7 @@
 <template>
     <section class="section is-medium" :class="{ 'bg-dark': bgDark }">
         <div class="container">
-            <h2 class="is-size-3 has-text-centered mb-5">{{ header }}</h2>
+            <h2 class="title has-text-centered">{{ header }}</h2>
 
             <div class="columns">
                 <div class="column" v-for="tech in techs" :key="tech.title">
