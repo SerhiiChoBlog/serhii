@@ -1,8 +1,8 @@
 {
   "name": "serhii",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "private": true,
-  "homepage": "https://serhii",
+  "homepage": "https://serhii.io",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --mode production",
