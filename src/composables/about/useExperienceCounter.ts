@@ -7,7 +7,7 @@ export default () => {
     const dateDiff = getDateDiff(currentDate, startedCareerDate)
 
     const experience = ref(dateDiff)
-    const fullExperience = ref(`${experience.value.years} years ${experience.value.months} months`)
+    const fullExperience = ref(`${experience.value.years} years ${experience.value.months.toFixed(0)} months`)
 
     return { fullExperience, roundYears: dateDiff.roundYears }
 }
