@@ -5,7 +5,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <p class="title">Blog</p>
-                <p class="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                <p class="subtitle">Some blog text will be here in this p tag</p>
             </div>
         </div>
     </section>
