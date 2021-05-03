@@ -30,9 +30,12 @@ import Navbar from '@/components/Navbar.vue'
 import Spinner from '@/components/Spinner.vue'
 import useFetchProjectContent from '@/composables/projects/useFetchProjectContent'
 import useFetchProject from '@/composables/projects/useFetchProject'
+import updatePageViews from '@/modules/updatePageViews'
 
 export default defineComponent({
     setup() {
+        updatePageViews()
+
         return {
             ...useFetchProjectContent(),
             ...useFetchProject(),
