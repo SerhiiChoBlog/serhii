@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import store from '@/store'
 import routes from '@/router/routes'
+import updatePageViews from '@/modules/updatePageViews'
 
 const router = createRouter({
     linkActiveClass: 'is-active',
@@ -8,8 +9,12 @@ const router = createRouter({
     routes,
 })
 
-router.beforeEach(() => {
+router.beforeEach((to, from) => {
     store.dispatch('closeNavMenu')
+})
+
+router.afterEach((to, from) => {
+    updatePageViews(to)
 })
 
 export default router
