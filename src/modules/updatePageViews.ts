@@ -15,19 +15,17 @@ function getSlug(route: RouteLocationNormalizedLoaded): string {
     let slug = route.params.projectName as string || route.fullPath
 
     if (slug === '/')
-        slug = 'home'
+        return 'home'
 
     if (slug[0] === '/')
-        slug = slug.substr(1)
+        return slug.substr(1)
 
     return slug
 }
 
 function getPageType(route: RouteLocationNormalizedLoaded): string {
-    let pageType = 'other'
-
     if (route.params.projectName)
-        pageType = 'project'
+        return 'project'
 
-    return pageType
+    return 'other'
 }
