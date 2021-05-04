@@ -14,11 +14,14 @@ export default (route: RouteLocationNormalizedLoaded) => {
 function getSlug(route: RouteLocationNormalizedLoaded): string {
     let slug = route.params.projectName as string || route.fullPath
 
-    if (slug === '/')
+    if (slug === '/' || slug.includes('?'))
         return 'home'
 
     if (slug[0] === '/')
-        return slug.substr(1)
+        slug = slug.substr(1)
+
+    if (slug[slug.length - 1] === '/')
+        slug = slug.slice(0, -1)
 
     return slug
 }
