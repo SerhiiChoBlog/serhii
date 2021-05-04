@@ -1,8 +1,5 @@
-const host = process.env.NODE_ENV === 'development'
-    ? 'http://127.0.0.1:8000/api'
-    : 'https://api.serhii.io/api'
-
-console.log(host)
+export const host = 'https://api.serhii.io/api'
+export const isProduction = host.includes('serhii.io')
 
 export function getProjectsUrl(): string {
     return `${host}/projects`
