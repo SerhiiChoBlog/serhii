@@ -1,7 +1,11 @@
 import { getUpdatePageViewsUrl } from '@/config'
 import { RouteLocationNormalizedLoaded } from 'vue-router'
+import { isProduction } from '@/config'
 
 export default (route: RouteLocationNormalizedLoaded) => {
+    if (!isProduction)
+        return
+
     const params = {
         method: 'POST',
         body: JSON.stringify({ slug: getSlug(route), page_type: getPageType(route) }),
