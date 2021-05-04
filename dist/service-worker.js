@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.0898a5ff3a4bbf98d30aec43585d1cd1.js"
+  "/precache-manifest.0adc994cea0b20ba7c4aa5dc95be3df1.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "serhii"});
