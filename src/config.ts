@@ -1,5 +1,6 @@
-export const host = 'https://api.serhii.io/api'
-export const isProduction = host.includes('serhii.io')
+const host = 'https://api.serhii.io/api'
+
+export const isProduction = window.location.hostname === 'serhii.io'
 
 export function getProjectsUrl(): string {
     return `${host}/projects`
