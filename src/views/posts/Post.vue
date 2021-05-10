@@ -22,14 +22,14 @@
     </section>
 
     <div class="container">
-        <div class="post-content">
-            <div class="row">
-                <div class="col-lg-9">
-                    <div v-if="postLoading" class="has-text-centered"><Spinner /></div>
-                    <div v-else-if="postError"><h3 class="is-size-4 has-text-centered">{{ postError }}</h3></div>
-                    <div v-else class="content px-3" v-html="post.content"></div>
-                </div>
-                <div class="col-lg-3">
+        <div class="row">
+            <div class="col-lg-9">
+                <div v-if="postLoading" class="has-text-centered"><Spinner /></div>
+                <div v-else-if="postError"><h3 class="is-size-4 has-text-centered">{{ postError }}</h3></div>
+                <div v-else class="content post-content is-medium px-3" v-html="post.content"></div>
+            </div>
+            <div class="col-lg-3">
+                <div class="sidebar-content">
                     sidebar is here... and here...and here more text...
                 </div>
             </div>
@@ -71,7 +71,8 @@ export default defineComponent({
         bottom: -160px
         right: 15px
 
-.post-content
+.post-content,
+.sidebar-content
     margin-top: 70px
 
 @media (max-width: 1407px)
@@ -81,8 +82,9 @@ export default defineComponent({
             width: 100%
             height: auto
 
-    .post-content
-        margin-top: 40px
+    .post-content,
+    .sidebar-content
+        margin-top: 30px
 
 @media (max-width: 992px)
     .hero .hero-body
@@ -92,4 +94,7 @@ export default defineComponent({
     .hero .hero-body
         font-size: .7em
         text-align: center
+
+    .post-content
+        font-size: 1.1em
 </style>
