@@ -8,10 +8,14 @@
             </div>
             <div v-else class="container">
                 <div class="columns">
-                    <div class="column is-flex is-align-items-center">
+                    <div class="column is-flex is-align-items-left is-flex-direction-column">
                         <p class="title" :style="{ fontSize: titleFontSize }">
                             {{ post.title }}
                         </p>
+                        <div class="tags mt-2 is-flex is-align-items-center">
+                            <span class="tag is-medium is-link is-normal m-0" v-for="tag in post.tags" :key="tag.id">{{ tag.name }}</span>
+                            <span class="has-text-grey ml-2">{{ post.created_at }}</span>
+                        </div>
                     </div>
                     <div class="column">
                         <img :src="post.image_url" :alt="post.title" class="post-image">

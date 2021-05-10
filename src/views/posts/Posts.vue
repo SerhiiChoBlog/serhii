@@ -28,6 +28,10 @@
                     <div class="post-content">
                         <h2 class="post-title has-text-black">{{ post.title }}</h2>
                         <p class="post-intro">{{ post.intro }}</p>
+                        <div class="tags mt-2 is-flex is-align-items-center">
+                            <span class="tag is-link is-normal m-0" v-for="tag in post.tags" :key="tag.id">{{ tag.name }}</span>
+                            <span class="has-text-grey ml-2">{{ post.created_at }}</span>
+                        </div>
                     </div>
                 </router-link>
             </div>
