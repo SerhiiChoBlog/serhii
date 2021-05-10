@@ -26,8 +26,6 @@
                                 <div class="content">
                                     <h4 class="card-title">{{ project.title }}</h4>
                                     <p>{{ project.description }}</p>
-
-                                    <div class="button is-rounded is-info is-block view-button">View</div>
                                 </div>
                             </div>
                         </div>
@@ -70,15 +68,16 @@ export default defineComponent({
     position: relative
     font-size: 1.1em
     transition: box-shadow 400ms
+    min-height: 300px
+    display: flex
+    justify-content: center
+    align-items: center
 
     &:hover
         box-shadow: 5px 5px 20px 10px rgba(10, 10, 10, .1)
 
     .content
-        min-height: 300px
         position: relative
-        padding-bottom: 40px
-        padding-top: 10px
 
         .view-button
             position: absolute
@@ -91,11 +90,11 @@ export default defineComponent({
             color: #444
 
 .language-image
-    width: 40px
-    height: 40px
+    width: 47px
+    height: 47px
     position: absolute
-    top: 12px
-    right: 12px
+    top: 15px
+    right: 15px
 
 @media (max-width: 991px)
     .card
