@@ -55,9 +55,11 @@ export default defineComponent({
 .navbar
     .logo
         background-color: transparent !important
+        font-size: 1.2em
 
     .navbar-item
         position: relative
+        font-size: 1.2em
 
         &.has-stripe
             &::before
