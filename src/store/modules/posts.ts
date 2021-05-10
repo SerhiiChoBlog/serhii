@@ -3,7 +3,8 @@ import RootState from '@/store/interfaces/RootState'
 import PostsState from '../interfaces/PostsState'
 import Post from '@/interfaces/posts/Post'
 import Posts from '@/interfaces/posts/Posts'
-import { getPostsUrl } from '@/config'
+import { getPostsUrl, getPostUrl } from '@/config'
+import loadHighlightJs from '@/modules/loadHighlightJs'
 
 const posts: Module<PostsState, RootState> = {
     state: {
@@ -12,6 +13,7 @@ const posts: Module<PostsState, RootState> = {
         posts: [],
         post: {
             title: '',
+            intro: '',
             content: '',
             tags: '',
             image_url: '',
@@ -19,6 +21,7 @@ const posts: Module<PostsState, RootState> = {
             created_at: '',
         },
         processingPost: false,
+        postError: null,
     },
 
     mutations: {
@@ -31,8 +34,12 @@ const posts: Module<PostsState, RootState> = {
         SET_POSTS(state, payload: Posts): void {
             state.posts = payload
         },
-        SET_PROJECT(state, payload: Post): void {
+        SET_POST(state, payload: Post): void {
             state.post = payload
+            loadHighlightJs()
+        },
+        SET_POST_ERROR(state, payload: string): void {
+            state.postError = payload
         },
         SET_POST_PROCESSING(state, payload: boolean): void {
             state.processingPost = payload
@@ -40,36 +47,33 @@ const posts: Module<PostsState, RootState> = {
     },
 
     actions: {
-        async fetchPosts({ commit }): Promise<Posts> {
+        fetchPosts({ commit }): void {
             commit('SET_POSTS_PROCESSING', true)
 
-            let posts: Posts = []
-
-            try {
-                const response = await fetch(getPostsUrl())
-
-                const json = await response.json() as Posts
-
-                if (json && json instanceof Array) {
-                    commit('SET_POSTS', json)
-                    posts = json
-                } else {
+            fetch(getPostsUrl())
+                .then(res => res.json())
+                .then(res => {
+                    res && res instanceof Array
+                        ? commit('SET_POSTS', res)
+                        : commit('SET_POSTS_ERROR', 'Sorry, but there is an error 🥺')
+                })
+                .catch(err => {
+                    console.error(err)
                     commit('SET_POSTS_ERROR', 'Sorry, but there is an error 🥺')
-                }
-            } catch (error) {
-                console.error(error)
-                commit('SET_POSTS_ERROR', 'Sorry, but there is an error 🥺')
-                posts = []
-            }
-
-            commit('SET_POSTS_PROCESSING', false)
-
-            return posts
+                })
+                .finally(() => commit('SET_POSTS_PROCESSING', false))
         },
-        async fetchPost({ commit, state, dispatch }, postId: number): Promise<void> {
+        fetchPost({ commit }, postId: number): void {
             commit('SET_POST_PROCESSING', true)
 
-            //
+            fetch(getPostUrl(postId))
+                .then(res => res.json())
+                .then((res: Post) => commit('SET_POST', res))
+                .catch(err => {
+                    console.error(err)
+                    commit('SET_POST_ERROR', 'Sorry, but there is an error 🥺')
+                })
+                .finally(() => commit('SET_POST_PROCESSING', false))
         },
     },
 }

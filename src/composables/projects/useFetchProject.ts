@@ -1,5 +1,5 @@
 import { useRoute } from 'vue-router'
-import { ref, onMounted, Ref, computed } from 'vue'
+import { onMounted, computed } from 'vue'
 import Project from '@/interfaces/projects/Project'
 import { useStore } from 'vuex'
 
