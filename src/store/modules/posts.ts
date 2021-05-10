@@ -75,6 +75,18 @@ const posts: Module<PostsState, RootState> = {
                 })
                 .finally(() => commit('SET_POST_PROCESSING', false))
         },
+        resetPost({ commit }): void {
+            commit('SET_POSTS_ERROR', null)
+            commit('SET_POST', {
+                title: '',
+                intro: '',
+                content: '',
+                tags: '',
+                image_url: '',
+                read_time: null,
+                created_at: '',
+            })
+        },
     },
 }
 
