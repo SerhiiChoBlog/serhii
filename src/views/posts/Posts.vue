@@ -11,14 +11,14 @@
     </section>
 
 
-    <div class="container mt-6">
+    <div class="container mt-5">
         <div v-if="processingPosts" class="has-text-centered"><Spinner /></div>
 
         <transition name="show-projects" mode="out-in">
             <div v-if="processingPosts"></div>
             <h4 v-else-if="postsError" class="is-size-4 has-text-centered">{{ postsError }}</h4>
             <div v-else class="posts">
-                <router-link class="post is-flex is-flex-direction-row is-align-items-center mb-4"
+                <router-link class="post"
                     :to="`/posts/${post.id}`"
                     v-for="post in posts"
                     :key="post.id"
@@ -26,7 +26,7 @@
                     <img class="post-image" :src="post.image_url">
 
                     <div class="post-content">
-                        <h2 class="post-title">{{ post.title }}</h2>
+                        <h2 class="post-title has-text-black">{{ post.title }}</h2>
                         <p class="post-intro">{{ post.intro }}</p>
                     </div>
                 </router-link>
@@ -62,6 +62,12 @@ export default defineComponent({
 
 .posts
     .post
+        display: flex
+        justify-content: center
+        flex-direction: row
+        align-items: center
+        padding: 7px 15px
+
         &-image
             width: 260px
             height: 130px
@@ -79,4 +85,18 @@ export default defineComponent({
 
             .post-intro
                 color: #555
+
+@media (max-width: 767px)
+    .posts
+        .post
+            flex-direction: column
+            margin-bottom: 30px
+
+            .post-content
+                margin: 0
+
+            .post-image
+                width: 100%
+                height: auto
+                margin-bottom: 10px
 </style>
