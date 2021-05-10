@@ -38,15 +38,19 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Navbar from "@/components/Navbar.vue"
+import Spinner from "@/components/Spinner.vue"
 import useFetchPosts from '@/composables/posts/useFetchPosts'
 
 export default defineComponent({
     setup() {
-        return { ...useFetchPosts() }
+        return {
+            ...useFetchPosts(),
+        }
     },
 
     components: {
         Navbar,
+        Spinner,
     },
 })
 </script>

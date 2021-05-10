@@ -7,4 +7,5 @@ export default interface PostsState {
     posts: Posts
     post: Post
     processingPost: boolean
+    postError: string | null
 }

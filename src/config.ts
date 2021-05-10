@@ -13,3 +13,11 @@ export function getProjectContentUrl(projectSlug: string): string {
 export function getUpdatePageViewsUrl(): string {
     return `${host}/page-view/update`
 }
+
+export function getPostsUrl(): string {
+    return `${host}/posts`
+}
+
+export function getPostUrl(postId: number): string {
+    return `${host}/posts/${postId}`
+}

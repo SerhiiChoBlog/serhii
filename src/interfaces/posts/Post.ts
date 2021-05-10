@@ -1,5 +1,6 @@
 export default interface Post {
     title: string
+    intro: string
     content: string
     tags: string
     image_url: string
