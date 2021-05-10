@@ -1,5 +1,5 @@
 <template>
-    <section class="hero is-dark is-medium">
+    <section class="hero is-dark is-medium" >
         <div class="hero-head"><Navbar :isLight="false" /></div>
 
         <div class="hero-body">
@@ -7,20 +7,31 @@
                 <Spinner />
             </div>
             <div v-else class="container">
-                <p class="title">{{ post.title }}</p>
+                <div class="columns">
+                    <div class="column is-flex is-align-items-center">
+                        <p class="title" :style="{ fontSize: titleFontSize }">
+                            {{ post.title }}
+                        </p>
+                    </div>
+                    <div class="column">
+                        <img :src="post.image_url" :alt="post.title" class="post-image">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <div class="container mt-6 pb-6">
-        <div class="row">
-            <div class="col-lg-9">
-                <div v-if="postLoading" class="has-text-centered"><Spinner /></div>
-                <div v-else-if="postError"><h3 class="is-size-4 has-text-centered">{{ postError }}</h3></div>
-                <div v-else class="content" v-html="post.content"></div>
-            </div>
-            <div class="col-lg-3">
-                sidebar is here... and here...and here more text...
+    <div class="container">
+        <div class="post-content">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div v-if="postLoading" class="has-text-centered"><Spinner /></div>
+                    <div v-else-if="postError"><h3 class="is-size-4 has-text-centered">{{ postError }}</h3></div>
+                    <div v-else class="content px-3" v-html="post.content"></div>
+                </div>
+                <div class="col-lg-3">
+                    sidebar is here... and here...and here more text...
+                </div>
             </div>
         </div>
     </div>
@@ -49,4 +60,36 @@ export default defineComponent({
 <style lang="sass" scoped>
 .hero
     background-color: #141618
+
+    .post-image
+        position: absolute
+        height: 300px
+        border-radius: 10px
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, .2)
+        object-fit: cover
+        object-position: center
+        bottom: -160px
+        right: 15px
+
+.post-content
+    margin-top: 70px
+
+@media (max-width: 1407px)
+    .hero
+        .post-image
+            position: static
+            width: 100%
+            height: auto
+
+    .post-content
+        margin-top: 40px
+
+@media (max-width: 992px)
+    .hero .hero-body
+        font-size: .9em
+
+@media (max-width: 768px)
+    .hero .hero-body
+        font-size: .7em
+        text-align: center
 </style>

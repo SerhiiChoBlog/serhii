@@ -1,4 +1,5 @@
-const host = 'https://api.serhii.io/api'
+const host = 'http://localhost:8000/api'
+// const host = 'https://api.serhii.io/api'
 
 export const isProduction = window.location.hostname === 'serhii.io'
 
