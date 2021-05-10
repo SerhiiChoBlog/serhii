@@ -24,8 +24,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-9">
-                <div v-if="postLoading" class="has-text-centered"><Spinner /></div>
-                <div v-else-if="postError"><h3 class="is-size-4 has-text-centered">{{ postError }}</h3></div>
+                <div v-if="postLoading" class="has-text-centered mt-6"><Spinner /></div>
+                <div v-else-if="postError"><h3 class="is-size-4 mt-6 has-text-centered">{{ postError }}</h3></div>
                 <div v-else class="content post-content is-medium px-3" v-html="post.content"></div>
             </div>
             <div class="col-lg-3">
