@@ -15,7 +15,7 @@ const posts: Module<PostsState, RootState> = {
             title: '',
             intro: '',
             content: '',
-            tags: '',
+            tags: [],
             image_url: '',
             read_time: null,
             created_at: '',
