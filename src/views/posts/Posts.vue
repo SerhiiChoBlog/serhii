@@ -63,7 +63,6 @@ export default defineComponent({
 .posts
     .post
         display: flex
-        justify-content: center
         flex-direction: row
         align-items: center
         padding: 7px 15px
