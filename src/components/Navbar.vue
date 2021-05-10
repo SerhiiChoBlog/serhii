@@ -16,6 +16,7 @@
                 <div class="navbar-end">
                     <router-link to="/" class="navbar-item has-stripe">About</router-link>
                     <router-link to="/projects" class="navbar-item has-stripe">Open source</router-link>
+                    <router-link to="/posts" class="navbar-item has-stripe">Blog</router-link>
                     <div class="navbar-item"><ContactModal /></div>
                 </div>
             </div>
