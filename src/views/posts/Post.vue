@@ -12,20 +12,24 @@
                         <p class="title" :style="{ fontSize: titleFontSize }">
                             {{ post.title }}
                         </p>
-                        <div class="tags mt-2 is-flex is-align-items-center">
-                            <span class="tag is-medium is-link is-normal m-0" v-for="tag in post.tags" :key="tag.id">{{ tag.name }}</span>
-                            <span class="has-text-grey ml-2">{{ post.created_at }}</span>
+                        <div class="tags mt-2">
+                            <span class="tag my-0 is-medium is-normal is-dark"
+                                v-for="tag in post.tags"
+                                :key="tag.id"
+                                :style="{ backgroundColor: tag.color }"
+                            >{{ tag.name }}</span>
+                            <span class="created-at ml-2">{{ post.pretty_created_at }}</span>
                         </div>
                     </div>
                     <div class="column">
-                        <img :src="post.image_url" :alt="post.title" class="post-image">
+                        <img :src="host + post.image_lg" :alt="post.title" class="post-image">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="container">
+    <div class="container pb-6">
         <div class="row">
             <div class="col-lg-9">
                 <div v-if="postLoading" class="has-text-centered mt-6"><Spinner /></div>
@@ -46,10 +50,12 @@ import { defineComponent } from 'vue'
 import Navbar from "@/components/Navbar.vue"
 import Spinner from "@/components/Spinner.vue"
 import useFetchPost, { } from '@/composables/posts/useFetchPost'
+import { host } from '@/config'
 
 export default defineComponent({
     setup() {
         return {
+            host,
             ...useFetchPost(),
         }
     },
@@ -67,6 +73,7 @@ export default defineComponent({
 
     .post-image
         position: absolute
+        width: 550px
         height: 300px
         border-radius: 10px
         box-shadow: 2px 2px 5px rgba(0, 0, 0, .2)
@@ -78,6 +85,9 @@ export default defineComponent({
 .post-content,
 .sidebar-content
     margin-top: 70px
+
+.created-at
+    color: #aaa
 
 @media (max-width: 1407px)
     .hero
