@@ -12,6 +12,7 @@ const routes: Array<RouteRecordRaw> = [
     { path: '/posts/:postId', component: Post },
     { path: '/projects', component: Projects },
     { path: '/projects/:projectName', component: Project },
+    { path: '/draft/:postId', component: Post },
     { path: '/:catchAll(.*)', component: Page404 }
 ]
 
