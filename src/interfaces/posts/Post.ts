@@ -1,13 +1,13 @@
 export default interface Post {
+    id: number
     title: string
     intro: string
     content: string
     tags: {
         id: number
-        post_id: number
         name: string
+        color: string
     }[]
-    image_url: string
-    read_time: number | null
-    created_at: string
+    image_lg: string
+    pretty_created_at: string
 }
