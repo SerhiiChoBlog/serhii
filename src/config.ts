@@ -1,10 +1,10 @@
-const host = 'http://localhost:8000/api'
-// const host = 'https://api.serhii.io/api'
+// export const host = 'http://localhost:8000/'
+export const host = 'https://api.serhii.io/'
 
 export const isProduction = window.location.hostname === 'serhii.io'
 
 export function getProjectsUrl(): string {
-    return `${host}/projects`
+    return `${host}api/projects`
 }
 
 export function getProjectContentUrl(projectSlug: string): string {
@@ -12,13 +12,13 @@ export function getProjectContentUrl(projectSlug: string): string {
 }
 
 export function getUpdatePageViewsUrl(): string {
-    return `${host}/page-view/update`
+    return `${host}api/page-view/update`
 }
 
 export function getPostsUrl(): string {
-    return `${host}/posts`
+    return `${host}api/posts`
 }
 
 export function getPostUrl(postId: number): string {
-    return `${host}/posts/${postId}`
+    return `${host}api/posts/${postId}`
 }
