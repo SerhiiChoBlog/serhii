@@ -23,14 +23,18 @@
                     v-for="post in posts"
                     :key="post.id"
                 >
-                    <img class="post-image" :src="post.image_url">
+                    <img class="post-image" :src="host + post.image_sm">
 
                     <div class="post-content">
                         <h2 class="post-title has-text-black">{{ post.title }}</h2>
                         <p class="post-intro">{{ post.intro }}</p>
-                        <div class="tags mt-2 is-flex is-align-items-center">
-                            <span class="tag is-link is-normal m-0" v-for="tag in post.tags" :key="tag.id">{{ tag.name }}</span>
-                            <span class="has-text-grey ml-2">{{ post.created_at }}</span>
+                        <div class="tags mt-2">
+                            <span class="tag my-0 is-small is-normal is-dark"
+                                v-for="tag in post.tags"
+                                :key="tag.id"
+                                :style="{ backgroundColor: tag.color }"
+                            >{{ tag.name }}</span>
+                            <span class="has-text-grey ml-2">{{ post.pretty_created_at }}</span>
                         </div>
                     </div>
                 </router-link>
@@ -44,10 +48,12 @@ import { defineComponent } from 'vue'
 import Navbar from "@/components/Navbar.vue"
 import Spinner from "@/components/Spinner.vue"
 import useFetchPosts from '@/composables/posts/useFetchPosts'
+import { host } from '@/config'
 
 export default defineComponent({
     setup() {
         return {
+            host,
             ...useFetchPosts(),
         }
     },
@@ -70,6 +76,11 @@ export default defineComponent({
         flex-direction: row
         align-items: center
         padding: 7px 15px
+        border-radius: 10px
+        transition: background-color 300ms
+
+        &:hover
+            background-color: #eee
 
         &-image
             width: 260px
