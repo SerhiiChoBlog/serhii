@@ -1,5 +1,4 @@
 export default interface Post {
-    id: number
     title: string
     intro: string
     content: string
@@ -9,5 +8,6 @@ export default interface Post {
         color: string
     }[]
     image_lg: string
+    created_at: string
     pretty_created_at: string
 }
