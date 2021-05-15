@@ -6,21 +6,22 @@ import Posts from '@/interfaces/posts/Posts'
 import { getPostsUrl, getPostUrl } from '@/config'
 import loadHighlightJs from '@/modules/loadHighlightJs'
 
+const emptyPost: Post = {
+    title: '',
+    intro: '',
+    content: '',
+    tags: [],
+    image_lg: '',
+    created_at: '',
+    pretty_created_at: '',
+}
+
 const posts: Module<PostsState, RootState> = {
     state: {
         processingPosts: false,
         postsError: null,
         posts: [],
-        post: {
-            title: '',
-            intro: '',
-            content: '',
-            tags: [],
-            image_sm: '',
-            image_lg: '',
-            read_time: null,
-            created_at: '',
-        },
+        post: emptyPost,
         processingPost: false,
         postError: null,
     },
@@ -78,15 +79,7 @@ const posts: Module<PostsState, RootState> = {
         },
         resetPost({ commit }): void {
             commit('SET_POSTS_ERROR', null)
-            commit('SET_POST', {
-                title: '',
-                intro: '',
-                content: '',
-                tags: '',
-                image_url: '',
-                read_time: null,
-                created_at: '',
-            })
+            commit('SET_POST', emptyPost)
         },
     },
 }
