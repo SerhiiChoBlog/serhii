@@ -21,7 +21,7 @@
                 <router-link class="post"
                     :to="`/posts/${post.slug}`"
                     v-for="post in posts"
-                    :key="post.id"
+                    :key="post.slug"
                 >
                     <img class="post-image" :src="host + post.image_sm">
 
