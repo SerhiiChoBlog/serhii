@@ -5,14 +5,14 @@ import { useStore } from 'vuex'
 
 export default () => {
     const store = useStore()
-    const { params: { postId } } = useRoute()
+    const { params: { slug } } = useRoute()
 
     const post = computed<Post>(() => store.state.posts.post)
     const postLoading = computed<boolean>(() => store.state.posts.processingPost)
     const postError = computed<string | null>(() => store.state.posts.postError)
     const titleFontSize = computed<string>(() => pickCorrectFontSize(post.value.title.length))
 
-    onMounted(() => store.dispatch('fetchPost', postId))
+    onMounted(() => store.dispatch('fetchPost', slug))
     onBeforeUnmount(() => store.dispatch('resetPost'))
 
     return { post, postLoading, postError, titleFontSize }

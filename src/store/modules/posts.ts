@@ -9,6 +9,7 @@ import loadHighlightJs from '@/modules/loadHighlightJs'
 const emptyPost: Post = {
     title: '',
     intro: '',
+    slug: '',
     content: '',
     tags: [],
     image_lg: '',
@@ -65,10 +66,10 @@ const posts: Module<PostsState, RootState> = {
                 })
                 .finally(() => commit('SET_POSTS_PROCESSING', false))
         },
-        fetchPost({ commit }, postId: number): void {
+        fetchPost({ commit }, slug: string): void {
             commit('SET_POST_PROCESSING', true)
 
-            fetch(getPostUrl(postId))
+            fetch(getPostUrl(slug))
                 .then(res => res.json())
                 .then((res: Post) => commit('SET_POST', res))
                 .catch(err => {

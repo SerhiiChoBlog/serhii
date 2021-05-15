@@ -19,7 +19,7 @@
             <h4 v-else-if="postsError" class="is-size-4 has-text-centered">{{ postsError }}</h4>
             <div v-else class="posts">
                 <router-link class="post"
-                    :to="`/posts/${post.id}`"
+                    :to="`/posts/${post.slug}`"
                     v-for="post in posts"
                     :key="post.id"
                 >
