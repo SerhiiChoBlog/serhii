@@ -36,11 +36,7 @@
                 <div v-else-if="postError"><h3 class="is-size-4 mt-6 has-text-centered">{{ postError }}</h3></div>
                 <div v-else class="content post-content is-medium px-3" v-html="post.content"></div>
             </div>
-            <div class="col-lg-3">
-                <div class="sidebar-content">
-                    sidebar is here... and here...and here more text...
-                </div>
-            </div>
+            <div class="col-lg-3"><PostSidebar /></div>
         </div>
     </div>
 </template>
@@ -51,6 +47,7 @@ import Navbar from "@/components/Navbar.vue"
 import Spinner from "@/components/Spinner.vue"
 import useFetchPost, { } from '@/composables/posts/useFetchPost'
 import { host } from '@/config'
+import PostSidebar from './PostSidebar.vue'
 
 export default defineComponent({
     setup() {
@@ -63,6 +60,7 @@ export default defineComponent({
     components: {
         Navbar,
         Spinner,
+        PostSidebar,
     },
 })
 </script>
