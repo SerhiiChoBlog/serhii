@@ -9,10 +9,10 @@ import Page404 from '@/views/Page404.vue'
 const routes: Array<RouteRecordRaw> = [
     { path: '/', component: About },
     { path: '/posts', component: Posts },
-    { path: '/posts/:postId', component: Post },
+    { path: '/posts/:slug', component: Post },
     { path: '/projects', component: Projects },
     { path: '/projects/:projectName', component: Project },
-    { path: '/draft/:postId', component: Post },
+    { path: '/draft/:slug', component: Post },
     { path: '/:catchAll(.*)', component: Page404 }
 ]
 

@@ -19,6 +19,6 @@ export function getPostsUrl(): string {
     return `${host}api/posts`
 }
 
-export function getPostUrl(postId: number): string {
-    return `${host}api/posts/${postId}`
+export function getPostUrl(slug: string): string {
+    return `${host}api/posts/${slug}`
 }

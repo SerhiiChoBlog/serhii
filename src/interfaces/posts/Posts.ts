@@ -1,7 +1,7 @@
 interface Post {
-    id: number
     title: string
     intro: string
+    slug: string
     tags: {
         id: number
         name: string
