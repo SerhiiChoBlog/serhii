@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="hero is-dark">
+<section class="hero blog-hero is-dark">
     <div class="hero-head">@include('includes.navbar')</div>
 
     <div class="hero-body">
