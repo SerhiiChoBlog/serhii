@@ -21,4 +21,17 @@
     </div>
 </section>
 
+
+<section class="section is-medium bg-dark">
+    <div class="container">
+        <x-home-tech-section :techs="config('technologies.languages')" header="Languages" />
+    </div>
+</section>
+
+<section class="section is-medium">
+    <div class="container">
+        <x-home-tech-section :techs="config('technologies.frameworks')" header="Frameworks" />
+    </div>
+</section>
+
 @endsection
