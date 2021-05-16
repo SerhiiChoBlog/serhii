@@ -3,26 +3,32 @@ import { RouteLocationNormalizedLoaded } from 'vue-router'
 import { isProduction } from '@/config'
 
 export default (route: RouteLocationNormalizedLoaded) => {
-    if (!isProduction)
+    // if (!isProduction)
+    //     return
+
+    const slug = getSlug(route)
+
+    if (!slug)
         return
 
     const params = {
         method: 'POST',
-        body: JSON.stringify({ slug: getSlug(route), page_type: getPageType(route) }),
+        body: JSON.stringify({ slug, page_type: getPageType(route) }),
         headers: { 'Content-Type': 'application/json' },
     }
 
     fetch(getUpdatePageViewsUrl(), params).catch(err => console.error(err))
 }
 
-function getSlug(route: RouteLocationNormalizedLoaded): string {
-    let slug = route.params.projectName as string || route.fullPath
+function getSlug(route: RouteLocationNormalizedLoaded): string | null {
+    const projectPageSlug = route.params.projectName as string | null
+    const homePageSlug = route.fullPath === '/' ? 'home' : null
+    const postPageSlug = route.params.slug as string | null
 
-    if (slug === '/' || slug.includes('?'))
-        return 'home'
+    let slug = projectPageSlug || homePageSlug || postPageSlug
 
-    if (slug[0] === '/')
-        slug = slug.substr(1)
+    if (!slug)
+        return null
 
     if (slug[slug.length - 1] === '/')
         slug = slug.slice(0, -1)
