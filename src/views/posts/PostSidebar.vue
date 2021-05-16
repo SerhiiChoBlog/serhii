@@ -2,7 +2,6 @@
     <div class="sidebar-content">
         <nav class="panel is-shadowless">
             <p class="panel-heading mb-4">
-                <img src="../../assets/images/icons/github-dark.png" class="mr-2" width="22" />
                 <span class="has-text-weight-normal">Open source projects</span>
             </p>
             <router-link :to="`/projects/${project.name}`"
@@ -33,4 +32,7 @@ export default defineComponent({
     background-color: transparent
     display: flex
     align-items: center
+
+.social-links
+    justify-content: flex-start
 </style>
