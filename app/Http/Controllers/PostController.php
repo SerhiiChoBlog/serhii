@@ -13,12 +13,23 @@ class PostController extends Controller
     public function index(): View
     {
         $posts = Cache::remember(CacheKey::PUBLISHED_POSTS, Ttl::DAY, fn() => Post::getPublishedPosts()->toArray());
-
         return view('posts.index', compact('posts'));
     }
 
-    public function show(): View
+    public function show(string $slug): View
     {
-        return view('posts.show');
+        $cache_key = CacheKey::POST . $slug;
+
+        $post = Cache::remember($cache_key, Ttl::DAY, function () use ($slug) {
+            $post = Post::query()
+                ->with('tags:id,color,name')
+                ->where('slug', $slug)
+                ->select('title', 'intro', 'slug', 'content', 'image_lg', 'created_at')
+                ->first();
+
+            return $post ? $post->toArray() : null;
+        });
+
+        return view('posts.show', compact('post'));
     }
 }
