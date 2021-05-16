@@ -27,7 +27,7 @@
                                 <td>{{ $visitor->ip }}</td>
                                 <td>{{ $visitor->country }}</td>
                                 <td>{{ $visitor->city }}</td>
-                                <td><img src="{{ asset("storage/flags/{$visitor->code}.png") }}" width="30" /></td>
+                                <td><img src="{{ asset("storage/admin/flags/{$visitor->code}.png") }}" width="30" /></td>
                             </tr>
                         @endforeach
                     </tbody>

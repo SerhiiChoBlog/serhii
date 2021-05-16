@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('includes.navbar')
+
 <div class="container">
     <div class="buttons mb-5">
         <a href="{{ route('posts.create') }}" class="button is-info">Create post</a>
