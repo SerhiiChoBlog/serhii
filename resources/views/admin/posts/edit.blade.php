@@ -18,7 +18,7 @@
     <h1 class="title">{{ $post->title }}</h1>
 
     <div class="container">
-        <form action="{{ route('posts.update', $post) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.posts.update', $post) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
 
@@ -104,7 +104,7 @@
 
 <input type="hidden" value="{{ $post->tags }}" id="old-post-tags">
 
-<form action="{{ route('posts.destroy', $post) }}" method="post" class="is-hidden" onsubmit="return confirm('Sure you want to delete the post?');">
+<form action="{{ route('admin.posts.destroy', $post) }}" method="post" class="is-hidden" onsubmit="return confirm('Sure you want to delete the post?');">
     @csrf
     @method('delete')
     <button type="submit" id="delete-post"></button>
