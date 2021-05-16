@@ -3,8 +3,8 @@ import { RouteLocationNormalizedLoaded } from 'vue-router'
 import { isProduction } from '@/config'
 
 export default (route: RouteLocationNormalizedLoaded) => {
-    // if (!isProduction)
-    //     return
+    if (!isProduction)
+        return
 
     const slug = getSlug(route)
 
