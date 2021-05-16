@@ -15,4 +15,10 @@
     </div>
 </section>
 
+<section class="section is-medium">
+    <div class="container">
+        <x-about-me-component />
+    </div>
+</section>
+
 @endsection
