@@ -13,7 +13,7 @@
         <nav class="navbar is-dark mb-6">
             <div class="container">
                 <div class="navbar-brand">
-                    <a href="{{ url('/') }}" class="navbar-item">
+                    <a href="{{ route('home') }}" class="navbar-item">
                         <b>SERHII<span class="has-text-info">CHO</span></b>
                     </a>
 

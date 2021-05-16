@@ -1,0 +1,47 @@
+.hero
+    background: url(/storage/heros/blog-hero.jpg) no-repeat center center
+    background-size: cover
+
+.posts
+    .post
+        display: flex
+        flex-direction: row
+        align-items: center
+        padding: 7px 15px
+        border-radius: 10px
+        transition: background-color 300ms
+
+        &:hover
+            background-color: #eee
+
+        &-image
+            width: 260px
+            height: 130px
+            border-radius: 10px
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, .2)
+            object-fit: cover
+            object-position: center
+
+        &-content
+            margin-left: 30px
+
+            .post-title
+                font-size: 1.3em
+                font-weight: bold
+
+            .post-intro
+                color: #555
+
+@media (max-width: 767px)
+    .posts
+        .post
+            flex-direction: column
+            margin-bottom: 30px
+
+            .post-content
+                margin: 0
+
+            .post-image
+                width: 100%
+                height: auto
+                margin-bottom: 10px
