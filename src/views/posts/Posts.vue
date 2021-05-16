@@ -33,7 +33,7 @@
                                 :key="tag.id"
                                 :style="{ backgroundColor: tag.color }"
                             >{{ tag.name }}</span>
-                            <span class="has-text-grey ml-2">{{ post.pretty_created_at }}</span>
+                            <span class="has-text-grey">{{ post.pretty_created_at }}</span>
                         </div>
                     </div>
                 </router-link>
