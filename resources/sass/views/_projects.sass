@@ -1,0 +1,41 @@
+.projects-hero
+    background: url(/storage/heros/open-source-hero.jpg) no-repeat center center
+    background-size: cover
+
+.card
+    margin-bottom: 25px
+    position: relative
+    font-size: 1.1em
+    transition: box-shadow 400ms
+    min-height: 300px
+    display: flex
+    justify-content: center
+    align-items: center
+
+    &:hover
+        box-shadow: 5px 5px 20px 10px rgba(10, 10, 10, .1)
+
+    .content
+        position: relative
+
+        .view-button
+            position: absolute
+            bottom: 0
+            left: 0
+            width: 100%
+
+        .card-title
+            font-size: 1.4em
+            color: #444
+
+.language-image
+    width: 47px
+    height: 47px
+    position: absolute
+    top: 15px
+    right: 15px
+
+@media (max-width: 991px)
+    .card
+        .content
+            min-height: auto

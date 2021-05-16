@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\{PostController, ProjectController};
 use App\Http\Controllers\Admin\{DashboardController as AdminDashboardController,
     PageViewController as AdminPageViewController,
     PostController as AdminPostController,
     TagController as AdminTagController,
     VisitorController as AdminVisitorController,};
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +22,12 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('tags', AdminTagController::class)->except(['show']);
 });
 
-Route::get('posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+Route::prefix('posts')->group(function () {
+    Route::get('/', [PostController::class, 'index'])->name('posts.index');
+    Route::get('{post:slug}', [PostController::class, 'show'])->name('posts.show');
+});
+
+Route::prefix('projects')->group(function () {
+    Route::get('/', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('{project}', [ProjectController::class, 'show'])->name('projects.show');
+});
