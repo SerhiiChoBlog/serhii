@@ -10,10 +10,7 @@
     <div class="hero-body">
         <div class="container has-text-centered">
             <p class="title main-logo">SERHII<span class="has-text-info">CHO</span></p>
-            <p class="subtitle professional">
-                Professional <span id="typewriter"></span>
-                <span class="cursor"></span>
-            </p>
+            <typewriter />
         </div>
     </div>
 </section>

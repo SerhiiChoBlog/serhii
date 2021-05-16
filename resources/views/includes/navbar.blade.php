@@ -15,8 +15,8 @@
         <div class="navbar-menu">
             <div class="navbar-end">
                 @auth
-                    <a href="{{ route('home') }}" class="navbar-item {{ request()->is('/') ? 'is-active' : '' }}">About</a>
-                    <a href="{{ route('posts.index') }}" class="navbar-item {{ request()->is('posts') ? 'is-active' : '' }}">Posts</a>
+                    <a href="{{ route('home') }}" class="navbar-item has-stripe {{ request()->is('/') ? 'is-active' : '' }}">About</a>
+                    <a href="{{ route('posts.index') }}" class="navbar-item has-stripe {{ request()->is('posts') ? 'is-active' : '' }}">Posts</a>
                 @endauth
             </div>
         </div>

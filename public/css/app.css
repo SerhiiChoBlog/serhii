@@ -3,6 +3,46 @@
   font-family: "JetBrainsMono";
   src: url(/fonts/JetBrainsMono-Regular.ttf?7c5472ddd3b056b938b5c2c5a9916552) format("truetype");
 }
+.hero {
+  background: url(/storage/heros/home-hero.jpg) no-repeat top center;
+  background-size: cover;
+}
+
+.main-logo {
+  font-size: 2em;
+}
+
+.experience {
+  cursor: help;
+  transition: color 200ms;
+}
+.experience:hover {
+  color: #3298dc;
+}
+
+.professional {
+  font-family: JetBrainsMono, monospace;
+  font-size: 1.3em;
+}
+
+.cursor {
+  border-right: 12px solid #999;
+  margin-left: 4px;
+  -webkit-animation: blink 1100ms linear infinite;
+          animation: blink 1100ms linear infinite;
+  -webkit-animation-timing-function: step-end;
+          animation-timing-function: step-end;
+}
+
+@media (max-width: 768px) {
+  .professional {
+    font-size: 1em;
+  }
+
+  .main-logo {
+    font-size: 1.5em;
+  }
+}
 .hljs {
   display: block;
   overflow-x: auto;
@@ -11110,4 +11150,59 @@ code.hljs {
 }
 .social-links a img {
   max-width: 35px;
+}
+
+.navbar .logo {
+  background-color: transparent !important;
+  font-size: 1.2em;
+}
+.navbar .navbar-item {
+  position: relative;
+  font-size: 1.1em;
+}
+.navbar .navbar-item.has-stripe::before {
+  content: "";
+  height: 6px;
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 5px;
+  background-color: #3298dc;
+  opacity: 0;
+  transition: opacity 200ms;
+  border-radius: 8px;
+}
+.navbar .navbar-item.has-stripe:hover::before, .navbar .navbar-item.has-stripe.is-active::before {
+  opacity: 1;
+}
+.navbar .navbar-burger span {
+  width: 19px;
+  height: 2px;
+}
+.navbar .navbar-burger.burger-light {
+  color: #dfdede;
+}
+
+@media (max-width: 1024px) {
+  .navbar-menu {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 9px -2px rgba(0, 0, 0, 0.5);
+  }
+  .navbar-menu .navbar-item {
+    padding: 20px 22px;
+  }
+  .navbar-menu .navbar-item.has-stripe::before {
+    content: none;
+  }
+  .navbar-menu .navbar-item.has-stripe:hover, .navbar-menu .navbar-item.has-stripe.is-active {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .contact-me-button {
+    width: 100%;
+  }
 }
