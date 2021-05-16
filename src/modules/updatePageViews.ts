@@ -40,5 +40,8 @@ function getPageType(route: RouteLocationNormalizedLoaded): string {
     if (route.params.projectName)
         return 'project'
 
+    if (route.params.slug)
+        return 'post'
+
     return 'other'
 }
