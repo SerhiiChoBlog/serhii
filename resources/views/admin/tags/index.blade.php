@@ -6,7 +6,7 @@
     <div class="columns">
         <div class="column">
             <div class="px-4">
-                <form action="{{ route('tags.store') }}" method="POST">
+                <form action="{{ route('admin.tags.store') }}" method="POST">
                     @csrf
 
                     <div class="field">
@@ -52,7 +52,7 @@
                                         {{ $tag->name }}
                                     </span>
                                 </td>
-                                <td><a href="{{ route('tags.edit', $tag) }}" class="button is-small">Edit</a></td>
+                                <td><a href="{{ route('admin.tags.edit', $tag) }}" class="button is-small">Edit</a></td>
                             </tr>
                         @endforeach
                     </tbody>

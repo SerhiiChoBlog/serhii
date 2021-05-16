@@ -8,7 +8,7 @@
             <h1 class="title">{{ $tag->name }}</h1>
 
             <div class="container">
-                <form action="{{ route('tags.update', $tag) }}" method="POST">
+                <form action="{{ route('admin.tags.update', $tag) }}" method="POST">
                     @csrf
                     @method('put')
 
@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <form action="{{ route('tags.destroy', $tag) }}" method="post" class="is-hidden" onsubmit="return confirm('Sure you want to delete the tag?');">
+    <form action="{{ route('admin.tags.destroy', $tag) }}" method="post" class="is-hidden" onsubmit="return confirm('Sure you want to delete the tag?');">
         @csrf
         @method('delete')
         <button id="delete-tag" type="submit"></button>

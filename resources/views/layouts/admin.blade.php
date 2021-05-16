@@ -26,18 +26,17 @@
 
                 <div class="navbar-menu">
                     <div class="navbar-end">
-                        @auth
-                            <a href="{{ route('admin.dashboard') }}" class="navbar-item {{ request()->is('admin.dashboard') ? 'is-active' : '' }}">Dashboard</a>
-                            <a href="{{ route('tags.index') }}" class="navbar-item {{ request()->is('tags') ? 'is-active' : '' }}">Tags</a>
-                            <a href="{{ route('admin.page_views.index') }}" class="navbar-item {{ request()->is('page-views') ? 'is-active' : '' }}">Page views</a>
-                            <a href="{{ route('admin.visitors.index') }}" class="navbar-item {{ request()->is('visitors') ? 'is-active' : '' }}">Visitors</a>
-                            <a href="{{ route('logout') }}"
-                               class="navbar-item"
-                               onclick="event.preventDefault();document.getElementById('logout-form').submit()"
-                            >
-                                Logout
-                            </a>
-                        @endauth
+                        <a href="{{ route('admin.dashboard') }}" class="navbar-item {{ request()->is('admin/dashboard') ? 'is-active' : '' }}">Dashboard</a>
+                        <a href="{{ route('admin.posts.create') }}" class="navbar-item {{ request()->is('admin/posts/create') ? 'is-active' : '' }}">Create post</a>
+                        <a href="{{ route('admin.tags.index') }}" class="navbar-item {{ request()->is('admin/tags') ? 'is-active' : '' }}">Tags</a>
+                        <a href="{{ route('admin.page_views.index') }}" class="navbar-item {{ request()->is('admin/page-views') ? 'is-active' : '' }}">Page views</a>
+                        <a href="{{ route('admin.visitors.index') }}" class="navbar-item {{ request()->is('visitors') ? 'is-active' : '' }}">Visitors</a>
+                        <a href="{{ route('logout') }}"
+                           class="navbar-item"
+                           onclick="event.preventDefault();document.getElementById('logout-form').submit()"
+                        >
+                            Logout
+                        </a>
                     </div>
                 </div>
             </div>
