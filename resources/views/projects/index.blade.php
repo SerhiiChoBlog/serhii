@@ -18,7 +18,7 @@
         @foreach ($projects as $project)
             <div class="col-md-12 col-lg-6 col-xl-4">
                 <a href="/projects/{{ $project['name'] }}">
-                    <div class="card">
+                    <div class="card project-card">
                         <img class="language-image"
                             src="{{ asset('/storage/languages/' . strtolower($project['language']) . '.png') }}"
                             alt="{{ $project['title'] }}"
