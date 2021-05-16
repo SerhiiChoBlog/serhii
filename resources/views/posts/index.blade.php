@@ -2,41 +2,38 @@
 
 @section('content')
 
-@include('includes.navbar')
+<section class="hero is-dark">
+    <div class="hero-head">@include('includes.navbar')</div>
 
-<div class="container">
-    <div class="buttons mb-5">
-        <a href="{{ route('posts.create') }}" class="button is-info">Create post</a>
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <p class="title">Blog</p>
+            <p class="subtitle">I'm mostly writing about productivity tips and technical related articles.</p>
+        </div>
     </div>
+</section>
 
-    @empty($posts->all())
-        <h2 class="subtitle has-text-centered">There are not posts</h2>
-    @else
-        <table class="table is-fullwidth">
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th style="min-width:300px">Title</th>
-                    <th>Intro</th>
-                    <th>Edit</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($posts as $post)
-                    <tr style="background-color: {{ $post->is_published ? '#00ff000d' : '#ff00000d' }}">
-                        <td>
-                            <a href="{{ asset($post->image_lg) }}" target="_blank">
-                                <img src="{{ asset($post->image_sm) }}" width="300" style="border-radius:4px">
-                            </a>
-                        </td>
-                        <td>{{ $post->title }}</td>
-                        <td>{{ $post->intro ?? '-' }}</td>
-                        <td><a href="{{ route('posts.edit', $post) }}" class="button is-small is-info">Edit</a></td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @endempty
+<div class="container mt-5">
+    <div v-else class="posts">
+        @foreach ($posts as $post)
+            <a href="/posts/{{ $post['slug'] }}" class="post">
+                <img class="post-image" src="{{ asset($post['image_sm']) }}" alt="{{ $post['title'] }}" />
+
+                <div class="post-content">
+                    <h2 class="post-title has-text-black">{{ $post['title'] }}</h2>
+                    <p class="post-intro">{{ $post['intro'] }}</p>
+                    <div class="tags mt-2">
+                        @foreach ($post['tags'] as $tag)
+                            <span class="tag my-0 is-small is-normal is-dark" style="background-color: {{ $tag['color'] }}">
+                                {{ $tag['name'] }}
+                            </span>
+                        @endforeach
+                        <span class="has-text-grey">{{ $post['pretty_created_at'] }}</span>
+                    </div>
+                </div>
+            </a>
+        @endforeach
+    </div>
 </div>
 
 @endsection
