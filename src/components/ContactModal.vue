@@ -62,51 +62,6 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
-.social-links
-    display: flex
-    justify-content: center
-    align-items: center
-
-    a
-        opacity: .9
-        margin-right: 25px
-        animation: pulse 3s
-        animation-iteration-count: infinite
-        animation-direction: normal
-        position: relative
-
-        &:nth-child(2)
-            animation-delay: 100ms
-
-        &:nth-child(3)
-            animation-delay: 200ms
-
-        &:nth-child(4)
-            animation-delay: 300ms
-
-        &::before
-            content: ""
-            display: block
-            width: 0
-            height: 0
-            background-color: blue
-            border-radius: 50%
-            position: absolute
-            bottom: -4px
-            left: 50%
-            box-shadow: 0 0 3px 3px #3298dc
-            opacity: 0
-            transform: translateY(-15px)
-            transition: transform 300ms, opacity 600ms
-
-        &:hover
-            &::before
-                opacity: 1
-                transform: translateY(0)
-
-        img
-            max-width: 35px
-
 .modal
     .box
         margin: 10px

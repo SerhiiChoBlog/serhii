@@ -35,6 +35,22 @@
                 <div v-if="postLoading" class="has-text-centered mt-6"><Spinner /></div>
                 <div v-else-if="postError"><h3 class="is-size-3 mt-6 has-text-centered">{{ postError }}</h3></div>
                 <div v-else class="content post-content px-3" v-html="post.content"></div>
+
+                <div class="subtitle has-text-centered mt-6">Share this post</div>
+                <div class="social-links">
+                    <a :href="`https://www.reddit.com/submit?url=${pageUrl}&title=${post.title}`" target="_blank" rel="nofollow noopener noreferrer">
+                        <img src="@/assets/images/icons/reddit.png" alt="reddit">
+                    </a>
+                    <a :href="`https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`" target="_blank" rel="nofollow noopener noreferrer">
+                        <img src="@/assets/images/icons/linkedin.png" alt="linked in">
+                    </a>
+                    <a :href="`https://twitter.com/intent/tweet?text=${post.title}&url=${pageUrl}`" target="_blank" rel="nofollow noopener noreferrer">
+                        <img src="@/assets/images/icons/twitter.png" alt="twitter">
+                    </a>
+                    <a :href="`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`" target="_blank" rel="nofollow noopener noreferrer">
+                        <img src="@/assets/images/icons/facebook.png" alt="facebook">
+                    </a>
+                </div>
             </div>
             <div class="col-lg-3"><PostSidebar /></div>
         </div>
@@ -42,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import Navbar from "@/components/Navbar.vue"
 import Spinner from "@/components/Spinner.vue"
 import useFetchPost, { } from '@/composables/posts/useFetchPost'
@@ -51,8 +67,11 @@ import PostSidebar from './PostSidebar.vue'
 
 export default defineComponent({
     setup() {
+        const pageUrl = ref(window.location.href)
+
         return {
             host,
+            pageUrl,
             ...useFetchPost(),
         }
     },
