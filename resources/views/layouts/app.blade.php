@@ -10,34 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar is-dark mb-6">
-            <div class="container">
-                <div class="navbar-brand">
-                    <a href="{{ url('/') }}" class="navbar-item">
-                        <b>SERHII<span class="has-text-info">CHO</span></b>
-                    </a>
-
-                    <a role="button" class="navbar-burger">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
-
-                <div class="navbar-menu">
-                    <div class="navbar-end">
-                        @auth
-                            <a href="{{ route('home') }}" class="navbar-item {{ request()->is('/') ? 'is-active' : '' }}">About</a>
-                            <a href="{{ route('posts.index') }}" class="navbar-item {{ request()->is('posts') ? 'is-active' : '' }}">Posts</a>
-                        @endauth
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        <main class="pb-6">
-            @yield('content')
-        </main>
+        @yield('content')
     </div>
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
