@@ -3,16 +3,13 @@
         <nav class="panel is-shadowless">
             <p class="panel-heading mb-4">
                 <img src="../../assets/images/icons/github-dark.png" class="mr-2" width="22" />
-                <span class="has-text-weight-normal">Projects on Github</span>
+                <span class="has-text-weight-normal">Open source projects</span>
             </p>
-            <a :href="project.url"
+            <router-link :to="`/projects/${project.name}`"
                 class="panel-block"
                 v-for="project in projects"
                 :key="project.name"
-                target="_blank"
-            >
-                {{ project.title }}
-            </a>
+            >{{ project.title }}</router-link>
         </nav>
     </div>
 </template>
