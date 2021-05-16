@@ -33,8 +33,8 @@
         <div class="row">
             <div class="col-lg-9">
                 <div v-if="postLoading" class="has-text-centered mt-6"><Spinner /></div>
-                <div v-else-if="postError"><h3 class="is-size-4 mt-6 has-text-centered">{{ postError }}</h3></div>
-                <div v-else class="content post-content is-medium px-3" v-html="post.content"></div>
+                <div v-else-if="postError"><h3 class="is-size-3 mt-6 has-text-centered">{{ postError }}</h3></div>
+                <div v-else class="content post-content px-3" v-html="post.content"></div>
             </div>
             <div class="col-lg-3"><PostSidebar /></div>
         </div>
@@ -79,6 +79,9 @@ export default defineComponent({
         object-position: center
         bottom: -160px
         right: 15px
+
+.post-content
+    font-size: 1.1em
 
 .post-content,
 .sidebar-content
