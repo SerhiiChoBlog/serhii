@@ -8,6 +8,7 @@ use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use Parsedown;
 
 class FetchGithubProjects extends Command
 {
@@ -66,7 +67,9 @@ class FetchGithubProjects extends Command
     private function getContent(string $readme_url): string
     {
         try {
-            return Http::get($readme_url)->throw()->body();
+            $content = Http::get($readme_url)->throw()->body();
+            $parser = new Parsedown();
+            return $parser->text($content);
         } catch (RequestException $e) {
             logger()->error($e);
             return '';
