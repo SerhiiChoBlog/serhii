@@ -12,10 +12,8 @@
     <div id="app">
         @yield('content')
     </div>
+
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @yield('script')
 </body>
 </html>
-
-<form id="logout-form" action="{{ route('logout') }}" method="POST" class="is-hidden">
-    @csrf
-</form>

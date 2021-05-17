@@ -9,7 +9,7 @@
     @yield('head')
 </head>
 <body>
-    <div id="app">
+    <div>
         <nav class="navbar is-dark mb-6">
             <div class="container">
                 <div class="navbar-brand">
