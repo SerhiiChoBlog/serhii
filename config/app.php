@@ -16,6 +16,7 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
 
     'github_projects_url' => env('GITHUB_PROJECTS_URL'),
+    'github_readme_url' => env('GITHUB_README_URL'),
     'user_password' => env('USER_PASSWORD'),
 
     /*

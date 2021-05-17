@@ -14,6 +14,7 @@ class CreateProjectsTable extends Migration
             $table->string('title');
             $table->string('url');
             $table->text('description');
+            $table->mediumText('content');
             $table->string('language');
             $table->unsignedMediumInteger('stars');
             $table->timestamp('created_at');
