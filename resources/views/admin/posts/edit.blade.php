@@ -5,9 +5,21 @@
     <script>
         tinymce.init({
             selector: '#content',
-            plugins: ['codesample', 'fullscreen'],
+            plugins: 'codesample fullscreen code',
             height: '500px',
             toolbar: 'undo redo | styleselect | bold italic | link image | alignleft aligncenter alignright | bullist numlist outdent indent | codesample fullscreen',
+            codesample_languages: [
+                {text: 'HTML/XML', value: 'html'},
+                {text: 'JavaScript', value: 'javascript'},
+                {text: 'CSS', value: 'css'},
+                {text: 'PHP', value: 'php'},
+                {text: 'Ruby', value: 'ruby'},
+                {text: 'Python', value: 'python'},
+                {text: 'Java', value: 'java'},
+                {text: 'C', value: 'c'},
+                {text: 'C#', value: 'csharp'},
+                {text: 'C++', value: 'cpp'}
+            ],
         })
     </script>
 @endsection
@@ -79,7 +91,7 @@
                 </div>
 
                 <div class="field mt-5">
-                    <textarea name="content" id="content">{!! $post->content !!}</textarea>
+                    <textarea name="content" id="content">{{ $post->content }}</textarea>
                 </div>
 
                 <div class="field">

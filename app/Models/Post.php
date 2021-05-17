@@ -17,6 +17,7 @@ use Serhii\Ago\TimeAgo;
  * @property bool $is_published
  * @property string $image_sm
  * @property string $image_lg
+ * @property string $pretty_created_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */

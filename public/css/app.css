@@ -10288,6 +10288,78 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background-color: #eee;
 }
 
+.projects-hero {
+  background: url(/storage/heros/open-source-hero.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.project-card {
+  margin-bottom: 25px;
+  position: relative;
+  font-size: 1.1em;
+  transition: box-shadow 400ms;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.project-card:hover {
+  box-shadow: 5px 5px 20px 10px rgba(10, 10, 10, 0.1);
+}
+.project-card .content {
+  position: relative;
+}
+.project-card .content .view-button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.project-card .content .card-title {
+  font-size: 1.4em;
+  color: #444;
+}
+
+.language-image {
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+@media (max-width: 991px) {
+  .project-card .content {
+    min-height: auto;
+  }
+}
+.project-hero {
+  min-height: 19em;
+  background-color: #f5f5f5;
+}
+
+.project .title {
+  text-transform: capitalize;
+  margin-bottom: 40px;
+  font-size: 2.2em;
+}
+.project .subtitle {
+  font-size: 1.4em;
+}
+.project .content {
+  font-size: 1.2em;
+}
+
+.project .title {
+  font-size: 1.7em;
+}
+.project .subtitle {
+  font-size: 1.2em;
+}
+.project .content {
+  font-size: 1.1em;
+}
+
 .blog-hero {
   background: url(/storage/heros/blog-hero.jpg) no-repeat center center;
   background-size: cover;
@@ -10339,79 +10411,58 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     margin-bottom: 10px;
   }
 }
-.projects-hero {
-  background: url(/storage/heros/open-source-hero.jpg) no-repeat center center;
-  background-size: cover;
+.post-hero {
+  background-color: #141618;
 }
-
-.project-card {
-  margin-bottom: 25px;
-  position: relative;
-  font-size: 1.1em;
-  transition: box-shadow 400ms;
-  min-height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.project-card:hover {
-  box-shadow: 5px 5px 20px 10px rgba(10, 10, 10, 0.1);
-}
-.project-card .content {
-  position: relative;
-}
-.project-card .content .view-button {
+.post-hero .post-image {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-.project-card .content .card-title {
-  font-size: 1.4em;
-  color: #444;
-}
-
-.language-image {
-  width: 47px;
-  height: 47px;
-  position: absolute;
-  top: 15px;
+  width: 550px;
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  bottom: -70px;
   right: 15px;
 }
 
-@media (max-width: 991px) {
-  .project-card .content {
-    min-height: auto;
-  }
+.post .post-content {
+  font-size: 1.1em;
 }
-.project-hero {
-  min-height: 19em;
+.post .post-content,
+.post .sidebar-content {
+  margin-top: 70px;
 }
-
-.title {
-  text-transform: capitalize;
-  margin-bottom: 40px;
-  font-size: 2.2em;
+.post .created-at {
+  color: #aaa;
 }
 
-.subtitle {
-  font-size: 1.4em;
-}
-
-.content {
-  font-size: 1.2em;
-}
-
-@media (max-width: 991px) {
-  .title {
-    font-size: 1.7em;
+@media (max-width: 1407px) {
+  .hero .post-image {
+    position: static;
+    width: 100%;
+    height: auto;
   }
 
-  .subtitle {
-    font-size: 1.2em;
+  .post .post-content,
+.post .sidebar-content {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 992px) {
+  .hero .hero-body {
+    font-size: 0.9em;
+  }
+}
+@media (max-width: 768px) {
+  .hero .hero-body {
+    font-size: 0.7em;
+    text-align: center;
   }
 
-  .content {
+  .post .post-content {
     font-size: 1.1em;
   }
 }
