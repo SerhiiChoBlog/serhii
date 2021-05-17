@@ -1,3 +1,7 @@
+@php
+    /** @var array[] $projects */
+@endphp
+
 @extends('layouts.app')
 
 @section('content')

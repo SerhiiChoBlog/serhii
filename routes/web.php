@@ -29,5 +29,5 @@ Route::prefix('posts')->group(function () {
 
 Route::prefix('projects')->group(function () {
     Route::get('/', [ProjectController::class, 'index'])->name('projects.index');
-    Route::get('{project}', [ProjectController::class, 'show'])->name('projects.show');
+    Route::get('{project:name}', [ProjectController::class, 'show'])->name('projects.show');
 });
