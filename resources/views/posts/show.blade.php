@@ -26,11 +26,11 @@
                                       style="background-color: {{ $tag['color'] }}"
                                 >{{ $tag['name'] }}</span>
                             @endforeach
-                            <span class="created-at ml-2">{{ $post['pretty_created_at'] }}</span>
+                            <span class="post__created-at ml-2">{{ $post['pretty_created_at'] }}</span>
                         </div>
                     </div>
                     <div class="column">
-                        <img src="{{ asset($post['image_lg']) }}" alt="{{ $post['title'] }}" class="post-image">
+                        <img src="{{ asset($post['image_lg']) }}" alt="{{ $post['title'] }}" class="post__image">
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
     <div class="container pb-6 post">
         <div class="row">
             <div class="col-lg-9">
-                <div class="content post-content px-3" v-pre>{!! $post['content'] !!}</div>
+                <div class="content post__content px-3" v-pre>{!! $post['content'] !!}</div>
 
                 <div class="subtitle has-text-centered mt-6">Share this post</div>
                 <div class="social-links">
@@ -58,7 +58,18 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3"><PostSidebar /></div>
+            <div class="col-lg-3">
+                <div class="post__sidebar">
+                    <nav class="panel is-shadowless">
+                        <p class="panel-heading mb-4">
+                            <span class="has-text-weight-normal">Open source projects</span>
+                        </p>
+                        @foreach ($projects as $project)
+                            <a href="{{ route('projects.show', $project['name']) }}" class="panel-block">{{ $project['title'] }}</a>
+                        @endforeach
+                    </nav>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
