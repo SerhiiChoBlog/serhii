@@ -12,6 +12,7 @@
             plugins: 'codesample fullscreen code image',
             height: '800px',
             toolbar: 'undo redo | styleselect | bold italic | link image | alignleft aligncenter alignright | bullist numlist outdent indent | codesample fullscreen code',
+            image_caption: true,
             codesample_languages: [
                 {text: 'HTML/XML', value: 'html'},
                 {text: 'JavaScript', value: 'javascript'},
@@ -162,11 +163,11 @@
                 @csrf
                 <div class="file is-inline-block mr-2">
                     <label class="file-label">
-                        <input class="file-input" type="file" name="image">
+                        <input class="file-input" type="file" name="image" required>
                         <span class="file-cta"><span class="file-label">Choose an image...</span></span>
                     </label>
                 </div>
-                <button class="button is-success" type="submit">Загрузить</button>
+                <button class="button is-success" type="submit">Load</button>
             </form>
         </div>
     </div>
