@@ -1,11 +1,15 @@
-<nav class="navbar is-dark mb-6">
+@php
+    /** @var ?boolean $is_light */
+@endphp
+
+<nav class="navbar mb-6" style="{{ ($is_grey ?? false) ? 'background-color: #f5f5f5' : '' }}">
     <div class="container">
         <div class="navbar-brand">
             <a href="{{ url('/') }}" class="navbar-item">
                 <b>SERHII<span class="has-text-info">CHO</span></b>
             </a>
 
-            <a role="button" class="navbar-burger">
+            <a role="button" class="navbar-burger {{ ($is_light ?? false) ? '' : 'burger-light' }}">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>

@@ -10,7 +10,7 @@
 
 @section('content')
     <section class="project-hero is-light">
-        <div class="hero-head">@include('includes.navbar')</div>
+        <div class="hero-head">@include('includes.navbar', ['is_grey' => true])</div>
 
         <div class="hero-body">
             <div v-else class="container has-text-centered">
@@ -24,7 +24,7 @@
         </div>
     </section>
 
-    <div class="container mt-6 pb-6">
+    <div class="container mt-6 pb-6 project">
         <div class="content">{!! $project->content !!}</div>
     </div>
 @endsection
