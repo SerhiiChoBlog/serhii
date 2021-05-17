@@ -11,6 +11,7 @@ class CreatePostContentImagesTable extends Migration
         Schema::create('post_content_images', function (Blueprint $table) {
             $table->id();
             $table->unsignedSmallInteger('post_id');
+            $table->foreign('post_id')->references('id')->on('posts')->cascadeOnDelete();
             $table->string('alt');
             $table->string('uri');
             $table->string('path');

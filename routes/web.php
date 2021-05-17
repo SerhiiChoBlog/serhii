@@ -22,6 +22,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('posts', AdminPostController::class)->except(['show']);
     Route::resource('tags', AdminTagController::class)->except(['show']);
     Route::post('post-content-images/{post}', [PostContentImageController::class, 'store'])->name('post-content-images.store');
+    Route::delete('post-content-images/{image}', [PostContentImageController::class, 'destroy'])->name('post-content-images.delete');
 });
 
 Route::prefix('posts')->group(function () {
