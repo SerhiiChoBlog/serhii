@@ -1,6 +1,17 @@
 .post-hero
     background-color: #141618 !important
 
+    &__image
+        position: absolute
+        width: 550px
+        height: 300px
+        border-radius: 10px
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, .2)
+        object-fit: cover
+        object-position: center
+        bottom: -70px
+        right: 15px
+
 .post
     &__content,
     &__sidebar
@@ -21,7 +32,7 @@
 
 @media (max-width: 1407px)
     .post-hero
-        .post-image
+        &__image
             position: static
             width: 100%
             height: auto
@@ -30,17 +41,6 @@
         &__content,
         &__sidebar
             margin-top: 30px
-
-        &__image
-            position: absolute
-            width: 550px
-            height: 300px
-            border-radius: 10px
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, .2)
-            object-fit: cover
-            object-position: center
-            bottom: -70px
-            right: 15px
 
 @media (max-width: 992px)
     .hero .hero-body

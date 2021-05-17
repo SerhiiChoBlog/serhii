@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="column">
-                        <img src="{{ asset($post['image_lg']) }}" alt="{{ $post['title'] }}" class="post__image">
+                        <img src="{{ asset($post['image_lg']) }}" alt="{{ $post['title'] }}" class="post-hero__image">
                     </div>
                 </div>
             </div>
