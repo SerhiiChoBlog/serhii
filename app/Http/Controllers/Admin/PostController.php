@@ -18,7 +18,7 @@ class PostController extends Controller
 
     public function index(): View
     {
-        $posts = Post::query()->with('tags')->get();
+        $posts = Post::query()->with(['tags', 'images'])->get();
         return view('admin.posts.index', compact('posts'));
     }
 

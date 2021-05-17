@@ -3,6 +3,7 @@
 use App\Http\Controllers\{PostController, ProjectController};
 use App\Http\Controllers\Admin\{DashboardController as AdminDashboardController,
     PageViewController as AdminPageViewController,
+    PostContentImageController,
     PostController as AdminPostController,
     TagController as AdminTagController,
     VisitorController as AdminVisitorController,};
@@ -20,6 +21,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('visitors', [AdminVisitorController::class, 'index'])->name('visitors.index');
     Route::resource('posts', AdminPostController::class)->except(['show']);
     Route::resource('tags', AdminTagController::class)->except(['show']);
+    Route::post('post-content-images/{post}', [PostContentImageController::class, 'store'])->name('post-content-images.store');
 });
 
 Route::prefix('posts')->group(function () {

@@ -1,3 +1,7 @@
+@php
+    /** @var \App\Models\Post $post */
+@endphp
+
 @extends('layouts.admin')
 
 @section('head')
@@ -5,8 +9,8 @@
     <script>
         tinymce.init({
             selector: '#content',
-            plugins: 'codesample fullscreen code',
-            height: '500px',
+            plugins: 'codesample fullscreen code image',
+            height: '800px',
             toolbar: 'undo redo | styleselect | bold italic | link image | alignleft aligncenter alignright | bullist numlist outdent indent | codesample fullscreen',
             codesample_languages: [
                 {text: 'HTML/XML', value: 'html'},
@@ -25,7 +29,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container pb-6">
         <h1 class="title">{{ $post->title }}</h1>
 
         <div class="container">
@@ -109,7 +113,47 @@
             </form>
         </div>
 
-        <div class="mt-6">
+        <div class="mt-6 pt-4">
+            <h3 class="subtitle has-text-centered mb-5">Attached images for this post</h3>
+
+            <table class="table is-fullwidth is-hoverable is-striped mb-6">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Alt</th>
+                        <th>URI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($post->images as $image)
+                        <tr>
+                            <td>
+                                <a href="{{ $image->uri }}" target="_blank">
+                                    <img data-src="{{ asset($image->uri) }}"
+                                        alt="{{ $image->alt }}"
+                                        width="100"
+                                        class="smooth-loader"
+                                        style="border-radius: 4px"
+                                    />
+                                </a>
+                            </td>
+                            <td>Vue js image</td>
+                            <td><pre>{{ $image->uri }}</pre></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+            <form action="{{ route('admin.post-content-images.store', $post) }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="file is-inline-block mr-2">
+                    <label class="file-label">
+                        <input class="file-input" type="file" name="image">
+                        <span class="file-cta"><span class="file-label">Choose an image...</span></span>
+                    </label>
+                </div>
+                <button class="button is-success" type="submit">Загрузить</button>
+            </form>
         </div>
     </div>
 
