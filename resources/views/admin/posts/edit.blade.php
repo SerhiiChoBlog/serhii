@@ -11,7 +11,7 @@
             selector: '#content',
             plugins: 'codesample fullscreen code image',
             height: '800px',
-            toolbar: 'undo redo | styleselect | bold italic | link image | alignleft aligncenter alignright | bullist numlist outdent indent | codesample fullscreen',
+            toolbar: 'undo redo | styleselect | bold italic | link image | alignleft aligncenter alignright | bullist numlist outdent indent | codesample fullscreen code',
             codesample_languages: [
                 {text: 'HTML/XML', value: 'html'},
                 {text: 'JavaScript', value: 'javascript'},
@@ -122,6 +122,7 @@
                         <th>Image</th>
                         <th>Alt</th>
                         <th>URI</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -138,13 +139,26 @@
                                 </a>
                             </td>
                             <td>Vue js image</td>
-                            <td><pre>{{ $image->uri }}</pre></td>
+                            <td><input type="text" value="{{ $image->uri }}" class="clean-input" disabled></td>
+                            <td>
+                                <form action="{{ route('admin.post-content-images.delete', $image) }}"
+                                    method="post"
+                                    onsubmit="return confirm('Sure you want to delete this content image?')"
+                                >
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="button is-danger">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
 
-            <form action="{{ route('admin.post-content-images.store', $post) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.post-content-images.store', $post) }}"
+                  method="post"
+                  enctype="multipart/form-data"
+            >
                 @csrf
                 <div class="file is-inline-block mr-2">
                     <label class="file-label">
@@ -159,7 +173,7 @@
 
     <input type="hidden" value="{{ $post->tags }}" id="old-post-tags">
 
-    <form action="{{ route('admin.posts.destroy', $post) }}" method="post" class="is-hidden" onsubmit="return confirm('Sure you want to delete the post?');">
+    <form action="{{ route('admin.posts.destroy', $post) }}" method="post" class="is-hidden" onsubmit="return confirm('Sure you want to delete the post?')">
         @csrf
         @method('delete')
         <button type="submit" id="delete-post"></button>
