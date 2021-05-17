@@ -37,25 +37,39 @@ class FetchGithubProjects extends Command
      */
     private function fetchProjects(): Collection
     {
-        $url = config('app.github_projects_url');
+        $projects_url = config('app.github_projects_url');
+        $readme_url = Str::of(config('app.github_readme_url'));
 
-        $projects = Http::get($url)->throw()->collect();
+        $projects = Http::get($projects_url)->throw()->collect();
 
         $mit_projects = $projects->filter(function ($project) {
             $license = $project['license']['key'] ?? null;
             return $license === 'mit';
         });
 
-        return $mit_projects->map(function ($project) {
+        return $mit_projects->map(function ($project) use ($readme_url) {
+            $readme_url = str_replace('{repo}', $project['name'], $readme_url);
+
             return [
                 'name' => $project['name'],
                 'title' => Str::of($project['name'])->replace('-', ' ')->ucfirst(),
                 'url' => $project['html_url'],
                 'description' => $project['description'],
                 'language' => $project['language'],
+                'content' => $this->getContent($readme_url),
                 'stars' => (int) $project['stargazers_count'],
                 'created_at' => date('Y-m-d H:i:s', strtotime($project['created_at']))
             ];
         });
+    }
+
+    private function getContent(string $readme_url): string
+    {
+        try {
+            return Http::get($readme_url)->throw()->body();
+        } catch (RequestException $e) {
+            logger()->error($e);
+            return '';
+        }
     }
 }
