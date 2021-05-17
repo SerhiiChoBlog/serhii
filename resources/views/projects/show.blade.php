@@ -13,7 +13,7 @@
         <div class="hero-head">@include('includes.navbar', ['is_grey' => true])</div>
 
         <div class="hero-body">
-            <div v-else class="container has-text-centered">
+            <div class="container has-text-centered">
                 <p class="title">{{ $project->title }}</p>
                 <p class="subtitle has-text-left">{{ $project->description }}</p>
                 <a href="{{ $project->url }}" target="_blank" class="button is-rounded is-dark">
@@ -25,7 +25,7 @@
     </section>
 
     <div class="container mt-6 pb-6 project">
-        <div class="content">{!! $project->content !!}</div>
+        <div class="content" v-pre>{!! $project->content !!}</div>
     </div>
 @endsection
 

@@ -17,7 +17,7 @@
     </section>
 
     <div class="container mt-5">
-        <div v-else class="posts">
+        <div class="posts">
             @foreach ($posts as $post)
                 <a href="/posts/{{ $post['slug'] }}" class="post">
                     <img class="post-image" src="{{ asset($post['image_sm']) }}" alt="{{ $post['title'] }}" />
