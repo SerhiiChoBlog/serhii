@@ -16,6 +16,13 @@
     <div id="modals"></div>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
-    @yield('script')
+    <script>
+        if (typeof hljs !== 'undefined') {
+            const blocks = document.querySelectorAll('pre code')
+            blocks.forEach(function (block) {
+                hljs.highlightElement(block)
+            })
+        }
+    </script>
 </body>
 </html>

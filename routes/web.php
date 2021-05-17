@@ -18,7 +18,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
     Route::get('page-views', [AdminPageViewController::class, 'index'])->name('page_views.index');
     Route::get('visitors', [AdminVisitorController::class, 'index'])->name('visitors.index');
-    Route::resource('posts', AdminPostController::class)->except(['show', 'index']);
+    Route::resource('posts', AdminPostController::class)->except(['show']);
     Route::resource('tags', AdminTagController::class)->except(['show']);
 });
 

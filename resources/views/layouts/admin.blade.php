@@ -27,7 +27,7 @@
                 <div class="navbar-menu">
                     <div class="navbar-end">
                         <a href="{{ route('admin.dashboard') }}" class="navbar-item {{ request()->is('admin/dashboard') ? 'is-active' : '' }}">Dashboard</a>
-                        <a href="{{ route('admin.posts.create') }}" class="navbar-item {{ request()->is('admin/posts/create') ? 'is-active' : '' }}">Create post</a>
+                        <a href="{{ route('admin.posts.index') }}" class="navbar-item {{ request()->is('admin/posts') ? 'is-active' : '' }}">Posts</a>
                         <a href="{{ route('admin.tags.index') }}" class="navbar-item {{ request()->is('admin/tags') ? 'is-active' : '' }}">Tags</a>
                         <a href="{{ route('admin.page_views.index') }}" class="navbar-item {{ request()->is('admin/page-views') ? 'is-active' : '' }}">Page views</a>
                         <a href="{{ route('admin.visitors.index') }}" class="navbar-item {{ request()->is('visitors') ? 'is-active' : '' }}">Visitors</a>

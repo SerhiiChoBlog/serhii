@@ -16,6 +16,12 @@ class PostController extends Controller
 {
     use SaveImage;
 
+    public function index(): View
+    {
+        $posts = Post::query()->with('tags')->get();
+        return view('admin.posts.index', compact('posts'));
+    }
+
     public function create(): View
     {
         return view('admin.posts.create');
@@ -44,6 +50,7 @@ class PostController extends Controller
         }
 
         $is_published = $request->get('is-published') === 'on';
+
         $data = array_merge($request->all(), compact('is_published'));
 
         $images = $this->savePhotoIfExist($request->file('image'), $post->title);

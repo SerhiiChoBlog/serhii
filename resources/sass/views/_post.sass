@@ -1,0 +1,49 @@
+.post-hero
+    background-color: #141618
+
+    .post-image
+        position: absolute
+        width: 550px
+        height: 300px
+        border-radius: 10px
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, .2)
+        object-fit: cover
+        object-position: center
+        bottom: -70px
+        right: 15px
+
+.post
+    .post-content
+        font-size: 1.1em
+
+    .post-content,
+    .sidebar-content
+        margin-top: 70px
+
+    .created-at
+        color: #aaa
+
+@media (max-width: 1407px)
+    .hero
+        .post-image
+            position: static
+            width: 100%
+            height: auto
+
+    .post
+        .post-content,
+        .sidebar-content
+            margin-top: 30px
+
+@media (max-width: 992px)
+    .hero .hero-body
+        font-size: .9em
+
+@media (max-width: 768px)
+    .hero .hero-body
+        font-size: .7em
+        text-align: center
+
+    .post
+        .post-content
+            font-size: 1.1em

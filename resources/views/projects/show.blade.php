@@ -28,12 +28,3 @@
         <div class="content" v-pre>{!! $project->content !!}</div>
     </div>
 @endsection
-
-@section('script')
-    <script>
-        const blocks = document.querySelectorAll('pre code')
-        blocks.forEach(function (block) {
-            hljs.highlightElement(block)
-        })
-    </script>
-@endsection
