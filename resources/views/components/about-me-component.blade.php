@@ -1,3 +1,8 @@
+@php
+    /** @var int $fullExperience **/
+    /** @var string $yearsExperience **/
+@endphp
+
 <div>
     <h2 class="title mb-6 has-text-centered">Nice to meet you</h2>
     <p class="subtitle">

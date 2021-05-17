@@ -1,3 +1,8 @@
+@php
+    /** @var string $header */
+    /** @var array[] $techs */
+@endphp
+
 <div>
     <h2 class="title has-text-centered">{{ $header }}</h2>
 

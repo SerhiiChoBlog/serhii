@@ -8,6 +8,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Serhii\Ago\TimeAgo;
 
+/**
+ * @property-read int $id
+ * @property string $title
+ * @property string $slug
+ * @property string|null $intro
+ * @property string|null $content
+ * @property bool $is_published
+ * @property string $image_sm
+ * @property string $image_lg
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ */
 class Post extends Model
 {
     use HasFactory;
