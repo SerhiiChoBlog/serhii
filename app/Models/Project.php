@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * @property-read int $id
@@ -21,6 +22,19 @@ class Project extends Model
 {
     use HasFactory;
 
+    private const ONE_HOUR_IN_SECONDS = 3600;
+
     protected $guarded = ['id'];
     public $timestamps = false;
+
+    public static function getCachedProjects(): array
+    {
+        return Cache::remember('projects', self::ONE_HOUR_IN_SECONDS, function () {
+            return self::query()
+            ->select('title', 'language', 'description', 'name')
+            ->orderBy('stars', 'DESC')
+            ->get()
+            ->toArray();
+        });
+    }
 }

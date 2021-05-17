@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CacheKey;
 use App\Models\Post;
+use App\Models\Project;
 use App\Ttl;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
@@ -42,6 +43,8 @@ class PostController extends Controller
             $title_len >= 50 && $title_len < 60 => '2.2em',
         };
 
-        return view('posts.show', compact('post', 'title_font_size'));
+        $projects = Project::getCachedProjects();
+
+        return view('posts.show', compact('post', 'title_font_size', 'projects'));
     }
 }
