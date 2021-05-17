@@ -1,0 +1,36 @@
+.image-wrapper
+    margin-top: 14px
+    position: relative
+    text-align: center
+
+    label
+        border: 6px dashed grey
+        border-radius: 10px
+        left: 50px
+        right: 50px
+        top: 0
+        bottom: 0
+        position: absolute
+        display: flex
+        justify-content: center
+        align-items: center
+        cursor: pointer
+        opacity: 0
+        transition: opacity 200ms
+        margin: 22px
+
+        &:hover
+            opacity: 1
+
+        b
+            font-size: 1.5em
+            color: grey
+
+    img
+        border-radius: 10px
+        width: 550px
+        height: 300px
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, .2)
+        object-fit: cover
+        object-position: center
+        margin: auto
