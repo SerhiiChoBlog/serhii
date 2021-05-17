@@ -19,10 +19,10 @@
     <div class="container mt-5">
         <div class="posts">
             @foreach ($posts as $post)
-                <a href="/posts/{{ $post['slug'] }}" class="post">
-                    <img class="post-image" src="{{ asset($post['image_sm']) }}" alt="{{ $post['title'] }}" />
+                <a href="/posts/{{ $post['slug'] }}" class="post-item">
+                    <img class="post-item-image" src="{{ asset($post['image_sm']) }}" alt="{{ $post['title'] }}" />
 
-                    <div class="post-content">
+                    <div class="post-item-content">
                         <h2 class="post-title has-text-black">{{ $post['title'] }}</h2>
                         <p class="post-intro">{{ $post['intro'] }}</p>
                         <div class="tags mt-2">
