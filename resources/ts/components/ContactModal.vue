@@ -16,10 +16,10 @@
                             </p>
 
                             <div class="social-links mt-5">
-                                <a href="https://github.com/SerhiiCho" target="_blank"><img src="@/assets/images/icons/github-dark.png" alt="github"></a>
-                                <a href="https://www.linkedin.com/in/serhiicho" target="_blank"><img src="@/assets/images/icons/linkedin.png" alt="linked in"></a>
-                                <a href="https://twitter.com/SerhiiCho" target="_blank"><img src="@/assets/images/icons/twitter.png" alt="twitter"></a>
-                                <a href="https://www.instagram.com/serhiicho" target="_blank"><img src="@/assets/images/icons/instagram.png" alt="instagram"></a>
+                                <a href="https://github.com/SerhiiCho" target="_blank"><img src="/storage/icons/github-dark.png" alt="github"></a>
+                                <a href="https://www.linkedin.com/in/serhiicho" target="_blank"><img src="/storage/icons/linkedin.png" alt="linked in"></a>
+                                <a href="https://twitter.com/SerhiiCho" target="_blank"><img src="/storage/icons/twitter.png" alt="twitter"></a>
+                                <a href="https://www.instagram.com/serhiicho" target="_blank"><img src="/storage/icons/instagram.png" alt="instagram"></a>
                             </div>
                         </div>
                     </div>
