@@ -2,6 +2,19 @@
     background: url(/storage/heros/home-hero.jpg) no-repeat top center
     background-size: cover
 
+    &__logo
+        font-size: 2em
+
+    &__professional
+        font-family: JetBrainsMono, monospace
+        font-size: 1.3em
+
+    &__cursor
+        border-right: 12px solid #999
+        margin-left: 4px
+        animation: blink 1100ms linear infinite
+        animation-timing-function: step-end
+
 .home
     &__title
         font-size: 2em
@@ -17,6 +30,12 @@
 
         &__subtitle
             font-size: 1.2em
+
+        &__professional
+            font-size: 1em
+
+        &__logo
+            font-size: 1.5em
 
 @media (max-width: $screen-500)
     .home
