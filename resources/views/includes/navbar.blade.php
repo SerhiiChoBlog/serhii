@@ -9,14 +9,10 @@
                 <b>SERHII<span class="has-text-info">CHO</span></b>
             </a>
 
-            <a role="button" class="navbar-burger {{ ($is_light ?? false) ? '' : 'burger-light' }}">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
+           <hamburger {{ ($is_light ?? false) ? ':is-light="true"' : '' }} />
         </div>
 
-        <div class="navbar-menu">
+        <div class="navbar-menu" id="navbar-menu">
             <div class="navbar-end">
                 <a href="{{ route('home') }}" class="navbar-item has-stripe {{ request()->is('/') ? 'is-active' : '' }}">About</a>
                 <a href="{{ route('projects.index') }}" class="navbar-item has-stripe {{ request()->is('projects') ? 'is-active' : '' }}">Open Source</a>
