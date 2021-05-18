@@ -1,6 +1,9 @@
 .post-hero
     background: linear-gradient(90deg, rgba(15,15,15,1) 0%, rgba(56,56,56,1) 100%)
 
+    .hero-body
+        padding: 5rem 1.5rem
+
     &__image
         position: absolute
         width: 550px
@@ -9,7 +12,7 @@
         box-shadow: 2px 2px 5px rgba(0, 0, 0, .2)
         object-fit: cover
         object-position: center
-        bottom: -70px
+        bottom: -95px
         right: 15px
 
 .post
@@ -24,11 +27,10 @@
         .panel-heading
             padding: 0
             background-color: transparent
-            display: flex
-            align-items: center
+            margin-bottom: 23px
 
-        .social-links
-            justify-content: flex-start
+        .panel
+            margin-bottom: 30px
 
 @media (max-width: $screen-1400)
     .post-hero
@@ -43,10 +45,14 @@
             margin-top: 30px
 
 @media (max-width: $screen-900)
-    .hero .hero-body
-        font-size: .9em
+    .hero
+        .hero-body
+            font-size: .9em
+            padding: 3rem 1.5rem
 
 @media (max-width: $screen-700)
-    .hero .hero-body
-        font-size: .7em
-        text-align: center
+    .hero
+        .hero-body
+            font-size: .7em
+            text-align: center
+            padding: 2rem 1.5rem

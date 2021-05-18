@@ -47,15 +47,20 @@
             </div>
             <div class="col-lg-3">
                 <div class="post__sidebar">
-                    @include('includes.share-post', compact('post'))
-
-                    <nav class="panel is-shadowless mt-5">
-                        <p class="panel-heading mb-4">
-                            <span class="has-text-weight-normal">Open source projects</span>
+                    <nav class="panel is-shadowless">
+                        <p class="panel-heading">
+                            <span class="has-text-grey-dark">Open source projects</span>
                         </p>
                         @foreach ($projects as $project)
                             <a href="{{ route('projects.show', $project['name']) }}" class="panel-block">{{ $project['title'] }}</a>
                         @endforeach
+                    </nav>
+
+                    <nav class="panel is-shadowless social-links--sidebar">
+                        <p class="panel-heading">
+                            <span class="has-text-grey-dark">Share this post</span>
+                        </p>
+                        @include('includes.share-post', compact('post'))
                     </nav>
                 </div>
             </div>
