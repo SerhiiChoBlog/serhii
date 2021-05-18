@@ -4,7 +4,7 @@
 @endphp
 
 <div>
-    <h2 class="title has-text-centered">{{ $header }}</h2>
+    <h2 class="home__title has-text-centered">{{ $header }}</h2>
 
     <div class="columns">
         @foreach ($techs as $tech)
