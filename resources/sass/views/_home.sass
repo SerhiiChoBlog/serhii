@@ -2,30 +2,23 @@
     background: url(/storage/heros/home-hero.jpg) no-repeat top center
     background-size: cover
 
-.main-logo
-    font-size: 2em
+.home
+    &__title
+        font-size: 2em
+        margin: 0 0 .8em 0 !important
 
-.experience
-    cursor: help
-    transition: color 200ms
+    &__subtitle
+        font-size: 1.4em
 
-    &:hover
-        color: #3298dc
+@media (max-width: $screen-700)
+    .home
+        &__title
+            font-size: 1.7em
 
-.professional
-    font-family: JetBrainsMono, monospace
-    font-size: 1.3em
+        &__subtitle
+            font-size: 1.2em
 
-.cursor
-    border-right: 12px solid #999
-    margin-left: 4px
-    animation: blink 1100ms linear infinite
-    animation-timing-function: step-end
-
-
-@media (max-width: 768px)
-    .professional
-        font-size: 1em
-
-    .main-logo
-        font-size: 1.5em
+@media (max-width: $screen-500)
+    .home
+        &__title
+            font-size: 1.5em
