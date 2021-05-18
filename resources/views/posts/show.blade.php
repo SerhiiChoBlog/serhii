@@ -47,7 +47,9 @@
             </div>
             <div class="col-lg-3">
                 <div class="post__sidebar">
-                    <nav class="panel is-shadowless">
+                    @include('includes.share-post', compact('post'))
+
+                    <nav class="panel is-shadowless mt-5">
                         <p class="panel-heading mb-4">
                             <span class="has-text-weight-normal">Open source projects</span>
                         </p>
