@@ -20,7 +20,7 @@
         <div class="posts">
             @foreach ($posts as $post)
                 <a href="/posts/{{ $post['slug'] }}" class="posts__item">
-                    <img class="posts__item__image" src="{{ asset($post['image_sm']) }}" alt="{{ $post['title'] }}" />
+                    <img data-src="{{ asset($post['image_sm']) }}" alt="{{ $post['title'] }}" class="smooth-loader posts__item__image" />
 
                     <div class="posts__item__content">
                         <h2 class="posts__item__content__title has-text-black">{{ $post['title'] }}</h2>
