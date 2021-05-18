@@ -6,25 +6,25 @@
   margin-left: auto;
 }
 
-@media (min-width: 576px) {
+@media (min-width: $screen-500) {
   .container {
     max-width: 540px;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: $screen-700) {
   .container {
     max-width: 720px;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: $screen-900) {
   .container {
     max-width: 960px;
   }
 }
 
-@media (min-width: 1500px) {
+@media (min-width: $screen-1500) {
   .container {
     max-width: 1140px;
   }
