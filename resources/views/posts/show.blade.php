@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="column">
-                        <img src="{{ asset($post['image_lg']) }}" alt="{{ $post['title'] }}" class="post-hero__image">
+                        <img data-src="{{ asset($post['image_lg']) }}" alt="{{ $post['title'] }}" class="post-hero__image smooth-loader">
                     </div>
                 </div>
             </div>
@@ -45,16 +45,16 @@
                 <div class="subtitle has-text-centered mt-6">Share this post</div>
                 <div class="social-links">
                     <a href="https://www.reddit.com/submit?url={{ url()->current() }}&title={{ $post['title'] }}" target="_blank" rel="nofollow noopener noreferrer">
-                        <img src="{{ asset('storage/icons/reddit.png') }}" alt="reddit">
+                        <img data-src="{{ asset('storage/icons/reddit.png') }}" alt="reddit" class="smooth-loader">
                     </a>
                     <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ url()->current() }}" target="_blank" rel="nofollow noopener noreferrer">
-                        <img src="{{ asset('storage/icons/linkedin.png') }}" alt="linked in">
+                        <img data-src="{{ asset('storage/icons/linkedin.png') }}" alt="linked in" class="smooth-loader">
                     </a>
                     <a href="https://twitter.com/intent/tweet?text={{ $post['title'] }}&url={{ url()->current() }}" target="_blank" rel="nofollow noopener noreferrer">
-                        <img src="{{ asset('storage/icons/twitter.png') }}" alt="twitter">
+                        <img data-src="{{ asset('storage/icons/twitter.png') }}" alt="twitter" class="smooth-loader">
                     </a>
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank" rel="nofollow noopener noreferrer">
-                        <img src="{{ asset('storage/icons/facebook.png') }}" alt="facebook">
+                        <img data-src="{{ asset('storage/icons/facebook.png') }}" alt="facebook" class="smooth-loader">
                     </a>
                 </div>
             </div>
