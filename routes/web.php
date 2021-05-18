@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{PostController, ProjectController};
+use App\Http\Controllers\{HomeController, PostController, ProjectController};
 use App\Http\Controllers\Admin\{DashboardController as AdminDashboardController,
     PageViewController as AdminPageViewController,
     PostContentImageController,
@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::view('/', 'home')->name('home');
 Route::redirect('/register', 'login');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');

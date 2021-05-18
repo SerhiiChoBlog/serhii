@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\CacheKey;
 use App\Models\Post;
 use App\Models\Project;
+use App\Models\Visitor;
 use App\Ttl;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
@@ -17,7 +19,7 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function show(string $slug): View
+    public function show(string $slug, Request $request): View
     {
         $cache_key = CacheKey::POST . $slug;
 
@@ -44,6 +46,8 @@ class PostController extends Controller
         };
 
         $projects = Project::getCachedProjects();
+
+        Visitor::incrementPageViews($request->segment(2), 'post', $request->ip());
 
         return view('posts.show', compact('post', 'title_font_size', 'projects'));
     }
