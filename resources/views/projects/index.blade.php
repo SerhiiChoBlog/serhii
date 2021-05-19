@@ -4,6 +4,8 @@
 
 @extends('layouts.app')
 
+@section('title', 'Projects')
+
 @section('content')
     <section class="hero projects-hero is-dark">
         <div class="hero-head">@include('includes.navbar')</div>
