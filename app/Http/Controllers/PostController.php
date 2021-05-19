@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
-    public function index(): Viecanw
+    public function index(): View
     {
         $posts = Cache::remember(CacheKey::PUBLISHED_POSTS, Ttl::DAY, fn() => Post::getPublishedPosts()->toArray());
         return view('posts.index', compact('posts'));
