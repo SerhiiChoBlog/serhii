@@ -59,6 +59,9 @@ class PostController extends Controller
             $data = array_merge($data, ['image_sm' => $images['sm'], 'image_lg' => $images['lg']]);
         }
 
+        $data['title'] = trim($data['title']);
+        $data['intro'] = trim($data['intro']);
+
         $post->update($data);
 
         Cache::forget(CacheKey::PUBLISHED_POSTS);
