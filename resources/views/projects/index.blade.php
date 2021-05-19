@@ -10,8 +10,8 @@
 
         <div class="hero-body">
             <div class="container has-text-centered">
-                <p class="title">Open source</p>
-                <p class="subtitle">I want to share with you some of my open source package from Github</p>
+                <h1 class="title">Open source</h1>
+                <h2 class="subtitle">I want to share with you some of my open source package from Github</h2>
             </div>
         </div>
     </section>
