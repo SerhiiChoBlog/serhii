@@ -3,6 +3,8 @@
     /** @var array[] $techs */
 @endphp
 
+@section('title', 'Professional software developer')
+
 <div>
     <h2 class="home__title has-text-centered">{{ $header }}</h2>
 

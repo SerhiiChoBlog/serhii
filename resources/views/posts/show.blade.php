@@ -9,6 +9,8 @@
     <script src="{{ asset('js/highlight.js') }}"></script>
 @endsection
 
+@section('title', $post['title'])
+
 @section('content')
     <section class="hero post-hero is-dark">
         <div class="hero-head">@include('includes.navbar')</div>

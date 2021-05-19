@@ -8,6 +8,8 @@
     <script src="{{ asset('js/highlight.js') }}"></script>
 @endsection
 
+@section('title', $project->title)
+
 @section('content')
     <section class="project-hero is-light">
         <div class="hero-head">@include('includes.navbar', ['is_grey' => true])</div>
