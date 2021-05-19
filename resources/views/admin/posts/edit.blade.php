@@ -9,7 +9,7 @@
     <script>
         tinymce.init({
             selector: '#content',
-            plugins: 'codesample fullscreen code image',
+            plugins: 'codesample fullscreen code image link',
             height: '800px',
             toolbar: 'undo redo | styleselect | bold italic | link image | alignleft aligncenter alignright | bullist numlist outdent indent | codesample fullscreen code',
             image_caption: true,
@@ -102,7 +102,7 @@
                 <div class="field">
                     <div class="buttons">
                         <button type="submit" class="button px-6 is-success">Update</button>
-                        <a href="https://serhii.io/draft/{{ $post->slug }}" target="_blank" class="button is-info">Preview</a>
+                        <a href="{{ route('posts.show', $post) }}" target="_blank" class="button is-info">Preview</a>
                         <button type="button" class="button" onclick="document.getElementById('delete-post').click()">Delete</button>
 
                         <label class="checkbox">
