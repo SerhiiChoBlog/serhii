@@ -10,8 +10,8 @@
 
         <div class="hero-body">
             <div class="container has-text-centered">
-                <p class="title">Blog</p>
-                <p class="subtitle">I'm mostly writing about productivity tips and technical related articles.</p>
+                <h1 class="title">Blog</h1>
+                <h2 class="subtitle">I'm mostly writing about productivity tips and technical related articles.</h2>
             </div>
         </div>
     </section>

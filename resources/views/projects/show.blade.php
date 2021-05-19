@@ -14,8 +14,8 @@
 
         <div class="hero-body">
             <div class="container has-text-centered">
-                <p class="title">{{ $project->title }}</p>
-                <p class="subtitle has-text-left">{{ $project->description }}</p>
+                <h1 class="title">{{ $project->title }}</h1>
+                <h2 class="subtitle has-text-left">{{ $project->description }}</h2>
                 <a href="{{ $project->url }}" target="_blank" class="button is-rounded is-dark">
                     <img src="{{ asset('storage/icons/github.png') }}" width="20" alt="Github logo" />
                     <span class="ml-2">Open on Github</span>

@@ -17,9 +17,9 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-flex is-align-items-left is-flex-direction-column">
-                        <p class="title" style="font-size: {{ $title_font_size }}">
+                        <h1 class="title" style="font-size: {{ $title_font_size }}">
                             {{ $post['title'] }}
-                        </p>
+                        </h1>
                         <div class="tags mt-2">
                             @foreach ($post['tags'] as $tag)
                                 <span class="tag my-0 is-medium is-normal is-dark"
