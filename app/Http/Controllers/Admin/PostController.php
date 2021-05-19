@@ -69,6 +69,7 @@ class PostController extends Controller
 
     public function destroy(Post $post): RedirectResponse
     {
+        $post->tags()->detach();
         $post->delete();
 
         Cache::forget(CacheKey::PUBLISHED_POSTS);
