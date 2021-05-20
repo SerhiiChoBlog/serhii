@@ -10,9 +10,9 @@
         window.tinymce = tinymce
         tinymce.init({
             selector: '#content',
-            plugins: 'codesample fullscreen code image link',
+            plugins: 'codesample fullscreen code image link table',
             height: '800px',
-            toolbar: 'undo redo | styleselect | bold italic | link image | alignleft aligncenter alignright | bullist numlist outdent indent | codesample fullscreen code',
+            toolbar: 'undo redo | styleselect | bold italic | link image | alignleft aligncenter alignright | bullist numlist outdent indent | codesample fullscreen code table',
             image_caption: true,
             codesample_languages: [
                 {text: 'HTML/XML', value: 'html'},
