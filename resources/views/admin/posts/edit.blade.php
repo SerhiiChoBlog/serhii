@@ -26,6 +26,11 @@
                 {text: 'C#', value: 'csharp'},
                 {text: 'C++', value: 'cpp'}
             ],
+            setup: function(editor) {
+                editor.on('blur', function () {
+                    window.dispatchEvent(new CustomEvent('postEditorBlurEvent'))
+                });
+            }
         })
     </script>
 @endsection

@@ -3,12 +3,19 @@ import axios from 'axios'
 import EditPostFormElements from '../interfaces/EditPostFormElements'
 
 export default class {
-    public constructor(private form: HTMLFormElement, private postId: number) {
-    }
+    public constructor(
+        private form: HTMLFormElement,
+        private postId: number,
+    ) {}
 
     public listenForSubmitEvent(): void {
         this.form.addEventListener('submit', e => {
             e.preventDefault()
+            this.showLoading(true)
+            this.handleEvent()
+        })
+
+        window.addEventListener('postEditorBlurEvent', () => {
             this.showLoading(true)
             this.handleEvent()
         })
@@ -36,7 +43,6 @@ export default class {
         axios.post(`/admin/posts/${this.postId}`, formData, {
             headers: { 'content-type': 'multipart/form-data' },
         })
-            .then(res => console.log(res.data))
             .catch(err => {
                 console.error(err)
                 alert(err)
