@@ -147,7 +147,7 @@
                                     />
                                 </a>
                             </td>
-                            <td>Vue js image</td>
+                            <td>{{ $image->alt }}</td>
                             <td><input type="text" value="{{ $image->uri }}" class="clean-input" disabled></td>
                             <td>
                                 <form action="{{ route('admin.post-content-images.delete', $image) }}"
