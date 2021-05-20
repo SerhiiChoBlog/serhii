@@ -42,12 +42,20 @@ class PostController extends Controller
         return view('admin.posts.edit', compact('post'));
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Post $post
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \JsonException
+     */
     public function update(Request $request, Post $post): RedirectResponse
     {
         $post->tags()->detach();
 
         if ($request->get('tags')) {
-            $post->tags()->attach($request->get('tags'));
+            $tags = json_decode($request->get('tags'), true, 512, JSON_THROW_ON_ERROR);
+            $post->tags()->attach($tags);
         }
 
         $is_published = $request->get('is-published') === 'on';

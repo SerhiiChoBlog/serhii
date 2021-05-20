@@ -1,6 +1,7 @@
 import TagsInput from '../classes/TagsInput';
 import InputLetterCounter from '../classes/InputLetterCounter'
 import PostImageLoader from '../classes/PostImageLoader'
+import PostAutoSave from '../classes/PostAutoSave'
 
 (function ExecuteTagsInputScript() {
     const tagsField = document.getElementById('post-tags') as HTMLInputElement
@@ -31,4 +32,16 @@ import PostImageLoader from '../classes/PostImageLoader'
         return
 
     new PostImageLoader(imgElement, imgInput).listenForEvents()
+})()
+
+;(function AutoSaveBlogPost() {
+    const form = document.getElementById('edit-post-form') as HTMLFormElement
+    const postIdField = document.getElementById('post-id-field') as HTMLInputElement
+
+    if (!form || !postIdField)
+        return
+
+    const postId = parseInt(postIdField.value)
+
+    new PostAutoSave(form, postId).listenForSubmitEvent()
 })()

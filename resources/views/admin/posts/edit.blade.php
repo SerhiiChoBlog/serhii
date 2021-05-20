@@ -7,6 +7,7 @@
 @section('head')
     <script src="{{ asset('js/tinymce.js') }}"></script>
     <script>
+        window.tinymce = tinymce
         tinymce.init({
             selector: '#content',
             plugins: 'codesample fullscreen code image link',
@@ -34,9 +35,11 @@
         <h1 class="title">{{ $post->title }}</h1>
 
         <div class="container">
-            <form action="{{ route('admin.posts.update', $post) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.posts.update', $post) }}" method="post" enctype="multipart/form-data" id="edit-post-form">
                 @csrf
                 @method('put')
+
+                <input type="hidden" name="post-id" id="post-id-field" value="{{ $post->id }}">
 
                 <div class="columns">
                     <div class="column">
@@ -101,7 +104,7 @@
 
                 <div class="field">
                     <div class="buttons">
-                        <button type="submit" class="button px-6 is-success">Update</button>
+                        <button type="submit" class="button px-6 is-success">Save</button>
                         <a href="{{ route('posts.show', $post) }}" target="_blank" class="button is-info">Preview</a>
                         <button type="button" class="button" onclick="document.getElementById('delete-post').click()">Delete</button>
 
