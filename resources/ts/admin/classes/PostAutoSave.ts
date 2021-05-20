@@ -37,7 +37,10 @@ export default class {
             headers: { 'content-type': 'multipart/form-data' },
         })
             .then(res => console.log(res.data))
-            .catch(err => console.error(err))
+            .catch(err => {
+                console.error(err)
+                alert(err)
+            })
             .finally(() => this.showLoading(false))
     }
 
