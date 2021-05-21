@@ -18,6 +18,7 @@ return [
     'github_projects_url' => env('GITHUB_PROJECTS_URL'),
     'github_readme_url' => env('GITHUB_README_URL'),
     'user_password' => env('USER_PASSWORD'),
+    'ips_to_exclude_from_page_views' => env('IPS_TO_EXCLUDE_FROM_PAGE_VIEW'),
 
     /*
     |--------------------------------------------------------------------------
