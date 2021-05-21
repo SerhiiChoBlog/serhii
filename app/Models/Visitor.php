@@ -26,7 +26,7 @@ class Visitor extends Model
         return $this->hasMany(PageView::class);
     }
 
-    public static function incrementPageViews(string $slug, string $page_type, string $ip): void
+    public static function getOrCreateVisitor($ip): Visitor
     {
         $visitor = self::query()->with('pageViews')->where('ip', $ip)->first();
         $location = app(Location::class);
@@ -41,6 +41,13 @@ class Visitor extends Model
                 'code' => $position->countryCode ?? null,
             ]);
         }
+
+        return $visitor;
+    }
+
+    public static function incrementPageViews(string $slug, string $page_type, string $ip): void
+    {
+        $visitor = self::getOrCreateVisitor($ip);
 
         $old_record = $visitor->pageViews->where('slug', $slug)->first();
 

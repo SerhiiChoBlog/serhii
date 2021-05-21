@@ -41,6 +41,11 @@ class Post extends Model
         return $this->hasMany(PostContentImage::class);
     }
 
+    public function socialShares(): HasMany
+    {
+        return $this->hasMany(SocialShare::class);
+    }
+
     public function getPrettyCreatedAtAttribute(): string
     {
         return TimeAgo::trans($this->created_at->toDateTimeString());
