@@ -59,7 +59,7 @@ class Post extends Model
     {
         return self::query()
             ->with('tags:id,name,color')
-            ->select('slug', 'title', 'intro', 'image_sm', 'created_at')
+            ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
             ->where('is_published', true)
             ->orderBy('created_at')
             ->get();
