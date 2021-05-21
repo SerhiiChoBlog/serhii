@@ -111,11 +111,13 @@
                 </div>
 
                 <div class="field">
-                    <div class="buttons">
-                        <button type="submit" class="button px-6 is-success">Save</button>
-                        <a href="{{ route('posts.show', $post) }}" target="_blank" class="button is-info">Preview</a>
-                        <button type="button" class="button" onclick="document.getElementById('delete-post').click()">Delete</button>
+                    <div class="flying-buttons">
+                        <button type="submit" class="button is-rounded mb-2 px-6 is-success">Save</button>
+                        <a href="{{ route('posts.show', $post) }}" target="_blank" class="button is-rounded px-5 is-info">Preview</a>
+                    </div>
 
+                    <div class="buttons">
+                        <button type="button" class="button" onclick="document.getElementById('delete-post').click()">Delete</button>
                         <label class="checkbox">
                             <input type="checkbox" name="is-published" class="ml-3 mr-1" {{ $post->is_published ? 'checked' : '' }}>
                             <span>publish this post</span>
