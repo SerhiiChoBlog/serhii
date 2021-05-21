@@ -12,19 +12,22 @@
             selector: '#content',
             plugins: 'codesample fullscreen code image link table lists',
             height: '800px',
-            toolbar: 'undo redo | styleselect | bold italic | link image | alignleft aligncenter alignright | numlist bullist | bullist numlist outdent indent | codesample fullscreen code table',
+            toolbar: 'undo redo | styleselect | bold italic | link image table | alignleft aligncenter alignright | numlist bullist | bullist numlist outdent indent | codesample code | fullscreen',
             image_caption: true,
             codesample_languages: [
                 {text: 'HTML/XML', value: 'html'},
                 {text: 'JavaScript', value: 'javascript'},
+                {text: 'TypeScript', value: 'typescript'},
                 {text: 'CSS', value: 'css'},
                 {text: 'PHP', value: 'php'},
                 {text: 'Ruby', value: 'ruby'},
                 {text: 'Python', value: 'python'},
                 {text: 'Java', value: 'java'},
+                {text: 'Go', value: 'go'},
                 {text: 'C', value: 'c'},
                 {text: 'C#', value: 'csharp'},
-                {text: 'C++', value: 'cpp'}
+                {text: 'C++', value: 'cpp'},
+                {text: 'Json', value: 'json'},
             ],
             setup: function(editor) {
                 editor.on('blur', function () {
