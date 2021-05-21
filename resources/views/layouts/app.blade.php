@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="author" content="Serhii Cho">
     <meta name="description" content="Serhii Cho is a fullstack developer with lots of experience creating web applications and programs written in different languages.">
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
     <title>@yield('title') | {{ config('app.name', 'Serhii API') }}</title>
