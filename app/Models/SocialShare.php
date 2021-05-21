@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property-read int $id
+ * @property int $post_id
+ * @property int $visitor_id
+ * @property string $social
+ * @property \App\Models\Post $post
+ * @property \App\Models\Visitor $visitor
+ * @property \Carbon\Carbon $created_at
+ */
 class SocialShare extends Model
 {
     use HasFactory;
@@ -16,5 +25,10 @@ class SocialShare extends Model
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
+    }
+
+    public function visitor(): BelongsTo
+    {
+        return $this->belongsTo(Visitor::class);
     }
 }
