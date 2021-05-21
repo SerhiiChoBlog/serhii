@@ -13,6 +13,8 @@ use Stevebauman\Location\Location;
  * @property string $country
  * @property string $city
  * @property string $code
+ * @property \App\Models\SocialShare[] $socialShares
+ * @property \App\Models\PageView[] $pageViews
  */
 class Visitor extends Model
 {
@@ -24,6 +26,11 @@ class Visitor extends Model
     public function pageViews(): HasMany
     {
         return $this->hasMany(PageView::class);
+    }
+
+    public function socialShares(): HasMany
+    {
+        return $this->hasMany(SocialShare::class);
     }
 
     public static function getOrCreateVisitor($ip): Visitor
