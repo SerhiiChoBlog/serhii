@@ -44,7 +44,9 @@
             <div class="col-lg-9">
                 <div class="content post__content px-3" v-pre>{!! $post['content'] !!}</div>
 
-                <div class="subtitle has-text-centered mt-6">Share this post</div>
+                <div class="subtitle has-text-centered mt-6">
+                    Thanks for your time! Share this post
+                </div>
                 @include('includes.share-post', compact('post'))
             </div>
             <div class="col-lg-3">
