@@ -13,7 +13,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <h1 class="title">Open source</h1>
-                <h2 class="subtitle">I want to share with you some of my open source package from Github</h2>
+                <h2 class="subtitle">I want to share with you some of my open-source packages from Github account</h2>
             </div>
         </div>
     </section>
