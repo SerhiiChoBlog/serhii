@@ -6,12 +6,13 @@
 @extends('layouts.app')
 
 @section('head')
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:creator" content="@SerhiiCho">
     <meta name="twitter:title" content="{{ $post['title'] }}">
     <meta name="twitter:description" content="{{ $post['intro'] }}">
     <meta name="twitter:image" content="{{ asset($post['image_lg']) }}">
-    <meta name="title" property="og:title" content="{{ $post['title'] }}">
+    <meta property="og:title" name="title" content="{{ $post['title'] }}">
+    <meta property="og:description" content="{{ $post['intro'] }}" />
     <meta property="og:image" content="{{ asset($post['image_lg']) }}">
     <meta property="og:type" content="article">
     <script src="{{ asset('js/highlight.js') }}"></script>
