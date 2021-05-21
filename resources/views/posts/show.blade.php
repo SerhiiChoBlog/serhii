@@ -6,6 +6,7 @@
 @extends('layouts.app')
 
 @section('head')
+    <meta property="og:image" content="{{ asset($post['image_lg']) }}">
     <script src="{{ asset('js/highlight.js') }}"></script>
 @endsection
 
