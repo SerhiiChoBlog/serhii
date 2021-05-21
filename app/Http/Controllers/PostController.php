@@ -28,7 +28,7 @@ class PostController extends Controller
             $post = Post::query()
                 ->with('tags:id,color,name')
                 ->where('slug', $slug)
-                ->select('title', 'intro', 'slug', 'content', 'image_lg', 'created_at')
+                ->select('id', 'title', 'intro', 'slug', 'content', 'image_lg', 'created_at')
                 ->first();
 
             return $post ? $post->toArray() : null;
