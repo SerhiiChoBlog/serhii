@@ -47,7 +47,8 @@
                 <div class="subtitle has-text-centered mt-6">
                     Thanks for your time! Share this post
                 </div>
-                @include('includes.share-post', compact('post'))
+                <div class="spinner"></div>
+                <share-post-buttons post-title="{{ $post['title'] }}" />
             </div>
             <div class="col-lg-3">
                 <div class="post__sidebar">
@@ -64,7 +65,7 @@
                         <p class="panel-heading">
                             <span class="has-text-grey-dark">Share this post</span>
                         </p>
-                        @include('includes.share-post', compact('post'))
+                        <share-post-buttons post-title="{{ $post['title'] }}" />
                     </nav>
                 </div>
             </div>
