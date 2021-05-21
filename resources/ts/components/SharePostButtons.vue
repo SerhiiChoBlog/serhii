@@ -33,20 +33,27 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import axios from 'axios'
 
 export default defineComponent({
     props: {
         postTitle: {
             required: true,
             type: String,
+        },
+        postId: {
+            required: true,
+            type: Number,
         }
     },
 
-    setup({ postTitle }) {
+    setup({ postTitle, postId }) {
         const url = window.location.href
 
-        function saveShare(socialMediaName: string): void {
-            console.log(socialMediaName)
+        function saveShare(social: string): void {
+            axios.post(`/api/social-shares/${postId}`, { social })
+                .then(resp => console.log(resp.data))
+                .catch(err => console.error(err))
         }
 
         return {

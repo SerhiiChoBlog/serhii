@@ -48,7 +48,7 @@
                     Thanks for your time! Share this post
                 </div>
                 <div class="spinner"></div>
-                <share-post-buttons post-title="{{ $post['title'] }}" />
+                <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
             </div>
             <div class="col-lg-3">
                 <div class="post__sidebar">
@@ -65,7 +65,7 @@
                         <p class="panel-heading">
                             <span class="has-text-grey-dark">Share this post</span>
                         </p>
-                        <share-post-buttons post-title="{{ $post['title'] }}" />
+                        <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
                     </nav>
                 </div>
             </div>
