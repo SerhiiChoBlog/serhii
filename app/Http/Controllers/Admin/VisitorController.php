@@ -10,9 +10,12 @@ class VisitorController extends Controller
 {
     public function index(): View
     {
+        $ips = explode(',', config('app.ips_to_exclude_from_page_views'));
+
         $visitors = Visitor::query()
             ->selectRaw('*, LOWER(code) as code')
             ->withSum('pageViews', 'views')
+            ->whereNotIn('ip', $ips)
             ->limit(50)
             ->orderBy('page_views_sum_views', 'DESC')
             ->get();
