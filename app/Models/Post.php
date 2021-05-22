@@ -20,6 +20,7 @@ use Serhii\Ago\TimeAgo;
  * @property string $image_lg
  * @property \App\Models\PostContentImage[] $images
  * @property \App\Models\SocialShare[] $socialShares
+ * @property \App\Models\PageView[] $pageViews
  * @property string $pretty_created_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -45,6 +46,11 @@ class Post extends Model
     public function socialShares(): HasMany
     {
         return $this->hasMany(SocialShare::class);
+    }
+
+    public function pageViews(): HasMany
+    {
+        return $this->hasMany(PageView::class, 'slug', 'slug');
     }
 
     public function getPrettyCreatedAtAttribute(): string

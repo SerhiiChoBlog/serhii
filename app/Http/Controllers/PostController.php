@@ -24,9 +24,10 @@ class PostController extends Controller
         $cache_key = CacheKey::POST . $slug;
 
         /** @var array $post */
-        $post = Cache::remember($cache_key, Ttl::DAY, function () use ($slug) {
+        $post = Cache::remember($cache_key, Ttl::HOUR, function () use ($slug) {
             $post = Post::query()
                 ->with('tags:id,color,name')
+                ->withCount('pageViews')
                 ->where('slug', $slug)
                 ->first();
 
