@@ -38,6 +38,10 @@
                                 >{{ $tag['name'] }}</span>
                             @endforeach
                             <span class="post__created-at ml-2">{{ $post['pretty_created_at'] }}</span>
+                            <span class="post__views ml-3">
+                                <img src="{{ asset('storage/icons/light-eye.png') }}" alt="eye icon" width="22">
+                                <span>334</span>
+                            </span>
                         </div>
                     </div>
                     <div class="column">
