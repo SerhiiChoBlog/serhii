@@ -27,7 +27,7 @@ class PostController extends Controller
         $post = Cache::remember($cache_key, Ttl::HOUR, function () use ($slug) {
             $post = Post::query()
                 ->with('tags:id,color,name')
-                ->withCount('pageViews')
+                ->withSum('pageViews', 'views')
                 ->where('slug', $slug)
                 ->first();
 
