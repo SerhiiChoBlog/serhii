@@ -60,7 +60,6 @@
                 <div class="subtitle has-text-centered mt-6">
                     Thanks for your time! Share this post
                 </div>
-                <div class="spinner"></div>
                 <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
             </div>
             <div class="col-lg-3">
