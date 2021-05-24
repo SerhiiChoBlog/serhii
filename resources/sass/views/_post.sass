@@ -51,6 +51,20 @@
         .panel
             margin-bottom: 30px
 
+            .panel-block
+                position: relative
+                padding-left: 25px
+
+                &::before
+                    content: ""
+                    width: 4px
+                    height: 4px
+                    background-color: #888
+                    border-radius: 50%
+                    position: absolute
+                    left: 8px
+                    margin-top: 2px
+
 @media (max-width: $screen-1400)
     .post-hero
         &__image
