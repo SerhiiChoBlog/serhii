@@ -55,16 +55,23 @@
     <div class="container pb-6 post">
         <div class="row">
             <div class="col-lg-9">
-                <div class="content post__content px-3" v-pre>{!! $post['content'] !!}</div>
+                <div class="content post__content px-3" id="post-content" v-pre>{!! $post['content'] !!}</div>
 
                 <div class="subtitle has-text-centered mt-6">
                     Thanks for your time! Share this post
                 </div>
-                <div class="spinner"></div>
+
                 <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
             </div>
             <div class="col-lg-3">
                 <div class="post__sidebar">
+                    <nav class="panel is-shadowless">
+                        <p class="panel-heading">
+                            <span class="has-text-grey-dark">Chapters</span>
+                        </p>
+                        <chapters />
+                    </nav>
+
                     <nav class="panel is-shadowless">
                         <p class="panel-heading">
                             <span class="has-text-grey-dark">Open source projects</span>
