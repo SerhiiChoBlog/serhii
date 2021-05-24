@@ -1,0 +1,46 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+
+class {{ class }} extends Controller
+{
+    public function index(): View
+    {
+        return view('');
+    }
+
+    public function create(): View
+    {
+        return view('');
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        return back();
+    }
+
+    public function show($id): View
+    {
+        return view('');
+    }
+
+    public function edit($id): View
+    {
+        return view('');
+    }
+
+    public function update(Request $request, $id): RedirectResponse
+    {
+        return back();
+    }
+
+    public function destroy($id): RedirectResponse
+    {
+        return back();
+    }
+}
