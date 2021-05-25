@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateSocialSharesTable extends Migration
@@ -16,7 +15,7 @@ class CreateSocialSharesTable extends Migration
             $table->unsignedBigInteger('visitor_id');
             $table->foreign('visitor_id')->references('id')->on('visitors')->cascadeOnDelete();
             $table->string('social', 100);
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
