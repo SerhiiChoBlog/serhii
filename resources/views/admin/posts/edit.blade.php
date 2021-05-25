@@ -26,8 +26,6 @@
                 {text: 'Java', value: 'java'},
                 {text: 'Text', value: 'text'},
                 {text: 'Ruby', value: 'ruby'},
-                {text: 'Shell', value: 'shell'},
-                {text: 'Bash', value: 'bash'},
                 {text: 'CSS', value: 'css'},
                 {text: 'HTML/XML', value: 'html'},
                 {text: 'JavaScript', value: 'javascript'},
