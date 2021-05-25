@@ -23,6 +23,7 @@
                 {text: 'Apache', value: 'apache'},
                 {text: 'C++', value: 'cpp'},
                 {text: 'Go', value: 'go'},
+                {text: 'Bash', value: 'bash'},
                 {text: 'Java', value: 'java'},
                 {text: 'Text', value: 'text'},
                 {text: 'Ruby', value: 'ruby'},
