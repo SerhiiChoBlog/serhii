@@ -58,7 +58,7 @@ class PostController extends Controller
             $post->tags()->attach($tags);
         }
 
-        $is_published = $request->get('is-published') === 'on';
+        $is_published = $request->boolean('is-published');
 
         $data = array_merge($request->all(), compact('is_published'));
 
