@@ -15,6 +15,7 @@
             toolbar: 'undo redo | styleselect | bold italic | link image table | alignleft aligncenter alignright | numlist bullist | bullist numlist outdent indent | codesample code | fullscreen',
             image_caption: true,
             codesample_languages: [
+                {text: 'Bash', value: 'bash'},
                 {text: 'HTML/XML', value: 'html'},
                 {text: 'JavaScript', value: 'javascript'},
                 {text: 'TypeScript', value: 'typescript'},
