@@ -68,7 +68,7 @@ class Post extends Model
             ->with('tags:id,name,color')
             ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
             ->where('is_published', true)
-            ->orderBy('created_at')
+            ->orderBy('created_at', 'desc')
             ->get();
     }
 }
