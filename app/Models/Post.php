@@ -21,6 +21,7 @@ use Serhii\Ago\TimeAgo;
  * @property \App\Models\PostContentImage[] $images
  * @property \App\Models\SocialShare[] $socialShares
  * @property \App\Models\PageView[] $pageViews
+ * @property \App\Models\Tag[] $tags
  * @property string $pretty_created_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at

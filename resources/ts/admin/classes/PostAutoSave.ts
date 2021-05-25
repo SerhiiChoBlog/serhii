@@ -24,8 +24,10 @@ export default class {
     private handleEvent(): void {
         const formElements = this.form.elements as EditPostFormElements
         const formData = new FormData()
+        const tagsElems = formElements['tags[]'] as HTMLInputElement[] | HTMLInputElement
 
-        const tags = Array.from(formElements['tags[]'])
+        const tags = tagsElems instanceof HTMLInputElement ? [tagsElems] : Array.from(tagsElems)
+
         const imageFile = formElements.image.files![0] as File
 
         formData.append('title', formElements.title.value)
