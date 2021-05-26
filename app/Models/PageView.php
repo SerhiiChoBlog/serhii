@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property-read int $id
  * @property int $visitor_id
- * @property int $views
  * @property string $slug
  * @property string $page_type
  * @property \Carbon\Carbon $created_at
