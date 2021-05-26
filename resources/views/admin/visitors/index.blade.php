@@ -22,7 +22,7 @@
                             @foreach ($visitors as $visitor)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $visitor->page_views_sum_views }}</td>
+                                    <td>{{ $visitor->page_views_count }}</td>
                                     <td>{{ $visitor->ip }}</td>
                                     <td>{{ $visitor->country }}</td>
                                     <td>{{ $visitor->city }}</td>

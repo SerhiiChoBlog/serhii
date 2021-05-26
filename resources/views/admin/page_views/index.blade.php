@@ -10,17 +10,15 @@
                     <table class="table is-fullwidth is-hoverable is-striped">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Page slug</th>
                                 <th>Views</th>
+                                <th>Page slug</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($views as $view)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $view->amount }}</td>
                                     <td>{{ $view->slug }}</td>
-                                    <td>{{ $view->views }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -11,9 +11,9 @@ class PageViewController extends Controller
     public function index(): View
     {
         $views = PageView::query()
-            ->selectRaw('slug, SUM(views) as views')
+            ->selectRaw('slug, COUNT(*) as amount')
             ->groupBy('slug')
-            ->orderBy('views', 'DESC')
+            ->orderBy('amount', 'DESC')
             ->limit(50)
             ->get();
 

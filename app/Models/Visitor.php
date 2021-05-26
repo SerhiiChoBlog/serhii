@@ -54,18 +54,9 @@ class Visitor extends Model
 
     public static function incrementPageViews(string $slug, string $page_type, string $ip): void
     {
-        $exclude_ips = explode(',', config('app.ips_to_exclude_from_page_views'));
-
-        if (in_array($ip, $exclude_ips, true)) {
-            return;
-        }
-
         $visitor = self::getOrCreateVisitor($ip);
 
-        $old_record = $visitor->pageViews->where('slug', $slug)->first();
-
-        if ($old_record) {
-            $old_record->increment('views');
+        if ($visitor->pageViews->where('slug', $slug)->first()) {
             return;
         }
 
