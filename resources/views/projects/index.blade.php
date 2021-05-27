@@ -4,7 +4,8 @@
 
 @extends('layouts.app')
 
-@section('title', 'Projects')
+@section('title', 'Open Source projects')
+@section('description', "These are all of my open source libraries for languages like PHP, Golang and JavaScript.")
 
 @section('content')
     <section class="hero projects-hero is-dark">
@@ -13,7 +14,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <h1 class="title">Open source</h1>
-                <h2 class="subtitle">I want to share with you some of my open-source packages from Github account</h2>
+                <h2 class="subtitle">These are all of my open source libraries for languages like PHP, Golang and JavaScript.</h2>
             </div>
         </div>
     </section>

@@ -9,6 +9,7 @@
 @endsection
 
 @section('title', $project->title)
+@section('description', $project->description)
 
 @section('content')
     <section class="project-hero is-light">
