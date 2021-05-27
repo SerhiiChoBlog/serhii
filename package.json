@@ -30,6 +30,7 @@
     },
     "dependencies": {
         "smooth-loader": "^1.0.3",
+        "sweetalert2": "^11.0.12",
         "webpack": "^5.36.2"
     },
     "author": "Serhii Cho",

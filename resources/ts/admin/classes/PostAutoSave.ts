@@ -1,6 +1,7 @@
 import { getEditorContent } from '../tinymce'
 import axios from 'axios'
 import EditPostFormElements from '../interfaces/EditPostFormElements'
+import SweetAlert from 'sweetalert2'
 
 export default class {
     public constructor(
@@ -11,14 +12,10 @@ export default class {
     public listenForSubmitEvent(): void {
         this.form.addEventListener('submit', e => {
             e.preventDefault()
-            this.showLoading(true)
             this.handleEvent()
         })
 
-        window.addEventListener('postEditorBlurEvent', () => {
-            this.showLoading(true)
-            this.handleEvent()
-        })
+        window.addEventListener('postEditorBlurEvent', () => this.handleEvent())
     }
 
     private handleEvent(): void {
@@ -26,7 +23,16 @@ export default class {
         const formData = new FormData()
         const tagsElems = formElements['tags[]'] as HTMLInputElement[] | HTMLInputElement
 
-        const tags = tagsElems instanceof HTMLInputElement ? [tagsElems] : Array.from(tagsElems)
+        if (!tagsElems) {
+            SweetAlert.fire('Info', 'Choose tags before saving the post', 'info')
+            return
+        }
+
+        this.showLoading(true)
+
+        const tags = tagsElems instanceof HTMLInputElement
+            ? [tagsElems]
+            : Array.from(tagsElems)
 
         const imageFile = formElements.image.files![0] as File
 
@@ -47,7 +53,7 @@ export default class {
         })
             .catch(err => {
                 console.error(err)
-                alert(err)
+                SweetAlert.fire('Error', err, 'error')
             })
             .finally(() => this.showLoading(false))
     }
