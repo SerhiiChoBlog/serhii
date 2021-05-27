@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
-use Serhii\Ago\TimeAgo;
 
 /**
  * @property-read int $id
@@ -56,7 +55,21 @@ class Post extends Model
 
     public function getPrettyCreatedAtAttribute(): string
     {
-        return TimeAgo::trans($this->created_at->toDateTimeString());
+        if ($this->created_at->isToday()) {
+            return 'Today';
+        }
+
+        if ($this->created_at->isYesterday()) {
+            return 'Yesterday';
+        }
+
+        $date = $this->created_at->format('d F');
+
+        if ($this->created_at->year === now()->year) {
+            return $date;
+        }
+
+        return sprintf("%s %s", $date, $this->created_at->year);
     }
 
     /**
