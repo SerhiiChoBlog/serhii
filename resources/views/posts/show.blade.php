@@ -19,6 +19,7 @@
 @endsection
 
 @section('title', $post['title'])
+@section('description', $post['intro'])
 
 @section('content')
     <section class="hero post-hero is-dark">
