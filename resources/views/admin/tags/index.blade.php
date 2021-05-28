@@ -23,7 +23,9 @@
                         </div>
 
                         <div class="field mt-4">
-                            <button type="submit" class="button is-info">Create</button>
+                            <button type="submit" class="button is-info">
+                                <i class="fas fa-plus mr-2"></i> Create tag
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -51,7 +53,11 @@
                                             {{ $tag->name }}
                                         </span>
                                     </td>
-                                    <td><a href="{{ route('admin.tags.edit', $tag) }}" class="button is-small">Edit</a></td>
+                                    <td>
+                                        <a href="{{ route('admin.tags.edit', $tag) }}" class="icon has-text-grey-dark" title="Edit tag">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
