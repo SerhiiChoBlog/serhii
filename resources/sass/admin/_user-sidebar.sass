@@ -8,7 +8,7 @@
     overflow: hidden
     transition: width 200ms, opacity 200ms
     transform: translateZ(0) scale(1, 1)
-    opacity: .5
+    opacity: .7
     z-index: 10
     padding-top: 51px
 
@@ -30,23 +30,20 @@
         background-color: brown
 
     li
-        position: relative
-        display: block
-        width: 200px
-        line-height: 40px
-        margin: auto
 
         &:hover
-            color: #fff
             background-color: brown
 
         a
             position: relative
+            width: 200px
+            line-height: 40px
+            margin: auto
+            transition: background-color 100ms
             display: table
             border-collapse: collapse
             border-spacing: 0
             color: #fff
-            font-family: arial
             font-size: 14px
             text-decoration: none
             transform: translateZ(0) scale(1, 1)
