@@ -39,10 +39,12 @@ export default class {
         formData.append('title', formElements.title.value)
         formData.append('intro', formElements.intro.value)
         formData.append('content', getEditorContent())
+        formData.append('published-at', formElements['published-at'].value)
         formData.append('image', imageFile)
         formData.append('tags', JSON.stringify(tags.map(tag => tag.value)))
         formData.append('is-published', formElements['is-published'].checked ? 'on' : 'off')
         formData.append('_method', 'put')
+        console.log(formElements['published-at'].value)
 
         this.sendData(formData)
     }

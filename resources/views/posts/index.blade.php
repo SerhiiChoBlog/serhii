@@ -17,7 +17,8 @@
                 <h1 class="title">Blog</h1>
                 <h2 class="subtitle">
                     I'm mostly writing programming related articles on different topics.<br>
-                    I'm sharing my knowledge with others to help you become a better developer</h2>
+                    I'm sharing my knowledge with others to help you become a better developer.
+                </h2>
             </div>
         </div>
     </section>
@@ -44,4 +45,6 @@
             @endforeach
         </div>
     </div>
+
+    <new-post />
 @endsection
