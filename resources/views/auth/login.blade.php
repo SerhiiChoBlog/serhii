@@ -9,7 +9,7 @@
                 @csrf
 
                 <input type="hidden" name="email" value="admin@mail.com" required>
-                <input type="hidden" name="remember" checked>
+                <input type="checkbox" name="remember" class="is-hidden" checked>
 
                 <div class="field">
                     <label for="password">Password</label>
