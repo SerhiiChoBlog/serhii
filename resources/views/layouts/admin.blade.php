@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
     <title>{{ config('app.name', 'Serhii API') }}</title>
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
     @yield('head')
 </head>
 <body>
