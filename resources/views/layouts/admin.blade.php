@@ -12,7 +12,7 @@
 </head>
 <body>
     @include('includes.user-sidebar')
-    <main class="py-6">
+    <main class="main-wrapper py-6">
         @yield('content')
     </main>
     <script src="{{ asset('js/admin.js') }}" defer></script>

@@ -7,38 +7,38 @@
                     <span>Site</span>
                 </a>
             </li>
-            <li class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
-                <a href="{{ route('admin.dashboard') }}">
+            <li>
+                <a href="{{ route('admin.dashboard') }}" class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
                     <i class="fas fa-columns icon-profile-menu-line"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="{{ request()->is('admin/posts') ? 'active' : ''}}">
-                <a href="{{ route('admin.posts.index') }}">
+            <li>
+                <a href="{{ route('admin.posts.index') }}" class="{{ request()->is('admin/posts') ? 'active' : ''}}">
                     <i class="fas fa-newspaper icon-profile-menu-line"></i>
                     <span>Posts</span>
                 </a>
             </li>
-            <li class="{{ request()->is('admin/tags') ? 'active' : ''}}">
-                <a href="{{ route('admin.tags.index') }}">
+            <li>
+                <a href="{{ route('admin.tags.index') }}" class="{{ request()->is('admin/tags') ? 'active' : ''}}">
                     <i class="fas fa-tags icon-profile-menu-line"></i>
                     <span>Tags</span>
                 </a>
             </li>
-            <li class="{{ request()->is('admin/page_views') ? 'active' : ''}}">
-                <a href="{{ route('admin.page_views.index') }}">
+            <li>
+                <a href="{{ route('admin.page_views.index') }}" class="{{ request()->is('admin/page_views') ? 'active' : ''}}">
                     <i class="fas fa-eye icon-profile-menu-line"></i>
                     <span>Page views</span>
                 </a>
             </li>
-            <li class="{{ request()->is('admin/visitors') ? 'active' : ''}}">
-                <a href="{{ route('admin.visitors.index') }}">
+            <li>
+                <a href="{{ route('admin.visitors.index') }}" class="{{ request()->is('admin/visitors') ? 'active' : ''}}">
                     <i class="fas fa-users icon-profile-menu-line"></i>
                     <span>Visitors</span>
                 </a>
             </li>
-            <li class="{{ request()->is('admin/social-shares') ? 'active' : ''}}">
-                <a href="{{ route('admin.social-shares.index') }}">
+            <li>
+                <a href="{{ route('admin.social-shares.index') }}" class="{{ request()->is('admin/social-shares') ? 'active' : ''}}">
                     <i class="fas fa-share-alt icon-profile-menu-line"></i>
                     <span>Shares</span>
                 </a>
