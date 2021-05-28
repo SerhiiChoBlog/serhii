@@ -29,6 +29,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "flatpickr": "^4.6.9",
         "smooth-loader": "^1.0.3",
         "sweetalert2": "^11.0.12",
         "webpack": "^5.36.2"
