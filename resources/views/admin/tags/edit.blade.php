@@ -26,8 +26,12 @@
                         </div>
 
                         <div class="field mt-4">
-                            <button type="submit" class="button is-info">Update</button>
-                            <button type="button" class="button ml-2" onclick="document.getElementById('delete-tag').click()">Delete</button>
+                            <button type="submit" class="button is-info">
+                                <i class="fas fa-save mr-2"></i> Update
+                            </button>
+                            <button type="button" class="button is-danger ml-2" onclick="document.getElementById('delete-tag').click()">
+                                <i class="fas fa-trash mr-2"></i> Delete
+                            </button>
                         </div>
                     </form>
                 </div>

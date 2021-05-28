@@ -122,12 +122,18 @@
 
                 <div class="field">
                     <div class="flying-buttons">
-                        <button type="submit" class="button is-rounded mb-2 px-6 is-success">Save</button>
-                        <a href="{{ route('posts.show', $post) }}" target="_blank" class="button is-rounded px-5 is-info">Preview</a>
+                        <button type="submit" class="button is-rounded mb-2 px-6 is-success">
+                            <i class="fas fa-save mr-2"></i> Save
+                        </button>
+                        <a href="{{ route('posts.show', $post) }}" target="_blank" class="button is-rounded px-5 is-info">
+                            <i class="fas fa-eye mr-2"></i> Preview
+                        </a>
                     </div>
 
                     <div class="buttons">
-                        <button type="button" class="button" onclick="document.getElementById('delete-post').click()">Delete</button>
+                        <button type="button" class="button is-danger" onclick="document.getElementById('delete-post').click()">
+                            <i class="fas fa-trash mr-2"></i> Delete
+                        </button>
                         <label class="checkbox">
                             <input type="checkbox" name="is-published" class="ml-3 mr-1" {{ $post->is_published ? 'checked' : '' }}>
                             <span>publish this post</span>
@@ -171,7 +177,9 @@
                                 >
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="button is-danger">Delete</button>
+                                    <button type="submit" class="button is-danger">
+                                        <i class="fas fa-trash mr-2"></i> Delete
+                                    </button>
                                 </form>
                             </td>
                         </tr>
@@ -190,7 +198,9 @@
                         <span class="file-cta"><span class="file-label">Choose an image...</span></span>
                     </label>
                 </div>
-                <button class="button is-success" type="submit">Load</button>
+                <button class="button is-success" type="submit">
+                    <i class="fas fa-upload mr-2"></i> Load
+                </button>
             </form>
         </div>
     </div>

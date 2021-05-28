@@ -7,7 +7,9 @@
 @section('content')
     <div class="container">
         <div class="buttons mb-5">
-            <a href="{{ route('admin.posts.create') }}" class="button is-info">Create post</a>
+            <a href="{{ route('admin.posts.create') }}" class="button is-info">
+                <i class="fas fa-plus mr-2"></i> Create post
+            </a>
         </div>
 
         @empty($posts->all())
@@ -32,7 +34,11 @@
                         </td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->intro ?? '-' }}</td>
-                        <td><a href="{{ route('admin.posts.edit', $post) }}" class="button is-small is-info">Edit</a></td>
+                        <td>
+                            <a href="{{ route('admin.posts.edit', $post) }}" class="icon has-text-grey-dark" title="Edit post">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
