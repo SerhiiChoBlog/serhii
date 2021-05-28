@@ -10,43 +10,38 @@
     transform: translateZ(0) scale(1, 1)
     opacity: .7
     z-index: 10
-    padding-top: 51px
+    padding-top: 50px
 
     &:hover
         overflow: visible
         width: 180px
         height: 100%
         overflow-y: scroll
+        overflow-x: hidden
         opacity: .95
-
-    &::-webkit-scrollbar
-        width: 0
-        background: transparent
 
     ul
         margin: 7px 0
 
-    .active
-        background-color: brown
+        li
+            a
+                position: relative
+                width: 180px
+                line-height: 40px
+                margin: auto
+                transition: background-color 100ms
+                display: block
+                border-collapse: collapse
+                border-spacing: 0
+                color: #fff
+                font-size: .9em
+                text-decoration: none
 
-    li
+                &:hover
+                    background-color: brown
 
-        &:hover
-            background-color: brown
-
-        a
-            position: relative
-            width: 200px
-            line-height: 40px
-            margin: auto
-            transition: background-color 100ms
-            display: table
-            border-collapse: collapse
-            border-spacing: 0
-            color: #fff
-            font-size: 14px
-            text-decoration: none
-            transform: translateZ(0) scale(1, 1)
+                &.active
+                    background-color: brown
 
     .icon-profile-menu-line
         width: 25px
@@ -54,3 +49,13 @@
         text-align: center
         margin: 0 10px
         vertical-align: middle
+
+@media (min-width: 1690px)
+    .user-sidebar
+        opacity: .95
+        width: 180px
+        height: 100%
+        overflow: hidden
+
+        &:hover
+            overflow: hidden
