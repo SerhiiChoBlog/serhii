@@ -41,7 +41,13 @@
             ],
             setup: function(editor) {
                 editor.on('blur', function () {
-                    window.dispatchEvent(new CustomEvent('postEditorBlurEvent'))
+                    window.dispatchEvent(new CustomEvent('savePost'))
+                });
+                editor.on('keydown', function (e) {
+                    if (e.ctrlKey && e.code === 'KeyS') {
+                        e.preventDefault()
+                        window.dispatchEvent(new CustomEvent('savePost'))
+                    }
                 });
             }
         })

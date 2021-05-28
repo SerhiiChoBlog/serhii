@@ -45,3 +45,4 @@ import PostAutoSave from '../classes/PostAutoSave'
 
     new PostAutoSave(form, postId).listenForSubmitEvent()
 })()
+
