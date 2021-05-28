@@ -29,6 +29,7 @@ class NewPostController extends Controller
         return [
             'countdown' => "{$days_string}{$hours_remaining} hours",
             'title' => $post->title,
+            'image' => $post->image_sm,
         ];
     }
 

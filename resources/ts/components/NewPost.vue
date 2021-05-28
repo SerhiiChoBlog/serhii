@@ -1,6 +1,6 @@
 <template>
-    <div class="next-post-countdown">
-        <img src="/storage/posts/sm/how-custom-events-in-javascript-can-decouple-your-code.jpg" alt="">
+    <div v-if="countdown && title && image" class="next-post-countdown">
+        <img :src="image" :alt="title">
         <div>
             <h2>new post in <b>{{ countdown }}</b></h2>
             <h3>{{ title }}</h3>
@@ -16,6 +16,7 @@ export default defineComponent({
     setup() {
         const countdown = ref<string | null>(null)
         const title = ref<string | null>(null)
+        const image = ref<string | null>(null)
 
         onMounted(() => {
             fetch('/api/new-post')
@@ -24,6 +25,7 @@ export default defineComponent({
                     if (resp) {
                         countdown.value = resp.countdown
                         title.value = resp.title
+                        image.value = resp.image
                     }
                 })
                 .catch(err => console.error(err))
@@ -32,6 +34,7 @@ export default defineComponent({
         return {
             countdown,
             title,
+            image,
         }
     },
 })
