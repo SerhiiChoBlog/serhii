@@ -15,10 +15,10 @@ export default class {
             this.handleEvent()
         })
 
-        window.addEventListener('postEditorBlurEvent', () => this.handleEvent())
+        window.addEventListener('savePost', () => this.handleEvent())
     }
 
-    private handleEvent(): void {
+    public handleEvent(): void {
         const formElements = this.form.elements as EditPostFormElements
         const formData = new FormData()
         const tagsElems = formElements['tags[]'] as HTMLInputElement[] | HTMLInputElement
