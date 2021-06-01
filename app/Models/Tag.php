@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property-read int $id
  * @property string $name
  * @property string $color
+ * @property \Illuminate\Support\Collection<Post> $posts
  */
 class Tag extends Model
 {
@@ -21,7 +22,7 @@ class Tag extends Model
 
     protected $guarded = ['id'];
 
-    public function tags(): BelongsToMany
+    public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class);
     }
