@@ -15,8 +15,8 @@ use Stevebauman\Location\Location;
  * @property string $country
  * @property string $city
  * @property string $code
- * @property \App\Models\SocialShare[] $socialShares
- * @property \App\Models\PageView[] $pageViews
+ * @property \Illuminate\Support\Collection<SocialShare> $socialShares
+ * @property \Illuminate\Support\Collection<PageView> $pageViews
  */
 class Visitor extends Model
 {

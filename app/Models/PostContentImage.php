@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $alt
  * @property string $uri
  * @property string $path
+ * @property Post $post
  */
 class PostContentImage extends Model
 {
