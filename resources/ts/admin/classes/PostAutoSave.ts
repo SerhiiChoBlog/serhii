@@ -7,7 +7,7 @@ export default class {
     public constructor(
         private form: HTMLFormElement,
         private postId: number,
-    ) {}
+    ) { }
 
     public listenForSubmitEvent(): void {
         this.form.addEventListener('submit', e => {
