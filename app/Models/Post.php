@@ -17,10 +17,10 @@ use Illuminate\Support\Collection;
  * @property bool $is_published
  * @property string $image_sm
  * @property string $image_lg
- * @property \App\Models\PostContentImage[] $images
- * @property \App\Models\SocialShare[] $socialShares
- * @property \App\Models\PageView[] $pageViews
- * @property \App\Models\Tag[] $tags
+ * @property \Illuminate\Support\Collection<PostContentImage> $images
+ * @property \Illuminate\Support\Collection<SocialShare> $socialShares
+ * @property \Illuminate\Support\Collection<PageView> $pageViews
+ * @property \Illuminate\Support\Collection<Tag> $tags
  * @property string $pretty_created_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at

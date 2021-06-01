@@ -4,5 +4,4 @@ export default interface EditPostFormElements extends HTMLFormControlsCollection
     image: HTMLInputElement
     'tags[]': HTMLInputElement[]
     'is-published': HTMLInputElement
-    'published-at': HTMLInputElement
 }
