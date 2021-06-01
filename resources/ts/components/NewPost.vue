@@ -2,7 +2,7 @@
     <div v-if="title && image && image !== 'storage/posts/placeholder.jpg'" class="next-post">
         <img :src="image" :alt="title">
         <div>
-            <h2>next post coming soon...</h2>
+            <h2>next post is coming soon...</h2>
             <h3>{{ title }}</h3>
         </div>
     </div>
