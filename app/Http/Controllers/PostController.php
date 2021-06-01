@@ -15,8 +15,7 @@ class PostController extends Controller
 {
     public function index(): View
     {
-        $posts = Post::getPublishedPosts()->toArray();
-//        $posts = Cache::remember(CacheKey::PUBLISHED_POSTS, Ttl::DAY, fn() => Post::getPublishedPosts()->toArray());
+        $posts = Cache::remember(CacheKey::PUBLISHED_POSTS, Ttl::DAY, fn() => Post::getPublishedPosts()->toArray());
         return view('posts.index', compact('posts'));
     }
 

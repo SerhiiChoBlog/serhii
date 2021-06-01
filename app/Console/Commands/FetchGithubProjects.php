@@ -15,7 +15,7 @@ class FetchGithubProjects extends Command
     protected $signature = 'projects:fetch';
     protected $description = 'Fetches github projects and saves them into a database table';
 
-    public function handle(): int
+    public function handle(): void
     {
         try {
             $projects = $this->fetchProjects();
@@ -28,8 +28,6 @@ class FetchGithubProjects extends Command
             $this->error($e->getMessage());
             logger()->error($e);
         }
-
-        return 0;
     }
 
     /**
