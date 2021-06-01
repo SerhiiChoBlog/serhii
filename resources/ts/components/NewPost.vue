@@ -1,8 +1,8 @@
 <template>
-    <div v-if="countdown && title && image" class="next-post-countdown">
+    <div v-if="title && image && image !== 'storage/posts/placeholder.jpg'" class="next-post">
         <img :src="image" :alt="title">
         <div>
-            <h2>new post in <b>{{ countdown }}</b></h2>
+            <h2>next post coming soon...</h2>
             <h3>{{ title }}</h3>
         </div>
     </div>
@@ -23,9 +23,8 @@ export default defineComponent({
                 .then(resp => resp.json())
                 .then((resp: NewPostResponse | null) => {
                     if (resp) {
-                        countdown.value = resp.countdown
                         title.value = resp.title
-                        image.value = resp.image
+                        image.value = resp.image_sm
                     }
                 })
                 .catch(err => console.error(err))
