@@ -4,37 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class NewPostController extends Controller
 {
-    public function __invoke(Request $request): ?array
+    public function __invoke(): ?Post
     {
-        $post = $this->getPost();
-
-        if (!$post) {
-            return null;
-        }
-
-        $date = $post->published_at->timestamp;
-        $remaining = $date - time();
-
-        $days_remaining = floor($remaining / 86400);
-        $hours_remaining = floor(($remaining % 86400) / 3600);
-
-        $days = Str::plural('day', $days_remaining);
-        $days_string = $days_remaining === 0.0 ? '' : "$days_remaining $days ";
-
-        return [
-            'countdown' => "{$days_string}{$hours_remaining} hours",
-            'title' => $post->title,
-            'image' => $post->image_sm,
-        ];
-    }
-
-    public function getPost(): ?Post
-    {
-        return Post::query()->where('is_published', false)->whereNotNull('published_at')->first();
+        return Post::query()
+            ->select('title', 'image_sm', 'created_at')
+            ->where('is_published', false)
+            ->first();
     }
 }

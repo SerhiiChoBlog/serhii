@@ -1,5 +1,6 @@
 export default interface NewPostResponse {
-    countdown: string
     title: string
-    image: string
+    image_sm: string
+    created_at: string
+    pretty_created_at: string
 }
