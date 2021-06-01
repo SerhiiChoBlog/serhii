@@ -84,25 +84,17 @@
                         </div>
 
                         <div class="field mt-5">
-                            <div class="columns">
-                                <div class="column">
-                                    <label for="post-tags" class="label">
-                                        <span class="mr-2">Tags</span>
-                                        <b id="suggestions-target"></b>
-                                    </label>
-                                    <div class="control post-tags">
-                                        <input class="input"
-                                            id="post-tags"
-                                            type="text"
-                                            placeholder="Choose tags"
-                                        >
-                                        <ul class="post-tags__popup is-hidden" id="post-tags-popup"></ul>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <label class="label" for="datetime">Publish at</label>
-                                    <input type="text" name="published-at" id="datetime" class="input" value="{{ $post->published_at }}" readonly>
-                                </div>
+                            <label for="post-tags" class="label">
+                                <span class="mr-2">Tags</span>
+                                <b id="suggestions-target"></b>
+                            </label>
+                            <div class="control post-tags">
+                                <input class="input"
+                                    id="post-tags"
+                                    type="text"
+                                    placeholder="Choose tags"
+                                >
+                                <ul class="post-tags__popup is-hidden" id="post-tags-popup"></ul>
                             </div>
                         </div>
 

@@ -68,13 +68,6 @@ class PostController extends Controller
             $data = array_merge($data, ['image_sm' => $images['sm'], 'image_lg' => $images['lg']]);
         }
 
-        $published_at = $request->get('published-at');
-
-        if ($published_at) {
-            $published_at = date('Y-m-d H:i:s', strtotime($published_at));
-            $data = array_merge($data, compact('published_at'));
-        }
-
         $data['title'] = trim($data['title']);
         $data['intro'] = trim($data['intro']);
 
