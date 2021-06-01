@@ -4,6 +4,7 @@ import ContactModal from './components/ContactModal.vue'
 import Hamburger from './components/Hamburger.vue'
 import SharePostButtons from './components/SharePostButtons.vue'
 import Chapters from './components/Chapters.vue'
+import NewPost from './components/NewPost.vue'
 import smoothLoader from 'smooth-loader'
 import insertTagsForHighlightJs from './modules/insertTagsForHighlightJs'
 
@@ -14,6 +15,7 @@ const app = createApp({
         Hamburger,
         SharePostButtons,
         Chapters,
+        NewPost,
     },
 
     setup() {

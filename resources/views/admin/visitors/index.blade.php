@@ -10,7 +10,6 @@
                     <table class="table is-fullwidth is-hoverable is-striped">
                         <thead>
                             <tr>
-                                <th>#</th>
                                 <th>Views</th>
                                 <th>IP</th>
                                 <th>Country</th>
@@ -21,7 +20,6 @@
                         <tbody>
                             @foreach ($visitors as $visitor)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $visitor->page_views_count }}</td>
                                     <td>{{ $visitor->ip }}</td>
                                     <td>{{ $visitor->country }}</td>
