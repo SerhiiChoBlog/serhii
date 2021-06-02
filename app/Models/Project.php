@@ -34,7 +34,7 @@ class Project extends Model
         return Cache::remember('projects', self::ONE_HOUR_IN_SECONDS, function () {
             return self::query()
             ->select('title', 'language', 'description', 'name')
-            ->orderBy('stars', 'DESC')
+            ->orderBy('created_at', 'DESC')
             ->get()
             ->toArray();
         });
