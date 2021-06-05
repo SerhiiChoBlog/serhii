@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\CacheKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
@@ -31,7 +32,7 @@ class Project extends Model
 
     public static function getCachedProjects(): array
     {
-        return Cache::remember('projects', self::ONE_HOUR_IN_SECONDS, function () {
+        return Cache::rememberForever(CacheKey::PROJECTS, function () {
             return self::query()
             ->select('title', 'language', 'description', 'name')
             ->orderBy('created_at', 'DESC')
