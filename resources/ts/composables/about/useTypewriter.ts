@@ -2,7 +2,7 @@ import { onMounted, ref } from 'vue'
 
 export default () => {
     const typewriter = ref('')
-    const words = ['software developer️ 😎', 'programmer 💻', 'full stack developer 💙', 'PHP developer 🐘']
+    const words = ['software developer️ 😎', 'programmer 💻', 'PHP developer 🐘']
     const wait = 3000
     let text = ''
     let isDeleting = false
