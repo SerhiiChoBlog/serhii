@@ -49,7 +49,7 @@ class PostController extends Controller
      * @param \App\Models\Post $post
      *
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \JsonException
+     * @throws \Exception
      */
     public function update(Request $request, Post $post): RedirectResponse
     {
@@ -75,7 +75,10 @@ class PostController extends Controller
 
         $post->update($data);
 
-        Cache::forget(CacheKey::PUBLISHED_POSTS);
+        if ($post->is_published) {
+            Cache::forget(CacheKey::PUBLISHED_POSTS);
+        }
+
         Cache::forget(CacheKey::POST . $post->slug);
 
         return redirect()->route('admin.posts.edit', $post);
@@ -86,6 +89,10 @@ class PostController extends Controller
         $post->images->each(static function ($image) {
             Storage::delete($image->path);
         });
+
+        if ($post->is_published) {
+            Cache::forget(CacheKey::PUBLISHED_POSTS);
+        }
 
         $post->images()->delete();
         $post->tags()->detach();
