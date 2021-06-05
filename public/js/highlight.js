@@ -958,3 +958,7 @@ className:"number",variants:[{begin:e.C_NUMBER_RE+"[i]",relevance:1
 },e.C_NUMBER_MODE]},{begin:/:=/},{className:"function",beginKeywords:"func",
 end:"\\s*(\\{|$)",excludeEnd:!0,contains:[e.TITLE_MODE,{className:"params",
 begin:/\(/,end:/\)/,keywords:n,illegal:/["']/}]}]}}})());
+
+document.querySelectorAll('pre code').forEach(function (block) {
+    hljs.highlightElement(block)
+})

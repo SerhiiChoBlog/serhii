@@ -18,14 +18,6 @@
 
     <div id="modals"></div>
 
-    <script src="{{ mix('js/app.js') }}" defer></script>
-    <script>
-        if (typeof hljs !== 'undefined') {
-            const blocks = document.querySelectorAll('pre code')
-            blocks.forEach(function (block) {
-                hljs.highlightElement(block)
-            })
-        }
-    </script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
