@@ -21,7 +21,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('page-views', [AdminPageViewController::class, 'index'])->name('page_views.index');
     Route::get('visitors', [AdminVisitorController::class, 'index'])->name('visitors.index');
     Route::resource('posts', AdminPostController::class)->except(['show']);
-    Route::resource('tags', AdminTagController::class)->except(['show']);
+    Route::resource('tags', AdminTagController::class)->except(['show', 'create']);
     Route::post('post-content-images/{post}', [PostContentImageController::class, 'store'])->name('post-content-images.store');
     Route::delete('post-content-images/{image}', [PostContentImageController::class, 'destroy'])->name('post-content-images.delete');
     Route::resource('social-shares', AdminSocialShareController::class)->only(['index']);
