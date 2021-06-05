@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use App\CacheKey;
 use App\Models\Project;
 use Illuminate\Console\Command;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Parsedown;
@@ -24,6 +26,8 @@ class FetchGithubProjects extends Command
 
             Project::query()->truncate();
             Project::query()->insert($projects->toArray());
+
+            Cache::forget(CacheKey::PROJECTS);
 
             $this->info(sprintf('%d projects has been uploaded to a database', $projects->count()));
         } catch (RequestException $e) {
@@ -49,7 +53,7 @@ class FetchGithubProjects extends Command
         });
 
         return $mit_projects->map(function ($project) use ($readme_url) {
-            $readme_url = str_replace('{repo}', $project['name'], $readme_url);
+            $readme_url = str_replace('{repo}', $project['name'], (string) $readme_url);
 
             return [
                 'name' => $project['name'],
