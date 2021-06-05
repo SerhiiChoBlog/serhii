@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1 class="title">Basic information</h1>
-        <h2 class="subtitle">Enter title, tags and short intro for future blog post.</h2>
+        <h2 class="subtitle">Enter title for future blog post.</h2>
 
         <form action="{{ route('admin.posts.store') }}" method="post">
             @csrf
