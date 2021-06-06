@@ -78,7 +78,9 @@
                             <span class="has-text-grey-dark">Open source projects</span>
                         </p>
                         @foreach ($projects as $project)
-                            <a href="{{ route('projects.show', $project['name']) }}" class="panel-block">{{ $project['title'] }}</a>
+                            <a href="{{ route('projects.show', $project['name']) }}" class="panel-block">
+                                <span></span>{{ $project['title'] }}
+                            </a>
                         @endforeach
                     </nav>
 
