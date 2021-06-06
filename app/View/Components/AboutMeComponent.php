@@ -15,12 +15,16 @@ class AboutMeComponent extends Component
         $this->date_diff = $this->getDateDiff();
     }
 
-    public function yearsExperience(): int
+    public function yearsExperience(): string
     {
         $months = (int) $this->date_diff->format('%m');
         $years = (int) $this->date_diff->format('%y');
 
-        if ($months >= 6) {
+        if (in_array($months, [4, 5, 6, 7, 8], true)) {
+            return "$years and a half";
+        }
+
+        if (in_array($months, [9, 10, 11, 12], true)) {
             ++$years;
         }
 

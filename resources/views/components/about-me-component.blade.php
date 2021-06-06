@@ -1,5 +1,5 @@
 @php
-    /** @var int $fullExperience **/
+    /** @var string $fullExperience **/
     /** @var string $yearsExperience **/
 @endphp
 
