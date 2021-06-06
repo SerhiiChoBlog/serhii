@@ -57,11 +57,13 @@
                 b
                     position: absolute
                     left: 3px
-                    color: grey
+                    color: $main-color
                     font-size: 1.3em
-                    display: inline-block
                     padding-right: 8px
                     border-right: 1px solid grey
+
+                    &.long-number
+                        left: -8px
 
                 span
                     position: absolute
@@ -70,7 +72,7 @@
                     height: 4px
                     left: 8px
                     border-radius: 50%
-                    background-color: grey
+                    background-color: $main-color
 
 @media (max-width: $screen-1400)
     .post-hero
