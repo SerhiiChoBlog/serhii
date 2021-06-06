@@ -1,10 +1,12 @@
 <template>
-    <a v-for="chapter in chapters"
-       :key="chapter"
-       class="panel-block"
-       v-html="chapter"
-       @click="scrollToChapter(chapter)"
-    ></a>
+    <div>
+        <a v-for="chapter in chapters"
+           :key="chapter"
+           class="panel-block"
+           v-html="chapter"
+           @click="scrollToChapter(chapter)"
+        ></a>
+    </div>
 </template>
 
 <script lang="ts">
@@ -20,7 +22,18 @@ export default defineComponent({
 
             postContentElements.forEach(elem => {
                 chaptersElements.push(elem)
-                chapters.value.push(elem.innerHTML)
+                let chapterText = elem.innerHTML
+                const numberRegex = /^\d/
+
+                if (numberRegex.test(chapterText)) {
+                    const chapterNum = chapterText.match(numberRegex)
+                    chapterText = chapterText.replace(/^\d\. /, '')
+                    chapterText = `<b>${chapterNum}</b> ${chapterText}`
+                } else {
+                    chapterText = `<span></span> ${chapterText}`
+                }
+
+                chapters.value.push(chapterText)
             })
         })
 
@@ -36,7 +49,3 @@ export default defineComponent({
     },
 })
 </script>
-
-<style scoped>
-
-</style>
