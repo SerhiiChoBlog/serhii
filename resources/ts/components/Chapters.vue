@@ -23,12 +23,15 @@ export default defineComponent({
             postContentElements.forEach(elem => {
                 chaptersElements.push(elem)
                 let chapterText = elem.innerHTML
-                const numberRegex = /^\d/
+                const numberRegex = /^\d+/
 
                 if (numberRegex.test(chapterText)) {
-                    const chapterNum = chapterText.match(numberRegex)
-                    chapterText = chapterText.replace(/^\d\. /, '')
-                    chapterText = `<b>${chapterNum}</b> ${chapterText}`
+                    const chapterNum = chapterText.match(numberRegex)!
+                    chapterText = chapterText.replace(/^\d+\. /, '')
+
+                    chapterText = chapterNum[0].length === 1
+                        ? `<b>${chapterNum[0]}</b> ${chapterText}`
+                        : `<b class="long-number">${chapterNum[0]}</b> ${chapterText}`
                 } else {
                     chapterText = `<span></span> ${chapterText}`
                 }
