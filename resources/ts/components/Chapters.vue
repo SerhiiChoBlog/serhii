@@ -41,7 +41,10 @@ export default defineComponent({
         })
 
         function scrollToChapter(chapter: string): void {
-            const neededElement = chaptersElements.find((el) => el.innerHTML === chapter)!
+            const neededElement = chaptersElements.find((el) => {
+                const elementHtml = el.innerHTML.replace(/^\d+\. /, '')
+                return chapter.includes(elementHtml)
+            })!
             neededElement.scrollIntoView({ behavior: 'smooth' })
         }
 
