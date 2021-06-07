@@ -30,10 +30,10 @@ export default defineComponent({
                     chapterText = chapterText.replace(/^\d+\. /, '')
 
                     chapterText = chapterNum[0].length === 1
-                        ? `<b>${chapterNum[0]}</b> ${chapterText}`
-                        : `<b class="long-number">${chapterNum[0]}</b> ${chapterText}`
+                        ? `<span class="list-number-style">${chapterNum[0]}</span> <span>${chapterText}</span>`
+                        : `<span class="list-number-style long-number">${chapterNum[0]}</span> <span>${chapterText}</span>`
                 } else {
-                    chapterText = `<span></span> ${chapterText}`
+                    chapterText = `<span class="list-dot-style"></span> <span>${chapterText}</span>`
                 }
 
                 chapters.value.push(chapterText)
