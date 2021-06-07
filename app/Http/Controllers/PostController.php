@@ -8,6 +8,7 @@ use App\CacheKey;
 use App\Models\Post;
 use App\Models\Project;
 use App\Models\Visitor;
+use App\Ttl;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -24,7 +25,7 @@ class PostController extends Controller
     {
         $cache_key = CacheKey::POST . $slug;
 
-        $post = Cache::rememberForever($cache_key, function () use ($slug) {
+        $post = Cache::remember($cache_key, Ttl::HOUR, function () use ($slug) {
             $post = Post::query()
                 ->with('tags:id,color,name')
                 ->withCount('pageViews')
