@@ -157,7 +157,6 @@
                 <thead>
                     <tr>
                         <th>Image</th>
-                        <th>Alt</th>
                         <th>URI</th>
                         <th>Delete</th>
                     </tr>
@@ -168,14 +167,13 @@
                             <td>
                                 <a href="{{ $image->uri }}" target="_blank">
                                     <img data-src="{{ asset($image->uri) }}"
-                                        alt="{{ $image->alt }}"
+                                        alt="Post image"
                                         width="100"
                                         class="smooth-loader"
                                         style="border-radius: 4px"
                                     />
                                 </a>
                             </td>
-                            <td>{{ $image->alt }}</td>
                             <td><input type="text" value="{{ $image->uri }}" class="clean-input" disabled></td>
                             <td>
                                 <form action="{{ route('admin.post-content-images.delete', $image) }}"
