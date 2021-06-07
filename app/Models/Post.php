@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\CacheKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * @property-read int $id
@@ -60,6 +62,32 @@ class Post extends Model
         return $this->hasMany(PageView::class, 'slug', 'slug');
     }
 
+    public static function getCachedPublishedPosts(?int $exclude_id = null): array
+    {
+        $posts = Cache::rememberForever(CacheKey::PUBLISHED_POSTS, function () {
+            return self::query()
+                ->with('tags:id,name,color')
+                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
+                ->where('is_published', true)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        });
+
+        if ($exclude_id) {
+            $new_posts = [];
+
+            foreach ($posts as $post) {
+                if ($post['id'] !== $exclude_id) {
+                    $new_posts[] = $post;
+                }
+            }
+
+            $posts = $new_posts;
+        }
+
+        return $posts;
+    }
+
     public function getPrettyCreatedAtAttribute(): string
     {
         if ($this->created_at->isToday()) {
@@ -77,18 +105,5 @@ class Post extends Model
         }
 
         return sprintf("%s %s", $date, $this->created_at->year);
-    }
-
-    /**
-     * @return \Illuminate\Support\Collection<Post>
-     */
-    public static function getPublishedPosts(): Collection
-    {
-        return self::query()
-            ->with('tags:id,name,color')
-            ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
-            ->where('is_published', true)
-            ->orderBy('created_at', 'desc')
-            ->get();
     }
 }
