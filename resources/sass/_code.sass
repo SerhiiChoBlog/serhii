@@ -1,4 +1,7 @@
 pre
+    padding: 0 !important
+    background-color: transparent
+    border-radius: 5px
     position: relative
 
     .code-language-tag
@@ -8,3 +11,15 @@ pre
         right: 10px
         top: 8px
         font-size: 0.7em
+
+code.hljs
+    font-family: 'JetBrainsMono', monospace
+    font-size: .9em
+    border-radius: 5px
+    padding: 25px 30px
+    display: block
+
+@media (max-width: $screen-700)
+    code.hljs
+        padding: 20px
+        font-size: .8em
