@@ -67,7 +67,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="post__sidebar">
-                    <nav class="panel is-shadowless social-links--sidebar">
+                    <nav class="panel is-shadowless social-links--sidebar" style="min-height: 83px">
                         <p class="panel-heading">
                             <span class="has-text-grey-dark">Share this post</span>
                         </p>
