@@ -25,6 +25,7 @@
                 {text: 'C++', value: 'cpp'},
                 {text: 'Go', value: 'go'},
                 {text: 'Bash', value: 'bash'},
+                {text: 'Shell', value: 'shell'},
                 {text: 'Java', value: 'java'},
                 {text: 'Text', value: 'text'},
                 {text: 'Ruby', value: 'ruby'},
