@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
 /**
@@ -70,7 +69,8 @@ class Post extends Model
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
                 ->where('is_published', true)
                 ->orderBy('created_at', 'desc')
-                ->get();
+                ->get()
+                ->toArray();
         });
 
         if ($exclude_id) {
