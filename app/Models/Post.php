@@ -70,7 +70,7 @@ class Post extends Model
             return 'Yesterday';
         }
 
-        $date = $this->created_at->format('d F');
+        $date = $this->created_at->format('j F');
 
         if ($this->created_at->year === now()->year) {
             return $date;
