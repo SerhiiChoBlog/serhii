@@ -10,10 +10,11 @@
         window.tinymce = tinymce
         tinymce.init({
             selector: '#content',
-            plugins: 'codesample fullscreen code image link table lists',
+            plugins: 'codesample fullscreen code image link table lists paste',
             height: '800px',
             toolbar: 'undo redo | styleselect | bold italic | link image table | alignleft aligncenter alignright | numlist bullist | bullist numlist outdent indent | codesample code | fullscreen',
             image_caption: true,
+            paste_as_text: true,
             codesample_languages: [
                 {text: 'C#', value: 'csharp'},
                 {text: 'Json', value: 'json'},
