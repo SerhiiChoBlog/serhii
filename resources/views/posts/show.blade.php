@@ -15,7 +15,7 @@
     <meta property="og:description" content="{{ $post['intro'] }}" />
     <meta property="og:image" content="{{ asset($post['image_lg']) }}">
     <meta property="og:type" content="article">
-    <script src="{{ asset('js/highlight.js') }}"></script>
+    <script src="{{ asset('js/highlight.js') }}" defer></script>
 @endsection
 
 @section('title', $post['title'])
