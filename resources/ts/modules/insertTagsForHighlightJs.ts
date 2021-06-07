@@ -1,5 +1,5 @@
 export default () => {
-    const codeElems = document.querySelectorAll('code.hljs')
+    const codeElems = document.querySelectorAll('code')
 
     codeElems.forEach(block => {
         const preElem = block.parentElement!
