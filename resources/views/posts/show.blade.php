@@ -74,7 +74,7 @@
                         <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
                     </nav>
 
-                    <nav class="panel is-shadowless">
+                    <nav class="panel is-shadowless" style="min-height: 300px">
                         <p class="panel-heading">
                             <span class="has-text-grey-dark">Chapters</span>
                         </p>
