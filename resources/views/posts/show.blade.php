@@ -79,7 +79,8 @@
                         </p>
                         @foreach ($projects as $project)
                             <a href="{{ route('projects.show', $project['name']) }}" class="panel-block">
-                                <span></span>{{ $project['title'] }}
+                                <span class="list-dot-style"></span>
+                                <span>{{ $project['title'] }}</span>
                             </a>
                         @endforeach
                     </nav>
