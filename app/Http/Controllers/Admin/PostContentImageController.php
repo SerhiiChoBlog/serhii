@@ -29,7 +29,6 @@ class PostContentImageController extends Controller
         Image::make($image)->save("$path/$image_name");
 
         $post->images()->create([
-            'alt' => $post->title,
             'uri' => "/storage/posts/content/$image_name",
             'path' => "/public/posts/content/$image_name",
         ]);

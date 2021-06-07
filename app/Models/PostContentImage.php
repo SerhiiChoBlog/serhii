@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @property-read int $id
  * @property int $post_id
- * @property string $alt
  * @property string $uri
  * @property string $path
  * @property Post $post
