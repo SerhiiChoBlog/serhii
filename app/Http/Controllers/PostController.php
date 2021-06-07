@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 
 use App\CacheKey;
 use App\Models\Post;
-use App\Models\Project;
 use App\Models\Visitor;
 use App\Ttl;
 use Illuminate\Contracts\View\View;
@@ -17,8 +16,7 @@ class PostController extends Controller
 {
     public function index(): View
     {
-        $posts = Cache::rememberForever(CacheKey::PUBLISHED_POSTS, fn() => Post::getPublishedPosts()->toArray());
-        return view('posts.index', compact('posts'));
+        return view('posts.index', ['posts' => Post::getCachedPublishedPosts()]);
     }
 
     public function show(string $slug, Request $request): View
@@ -48,10 +46,10 @@ class PostController extends Controller
             $title_len >= 50 && $title_len < 60 => '2.2em',
         };
 
-        $projects = Project::getCachedProjects();
+        $posts = Post::getCachedPublishedPosts($post['id']);
 
         Visitor::incrementPageViews($request->segment(2), 'post', $request->ip());
 
-        return view('posts.show', compact('post', 'title_font_size', 'projects'));
+        return view('posts.show', compact('post', 'title_font_size', 'posts'));
     }
 }

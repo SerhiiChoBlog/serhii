@@ -67,6 +67,13 @@
             </div>
             <div class="col-lg-3">
                 <div class="post__sidebar">
+                    <nav class="panel is-shadowless social-links--sidebar">
+                        <p class="panel-heading">
+                            <span class="has-text-grey-dark">Share this post</span>
+                        </p>
+                        <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
+                    </nav>
+
                     <nav class="panel is-shadowless">
                         <p class="panel-heading">
                             <span class="has-text-grey-dark">Chapters</span>
@@ -74,23 +81,20 @@
                         <chapters />
                     </nav>
 
-                    <nav class="panel is-shadowless">
+                    <nav class="panel-posts">
                         <p class="panel-heading">
-                            <span class="has-text-grey-dark">Open source projects</span>
+                            <span class="has-text-grey-dark">Other posts</span>
                         </p>
-                        @foreach ($projects as $project)
-                            <a href="{{ route('projects.show', $project['name']) }}" class="panel-block">
-                                <span class="list-dot-style"></span>
-                                <span>{{ $project['title'] }}</span>
+
+                        @foreach ($posts as $other_post)
+                            <a href="{{ route('posts.show', $other_post['slug']) }}" class="panel-posts__post">
+                                <img data-src="{{ asset($other_post['image_sm']) }}"
+                                    alt="{{ $other_post['title'] }}"
+                                    class="smooth-loader"
+                                >
+                                <h4 class="panel-posts__post__title">{{ $other_post['title'] }}</h4>
                             </a>
                         @endforeach
-                    </nav>
-
-                    <nav class="panel is-shadowless social-links--sidebar">
-                        <p class="panel-heading">
-                            <span class="has-text-grey-dark">Share this post</span>
-                        </p>
-                        <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
                     </nav>
                 </div>
             </div>
