@@ -19,13 +19,5 @@
     <div id="modals"></div>
 
     <script src="{{ mix('js/app.js') }}"></script>
-    <script>
-        if (typeof hljs !== 'undefined') {
-            const blocks = document.querySelectorAll('pre code')
-            blocks.forEach(function (block) {
-                hljs.highlightElement(block)
-            })
-        }
-    </script>
 </body>
 </html>

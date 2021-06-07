@@ -5,7 +5,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <script src="{{ asset('js/highlight.js') }}"></script>
+    <script src="{{ asset('js/highlight.js') }}" defer></script>
 @endsection
 
 @section('title', $project->title)
