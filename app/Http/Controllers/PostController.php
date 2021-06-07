@@ -34,6 +34,8 @@ class PostController extends Controller
             return $post ? $post->toArray() : null;
         });
 
+        abort_if(!$post['is_published'] && !auth()->check(), 404);
+
         $title_len = strlen($post['title']);
 
         $title_font_size = match (true) {
