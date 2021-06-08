@@ -44,6 +44,9 @@
                                 <img src="{{ asset('storage/icons/light-eye.png') }}" alt="eye icon" width="22">
                                 <span>{{ $post['page_views_count'] }}</span>
                             </span>
+                            @auth
+                                <a href="{{ route('admin.posts.edit', $post['id']) }}" class="button is-small is-rounded ml-4">Edit</a>
+                            @endauth
                         </div>
                     </div>
                     <div class="column">
