@@ -16,7 +16,7 @@ class VisitorController extends Controller
             ->selectRaw('*, LOWER(code) as code')
             ->withCount('pageViews')
             ->limit(50)
-            ->orderBy('page_views_count', 'DESC')
+            ->orderByDesc('page_views_count')
             ->get();
 
         return view('admin.visitors.index', compact('visitors'));
