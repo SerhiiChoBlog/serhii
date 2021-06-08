@@ -77,6 +77,7 @@ class PostController extends Controller
 
         if ($post->is_published) {
             Cache::forget(CacheKey::PUBLISHED_POSTS);
+            Cache::forget(CacheKey::SIDEBAR_POSTS);
         }
 
         Cache::forget(CacheKey::POST . $post->slug);
@@ -92,13 +93,13 @@ class PostController extends Controller
 
         if ($post->is_published) {
             Cache::forget(CacheKey::PUBLISHED_POSTS);
+            Cache::forget(CacheKey::SIDEBAR_POSTS);
         }
 
         $post->images()->delete();
         $post->tags()->detach();
         $post->delete();
 
-        Cache::forget(CacheKey::PUBLISHED_POSTS);
         Cache::forget(CacheKey::POST . $post->slug);
 
         return redirect()->route('admin.posts.index');

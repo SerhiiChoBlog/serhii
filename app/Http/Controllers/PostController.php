@@ -16,7 +16,18 @@ class PostController extends Controller
 {
     public function index(): View
     {
-        return view('posts.index', ['posts' => Post::getCachedPublishedPosts()]);
+        $posts = Cache::rememberForever(CacheKey::PUBLISHED_POSTS, function () {
+            return Post::query()
+                ->with('tags:id,name,color')
+                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
+                ->where('is_published', true)
+                ->orderBy('created_at', 'desc')
+                ->get()
+                ->toArray();
+        });
+
+
+        return view('posts.index', compact('posts'));
     }
 
     public function show(string $slug, Request $request): View
@@ -46,7 +57,7 @@ class PostController extends Controller
             $title_len >= 50 && $title_len < 60 => '2.2em',
         };
 
-        $posts = Post::getCachedPublishedPosts($post['id']);
+        $posts = Post::getPostsForSidebar($post['id']);
 
         Visitor::incrementPageViews($request->segment(2), 'post', $request->ip());
 

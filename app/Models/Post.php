@@ -61,35 +61,28 @@ class Post extends Model
         return $this->hasMany(PageView::class, 'slug', 'slug');
     }
 
-    public static function getCachedPublishedPosts(?int $exclude_id = null): array
+    public static function getPostsForSidebar(int $exclude_id): array
     {
-        $posts = Cache::rememberForever(CacheKey::PUBLISHED_POSTS, function () {
+        return Cache::rememberForever(CacheKey::SIDEBAR_POSTS, function () use ($exclude_id) {
             return self::query()
                 ->with('tags:id,name,color')
-                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
+                ->select('id', 'slug', 'title', 'image_sm')
                 ->where('is_published', true)
-                ->orderBy('created_at', 'desc')
+                ->where('id', '!=', $exclude_id)
+                ->orderByRaw('RAND()')
+                ->limit(5)
                 ->get()
+                ->shuffle()
                 ->toArray();
         });
-
-        if ($exclude_id) {
-            $new_posts = [];
-
-            foreach ($posts as $post) {
-                if ($post['id'] !== $exclude_id) {
-                    $new_posts[] = $post;
-                }
-            }
-
-            $posts = $new_posts;
-        }
-
-        return $posts;
     }
 
     public function getPrettyCreatedAtAttribute(): string
     {
+        if (!$this->created_at) {
+            return '';
+        }
+
         if ($this->created_at->isToday()) {
             return 'Today';
         }
