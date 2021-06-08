@@ -1,5 +1,5 @@
 @php
-    /** @var array[] $posts */
+    /** @var \Illuminate\Support\Collection<\App\Models\Post> $posts */
 @endphp
 
 @extends('layouts.app')
@@ -26,23 +26,27 @@
     <div class="container mt-5">
         <div class="posts">
             @foreach ($posts as $post)
-                <a href="/posts/{{ $post['slug'] }}" class="posts__item">
-                    <img class="posts__item__image" src="{{ asset($post['image_sm']) }}" alt="{{ $post['title'] }}" />
+                <a href="/posts/{{ $post->slug }}" class="posts__item">
+                    <img class="posts__item__image" src="{{ asset($post->image_sm) }}" alt="{{ $post->title }}" />
 
                     <div class="posts__item__content">
-                        <h2 class="posts__item__content__title has-text-black">{{ $post['title'] }}</h2>
-                        <p class="posts__item__content__intro">{{ $post['intro'] }}</p>
+                        <h2 class="posts__item__content__title has-text-black">{{ $post->title }}</h2>
+                        <p class="posts__item__content__intro">{{ $post->intro }}</p>
                         <div class="tags mt-2">
-                            @foreach ($post['tags'] as $tag)
-                                <span class="tag my-0 is-small is-normal is-dark" style="background-color: {{ $tag['color'] }}">
-                                    {{ $tag['name'] }}
+                            @foreach ($post->tags as $tag)
+                                <span class="tag my-0 is-small is-normal is-dark" style="background-color: {{ $tag->color }}">
+                                    {{ $tag->name }}
                                 </span>
                             @endforeach
-                            <span class="has-text-grey">{{ $post['pretty_created_at'] }}</span>
+                            <span class="has-text-grey">{{ $post->pretty_created_at }}</span>
                         </div>
                     </div>
                 </a>
             @endforeach
+
+            <div class="my-6 mx-4">
+                {{ $posts->links('vendor.pagination.default') }}
+            </div>
         </div>
     </div>
 
