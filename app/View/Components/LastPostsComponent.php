@@ -14,6 +14,7 @@ class LastPostsComponent extends Component
     {
         return Cache::rememberForever(CacheKey::LAST_POSTS, function () {
             return Post::query()
+                ->with('tags:name,color')
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
                 ->orderByDesc('created_at')
                 ->limit(3)

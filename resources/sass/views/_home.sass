@@ -27,6 +27,17 @@
         &:nth-child(even)
             background-color: $grey-color
 
+    .last-posts
+        .card-image
+            padding: 0 15px
+            transition: opacity 150ms
+
+            &:hover
+                opacity: .7
+
+            img
+                border-radius: 8px
+
 @media (max-width: $screen-700)
     .home
         &__title
