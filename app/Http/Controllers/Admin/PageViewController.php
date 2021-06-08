@@ -15,7 +15,7 @@ class PageViewController extends Controller
         $views = PageView::query()
             ->selectRaw('slug, COUNT(*) as amount')
             ->groupBy('slug')
-            ->orderBy('amount', 'DESC')
+            ->orderByDesc('amount')
             ->limit(50)
             ->get();
 
