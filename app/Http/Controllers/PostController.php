@@ -22,10 +22,8 @@ class PostController extends Controller
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
                 ->where('is_published', true)
                 ->orderBy('created_at', 'desc')
-                ->get()
-                ->toArray();
+                ->paginate(15);
         });
-
 
         return view('posts.index', compact('posts'));
     }
