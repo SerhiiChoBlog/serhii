@@ -39,7 +39,7 @@
                                       style="background-color: {{ $tag['color'] }}"
                                 >{{ $tag['name'] }}</span>
                             @endforeach
-                            <span class="post__created-at ml-2">{{ $post['pretty_created_at'] }}</span>
+                            <time datetime="{{ $post['created_at'] }}" class="post__created-at ml-2">{{ $post['pretty_created_at'] }}</time>
                             <span class="post__views ml-3">
                                 <img src="{{ asset('storage/icons/light-eye.png') }}" alt="eye icon" width="22">
                                 <span>{{ $post['page_views_count'] }}</span>

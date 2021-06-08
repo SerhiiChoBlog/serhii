@@ -38,7 +38,7 @@
                                     {{ $tag->name }}
                                 </span>
                             @endforeach
-                            <span class="has-text-grey">{{ $post->pretty_created_at }}</span>
+                            <time datetime="{{ $post->created_at }}" class="has-text-grey">{{ $post->pretty_created_at }}</time>
                         </div>
                     </div>
                 </a>
