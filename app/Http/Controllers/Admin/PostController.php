@@ -76,8 +76,7 @@ class PostController extends Controller
         $post->update($data);
 
         if ($post->is_published) {
-            Cache::forget(CacheKey::PUBLISHED_POSTS);
-            Cache::forget(CacheKey::SIDEBAR_POSTS);
+            $this->forgetPostsCache();
         }
 
         Cache::forget(CacheKey::POST . $post->slug);
@@ -92,8 +91,7 @@ class PostController extends Controller
         });
 
         if ($post->is_published) {
-            Cache::forget(CacheKey::PUBLISHED_POSTS);
-            Cache::forget(CacheKey::SIDEBAR_POSTS);
+            $this->forgetPostsCache();
         }
 
         $post->images()->delete();
@@ -103,5 +101,12 @@ class PostController extends Controller
         Cache::forget(CacheKey::POST . $post->slug);
 
         return redirect()->route('admin.posts.index');
+    }
+
+    public function forgetPostsCache(): void
+    {
+        Cache::forget(CacheKey::PUBLISHED_POSTS);
+        Cache::forget(CacheKey::SIDEBAR_POSTS);
+        Cache::forget(CacheKey::LAST_POSTS);
     }
 }
