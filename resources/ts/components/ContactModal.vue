@@ -11,7 +11,7 @@
                         <div class="content">
                             <h3 class="has-text-centered">Contact me</h3>
                             <p>
-                                The fastest way to contact me is writing me an email at
+                                The fastest way to contact me is to send me an email at
                                 <a href="mailto:serhiicho@protonmail.com" class="has-text-info">serhiicho@protonmail.com</a>
                             </p>
 
