@@ -6,7 +6,6 @@
 
 @section('head')
     <script src="{{ asset('js/highlight.js') }}" defer></script>
-    <link rel="stylesheet" href="{{ asset('css/light-theme.css') }}">
 @endsection
 
 @section('title', $project->title)
