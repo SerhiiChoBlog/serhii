@@ -73,11 +73,11 @@ class PostController extends Controller
         $data['title'] = trim($data['title']);
         $data['intro'] = trim($data['intro']);
 
-        $post->update($data);
-
-        if ($post->is_published) {
+        if ($post->is_published || $is_published) {
             $this->forgetPostsCache();
         }
+
+        $post->update($data);
 
         Cache::forget(CacheKey::POST . $post->slug);
 
