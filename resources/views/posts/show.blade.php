@@ -1,5 +1,6 @@
 @php
     /** @var array $post */
+    /** @var \App\Models\Post[] $posts */
     /** @var string $title_font_size */
 @endphp
 
@@ -89,12 +90,12 @@
                         </p>
 
                         @foreach ($posts as $other_post)
-                            <a href="{{ route('posts.show', $other_post['slug']) }}" class="panel-posts__post">
-                                <img data-src="{{ asset($other_post['image_sm']) }}"
-                                    alt="{{ $other_post['title'] }}"
+                            <a href="{{ route('posts.show', $other_post) }}" class="panel-posts__post">
+                                <img data-src="{{ asset($other_post->image_sm) }}"
+                                    alt="{{ $other_post->title }}"
                                     class="smooth-loader"
                                 >
-                                <h4 class="panel-posts__post__title">{{ $other_post['title'] }}</h4>
+                                <h4 class="panel-posts__post__title">{{ $other_post->title }}</h4>
                             </a>
                         @endforeach
                     </nav>

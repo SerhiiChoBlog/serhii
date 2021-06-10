@@ -106,7 +106,6 @@ class PostController extends Controller
     public function forgetPostsCache(): void
     {
         Cache::forget(CacheKey::PUBLISHED_POSTS);
-        Cache::forget(CacheKey::SIDEBAR_POSTS);
         Cache::forget(CacheKey::LAST_POSTS);
     }
 }
