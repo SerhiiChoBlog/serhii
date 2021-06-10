@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\CacheKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Collection;
 
 /**
  * @property-read int $id
@@ -62,20 +61,17 @@ class Post extends Model
         return $this->hasMany(PageView::class, 'slug', 'slug');
     }
 
-    public static function getPostsForSidebar(int $exclude_id): array
+    public static function getPostsForSidebar(int $exclude_id): Collection
     {
-        return Cache::rememberForever(CacheKey::SIDEBAR_POSTS, function () use ($exclude_id) {
-            return self::query()
-                ->with('tags:id,name,color')
-                ->select('id', 'slug', 'title', 'image_sm')
-                ->where('is_published', true)
-                ->where('id', '!=', $exclude_id)
-                ->orderByRaw('RAND()')
-                ->limit(5)
-                ->get()
-                ->shuffle()
-                ->toArray();
-        });
+        return self::query()
+            ->with('tags:id,name,color')
+            ->select('id', 'slug', 'title', 'image_sm')
+            ->where('is_published', true)
+            ->where('id', '!=', $exclude_id)
+            ->orderByRaw('RAND()')
+            ->limit(5)
+            ->get()
+            ->shuffle();
     }
 
     public function getPrettyCreatedAtAttribute(): string

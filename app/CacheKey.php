@@ -9,6 +9,5 @@ abstract class CacheKey
     public const PUBLISHED_POSTS = 'published-posts';
     public const POST = 'post:';
     public const PROJECTS = 'projects';
-    public const SIDEBAR_POSTS = 'sidebar-posts';
     public const LAST_POSTS = 'last-posts';
 }
