@@ -39,6 +39,7 @@ class Post extends Model
     protected $casts = [
         'slug' => 'string',
         'published_at' => 'datetime',
+        'is_published' => 'bool',
     ];
 
     public function tags(): BelongsToMany
