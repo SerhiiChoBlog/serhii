@@ -45,7 +45,7 @@
                                 <span>{{ $post['page_views_count'] }}</span>
                             </span>
                             @auth
-                                <a href="{{ route('admin.posts.edit', $post['id']) }}" class="button is-small is-rounded ml-4">Edit</a>
+                                <a href="{{ route('admin.posts.edit', $post['id']) }}" class="edit-post-button button is-small is-rounded ml-4">Edit</a>
                             @endauth
                         </div>
                     </div>
