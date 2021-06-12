@@ -16,6 +16,7 @@ class LastPostsComponent extends Component
             return Post::query()
                 ->with('tags:name,color')
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
+                ->where('is_published', true)
                 ->orderByDesc('created_at')
                 ->limit(3)
                 ->get()
