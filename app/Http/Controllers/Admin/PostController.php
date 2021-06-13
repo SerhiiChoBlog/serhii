@@ -77,6 +77,10 @@ class PostController extends Controller
             $this->forgetPostsCache();
         }
 
+        if (!$post->is_published && $is_published) {
+            $data = array_merge($data, ['created_at' => now()]);
+        }
+
         $post->update($data);
 
         Cache::forget(CacheKey::POST . $post->slug);
