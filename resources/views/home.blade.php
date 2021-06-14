@@ -16,7 +16,7 @@
     <div class="home">
         <section class="section is-medium">
             <div class="container">
-                <x-about-me-component />
+                <x-nice-to-meet-you-component />
             </div>
         </section>
 
