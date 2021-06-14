@@ -23,11 +23,11 @@
 
                         <div class="tags mt-3">
                             @foreach ($post['tags'] as $tag)
-                                <span class="tag my-0 is-small is-normal is-dark" style="background-color: {{ $tag['color'] }}">
+                                <span class="tag my-0 is-small is-normal is-dark mb-1" style="background-color: {{ $tag['color'] }}">
                                     {{ $tag['name'] }}
                                 </span>
                             @endforeach
-                            <time datetime="{{ $post['created_at'] }}" class="has-text-grey">{{ $post['pretty_created_at'] }}</time>
+                            <time datetime="{{ $post['created_at'] }}" class="has-text-grey mb-1">{{ $post['pretty_created_at'] }}</time>
                         </div>
                     </div>
                 </div>
