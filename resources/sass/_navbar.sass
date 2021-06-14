@@ -10,23 +10,22 @@
         &:hover
             color: inherit
 
-        &.has-stripe
-            &::before
-                content: ""
-                height: 6px
-                position: absolute
-                left: 10px
-                right: 10px
-                bottom: 5px
-                background-color: $main-color
-                opacity: 0
-                transition: opacity 200ms
-                border-radius: 8px
+        &::before
+            content: ""
+            height: 6px
+            position: absolute
+            left: 10px
+            right: 10px
+            bottom: 5px
+            background-color: $main-color
+            opacity: 0
+            transition: opacity 200ms
+            border-radius: 8px
 
-            &:hover,
-            &.is-active
-                &::before
-                    opacity: 1
+        &:hover,
+        &.is-active
+            &::before
+                opacity: 1
 
     .navbar-burger
         span
