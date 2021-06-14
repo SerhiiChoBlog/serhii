@@ -21,7 +21,7 @@ class PostController extends Controller
 
     public function index(): View
     {
-        $posts = Post::query()->with(['tags', 'images'])->orderByDesc('created_at')->get();
+        $posts = Post::query()->with(['tags', 'images', 'pageViews', 'socialShares'])->orderByDesc('created_at')->get();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -76,7 +76,6 @@ class PostController extends Controller
         if ($post->is_published || $is_published) {
             $this->forgetPostsCache();
         }
-
         if (!$post->is_published && $is_published) {
             $data = array_merge($data, ['created_at' => now()]);
         }
