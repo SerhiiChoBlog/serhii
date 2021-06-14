@@ -7,7 +7,7 @@
     <meta name="author" content="Serhii Cho">
     <meta name="description" content="@yield('description', "Serhii Cho is a fullstack developer with lots of experience creating web applications and programs written in different languages. Here you can find Serhii's open source projects and blog posts on software development topics.")">
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
-    <title>@yield('title') | {{ config('app.name', 'Serhii API') }}</title>
+    <title>@yield('title'){{ request()->is('/') ? '' : ' | ' }}{{ config('app.name', 'Serhii API') }}</title>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @yield('head')
 </head>

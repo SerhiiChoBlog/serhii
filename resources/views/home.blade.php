@@ -16,7 +16,12 @@
     <div class="home">
         <section class="section is-medium">
             <div class="container">
-                <x-nice-to-meet-you-component />
+                <div>
+                    <h2 class="home__title mb-6 has-text-centered">Nice to meet you</h2>
+                    <p class="home__subtitle">
+                        <x-nice-to-meet-you-component />
+                    </p>
+                </div>
             </div>
         </section>
 

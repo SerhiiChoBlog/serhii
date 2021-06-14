@@ -9,7 +9,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <h1 class="title">About me</h1>
-                <h2 class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat impedit iste maiores?</h2>
+                <h2 class="subtitle"><x-nice-to-meet-you-component /></h2>
             </div>
         </div>
     </section>
