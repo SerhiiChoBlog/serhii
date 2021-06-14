@@ -46,8 +46,8 @@
                             </td>
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->intro ?? '-' }}</td>
-                            <td>{{ $post->socialShares->count() }}</td>
-                            <td>{{ $post->pageViews->count() }}</td>
+                            <td>{{ $post->social_shares_count }}</td>
+                            <td>{{ $post->page_views_count }}</td>
                             <td>
                                 <a href="{{ route('posts.show', $post) }}" class="button is-small" title="View post">
                                     <i class="fas fa-eye"></i>

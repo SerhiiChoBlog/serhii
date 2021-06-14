@@ -21,7 +21,13 @@ class PostController extends Controller
 
     public function index(): View
     {
-        $posts = Post::query()->with(['tags', 'images', 'pageViews', 'socialShares'])->orderByDesc('created_at')->get();
+        $posts = Post::query()
+            ->with(['tags', 'images'])
+            ->withCount('pageViews')
+            ->withCount('socialShares')
+            ->orderByDesc('created_at')
+            ->get();
+
         return view('admin.posts.index', compact('posts'));
     }
 
