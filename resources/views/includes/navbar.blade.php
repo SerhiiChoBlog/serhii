@@ -17,7 +17,7 @@
                 @auth
                     <a href="{{ route('admin.posts.index') }}" class="navbar-item {{ request()->is('/admin/posts') ? 'is-active' : '' }}">Admin</a>
                 @endauth
-                <a href="{{ route('home') }}" class="navbar-item {{ request()->is('posts') ? '/' : '' }}">Home</a>
+                <a href="{{ route('home') }}" class="navbar-item {{ request()->is('/') ? 'is-active' : '' }}">Home</a>
                 <a href="{{ route('posts.index') }}" class="navbar-item {{ request()->is('posts') ? 'is-active' : '' }}">Blog</a>
                 <a href="{{ route('projects.index') }}" class="navbar-item {{ request()->is('projects') ? 'is-active' : '' }}">Open Source</a>
                 <a href="{{ route('about-me') }}" class="navbar-item {{ request()->is('/about') ? 'is-active' : '' }}">About me</a>

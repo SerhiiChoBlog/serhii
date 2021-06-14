@@ -6,7 +6,7 @@ use DateInterval;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class AboutMeComponent extends Component
+class NiceToMeetYouComponent extends Component
 {
     private DateInterval $date_diff;
 
@@ -46,6 +46,6 @@ class AboutMeComponent extends Component
 
     public function render(): View
     {
-        return view('components.about-me-component');
+        return view('components.nice-to-meet-you-component');
     }
 }
