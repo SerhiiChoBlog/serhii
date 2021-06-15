@@ -18,8 +18,15 @@
         <section class="section is-medium">
             <div class="container">
                 <div class="content">
+                    <h2>Who am I?</h2>
                     <p><x-nice-to-meet-you-component /></p>
-                    <p>I web development, my priorities are <strong>code readability</strong> and <strong>performance</strong>. In my free time, I'm writing posts for my blog on programming related subjects.</p>
+                    <p>I like working every day except Sundays. I do most of my work from home.</p>
+
+                    <h2>My way of working</h2>
+                    <p>Like every other person on the planet, I hate slow web apps and sites. In web development, my priorities are <strong>code readability</strong> and <strong>performance</strong>. You can check my post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites">"5 techniques that I use for building fast websites"</a> where I'm talking about it in details.</p>
+
+                    <h2>Blog</h2>
+                    <p>In my free from coding time, I enjoy writing posts for my <a href="/posts" target="_blank" title="Link to a blog">blog</a> on programming related subjects.</p>
                 </div>
             </div>
         </section>
