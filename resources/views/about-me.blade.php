@@ -9,7 +9,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <h1 class="title">About me</h1>
-                <h2 class="subtitle"></h2>
+                <h2 class="subtitle">Hi, my name is Serhii, I live in Kharkiv, Ukraine. Thanks for coming to my little, cozy place. Down below, you can find technologies that I'm working with and other information that might help you to know more about me.</h2>
             </div>
         </div>
     </section>
