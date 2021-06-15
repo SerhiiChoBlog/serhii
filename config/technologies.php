@@ -29,7 +29,7 @@ return [
         [
             'image' => 'storage/tools/vue.png',
             'title' => 'Vue',
-            'content' => "I've been using Vue along with the VueRouter and Vuex mostly for building Single Page Applications.",
+            'content' => "I've been using Vue along with the VueRouter and Vuex mostly for building Single Page Applications. I enjoy working with Vue 3 with TypeScript and composition API.",
         ],
         [
             'image' => 'storage/tools/wordpress.png',
