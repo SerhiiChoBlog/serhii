@@ -15,6 +15,12 @@
         animation: blink 1100ms linear infinite
         animation-timing-function: step-end
 
+.home,
+.about-me
+    section.section
+        &:nth-child(even)
+            background-color: $grey-color
+
 .home
     &__title
         font-size: 2em
@@ -22,10 +28,6 @@
 
     &__subtitle
         font-size: 1.4em
-
-    section.section
-        &:nth-child(even)
-            background-color: $grey-color
 
     .last-posts
         .card-image

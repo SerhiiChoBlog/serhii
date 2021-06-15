@@ -20,6 +20,7 @@
                     <h2 class="home__title mb-6 has-text-centered">Nice to meet you</h2>
                     <p class="home__subtitle">
                         <x-nice-to-meet-you-component />
+                        <a href="{{ route('about-me') }}">Read mode about me...</a>
                     </p>
                 </div>
             </div>
