@@ -29,12 +29,12 @@ return [
         [
             'image' => 'storage/tools/vue.png',
             'title' => 'Vue',
-            'content' => "I've been using Vue along with the VueRouter and Vuex mostly for building Single Page Applications. This site is also written with Vue 3 as an SPA with TypeScript.",
+            'content' => "I've been using Vue along with the VueRouter and Vuex mostly for building Single Page Applications.",
         ],
         [
             'image' => 'storage/tools/wordpress.png',
             'title' => 'WordPress',
-            'content' => "As I'm working from home, I do a lot of WordPress development for a company from Europe. Mostly we are building plugins for syncing database, data collection and web hooks.",
+            'content' => "Mostly I'm building plugins for business sites, that need integration of payment systems like Mollie, Wayforpay and Bitpay, plugins for Megaplan CRM and Exact Online, web hooks and other functionalities.",
         ],
     ],
 
