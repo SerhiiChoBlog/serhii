@@ -53,6 +53,7 @@ class PostController extends Controller
             $title_len >= 30 && $title_len < 40 => '2.8em',
             $title_len >= 40 && $title_len < 50 => '2.4em',
             $title_len >= 50 && $title_len < 60 => '2.2em',
+            $title_len >= 60 => '2em',
         };
 
         $posts = Post::getPostsForSidebar($post['id']);
