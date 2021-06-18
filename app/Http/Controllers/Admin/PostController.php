@@ -76,6 +76,8 @@ class PostController extends Controller
             $data = array_merge($data, ['image_sm' => $images['sm'], 'image_lg' => $images['lg']]);
         }
 
+        $data = array_merge($data, Str::slug($request->get('title')));
+
         $data['title'] = trim($data['title']);
         $data['intro'] = trim($data['intro']);
 
