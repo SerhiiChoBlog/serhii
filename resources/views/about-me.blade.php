@@ -22,7 +22,7 @@
                     <p><x-nice-to-meet-you-component /> I do most of my work out from home.</p>
 
                     <h2>My way of working</h2>
-                    <p>Like every other person on the planet, I hate slow web apps and sites. In web development, my priorities are <strong>code readability</strong> and <strong>performance</strong>. You can check my post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites">"5 techniques that I use for building fast websites"</a> where I'm talking about it in details.</p>
+                    <p>Like every other person, I hate slow web apps and sites. In web development, my priorities are <strong>code readability</strong> and <strong>performance</strong>. You can check my post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites">"5 techniques that I use for building fast websites"</a> where I'm talking about it in details.</p>
 
                     <h2>Blog</h2>
                     <p>In my free from coding time, I enjoy writing posts for my <a href="/posts" target="_blank" title="Link to a blog">blog</a> on programming related subjects and learn new things. I mostly share what I've learned along the way and things that can help other developers strengthen their skills.</p>
