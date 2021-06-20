@@ -49,6 +49,4 @@
             </div>
         </div>
     </div>
-
-    <new-post />
 @endsection
