@@ -16,7 +16,7 @@ class PostController extends Controller
 {
     public function index(): View
     {
-        $posts = Cache::rememberForever(CacheKey::PUBLISHED_POSTS, function () {
+        $posts = Cache::remember(CacheKey::PUBLISHED_POSTS, Ttl::DAY, function () {
             return Post::query()
                 ->with('tags:id,name,color')
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
@@ -32,7 +32,7 @@ class PostController extends Controller
     {
         $cache_key = CacheKey::POST . $slug;
 
-        $post = Cache::remember($cache_key, Ttl::HOUR, function () use ($slug) {
+        $post = Cache::remember($cache_key, Ttl::DAY, function () use ($slug) {
             $post = Post::query()
                 ->with('tags:id,color,name')
                 ->withCount('pageViews')
