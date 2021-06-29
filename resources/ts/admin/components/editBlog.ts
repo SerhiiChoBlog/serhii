@@ -46,3 +46,16 @@ import PostSave from '../classes/PostSave'
     new PostSave(form, postId).listenForSubmitEvent()
 })()
 
+;(function ListenForSavingEventOnWholePage() {
+    const form = document.getElementById('edit-post-form') as HTMLFormElement
+
+    if (!form)
+        return
+
+    window.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.code === 'KeyS') {
+            e.preventDefault()
+            window.dispatchEvent(new CustomEvent('savePost'))
+        }
+    })
+})()
