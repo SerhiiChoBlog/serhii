@@ -61,7 +61,15 @@ export default class {
 
     private showLoading(show: boolean): void {
         const btn = this.form.querySelector<HTMLButtonElement>('button[type=submit]')!
-        show ? btn.classList.add('is-loading') : btn.classList.remove('is-loading')
+
+        if (show) {
+            btn.classList.add('is-loading')
+            btn.classList.add('is-warning')
+            return
+        }
+
+        btn.classList.remove('is-loading')
+        btn.classList.remove('is-warning')
     }
 
     private updatePreviewLink(newHref: string): void {
