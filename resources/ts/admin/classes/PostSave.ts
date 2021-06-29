@@ -48,9 +48,10 @@ export default class {
     }
 
     private sendData(formData: FormData): void {
-        axios.post(`/admin/posts/${this.postId}`, formData, {
+        axios.post<string>(`/admin/posts/${this.postId}`, formData, {
             headers: { 'content-type': 'multipart/form-data' },
         })
+            .then(res => this.updatePreviewLink(res.data))
             .catch(err => {
                 console.error(err)
                 SweetAlert.fire('Error', err, 'error')
@@ -61,5 +62,14 @@ export default class {
     private showLoading(show: boolean): void {
         const btn = this.form.querySelector<HTMLButtonElement>('button[type=submit]')!
         show ? btn.classList.add('is-loading') : btn.classList.remove('is-loading')
+    }
+
+    private updatePreviewLink(newHref: string): void {
+        const btn = document.getElementById('preview-the-post') as HTMLAnchorElement
+
+        if (!btn)
+            return
+
+        btn.href = newHref
     }
 }
