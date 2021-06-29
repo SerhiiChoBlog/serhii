@@ -132,7 +132,11 @@
                         <button type="submit" class="button is-rounded mb-2 px-6 is-success">
                             <i class="fas fa-save mr-2"></i> Save
                         </button>
-                        <a href="{{ route('posts.show', $post) }}" target="_blank" class="button is-rounded px-5 is-info">
+                        <a href="{{ route('posts.show', $post) }}"
+                            target="_blank"
+                            class="button is-rounded px-5 is-info"
+                            id="preview-the-post"
+                        >
                             <i class="fas fa-eye mr-2"></i> Preview
                         </a>
                     </div>

@@ -54,10 +54,10 @@ class PostController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Post $post
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
+     * @return string
+     * @throws \JsonException
      */
-    public function update(Request $request, Post $post): RedirectResponse
+    public function update(Request $request, Post $post): string
     {
         $post->tags()->detach();
 
@@ -84,6 +84,7 @@ class PostController extends Controller
         if ($post->is_published || $is_published) {
             $this->forgetPostsCache();
         }
+
         if (!$post->is_published && $is_published) {
             $data = array_merge($data, ['created_at' => now()]);
         }
@@ -92,7 +93,7 @@ class PostController extends Controller
 
         Cache::forget(CacheKey::POST . $post->slug);
 
-        return redirect()->route('admin.posts.edit', $post);
+        return route('posts.show', $post);
     }
 
     public function destroy(Post $post): RedirectResponse
