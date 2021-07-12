@@ -32,6 +32,11 @@ return [
             'content' => "I've been using Vue along with the VueRouter and Vuex mostly for building Single Page Applications. I enjoy working with Vue 3 with TypeScript and composition API.",
         ],
         [
+            'image' => 'storage/tools/react.png',
+            'title' => 'React',
+            'content' => "React.js with TypeScript is another JavaScript framework that I'm using from time to time. Usually I'm reaching for it because it has libraries that Vue doesn't have. One of those amazing libraries is react-pdf.",
+        ],
+        [
             'image' => 'storage/tools/wordpress.png',
             'title' => 'WordPress',
             'content' => "Mostly I'm building plugins for business sites, that need integration of payment systems like Mollie, Wayforpay and Bitpay, plugins for Megaplan CRM and Exact Online, web hooks and other functionalities.",
