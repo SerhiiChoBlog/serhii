@@ -17,7 +17,12 @@ return [
             'image' => 'storage/tools/go.png',
             'title' => 'Go',
             'content' => "I've started learning Go because I needed fast and strongly typed language for a couple of my projects. Go was a perfect match for it.",
-        ]
+        ],
+        [
+            'image' => 'storage/tools/sql.png',
+            'title' => 'SQL',
+            'content' => "SQL is a must have language for building backend applications with SQL-databases. I can write all the CRUD operations including joins and unions.",
+        ],
     ],
 
     'frameworks' => [
