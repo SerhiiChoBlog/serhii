@@ -25,49 +25,6 @@ $subtitle-size: 1.5rem
         font-family: 'Lato', serif
         font-size: 1.3em
 
-        blockquote
-            margin: 2rem 0
-            padding: 1.5em
-            background-color: $blockquote-color
-            position: relative
-            border-left: none
-            border-radius: 30px
-            margin-left: 140px
-            font-size: .9em
-
-            p
-                &:last-of-type
-                    margin-bottom: 0
-
-            img,
-            &::before
-                margin: 0
-                position: absolute
-                width: 100px
-                height: 100px
-                border-radius: 50%
-                top: 50%
-                left: -130px
-                transform: translateY(-50%)
-
-            &::before
-                content: ""
-                background-color: $blockquote-color
-                box-shadow: 6px 5px 8px #1e1e1e33
-
-            &::after
-                content: ""
-                display: block
-                position: absolute
-                top: 50%
-                left: -15px
-                width: 0
-                height: 0
-                border-top: 20px solid transparent
-                border-bottom: 30px solid transparent
-                border-right: 20px solid $blockquote-color
-                transform: translateY(-50%)
-
         h4
             margin: 1.2em 0
 
@@ -103,7 +60,8 @@ $subtitle-size: 1.5rem
 
                 strong
                     color: inherit
-        img
+        > img,
+        > p > img
             border-radius: 4px
             margin: 2em auto 0 auto
 
