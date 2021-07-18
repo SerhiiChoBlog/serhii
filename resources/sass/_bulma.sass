@@ -28,22 +28,45 @@ $subtitle-size: 1.5rem
         blockquote
             margin: 2rem 0
             padding: 1.5em
-            background-color: #e9ecef
+            background-color: $blockquote-color
             position: relative
             border-left: none
-            border-radius: 6px
+            border-radius: 30px
+            margin-left: 140px
+            font-size: .9em
+
+            p
+                &:last-of-type
+                    margin-bottom: 0
+
+            img,
+            &::before
+                margin: 0
+                position: absolute
+                width: 100px
+                height: 100px
+                border-radius: 50%
+                top: 50%
+                left: -130px
+                transform: translateY(-50%)
+
+            &::before
+                content: ""
+                background-color: $blockquote-color
+                box-shadow: 6px 5px 8px #1e1e1e33
 
             &::after
                 content: ""
                 display: block
                 position: absolute
-                bottom: -1rem
-                left: 2rem
+                top: 50%
+                left: -15px
                 width: 0
                 height: 0
-                border-left: 30px solid transparent
-                border-right: 30px solid transparent
-                border-top: 20px solid #e9ecef
+                border-top: 20px solid transparent
+                border-bottom: 30px solid transparent
+                border-right: 20px solid $blockquote-color
+                transform: translateY(-50%)
 
         h4
             margin: 1.2em 0
