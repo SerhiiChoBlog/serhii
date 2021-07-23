@@ -29,6 +29,9 @@
                         <div class="button is-rounded is-info contact-me-button">Contact me</div>
                     </contact-modal>
                 </div>
+                <div class="navbar-item">
+                    <theme-switch theme="{{ request()->cookie('theme') ?? 'light' }}" />
+                </div>
             </div>
         </div>
     </div>

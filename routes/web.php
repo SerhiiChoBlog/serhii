@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\{AboutMeController, HomeController, PostController, ProjectController};
-use App\Http\Controllers\Admin\{DashboardController as AdminDashboardController,
+use App\Http\Controllers\{AboutMeController, HomeController, PostController, ProjectController, ThemeController};
+use App\Http\Controllers\Admin\{
+    DashboardController as AdminDashboardController,
     PageViewController as AdminPageViewController,
     PostContentImageController,
     PostController as AdminPostController,
     SocialShareController as AdminSocialShareController,
     TagController as AdminTagController,
-    VisitorController as AdminVisitorController,};
+    VisitorController as AdminVisitorController,
+};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +39,5 @@ Route::prefix('projects')->group(function () {
     Route::get('/', [ProjectController::class, 'index'])->name('projects.index');
     Route::get('{project:name}', [ProjectController::class, 'show'])->name('projects.show');
 });
+
+Route::get('theme', ThemeController::class);
