@@ -3,7 +3,7 @@
     display: inline-block
     padding: 3px
     background-color: transparent
-    color: $main-color
+    color: #fbac13
     border: 0
     outline: 0
     cursor: pointer
@@ -14,7 +14,7 @@
     height: 35px
 
     .dark-theme &
-        color: #fbac13
+        color: $main-color
 
     &-wrap
         transform: translateY(4px)
@@ -50,17 +50,17 @@
 
     &__circle
         transition: transform 500ms ease-out
-        transform: translateX(-15%)
+        transform: translateX(0)
 
         .dark-theme &
-            transform: translateX(0)
+            transform: translateX(-15%)
 
     &__sun
         transition: transform 600ms cubic-bezier(0.27, 0.68, 0.6, 1.35)
-        transform: rotate(0.5turn)
+        transform: rotate(0turn)
 
         .dark-theme &
-            transform: rotate(0turn)
+            transform: rotate(0.5turn)
 
 @media (max-width: $screen-1000)
     .theme-toggle

@@ -1,7 +1,7 @@
 <template>
     <div class="theme-toggle-wrap">
         <button class="theme-toggle"
-            :aria-label="`Switch to ${currentTheme} theme`"
+            :aria-label="`Switch to ${switchTo} theme`"
             @click="switchTheme"
         >
             <svg
@@ -45,15 +45,17 @@ export default defineComponent({
 
     setup({ theme }) {
         const currentTheme = ref<Theme>(theme)
+        const switchTo = ref<Theme>(theme === 'light' ? 'dark' : 'light')
 
         function switchTheme(): void {
-            axios
-                .get('/theme')
+            axios.get('/theme')
                 .then((res) => {
                     if (currentTheme.value === 'light') {
+                        switchTo.value = 'light'
                         currentTheme.value = 'dark'
                         document.body.classList.add('dark-theme')
                     } else {
+                        switchTo.value = 'dark'
                         currentTheme.value = 'light'
                         document.body.classList.remove('dark-theme')
                     }
@@ -63,7 +65,7 @@ export default defineComponent({
 
         return {
             switchTheme,
-            currentTheme,
+            switchTo,
         }
     },
 })
