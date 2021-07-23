@@ -1,0 +1,61 @@
+.dark-mode-toggle-wrap
+    transform: translateY(4px)
+
+.theme-toggle
+    position: relative
+    display: block
+    padding: 3px
+    background-color: transparent
+    color: $main-color
+    border: 0
+    outline: 0
+    cursor: pointer
+    opacity: .9
+    border-radius: 100px
+    transition: background 100ms ease-in-out
+    width: 35px
+    height: 35px
+
+    .dark-theme &
+        color: #fbac13
+
+    &:hover,
+    &:focus-visible
+        background-color: hsl(0 0% 50% / 0.3)
+
+    &::after
+        content: attr(aria-label)
+        position: absolute
+        width: max-content
+        font-weight: 700
+        font-size: 0.8rem
+        top: calc(100% + 10px)
+        left: 50%
+        right: 0
+        opacity: 0
+        transform: translateX(-50%) scale(0)
+        transform-origin: top
+
+    &:hover::after,
+    &:focus-visible::after
+        transform: translateX(-50%) scale(1)
+        opacity: 1
+        transition: all 100ms ease-in-out
+
+    .toggle-circle,
+    .toggle-sun
+        transform-origin: center
+
+    .toggle-circle
+        transition: transform 500ms ease-out
+        transform: translateX(-15%)
+
+        .dark-theme &
+            transform: translateX(0)
+
+    .toggle-sun
+        transition: transform 600ms cubic-bezier(0.27, 0.68, 0.6, 1.35)
+        transform: rotate(0.5turn)
+
+        .dark-theme &
+            transform: rotate(0turn)
