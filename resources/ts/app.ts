@@ -6,6 +6,7 @@ import SharePostButtons from './components/SharePostButtons.vue'
 import Chapters from './components/Chapters.vue'
 import smoothLoader from 'smooth-loader'
 import insertTagsForHighlightJs from './modules/insertTagsForHighlightJs'
+import ThemeSwitch from './components/ThemeSwitch.vue'
 
 const app = createApp({
     components: {
@@ -14,6 +15,7 @@ const app = createApp({
         Hamburger,
         SharePostButtons,
         Chapters,
+        ThemeSwitch,
     },
 
     setup() {
