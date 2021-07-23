@@ -1,9 +1,6 @@
-.dark-mode-toggle-wrap
-    transform: translateY(4px)
-
 .theme-toggle
     position: relative
-    display: block
+    display: inline-block
     padding: 3px
     background-color: transparent
     color: $main-color
@@ -18,6 +15,11 @@
 
     .dark-theme &
         color: #fbac13
+
+    &-wrap
+        transform: translateY(4px)
+        display: flex
+        align-items: center
 
     &:hover,
     &:focus-visible
@@ -42,20 +44,33 @@
         opacity: 1
         transition: all 100ms ease-in-out
 
-    .toggle-circle,
-    .toggle-sun
+    &__circle,
+    &__sun
         transform-origin: center
 
-    .toggle-circle
+    &__circle
         transition: transform 500ms ease-out
         transform: translateX(-15%)
 
         .dark-theme &
             transform: translateX(0)
 
-    .toggle-sun
+    &__sun
         transition: transform 600ms cubic-bezier(0.27, 0.68, 0.6, 1.35)
         transform: rotate(0.5turn)
 
         .dark-theme &
             transform: rotate(0turn)
+
+@media (max-width: $screen-1000)
+    .theme-toggle
+        &::after
+            transform: scale(1)
+            opacity: 1
+            left: 47px
+            top: 7px
+            font-size: 1.2em
+
+        &:hover::after,
+        &:focus-visible::after
+            transform: scale(1)
