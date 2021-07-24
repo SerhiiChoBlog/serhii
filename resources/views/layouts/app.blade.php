@@ -11,7 +11,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @yield('head')
 </head>
-<body>
+<body class="{{ request()->cookie('theme') === 'dark' ? 'dark-theme' : '' }}">
     <div id="app">
         @yield('content')
     </div>

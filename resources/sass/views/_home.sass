@@ -19,7 +19,10 @@
 .about-me
     section.section
         &:nth-child(even)
-            background-color: $grey-color
+            background-color: $gray
+
+            .dark-theme &
+                background-color: $dark-theme-gray
 
 .home
     &__title
@@ -30,6 +33,13 @@
     &__subtitle
         font-family: 'Lato', serif
         font-size: 1.4em
+
+        a
+            .dark-theme &
+                color: $dark-theme-link !important
+
+                &:hover
+                    color: $dark-theme-link-hover !important
 
     .last-posts
         font-family: 'Lato', serif

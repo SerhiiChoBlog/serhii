@@ -20,6 +20,9 @@
 
         <div class="navbar-menu" id="navbar-menu">
             <div class="navbar-end">
+                <div class="navbar-item mr-3">
+                    <theme-switch theme="{{ request()->cookie('theme') ?? 'light' }}" />
+                </div>
                 <a href="{{ route('home') }}" class="navbar-item has-stripe {{ request()->is('/') ? 'is-active' : '' }}">Home</a>
                 <a href="{{ route('posts.index') }}" class="navbar-item has-stripe {{ request()->is('posts') ? 'is-active' : '' }}">Blog</a>
                 <a href="{{ route('projects.index') }}" class="navbar-item has-stripe {{ request()->is('projects') ? 'is-active' : '' }}">Open Source</a>

@@ -13,7 +13,10 @@
         margin-bottom: 7px
 
         &:hover
-            background-color: #eee
+            background-color: $gray
+
+            .dark-theme &
+                background-color: $dark-theme-gray
 
         &__image
             width: 260px
@@ -33,7 +36,10 @@
 
             &__intro
                 font-size: 1.1em
-                color: #555
+                color: $font-gray
+
+                .dark-theme &
+                    color: $dark-theme-font-gray
 
 @media (max-width: $screen-700)
     .posts
