@@ -1,5 +1,6 @@
 .dark-theme
     .title,
+    .subtitle,
     .has-text-black,
     .has-text-grey-dark
         color: $dark-theme-font !important
@@ -14,15 +15,25 @@
     .panel-block:hover
         background-color: $dark-theme-gray
 
+    .is-light
+        .navbar
+            background-color: $dark-theme-gray !important
+
+        .navbar-item,
+        .navbar-link
+            color: $dark-theme-font
+
     .content
         h1, h2, h3, h4, h5,
         p strong,
-        p code
+        p code,
+        ul li code
             color: $dark-theme-font
 
         blockquote,
         blockquote::before,
-        p code
+        p code,
+        ul li code
             background-color: $dark-theme-gray
 
         blockquote::after
