@@ -42,9 +42,6 @@ $subtitle-size: 1.5rem
             margin-bottom: 1.2em
             line-height: 1.7
 
-            strong
-                color: #444
-
             code
                 background-color: #e8e8e8
                 color: black
@@ -54,6 +51,12 @@ $subtitle-size: 1.5rem
             a
                 color: #3460b3
                 text-decoration: underline
+
+                .dark-theme &
+                    color: #93adde
+
+                    &:hover
+                        color: #6881b1
 
                 &:hover
                     color: #20407d

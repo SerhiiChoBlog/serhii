@@ -1,4 +1,29 @@
 .dark-theme
     .title,
-    .has-text-black
+    .has-text-black,
+    .has-text-grey-dark
         color: $dark-theme-font !important
+
+    .panel-tabs:not(:last-child),
+    .panel-block:not(:last-child)
+        border-bottom-color: $dark-theme-gray
+
+    .panel-block span
+        color: $dark-theme-font
+
+    .panel-block:hover
+        background-color: $dark-theme-gray
+
+    .content
+        h1, h2, h3, h4, h5,
+        p strong,
+        p code
+            color: $dark-theme-font
+
+        blockquote,
+        blockquote::before,
+        p code
+            background-color: $dark-theme-gray
+
+        blockquote::after
+            border-right-color: $dark-theme-gray
