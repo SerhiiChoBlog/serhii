@@ -38,3 +38,12 @@
 
         blockquote::after
             border-right-color: $dark-theme-gray
+
+    table:not(:first-child)
+        tbody
+            tr
+                &:nth-child(even)
+                    background-color: $dark-theme-gray !important
+
+                td
+                    border: none
