@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-content has-text-centered">
                         <div class="title is-size-4">{{ $tech['title'] }}</div>
-                        <div class="content is-size-5">{{ $tech['content'] }}</div>
+                        <div class="content is-size-5 font-color">{{ $tech['content'] }}</div>
                     </div>
                 </div>
             </div>
