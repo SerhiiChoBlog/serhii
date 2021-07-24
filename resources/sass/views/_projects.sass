@@ -12,6 +12,9 @@
     justify-content: center
     align-items: center
 
+    .dark-theme &
+        background-color: $dark-theme-gray
+
     &:hover
         box-shadow: 5px 5px 20px 10px rgba(10, 10, 10, .1)
 
@@ -27,6 +30,13 @@
         .card-title
             font-size: 1.4em
             color: #444
+
+            .dark-theme &
+                color: $dark-theme-font
+
+        p
+            .dark-theme &
+                color: $dark-theme-font
 
 .language-image
     width: 47px
