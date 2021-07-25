@@ -1,6 +1,12 @@
 <?php
 
-use App\Http\Controllers\{AboutMeController, HomeController, PostController, ProjectController, ThemeController};
+use App\Http\Controllers\{
+    AboutMeController,
+    HomeController,
+    PostController,
+    ProjectController,
+    ThemeController,
+};
 use App\Http\Controllers\Admin\{
     DashboardController as AdminDashboardController,
     PageViewController as AdminPageViewController,
