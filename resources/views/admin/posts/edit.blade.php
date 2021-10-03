@@ -14,7 +14,7 @@
             height: '800px',
             toolbar: 'undo redo | styleselect | bold italic | link image table | alignleft aligncenter alignright | numlist bullist | bullist numlist outdent indent | codesample code | fullscreen',
             image_caption: true,
-            paste_as_text: true,
+            paste_as_text: false,
             codesample_languages: [
                 {text: 'C#', value: 'csharp'},
                 {text: 'Json', value: 'json'},
