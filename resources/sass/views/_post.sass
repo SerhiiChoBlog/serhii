@@ -32,6 +32,9 @@
         margin-top: 30px
         border: 1px solid #eae9e9
 
+        .panel-block-wrapper
+            padding: 0 20px
+
         .dark-theme &
             border-color: $dark-theme-gray
 
@@ -83,6 +86,33 @@
                 border-right: 20px solid $blockquote-color
                 transform: translateY(-50%)
 
+    .panel
+        margin-bottom: 30px
+
+        .panel-block
+            position: relative
+            padding-left: 33px
+
+            .list-number-style
+                position: absolute
+                left: 3px
+                color: grey
+                font-size: 1.3em
+                padding-right: 8px
+                border-right: 1px solid grey
+
+                &.long-number
+                    left: -8px
+
+            .list-dot-style
+                position: absolute
+                display: inline-block
+                width: 4px
+                height: 4px
+                left: 8px
+                border-radius: 50%
+                background-color: grey
+
     &__created-at
         color: #aaa
 
@@ -131,33 +161,6 @@
 
                 &:hover
                     opacity: .8
-
-        .panel
-            margin-bottom: 30px
-
-            .panel-block
-                position: relative
-                padding-left: 33px
-
-                .list-number-style
-                    position: absolute
-                    left: 3px
-                    color: grey
-                    font-size: 1.3em
-                    padding-right: 8px
-                    border-right: 1px solid grey
-
-                    &.long-number
-                        left: -8px
-
-                .list-dot-style
-                    position: absolute
-                    display: inline-block
-                    width: 4px
-                    height: 4px
-                    left: 8px
-                    border-radius: 50%
-                    background-color: grey
 
 @media (max-width: $screen-1400)
     .post-hero

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="panel-block-wrapper">
         <a v-for="chapter in chapters"
            :key="chapter"
            class="panel-block"
@@ -38,6 +38,7 @@ export default defineComponent({
 
                 chapters.value.push(chapterText)
             })
+            console.log(chapters.value)
         })
 
         function scrollToChapter(chapter: string): void {
