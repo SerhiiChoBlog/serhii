@@ -60,6 +60,13 @@
     <div class="container pb-6 post">
         <div class="row">
             <div class="col-lg-9">
+                <nav class="panel is-shadowless post__chapters">
+                    <p class="panel-heading">
+                        <span class="has-text-grey-dark">Chapters</span>
+                    </p>
+                    <chapters />
+                </nav>
+
                 <div class="content post__content px-3" id="post-content" v-pre>{!! $post['content'] !!}</div>
 
                 <div class="subtitle has-text-centered mt-6">

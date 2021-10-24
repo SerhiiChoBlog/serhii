@@ -27,6 +27,11 @@
     &__sidebar
         margin-top: 70px
 
+    &__chapters
+        display: none
+        margin-top: 30px
+        border: 1px solid #eae9e9
+
     &__content
         blockquote
             margin: 2rem 0
@@ -166,9 +171,12 @@
             padding: 3rem 1.5rem
 
     .post
+        &__chapters
+            display: block
+
         &__sidebar
             &__chapters
-                min-height: auto
+                display: none
 
 @media (max-width: $screen-700)
     .hero
