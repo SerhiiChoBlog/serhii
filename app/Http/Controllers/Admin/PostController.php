@@ -80,6 +80,7 @@ class PostController extends Controller
 
         $data['title'] = trim($data['title']);
         $data['intro'] = trim($data['intro']);
+        $data['content'] = $this->addNotesToContent($data['content']);
 
         if ($post->is_published || $is_published) {
             $this->forgetPostsCache();
@@ -94,6 +95,11 @@ class PostController extends Controller
         Cache::forget(CacheKey::POST . $post->slug);
 
         return route('posts.show', $post);
+    }
+
+    private function addNotesToContent(string $content): string
+    {
+        return str_replace('<p>Note. ', '<p class="note">Note. ', $content);
     }
 
     public function destroy(Post $post): RedirectResponse
