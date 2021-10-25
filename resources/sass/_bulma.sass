@@ -13,6 +13,44 @@ $subtitle-size: 1.5rem
 .title
     overflow-y: hidden
 
+.note
+    background-color: #f7f4dc
+    color: #3d3506
+    padding: 14px 25px
+    border-radius: 6px
+    line-height: 1.5 !important
+    font-size: 1.3rem
+    position: relative
+
+    &::before
+        content: "!"
+        position: absolute
+        left: -14px
+        top: -9px
+        font-size: 2rem
+        background-color: #ffc12e
+        border-radius: 4px
+        width: 30px
+        height: 40px
+        color: white
+        font-weight: bold
+        display: flex
+        justify-content: center
+        align-items: center
+
+    strong
+        font-weight: bold
+        color: black
+
+    .dark-theme &
+        background-color: #cfc09c
+
+        strong
+            color: black !important
+
+        &::before
+            background-color: #b88202
+
 .project
     .content
         p img
