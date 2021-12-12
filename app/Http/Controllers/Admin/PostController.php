@@ -101,7 +101,7 @@ class PostController extends Controller
     {
         return str_replace(
             ['<p>Note. ', '<p>Tip. '],
-            ['<p class="note">Note. ', '<p class="tip">Tip. '],
+            ['<p class="note">', '<p class="tip">'],
             $content,
         );
     }
