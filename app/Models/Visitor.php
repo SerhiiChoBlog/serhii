@@ -7,6 +7,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\QueryException;
 use Stevebauman\Location\Location;
 
 /**
@@ -35,12 +36,15 @@ class Visitor extends Model
         return $this->hasMany(SocialShare::class);
     }
 
+    /**
+     * @throws \Illuminate\Database\QueryException
+     */
     public static function getOrCreateVisitor($ip): Visitor
     {
         $visitor = self::query()->with('pageViews')->where('ip', $ip)->first();
-        $location = app(Location::class);
 
         if (!$visitor) {
+            $location = app(Location::class);
             $position = $location->get($ip);
 
             $visitor = self::query()->create([
@@ -56,7 +60,12 @@ class Visitor extends Model
 
     public static function incrementPageViews(string $slug, string $page_type, string $ip): void
     {
-        $visitor = self::getOrCreateVisitor($ip);
+        try {
+            $visitor = self::getOrCreateVisitor($ip);
+        } catch (QueryException $e) {
+            logger()?->warning($e);
+            return;
+        }
 
         if ($visitor->pageViews->where('slug', $slug)->first()) {
             return;
