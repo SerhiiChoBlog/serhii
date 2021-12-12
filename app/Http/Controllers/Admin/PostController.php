@@ -99,7 +99,11 @@ class PostController extends Controller
 
     private function addNotesToContent(string $content): string
     {
-        return str_replace('<p>Note. ', '<p class="note">Note. ', $content);
+        return str_replace(
+            ['<p>Note. ', '<p>Tip. '],
+            ['<p class="note">Note. ', '<p class="tip">Tip. '],
+            $content,
+        );
     }
 
     public function destroy(Post $post): RedirectResponse
