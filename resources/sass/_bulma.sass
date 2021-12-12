@@ -17,27 +17,28 @@ $subtitle-size: 1.5rem
 .tip
     background-color: #f7f4dc
     color: #3d3506
-    padding: 14px 25px
+    padding: 22px 25px 14px 25px
     border-radius: 6px
     line-height: 1.5 !important
     font-size: 1.3rem
     position: relative
+    margin-top: 40px
 
     &::before
-        content: "!"
+        content: "note"
         position: absolute
-        left: -14px
-        top: -9px
-        font-size: 2rem
+        width: 100px
+        top: -13px
+        left: -7px
+        font-size: 1.1rem
         background-color: rgba(255, 193, 46, 0.8)
         border-radius: 4px
-        width: 30px
-        height: 40px
         color: white
         font-weight: bold
         display: flex
         justify-content: center
         align-items: center
+        text-transform: uppercase
 
     strong
         font-weight: bold
@@ -57,6 +58,7 @@ $subtitle-size: 1.5rem
     color: #06303d
 
     &::before
+        content: "tip"
         background-color: rgba(111, 202, 253, 0.79)
 
     .dark-theme &
