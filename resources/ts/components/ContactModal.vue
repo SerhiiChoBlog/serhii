@@ -1,16 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import {
-    Teleport as teleport_,
-    TeleportProps,
-    VNodeProps
-} from 'vue'
-
-const Teleport = teleport_ as {
-    new(): {
-        $props: VNodeProps & TeleportProps
-    }
-}
 
 const isOpen = ref(false)
 
@@ -32,7 +21,7 @@ window.addEventListener('keydown', e => {
 <template>
     <div class="button is-rounded is-info contact-me-button" @click="openContactModal">Contact me</div>
 
-    <component :is="Teleport" to="#modals">
+    <teleport to="#modals">
         <div class="modal is-active" v-show="isOpen">
             <div class="modal-background"></div>
 
@@ -47,7 +36,7 @@ window.addEventListener('keydown', e => {
                                     href="mailto:serhiicho@protonmail.com"
                                     class="has-text-info"
                                 >serhiicho@protonmail.com</a> or text me on Linkedin. Before you send me a message, make sure you've read
-                                <a href="{{ route('about-me') }}" target="_blank">about me</a> page. Don't ignore this, it's very important.
+                                <a href="/about-me" target="_blank">about me</a> page. Don't ignore this, it's very important.
                             </p>
 
                             <div class="social-links mt-5">
@@ -135,7 +124,7 @@ window.addEventListener('keydown', e => {
 
             <button class="modal-close is-large" aria-label="close" @click="closeContactModal"></button>
         </div>
-    </component>
+    </teleport>
 </template>
 
 <style lang="sass" scoped>
