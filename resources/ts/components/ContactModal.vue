@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const isOpen = ref(false)
+
+function openContactModal(): void {
+    isOpen.value = true
+}
+
+function closeContactModal(): void {
+    isOpen.value = false
+}
+
+window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        closeContactModal()
+    }
+})
+</script>
+
 <template>
     <div class="button is-rounded is-info contact-me-button" @click="openContactModal">Contact me</div>
 
@@ -69,32 +89,6 @@
         </div>
     </teleport>
 </template>
-
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-
-export default defineComponent({
-    setup() {
-        const isOpen = ref(false)
-
-        function openContactModal(): void {
-            isOpen.value = true
-        }
-
-        function closeContactModal(): void {
-            isOpen.value = false
-        }
-
-        window.addEventListener('keydown', e => {
-            if (e.key === 'Escape') {
-                closeContactModal()
-            }
-        })
-
-        return { isOpen, openContactModal, closeContactModal }
-    },
-})
-</script>
 
 <style lang="sass" scoped>
 .modal
