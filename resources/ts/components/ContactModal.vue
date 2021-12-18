@@ -12,10 +12,7 @@
                             <h3 class="has-text-centered">Contact me</h3>
                             <p class="has-text-centered">
                                 The fastest way to contact me is to send me an email at
-                                <a
-                                    href="mailto:serhiicho@protonmail.com"
-                                    class="has-text-info"
-                                >serhiicho@protonmail.com</a> or text me on Linkedin. Before you send me a message, make sure you've read
+                                <a href="mailto:serhiicho@protonmail.com">serhiicho@protonmail.com</a> or text me on Linkedin. Before you send me a message, make sure you've read
                                 <a href="/about-me" target="_blank">about me</a> page. Don't ignore this, it's very important.
                             </p>
 
