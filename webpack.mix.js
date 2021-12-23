@@ -41,7 +41,7 @@ mix.ts('resources/ts/app.ts', 'public/js/app.js')
     })
 
 mix.ts('resources/ts/admin/app.ts', 'public/js/admin.js')
-    .sass('resources/sass/admin/app.sass', 'public/css/admin.css', {}, sassOptions)
+    .sass('resources/sass/admin/app.sass', 'public/css/admin.css')
     .webpackConfig({
         module: {
             rules: [
