@@ -74,6 +74,7 @@ export default class {
 
     private updatePreviewLink(newHref: string): void {
         const btn = document.getElementById('preview-the-post') as HTMLAnchorElement
+        SweetAlert.fire('Info', 'Test', 'info')
 
         if (!btn)
             return
