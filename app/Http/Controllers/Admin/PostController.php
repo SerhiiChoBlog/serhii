@@ -97,8 +97,12 @@ class PostController extends Controller
         return route('posts.show', $post);
     }
 
-    private function addNotesToContent(string $content): string
+    private function addNotesToContent(?string $content): ?string
     {
+        if (!$content) {
+            return null;
+        }
+
         return str_replace(
             ['<p>Note. ', '<p>Tip. '],
             ['<p class="note"><span class="d-none">Note. </span>', '<p class="tip"><span class="d-none">Tip. </span>'],
