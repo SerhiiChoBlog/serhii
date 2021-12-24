@@ -3,7 +3,7 @@
 @endphp
 
 <div class="last-posts">
-    <h2 class="home__title has-text-centered">Last posts</h2>
+    <h2 class="home__title has-text-centered">Lastest posts</h2>
 
     <div class="columns">
         @foreach ($posts as $post)
