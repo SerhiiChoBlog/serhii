@@ -5,15 +5,14 @@
 <nav class="navbar" style="{{ ($is_grey ?? false) ? 'background-color: #f5f5f5' : '' }}">
     <div class="container">
         <div class="navbar-brand">
-           @auth
-               <a href="{{ route('admin.dashboard') }}" class="navbar-item">
-                   <b>SERHII<span class="has-text-info">CHO</span> ADMIN</b>
-               </a>
-           @else
-               <a href="{{ route('home') }}" class="navbar-item">
-                   <b>SERHII<span class="has-text-info">CHO</span></b>
-               </a>
-           @endauth
+            <a href="{{ route('home') }}" class="navbar-item">
+                <b>SERHII<span class="has-text-info">CHO</span></b>
+            </a>
+            @auth
+                <a href="{{ route('admin.dashboard') }}" class="navbar-item" style="margin-left: -17px">
+                    <b>ADMIN</b>
+                </a>
+            @endauth
 
            <hamburger {{ ($is_light ?? false) ? ':is-light="true"' : '' }} />
         </div>
