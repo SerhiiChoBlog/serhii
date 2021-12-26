@@ -104,19 +104,8 @@
     </teleport>
 </template>
 
-<style lang="sass" scoped>
-.modal
-    .box
-        margin: 10px
-        padding: 30px
-
-.modal-content
-    width: 100%
-    max-width: 1000px
-</style>
-
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent, onMounted } from 'vue'
 
 export default defineComponent({
     setup() {
@@ -130,10 +119,12 @@ export default defineComponent({
             isOpen.value = false
         }
 
-        window.addEventListener('keydown', e => {
-            if (e.key === 'Escape') {
-                closeContactModal()
-            }
+        onMounted(() => {
+            window.addEventListener('keydown', e => {
+                if (e.key === 'Escape') {
+                    closeContactModal()
+                }
+            })
         })
 
         return {
@@ -144,3 +135,14 @@ export default defineComponent({
     },
 })
 </script>
+
+<style lang="sass" scoped>
+.modal
+    .box
+        margin: 10px
+        padding: 30px
+
+.modal-content
+    width: 100%
+    max-width: 1000px
+</style>
