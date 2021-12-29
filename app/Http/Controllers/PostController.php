@@ -16,7 +16,7 @@ class PostController extends Controller
 {
     public function index(): View
     {
-        $posts = Cache::remember(CacheKey::PUBLISHED_POSTS, Ttl::DAY, function () {
+        $posts = Cache::remember(CacheKey::PUBLISHED_POSTS, Ttl::DAY, static function () {
             return Post::query()
                 ->with('tags:id,name,color')
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
@@ -32,13 +32,13 @@ class PostController extends Controller
     {
         $cache_key = CacheKey::POST . $slug;
 
-        $post = Cache::remember($cache_key, Ttl::DAY, function () use ($slug) {
+        $post = Cache::remember($cache_key, Ttl::DAY, static function () use ($slug) {
             $post = Post::query()
                 ->with('tags:id,color,name')
                 ->where('slug', $slug)
                 ->first();
 
-            return $post ? $post->toArray() : null;
+            return $post?->toArray();
         });
 
         abort_if(!$post['is_published'] && !auth()->check(), 404);
