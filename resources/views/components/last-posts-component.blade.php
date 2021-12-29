@@ -27,7 +27,6 @@
                                     {{ $tag['name'] }}
                                 </span>
                             @endforeach
-                            <time datetime="{{ $post['created_at'] }}" class="has-text-grey mb-1">{{ $post['pretty_created_at'] }}</time>
                         </div>
                     </div>
                 </div>
