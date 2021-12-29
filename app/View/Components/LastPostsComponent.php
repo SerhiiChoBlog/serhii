@@ -12,13 +12,13 @@ class LastPostsComponent extends Component
 {
     public function posts(): array
     {
-        return Cache::rememberForever(CacheKey::LAST_POSTS, function () {
+        return Cache::rememberForever(CacheKey::LAST_POSTS, static function () {
             return Post::query()
                 ->with('tags:name,color')
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
                 ->where('is_published', true)
                 ->orderByDesc('created_at')
-                ->limit(3)
+                ->limit(6)
                 ->get()
                 ->toArray();
         });
