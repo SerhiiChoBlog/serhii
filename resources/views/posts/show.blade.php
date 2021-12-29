@@ -40,9 +40,6 @@
                                 >{{ $tag['name'] }}</span>
                             @endforeach
                             <time datetime="{{ $post['created_at'] }}" class="post__created-at ml-2">{{ $post['pretty_created_at'] }}</time>
-                            @auth
-                                <a href="{{ route('admin.posts.edit', $post['id']) }}" class="edit-post-button button is-small is-rounded ml-4">Edit</a>
-                            @endauth
                         </div>
                     </div>
                     <div class="column">
