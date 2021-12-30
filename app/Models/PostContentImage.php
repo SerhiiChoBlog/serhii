@@ -16,7 +16,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class PostContentImage extends Model
 {
+    /**
+     * @var string[]
+     */
     protected $guarded = ['id'];
+
     public $timestamps = false;
 
     public function post(): BelongsTo

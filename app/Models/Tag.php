@@ -20,6 +20,9 @@ class Tag extends Model
 
     public $timestamps = false;
 
+    /**
+     * @var string[]
+     */
     protected $guarded = ['id'];
 
     public function posts(): BelongsToMany

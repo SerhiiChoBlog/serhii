@@ -24,6 +24,10 @@ class Visitor extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    /**
+     * @var string[]
+     */
     protected $guarded = ['id'];
 
     public function pageViews(): HasMany

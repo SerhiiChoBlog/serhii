@@ -21,7 +21,11 @@ class SocialShare extends Model
 {
     use HasFactory;
 
+    /**
+     * @var string[]
+     */
     protected $guarded = ['id'];
+
     public $timestamps = false;
 
     public function post(): BelongsTo

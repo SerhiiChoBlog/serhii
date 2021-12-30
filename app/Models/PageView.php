@@ -19,5 +19,8 @@ class PageView extends Model
 {
     use HasFactory;
 
+    /**
+     * @var string[]
+     */
     protected $guarded = ['id'];
 }
