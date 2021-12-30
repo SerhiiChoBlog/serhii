@@ -74,26 +74,30 @@ class Post extends Model
             ->shuffle();
     }
 
-    public function getPrettyCreatedAtAttribute(): string
+    protected function prettyCreatedAt(): Attribute
     {
-        if (!$this->created_at) {
-            return '';
-        }
+        $get = function () {
+            if (!$this->created_at) {
+                return '';
+            }
 
-        if ($this->created_at->isToday()) {
-            return 'Today';
-        }
+            if ($this->created_at->isToday()) {
+                return 'Today';
+            }
 
-        if ($this->created_at->isYesterday()) {
-            return 'Yesterday';
-        }
+            if ($this->created_at->isYesterday()) {
+                return 'Yesterday';
+            }
 
-        $date = $this->created_at->format('j F');
+            $date = $this->created_at->format('j F');
 
-        if ($this->created_at->year === now()->year) {
-            return $date;
-        }
+            if ($this->created_at->year === now()->year) {
+                return $date;
+            }
 
-        return sprintf("%s %s", $date, $this->created_at->year);
+            return sprintf("%s %s", $date, $this->created_at->year);
+        };
+
+        return new Attribute($get);
     }
 }
