@@ -27,7 +27,11 @@ class Project extends Model
 
     private const ONE_HOUR_IN_SECONDS = 3600;
 
+    /**
+     * @var string[]
+     */
     protected $guarded = ['id'];
+
     public $timestamps = false;
 
     public static function getCachedProjects(): array
