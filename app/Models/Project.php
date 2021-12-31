@@ -36,12 +36,12 @@ class Project extends Model
 
     public static function getCachedProjects(): array
     {
-        return Cache::rememberForever(CacheKey::PROJECTS, function () {
+        return Cache::rememberForever(CacheKey::PROJECTS, static function () {
             return self::query()
-            ->select('title', 'language', 'description', 'name')
-            ->orderByDesc('created_at')
-            ->get()
-            ->toArray();
+                ->select('title', 'language', 'description', 'name')
+                ->orderByDesc('created_at')
+                ->get()
+                ->toArray();
         });
     }
 }
