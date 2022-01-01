@@ -28,11 +28,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     // protected $namespace = 'App\\Http\\Controllers';
 
-    /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
-     */
     public function boot(): void
     {
         $this->configureRateLimiting();
@@ -49,13 +44,8 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * Configure the rate limiters for the application.
-     *
-     * @return void
-     */
     protected function configureRateLimiting(): void
     {
-        RateLimiter::for('api', fn(Request $request) => Limit::none());
+        RateLimiter::for('api', static fn(Request $request) => Limit::none());
     }
 }
