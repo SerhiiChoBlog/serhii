@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="hero about-me-hero is-dark smooth-loader">
+    <section class="hero about-me-hero is-dark">
         <div class="hero-head">
             @include('includes.navbar')
         </div>
