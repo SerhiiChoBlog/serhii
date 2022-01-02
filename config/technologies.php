@@ -48,4 +48,16 @@ return [
         ],
     ],
 
+    'projects' => [
+        [
+            'image' => 'storage/tools/site-sho.png',
+            'title' => 'Shobar',
+            'content' => "",
+        ],
+        [
+            'image' => 'storage/tools/site-zoo.png',
+            'title' => 'ZooZooZoo',
+            'content' => "",
+        ],
+    ],
 ];

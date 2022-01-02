@@ -24,7 +24,7 @@
                         </div>
                         <div class="column">
                             <p><x-nice-to-meet-you-component /></p>
-                            <p>I've worked with integration services like <b>Megaplan CRM</b>, <b>Exact Online</b>, payment systems like <b>Mollie</b> and <b>WayForPay</b>. I've built apps in <b>Docker</b> containers, SPAs with <b>Vue</b> and websites with <b>WordPress</b> and <b>Laravel</b>. Likewise, I've done tons of different work for companies in <b>business</b> and <b>e-commerce</b> segment.</p>
+                            <p>I've worked with integration services like <b>Megaplan CRM</b>, <b>Exact Online</b>, payment systems like <b>Mollie</b>, <b>Bitpay</b> and <b>WayForPay</b>. I've built apps in <b>Docker</b> containers, SPAs with <b>Vue</b> and websites with <b>WordPress</b> and <b>Laravel</b>. Likewise, I've done tons of different work for companies in <b>business</b> and <b>e-commerce</b> segment.</p>
                             <p>Lately, I've been doing decent amount of single page apps with <b>Vue 3</b>. I find myself enjoying to work on the frontend with such technologies like <b>Vue.js</b>, <b>TailwindCSS</b> and <b>TypeScript</b>. This combination is perfect for the frontend.</p>
                         </div>
                     </div>
@@ -66,6 +66,20 @@
         <section class="section is-medium">
             <div class="container">
                 <x-home-tech-section :techs="config('technologies.frameworks')" header="Frameworks / CMS" />
+            </div>
+        </section>
+
+        <section class="section is-medium">
+            <div class="container">
+                <div class="about-me">
+                    <div class="content">
+                        <h2>Latest projects</h2>
+
+                        <p>For privacy reasons, I cannot show 90% of my project because it against my contract with the companies I've worked for. But I can show you the latest projects that are public for everyone.</p>
+
+                        <x-home-sites-section />
+                    </div>
+                </div>
             </div>
         </section>
     </div>
