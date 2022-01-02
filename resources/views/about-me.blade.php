@@ -65,7 +65,7 @@
 
         <section class="section is-medium">
             <div class="container">
-                <x-home-tech-section :techs="config('technologies.frameworks')" header="Frameworks" />
+                <x-home-tech-section :techs="config('technologies.frameworks')" header="Frameworks / CMS" />
             </div>
         </section>
     </div>
