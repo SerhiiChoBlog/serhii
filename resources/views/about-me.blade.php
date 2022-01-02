@@ -71,15 +71,7 @@
 
         <section class="section is-medium">
             <div class="container">
-                <div class="about-me">
-                    <div class="content">
-                        <h2>Latest projects</h2>
-
-                        <p>For privacy reasons, I cannot show 90% of my project because it against my contract with the companies I've worked for. But I can show you the latest projects that are public for everyone.</p>
-
-                        <x-home-sites-section />
-                    </div>
-                </div>
+                <x-home-sites-section />
             </div>
         </section>
     </div>
