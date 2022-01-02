@@ -2,9 +2,9 @@
     /** @var array $sites */
 @endphp
 
-@section('title', 'Professional software developer')
-
 <div>
+    <h2 class="home__title has-text-centered">Latest projects</h2>
+
     <div class="sites">
         @foreach ($sites as $site)
             <div class="site">
