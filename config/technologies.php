@@ -6,7 +6,7 @@ return [
         [
             'image' => 'storage/tools/php.png',
             'title' => 'PHP',
-            'content' => "I'm mostly working with Laravel framework and developing WordPress plugins. I have a passion for writing clean, testable code using strict typing.",
+            'content' => "PHP was my first programming language. I'm always following the latest news in PHP world to stay updated.",
         ],
         [
             'image' => 'storage/tools/ts.png',
@@ -34,12 +34,12 @@ return [
         [
             'image' => 'storage/tools/vue.png',
             'title' => 'Vue',
-            'content' => "I've been using Vue along with the VueRouter and Vuex mostly for building Single Page Applications. I enjoy working with Vue 3 with TypeScript and composition API.",
+            'content' => "I've been using Vue along with the VueRouter and Vuex mostly for building Single Page Applications. I enjoy working with Vue 3, TypeScript and script setup.",
         ],
         [
             'image' => 'storage/tools/react.png',
             'title' => 'React',
-            'content' => "React.js with TypeScript is another JavaScript framework that I'm using from time to time. Usually I'm reaching for it because it has libraries that Vue doesn't have. One of those amazing libraries is react-pdf.",
+            'content' => "React.js with TypeScript is another JavaScript framework that I'm using from time to time. Usually I'm reaching for it when I need a library that Vue doesn't have. One of those amazing libraries is react-pdf.",
         ],
         [
             'image' => 'storage/tools/wordpress.png',
