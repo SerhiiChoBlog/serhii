@@ -10,7 +10,10 @@
             <div class="column">
                 <div>
                     <a href="{{ route('posts.show', $post['slug']) }}" class="card-image">
-                        <img data-src="{{ asset($post['image_sm']) }}" alt="{{ $post['title'] }}" class="smooth-loader">
+                        <img data-src="{{ asset($post['image_sm']) }}"
+                            alt="{{ $post['title'] }}"
+                             class="smooth-loader"
+                        />
                     </a>
                     <div class="card-content">
                         <div class="media mb-3">
