@@ -17,4 +17,10 @@ push:
 	git pull origin HEAD
 	git push origin HEAD
 
+deploy:
+	git pull origin HEAD
+	php artisan migrate
+	composer update --no-dev
+	make cache
+
 .DEFAULT_GOAL := push
