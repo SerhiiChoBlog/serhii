@@ -32,7 +32,7 @@
                     <h2>My way of working</h2>
                     <p>Like every other person, I hate slow web apps and sites. In web development, my priorities are <b>code readability</b> and <b>performance</b>. You can check my post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites">"5 techniques that I use for building fast websites"</a> where I'm talking about it in details.</p>
                     <p>I'm a big <b>believer in tests</b> and I don't like writing code without them. I prefer <b>PHP Unit</b> but I've tried other testing frameworks as well.</p>
-                    <p>I respect people who are searching for developers and actually reading information about them, so if you are going to contact me for any reason, include 🤓 emoji at the beginning of your message. That way, I'll know that you've read about me.</p>
+                    <p>I respect people who are searching for developers and actually reading information about them. So if you are going to contact me for any reason, include 🤓 emoji at the beginning of your message. That way, I'll know that you've read about me.</p>
 
                     <h2>Blog</h2>
                     <p>In my free from coding time, I enjoy writing posts for my <a href="/posts" target="_blank" title="Link to a blog">blog</a> on programming related subjects and learn new things. I mostly share what I've learned along the way and things that can help other developers strengthen their skills.</p>
