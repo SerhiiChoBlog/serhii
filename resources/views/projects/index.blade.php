@@ -4,8 +4,8 @@
 
 @extends('layouts.app')
 
-@section('title', 'Open Source projects')
-@section('description', "These are all of my open source libraries for languages like PHP, Golang and JavaScript.")
+@section('title', 'Open-source projects')
+@section('description', "I'm a the maintainer of se")
 
 @section('content')
     <section class="hero projects-hero is-dark">
@@ -13,8 +13,8 @@
 
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h1 class="title">Open source</h1>
-                <h2 class="subtitle">These are all of my open source libraries for languages like PHP, Golang and JavaScript.</h2>
+                <h1 class="title">Open-source projects</h1>
+                <h2 class="subtitle">I'm the maintainer of several open-source libraries and browser extension. You can contribute to any of them on GitHub, and I would gladly look into your pull request or issue.</h2>
             </div>
         </div>
     </section>
