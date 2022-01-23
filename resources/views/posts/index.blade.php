@@ -4,9 +4,8 @@
 
 @extends('layouts.app')
 
+@section('title', 'Blog for web developers')
 @section('description', "I am mostly writing programming related articles on different topics. I am sharing my knowledge with others to help you become a better developer")
-
-@section('title', 'Programming posts')
 
 @section('content')
     <section class="hero blog-hero is-dark">
@@ -14,7 +13,7 @@
 
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h1 class="title">Blog</h1>
+                <h1 class="title">Blog for web developers</h1>
                 <h2 class="subtitle">
                     I'm mostly writing programming related articles on different topics.<br>
                     I'm sharing my knowledge with others to help you become a better developer.
