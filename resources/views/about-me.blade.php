@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', 'Information about me')
+@section('description', "Hi, my name is Serhii, I live in Kharkiv, Ukraine. Thanks for coming to my little and cozy place. Here, you can find information that might help you to find out more about me")
+
 @section('content')
     <section class="hero about-me-hero is-dark">
         <div class="hero-head">
@@ -8,7 +11,7 @@
 
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h1 class="title">About me</h1>
+                <h1 class="title">Information about me</h1>
                 <h2 class="subtitle">Hi, my name is Serhii, I live in Kharkiv, Ukraine. Thanks for coming to my little and cozy place. Down below, you can find technologies that I'm working with and other information that might help you to know more about me.</h2>
             </div>
         </div>
@@ -24,7 +27,7 @@
                         </div>
                         <div class="column">
                             <p><x-nice-to-meet-you-component /></p>
-                            <p>I've worked with integration services like <b>Megaplan CRM</b>, <b>Exact Online</b>, payment systems like <b>Mollie</b>, <b>Bitpay</b> and <b>WayForPay</b>. I've built apps in <b>Docker</b> containers, SPAs with <b>Vue</b> and websites with <b>WordPress</b> and <b>Laravel</b>. Likewise, I've done tons of different work for companies in <b>business</b> and <b>e-commerce</b> segment.</p>
+                            <p>I've worked with integration services like <b>Megaplan CRM</b>, <b>Exact Online</b>, payment systems like <b>Mollie</b>, <b>Bitpay</b> and <b>WayForPay</b>. I've built apps in <b>Docker</b> containers, SPAs with <b>Vue</b>, and websites with <b>WordPress</b> and <b>Laravel</b>. Likewise, I've done tons of different work for companies in <b>business</b> and <b>e-commerce</b> segment. Building programs and interfaces for generating different types of documents, programs for stuff management and communication with clients.</p>
                             <p>Lately, I've been doing decent amount of single page apps with <b>Vue 3</b>. I find myself enjoying to work on the frontend with such technologies like <b>Vue.js</b>, <b>TailwindCSS</b> and <b>TypeScript</b>. This combination is perfect for the frontend.</p>
                         </div>
                     </div>
