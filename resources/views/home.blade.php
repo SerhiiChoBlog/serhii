@@ -8,6 +8,7 @@
 
         <div class="hero-body">
             <div class="container has-text-centered">
+                <h1 class="home-hero__logo">SERHII<span class="has-text-info">CHO</span></h1>
                 <typewriter />
             </div>
         </div>

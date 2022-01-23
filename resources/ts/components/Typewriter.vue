@@ -1,5 +1,4 @@
 <template>
-    <h1 class="home-hero__logo">SERHII<span class="has-text-info">CHO</span></h1>
     <p class="home-hero__professional">
         Professional {{ typewriter }}
         <span class="home-hero__cursor"></span>
