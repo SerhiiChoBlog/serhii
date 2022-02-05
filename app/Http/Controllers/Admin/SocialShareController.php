@@ -15,10 +15,6 @@ class SocialShareController extends Controller
         $posts = Post::query()
             ->with('socialShares')
             ->get()
-            ->map(static function (Post $post) {
-                $post->social = $post->socialShares->groupBy('social')->toArray();
-                return $post;
-            })
             ->filter(fn(Post $post) => !empty($post->social));
 
         return view('admin.social_shares.index', compact('posts'));
