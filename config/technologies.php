@@ -6,22 +6,36 @@ return [
         [
             'image' => 'storage/tools/php.png',
             'title' => 'PHP',
-            'content' => "PHP was my first programming language. I'm always following the latest news in PHP world to stay updated.",
-        ],
-        [
-            'image' => 'storage/tools/ts.png',
-            'title' => 'TypeScript',
-            'content' => "I always wanted to have a tool that will reduce the number of bugs in JavaScript. TypeScript is a perfect fit for the that job.",
+            'content' => <<<TEXT
+            PHP was my first programming language.
+            I've build tons of apps and several open-source packages throughout my career.
+            I'm always following the latest news in PHP world to stay updated.
+            Even though I'm slowly moving towards Go.
+            TEXT,
         ],
         [
             'image' => 'storage/tools/go.png',
             'title' => 'Go',
-            'content' => "I've started learning Go because I needed fast and strongly typed language for a couple of my projects. Go was a perfect match for it.",
+            'content' => <<<TEXT
+            I've been using Go since 2019 mostly for my personal projects.
+            One of them is the open-source package <a href="https://github.com/SerhiiCho/timeago" target="_blank">Timeago</a> for converting date time into human-readable format. This is a very promising language that I'm gradually moving into.
+            TEXT,
+        ],
+        [
+            'image' => 'storage/tools/ts.png',
+            'title' => 'TypeScript',
+            'content' => <<<TEXT
+            TypeScript is my go-to when I'm working with Vue and React.
+            TEXT,
         ],
         [
             'image' => 'storage/tools/sql.png',
             'title' => 'SQL',
-            'content' => "SQL is a must have language for building backend applications with SQL-databases. I can write all the CRUD operations including joins and unions.",
+            'content' => <<<TEXT
+            SQL is a must have language for building backend applications with SQL-databases.
+            I can write all the CRUD operations including joins and unions.
+            TEXT
+,
         ],
     ],
 

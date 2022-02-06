@@ -28,14 +28,13 @@
                         <div class="column">
                             <p><x-nice-to-meet-you-component /></p>
                             <p>I've worked with integration services like <b>Megaplan CRM</b>, <b>Exact Online</b>, payment systems like <b>Mollie</b>, <b>Bitpay</b> and <b>WayForPay</b>. I've built apps in <b>Docker</b> containers, SPAs with <b>Vue</b>, and websites with <b>WordPress</b> and <b>Laravel</b>. Likewise, I've done tons of different work for companies in <b>business</b> and <b>e-commerce</b> segment. Building programs and interfaces for generating different types of documents, programs for stuff management and communication with clients.</p>
-                            <p>Lately, I've been doing decent amount of single page apps with <b>Vue 3</b>. I find myself enjoying to work on the frontend with such technologies like <b>Vue.js</b>, <b>TailwindCSS</b> and <b>TypeScript</b>. This combination is perfect for the frontend.</p>
+                            <p>Lately, I've been doing decent amount of single page apps with <b>Vue 3</b>. I find myself enjoying to work on the frontend with such technologies like <b>Vue.js</b>, <b>TailwindCSS</b> and <b>TypeScript</b>.</p>
                         </div>
                     </div>
 
                     <h2>My way of working</h2>
                     <p>Like every other person, I hate slow web apps and sites. In web development, my priorities are <b>code readability</b> and <b>performance</b>. You can check my post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites">"5 techniques that I use for building fast websites"</a> where I'm talking about it in details.</p>
-                    <p>I'm a big <b>believer in tests</b> and I don't like writing code without them. I prefer <b>PHP Unit</b> but I've tried other testing frameworks as well.</p>
-                    <p>I respect people who are searching for developers and actually reading information about them. So if you are going to contact me for any reason, include 🤓 emoji at the beginning of your message. That way, I'll know that you've read about me.</p>
+                    <p>I'm a big believer in tests, and long-term maintainability of the software. If you are going to contact me, include 🤓 emoji at the beginning of your message. That way, I'll know that you are actually interested working with me.</p>
 
                     <h2>Blog</h2>
                     <p>In my free from coding time, I enjoy writing posts for my <a href="/posts" target="_blank" title="Link to a blog">blog</a> on programming related subjects and learn new things. I mostly share what I've learned along the way and things that can help other developers strengthen their skills.</p>
@@ -48,12 +47,8 @@
                             <p>I understand that sometimes you need to create some quick prototype as fast as you can just to get it out there. I would not write tests for those prototypes.</p>
                         </li>
                         <li>
-                            <strong>Greedy companies that pay the minimum salary on the market.</strong>
+                            <strong>Low salary companies.</strong>
                             <p>Great developers have a considerable salary. You can't hire a professional and expect low salary for that person. </p>
-                        </li>
-                        <li>
-                            <strong>Companies that have nothing to do with the web.</strong>
-                            <p>I consider myself as a web developer and I don't want to go outside the web. Unless that thing that I'm going to be working on is withing of my stack.</p>
                         </li>
                     </ul>
                 </div>
