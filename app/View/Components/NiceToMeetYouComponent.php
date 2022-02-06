@@ -20,11 +20,16 @@ class NiceToMeetYouComponent extends Component
         $months = (int) $this->date_diff->format('%m');
         $years = (int) $this->date_diff->format('%y');
 
-        if (in_array($months, [4, 5, 6, 7, 8], true)) {
+        if (in_array($months, [4, 5, 6, 7], true)) {
             return "$years and a half";
         }
 
-        if (in_array($months, [9, 10, 11, 12], true)) {
+        if (in_array($months, [8, 9, 10], true)) {
+            ++$years;
+            return "almost $years";
+        }
+
+        if (in_array($months, [11, 12], true)) {
             ++$years;
         }
 
