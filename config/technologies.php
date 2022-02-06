@@ -103,4 +103,34 @@ return [
             TEXT,
         ],
     ],
+
+    'skills' => [
+        [
+            'image' => 'storage/tools/communication.png',
+            'title' => 'Communication',
+            'content' => <<<TEXT
+            I put communication skills on the first place because I think it's the most important personal skill for a person working in a team.
+            I'm a very calm man, with my own principles and beliefs.
+            I never judge anyone and I feel blessed to work in this field and exchange knowledge.
+            TEXT,
+        ],
+        [
+            'image' => 'storage/tools/english.png',
+            'title' => 'English Mastery',
+            'content' => <<<TEXT
+            At the end of 2014, I've decided to start learning English daily.
+            Since then, English became not just as my second language, it became a part of my existence.
+            I've never been in an English-speaking country, so speaking practice is something that I'm missing but looking forward to do in the near future.
+            TEXT,
+        ],
+        [
+            'image' => 'storage/tools/keyboard.png',
+            'title' => 'Touch Typing',
+            'content' => <<<TEXT
+            We are coders, and we like to type countless number of symbols on the screen.
+            Fast touch typing helps me to be less focused on the typing but dive more into the problem.
+            I'm touch typing pretty confident on latin and cyrillic keyboards.
+            TEXT,
+        ],
+    ],
 ];
