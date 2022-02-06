@@ -25,7 +25,8 @@ return [
             'image' => 'storage/tools/ts.png',
             'title' => 'TypeScript',
             'content' => <<<TEXT
-            TypeScript is my go-to when I'm working with Vue and React.
+            TypeScript is my go-to when I'm working with Vue, React or native JavaScript.
+            I've started applying it to all the new projects since 2019 because I needed a tool to reduce the number of bugs and typos in JavaScript apps.
             TEXT,
         ],
         [
@@ -33,7 +34,7 @@ return [
             'title' => 'SQL',
             'content' => <<<TEXT
             SQL is a must have language for building backend applications with SQL-databases.
-            I can write all the CRUD operations including joins and unions.
+            I can write all the common CRUD operations that developers use on a daily basis, including joins and unions.
             TEXT
 ,
         ],
@@ -72,6 +73,43 @@ return [
             'image' => 'storage/tools/site-zoo.png',
             'title' => 'ZooZooZoo',
             'content' => "",
+        ],
+    ],
+
+    'technologies' => [
+        [
+            'image' => 'storage/tools/docker.png',
+            'title' => 'Docker',
+            'content' => <<<TEXT
+            My first Docker experience started in 2018. I was fortunate to start using it so early in my career.
+            It helped me to abstract my workspace from the operating system, and made it easy to work with different technologies like Redis, MySQL, PostgreSQL, etc.
+            TEXT,
+        ],
+        [
+            'image' => 'storage/tools/linux.png',
+            'title' => 'Linux',
+            'content' => <<<TEXT
+            I feel free using Unix based operating system like Linux and macOS.
+            In my capacity a dozen terminal command which help me to quickly navigate, modify and interact with OS.
+            Including writing simple bash scripts, cron jobs, symbolic links, ssh, dpkg and other helpful tools.
+            TEXT,
+        ],
+        [
+            'image' => 'storage/tools/tailwind.png',
+            'title' => 'Tailwind CSS',
+            'content' => <<<TEXT
+            Tailwind CSS is on my radar since the beginning of 2021.
+            That's when I've started applying it to almost all of my projects that needed CSS.
+            But almost all of my old projects I was either compiling CSS from SASS, either using frameworks like Bootstrap, Materialize CSS or  Bulma.
+            TEXT,
+        ],
+        [
+            'image' => 'storage/tools/sql.png',
+            'title' => 'SQL',
+            'content' => <<<TEXT
+
+            TEXT
+            ,
         ],
     ],
 ];

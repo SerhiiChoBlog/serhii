@@ -69,6 +69,12 @@
 
         <section class="section is-medium">
             <div class="container">
+                <x-home-tech-section :techs="config('technologies.technologies')" header="Other technologies" />
+            </div>
+        </section>
+
+        <section class="section is-medium">
+            <div class="container">
                 <x-home-sites-section />
             </div>
         </section>
