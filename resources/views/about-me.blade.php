@@ -28,7 +28,6 @@
                         <div class="column">
                             <p><x-nice-to-meet-you-component /></p>
                             <p>I've worked with integration services like <b>Megaplan CRM</b>, <b>Exact Online</b>, payment systems like <b>Mollie</b>, <b>Bitpay</b> and <b>WayForPay</b>. I've built apps in <b>Docker</b> containers, SPAs with <b>Vue</b>, and websites with <b>WordPress</b> and <b>Laravel</b>. Likewise, I've done tons of different work for companies in <b>business</b> and <b>e-commerce</b> segment. Building programs and interfaces for generating different types of documents, programs for stuff management and communication with clients.</p>
-                            <p>Lately, I've been doing decent amount of single page apps with <b>Vue 3</b>. I find myself enjoying to work on the frontend with such technologies like <b>Vue.js</b>, <b>TailwindCSS</b> and <b>TypeScript</b>.</p>
                         </div>
                     </div>
 

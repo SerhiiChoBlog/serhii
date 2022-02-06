@@ -18,7 +18,7 @@ return [
             'title' => 'Go',
             'content' => <<<TEXT
             I've been using Go since 2019 mostly for my personal projects.
-            One of them is the open-source package <a href="https://github.com/SerhiiCho/timeago" target="_blank">Timeago</a> for converting date time into human-readable format. This is a very promising language that I'm gradually moving into.
+            One of them is the open-source package <a href="https://serhii.io/projects/timeago" target="_blank">Timeago</a> for converting date time into human-readable format. This is a very promising language that I'm gradually moving into.
             TEXT,
         ],
         [
@@ -35,8 +35,7 @@ return [
             'content' => <<<TEXT
             SQL is a must have language for building backend applications with SQL-databases.
             I can write all the common CRUD operations that developers use on a daily basis, including joins and unions.
-            TEXT
-,
+            TEXT,
         ],
     ],
 
@@ -91,7 +90,7 @@ return [
             'content' => <<<TEXT
             I feel free using Unix based operating system like Linux and macOS.
             In my capacity a dozen terminal command which help me to quickly navigate, modify and interact with OS.
-            Including writing simple bash scripts, cron jobs, symbolic links, ssh, dpkg and other helpful tools.
+            Including writing simple bash scripts, cron jobs, symbolic links, ssh, dpkg, vim and other helpful tools.
             TEXT,
         ],
         [
@@ -102,14 +101,6 @@ return [
             That's when I've started applying it to almost all of my projects that needed CSS.
             But almost all of my old projects I was either compiling CSS from SASS, either using frameworks like Bootstrap, Materialize CSS or  Bulma.
             TEXT,
-        ],
-        [
-            'image' => 'storage/tools/sql.png',
-            'title' => 'SQL',
-            'content' => <<<TEXT
-
-            TEXT
-            ,
         ],
     ],
 ];
