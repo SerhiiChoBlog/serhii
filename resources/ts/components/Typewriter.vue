@@ -1,6 +1,7 @@
 <template>
     <p class="home-hero__professional">
-        Professional {{ typewriter }}
+        <!-- Professional {{ typewriter }} -->
+        {{ typewriter }}
         <span class="home-hero__cursor"></span>
     </p>
 </template>
