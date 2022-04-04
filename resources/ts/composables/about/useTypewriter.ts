@@ -3,7 +3,7 @@ import { onMounted, ref } from 'vue'
 export default () => {
     const typewriter = ref('')
     // const words = ['software developer️ 😎', 'programmer 💻', 'PHP developer 🐘']
-    const words = ['Stand with Ukraine 🇺🇦', "I'm Ukrainian software developer 🇺🇦", 'Stop killing us 🙏']
+    const words = ['Stand with Ukraine 🇺🇦', "I'm a Ukrainian software developer 🇺🇦", 'Stop killing us 🙏']
     const wait = 3000
     let text = ''
     let isDeleting = false
