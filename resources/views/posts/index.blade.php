@@ -15,8 +15,8 @@
             <div class="container has-text-centered">
                 <h1 class="title">Blog for web developers</h1>
                 <h2 class="subtitle">
-                    I'm mostly writing programming related articles on different topics.<br>
-                    I'm sharing my knowledge with others to help you become a better developer.
+                    I'm mostly writing programming and productivity related articles.<br>
+                    Sharing my knowledge with others, learning and growing together.
                 </h2>
             </div>
         </div>
