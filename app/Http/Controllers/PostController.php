@@ -36,6 +36,7 @@ class PostController extends Controller
             $post = Post::query()
                 ->with('tags:id,color,name')
                 ->where('slug', $slug)
+                ->withCount('pageViews')
                 ->first();
 
             return $post?->toArray();
