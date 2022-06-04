@@ -47,7 +47,7 @@
                     window.dispatchEvent(new CustomEvent('savePost'))
                 });
                 editor.on('keydown', function (e) {
-                    if (e.ctrlKey && e.code === 'KeyS') {
+                    if ((e.ctrlKey || e.metaKey) && e.code === 'KeyS') {
                         e.preventDefault()
                         window.dispatchEvent(new CustomEvent('savePost'))
                     }
