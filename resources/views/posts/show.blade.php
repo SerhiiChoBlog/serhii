@@ -29,7 +29,7 @@
         <div class="hero-body">
             <div class="container">
                 <div class="columns">
-                    <div class="column is-flex is-align-items-left is-flex-direction-column">
+                    <div class="column is-flex is-align-items-left is-justify-content-center is-flex-direction-column">
                         <h1 class="title" style="font-size: {{ $title_font_size }}">
                             {{ $post['title'] }}
                         </h1>
