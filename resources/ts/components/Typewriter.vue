@@ -1,7 +1,7 @@
 <template>
-    <p class="home-hero__professional">
+    <p class="font-code text-lg">
          Professional {{ typewriter }}
-        <span class="home-hero__cursor"></span>
+        <span class="border-r-[12px] ml-2 animate-blink"></span>
     </p>
 </template>
 
