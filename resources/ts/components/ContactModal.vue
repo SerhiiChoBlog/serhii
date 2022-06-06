@@ -3,15 +3,15 @@
         Contact me
     </button>
 
-    <div class="absolute left-0 right-0 top-0 bottom-0 z-10 bg-[rgba(0, 0, 0, .5)]" v-show="isOpen">
+    <div class="absolute left-0 right-0 top-0 bottom-0 z-10 bg-[hsla(0,0%,4%,.86)]" v-show="isOpen">
         <transition name="fade">
-            <div class="divide-y bg-white max-w-[1000px] mx-auto shadow-xl rounded-lg p-10" v-if="isOpen">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 divide-y bg-white w-full max-w-[1000px] mx-auto shadow-xl rounded-lg p-10" v-if="isOpen">
 
                 <div v-for="section in sections" :key="section.title" class="text-black py-5 first:pt-0 last:pb-0">
                     <h3 class="text-center text-2xl mb-3">{{ section.title }}</h3>
                     <p v-html="section.content" class="text-center text-lg text-gray-700"></p>
 
-                    <div class="flex justify-center gap-x-4 mt-5">
+                    <div class="flex justify-center gap-x-5 mt-5">
                         <a
                             v-for="link in section.links"
                             :key="link.title"
