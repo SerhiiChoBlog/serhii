@@ -33,12 +33,14 @@
                         <h1 class="title" style="font-size: {{ $title_font_size }}">
                             {{ $post['title'] }}
                         </h1>
+
                         <div class="tags mt-2">
                             @foreach ($post['tags'] as $tag)
                                 <span class="tag my-0 is-medium is-normal is-dark"
                                       style="background-color: {{ $tag['color'] }}"
                                 >{{ $tag['name'] }}</span>
                             @endforeach
+
                             <time datetime="{{ $post['created_at'] }}" class="post__created-at ml-2">{{ $post['pretty_created_at'] }}</time>
 
                             @if ($post['page_views_count'] >= 100)
@@ -46,6 +48,12 @@
                                     <img src="{{ asset('storage/icons/light-eye.png') }}" alt="eye icon" width="22">
                                     <span>{{ $post['page_views_count'] }}</span>
                                 </span>
+                            @endif
+
+                            @if (auth()->check())
+                                <a href="{{ route('admin.posts.edit', ['post' => $post['id']]) }}" class="post__edit">
+                                    Edit post
+                                </a>
                             @endif
                         </div>
                     </div>
