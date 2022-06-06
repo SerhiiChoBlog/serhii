@@ -25,7 +25,7 @@
     <div class="container mt-5">
         <div class="posts">
             @foreach ($posts as $post)
-                <a href="/posts/{{ $post->slug }}" class="posts__item">
+                <a href="/posts/{{ $post->slug }}" class="posts__item {{ $post->is_published ? '' : 'posts__item--not-published' }}">
                     <img class="posts__item__image" src="{{ asset($post->image_sm) }}" alt="{{ $post->title }}" />
 
                     <div class="posts__item__content">
