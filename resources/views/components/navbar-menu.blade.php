@@ -7,9 +7,10 @@
 
     <div>
         <contact-modal>
-            <div class="rounded-full bg-main">Contact me</div>
+            <div class="bg-main py-2 px-6 rounded-full">Contact me</div>
         </contact-modal>
     </div>
+
     <div>
         <theme-switch theme="{{ request()->cookie('theme') ?? 'light' }}" />
     </div>
