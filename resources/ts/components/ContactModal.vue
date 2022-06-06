@@ -1,100 +1,29 @@
 <template>
-    <div class="bg-main py-2 px-6 rounded-full" @click="openContactModal">Contact me</div>
+    <button type="button" class="bg-main py-2 px-6 rounded-full hover:bg-main-hover transition-colors" @click="openContactModal">
+        Contact me
+    </button>
 
-    <div class="modal is-active" v-show="isOpen">
-        <div class="modal-background"></div>
-
+    <div class="absolute left-0 right-0 top-0 bottom-0 z-10 bg-[rgba(0, 0, 0, .5)]" v-show="isOpen">
         <transition name="fade">
-            <div class="modal-content" v-if="isOpen">
-                <div class="box">
-                    <div class="content">
-                        <h3 class="has-text-centered">Contact me</h3>
-                        <p class="has-text-centered">
-                            The fastest way to contact me is to send me an email at
-                            <a href="mailto:serhiicho@protonmail.com">serhiicho@protonmail.com</a> or text me on Linkedin. Before you send me a message, make sure you've read
-                            <a href="/about-me" target="_blank">about me</a> page. Don't ignore this, it's very important.
-                        </p>
+            <div class="divide-y bg-white max-w-[1000px] mx-auto shadow-xl rounded-lg p-10" v-if="isOpen">
 
-                        <div class="social-links mt-5">
-                            <a
-                                href="https://www.linkedin.com/in/serhiicho"
-                                target="_blank"
-                                title="LinkedIn"
-                            >
-                                <img src="/storage/icons/linkedin.png" alt="linked in" />
-                            </a>
-                            <a
-                                href="https://www.instagram.com/serhiicho"
-                                target="_blank"
-                                title="Instagram"
-                            >
-                                <img src="/storage/icons/instagram.png" alt="instagram" />
-                            </a>
-                            <a
-                                href="https://twitter.com/SerhiiCho"
-                                target="_blank"
-                                title="Twitter"
-                            >
-                                <img src="/storage/icons/twitter.png" alt="twitter" />
-                            </a>
-                        </div>
+                <div v-for="section in sections" :key="section.title" class="text-black py-5 first:pt-0 last:pb-0">
+                    <h3 class="text-center text-2xl mb-3">{{ section.title }}</h3>
+                    <p v-html="section.content" class="text-center text-lg text-gray-700"></p>
 
-                        <hr />
-
-                        <h3 class="has-text-centered">Find me</h3>
-                        <p
-                            class="has-text-centered"
-                        >There are some places where I'm usually hanging out. I spend a lot of time on websites that are linked below.</p>
-
-                        <div class="social-links mt-5">
-                            <a
-                                href="https://github.com/SerhiiCho"
-                                target="_blank"
-                                title="GitHub"
-                            >
-                                <img src="/storage/icons/github-dark.png" alt="github" />
-                            </a>
-                            <a
-                                href="https://laracasts.com/@SerhiiCho"
-                                target="_blank"
-                                title="Laracasts"
-                            >
-                                <img src="/storage/icons/laracasts.png" alt="laracasts" />
-                            </a>
-                            <a
-                                href="https://www.codewars.com/users/serhii_cho"
-                                target="_blank"
-                                title="Codewars"
-                            >
-                                <img src="/storage/icons/codewars.png" alt="Codewars" />
-                            </a>
-                        </div>
-
-                        <hr />
-
-                        <h3 class="has-text-centered">Open source</h3>
-                        <p
-                            class="has-text-centered"
-                        >There are also libraries and packages that I've contributed to the open-source community. Some of them you can find by links below.</p>
-
-                        <div class="social-links mt-5">
-                            <a
-                                href="https://packagist.org/packages/serhii"
-                                target="_blank"
-                                title="Packagist"
-                            >
-                                <img src="/storage/icons/packagist.png" alt="Packagist" />
-                            </a>
-                            <a
-                                href="https://www.npmjs.com/~serhiicho"
-                                target="_blank"
-                                title="NPM"
-                            >
-                                <img src="/storage/icons/npm.png" alt="NPM" />
-                            </a>
-                        </div>
+                    <div class="flex justify-center gap-x-4 mt-5">
+                        <a
+                            v-for="link in section.links"
+                            :key="link.title"
+                            :href="link.href"
+                            target="_blank"
+                            :title="link.title"
+                        >
+                            <img :src="link.img" :alt="link.title" width="30" />
+                        </a>
                     </div>
                 </div>
+
             </div>
         </transition>
 
@@ -107,7 +36,71 @@ import { defineComponent, onMounted, ref } from 'vue'
 
 export default defineComponent({
     setup() {
-        const isOpen = ref(false)
+        const isOpen = ref(true)
+        const sections = [
+            {
+                title: 'Contact me',
+                content: `
+                The fastest way to contact me is to send me an email at
+                <a href="mailto:serhiicho@protonmail.com" class="text-main">serhiicho@protonmail.com</a> or text me on Linkedin. Before you send me a message, make sure you've read
+                <a href="/about-me" class="text-main" target="_blank">about me</a> page. Don't ignore this, it's very important.
+                `,
+                links: [
+                    {
+                        img: '/storage/icons/linkedin.png',
+                        href: 'https://www.linkedin.com/in/serhiicho',
+                        title: 'LinkedIn',
+                    },
+                    {
+                        img: '/storage/icons/instagram.png',
+                        href: 'https://www.instagram.com/serhiicho',
+                        title: 'Instagram',
+                    },
+                    {
+                        img: '/storage/icons/twitter.png',
+                        href: 'https://twitter.com/SerhiiCho',
+                        title: 'Twitter',
+                    },
+                ],
+            },
+            {
+                title: 'Find me',
+                content: "There are some places where I'm usually hanging out. I spend a lot of time on websites that are linked below.",
+                links: [
+                    {
+                        img: '/storage/icons/github-dark.png',
+                        href: 'https://github.com/SerhiiCho',
+                        title: 'GitHub',
+                    },
+                    {
+                        img: '/storage/icons/laracasts.png',
+                        href: 'https://laracasts.com/@SerhiiCho',
+                        title: 'Laracasts',
+                    },
+                    {
+                        img: '/storage/icons/codewars.png',
+                        href: 'https://www.codewars.com/users/serhii_cho',
+                        title: 'Codewars',
+                    },
+                ],
+            },
+            {
+                title: 'Open source',
+                content: "There are also libraries and packages that I've contributed to the open-source community. Some of them you can find by links below.",
+                links: [
+                    {
+                        img: '/storage/icons/packagist.png',
+                        href: 'https://packagist.org/packages/serhii',
+                        title: 'Packagist',
+                    },
+                    {
+                        img: '/storage/icons/npm.png',
+                        href: 'https://www.npmjs.com/~serhiicho',
+                        title: 'NPM',
+                    },
+                ],
+            },
+        ]
 
         function openContactModal(): void {
             isOpen.value = true
@@ -127,6 +120,7 @@ export default defineComponent({
 
         return {
             isOpen,
+            sections,
             openContactModal,
             closeContactModal,
         }
