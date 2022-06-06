@@ -3,14 +3,14 @@
 @endphp
 
 <nav class="{{ ($is_grey ?? false) ? 'bg-gray-300' : 'transparent' }}">
-    <div class="container flex justify-between">
-        <div class="navbar-brand">
-            <a href="{{ route('home') }}" class="relative text-xl text-white">
-                <b>SERHII<span class="text-main-light">CHO</span></b>
+    <div class="container flex justify-between items-center min-h-[3.25rem]">
+        <div class="flex items-center gap-x-1">
+            <a href="{{ route('home') }}" class="text-xl">
+                <span>SERHII<span class="text-main">CHO</span></span>
             </a>
 
             @auth
-                <a href="{{ route('admin.dashboard') }}" class="navbar-item" style="margin-left: -17px">
+                <a href="{{ route('admin.dashboard') }}" class="text-lg">
                     <b>ADMIN</b>
                 </a>
             @endauth

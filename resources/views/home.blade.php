@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="hero home-hero is-large is-dark">
-        <div class="hero-head">
+    <section class="bg-[#363636] bg-home-hero flex flex-col justify-between">
+        <div class="text-white min-h-[3.25rem]">
             @include('includes.navbar')
         </div>
 
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="home-hero__logo">SERHII<span class="has-text-info">CHO</span></h1>
+        <div class="py-[18rem] px-[6rem]">
+            <div class="text-center text-white">
+                <h1 class="text-3xl">SERHII<span class="text-main">CHO</span></h1>
                 <typewriter />
             </div>
         </div>
