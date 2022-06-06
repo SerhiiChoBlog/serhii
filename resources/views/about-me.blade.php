@@ -23,7 +23,12 @@
                 <div class="content">
                     <div class="columns">
                         <div class="column is-one-quarter has-text-centered">
-                            <img src="{{ asset('storage/serhii.jpg') }}" alt="Serhii Cho" class="my-0 my-auto" width="250">
+                            <img src="{{ asset('storage/serhii.jpg') }}"
+                                alt="Serhii Cho"
+                                class="my-0 my-auto"
+                                width="250"
+                                style="border-radius: 9px; box-shadow: 2px 2px 7px rgba(0, 0, 0, .3)"
+                            />
                         </div>
                         <div class="column">
                             <p><x-nice-to-meet-you-component /></p>
