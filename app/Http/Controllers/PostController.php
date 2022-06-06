@@ -16,12 +16,14 @@ class PostController extends Controller
 {
     public function index(): View
     {
-        $posts = Post::query()
-            ->with('tags:id,name,color')
-            ->select('id', 'slug', 'title', 'intro', 'image_sm', 'is_published', 'created_at')
-            ->when(!auth()->check(), fn($q) => $q->where('is_published', true))
-            ->orderByDesc('created_at')
-            ->paginate(15);
+        $posts = Cache::remember(CacheKey::PUBLISHED_POSTS, Ttl::DAY, static function () {
+            return Post::query()
+                ->with('tags:id,name,color')
+                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
+                ->where('is_published', true)
+                ->orderByDesc('created_at')
+                ->paginate(15);
+        });
 
         return view('posts.index', compact('posts'));
     }
