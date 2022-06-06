@@ -1,5 +1,5 @@
 <template>
-    <div class="button is-rounded is-info contact-me-button" @click="openContactModal">Contact me</div>
+    <div class="bg-main py-2 px-6 rounded-full" @click="openContactModal">Contact me</div>
 
     <div class="modal is-active" v-show="isOpen">
         <div class="modal-background"></div>
