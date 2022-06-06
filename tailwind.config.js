@@ -14,7 +14,22 @@ module.exports = {
             'main-light': '#99c8e6',
             main: '#3298dc',
             'main-dark': '#1972ac',
-        }
+        },
+        animation: {
+            blink: 'blink 1s linear infinite',
+        },
+        backgroundImage: {
+           'home-hero': 'url(/storage/heros/home-hero.jpg)',
+        },
+        fontFamily: {
+            lato: ['Lato', 'sans-serif'],
+            code: ['JetBrainsMono', 'monospace'],
+        },
+        keyframes: {
+            blink: {
+                '50%': { opacity: 0 },
+            }
+        },
     },
   },
   plugins: [],
