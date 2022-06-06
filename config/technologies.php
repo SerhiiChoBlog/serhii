@@ -99,7 +99,7 @@ return [
             'content' => <<<TEXT
             Tailwind CSS is on my radar since the beginning of 2021.
             That's when I've started applying it to almost all of my projects that needed CSS.
-            But almost all of my old projects I was either compiling CSS from SASS, either using frameworks like Bootstrap, Materialize CSS or  Bulma.
+            But almost all of my old projects I was either compiling CSS from SASS, either using frameworks like Bootstrap, Materialize CSS, Bulma or Tailwind.
             TEXT,
         ],
     ],
