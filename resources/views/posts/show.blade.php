@@ -77,8 +77,9 @@
 
                 <div class="content post__content px-3" id="post-content" v-pre>{!! $post['content'] !!}</div>
 
-                <div class="subtitle has-text-centered mt-6">
-                    Thanks for your time! Share this post
+                <div class="subtitle has-text-centered mt-6 is-flex is-flex-direction-column">
+                    <span>Thanks for your time!</span>
+                    <span>Please, share this post to support <a href="{{ route('about-me') }}">the author</a></span>
                 </div>
 
                 <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
