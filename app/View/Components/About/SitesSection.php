@@ -1,11 +1,11 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\About;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class HomeSitesSection extends Component
+class SitesSection extends Component
 {
     public array $sites = [
         [
@@ -26,6 +26,6 @@ class HomeSitesSection extends Component
 
     public function render(): View
     {
-        return view('components.home-sites-section');
+        return view('components.about.sites-section');
     }
 }

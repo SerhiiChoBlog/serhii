@@ -1,18 +1,23 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Home;
 
 use DateInterval;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class NiceToMeetYouComponent extends Component
+class WelcomeSection extends Component
 {
     private DateInterval $date_diff;
 
     public function __construct()
     {
         $this->date_diff = $this->getDateDiff();
+    }
+
+    public function render(): View
+    {
+        return view('components.home.welcome-section');
     }
 
     public function yearsExperience(): string
@@ -47,10 +52,5 @@ class NiceToMeetYouComponent extends Component
         $current_date = date_create();
 
         return date_diff($started_career, $current_date);
-    }
-
-    public function render(): View
-    {
-        return view('components.nice-to-meet-you-component');
     }
 }

@@ -31,7 +31,7 @@
                             />
                         </div>
                         <div class="column">
-                            <p><x-nice-to-meet-you-component /></p>
+                            <p><x-home.welcome-section /></p>
                             <p>I've worked with integration services like <b>Megaplan CRM</b>, <b>Exact Online</b>, payment systems like <b>Mollie</b>, <b>Bitpay</b> and <b>WayForPay</b>. I've built apps in <b>Docker</b> containers, SPAs with <b>Vue</b>, and websites with <b>WordPress</b> and <b>Laravel</b>. Likewise, I've done tons of different work for companies in <b>business</b> and <b>e-commerce</b> segment. Building programs and interfaces for generating different types of documents, programs for stuff management and communication with clients.</p>
                         </div>
                     </div>
@@ -61,31 +61,31 @@
 
         <section class="section is-medium">
             <div class="container">
-                <x-home-tech-section :techs="config('technologies.languages')" header="Languages" />
+                <x-about.tech-section :techs="config('technologies.languages')" header="Languages" />
             </div>
         </section>
 
         <section class="section is-medium">
             <div class="container">
-                <x-home-tech-section :techs="config('technologies.frameworks')" header="Frameworks / CMS" />
+                <x-about.tech-section :techs="config('technologies.frameworks')" header="Frameworks / CMS" />
             </div>
         </section>
 
         <section class="section is-medium">
             <div class="container">
-                <x-home-tech-section :techs="config('technologies.technologies')" header="Other technologies" />
+                <x-about.tech-section :techs="config('technologies.technologies')" header="Other technologies" />
             </div>
         </section>
 
         <section class="section is-medium">
             <div class="container">
-                <x-home-tech-section :techs="config('technologies.skills')" header="Personal skills" />
+                <x-about.tech-section :techs="config('technologies.skills')" header="Personal skills" />
             </div>
         </section>
 
         <section class="section is-medium">
             <div class="container">
-                <x-home-sites-section />
+                <x-about.sites-section />
             </div>
         </section>
     </div>

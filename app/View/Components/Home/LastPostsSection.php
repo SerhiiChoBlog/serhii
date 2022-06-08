@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Home;
 
 use App\CacheKey;
 use App\Models\Post;
@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\Component;
 
-class LastPostsComponent extends Component
+class LastPostsSection extends Component
 {
     public function posts(): array
     {
@@ -26,6 +26,6 @@ class LastPostsComponent extends Component
 
     public function render(): View
     {
-        return view('components.last-posts-component');
+        return view('components.home.last-posts-section');
     }
 }
