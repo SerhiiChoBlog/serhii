@@ -4,4 +4,6 @@
             {{ $tag['name'] }}
         </span>
     @endforeach
+
+    {{ $slot }}
 </div>
