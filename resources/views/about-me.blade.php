@@ -4,18 +4,10 @@
 @section('description', "Hi, my name is Serhii, I live in Kharkiv, Ukraine. Thanks for coming to my little and cozy place. Here, you can find information that might help you to find out more about me")
 
 @section('content')
-    <section class="hero about-me-hero is-dark">
-        <div class="hero-head">
-            <x-navbar />
-        </div>
-
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title">Information about me</h1>
-                <h2 class="subtitle">Hi, my name is Serhii, I live in Kharkiv, Ukraine. Thanks for coming to my little and cozy place. Down below, you can find technologies that I'm working with and other information that might help you to know more about me.</h2>
-            </div>
-        </div>
-    </section>
+    <x-hero title="Information about me"
+        subtitle="Hi, my name is Serhii, I live in Kharkiv, Ukraine. Thanks for coming to my little and cozy place.<br>Down below, you can find technologies that I'm working with and other information that might help you to know more about me."
+        class="bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1] text-white"
+    />
 
     <div class="about-me">
         <section class="section is-medium">

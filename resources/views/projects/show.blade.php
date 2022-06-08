@@ -12,22 +12,22 @@
 @section('description', $project->description)
 
 @section('content')
-    <section class="project-hero is-light">
-        <div class="hero-head">
-{{--            @include('includes.navbar', ['is_grey' => true])--}}
-        </div>
-
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title">{{ $project->title }}</h1>
-                <h2 class="subtitle has-text-left">{{ $project->description }}</h2>
-                <a href="{{ $project->url }}" target="_blank" class="button is-rounded is-dark">
-                    <img src="{{ asset('storage/icons/github.png') }}" width="20" alt="Github logo" />
-                    <span class="ml-2">Open on Github</span>
-                </a>
-            </div>
-        </div>
-    </section>
+    <x-hero :title="$project->title"
+        :subtitle="$project->description"
+        class="bg-gray-50"
+    />
+{{--    <section class="project-hero is-light">--}}
+{{--        <div class="hero-body">--}}
+{{--            <div class="container has-text-centered">--}}
+{{--                <h1 class="title"></h1>--}}
+{{--                <h2 class="subtitle has-text-left"></h2>--}}
+{{--                <a href="{{ $project->url }}" target="_blank" class="button is-rounded is-dark">--}}
+{{--                    <img src="{{ asset('storage/icons/github.png') }}" width="20" alt="Github logo" />--}}
+{{--                    <span class="ml-2">Open on Github</span>--}}
+{{--                </a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
     <div class="container mt-6 pb-6 project">
         <div class="content" v-pre>{!! $project->content !!}</div>

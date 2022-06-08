@@ -19922,7 +19922,7 @@ var _hoisted_8 = ["src", "alt"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, [(0, vue_1.createElementVNode)("button", {
     type: "button",
-    "class": "bg-main py-2 px-6 rounded-full hover:bg-main-hover transition-colors",
+    "class": "text-white bg-main py-2 px-6 rounded-full hover:bg-main-hover transition-colors",
     onClick: _cache[0] || (_cache[0] = function () {
       var args = [];
 

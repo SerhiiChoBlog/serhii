@@ -728,6 +728,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     --tw-bg-opacity: 1;
     background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
+.bg-gray-50 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
 .bg-home-hero {
     background-image: url(/storage/heros/home-hero.jpg);
 }
@@ -742,14 +746,24 @@ Ensure the default browser behavior of the `hidden` attribute.
     --tw-gradient-from: #51895c;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(81 137 92 / 0));
 }
+.from-\[\#163249\] {
+    --tw-gradient-from: #163249;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(22 50 73 / 0));
+}
 .via-\[\#4c5f7d\] {
     --tw-gradient-stops: var(--tw-gradient-from), #4c5f7d, var(--tw-gradient-to, rgb(76 95 125 / 0));
+}
+.via-\[\#657ca1\] {
+    --tw-gradient-stops: var(--tw-gradient-from), #657ca1, var(--tw-gradient-to, rgb(101 124 161 / 0));
 }
 .to-\[\#2a4b67\] {
     --tw-gradient-to: #2a4b67;
 }
 .to-\[\#51895c\] {
     --tw-gradient-to: #51895c;
+}
+.to-\[\#657ca1\] {
+    --tw-gradient-to: #657ca1;
 }
 .bg-cover {
     background-size: cover;

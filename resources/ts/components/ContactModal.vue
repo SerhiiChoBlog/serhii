@@ -1,5 +1,8 @@
 <template>
-    <button type="button" class="bg-main py-2 px-6 rounded-full hover:bg-main-hover transition-colors" @click="openContactModal">
+    <button type="button"
+        class="text-white bg-main py-2 px-6 rounded-full hover:bg-main-hover transition-colors"
+        @click="openContactModal"
+    >
         Contact me
     </button>
 
