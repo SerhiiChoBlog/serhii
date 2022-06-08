@@ -14,22 +14,22 @@
         </div>
     </section>
 
-    <div class="home">
-        <section class="section is-medium">
+    <div>
+        <section class="p-8">
             <div class="container">
                 <div>
-                    <h2 class="home__title mb-6 has-text-centered">Nice to meet you</h2>
-                    <p class="home__subtitle">
-                        <x-nice-to-meet-you-component />
-                        <a href="{{ route('about-me') }}">Read mode about me...</a>
+                    <x-home.section-title>Nice to meet you</x-home.section-title>
+                    <p class="text-xl font-weight-light leading-8">
+                        <x-home.welcome-section />
+                        <a href="{{ route('about-me') }}" class="text-main hover:underline">Read mode about me...</a>
                     </p>
                 </div>
             </div>
         </section>
 
-        <section class="section is-medium">
+        <section class="p-8 bg-gray-100">
             <div class="container">
-                <x-last-posts-component />
+                <x-home.last-posts-section />
             </div>
         </section>
     </div>

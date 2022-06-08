@@ -2,8 +2,8 @@
     /** @var array[] $posts */
 @endphp
 
-<div class="last-posts">
-    <h2 class="home__title has-text-centered">Latest posts</h2>
+<div>
+    <x-home.section-title>Latest posts</x-home.section-title>
 
     <div class="columns">
         @foreach ($posts as $post)

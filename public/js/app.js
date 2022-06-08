@@ -19553,6 +19553,51 @@ var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 exports["default"] = (0, vue_1.defineComponent)({
   setup: function setup() {
     var isOpen = (0, vue_1.ref)(false);
+    var sections = [{
+      title: 'Contact me',
+      content: "\n                The fastest way to contact me is to send me an email at\n                <a href=\"mailto:serhiicho@protonmail.com\" class=\"text-main\">serhiicho@protonmail.com</a> or text me on Linkedin. Before you send me a message, make sure you've read\n                <a href=\"/about-me\" class=\"text-main\" target=\"_blank\">about me</a> page. Don't ignore this, it's very important.\n                ",
+      links: [{
+        img: '/storage/icons/linkedin.png',
+        href: 'https://www.linkedin.com/in/serhiicho',
+        title: 'LinkedIn'
+      }, {
+        img: '/storage/icons/instagram.png',
+        href: 'https://www.instagram.com/serhiicho',
+        title: 'Instagram'
+      }, {
+        img: '/storage/icons/twitter.png',
+        href: 'https://twitter.com/SerhiiCho',
+        title: 'Twitter'
+      }]
+    }, {
+      title: 'Find me',
+      content: "There are some places where I'm usually hanging out. I spend a lot of time on websites that are linked below.",
+      links: [{
+        img: '/storage/icons/github-dark.png',
+        href: 'https://github.com/SerhiiCho',
+        title: 'GitHub'
+      }, {
+        img: '/storage/icons/laracasts.png',
+        href: 'https://laracasts.com/@SerhiiCho',
+        title: 'Laracasts'
+      }, {
+        img: '/storage/icons/codewars.png',
+        href: 'https://www.codewars.com/users/serhii_cho',
+        title: 'Codewars'
+      }]
+    }, {
+      title: 'Open source',
+      content: "There are also libraries and packages that I've contributed to the open-source community. Some of them you can find by links below.",
+      links: [{
+        img: '/storage/icons/packagist.png',
+        href: 'https://packagist.org/packages/serhii',
+        title: 'Packagist'
+      }, {
+        img: '/storage/icons/npm.png',
+        href: 'https://www.npmjs.com/~serhiicho',
+        title: 'NPM'
+      }]
+    }];
 
     function openContactModal() {
       isOpen.value = true;
@@ -19571,6 +19616,7 @@ exports["default"] = (0, vue_1.defineComponent)({
     });
     return {
       isOpen: isOpen,
+      sections: sections,
       openContactModal: openContactModal,
       closeContactModal: closeContactModal
     };
@@ -19854,112 +19900,29 @@ var _withScopeId = function _withScopeId(n) {
 };
 
 var _hoisted_1 = {
-  "class": "modal is-active"
+  "class": "fixed left-0 right-0 top-0 bottom-0 z-10 bg-[hsla(0,0%,4%,.86)]"
 };
-
-var _hoisted_2 = _withScopeId(function () {
-  return (0, vue_1.createElementVNode)("div", {
-    "class": "modal-background"
-  }, null, -1);
-});
-
-var _hoisted_3 = {
+var _hoisted_2 = {
   key: 0,
-  "class": "modal-content"
+  "class": "overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto"
 };
-
-var _hoisted_4 = _withScopeId(function () {
-  return (0, vue_1.createElementVNode)("div", {
-    "class": "box"
-  }, [(0, vue_1.createElementVNode)("div", {
-    "class": "content"
-  }, [(0, vue_1.createElementVNode)("h3", {
-    "class": "has-text-centered"
-  }, "Contact me"), (0, vue_1.createElementVNode)("p", {
-    "class": "has-text-centered"
-  }, [(0, vue_1.createTextVNode)(" The fastest way to contact me is to send me an email at "), (0, vue_1.createElementVNode)("a", {
-    href: "mailto:serhiicho@protonmail.com"
-  }, "serhiicho@protonmail.com"), (0, vue_1.createTextVNode)(" or text me on Linkedin. Before you send me a message, make sure you've read "), (0, vue_1.createElementVNode)("a", {
-    href: "/about-me",
-    target: "_blank"
-  }, "about me"), (0, vue_1.createTextVNode)(" page. Don't ignore this, it's very important. ")]), (0, vue_1.createElementVNode)("div", {
-    "class": "social-links mt-5"
-  }, [(0, vue_1.createElementVNode)("a", {
-    href: "https://www.linkedin.com/in/serhiicho",
-    target: "_blank",
-    title: "LinkedIn"
-  }, [(0, vue_1.createElementVNode)("img", {
-    src: "/storage/icons/linkedin.png",
-    alt: "linked in"
-  })]), (0, vue_1.createElementVNode)("a", {
-    href: "https://www.instagram.com/serhiicho",
-    target: "_blank",
-    title: "Instagram"
-  }, [(0, vue_1.createElementVNode)("img", {
-    src: "/storage/icons/instagram.png",
-    alt: "instagram"
-  })]), (0, vue_1.createElementVNode)("a", {
-    href: "https://twitter.com/SerhiiCho",
-    target: "_blank",
-    title: "Twitter"
-  }, [(0, vue_1.createElementVNode)("img", {
-    src: "/storage/icons/twitter.png",
-    alt: "twitter"
-  })])]), (0, vue_1.createElementVNode)("hr"), (0, vue_1.createElementVNode)("h3", {
-    "class": "has-text-centered"
-  }, "Find me"), (0, vue_1.createElementVNode)("p", {
-    "class": "has-text-centered"
-  }, "There are some places where I'm usually hanging out. I spend a lot of time on websites that are linked below."), (0, vue_1.createElementVNode)("div", {
-    "class": "social-links mt-5"
-  }, [(0, vue_1.createElementVNode)("a", {
-    href: "https://github.com/SerhiiCho",
-    target: "_blank",
-    title: "GitHub"
-  }, [(0, vue_1.createElementVNode)("img", {
-    src: "/storage/icons/github-dark.png",
-    alt: "github"
-  })]), (0, vue_1.createElementVNode)("a", {
-    href: "https://laracasts.com/@SerhiiCho",
-    target: "_blank",
-    title: "Laracasts"
-  }, [(0, vue_1.createElementVNode)("img", {
-    src: "/storage/icons/laracasts.png",
-    alt: "laracasts"
-  })]), (0, vue_1.createElementVNode)("a", {
-    href: "https://www.codewars.com/users/serhii_cho",
-    target: "_blank",
-    title: "Codewars"
-  }, [(0, vue_1.createElementVNode)("img", {
-    src: "/storage/icons/codewars.png",
-    alt: "Codewars"
-  })])]), (0, vue_1.createElementVNode)("hr"), (0, vue_1.createElementVNode)("h3", {
-    "class": "has-text-centered"
-  }, "Open source"), (0, vue_1.createElementVNode)("p", {
-    "class": "has-text-centered"
-  }, "There are also libraries and packages that I've contributed to the open-source community. Some of them you can find by links below."), (0, vue_1.createElementVNode)("div", {
-    "class": "social-links mt-5"
-  }, [(0, vue_1.createElementVNode)("a", {
-    href: "https://packagist.org/packages/serhii",
-    target: "_blank",
-    title: "Packagist"
-  }, [(0, vue_1.createElementVNode)("img", {
-    src: "/storage/icons/packagist.png",
-    alt: "Packagist"
-  })]), (0, vue_1.createElementVNode)("a", {
-    href: "https://www.npmjs.com/~serhiicho",
-    target: "_blank",
-    title: "NPM"
-  }, [(0, vue_1.createElementVNode)("img", {
-    src: "/storage/icons/npm.png",
-    alt: "NPM"
-  })])])])], -1);
-});
-
-var _hoisted_5 = [_hoisted_4];
+var _hoisted_3 = {
+  "class": "bg-white shadow-xl rounded-lg p-10 divide-y h-full"
+};
+var _hoisted_4 = {
+  "class": "text-center text-2xl mb-3"
+};
+var _hoisted_5 = ["innerHTML"];
+var _hoisted_6 = {
+  "class": "flex justify-center gap-x-5 mt-5"
+};
+var _hoisted_7 = ["href", "title"];
+var _hoisted_8 = ["src", "alt"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, [(0, vue_1.createElementVNode)("div", {
-    "class": "button is-rounded is-info contact-me-button",
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, [(0, vue_1.createElementVNode)("button", {
+    type: "button",
+    "class": "bg-main py-2 px-6 rounded-full hover:bg-main-hover transition-colors",
     onClick: _cache[0] || (_cache[0] = function () {
       var args = [];
 
@@ -19969,11 +19932,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       return _ctx.openContactModal && _ctx.openContactModal.apply(_ctx, args);
     })
-  }, "Contact me"), (0, vue_1.withDirectives)((0, vue_1.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0, vue_1.createVNode)(vue_1.Transition, {
+  }, " Contact me "), (0, vue_1.withDirectives)((0, vue_1.createElementVNode)("div", _hoisted_1, [(0, vue_1.createVNode)(vue_1.Transition, {
     name: "fade"
   }, {
     "default": (0, vue_1.withCtx)(function () {
-      return [_ctx.isOpen ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_3, _hoisted_5)) : (0, vue_1.createCommentVNode)("v-if", true)];
+      return [_ctx.isOpen ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_2, [(0, vue_1.createElementVNode)("div", _hoisted_3, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(_ctx.sections, function (section) {
+        return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", {
+          key: section.title,
+          "class": "text-black py-5 first:pt-0 last:pb-0"
+        }, [(0, vue_1.createElementVNode)("h3", _hoisted_4, (0, vue_1.toDisplayString)(section.title), 1), (0, vue_1.createElementVNode)("p", {
+          innerHTML: section.content,
+          "class": "text-center text-lg text-gray-700"
+        }, null, 8, _hoisted_5), (0, vue_1.createElementVNode)("div", _hoisted_6, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(section.links, function (link) {
+          return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
+            key: link.title,
+            href: link.href,
+            target: "_blank",
+            title: link.title,
+            "class": "transition-transform hover:scale-125"
+          }, [(0, vue_1.createElementVNode)("img", {
+            src: link.img,
+            alt: link.title,
+            width: "30"
+          }, null, 8, _hoisted_8)], 8, _hoisted_7);
+        }), 128))])]);
+      }), 128))])])) : (0, vue_1.createCommentVNode)("v-if", true)];
     }),
     _: 1
   }), (0, vue_1.createElementVNode)("button", {
@@ -20218,11 +20201,11 @@ exports.render = void 0;
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "home-hero__professional"
+  "class": "font-code text-lg"
 };
 
 var _hoisted_2 = (0, vue_1.createElementVNode)("span", {
-  "class": "home-hero__cursor"
+  "class": "border-r-[12px] ml-2 animate-blink"
 }, null, -1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
