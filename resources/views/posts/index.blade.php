@@ -1,5 +1,8 @@
 @php
-    /** @var \Illuminate\Support\Collection<\App\Models\Post> $posts */
+    use Illuminate\Support\Collection;
+    use App\Models\Post;
+
+    /** @var Collection<Post> $posts */
 @endphp
 
 @extends('layouts.app')
@@ -8,19 +11,10 @@
 @section('description', "I am mostly writing programming related articles on different topics. I am sharing my knowledge with others to help you become a better developer")
 
 @section('content')
-    <section class="hero blog-hero is-dark">
-        <div class="hero-head">@include('includes.navbar')</div>
-
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title">Blog for web developers</h1>
-                <h2 class="subtitle">
-                    I'm mostly writing programming and productivity related articles.<br>
-                    Sharing my knowledge with others, learning and growing together.
-                </h2>
-            </div>
-        </div>
-    </section>
+    <x-hero title="Blog for web developers"
+        subtitle="I'm mostly writing programming and productivity related articles.<br>Sharing my knowledge with others, learning and growing together."
+        class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white"
+    />
 
     <div class="container mt-5">
         <div class="posts">

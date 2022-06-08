@@ -8,16 +8,10 @@
 @section('description', "I'm a the maintainer of se")
 
 @section('content')
-    <section class="hero projects-hero is-dark">
-        <div class="hero-head">@include('includes.navbar')</div>
-
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title">Open-source projects</h1>
-                <h2 class="subtitle">I'm the maintainer of several open-source libraries and browser extension. You can contribute to any of them on GitHub, and I would gladly look into your pull request or issue.</h2>
-            </div>
-        </div>
-    </section>
+    <x-hero title="Open-source projects"
+        subtitle="I'm the maintainer of several open-source libraries and browser extension.<br>You can contribute to any of them on GitHub, and I would gladly look into your pull request or issue."
+        class="bg-gradient-to-r from-[#51895c] via-[#4c5f7d] to-[#51895c] text-white"
+    />
 
     <div class="container mt-6">
         <div class="row">
