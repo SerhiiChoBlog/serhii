@@ -8,24 +8,21 @@
     <div class="flex gap-8">
         @foreach ($posts as $post)
             <div>
-                <div>
-                    <a href="{{ route('posts.show', $post['slug']) }}">
-                        <img data-src="{{ asset($post['image_sm']) }}"
-                            alt="{{ $post['title'] }}"
-                            class="smooth-loader"
-                        />
-                    </a>
-                    <div class="card-content">
-                        <div class="media mb-3">
-                            <div class="media-content">
-                                <p class="title is-4 has-text-weight-bold">{{ $post['title'] }}</p>
-                            </div>
-                        </div>
+                <a href="{{ route('posts.show', $post['slug']) }}"
+                   class="transition-opacity hover:opacity-70"
+                >
+                    <img data-src="{{ asset($post['image_sm']) }}"
+                        alt="{{ $post['title'] }}"
+                        class="smooth-loader rounded-md shadow-md"
+                    />
+                </a>
 
-                        <div class="content is-medium mb-2">{{ $post['intro'] }}</div>
+                <div class="py-5 px-2">
+                    <h4 class="text-2xl font-bold">{{ $post['title'] }}</h4>
 
-                        <x-post.tags :tags="$post['tags']" />
-                    </div>
+                    <div class="my-4 text-xl">{{ $post['intro'] }}</div>
+
+                    <x-post.tags :tags="$post['tags']" />
                 </div>
             </div>
         @endforeach
