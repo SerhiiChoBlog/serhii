@@ -19774,11 +19774,11 @@ exports["default"] = (0, vue_1.defineComponent)({
         if (currentTheme.value === 'light') {
           switchTo.value = 'light';
           currentTheme.value = 'dark';
-          document.body.classList.add('dark-theme');
+          document.body.classList.add('dark');
         } else {
           switchTo.value = 'dark';
           currentTheme.value = 'light';
-          document.body.classList.remove('dark-theme');
+          document.body.classList.remove('dark');
         }
       })["catch"](function (err) {
         return console.error(err);
@@ -20135,12 +20135,9 @@ exports.render = void 0;
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "theme-toggle-wrap"
-};
-var _hoisted_2 = ["aria-label"];
+var _hoisted_1 = ["aria-label"];
 
-var _hoisted_3 = (0, vue_1.createElementVNode)("svg", {
+var _hoisted_2 = (0, vue_1.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   "xmlns:xlink": "http://www.w3.org/1999/xlink",
   x: "0px",
@@ -20150,23 +20147,23 @@ var _hoisted_3 = (0, vue_1.createElementVNode)("svg", {
   viewBox: "0 0 212.1 212.1",
   "xml:space": "preserve",
   fill: "currentColor"
-}, [(0, vue_1.createElementVNode)("g", {
-  "class": "theme-toggle__sun"
+}, [(0, vue_1.createCommentVNode)(" Sun "), (0, vue_1.createElementVNode)("g", {
+  "class": "origin-center transition-transform rotate-[0turn]"
 }, [(0, vue_1.createElementVNode)("path", {
-  d: "M181.1,75V31.1h-43.9L106.1,0L75,31.1H31.1V75L0,106.1l31.1,31.1v43.9H75l31.1,31.1l31.1-31.1h43.9v-43.9l31.1-31.1\n                    L181.1,75z M106.1,162.1c-30.9,0-56-25.1-56-56s25.1-56,56-56s56,25.1,56,56S137,162.1,106.1,162.1z"
-})]), (0, vue_1.createElementVNode)("g", {
-  "class": "theme-toggle__circle"
+  d: "M181.1,75V31.1h-43.9L106.1,0L75,31.1H31.1V75L0,106.1l31.1,31.1v43.9H75l31.1,31.1l31.1-31.1h43.9v-43.9l31.1-31.1\n                        L181.1,75z M106.1,162.1c-30.9,0-56-25.1-56-56s25.1-56,56-56s56,25.1,56,56S137,162.1,106.1,162.1z"
+})]), (0, vue_1.createCommentVNode)(" Circle "), (0, vue_1.createElementVNode)("g", {
+  "class": "origin-center transition-transform translate-x-0"
 }, [(0, vue_1.createElementVNode)("circle", {
   cx: "106.1",
   cy: "106.1",
   r: "41"
 })])], -1);
 
-var _hoisted_4 = [_hoisted_3];
+var _hoisted_3 = [_hoisted_2];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createElementVNode)("button", {
-    "class": "theme-toggle",
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", null, [(0, vue_1.createElementVNode)("button", {
+    "class": "relative inline-block p-1 bg-transparent text-yellow-500",
     "aria-label": "Switch to ".concat(_ctx.switchTo, " theme"),
     onClick: _cache[0] || (_cache[0] = function () {
       var args = [];
@@ -20177,7 +20174,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       return _ctx.switchTheme && _ctx.switchTheme.apply(_ctx, args);
     })
-  }, _hoisted_4, 8, _hoisted_2)]);
+  }, _hoisted_3, 8, _hoisted_1)]);
 }
 
 exports.render = render;
