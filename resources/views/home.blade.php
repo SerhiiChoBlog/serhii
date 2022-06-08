@@ -15,7 +15,7 @@
     </section>
 
     <div>
-        <section class="p-8">
+        <section class="py-14">
             <div class="container">
                 <div>
                     <x-home.section-title>Nice to meet you</x-home.section-title>
@@ -27,7 +27,7 @@
             </div>
         </section>
 
-        <section class="p-8 bg-gray-100">
+        <section class="py-12 bg-page-second">
             <div class="container">
                 <x-home.last-posts-section />
             </div>

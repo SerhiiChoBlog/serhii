@@ -12,10 +12,12 @@ module.exports = {
     },
     extend: {
         colors: {
-            'main-light': '#99c8e6',
-            main: '#3298dc',
-            'main-hover': '#288acc',
-            'main-dark': '#1972ac',
+            'page': 'var(--color-page)',
+            'page-second': 'var(--color-page-second)',
+            'main-light': 'var(--color-main-light)',
+            'main': 'var(--color-main)',
+            'main-hover': 'var(--color-main-hover)',
+            'main-dark': 'var(--color-main-dark)',
         },
         animation: {
             blink: 'blink 1s linear infinite',
