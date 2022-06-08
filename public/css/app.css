@@ -401,6 +401,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
+:root {
+        --color-page: white;
+        --color-page-second: #eee;
+        --color-main-light: #99c8e6;
+        --color-main: #3298dc;
+        --color-main-hover: #288acc;
+        --color-main-dark: #1972ac;
+    }
+
+.dark {
+        --color-page: #10171e;
+        --color-page-second: #15202b;
+        --color-main-light: #99c8e6;
+        --color-main: #3298dc;
+        --color-main-hover: #288acc;
+        --color-main-dark: #1972ac;
+    }
+
 *, ::before, ::after {
     --tw-translate-x: 0;
     --tw-translate-y: 0;
@@ -626,18 +644,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     --tw-translate-x: 0px;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-.translate-y-1 {
-    --tw-translate-y: 0.25rem;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-.translate-y-\[2px\] {
-    --tw-translate-y: 2px;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-.translate-y-\[1px\] {
-    --tw-translate-y: 1px;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
 .rotate-\[0turn\] {
     --tw-rotate: 0turn;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -724,13 +730,8 @@ Ensure the default browser behavior of the `hidden` attribute.
     --tw-bg-opacity: 1;
     background-color: rgb(54 54 54 / var(--tw-bg-opacity));
 }
-.bg-gray-100 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
 .bg-main {
-    --tw-bg-opacity: 1;
-    background-color: rgb(50 152 220 / var(--tw-bg-opacity));
+    background-color: var(--color-main);
 }
 .bg-\[hsla\(0\2c 0\%\2c 4\%\2c \.86\)\] {
     background-color: hsla(0,0%,4%,.86);
@@ -750,23 +751,11 @@ Ensure the default browser behavior of the `hidden` attribute.
     --tw-bg-opacity: 1;
     background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
-.bg-opacity-75 {
-    --tw-bg-opacity: 0.75;
+.bg-page-second {
+    background-color: var(--color-page-second);
 }
-.bg-opacity-50 {
-    --tw-bg-opacity: 0.5;
-}
-.bg-opacity-25 {
-    --tw-bg-opacity: 0.25;
-}
-.bg-opacity-5 {
-    --tw-bg-opacity: 0.05;
-}
-.bg-opacity-90 {
-    --tw-bg-opacity: 0.9;
-}
-.bg-opacity-10 {
-    --tw-bg-opacity: 0.1;
+.bg-page {
+    background-color: var(--color-page);
 }
 .bg-gradient-to-r {
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
@@ -825,6 +814,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .p-3 {
     padding: 0.75rem;
 }
+.p-12 {
+    padding: 3rem;
+}
 .py-\[18rem\] {
     padding-top: 18rem;
     padding-bottom: 18rem;
@@ -873,6 +865,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
 }
+.py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
 .pb-3 {
     padding-bottom: 0.75rem;
 }
@@ -884,6 +880,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pt-4 {
     padding-top: 1rem;
+}
+.pb-14 {
+    padding-bottom: 3.5rem;
+}
+.pb-12 {
+    padding-bottom: 3rem;
+}
+.pb-10 {
+    padding-bottom: 2.5rem;
 }
 .text-center {
     text-align: center;
@@ -935,8 +940,7 @@ Ensure the default browser behavior of the `hidden` attribute.
     color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .text-main {
-    --tw-text-opacity: 1;
-    color: rgb(50 152 220 / var(--tw-text-opacity));
+    color: var(--color-main);
 }
 .text-black {
     --tw-text-opacity: 1;
@@ -1004,9 +1008,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
-.duration-200 {
-    transition-duration: 200ms;
-}
 .duration-500 {
     transition-duration: 500ms;
 }
@@ -1036,22 +1037,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .hover\:bg-main-hover:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(40 138 204 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-gray-100:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-gray-400:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(156 163 175 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-\[rgba\(0\2c 0\2c 0\2c \.4\)\]:hover {
-    background-color: rgba(0,0,0,.4);
+    background-color: var(--color-main-hover);
 }
 
 .hover\:bg-gray-500:hover {
@@ -1059,16 +1045,9 @@ Ensure the default browser behavior of the `hidden` attribute.
     background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-opacity-10:hover {
-    --tw-bg-opacity: 0.1;
-}
-
-.hover\:bg-opacity-25:hover {
-    --tw-bg-opacity: 0.25;
-}
-
-.hover\:bg-opacity-30:hover {
-    --tw-bg-opacity: 0.3;
+.hover\:bg-gray-100:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-opacity-50:hover {
@@ -1093,23 +1072,12 @@ Ensure the default browser behavior of the `hidden` attribute.
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.dark .dark\:-translate-x-1\/3 {
-    --tw-translate-x: -33.333333%;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.dark .dark\:-translate-x-1\/2 {
-    --tw-translate-x: -50%;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .dark .dark\:rotate-\[0\.5turn\] {
     --tw-rotate: 0.5turn;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .dark .dark\:text-main {
-    --tw-text-opacity: 1;
-    color: rgb(50 152 220 / var(--tw-text-opacity));
+    color: var(--color-main);
 }
 
