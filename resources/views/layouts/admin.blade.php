@@ -11,11 +11,11 @@
     @yield('head')
 </head>
 <body>
-    @include('includes.user-sidebar')
-    <main class="main-wrapper py-6">
-        @yield('content')
-    </main>
-    <script src="{{ asset('js/admin.js') }}" defer></script>
+<x-user-sidebar />
+<main class="main-wrapper py-6">
+    @yield('content')
+</main>
+<script src="{{ asset('js/admin.js') }}" defer></script>
 </body>
 </html>
 
