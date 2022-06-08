@@ -31,10 +31,14 @@
                         alt="{{ $post->title }}"
                     />
 
-                    <div class="">
-                        <h2 class="">{{ $post->title }}</h2>
-                        <p class="">{{ $post->intro }}</p>
-                        <x-post.tags :tags="$post->tags" />
+                    <div class="font-lato">
+                        <h2 class="text-xl text-black">{{ $post->title }}</h2>
+                        <p class="pb-3 pt-1 text-lg font-light text-gray-500">{{ $post->intro }}</p>
+                        <x-post.tags :tags="$post->tags">
+                            <time datetime="{{ $post->created_at }}" class="text-gray-400 text-md ml-1">
+                                {{ $post->pretty_created_at }}
+                            </time>
+                        </x-post.tags>
                     </div>
                 </a>
             @endforeach
