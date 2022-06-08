@@ -1,8 +1,11 @@
 @php
-    use Illuminate\Support\Collection;
+    use Illuminate\Pagination\LengthAwarePaginator;
     use App\Models\Post;
 
-    /** @var Collection<Post> $posts */
+    /**
+     * @var LengthAwarePaginator<Post> $posts
+     * @var Post $post
+     */
 @endphp
 
 @extends('layouts.app')
@@ -18,21 +21,20 @@
 
     <div class="container mt-5">
         <div class="posts">
-            @foreach ($posts as $post)
-                <a href="/posts/{{ $post->slug }}" class="posts__item">
-                    <img class="posts__item__image" src="{{ asset($post->image_sm) }}" alt="{{ $post->title }}" />
 
-                    <div class="posts__item__content">
-                        <h2 class="posts__item__content__title has-text-black">{{ $post->title }}</h2>
-                        <p class="posts__item__content__intro">{{ $post->intro }}</p>
-                        <div class="tags mt-2">
-                            @foreach ($post->tags as $tag)
-                                <span class="tag my-0 is-small is-normal is-dark" style="background-color: {{ $tag->color }}">
-                                    {{ $tag->name }}
-                                </span>
-                            @endforeach
-                            <time datetime="{{ $post->created_at }}" class="has-text-grey">{{ $post->pretty_created_at }}</time>
-                        </div>
+            @foreach ($posts as $post)
+                <a href="/posts/{{ $post->slug }}"
+                   class="flex items-center gap-6 border-md p-3 rounded-xl transition-colors hover:bg-gray-100"
+                >
+                    <img src="{{ asset($post->image_sm) }}"
+                        class="rounded-lg shadow-md shadow-[rgba(0,0,0,.2)] w-[260px] h-[130px]"
+                        alt="{{ $post->title }}"
+                    />
+
+                    <div class="">
+                        <h2 class="">{{ $post->title }}</h2>
+                        <p class="">{{ $post->intro }}</p>
+                        <x-post.tags :tags="$post->tags" />
                     </div>
                 </a>
             @endforeach
