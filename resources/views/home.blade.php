@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="bg-[#363636] bg-home-hero flex flex-col justify-between">
+    <section class="bg-[#363636] bg-home-hero bg-no-repeat bg-center bg-cover flex flex-col justify-between">
         <div class="text-white min-h-[3.25rem]">
             @include('includes.navbar')
         </div>
@@ -19,7 +19,7 @@
             <div class="container">
                 <div>
                     <x-home.section-title>Nice to meet you</x-home.section-title>
-                    <p class="text-xl font-weight-light leading-8">
+                    <p class="text-[1.3em] font-weight-light leading-9">
                         <x-home.welcome-section />
                         <a href="{{ route('about-me') }}" class="text-main hover:underline">Read mode about me...</a>
                     </p>
