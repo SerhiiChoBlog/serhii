@@ -1,7 +1,6 @@
 <template>
-    <div>
-        <button class="relative inline-block p-1 bg-transparent text-yellow-500"
-            :aria-label="`Switch to ${switchTo} theme`"
+    <div class="flex items-center">
+        <button class="relative inline-block p-1 bg-transparent text-yellow-500 dark:text-main hover:bg-gray-500 hover:bg-opacity-50 rounded-full"
             @click="switchTheme"
         >
             <svg
@@ -47,17 +46,14 @@ export default defineComponent({
 
     setup({ theme }) {
         const currentTheme = ref<Theme>(theme)
-        const switchTo = ref<Theme>(theme === 'light' ? 'dark' : 'light')
 
         function switchTheme(): void {
             axios.get('/theme')
                 .then((res) => {
                     if (currentTheme.value === 'light') {
-                        switchTo.value = 'light'
                         currentTheme.value = 'dark'
                         document.body.classList.add('dark')
                     } else {
-                        switchTo.value = 'dark'
                         currentTheme.value = 'light'
                         document.body.classList.remove('dark')
                     }
@@ -67,7 +63,6 @@ export default defineComponent({
 
         return {
             switchTheme,
-            switchTo,
         }
     },
 })
