@@ -19767,16 +19767,13 @@ exports["default"] = (0, vue_1.defineComponent)({
   setup: function setup(_a) {
     var theme = _a.theme;
     var currentTheme = (0, vue_1.ref)(theme);
-    var switchTo = (0, vue_1.ref)(theme === 'light' ? 'dark' : 'light');
 
     function switchTheme() {
       axios_1["default"].get('/theme').then(function (res) {
         if (currentTheme.value === 'light') {
-          switchTo.value = 'light';
           currentTheme.value = 'dark';
           document.body.classList.add('dark');
         } else {
-          switchTo.value = 'dark';
           currentTheme.value = 'light';
           document.body.classList.remove('dark');
         }
@@ -19786,8 +19783,7 @@ exports["default"] = (0, vue_1.defineComponent)({
     }
 
     return {
-      switchTheme: switchTheme,
-      switchTo: switchTo
+      switchTheme: switchTheme
     };
   }
 });
@@ -20135,7 +20131,9 @@ exports.render = void 0;
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = ["aria-label"];
+var _hoisted_1 = {
+  "class": "flex items-center"
+};
 
 var _hoisted_2 = (0, vue_1.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -20162,9 +20160,8 @@ var _hoisted_2 = (0, vue_1.createElementVNode)("svg", {
 var _hoisted_3 = [_hoisted_2];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", null, [(0, vue_1.createElementVNode)("button", {
-    "class": "relative inline-block p-1 bg-transparent text-yellow-500",
-    "aria-label": "Switch to ".concat(_ctx.switchTo, " theme"),
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createElementVNode)("button", {
+    "class": "relative inline-block p-1 bg-transparent text-yellow-500 dark:text-main hover:bg-gray-500 hover:bg-opacity-50 rounded-full",
     onClick: _cache[0] || (_cache[0] = function () {
       var args = [];
 
@@ -20174,7 +20171,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       return _ctx.switchTheme && _ctx.switchTheme.apply(_ctx, args);
     })
-  }, _hoisted_3, 8, _hoisted_1)]);
+  }, _hoisted_3)]);
 }
 
 exports.render = render;
