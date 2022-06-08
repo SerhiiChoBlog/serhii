@@ -5,14 +5,14 @@
 <div>
     <x-home.section-title>Latest posts</x-home.section-title>
 
-    <div class="columns">
+    <div class="flex gap-8">
         @foreach ($posts as $post)
-            <div class="column">
+            <div>
                 <div>
-                    <a href="{{ route('posts.show', $post['slug']) }}" class="card-image">
+                    <a href="{{ route('posts.show', $post['slug']) }}">
                         <img data-src="{{ asset($post['image_sm']) }}"
                             alt="{{ $post['title'] }}"
-                             class="smooth-loader"
+                            class="smooth-loader"
                         />
                     </a>
                     <div class="card-content">
@@ -24,13 +24,7 @@
 
                         <div class="content is-medium mb-2">{{ $post['intro'] }}</div>
 
-                        <div class="tags mt-3">
-                            @foreach ($post['tags'] as $tag)
-                                <span class="tag my-0 is-small is-normal is-dark mb-1" style="background-color: {{ $tag['color'] }}">
-                                    {{ $tag['name'] }}
-                                </span>
-                            @endforeach
-                        </div>
+                        <x-post.tags :tags="$post['tags']" />
                     </div>
                 </div>
             </div>
