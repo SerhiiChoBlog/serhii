@@ -18,9 +18,9 @@
                 </a>
 
                 <div class="py-5 px-2">
-                    <h4 class="text-2xl font-bold">{{ $post['title'] }}</h4>
+                    <h4 class="text-2xl font-light">{{ $post['title'] }}</h4>
 
-                    <div class="my-4 text-xl">{{ $post['intro'] }}</div>
+                    <div class="my-3 text-lg text-light">{{ $post['intro'] }}</div>
 
                     <x-post.tags :tags="$post['tags']" />
                 </div>
