@@ -13,7 +13,9 @@
 
 @section('content')
     <section class="project-hero is-light">
-        <div class="hero-head">@include('includes.navbar', ['is_grey' => true])</div>
+        <div class="hero-head">
+{{--            @include('includes.navbar', ['is_grey' => true])--}}
+        </div>
 
         <div class="hero-body">
             <div class="container has-text-centered">

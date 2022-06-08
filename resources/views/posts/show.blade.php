@@ -24,7 +24,7 @@
 
 @section('content')
     <section class="hero post-hero is-dark">
-        <div class="hero-head">@include('includes.navbar')</div>
+        <div class="hero-head"><x-navbar /></div>
 
         <div class="hero-body">
             <div class="container">

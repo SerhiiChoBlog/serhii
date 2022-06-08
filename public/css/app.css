@@ -724,8 +724,32 @@ Ensure the default browser behavior of the `hidden` attribute.
     --tw-bg-opacity: 1;
     background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
+.bg-gray-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
 .bg-home-hero {
     background-image: url(/storage/heros/home-hero.jpg);
+}
+.bg-gradient-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+.from-\[\#d074a2\] {
+    --tw-gradient-from: #d074a2;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(208 116 162 / 0));
+}
+.from-\[\#51895c\] {
+    --tw-gradient-from: #51895c;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(81 137 92 / 0));
+}
+.via-\[\#4c5f7d\] {
+    --tw-gradient-stops: var(--tw-gradient-from), #4c5f7d, var(--tw-gradient-to, rgb(76 95 125 / 0));
+}
+.to-\[\#2a4b67\] {
+    --tw-gradient-to: #2a4b67;
+}
+.to-\[\#51895c\] {
+    --tw-gradient-to: #51895c;
 }
 .bg-cover {
     background-size: cover;
@@ -747,6 +771,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .p-2 {
     padding: 0.5rem;
+}
+.p-\[3ewm\] {
+    padding: 3ewm;
+}
+.p-\[3em\] {
+    padding: 3em;
 }
 .py-\[18rem\] {
     padding-top: 18rem;
@@ -866,6 +896,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .text-\[1\.3em\] {
     font-size: 1.3em;
+}
+.text-\[1\.2em\] {
+    font-size: 1.2em;
 }
 .font-bold {
     font-weight: 700;

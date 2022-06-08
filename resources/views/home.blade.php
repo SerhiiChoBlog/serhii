@@ -3,7 +3,7 @@
 @section('content')
     <section class="bg-[#363636] bg-home-hero bg-no-repeat bg-center bg-cover flex flex-col justify-between">
         <div class="text-white min-h-[3.25rem]">
-            @include('includes.navbar')
+            <x-navbar />
         </div>
 
         <div class="py-[18rem] px-[6rem]">

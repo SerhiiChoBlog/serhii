@@ -6,7 +6,7 @@
 @section('content')
     <section class="hero about-me-hero is-dark">
         <div class="hero-head">
-            @include('includes.navbar')
+            <x-navbar />
         </div>
 
         <div class="hero-body">
