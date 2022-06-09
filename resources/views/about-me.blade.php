@@ -9,20 +9,19 @@
         class="bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1] text-white"
     />
 
-    <div class="about-me">
-        <section class="section is-medium">
+    <div class="mt-8">
+        <section>
             <div class="container">
                 <div class="content">
-                    <div class="columns">
-                        <div class="column is-one-quarter has-text-centered">
+                    <div class="grid grid-cols-[25%_1fr]">
+                        <div>
                             <img src="{{ asset('storage/serhii.jpg') }}"
                                 alt="Serhii Cho"
-                                class="my-0 my-auto"
+                                class="my-0 my-auto rounded-lg shadow-lg"
                                 width="250"
-                                style="border-radius: 9px; box-shadow: 2px 2px 7px rgba(0, 0, 0, .3)"
                             />
                         </div>
-                        <div class="column">
+                        <div>
                             <p><x-home.welcome-section /></p>
                             <p>I've worked with integration services like <b>Megaplan CRM</b>, <b>Exact Online</b>, payment systems like <b>Mollie</b>, <b>Bitpay</b> and <b>WayForPay</b>. I've built apps in <b>Docker</b> containers, SPAs with <b>Vue</b>, and websites with <b>WordPress</b> and <b>Laravel</b>. Likewise, I've done tons of different work for companies in <b>business</b> and <b>e-commerce</b> segment. Building programs and interfaces for generating different types of documents, programs for stuff management and communication with clients.</p>
                         </div>
