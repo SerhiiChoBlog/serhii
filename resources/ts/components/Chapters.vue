@@ -20,7 +20,10 @@ onMounted(() => {
                 ? `<span class="list-number-style">${chapterNum[0]}</span> <span>${chapterText}</span>`
                 : `<span class="list-number-style long-number">${chapterNum[0]}</span> <span>${chapterText}</span>`
         } else {
-            chapterText = `<span class="list-dot-style"></span> <span>${chapterText}</span>`
+            chapterText = `
+                <span class="bg-gray-400 w-[4px] h-[4px] rounded-full absolute left-[8px] top-1/2 -translate-y-1/2"></span>
+                <span>${chapterText}</span>
+            `
         }
 
         chapters.value.push(chapterText)
@@ -37,10 +40,10 @@ function scrollToChapter(chapter: string): void {
 </script>
 
 <template>
-    <div class="panel-block-wrapper">
+    <div>
         <a v-for="chapter in chapters"
            :key="chapter"
-           class="panel-block"
+           class="border-b relative block flex justify-start text-font-second pl-7 pr-3 py-2 transition-colors hover:bg-page-second select-none last:border-none"
            v-html="chapter"
            @click="scrollToChapter(chapter)"
         ></a>
