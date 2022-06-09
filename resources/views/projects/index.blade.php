@@ -14,25 +14,27 @@
     />
 
     <div class="container mt-6">
-        <div class="row">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             @foreach ($projects as $project)
-                <div class="col-md-12 col-lg-6 col-xl-4">
-                    <a href="/projects/{{ $project['name'] }}">
-                        <div class="card project-card">
-                            <img class="language-image"
-                                src="{{ asset('/storage/languages/' . strtolower($project['language']) . '.png') }}"
-                                alt="{{ $project['title'] }}"
-                            />
+                <a href="/projects/{{ $project['name'] }}"
+                   class="bg-page-second p-7 rounded-md shadow-md hover:shadow-lg transition-shadow relative flex flex-col justify-center min-h-[300px]"
+                >
+                    <div>
+                        <img src="{{ asset('/storage/languages/' . strtolower($project['language']) . '.png') }}"
+                            alt="{{ $project['title'] }}"
+                            class="absolute right-4 top-4"
+                        />
 
-                            <div class="card-content">
-                                <div class="content">
-                                    <h4 class="card-title">{{ $project['title'] }}</h4>
-                                    <p>{{ $project['description'] }}</p>
-                                </div>
-                            </div>
+                        <div>
+                            <h4 class="first-letter:text-main-dark first-letter:text-3xl text-2xl text-font">
+                                {{ $project['title'] }}
+                            </h4>
+                            <p class="text-md mt-3 text-font-second border-t pt-3">
+                                {{ $project['description'] }}
+                            </p>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             @endforeach
         </div>
     </div>
