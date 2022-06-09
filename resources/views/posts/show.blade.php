@@ -78,7 +78,7 @@
                 </nav>
 
                 {{-- Blog post content --}}
-                <div class="prose-xl max-w-none px-6 pt-16"
+                <div class="prose-xl max-w-none px-6 pt-16 font-lato"
                      id="post-content"
                      v-pre
                 >{!! $post['content'] !!}</div>
