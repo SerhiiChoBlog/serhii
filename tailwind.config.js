@@ -14,6 +14,10 @@ module.exports = {
         colors: {
             'page': 'var(--color-page)',
             'page-second': 'var(--color-page-second)',
+            'font': 'var(--color-font)',
+            'font-second': 'var(--color-font-second)',
+            'link': 'var(--color-link)',
+            'link-hover': 'var(--color-link-hover)',
             'main-light': 'var(--color-main-light)',
             'main': 'var(--color-main)',
             'main-hover': 'var(--color-main-hover)',
