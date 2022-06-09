@@ -67,7 +67,7 @@
     </section>
 
     <div class="container pb-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[1fr_25%]">
+        <div class="grid grid-cols-1 lg:grid-cols-[75%_25%]">
             <div>
                 {{-- Chapters for mobile --}}
                 <nav class="block lg:hidden">
@@ -77,11 +77,13 @@
                     <chapters />
                 </nav>
 
-                <div class="prose max-w-none px-6 pt-10 text-xl"
+                {{-- Blog post content --}}
+                <div class="prose-xl max-w-none px-6 pt-16"
                      id="post-content"
                      v-pre
                 >{!! $post['content'] !!}</div>
 
+                {{-- End of the post --}}
                 <div class="subtitle has-text-centered mt-6 is-flex is-flex-direction-column">
                     <span>Thanks for your time!</span>
                     <span>Please, share this post to support <a href="{{ route('about-me') }}">the author</a></span>
@@ -90,33 +92,27 @@
                 <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
             </div>
 
+            {{-- Post sidebar --}}
             <div>
-                {{-- Post sidebar --}}
-                <div class="post__sidebar">
-                    <nav class="panel is-shadowless social-links--sidebar" style="min-height: 83px">
-                        <p class="panel-heading">
-                            <span class="has-text-grey-dark">Share this post</span>
-                        </p>
+                <div class="pt-16">
+                    <nav class="min-h-[83px] mb-7">
+                        <x-post.sidebar-title>Share this post</x-post.sidebar-title>
                         <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
                     </nav>
 
-                    <nav class="panel is-shadowless post__sidebar__chapters">
-                        <p class="panel-heading">
-                            <span class="has-text-grey-dark">Chapters</span>
-                        </p>
+                    <nav class="mb-7">
+                        <x-post.sidebar-title>Chapters</x-post.sidebar-title>
                         <chapters />
                     </nav>
 
-                    <nav class="panel-posts">
-                        <p class="panel-heading">
-                            <span class="has-text-grey-dark">Other posts</span>
-                        </p>
+                    <nav class="mb-7">
+                        <x-post.sidebar-title>Other posts</x-post.sidebar-title>
 
                         @foreach ($posts as $other_post)
-                            <a href="{{ route('posts.show', $other_post) }}" class="panel-posts__post">
+                            <a href="{{ route('posts.show', $other_post) }}">
                                 <img data-src="{{ asset($other_post->image_sm) }}"
                                     alt="{{ $other_post->title }}"
-                                    class="smooth-loader"
+                                    class="smooth-loader w-full"
                                 >
                                 <h4 class="panel-posts__post__title">{{ $other_post->title }}</h4>
                             </a>

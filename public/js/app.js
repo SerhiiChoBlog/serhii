@@ -19675,10 +19675,10 @@ exports["default"] = (0, vue_1.defineComponent)({
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/SharePostButtons.vue?vue&type=script&lang=ts":
-/*!*************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/SharePostButtons.vue?vue&type=script&lang=ts ***!
-  \*************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/SharePostButtons.vue?vue&type=script&setup=true&lang=ts":
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/SharePostButtons.vue?vue&type=script&setup=true&lang=ts ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -19699,20 +19699,37 @@ var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
 
 exports["default"] = (0, vue_1.defineComponent)({
+  name: 'SharePostButtons',
   props: {
     postTitle: {
-      required: true,
-      type: String
+      type: String,
+      required: true
     },
     postId: {
-      required: true,
-      type: Number
+      type: Number,
+      required: true
     }
   },
-  setup: function setup(_a) {
-    var postTitle = _a.postTitle,
-        postId = _a.postId;
+  setup: function setup(__props, _a) {
+    var expose = _a.expose;
+    expose();
+    var _b = __props,
+        postTitle = _b.postTitle,
+        postId = _b.postId;
     var url = window.location.href;
+    var links = [{
+      href: "https://www.reddit.com/submit?url=".concat(url, "&title=").concat(postTitle),
+      title: 'reddit'
+    }, {
+      href: "https://www.linkedin.com/sharing/share-offsite/?url=".concat(url),
+      title: 'linkedin'
+    }, {
+      href: "https://twitter.com/intent/tweet?text=".concat(postTitle, "&url=").concat(url),
+      title: 'twitter'
+    }, {
+      href: "https://www.facebook.com/sharer/sharer.php?u=".concat(url),
+      title: 'facebook'
+    }];
 
     function saveShare(social) {
       axios_1["default"].post("/api/social-shares/".concat(postId), {
@@ -19724,11 +19741,16 @@ exports["default"] = (0, vue_1.defineComponent)({
       });
     }
 
-    return {
+    var __returned__ = {
       url: url,
-      postTitle: postTitle,
+      links: links,
       saveShare: saveShare
     };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
   }
 });
 
@@ -20044,71 +20066,27 @@ exports.render = void 0;
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "social-links"
+  "class": "flex space-x-5"
 };
-var _hoisted_2 = ["href"];
-
-var _hoisted_3 = (0, vue_1.createElementVNode)("img", {
-  src: "/storage/icons/reddit.png",
-  alt: "reddit"
-}, null, -1);
-
-var _hoisted_4 = [_hoisted_3];
-var _hoisted_5 = ["href"];
-
-var _hoisted_6 = (0, vue_1.createElementVNode)("img", {
-  src: "/storage/icons/linkedin.png",
-  alt: "linked in"
-}, null, -1);
-
-var _hoisted_7 = [_hoisted_6];
-var _hoisted_8 = ["href"];
-
-var _hoisted_9 = (0, vue_1.createElementVNode)("img", {
-  src: "/storage/icons/twitter.png",
-  alt: "twitter"
-}, null, -1);
-
-var _hoisted_10 = [_hoisted_9];
-var _hoisted_11 = ["href"];
-
-var _hoisted_12 = (0, vue_1.createElementVNode)("img", {
-  src: "/storage/icons/facebook.png",
-  alt: "facebook"
-}, null, -1);
-
-var _hoisted_13 = [_hoisted_12];
+var _hoisted_2 = ["href", "onMousedown"];
+var _hoisted_3 = ["src", "alt"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createElementVNode)("a", {
-    href: "https://www.reddit.com/submit?url=".concat(_ctx.url, "&title=").concat(_ctx.postTitle),
-    target: "_blank",
-    rel: "nofollow noopener noreferrer",
-    onMousedown: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.saveShare('reddit');
-    })
-  }, _hoisted_4, 40, _hoisted_2), (0, vue_1.createElementVNode)("a", {
-    href: "https://www.linkedin.com/sharing/share-offsite/?url=".concat(_ctx.url),
-    target: "_blank",
-    rel: "nofollow noopener noreferrer",
-    onMousedown: _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.saveShare('linkedin');
-    })
-  }, _hoisted_7, 40, _hoisted_5), (0, vue_1.createElementVNode)("a", {
-    href: "https://twitter.com/intent/tweet?text=".concat(_ctx.postTitle, "&url=").concat(_ctx.url),
-    target: "_blank",
-    rel: "nofollow noopener noreferrer",
-    onMousedown: _cache[2] || (_cache[2] = function ($event) {
-      return _ctx.saveShare('twitter');
-    })
-  }, _hoisted_10, 40, _hoisted_8), (0, vue_1.createElementVNode)("a", {
-    href: "https://www.facebook.com/sharer/sharer.php?u=".concat(_ctx.url),
-    target: "_blank",
-    rel: "nofollow noopener noreferrer",
-    onMousedown: _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.saveShare('facebook');
-    })
-  }, _hoisted_13, 40, _hoisted_11)]);
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.links, function (link) {
+    return (0, vue_1.createElementVNode)("a", {
+      key: link.title,
+      href: link.href,
+      target: "_blank",
+      rel: "nofollow noopener noreferrer",
+      onMousedown: function onMousedown($event) {
+        return $setup.saveShare(link.title);
+      }
+    }, [(0, vue_1.createElementVNode)("img", {
+      src: "/storage/icons/".concat(link.title, ".png"),
+      alt: link.title,
+      width: "35"
+    }, null, 8, _hoisted_3)], 40, _hoisted_2);
+  }), 64))]);
 }
 
 exports.render = render;
@@ -21219,9 +21197,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _SharePostButtons_vue_vue_type_template_id_45628c03_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SharePostButtons.vue?vue&type=template&id=45628c03&ts=true */ "./resources/ts/components/SharePostButtons.vue?vue&type=template&id=45628c03&ts=true");
-/* harmony import */ var _SharePostButtons_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SharePostButtons.vue?vue&type=script&lang=ts */ "./resources/ts/components/SharePostButtons.vue?vue&type=script&lang=ts");
+/* harmony import */ var _SharePostButtons_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SharePostButtons.vue?vue&type=script&setup=true&lang=ts */ "./resources/ts/components/SharePostButtons.vue?vue&type=script&setup=true&lang=ts");
 /* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _SharePostButtons_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _SharePostButtons_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _SharePostButtons_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _SharePostButtons_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
 /* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 /* harmony import */ var _Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
@@ -21229,7 +21207,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_SharePostButtons_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_SharePostButtons_vue_vue_type_template_id_45628c03_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/components/SharePostButtons.vue"]])
+const __exports__ = /*#__PURE__*/(0,_Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_SharePostButtons_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_SharePostButtons_vue_vue_type_template_id_45628c03_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/components/SharePostButtons.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -21351,21 +21329,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/ts/components/SharePostButtons.vue?vue&type=script&lang=ts":
-/*!******************************************************************************!*\
-  !*** ./resources/ts/components/SharePostButtons.vue?vue&type=script&lang=ts ***!
-  \******************************************************************************/
+/***/ "./resources/ts/components/SharePostButtons.vue?vue&type=script&setup=true&lang=ts":
+/*!*****************************************************************************************!*\
+  !*** ./resources/ts/components/SharePostButtons.vue?vue&type=script&setup=true&lang=ts ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport default from dynamic */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SharePostButtons_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0___default.a)
+/* harmony export */   "default": () => (/* reexport default from dynamic */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SharePostButtons_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0___default.a)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SharePostButtons_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./SharePostButtons.vue?vue&type=script&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/SharePostButtons.vue?vue&type=script&lang=ts");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SharePostButtons_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SharePostButtons_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SharePostButtons_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./SharePostButtons.vue?vue&type=script&setup=true&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/SharePostButtons.vue?vue&type=script&setup=true&lang=ts");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SharePostButtons_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SharePostButtons_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SharePostButtons_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SharePostButtons_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SharePostButtons_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SharePostButtons_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
 /* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
  
 
