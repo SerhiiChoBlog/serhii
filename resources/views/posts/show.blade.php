@@ -65,8 +65,8 @@
         </div>
     </section>
 
-    <div class="container pb-6 post">
-        <div class="row">
+    <div class="container pb-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_25%]">
             <div class="col-lg-9">
                 <nav class="panel is-shadowless post__chapters">
                     <p class="panel-heading">
@@ -75,7 +75,7 @@
                     <chapters />
                 </nav>
 
-                <div class="content post__content px-3" id="post-content" v-pre>{!! $post['content'] !!}</div>
+                <div class="prose" id="post-content" v-pre>{!! $post['content'] !!}</div>
 
                 <div class="subtitle has-text-centered mt-6 is-flex is-flex-direction-column">
                     <span>Thanks for your time!</span>
@@ -84,6 +84,7 @@
 
                 <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
             </div>
+
             <div class="col-lg-3">
                 <div class="post__sidebar">
                     <nav class="panel is-shadowless social-links--sidebar" style="min-height: 83px">
