@@ -22,7 +22,7 @@
 
                     <div class="my-3 text-lg text-light">{{ $post['intro'] }}</div>
 
-                    <x-post.tags :tags="$post['tags']" />
+                    <x-post.tags :tags="$post['tags']" class="text-xs" />
                 </div>
             </div>
         @endforeach

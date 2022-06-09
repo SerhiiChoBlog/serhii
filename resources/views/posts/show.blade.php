@@ -33,28 +33,28 @@
                         {{ $post['title'] }}
                     </h1>
 
-                    <div class="tags mt-2">
-                        @foreach ($post['tags'] as $tag)
-                            <span class="tag my-0 is-medium is-normal is-dark"
-                                  style="background-color: {{ $tag['color'] }}"
-                            >{{ $tag['name'] }}</span>
-                        @endforeach
+                    <x-post.tags :tags="$post['tags']" class="text-sm mt-5">
+                        <div class="opacity-70 flex items-center">
+                            <time datetime="{{ $post['created_at'] }}" class="ml-2">
+                                {{ $post['pretty_created_at'] }}
+                            </time>
 
-                        <time datetime="{{ $post['created_at'] }}" class="post__created-at ml-2">{{ $post['pretty_created_at'] }}</time>
-
-                        @if ($post['page_views_count'] >= 100)
-                            <span class="post__views ml-3">
-                                <img src="{{ asset('storage/icons/light-eye.png') }}" alt="eye icon" width="22">
-                                <span>{{ $post['page_views_count'] }}</span>
-                            </span>
-                        @endif
+                            @if ($post['page_views_count'] >= 100)
+                                <span class="flex items-center gap-x-2 ml-3">
+                                    <img src="{{ asset('storage/icons/light-eye.png') }}" alt="eye icon" width="22">
+                                    <span>{{ $post['page_views_count'] }}</span>
+                                </span>
+                            @endif
+                        </div>
 
                         @if (auth()->check())
-                            <a href="{{ route('admin.posts.edit', ['post' => $post['id']]) }}" class="post__edit">
+                            <a href="{{ route('admin.posts.edit', ['post' => $post['id']]) }}"
+                               class="flex items-center px-5 ml-2 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100"
+                            >
                                 Edit post
                             </a>
                         @endif
-                    </div>
+                    </x-post.tags>
                 </div>
                 <div class="column">
                     <img src="{{ asset($post['image_lg']) }}" alt="{{ $post['title'] }}" class="post-hero__image">

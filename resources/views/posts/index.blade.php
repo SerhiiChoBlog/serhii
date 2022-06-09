@@ -36,8 +36,8 @@
                         <p class="pb-3 pt-1 text-lg mt-1 font-light text-font-second">{{ $post->intro }}</p>
 
                         <div>
-                            <x-post.tags :tags="$post->tags">
-                                <time datetime="{{ $post->created_at }}" class="text-gray-400 text-md ml-1">
+                            <x-post.tags :tags="$post->tags" class="text-xs">
+                                <time datetime="{{ $post->created_at }}" class="flex items-center text-gray-400 text-md ml-1">
                                     {{ $post->pretty_created_at }}
                                 </time>
                             </x-post.tags>
