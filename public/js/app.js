@@ -19503,7 +19503,7 @@ exports["default"] = (0, vue_1.defineComponent)({
           chapterText = chapterText.replace(/^\d+\. /, '');
           chapterText = chapterNum[0].length === 1 ? "<span class=\"list-number-style\">".concat(chapterNum[0], "</span> <span>").concat(chapterText, "</span>") : "<span class=\"list-number-style long-number\">".concat(chapterNum[0], "</span> <span>").concat(chapterText, "</span>");
         } else {
-          chapterText = "<span class=\"list-dot-style\"></span> <span>".concat(chapterText, "</span>");
+          chapterText = "\n                <span class=\"bg-gray-400 w-[4px] h-[4px] rounded-full absolute left-[8px] top-1/2 -translate-y-1/2\"></span>\n                <span>".concat(chapterText, "</span>\n            ");
         }
 
         chapters.value.push(chapterText);
@@ -19875,21 +19875,18 @@ exports.render = void 0;
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "panel-block-wrapper"
-};
-var _hoisted_2 = ["innerHTML", "onClick"];
+var _hoisted_1 = ["innerHTML", "onClick"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.chapters, function (chapter) {
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", null, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.chapters, function (chapter) {
     return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
       key: chapter,
-      "class": "panel-block",
+      "class": "border-b relative block flex justify-start text-font-second pl-7 pr-3 py-2 transition-colors hover:bg-page-second select-none last:border-none",
       innerHTML: chapter,
       onClick: function onClick($event) {
         return $setup.scrollToChapter(chapter);
       }
-    }, null, 8, _hoisted_2);
+    }, null, 8, _hoisted_1);
   }), 128))]);
 }
 
