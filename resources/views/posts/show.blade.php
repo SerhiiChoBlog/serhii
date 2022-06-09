@@ -1,6 +1,6 @@
 @php
     /** @var array $post */
-    /** @var \App\Models\Post[] $posts */
+    /** @var App\Models\Post[] $posts */
     /** @var string $title_font_size */
 @endphp
 
@@ -23,43 +23,41 @@
 @section('description', $post['intro'])
 
 @section('content')
-    <section class="hero post-hero is-dark">
-        <div class="hero-head"><x-navbar /></div>
+    <section class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white">
+        <x-navbar />
 
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns">
-                    <div class="column is-flex is-align-items-left is-justify-content-center is-flex-direction-column">
-                        <h1 class="title" style="font-size: {{ $title_font_size }}">
-                            {{ $post['title'] }}
-                        </h1>
+        <div class="p-[3em]">
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                <div class="flex items-left justify-center flex-col">
+                    <h1 style="font-size: {{ $title_font_size }}">
+                        {{ $post['title'] }}
+                    </h1>
 
-                        <div class="tags mt-2">
-                            @foreach ($post['tags'] as $tag)
-                                <span class="tag my-0 is-medium is-normal is-dark"
-                                      style="background-color: {{ $tag['color'] }}"
-                                >{{ $tag['name'] }}</span>
-                            @endforeach
+                    <div class="tags mt-2">
+                        @foreach ($post['tags'] as $tag)
+                            <span class="tag my-0 is-medium is-normal is-dark"
+                                  style="background-color: {{ $tag['color'] }}"
+                            >{{ $tag['name'] }}</span>
+                        @endforeach
 
-                            <time datetime="{{ $post['created_at'] }}" class="post__created-at ml-2">{{ $post['pretty_created_at'] }}</time>
+                        <time datetime="{{ $post['created_at'] }}" class="post__created-at ml-2">{{ $post['pretty_created_at'] }}</time>
 
-                            @if ($post['page_views_count'] >= 100)
-                                <span class="post__views ml-3">
-                                    <img src="{{ asset('storage/icons/light-eye.png') }}" alt="eye icon" width="22">
-                                    <span>{{ $post['page_views_count'] }}</span>
-                                </span>
-                            @endif
+                        @if ($post['page_views_count'] >= 100)
+                            <span class="post__views ml-3">
+                                <img src="{{ asset('storage/icons/light-eye.png') }}" alt="eye icon" width="22">
+                                <span>{{ $post['page_views_count'] }}</span>
+                            </span>
+                        @endif
 
-                            @if (auth()->check())
-                                <a href="{{ route('admin.posts.edit', ['post' => $post['id']]) }}" class="post__edit">
-                                    Edit post
-                                </a>
-                            @endif
-                        </div>
+                        @if (auth()->check())
+                            <a href="{{ route('admin.posts.edit', ['post' => $post['id']]) }}" class="post__edit">
+                                Edit post
+                            </a>
+                        @endif
                     </div>
-                    <div class="column">
-                        <img src="{{ asset($post['image_lg']) }}" alt="{{ $post['title'] }}" class="post-hero__image">
-                    </div>
+                </div>
+                <div class="column">
+                    <img src="{{ asset($post['image_lg']) }}" alt="{{ $post['title'] }}" class="post-hero__image">
                 </div>
             </div>
         </div>
@@ -75,7 +73,7 @@
                     <chapters />
                 </nav>
 
-                <div class="prose" id="post-content" v-pre>{!! $post['content'] !!}</div>
+                <div class="prose max-w-none px-6" id="post-content" v-pre>{!! $post['content'] !!}</div>
 
                 <div class="subtitle has-text-centered mt-6 is-flex is-flex-direction-column">
                     <span>Thanks for your time!</span>

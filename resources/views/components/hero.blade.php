@@ -1,5 +1,5 @@
 <section {{ $attributes->merge(['class' => 'bg-gray-500']) }}>
-    <div class="hero-head"><x-navbar /></div>
+    <x-navbar />
 
     <div class="p-[3em]">
         <div class="text-center font-lato">
