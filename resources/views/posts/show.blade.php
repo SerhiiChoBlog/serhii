@@ -26,10 +26,10 @@
     <section class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white">
         <x-navbar />
 
-        <div class="p-[3em]">
-            <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div class="py-[5em] px-[1.5em] container">
+            <div class="grid grid-cols-1 lg:grid-cols-2 relative">
                 <div class="flex items-left justify-center flex-col">
-                    <h1 style="font-size: {{ $title_font_size }}">
+                    <h1 style="font-size: {{ $title_font_size }}" class="leading-10 font-light">
                         {{ $post['title'] }}
                     </h1>
 
@@ -56,8 +56,11 @@
                         @endif
                     </x-post.tags>
                 </div>
-                <div class="column">
-                    <img src="{{ asset($post['image_lg']) }}" alt="{{ $post['title'] }}" class="post-hero__image">
+                <div>
+                    <img src="{{ asset($post['image_lg']) }}"
+                        alt="{{ $post['title'] }}"
+                        class="absolute right-4 bottom-[-110px] w-[550px] rounded-lg shadow-md"
+                    />
                 </div>
             </div>
         </div>
@@ -65,15 +68,19 @@
 
     <div class="container pb-6">
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_25%]">
-            <div class="col-lg-9">
-                <nav class="panel is-shadowless post__chapters">
+            <div>
+                {{-- Chapters for mobile --}}
+                <nav class="block lg:hidden">
                     <p class="panel-heading">
                         <span class="has-text-grey-dark">Chapters</span>
                     </p>
                     <chapters />
                 </nav>
 
-                <div class="prose max-w-none px-6" id="post-content" v-pre>{!! $post['content'] !!}</div>
+                <div class="prose max-w-none px-6 pt-10 text-xl"
+                     id="post-content"
+                     v-pre
+                >{!! $post['content'] !!}</div>
 
                 <div class="subtitle has-text-centered mt-6 is-flex is-flex-direction-column">
                     <span>Thanks for your time!</span>
@@ -83,7 +90,8 @@
                 <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
             </div>
 
-            <div class="col-lg-3">
+            <div>
+                {{-- Post sidebar --}}
                 <div class="post__sidebar">
                     <nav class="panel is-shadowless social-links--sidebar" style="min-height: 83px">
                         <p class="panel-heading">

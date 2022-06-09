@@ -1,8 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/admin.js": "/js/admin.js",
-    "/css/font-awesome.css": "/css/font-awesome.css",
     "/css/app.css": "/css/app.css",
+    "/css/font-awesome.css": "/css/font-awesome.css",
     "/css/admin.css": "/css/admin.css",
     "/fonts/JetBrainsMono-Regular.ttf": "/fonts/JetBrainsMono-Regular.ttf",
     "/fonts/Lato-Regular.ttf": "/fonts/Lato-Regular.ttf",
