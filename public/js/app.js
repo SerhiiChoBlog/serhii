@@ -19903,7 +19903,7 @@ var _hoisted_2 = {
   "class": "overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto"
 };
 var _hoisted_3 = {
-  "class": "bg-white shadow-xl rounded-lg p-10 divide-y h-full"
+  "class": "bg-page text-font shadow-xl rounded-lg p-10 divide-y h-full"
 };
 var _hoisted_4 = {
   "class": "text-center text-2xl mb-3"
@@ -19935,10 +19935,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_ctx.isOpen ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_2, [(0, vue_1.createElementVNode)("div", _hoisted_3, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(_ctx.sections, function (section) {
         return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", {
           key: section.title,
-          "class": "text-black py-5 first:pt-0 last:pb-0"
+          "class": "py-5 first:pt-0 last:pb-0"
         }, [(0, vue_1.createElementVNode)("h3", _hoisted_4, (0, vue_1.toDisplayString)(section.title), 1), (0, vue_1.createElementVNode)("p", {
           innerHTML: section.content,
-          "class": "text-center text-lg text-gray-700"
+          "class": "text-center text-lg"
         }, null, 8, _hoisted_5), (0, vue_1.createElementVNode)("div", _hoisted_6, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(section.links, function (link) {
           return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
             key: link.title,

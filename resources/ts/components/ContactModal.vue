@@ -8,11 +8,13 @@
 
     <div class="fixed left-0 right-0 top-0 bottom-0 z-10 bg-[hsla(0,0%,4%,.86)]" v-show="isOpen">
         <transition name="fade">
-            <div v-if="isOpen" class="overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto">
-                <div class="bg-white shadow-xl rounded-lg p-10 divide-y h-full">
-                    <div v-for="section in sections" :key="section.title" class="text-black py-5 first:pt-0 last:pb-0">
+            <div v-if="isOpen"
+                class="overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto"
+            >
+                <div class="bg-page text-font shadow-xl rounded-lg p-10 divide-y h-full">
+                    <div v-for="section in sections" :key="section.title" class="py-5 first:pt-0 last:pb-0">
                         <h3 class="text-center text-2xl mb-3">{{ section.title }}</h3>
-                        <p v-html="section.content" class="text-center text-lg text-gray-700"></p>
+                        <p v-html="section.content" class="text-center text-lg"></p>
 
                         <div class="flex justify-center gap-x-5 mt-5">
                             <a

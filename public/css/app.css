@@ -404,6 +404,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 :root {
         --color-page: white;
         --color-page-second: #eee;
+        --color-font: black;
+        --color-font-second: #555;
+        --color-link: var(--color-main);
+        --color-link-hover: var(--color-main-hover);
         --color-main-light: #99c8e6;
         --color-main: #3298dc;
         --color-main-hover: #288acc;
@@ -413,6 +417,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .dark {
         --color-page: #10171e;
         --color-page-second: #15202b;
+        --color-font: #dedee3;
+        --color-font-second: #8e8e8e;
+        --color-link: #93adde;
+        --color-link-hover: #6881b1;
         --color-main-light: #99c8e6;
         --color-main: #3298dc;
         --color-main-hover: #288acc;
@@ -702,6 +710,12 @@ Ensure the default browser behavior of the `hidden` attribute.
     border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
     border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
+.divide-main > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--color-main);
+}
+.divide-font > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--color-font);
+}
 .overflow-y-scroll {
     overflow-y: scroll;
 }
@@ -730,6 +744,9 @@ Ensure the default browser behavior of the `hidden` attribute.
     --tw-bg-opacity: 1;
     background-color: rgb(54 54 54 / var(--tw-bg-opacity));
 }
+.bg-page-second {
+    background-color: var(--color-page-second);
+}
 .bg-main {
     background-color: var(--color-main);
 }
@@ -747,15 +764,12 @@ Ensure the default browser behavior of the `hidden` attribute.
     --tw-bg-opacity: 1;
     background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
+.bg-page {
+    background-color: var(--color-page);
+}
 .bg-gray-50 {
     --tw-bg-opacity: 1;
     background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-.bg-page-second {
-    background-color: var(--color-page-second);
-}
-.bg-page {
-    background-color: var(--color-page);
 }
 .bg-gradient-to-r {
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
@@ -799,9 +813,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-no-repeat {
     background-repeat: no-repeat;
 }
-.p-8 {
-    padding: 2rem;
-}
 .p-10 {
     padding: 2.5rem;
 }
@@ -814,9 +825,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .p-3 {
     padding: 0.75rem;
 }
-.p-12 {
-    padding: 3rem;
-}
 .py-\[18rem\] {
     padding-top: 18rem;
     padding-bottom: 18rem;
@@ -824,6 +832,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-\[6rem\] {
     padding-left: 6rem;
     padding-right: 6rem;
+}
+.py-14 {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+}
+.py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 .py-2 {
     padding-top: 0.5rem;
@@ -857,17 +873,9 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
-.py-14 {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-}
 .py-1 {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
-}
-.py-12 {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
 }
 .pb-3 {
     padding-bottom: 0.75rem;
@@ -880,12 +888,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pt-4 {
     padding-top: 1rem;
-}
-.pb-14 {
-    padding-bottom: 3.5rem;
-}
-.pb-12 {
-    padding-bottom: 3rem;
 }
 .pb-10 {
     padding-bottom: 2.5rem;
@@ -942,6 +944,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-main {
     color: var(--color-main);
 }
+.text-link {
+    color: var(--color-link);
+}
 .text-black {
     --tw-text-opacity: 1;
     color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -954,9 +959,8 @@ Ensure the default browser behavior of the `hidden` attribute.
     --tw-text-opacity: 1;
     color: rgb(234 179 8 / var(--tw-text-opacity));
 }
-.text-\[\#606060\] {
-    --tw-text-opacity: 1;
-    color: rgb(96 96 96 / var(--tw-text-opacity));
+.text-font {
+    color: var(--color-font);
 }
 .text-gray-500 {
     --tw-text-opacity: 1;
@@ -965,6 +969,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-gray-400 {
     --tw-text-opacity: 1;
     color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+.text-font-second {
+    color: var(--color-font-second);
 }
 .shadow-xl {
     --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
@@ -1050,8 +1057,16 @@ Ensure the default browser behavior of the `hidden` attribute.
     background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-page-second:hover {
+    background-color: var(--color-page-second);
+}
+
 .hover\:bg-opacity-50:hover {
     --tw-bg-opacity: 0.5;
+}
+
+.hover\:text-link-hover:hover {
+    color: var(--color-link-hover);
 }
 
 .hover\:underline:hover {
