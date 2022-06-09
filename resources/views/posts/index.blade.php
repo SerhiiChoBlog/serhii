@@ -20,25 +20,28 @@
     />
 
     <div class="container mt-5">
-        <div class="posts">
+        <div class="flex flex-col gap-y-2">
 
             @foreach ($posts as $post)
                 <a href="/posts/{{ $post->slug }}"
-                   class="flex items-center gap-6 border-md p-3 rounded-xl transition-colors hover:bg-page-second"
+                   class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl transition-colors hover:bg-page-second max-w-[550px] lg:max-w-full mx-auto"
                 >
                     <img src="{{ asset($post->image_sm) }}"
-                        class="rounded-lg shadow-md shadow-[rgba(0,0,0,.2)] w-[260px] h-[130px]"
+                        class="rounded-lg shadow-md shadow-[rgba(0,0,0,.2)] w-full max-w-max lg:max-w-[260px]"
                         alt="{{ $post->title }}"
                     />
 
                     <div class="font-lato">
                         <h2 class="text-xl text-font">{{ $post->title }}</h2>
-                        <p class="pb-3 pt-1 text-lg font-light text-font-second">{{ $post->intro }}</p>
-                        <x-post.tags :tags="$post->tags">
-                            <time datetime="{{ $post->created_at }}" class="text-gray-400 text-md ml-1">
-                                {{ $post->pretty_created_at }}
-                            </time>
-                        </x-post.tags>
+                        <p class="pb-3 pt-1 text-lg mt-1 font-light text-font-second">{{ $post->intro }}</p>
+
+                        <div>
+                            <x-post.tags :tags="$post->tags">
+                                <time datetime="{{ $post->created_at }}" class="text-gray-400 text-md ml-1">
+                                    {{ $post->pretty_created_at }}
+                                </time>
+                            </x-post.tags>
+                        </div>
                     </div>
                 </a>
             @endforeach
