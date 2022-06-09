@@ -33,8 +33,8 @@
 @layer base {
     :root {
         --color-page: white;
-        --color-page-second: #eee;
-        --color-font: black;
+        --color-page-second: #f7f7f7;
+        --color-font: #353535;
         --color-font-second: #555;
         --color-link: var(--color-main);
         --color-link-hover: var(--color-main-hover);
@@ -44,7 +44,7 @@
         --color-main-dark: #1972ac;
     }
     .dark {
-        --color-page: #10171e;
+        --color-page: #141d27;
         --color-page-second: #15202b;
         --color-font: #dedee3;
         --color-font-second: #8e8e8e;
