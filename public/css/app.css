@@ -1091,6 +1091,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-width: -moz-max-content;
   max-width: max-content;
 }
+.max-w-none{
+  max-width: none;
+}
 .origin-center{
   transform-origin: center;
 }
@@ -1248,6 +1251,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-gradient-from: #51895c;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(81 137 92 / 0));
 }
+.from-\[\#0f0f0f\]{
+  --tw-gradient-from: #0f0f0f;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(15 15 15 / 0));
+}
 .via-\[\#657ca1\]{
   --tw-gradient-stops: var(--tw-gradient-from), #657ca1, var(--tw-gradient-to, rgb(101 124 161 / 0));
 }
@@ -1262,6 +1269,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .to-\[\#51895c\]{
   --tw-gradient-to: #51895c;
+}
+.to-\[\#383838\]{
+  --tw-gradient-to: #383838;
 }
 .bg-cover{
   background-size: cover;
