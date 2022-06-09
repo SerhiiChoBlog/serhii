@@ -770,6 +770,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .prose-lg > :where(:last-child):not(:where([class~="not-prose"] *)){
   margin-bottom: 0;
 }
+.static{
+  position: static;
+}
 .fixed{
   position: fixed;
 }
@@ -892,6 +895,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .mt-4{
   margin-top: 1rem;
+}
+.mt-7{
+  margin-top: 1.75rem;
 }
 .block{
   display: block;
@@ -1239,6 +1245,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
+.py-\[5rem\]{
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.px-\[1\.5rem\]{
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.py-\[2rem\]{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
 .pl-7{
   padding-left: 1.75rem;
 }
@@ -1268,6 +1286,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pb-10{
   padding-bottom: 2.5rem;
+}
+.text-left{
+  text-align: left;
 }
 .text-center{
   text-align: center;
@@ -1308,6 +1329,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-4xl{
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+.text-\[2rem\]{
+  font-size: 2rem;
+}
+.text-\[\.5rem\]{
+  font-size: .5rem;
+}
+.text-\[\.8rem\]{
+  font-size: .8rem;
+}
+.text-\[\.7rem\]{
+  font-size: .7rem;
 }
 .font-light{
   font-weight: 300;
@@ -1742,6 +1775,14 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-bottom: 0;
   }
 
+  .lg\:absolute{
+    position: absolute;
+  }
+
+  .lg\:mt-0{
+    margin-top: 0px;
+  }
+
   .lg\:hidden{
     display: none;
   }
@@ -1771,8 +1812,30 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-right: 1.5rem;
   }
 
+  .lg\:py-\[5rem\]{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .lg\:px-\[1\.5rem\]{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .lg\:pt-16{
     padding-top: 4rem;
+  }
+
+  .lg\:text-left{
+    text-align: left;
+  }
+
+  .lg\:text-center{
+    text-align: center;
+  }
+
+  .lg\:text-\[1rem\]{
+    font-size: 1rem;
   }
 }
 

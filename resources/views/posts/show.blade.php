@@ -26,10 +26,10 @@
     <section class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white">
         <x-navbar />
 
-        <div class="py-[5em] px-[1.5em] container">
+        <div class="py-[2rem] px-[1.5rem] lg:py-[5rem] lg:px-[1.5rem] container">
             <div class="grid grid-cols-1 lg:grid-cols-2 relative">
-                <div class="flex items-left justify-center flex-col">
-                    <h1 style="font-size: {{ $title_font_size }}" class="leading-10 font-light">
+                <div class="flex items-left justify-center flex-col text-[.7rem] lg:text-[1rem]">
+                    <h1 style="font-size: {{ $title_font_size }}" class="leading-10 font-light text-center lg:text-left">
                         {{ $post['title'] }}
                     </h1>
 
@@ -56,10 +56,11 @@
                         @endif
                     </x-post.tags>
                 </div>
+
                 <div>
                     <img src="{{ asset($post['image_lg']) }}"
                         alt="{{ $post['title'] }}"
-                        class="absolute right-4 bottom-[-110px] w-[550px] rounded-lg shadow-md"
+                        class="static lg:absolute right-4 bottom-[-110px] w-[550px] rounded-lg shadow-md mt-7 lg:mt-0"
                     />
                 </div>
             </div>
