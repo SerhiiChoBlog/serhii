@@ -49,7 +49,7 @@
 
                         @if (auth()->check())
                             <a href="{{ route('admin.posts.edit', ['post' => $post['id']]) }}"
-                               class="flex items-center px-5 ml-2 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100"
+                               class="flex items-center px-5 ml-2 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100 uppercase text-xs"
                             >
                                 Edit post
                             </a>
@@ -76,19 +76,12 @@
                     <chapters />
                 </nav>
 
-                {{-- Blog post content --}}
-                <div class="post-content prose lg:prose-xl max-w-none pr-2 lg:px-6 pt-8 lg:pt-10 prose-img:rounded-md prose-img:mx-auto prose-a:text-link prose-a:no-underline hover:prose-a:text-link-hover"
+                <div class="post-content prose lg:prose-xl max-w-none pr-2 lg:px-6 pt-8 lg:pt-10 prose-img:rounded-md prose-img:mx-auto prose-a:text-link prose-a:no-underline hover:prose-a:text-link-hover prose-headings:font-normal prose-p:font-light prose-strong:font-semibold"
                      id="post-content"
                      v-pre
                 >{!! $post['content'] !!}</div>
 
-                {{-- End of the post --}}
-                <div class="subtitle has-text-centered mt-6 is-flex is-flex-direction-column">
-                    <span>Thanks for your time!</span>
-                    <span>Please, share this post to support <a href="{{ route('about-me') }}">the author</a></span>
-                </div>
-
-                <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
+                <x-post.footer :post="$post" />
             </div>
 
             <x-post.sidebar :post="$post" :posts="$posts" />

@@ -19,9 +19,13 @@
             <div class="container">
                 <div>
                     <x-home.section-title>Nice to meet you</x-home.section-title>
-                    <p class="text-[1.3em] font-weight-light leading-9">
+
+                    <p class="text-[1.3em] font-light leading-9">
                         <x-home.welcome-section />
-                        <a href="{{ route('about-me') }}" class="text-link hover:text-link-hover hover:underline">Read mode about me...</a>
+
+                        <a href="{{ route('about-me') }}"
+                            class="text-link hover:text-link-hover hover:underline transition-colors"
+                        >Read mode about me...</a>
                     </p>
                 </div>
             </div>

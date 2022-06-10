@@ -19881,7 +19881,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", null, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.chapters, function (chapter) {
     return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
       key: chapter,
-      "class": "border-b relative block flex justify-start text-font-second pl-7 pr-3 py-2 transition-colors hover:bg-page-second select-none last:border-none",
+      "class": "border-b relative block flex justify-start text-font-second pl-7 pr-5 py-2 transition-colors hover:bg-page-second select-none last:border-none",
       innerHTML: chapter,
       onClick: function onClick($event) {
         return $setup.scrollToChapter(chapter);

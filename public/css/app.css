@@ -1024,6 +1024,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .prose > :where(:last-child):not(:where([class~="not-prose"] *)){
   margin-bottom: 0;
 }
+.prose-fuchsia{
+  --tw-prose-links: #c026d3;
+  --tw-prose-invert-links: #d946ef;
+}
 .static{
   position: static;
 }
@@ -1443,6 +1447,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .p-7{
   padding: 1.75rem;
 }
+.p-4{
+  padding: 1rem;
+}
 .py-\[18rem\]{
   padding-top: 18rem;
   padding-bottom: 18rem;
@@ -1499,6 +1506,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
+.py-8{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.py-0{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.px-3{
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
 .pl-7{
   padding-left: 1.75rem;
 }
@@ -1531,6 +1550,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pb-10{
   padding-bottom: 2.5rem;
+}
+.pt-7{
+  padding-top: 1.75rem;
+}
+.pt-10{
+  padding-top: 2.5rem;
+}
+.pr-5{
+  padding-right: 1.25rem;
 }
 .text-center{
   text-align: center;
@@ -1578,6 +1606,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 .font-bold{
   font-weight: 700;
 }
+.font-semibold{
+  font-weight: 600;
+}
+.font-black{
+  font-weight: 900;
+}
+.font-medium{
+  font-weight: 500;
+}
+.uppercase{
+  text-transform: uppercase;
+}
 .italic{
   font-style: italic;
 }
@@ -1613,6 +1653,20 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-gray-400{
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+.text-main-light{
+  color: var(--color-main-light);
+}
+.text-red-700{
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+.underline{
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+.underline-offset-1{
+  text-underline-offset: 1px;
 }
 .opacity-70{
   opacity: 0.7;
@@ -1772,6 +1826,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.prose-headings\:font-light :is(:where(h1, h2, h3, h4, th):not(:where([class~="not-prose"] *))){
+  font-weight: 300;
+}
+
+.prose-headings\:font-normal :is(:where(h1, h2, h3, h4, th):not(:where([class~="not-prose"] *))){
+  font-weight: 400;
+}
+
+.prose-p\:font-light :is(:where(p):not(:where([class~="not-prose"] *))){
+  font-weight: 300;
+}
+
 .prose-a\:text-link :is(:where(a):not(:where([class~="not-prose"] *))){
   color: var(--color-link);
 }
@@ -1783,6 +1849,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .hover\:prose-a\:text-link-hover :is(:where(a):not(:where([class~="not-prose"] *))):hover{
   color: var(--color-link-hover);
+}
+
+.prose-strong\:font-normal :is(:where(strong):not(:where([class~="not-prose"] *))){
+  font-weight: 400;
+}
+
+.prose-strong\:font-bold :is(:where(strong):not(:where([class~="not-prose"] *))){
+  font-weight: 700;
+}
+
+.prose-strong\:font-semibold :is(:where(strong):not(:where([class~="not-prose"] *))){
+  font-weight: 600;
 }
 
 .prose-img\:mx-auto :is(:where(img):not(:where([class~="not-prose"] *))){

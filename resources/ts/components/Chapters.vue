@@ -43,7 +43,7 @@ function scrollToChapter(chapter: string): void {
     <div>
         <a v-for="chapter in chapters"
            :key="chapter"
-           class="border-b relative block flex justify-start text-font-second pl-7 pr-3 py-2 transition-colors hover:bg-page-second select-none last:border-none"
+           class="border-b relative block flex justify-start text-font-second pl-7 pr-5 py-2 transition-colors hover:bg-page-second select-none last:border-none"
            v-html="chapter"
            @click="scrollToChapter(chapter)"
         ></a>
