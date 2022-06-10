@@ -1,11 +1,13 @@
 @import '_material-theme.css';
+@import '_code.css';
+@import '_blockquote.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
-    font-family: 'JetBrainsMono';
+    font-family: 'Code';
     src: url('../fonts/JetBrainsMono-Regular.ttf') format("truetype");
 }
 
@@ -20,8 +22,8 @@
         --color-page-second: #f7f7f7;
         --color-font: #353535;
         --color-font-second: #555;
-        --color-link: var(--color-main);
-        --color-link-hover: var(--color-main-hover);
+        --color-link: #3298dc;
+        --color-link-hover: #1f71a7;
         --color-main-light: #99c8e6;
         --color-main: #3298dc;
         --color-main-hover: #288acc;
