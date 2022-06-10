@@ -1,0 +1,30 @@
+pre {
+    padding: 0 !important;
+    background-color: transparent;
+    border-radius: 5px;
+    position: relative;
+}
+
+pre .code-language-tag {
+    position: absolute;
+    color: #b9bec2;
+    display: block;
+    right: 10px;
+    top: 8px;
+    font-size: 0.8em;
+}
+
+code.hljs {
+    font-family: 'Code', monospace;
+    font-size: .8em;
+    border-radius: 5px;
+    padding: 25px 30px;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    code.hljs {
+        padding: 20px;
+        font-size: .8em;
+    }
+}

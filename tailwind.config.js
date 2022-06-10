@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     container: {
         center: true,
-        padding: '1.2rem',
+        padding: '1rem',
     },
     extend: {
         colors: {
@@ -30,8 +30,8 @@ module.exports = {
            'home-hero': 'url(/storage/heros/home-hero.jpg)',
         },
         fontFamily: {
-            lato: ['Lato', 'sans-serif'],
-            code: ['JetBrainsMono', 'monospace'],
+            text: ['Lato', 'serif'],
+            code: ['Code', 'monospace'],
         },
         keyframes: {
             blink: {

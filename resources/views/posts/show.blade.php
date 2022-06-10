@@ -68,7 +68,7 @@
     </section>
 
     <div class="container pb-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[75%_25%]">
+        <div class="grid grid-cols-1 lg:grid-cols-[75%_25%] gap-x-5">
             <div>
                 {{-- Chapters for mobile --}}
                 <nav class="block lg:hidden mt-16">
@@ -77,7 +77,7 @@
                 </nav>
 
                 {{-- Blog post content --}}
-                <div class="prose-lg lg:prose-xl max-w-none px-2 lg:px-6 pt-8 lg:pt-16 font-lato"
+                <div class="post-content prose lg:prose-xl max-w-none pr-2 lg:px-6 pt-8 lg:pt-10 prose-img:rounded-md prose-img:mx-auto prose-a:text-link prose-a:no-underline hover:prose-a:text-link-hover"
                      id="post-content"
                      v-pre
                 >{!! $post['content'] !!}</div>
