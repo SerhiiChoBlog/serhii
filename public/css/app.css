@@ -1,6 +1,7 @@
 :root {
     --color-page: white;
     --color-page-second: #f7f7f7;
+    --color-border: rgba(0, 0, 0, .1);
     --color-font: #353535;
     --color-font-second: #555;
     --color-link: #3298dc;
@@ -13,8 +14,9 @@
 .dark {
     --color-page: #141d27;
     --color-page-second: #15202b;
+    --color-border: rgba(255, 255, 255, .1);
     --color-font: #dedee3;
-    --color-font-second: #8e8e8e;
+    --color-font-second: #a7a7a7;
     --color-link: #93adde;
     --color-link-hover: #6881b1;
     --color-main-light: #99c8e6;
@@ -1686,6 +1688,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .border-dashed {
   border-style: dashed;
+}
+.border-border {
+  border-color: var(--color-border);
 }
 .bg-black\/30 {
   background-color: rgb(0 0 0 / 0.3);
