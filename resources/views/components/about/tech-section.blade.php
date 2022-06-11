@@ -3,7 +3,7 @@
 @endphp
 
 <div>
-    <div class="flex gap-x-7">
+    <div class="flex flex-col lg:flex-row gap-7">
         @foreach ($techs as $tech)
             <div>
                 <div>
