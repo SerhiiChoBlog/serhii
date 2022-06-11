@@ -2,9 +2,13 @@
     <x-navbar />
 
     <div class="p-[3em]">
-        <div class="text-center font-lato">
+        <div class="text-center font-lato max-w-5xl mx-auto">
             <h1 class="text-3xl mb-2">{{ $title }}</h1>
             <h2 class="text-[1.3em]">{!! $subtitle !!}</h2>
+
+            <div>
+                {{ $slot ?? '' }}
+            </div>
         </div>
     </div>
 </section>

@@ -15,19 +15,17 @@
     <x-hero :title="$project->title"
         :subtitle="$project->description"
         class="bg-gray-50"
-    />
-{{--    <section class="project-hero is-light">--}}
-{{--        <div class="hero-body">--}}
-{{--            <div class="container has-text-centered">--}}
-{{--                <h1 class="title"></h1>--}}
-{{--                <h2 class="subtitle has-text-left"></h2>--}}
-{{--                <a href="{{ $project->url }}" target="_blank" class="button is-rounded is-dark">--}}
-{{--                    <img src="{{ asset('storage/icons/github.png') }}" width="20" alt="Github logo" />--}}
-{{--                    <span class="ml-2">Open on Github</span>--}}
-{{--                </a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+    >
+        <a href="{{ $project->url }}"
+           target="_blank"
+           class="bg-gray-700 text-white px-7 py-3 rounded-full inline-flex mt-5 hover:bg-gray-800 transition-colors shadow-md"
+        >
+            <div>
+                <img src="{{ asset('storage/icons/github.png') }}" width="20" alt="Github logo" />
+            </div>
+            <span class="ml-2">Open on Github</span>
+        </a>
+    </x-hero>
 
     <div class="container mt-6 pb-6 project">
         <div class="content" v-pre>{!! $project->content !!}</div>
