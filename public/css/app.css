@@ -2126,6 +2126,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1.5rem;
 }
 
+.prose-h2\:font-light :is(:where(h2):not(:where([class~="not-prose"] *))){
+  font-weight: 300;
+}
+
+.prose-h2\:font-normal :is(:where(h2):not(:where([class~="not-prose"] *))){
+  font-weight: 400;
+}
+
 .prose-p\:font-light :is(:where(p):not(:where([class~="not-prose"] *))){
   font-weight: 300;
 }
@@ -2149,6 +2157,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .prose-strong\:font-semibold :is(:where(strong):not(:where([class~="not-prose"] *))){
   font-weight: 600;
+}
+
+.prose-strong\:font-normal :is(:where(strong):not(:where([class~="not-prose"] *))){
+  font-weight: 400;
+}
+
+.prose-strong\:font-bold :is(:where(strong):not(:where([class~="not-prose"] *))){
+  font-weight: 700;
 }
 
 .prose-img\:mx-auto :is(:where(img):not(:where([class~="not-prose"] *))){
