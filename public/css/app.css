@@ -134,15 +134,6 @@ pre {
     position: relative;
 }
 
-pre .code-language-tag {
-    position: absolute;
-    color: #b9bec2;
-    display: block;
-    right: 10px;
-    top: 8px;
-    font-size: 0.8em;
-}
-
 code.hljs {
     font-family: 'Code', monospace;
     font-size: .8em;
@@ -1264,6 +1255,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .top-\[calc\(50\%\+4px\)\]{
   top: calc(50% + 4px);
 }
+.right-\[10px\]{
+  right: 10px;
+}
+.top-\[8px\]{
+  top: 8px;
+}
 .right-4{
   right: 1rem;
 }
@@ -1272,6 +1269,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .top-4{
   top: 1rem;
+}
+.top-\[6px\]{
+  top: 6px;
 }
 .z-10{
   z-index: 10;
@@ -1342,11 +1342,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mt-3{
   margin-top: 0.75rem;
 }
-.mr-2{
-  margin-right: 0.5rem;
-}
 .mr-1{
   margin-right: 0.25rem;
+}
+.mr-2{
+  margin-right: 0.5rem;
 }
 .mb-5{
   margin-bottom: 1.25rem;
@@ -1818,16 +1818,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
+.text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
 .text-3xl{
   font-size: 1.875rem;
   line-height: 2.25rem;
 }
 .text-\[1\.3em\]{
   font-size: 1.3em;
-}
-.text-xs{
-  font-size: 0.75rem;
-  line-height: 1rem;
 }
 .text-\[\.7rem\]{
   font-size: .7rem;
@@ -1879,6 +1879,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(234 179 8 / var(--tw-text-opacity));
 }
+.text-\[\#b9bec2\]{
+  --tw-text-opacity: 1;
+  color: rgb(185 190 194 / var(--tw-text-opacity));
+}
 .text-gray-400{
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -1919,6 +1923,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .drop-shadow-\[-7px_7px_6px_rgba\(0\2c 0\2c 0\2c \.4\)\]{
   --tw-drop-shadow: drop-shadow(-7px 7px 6px rgba(0,0,0,.4));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.filter{
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .transition-colors{

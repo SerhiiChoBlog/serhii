@@ -3,6 +3,7 @@ module.exports = {
       "./app/View/**/*.php",
       "./resources/**/*.blade.php",
       "./resources/**/*.js",
+      "./resources/**/*.ts",
       "./resources/**/*.vue",
   ],
   darkMode: 'class',
