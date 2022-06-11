@@ -1,13 +1,15 @@
-<div class="pt-16">
-    <nav class="min-h-[83px] mb-7">
-        <x-post.sidebar-title>Share this post</x-post.sidebar-title>
-        <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
-    </nav>
+<div class="pt-10 lg:pt-16">
+    <div class="hidden lg:block">
+        <nav class="min-h-[83px] mb-7">
+            <x-post.sidebar-title>Share this post</x-post.sidebar-title>
+            <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
+        </nav>
 
-    <nav class="mb-7">
-        <x-post.sidebar-title>Chapters</x-post.sidebar-title>
-        <chapters />
-    </nav>
+        <nav class="mb-7">
+            <x-post.sidebar-title>Chapters</x-post.sidebar-title>
+            <chapters />
+        </nav>
+    </div>
 
     <nav class="mb-7">
         <x-post.sidebar-title>Other posts</x-post.sidebar-title>

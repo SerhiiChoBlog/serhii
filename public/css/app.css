@@ -110,6 +110,23 @@
     text-decoration: underline;
 }
 
+p > code {
+    background-color: #eff1f3;
+    border-radius: 6px;
+    padding: 2px 6px;
+    margin: 0 2px;
+    font-weight: lighter !important;
+    font-size: .8em !important;
+}
+
+p > code::before {
+    content: none !important;
+}
+
+p > code::after {
+    content: none !important;
+}
+
 pre {
     padding: 0 !important;
     background-color: transparent;
@@ -1779,9 +1796,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pt-10{
   padding-top: 2.5rem;
 }
-.pt-16{
-  padding-top: 4rem;
-}
 .text-center{
   text-align: center;
 }
@@ -2390,6 +2404,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-top: 0px;
   }
 
+  .lg\:block{
+    display: block;
+  }
+
   .lg\:hidden{
     display: none;
   }
@@ -2478,6 +2496,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:pb-10{
     padding-bottom: 2.5rem;
+  }
+
+  .lg\:pt-16{
+    padding-top: 4rem;
   }
 
   .lg\:text-left{
