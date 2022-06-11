@@ -2,46 +2,13 @@
 .post-content p code,
 .project-content ul  li code,
 .post-content ul li code {
-    background-color: #eff1f3;
-    border-radius: 6px;
-    padding: 2px 6px;
-    margin: 0 2px;
-    font-weight: lighter !important;
-    font-size: .8em !important;
-}
-
-.project-content p code::before,
-.project-content ul li code::before,
-.post-content p code::before,
-.post-content ul li code::before {
-    content: none !important;
-}
-
-.project-content p code::after,
-.project-content ul li code::after,
-.post-content p code::after,
-.post-content ul li code::after {
-    content: none !important;
+    @apply bg-page-second rounded-md py-1 px-2 mx-1 font-light text-sm text-font before:content-none after:content-none;
 }
 
 pre {
-    padding: 0 !important;
-    background-color: transparent;
-    border-radius: 5px;
-    position: relative;
+    @apply !p-0 bg-transparent rounded-md relative;
 }
 
 code.hljs {
-    font-family: 'Code', monospace;
-    font-size: .8em;
-    border-radius: 5px;
-    padding: 25px 30px;
-    display: block;
-}
-
-@media (max-width: 768px) {
-    code.hljs {
-        padding: 20px;
-        font-size: .8em;
-    }
+    @apply font-code text-sm rounded-sm py-7 px-3 lg:p-7 block;
 }

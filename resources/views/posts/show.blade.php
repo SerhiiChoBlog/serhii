@@ -28,8 +28,8 @@
 
         <div class="py-[2rem] px-[1.5rem] lg:py-[5rem] lg:px-[1.5rem] container">
             <div class="grid grid-cols-1 lg:grid-cols-2 relative">
-                <div class="flex items-left justify-center flex-col text-[.7rem] lg:text-[1rem]">
-                    <h1 style="font-size: {{ $title_font_size }}" class="leading-10 font-light text-center lg:text-left">
+                <div class="flex items-left justify-center flex-col text-[.7rem] lg:text-[1rem] px-4">
+                    <h1 style="font-size: {{ $title_font_size }}" class="leading-[1.1] font-light text-center lg:text-left">
                         {{ $post['title'] }}
                     </h1>
 
@@ -76,9 +76,9 @@
                     <chapters />
                 </nav>
 
-                <div class="post-content prose lg:prose-xl max-w-none pr-2 lg:px-6 pt-8 lg:pt-10 prose-img:rounded-md prose-img:mx-auto prose-a:text-link prose-a:no-underline hover:prose-a:text-link-hover prose-headings:font-normal prose-p:font-light prose-strong:font-semibold"
-                     id="post-content"
-                     v-pre
+                <div class="post-content prose lg:prose-xl max-w-none pr-2 lg:px-6 pt-8 lg:pt-10 prose-img:rounded-md prose-img:mx-auto prose-a:text-link prose-a:no-underline hover:prose-a:text-link-hover prose-headings:font-normal prose-p:font-light prose-strong:font-semibold prose-headings:text-font text-font prose-strong:text-font"
+                    id="post-content"
+                    v-pre
                 >{!! $post['content'] !!}</div>
 
                 <x-post.footer :post="$post" />

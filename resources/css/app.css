@@ -1,7 +1,3 @@
-@import '_material-theme.css';
-@import '_code.css';
-@import '_blockquote.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,55 +13,12 @@
 }
 
 @layer base {
-    :root {
-        --color-page: white;
-        --color-page-second: #f7f7f7;
-        --color-font: #353535;
-        --color-font-second: #555;
-        --color-link: #3298dc;
-        --color-link-hover: #1f71a7;
-        --color-main-light: #99c8e6;
-        --color-main: #3298dc;
-        --color-main-hover: #288acc;
-        --color-main-dark: #1972ac;
-    }
-    .dark {
-        --color-page: #141d27;
-        --color-page-second: #15202b;
-        --color-font: #dedee3;
-        --color-font-second: #8e8e8e;
-        --color-link: #93adde;
-        --color-link-hover: #6881b1;
-        --color-main-light: #99c8e6;
-        --color-main: #3298dc;
-        --color-main-hover: #288acc;
-        --color-main-dark: #1972ac;
-    }
+    @import "_variables.css";
 }
 
-@layer composenent {
-    .navbar-menu {
-        @apply hidden lg:flex items-center gap-x-6;
-    }
-    .navbar-menu--active {
-        @apply flex flex-col bg-[#363636] absolute right-[20px] left-[20px] md:right-[120px] md:left-[120px] top-[52px] p-0 shadow-lg rounded-lg z-10 !overflow-hidden;
-    }
-}
-
-.navbar-link::before {
-    background-color: #3298dc;
-    border-radius: 8px;
-    bottom: -8px;
-    content: "";
-    height: 6px;
-    left: -5px;
-    right: -5px;
-    opacity: 0;
-    position: absolute;
-    transition: opacity .2s;
-}
-
-.navbar-link:hover::before,
-.navbar-link--active::before {
-    opacity: 1;
+@layer components {
+    @import "_navbar.css";
+    @import "_material-theme.css";
+    @import "_code.css";
+    @import "_blockquote.css";
 }
