@@ -110,7 +110,10 @@
     text-decoration: underline;
 }
 
-p > code {
+.project-content p code,
+.post-content p code,
+.project-content ul  li code,
+.post-content ul li code {
     background-color: #eff1f3;
     border-radius: 6px;
     padding: 2px 6px;
@@ -119,11 +122,17 @@ p > code {
     font-size: .8em !important;
 }
 
-p > code::before {
+.project-content p code::before,
+.project-content ul li code::before,
+.post-content p code::before,
+.post-content ul li code::before {
     content: none !important;
 }
 
-p > code::after {
+.project-content p code::after,
+.project-content ul li code::after,
+.post-content p code::after,
+.post-content ul li code::after {
     content: none !important;
 }
 
@@ -1200,6 +1209,174 @@ Ensure the default browser behavior of the `hidden` attribute.
 .prose-lg > :where(:last-child):not(:where([class~="not-prose"] *)){
   margin-bottom: 0;
 }
+.prose-xl{
+  font-size: 1.25rem;
+  line-height: 1.8;
+}
+.prose-xl :where(p):not(:where([class~="not-prose"] *)){
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+}
+.prose-xl :where([class~="lead"]):not(:where([class~="not-prose"] *)){
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.prose-xl :where(blockquote):not(:where([class~="not-prose"] *)){
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  padding-left: 1.0666667em;
+}
+.prose-xl :where(h1):not(:where([class~="not-prose"] *)){
+  font-size: 2.8em;
+  margin-top: 0;
+  margin-bottom: 0.8571429em;
+  line-height: 1;
+}
+.prose-xl :where(h2):not(:where([class~="not-prose"] *)){
+  font-size: 1.8em;
+  margin-top: 1.5555556em;
+  margin-bottom: 0.8888889em;
+  line-height: 1.1111111;
+}
+.prose-xl :where(h3):not(:where([class~="not-prose"] *)){
+  font-size: 1.5em;
+  margin-top: 1.6em;
+  margin-bottom: 0.6666667em;
+  line-height: 1.3333333;
+}
+.prose-xl :where(h4):not(:where([class~="not-prose"] *)){
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  line-height: 1.6;
+}
+.prose-xl :where(img):not(:where([class~="not-prose"] *)){
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.prose-xl :where(video):not(:where([class~="not-prose"] *)){
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.prose-xl :where(figure):not(:where([class~="not-prose"] *)){
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.prose-xl :where(figure > *):not(:where([class~="not-prose"] *)){
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.prose-xl :where(figcaption):not(:where([class~="not-prose"] *)){
+  font-size: 0.9em;
+  line-height: 1.5555556;
+  margin-top: 1em;
+}
+.prose-xl :where(code):not(:where([class~="not-prose"] *)){
+  font-size: 0.9em;
+}
+.prose-xl :where(h2 code):not(:where([class~="not-prose"] *)){
+  font-size: 0.8611111em;
+}
+.prose-xl :where(h3 code):not(:where([class~="not-prose"] *)){
+  font-size: 0.9em;
+}
+.prose-xl :where(pre):not(:where([class~="not-prose"] *)){
+  font-size: 0.9em;
+  line-height: 1.7777778;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-radius: 0.5rem;
+  padding-top: 1.1111111em;
+  padding-right: 1.3333333em;
+  padding-bottom: 1.1111111em;
+  padding-left: 1.3333333em;
+}
+.prose-xl :where(ol):not(:where([class~="not-prose"] *)){
+  padding-left: 1.6em;
+}
+.prose-xl :where(ul):not(:where([class~="not-prose"] *)){
+  padding-left: 1.6em;
+}
+.prose-xl :where(li):not(:where([class~="not-prose"] *)){
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+}
+.prose-xl :where(ol > li):not(:where([class~="not-prose"] *)){
+  padding-left: 0.4em;
+}
+.prose-xl :where(ul > li):not(:where([class~="not-prose"] *)){
+  padding-left: 0.4em;
+}
+.prose-xl > :where(ul > li p):not(:where([class~="not-prose"] *)){
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+.prose-xl > :where(ul > li > *:first-child):not(:where([class~="not-prose"] *)){
+  margin-top: 1.2em;
+}
+.prose-xl > :where(ul > li > *:last-child):not(:where([class~="not-prose"] *)){
+  margin-bottom: 1.2em;
+}
+.prose-xl > :where(ol > li > *:first-child):not(:where([class~="not-prose"] *)){
+  margin-top: 1.2em;
+}
+.prose-xl > :where(ol > li > *:last-child):not(:where([class~="not-prose"] *)){
+  margin-bottom: 1.2em;
+}
+.prose-xl :where(ul ul, ul ol, ol ul, ol ol):not(:where([class~="not-prose"] *)){
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+.prose-xl :where(hr):not(:where([class~="not-prose"] *)){
+  margin-top: 2.8em;
+  margin-bottom: 2.8em;
+}
+.prose-xl :where(hr + *):not(:where([class~="not-prose"] *)){
+  margin-top: 0;
+}
+.prose-xl :where(h2 + *):not(:where([class~="not-prose"] *)){
+  margin-top: 0;
+}
+.prose-xl :where(h3 + *):not(:where([class~="not-prose"] *)){
+  margin-top: 0;
+}
+.prose-xl :where(h4 + *):not(:where([class~="not-prose"] *)){
+  margin-top: 0;
+}
+.prose-xl :where(table):not(:where([class~="not-prose"] *)){
+  font-size: 0.9em;
+  line-height: 1.5555556;
+}
+.prose-xl :where(thead th):not(:where([class~="not-prose"] *)){
+  padding-right: 0.6666667em;
+  padding-bottom: 0.8888889em;
+  padding-left: 0.6666667em;
+}
+.prose-xl :where(thead th:first-child):not(:where([class~="not-prose"] *)){
+  padding-left: 0;
+}
+.prose-xl :where(thead th:last-child):not(:where([class~="not-prose"] *)){
+  padding-right: 0;
+}
+.prose-xl :where(tbody td):not(:where([class~="not-prose"] *)){
+  padding-top: 0.8888889em;
+  padding-right: 0.6666667em;
+  padding-bottom: 0.8888889em;
+  padding-left: 0.6666667em;
+}
+.prose-xl :where(tbody td:first-child):not(:where([class~="not-prose"] *)){
+  padding-left: 0;
+}
+.prose-xl :where(tbody td:last-child):not(:where([class~="not-prose"] *)){
+  padding-right: 0;
+}
+.prose-xl > :where(:first-child):not(:where([class~="not-prose"] *)){
+  margin-top: 0;
+}
+.prose-xl > :where(:last-child):not(:where([class~="not-prose"] *)){
+  margin-bottom: 0;
+}
 .static{
   position: static;
 }
@@ -1468,6 +1645,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .max-w-5xl{
   max-width: 64rem;
+}
+.max-w-6xl{
+  max-width: 72rem;
 }
 .origin-center{
   transform-origin: center;
@@ -1813,6 +1993,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-\[5em\]{
   padding-left: 5em;
   padding-right: 5em;
+}
+.px-8{
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 .pl-7{
   padding-left: 1.75rem;
@@ -2193,6 +2377,42 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-weight: 400;
 }
 
+.prose-h1\:text-sm :is(:where(h1):not(:where([class~="not-prose"] *))){
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.prose-h1\:text-\[\.9em\] :is(:where(h1):not(:where([class~="not-prose"] *))){
+  font-size: .9em;
+}
+
+.prose-h1\:text-\[0\.9em\] :is(:where(h1):not(:where([class~="not-prose"] *))){
+  font-size: 0.9em;
+}
+
+.prose-h1\:text-\[0\.9rem\] :is(:where(h1):not(:where([class~="not-prose"] *))){
+  font-size: 0.9rem;
+}
+
+.prose-h1\:text-\[2rem\] :is(:where(h1):not(:where([class~="not-prose"] *))){
+  font-size: 2rem;
+}
+
+.prose-h1\:text-lg :is(:where(h1):not(:where([class~="not-prose"] *))){
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.prose-h1\:text-xl :is(:where(h1):not(:where([class~="not-prose"] *))){
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.prose-h1\:text-3xl :is(:where(h1):not(:where([class~="not-prose"] *))){
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .prose-h2\:mb-6 :is(:where(h2):not(:where([class~="not-prose"] *))){
   margin-bottom: 1.5rem;
 }
@@ -2201,12 +2421,25 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0px;
 }
 
+.prose-h2\:text-2xl :is(:where(h2):not(:where([class~="not-prose"] *))){
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .prose-h2\:font-normal :is(:where(h2):not(:where([class~="not-prose"] *))){
   font-weight: 400;
 }
 
 .prose-p\:font-light :is(:where(p):not(:where([class~="not-prose"] *))){
   font-weight: 300;
+}
+
+.prose-a\:mr-1 :is(:where(a):not(:where([class~="not-prose"] *))){
+  margin-right: 0.25rem;
+}
+
+.prose-a\:inline-block :is(:where(a):not(:where([class~="not-prose"] *))){
+  display: inline-block;
 }
 
 .prose-a\:text-link :is(:where(a):not(:where([class~="not-prose"] *))){
@@ -2233,6 +2466,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .prose-img\:mx-auto :is(:where(img):not(:where([class~="not-prose"] *))){
   margin-left: auto;
   margin-right: auto;
+}
+
+.prose-img\:w-full :is(:where(img):not(:where([class~="not-prose"] *))){
+  width: 100%;
 }
 
 .prose-img\:rounded-md :is(:where(img):not(:where([class~="not-prose"] *))){
@@ -2552,6 +2789,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   .lg\:px-6{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .lg\:px-0{
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .lg\:pb-0{
