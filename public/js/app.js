@@ -20020,18 +20020,18 @@ var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
     role: "button",
-    "class": (0, vue_1.normalizeClass)(["flex flex-col gap-y-[3px] opacity-80", {
-      'text-white': $props.isLight,
-      'is-active': $setup.isActive
-    }]),
+    "class": (0, vue_1.normalizeClass)(["block ml-auto relative w-[3.25rem] h-[3.25rem] transition-transform duration-300 delay-500", $setup.isActive ? 'rotate-45' : '']),
     onClick: $setup.toggleNavbar
-  }, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(3, function (i) {
-    return (0, vue_1.createElementVNode)("span", {
-      key: i,
-      "aria-hidden": "true",
-      "class": "w-[19px] h-[2px] block bg-white"
-    });
-  }), 64))], 2);
+  }, [(0, vue_1.createElementVNode)("span", {
+    "aria-hidden": "true",
+    "class": (0, vue_1.normalizeClass)(["w-[19px] h-[2px] block bg-white rounded-full absolute left-[calc(50%-8px)] transition-all duration-500", $setup.isActive ? 'rotate-[-90deg] top-[calc(50%-1.5px)]' : 'top-[calc(50%-6px)]'])
+  }, null, 2), (0, vue_1.createElementVNode)("span", {
+    "aria-hidden": "true",
+    "class": (0, vue_1.normalizeClass)(["w-[19px] h-[2px] block bg-white rounded-full absolute top-[calc(50%-1px)] left-[calc(50%-8px)] transition-all duration-500", $setup.isActive ? '' : ''])
+  }, null, 2), (0, vue_1.createElementVNode)("span", {
+    "aria-hidden": "true",
+    "class": (0, vue_1.normalizeClass)(["w-[19px] h-[2px] block bg-white rounded-full absolute top-[calc(50%+4px)] left-[calc(50%-8px)] transition-all duration-500", $setup.isActive ? 'translate-y-[40px] opacity-0' : ''])
+  }, null, 2)], 2);
 }
 
 exports.render = render;

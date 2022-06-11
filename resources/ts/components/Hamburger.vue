@@ -27,10 +27,23 @@ function toggleNavbar(): void {
 
 <template>
     <a role="button"
-       class="flex flex-col gap-y-[3px] opacity-80"
-       :class="{ 'text-white': isLight, 'is-active': isActive }"
+       class="block ml-auto relative w-[3.25rem] h-[3.25rem] transition-transform duration-300 delay-500"
+       :class="isActive ? 'rotate-45' : ''"
        @click="toggleNavbar"
     >
-        <span v-for="i in 3" :key="i" aria-hidden="true" class="w-[19px] h-[2px] block bg-white"></span>
+        <span aria-hidden="true"
+            class="w-[19px] h-[2px] block bg-white rounded-full absolute left-[calc(50%-8px)] transition-all duration-500"
+            :class="isActive ? 'rotate-[-90deg] top-[calc(50%-1.5px)]' : 'top-[calc(50%-6px)]'"
+        ></span>
+
+        <span aria-hidden="true"
+            class="w-[19px] h-[2px] block bg-white rounded-full absolute top-[calc(50%-1px)] left-[calc(50%-8px)] transition-all duration-500"
+            :class="isActive ? '' : ''"
+        ></span>
+
+        <span aria-hidden="true"
+            class="w-[19px] h-[2px] block bg-white rounded-full absolute top-[calc(50%+4px)] left-[calc(50%-8px)] transition-all duration-500"
+            :class="isActive ? 'translate-y-[40px] opacity-0' : ''"
+        ></span>
     </a>
 </template>

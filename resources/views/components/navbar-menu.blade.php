@@ -1,4 +1,4 @@
-<div class="flex items-center gap-x-6" id="navbar-menu">
+<div class="hidden flex items-center gap-x-6" id="navbar-menu">
     @foreach ($getMenuItems() as $item)
         <a href="{{ $item['href'] }}"
            class="relative text-md navbar-link {{ $item['class'] }}"
