@@ -14,7 +14,6 @@ if (mix.inProduction()) {
                 'resources/purge-ignore.html',
             ],
             css: [
-                'public/css/admin.css',
                 'public/css/font-awesome.css',
             ],
         })
@@ -45,7 +44,7 @@ mix.ts('resources/ts/app.ts', 'public/js/app.js')
     })
 
 mix.ts('resources/ts/admin/app.ts', 'public/js/admin.js')
-    .sass('resources/sass/admin/app.sass', 'public/css/admin.css', {}, sassOptions)
+    .sass('resources/sass/app.sass', 'public/css/admin.css', {}, sassOptions)
     .webpackConfig({
         module: {
             rules: [

@@ -27,12 +27,10 @@ function toggleNavbar(): void {
 
 <template>
     <a role="button"
-       class="navbar-burger"
-       :class="{ 'burger-light': isLight, 'is-active': isActive }"
+       class="flex flex-col gap-y-[3px] opacity-80"
+       :class="{ 'text-white': isLight, 'is-active': isActive }"
        @click="toggleNavbar"
     >
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+        <span v-for="i in 3" :key="i" aria-hidden="true" class="w-[19px] h-[2px] block bg-white"></span>
     </a>
 </template>
