@@ -20020,7 +20020,7 @@ var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
     role: "button",
-    "class": (0, vue_1.normalizeClass)(["block ml-auto relative w-[3.25rem] h-[3.25rem] transition-transform duration-300 delay-500", $setup.isActive ? 'rotate-45' : '']),
+    "class": (0, vue_1.normalizeClass)(["block lg:hidden ml-auto relative w-[3.25rem] h-[3.25rem] transition-transform duration-300 delay-300", $setup.isActive ? 'rotate-45' : '']),
     onClick: $setup.toggleNavbar
   }, [(0, vue_1.createElementVNode)("span", {
     "aria-hidden": "true",
@@ -20162,7 +20162,7 @@ exports.render = void 0;
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "font-code text-lg"
+  "class": "font-code text-sm lg:text-lg"
 };
 
 var _hoisted_2 = (0, vue_1.createElementVNode)("span", {

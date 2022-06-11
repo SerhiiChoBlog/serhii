@@ -24,7 +24,7 @@ module.exports = {
             'main-dark': 'var(--color-main-dark)',
         },
         animation: {
-            blink: 'blink 1s linear infinite',
+            blink: 'blink 800ms linear infinite',
         },
         backgroundImage: {
            'home-hero': 'url(/storage/heros/home-hero.jpg)',

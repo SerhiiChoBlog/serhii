@@ -1,5 +1,5 @@
 <template>
-    <p class="font-code text-md">
+    <p class="font-code text-sm lg:text-lg">
          Professional {{ typewriter }}
         <span class="border-r-[12px] ml-2 animate-blink"></span>
     </p>
