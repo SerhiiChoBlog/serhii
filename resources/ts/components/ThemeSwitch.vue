@@ -1,6 +1,34 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import axios from 'axios'
+
+type Theme = 'light' | 'dark'
+
+interface Props {
+    theme: Theme
+}
+
+const { theme } = defineProps<Props>()
+const currentTheme = ref<Theme>(theme)
+
+function switchTheme(): void {
+    axios.get('/theme')
+        .then((res) => {
+            if (currentTheme.value === 'light') {
+                currentTheme.value = 'dark'
+                document.body.classList.add('dark')
+            } else {
+                currentTheme.value = 'light'
+                document.body.classList.remove('dark')
+            }
+        })
+        .catch((err) => console.error(err))
+}
+</script>
+
 <template>
-    <div class="flex items-center">
-        <button class="relative inline-block p-1 bg-transparent text-yellow-500 dark:text-main hover:bg-gray-500 hover:bg-opacity-50 rounded-full"
+    <div class="flex items-center justify-center pb-6 lg:pb-0">
+        <button class="relative flex p-1 bg-transparent text-yellow-500 dark:text-main hover:bg-gray-500 hover:bg-opacity-50 rounded-full"
             @click="switchTheme"
         >
             <svg
@@ -26,44 +54,10 @@
                     <circle cx="106.1" cy="106.1" r="41" />
                 </g>
             </svg>
+
+            <span class="block lg:hidden pl-4">
+                Switch to {{ currentTheme === 'light' ? 'dark' : 'light' }} theme
+            </span>
         </button>
     </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, PropType, ref } from 'vue'
-import axios from 'axios'
-
-type Theme = 'light' | 'dark'
-
-export default defineComponent({
-    props: {
-        theme: {
-            type: String as PropType<Theme>,
-            required: true,
-        },
-    },
-
-    setup({ theme }) {
-        const currentTheme = ref<Theme>(theme)
-
-        function switchTheme(): void {
-            axios.get('/theme')
-                .then((res) => {
-                    if (currentTheme.value === 'light') {
-                        currentTheme.value = 'dark'
-                        document.body.classList.add('dark')
-                    } else {
-                        currentTheme.value = 'light'
-                        document.body.classList.remove('dark')
-                    }
-                })
-                .catch((err) => console.error(err))
-        }
-
-        return {
-            switchTheme,
-        }
-    },
-})
-</script>

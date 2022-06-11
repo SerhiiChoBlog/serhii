@@ -15,7 +15,7 @@
     </section>
 
     <div>
-        <section class="py-8 lg:py-14">
+        <section class="py-8 lg:py-14 px-4">
             <div class="container">
                 <div>
                     <x-home.section-title>Nice to meet you</x-home.section-title>
