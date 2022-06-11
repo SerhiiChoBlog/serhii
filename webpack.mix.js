@@ -22,7 +22,6 @@ if (mix.inProduction()) {
 
 mix.ts('resources/ts/app.ts', 'public/js/app.js')
     .vue()
-    // .sass('resources/sass/app.sass', 'public/css/app.css')
     .postCss("resources/css/app.css", "public/css", [
         require("tailwindcss"),
     ])
