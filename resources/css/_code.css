@@ -1,3 +1,20 @@
+p > code {
+    background-color: #eff1f3;
+    border-radius: 6px;
+    padding: 2px 6px;
+    margin: 0 2px;
+    font-weight: lighter !important;
+    font-size: .8em !important;
+}
+
+p > code::before {
+    content: none !important;
+}
+
+p > code::after {
+    content: none !important;
+}
+
 pre {
     padding: 0 !important;
     background-color: transparent;
