@@ -16,6 +16,7 @@ module.exports = {
         colors: {
             'page': 'var(--color-page)',
             'page-second': 'var(--color-page-second)',
+            'border': 'var(--color-border)',
             'font': 'var(--color-font)',
             'font-second': 'var(--color-font-second)',
             'link': 'var(--color-link)',
