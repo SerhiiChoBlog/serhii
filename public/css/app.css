@@ -1283,6 +1283,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
 }
+.mx-7{
+  margin-left: 1.75rem;
+  margin-right: 1.75rem;
+}
 .mt-2{
   margin-top: 0.5rem;
 }
@@ -2381,6 +2385,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:prose-xl > :where(:last-child):not(:where([class~="not-prose"] *)){
     margin-bottom: 0;
+  }
+
+  .lg\:mx-0{
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
   .lg\:mt-0{

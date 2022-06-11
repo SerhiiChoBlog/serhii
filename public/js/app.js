@@ -19925,29 +19925,32 @@ var _withScopeId = function _withScopeId(n) {
 };
 
 var _hoisted_1 = {
-  "class": "fixed left-0 right-0 top-0 bottom-0 z-10 bg-[hsla(0,0%,4%,.86)]"
+  "class": "p-7 lg:p-0"
 };
 var _hoisted_2 = {
+  "class": "fixed left-0 right-0 top-0 bottom-0 z-10 bg-[hsla(0,0%,4%,.86)]"
+};
+var _hoisted_3 = {
   key: 0,
   "class": "overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto"
 };
-var _hoisted_3 = {
+var _hoisted_4 = {
   "class": "bg-page text-font shadow-xl rounded-lg p-10 divide-y h-full"
 };
-var _hoisted_4 = {
+var _hoisted_5 = {
   "class": "text-center text-2xl mb-3"
 };
-var _hoisted_5 = ["innerHTML"];
-var _hoisted_6 = {
+var _hoisted_6 = ["innerHTML"];
+var _hoisted_7 = {
   "class": "flex justify-center gap-x-5 mt-5"
 };
-var _hoisted_7 = ["href", "title"];
-var _hoisted_8 = ["src", "alt"];
+var _hoisted_8 = ["href", "title"];
+var _hoisted_9 = ["src", "alt"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, [(0, vue_1.createElementVNode)("button", {
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, [(0, vue_1.createElementVNode)("div", _hoisted_1, [(0, vue_1.createElementVNode)("button", {
     type: "button",
-    "class": "text-white bg-main py-2 px-6 rounded-full hover:bg-main-hover transition-colors",
+    "class": "w-full lg:w-auto text-white bg-main py-2 px-6 rounded-full hover:bg-main-hover transition-colors",
     onClick: _cache[0] || (_cache[0] = function () {
       var args = [];
 
@@ -19957,18 +19960,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       return _ctx.openContactModal && _ctx.openContactModal.apply(_ctx, args);
     })
-  }, " Contact me "), (0, vue_1.withDirectives)((0, vue_1.createElementVNode)("div", _hoisted_1, [(0, vue_1.createVNode)(vue_1.Transition, {
+  }, " Contact me ")]), (0, vue_1.withDirectives)((0, vue_1.createElementVNode)("div", _hoisted_2, [(0, vue_1.createVNode)(vue_1.Transition, {
     name: "fade"
   }, {
     "default": (0, vue_1.withCtx)(function () {
-      return [_ctx.isOpen ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_2, [(0, vue_1.createElementVNode)("div", _hoisted_3, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(_ctx.sections, function (section) {
+      return [_ctx.isOpen ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_3, [(0, vue_1.createElementVNode)("div", _hoisted_4, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(_ctx.sections, function (section) {
         return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", {
           key: section.title,
           "class": "py-5 first:pt-0 last:pb-0"
-        }, [(0, vue_1.createElementVNode)("h3", _hoisted_4, (0, vue_1.toDisplayString)(section.title), 1), (0, vue_1.createElementVNode)("p", {
+        }, [(0, vue_1.createElementVNode)("h3", _hoisted_5, (0, vue_1.toDisplayString)(section.title), 1), (0, vue_1.createElementVNode)("p", {
           innerHTML: section.content,
           "class": "text-center text-lg"
-        }, null, 8, _hoisted_5), (0, vue_1.createElementVNode)("div", _hoisted_6, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(section.links, function (link) {
+        }, null, 8, _hoisted_6), (0, vue_1.createElementVNode)("div", _hoisted_7, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(section.links, function (link) {
           return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
             key: link.title,
             href: link.href,
@@ -19979,7 +19982,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             src: link.img,
             alt: link.title,
             width: "30"
-          }, null, 8, _hoisted_8)], 8, _hoisted_7);
+          }, null, 8, _hoisted_9)], 8, _hoisted_8);
         }), 128))])]);
       }), 128))])])) : (0, vue_1.createCommentVNode)("v-if", true)];
     }),
