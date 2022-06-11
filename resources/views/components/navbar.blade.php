@@ -6,8 +6,8 @@
             </a>
 
             @auth
-                <a href="{{ route('admin.dashboard') }}" class="text-xs font-bold">
-                    ADMIN
+                <a href="{{ route('admin.dashboard') }}" class="text-xs font-bold opacity-40 transition-opacity hover:opacity-100">
+                    dashboard
                 </a>
             @endauth
 
