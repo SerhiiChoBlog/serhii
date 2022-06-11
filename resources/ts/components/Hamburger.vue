@@ -14,11 +14,13 @@ function toggleNavbar(): void {
     if (!navbar)
         return
 
-    if (navbar.classList.contains('is-active')) {
-        navbar.classList.remove('is-active')
+    if (navbar.classList.contains('navbar-menu--active')) {
+        navbar.classList.remove('navbar-menu--active')
+        navbar.classList.add('navbar-menu')
         isActive.value = false
     } else {
-        navbar.classList.add('is-active')
+        navbar.classList.remove('navbar-menu')
+        navbar.classList.add('navbar-menu--active')
         isActive.value = true
     }
 }

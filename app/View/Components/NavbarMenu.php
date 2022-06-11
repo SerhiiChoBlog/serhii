@@ -19,7 +19,7 @@ class NavbarMenu extends Component
 
     public function getMenuItems(): array
     {
-        $active_class = 'navbar-link--active';
+        $active_class = 'navbar-link--active bg-main';
 
         return [
             [
