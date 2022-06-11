@@ -3,18 +3,18 @@
 @endphp
 
 <div>
-    <h2 class="home__title has-text-centered">Latest projects</h2>
-
-    <div class="sites">
+    <div class="flex items-center justify-center py-7">
         @foreach ($sites as $site)
-            <div class="site">
-                <a href="{{ $site['href'] }}" target="_blank" class="site-image">
+            <div class="skew-y-[-3deg] transition-transform ml-[-80px] first:ml-0 hover:translate-y-[-10px] duration-300">
+                <a href="{{ $site['href'] }}" target="_blank" class="max-w-[350px] block">
                     <img data-src="{{ asset($site['image']) }}"
                         alt="{{ $site['title'] }}"
-                        class="smooth-loader"
+                        class="smooth-loader rounded-lg shadow-[-19px_29px_13px_rgba(0,0,0,.1)]"
                     />
 
-                    <span class="site-title">{{ $site['title'] }}</span>
+                    <span class="block text-font-second text-xl text-center drop-shadow-[-7px_7px_6px_rgba(0,0,0,.4)] mt-3 font-light">
+                        {{ $site['title'] }}
+                    </span>
                 </a>
             </div>
         @endforeach
