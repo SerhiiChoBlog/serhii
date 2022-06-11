@@ -20323,7 +20323,8 @@ exports["default"] = function () {
 
     if (/^language-/.test(classes)) {
       var lang = classes.replace('language-', '').trim();
-      preElem.insertAdjacentHTML('beforeend', "<div class=\"code-language-tag\">".concat(lang, "</div>"));
+      var html = "<div class=\"absolute text-[#b9bec2] block right-[10px] top-[6px] text-xs\">".concat(lang, "</div>");
+      preElem.insertAdjacentHTML('beforeend', html);
     }
   });
 };
