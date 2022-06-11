@@ -48,11 +48,11 @@ class PostController extends Controller
 
         $title_font_size = match (true) {
             $title_len <= 10 => '4.8em',
-            $title_len > 10 && $title_len < 20 => '3.8em',
-            $title_len >= 20 && $title_len < 30 => '3.4em',
-            $title_len >= 30 && $title_len < 40 => '2.8em',
-            $title_len >= 40 && $title_len < 50 => '2.4em',
-            $title_len >= 50 && $title_len < 60 => '2.2em',
+            $title_len > 10 && $title_len < 20 => '4.4em',
+            $title_len >= 20 && $title_len < 30 => '4.0em',
+            $title_len >= 30 && $title_len < 40 => '3.4em',
+            $title_len >= 40 && $title_len < 50 => '3.0em',
+            $title_len >= 50 && $title_len < 60 => '2.8em',
             $title_len >= 60 => '2em',
         };
 
