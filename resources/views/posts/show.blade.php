@@ -76,7 +76,7 @@
                     <chapters />
                 </nav>
 
-                <div class="post-content prose lg:prose-xl max-w-none pr-2 lg:px-6 pt-8 lg:pt-10 prose-img:rounded-md prose-img:mx-auto prose-a:text-link prose-a:no-underline hover:prose-a:text-link-hover prose-headings:font-normal prose-p:font-light prose-strong:font-semibold prose-headings:text-font text-font prose-strong:text-font"
+                <div class="post-content lg:prose-xl pr-2 lg:px-6 pt-8 lg:pt-10"
                     id="post-content"
                     v-pre
                 >{!! $post['content'] !!}</div>

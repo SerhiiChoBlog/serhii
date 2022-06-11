@@ -21,4 +21,10 @@
     @import "_material-theme.css";
     @import "_code.css";
     @import "_blockquote.css";
+
+    .post-content,
+    .project-content,
+    .about-me {
+        @apply prose max-w-none prose-img:rounded-md prose-img:mx-auto prose-a:text-link prose-a:no-underline hover:prose-a:text-link-hover prose-headings:font-normal prose-p:font-light prose-strong:font-semibold prose-headings:text-font text-font prose-strong:text-font;
+    }
 }

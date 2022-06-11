@@ -11,7 +11,7 @@
 
     <div class="mt-2 text-xl">
         <section
-            class="prose prose-h2:font-normal prose-p:font-light prose-strong:font-bold prose-lg max-w-max px-6 py-8 prose-h2:mb-6 prose-h2:mt-0">
+            class="about-me prose-xl text-[1.2rem] px-6 py-8 prose-h2:mb-6 prose-h2:mt-0">
             <div class="container">
                 <div>
                     <div class="grid grid-cols-1 lg:grid-cols-[25%_1fr]">

@@ -19902,7 +19902,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", null, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.chapters, function (chapter) {
     return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
       key: chapter,
-      "class": "border-b relative block flex justify-start text-font-second pl-7 pr-5 py-2 transition-colors hover:bg-page-second select-none last:border-none",
+      "class": "border-b border-border relative block flex justify-start text-font-second pl-7 pr-5 py-2 transition-colors hover:bg-page-second select-none last:border-none",
       innerHTML: chapter,
       onClick: function onClick($event) {
         return $setup.scrollToChapter(chapter);
@@ -19946,7 +19946,7 @@ var _hoisted_3 = {
   "class": "overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto"
 };
 var _hoisted_4 = {
-  "class": "bg-page text-font shadow-xl rounded-lg p-10 divide-y h-full"
+  "class": "bg-page text-font shadow-xl rounded-lg p-10 divide-y divide-border h-full"
 };
 var _hoisted_5 = {
   "class": "text-center text-2xl mb-3"

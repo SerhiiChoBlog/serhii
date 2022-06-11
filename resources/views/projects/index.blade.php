@@ -29,7 +29,7 @@
                             <h4 class="first-letter:text-main-dark first-letter:text-3xl text-2xl text-font">
                                 {{ $project['title'] }}
                             </h4>
-                            <p class="text-md mt-3 text-font-second border-t pt-3">
+                            <p class="text-md mt-3 text-font-second border-t border-t-border pt-3">
                                 {{ $project['description'] }}
                             </p>
                         </div>
