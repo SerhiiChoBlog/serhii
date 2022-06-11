@@ -8,7 +8,7 @@
 
         <div class="py-[18rem] px-[6rem]">
             <div class="text-center text-white">
-                <h1 class="text-3xl">SERHII<span class="text-main">CHO</span></h1>
+                <h1 class="text-2xl">SERHII<span class="text-main">CHO</span></h1>
                 <typewriter />
             </div>
         </div>

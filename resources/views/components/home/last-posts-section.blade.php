@@ -5,7 +5,7 @@
 <div>
     <x-home.section-title>Latest posts</x-home.section-title>
 
-    <div class="flex gap-8">
+    <div class="flex flex-col lg:flex-row gap-8">
         @foreach ($posts as $post)
             <div>
                 <a href="{{ route('posts.show', $post['slug']) }}"
@@ -13,7 +13,7 @@
                 >
                     <img data-src="{{ asset($post['image_sm']) }}"
                         alt="{{ $post['title'] }}"
-                        class="smooth-loader rounded-md shadow-md"
+                        class="smooth-loader rounded-md shadow-md mx-auto"
                     />
                 </a>
 

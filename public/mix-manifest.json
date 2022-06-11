@@ -3,6 +3,7 @@
     "/js/admin.js": "/js/admin.js",
     "/css/app.css": "/css/app.css",
     "/css/font-awesome.css": "/css/font-awesome.css",
+    "/css/admin.css": "/css/admin.css",
     "/fonts/JetBrainsMono-Regular.ttf": "/fonts/JetBrainsMono-Regular.ttf",
     "/fonts/Lato-Regular.ttf": "/fonts/Lato-Regular.ttf",
     "/fonts/fa-solid-900.eot": "/fonts/fa-solid-900.eot",
@@ -24,6 +25,5 @@
     "/fonts/webfonts/fa-solid-900.svg": "/fonts/webfonts/fa-solid-900.svg",
     "/fonts/webfonts/fa-solid-900.ttf": "/fonts/webfonts/fa-solid-900.ttf",
     "/fonts/webfonts/fa-solid-900.woff": "/fonts/webfonts/fa-solid-900.woff",
-    "/fonts/webfonts/fa-solid-900.woff2": "/fonts/webfonts/fa-solid-900.woff2",
-    "/css/admin.css": "/css/admin.css"
+    "/fonts/webfonts/fa-solid-900.woff2": "/fonts/webfonts/fa-solid-900.woff2"
 }
