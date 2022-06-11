@@ -1283,10 +1283,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
 }
-.mx-7{
-  margin-left: 1.75rem;
-  margin-right: 1.75rem;
-}
 .mt-2{
   margin-top: 0.5rem;
 }
@@ -1578,6 +1574,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-dashed{
   border-style: dashed;
 }
+.bg-main{
+  background-color: var(--color-main);
+}
 .bg-\[\#363636\]{
   --tw-bg-opacity: 1;
   background-color: rgb(54 54 54 / var(--tw-bg-opacity));
@@ -1588,9 +1587,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-gray-400{
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity));
-}
-.bg-main{
-  background-color: var(--color-main);
 }
 .bg-\[hsla\(0\2c 0\%\2c 4\%\2c \.86\)\]{
   background-color: hsla(0,0%,4%,.86);
@@ -1612,6 +1608,27 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-gray-50{
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+.bg-gray-700{
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+}
+.bg-gray-800{
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+.bg-gray-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+.bg-gray-800\/50{
+  background-color: rgb(31 41 55 / 0.5);
+}
+.bg-black\/50{
+  background-color: rgb(0 0 0 / 0.5);
+}
+.bg-black\/30{
+  background-color: rgb(0 0 0 / 0.3);
 }
 .bg-gradient-to-r{
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
@@ -1662,6 +1679,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-no-repeat{
   background-repeat: no-repeat;
 }
+.p-7{
+  padding: 1.75rem;
+}
 .p-10{
   padding: 2.5rem;
 }
@@ -1673,9 +1693,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .p-3{
   padding: 0.75rem;
-}
-.p-7{
-  padding: 1.75rem;
 }
 .p-2{
   padding: 0.5rem;
@@ -2387,11 +2404,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-bottom: 0;
   }
 
-  .lg\:mx-0{
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-
   .lg\:mt-0{
     margin-top: 0px;
   }
@@ -2430,6 +2442,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:flex-row{
     flex-direction: row;
+  }
+
+  .lg\:bg-transparent{
+    background-color: transparent;
   }
 
   .lg\:p-0{
