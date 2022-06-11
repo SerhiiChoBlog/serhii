@@ -1,30 +1,14 @@
-html
-    background-color: inherit
+.clean-input
+    border: none
+    width: 100%
+    padding: 7px 15px
+    font-size: .9em
+    background-color: #eee
+    border-radius: 8px
 
-body
-    color: #4a4a4a
+.swal2-container
+    z-index: 1700 !important
 
-    &.dark-theme
-        color: $dark-theme-font
-        background-color: $dark-theme-white
-
-.d-none
-    display: none
-
-.font-color
-    color: #4a4a4a
-
-    .dark-theme &
-        color: $dark-theme-font
-
-.background-white
-    background-color: $white
-
-    .dark-theme &
-        background-color: $dark-theme-white
-
-.background-gray
-    background-color: $gray
-
-    .dark-theme &
-        background-color: $dark-theme-gray
+@media (max-width: 787px)
+    .main-wrapper
+        padding-left: 35px
