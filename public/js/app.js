@@ -19843,36 +19843,14 @@ exports["default"] = (0, vue_1.defineComponent)({
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/Typewriter.vue?vue&type=script&lang=ts":
-/*!*******************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/Typewriter.vue?vue&type=script&lang=ts ***!
-  \*******************************************************************************************************************************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/Typewriter.vue?vue&type=script&setup=true&lang=ts":
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/Typewriter.vue?vue&type=script&setup=true&lang=ts ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
-
-var __assign = this && this.__assign || function () {
-  __assign = Object.assign || function (t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-      s = arguments[i];
-
-      for (var p in s) {
-        if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-      }
-    }
-
-    return t;
-  };
-
-  return __assign.apply(this, arguments);
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -19880,11 +19858,63 @@ Object.defineProperty(exports, "__esModule", ({
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var useTypewriter_1 = __importDefault(__webpack_require__(/*! ../composables/about/useTypewriter */ "./resources/ts/composables/about/useTypewriter.ts"));
+var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 exports["default"] = (0, vue_1.defineComponent)({
-  setup: function setup() {
-    return __assign({}, (0, useTypewriter_1["default"])());
+  name: 'Typewriter',
+  setup: function setup(__props, _a) {
+    var expose = _a.expose;
+    expose();
+    var typewriter = (0, vue_2.ref)('');
+    var words = ['software developer️ 😎', 'programmer 💻', 'PHP developer 🐘'];
+    var wait = 3000;
+    var text = '';
+    var isDeleting = false;
+    var typingSpeed = 100;
+    var wordIndex = 0;
+
+    function initTypewriter() {
+      var current = wordIndex % words.length;
+      var fullText = words[current];
+      text = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
+      typewriter.value = text;
+
+      if (isDeleting) {
+        typingSpeed = 30;
+      }
+
+      if (!isDeleting && text === fullText) {
+        typingSpeed = wait;
+        isDeleting = true;
+      } else if (isDeleting && text === '') {
+        typingSpeed = 100;
+        isDeleting = false;
+        wordIndex++;
+      }
+
+      window.setTimeout(function () {
+        return initTypewriter();
+      }, typingSpeed);
+    }
+
+    (0, vue_2.onMounted)(function () {
+      return initTypewriter();
+    });
+    var __returned__ = {
+      typewriter: typewriter,
+      words: words,
+      wait: wait,
+      text: text,
+      isDeleting: isDeleting,
+      typingSpeed: typingSpeed,
+      wordIndex: wordIndex,
+      initTypewriter: initTypewriter
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
   }
 });
 
@@ -20173,7 +20203,7 @@ var _hoisted_2 = (0, vue_1.createElementVNode)("span", {
 }, null, -1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("p", _hoisted_1, [(0, vue_1.createTextVNode)(" Professional " + (0, vue_1.toDisplayString)(_ctx.typewriter) + " ", 1), _hoisted_2]);
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("p", _hoisted_1, [(0, vue_1.createTextVNode)(" Professional " + (0, vue_1.toDisplayString)($setup.typewriter) + " ", 1), _hoisted_2]);
 }
 
 exports.render = render;
@@ -20234,64 +20264,6 @@ var app = (0, vue_1.createApp)({
 });
 app.mount("#app");
 (0, smooth_loader_1["default"])();
-
-/***/ }),
-
-/***/ "./resources/ts/composables/about/useTypewriter.ts":
-/*!*********************************************************!*\
-  !*** ./resources/ts/composables/about/useTypewriter.ts ***!
-  \*********************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-
-exports["default"] = function () {
-  var typewriter = (0, vue_1.ref)('');
-  var words = ['software developer️ 😎', 'programmer 💻', 'PHP developer 🐘'];
-  var wait = 3000;
-  var text = '';
-  var isDeleting = false;
-  var typingSpeed = 100;
-  var wordIndex = 0;
-
-  function initTypewriter() {
-    var current = wordIndex % words.length;
-    var fullText = words[current];
-    text = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
-    typewriter.value = text;
-
-    if (isDeleting) {
-      typingSpeed = 30;
-    }
-
-    if (!isDeleting && text === fullText) {
-      typingSpeed = wait;
-      isDeleting = true;
-    } else if (isDeleting && text === '') {
-      typingSpeed = 100;
-      isDeleting = false;
-      wordIndex++;
-    }
-
-    window.setTimeout(function () {
-      return initTypewriter();
-    }, typingSpeed);
-  }
-
-  (0, vue_1.onMounted)(function () {
-    return initTypewriter();
-  });
-  return {
-    typewriter: typewriter
-  };
-};
 
 /***/ }),
 
@@ -21249,20 +21221,18 @@ if (false) {}
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": () => (/* reexport safe */ _Typewriter_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Typewriter_vue_vue_type_template_id_01810fe4_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Typewriter.vue?vue&type=template&id=01810fe4&ts=true */ "./resources/ts/components/Typewriter.vue?vue&type=template&id=01810fe4&ts=true");
-/* harmony import */ var _Typewriter_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Typewriter.vue?vue&type=script&lang=ts */ "./resources/ts/components/Typewriter.vue?vue&type=script&lang=ts");
-/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _Typewriter_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _Typewriter_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
-/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+/* harmony import */ var _Typewriter_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Typewriter.vue?vue&type=script&setup=true&lang=ts */ "./resources/ts/components/Typewriter.vue?vue&type=script&setup=true&lang=ts");
 /* harmony import */ var _Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Typewriter_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Typewriter_vue_vue_type_template_id_01810fe4_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/components/Typewriter.vue"]])
+const __exports__ = /*#__PURE__*/(0,_Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Typewriter_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Typewriter_vue_vue_type_template_id_01810fe4_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/components/Typewriter.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -21362,22 +21332,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/ts/components/Typewriter.vue?vue&type=script&lang=ts":
-/*!************************************************************************!*\
-  !*** ./resources/ts/components/Typewriter.vue?vue&type=script&lang=ts ***!
-  \************************************************************************/
+/***/ "./resources/ts/components/Typewriter.vue?vue&type=script&setup=true&lang=ts":
+/*!***********************************************************************************!*\
+  !*** ./resources/ts/components/Typewriter.vue?vue&type=script&setup=true&lang=ts ***!
+  \***********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport default from dynamic */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Typewriter_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0___default.a)
+/* harmony export */   "__esModule": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Typewriter_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule),
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Typewriter_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Typewriter_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Typewriter.vue?vue&type=script&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/Typewriter.vue?vue&type=script&lang=ts");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Typewriter_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Typewriter_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Typewriter_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Typewriter_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
-/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Typewriter_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Typewriter.vue?vue&type=script&setup=true&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/Typewriter.vue?vue&type=script&setup=true&lang=ts");
  
 
 /***/ }),
