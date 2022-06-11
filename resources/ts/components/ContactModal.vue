@@ -1,10 +1,12 @@
 <template>
-    <button type="button"
-        class="text-white bg-main py-2 px-6 rounded-full hover:bg-main-hover transition-colors"
-        @click="openContactModal"
-    >
-        Contact me
-    </button>
+    <div class="p-7 lg:p-0">
+        <button type="button"
+            class="w-full lg:w-auto text-white bg-main py-2 px-6 rounded-full hover:bg-main-hover transition-colors"
+            @click="openContactModal"
+        >
+            Contact me
+        </button>
+    </div>
 
     <div class="fixed left-0 right-0 top-0 bottom-0 z-10 bg-[hsla(0,0%,4%,.86)]" v-show="isOpen">
         <transition name="fade">
