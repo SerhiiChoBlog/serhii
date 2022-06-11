@@ -14,7 +14,7 @@
 @section('content')
     <x-hero :title="$project->title"
         :subtitle="$project->description"
-        class="bg-gray-50"
+        class="bg-gray-100 dark:bg-gray-800 dark:text-white"
     >
         <a href="{{ $project->url }}"
            target="_blank"
@@ -29,7 +29,7 @@
     </x-hero>
 
     <div class="container mt-6 pb-6 px-8 lg:px-0">
-        <div class="project-content prose prose-lg mx-auto prose-h1:text-3xl prose-h2:text-2xl prose-a:inline-block prose-a:mr-1" v-pre>
+        <div class="project-content text-[1.2rem] prose-h1:text-4xl prose-h2:text-3xl prose-a:inline-block prose-a:mr-2 max-w-4xl mx-auto prose-blockquote:text-font" v-pre>
             {!! $project->content !!}
         </div>
     </div>
