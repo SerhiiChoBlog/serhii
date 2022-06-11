@@ -60,7 +60,7 @@
                 <div>
                     <img src="{{ asset($post['image_lg']) }}"
                         alt="{{ $post['title'] }}"
-                        class="static mx-auto xl:absolute right-4 bottom-[-110px] w-[550px] rounded-lg shadow-md mt-7 lg:mt-0"
+                        class="static mx-auto 2xl:absolute right-4 bottom-[-110px] w-[550px] rounded-lg shadow-md mt-7 lg:mt-0"
                     />
                 </div>
             </div>
