@@ -1,54 +1,51 @@
-<template>
-    <a role="button"
-        class="navbar-burger"
-        :class="{ 'burger-light': isLight, 'is-active': isActive }"
-        @click="toggleNavbar"
-    >
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-    </a>
-</template>
+<script setup lang="ts">
+import { ref } from 'vue'
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
+interface Props {
+    isLight: boolean
+}
 
-export default defineComponent({
-    props: {
-        isLight: {
-            required: false,
-            type: Boolean,
-            default: false,
-        },
-    },
+const { isLight } = defineProps<Props>()
+const isActive = ref(false)
 
-    setup({ isLight }) {
-        const isActive = ref(false)
+function toggleNavbar(): void {
+    const navbar = document.getElementById('navbar-menu')
 
-        function toggleNavbar(): void {
-            const navbar = document.getElementById('navbar-menu')
+    if (!navbar)
+        return
 
-            if (!navbar)
-                return
-
-            if (navbar.classList.contains('is-active')) {
-                navbar.classList.remove('is-active')
-                isActive.value = false
-            } else {
-                navbar.classList.add('is-active')
-                isActive.value = true
-            }
-        }
-
-        return {
-            isLight,
-            isActive,
-            toggleNavbar,
-        }
-    },
-})
+    if (navbar.classList.contains('navbar-menu--active')) {
+        navbar.classList.remove('navbar-menu--active')
+        navbar.classList.add('navbar-menu')
+        isActive.value = false
+    } else {
+        navbar.classList.remove('navbar-menu')
+        navbar.classList.add('navbar-menu--active')
+        isActive.value = true
+    }
+}
 </script>
 
-<style scoped>
 
-</style>
+<template>
+    <a role="button"
+       class="block lg:hidden ml-auto relative w-[3.25rem] h-[3.25rem] transition-transform duration-300 delay-300"
+       :class="isActive ? 'rotate-45' : ''"
+       @click="toggleNavbar"
+    >
+        <span aria-hidden="true"
+            class="w-[19px] h-[2px] block bg-white rounded-full absolute left-[calc(50%-8px)] transition-all duration-500"
+            :class="isActive ? 'rotate-[-90deg] top-[calc(50%-1.5px)]' : 'top-[calc(50%-6px)]'"
+        ></span>
+
+        <span aria-hidden="true"
+            class="w-[19px] h-[2px] block bg-white rounded-full absolute top-[calc(50%-1px)] left-[calc(50%-8px)] transition-all duration-500"
+            :class="isActive ? '' : ''"
+        ></span>
+
+        <span aria-hidden="true"
+            class="w-[19px] h-[2px] block bg-white rounded-full absolute top-[calc(50%+4px)] left-[calc(50%-8px)] transition-all duration-500"
+            :class="isActive ? 'translate-y-[40px] opacity-0' : ''"
+        ></span>
+    </a>
+</template>

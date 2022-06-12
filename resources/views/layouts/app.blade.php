@@ -11,12 +11,10 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @yield('head')
 </head>
-<body class="{{ request()->cookie('theme') === 'dark' ? 'dark-theme' : '' }}">
+<body class="text-font font-lato bg-page {{ request()->cookie('theme') }}">
     <div id="app">
         @yield('content')
     </div>
-
-    <div id="modals"></div>
 
     <script src="{{ mix('js/app.js') }}"></script>
 </body>

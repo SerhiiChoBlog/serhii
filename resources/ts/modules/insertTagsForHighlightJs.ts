@@ -7,7 +7,9 @@ export default () => {
 
         if (/^language-/.test(classes)) {
             const lang = classes.replace('language-', '').trim()
-            preElem.insertAdjacentHTML('beforeend', `<div class="code-language-tag">${lang}</div>`)
+            const html = `<div class="absolute text-[#b9bec2] block right-[10px] top-[6px] text-xs">${lang}</div>`
+
+            preElem.insertAdjacentHTML('beforeend', html)
         }
     })
 }

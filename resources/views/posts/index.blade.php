@@ -1,5 +1,11 @@
 @php
-    /** @var \Illuminate\Support\Collection<\App\Models\Post> $posts */
+    use Illuminate\Pagination\LengthAwarePaginator;
+    use App\Models\Post;
+
+    /**
+     * @var LengthAwarePaginator<Post> $posts
+     * @var Post $post
+     */
 @endphp
 
 @extends('layouts.app')
@@ -8,36 +14,33 @@
 @section('description', "I am mostly writing programming related articles on different topics. I am sharing my knowledge with others to help you become a better developer")
 
 @section('content')
-    <section class="hero blog-hero is-dark">
-        <div class="hero-head">@include('includes.navbar')</div>
-
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title">Blog for web developers</h1>
-                <h2 class="subtitle">
-                    I'm mostly writing programming and productivity related articles.<br>
-                    Sharing my knowledge with others, learning and growing together.
-                </h2>
-            </div>
-        </div>
-    </section>
+    <x-hero title="Blog for web developers"
+        subtitle="I'm mostly writing programming and productivity related articles.<br>Sharing my knowledge with others, learning and growing together."
+        class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white"
+    />
 
     <div class="container mt-5">
-        <div class="posts">
-            @foreach ($posts as $post)
-                <a href="/posts/{{ $post->slug }}" class="posts__item">
-                    <img class="posts__item__image" src="{{ asset($post->image_sm) }}" alt="{{ $post->title }}" />
+        <div class="flex flex-col gap-y-2">
 
-                    <div class="posts__item__content">
-                        <h2 class="posts__item__content__title has-text-black">{{ $post->title }}</h2>
-                        <p class="posts__item__content__intro">{{ $post->intro }}</p>
-                        <div class="tags mt-2">
-                            @foreach ($post->tags as $tag)
-                                <span class="tag my-0 is-small is-normal is-dark" style="background-color: {{ $tag->color }}">
-                                    {{ $tag->name }}
-                                </span>
-                            @endforeach
-                            <time datetime="{{ $post->created_at }}" class="has-text-grey">{{ $post->pretty_created_at }}</time>
+            @foreach ($posts as $post)
+                <a href="/posts/{{ $post->slug }}"
+                   class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl transition-colors hover:bg-page-second max-w-[550px] lg:max-w-full mx-auto"
+                >
+                    <img src="{{ asset($post->image_sm) }}"
+                        class="rounded-lg shadow-md shadow-[rgba(0,0,0,.2)] w-full max-w-max lg:max-w-[260px]"
+                        alt="{{ $post->title }}"
+                    />
+
+                    <div class="font-lato">
+                        <h2 class="text-xl text-font">{{ $post->title }}</h2>
+                        <p class="pb-3 pt-1 text-lg mt-1 font-light text-font-second">{{ $post->intro }}</p>
+
+                        <div>
+                            <x-post.tags :tags="$post->tags" class="text-xs">
+                                <time datetime="{{ $post->created_at }}" class="flex items-center text-gray-400 text-md ml-1">
+                                    {{ $post->pretty_created_at }}
+                                </time>
+                            </x-post.tags>
                         </div>
                     </div>
                 </a>
