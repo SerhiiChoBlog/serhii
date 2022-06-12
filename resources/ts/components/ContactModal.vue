@@ -94,29 +94,45 @@ onMounted(() => {
         </button>
     </div>
 
-    <div class="fixed left-0 right-0 top-0 bottom-0 z-10 bg-[hsla(0,0%,4%,.86)]" v-show="isOpen">
+    <div class="fixed left-0 right-0 top-0 bottom-0 z-20 bg-[hsla(0,0%,4%,.86)]" v-show="isOpen">
         <transition name="fade">
             <div v-if="isOpen"
-                class="overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto"
+                 class="overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto max-h-[calc(100vh-40px)]"
             >
-                <div class="bg-page text-font shadow-xl rounded-lg p-10 divide-y divide-border h-full">
-                    <div v-for="section in sections" :key="section.title" class="py-5 first:pt-0 last:pb-0">
-                        <h3 class="text-center text-2xl mb-3">{{ section.title }}</h3>
-                        <p v-html="section.content" class="text-center text-lg"></p>
+                <div class="bg-page text-font shadow-xl rounded-lg p-10 h-full relative">
+                    <!-- Close modal button -->
+                    <button @click="closeContactModal"
+                        type="button"
+                        class="absolute top-2 right-2 p-3 text-font-second hover:text-main transition-colors"
+                    >
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd">
+                            </path>
+                        </svg>
+                    </button>
 
-                        <div class="flex justify-center gap-x-5 mt-5">
-                            <a
-                                v-for="link in section.links"
-                                :key="link.title"
-                                :href="link.href"
-                                target="_blank"
-                                :title="link.title"
-                                class="transition-transform hover:scale-125"
-                            >
-                                <img :src="link.img" :alt="link.title" width="30" />
-                            </a>
+                    <div class="divide-y divide-border">
+                        <div v-for="section in sections" :key="section.title" class="py-5 first:pt-0 last:pb-0">
+                            <h3 class="text-center text-2xl mb-3">{{ section.title }}</h3>
+                            <p v-html="section.content" class="text-center text-lg"></p>
+
+                            <div class="flex justify-center gap-x-5 mt-5">
+                                <a
+                                    v-for="link in section.links"
+                                    :key="link.title"
+                                    :href="link.href"
+                                    target="_blank"
+                                    :title="link.title"
+                                    class="transition-transform hover:scale-125"
+                                >
+                                    <img :src="link.img" :alt="link.title" width="30"/>
+                                </a>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </transition>

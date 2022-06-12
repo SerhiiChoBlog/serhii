@@ -19976,24 +19976,42 @@ var _withScopeId = function _withScopeId(n) {
 };
 
 var _hoisted_1 = {
-  "class": "fixed left-0 right-0 top-0 bottom-0 z-10 bg-[hsla(0,0%,4%,.86)]"
+  "class": "fixed left-0 right-0 top-0 bottom-0 z-20 bg-[hsla(0,0%,4%,.86)]"
 };
 var _hoisted_2 = {
   key: 0,
-  "class": "overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto"
+  "class": "overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto max-h-[calc(100vh-40px)]"
 };
 var _hoisted_3 = {
-  "class": "bg-page text-font shadow-xl rounded-lg p-10 divide-y divide-border h-full"
+  "class": "bg-page text-font shadow-xl rounded-lg p-10 h-full relative"
 };
-var _hoisted_4 = {
+
+var _hoisted_4 = _withScopeId(function () {
+  return (0, vue_1.createElementVNode)("svg", {
+    "class": "w-6 h-6",
+    fill: "currentColor",
+    viewBox: "0 0 20 20",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, [(0, vue_1.createElementVNode)("path", {
+    "fill-rule": "evenodd",
+    d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
+    "clip-rule": "evenodd"
+  })], -1);
+});
+
+var _hoisted_5 = [_hoisted_4];
+var _hoisted_6 = {
+  "class": "divide-y divide-border"
+};
+var _hoisted_7 = {
   "class": "text-center text-2xl mb-3"
 };
-var _hoisted_5 = ["innerHTML"];
-var _hoisted_6 = {
+var _hoisted_8 = ["innerHTML"];
+var _hoisted_9 = {
   "class": "flex justify-center gap-x-5 mt-5"
 };
-var _hoisted_7 = ["href", "title"];
-var _hoisted_8 = ["src", "alt"];
+var _hoisted_10 = ["href", "title"];
+var _hoisted_11 = ["src", "alt"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, [(0, vue_1.createElementVNode)("div", {
@@ -20006,14 +20024,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "fade"
   }, {
     "default": (0, vue_1.withCtx)(function () {
-      return [$setup.isOpen ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_2, [(0, vue_1.createElementVNode)("div", _hoisted_3, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.sections, function (section) {
+      return [$setup.isOpen ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_2, [(0, vue_1.createElementVNode)("div", _hoisted_3, [(0, vue_1.createCommentVNode)(" Close modal button "), (0, vue_1.createElementVNode)("button", {
+        onClick: $setup.closeContactModal,
+        type: "button",
+        "class": "absolute top-2 right-2 p-3 text-font-second hover:text-main transition-colors"
+      }, _hoisted_5), (0, vue_1.createElementVNode)("div", _hoisted_6, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.sections, function (section) {
         return (0, vue_1.createElementVNode)("div", {
           key: section.title,
           "class": "py-5 first:pt-0 last:pb-0"
-        }, [(0, vue_1.createElementVNode)("h3", _hoisted_4, (0, vue_1.toDisplayString)(section.title), 1), (0, vue_1.createElementVNode)("p", {
+        }, [(0, vue_1.createElementVNode)("h3", _hoisted_7, (0, vue_1.toDisplayString)(section.title), 1), (0, vue_1.createElementVNode)("p", {
           innerHTML: section.content,
           "class": "text-center text-lg"
-        }, null, 8, _hoisted_5), (0, vue_1.createElementVNode)("div", _hoisted_6, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(section.links, function (link) {
+        }, null, 8, _hoisted_8), (0, vue_1.createElementVNode)("div", _hoisted_9, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(section.links, function (link) {
           return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
             key: link.title,
             href: link.href,
@@ -20024,9 +20046,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             src: link.img,
             alt: link.title,
             width: "30"
-          }, null, 8, _hoisted_8)], 8, _hoisted_7);
+          }, null, 8, _hoisted_11)], 8, _hoisted_10);
         }), 128))])]);
-      }), 64))])])) : (0, vue_1.createCommentVNode)("v-if", true)];
+      }), 64))])])])) : (0, vue_1.createCommentVNode)("v-if", true)];
     }),
     _: 1
   }), (0, vue_1.createElementVNode)("button", {
