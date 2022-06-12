@@ -1,0 +1,25 @@
+.navbar-menu {
+    @apply hidden lg:flex items-center gap-x-6;
+}
+
+.navbar-menu--active {
+    @apply flex flex-col bg-[#363636] absolute right-[20px] left-[20px] md:right-[120px] md:left-[120px] top-[52px] p-0 shadow-lg rounded-lg z-10 !overflow-hidden;
+}
+
+.navbar-link::before {
+    background-color: #3298dc;
+    border-radius: 8px;
+    bottom: -8px;
+    content: "";
+    height: 6px;
+    left: -5px;
+    right: -5px;
+    opacity: 0;
+    position: absolute;
+    transition: opacity .2s;
+}
+
+.navbar-link:hover::before,
+.navbar-link--active::before {
+    opacity: 1;
+}

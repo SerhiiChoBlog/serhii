@@ -1,0 +1,53 @@
+.post-content blockquote {
+    margin: 2rem 0;
+    padding: 1.5em;
+    background-color: #e9ecef;
+    position: relative;
+    border-left: none;
+    border-radius: 30px;
+    margin-left: 140px;
+    font-size: .9em;
+}
+
+.post-content blockquote p {
+    font-family: 'Lato', serif;
+    font-style: normal;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.post-content blockquote p:last-of-type {
+    margin-bottom: 0;
+}
+
+.post-content blockquote img,
+.post-content blockquote::before {
+    margin: 0;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    top: 50%;
+    left: -130px;
+    transform: translateY(-50%);
+}
+
+.post-content blockquote::before {
+    content: "";
+    background-color: #e9ecef;
+    box-shadow: 6px 5px 8px #1e1e1e33;
+}
+
+.post-content blockquote::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-right: 20px solid #e9ecef;
+    transform: translateY(-50%);
+}
