@@ -49,7 +49,7 @@
 
                         @if (auth()->check())
                             <a href="{{ route('admin.posts.edit', ['post' => $post['id']]) }}"
-                               class="flex items-center px-5 ml-2 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100 uppercase text-xs"
+                               class="flex items-center px-5 ml-2 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100 py-1 uppercase text-xs"
                             >
                                 Edit post
                             </a>
