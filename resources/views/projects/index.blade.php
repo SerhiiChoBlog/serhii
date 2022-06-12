@@ -13,7 +13,7 @@
         class="bg-gradient-to-r from-[#51895c] via-[#4c5f7d] to-[#51895c] text-white"
     />
 
-    <div class="container mt-6">
+    <div class="container my-6">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             @foreach ($projects as $project)
                 <a href="/projects/{{ $project['name'] }}"
