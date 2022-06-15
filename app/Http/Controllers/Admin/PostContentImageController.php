@@ -21,10 +21,9 @@ class PostContentImageController extends Controller
 
         $path = storage_path('app/public/posts/content');
 
-        $incrementer = $post->images()->count() + 1;
         $slug = Str::slug($post->title);
 
-        $image_name = "$slug-$incrementer.{$image->getClientOriginalExtension()}";
+        $image_name = sprintf("%s-%s.%s", $slug, time(), $image->getClientOriginalExtension());
 
         Image::make($image)->save("$path/$image_name");
 
