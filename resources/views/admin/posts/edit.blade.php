@@ -59,46 +59,36 @@
 
 @section('content')
     <div class="container pb-6">
-        <h1 class="title">{{ $post->title }}</h1>
+        <h1 class="text-4xl text-font-second">{{ $post->title }}</h1>
 
         <div class="container">
-            <form action="{{ route('admin.posts.update', $post) }}" method="post" enctype="multipart/form-data" id="edit-post-form">
+            <form action="{{ route('admin.posts.update', $post) }}"
+                method="post"
+                enctype="multipart/form-data"
+                id="edit-post-form"
+            >
                 @csrf
                 @method('put')
 
                 <input type="hidden" name="post-id" id="post-id-field" value="{{ $post->id }}">
 
-                <div class="columns">
-                    <div class="column">
-                        <div class="field">
-                            <label for="title" class="label">Title</label>
-                            <div class="control has-icons-right">
-                                <input value="{{ $post->title }}"
-                                    class="input letter-counter"
-                                    id="title"
-                                    type="text"
-                                    name="title"
-                                    placeholder="Enter the title"
-                                    maxlength="190"
-                                    required
-                                >
-                                <span class="icon is-small is-right counter"></span>
-                            </div>
+                <div class="flex flex-col lg:flex-row gap-6 mt-10">
+                    <div class="flex-1">
+                        <div>
+                            <x-admin.input title="Title"
+                                type="text"
+                                name="title"
+                                placeholder="Enter the title"
+                                :value="$post->title"
+                                :required="true"
+                            />
                         </div>
 
-                        <div class="field mt-5">
-                            <label for="post-tags" class="label">
-                                <span class="mr-2">Tags</span>
+                        <div class="mt-5">
+                            <x-admin.input title="Tags" placeholder="Choose tags" type="text" id="post-tags" name="post-tags">
                                 <b id="suggestions-target"></b>
-                            </label>
-                            <div class="control post-tags">
-                                <input class="input"
-                                    id="post-tags"
-                                    type="text"
-                                    placeholder="Choose tags"
-                                >
-                                <ul class="post-tags__popup is-hidden" id="post-tags-popup"></ul>
-                            </div>
+                            </x-admin.input>
+                            <ul class="post-tags__popup is-hidden" id="post-tags-popup"></ul>
                         </div>
 
                         <div class="field mt-5">
@@ -116,9 +106,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="column">
+
+                    <div class="flex-1">
                         <div class="image-wrapper">
-                            <img src="{{ asset($post->image_sm ?? 'storage/posts/placeholder.jpg') }}" alt="image" id="post-image">
+                            <img src="{{ asset($post->image_sm ?? 'storage/posts/placeholder.jpg') }}"
+                                alt="image"
+                                id="post-image"
+                                class="rounded-md shadow-lg"
+                            />
                             <label for="post-image-input"><b>Choose image</b></label>
                             <input type="file" id="post-image-input" name="image" class="is-hidden">
                         </div>
