@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use JsonException;
 
 class PostController extends Controller
 {
@@ -51,11 +52,11 @@ class PostController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Post $post
+     * @param Request $request
+     * @param Post $post
      *
      * @return string
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function update(Request $request, Post $post): string
     {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,14 +21,14 @@ use Illuminate\Support\Collection;
  * @property bool $is_published
  * @property string $image_sm
  * @property string $image_lg
- * @property \Illuminate\Support\Collection<PostContentImage> $images
- * @property \Illuminate\Support\Collection<SocialShare> $socialShares
- * @property \Illuminate\Support\Collection<PageView> $pageViews
- * @property \Illuminate\Support\Collection<Tag> $tags
+ * @property Collection $images
+ * @property Collection $socialShares
+ * @property Collection $pageViews
+ * @property Collection $tags
  * @property string $pretty_created_at
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- * @property \Carbon\Carbon $published_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ * @property Carbon $published_at
  */
 class Post extends Model
 {
