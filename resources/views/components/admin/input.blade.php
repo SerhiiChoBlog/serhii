@@ -6,4 +6,8 @@
         class="border py-2 px-3 rounded-md w-full max-w-[360px] min-h-[42px]"
         placeholder="{{ $placeholder ?? '' }}"
     >
+
+    @error($name)
+        <span class="text-sm text-red-700">{{ $message }}</span>
+    @enderror
 </div>

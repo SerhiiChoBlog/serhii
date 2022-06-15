@@ -20,6 +20,7 @@ class TagController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        $request->validate(['name' => 'required']);
         Tag::query()->create($request->all());
         return redirect()->route('admin.tags.index');
     }
