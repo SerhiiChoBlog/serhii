@@ -12,7 +12,7 @@
 </head>
 <body>
 <x-admin.user-sidebar />
-<main class="pl-3 lg:pl-0 py-6">
+<main class="pl-9 lg:pl-0 py-10 text-font bg-page">
     @yield('content')
 </main>
 <script src="{{ asset('js/admin.js') }}" defer></script>
