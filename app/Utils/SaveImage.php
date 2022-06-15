@@ -20,15 +20,15 @@ trait SaveImage
 
         $path_sm = storage_path('app/public/posts/sm');
         $path_lg = storage_path('app/public/posts/lg');
-        $image_name = Str::slug($post_name) . '.' . $photo->getClientOriginalExtension();
+        $image_name = Str::slug($post_name) . '-' . time() .  '.' . $photo->getClientOriginalExtension();
 
         Image::make($photo)
             ->fit(550, 300, fn($constraint) => $constraint->upsize())
             ->save("$path_sm/$image_name");
 
         Image::make($photo)
-             ->fit(1100, 600, fn($constraint) => $constraint->upsize())
-             ->save("$path_lg/$image_name");
+            ->fit(1100, 600, fn($constraint) => $constraint->upsize())
+            ->save("$path_lg/$image_name");
 
         return [
             'sm' => "storage/posts/sm/$image_name",
