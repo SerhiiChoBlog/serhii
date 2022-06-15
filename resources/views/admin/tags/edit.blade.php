@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="max-w-2xl mx-auto">
+        <div class="max-w-md mx-auto">
             <h1 class="text-5xl text-center drop-shadow-xl text-main-dark mb-5">
                 {{ $tag->name }}
             </h1>

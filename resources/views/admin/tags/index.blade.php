@@ -9,11 +9,19 @@
                         @csrf
 
                         <div class="space-y-5">
-                            <x-admin.input title="Name" name="name" type="text" placeholder="Enter the tag name" />
-                            <x-admin.input title="Choose the color" name="color" type="color" />
-                            <x-admin.button>
-                                <i class="fas fa-plus mr-2"></i> Create tag
-                            </x-admin.button>
+                            <div>
+                                <x-admin.input title="Name" name="name" type="text" placeholder="Enter the tag name" />
+                            </div>
+
+                            <div>
+                                <x-admin.input title="Choose the color" name="color" type="color" />
+                            </div>
+
+                            <div>
+                                <x-admin.button>
+                                    <i class="fas fa-plus mr-2"></i> Create tag
+                                </x-admin.button>
+                            </div>
                         </div>
                     </form>
                 </div>
