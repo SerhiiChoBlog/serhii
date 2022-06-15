@@ -6,12 +6,14 @@
 @endphp
 
 @auth
-    <nav class="user-sidebar">
-        <ul>
+    <nav class="bg-[#222] opacity-75 fixed top-0 bottom-0 w-[43px] overflow-hidden transition-all translate-z-0 scale-x-1 scale-y-1 z-10 pt-[50px] hover:overflow-visible hover:w-[180px] hover:h-full hover:overflow-y-scroll hover:opacity-95">
+        <ul class="my-4">
             @foreach ($links() as $link)
                 <li>
-                    <a href="{{ $link['href'] }}" class="{{ $link['class'] }}">
-                        <i class="fas {{ $link['icon'] }} icon-profile-menu-line"></i>
+                    <a href="{{ $link['href'] }}"
+                        class="{{ $link['class'] }} relative w-[180px] m-auto transition-colors block border-collapse text-white text-sm leading-10 hover:bg-red-700"
+                    >
+                        <i class="fas {{ $link['icon'] }} w-[25px] text-2xl text-center mx-[10px] align-middle"></i>
                         <span>{{ $link['title'] }}</span>
                     </a>
                 </li>
