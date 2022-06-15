@@ -43,7 +43,9 @@ mix.ts('resources/ts/app.ts', 'public/js/app.js')
     })
 
 mix.ts('resources/ts/admin/app.ts', 'public/js/admin.js')
-    .sass('resources/sass/app.sass', 'public/css/admin.css', {}, sassOptions)
+    .postCss("resources/css/admin/admin.css", "public/css", [
+        require("tailwindcss"),
+    ])
     .webpackConfig({
         module: {
             rules: [
@@ -60,6 +62,6 @@ mix.ts('resources/ts/admin/app.ts', 'public/js/admin.js')
         }
     })
 
-mix.css('resources/sass/font-awesome.css', 'public/css/font-awesome.css', {}, sassOptions)
+mix.css('resources/css/admin/font-awesome.css', 'public/css/font-awesome.css', {}, sassOptions)
 
 mix.disableSuccessNotifications()
