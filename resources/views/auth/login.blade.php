@@ -2,26 +2,21 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-4 mt-6">
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
+<div class="flex justify-center pt-10">
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
 
-                <input type="hidden" name="email" value="admin@mail.com" required>
-                <input type="checkbox" name="remember" class="is-hidden" checked>
+        <input type="hidden" name="email" value="admin@mail.com" required>
+        <input type="checkbox" name="remember" class="hidden" checked>
 
-                <div class="field">
-                    <label for="password">Password</label>
-                    <div class="control">
-                        <input id="password" type="password" class="input" name="password" placeholder="Enter the password..." required>
-                    </div>
-                </div>
-
-                <button type="submit" class="button is-info">Login</button>
-            </form>
-        </div>
-    </div>
+        <input id="password"
+            type="password"
+            class="px-8 py-3 rounded-full text-center"
+            name="password"
+            placeholder="Welcome..."
+            required
+        >
+    </form>
 </div>
 
 @endsection
