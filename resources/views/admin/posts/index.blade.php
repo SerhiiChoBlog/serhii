@@ -17,16 +17,16 @@
         @else
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="table-auto">
-                    <thead class="bg-gray-600 text-white">
+                    <thead class="bg-gray-500 text-white text-left">
                         <tr>
                             <th></th>
-                            <th class="p-3">Image</th>
-                            <th class="p-3 min-w-[300px]">Title</th>
-                            <th class="p-3">Intro</th>
-                            <th class="p-3">Shares</th>
-                            <th class="p-3">Views</th>
-                            <th class="p-3">View</th>
-                            <th class="p-3">Edit</th>
+                            <th class="p-3 font-light">Image</th>
+                            <th class="p-3 font-light min-w-[300px]">Title</th>
+                            <th class="p-3 font-light">Intro</th>
+                            <th class="p-3 font-light">Shares</th>
+                            <th class="p-3 font-light">Views</th>
+                            <th class="p-3 font-light">View</th>
+                            <th class="p-3 font-light">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
