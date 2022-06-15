@@ -15,7 +15,7 @@
                 </thead>
                 <tbody>
                     @foreach ($visitors as $visitor)
-                        <tr class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-200">
+                        <tr class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100">
                             <td class="px-3 py-1">{{ $visitor->page_views_count }}</td>
                             <td class="px-3 py-1">{{ $visitor->ip }}</td>
                             <td class="px-3 py-1">{{ $visitor->country ?? '-' }}</td>

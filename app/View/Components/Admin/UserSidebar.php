@@ -59,7 +59,7 @@ class UserSidebar extends Component
                 'href' => route('admin.social-shares.index'),
                 'title' => 'Shares',
                 'icon' => 'fa-share-alt',
-                'class' => request()?->is('admin/page_views') ? 'bg-main-dark' : '',
+                'class' => request()?->is('admin/social-shares') ? 'bg-main-dark' : '',
             ],
             [
                 'href' => route('logout'),
