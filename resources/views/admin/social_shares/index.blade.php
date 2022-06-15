@@ -25,7 +25,7 @@
 
                                 @foreach ($post->social as $social => $items)
                                     <td class="p-1">
-                                        <div class="flex gap-x-2 items-center">
+                                        <div class="flex flex-col lg:flex-row gap-x-2 items-center">
                                             <img src="{{ asset("storage/icons/$social.png") }}"
                                                  alt="{{ $social }}"
                                                  width="20"
