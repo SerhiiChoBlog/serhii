@@ -6,14 +6,16 @@
 
 @section('content')
     <div class="container">
-        <div class="buttons mb-5">
-            <a href="{{ route('admin.posts.create') }}" class="button is-info">
-                <i class="fas fa-plus mr-2"></i> Create post
+        <div class="mb-9">
+            <a href="{{ route('admin.posts.create') }}"
+                class="bg-main text-white px-4 py-2 rounded-md transition-colors hover:bg-main-hover"
+            >
+                <i class="fas fa-plus mr-1"></i> Create post
             </a>
         </div>
 
         @empty($posts->all())
-            <h2 class="subtitle has-text-centered">There are not posts</h2>
+            <h2 class="text-xl text-center pt-4">There are not posts</h2>
         @else
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="table-auto">
@@ -32,7 +34,7 @@
                     <tbody>
                         @foreach ($posts as $post)
                             <tr class="bg-white even:bg-gray-50 nth border-b">
-                                <td class="p-3">
+                                <td class="p-3 text-lg">
                                     @if ($post->is_published)
                                         <i class="fas fa-check text-green-600"></i>
                                     @else
