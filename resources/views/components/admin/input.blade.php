@@ -1,5 +1,5 @@
 <div>
-    <label for="id-{{ $name }}" class="label">{{ $title }}</label>
+    <label for="id-{{ $name }}" class="font-bold text-sm mb-2 text-gray-600">{{ $title }}</label>
     <input type="{{ $type }}"
         name="{{ $name }}"
         id="id-{{ $name }}"
