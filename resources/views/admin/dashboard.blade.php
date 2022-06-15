@@ -12,7 +12,7 @@
     <nav class="flex items-center space-y-6 flex-col lg:flex-row justify-between mx-auto">
         @foreach ($sections as $section)
             <div class="flex flex-col space-y-2">
-                <p class="text-font-second text-center uppercase text-xs text-gray-500 tracking-widest">
+                <p class="text-font-second text-center uppercase text-xs text-font-second tracking-widest">
                     {{ $section['title'] }}
                 </p>
 

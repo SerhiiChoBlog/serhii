@@ -31,7 +31,7 @@
                                                  width="20"
                                             />
 
-                                            <span class="text-md font-bold text-gray-500">
+                                            <span class="text-md font-bold text-font-second">
                                                 {{ count($items) }}
                                             </span>
                                         </div>

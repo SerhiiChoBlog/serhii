@@ -44,7 +44,7 @@
                                         </td>
                                         <td class="px-3 py-2">
                                             <a href="{{ route('admin.tags.edit', $tag) }}"
-                                                class="text-gray-600 inline-block text-xs transition-colors hover:text-main-dark p-1"
+                                                class="text-font-second inline-block text-xs transition-colors hover:text-main-dark p-1"
                                                 title="Edit tag"
                                             >
                                                 <i class="fas fa-pen"></i>
