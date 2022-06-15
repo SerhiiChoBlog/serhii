@@ -13,7 +13,7 @@
                     <a href="{{ $link['href'] }}"
                         class="{{ $link['class'] }} relative w-[180px] m-auto transition-colors block border-collapse text-white text-sm leading-10 hover:bg-main-hover"
                     >
-                        <i class="fas {{ $link['icon'] }} w-[25px] text-2xl text-center mx-[9px] align-middle"></i>
+                        <i class="fas {{ $link['icon'] }} w-[25px] text-2xl text-center ml-[7px] mr-2 align-middle"></i>
                         <span>{{ $link['title'] }}</span>
                     </a>
                 </li>
