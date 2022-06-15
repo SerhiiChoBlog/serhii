@@ -2079,6 +2079,33 @@ __webpack_require__(/*! ./components/editBlog */ "./resources/ts/admin/component
 
 (0, smooth_loader_1["default"])();
 
+(function HandleLogoutButton() {
+  var selector = '._logout-button';
+  var btn = document.querySelector(selector);
+
+  if (!btn) {
+    console.error("Element with selector ".concat(selector, " not found"));
+    return;
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    var selector = '#logout-form';
+    var form = document.querySelector(selector);
+
+    if (!form) {
+      console.error("Form with selector can't be submitted because selector ".concat(selector, " not found"));
+      return;
+    }
+
+    if (confirm('Are you sure you want to sign out?')) {
+      form.submit();
+    }
+  }
+
+  btn.addEventListener('click', submitForm);
+})();
+
 /***/ }),
 
 /***/ "./resources/ts/admin/classes/InputLetterCounter.ts":
