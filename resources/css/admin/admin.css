@@ -5,3 +5,9 @@
 @layer base {
     @import "../_variables.css";
 }
+
+@layer base {
+    .swal2-container {
+        z-index: 1700 !important;
+    }
+}

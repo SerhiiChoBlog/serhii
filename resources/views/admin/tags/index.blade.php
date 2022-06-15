@@ -2,35 +2,24 @@
 
 @section('content')
     <div class="container">
-        <div class="columns">
-            <div class="column">
+        <div class="grid grid-cols-[1fr_2fr] gap-x-6">
+            <div>
                 <div class="px-4">
                     <form action="{{ route('admin.tags.store') }}" method="POST">
                         @csrf
 
-                        <div class="field">
-                            <label class="label">Name</label>
-                            <div class="control">
-                                <input class="input" name="name" type="text" placeholder="Enter the tag name">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">Choose the color</label>
-                            <div class="control">
-                                <input class="input" name="color" type="color">
-                            </div>
-                        </div>
-
-                        <div class="field mt-4">
-                            <button type="submit" class="button is-info">
+                        <div class="space-y-5">
+                            <x-admin.input title="Name" name="name" type="text" placeholder="Enter the tag name" />
+                            <x-admin.input title="Choose the color" name="color" type="color" />
+                            <x-admin.button>
                                 <i class="fas fa-plus mr-2"></i> Create tag
-                            </button>
+                            </x-admin.button>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="column is-three-fifths">
+
+            <div>
                 @empty($tags->all())
                     <h2 class="subtitle has-text-centered">There are not tags</h2>
                 @else
