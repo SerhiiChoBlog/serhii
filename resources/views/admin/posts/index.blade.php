@@ -7,11 +7,9 @@
 @section('content')
     <div class="container">
         <div class="mb-9">
-            <a href="{{ route('admin.posts.create') }}"
-                class="bg-main text-white px-4 py-2 rounded-md transition-colors hover:bg-main-hover"
-            >
+            <x-admin.button :to="route('admin.posts.create')">
                 <i class="fas fa-plus mr-1"></i> Create post
-            </a>
+            </x-admin.button>
         </div>
 
         @empty($posts->all())
