@@ -10,6 +10,7 @@ cache-clear:
 	php artisan cache:clear
 
 test:
+	touch database/database.sqlite
 	php artisan test
 
 push:
