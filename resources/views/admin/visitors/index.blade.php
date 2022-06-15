@@ -1,36 +1,36 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <h1 class="title">Visitors</h1>
+    <div class="container max-w-3xl">
+        <h1 class="text-3xl">Page views</h1>
 
-                <div class="table-container">
-                    <table class="table is-fullwidth is-hoverable is-striped">
-                        <thead>
-                            <tr>
-                                <th>Views</th>
-                                <th>IP</th>
-                                <th>Country</th>
-                                <th>City</th>
-                                <th>Flag</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($visitors as $visitor)
-                                <tr>
-                                    <td>{{ $visitor->page_views_count }}</td>
-                                    <td>{{ $visitor->ip }}</td>
-                                    <td>{{ $visitor->country }}</td>
-                                    <td>{{ $visitor->city }}</td>
-                                    <td><img src="{{ asset("storage/admin/flags/{$visitor->code}.png") }}" width="30" /></td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="overflow-x-auto shadow-md rounded-lg mx-auto mt-7">
+            <table class="table-auto w-full">
+                <thead class="bg-gray-500 text-white text-left">
+                    <tr>
+                        @foreach (['Views', 'IP', 'Country', 'City', 'Flag'] as $title)
+                            <th class="p-3">{{ $title }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($visitors as $visitor)
+                        <tr class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-200">
+                            <td class="px-3 py-1">{{ $visitor->page_views_count }}</td>
+                            <td class="px-3 py-1">{{ $visitor->ip }}</td>
+                            <td class="px-3 py-1">{{ $visitor->country ?? '-' }}</td>
+                            <td class="px-3 py-1">{{ $visitor->city ?? '-' }}</td>
+                            <td class="px-3 py-1">
+                                @if ($visitor->code)
+                                    <img src="{{ asset("storage/admin/flags/$visitor->code.png") }}" width="30" />
+                                @else
+                                    <img src="{{ asset("storage/admin/flags/unknown.png") }}" width="30" />
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection
