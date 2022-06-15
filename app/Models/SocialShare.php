@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,9 +14,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $post_id
  * @property int $visitor_id
  * @property string $social
- * @property \App\Models\Post $post
- * @property \App\Models\Visitor $visitor
- * @property \Carbon\Carbon $created_at
+ * @property Post $post
+ * @property Visitor $visitor
+ * @property Carbon $created_at
  */
 class SocialShare extends Model
 {

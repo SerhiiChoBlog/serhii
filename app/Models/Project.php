@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\CacheKey;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
@@ -18,8 +19,8 @@ use Illuminate\Support\Facades\Cache;
  * @property string $content
  * @property string $language
  * @property int $stars
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  */
 class Project extends Model
 {

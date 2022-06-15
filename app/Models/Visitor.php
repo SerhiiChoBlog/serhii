@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Collection;
 use Stevebauman\Location\Location;
 
 /**
@@ -16,8 +17,8 @@ use Stevebauman\Location\Location;
  * @property string $country
  * @property string $city
  * @property string $code
- * @property \Illuminate\Support\Collection<SocialShare> $socialShares
- * @property \Illuminate\Support\Collection<PageView> $pageViews
+ * @property Collection<SocialShare> $socialShares
+ * @property Collection<PageView> $pageViews
  */
 class Visitor extends Model
 {
@@ -41,7 +42,7 @@ class Visitor extends Model
     }
 
     /**
-     * @throws \Illuminate\Database\QueryException
+     * @throws QueryException
      */
     public static function getOrCreateVisitor($ip): Visitor
     {
