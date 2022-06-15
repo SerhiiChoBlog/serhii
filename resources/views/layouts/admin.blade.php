@@ -11,8 +11,8 @@
     @yield('head')
 </head>
 <body>
-<x-user-sidebar />
-<main class="main-wrapper py-6">
+<x-admin.user-sidebar />
+<main class="pl-3 lg:pl-0 py-6">
     @yield('content')
 </main>
 <script src="{{ asset('js/admin.js') }}" defer></script>
