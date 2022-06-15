@@ -2,43 +2,52 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h1 class="title">{{ $tag->name }}</h1>
+        <div class="max-w-2xl mx-auto">
+            <h1 class="text-5xl text-center drop-shadow-xl text-main-dark mb-5">
+                {{ $tag->name }}
+            </h1>
 
-                <div class="container">
-                    <form action="{{ route('admin.tags.update', $tag) }}" method="POST">
-                        @csrf
-                        @method('put')
+            <div class="container">
+                <form action="{{ route('admin.tags.update', $tag) }}" method="POST">
+                    @csrf
+                    @method('put')
 
-                        <div class="field">
-                            <label class="label">Name</label>
-                            <div class="control">
-                                <input class="input" name="name" value="{{ $tag->name }}" type="text" placeholder="Enter the tag name">
-                            </div>
-                        </div>
+                    <div class="space-y-5">
+                        <x-admin.input title="Name"
+                            name="name"
+                            type="text"
+                            placehoder="Enter the tag name"
+                            :value="old('name', $tag->name)"
+                        />
 
-                        <div class="field">
-                            <label class="label">Choose the color</label>
-                            <div class="control">
-                                <input class="input" value="{{ $tag->color }}" name="color" type="color">
-                            </div>
-                        </div>
+                        <x-admin.input title="Choose the color"
+                            :value="old('color', $tag->color)"
+                            name="color"
+                            type="color"
+                        />
 
-                        <div class="field mt-4">
-                            <button type="submit" class="button is-info">
+                        <div class="flex gap-x-3 justify-center">
+                            <x-admin.button>
                                 <i class="fas fa-save mr-2"></i> Update
-                            </button>
-                            <button type="button" class="button is-danger ml-2" onclick="document.getElementById('delete-tag').click()">
+                            </x-admin.button>
+
+                            <x-admin.button type="button"
+                                onclick="document.getElementById('delete-tag').click()"
+                                class="bg-red-600 hover:bg-red-700"
+                            >
                                 <i class="fas fa-trash mr-2"></i> Delete
-                            </button>
+                            </x-admin.button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
 
-        <form action="{{ route('admin.tags.destroy', $tag) }}" method="post" class="is-hidden" onsubmit="return confirm('Sure you want to delete the tag?');">
+        <form action="{{ route('admin.tags.destroy', $tag) }}"
+            method="post"
+            class="hidden"
+            onsubmit="return confirm('Sure you want to delete the tag?');"
+        >
             @csrf
             @method('delete')
             <button id="delete-tag" type="submit"></button>
