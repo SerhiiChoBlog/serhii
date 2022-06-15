@@ -25,10 +25,10 @@
                 @else
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="w-full">
-                            <thead>
+                            <thead class="bg-gray-500 text-left">
                                 <tr>
                                     @foreach (['Name', 'Color', 'Tag', ''] as $title)
-                                        <th class="bg-gray-700 text-white p-3">{{ $title }}</th>
+                                        <th class="text-white p-3 font-light">{{ $title }}</th>
                                     @endforeach
                                 </tr>
                             </thead>
