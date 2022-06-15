@@ -15,7 +15,7 @@
                 </thead>
                 <tbody>
                     @foreach ($views as $view)
-                        <tr class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-200">
+                        <tr class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100">
                             <td class="px-3 py-1">{{ $view->amount }}</td>
                             <td class="px-3 py-1">{{ $view->slug }}</td>
                         </tr>

@@ -34,7 +34,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($tags as $tag)
-                                    <tr class="odd:bg-gray-50 border-b transition-colors hover:bg-gray-200">
+                                    <tr class="odd:bg-gray-50 border-b transition-colors hover:bg-gray-100">
                                         <td class="px-3 py-2">{{ $tag->name }}</td>
                                         <td class="px-3 py-2">{{ $tag->color }}</td>
                                         <td class="px-3 py-2">

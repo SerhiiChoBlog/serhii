@@ -7,26 +7,41 @@
 @section('content')
     <div class="container">
         @empty($posts->all())
-            <h2 class="subtitle has-text-centered">There are not posts</h2>
+            <h2 class="text-2xl text-center">There are not posts</h2>
         @else
-            @foreach ($posts as $post)
-                <article class="message">
-                    <div class="message-header">
-                        <p>{{ $post->title }}</p>
-                    </div>
-                    <div class="message-body is-flex is-align-items-center is-justify-content-center">
-                        @foreach ($post->social as $social => $items)
-                            <div class="tags has-addons mb-0 mr-4">
-                                <span class="tag is-white is-medium" style="border: 1px solid #3298dc">
-                                    <img src="{{ asset("storage/icons/$social.png") }}" alt="{{ $social }}" width="27">
-                                    <span class="ml-2">{{ ucfirst($social) }}</span>
-                                </span>
-                                <span class="tag is-info is-medium">{{ count($items) }}</span>
-                            </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full">
+                    <thead class="bg-gray-500 text-left">
+                        <tr>
+                            @foreach (['Article', '', '', '', ''] as $title)
+                                <th class="text-white p-3 font-light">{{ $title }}</th>
+                            @endforeach
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($posts as $post)
+                            <tr class="odd:bg-gray-50 border-b transition-colors hover:bg-gray-100">
+                                <td class="p-2">{{ $post->title }}</td>
+
+                                @foreach ($post->social as $social => $items)
+                                    <td class="p-1">
+                                        <div class="flex gap-x-2 items-center">
+                                            <img src="{{ asset("storage/icons/$social.png") }}"
+                                                 alt="{{ $social }}"
+                                                 width="20"
+                                            />
+
+                                            <span class="text-md font-bold text-gray-500">
+                                                {{ count($items) }}
+                                            </span>
+                                        </div>
+                                    </td>
+                                @endforeach
+                            </tr>
                         @endforeach
-                    </div>
-                </article>
-            @endforeach
+                    </tbody>
+                </table>
+            </div>
         @endempty
     </div>
 @endsection

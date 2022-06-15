@@ -31,7 +31,7 @@
                     </thead>
                     <tbody>
                         @foreach ($posts as $post)
-                            <tr class="bg-white even:bg-gray-50 nth border-b">
+                            <tr class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100">
                                 <td class="p-3 text-lg">
                                     @if ($post->is_published)
                                         <i class="fas fa-check text-green-600"></i>
