@@ -2123,6 +2123,22 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-top: 4rem;
   }
 
+  .lg\:pl-9 {
+    padding-left: 2.25rem;
+  }
+
+  .lg\:pl-10 {
+    padding-left: 2.5rem;
+  }
+
+  .lg\:pl-12 {
+    padding-left: 3rem;
+  }
+
+  .lg\:pl-14 {
+    padding-left: 3.5rem;
+  }
+
   .lg\:text-left {
     text-align: left;
   }
