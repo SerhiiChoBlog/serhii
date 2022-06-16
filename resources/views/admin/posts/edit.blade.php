@@ -129,17 +129,17 @@
                 </div>
 
                 <div>
-                    <div class="flex flex-col justify-center fixed right-[20px] top-[70px] z-50">
-                        <button type="submit" class="button is-rounded mb-2 px-6 is-success">
+                    <div class="flex flex-col justify-center fixed right-[20px] top-[70px] z-[9999] space-y-2">
+                        <x-admin.button type="submit" class="bg-green-500 hover:bg-green-600">
                             <i class="fas fa-save mr-2"></i> Save
-                        </button>
-                        <a href="{{ route('posts.show', $post) }}"
+                        </x-admin.button>
+                        <x-admin.button
+                            href="{{ route('posts.show', $post) }}"
                             target="_blank"
-                            class="button is-rounded px-5 is-info"
                             id="preview-the-post"
                         >
                             <i class="fas fa-eye mr-2"></i> Preview
-                        </a>
+                        </x-admin.button>
                     </div>
 
                     <div class="buttons">

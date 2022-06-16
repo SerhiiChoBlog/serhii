@@ -16,7 +16,7 @@
                             </div>
 
                             <div>
-                                <x-admin.input name="color" type="color">Choose the color</x-admin.input>
+                                <x-admin.input name="color" type="color" class="min-h-[50px]">Choose the color</x-admin.input>
                             </div>
 
                             <div>
