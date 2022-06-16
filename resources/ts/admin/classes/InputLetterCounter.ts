@@ -11,7 +11,7 @@ export default class {
     private displayCurrentLetterLeft(field: HTMLInputElement): void {
         const lettersCount = field.value.length
         const maxLength = field.maxLength
-        const target = field.parentElement!.querySelector<Element>('.counter')!
+        const target = field.parentElement!.querySelector<Element>('._counter')!
 
         target.innerHTML = `${maxLength - lettersCount}`
     }

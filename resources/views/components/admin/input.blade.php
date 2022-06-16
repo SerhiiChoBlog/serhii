@@ -22,27 +22,38 @@
         </label>
     @endif
 
-    @isset($textarea)
-        <textarea
-    @else
-        <input
-    @endisset
+    <div class="inline-block relative w-full">
+        @isset($textarea)
+            <textarea
+        @else
+            <input
+        @endisset
 
-        @isset($id) type="{{ $type }}" @endisset
-        name="{{ $name }}"
-        @isset($id) id="{{ $id }}" @else id="id-{{ $name }}" @endisset
-        class="border py-2 px-3 rounded-md w-full min-h-[42px] {{ $class ?? '' }}"
-        placeholder="{{ $placeholder ?? '' }}"
-        value="{{ $value ?? '' }}"
-        @isset($required) required @endisset
+            @isset($id) type="{{ $type }}" @endisset
+            name="{{ $name }}"
+            @isset($id) id="{{ $id }}" @else id="id-{{ $name }}" @endisset
+            class="border py-3 px-4 rounded-md w-full min-h-[42px] {{ $class ?? '' }}"
+            placeholder="{{ $placeholder ?? '' }}"
+            value="{{ $value ?? '' }}"
+            @isset($required) required @endisset
+            maxlength="{{ $maxlength ?? 0 }}"
 
-    @isset($textarea)
-        >{{ $value ?? '' }}</textarea>
-    @else
-        />
-    @endisset
+        @isset($textarea)
+            >{{ $value ?? '' }}</textarea>
+        @else
+            />
+        @endisset
 
-    @error($name)
-        <span class="text-sm text-red-700">{{ $message }}</span>
-    @enderror
+        @error($name)
+            <span class="text-sm text-red-700">{{ $message }}</span>
+        @enderror
+
+        @if(isset($class) && str_contains($class, '_letter-counter'))
+            @isset($textarea)
+                <span class="_counter absolute top-0 bg-white -right-3 border p-1 rounded-full text-gray-400 text-sm"></span>
+            @else
+                <span class="_counter absolute bg-white rounded-full border p-1 top-1/2 -translate-y-1/2 -right-3 text-gray-400 text-sm"></span>
+            @endisset
+        @endif
+    </div>
 </div>

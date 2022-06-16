@@ -81,6 +81,8 @@
                                 placeholder="Enter the title"
                                 :value="$post->title"
                                 :required="true"
+                                maxlength="190"
+                                class="_letter-counter"
                             >Title</x-admin.input>
                         </div>
 
@@ -96,8 +98,9 @@
                             <x-admin.input :textarea="true"
                                 placeholder="Enter a short intro"
                                 name="intro"
-                                class="min-h-[95px]"
+                                class="min-h-[95px] _letter-counter"
                                 :value="$post->intro"
+                                maxlength="190"
                             >
                             </x-admin.input>
                         </div>
