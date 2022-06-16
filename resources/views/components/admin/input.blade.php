@@ -1,46 +1,30 @@
 @php
     use Illuminate\Support\HtmlString;
+    use Illuminate\View\ComponentAttributeBag;
 
     /**
      * @var HtmlString $slot
-     * @var ?string $id
-     * @var string $name
-     * @var ?string $type
-     * @var ?string $value
      * @var ?string $message
-     * @var ?string $placeholder
-     * @var ?string $class
+     * @var ComponentAttributeBag $attributes
      */
+
+    $custom_classes = 'border py-3 px-4 rounded-md w-full';
+    $id = $attributes->get('id');
+    $value = $attributes->get('value');
 @endphp
 
 <div class="inline-block w-full">
     @if (!$slot->isEmpty())
-        <label @isset($id) for="{{ $id }}" @else for="id-{{ $name }}" @endisset
-        class="font-bold text-sm mb-2 text-font-second block"
-        >
+        <label for="{{ $id ?? '' }}" class="font-bold text-sm mb-2 text-font-second block">
             {{ $slot }}
         </label>
     @endif
 
     <div class="inline-block relative w-full">
         @isset($textarea)
-            <textarea
+            <textarea {{ $attributes->merge(['class' => $custom_classes]) }}>{{ $value }}</textarea>
         @else
-            <input
-        @endisset
-            @isset($id) type="{{ $type }}" @endisset
-            name="{{ $name }}"
-            @isset($id) id="{{ $id }}" @else id="id-{{ $name }}" @endisset
-            class="border py-3 px-4 rounded-md w-full min-h-[42px] {{ $class ?? '' }}"
-            placeholder="{{ $placeholder ?? '' }}"
-            value="{{ $value ?? '' }}"
-            @isset($required) required @endisset
-            maxlength="{{ $maxlength ?? 0 }}"
-
-        @isset($textarea)
-            >{{ $value ?? '' }}</textarea>
-        @else
-            />
+            <input {{ $attributes->merge(['class' => $custom_classes]) }} />
         @endisset
 
         @error($name)
