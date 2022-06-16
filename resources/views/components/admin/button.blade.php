@@ -1,13 +1,13 @@
 @php
-    $classes = 'inline-block bg-main uppercase text-white text-sm px-6 py-2 rounded-md transition-all hover:bg-main-hover shadow-md hover:shadow-lg';
+    $classes = 'inline-block bg-main uppercase text-white text-sm px-6 py-2 rounded-full transition-all hover:bg-main-hover shadow-md hover:shadow-lg';
 @endphp
 
 @if (isset($to))
-    <a href="{{ $to }}" {{ $attributes->merge(['class' => $classes]) }}>
+    <a {{ $attributes->merge(['class' => $classes]) }}>
         {{ $slot }}
     </a>
 @else
-    <button type="{{ $type ?? 'submit' }}" {{ $attributes->merge(['class' => $classes]) }}>
+    <button {{ $attributes->merge(['class' => $classes]) }}>
         {{ $slot }}
     </button>
 @endif

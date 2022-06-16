@@ -24,6 +24,7 @@
                             :value="old('color', $tag->color)"
                             name="color"
                             type="color"
+                            class="min-h-[50px]"
                         >Choose the color</x-admin.input>
 
                         <div class="flex gap-x-3 justify-center">
