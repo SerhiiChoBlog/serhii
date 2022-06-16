@@ -10,11 +10,13 @@
 
                         <div class="space-y-5">
                             <div>
-                                <x-admin.input title="Name" name="name" type="text" placeholder="Enter the tag name" />
+                                <x-admin.input name="name" type="text" placeholder="Enter the tag name">
+                                    Name
+                                </x-admin.input>
                             </div>
 
                             <div>
-                                <x-admin.input title="Choose the color" name="color" type="color" />
+                                <x-admin.input name="color" type="color">Choose the color</x-admin.input>
                             </div>
 
                             <div>

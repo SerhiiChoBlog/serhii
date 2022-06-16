@@ -75,35 +75,31 @@
                 <div class="flex flex-col lg:flex-row gap-6 mt-10">
                     <div class="flex-1">
                         <div>
-                            <x-admin.input title="Title"
+                            <x-admin.input
                                 type="text"
                                 name="title"
                                 placeholder="Enter the title"
                                 :value="$post->title"
                                 :required="true"
-                            />
+                            >Title</x-admin.input>
                         </div>
 
                         <div class="mt-5">
-                            <x-admin.input title="Tags" placeholder="Choose tags" type="text" id="post-tags" name="post-tags">
-                                <div id="suggestions-target" class="inline-block space-x-1"></div>
+                            <x-admin.input placeholder="Choose tags" type="text" id="post-tags" name="post-tags">
+                                Tags
+                                <div id="suggestions-target" class="ml-1 inline-block space-x-1"></div>
                             </x-admin.input>
                             <ul class="bg-white shadow-md mt-2 rounded-lg overflow-hidden hidden" id="post-tags-popup"></ul>
                         </div>
 
                         <div class="field mt-5">
-                            <label for="intro" class="label">Intro</label>
-                            <div class="control has-icons-right">
-                                <textarea class="input letter-counter"
-                                    id="intro"
-                                    name="intro"
-                                    placeholder="Enter a short intro"
-                                    maxlength="190"
-                                    style="min-height:95px"
-                                    required
-                                >{{ $post->intro }}</textarea>
-                                <span class="icon is-small is-right counter"></span>
-                            </div>
+                            <x-admin.input :textarea="true"
+                                placeholder="Enter a short intro"
+                                name="intro"
+                                class="min-h-[95px]"
+                                :value="$post->intro"
+                            >
+                            </x-admin.input>
                         </div>
                     </div>
 

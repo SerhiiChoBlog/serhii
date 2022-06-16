@@ -13,18 +13,18 @@
                     @method('put')
 
                     <div class="space-y-5">
-                        <x-admin.input title="Name"
+                        <x-admin.input
                             name="name"
                             type="text"
                             placehoder="Enter the tag name"
                             :value="old('name', $tag->name)"
-                        />
+                        >Name</x-admin.input>
 
-                        <x-admin.input title="Choose the color"
+                        <x-admin.input
                             :value="old('color', $tag->color)"
                             name="color"
                             type="color"
-                        />
+                        >Choose the color</x-admin.input>
 
                         <div class="flex gap-x-3 justify-center">
                             <x-admin.button>
