@@ -892,6 +892,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .min-h-\[83px\] {
   min-height: 83px;
 }
+.min-h-\[95px\] {
+  min-height: 95px;
+}
 .w-\[4px\] {
   width: 4px;
 }

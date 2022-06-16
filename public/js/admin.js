@@ -2345,7 +2345,7 @@ var default_1 = function () {
       open = true;
     }
 
-    open ? this.popup.classList.remove('is-hidden') : this.popup.classList.add('is-hidden');
+    open ? this.popup.classList.remove('hidden') : this.popup.classList.add('hidden');
   };
 
   default_1.prototype.handleEvent = function (value) {
@@ -2375,13 +2375,13 @@ var default_1 = function () {
     this.openPopup();
     var popupHtml = '';
     this.tags.forEach(function (tag) {
-      return popupHtml += "<li class=\"_popup-item\">".concat(tag.name, "</li>");
+      popupHtml += "\n                <li class=\"_popup-item transition-colors hover:bg-page-second px-3 py-1\">\n                    ".concat(tag.name, "\n                </li>\n            ");
     });
     this.popup.innerHTML = popupHtml;
   };
 
   default_1.prototype.getHtmlForTag = function (tag) {
-    return "\n            <span class=\"tag is-normal is-dark mr-1\" style=\"background-color: ".concat(tag.color, "\">\n                ").concat(tag.name, "\n                <button type=\"button\" class=\"delete is-small\" id=\"delete-tag-").concat(tag.id, "\"></button>\n                <input type=\"hidden\" name=\"tags[]\" value=\"").concat(tag.id, "\">\n            </span>\n        ");
+    return "\n            <span class=\"text-white py-1 px-2 rounded-md font-light shadow-md text-xs\" style=\"background-color: ".concat(tag.color, "\">\n                ").concat(tag.name, "\n                <button type=\"button\" class=\"\" id=\"delete-tag-").concat(tag.id, "\">\n                    <i class=\"fas fa-times ml-1 transition-transform hover:scale-125\"></i>\n                </button>\n                <input type=\"hidden\" name=\"tags[]\" value=\"").concat(tag.id, "\">\n            </span>\n        ");
   };
 
   default_1.prototype.addEventsPopupItems = function () {
