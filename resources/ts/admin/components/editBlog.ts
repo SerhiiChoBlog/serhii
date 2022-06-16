@@ -16,7 +16,7 @@ import PostSave from '../classes/PostSave'
 })()
 
 ;(function ExecuteLetterCounter() {
-    const fields = document.querySelectorAll<HTMLInputElement>('.letter-counter')
+    const fields = document.querySelectorAll<HTMLInputElement>('._letter-counter')
 
     if (!fields)
         return

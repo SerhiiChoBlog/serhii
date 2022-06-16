@@ -2141,7 +2141,7 @@ var default_1 = function () {
   default_1.prototype.displayCurrentLetterLeft = function (field) {
     var lettersCount = field.value.length;
     var maxLength = field.maxLength;
-    var target = field.parentElement.querySelector('.counter');
+    var target = field.parentElement.querySelector('._counter');
     target.innerHTML = "".concat(maxLength - lettersCount);
   };
 
@@ -2500,7 +2500,7 @@ var PostSave_1 = __importDefault(__webpack_require__(/*! ../classes/PostSave */ 
 })();
 
 (function ExecuteLetterCounter() {
-  var fields = document.querySelectorAll('.letter-counter');
+  var fields = document.querySelectorAll('._letter-counter');
   if (!fields) return;
   new InputLetterCounter_1["default"](Array.from(fields)).listenForEvents();
 })();
