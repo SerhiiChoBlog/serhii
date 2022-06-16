@@ -95,10 +95,11 @@
                         </div>
 
                         <div class="field mt-5">
-                            <x-admin.input :textarea="true"
+                            <x-admin.input
+                                :textarea="true"
                                 placeholder="Enter a short intro"
                                 name="intro"
-                                class="min-h-[95px] _letter-counter min-h-[100px]"
+                                class="_letter-counter min-h-[100px]"
                                 :value="$post->intro"
                                 maxlength="190"
                             >
@@ -142,11 +143,18 @@
                     </div>
 
                     <div class="buttons">
-                        <button type="button" class="button is-danger" onclick="document.getElementById('delete-post').click()">
+                        <button
+                            type="button"
+                            class="button is-danger"
+                            onclick="document.getElementById('delete-post').click()"
+                        >
                             <i class="fas fa-trash mr-2"></i> Delete
                         </button>
                         <label class="checkbox">
-                            <input type="checkbox" name="is-published" class="ml-3 mr-1" {{ $post->is_published ? 'checked' : '' }}>
+                            <input type="checkbox"
+                                name="is-published"
+                                class="ml-3 mr-1" {{ $post->is_published ? 'checked' : '' }}
+                            />
                             <span>publish this post</span>
                         </label>
                     </div>
