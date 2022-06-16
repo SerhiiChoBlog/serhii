@@ -28,7 +28,6 @@
         @else
             <input
         @endisset
-
             @isset($id) type="{{ $type }}" @endisset
             name="{{ $name }}"
             @isset($id) id="{{ $id }}" @else id="id-{{ $name }}" @endisset

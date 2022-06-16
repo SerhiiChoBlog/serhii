@@ -98,7 +98,7 @@
                             <x-admin.input :textarea="true"
                                 placeholder="Enter a short intro"
                                 name="intro"
-                                class="min-h-[95px] _letter-counter"
+                                class="min-h-[95px] _letter-counter min-h-[100px]"
                                 :value="$post->intro"
                                 maxlength="190"
                             >
