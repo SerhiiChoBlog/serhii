@@ -13,6 +13,8 @@
                     name="title"
                     placeholder="Enter the title"
                     :required="true"
+                    class="_letter-counter"
+                    maxlength="190"
                 />
 
                 <x-admin.button>
