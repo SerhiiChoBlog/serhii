@@ -22,8 +22,8 @@ export default class {
 
     private openPopup(open: boolean | null = true): void {
         open
-            ? this.popup.classList.remove('is-hidden')
-            : this.popup.classList.add('is-hidden')
+            ? this.popup.classList.remove('hidden')
+            : this.popup.classList.add('hidden')
     }
 
     private handleEvent(value: string): void {
@@ -47,16 +47,24 @@ export default class {
 
         let popupHtml = ''
 
-        this.tags.forEach(tag => popupHtml += `<li class="_popup-item">${tag.name}</li>`)
+        this.tags.forEach(tag => {
+            popupHtml += `
+                <li class="_popup-item transition-colors hover:bg-page-second px-3 py-1">
+                    ${tag.name}
+                </li>
+            `
+        })
 
         this.popup.innerHTML = popupHtml
     }
 
     private getHtmlForTag(tag: SearchTagResponseItem): string {
         return `
-            <span class="tag is-normal is-dark mr-1" style="background-color: ${tag.color}">
+            <span class="text-white py-1 px-2 rounded-md font-light shadow-md text-xs" style="background-color: ${tag.color}">
                 ${tag.name}
-                <button type="button" class="delete is-small" id="delete-tag-${tag.id}"></button>
+                <button type="button" class="" id="delete-tag-${tag.id}">
+                    <i class="fas fa-times ml-1 transition-transform hover:scale-125"></i>
+                </button>
                 <input type="hidden" name="tags[]" value="${tag.id}">
             </span>
         `

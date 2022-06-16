@@ -46,7 +46,9 @@
                                         <td class="px-3 py-2">{{ $tag->name }}</td>
                                         <td class="px-3 py-2">{{ $tag->color }}</td>
                                         <td class="px-3 py-2">
-                                            <span class="py-[3px] inline-block font-light px-2 rounded-md text-white text-sm" style="background-color: {{ $tag->color }}">
+                                            <span class="py-[3px] inline-block font-light px-2 rounded-md text-white text-xs shadow-md"
+                                                style="background-color: {{ $tag->color }}"
+                                            >
                                                 {{ $tag->name }}
                                             </span>
                                         </td>
