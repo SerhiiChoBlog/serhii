@@ -124,12 +124,12 @@
                     </div>
                 </div>
 
-                <div class="field mt-5">
+                <div class="mt-5">
                     <textarea name="content" id="content">{{ $post->content }}</textarea>
                 </div>
 
-                <div class="field">
-                    <div class="flying-buttons">
+                <div>
+                    <div class="flex flex-col justify-center fixed right-[20px] top-[70px] z-50">
                         <button type="submit" class="button is-rounded mb-2 px-6 is-success">
                             <i class="fas fa-save mr-2"></i> Save
                         </button>
