@@ -86,9 +86,9 @@
 
                         <div class="mt-5">
                             <x-admin.input title="Tags" placeholder="Choose tags" type="text" id="post-tags" name="post-tags">
-                                <b id="suggestions-target"></b>
+                                <div id="suggestions-target" class="inline-block space-x-1"></div>
                             </x-admin.input>
-                            <ul class="post-tags__popup is-hidden" id="post-tags-popup"></ul>
+                            <ul class="bg-white shadow-md mt-2 rounded-lg overflow-hidden hidden" id="post-tags-popup"></ul>
                         </div>
 
                         <div class="field mt-5">
