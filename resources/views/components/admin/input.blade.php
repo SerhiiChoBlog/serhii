@@ -22,7 +22,7 @@
 
     <div class="inline-block relative w-full">
         @isset($textarea)
-            <textarea {{ $attributes->merge(['class' => $custom_classes]) }}>{{ $value }}</textarea>
+            <textarea {{ $attributes->merge(['class' => $custom_classes]) }}>{!! $value !!}</textarea>
         @else
             <input {{ $attributes->merge(['class' => $custom_classes]) }} />
         @endisset
