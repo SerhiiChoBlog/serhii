@@ -59,96 +59,102 @@
 
 @section('content')
     <div class="container pb-6">
-        <h1 class="title">{{ $post->title }}</h1>
+        <h1 class="text-4xl text-font-second">{{ $post->title }}</h1>
 
         <div class="container">
-            <form action="{{ route('admin.posts.update', $post) }}" method="post" enctype="multipart/form-data" id="edit-post-form">
+            <form action="{{ route('admin.posts.update', $post) }}"
+                method="post"
+                enctype="multipart/form-data"
+                id="edit-post-form"
+            >
                 @csrf
                 @method('put')
 
                 <input type="hidden" name="post-id" id="post-id-field" value="{{ $post->id }}">
 
-                <div class="columns">
-                    <div class="column">
-                        <div class="field">
-                            <label for="title" class="label">Title</label>
-                            <div class="control has-icons-right">
-                                <input value="{{ $post->title }}"
-                                    class="input letter-counter"
-                                    id="title"
-                                    type="text"
-                                    name="title"
-                                    placeholder="Enter the title"
-                                    maxlength="190"
-                                    required
-                                >
-                                <span class="icon is-small is-right counter"></span>
-                            </div>
+                <div class="flex flex-col lg:flex-row gap-6 mt-10">
+                    <div class="flex-1">
+                        <div>
+                            <x-admin.input
+                                type="text"
+                                name="title"
+                                placeholder="Enter the title"
+                                :value="$post->title"
+                                :required="true"
+                                maxlength="190"
+                                class="_letter-counter"
+                            >Title</x-admin.input>
+                        </div>
+
+                        <div class="mt-5">
+                            <x-admin.input placeholder="Choose tags" type="text" id="post-tags" name="post-tags">
+                                Tags
+                                <div id="suggestions-target" class="ml-1 inline-block space-x-1"></div>
+                            </x-admin.input>
+                            <ul class="bg-white shadow-md mt-2 rounded-lg overflow-hidden hidden" id="post-tags-popup"></ul>
                         </div>
 
                         <div class="field mt-5">
-                            <label for="post-tags" class="label">
-                                <span class="mr-2">Tags</span>
-                                <b id="suggestions-target"></b>
-                            </label>
-                            <div class="control post-tags">
-                                <input class="input"
-                                    id="post-tags"
-                                    type="text"
-                                    placeholder="Choose tags"
-                                >
-                                <ul class="post-tags__popup is-hidden" id="post-tags-popup"></ul>
-                            </div>
-                        </div>
-
-                        <div class="field mt-5">
-                            <label for="intro" class="label">Intro</label>
-                            <div class="control has-icons-right">
-                                <textarea class="input letter-counter"
-                                    id="intro"
-                                    name="intro"
-                                    placeholder="Enter a short intro"
-                                    maxlength="190"
-                                    style="min-height:95px"
-                                    required
-                                >{{ $post->intro }}</textarea>
-                                <span class="icon is-small is-right counter"></span>
-                            </div>
+                            <x-admin.input
+                                :textarea="true"
+                                placeholder="Enter a short intro"
+                                name="intro"
+                                class="_letter-counter min-h-[100px]"
+                                :value="$post->intro"
+                                maxlength="190"
+                            >
+                            </x-admin.input>
                         </div>
                     </div>
-                    <div class="column">
-                        <div class="image-wrapper">
-                            <img src="{{ asset($post->image_sm ?? 'storage/posts/placeholder.jpg') }}" alt="image" id="post-image">
-                            <label for="post-image-input"><b>Choose image</b></label>
-                            <input type="file" id="post-image-input" name="image" class="is-hidden">
+
+                    <div class="flex-1">
+                        <div class="relative">
+                            <img src="{{ asset($post->image_sm ?? 'storage/posts/placeholder.jpg') }}"
+                                alt="image"
+                                id="post-image"
+                                class="rounded-md shadow-lg w-full"
+                            />
+                            <label for="post-image-input"
+                                class="opacity-0 flex items-center hover:opacity-100 transition-opacity border-[6px] border-dashed text-center rounded-lg cursor-pointer border-gray-300 absolute right-6 top-6 left-6 bottom-6"
+                            >
+                                <b class="text-gray-600 px-4 py-2 rounded-xl bg-gray-300 text-3xl drop-shadow-sm mx-auto shadow-lg opacity-90">Choose image</b>
+                            </label>
+                            <input type="file" id="post-image-input" name="image" class="hidden">
                         </div>
                     </div>
                 </div>
 
-                <div class="field mt-5">
+                <div class="mt-5">
                     <textarea name="content" id="content">{{ $post->content }}</textarea>
                 </div>
 
-                <div class="field">
-                    <div class="flying-buttons">
-                        <button type="submit" class="button is-rounded mb-2 px-6 is-success">
+                <div>
+                    <div class="flex flex-col justify-center fixed right-[20px] top-[70px] z-[9999] space-y-2">
+                        <x-admin.button type="submit" class="bg-green-500 hover:bg-green-600">
                             <i class="fas fa-save mr-2"></i> Save
-                        </button>
-                        <a href="{{ route('posts.show', $post) }}"
+                        </x-admin.button>
+                        <x-admin.button
+                            href="{{ route('posts.show', $post) }}"
                             target="_blank"
-                            class="button is-rounded px-5 is-info"
                             id="preview-the-post"
                         >
                             <i class="fas fa-eye mr-2"></i> Preview
-                        </a>
+                        </x-admin.button>
                     </div>
 
                     <div class="buttons">
-                        <button type="button" class="button is-danger" onclick="document.getElementById('delete-post').click()">
+                        <button
+                            type="button"
+                            class="button is-danger"
+                            onclick="document.getElementById('delete-post').click()"
+                        >
                             <i class="fas fa-trash mr-2"></i> Delete
                         </button>
                         <label class="checkbox">
-                            <input type="checkbox" name="is-published" class="ml-3 mr-1" {{ $post->is_published ? 'checked' : '' }}>
+                            <input type="checkbox"
+                                name="is-published"
+                                class="ml-3 mr-1" {{ $post->is_published ? 'checked' : '' }}
+                            />
                             <span>publish this post</span>
                         </label>
                     </div>
@@ -157,68 +163,81 @@
         </div>
 
         <div class="mt-6 pt-4">
-            <h3 class="subtitle has-text-centered mb-5">Attached images for this post</h3>
+            <h3 class="text-center text-2xl mb-10">
+                Attached images for this post
+            </h3>
 
-            <table class="table is-fullwidth is-hoverable is-striped mb-6">
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>URI</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($post->images as $image)
+            <div class="overflow-x-auto shadow-md rounded-lg mx-auto mt-7">
+                <table class="table-auto w-full">
+                    <thead class="bg-gray-500 text-white text-left">
                         <tr>
-                            <td>
-                                <a href="{{ $image->uri }}" target="_blank">
-                                    <img data-src="{{ asset($image->uri) }}"
-                                        alt="Post image"
-                                        width="100"
-                                        class="smooth-loader"
-                                        style="border-radius: 4px"
-                                    />
-                                </a>
-                            </td>
-                            <td><input type="text" value="{{ $image->uri }}" class="clean-input" disabled></td>
-                            <td>
-                                <form action="{{ route('admin.post-content-images.delete', $image) }}"
-                                    method="post"
-                                    onsubmit="return confirm('Sure you want to delete this content image?')"
-                                >
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="button is-danger">
-                                        <i class="fas fa-trash mr-2"></i> Delete
-                                    </button>
-                                </form>
-                            </td>
+                            @foreach (['Image', 'URI', 'Delete'] as $title)
+                                <th class="p-3 font-light">{{ $title }}</th>
+                            @endforeach
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($post->images as $image)
+                            <tr class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100">
+                                <td class="px-3 py-1">
+                                    <a href="{{ $image->uri }}" target="_blank">
+                                        <img data-src="{{ asset($image->uri) }}"
+                                            alt="Post image"
+                                            width="100"
+                                            class="smooth-loader rounded-md shadow-sm"
+                                        />
+                                    </a>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <input type="text"
+                                        value="{{ $image->uri }}"
+                                        class="bg-gray-200 rounded-md p-2 w-full"
+                                        disabled
+                                    />
+                                </td>
+                                <td class="px-3 py-1 text-right">
+                                    <form action="{{ route('admin.post-content-images.delete', $image) }}"
+                                        method="post"
+                                        onsubmit="return confirm('Sure you want to delete this content image?')"
+                                    >
+                                        @csrf
+                                        @method('delete')
+
+                                        <x-admin.button type="submit" class="bg-red-500 hover:bg-red-600">
+                                            <i class="fas fa-trash mr-2"></i> Delete
+                                        </x-admin.button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
             <form action="{{ route('admin.post-content-images.store', $post) }}"
                   method="post"
                   enctype="multipart/form-data"
+                  class="mt-6"
             >
                 @csrf
-                <div class="file is-inline-block mr-2">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="image" required>
-                        <span class="file-cta"><span class="file-label">Choose an image...</span></span>
+
+                <div class="inline-block mr-2">
+                    <label class="border-4 text-gray-400 hover:text-gray-500 cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-300 transition-colors">
+                        <input class="hidden" type="file" name="image" required>
+                        <span>Choose an image...</span>
                     </label>
                 </div>
-                <button class="button is-success" type="submit">
-                    <i class="fas fa-upload mr-2"></i> Load
-                </button>
+
+                <x-admin.button class="ml-3" type="submit">
+                    <i class="fas fa-upload mr-2"></i> Upload
+                </x-admin.button>
             </form>
         </div>
     </div>
 
     <input type="hidden" value="{{ $post->tags }}" id="old-post-tags">
 
-    <form action="{{ route('admin.posts.destroy', $post) }}" method="post" class="is-hidden" onsubmit="return confirm('Sure you want to delete the post?')">
+    <form action="{{ route('admin.posts.destroy', $post) }}" method="post" class="hidden" onsubmit="return confirm('Sure you want to delete the post?')">
         @csrf
         @method('delete')
         <button type="submit" id="delete-post"></button>

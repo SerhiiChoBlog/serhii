@@ -2,26 +2,25 @@
 
 @section('content')
     <div class="container">
-        <h1 class="title">Basic information</h1>
-        <h2 class="subtitle">Enter title for the future blog post.</h2>
+        <h1 class="text-3xl font-bold text-font-second">Basic information</h1>
+        <h2 class="text-xl">Enter title for the future blog post.</h2>
 
-        <form action="{{ route('admin.posts.store') }}" method="post">
+        <form action="{{ route('admin.posts.store') }}" method="post" class="mt-5">
             @csrf
 
-            <div class="columns">
-                <div class="column">
-                    <div class="field">
-                        <div class="control has-icons-right">
-                            <input class="input letter-counter" id="title" type="text" name="title" placeholder="Enter the title" maxlength="190" required>
-                            <span class="icon is-small is-right counter"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="field">
-                        <button type="submit" class="button px-6 is-info">Create</button>
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 lg:grid-cols-[3fr_1fr]  gap-3 max-w-3xl">
+                <x-admin.input type="text"
+                    name="title"
+                    placeholder="Enter the title"
+                    :required="true"
+                    class="_letter-counter"
+                    maxlength="190"
+                />
+
+                <x-admin.button>
+                    <i class="fas fa-plus mr-2"></i>
+                    <span>Create post</span>
+                </x-admin.button>
             </div>
         </form>
     </div>

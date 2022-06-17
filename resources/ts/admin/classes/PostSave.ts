@@ -61,15 +61,16 @@ export default class {
 
     private showLoading(show: boolean): void {
         const btn = this.form.querySelector<HTMLButtonElement>('button[type=submit]')!
+        const elem = btn.querySelector<HTMLButtonElement>('svg')!
 
         if (show) {
-            btn.classList.add('is-loading')
-            btn.classList.add('is-warning')
+            elem.classList.add('!inline')
+            btn.classList.add('!bg-orange-400')
             return
         }
 
-        btn.classList.remove('is-loading')
-        btn.classList.remove('is-warning')
+        elem.classList.remove('!inline')
+        btn.classList.remove('!bg-orange-400')
     }
 
     private updatePreviewLink(newHref: string): void {

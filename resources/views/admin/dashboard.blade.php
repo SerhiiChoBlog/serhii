@@ -1,33 +1,26 @@
+@php
+    /**
+     * @var array $sections
+     * @var array{title:string, value:string} $section
+     */
+@endphp
 @extends('layouts.admin')
 
 @section('content')
 
 <div class="container">
-    <nav class="level">
-        <div class="level-item has-text-centered">
-            <div>
-                <p class="heading">Last visit</p>
-                <p class="title">{{ $last_visit }}</p>
+    <nav class="flex items-center space-y-6 flex-col lg:flex-row justify-between mx-auto">
+        @foreach ($sections as $section)
+            <div class="flex flex-col space-y-2">
+                <p class="text-font-second text-center uppercase text-xs text-font-second tracking-widest">
+                    {{ $section['title'] }}
+                </p>
+
+                <p class="drop-shadow-md text-3xl text-center font-semibold">
+                    {{ $section['value'] }}
+                </p>
             </div>
-        </div>
-        <div class="level-item has-text-centered">
-            <div>
-                <p class="heading">Visitors</p>
-                <p class="title">{{ $visitors_count }}</p>
-            </div>
-        </div>
-        <div class="level-item has-text-centered">
-            <div>
-                <p class="heading">-</p>
-                <p class="title">-</p>
-            </div>
-        </div>
-        <div class="level-item has-text-centered">
-            <div>
-                <p class="heading">-</p>
-                <p class="title">-</p>
-            </div>
-        </div>
+        @endforeach
     </nav>
 </div>
 

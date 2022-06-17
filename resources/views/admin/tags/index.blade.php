@@ -2,66 +2,71 @@
 
 @section('content')
     <div class="container">
-        <div class="columns">
-            <div class="column">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-x-6">
+            <div class="border-b pb-7 mb-7 lg:border-none lg:pb-0 lg:mb-0">
                 <div class="px-4">
                     <form action="{{ route('admin.tags.store') }}" method="POST">
                         @csrf
 
-                        <div class="field">
-                            <label class="label">Name</label>
-                            <div class="control">
-                                <input class="input" name="name" type="text" placeholder="Enter the tag name">
+                        <div class="space-y-5">
+                            <div>
+                                <x-admin.input name="name" type="text" placeholder="Enter the tag name">
+                                    Name
+                                </x-admin.input>
                             </div>
-                        </div>
 
-                        <div class="field">
-                            <label class="label">Choose the color</label>
-                            <div class="control">
-                                <input class="input" name="color" type="color">
+                            <div>
+                                <x-admin.input name="color" type="color" class="min-h-[50px]">Choose the color</x-admin.input>
                             </div>
-                        </div>
 
-                        <div class="field mt-4">
-                            <button type="submit" class="button is-info">
-                                <i class="fas fa-plus mr-2"></i> Create tag
-                            </button>
+                            <div>
+                                <x-admin.button>
+                                    <i class="fas fa-plus mr-2"></i> Create tag
+                                </x-admin.button>
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="column is-three-fifths">
+
+            <div>
                 @empty($tags->all())
-                    <h2 class="subtitle has-text-centered">There are not tags</h2>
+                    <h2 class="text-center text-xl mt-6">There are not tags</h2>
                 @else
-                    <table class="table is-fullwidth is-hoverable is-striped">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Color</th>
-                                <th>Tag</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($tags as $tag)
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full">
+                            <thead class="bg-gray-500 text-left">
                                 <tr>
-                                    <td>{{ $tag->name }}</td>
-                                    <td>{{ $tag->color }}</td>
-                                    <td>
-                                        <span class="tag is-normal is-dark" style="background-color: {{ $tag->color }}">
-                                            {{ $tag->name }}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('admin.tags.edit', $tag) }}" class="icon has-text-grey-dark" title="Edit tag">
-                                            <i class="fas fa-pen"></i>
-                                        </a>
-                                    </td>
+                                    @foreach (['Name', 'Color', 'Tag', ''] as $title)
+                                        <th class="text-white p-3 font-light">{{ $title }}</th>
+                                    @endforeach
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($tags as $tag)
+                                    <tr class="odd:bg-gray-50 border-b transition-colors hover:bg-gray-100">
+                                        <td class="px-3 py-2">{{ $tag->name }}</td>
+                                        <td class="px-3 py-2">{{ $tag->color }}</td>
+                                        <td class="px-3 py-2">
+                                            <span class="py-[3px] inline-block font-light px-2 rounded-md text-white text-xs shadow-md"
+                                                style="background-color: {{ $tag->color }}"
+                                            >
+                                                {{ $tag->name }}
+                                            </span>
+                                        </td>
+                                        <td class="px-3 py-2">
+                                            <a href="{{ route('admin.tags.edit', $tag) }}"
+                                                class="text-font-second inline-block text-xs transition-colors hover:text-main-dark p-1"
+                                                title="Edit tag"
+                                            >
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 @endempty
             </div>
         </div>
