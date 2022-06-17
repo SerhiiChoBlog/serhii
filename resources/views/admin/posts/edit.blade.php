@@ -237,7 +237,7 @@
 
     <input type="hidden" value="{{ $post->tags }}" id="old-post-tags">
 
-    <form action="{{ route('admin.posts.destroy', $post) }}" method="post" class="is-hidden" onsubmit="return confirm('Sure you want to delete the post?')">
+    <form action="{{ route('admin.posts.destroy', $post) }}" method="post" class="hidden" onsubmit="return confirm('Sure you want to delete the post?')">
         @csrf
         @method('delete')
         <button type="submit" id="delete-post"></button>
