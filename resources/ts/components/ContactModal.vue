@@ -99,8 +99,15 @@ onMounted(() => {
         </button>
     </div>
 
-    <div class="fixed left-0 right-0 top-0 bottom-0 z-20 bg-[hsla(0,0%,4%,.86)]" v-show="isOpen">
-        <transition name="fade">
+    <transition
+        enter-active-class="duration-300 ease-out"
+        enter-from-class="transform opacity-0"
+        enter-to-class="opacity-100"
+        leave-active-class="duration-200 ease-in"
+        leave-from-class="opacity-100"
+        leave-to-class="transform opacity-0"
+    >
+        <div v-show="isOpen" class="fixed left-0 right-0 top-0 bottom-0 z-20 bg-[hsla(0,0%,4%,.86)]">
             <div v-if="isOpen"
                  class="overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto max-h-[calc(100vh-40px)]"
             >
@@ -140,10 +147,10 @@ onMounted(() => {
 
                 </div>
             </div>
-        </transition>
 
-        <button class="modal-close is-large" aria-label="close" @click="closeContactModal"></button>
-    </div>
+            <button class="modal-close is-large" aria-label="close" @click="closeContactModal"></button>
+        </div>
+    </transition>
 </template>
 
 <style lang="sass" scoped>
