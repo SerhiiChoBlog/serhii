@@ -4,6 +4,7 @@ namespace App\View\Components\Home;
 
 use App\CacheKey;
 use App\Models\Post;
+use App\Ttl;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\Component;
@@ -12,7 +13,7 @@ class LastPostsSection extends Component
 {
     public function posts(): array
     {
-        return Cache::rememberForever(CacheKey::LAST_POSTS, static function () {
+        return Cache::remember(CacheKey::LAST_POSTS, Ttl::DAY, static function () {
             return Post::query()
                 ->with('tags:name,color')
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
