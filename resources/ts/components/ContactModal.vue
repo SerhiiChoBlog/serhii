@@ -47,6 +47,11 @@ const sections = [
                 href: 'https://www.codewars.com/users/serhii_cho',
                 title: 'Codewars',
             },
+            {
+                img: '/storage/icons/codepen.png',
+                href: 'https://codepen.io/serhii_cho',
+                title: 'Codepen',
+            },
         ],
     },
     {
