@@ -163,46 +163,56 @@
         </div>
 
         <div class="mt-6 pt-4">
-            <h3 class="subtitle has-text-centered mb-5">Attached images for this post</h3>
+            <h3 class="text-center text-2xl mb-10">
+                Attached images for this post
+            </h3>
 
-            <table class="table is-fullwidth is-hoverable is-striped mb-6">
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>URI</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($post->images as $image)
+            <div class="overflow-x-auto shadow-md rounded-lg mx-auto mt-7">
+                <table class="table-auto w-full">
+                    <thead class="bg-gray-500 text-white text-left">
                         <tr>
-                            <td>
-                                <a href="{{ $image->uri }}" target="_blank">
-                                    <img data-src="{{ asset($image->uri) }}"
-                                        alt="Post image"
-                                        width="100"
-                                        class="smooth-loader"
-                                        style="border-radius: 4px"
-                                    />
-                                </a>
-                            </td>
-                            <td><input type="text" value="{{ $image->uri }}" class="clean-input" disabled></td>
-                            <td>
-                                <form action="{{ route('admin.post-content-images.delete', $image) }}"
-                                    method="post"
-                                    onsubmit="return confirm('Sure you want to delete this content image?')"
-                                >
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="button is-danger">
-                                        <i class="fas fa-trash mr-2"></i> Delete
-                                    </button>
-                                </form>
-                            </td>
+                            @foreach (['Image', 'URI', 'Delete'] as $title)
+                                <th class="p-3 font-light">{{ $title }}</th>
+                            @endforeach
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($post->images as $image)
+                            <tr class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100">
+                                <td class="px-3 py-1">
+                                    <a href="{{ $image->uri }}" target="_blank">
+                                        <img data-src="{{ asset($image->uri) }}"
+                                            alt="Post image"
+                                            width="100"
+                                            class="smooth-loader rounded-md shadow-sm"
+                                        />
+                                    </a>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <input type="text"
+                                        value="{{ $image->uri }}"
+                                        class="bg-gray-200 rounded-md p-2 w-full"
+                                        disabled
+                                    />
+                                </td>
+                                <td class="px-3 py-1 text-right">
+                                    <form action="{{ route('admin.post-content-images.delete', $image) }}"
+                                        method="post"
+                                        onsubmit="return confirm('Sure you want to delete this content image?')"
+                                    >
+                                        @csrf
+                                        @method('delete')
+
+                                        <x-admin.button type="submit">
+                                            <i class="fas fa-trash mr-2"></i> Delete
+                                        </x-admin.button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
             <form action="{{ route('admin.post-content-images.store', $post) }}"
                   method="post"
