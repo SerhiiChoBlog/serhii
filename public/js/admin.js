@@ -2283,15 +2283,16 @@ var default_1 = function () {
 
   default_1.prototype.showLoading = function (show) {
     var btn = this.form.querySelector('button[type=submit]');
+    var elem = btn.querySelector('svg');
 
     if (show) {
-      btn.classList.add('is-loading');
-      btn.classList.add('is-warning');
+      elem.classList.add('!inline');
+      btn.classList.add('!bg-orange-400');
       return;
     }
 
-    btn.classList.remove('is-loading');
-    btn.classList.remove('is-warning');
+    elem.classList.remove('!inline');
+    btn.classList.remove('!bg-orange-400');
   };
 
   default_1.prototype.updatePreviewLink = function (newHref) {
