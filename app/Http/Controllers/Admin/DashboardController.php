@@ -16,16 +16,35 @@ class DashboardController extends Controller
     public function index(): View
     {
         return view('admin.dashboard', [
-            'last_visit' => $this->getLastVisit(),
-            'visitors_count' => Number::conv(Visitor::query()->count()),
+            'sections' => $this->getSections(),
         ]);
+    }
+    private function getSections(): array
+    {
+        return [
+            [
+                'title' => 'Last visit',
+                'value' => $this->getLastVisit(),
+            ],
+            [
+                'title' => 'Visitors',
+                'value' => Number::conv(Visitor::query()->count()),
+            ],
+            [
+                'title' => '-',
+                'value' => '-',
+            ],
+            [
+                'title' => '-',
+                'value' => '-',
+            ],
+        ];
     }
 
     private function getLastVisit(): string
     {
-        $last_visit = PageView::query()
-            ->latest('updated_at')
-            ->first();
+        /** @var PageView|null $last_visit */
+        $last_visit = PageView::query()->latest('updated_at')->first();
 
         if (!$last_visit) {
             return '';

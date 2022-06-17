@@ -14,7 +14,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "serhii/ago": "^2.0",
-        "serhii/short-number": "^2.0",
+        "serhii/short-number": "^3.0",
         "stevebauman/location": "^6.1"
     },
     "require-dev": {

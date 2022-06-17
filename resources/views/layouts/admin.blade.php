@@ -11,14 +11,14 @@
     @yield('head')
 </head>
 <body>
-<x-user-sidebar />
-<main class="main-wrapper py-6">
+<x-admin.user-sidebar />
+<main class="pl-9 lg:pl-14 py-10 text-font bg-page">
     @yield('content')
 </main>
 <script src="{{ asset('js/admin.js') }}" defer></script>
 </body>
 </html>
 
-<form id="logout-form" action="{{ route('logout') }}" method="POST" class="is-hidden">
+<form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
     @csrf
 </form>
