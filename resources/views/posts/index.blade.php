@@ -37,9 +37,7 @@
 
                         <div>
                             <x-post.tags :tags="$post->tags" class="text-xs">
-                                <time datetime="{{ $post->created_at }}" class="flex items-center text-font-second text-md ml-1">
-                                    {{ $post->pretty_created_at }}
-                                </time>
+                                <x-post.created :created="$post->created_at" :pretty="$post->pretty_created_at" />
                             </x-post.tags>
                         </div>
                     </div>
