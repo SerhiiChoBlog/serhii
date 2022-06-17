@@ -5,11 +5,9 @@
         >{{ $item['title'] }}</a>
     @endforeach
 
-    <div>
-        <contact-modal>
-            <div class="bg-main py-2 px-6 rounded-full">Contact me</div>
-        </contact-modal>
-    </div>
+    <contact-modal>
+        <div class="bg-main py-2 px-6 rounded-full">Contact me</div>
+    </contact-modal>
 
     <div>
         <theme-switch theme="{{ request()->cookie('theme') ?? 'light' }}" />
