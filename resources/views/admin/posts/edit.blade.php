@@ -203,7 +203,7 @@
                                         @csrf
                                         @method('delete')
 
-                                        <x-admin.button type="submit">
+                                        <x-admin.button type="submit" class="bg-red-500 hover:bg-red-600">
                                             <i class="fas fa-trash mr-2"></i> Delete
                                         </x-admin.button>
                                     </form>
@@ -217,17 +217,20 @@
             <form action="{{ route('admin.post-content-images.store', $post) }}"
                   method="post"
                   enctype="multipart/form-data"
+                  class="mt-6"
             >
                 @csrf
-                <div class="file is-inline-block mr-2">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="image" required>
-                        <span class="file-cta"><span class="file-label">Choose an image...</span></span>
+
+                <div class="inline-block mr-2">
+                    <label class="border-4 text-gray-400 hover:text-gray-500 cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-300 transition-colors">
+                        <input class="hidden" type="file" name="image" required>
+                        <span>Choose an image...</span>
                     </label>
                 </div>
-                <button class="button is-success" type="submit">
-                    <i class="fas fa-upload mr-2"></i> Load
-                </button>
+
+                <x-admin.button class="ml-3" type="submit">
+                    <i class="fas fa-upload mr-2"></i> Upload
+                </x-admin.button>
             </form>
         </div>
     </div>
