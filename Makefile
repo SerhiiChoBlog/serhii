@@ -15,16 +15,17 @@ stan:
 cs:
 	./vendor/bin/phpcs app --colors -p
 
-check:
-	make stan
-	make cs
-
 test:
 	touch database/database.sqlite
 	php artisan test
 
-push:
+check:
+	make stan
+	make cs
 	make test
+
+push:
+	make check
 	git pull origin HEAD
 	git push origin HEAD
 
