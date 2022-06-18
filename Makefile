@@ -9,6 +9,16 @@ cache-clear:
 	php artisan route:clear
 	php artisan cache:clear
 
+stan:
+	./vendor/bin/phpstan analyse
+
+cs:
+	./vendor/bin/phpcs app --colors -p
+
+check:
+	make stan
+	make cs
+
 test:
 	touch database/database.sqlite
 	php artisan test
