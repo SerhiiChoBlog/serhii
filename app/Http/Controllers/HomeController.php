@@ -12,7 +12,12 @@ class HomeController extends Controller
 {
     public function index(Request $request): View
     {
-        Visitor::incrementPageViews('/', 'home', $request->ip());
+        $ip = $request->ip();
+
+        if ($ip) {
+            Visitor::incrementPageViews('/', 'home', $ip);
+        }
+
         return view('home');
     }
 }

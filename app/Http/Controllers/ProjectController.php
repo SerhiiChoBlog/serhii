@@ -19,7 +19,13 @@ class ProjectController extends Controller
 
     public function show(Project $project, Request $request): View
     {
-        Visitor::incrementPageViews($request->segment(2), 'project', $request->ip());
+        $slug = $request->segment(2);
+        $ip = $request->ip();
+
+        if ($slug && $ip) {
+            Visitor::incrementPageViews($slug, 'project', $ip);
+        }
+
         return view('projects.show', compact('project'));
     }
 }
