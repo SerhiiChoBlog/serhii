@@ -13,7 +13,13 @@ class SocialShareController extends Controller
 {
     public function store(Post $post, Request $request): void
     {
-        $visitor = Visitor::getOrCreateVisitor($request->ip());
+        $ip = $request->ip();
+
+        if (!$ip) {
+            return;
+        }
+
+        $visitor = Visitor::getOrCreateVisitor($ip);
 
         $has_old_record = $post->socialShares()
             ->where('visitor_id', $visitor->id)
