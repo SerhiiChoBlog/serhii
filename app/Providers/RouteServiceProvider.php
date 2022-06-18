@@ -19,15 +19,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const DASHBOARD = '/admin/dashboard';
 
-    /**
-     * The controller namespace for the application.
-     *
-     * When present, controller route declarations will automatically be prefixed with this namespace.
-     *
-     * @var string|null
-     */
-    // protected $namespace = 'App\\Http\\Controllers';
-
     public function boot(): void
     {
         $this->configureRateLimiting();

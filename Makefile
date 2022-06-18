@@ -10,7 +10,7 @@ cache-clear:
 	php artisan cache:clear
 
 stan:
-	./vendor/bin/phpstan analyse
+	php -d memory_limit=2G ./vendor/bin/phpstan analyse
 
 cs:
 	./vendor/bin/phpcs app --colors -p

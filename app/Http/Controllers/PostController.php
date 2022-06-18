@@ -8,8 +8,10 @@ use App\CacheKey;
 use App\Models\Post;
 use App\Models\Visitor;
 use App\Ttl;
+use HttpException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
@@ -28,10 +30,14 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
+    /**
+     * @throws HttpException
+     */
     public function show(string $slug, Request $request): View
     {
         $cache_key = CacheKey::POST . $slug;
 
+        /** @var array{id:int, is_published:bool, title:string} $post */
         $post = Cache::remember($cache_key, Ttl::DAY, static function () use ($slug) {
             $post = Post::query()
                 ->with('tags:id,color,name')
@@ -42,23 +48,30 @@ class PostController extends Controller
             return $post?->toArray();
         });
 
-        abort_if(!$post['is_published'] && !auth()->check(), 404);
+        abort_if(!$post['is_published'] && !Auth::check(), 404);
 
+        /** @var int<0, 190> $title_len */
         $title_len = strlen($post['title']);
 
         $title_font_size = match (true) {
             $title_len <= 10 => '4.8em',
-            $title_len > 10 && $title_len < 20 => '4.4em',
-            $title_len >= 20 && $title_len < 30 => '4.0em',
-            $title_len >= 30 && $title_len < 40 => '3.4em',
-            $title_len >= 40 && $title_len < 50 => '3.0em',
-            $title_len >= 50 && $title_len < 60 => '2.8em',
-            $title_len >= 60 => '2em',
+            $title_len < 20 => '4.4em',
+            $title_len < 30 => '4.0em',
+            $title_len < 40 => '3.4em',
+            $title_len < 50 => '3.0em',
+            $title_len < 60 => '2.8em',
+            default => '2em',
         };
 
         $posts = Post::getPostsForSidebar($post['id']);
+        $segment = $request->segment(2);
+        $ip = $request->ip();
 
-        Visitor::incrementPageViews($request->segment(2), 'post', $request->ip());
+        if (!$segment || !$ip) {
+            throw new HttpException('Incorrect url path or IP address of the client');
+        }
+
+        Visitor::incrementPageViews($segment, 'post', $ip);
 
         return view('posts.show', compact('post', 'title_font_size', 'posts'));
     }

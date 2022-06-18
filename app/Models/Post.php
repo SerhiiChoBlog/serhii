@@ -26,6 +26,7 @@ use Serhii\Ago\TimeAgo;
  * @property Collection $socialShares
  * @property Collection $pageViews
  * @property Collection $tags
+ * @property array<int, array<int, string>>|null $social
  * @property string $pretty_created_at
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -68,6 +69,11 @@ class Post extends Model
         return $this->hasMany(PageView::class, 'slug', 'slug');
     }
 
+    /**
+     * @param int $exclude_id
+     *
+     * @return Collection<int, Post>
+     */
     public static function getPostsForSidebar(int $exclude_id): Collection
     {
         return self::query()
@@ -84,7 +90,7 @@ class Post extends Model
     protected function prettyCreatedAt(): Attribute
     {
         $get = function () {
-            if (!$this->created_at) {
+            if ($this->created_at === null) {
                 return '';
             }
 

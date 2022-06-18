@@ -26,8 +26,6 @@ class Project extends Model
 {
     use HasFactory;
 
-    private const ONE_HOUR_IN_SECONDS = 3600;
-
     /**
      * @var string[]
      */
