@@ -4,7 +4,9 @@ import { onMounted, ref } from 'vue'
 const chapters = ref<string[]>([])
 const chaptersElements: Element[] = []
 
-onMounted(() => {
+onMounted(handleChapters)
+
+function handleChapters(): void {
     const postContentElements = document.querySelectorAll('#post-content h2')!
 
     postContentElements.forEach(elem => {
@@ -28,7 +30,7 @@ onMounted(() => {
 
         chapters.value.push(chapterText)
     })
-})
+}
 
 function scrollToChapter(chapter: string): void {
     const neededElement = chaptersElements.find((el) => {
@@ -43,7 +45,7 @@ function scrollToChapter(chapter: string): void {
     <div>
         <a v-for="chapter in chapters"
            :key="chapter"
-           class="border-b border-border relative block flex justify-start text-font-second pl-7 pr-5 py-2 transition-colors hover:bg-page-second select-none last:border-none"
+           class="border-b border-border cursor-pointer relative block flex justify-start text-font-second pl-7 pr-5 py-2 transition-colors hover:bg-page-second select-none last:border-none"
            v-html="chapter"
            @click="scrollToChapter(chapter)"
         ></a>
