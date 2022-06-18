@@ -93,7 +93,7 @@ class Post extends Model
             ->select('id', 'slug', 'title', 'image_sm')
             ->where('is_published', true)
             ->where('id', '!=', $exclude_id)
-            ->orderByRaw('RAND()')
+            ->inRandomOrder()
             ->limit(5)
             ->get()
             ->shuffle();
