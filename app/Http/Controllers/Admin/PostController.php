@@ -11,6 +11,7 @@ use App\Utils\SaveImage;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -71,7 +72,10 @@ class PostController extends Controller
 
         $data = array_merge($request->all(), compact('is_published'));
 
-        $images = $this->savePhotoIfExist($request->file('image'), $post->title);
+        /** @var UploadedFile $photo */
+        $photo = $request->file('image');
+
+        $images = $this->savePhotoIfExist($photo, $post->title);
 
         if ($images) {
             $data = array_merge($data, ['image_sm' => $images['sm'], 'image_lg' => $images['lg']]);

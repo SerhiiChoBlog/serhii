@@ -3,6 +3,7 @@
 namespace App\View\Components\Home;
 
 use DateInterval;
+use DateTime;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
@@ -49,7 +50,7 @@ class WelcomeSection extends Component
     private function getDateDiff(): DateInterval
     {
         $started_career = date_create('2017-05-24');
-        $current_date = date_create();
+        $current_date = new DateTime();
 
         return date_diff($started_career, $current_date);
     }

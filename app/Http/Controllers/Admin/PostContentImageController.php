@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\PostContentImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
@@ -17,6 +18,7 @@ class PostContentImageController extends Controller
 {
     public function store(Post $post, Request $request): RedirectResponse
     {
+        /** @var UploadedFile $image */
         $image = $request->file('image');
 
         $path = storage_path('app/public/posts/content');
