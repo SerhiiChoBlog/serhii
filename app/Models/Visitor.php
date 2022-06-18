@@ -68,7 +68,7 @@ class Visitor extends Model
         try {
             $visitor = self::getOrCreateVisitor($ip);
         } catch (QueryException $e) {
-            logger()?->warning($e);
+            logger()->warning($e);
             return;
         }
 

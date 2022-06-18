@@ -7,11 +7,9 @@ namespace App\Utils;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-use JetBrains\PhpStorm\ArrayShape;
 
 trait SaveImage
 {
-    #[ArrayShape(['sm' => 'string', 'lg' => 'string'])]
     public function savePhotoIfExist(?UploadedFile $photo, string $post_name): ?array
     {
         if (is_null($photo)) {

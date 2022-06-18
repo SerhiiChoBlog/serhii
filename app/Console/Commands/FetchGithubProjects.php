@@ -37,8 +37,8 @@ class FetchGithubProjects extends Command
     }
 
     /**
-     * @return \Illuminate\Support\Collection
-     * @throws \Illuminate\Http\Client\RequestException
+     * @return Collection
+     * @throws RequestException
      */
     private function fetchProjects(): Collection
     {

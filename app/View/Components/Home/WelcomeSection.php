@@ -38,7 +38,7 @@ class WelcomeSection extends Component
             ++$years;
         }
 
-        return $years;
+        return (string) $years;
     }
 
     public function fullExperience(): string
