@@ -49,21 +49,33 @@ class Post extends Model
         'is_published' => 'bool',
     ];
 
+    /**
+     * @return BelongsToMany<Tag>
+     */
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
     }
 
+    /**
+     * @return HasMany<PostContentImage>
+     */
     public function images(): HasMany
     {
         return $this->hasMany(PostContentImage::class);
     }
 
+    /**
+     * @return HasMany<SocialShare>
+     */
     public function socialShares(): HasMany
     {
         return $this->hasMany(SocialShare::class);
     }
 
+    /**
+     * @return HasMany<PageView>
+     */
     public function pageViews(): HasMany
     {
         return $this->hasMany(PageView::class, 'slug', 'slug');
@@ -87,9 +99,12 @@ class Post extends Model
             ->shuffle();
     }
 
+    /**
+     * @return Attribute<string, mixed>
+     */
     protected function prettyCreatedAt(): Attribute
     {
-        $get = function () {
+        $get = function (): string {
             if ($this->created_at === null) {
                 return '';
             }

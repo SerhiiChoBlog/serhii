@@ -37,7 +37,7 @@ class FetchGithubProjects extends Command
     }
 
     /**
-     * @return Collection
+     * @return Collection<int, Project>
      * @throws RequestException
      */
     private function fetchProjects(): Collection
@@ -55,7 +55,8 @@ class FetchGithubProjects extends Command
         return $mit_projects->map(function ($project) use ($readme_url) {
             $readme_url = str_replace('{repo}', $project['name'], (string) $readme_url);
 
-            return [
+            /** @var Project */
+            $result = [
                 'name' => $project['name'],
                 'title' => Str::of($project['name'])->replace('-', ' ')->ucfirst(),
                 'url' => $project['html_url'],
@@ -65,6 +66,8 @@ class FetchGithubProjects extends Command
                 'stars' => (int) $project['stargazers_count'],
                 'created_at' => date('Y-m-d H:i:s', strtotime($project['created_at']))
             ];
+
+            return $result;
         });
     }
 

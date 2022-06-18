@@ -31,11 +31,17 @@ class Visitor extends Model
      */
     protected $guarded = ['id'];
 
+    /**
+     * @return HasMany<PageView>
+     */
     public function pageViews(): HasMany
     {
         return $this->hasMany(PageView::class);
     }
 
+    /**
+     * @return HasMany<SocialShare>
+     */
     public function socialShares(): HasMany
     {
         return $this->hasMany(SocialShare::class);
@@ -44,7 +50,7 @@ class Visitor extends Model
     /**
      * @throws QueryException
      */
-    public static function getOrCreateVisitor($ip): Visitor
+    public static function getOrCreateVisitor(string $ip): Visitor
     {
         $visitor = self::query()->with('pageViews')->where('ip', $ip)->first();
 

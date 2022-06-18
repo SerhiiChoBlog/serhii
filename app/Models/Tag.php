@@ -26,6 +26,9 @@ class Tag extends Model
      */
     protected $guarded = ['id'];
 
+    /**
+     * @return BelongsToMany<Post>
+     */
     public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class);

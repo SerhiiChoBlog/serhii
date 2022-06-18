@@ -29,11 +29,17 @@ class SocialShare extends Model
 
     public $timestamps = false;
 
+    /**
+     * @return BelongsTo<Post, self>
+     */
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
     }
 
+    /**
+     * @return BelongsTo<Visitor, self>
+     */
     public function visitor(): BelongsTo
     {
         return $this->belongsTo(Visitor::class);

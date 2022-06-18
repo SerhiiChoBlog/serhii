@@ -11,7 +11,7 @@ class ThemeController extends Controller
     private const DARK_THEME = 'dark';
     private const LIGHT_THEME = 'light';
 
-    public function __invoke()
+    public function __invoke(): void
     {
         $theme = Cookie::get('theme');
 

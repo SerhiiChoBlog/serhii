@@ -23,6 +23,9 @@ class PostContentImage extends Model
 
     public $timestamps = false;
 
+    /**
+     * @return BelongsTo<Post, self>
+     */
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
