@@ -15,7 +15,7 @@ class HomeTest extends TestCase
     /** @test */
     public function guest_can_visit_home_page(): void
     {
-        $this->get('/')->assertOk()->assertViewIs('home');
+        $this->get(route('home'))->assertOk()->assertViewIs('home');
     }
 
     /** @test */
@@ -24,7 +24,7 @@ class HomeTest extends TestCase
         $user = User::factory()->make();
 
         $this->actingAs($user)
-            ->get('/')
+            ->get(route('home'))
             ->assertOk()
             ->assertViewIs('home');
     }
