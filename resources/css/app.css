@@ -12,6 +12,11 @@
     src: url('../fonts/Lato-Regular.ttf') format("truetype");
 }
 
+@font-face {
+    font-family: 'Arizona';
+    src: url('../fonts/ArizonaPlusVariable.woff2') format("woff2-variations");
+}
+
 @layer base {
     @import "_variables.css";
 }
