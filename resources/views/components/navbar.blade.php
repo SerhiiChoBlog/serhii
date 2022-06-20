@@ -1,7 +1,7 @@
 <nav>
     <div class="container flex justify-between items-center min-h-[3.25rem]">
         <div class="flex items-center gap-x-1 w-full lg:w-auto">
-            <a href="{{ route('home') }}" class="text-md font-bold transition-opacity hover:opacity-80">
+            <a href="{{ route('home') }}" class="text-md font-bold transition-opacity hover:opacity-80 font-arizona">
                 <span>SERHII<span class="text-main">CHO</span></span>
             </a>
 

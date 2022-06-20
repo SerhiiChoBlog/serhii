@@ -8,7 +8,7 @@
 
         <div class="py-12 px-5 lg:py-[18rem] lg:px-[6rem]">
             <div class="text-center text-white">
-                <h1 class="text-xl lg:text-3xl">SERHII<span class="text-main">CHO</span></h1>
+                <h1 class="text-xl font-arizona lg:text-3xl">SERHII<span class="text-main">CHO</span></h1>
                 <typewriter />
             </div>
         </div>

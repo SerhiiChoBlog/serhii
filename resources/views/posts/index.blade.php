@@ -32,8 +32,8 @@
                     />
 
                     <div class="font-lato">
-                        <h2 class="text-xl text-font">{{ $post->title }}</h2>
-                        <p class="pb-3 pt-1 text-lg mt-1 font-light text-font-second">{{ $post->intro }}</p>
+                        <h2 class="text-2xl text-font font-arizona ">{{ $post->title }}</h2>
+                        <p class="pb-3 pt-1 text-lg font-light text-font-second">{{ $post->intro }}</p>
 
                         <div>
                             <x-post.tags :tags="$post->tags" class="text-xs">
