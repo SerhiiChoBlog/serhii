@@ -29,7 +29,7 @@
         <div class="py-[2rem] px-[1.5rem] lg:py-[5rem] lg:px-[1.5rem] container">
             <div class="grid grid-cols-1 lg:grid-cols-2 relative">
                 <div class="flex items-left justify-center flex-col text-[.7rem] lg:text-[1rem] px-4">
-                    <h1 style="font-size: {{ $title_font_size }}" class="leading-[1.1] font-light text-center lg:text-left">
+                    <h1 style="font-size: {{ $title_font_size }}" class="leading-[1.1] font-light text-center lg:text-left font-arizona">
                         {{ $post['title'] }}
                     </h1>
 

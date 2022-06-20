@@ -127,7 +127,7 @@ onMounted(() => {
 
                     <div class="divide-y divide-border">
                         <div v-for="section in sections" :key="section.title" class="py-5 first:pt-0 last:pb-0">
-                            <h3 class="text-center text-2xl mb-3">{{ section.title }}</h3>
+                            <h3 class="text-center text-2xl mb-3 font-arizona font-bold">{{ section.title }}</h3>
                             <p v-html="section.content" class="text-center text-lg"></p>
 
                             <div class="flex justify-center gap-x-5 mt-5">
