@@ -51,7 +51,13 @@
                                 Like every other person, I hate slow web apps and sites. In web development, my priorities
                                 are <strong>code readability</strong> and <strong>performance</strong>. You can check my
                                 post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites">"5 techniques that
-                                    I use for building fast websites"</a> where I'm talking about it in details.
+                                I use for building fast websites"</a> where I'm talking about it in details.
+                            </p>
+
+                            <p>
+                                In general, the code should be tested to make sure that behavior of the program works
+                                as expected. The code should be clean and readable, so that others can read and
+                                understand it.
                             </p>
 
                             <h2>Blog</h2>
