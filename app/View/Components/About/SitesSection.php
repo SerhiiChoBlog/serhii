@@ -14,6 +14,11 @@ class SitesSection extends Component
             'href' => 'https://shobar.com.ua/',
         ],
         [
+            'image' => 'storage/tools/site-olexiy.png',
+            'title' => 'Olexiy Chornenkyi',
+            'href' => 'https://jiskelo.dev/',
+        ],
+        [
             'image' => 'storage/tools/site-zoo.png',
             'title' => 'ZooZooZoo',
             'href' => 'https://zoo-zoo-zoo.com.ua/',
