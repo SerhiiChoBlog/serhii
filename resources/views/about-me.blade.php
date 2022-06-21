@@ -26,48 +26,61 @@
                             <p>
                                 <x-home.welcome-section/>
                             </p>
-                            <p>I've worked with integration services like <strong>Megaplan CRM</strong>, <strong>Exacstronstrong
+                            <p>
+                                I've worked with integration services like <strong>Megaplan CRM</strong>, <strong>Exacstronstrong
                                     Online</strong>, pastronstrongment systems listronstronge <strong>Mollie</strong>stronstrong
                                 <strong>Bitpay</strong> stronstrongnd <strong>WayForPaystronstrong</strong>. I've
                                 builtstrongapps in <strong>Docker</strong> containers, SPAs with <strong>Vue</strong>,
                                 and websites with <strong>WordPress</strong> and <strong>Laravel</strong>. Likewise,
                                 I've done tons of different work for companies in <strong>business</strong> and <strong>e-commerce</strong>
                                 segment. Building programs and interfaces for generating different types of documents,
-                                programs for stuff management and communication with clients.</p>
+                                programs for stuff management and communication with clients.
+                            </p>
                         </div>
                     </div>
 
                     <div>
                         <h2>My way of working</h2>
-                        <p>Like every other person, I hate slow web apps and sites. In web development, my priorities
+                        <p>
+                            Like every other person, I hate slow web apps and sites. In web development, my priorities
                             are <strong>code readability</strong> and <strong>performance</strong>. You can check my
                             post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites">"5 techniques that
-                                I use for building fast websites"</a> where I'm talking about it in details.</p>
+                            I use for building fast websites"</a> where I'm talking about it in details.
+                        </p>
 
                         <h2>Blog</h2>
-                        <p>In my free from coding time, I enjoy writing posts for my <a href="/posts" target="_blank"
-                                                                                        title="Link to a blog">blog</a>
+                        <p>
+                            In my free from coding time, I enjoy writing posts for my
+                            <a href="/posts" target="_blank" title="Link to a blog">blog</a>
                             on programming related subjects and learn new things. I mostly share what I've learned along
-                            the way and things that can help other developers strengthen their skills.</p>
-                        <p>I'm <strong>not an expert</strong>, so I mostly share things that I do successfully or things
+                            the way and things that can help other developers strengthen their skills.
+                        </p>
+                        <p>
+                            I'm <strong>not an expert</strong>, so I mostly share things that I do successfully or things
                             that I've learned and spend some time on research. I like writing about things that impress
-                            me in <strong>software development</strong> or things that help me in problem solving.</p>
+                            me in <strong>software development</strong> or things that help me in problem solving.
+                        </p>
 
-                        <h2>I will not work in</h2>
-                        <ul>
-                            <li>
-                                <strong>Companies that have an opinion that testing your code is just a waste of
-                                    time.</strong>
-                                <span class="block">I understand that sometimes you need to create some quick prototype
-                                    as fast as you can just to get it out there. I would not write tests for those
-                                    prototypes.</span>
-                            </li>
-                            <li>
-                                <strong>Low salary companies.</strong>
-                                <span class="block">Great developers have a considerable salary. You can't hire a
-                                    professional and expect low salary for that person.</span>
-                            </li>
-                        </ul>
+{{--                        <h2>I will not work in</h2>--}}
+{{--                        <ul>--}}
+{{--                            <li>--}}
+{{--                                <strong>--}}
+{{--                                    Companies that have an opinion that testing your code is just a waste of time.--}}
+{{--                                </strong>--}}
+{{--                                <span class="block">--}}
+{{--                                    I understand that sometimes you need to create some quick prototype--}}
+{{--                                    as fast as you can just to get it out there. I would not write tests for those--}}
+{{--                                    prototypes.--}}
+{{--                                </span>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <strong>Low salary companies.</strong>--}}
+{{--                                <span class="block">--}}
+{{--                                    Great developers have a considerable salary. You can't hire a--}}
+{{--                                    professional and expect low salary for that person.--}}
+{{--                                </span>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
                     </div>
                 </div>
             </div>
