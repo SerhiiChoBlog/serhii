@@ -36,6 +36,10 @@
                                 segment. Building programs and interfaces for generating different types of documents,
                                 programs for stuff management and communication with clients.
                             </p>
+
+                            <p>
+                                I'm looking forward to work in company from EU, US, Canada or Australia by a contract
+                            </p>
                         </div>
                     </div>
 
@@ -60,27 +64,6 @@
                             that I've learned and spend some time on research. I like writing about things that impress
                             me in <strong>software development</strong> or things that help me in problem solving.
                         </p>
-
-{{--                        <h2>I will not work in</h2>--}}
-{{--                        <ul>--}}
-{{--                            <li>--}}
-{{--                                <strong>--}}
-{{--                                    Companies that have an opinion that testing your code is just a waste of time.--}}
-{{--                                </strong>--}}
-{{--                                <span class="block">--}}
-{{--                                    I understand that sometimes you need to create some quick prototype--}}
-{{--                                    as fast as you can just to get it out there. I would not write tests for those--}}
-{{--                                    prototypes.--}}
-{{--                                </span>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <strong>Low salary companies.</strong>--}}
-{{--                                <span class="block">--}}
-{{--                                    Great developers have a considerable salary. You can't hire a--}}
-{{--                                    professional and expect low salary for that person.--}}
-{{--                                </span>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
                     </div>
                 </div>
             </div>
