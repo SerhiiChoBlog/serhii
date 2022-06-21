@@ -5,14 +5,24 @@
 <div>
     <div class="flex flex-col lg:flex-row items-center justify-center py-7">
         @foreach ($sites as $site)
-            <div class="skew-y-[-7deg] mb-5 lg:mb-0 lg:transition-transform lg:ml-[-80px] first:ml-0 hover:translate-y-[-10px] duration-300">
+            <div class="
+            skew-y-[-7deg] mb-5 lg:mb-0 lg:transition-transform lg:ml-[-100px] first:ml-0 hover:translate-y-[-10px]
+            duration-300 relative
+            before:left-0 before:absolute before:right-0 before:h-3 before:bg-[#282829] before:top-[-11px] before:rounded-t-lg
+            ">
                 <a href="{{ $site['href'] }}" target="_blank" class="max-w-[350px] block">
+                    <img src="{{ asset('storage/tools/mac-buttons.png') }}"
+                        class="absolute top-[-8px] left-2"
+                        width="18"
+                        alt="mac buttons"
+                    >
+
                     <img data-src="{{ asset($site['image']) }}"
                         alt="{{ $site['title'] }}"
-                        class="smooth-loader rounded-lg shadow-[-19px_29px_13px_rgba(0,0,0,.1)]"
+                        class="smooth-loader rounded-b-lg shadow-[-19px_10px_5px_rgba(0,0,0,.05)]"
                     />
 
-                    <span class="block text-font-second text-xl text-center drop-shadow-[-7px_7px_6px_rgba(0,0,0,.4)] mt-3 font-light">
+                    <span class="block text-font-second text-xl text-center drop-shadow-[-7px_7px_5px_rgba(0,0,0,.2)] mt-3 font-light font-arizona">
                         {{ $site['title'] }}
                     </span>
                 </a>
