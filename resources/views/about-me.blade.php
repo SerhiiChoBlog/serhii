@@ -33,11 +33,11 @@
                                 I've worked with integration services like <strong>Megaplan CRM</strong>,
                                 <strong>Exact Online</strong>, payment systems like <strong>Mollie</strong>,
                                 <strong>Bitpay</strong> and <strong>WayForPay</strong>. I've built apps in <strong>Docker</strong>
-                                containers, SPAs with <strong>Vue</strong>, and websites with <strong>WordPress</strong>
-                                and <strong>Laravel</strong>. Likewise, I've done tons of different work for companies
-                                in <strong>business</strong> and <strong>e-commerce</strong> segment. Building programs
-                                and interfaces for generating different types of documents, programs for stuff management
-                                and communication with clients.
+                                containers, SPAs with <strong>Vue</strong>, <strong>React</strong>, and websites with
+                                <strong>WordPress</strong> and <strong>Laravel</strong>. Likewise, I've done tons of
+                                different work for companies in <strong>business</strong> and <strong>e-commerce</strong>
+                                segment. Building programs and interfaces for generating different types of documents,
+                                programs for stuff management, communication with clients, chat bots and tons of web API.
                             </p>
 
                             <p>
