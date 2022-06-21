@@ -43,9 +43,6 @@
                             are <strong>code readability</strong> and <strong>performance</strong>. You can check my
                             post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites">"5 techniques that
                                 I use for building fast websites"</a> where I'm talking about it in details.</p>
-                        <p>I'm a big believer in tests, and long-term maintainability of the software. If you are going
-                            to contact me, include 🤓 emoji at the beginning of your message. That way, I'll know that
-                            you are actually interested working with me.</p>
 
                         <h2>Blog</h2>
                         <p>In my free from coding time, I enjoy writing posts for my <a href="/posts" target="_blank"
