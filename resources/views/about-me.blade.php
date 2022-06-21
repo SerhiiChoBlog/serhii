@@ -23,9 +23,12 @@
                             />
                         </div>
                         <div>
+                            <h2>Intro</h2>
+
                             <p>
                                 <x-home.welcome-section/>
                             </p>
+
                             <p>
                                 I've worked with integration services like <strong>Megaplan CRM</strong>, <strong>Exacstronstrong
                                     Online</strong>, pastronstrongment systems listronstronge <strong>Mollie</strong>stronstrong
@@ -38,32 +41,34 @@
                             </p>
 
                             <p>
-                                I'm looking forward to work in company from EU, US, Canada or Australia by a contract
+                                I'm looking forward to work in company from <strong>EU, US, Canada or Australia</strong> by a contract.
+                                I'll be comfortable to work remotely <strong>120 hours per month</strong> in non outsource company.
+                            </p>
+
+                            <h2>My way of working</h2>
+
+                            <p>
+                                Like every other person, I hate slow web apps and sites. In web development, my priorities
+                                are <strong>code readability</strong> and <strong>performance</strong>. You can check my
+                                post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites">"5 techniques that
+                                    I use for building fast websites"</a> where I'm talking about it in details.
+                            </p>
+
+                            <h2>Blog</h2>
+
+                            <p>
+                                In my free from coding time, I enjoy writing posts for my
+                                <a href="/posts" target="_blank" title="Link to a blog">blog</a>
+                                on programming related subjects and learn new things. I mostly share what I've learned along
+                                the way and things that can help other developers strengthen their skills.
+                            </p>
+
+                            <p>
+                                I'm <strong>not an expert</strong>, so I mostly share things that I do successfully or things
+                                that I've learned and spend some time on research. I like writing about things that impress
+                                me in <strong>software development</strong> or things that help me in problem solving.
                             </p>
                         </div>
-                    </div>
-
-                    <div>
-                        <h2>My way of working</h2>
-                        <p>
-                            Like every other person, I hate slow web apps and sites. In web development, my priorities
-                            are <strong>code readability</strong> and <strong>performance</strong>. You can check my
-                            post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites">"5 techniques that
-                            I use for building fast websites"</a> where I'm talking about it in details.
-                        </p>
-
-                        <h2>Blog</h2>
-                        <p>
-                            In my free from coding time, I enjoy writing posts for my
-                            <a href="/posts" target="_blank" title="Link to a blog">blog</a>
-                            on programming related subjects and learn new things. I mostly share what I've learned along
-                            the way and things that can help other developers strengthen their skills.
-                        </p>
-                        <p>
-                            I'm <strong>not an expert</strong>, so I mostly share things that I do successfully or things
-                            that I've learned and spend some time on research. I like writing about things that impress
-                            me in <strong>software development</strong> or things that help me in problem solving.
-                        </p>
                     </div>
                 </div>
             </div>
