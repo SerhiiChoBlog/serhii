@@ -16,11 +16,7 @@
                 <div>
                     <div class="grid grid-cols-1 gap-x-6 lg:grid-cols-[25%_1fr]">
                         <div class="relative">
-                            <img src="{{ asset('storage/serhii.jpg') }}"
-                                 alt="Serhii Cho"
-                                 class="my-0 my-auto rounded-lg shadow-lg sticky top-6 mb-6 mt-6 mx-auto"
-                                 width="250"
-                            />
+                            <avatar />
                         </div>
                         <div>
                             <h2>Experience</h2>
