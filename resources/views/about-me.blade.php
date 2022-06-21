@@ -23,21 +23,21 @@
                             />
                         </div>
                         <div>
-                            <h2>Intro</h2>
+                            <h2>Experience</h2>
 
                             <p>
                                 <x-home.welcome-section/>
                             </p>
 
                             <p>
-                                I've worked with integration services like <strong>Megaplan CRM</strong>, <strong>Exacstronstrong
-                                    Online</strong>, pastronstrongment systems listronstronge <strong>Mollie</strong>stronstrong
-                                <strong>Bitpay</strong> stronstrongnd <strong>WayForPaystronstrong</strong>. I've
-                                builtstrongapps in <strong>Docker</strong> containers, SPAs with <strong>Vue</strong>,
-                                and websites with <strong>WordPress</strong> and <strong>Laravel</strong>. Likewise,
-                                I've done tons of different work for companies in <strong>business</strong> and <strong>e-commerce</strong>
-                                segment. Building programs and interfaces for generating different types of documents,
-                                programs for stuff management and communication with clients.
+                                I've worked with integration services like <strong>Megaplan CRM</strong>,
+                                <strong>Exact Online</strong>, payment systems like <strong>Mollie</strong>,
+                                <strong>Bitpay</strong> and <strong>WayForPay</strong>. I've built apps in <strong>Docker</strong>
+                                containers, SPAs with <strong>Vue</strong>, and websites with <strong>WordPress</strong>
+                                and <strong>Laravel</strong>. Likewise, I've done tons of different work for companies
+                                in <strong>business</strong> and <strong>e-commerce</strong> segment. Building programs
+                                and interfaces for generating different types of documents, programs for stuff management
+                                and communication with clients.
                             </p>
 
                             <p>
