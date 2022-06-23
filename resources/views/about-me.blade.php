@@ -38,7 +38,8 @@
 
                             <p>
                                 I'm looking forward to work in company from 🇪🇺 🇺🇸 🇨🇦 🇦🇺 🏴󠁧󠁢󠁥󠁮󠁧󠁿 by a contract.
-                                I'll be comfortable to work remotely <strong>120 hours per month</strong> in non outsource company.
+                                I'll be comfortable to work remotely <strong>120 hours per month</strong> in non
+                                outsource company. I'm also ready to relocate from Ukraine and work in the office.
                             </p>
 
                             <h2>My way of working</h2>
