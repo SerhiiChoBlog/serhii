@@ -37,7 +37,7 @@
                             </p>
 
                             <p>
-                                I'm looking forward to work in company from <strong>EU, US, Canada or Australia</strong> by a contract.
+                                I'm looking forward to work in company from 🇪🇺 🇺🇸 🇨🇦 🇦🇺 🏴󠁧󠁢󠁥󠁮󠁧󠁿 by a contract.
                                 I'll be comfortable to work remotely <strong>120 hours per month</strong> in non outsource company.
                             </p>
 
