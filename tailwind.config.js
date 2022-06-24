@@ -30,7 +30,7 @@ module.exports = {
             blink: 'blink 800ms linear infinite',
         },
         backgroundImage: {
-           'home-hero': 'url(/storage/heros/home-hero.jpg)',
+           'home-hero': 'url(/storage/heros/home-hero.png)',
             'mac-buttons': 'url(/storage/tools/mac-buttons.png)',
         },
         fontFamily: {

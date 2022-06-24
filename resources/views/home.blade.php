@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="bg-[#363636] bg-home-hero bg-no-repeat bg-center bg-cover flex flex-col justify-between">
+    <section class="bg-home-hero bg-no-repeat bg-center bg-cover flex flex-col justify-between relative">
+        <div class="absolute left-0 right-0 top-0 bottom-0 bg-black/70"></div>
+
         <div class="text-white min-h-0 lg:min-h-[3.25rem]">
             <x-navbar />
         </div>
 
-        <div class="py-12 px-5 lg:py-[18rem] lg:px-[6rem]">
+        <div class="py-12 px-5 lg:py-[18rem] lg:px-[6rem] relative">
             <div class="text-center text-white">
                 <h1 class="text-xl font-arizona lg:text-3xl">SERHII<span class="text-main">CHO</span></h1>
                 <typewriter />
