@@ -14,6 +14,7 @@
 <body class="text-font font-lato bg-page {{ request()->cookie('theme') }}">
     <div id="app">
         @yield('content')
+        <to-top></to-top>
     </div>
 
     <script src="{{ App\FileVersion::append('/js/app.js') }}"></script>

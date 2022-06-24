@@ -8,6 +8,7 @@ import smoothLoader from 'smooth-loader'
 import insertTagsForHighlightJs from './modules/insertTagsForHighlightJs'
 import ThemeSwitch from './components/ThemeSwitch.vue'
 import Avatar from './components/Avatar.vue'
+import ToTop from './components/ToTop.vue'
 
 const app = createApp({
     components: {
@@ -18,6 +19,7 @@ const app = createApp({
         Chapters,
         ThemeSwitch,
         Avatar,
+        ToTop,
     },
 
     setup() {
