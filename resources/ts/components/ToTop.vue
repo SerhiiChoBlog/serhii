@@ -42,7 +42,7 @@ function showHideButton(): void {
 <template>
     <button type="button"
         @click="goToTopHandler"
-        class="pointer-events-none opacity-0 fixed bottom-6 right-6 z-20 bg-main p-2 rounded-full shadow-md transition-all duration-500 hover:scale-110"
+        class="pointer-events-none opacity-0 fixed bottom-2 right-2 md:bottom-6 md:right-6 z-20 bg-main p-2 rounded-full shadow-md transition-all duration-500 hover:scale-110"
         ref="btn"
     >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
