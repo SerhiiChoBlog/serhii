@@ -8,7 +8,7 @@ export default (el: HTMLElement | null): boolean => {
     let width = el.offsetWidth
     let height = el.offsetHeight
 
-    while(el && el.offsetParent) {
+    while (el && el.offsetParent) {
         el = el.offsetParent as HTMLElement
         top += el.offsetTop
         left += el.offsetLeft

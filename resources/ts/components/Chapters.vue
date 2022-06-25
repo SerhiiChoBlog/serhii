@@ -15,18 +15,19 @@ onMounted(() => {
 
     headers.value.forEach(elem => {
         handleChapters(elem)
-        markVisibleChapters(elem)
+        window.addEventListener('scroll', () => markVisibleChapters(elem))
     })
 })
 
 function markVisibleChapters(elem: HTMLElement): void {
-    window.addEventListener('scroll', () => {
-        const elemIsVisible = isElementInViewport(elem)
+    const elemIsVisible = isElementInViewport(elem)
 
-        if (elemIsVisible) {
-            const res = chapters.value.find(chapter => console.log(chapter))
-        }
-    })
+    if (elemIsVisible) {
+        chapters.value.map(chapter => {
+            chapter.isActive = chapter.title === elem.innerText
+            return chapter
+        })
+    }
 }
 
 function handleChapters(elem: HTMLElement): void {
@@ -41,11 +42,6 @@ function scrollToChapter(selectedChapter: Chapter): void {
         return
     }
 
-    chapters.value.map(chapter => {
-        chapter.isActive = chapter.title === selectedChapter.title
-        return chapter
-    })
-
     const neededElement = Array.from(headers.value).find(header => {
         return selectedChapter.title === header.innerText
     })!
@@ -55,11 +51,11 @@ function scrollToChapter(selectedChapter: Chapter): void {
 </script>
 
 <template>
-    <div>
+    <div class="space-y-2">
         <a v-for="chapter in chapters"
            :key="chapter"
-           class="border-b border-border cursor-pointer relative block flex justify-start text-font-second pl-7 pr-5 py-2 transition-colors hover:bg-page-second select-none last:border-none"
-           :class="chapter.isActive ? '!text-main font-bold' : ''"
+           class="shadow-sm border rounded-full cursor-pointer relative block flex justify-start text-font-second px-5 py-2 transition-colors hover:shadow-md select-none transition-all"
+           :class="{'!bg-main !text-white ': chapter.isActive}"
            @click="scrollToChapter(chapter)"
         >
             <span class="${numberClasses}"></span> <span>{{ chapter.title }}</span>
