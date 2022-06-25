@@ -8,7 +8,7 @@
         <div class="h-full relative">
             <nav class="sticky h-screen overflow-y-scroll top-3 px-4">
                 <x-post.sidebar-title>Chapters</x-post.sidebar-title>
-                <chapters />
+                <chapters slug="{{ $post['slug'] }}" />
             </nav>
         </div>
     </div>

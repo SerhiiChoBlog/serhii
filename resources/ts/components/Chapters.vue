@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import isElementInViewport from '../modules/isElementInViewport'
+import { Chapter } from '../types/types'
 
-interface Chapter {
-    title: string
-    isActive: boolean
+interface Props {
+    slug: string
 }
+
+const { slug } = defineProps<Props>()
 
 const headers = ref<NodeListOf<HTMLElement> | null>(null)
 const chapters = ref<Chapter[]>([])
@@ -22,12 +24,27 @@ onMounted(() => {
 function markVisibleChapters(elem: HTMLElement): void {
     const elemIsVisible = isElementInViewport(elem)
 
-    if (elemIsVisible) {
-        chapters.value.map(chapter => {
-            chapter.isActive = chapter.title === elem.innerText
-            return chapter
-        })
+    if (!elemIsVisible) {
+        return
     }
+
+    const currentChapter = chapters.value.find(chap => chap.title === elem.innerText)
+
+    if (!currentChapter) {
+        console.error(`Can't find chapter with title ${elem.innerText}`)
+        return
+    }
+
+    chapters.value.map(chapter => {
+        chapter.isActive = chapter.title === elem.innerText
+        return chapter
+    })
+
+    saveCurrentChapter(currentChapter)
+}
+
+function saveCurrentChapter(chapter: Chapter): void {
+    localStorage.setItem(`chapter:${slug}`, chapter.title)
 }
 
 function handleChapters(elem: HTMLElement): void {
