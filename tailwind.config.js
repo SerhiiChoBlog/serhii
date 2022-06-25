@@ -25,6 +25,7 @@ module.exports = {
             'main': 'var(--color-main)',
             'main-hover': 'var(--color-main-hover)',
             'main-dark': 'var(--color-main-dark)',
+            'code': 'var(--color-code)',
         },
         animation: {
             blink: 'blink 800ms linear infinite',
