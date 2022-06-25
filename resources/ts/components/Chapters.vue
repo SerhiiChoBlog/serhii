@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue'
 import isElementInViewport from '../modules/isElementInViewport'
 import { Chapter } from '../types/types'
-import screenIs from '../modules/screenIs'
 import FloppyIcon from './Icons/Floppy.vue'
 
 interface Props {
@@ -38,10 +37,6 @@ function markSavedChapter(): void {
 }
 
 function markVisibleChapters(elem: HTMLElement): void {
-    if (screenIs('lg')) {
-        return
-    }
-
     const elemIsVisible = isElementInViewport(elem)
 
     if (!elemIsVisible) {
