@@ -19515,10 +19515,16 @@ exports["default"] = (0, vue_1.defineComponent)({
 /*!****************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/Chapters.vue?vue&type=script&setup=true&lang=ts ***!
   \****************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -19528,38 +19534,53 @@ var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 
 var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var isElementInViewport_1 = __importDefault(__webpack_require__(/*! ../modules/isElementInViewport */ "./resources/ts/modules/isElementInViewport.ts"));
+
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Chapters',
   setup: function setup(__props, _a) {
     var expose = _a.expose;
     expose();
+    var headers = (0, vue_2.ref)(null);
     var chapters = (0, vue_2.ref)([]);
-    var chaptersElements = [];
-    (0, vue_2.onMounted)(handleChapters);
+    (0, vue_2.onMounted)(function () {
+      headers.value = document.querySelectorAll('#post-content h2');
+      headers.value.forEach(function (elem) {
+        handleChapters(elem);
+        markVisibleChapters(elem);
+      });
+    });
 
-    function handleChapters() {
-      var postContentElements = document.querySelectorAll('#post-content h2');
-      postContentElements.forEach(function (elem) {
-        chaptersElements.push(elem);
-        var chapterText = elem.innerHTML;
-        var numberRegex = /^\d+/;
+    function markVisibleChapters(elem) {
+      window.addEventListener('scroll', function () {
+        var elemIsVisible = (0, isElementInViewport_1["default"])(elem);
 
-        if (numberRegex.test(chapterText)) {
-          var chapterNum = chapterText.match(numberRegex);
-          chapterText = chapterText.replace(/^\d+\. /, '');
-          chapterText = chapterNum[0].length === 1 ? "<span class=\"list-number-style\">".concat(chapterNum[0], "</span> <span>").concat(chapterText, "</span>") : "<span class=\"list-number-style long-number\">".concat(chapterNum[0], "</span> <span>").concat(chapterText, "</span>");
-        } else {
-          chapterText = "\n                <span class=\"bg-gray-400 w-[4px] h-[4px] rounded-full absolute left-[8px] top-1/2 -translate-y-1/2\"></span>\n                <span>".concat(chapterText, "</span>\n            ");
+        if (elemIsVisible) {
+          var res = chapters.value.find(function (chapter) {
+            return console.log(chapter);
+          });
         }
-
-        chapters.value.push(chapterText);
       });
     }
 
-    function scrollToChapter(chapter) {
-      var neededElement = chaptersElements.find(function (el) {
-        var elementHtml = el.innerHTML.replace(/^\d+\. /, '');
-        return chapter.includes(elementHtml);
+    function handleChapters(elem) {
+      chapters.value.push({
+        title: elem.innerText,
+        isActive: false
+      });
+    }
+
+    function scrollToChapter(selectedChapter) {
+      if (!headers.value) {
+        return;
+      }
+
+      chapters.value.map(function (chapter) {
+        chapter.isActive = chapter.title === selectedChapter.title;
+        return chapter;
+      });
+      var neededElement = Array.from(headers.value).find(function (header) {
+        return selectedChapter.title === header.innerText;
       });
       neededElement.scrollIntoView({
         behavior: 'smooth'
@@ -19567,8 +19588,9 @@ exports["default"] = (0, vue_1.defineComponent)({
     }
 
     var __returned__ = {
+      headers: headers,
       chapters: chapters,
-      chaptersElements: chaptersElements,
+      markVisibleChapters: markVisibleChapters,
       handleChapters: handleChapters,
       scrollToChapter: scrollToChapter
     };
@@ -20063,18 +20085,23 @@ exports.render = void 0;
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = ["innerHTML", "onClick"];
+var _hoisted_1 = ["onClick"];
+
+var _hoisted_2 = (0, vue_1.createElementVNode)("span", {
+  "class": "${numberClasses}"
+}, null, -1);
+
+var _hoisted_3 = (0, vue_1.createTextVNode)();
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", null, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.chapters, function (chapter) {
     return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
       key: chapter,
-      "class": "border-b border-border cursor-pointer relative block flex justify-start text-font-second pl-7 pr-5 py-2 transition-colors hover:bg-page-second select-none last:border-none",
-      innerHTML: chapter,
+      "class": (0, vue_1.normalizeClass)(["border-b border-border cursor-pointer relative block flex justify-start text-font-second pl-7 pr-5 py-2 transition-colors hover:bg-page-second select-none last:border-none", chapter.isActive ? '!text-main font-bold' : '']),
       onClick: function onClick($event) {
         return $setup.scrollToChapter(chapter);
       }
-    }, null, 8, _hoisted_1);
+    }, [_hoisted_2, _hoisted_3, (0, vue_1.createElementVNode)("span", null, (0, vue_1.toDisplayString)(chapter.title), 1)], 10, _hoisted_1);
   }), 128))]);
 }
 
@@ -20559,6 +20586,40 @@ exports["default"] = function () {
       preElem.insertAdjacentHTML('beforeend', html);
     }
   });
+};
+
+/***/ }),
+
+/***/ "./resources/ts/modules/isElementInViewport.ts":
+/*!*****************************************************!*\
+  !*** ./resources/ts/modules/isElementInViewport.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+exports["default"] = function (el) {
+  if (!el) {
+    return false;
+  }
+
+  var top = el.offsetTop;
+  var left = el.offsetLeft;
+  var width = el.offsetWidth;
+  var height = el.offsetHeight;
+
+  while (el && el.offsetParent) {
+    el = el.offsetParent;
+    top += el.offsetTop;
+    left += el.offsetLeft;
+  }
+
+  return top >= window.scrollY && left >= window.scrollX && top + height <= window.scrollY + window.innerHeight && left + width <= window.scrollX + window.innerWidth;
 };
 
 /***/ }),
@@ -21365,11 +21426,13 @@ if (false) {}
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": () => (/* reexport safe */ _Chapters_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Chapters_vue_vue_type_template_id_6a21e132_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Chapters.vue?vue&type=template&id=6a21e132&ts=true */ "./resources/ts/components/Chapters.vue?vue&type=template&id=6a21e132&ts=true");
 /* harmony import */ var _Chapters_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Chapters.vue?vue&type=script&setup=true&lang=ts */ "./resources/ts/components/Chapters.vue?vue&type=script&setup=true&lang=ts");
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _Chapters_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _Chapters_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 /* harmony import */ var _Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
@@ -21594,10 +21657,13 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Chapters_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule),
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Chapters_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport default from dynamic */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Chapters_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0___default.a)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Chapters_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Chapters.vue?vue&type=script&setup=true&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/Chapters.vue?vue&type=script&setup=true&lang=ts");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Chapters_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Chapters_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Chapters_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Chapters_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
  
 
 /***/ }),
