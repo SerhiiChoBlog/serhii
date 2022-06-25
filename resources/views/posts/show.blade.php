@@ -97,7 +97,15 @@
                 </nav>
             </div>
 
-            <x-post.sidebar :post="$post" :posts="$posts" />
+            <div class="pt-10 lg:pt-16 h-full">
+                <div class="hidden lg:block">
+                    <nav class="min-h-[83px] mb-7">
+                        <x-post.sidebar-title>Share this post</x-post.sidebar-title>
+                        <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
+                    </nav>
+                </div>
+                <chapters slug="{{ $post['slug'] }}" />
+            </div>
         </div>
     </div>
 @endsection

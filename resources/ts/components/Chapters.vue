@@ -92,18 +92,28 @@ function getChapterStyles(chapter: Chapter): string {
 </script>
 
 <template>
-    <div class="space-y-2">
-        <a v-for="chapter in chapters"
-           :key="chapter"
-           class="border border-border rounded-full cursor-pointer relative block flex justify-start text-font-second px-5 py-2 transition-colors hover:bg-page-second select-none transition-colors"
-           :class="getChapterStyles(chapter)"
-           @click="scrollToChapter(chapter.title)"
-        >
-            <span class="${numberClasses}"></span> <span>{{ chapter.title }}</span>
+    <div class="h-[94%] lg:h-full fixed bg-page w-full max-w-sm left-1/2 -translate-x-1/2 border lg:border-none top-[3%] lg:top-0 bottom-[3%] p-4 lg:p-0 rounded-2xl shadow-xl lg:shadow-none lg:relative">
+        <nav class="sticky h-screen overflow-y-scroll top-3">
+            <p class="mb-5">
+                <span class="text-font-second text-2xl font-bold font-arizona font-bold">
+                    Chapters
+                </span>
+            </p>
 
-            <div v-if="chapter.isSaved" class="absolute right-4 top-1/2 -translate-y-1/2">
-                <FloppyIcon class="w-4 h-4"  />
+            <div class="space-y-2">
+                <a v-for="chapter in chapters"
+                   :key="chapter"
+                   class="border border-border rounded-full cursor-pointer relative block flex justify-start text-font-second px-5 py-2 transition-colors hover:bg-page-second select-none transition-colors"
+                   :class="getChapterStyles(chapter)"
+                   @click="scrollToChapter(chapter.title)"
+                >
+                    <span>{{ chapter.title }}</span>
+
+                    <div v-if="chapter.isSaved" class="absolute right-4 top-1/2 -translate-y-1/2">
+                        <FloppyIcon class="w-4 h-4"  />
+                    </div>
+                </a>
             </div>
-        </a>
+        </nav>
     </div>
 </template>
