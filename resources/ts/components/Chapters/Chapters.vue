@@ -13,6 +13,7 @@ const { slug } = defineProps<Props>()
 const headers = ref<NodeListOf<HTMLElement> | null>(null)
 const chapters = ref<ChapterType[]>([])
 const currentChapter = ref<ChapterType | null>(null)
+const showChapters = ref(false)
 
 onMounted(() => {
     headers.value = document.querySelectorAll<HTMLElement>('#post-content h2')
@@ -73,14 +74,17 @@ function handleChapters(elem: HTMLElement): void {
 </script>
 
 <template>
-    <div class="h-[94%] lg:h-full fixed bg-page w-full max-w-sm left-1/2 -translate-x-1/2 border lg:border-none top-[3%] lg:top-0 bottom-[3%] p-4 lg:p-0 rounded-2xl shadow-xl lg:shadow-none lg:relative">
-        <button v-if="currentChapter"
-                class="flex lg:hidden items-center gap-x-1 justify-center absolute top-2 bg-white right-0 left-0 px-4 rounded-t-full z-10"
-        >
-            <ChevronDown class="w-6 h-6 inline-block" />
-            <span class="tracking-wide">{{ currentChapter.title }}</span>
-        </button>
+    <button v-if="currentChapter"
+        class="flex lg:hidden items-center shadow-md gap-x-1 justify-center fixed border top-1 bg-white w-full py-1 px-4 rounded-full z-10 max-w-sm left-1/2 -translate-x-1/2"
+        @click="showChapters = !showChapters"
+    >
+        <ChevronDown class="w-6 h-6 inline-block" />
+        <span class="tracking-wide">{{ currentChapter.title }}</span>
+    </button>
 
+    <div v-if="showChapters"
+       class="h-[94%] lg:h-full fixed bg-page w-full max-w-sm left-1/2 -translate-x-1/2 border lg:border-none top-[3%] lg:top-0 bottom-[3%] p-4 lg:p-0 rounded-2xl shadow-xl lg:shadow-none lg:relative"
+    >
         <nav class="sticky h-screen overflow-y-scroll top-3 mt-7 text-center lg:text-left">
             <p class="mb-5">
                 <span class="text-font-second text-2xl font-bold font-arizona font-bold">
@@ -93,6 +97,7 @@ function handleChapters(elem: HTMLElement): void {
                     :key="chapter"
                     :chapter="chapter"
                     :headers="headers"
+                    @clicked="showChapters = false"
                 />
             </div>
         </nav>

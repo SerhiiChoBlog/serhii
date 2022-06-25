@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { headers, chapter } = defineProps<Props>()
+const emit = defineEmits(['clicked'])
 
 function scrollToChapter(title: string): void {
     if (!headers) {
@@ -17,6 +18,8 @@ function scrollToChapter(title: string): void {
     const neededElement = Array.from(headers).find(header => {
         return title === header.innerText
     })!
+
+    emit('clicked')
 
     neededElement.scrollIntoView({ behavior: 'smooth' })
 }
