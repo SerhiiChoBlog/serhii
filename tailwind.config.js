@@ -19,6 +19,7 @@ module.exports = {
             'border': 'var(--color-border)',
             'font': 'var(--color-font)',
             'font-second': 'var(--color-font-second)',
+            'font-second-hover': 'var(--color-font-second-hover)',
             'link': 'var(--color-link)',
             'link-hover': 'var(--color-link-hover)',
             'main-light': 'var(--color-main-light)',

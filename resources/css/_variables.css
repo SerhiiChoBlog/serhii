@@ -4,6 +4,7 @@
     --color-border: rgba(0, 0, 0, .1);
     --color-font: #353535;
     --color-font-second: #555;
+    --color-font-second-hover: #222;
     --color-link: #3298dc;
     --color-link-hover: #1f71a7;
     --color-main-light: #99c8e6;
@@ -18,6 +19,7 @@
     --color-border: rgba(255, 255, 255, .1);
     --color-font: #dedee3;
     --color-font-second: #a7a7a7;
+    --color-font-second-hover: #929292;
     --color-link: #93adde;
     --color-link-hover: #6881b1;
     --color-main-light: #99c8e6;
