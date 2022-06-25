@@ -70,12 +70,6 @@
     <div class="container pb-6">
         <div class="grid grid-cols-1 lg:grid-cols-[75%_25%] gap-x-5">
             <div>
-                {{-- Chapters for mobile --}}
-                <nav class="block lg:hidden mt-16">
-                    <x-post.sidebar-title>Chapters</x-post.sidebar-title>
-                    <chapters slug="{{ $post['slug'] }}" />
-                </nav>
-
                 <div class="post-content lg:prose-xl pr-2 lg:px-6 pt-8 lg:pt-10"
                     id="post-content"
                     v-pre
@@ -103,7 +97,15 @@
                 </nav>
             </div>
 
-            <x-post.sidebar :post="$post" :posts="$posts" />
+            <div class="pt-10 lg:pt-16 h-full">
+                <div class="hidden lg:block">
+                    <nav class="min-h-[83px] mb-7">
+                        <x-post.sidebar-title>Share this post</x-post.sidebar-title>
+                        <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
+                    </nav>
+                </div>
+                <chapters slug="{{ $post['slug'] }}" />
+            </div>
         </div>
     </div>
 @endsection
