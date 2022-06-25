@@ -15,12 +15,13 @@ function handleChapters(): void {
         const numberRegex = /^\d+/
 
         if (numberRegex.test(chapterText)) {
+            const numberClasses = 'text-gray-400 text-lg rounded-full absolute left-[8px] top-1/2 -translate-y-1/2 -translate-y-1/2'
             const chapterNum = chapterText.match(numberRegex)!
             chapterText = chapterText.replace(/^\d+\. /, '')
 
             chapterText = chapterNum[0].length === 1
-                ? `<span class="list-number-style">${chapterNum[0]}</span> <span>${chapterText}</span>`
-                : `<span class="list-number-style long-number">${chapterNum[0]}</span> <span>${chapterText}</span>`
+                ? `<span class="${numberClasses}">${chapterNum[0]}</span> <span>${chapterText}</span>`
+                : `<span class="-ml-1 ${numberClasses}">${chapterNum[0]}</span> <span>${chapterText}</span>`
         } else {
             chapterText = `
                 <span class="bg-gray-400 w-[4px] h-[4px] rounded-full absolute left-[8px] top-1/2 -translate-y-1/2"></span>
