@@ -80,11 +80,11 @@ function scrollToChapter(title: string): void {
 
 function getChapterStyles(chapter: Chapter): string {
     if (chapter.isActive) {
-        return 'bg-main !text-white !border-main hover:bg-main-hover'
+        return 'bg-main !text-white !border-main hover:!bg-main-hover'
     }
 
     if (chapter.isSaved) {
-        return 'bg-green-100 pr-12'
+        return 'bg-green-100 hover:!bg-green-200 pr-12'
     }
 
     return ''
