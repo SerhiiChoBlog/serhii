@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Chapter as ChapterType } from '../../types/types'
-import Floppy from '../Icons/Floppy.vue'
 
 interface Props {
     headers: NodeListOf<HTMLElement>
@@ -43,9 +42,5 @@ function getChapterStyles(chapter: ChapterType): string {
        @click="scrollToChapter(chapter.title)"
     >
         <span>{{ chapter.title }}</span>
-
-        <div v-if="chapter.isSaved" class="absolute right-4 top-1/2 -translate-y-1/2">
-            <Floppy class="w-4 h-4"  />
-        </div>
     </a>
 </template>

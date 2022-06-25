@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import isElementInViewport from '../../modules/isElementInViewport'
-import { Chapter as ChapterType } from '../../types/types'
+import type { Chapter as ChapterType, SavedChapter } from '../../types/types'
 import screenSizeIs from '../../modules/screenSizeIs'
 import Chapter from './Chapter.vue'
-import ChevronDown from '../Icons/ChevronDown.vue'
-import ChevronUp from '../Icons/ChevronUp.vue'
+import ChevronDownIcon from '../Icons/ChevronDownIcon.vue'
+import ChevronUpIcon from '../Icons/ChevronUpIcon.vue'
+import SaveIcon from '../Icons/SaveIcon.vue'
+import Download from '../Icons/Download.vue'
 
 interface Props {
     slug: string
@@ -14,6 +16,7 @@ interface Props {
 const { slug } = defineProps<Props>()
 const headers = ref<NodeListOf<HTMLElement> | null>(null)
 const chapters = ref<ChapterType[]>([])
+const hasSavedChapter = ref(false)
 const currentChapter = ref<ChapterType | null>(null)
 const showChapters = ref(false)
 
@@ -29,26 +32,30 @@ onMounted(() => {
         window.addEventListener('scroll', () => markVisibleChapters(elem))
     })
 
-    markSavedChapter()
+    checkIfHasSavedChapter()
     detectCurrentChapter()
 })
+
+function checkIfHasSavedChapter(): void {
+    const savedChapter = localStorage.getItem(`chapter:${slug}`) as string | null
+    hasSavedChapter.value = savedChapter !== null
+}
+
+function goToSavedChapter(): void {
+    const savedChapter = localStorage.getItem(`chapter:${slug}`) as string | null
+
+    if (!savedChapter) {
+        return
+    }
+
+    const chapter = JSON.parse(savedChapter) as SavedChapter
+
+    window.scrollTo({ top: chapter.top, behavior: 'smooth' })
+}
 
 function detectCurrentChapter(): void {
     const activeChapter = chapters.value.find(chapter => chapter.isActive)
     currentChapter.value = activeChapter || null
-}
-
-function markSavedChapter(): void {
-    const header = localStorage.getItem(`chapter:${slug}`) as string | null
-
-    if (!header) {
-        return
-    }
-
-    chapters.value.map(chapter => {
-        chapter.isSaved = chapter.title === header
-        return chapter
-    })
 }
 
 function markVisibleChapters(elem: HTMLElement): void {
@@ -64,9 +71,19 @@ function markVisibleChapters(elem: HTMLElement): void {
     })
 
     detectCurrentChapter()
+}
 
+function saveCurrentChapter(): void {
     if (currentChapter.value) {
-        localStorage.setItem(`chapter:${slug}`, currentChapter.value.title)
+        const chapter: SavedChapter = {
+            title: currentChapter.value.title,
+            top: window.scrollY,
+        }
+
+        localStorage.setItem(`chapter:${slug}`, JSON.stringify(chapter))
+        hasSavedChapter.value = true
+
+        window.alert('Saved!!')
     }
 }
 
@@ -90,8 +107,8 @@ function handleChapterClick(): void {
         class="flex lg:hidden items-center shadow-md gap-x-1 justify-center fixed border top-1 bg-white w-full py-1 px-4 rounded-full z-40 max-w-sm left-1/2 -translate-x-1/2"
         @click="showChapters = !showChapters"
     >
-        <ChevronUp v-if="showChapters" class="w-6 h-6 inline-block" />
-        <ChevronDown v-else class="w-6 h-6 inline-block" />
+        <ChevronUpIcon v-if="showChapters" class="w-6 h-6 inline-block" />
+        <ChevronDownIcon v-else class="w-6 h-6 inline-block" />
         <span class="tracking-wide">{{ currentChapter.title }}</span>
     </button>
 
@@ -107,11 +124,30 @@ function handleChapterClick(): void {
            class="h-[94%] lg:h-full fixed bg-page w-full max-w-sm left-1/2 -translate-x-1/2 border lg:border-none top-[3%] lg:top-0 bottom-[3%] p-4 lg:p-0 rounded-2xl shadow-xl lg:shadow-none lg:relative z-30"
         >
             <nav class="sticky h-screen overflow-y-scroll top-3 mt-7 text-center lg:text-left">
-                <p class="mb-5">
-                    <span class="text-font-second text-2xl font-bold font-arizona font-bold">
-                        Chapters
-                    </span>
-                </p>
+                <div class="mb-5">
+                    <div class="flex justify-between items-center">
+                        <span class="text-font-second text-2xl font-bold font-arizona font-bold">Chapters</span>
+
+                        <div class="flex gap-x-2 text-font-second hover:text-font-second-hover transition-colors">
+                            <button type="button"
+                                class="border border-border py-1 px-3 rounded-lg flex items-center"
+                                :class="{'opacity-50 cursor-not-allowed': !hasSavedChapter}"
+                                @click="goToSavedChapter"
+                            >
+                                <Download class="w-4" />
+                                <span class="ml-2 text-sm font-bold">LOAD</span>
+                            </button>
+
+                            <button type="button"
+                                 class="border border-border py-1 px-3 rounded-lg flex items-center"
+                                 @click="saveCurrentChapter"
+                            >
+                                <SaveIcon class="w-4" />
+                                <span class="ml-2 text-sm font-bold">SAVE</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="space-y-2">
                     <Chapter v-for="chapter in chapters"

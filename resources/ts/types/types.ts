@@ -3,3 +3,8 @@ export interface Chapter {
     isActive: boolean
     isSaved: boolean
 }
+
+export interface SavedChapter {
+    title: string
+    top: number
+}
