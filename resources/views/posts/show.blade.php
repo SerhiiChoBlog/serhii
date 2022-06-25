@@ -82,28 +82,28 @@
                 >{!! $post['content'] !!}</div>
 
                 <x-post.footer :post="$post" />
+
+                {{-- Other posts --}}
+                <nav>
+                    <x-post.sidebar-title>Other posts</x-post.sidebar-title>
+
+                    <div class="flex flex-col md:flex-row gap-2">
+                        @foreach ($posts as $other_post)
+                            <a href="{{ route('posts.show', $other_post) }}"
+                               class="p-2 transition-opacity hover:opacity-80 min-h-[160px]"
+                            >
+                                <img data-src="{{ asset($other_post->image_sm) }}"
+                                     alt="{{ $other_post->title }}"
+                                     class="smooth-loader rounded-lg shadow-lg"
+                                >
+                                <h4 class="text-lg leading-6 my-3">{{ $other_post->title }}</h4>
+                            </a>
+                        @endforeach
+                    </div>
+                </nav>
             </div>
 
             <x-post.sidebar :post="$post" :posts="$posts" />
         </div>
-
-        {{-- Other posts --}}
-        <nav class="mb-7">
-            <x-post.sidebar-title>Other posts</x-post.sidebar-title>
-
-            <div class="flex flex-col md:flex-row gap-2">
-                @foreach ($posts as $other_post)
-                    <a href="{{ route('posts.show', $other_post) }}"
-                       class="p-2 transition-opacity hover:opacity-80 min-h-[160px]"
-                    >
-                        <img data-src="{{ asset($other_post->image_sm) }}"
-                             alt="{{ $other_post->title }}"
-                             class="smooth-loader rounded-lg shadow-lg"
-                        >
-                        <h4 class="text-lg leading-6 my-3">{{ $other_post->title }}</h4>
-                    </a>
-                @endforeach
-            </div>
-        </nav>
     </div>
 @endsection
