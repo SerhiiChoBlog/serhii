@@ -95,7 +95,6 @@ function handleChapters(elem: HTMLElement): void {
     chapters.value.push({
         title: elem.innerText,
         isActive: false,
-        isSaved: false,
     })
 }
 
