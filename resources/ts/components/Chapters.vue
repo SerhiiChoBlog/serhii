@@ -14,8 +14,11 @@ function handleChapters(): void {
         let chapterText = elem.innerHTML
         const numberRegex = /^\d+/
 
+        const commonClasses = 'absolute left-[8px] top-1/2 -translate-y-1/2 rounded-full'
+        const numberClasses = `${commonClasses} text-gray-400 text-lg -translate-y-1/2`
+        const pointClasses = `${commonClasses} bg-gray-400 w-[4px] h-[4px]`
+
         if (numberRegex.test(chapterText)) {
-            const numberClasses = 'text-gray-400 text-lg rounded-full absolute left-[8px] top-1/2 -translate-y-1/2 -translate-y-1/2'
             const chapterNum = chapterText.match(numberRegex)!
             chapterText = chapterText.replace(/^\d+\. /, '')
 
@@ -24,7 +27,7 @@ function handleChapters(): void {
                 : `<span class="-ml-1 ${numberClasses}">${chapterNum[0]}</span> <span>${chapterText}</span>`
         } else {
             chapterText = `
-                <span class="bg-gray-400 w-[4px] h-[4px] rounded-full absolute left-[8px] top-1/2 -translate-y-1/2"></span>
+                <span class="${pointClasses}"></span>
                 <span>${chapterText}</span>
             `
         }
