@@ -2,13 +2,13 @@
 import { onMounted, ref } from 'vue'
 import isElementInViewport from '../modules/isElementInViewport'
 import { Chapter } from '../types/types'
+import screenIs from '../modules/screenIs'
 
 interface Props {
     slug: string
 }
 
 const { slug } = defineProps<Props>()
-
 const headers = ref<NodeListOf<HTMLElement> | null>(null)
 const chapters = ref<Chapter[]>([])
 
@@ -22,6 +22,10 @@ onMounted(() => {
 })
 
 function markVisibleChapters(elem: HTMLElement): void {
+    if (screenIs('lg')) {
+        return
+    }
+
     const elemIsVisible = isElementInViewport(elem)
 
     if (!elemIsVisible) {
@@ -40,11 +44,7 @@ function markVisibleChapters(elem: HTMLElement): void {
         return chapter
     })
 
-    saveCurrentChapter(currentChapter)
-}
-
-function saveCurrentChapter(chapter: Chapter): void {
-    localStorage.setItem(`chapter:${slug}`, chapter.title)
+    localStorage.setItem(`chapter:${slug}`, currentChapter.title)
 }
 
 function handleChapters(elem: HTMLElement): void {
