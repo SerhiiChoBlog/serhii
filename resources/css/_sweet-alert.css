@@ -1,0 +1,30 @@
+swal2-popup {
+    border-radius: 4px;
+}
+
+.swal2-html-container {
+    text-align: left !important;
+    font-size: 1.3em !important;
+    line-height: 1.4;
+}
+
+.swal2-actions button {
+    min-width: 110px;
+    padding: 10px 20px !important;
+    border-radius: 8px !important;
+    background-color: var(--color-main) !important;
+    transition: background-color 300ms;
+}
+
+.swal2-actions button:hover {
+    background-color: var(--color-main-hover) !important;
+}
+
+.swal2-actions button:focus {
+    box-shadow: none !important;
+}
+
+button.swal2-cancel {
+    background-color: #efefef !important;
+    color: #444;
+}

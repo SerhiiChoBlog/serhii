@@ -8,6 +8,7 @@ import ChevronDownIcon from '../Icons/ChevronDownIcon.vue'
 import ChevronUpIcon from '../Icons/ChevronUpIcon.vue'
 import SaveIcon from '../Icons/SaveIcon.vue'
 import Download from '../Icons/Download.vue'
+import sweetAlert from 'sweetalert2'
 
 interface Props {
     slug: string
@@ -83,7 +84,10 @@ function saveCurrentChapter(): void {
         localStorage.setItem(`chapter:${slug}`, JSON.stringify(chapter))
         hasSavedChapter.value = true
 
-        window.alert('Saved!!')
+        sweetAlert.fire({
+            title: 'Saved',
+            html: `You've saved current position in the post. You'll be able to go back to it any time`,
+        })
     }
 }
 

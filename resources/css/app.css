@@ -26,6 +26,7 @@
     @import "_material-theme.css";
     @import "_code.css";
     @import "_blockquote.css";
+    @import "_sweet-alert.css";
 
     .post-content,
     .project-content,
