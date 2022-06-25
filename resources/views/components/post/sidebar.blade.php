@@ -6,7 +6,7 @@
         </nav>
 
         <div class="h-full relative">
-            <nav class="sticky top-3">
+            <nav class="sticky h-screen overflow-y-scroll top-3 px-4">
                 <x-post.sidebar-title>Chapters</x-post.sidebar-title>
                 <chapters />
             </nav>
