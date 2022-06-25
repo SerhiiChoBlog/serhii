@@ -73,7 +73,7 @@
                 {{-- Chapters for mobile --}}
                 <nav class="block lg:hidden mt-16">
                     <x-post.sidebar-title>Chapters</x-post.sidebar-title>
-                    <chapters />
+                    <chapters slug="{{ $post['slug'] }}" />
                 </nav>
 
                 <div class="post-content lg:prose-xl pr-2 lg:px-6 pt-8 lg:pt-10"
