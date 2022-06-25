@@ -94,7 +94,7 @@ class Post extends Model
             ->where('is_published', true)
             ->where('id', '!=', $exclude_id)
             ->inRandomOrder()
-            ->limit(5)
+            ->limit(4)
             ->get()
             ->shuffle();
     }

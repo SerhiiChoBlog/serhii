@@ -35,7 +35,7 @@ function saveShare(social: string): void {
 </script>
 
 <template>
-    <div class="flex space-x-5">
+    <div class="flex gap-x-4">
         <a v-for="link in links"
             :key="link.title"
             :href="link.href"
@@ -45,7 +45,7 @@ function saveShare(social: string): void {
         >
             <img :src="`/storage/icons/${link.title}.png`"
                 :alt="link.title"
-                width="35"
+                width="30"
             >
         </a>
     </div>

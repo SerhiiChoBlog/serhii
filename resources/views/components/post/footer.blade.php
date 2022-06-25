@@ -2,12 +2,20 @@
     /** @var array $post */
 @endphp
 
-<div class="pb-6 pt-10 text-center flex flex-col text-2xl font-light text-font-second">
-    <span>Thanks for your time!</span>
-    <span>Please, share this post to support <a href="{{ route('about-me') }}" class="text-link hover:text-link-hover">the author</a></span>
-</div>
+<a href="{{ route('about-me') }}"
+   target="_blank"
+    class="flex items-center justify-center gap-x-8 my-14"
+>
+    <div>
+        <img src="{{ asset('storage/posts/thanks.jpeg') }}"
+            alt="Serhii Cho"
+            class="rounded-full shadow-md w-28"
+        />
+    </div>
 
-<share-post-buttons post-title="{{ $post['title'] }}"
-    :post-id="{{ $post['id'] }}"
-    class="justify-center"
-/>
+    <div class="flex flex-col text-2xl font-light text-font-second">
+        <span>Thanks for your time!</span>
+        <span class="mb-4">Please, share this post to support me</span>
+        <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
+    </div>
+</a>
