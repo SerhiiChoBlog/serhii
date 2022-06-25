@@ -4,7 +4,7 @@ import isElementInViewport from '../modules/isElementInViewport'
 
 interface Chapter {
     title: string
-    prefix: string | null
+    isActive: boolean
 }
 
 const headers = ref<NodeListOf<HTMLElement> | null>(null)
@@ -30,20 +30,24 @@ function markVisibleChapters(elem: HTMLElement): void {
 }
 
 function handleChapters(elem: HTMLElement): void {
-    console.log(elem.innerText)
     chapters.value.push({
         title: elem.innerText,
-        prefix: null,
+        isActive: false,
     })
 }
 
-function scrollToChapter(chapter: Chapter): void {
+function scrollToChapter(selectedChapter: Chapter): void {
     if (!headers.value) {
         return
     }
 
+    chapters.value.map(chapter => {
+        chapter.isActive = chapter.title === selectedChapter.title
+        return chapter
+    })
+
     const neededElement = Array.from(headers.value).find(header => {
-        return chapter.title === header.innerText
+        return selectedChapter.title === header.innerText
     })!
 
     neededElement.scrollIntoView({ behavior: 'smooth' })
@@ -55,6 +59,7 @@ function scrollToChapter(chapter: Chapter): void {
         <a v-for="chapter in chapters"
            :key="chapter"
            class="border-b border-border cursor-pointer relative block flex justify-start text-font-second pl-7 pr-5 py-2 transition-colors hover:bg-page-second select-none last:border-none"
+           :class="chapter.isActive ? '!text-main font-bold' : ''"
            @click="scrollToChapter(chapter)"
         >
             <span class="${numberClasses}"></span> <span>{{ chapter.title }}</span>
