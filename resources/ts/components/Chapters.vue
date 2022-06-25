@@ -54,8 +54,8 @@ function scrollToChapter(selectedChapter: Chapter): void {
     <div class="space-y-2">
         <a v-for="chapter in chapters"
            :key="chapter"
-           class="shadow-sm border rounded-full cursor-pointer relative block flex justify-start text-font-second px-5 py-2 transition-colors hover:shadow-md select-none transition-all"
-           :class="{'!bg-main !text-white ': chapter.isActive}"
+           class="border border-border rounded-full cursor-pointer relative block flex justify-start text-font-second px-5 py-2 transition-colors hover:bg-page-second select-none transition-colors"
+           :class="{'!bg-main !text-white !border-main': chapter.isActive}"
            @click="scrollToChapter(chapter)"
         >
             <span class="${numberClasses}"></span> <span>{{ chapter.title }}</span>
