@@ -10,6 +10,7 @@
     --color-main: #3298dc;
     --color-main-hover: #288acc;
     --color-main-dark: #1972ac;
+    --color-code: #e3e8f4;
 }
 .dark {
     --color-page: #182330;
@@ -23,4 +24,5 @@
     --color-main: #3298dc;
     --color-main-hover: #288acc;
     --color-main-dark: #1972ac;
+    --color-code: #334257;
 }
