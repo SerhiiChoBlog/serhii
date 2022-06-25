@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import isElementInViewport from '../modules/isElementInViewport'
-import { Chapter } from '../types/types'
-import FloppyIcon from './Icons/Floppy.vue'
+import isElementInViewport from '../../modules/isElementInViewport'
+import { Chapter as ChapterType } from '../../types/types'
+import Chapter from './Chapter.vue'
 
 interface Props {
     slug: string
@@ -10,7 +10,7 @@ interface Props {
 
 const { slug } = defineProps<Props>()
 const headers = ref<NodeListOf<HTMLElement> | null>(null)
-const chapters = ref<Chapter[]>([])
+const chapters = ref<ChapterType[]>([])
 
 onMounted(() => {
     headers.value = document.querySelectorAll<HTMLElement>('#post-content h2')
@@ -65,30 +65,6 @@ function handleChapters(elem: HTMLElement): void {
         isSaved: false,
     })
 }
-
-function scrollToChapter(title: string): void {
-    if (!headers.value) {
-        return
-    }
-
-    const neededElement = Array.from(headers.value).find(header => {
-        return title === header.innerText
-    })!
-
-    neededElement.scrollIntoView({ behavior: 'smooth' })
-}
-
-function getChapterStyles(chapter: Chapter): string {
-    if (chapter.isActive) {
-        return 'bg-main !text-white !border-main hover:!bg-main-hover'
-    }
-
-    if (chapter.isSaved) {
-        return 'bg-green-100 hover:!bg-green-200 pr-12'
-    }
-
-    return ''
-}
 </script>
 
 <template>
@@ -101,18 +77,11 @@ function getChapterStyles(chapter: Chapter): string {
             </p>
 
             <div class="space-y-2">
-                <a v-for="chapter in chapters"
-                   :key="chapter"
-                   class="border border-border rounded-full cursor-pointer relative block flex justify-start text-font-second px-5 py-2 transition-colors hover:bg-page-second select-none transition-colors"
-                   :class="getChapterStyles(chapter)"
-                   @click="scrollToChapter(chapter.title)"
-                >
-                    <span>{{ chapter.title }}</span>
-
-                    <div v-if="chapter.isSaved" class="absolute right-4 top-1/2 -translate-y-1/2">
-                        <FloppyIcon class="w-4 h-4"  />
-                    </div>
-                </a>
+                <Chapter v-for="chapter in chapters"
+                    :key="chapter"
+                    :chapter="chapter"
+                    :headers="headers"
+                />
             </div>
         </nav>
     </div>
