@@ -129,7 +129,7 @@ function saveCurrentChapter(): void {
 
     sweetAlert.fire({
         title: 'Saved',
-        html: `You've saved current position in the post. You'll be able to go back to it any time`,
+        html: `You've saved current position in the post. You'll be able to go back to it at any time`,
     })
 
     if (screenSizeIs('lg')) {
