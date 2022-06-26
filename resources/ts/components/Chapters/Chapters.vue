@@ -34,8 +34,8 @@ onMounted(() => {
     })
 
     setSavedChapter()
-    showAlertIfHasSavedChapter()
     detectCurrentChapter()
+    showAlertIfHasSavedChapter()
 })
 
 function setSavedChapter(): void {
@@ -55,9 +55,9 @@ async function showAlertIfHasSavedChapter(): Promise<void> {
 
     const response = await sweetAlert.fire({
         title: 'Welcome back',
-        html: `You have a saved chapter<br><b>"${savedChapter.value.chapter.title}"</b>`,
+        html: `You have a saved chapter <b>"${savedChapter.value.chapter.title}"</b>. Do you want to continue reading where you've left off?`,
         showDenyButton: true,
-        confirmButtonText: 'Load save',
+        confirmButtonText: 'Continue reading',
         denyButtonText: 'Delete save',
     })
 
@@ -69,7 +69,7 @@ async function showAlertIfHasSavedChapter(): Promise<void> {
     }
 
     if (wantsLoadSave) {
-        goToSavedChapter()
+        setTimeout(() => goToSavedChapter(), 300)
     }
 }
 
@@ -92,7 +92,7 @@ function goToSavedChapter(): void {
         showChapters.value = false
     }
 
-    window.scrollTo({ top: savedChapter.value.top, behavior: 'smooth' })
+    window.scrollTo({top: savedChapter.value!.top, behavior: 'smooth'})
 }
 
 function detectCurrentChapter(): void {
