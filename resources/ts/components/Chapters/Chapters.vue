@@ -17,7 +17,7 @@ interface Props {
 const { slug } = defineProps<Props>()
 const headers = ref<NodeListOf<HTMLElement> | null>(null)
 const chapters = ref<ChapterType[]>([])
-const hasSavedChapter = ref(false)
+const savedChapter = ref<SavedChapter | null>(null)
 const currentChapter = ref<ChapterType | null>(null)
 const showChapters = ref(false)
 
@@ -33,25 +33,43 @@ onMounted(() => {
         window.addEventListener('scroll', () => markVisibleChapters(elem))
     })
 
-    checkIfHasSavedChapter()
+    setSavedChapter()
+    showAlertIfHasSavedChapter()
     detectCurrentChapter()
 })
 
-function checkIfHasSavedChapter(): void {
-    const savedChapter = localStorage.getItem(`chapter:${slug}`) as string | null
-    hasSavedChapter.value = savedChapter !== null
-}
+function setSavedChapter(): void {
+    const saved = localStorage.getItem(`chapter:${slug}`) as string | null
 
-function goToSavedChapter(): void {
-    const savedChapter = localStorage.getItem(`chapter:${slug}`) as string | null
-
-    if (!savedChapter) {
+    if (!saved) {
         return
     }
 
-    const chapter = JSON.parse(savedChapter) as SavedChapter
+    savedChapter.value = JSON.parse(saved) as SavedChapter
+}
 
-    window.scrollTo({ top: chapter.top, behavior: 'smooth' })
+async function showAlertIfHasSavedChapter(): Promise<void> {
+    if (!savedChapter.value) {
+        return
+    }
+
+    const response = await sweetAlert.fire({
+        title: 'Welcome back',
+        html: `You have a saved chapter<br><b>"${savedChapter.value.chapter.title}"</b>`,
+        showCancelButton: true,
+        confirmButtonText: 'Load save',
+        cancelButtonText: 'Delete save',
+    })
+
+    console.log(response.value)
+}
+
+function goToSavedChapter(): void {
+    if (!savedChapter.value) {
+        return
+    }
+
+    window.scrollTo({ top: savedChapter.value.top, behavior: 'smooth' })
 }
 
 function detectCurrentChapter(): void {
@@ -76,13 +94,12 @@ function markVisibleChapters(elem: HTMLElement): void {
 
 function saveCurrentChapter(): void {
     if (currentChapter.value) {
-        const chapter: SavedChapter = {
-            title: currentChapter.value.title,
+        savedChapter.value = {
+            chapter: currentChapter.value,
             top: window.scrollY,
         }
 
-        localStorage.setItem(`chapter:${slug}`, JSON.stringify(chapter))
-        hasSavedChapter.value = true
+        localStorage.setItem(`chapter:${slug}`, JSON.stringify(savedChapter.value))
 
         sweetAlert.fire({
             title: 'Saved',
@@ -134,7 +151,7 @@ function handleChapterClick(): void {
                         <div class="flex gap-x-2 text-font-second hover:text-font-second-hover transition-colors">
                             <button type="button"
                                 class="border border-border py-1 px-3 rounded-lg flex items-center"
-                                :class="{'opacity-50 cursor-not-allowed': !hasSavedChapter}"
+                                :class="{'opacity-50 cursor-not-allowed': !savedChapter}"
                                 @click="goToSavedChapter"
                             >
                                 <Download class="w-4" />
