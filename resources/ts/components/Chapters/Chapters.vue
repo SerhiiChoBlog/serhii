@@ -56,13 +56,13 @@ async function showAlertIfHasSavedChapter(): Promise<void> {
     const response = await sweetAlert.fire({
         title: 'Welcome back',
         html: `You have a saved chapter<br><b>"${savedChapter.value.chapter.title}"</b>`,
-        showCancelButton: true,
+        showDenyButton: true,
         confirmButtonText: 'Load save',
-        cancelButtonText: 'Delete save',
+        denyButtonText: 'Delete save',
     })
 
     const wantsLoadSave = response.isConfirmed
-    const wantsDeleteSave = response.isDismissed
+    const wantsDeleteSave = response.isDenied
 
     if (wantsDeleteSave) {
         deleteSave()
@@ -88,6 +88,10 @@ function goToSavedChapter(): void {
         return
     }
 
+    if (screenSizeIs('lg')) {
+        showChapters.value = false
+    }
+
     window.scrollTo({ top: savedChapter.value.top, behavior: 'smooth' })
 }
 
@@ -104,7 +108,7 @@ function markVisibleChapters(elem: HTMLElement): void {
     }
 
     chapters.value.map(chapter => {
-        chapter.isActive = chapter.title === elem.innerText
+        chapter.isActive = window.scrollY > 300 ? (chapter.title === elem.innerText) : false
         return chapter
     })
 
@@ -112,18 +116,24 @@ function markVisibleChapters(elem: HTMLElement): void {
 }
 
 function saveCurrentChapter(): void {
-    if (currentChapter.value) {
-        savedChapter.value = {
-            chapter: currentChapter.value,
-            top: window.scrollY,
-        }
+    if (!currentChapter.value) {
+        return
+    }
 
-        localStorage.setItem(`chapter:${slug}`, JSON.stringify(savedChapter.value))
+    savedChapter.value = {
+        chapter: currentChapter.value,
+        top: window.scrollY,
+    }
 
-        sweetAlert.fire({
-            title: 'Saved',
-            html: `You've saved current position in the post. You'll be able to go back to it any time`,
-        })
+    localStorage.setItem(`chapter:${slug}`, JSON.stringify(savedChapter.value))
+
+    sweetAlert.fire({
+        title: 'Saved',
+        html: `You've saved current position in the post. You'll be able to go back to it any time`,
+    })
+
+    if (screenSizeIs('lg')) {
+        showChapters.value = false
     }
 }
 
