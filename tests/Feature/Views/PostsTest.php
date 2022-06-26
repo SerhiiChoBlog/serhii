@@ -28,4 +28,10 @@ class PostsTest extends TestCase
             ->assertOk()
             ->assertViewIs('posts.index');
     }
+
+    /** @test */
+    public function blog_page_redirects_to_posts(): void
+    {
+        $this->get('/blog')->assertRedirect(route('posts.index'));
+    }
 }
