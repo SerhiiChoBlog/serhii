@@ -2,7 +2,7 @@
 .post-content p code,
 .project-content ul  li code,
 .post-content ul li code {
-    @apply bg-inline-code rounded-md py-1 px-2 mx-1 font-light text-sm text-font before:content-none after:content-none;
+    @apply bg-inline-code rounded-md py-1 px-2 mx-1 font-light text-sm text-font before:content-none after:content-none break-all;
 }
 
 pre {
