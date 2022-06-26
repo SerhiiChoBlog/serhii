@@ -26,8 +26,9 @@ class ProjectFactory extends Factory
             'name' => 'some-name',
             'title' => 'Some name',
             'url' => 'http://some-url.com/nice',
-            'description' => 'Some description',
-            'language' => 'php',
+            'content' => $this->faker->paragraph(),
+            'description' => $this->faker->paragraph(),
+            'language' => ['php', 'javascript', 'typescript', 'css', 'go'][random_int(0, 4)],
             'stars' => random_int(0, 100),
             'created_at' => '2021-01-01 10:00:00',
         ];
