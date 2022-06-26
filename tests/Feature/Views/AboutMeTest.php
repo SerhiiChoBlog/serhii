@@ -19,7 +19,7 @@ class AboutMeTest extends TestCase
     }
 
     /** @test */
-    public function admin_can_visit_home_page(): void
+    public function admin_can_visit_about_me_page(): void
     {
         $user = User::factory()->make();
 
