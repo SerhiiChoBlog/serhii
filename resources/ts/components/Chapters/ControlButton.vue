@@ -10,7 +10,7 @@ const { tipContent } = defineProps<Props>()
 
 <template>
     <tip :content="tipContent">
-        <button type="button" class="flex items-center">
+        <button type="button" class="flex items-center transition-transform hover:scale-125">
             <slot />
         </button>
     </tip>

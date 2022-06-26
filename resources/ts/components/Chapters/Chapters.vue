@@ -110,7 +110,7 @@ function markVisibleChapters(elem: HTMLElement): void {
     }
 
     chapters.value.map(chapter => {
-        chapter.isActive = window.scrollY > 300 ? (chapter.title === elem.innerText) : false
+        chapter.isActive = window.scrollY > 100 ? (chapter.title === elem.innerText) : false
         return chapter
     })
 

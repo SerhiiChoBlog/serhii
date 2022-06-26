@@ -97,13 +97,14 @@
                 </nav>
             </div>
 
-            <div class="pt-10 lg:pt-16 h-full">
+            <div class="pt-10 h-full">
                 <div class="hidden lg:block">
-                    <nav class="min-h-[83px] mb-7">
+                    <nav class="min-h-[83px] mb-10">
                         <x-post.sidebar-title>Share this post</x-post.sidebar-title>
                         <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
                     </nav>
                 </div>
+
                 <chapters slug="{{ $post['slug'] }}" />
             </div>
         </div>
