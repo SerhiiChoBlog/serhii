@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::redirect('about', 'about-me');
+Route::redirect('blog', 'posts');
+
 Route::redirect('/register', 'login');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-me', [AboutMeController::class, 'index'])->name('about-me');
