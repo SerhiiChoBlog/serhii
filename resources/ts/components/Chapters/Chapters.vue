@@ -61,7 +61,26 @@ async function showAlertIfHasSavedChapter(): Promise<void> {
         cancelButtonText: 'Delete save',
     })
 
-    console.log(response.value)
+    const wantsLoadSave = response.isConfirmed
+    const wantsDeleteSave = response.isDismissed
+
+    if (wantsDeleteSave) {
+        deleteSave()
+    }
+
+    if (wantsLoadSave) {
+        goToSavedChapter()
+    }
+}
+
+function deleteSave(): void {
+    localStorage.removeItem(`chapter:${slug}`)
+    savedChapter.value = null
+
+    sweetAlert.fire({
+        title: 'Done',
+        html: `Your saved chapter has been deleted!`,
+    })
 }
 
 function goToSavedChapter(): void {
