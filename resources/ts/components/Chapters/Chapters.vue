@@ -9,7 +9,7 @@ import ChevronUpIcon from '../Icons/ChevronUpIcon.vue'
 import SaveIcon from '../Icons/SaveIcon.vue'
 import Download from '../Icons/Download.vue'
 import sweetAlert from 'sweetalert2'
-import Popper from "vue3-popper"
+import Tip from '../Tip.vue'
 
 interface Props {
     slug: string
@@ -179,7 +179,7 @@ function handleChapterClick(): void {
                         <span class="text-font-second text-2xl font-bold font-arizona font-bold">Chapters</span>
 
                         <div class="flex gap-x-2 text-font-second hover:text-font-second-hover transition-colors mt-3">
-                            <popper arrow :content="savedChapter ? `Load saved position and get back to where you've left off` : `Loading saved position is disabled because you don't have saved positions`">
+                            <tip :content="savedChapter ? `Load saved position and get back to where you've left off` : `Loading saved position is disabled because you don't have saved positions`">
                                 <button type="button"
                                     class="border border-border py-1 px-3 rounded-lg flex items-center"
                                     :class="{'opacity-40 cursor-not-allowed': !savedChapter}"
@@ -188,9 +188,9 @@ function handleChapterClick(): void {
                                     <Download class="w-4" />
                                     <span class="ml-2 text-sm font-bold">LOAD</span>
                                 </button>
-                            </popper>
+                            </tip>
 
-                            <popper arrow content="Save current position. You'll be able to load it and get back to where you've left off">
+                            <tip content="Save current position. You'll be able to load it and get back to where you've left off">
                                 <button type="button"
                                      class="border border-border py-1 px-3 rounded-lg flex items-center"
                                      @click="saveCurrentChapter"
@@ -198,7 +198,7 @@ function handleChapterClick(): void {
                                     <SaveIcon class="w-4" />
                                     <span class="ml-2 text-sm font-bold">SAVE</span>
                                 </button>
-                            </popper>
+                            </tip>
                         </div>
                     </div>
                 </div>
