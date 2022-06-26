@@ -4,6 +4,6 @@ export interface Chapter {
 }
 
 export interface SavedChapter {
-    title: string
+    chapter: Chapter
     top: number
 }
