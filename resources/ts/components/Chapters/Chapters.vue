@@ -8,9 +8,9 @@ import ChevronDownIcon from '../Icons/ChevronDownIcon.vue'
 import ChevronUpIcon from '../Icons/ChevronUpIcon.vue'
 import SaveIcon from '../Icons/SaveIcon.vue'
 import DeleteIcon from '../Icons/DeleteIcon.vue'
-import Download from '../Icons/Download.vue'
+import LoadIcon from '../Icons/LoadIcon.vue'
 import sweetAlert from 'sweetalert2'
-import Tip from '../Tip.vue'
+import ControlButton from './ControlButton.vue'
 
 interface Props {
     slug: string
@@ -154,7 +154,8 @@ function handleChapterClick(): void {
 </script>
 
 <template>
-    <button v-if="currentChapter"
+    <button
+        v-if="currentChapter"
         class="flex lg:hidden items-center shadow-md gap-x-1 justify-center fixed border top-1 bg-white w-full py-1 px-4 rounded-full z-40 max-w-sm left-1/2 -translate-x-1/2"
         @click="showChapters = !showChapters"
     >
@@ -171,43 +172,40 @@ function handleChapterClick(): void {
         leave-from-class="opacity-100 translate-y-0"
         leave-to-class="transform -translate-y-5"
     >
-        <div v-if="showChapters"
-           class="h-[94%] lg:h-full fixed bg-page w-full max-w-sm left-1/2 -translate-x-1/2 border lg:border-none top-[3%] lg:top-0 bottom-[3%] p-4 lg:p-0 rounded-2xl shadow-xl lg:shadow-none lg:relative z-30"
+        <div
+            v-if="showChapters"
+            class="h-[94%] lg:h-full fixed bg-page w-full max-w-sm left-1/2 -translate-x-1/2 border lg:border-none top-[3%] lg:top-0 bottom-[3%] p-4 lg:p-0 rounded-2xl shadow-xl lg:shadow-none lg:relative z-30"
         >
             <nav class="sticky h-screen overflow-y-scroll top-3 mt-7 text-center lg:text-left">
                 <div class="mb-5">
-                    <div class="flex items-center gap-x-5">
-                        <span class="text-font-second text-2xl font-bold font-arizona font-bold">Chapters</span>
+                    <div class="flex items-center gap-x-5 text-font-second">
+                        <span class="text-2xl font-bold font-arizona font-bold">
+                            Chapters
+                        </span>
 
-                        <div class="flex items-center gap-x-3 transition-colors text-font-second hover:text-font-second-hover">
-                            <tip content="Load saved position and get back to where you've left off">
-                                <button type="button"
-                                    class="flex items-center"
-                                    :class="{'opacity-40 cursor-not-allowed': !savedChapter}"
-                                    @click="goToSavedChapter"
-                                >
-                                    <Download class="w-6" />
-                                </button>
-                            </tip>
+                        <div class="flex items-center gap-x-4">
+                            <control-button
+                                tipContent="Load saved position and get back to where you've left off"
+                                :class="{'opacity-40 cursor-not-allowed': !savedChapter}"
+                                @click="goToSavedChapter"
+                            >
+                                <LoadIcon class="w-4" />
+                            </control-button>
 
-                            <tip content="Save current position. You'll be able to load it and get back to where you've left off">
-                                <button type="button"
-                                     class="flex items-center"
-                                     @click="saveCurrentChapter"
-                                >
-                                    <SaveIcon class="w-6" />
-                                </button>
-                            </tip>
+                            <control-button
+                                @click="saveCurrentChapter"
+                                tipContent="Save current position. You'll be able to load it and get back to where you've left off"
+                            >
+                                <SaveIcon class="w-4" />
+                            </control-button>
 
-                            <tip content="Delete current saved position">
-                                <button type="button"
-                                    class="flex items-center"
-                                    :class="{'opacity-40 cursor-not-allowed': !savedChapter}"
-                                    @click="deleteSave"
-                                >
-                                    <DeleteIcon class="w-6" />
-                                </button>
-                            </tip>
+                            <control-button
+                                @click="deleteSave"
+                                tipContent="Delete current saved position"
+                                :class="{'opacity-40 cursor-not-allowed': !savedChapter}"
+                            >
+                                <DeleteIcon class="w-4" />
+                            </control-button>
                         </div>
                     </div>
                 </div>
