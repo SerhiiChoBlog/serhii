@@ -9,6 +9,7 @@ import ChevronUpIcon from '../Icons/ChevronUpIcon.vue'
 import SaveIcon from '../Icons/SaveIcon.vue'
 import Download from '../Icons/Download.vue'
 import sweetAlert from 'sweetalert2'
+import Popper from "vue3-popper"
 
 interface Props {
     slug: string
@@ -174,26 +175,30 @@ function handleChapterClick(): void {
         >
             <nav class="sticky h-screen overflow-y-scroll top-3 mt-7 text-center lg:text-left">
                 <div class="mb-5">
-                    <div class="flex justify-between items-center">
+                    <div>
                         <span class="text-font-second text-2xl font-bold font-arizona font-bold">Chapters</span>
 
-                        <div class="flex gap-x-2 text-font-second hover:text-font-second-hover transition-colors">
-                            <button type="button"
-                                class="border border-border py-1 px-3 rounded-lg flex items-center"
-                                :class="{'opacity-50 cursor-not-allowed': !savedChapter}"
-                                @click="goToSavedChapter"
-                            >
-                                <Download class="w-4" />
-                                <span class="ml-2 text-sm font-bold">LOAD</span>
-                            </button>
+                        <div class="flex gap-x-2 text-font-second hover:text-font-second-hover transition-colors mt-3">
+                            <popper arrow :content="savedChapter ? `Load saved position and get back to where you've left off` : `Loading saved position is disabled because you don't have saved positions`">
+                                <button type="button"
+                                    class="border border-border py-1 px-3 rounded-lg flex items-center"
+                                    :class="{'opacity-40 cursor-not-allowed': !savedChapter}"
+                                    @click="goToSavedChapter"
+                                >
+                                    <Download class="w-4" />
+                                    <span class="ml-2 text-sm font-bold">LOAD</span>
+                                </button>
+                            </popper>
 
-                            <button type="button"
-                                 class="border border-border py-1 px-3 rounded-lg flex items-center"
-                                 @click="saveCurrentChapter"
-                            >
-                                <SaveIcon class="w-4" />
-                                <span class="ml-2 text-sm font-bold">SAVE</span>
-                            </button>
+                            <popper arrow content="Save current position. You'll be able to load it and get back to where you've left off">
+                                <button type="button"
+                                     class="border border-border py-1 px-3 rounded-lg flex items-center"
+                                     @click="saveCurrentChapter"
+                                >
+                                    <SaveIcon class="w-4" />
+                                    <span class="ml-2 text-sm font-bold">SAVE</span>
+                                </button>
+                            </popper>
                         </div>
                     </div>
                 </div>
