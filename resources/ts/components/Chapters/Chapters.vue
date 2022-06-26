@@ -78,8 +78,8 @@ function deleteSave(): void {
     savedChapter.value = null
 
     sweetAlert.fire({
-        title: 'Done',
-        html: `Your saved chapter has been deleted!`,
+        title: 'Deleted',
+        html: `Your saved position in the post has been deleted!`,
     })
 }
 
