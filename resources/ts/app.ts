@@ -9,6 +9,7 @@ import insertTagsForHighlightJs from './modules/insertTagsForHighlightJs'
 import ThemeSwitch from './components/ThemeSwitch.vue'
 import Avatar from './components/Avatar.vue'
 import ToTop from './components/ToTop.vue'
+import Popper from "vue3-popper"
 
 const app = createApp({
     components: {
@@ -20,6 +21,7 @@ const app = createApp({
         ThemeSwitch,
         Avatar,
         ToTop,
+        Popper,
     },
 
     setup() {
