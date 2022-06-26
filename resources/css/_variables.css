@@ -12,15 +12,6 @@
     --color-main-hover: #288acc;
     --color-main-dark: #1972ac;
     --color-inline-code: #e3e8f4;
-    /* Popper variables */
-    --popper-theme-background-color: var(--color-font);
-    --popper-theme-background-color-hover: var(--color-font);
-    --popper-theme-text-color: #ffffff;
-    --popper-theme-border-width: 0px;
-    --popper-theme-border-style: solid;
-    --popper-theme-border-radius: 8px;
-    --popper-theme-padding: 10px;
-    --popper-theme-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
 .dark {
     --color-page: #182330;

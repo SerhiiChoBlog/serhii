@@ -9,7 +9,13 @@ const { content } = defineProps<Props>()
 </script>
 
 <template>
-    <popper arrow hover :content="content">
+    <popper hover :content="content">
         <slot/>
+
+        <template #content>
+            <div class="bg-font px-4 py-2 text-white rounded-lg text-sm shadow-md">
+                {{ content }}
+            </div>
+        </template>
     </popper>
 </template>
