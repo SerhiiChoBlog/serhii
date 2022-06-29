@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="bg-home-hero bg-no-repeat bg-center bg-cover flex flex-col justify-between relative">
+    <section class="bg-home-hero-sm lg:bg-home-hero bg-no-repeat bg-center bg-cover flex flex-col justify-between relative">
         <div class="absolute left-0 right-0 top-0 bottom-0 bg-black/70"></div>
 
         <div class="text-white min-h-0 lg:min-h-[3.25rem]">

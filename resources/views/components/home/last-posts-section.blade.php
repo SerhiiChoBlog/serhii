@@ -11,9 +11,12 @@
                 <a href="{{ route('posts.show', $post['slug']) }}"
                    class="transition-opacity hover:opacity-70"
                 >
-                    <img data-src="{{ asset($post['image_sm']) }}"
+                    <img
+                        data-src="{{ asset($post['image_sm']) }}"
                         alt="{{ $post['title'] }}"
                         class="smooth-loader rounded-md shadow-md mx-auto"
+                        width="468"
+                        height="255"
                     />
                 </a>
 
