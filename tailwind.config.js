@@ -39,7 +39,7 @@ module.exports = {
         fontFamily: {
             text: ['Lato', 'serif'],
             code: ['Code', 'monospace'],
-            arizona: ['Arizona', 'monospace'],
+            arizona: ['Arizona', 'serif'],
         },
         keyframes: {
             blink: {
