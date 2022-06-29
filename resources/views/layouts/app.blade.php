@@ -11,11 +11,11 @@
     <link href="{{ App\FileVersion::append('/css/app.css') }}" rel="stylesheet">
     @yield('head')
 </head>
-<body class="text-font font-lato bg-page {{ request()->cookie('theme') }}">
-    <div id="app">
+<body aria-hidden="true" class="text-font font-lato bg-page {{ request()->cookie('theme') }}">
+    <main id="app">
         @yield('content')
         <to-top></to-top>
-    </div>
+    </main>
 
     <script src="{{ App\FileVersion::append('/js/app.js') }}"></script>
 </body>

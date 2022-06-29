@@ -16,27 +16,25 @@
         </div>
     </section>
 
-    <div>
-        <section class="py-8 lg:py-14 px-4">
-            <div class="container">
-                <div>
-                    <x-home.section-title>Nice to meet you</x-home.section-title>
+    <section class="py-8 lg:py-14 px-4">
+        <div class="container">
+            <div>
+                <x-home.section-title>Nice to meet you</x-home.section-title>
 
-                    <p class="text-lg lg:text-xl font-light leading-7 lg:leading-9">
-                        <x-home.welcome-section />
+                <p class="text-lg lg:text-xl font-light leading-7 lg:leading-9">
+                    <x-home.welcome-section />
 
-                        <a href="{{ route('about-me') }}"
-                            class="text-link hover:text-link-hover hover:underline transition-colors"
-                        >Read mode about me...</a>
-                    </p>
-                </div>
+                    <a href="{{ route('about-me') }}"
+                        class="text-link hover:text-link-hover hover:underline transition-colors"
+                    >Read mode about me...</a>
+                </p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="py-12 bg-page-second">
-            <div class="container">
-                <x-home.last-posts-section />
-            </div>
-        </section>
-    </div>
+    <section class="py-12 bg-page-second">
+        <div class="container">
+            <x-home.last-posts-section />
+        </div>
+    </section>
 @endsection
