@@ -6,9 +6,9 @@
     <div class="flex flex-col lg:flex-row items-center justify-center py-7">
         @foreach ($sites as $site)
             <div class="
-            skew-y-[-7deg] mb-5 lg:mb-0 lg:transition-transform lg:ml-[-100px] first:ml-0 hover:translate-y-[-10px]
-            duration-300 relative
-            before:left-0 before:absolute before:right-0 before:h-3 before:bg-[#282829] before:top-[-11px] before:rounded-t-lg
+            skew-y-[-4deg] mb-5 first:ml-0 hover:translate-y-[-10px] duration-300 relative lg:transition-transform
+            lg:ml-[-100px] lg:mb-0 before:left-0 before:absolute before:right-0 before:h-3 before:bg-[#282829]
+            before:top-[-11px] before:rounded-t-lg
             ">
                 <a href="{{ $site['href'] }}" target="_blank" class="max-w-[350px] block">
                     <img src="{{ asset('storage/tools/mac-buttons.png') }}"
@@ -20,6 +20,8 @@
                     <img data-src="{{ asset($site['image']) }}"
                         alt="{{ $site['title'] }}"
                         class="smooth-loader rounded-b-lg shadow-[-19px_10px_5px_rgba(0,0,0,.05)]"
+                        width="350"
+                        height="251"
                     />
 
                     <span class="block text-font-second text-xl text-center drop-shadow-[-7px_7px_5px_rgba(0,0,0,.2)] mt-3 font-light font-arizona">
