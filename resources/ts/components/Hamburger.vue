@@ -32,6 +32,7 @@ function toggleNavbar(): void {
        class="block lg:hidden ml-auto relative w-[3.25rem] h-[3.25rem] transition-transform duration-300 delay-300"
        :class="isActive ? 'rotate-45' : ''"
        @click="toggleNavbar"
+       aria-label="Show mobile menu"
     >
         <span aria-hidden="true"
             class="w-[19px] h-[2px] block bg-white rounded-full absolute left-[calc(50%-8px)] transition-all duration-500"
