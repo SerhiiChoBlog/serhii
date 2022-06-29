@@ -68,9 +68,9 @@
     </section>
 
     <div class="container pb-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[75%_25%] gap-x-5">
+        <div class="grid grid-cols-1 lg:grid-cols-[clamp(700px,70%,900px)_clamp(300px,30%,370px)] gap-x-7 pt-8 lg:pt-20">
             <div>
-                <div class="post-content lg:prose-xl pr-2 lg:px-6 pt-8 lg:pt-10"
+                <div class="post-content lg:prose-xl pr-2 lg:px-6"
                     id="post-content"
                     v-pre
                 >{!! $post['content'] !!}</div>
@@ -97,9 +97,9 @@
                 </nav>
             </div>
 
-            <div class="pt-10 h-full">
+            <div class="spacey-y-0 lg:space-y-12 px-3 h-full">
                 <div class="hidden lg:block">
-                    <nav class="min-h-[83px] mb-10">
+                    <nav class="min-h-[83px]">
                         <x-post.sidebar-title>Share this post</x-post.sidebar-title>
                         <share-post-buttons post-title="{{ $post['title'] }}" :post-id="{{ $post['id'] }}" />
                     </nav>
