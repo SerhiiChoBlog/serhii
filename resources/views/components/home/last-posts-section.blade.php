@@ -21,7 +21,7 @@
                 </a>
 
                 <div class="py-5 px-2">
-                    <h4 class="text-2xl font-medium font-arizona">{{ $post['title'] }}</h4>
+                    <h3 class="text-2xl font-medium font-arizona">{{ $post['title'] }}</h3>
 
                     <p class="my-3 text-lg font-light">{{ $post['intro'] }}</p>
 
