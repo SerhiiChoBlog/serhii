@@ -20,7 +20,7 @@ class SitesSection extends Component
         ],
         [
             'image' => 'storage/tools/site-olexiy.png',
-            'title' => 'Olexiy Chornenkyi',
+            'title' => 'Jiskelo',
             'href' => 'https://jiskelo.dev/',
         ],
     ];
