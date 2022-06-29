@@ -23,6 +23,8 @@
                         <img src="{{ asset('/storage/languages/' . strtolower($project['language']) . '.png') }}"
                             alt="{{ $project['title'] }}"
                             class="absolute right-4 top-4"
+                            width="50"
+                            height="50"
                         />
 
                         <div>
