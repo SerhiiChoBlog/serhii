@@ -30,6 +30,7 @@ function switchTheme(): void {
     <div class="flex items-center justify-center pb-6 lg:pb-0">
         <button class="relative flex p-1 bg-transparent text-yellow-500 dark:text-main hover:bg-gray-500 hover:bg-opacity-50 rounded-full"
             @click="switchTheme"
+            aria-label="Toggle between light and dark themes"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
