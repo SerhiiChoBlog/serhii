@@ -7,9 +7,10 @@
 
     <div class="flex flex-col lg:flex-row gap-8">
         @foreach ($posts as $post)
-            <div>
-                <a href="{{ route('posts.show', $post['slug']) }}"
-                   class="transition-opacity hover:opacity-70"
+            <article class="max-w-md mx-auto">
+                <a
+                    href="{{ route('posts.show', $post['slug']) }}"
+                    class="transition-opacity hover:opacity-70"
                 >
                     <img
                         data-src="{{ asset($post['image_sm']) }}"
@@ -29,7 +30,7 @@
                         <x-post.created :created="$post['created_at']" :pretty="$post['pretty_created_at']" />
                     </x-post.tags>
                 </div>
-            </div>
+            </article>
         @endforeach
     </div>
 </div>

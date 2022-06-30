@@ -81,7 +81,7 @@
     </section>
 
     <div class="container pb-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[clamp(700px,70%,900px)_clamp(300px,30%,370px)] gap-x-7 pt-8 lg:pt-20">
+        <div class="grid grid-cols-1 lg:grid-cols-[clamp(700px,70%,850px)_clamp(300px,30%,370px)] gap-x-7 pt-8 lg:pt-20">
             <div>
                 <div class="post-content lg:prose-xl pr-2 lg:px-6"
                     id="post-content"
