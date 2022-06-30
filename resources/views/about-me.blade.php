@@ -4,9 +4,10 @@
 @section('description', "Hi, my name is Serhii, I live in Kharkiv, Ukraine. Thanks for coming to my little and cozy place. Here, you can find information that might help you to find out more about me")
 
 @section('content')
-    <x-hero title="Information about me"
-            subtitle="Hi, my name is Serhii, I live in Kharkiv, Ukraine. Thanks for coming to my little and cozy place.<br>Down below, you can find technologies that I'm working with and other information that might help you to know more about me."
-            class="bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1] text-white"
+    <x-hero
+        title="Information about me"
+        subtitle="Hi, my name is Serhii, I live in Kharkiv, Ukraine. Thanks for coming to my little and cozy place.<br>Down below, you can find technologies that I'm working with and other information that might help you to know more about me."
+        class="bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1] text-white"
     />
 
     <div class="mt-2 text-xl">

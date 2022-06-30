@@ -11,6 +11,7 @@ import DeleteIcon from '../Icons/DeleteIcon.vue'
 import LoadIcon from '../Icons/LoadIcon.vue'
 import sweetAlert from 'sweetalert2'
 import ControlButton from './ControlButton.vue'
+import SlideUpTransition from '../Transitions/SlideUpTransition.vue'
 
 interface Props {
     slug: string
@@ -164,14 +165,7 @@ function handleChapterClick(): void {
         <span class="tracking-wide">{{ currentChapter.title }}</span>
     </button>
 
-    <transition
-        enter-active-class="duration-300 ease-out"
-        enter-from-class="transform opacity-0 -translate-y-5"
-        enter-to-class="opacity-100 translate-y-0"
-        leave-active-class="duration-300 ease-in"
-        leave-from-class="opacity-100 translate-y-0"
-        leave-to-class="transform -translate-y-5"
-    >
+    <slide-up-transition>
         <div
             v-if="showChapters"
             class="h-[94%] lg:h-full fixed lg:static bg-page w-full max-w-md left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 border lg:border-none top-[3%] lg:top-0 bottom-[3%] p-4 lg:p-0 rounded-2xl shadow-xl lg:shadow-none lg:relative z-30"
@@ -220,5 +214,5 @@ function handleChapterClick(): void {
                 </div>
             </nav>
         </div>
-    </transition>
+    </slide-up-transition>
 </template>

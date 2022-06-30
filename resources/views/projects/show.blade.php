@@ -20,7 +20,7 @@
         <a
             href="{{ $project->url }}"
             target="_blank"
-            class="bg-gray-100 text-font px-7 py-3 rounded-full inline-flex mt-5 hover:scale-105 transition-transform shadow-md"
+            class="bg-gradient bg-gradient-to-br from-gray-200 via-white to-gray-200 text-black px-7 py-3 rounded-full inline-flex mt-5 hover:scale-105 transition-transform shadow-md"
             aria-label="{{ $project->title }}"
             title="Link to GitHub repo '{{ $project->title }}'"
         >
