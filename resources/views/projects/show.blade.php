@@ -12,16 +12,25 @@
 @section('description', $project->description)
 
 @section('content')
-    <x-hero :title="$project->title"
+    <x-hero
+        :title="$project->title"
         :subtitle="$project->description"
-        class="bg-gray-100 dark:bg-gray-800 dark:text-white"
+        class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white"
     >
-        <a href="{{ $project->url }}"
-           target="_blank"
-           class="bg-gray-700 text-white px-7 py-3 rounded-full inline-flex mt-5 hover:bg-gray-800 transition-colors shadow-md"
+        <a
+            href="{{ $project->url }}"
+            target="_blank"
+            class="bg-gray-100 text-font px-7 py-3 rounded-full inline-flex mt-5 hover:scale-105 transition-transform shadow-md"
+            aria-label="{{ $project->title }}"
+            title="Link to GitHub repo '{{ $project->title }}'"
         >
             <div>
-                <img src="{{ asset('storage/icons/github.png') }}" width="20" alt="Github logo" />
+                <img
+                    src="{{ asset('storage/icons/github-dark.png') }}"
+                    width="20"
+                    height="20"
+                    alt="Github logo"
+                />
             </div>
 
             <span class="ml-2">Open on Github</span>
