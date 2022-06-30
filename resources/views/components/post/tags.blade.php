@@ -3,7 +3,7 @@
         <div class="flex items-center px-4 py-1 rounded-full shadow-md"
             style="background-color: {{ $tag['color'] }}"
         >
-            <span class="text-white font-semibold drop-shadow-[1px_1px_2px_rgba(0,0,0,.2)]">
+            <span class="text-white font-semibold">
                 {{ $tag['name'] }}
             </span>
         </div>
