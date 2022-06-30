@@ -1,4 +1,4 @@
-<section {{ $attributes->merge(['class' => 'bg-gray-500']) }}>
+<header {{ $attributes->merge(['class' => 'bg-gray-500']) }}>
     <x-navbar />
 
     <div class="p-[1.5em] lg:p-[3em]">
@@ -11,4 +11,4 @@
             </div>
         </div>
     </div>
-</section>
+</header>
