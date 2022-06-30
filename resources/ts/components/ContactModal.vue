@@ -24,7 +24,7 @@ onMounted(() => {
 <template>
     <div class="p-7 lg:p-0">
         <button type="button"
-            class="w-full lg:w-auto text-white bg-main py-2 px-6 rounded-full hover:bg-main-hover transition-colors"
+            class="w-full lg:w-auto font-semibold text-white bg-main py-2 px-6 rounded-full hover:bg-main-hover transition-colors shadow-md"
             @click="openContactModal"
         >
             Contact me
