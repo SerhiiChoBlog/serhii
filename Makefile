@@ -2,6 +2,7 @@ cache:
 	php artisan config:cache
 	php artisan view:cache
 	php artisan route:cache
+	php artisan cache:clear
 
 cache-clear:
 	php artisan config:clear
