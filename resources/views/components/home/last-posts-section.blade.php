@@ -3,8 +3,6 @@
 @endphp
 
 <div>
-    <x-home.section-title>Latest posts</x-home.section-title>
-
     <div class="flex flex-col lg:flex-row gap-8">
         @foreach ($posts as $post)
             <article class="max-w-md mx-auto">

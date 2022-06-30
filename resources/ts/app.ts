@@ -1,5 +1,4 @@
 import { createApp, onMounted } from 'vue'
-import Typewriter from './components/Typewriter.vue'
 import ContactModal from './components/ContactModal.vue'
 import Hamburger from './components/Hamburger.vue'
 import SharePostButtons from './components/SharePostButtons.vue'
@@ -13,7 +12,6 @@ import Popper from "vue3-popper"
 
 const app = createApp({
     components: {
-        Typewriter,
         ContactModal,
         Hamburger,
         SharePostButtons,
