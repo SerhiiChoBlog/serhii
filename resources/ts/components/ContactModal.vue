@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import contactModalSections from '../modules/contactModalSections'
+import AppearTransition from './Transitions/AppearTransition.vue'
 
 const isOpen = ref(false)
 
@@ -22,16 +23,18 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="p-7 lg:p-0 text-center">
-        <button
-            type="button"
-            class="w-full mx-auto max-w-xs border border-white lg:w-auto font-semibold text-white py-2 px-6 rounded-full transition-colors"
-            @click="openContactModal"
-            aria-label="Open contacts modal"
-        >
-            Contact me
-        </button>
-    </div>
+    <appear-transition>
+        <div class="p-7 lg:p-0 text-center">
+            <button
+                type="button"
+                class="w-full mx-auto max-w-xs border border-white lg:w-auto font-semibold text-white py-2 px-6 rounded-full transition-colors"
+                @click="openContactModal"
+                aria-label="Open contacts modal"
+            >
+                Contact me
+            </button>
+        </div>
+    </appear-transition>
 
     <transition
         enter-active-class="duration-300 ease-out"

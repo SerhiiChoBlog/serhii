@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import AppearTransition from './Transitions/AppearTransition.vue'
 
 const shadows = {
     normal: 'box-shadow: rgba(50,50,93,.25) 0 13px 27px -5px, rgba(0,0,0,.3) 0 8px 16px -8px',
@@ -16,15 +17,7 @@ document.addEventListener('scroll', () => {
 </script>
 
 <template>
-    <transition
-        enter-active-class="duration-300 ease-out"
-        enter-from-class="transform opacity-0"
-        enter-to-class="opacity-100"
-        leave-active-class="duration-200 ease-in"
-        leave-from-class="opacity-100"
-        leave-to-class="transform opacity-0"
-        appear
-    >
+    <appear-transition>
         <img
             src="/storage/serhii.jpg"
             alt="Serhii Cho"
@@ -33,5 +26,5 @@ document.addEventListener('scroll', () => {
             width="250"
             height="250"
         />
-    </transition>
+    </appear-transition>
 </template>

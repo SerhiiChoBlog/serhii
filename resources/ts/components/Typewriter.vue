@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import AppearTransition from './Transitions/AppearTransition.vue'
 
 const typewriter = ref('')
 const words = ['software developer️ 😎', 'programmer 💻', 'PHP developer 🐘']
@@ -39,8 +40,10 @@ onMounted(() => initTypewriter())
 </script>
 
 <template>
-    <p class="font-code text-sm lg:text-lg">
-         Professional {{ typewriter }}
-        <span class="border-r-[12px] ml-2 animate-blink"></span>
-    </p>
+    <appear-transition>
+        <p class="font-code text-sm lg:text-lg">
+             Professional {{ typewriter }}
+            <span class="border-r-[12px] ml-2 animate-blink"></span>
+        </p>
+    </appear-transition>
 </template>
