@@ -10,7 +10,7 @@
     @endforeach
 
     <contact-modal>
-        <div class="border py-2 px-6 rounded-full">Contact me</div>
+        <div class="border-2 border-main-light text-main-light py-2 px-6 rounded-full">Contact me</div>
     </contact-modal>
 
     <div class="min-w-[35px]">
