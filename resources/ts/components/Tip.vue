@@ -13,7 +13,7 @@ const { content } = defineProps<Props>()
         <slot/>
 
         <template #content>
-            <div class="bg-font px-4 py-2 text-white rounded-lg text-sm shadow-md">
+            <div class="bg-font dark:bg-page-second dark:text-white px-4 py-2 text-white rounded-lg text-sm shadow-md">
                 {{ content }}
             </div>
         </template>

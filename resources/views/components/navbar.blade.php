@@ -1,5 +1,5 @@
 <nav class="relative">
-    <div class="container flex justify-between items-center min-h-[3.25rem]">
+    <div class="container flex justify-between items-center min-h-[4rem]">
         <div class="flex items-center gap-x-1 w-full lg:w-auto">
             <a
                 href="{{ route('home') }}"
