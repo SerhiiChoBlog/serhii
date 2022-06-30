@@ -20,10 +20,10 @@
     />
 
     <div class="container mt-5">
-        <ul class="flex flex-col gap-y-2">
+        <div class="flex flex-col gap-y-2">
 
             @foreach ($posts as $post)
-                <li>
+                <article>
                     <a href="/posts/{{ $post->slug }}"
                        class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl transition-colors hover:bg-page-second max-w-[550px] lg:max-w-full mx-auto"
                        aria-label="{{ $post->title }}"
@@ -44,12 +44,12 @@
                             </div>
                         </div>
                     </a>
-                </li>
+                </article>
             @endforeach
 
             <div class="my-6 mx-4">
                 {{ $posts->links('vendor.pagination.default') }}
             </div>
-        </ul>
+        </div>
     </div>
 @endsection

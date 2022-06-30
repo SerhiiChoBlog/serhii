@@ -7,7 +7,7 @@
 }
 
 .navbar-link::before {
-    @apply bg-main rounded-full -bottom-3 content-[""] h-[5px] left-[-5px] right-[-5px] opacity-0 absolute transition-opacity;
+    @apply bg-main-light rounded-full -bottom-2 content-[""] h-[4px] left-[-5px] right-[-5px] opacity-0 absolute transition-opacity;
 }
 
 .navbar-link:hover::before,
