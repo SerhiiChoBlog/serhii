@@ -188,6 +188,7 @@ function handleChapterClick(): void {
 
                             <control-button
                                 @click="saveCurrentChapter"
+                                :disabled="false"
                                 tipContent="Save current position. You'll be able to load it and get back to where you've left off"
                             >
                                 <SaveIcon class="w-4" />

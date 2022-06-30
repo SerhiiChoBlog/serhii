@@ -5,8 +5,8 @@
                 href="{{ route('home') }}"
                 class="text-md font-bold transition-opacity hover:opacity-80 text-lato drop-shadow-[1px_1px_0_rgba(0,0,0,.4)]"
             >
-                <span>SERHII</span>
-                <span class="text-main">CHO</span>
+                <span class="text-white">SERHII</span>
+                <span class="text-main-light">CHO</span>
             </a>
 
             @auth

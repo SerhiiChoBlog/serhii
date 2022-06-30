@@ -23,27 +23,18 @@ onMounted(() => {
 </script>
 
 <template>
-    <appear-transition>
-        <div class="p-7 lg:p-0 text-center">
-            <button
-                type="button"
-                class="w-full mx-auto max-w-xs border border-white lg:w-auto font-semibold text-white py-2 px-6 rounded-full transition-colors"
-                @click="openContactModal"
-                aria-label="Open contacts modal"
-            >
-                Contact me
-            </button>
-        </div>
-    </appear-transition>
+    <div class="p-7 lg:p-0 text-center">
+        <button
+            type="button"
+            class="w-full mx-auto shadow-md border border-border max-w-xs bg-main lg:w-auto font-semibold text-white py-2 px-6 rounded-full transition-colors hover:bg-main-hover"
+            @click="openContactModal"
+            aria-label="Open contacts modal"
+        >
+            Contact me
+        </button>
+    </div>
 
-    <transition
-        enter-active-class="duration-300 ease-out"
-        enter-from-class="transform opacity-0"
-        enter-to-class="opacity-100"
-        leave-active-class="duration-200 ease-in"
-        leave-from-class="opacity-100"
-        leave-to-class="transform opacity-0"
-    >
+    <appear-transition>
         <aside v-show="isOpen" class="fixed left-0 right-0 top-0 bottom-0 z-40 bg-[hsla(0,0%,4%,.86)]">
             <div
                 v-if="isOpen"
@@ -101,5 +92,5 @@ onMounted(() => {
                 </div>
             </div>
         </aside>
-    </transition>
+    </appear-transition>
 </template>

@@ -1,20 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="bg-home-hero-sm lg:bg-home-hero bg-no-repeat bg-center bg-cover flex flex-col justify-between relative">
-        <div class="absolute left-0 right-0 top-0 bottom-0 bg-black/70"></div>
-
-        <div class="text-white min-h-0 lg:min-h-[3.25rem]">
-            <x-navbar />
-        </div>
-
-        <div class="py-12 px-5 lg:py-[18rem] lg:px-[6rem] relative">
-            <div class="text-center text-white">
-                <h1 class="text-xl font-arizona lg:text-3xl">SERHII<span class="text-main-light">CHO</span></h1>
-                <typewriter />
-            </div>
-        </div>
-    </section>
+    <x-hero
+        title="SERHII<span class='text-main-light'>CHO</span>"
+        subtitle="<typewriter />"
+        class="bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1] text-white"
+    />
 
     <section class="py-8 lg:py-14 px-4">
         <div class="container">
@@ -24,9 +15,12 @@
                 <p class="px-0 lg:px-8 text-lg lg:text-xl font-light leading-7 lg:leading-9">
                     <x-home.welcome-section />
 
-                    <a href="{{ route('about-me') }}"
+                    <a
+                        href="{{ route('about-me') }}"
                         class="text-link hover:text-link-hover hover:underline transition-colors"
-                    >Read mode about me...</a>
+                    >
+                        Read mode about me...
+                    </a>
                 </p>
             </div>
         </div>
