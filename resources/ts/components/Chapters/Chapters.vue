@@ -183,10 +183,10 @@ function handleChapterClick(): void {
                             Chapters
                         </span>
 
-                        <div class="flex items-center gap-x-4">
+                        <div class="flex items-center gap-x-4 text-font-second">
                             <control-button
                                 tipContent="Load saved position and get back to where you've left off"
-                                :class="{'opacity-40 cursor-not-allowed': !savedChapter}"
+                                :disabled="!savedChapter"
                                 @click="goToSavedChapter"
                             >
                                 <LoadIcon class="w-4" />
@@ -202,7 +202,7 @@ function handleChapterClick(): void {
                             <control-button
                                 @click="deleteSave"
                                 tipContent="Delete current saved position"
-                                :class="{'opacity-40 cursor-not-allowed': !savedChapter}"
+                                :disabled="!savedChapter"
                             >
                                 <DeleteIcon class="w-4" />
                             </control-button>
