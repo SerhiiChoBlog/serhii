@@ -1,8 +1,12 @@
 <nav class="relative">
     <div class="container flex justify-between items-center min-h-[3.25rem]">
         <div class="flex items-center gap-x-1 w-full lg:w-auto">
-            <a href="{{ route('home') }}" class="text-md font-bold transition-opacity hover:opacity-80 font-arizona">
-                <span>SERHII<span class="text-main">CHO</span></span>
+            <a
+                href="{{ route('home') }}"
+                class="text-md font-bold transition-opacity hover:opacity-80 text-lato drop-shadow-[1px_1px_0_rgba(0,0,0,.4)]"
+            >
+                <span>SERHII</span>
+                <span class="text-main">CHO</span>
             </a>
 
             @auth
