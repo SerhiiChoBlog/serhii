@@ -40,7 +40,8 @@
                             <p>
                                 I'm looking forward to work in company from 🇪🇺 🇺🇸 🇨🇦 🇦🇺 🏴󠁧󠁢󠁥󠁮󠁧󠁿 by a contract.
                                 I'll be comfortable to work remotely <strong>120 hours per month</strong> in non
-                                outsource company. I'm also ready to relocate from Ukraine and work in the office.
+                                outsource company. I'm also ready to relocate from Ukraine and work in the office in countries
+                                listed above.
                             </p>
 
                             <h2>My way of working</h2>
@@ -50,6 +51,12 @@
                                 are <strong>code readability</strong> and <strong>performance</strong>. You can check my
                                 post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites">"5 techniques that
                                 I use for building fast websites"</a> where I'm talking about it in details.
+                            </p>
+
+                            <p>
+                                Websites that I'm working on are usually have the highest rate for the <strong>Lighthouse</strong>
+                                tests or <strong>PageSpeed Insights</strong>. I always try making a product as <strong>SEO</strong> friendly as
+                                possible.
                             </p>
 
                             <p>
