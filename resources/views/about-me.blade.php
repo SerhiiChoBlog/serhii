@@ -49,7 +49,7 @@
                             <p>
                                 Like every other person, I hate slow web apps and sites. In web development, my priorities
                                 are <strong>code readability</strong> and <strong>performance</strong>. You can check my
-                                post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites">"5 techniques that
+                                post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites" target="_blank">"5 techniques that
                                 I use for building fast websites"</a> where I'm talking about it in details.
                             </p>
 
