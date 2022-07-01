@@ -32,7 +32,7 @@ function switchTheme(): void {
         <div class="flex items-center justify-center pb-6 lg:pb-0">
             <button
                 type="button"
-                class="drop-shadow-md relative flex p-1 bg-transparent text-white hover:bg-gray-500 hover:bg-opacity-50 rounded-full"
+                class="drop-shadow-md relative text-yellow-300 dark:text-main flex p-1 bg-transparent text-white hover:bg-gray-500 hover:bg-opacity-50 rounded-full"
                 @click="switchTheme"
                 aria-label="Toggle between light and dark themes"
                 title="Toggle between light and dark themes"

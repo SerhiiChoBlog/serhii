@@ -81,7 +81,7 @@
     </section>
 
     <div class="container pb-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[clamp(700px,70%,850px)_clamp(300px,30%,370px)] gap-x-7 pt-8 lg:pt-20">
+        <div class="grid w-full grid-cols-1 lg:grid-cols-[repeat(auto-fit,minmax(320px,auto))] gap-x-7 pt-8 lg:pt-20 mx-auto max-w-[1200px]">
             <div>
                 <div class="post-content lg:prose-xl pr-2 lg:px-6"
                     id="post-content"
@@ -110,7 +110,7 @@
                 </nav>
             </div>
 
-            <div class="spacey-y-0 lg:space-y-12 px-3 h-full">
+            <div class="spacey-y-0 lg:space-y-12 px-3 h-full max-w-[320px]">
                 <div class="hidden lg:block">
                     <nav class="min-h-[83px]">
                         <x-post.sidebar-title>Share this post</x-post.sidebar-title>
