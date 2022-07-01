@@ -37,9 +37,8 @@ module.exports = {
             'mac-buttons': 'url(/storage/tools/mac-buttons.png)',
         },
         fontFamily: {
-            text: ['Lato', 'serif'],
+            main: ['Main', 'serif'],
             code: ['Code', 'monospace'],
-            arizona: ['Arizona', 'serif'],
         },
         keyframes: {
             blink: {

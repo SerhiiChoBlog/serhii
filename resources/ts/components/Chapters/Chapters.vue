@@ -173,7 +173,7 @@ function handleChapterClick(): void {
             <nav class="sticky h-screen overflow-y-scroll top-3 mt-7 text-center lg:text-left">
                 <div class="mb-5">
                     <div class="flex items-center gap-x-5 text-font-second">
-                        <span class="text-2xl font-bold font-arizona font-bold">
+                        <span class="text-2xl font-bold font-bold">
                             Chapters
                         </span>
 

@@ -34,7 +34,7 @@
                             />
 
                             <div>
-                                <h2 class="first-letter:text-main first-letter:text-3xl text-2xl text-font font-arizona">
+                                <h2 class="first-letter:text-main first-letter:text-3xl text-2xl text-font">
                                     {{ $project['title'] }}
                                 </h2>
 

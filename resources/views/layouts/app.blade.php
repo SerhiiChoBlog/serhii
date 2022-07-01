@@ -11,7 +11,7 @@
     <link href="{{ App\FileVersion::append('/css/app.css') }}" rel="stylesheet">
     @yield('head')
 </head>
-<body class="text-font font-lato bg-page {{ request()->cookie('theme') }}">
+<body class="text-font font-main bg-page {{ request()->cookie('theme') }}">
     <main id="app">
         @yield('content')
         <to-top></to-top>

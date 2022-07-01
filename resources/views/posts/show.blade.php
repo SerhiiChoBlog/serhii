@@ -31,7 +31,7 @@
                 <div class="flex items-left justify-center flex-col text-[.7rem] lg:text-[1rem] px-4">
                     <h1
                         style="font-size: {{ $title_font_size }}"
-                        class="leading-[1] font-light text-center lg:text-left font-arizona"
+                        class="leading-[1] font-light text-center lg:text-left"
                     >
                         {{ $post['title'] }}
                     </h1>

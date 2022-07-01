@@ -20,9 +20,9 @@
                 </a>
 
                 <div class="py-5 px-2">
-                    <h3 class="text-2xl font-medium font-arizona">{{ $post['title'] }}</h3>
+                    <h3 class="text-2xl font-semibold">{{ $post['title'] }}</h3>
 
-                    <p class="my-3 text-lg font-light">{{ $post['intro'] }}</p>
+                    <p class="my-3 text-lg">{{ $post['intro'] }}</p>
 
                     <x-post.tags :tags="$post['tags']" class="text-xs">
                         <x-post.created :created="$post['created_at']" :pretty="$post['pretty_created_at']" />
