@@ -24,17 +24,19 @@
 
             @foreach ($posts as $post)
                 <article>
-                    <a href="/posts/{{ $post->slug }}"
-                       class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl transition-colors hover:bg-page-second max-w-[550px] lg:max-w-full mx-auto"
-                       aria-label="{{ $post->title }}"
+                    <a
+                        href="/posts/{{ $post->slug }}"
+                        class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl transition-colors hover:bg-page-second max-w-[550px] lg:max-w-full mx-auto"
+                        aria-label="{{ $post->title }}"
                     >
-                        <img src="{{ asset($post->image_sm) }}"
+                        <img
+                            src="{{ asset($post->image_sm) }}"
                             class="rounded-lg shadow-md shadow-[rgba(0,0,0,.2)] w-full max-w-max lg:max-w-[260px]"
                             alt="{{ $post->title }}"
                         />
 
-                        <div class="font-lato">
-                            <h2 class="text-2xl text-font font-arizona ">{{ $post->title }}</h2>
+                        <div>
+                            <h2 class="text-2xl text-font">{{ $post->title }}</h2>
                             <p class="pb-3 pt-1 text-lg font-light text-font-second">{{ $post->intro }}</p>
 
                             <div>

@@ -9,14 +9,16 @@
 }
 
 @font-face {
-    font-family: 'Lato';
+    font-family: 'Main';
     src: url('../fonts/Lato-Regular.ttf') format("truetype");
+    font-weight: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Arizona';
-    src: url('../fonts/ArizonaPlusVariable.woff2') format("woff2-variations");
+    font-family: 'Main';
+    src: url('../fonts/Lato-Bold.ttf') format("truetype");
+    font-weight: bold;
     font-display: swap;
 }
 
@@ -34,6 +36,6 @@
     .post-content,
     .project-content,
     .about-me {
-        @apply prose prose-figcaption:text-center prose-figcaption:text-font-second max-w-none prose-img:rounded-xl prose-img:shadow-lg prose-img:mx-auto prose-a:text-link prose-a:no-underline hover:prose-a:text-link-hover prose-h4:font-arizona prose-h3:font-arizona prose-h2:font-arizona prose-headings:font-normal prose-p:font-light prose-strong:font-semibold prose-headings:text-font text-font prose-strong:text-font;
+        @apply prose prose-figcaption:text-center prose-figcaption:text-font-second max-w-none prose-img:rounded-xl prose-img:shadow-lg prose-img:mx-auto prose-a:text-link prose-a:no-underline hover:prose-a:text-link-hover prose-strong:font-black text-font prose-strong:text-font prose-p:!font-main prose-headings:text-font prose-p:leading-10;
     }
 }

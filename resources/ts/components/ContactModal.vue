@@ -63,7 +63,7 @@ onMounted(() => {
                             :key="section.title"
                             class="py-5 first:pt-0 last:pb-0"
                         >
-                            <h2 class="text-center text-2xl mb-3 font-arizona font-bold">
+                            <h2 class="text-center text-2xl mb-3 font-bold">
                                 {{ section.title }}
                             </h2>
 

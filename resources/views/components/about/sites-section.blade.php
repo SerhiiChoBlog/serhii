@@ -24,7 +24,7 @@
                         height="251"
                     />
 
-                    <span class="block text-font-second text-xl text-center drop-shadow-[-7px_7px_5px_rgba(0,0,0,.2)] mt-3 font-light font-arizona">
+                    <span class="block text-font-second text-xl text-center drop-shadow-[-7px_7px_5px_rgba(0,0,0,.2)] mt-3 font-light">
                         {{ $site['title'] }}
                     </span>
                 </a>
