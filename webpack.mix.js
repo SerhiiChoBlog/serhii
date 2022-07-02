@@ -25,7 +25,6 @@ mix.ts('resources/ts/app.ts', 'public/js/app.js')
     .postCss("resources/css/app.css", "public/css", [
         require("tailwindcss"),
     ])
-    .version()
     .options({
         autoprefixer: {
             options: {
