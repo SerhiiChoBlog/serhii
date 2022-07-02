@@ -10,3 +10,4 @@ parameters:
 		- ./*/*/FileToBeExcluded.php
 	ignoreErrors:
 		- '/Parameter #1 \$message of method Illuminate\\Log\\LogManager::(warning|error|debug)\(\) expects string, .*Exception given./'
+		- '/Parameter #2 \$operator of method Illuminate\\Database\\Eloquent\\Builder<.*>::whereDate\(\) expects string, Illuminate\\Support\\Carbon given\./'
