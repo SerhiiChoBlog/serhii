@@ -56,6 +56,7 @@
                                     <a href="{{ route('posts.show', $post) }}"
                                        class="text-sm border rounded-sm w-10 h-10 flex justify-center items-center transition-colors hover:bg-gray-100"
                                        title="View post"
+                                       target="_blank"
                                     >
                                         <i class="fas fa-eye"></i>
                                     </a>
