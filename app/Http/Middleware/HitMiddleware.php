@@ -17,7 +17,7 @@ class HitMiddleware
         }
 
         /** @var Hit|null $today_hit */
-        $today_hit = Hit::query()->whereDate('updated_at', today()->toString())->first();
+        $today_hit = Hit::query()->whereDate('updated_at', today())->first();
 
         $today_hit
             ? $today_hit->query()->increment('amount')
