@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePageViewsTable extends Migration
+return new class extends Migration
 {
     public function up(): void
     {
@@ -24,4 +24,4 @@ class CreatePageViewsTable extends Migration
     {
         Schema::dropIfExists('page_views');
     }
-}
+};
