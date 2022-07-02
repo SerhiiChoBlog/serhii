@@ -24,6 +24,7 @@ class Referrer extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
     protected $appends = ['pretty_updated_at'];
 
     /**
