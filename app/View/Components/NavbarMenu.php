@@ -40,7 +40,7 @@ class NavbarMenu extends Component
             [
                 'href' => route('about-me'),
                 'class' => request()->is('about-me') ? $active_class : '',
-                'title' => 'About me',
+                'title' => 'About',
             ],
         ];
     }
