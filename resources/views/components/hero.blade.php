@@ -10,10 +10,8 @@
             @isset($subtitle)
                 <p class="text-md lg:text-xl">{!! $subtitle !!}</p>
             @endisset
-
-            <div>
-                {{ $slot ?? '' }}
-            </div>
         </div>
+
+        {{ $slot ?? '' }}
     </div>
 </header>

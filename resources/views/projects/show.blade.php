@@ -17,24 +17,26 @@
         :subtitle="$project->description"
         class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white"
     >
-        <a
-            href="{{ $project->url }}"
-            target="_blank"
-            class="bg-gradient bg-gradient-to-br from-gray-200 via-white to-gray-200 text-black px-7 py-3 rounded-full inline-flex mt-5 hover:scale-105 transition-transform shadow-md"
-            aria-label="{{ $project->title }}"
-            title="Link to GitHub repo '{{ $project->title }}'"
-        >
-            <div>
-                <img
-                    src="{{ asset('storage/icons/github-dark.png') }}"
-                    width="20"
-                    height="20"
-                    alt="Github logo"
-                />
-            </div>
+        <div class="text-center">
+            <a
+                href="{{ $project->url }}"
+                target="_blank"
+                class="bg-gradient bg-gradient-to-br from-gray-200 via-white to-gray-200 text-black px-7 py-3 rounded-full inline-flex mt-5 hover:scale-105 transition-transform shadow-md mx-auto"
+                aria-label="{{ $project->title }}"
+                title="Link to GitHub repo '{{ $project->title }}'"
+            >
+                <div>
+                    <img
+                        src="{{ asset('storage/icons/github-dark.png') }}"
+                        width="20"
+                        height="20"
+                        alt="Github logo"
+                    />
+                </div>
 
-            <span class="ml-2">Open on Github</span>
-        </a>
+                <span class="ml-2">Open on Github</span>
+            </a>
+        </div>
     </x-hero>
 
     <div class="container mt-6 pb-6 px-8 lg:px-0">
