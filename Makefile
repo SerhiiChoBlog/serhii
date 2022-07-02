@@ -36,4 +36,9 @@ deploy:
 	composer update --no-dev
 	make cache
 
+deploy:
+	yarn prod
+	git commit -m 'Compiled assets for production'
+	make push
+
 .DEFAULT_GOAL := push
