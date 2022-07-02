@@ -1,4 +1,4 @@
-<header {{ $attributes->merge(['class' => 'bg-gray-500']) }}>
+<header {{ $attributes->merge([]) }}>
     <x-navbar />
 
     <div class="{{ isset($title, $subtitle) ? 'p-[1.5em] lg:p-[3em]' : '' }}">

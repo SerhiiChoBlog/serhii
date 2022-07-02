@@ -3,11 +3,11 @@ import { onMounted, ref } from 'vue'
 import AppearTransition from './Transitions/AppearTransition.vue'
 
 const typewriter = ref('')
-const words = ['software developer️ 😎', 'programmer 💻', 'PHP developer 🐘']
+const words = ['software developer️ 😎', 'programmer 💻', 'Laravel developer 🐘']
 const wait = 3000
 let text = ''
 let isDeleting = false
-let typingSpeed = 100
+let typingSpeed = 50
 let wordIndex = 0
 
 function initTypewriter(): void {
@@ -41,9 +41,9 @@ onMounted(() => initTypewriter())
 
 <template>
     <appear-transition>
-        <p class="font-code text-sm lg:text-lg">
+        <p class="text-gray-200 font-code text-sm lg:text-lg">
              Professional {{ typewriter }}
-            <span class="border-r-[12px] ml-2 animate-blink"></span>
+            <span class="border-r-[12px] border-r-gray-800 animate-blink"></span>
         </p>
     </appear-transition>
 </template>
