@@ -13,7 +13,7 @@
         <div class="w-full mx-auto shadow-md border border-border max-w-xs bg-main lg:w-auto font-semibold text-white py-2 px-6 rounded-full transition-colors hover:bg-main-hover">Contact me</div>
     </contact-modal>
 
-    <div class="min-w-[35px]">
+    <div class="min-w-[35px] mx-auto">
         <theme-switch theme="{{ request()->cookie('theme') ?? 'light' }}" />
     </div>
 </div>

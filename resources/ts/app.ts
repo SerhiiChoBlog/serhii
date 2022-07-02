@@ -10,6 +10,7 @@ import ThemeSwitch from './components/ThemeSwitch.vue'
 import Avatar from './components/Avatar.vue'
 import ToTop from './components/ToTop.vue'
 import Popper from "vue3-popper"
+import Tip from './components/Tip.vue'
 
 const app = createApp({
     components: {
@@ -22,6 +23,7 @@ const app = createApp({
         Avatar,
         ToTop,
         Popper,
+        Tip,
     },
 
     setup() {

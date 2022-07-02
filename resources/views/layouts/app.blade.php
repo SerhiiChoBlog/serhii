@@ -14,7 +14,7 @@
 <body class="text-font font-main bg-page {{ request()->cookie('theme') }}">
     <main id="app">
         @yield('content')
-        <to-top></to-top>
+{{--        <to-top></to-top>--}}
     </main>
 
     <script src="{{ App\FileVersion::append('/js/app.js') }}"></script>
