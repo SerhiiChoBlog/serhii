@@ -15,13 +15,13 @@
     />
 
     <div class="container my-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
 
             @foreach ($projects as $project)
-                <article>
+                <article class="xl:first:-row-start-1 xl:first:row-span-2">
                     <a
                         href="/projects/{{ $project['name'] }}"
-                        class="bg-page-second p-7 rounded-md shadow-md hover:shadow-lg transition-shadow relative flex flex-col justify-center min-h-[300px]"
+                        class="bg-page-second p-7 h-full rounded-md shadow-md hover:shadow-lg transition-shadow relative flex flex-col justify-center min-h-[300px]"
                         title="Go to a project"
                     >
                         <div>
@@ -34,11 +34,11 @@
                             />
 
                             <div>
-                                <h2 class="first-letter:text-main first-letter:text-3xl text-2xl text-font">
+                                <h2 class="first-letter:text-main font-bold text-2xl text-font uppercase">
                                     {{ $project['title'] }}
                                 </h2>
 
-                                <p class="text-md mt-3 text-font-second border-t border-t-border pt-3">
+                                <p class="text-lg mt-3 text-font-second border-t border-t-border pt-3">
                                     {{ $project['description'] }}
                                 </p>
                             </div>
