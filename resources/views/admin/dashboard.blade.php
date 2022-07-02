@@ -9,16 +9,18 @@
 @section('content')
 
 <div class="container">
-    <nav class="flex items-center space-y-6 flex-col lg:flex-row justify-between mx-auto">
-        @foreach ($sections as $section)
-            <div class="flex flex-col space-y-2">
-                <p class="text-font-second text-center uppercase text-xs text-font-second tracking-widest">
-                    {{ $section['title'] }}
-                </p>
+    <x-admin.page-title>Statistics</x-admin.page-title>
 
-                <p class="drop-shadow-md text-3xl text-center font-semibold">
+    <nav class="flex items-center flex-col lg:flex-row justify-between max-w-[800px] mx-auto gap-9">
+        @foreach ($sections as $section)
+            <div class="flex flex-col justify-between">
+                <div class="text-font-second text-center uppercase text-sm text-font-second tracking-widest">
+                    {{ $section['title'] }}
+                </div>
+
+                <div class="drop-shadow-md text-2xl text-center font-semibold text-main-dark drop-shadow-md">
                     {{ $section['value'] }}
-                </p>
+                </div>
             </div>
         @endforeach
     </nav>

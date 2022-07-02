@@ -4,6 +4,8 @@
     <div class="container">
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-x-6">
             <div class="border-b pb-7 mb-7 lg:border-none lg:pb-0 lg:mb-0">
+                <x-admin.page-title>Tags</x-admin.page-title>
+
                 <div class="px-4">
                     <form action="{{ route('admin.tags.store') }}" method="POST">
                         @csrf

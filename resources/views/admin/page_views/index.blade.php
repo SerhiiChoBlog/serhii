@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container max-w-3xl">
-        <h1 class="text-3xl">Page views</h1>
+        <x-admin.page-title>Page views</x-admin.page-title>
 
-        <div class="overflow-x-auto shadow-md rounded-lg mx-auto mt-7">
+        <div class="overflow-x-auto shadow-md rounded-lg mx-auto">
             <table class="table-auto w-full">
                 <thead class="bg-gray-500 text-white text-left">
                     <tr>
