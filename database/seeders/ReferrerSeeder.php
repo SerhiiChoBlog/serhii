@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Referrer;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class ReferrerSeeder extends Seeder
 {
@@ -15,12 +16,14 @@ class ReferrerSeeder extends Seeder
             'name' => 'Jiskelo',
             'site' => 'https://jiskelo.dev',
             'hits' => 1,
+            'hash' => Str::random(5)
         ]);
 
         Referrer::query()->create([
             'name' => 'Shobar',
             'site' => 'https://shobar.com.ua',
             'hits' => 1,
+            'hash' => Str::random(5)
         ]);
     }
 }

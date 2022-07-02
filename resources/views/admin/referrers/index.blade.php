@@ -10,7 +10,7 @@
         @empty($referrers->all())
             <h2 class="text-2xl text-center">There are not referrers</h2>
         @else
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-w-[1100px] mx-auto">
                 <table class="w-full">
                     <thead class="bg-gray-500 text-left">
                     <tr>
@@ -25,9 +25,9 @@
                             <td class="p-2">{{ $referrer->id }}</td>
                             <td class="p-2">{{ $referrer->name }}</td>
                             <td class="p-2">{{ $referrer->site }}</td>
-                            <td class="p-2">{{ $referrer->hits }}</td>
+                            <td class="p-2 text-lg font-black text-main font-code">{{ $referrer->hits }}</td>
                             <td class="p-2">
-                                <code class="bg-gray-200 py-1 px-3 rounded-md">
+                                <code class="bg-gray-200 py-1 px-3 rounded-md font-code">
                                     {{ $referrer->hash }}
                                 </code>
                             </td>
