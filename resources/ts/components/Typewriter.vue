@@ -41,7 +41,7 @@ onMounted(() => initTypewriter())
 
 <template>
     <appear-transition>
-        <p class="text-gray-200 font-code text-sm lg:text-lg">
+        <p class="text-gray-300 font-code text-sm lg:text-xl">
              Professional {{ typewriter }}
             <span class="border-r-[12px] border-r-gray-800 animate-blink"></span>
         </p>
