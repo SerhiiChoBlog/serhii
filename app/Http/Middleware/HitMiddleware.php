@@ -16,11 +16,11 @@ class HitMiddleware
             return $next($request);
         }
 
-        /** @var Hit|null $old_hit */
-        $today_hit = Hit::query()->whereDate('updated_at', today())->first();
+        /** @var Hit|null $today_hit */
+        $today_hit = Hit::query()->whereDate('updated_at', today()->toString())->first();
 
         $today_hit
-            ? $today_hit->increment('amount')
+            ? $today_hit->query()->increment('amount')
             : Hit::query()->create();
 
         return $next($request);
