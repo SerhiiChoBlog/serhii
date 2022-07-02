@@ -3,7 +3,7 @@
 @endphp
 
 <div>
-    <div class="flex flex-col lg:flex-row gap-8">
+    <div class="flex flex-col lg:flex-row gap-8 overflow-x-hidden">
         @foreach ($posts as $post)
             <article class="max-w-md mx-auto">
                 <a
