@@ -19,7 +19,7 @@ document.addEventListener('scroll', () => {
 <template>
     <appear-transition>
         <img
-            src="/storage/serhii.jpg"
+            src="/storage/serhii-cho.jpg"
             alt="Serhii Cho"
             class="my-0 my-auto rounded-lg sticky top-6 mb-6 mt-6 mx-auto transition-all duration-500"
             :style="shadow"
