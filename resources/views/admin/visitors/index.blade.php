@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container max-w-3xl">
-        <h1 class="text-3xl">Page views</h1>
+        <x-admin.page-title>Visitors</x-admin.page-title>
 
         <div class="overflow-x-auto shadow-md rounded-lg mx-auto mt-7">
             <table class="table-auto w-full">
