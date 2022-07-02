@@ -6,6 +6,7 @@ namespace Database\Factories;
 
 use App\Models\Referrer;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class ReferrerFactory extends Factory
 {
@@ -16,7 +17,8 @@ class ReferrerFactory extends Factory
         return [
             'name' => $this->faker->title,
             'site' => $this->faker->slug . '.com',
-            'hits' => random_int(1, 199)
+            'hash' => Str::random(5),
+            'hits' => 0,
         ];
     }
 }
