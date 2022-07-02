@@ -11,13 +11,13 @@ class ReferrerSeeder extends Seeder
 {
     public function run(): void
     {
-        Referrer::factory()->create([
+        Referrer::query()->create([
             'name' => 'Jiskelo',
             'site' => 'https://jiskelo.dev',
             'hits' => 1,
         ]);
 
-        Referrer::factory()->create([
+        Referrer::query()->create([
             'name' => 'Shobar',
             'site' => 'https://shobar.com.ua',
             'hits' => 1,
