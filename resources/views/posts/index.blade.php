@@ -20,7 +20,7 @@
     />
 
     <div class="container mt-5">
-        <div class="flex flex-col gap-y-2">
+        <div class="flex flex-col gap-y-2 max-w-[1100px] mx-auto">
 
             @foreach ($posts as $post)
                 <article>
