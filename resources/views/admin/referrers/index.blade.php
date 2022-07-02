@@ -14,7 +14,7 @@
                 <table class="w-full">
                     <thead class="bg-gray-500 text-left">
                     <tr>
-                        @foreach (['#', 'Name', 'Site', 'Hits', 'Last'] as $title)
+                        @foreach (['#', 'Name', 'Site', 'Hits', 'Hash', 'Last update'] as $title)
                             <th class="text-white p-3 font-light">{{ $title }}</th>
                         @endforeach
                     </tr>
@@ -26,6 +26,11 @@
                             <td class="p-2">{{ $referrer->name }}</td>
                             <td class="p-2">{{ $referrer->site }}</td>
                             <td class="p-2">{{ $referrer->hits }}</td>
+                            <td class="p-2">
+                                <code class="bg-gray-200 py-1 px-3 rounded-md">
+                                    {{ $referrer->hash }}
+                                </code>
+                            </td>
                             <td class="p-2">{{ $referrer->pretty_updated_at }}</td>
                         </tr>
                     @endforeach
