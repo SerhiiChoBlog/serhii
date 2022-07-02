@@ -26,11 +26,11 @@ onMounted(() => {
     <div class="p-7 lg:p-0 text-center">
         <button
             type="button"
-            class="w-full mx-auto shadow-md border border-border max-w-xs bg-main lg:w-auto font-semibold text-white py-2 px-6 rounded-full transition-colors hover:bg-main-hover"
+            class="w-full mx-auto shadow-md border border-border max-w-xs bg-main lg:w-auto font-semibold text-white py-2 px-6 rounded-full transition-colors hover:bg-main-hover uppercase text-sm tracking-widest"
             @click="openContactModal"
             aria-label="Open contacts modal"
         >
-            Contact me
+            Contacts
         </button>
     </div>
 
