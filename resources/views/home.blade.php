@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-hero class="bg-gradient-to-r from-gray-700 to-gray-800 text-white">
-        <div class="grid grid-cols-[2fr_1fr] gap-7">
-            <div class="rounded-xl bg-gray-900 p-10 bg-home-hero-sm lg:bg-home-hero bg-no-repeat bg-top bg-cover relative overflow-hidden min-h-[600px] shadow-xl">
-                <div class="absolute left-0 right-0 top-0 bottom-0 bg-black/70"></div>
+    <x-hero class="bg-gradient-to-r from-gray-600 to-gray-700 text-white shadow-md">
+        <div class="grid grid-cols-[2fr_1fr] gap-7 px-7 pb-7">
+            <div class="rounded-xl bg-gray-900 p-10 bg-home-hero-sm lg:bg-home-hero bg-no-repeat bg-top bg-cover relative overflow-hidden min-h-[600px] shadow-md">
+                <div class="absolute left-0 right-0 top-0 bottom-0 bg-black/60"></div>
 
                 <div class="z-10 absolute top-1/2 -translate-y-1/2">
                     <h1 class="text-xl lg:text-3xl relative">
@@ -15,7 +15,8 @@
                     <typewriter />
                 </div>
             </div>
-            <div class="rounded-lg bg-white">
+
+            <div class="rounded-lg bg-white shadow-md">
                 nice
             </div>
         </div>
