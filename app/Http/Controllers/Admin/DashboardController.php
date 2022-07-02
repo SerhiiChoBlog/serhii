@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\PageView;
+use App\Models\Hit;
 use App\Models\Post;
 use App\Models\Referrer;
 use App\Models\SocialShare;
-use App\Models\Visitor;
 use Illuminate\Contracts\View\View;
+use Serhii\Ago\Exceptions\InvalidDateFormatException;
+use Serhii\Ago\Exceptions\MissingRuleException;
 use Serhii\Ago\TimeAgo;
-use Serhii\ShortNumber\Number;
 
 class DashboardController extends Controller
 {
@@ -22,16 +22,21 @@ class DashboardController extends Controller
             'sections' => $this->getSections(),
         ]);
     }
+
+    /**
+     * @throws InvalidDateFormatException
+     * @throws MissingRuleException
+     */
     private function getSections(): array
     {
         return [
             [
                 'title' => 'Last visit',
-                'value' => $this->getLastVisit(),
+                'value' => TimeAgo::trans(Hit::query()->latest()->value('updated_at')),
             ],
             [
-                'title' => 'Visitors',
-                'value' => Number::conv(Visitor::query()->count()),
+                'title' => 'Hits today',
+                'value' => Hit::query()->whereDate('updated_at', today())->value('amount') ?? 0,
             ],
             [
                 'title' => 'Referrers',
@@ -42,18 +47,6 @@ class DashboardController extends Controller
                 'value' => $this->getShares(),
             ],
         ];
-    }
-
-    private function getLastVisit(): string
-    {
-        /** @var PageView|null $last_visit */
-        $last_visit = PageView::query()->latest('updated_at')->first();
-
-        if (!$last_visit) {
-            return '';
-        }
-
-        return TimeAgo::trans($last_visit->updated_at->toDateTimeString());
     }
 
     private function getShares(): int
