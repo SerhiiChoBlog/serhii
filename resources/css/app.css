@@ -36,6 +36,6 @@
     .post-content,
     .project-content,
     .about-me {
-        @apply prose prose-figcaption:text-center prose-figcaption:text-font-second max-w-none prose-img:rounded-xl prose-img:shadow-lg prose-img:mx-auto prose-a:text-link prose-a:no-underline hover:prose-a:text-link-hover prose-strong:font-black text-font prose-strong:text-font prose-p:!font-main prose-headings:text-font prose-p:leading-10;
+        @apply prose prose-figcaption:text-center prose-figcaption:text-font-second max-w-none prose-img:rounded-xl prose-img:mx-auto prose-a:text-link prose-a:no-underline hover:prose-a:text-link-hover prose-strong:font-black text-font prose-strong:text-font prose-p:!font-main prose-headings:text-font prose-p:leading-8 prose-p:lg:leading-10;
     }
 }
