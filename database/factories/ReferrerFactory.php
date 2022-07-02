@@ -16,6 +16,7 @@ class ReferrerFactory extends Factory
         return [
             'name' => $this->faker->title,
             'site' => $this->faker->slug . '.com',
+            'hits' => random_int(1, 199)
         ];
     }
 }
