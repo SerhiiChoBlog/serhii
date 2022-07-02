@@ -1,6 +1,11 @@
 <?php
 
-use App\Http\Controllers\{AboutMeController, HomeController, PostController, ProjectController, ThemeController,};
+use App\Http\Controllers\{AboutMeController,
+    HomeController,
+    PostController,
+    ProjectController,
+    ReferrerController,
+    ThemeController};
 use App\Http\Controllers\Admin\{DashboardController as AdminDashboardController,
     PageViewController as AdminPageViewController,
     PostContentImageController,
@@ -29,6 +34,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::post('post-content-images/{post}', [PostContentImageController::class, 'store'])->name('post-content-images.store');
     Route::delete('post-content-images/{image}', [PostContentImageController::class, 'destroy'])->name('post-content-images.delete');
     Route::resource('social-shares', AdminSocialShareController::class)->only(['index']);
+    Route::resource('referrers', ReferrerController::class)->only(['index']);
 });
 
 Route::prefix('posts')->controller(PostController::class)->group(function () {
