@@ -19,9 +19,17 @@ class HitMiddleware
         /** @var Hit|null $today_hit */
         $today_hit = Hit::query()->whereDate('updated_at', today())->first();
 
-        $today_hit
-            ? $today_hit->query()->increment('amount')
-            : Hit::query()->create();
+        $exclude_ips = explode(',', config('app.hits_exclude_ips'));
+
+        if (in_array($request->ip(), $exclude_ips, true)) {
+            return $next($request);
+        }
+
+        if ($today_hit) {
+            $today_hit->query()->increment('amount');
+        } else {
+            Hit::query()->create();
+        }
 
         return $next($request);
     }
