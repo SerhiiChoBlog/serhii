@@ -31,7 +31,7 @@ class HomeController extends Controller
             [
                 'href' => route('posts.index'),
                 'class' => 'bg-gradient-to-r from-[#d074a2] to-[#2a4b67]',
-                'title' => 'Blog posts',
+                'title' => 'Blog',
             ],
             [
                 'href' => route('projects.index'),
