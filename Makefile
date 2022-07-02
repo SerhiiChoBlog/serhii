@@ -17,6 +17,7 @@ cs:
 	./vendor/bin/phpcs app --colors -p
 
 test:
+	rm -f database/database.sqlite
 	touch database/database.sqlite
 	php artisan test
 
