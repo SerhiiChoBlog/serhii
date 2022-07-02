@@ -11,11 +11,11 @@
     @yield('head')
 </head>
 <body>
-<x-admin.user-sidebar />
-<main class="pl-9 lg:pl-14 py-10 text-font bg-page">
-    @yield('content')
-</main>
-<script src="{{ asset('js/admin.js') }}" defer></script>
+    <x-admin.user-sidebar />
+    <main class="pl-9 lg:pl-14 py-10 text-font font-main bg-page">
+        @yield('content')
+    </main>
+    <script src="{{ asset('js/admin.js') }}" defer></script>
 </body>
 </html>
 
