@@ -10,7 +10,7 @@ use Illuminate\View\Component;
 
 class LastPost extends Component
 {
-    public array $post;
+    public ?array $post;
 
     public function __construct()
     {
@@ -22,7 +22,7 @@ class LastPost extends Component
         return view('components.home.last-post');
     }
 
-    public function getLastPost(): array
+    public function getLastPost(): ?array
     {
         return Cache::rememberForever(CacheKey::LAST_POST, static function () {
             return Post::query()
