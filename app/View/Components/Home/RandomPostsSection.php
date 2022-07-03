@@ -2,20 +2,26 @@
 
 namespace App\View\Components\Home;
 
+use App\CacheKey;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\Component;
 
 class RandomPostsSection extends Component
 {
     public function posts(): array
     {
+        $last_post = Cache::get(CacheKey::LAST_POST);
+
         return Post::query()
             ->with('tags:name,color')
             ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
             ->where('is_published', true)
-            ->inRandomOrder()
             ->limit(3)
+            ->when($last_post, fn(Builder $query) => $query->whereNot('id', $last_post['id']))
+            ->inRandomOrder()
             ->get()
             ->toArray();
     }
