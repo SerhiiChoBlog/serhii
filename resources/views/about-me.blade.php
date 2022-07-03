@@ -94,6 +94,7 @@
         </section>
 
         <x-about.section isDark="true" header="Languages">
+            <x-section-detail />
             <x-about.tech-section :techs="config('technologies.languages')"/>
         </x-about.section>
 
@@ -102,6 +103,7 @@
         </x-about.section>
 
         <x-about.section isDark="true" header="Other technologies">
+            <x-section-detail />
             <x-about.tech-section :techs="config('technologies.technologies')"/>
         </x-about.section>
 
@@ -110,6 +112,7 @@
         </x-about.section>
 
         <x-about.section isDark="true" header="Latest projects">
+            <x-section-detail />
             <x-about.sites-section/>
         </x-about.section>
     </div>
