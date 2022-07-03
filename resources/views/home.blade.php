@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-hero class="bg-white shadow-md" navbar="bg-gray-700 text-white">
+    <x-hero class="bg-page shadow-md" navbar="bg-gray-700 text-white">
         <div class="container mt-4">
             <div class="grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-5 pt-1">
                 <x-home.banner />
