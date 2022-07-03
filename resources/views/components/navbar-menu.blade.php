@@ -1,4 +1,4 @@
-<div class="navbar-menu" id="navbar-menu">
+<div class="navbar-menu z-40" id="navbar-menu">
     @foreach ($getMenuItems() as $item)
         <a
             href="{{ $item['href'] }}"
