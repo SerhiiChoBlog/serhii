@@ -23,7 +23,7 @@ class PostController extends Controller
                 ->with('tags:id,name,color')
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
                 ->where('is_published', true)
-                ->orderByDesc('created_at')
+                ->latest()
                 ->paginate(15);
         });
 

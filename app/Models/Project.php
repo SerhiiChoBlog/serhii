@@ -38,7 +38,7 @@ class Project extends Model
         return Cache::rememberForever(CacheKey::PROJECTS, static function () {
             return self::query()
                 ->select('title', 'language', 'description', 'name')
-                ->orderByDesc('created_at')
+                ->latest()
                 ->get()
                 ->toArray();
         });

@@ -27,7 +27,7 @@ class PostController extends Controller
             ->with(['tags', 'images'])
             ->withCount('pageViews')
             ->withCount('socialShares')
-            ->orderByDesc('created_at')
+            ->latest()
             ->get();
 
         return view('admin.posts.index', compact('posts'));
