@@ -7,12 +7,13 @@ use App\Http\Controllers\{AboutMeController,
     ReferrerController,
     ThemeController};
 use App\Http\Controllers\Admin\{DashboardController as AdminDashboardController,
+    HitController,
     PageViewController as AdminPageViewController,
     PostContentImageController,
     PostController as AdminPostController,
     SocialShareController as AdminSocialShareController,
     TagController as AdminTagController,
-    VisitorController as AdminVisitorController,};
+    VisitorController as AdminVisitorController};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,4 +50,5 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::delete('post-content-images/{image}', [PostContentImageController::class, 'destroy'])->name('post-content-images.delete');
     Route::resource('social-shares', AdminSocialShareController::class)->only(['index']);
     Route::resource('referrers', ReferrerController::class)->only(['index']);
+    Route::resource('hits', HitController::class)->only(['index']);
 });

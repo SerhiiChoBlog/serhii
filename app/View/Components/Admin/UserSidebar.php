@@ -68,6 +68,12 @@ class UserSidebar extends Component
                 'class' => request()->is('admin/referrers') ? 'bg-main' : '',
             ],
             [
+                'href' => route('admin.hits.index'),
+                'title' => 'Hits',
+                'icon' => 'fa-shoe-prints',
+                'class' => request()->is('admin/hits') ? 'bg-main' : '',
+            ],
+            [
                 'href' => route('logout'),
                 'title' => 'Logout',
                 'icon' => 'fa-sign-out-alt',
