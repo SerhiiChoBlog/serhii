@@ -3,7 +3,7 @@
 @section('content')
     <x-hero class="bg-white shadow-md" navbar="bg-gray-700 text-white">
         <div class="container mt-4">
-            <div class="grid grid-cols-[3fr_1fr] gap-5 pt-1">
+            <div class="grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-5 pt-1">
                 <x-home.banner />
                 <x-home.last-post />
             </div>
@@ -12,7 +12,9 @@
         {{-- Welcome --}}
         <section class="py-10">
             <div class="container">
-                <div class="px-10 mx-auto">
+                <div class="lg:px-10 mx-auto">
+                    <x-home.section-title>Nice to meet you</x-home.section-title>
+
                     <div class="text-lg lg:text-xl font-light leading-7 lg:leading-9">
                         <x-home.welcome-section />
 
