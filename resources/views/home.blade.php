@@ -71,9 +71,13 @@
         </section>
     </x-hero>
 
-    <section class="py-12 bg-page-second">
+    <section class="py-12 bg-page-second relative">
+        <div class="w-[50px] aspect-square bg-page absolute top-[-30px] left-1/2 -translate-x-1/2 rotate-45"></div>
+        <div class="w-[50px] aspect-square bg-page-second absolute top-[-40px] left-1/2 -translate-x-1/2 rotate-45"></div>
+        <div class="w-[20px] aspect-square bg-page absolute top-[-24px] left-1/2 -translate-x-1/2 rotate-45"></div>
+
         <div class="container">
-            <x-home.last-posts-section />
+            <x-home.random-posts-section />
         </div>
     </section>
 @endsection
