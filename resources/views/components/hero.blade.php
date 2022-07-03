@@ -1,5 +1,7 @@
 <header {{ $attributes->merge([]) }}>
-    <x-navbar />
+    <div class="{{ $navbar ?? '' }}">
+        <x-navbar />
+    </div>
 
     <div class="{{ isset($title, $subtitle) ? 'p-[1.5em] lg:p-[3em]' : '' }}">
         <div class="text-center max-w-5xl mx-auto">

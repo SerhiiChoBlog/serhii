@@ -5,72 +5,66 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-hero class="bg-white shadow-md px-5">
-        <div class="container">
+    <x-hero class="bg-white shadow-md" navbar="bg-gray-700 text-white">
+        <div class="container mt-4">
             <div class="grid grid-cols-[3fr_1fr] gap-5 pt-1">
-                <div class="rounded-xl bg-gray-900 p-10 bg-home-hero-sm lg:bg-home-hero bg-no-repeat bg-top bg-cover relative overflow-hidden h-[500px] shadow-lg">
+                <div class="rounded-lg bg-gray-900 p-10 bg-home-hero-sm lg:bg-home-hero bg-no-repeat bg-top bg-cover relative overflow-hidden h-full shadow-lg">
                     <div class="absolute left-0 right-0 top-0 bottom-0 bg-gradient-to-r from-gray-800 to-gray-800/30"></div>
 
                     <div class="z-10 absolute top-1/2 -translate-y-1/2 ml-10">
                         <h1 class="text-xl lg:text-4xl relative">
-                            <span class="text-gray-300">SERHII</span>
-                            <span class="text-main-light">CHO</span>
+                            <span class="text-gray-300 drop-shadow-md">SERHII</span>
+                            <span class="text-main drop-shadow-md">CHO</span>
                         </h1>
 
                         <typewriter />
                     </div>
                 </div>
 
-                <div class="flex items-center">
-                    <div>
-                        <div class="border mb-3 py-1 px-5 uppercase flex justify-between text-gray-700 border-gray-400 rounded-lg font-bold text-xl shadow-md">
-                            <b>L</b><b>a</b><b>t</b><b>e</b><b>s</b><b>t</b>
-                            <b class="ml-5">p</b><b>o</b><b>s</b><b>t</b>
-                        </div>
+                <div>
+                    <div
+                        class="flex flex-col gap-4 justify-between"
+                    >
+                        <img
+                            src="{{ $post->image_sm }}"
+                            alt="{{ $post->title }}"
+                            class="rounded-lg shadow-lg w-full"
+                            width="395"
+                            height="215"
+                        >
+
+                        <h2 class="text-2xl font-bold px-2">
+                            {{ $post->title }}
+                        </h2>
+
+                        <p class="text-lg px-2">
+                            {{ $post->intro }}
+                        </p>
 
                         <a
                             href="{{ route('posts.show', $post) }}"
-                            class="flex flex-col gap-4 justify-between"
+                            class="border border-border rounded-lg py-2 px-4 uppercase text-center"
                         >
-                            <img
-                                src="{{ $post->image_sm }}"
-                                alt="{{ $post->title }}"
-                                class="rounded-lg shadow-lg w-full"
-                                width="395"
-                                height="215"
-                            >
-
-                            <div class="px-4 space-y-4">
-                                <h2 class="text-2xl font-bold">
-                                    {{ $post->title }}
-                                </h2>
-
-                                <p class="text-lg">
-                                    {{ $post->intro }}
-                                </p>
-                            </div>
+                            Read latest post
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> <!-- grid -->
         </div>
 
-        <section class="pt-14 pb-20 flex flex-col justify-center">
+        {{-- Welcome --}}
+        <section class="py-10">
             <div class="container">
                 <div class="px-10 mx-auto">
-                    <div class="flex gap-14 text-lg lg:text-xl font-light leading-7 lg:leading-9">
-                        <div>
-                            <x-home.welcome-section />
-                        </div>
+                    <div class="text-lg lg:text-xl font-light leading-7 lg:leading-9">
+                        <x-home.welcome-section />
 
-                        <div class="flex items-center">
-                            <a
-                                href="{{ route('about-me') }}"
-                                class="inline-block bg-white text-xl py-4 px-10 text-center rounded-xl uppercase border min-w-[250px]"
-                            >
-                                Read more
-                            </a>
-                        </div>
+                        <a
+                            href="{{ route('about-me') }}"
+                            class="text-link transition-colors hover:text-link-hover ml-1"
+                        >
+                            Read more ...
+                        </a>
                     </div>
                 </div>
             </div>
