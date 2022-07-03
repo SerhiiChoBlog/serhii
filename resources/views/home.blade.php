@@ -10,7 +10,7 @@
         </div>
 
         {{-- Welcome --}}
-        <section class="py-10">
+        <section class="py-14 md:py-20">
             <div class="container">
                 <div class="lg:px-10 mx-auto">
                     <x-home.section-title>Nice to meet you</x-home.section-title>
@@ -31,9 +31,7 @@
     </x-hero>
 
     <section class="py-12 bg-page-second relative">
-        <div class="w-[50px] aspect-square bg-page absolute top-[-30px] left-1/2 -translate-x-1/2 rotate-45"></div>
-        <div class="w-[50px] aspect-square bg-page-second absolute top-[-40px] left-1/2 -translate-x-1/2 rotate-45"></div>
-        <div class="w-[20px] aspect-square bg-page absolute top-[-24px] left-1/2 -translate-x-1/2 rotate-45"></div>
+        <x-section-detail />
 
         <div class="container">
             <x-home.random-posts-section />
