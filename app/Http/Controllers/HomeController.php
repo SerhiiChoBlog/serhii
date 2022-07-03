@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Visitor;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -18,36 +19,8 @@ class HomeController extends Controller
             Visitor::incrementPageViews('/', 'home', $ip);
         }
 
-        $pages = $this->getPages();
+        $post = Post::query()->where('is_published', true)->latest()->first();
 
-        return view('home', compact('pages'));
-    }
-
-    private function getPages(): array
-    {
-        $active_class = 'navbar-link--active bg-black/30 lg:bg-transparent';
-
-        return [
-            [
-                'href' => route('posts.index'),
-                'class' => 'bg-gradient-to-r from-[#d074a2] to-[#2a4b67]',
-                'title' => 'Blog',
-            ],
-            [
-                'href' => route('projects.index'),
-                'class' => 'bg-gradient-to-r from-[#51895c] via-[#4c5f7d] to-[#51895c]',
-                'title' => 'Open Source',
-            ],
-            [
-                'href' => route('about-me'),
-                'class' => 'bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1]',
-                'title' => 'About',
-            ],
-            [
-                'href' => route('about-me'),
-                'class' => 'bg-gradient-to-r from-main-dark to-main',
-                'title' => 'Contacts',
-            ],
-        ];
+        return view('home', compact('post'));
     }
 }
