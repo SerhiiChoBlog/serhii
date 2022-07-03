@@ -1,7 +1,7 @@
 :root {
     --color-page: white;
     --color-page-second: #f7f7f7;
-    --color-border: rgba(0, 0, 0, .1);
+    --color-border: rgba(0, 0, 0, .2);
     --color-font: #353535;
     --color-font-second: #555;
     --color-font-second-hover: #222;
