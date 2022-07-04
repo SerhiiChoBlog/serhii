@@ -10,7 +10,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container max-w-3xl">
+    <div class="container max-w-xs">
         <x-admin.page-title>Request hits</x-admin.page-title>
 
         <div class="overflow-x-auto shadow-md rounded-lg mx-auto">
