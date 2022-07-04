@@ -25,7 +25,7 @@
                 <tbody>
                     @foreach ($hits as $hit)
                         <tr class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100">
-                            <td class="px-3 py-1">{{ $hit->created_at->format('j/m/Y') }}</td>
+                            <td class="px-3 py-1">{{ $hit->created_at->format('d/m/Y') }}</td>
                             <td class="px-3 py-1">{{ $hit->amount }}</td>
                         </tr>
                     @endforeach

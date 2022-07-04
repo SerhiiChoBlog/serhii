@@ -12,7 +12,7 @@ class HitController extends Controller
 {
     public function index(): View
     {
-        $hits = Hit::query()->latest()->paginate(30);
+        $hits = Hit::query()->orderByDesc('created_at')->paginate(30);
         return view('admin.hits.index', compact('hits'));
     }
 }
