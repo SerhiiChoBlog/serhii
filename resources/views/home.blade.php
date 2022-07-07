@@ -2,45 +2,21 @@
 
 @section('content')
     <x-hero class="relative shadow-md bg-gray-900 bg-home-hero-sm lg:bg-home-hero bg-no-repeat bg-top bg-cover" navbar="text-white">
-        <div class="overflow-hidden h-full shadow-lg min-h-[300px] md:min-h-[500px]">
+        <div class="overflow-hidden h-full shadow-lg min-h-[280px] md:min-h-[380px]">
             <div class="absolute left-0 right-0 top-0 bottom-0 bg-gradient-to-r from-gray-800 to-gray-800/30"></div>
 
-            <div class="z-10 absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2 text-center">
-                <h1 class="text-xl lg:text-4xl relative">
-                    <span class="text-gray-300 drop-shadow-md">SERHII</span>
-                    <span class="text-main drop-shadow-md">CHO</span>
-                </h1>
+            <search />
+        </div>
 
-                <h2 class="text-white text-2xl">
-                    Professional Full Stack developer
-                </h2>
-
-                <div class="flex items-center justify-center mt-5">
-                    <form class="flex shadow-lg rounded-md overflow-hidden focus-within:ring-2 focus-within:ring-main">
-                        <input
-                            type="text"
-                            class="px-6 py-4 text-xl w-[500px]"
-                            placeholder="Enter post title, project or anything else"
-                        />
-
-                        <button class="flex items-center justify-center px-4 bg-white">
-                            <svg
-                                class="w-6 h-6 text-gray-600 stroke-gray-400"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                            >
-                                <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-            </div>
+        <div class="absolute flex flex-col gap-y-2 items-center bottom-[-45px] left-1/2 -translate-x-1/2">
+            <div class="w-[300px] lg:w-[600px] h-1 bg-page-second"></div>
+            <div class="w-[250px] lg:w-[450px] h-1 bg-page-second"></div>
+            <div class="w-[200px] lg:w-[300px] h-1 bg-page-second"></div>
         </div>
     </x-hero>
 
     {{-- Welcome --}}
-    <section class="py-14 md:py-20">
+    <section class="py-20">
         <div class="container">
             <div class="lg:px-10 mx-auto">
                 <x-home.section-title>Nice to meet you</x-home.section-title>
