@@ -10,7 +10,7 @@ import Avatar from './components/Avatar.vue'
 import ToTop from './components/ToTop.vue'
 import Popper from "vue3-popper"
 import Tip from './components/Tip.vue'
-import Search from './components/Search.vue'
+import Search from './components/Search/Search.vue'
 
 const app = createApp({
     components: {
