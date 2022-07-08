@@ -4,6 +4,7 @@ import { reactive } from 'vue'
 import { debounce } from 'lodash'
 import { Search, SearchServerResponse } from '../../types/types'
 import axios from 'axios'
+import Dropdown from './Dropdown.vue'
 
 const search = reactive<Search>({
     query: '',
@@ -20,15 +21,12 @@ const makeRequestToFetchItems = debounce<(q: string) => void>(q => {
 
     axios.get<SearchServerResponse>(`/api/search/${q}`)
         .then(resp => {
+            console.log(resp.data)
             search.posts = resp.data.posts
             search.projects = resp.data.projects
         })
         .catch(err => console.error(err))
 }, 300)
-
-function fetchItems(): void {
-    makeRequestToFetchItems(search.query)
-}
 </script>
 
 <template>
@@ -42,20 +40,25 @@ function fetchItems(): void {
             Professional Full Stack developer
         </h2>
 
-        <div class="flex items-center justify-center mt-5 shadow-lg rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-main bg-white max-w-[300px] md:max-w-[600px] mx-auto">
-            <form @submit.prevent class="flex w-full">
-                <input
-                    type="text"
-                    class="pl-3 md:pl-6 py-3 md:py-4 text-sm md:text-xl w-full"
-                    placeholder="Enter a query to find post or project"
-                    v-model="search.query"
-                    @keyup="fetchItems"
-                />
+        <div class="relative max-w-[300px] md:max-w-[600px] mx-auto">
+            <div class="flex items-center justify-center mt-5 shadow-lg rounded-full overflow-hidden focus-within:ring-2 focus-within:ring-main bg-white mx-auto">
+                <form @submit.prevent class="w-full">
+                    <search-icon class="w-5 md:w-6 h-5 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-8" />
 
-                <button type="button" class="flex items-center justify-center px-3 md:px-5 bg-white cursor-default">
-                    <search-icon class="w-5 md:w-6 h-5 md:h-6 text-gray-600 stroke-gray-400" />
-                </button>
-            </form>
+                    <input
+                        type="text"
+                        class="pl-3 md:pl-20 py-3 md:py-4 text-sm md:text-xl w-full"
+                        placeholder="Enter a query to find post or project"
+                        v-model="search.query"
+                        @keyup="makeRequestToFetchItems(search.query)"
+                    />
+                </form>
+            </div>
+
+            <dropdown
+                v-if="search.query !== '' && search.posts.length > 0 && search.projects.length > 0"
+                :search="search"
+            />
         </div>
     </div>
 </template>
