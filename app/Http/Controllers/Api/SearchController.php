@@ -5,12 +5,27 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use App\Models\Project;
 
 class SearchController extends Controller
 {
     public function index(string $query): array
     {
-        //
-        return ['query' => $query];
+        $posts = Post::query()
+            ->select('id', 'title')
+            ->where('title', 'LIKE', "%$query%")
+            ->orWhere('intro', 'LIKE', "%$query%")
+            ->limit(5)
+            ->get();
+
+        $projects = Project::query()
+            ->select('id', 'title')
+            ->where('title', 'LIKE', "%$query%")
+            ->orWhere('description', 'LIKE', "%$query%")
+            ->limit(5)
+            ->get();
+
+        return compact('posts', 'projects');
     }
 }
