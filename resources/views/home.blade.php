@@ -3,7 +3,7 @@
 @section('content')
     <x-hero class="relative shadow-md bg-gray-900 bg-home-hero-sm lg:bg-home-hero bg-no-repeat bg-top bg-cover" navbar="text-white">
         <div class="overflow-hidden h-full shadow-lg min-h-[280px] md:min-h-[380px]">
-            <div class="absolute left-0 right-0 top-0 bottom-0 bg-gradient-to-r from-gray-800 to-gray-800/30"></div>
+            <div class="absolute left-0 right-0 top-0 bottom-0 bg-gradient-to-r from-gray-900 to-gray-900/50"></div>
 
             <search />
         </div>
