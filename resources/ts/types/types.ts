@@ -7,3 +7,19 @@ export interface SavedChapter {
     chapter: Chapter
     top: number
 }
+
+export interface SearchSuggestion {
+    title: string
+    url: string
+}
+
+export interface Search {
+    query: string
+    posts: SearchSuggestion[]
+    projects: SearchSuggestion[]
+}
+
+export interface SearchServerResponse {
+    posts: SearchSuggestion[]
+    projects: SearchSuggestion[]
+}
