@@ -1,32 +1,9 @@
 <script setup lang="ts">
 import SearchIcon from '../Icons/SearchIcon.vue'
-import { reactive } from 'vue'
-import { debounce } from 'lodash'
-import { Search, SearchServerResponse } from '../../types/types'
-import axios from 'axios'
 import Dropdown from './Dropdown.vue'
+import useSearch from '../../composables/useSearch'
 
-const search = reactive<Search>({
-    query: '',
-    posts: [],
-    projects: [],
-})
-
-const makeRequestToFetchItems = debounce<(q: string) => void>(q => {
-    if (q === '') {
-        search.posts = []
-        search.projects = []
-        return
-    }
-
-    axios.get<SearchServerResponse>(`/api/search/${q}`)
-        .then(resp => {
-            console.log(resp.data)
-            search.posts = resp.data.posts
-            search.projects = resp.data.projects
-        })
-        .catch(err => console.error(err))
-}, 300)
+const { search, makeRequestToFetchItems } = useSearch()
 </script>
 
 <template>
@@ -55,10 +32,7 @@ const makeRequestToFetchItems = debounce<(q: string) => void>(q => {
                 </form>
             </div>
 
-            <dropdown
-                v-if="search.query !== '' && search.posts.length > 0 && search.projects.length > 0"
-                :search="search"
-            />
+            <dropdown v-if="search.query !== ''" :search="search" />
         </div>
     </div>
 </template>
