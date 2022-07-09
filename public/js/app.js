@@ -21080,7 +21080,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: 0,
       href: $props.linkUrl.replace('{slug}', item.slug),
       "class": (0, vue_1.normalizeClass)(["hover:bg-page-hover transition-colors rounded-lg my-1 py-2 px-3 block hover:bg-page-second dark:hover:bg-border transition-colors", {
-        'bg-main-light': item.selected
+        '!bg-main-light': item.selected
       }]),
       onClick: function onClick($event) {
         return $setup.saveItemToHistory(item.title, $props.linkUrl.replace('{slug}', item.slug));
@@ -21673,11 +21673,13 @@ var default_1 = function () {
   };
 
   default_1.prototype.setTarget = function () {
-    if (this.search.posts.length > 0) {
-      this.search.suggestionsTarget = 'posts';
+    if (this.search.suggestionsTarget === 'posts' && this.search.posts.length === 0) {
+      this.search.suggestionsTarget = 'projects';
     }
 
-    this.search.suggestionsTarget = 'projects';
+    if (this.search.suggestionsTarget === 'projects' && this.search.projects.length === 0) {
+      this.search.suggestionsTarget = 'posts';
+    }
   };
 
   default_1.prototype.clearAllSelectedFlags = function () {
@@ -21685,9 +21687,9 @@ var default_1 = function () {
       post.selected = false;
       return post;
     });
-    this.search.projects.map(function (post) {
-      post.selected = false;
-      return post;
+    this.search.projects.map(function (project) {
+      project.selected = false;
+      return project;
     });
   };
 
@@ -21719,6 +21721,10 @@ var default_1 = function () {
 
     if (!this.search.projects[this.search.suggestionsIndex]) {
       this.search.suggestionsIndex = this.search.posts.length - 1;
+
+      if (this.search.suggestionsIndex < 0) {
+        this.search.suggestionsIndex = 0;
+      }
     }
 
     this.search.projects[this.search.suggestionsIndex].selected = true;

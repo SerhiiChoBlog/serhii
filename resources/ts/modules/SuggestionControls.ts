@@ -42,11 +42,13 @@ export default class {
     }
 
     private setTarget(): void {
-        if (this.search.posts.length > 0) {
-            this.search.suggestionsTarget = 'posts'
+        if (this.search.suggestionsTarget === 'posts' && this.search.posts.length === 0) {
+            this.search.suggestionsTarget = 'projects'
         }
 
-        this.search.suggestionsTarget = 'projects'
+        if (this.search.suggestionsTarget === 'projects' && this.search.projects.length === 0) {
+            this.search.suggestionsTarget = 'posts'
+        }
     }
 
     private clearAllSelectedFlags(): void {
@@ -55,9 +57,9 @@ export default class {
             return post
         })
 
-        this.search.projects.map(post => {
-            post.selected = false
-            return post
+        this.search.projects.map(project => {
+            project.selected = false
+            return project
         })
     }
 
@@ -89,6 +91,10 @@ export default class {
 
         if (!this.search.projects[this.search.suggestionsIndex]) {
             this.search.suggestionsIndex = this.search.posts.length - 1
+
+            if (this.search.suggestionsIndex < 0) {
+                this.search.suggestionsIndex = 0
+            }
         }
 
         this.search.projects[this.search.suggestionsIndex].selected = true
