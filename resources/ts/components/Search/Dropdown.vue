@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { Search } from '../../types/types'
+import History from './History.vue'
+import NotFound from './NotFound.vue'
+import DropdownItems from './DropdownItems.vue'
 
 interface Props {
     search: Search
@@ -13,22 +16,22 @@ const { search } = defineProps<Props>()
         <history v-if="search.history.length > 0" :history="search.history" />
 
         <div v-else>
-            <not-found v-if="search.services.length === 0 && search.specialists.length === 0" />
+            <not-found v-if="search.posts.length === 0 && search.projects.length === 0" />
 
             <div v-else>
                 <div class="flex justify-between relative after:content-'' after:w-[1px] after:absolute after:h-full after:top-0 after:bg-red-500 after:left-1/2 after:bg-border">
-                    <dropdown-items-section
-                        :heading="$trans.get('common.specialists')"
-                        :items="search.specialists"
+                    <dropdown-items
+                        heading="Posts"
+                        :items="search.posts"
                         class="pr-2"
-                        link-url="/specialists/{id}"
+                        link-url="/posts/{slug}"
                     />
 
-                    <dropdown-items-section
-                       :heading="$trans.get('common.services')"
-                       :items="search.services"
+                    <dropdown-items
+                       heading="Projects"
+                       :items="search.projects"
                        class="pl-2"
-                       link-url="/services/{id}"
+                       link-url="/projects/{slug}"
                     />
                 </div>
             </div>

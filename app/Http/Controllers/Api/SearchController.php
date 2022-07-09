@@ -13,14 +13,14 @@ class SearchController extends Controller
     public function index(string $query): array
     {
         $posts = Post::query()
-            ->select('id', 'title')
+            ->select('id', 'title', 'slug')
             ->where('title', 'LIKE', "%$query%")
             ->orWhere('intro', 'LIKE', "%$query%")
             ->limit(5)
             ->get();
 
         $projects = Project::query()
-            ->select('id', 'title')
+            ->selectRaw('id, title, name as slug')
             ->where('title', 'LIKE', "%$query%")
             ->orWhere('description', 'LIKE', "%$query%")
             ->limit(5)

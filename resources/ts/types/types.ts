@@ -11,6 +11,7 @@ export interface SavedChapter {
 export interface SearchSuggestion {
     title: string
     url: string
+    slug?: string
 }
 
 export interface Search {
