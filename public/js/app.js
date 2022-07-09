@@ -21637,7 +21637,8 @@ var default_1 = function () {
       down: 'ArrowDown',
       up: 'ArrowUp',
       left: 'ArrowLeft',
-      right: 'ArrowRight'
+      right: 'ArrowRight',
+      enter: 'Enter'
     };
   }
 
@@ -21646,22 +21647,49 @@ var default_1 = function () {
       return;
     }
 
-    this.clearAllSelectedFlags();
     this.setTarget();
 
     switch (key) {
+      case this.keys.enter:
+        this.handleEnterKeyPress();
+        break;
+
       case this.keys.down:
+        this.clearAllSelectedFlags();
         this.search.suggestionsTarget === 'posts' ? this.movePostsDown() : this.moveProjectsDown();
         break;
 
       case this.keys.up:
+        this.clearAllSelectedFlags();
         this.search.suggestionsTarget === 'posts' ? this.movePostsUp() : this.moveProjectsUp();
         break;
 
       case this.keys.left:
       case this.keys.right:
+        this.clearAllSelectedFlags();
         this.moveHorizontal();
     }
+  };
+
+  default_1.prototype.handleEnterKeyPress = function () {
+    var post = this.search.posts.find(function (post) {
+      return post.selected;
+    });
+
+    if (post) {
+      window.location.href = "/posts/".concat(post.slug);
+      return;
+    }
+
+    var project = this.search.projects.find(function (project) {
+      return project.selected;
+    });
+
+    if (project) {
+      window.location.href = "/projects/".concat(project.slug);
+    }
+
+    console.error("Cannot find any selected suggestions");
   };
 
   default_1.prototype.notNeededEvent = function (key) {
