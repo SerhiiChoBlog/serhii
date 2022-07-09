@@ -3,7 +3,7 @@ import SearchIcon from '../Icons/SearchIcon.vue'
 import Dropdown from './Dropdown.vue'
 import useSearch from '../../composables/useSearch'
 
-const { search, fetchSearchSuggestions } = useSearch()
+const { search, input, fetchSearchSuggestions } = useSearch()
 </script>
 
 <template>
@@ -25,9 +25,10 @@ const { search, fetchSearchSuggestions } = useSearch()
                     <input
                         type="text"
                         class="pl-10 md:pl-20 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 font-light"
-                        placeholder="Enter a query to find post or project"
+                        placeholder="Press '/' to start searching"
                         v-model="search.query"
                         @keyup="fetchSearchSuggestions"
+                        ref="input"
                     />
                 </form>
             </div>
