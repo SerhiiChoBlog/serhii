@@ -31,9 +31,7 @@ function showHideButton(): void {
         btn.value.classList.remove('opacity-0')
         btn.value.classList.remove('pointer-events-none')
         btn.value.classList.add('opacity-70')
-        console.log('show')
     } else {
-        console.log('hide')
         btn.value.classList.add('opacity-0')
         btn.value.classList.add('pointer-events-none')
         btn.value.classList.remove('opacity-70')

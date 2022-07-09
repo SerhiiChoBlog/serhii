@@ -1,4 +1,4 @@
-<nav class="relative">
+<nav class="relative z-20">
     <div class="container flex justify-between items-center min-h-[4rem]">
         <div class="flex items-center gap-x-1 w-full lg:w-auto">
             <a
