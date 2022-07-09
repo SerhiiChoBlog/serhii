@@ -13,11 +13,12 @@ export default class {
     }
 
     public handle(key: string): void {
-        if (!Object.values(this.keys).includes(key)) {
+        if (this.notNeededEvent(key) || this.suggestionsAreEmpty()) {
             return
         }
 
         this.clearAllSelectedFlags()
+        this.setTarget()
 
         switch (key) {
             case this.keys.down:
@@ -30,6 +31,22 @@ export default class {
             case this.keys.right:
                 this.moveHorizontal()
         }
+    }
+
+    private notNeededEvent(key: string): boolean {
+        return !Object.values(this.keys).includes(key)
+    }
+
+    private suggestionsAreEmpty(): boolean {
+        return this.search.posts.length === 0 && this.search.projects.length === 0
+    }
+
+    private setTarget(): void {
+        if (this.search.posts.length > 0) {
+            this.search.suggestionsTarget = 'posts'
+        }
+
+        this.search.suggestionsTarget = 'projects'
     }
 
     private clearAllSelectedFlags(): void {
@@ -57,7 +74,7 @@ export default class {
     private moveHorizontal(): void {
         this.search.suggestionsIndex = 0
 
-        if (this.search.suggestionsTarget === 'posts') {
+        if (this.search.suggestionsTarget === 'posts' && this.search.projects.length > 0) {
             this.search.suggestionsTarget = 'projects'
             this.search.projects[0].selected = true
             return
