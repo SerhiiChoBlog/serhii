@@ -21642,11 +21642,12 @@ var default_1 = function () {
   }
 
   default_1.prototype.handle = function (key) {
-    if (!Object.values(this.keys).includes(key)) {
+    if (this.notNeededEvent(key) || this.suggestionsAreEmpty()) {
       return;
     }
 
     this.clearAllSelectedFlags();
+    this.setTarget();
 
     switch (key) {
       case this.keys.down:
@@ -21661,6 +21662,22 @@ var default_1 = function () {
       case this.keys.right:
         this.moveHorizontal();
     }
+  };
+
+  default_1.prototype.notNeededEvent = function (key) {
+    return !Object.values(this.keys).includes(key);
+  };
+
+  default_1.prototype.suggestionsAreEmpty = function () {
+    return this.search.posts.length === 0 && this.search.projects.length === 0;
+  };
+
+  default_1.prototype.setTarget = function () {
+    if (this.search.posts.length > 0) {
+      this.search.suggestionsTarget = 'posts';
+    }
+
+    this.search.suggestionsTarget = 'projects';
   };
 
   default_1.prototype.clearAllSelectedFlags = function () {
@@ -21687,7 +21704,7 @@ var default_1 = function () {
   default_1.prototype.moveHorizontal = function () {
     this.search.suggestionsIndex = 0;
 
-    if (this.search.suggestionsTarget === 'posts') {
+    if (this.search.suggestionsTarget === 'posts' && this.search.projects.length > 0) {
       this.search.suggestionsTarget = 'projects';
       this.search.projects[0].selected = true;
       return;
