@@ -1,4 +1,4 @@
-php
+@php
     /**
      * @var callable $links
      * @var array{href:string, title:string, icon:string, class:string} $link
