@@ -21002,7 +21002,7 @@ exports.render = void 0;
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "bg-white shadow-xl p-6 top-[45px] lg:top-[calc(100%+5px)] border-t bg-white absolute left-0 right-0 z-50 lg:rounded-3xl rounded-none"
+  "class": "bg-page dark:bg-page-second shadow-xl p-6 top-[calc(100%+10px)] absolute left-0 right-0 z-50 rounded-3xl dark:border-2 dark:border-border"
 };
 var _hoisted_2 = {
   key: 1
@@ -21011,7 +21011,7 @@ var _hoisted_3 = {
   key: 1
 };
 var _hoisted_4 = {
-  "class": "flex justify-between relative after:content-'' after:w-[1px] after:absolute after:h-full after:top-0 after:bg-red-500 after:left-1/2 after:bg-border"
+  "class": "flex flex-col md:flex-row justify-between relative after:content-'' after:w-[1px] after:absolute after:h-full after:top-0 after:left-1/2 after:bg-border"
 };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -21057,35 +21057,31 @@ var _hoisted_1 = {
   "class": "flex-1"
 };
 var _hoisted_2 = {
-  "class": "mx-2 mb-4 text-md text-main-dark font-bold"
+  "class": "mx-2 mb-4 text-lg text-main-dark font-bold"
 };
 var _hoisted_3 = {
   key: 0,
-  "class": "text-xs leading-5 divide-y divide-border"
+  "class": "text-md leading-5 divide-y divide-border"
 };
 var _hoisted_4 = ["href", "onClick"];
-
-var _hoisted_5 = (0, vue_1.createElementVNode)("a", {
-  href: "#",
-  "class": "block bg-main text-white rounded-lg px-5 py-2 text-center text-sm mt-4 hover:bg-main-hover transition-colors"
-}, " Показать все ", -1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createElementVNode)("h2", _hoisted_2, (0, vue_1.toDisplayString)($props.heading), 1), $props.items.length > 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("ul", _hoisted_3, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($props.items, function (item) {
     return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("li", {
-      key: item.slug
+      key: item.slug,
+      "class": "text-left"
     }, [item.slug ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
       key: 0,
       href: $props.linkUrl.replace('{slug}', item.slug),
-      "class": "hover:bg-page-hover transition-colors rounded-md py-2 px-3",
+      "class": "hover:bg-page-hover transition-colors py-2 px-3 rounded-lg block hover:bg-page-second dark:hover:bg-border transition-colors",
       onClick: function onClick($event) {
         return $setup.saveItemToHistory(item.title, $props.linkUrl.replace('{slug}', item.slug));
       }
-    }, [(0, vue_1.createElementVNode)("span", null, (0, vue_1.toDisplayString)(item.title), 1)], 8, _hoisted_4)) : (0, vue_1.createCommentVNode)("v-if", true)]);
+    }, (0, vue_1.toDisplayString)(item.title), 9, _hoisted_4)) : (0, vue_1.createCommentVNode)("v-if", true)]);
   }), 128))])) : ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["NotFound"], {
     key: 1,
     "class": "text-sm"
-  })), _hoisted_5]);
+  }))]);
 }
 
 exports.render = render;
@@ -21180,10 +21176,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSubmit: _cache[2] || (_cache[2] = (0, vue_1.withModifiers)(function () {}, ["prevent"])),
     "class": "w-full"
   }, [(0, vue_1.createVNode)($setup["SearchIcon"], {
-    "class": "w-5 md:w-6 h-5 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-8"
+    "class": "w-4 md:w-6 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-8"
   }), (0, vue_1.withDirectives)((0, vue_1.createElementVNode)("input", {
     type: "text",
-    "class": "pl-3 md:pl-20 py-3 md:py-4 text-sm md:text-xl w-full",
+    "class": "pl-10 md:pl-20 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 font-light",
     placeholder: "Enter a query to find post or project",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.search.query = $event;
@@ -21949,7 +21945,7 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 🧐 ");
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "ml-2"
+  "class": "ml-2 text-lg"
 }, "Не найдено", -1
 /* HOISTED */
 );

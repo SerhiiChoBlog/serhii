@@ -20,11 +20,11 @@ const { search, makeRequestToFetchItems } = useSearch()
         <div class="relative max-w-[300px] md:max-w-[600px] mx-auto">
             <div class="flex items-center justify-center mt-5 shadow-lg rounded-full overflow-hidden focus-within:ring-2 focus-within:ring-main bg-white mx-auto">
                 <form @submit.prevent class="w-full">
-                    <search-icon class="w-5 md:w-6 h-5 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-8" />
+                    <search-icon class="w-4 md:w-6 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-8" />
 
                     <input
                         type="text"
-                        class="pl-3 md:pl-20 py-3 md:py-4 text-sm md:text-xl w-full"
+                        class="pl-10 md:pl-20 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 font-light"
                         placeholder="Enter a query to find post or project"
                         v-model="search.query"
                         @keyup="makeRequestToFetchItems(search.query)"

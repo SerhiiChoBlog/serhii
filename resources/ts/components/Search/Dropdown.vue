@@ -12,14 +12,14 @@ const { search } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="bg-white shadow-xl p-6 top-[45px] lg:top-[calc(100%+5px)] border-t bg-white absolute left-0 right-0 z-50 lg:rounded-3xl rounded-none">
+    <div class="bg-page dark:bg-page-second shadow-xl p-6 top-[calc(100%+10px)] absolute left-0 right-0 z-50 rounded-3xl dark:border-2 dark:border-border">
         <history v-if="search.history.length > 0" :history="search.history" />
 
         <div v-else>
             <not-found v-if="search.posts.length === 0 && search.projects.length === 0" />
 
             <div v-else>
-                <div class="flex justify-between relative after:content-'' after:w-[1px] after:absolute after:h-full after:top-0 after:bg-red-500 after:left-1/2 after:bg-border">
+                <div class="flex flex-col md:flex-row justify-between relative after:content-'' after:w-[1px] after:absolute after:h-full after:top-0 after:left-1/2 after:bg-border">
                     <dropdown-items
                         heading="Posts"
                         :items="search.posts"
