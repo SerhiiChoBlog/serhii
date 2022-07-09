@@ -60,8 +60,8 @@ export default () => {
             return
         }
 
-        search.query = search.query.trim()
         search.loading = true
+        search.query = search.query.trimStart()
 
         makeRequestToFetchItems(search.query)
     }
