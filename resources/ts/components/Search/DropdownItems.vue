@@ -23,7 +23,7 @@ const { saveItemToHistory } = useSearch()
                     :href="linkUrl.replace('{slug}', item.slug)"
                     class="hover:bg-page-hover transition-colors rounded-lg my-1 py-2 px-3 block hover:bg-page-second dark:hover:bg-border transition-colors"
                     @click="saveItemToHistory(item.title, linkUrl.replace('{slug}', item.slug))"
-                    :class="{'bg-main-light': item.selected}"
+                    :class="{'!bg-main-light': item.selected}"
                 >
                     {{ item.title }}
                 </a>
