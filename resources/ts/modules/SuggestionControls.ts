@@ -21,16 +21,14 @@ export default class {
 
         switch (key) {
             case this.keys.down:
-                this.movePostsDown()
+                this.search.suggestionsTarget === 'posts' ? this.movePostsDown() : this.moveProjectsDown()
                 break
             case this.keys.up:
-                this.movePostsUp()
+                this.search.suggestionsTarget === 'posts' ? this.movePostsUp() : this.moveProjectsUp()
                 break
             case this.keys.left:
-                this.movePostsDown()
-                break
             case this.keys.right:
-                this.movePostsUp()
+                this.moveHorizontal()
         }
     }
 
@@ -39,43 +37,63 @@ export default class {
             post.selected = false
             return post
         })
+
+        this.search.projects.map(post => {
+            post.selected = false
+            return post
+        })
     }
 
     private moveProjectsDown(): void {
-        if (!this.search.projects[this.search.index]) {
+        this.search.suggestionsIndex += 1
+
+        if (!this.search.projects[this.search.suggestionsIndex]) {
+            this.search.suggestionsIndex = 0
+        }
+
+        this.search.projects[this.search.suggestionsIndex].selected = true
+    }
+
+    private moveHorizontal(): void {
+        this.search.suggestionsIndex = 0
+
+        if (this.search.suggestionsTarget === 'posts') {
+            this.search.suggestionsTarget = 'projects'
+            this.search.projects[0].selected = true
             return
         }
 
-        this.search.projects[this.search.index].selected = true
-        this.search.index += 1
+        this.search.suggestionsTarget = 'posts'
+        this.search.posts[0].selected = true
     }
 
     private moveProjectsUp(): void {
-        if (!this.search.projects[this.search.index]) {
-            return
+        this.search.suggestionsIndex -= 1
+
+        if (!this.search.projects[this.search.suggestionsIndex]) {
+            this.search.suggestionsIndex = this.search.posts.length - 1
         }
 
-        this.search.projects[this.search.index].selected = true
-        this.search.index -= 1
+        this.search.projects[this.search.suggestionsIndex].selected = true
     }
 
     private movePostsUp(): void {
-        this.search.index -= 1
+        this.search.suggestionsIndex -= 1
 
-        if (!this.search.posts[this.search.index]) {
-            this.search.index = this.search.posts.length - 1
+        if (!this.search.posts[this.search.suggestionsIndex]) {
+            this.search.suggestionsIndex = this.search.posts.length - 1
         }
 
-        this.search.posts[this.search.index].selected = true
+        this.search.posts[this.search.suggestionsIndex].selected = true
     }
 
     private movePostsDown(): void {
-        this.search.index += 1
+        this.search.suggestionsIndex += 1
 
-        if (!this.search.posts[this.search.index]) {
-            this.search.index = 0
+        if (!this.search.posts[this.search.suggestionsIndex]) {
+            this.search.suggestionsIndex = 0
         }
 
-        this.search.posts[this.search.index].selected = true
+        this.search.posts[this.search.suggestionsIndex].selected = true
     }
 }

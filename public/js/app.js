@@ -21515,7 +21515,8 @@ exports["default"] = function () {
     projects: [],
     loading: false,
     history: [],
-    index: -1
+    suggestionsIndex: -1,
+    suggestionsTarget: 'posts'
   });
   (0, vue_1.onMounted)(function () {
     window.addEventListener('keyup', function (e) {
@@ -21649,19 +21650,16 @@ var default_1 = function () {
 
     switch (key) {
       case this.keys.down:
-        this.movePostsDown();
+        this.search.suggestionsTarget === 'posts' ? this.movePostsDown() : this.moveProjectsDown();
         break;
 
       case this.keys.up:
-        this.movePostsUp();
+        this.search.suggestionsTarget === 'posts' ? this.movePostsUp() : this.moveProjectsUp();
         break;
 
       case this.keys.left:
-        this.movePostsDown();
-        break;
-
       case this.keys.right:
-        this.movePostsUp();
+        this.moveHorizontal();
     }
   };
 
@@ -21670,44 +21668,63 @@ var default_1 = function () {
       post.selected = false;
       return post;
     });
+    this.search.projects.map(function (post) {
+      post.selected = false;
+      return post;
+    });
   };
 
   default_1.prototype.moveProjectsDown = function () {
-    if (!this.search.projects[this.search.index]) {
+    this.search.suggestionsIndex += 1;
+
+    if (!this.search.projects[this.search.suggestionsIndex]) {
+      this.search.suggestionsIndex = 0;
+    }
+
+    this.search.projects[this.search.suggestionsIndex].selected = true;
+  };
+
+  default_1.prototype.moveHorizontal = function () {
+    this.search.suggestionsIndex = 0;
+
+    if (this.search.suggestionsTarget === 'posts') {
+      this.search.suggestionsTarget = 'projects';
+      this.search.projects[0].selected = true;
       return;
     }
 
-    this.search.projects[this.search.index].selected = true;
-    this.search.index += 1;
+    this.search.suggestionsTarget = 'posts';
+    this.search.posts[0].selected = true;
   };
 
   default_1.prototype.moveProjectsUp = function () {
-    if (!this.search.projects[this.search.index]) {
-      return;
+    this.search.suggestionsIndex -= 1;
+
+    if (!this.search.projects[this.search.suggestionsIndex]) {
+      this.search.suggestionsIndex = this.search.posts.length - 1;
     }
 
-    this.search.projects[this.search.index].selected = true;
-    this.search.index -= 1;
+    this.search.projects[this.search.suggestionsIndex].selected = true;
   };
 
   default_1.prototype.movePostsUp = function () {
-    this.search.index -= 1;
+    this.search.suggestionsIndex -= 1;
 
-    if (!this.search.posts[this.search.index]) {
-      this.search.index = this.search.posts.length - 1;
+    if (!this.search.posts[this.search.suggestionsIndex]) {
+      this.search.suggestionsIndex = this.search.posts.length - 1;
     }
 
-    this.search.posts[this.search.index].selected = true;
+    this.search.posts[this.search.suggestionsIndex].selected = true;
   };
 
   default_1.prototype.movePostsDown = function () {
-    this.search.index += 1;
+    this.search.suggestionsIndex += 1;
 
-    if (!this.search.posts[this.search.index]) {
-      this.search.index = 0;
+    if (!this.search.posts[this.search.suggestionsIndex]) {
+      this.search.suggestionsIndex = 0;
     }
 
-    this.search.posts[this.search.index].selected = true;
+    this.search.posts[this.search.suggestionsIndex].selected = true;
   };
 
   return default_1;
