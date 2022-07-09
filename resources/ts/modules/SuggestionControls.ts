@@ -21,16 +21,16 @@ export default class {
 
         switch (key) {
             case this.keys.down:
-                this.handleArrowDown()
+                this.movePostsDown()
                 break
             case this.keys.up:
-                this.handleArrowDown()
+                this.movePostsUp()
                 break
             case this.keys.left:
-                this.handleArrowDown()
+                this.movePostsDown()
                 break
             case this.keys.right:
-                this.handleArrowDown()
+                this.movePostsUp()
         }
     }
 
@@ -41,15 +41,41 @@ export default class {
         })
     }
 
-    private handleArrowDown(): void {
-        if (!this.search.posts[this.search.index]) {
-            this.search.index = 0
-            this.search.projects[this.search.index].selected = true
+    private moveProjectsDown(): void {
+        if (!this.search.projects[this.search.index]) {
             return
         }
 
-        this.search.posts[this.search.index].selected = true
-
+        this.search.projects[this.search.index].selected = true
         this.search.index += 1
+    }
+
+    private moveProjectsUp(): void {
+        if (!this.search.projects[this.search.index]) {
+            return
+        }
+
+        this.search.projects[this.search.index].selected = true
+        this.search.index -= 1
+    }
+
+    private movePostsUp(): void {
+        this.search.index -= 1
+
+        if (!this.search.posts[this.search.index]) {
+            this.search.index = this.search.posts.length - 1
+        }
+
+        this.search.posts[this.search.index].selected = true
+    }
+
+    private movePostsDown(): void {
+        this.search.index += 1
+
+        if (!this.search.posts[this.search.index]) {
+            this.search.index = 0
+        }
+
+        this.search.posts[this.search.index].selected = true
     }
 }

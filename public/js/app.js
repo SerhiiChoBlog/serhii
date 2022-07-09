@@ -21515,7 +21515,7 @@ exports["default"] = function () {
     projects: [],
     loading: false,
     history: [],
-    index: 0
+    index: -1
   });
   (0, vue_1.onMounted)(function () {
     window.addEventListener('keyup', function (e) {
@@ -21649,19 +21649,19 @@ var default_1 = function () {
 
     switch (key) {
       case this.keys.down:
-        this.handleArrowDown();
+        this.movePostsDown();
         break;
 
       case this.keys.up:
-        this.handleArrowDown();
+        this.movePostsUp();
         break;
 
       case this.keys.left:
-        this.handleArrowDown();
+        this.movePostsDown();
         break;
 
       case this.keys.right:
-        this.handleArrowDown();
+        this.movePostsUp();
     }
   };
 
@@ -21672,15 +21672,42 @@ var default_1 = function () {
     });
   };
 
-  default_1.prototype.handleArrowDown = function () {
-    if (!this.search.posts[this.search.index]) {
-      this.search.index = 0;
-      this.search.projects[this.search.index].selected = true;
+  default_1.prototype.moveProjectsDown = function () {
+    if (!this.search.projects[this.search.index]) {
       return;
     }
 
-    this.search.posts[this.search.index].selected = true;
+    this.search.projects[this.search.index].selected = true;
     this.search.index += 1;
+  };
+
+  default_1.prototype.moveProjectsUp = function () {
+    if (!this.search.projects[this.search.index]) {
+      return;
+    }
+
+    this.search.projects[this.search.index].selected = true;
+    this.search.index -= 1;
+  };
+
+  default_1.prototype.movePostsUp = function () {
+    this.search.index -= 1;
+
+    if (!this.search.posts[this.search.index]) {
+      this.search.index = this.search.posts.length - 1;
+    }
+
+    this.search.posts[this.search.index].selected = true;
+  };
+
+  default_1.prototype.movePostsDown = function () {
+    this.search.index += 1;
+
+    if (!this.search.posts[this.search.index]) {
+      this.search.index = 0;
+    }
+
+    this.search.posts[this.search.index].selected = true;
   };
 
   return default_1;

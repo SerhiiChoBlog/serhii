@@ -13,7 +13,7 @@ export default () => {
         projects: [],
         loading: false,
         history: [],
-        index: 0,
+        index: -1,
     })
 
     onMounted(() => {
