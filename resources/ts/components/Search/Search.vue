@@ -27,7 +27,7 @@ const { search, input, fetchSearchSuggestions } = useSearch()
 
                     <input
                         type="search"
-                        class="pl-10 md:pl-20 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 font-light rounded-full"
+                        class="pl-10 pr-7 md:pl-20 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 font-light rounded-full"
                         placeholder="Press '/' to start searching"
                         v-model="search.query"
                         @keyup="fetchSearchSuggestions"

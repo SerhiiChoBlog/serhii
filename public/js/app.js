@@ -21186,7 +21186,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, "w-4 md:w-6 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-8"])
   }, null, 8, ["class"]), (0, vue_1.withDirectives)((0, vue_1.createElementVNode)("input", {
     type: "search",
-    "class": "pl-10 md:pl-20 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 font-light rounded-full",
+    "class": "pl-10 pr-7 md:pl-20 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 font-light rounded-full",
     placeholder: "Press '/' to start searching",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.search.query = $event;
