@@ -51,6 +51,7 @@ export default class {
 
         if (project) {
             window.location.href = `/projects/${project.slug}`
+            return
         }
 
         console.error(`Cannot find any selected suggestions`)
