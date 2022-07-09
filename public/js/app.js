@@ -20186,13 +20186,6 @@ exports["default"] = (0, vue_1.defineComponent)({
     var expose = _a.expose;
     expose();
     var search = __props.search;
-    window.addEventListener('keydown', function (e) {
-      if (e.key !== 'ArrowDown') {
-        return;
-      }
-
-      search.posts[0].selected = true;
-    });
     var __returned__ = {
       History: History_vue_1["default"],
       NotFound: NotFound_vue_1["default"],
@@ -20341,10 +20334,12 @@ exports["default"] = (0, vue_1.defineComponent)({
 
     var _b = (0, useSearch_1["default"])(),
         search = _b.search,
+        input = _b.input,
         fetchSearchSuggestions = _b.fetchSearchSuggestions;
 
     var __returned__ = {
       search: search,
+      input: input,
       fetchSearchSuggestions: fetchSearchSuggestions,
       SearchIcon: SearchIcon_vue_1["default"],
       Dropdown: Dropdown_vue_1["default"]
@@ -21078,8 +21073,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [item.slug ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
       key: 0,
       href: $props.linkUrl.replace('{slug}', item.slug),
-      "class": (0, vue_1.normalizeClass)(["hover:bg-page-hover transition-colors py-2 px-3 block hover:bg-page-second dark:hover:bg-border transition-colors", {
-        'bg-main': item.selected
+      "class": (0, vue_1.normalizeClass)(["hover:bg-page-hover transition-colors rounded-lg my-1 py-2 px-3 block hover:bg-page-second dark:hover:bg-border transition-colors", {
+        'bg-main-light': item.selected
       }]),
       onClick: function onClick($event) {
         return $setup.saveItemToHistory(item.title, $props.linkUrl.replace('{slug}', item.slug));
@@ -21184,7 +21179,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), (0, vue_1.withDirectives)((0, vue_1.createElementVNode)("input", {
     type: "text",
     "class": "pl-10 md:pl-20 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 font-light",
-    placeholder: "Enter a query to find post or project",
+    placeholder: "Press '/' to start searching",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.search.query = $event;
     }),
@@ -21196,7 +21191,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
 
       return $setup.fetchSearchSuggestions && $setup.fetchSearchSuggestions.apply($setup, args);
-    })
+    }),
+    ref: "input"
   }, null, 544), [[vue_1.vModelText, $setup.search.query]])], 32)]), $setup.search.query !== '' ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Dropdown"], {
     key: 0,
     search: $setup.search
@@ -21501,13 +21497,27 @@ var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/a
 
 var Cache_1 = __importDefault(__webpack_require__(/*! ../modules/Cache */ "./resources/ts/modules/Cache.ts"));
 
+var SuggestionControls_1 = __importDefault(__webpack_require__(/*! ../modules/SuggestionControls */ "./resources/ts/modules/SuggestionControls.ts"));
+
 exports["default"] = function () {
+  var input = (0, vue_1.ref)(null);
   var search = (0, vue_1.reactive)({
     query: '',
     posts: [],
     projects: [],
     loading: false,
-    history: []
+    history: [],
+    index: 0
+  });
+  (0, vue_1.onMounted)(function () {
+    window.addEventListener('keydown', function (e) {
+      new SuggestionControls_1["default"](search).handle(e.key);
+
+      if (e.key === '/') {
+        e.preventDefault();
+        input.value ? input.value.focus() : null;
+      }
+    });
   });
   var makeRequestToFetchItems = (0, lodash_1.debounce)(function (q) {
     if (q === '') {
@@ -21541,6 +21551,7 @@ exports["default"] = function () {
   }
 
   return {
+    input: input,
     search: search,
     saveItemToHistory: saveItemToHistory,
     fetchSearchSuggestions: fetchSearchSuggestions
@@ -21580,6 +21591,80 @@ var default_1 = function () {
   default_1.get = function (key) {
     var history = localStorage.getItem(key);
     return history ? JSON.parse(history) : [];
+  };
+
+  return default_1;
+}();
+
+exports["default"] = default_1;
+
+/***/ }),
+
+/***/ "./resources/ts/modules/SuggestionControls.ts":
+/*!****************************************************!*\
+  !*** ./resources/ts/modules/SuggestionControls.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var default_1 = function () {
+  function default_1(search) {
+    this.search = search;
+    this.keys = {
+      down: 'ArrowDown',
+      up: 'ArrowUp',
+      left: 'ArrowLeft',
+      right: 'ArrowRight'
+    };
+  }
+
+  default_1.prototype.handle = function (key) {
+    if (!Object.values(this.keys).includes(key)) {
+      return;
+    }
+
+    this.clearAllSelectedFlags();
+
+    switch (key) {
+      case this.keys.down:
+        this.handleArrowDown();
+        break;
+
+      case this.keys.up:
+        this.handleArrowDown();
+        break;
+
+      case this.keys.left:
+        this.handleArrowDown();
+        break;
+
+      case this.keys.right:
+        this.handleArrowDown();
+    }
+  };
+
+  default_1.prototype.clearAllSelectedFlags = function () {
+    this.search.posts.map(function (post) {
+      post.selected = false;
+      return post;
+    });
+  };
+
+  default_1.prototype.handleArrowDown = function () {
+    if (!this.search.posts[this.search.index]) {
+      this.search.index = 0;
+      this.search.projects[this.search.index].selected = true;
+      return;
+    }
+
+    this.search.posts[this.search.index].selected = true;
+    this.search.index += 1;
   };
 
   return default_1;

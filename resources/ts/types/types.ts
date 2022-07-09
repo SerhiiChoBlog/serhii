@@ -19,8 +19,9 @@ export interface Search {
     query: string
     posts: SearchSuggestion[]
     projects: SearchSuggestion[]
-    loading: boolean
     history: SearchSuggestion[]
+    loading: boolean
+    index: number
 }
 
 export interface SearchServerResponse {

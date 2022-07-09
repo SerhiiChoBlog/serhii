@@ -1,16 +1,30 @@
 import type { Search, SearchServerResponse, SearchSuggestion } from '../types/types'
-import { reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { debounce } from 'lodash'
 import axios from 'axios'
 import Cache from '../modules/Cache'
+import SuggestionControls from '../modules/SuggestionControls'
 
 export default () => {
+    const input = ref<HTMLInputElement | null>(null)
     const search = reactive<Search>({
         query: '',
         posts: [],
         projects: [],
         loading: false,
         history: [],
+        index: 0,
+    })
+
+    onMounted(() => {
+        window.addEventListener('keydown', (e: KeyboardEvent) => {
+            new SuggestionControls(search).handle(e.key)
+
+            if (e.key === '/') {
+                e.preventDefault()
+                input.value ? input.value.focus() : null
+            }
+        })
     })
 
     const makeRequestToFetchItems = debounce<(q: string) => void>(q => {
@@ -41,6 +55,7 @@ export default () => {
     }
 
     return {
+        input,
         search,
         saveItemToHistory,
         fetchSearchSuggestions,

@@ -9,14 +9,6 @@ interface Props {
 }
 
 const { search } = defineProps<Props>()
-
-window.addEventListener('keydown', e => {
-    if (e.key !== 'ArrowDown') {
-        return
-    }
-
-    search.posts[0].selected = true
-})
 </script>
 
 <template>
