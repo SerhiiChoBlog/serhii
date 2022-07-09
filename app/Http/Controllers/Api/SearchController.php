@@ -20,7 +20,7 @@ class SearchController extends Controller
             ->get();
 
         $projects = Project::query()
-            ->selectRaw('id, title, name as slug')
+            ->selectRaw('id, concat(title, " (", language, ")") as title, name as slug, language')
             ->where('title', 'LIKE', "%$query%")
             ->orWhere('description', 'LIKE', "%$query%")
             ->limit(5)

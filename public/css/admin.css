@@ -1,7 +1,7 @@
 :root {
     --color-page: white;
     --color-page-second: #f7f7f7;
-    --color-border: rgba(0, 0, 0, .2);
+    --color-border: rgba(0, 0, 0, .1);
     --color-font: #353535;
     --color-font-second: #555;
     --color-font-second-hover: #222;
@@ -2176,6 +2176,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 0px;
 }
 
+.first\:text-main:first-child {
+  color: var(--color-main);
+}
+
 .last\:pb-0:last-child {
   padding-bottom: 0px;
 }
@@ -2462,6 +2466,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .md\:after\:w-\[1px\]::after {
+    content: var(--tw-content);
+    width: 1px;
   }
 }
 
