@@ -16,6 +16,7 @@ class SearchController extends Controller
             ->select('id', 'title', 'slug')
             ->where('title', 'LIKE', "%$query%")
             ->orWhere('intro', 'LIKE', "%$query%")
+            ->where('is_published', true)
             ->limit(5)
             ->get();
 
