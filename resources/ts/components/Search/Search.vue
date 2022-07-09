@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import useSearch from '../../composables/useSearch'
 import SearchIcon from '../Icons/SearchIcon.vue'
 import Dropdown from './Dropdown.vue'
-import useSearch from '../../composables/useSearch'
 
 const { search, input, fetchSearchSuggestions } = useSearch()
 </script>
@@ -20,7 +20,10 @@ const { search, input, fetchSearchSuggestions } = useSearch()
         <div class="relative max-w-[300px] md:max-w-[600px] mx-auto">
             <div class="flex items-center justify-center mt-5 shadow-lg rounded-full overflow-hidden focus-within:ring-2 focus-within:ring-main bg-white mx-auto">
                 <form @submit.prevent class="w-full">
-                    <search-icon class="w-4 md:w-6 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-8" />
+                    <search-icon
+                        :class="{'animate-blink': search.loading}"
+                        class="w-4 md:w-6 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-8"
+                    />
 
                     <input
                         type="text"

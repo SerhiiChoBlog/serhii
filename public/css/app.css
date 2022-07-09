@@ -1774,6 +1774,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .-ml-px {
   margin-left: -1px;
 }
+.-ml-3 {
+  margin-left: -0.75rem;
+}
 .block {
   display: block;
 }
@@ -2022,6 +2025,22 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+@-webkit-keyframes blink {
+
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes blink {
+
+  50% {
+    opacity: 0;
+  }
+}
+.animate-blink {
+  -webkit-animation: blink 800ms linear infinite;
+          animation: blink 800ms linear infinite;
 }
 @-webkit-keyframes spin {
 
