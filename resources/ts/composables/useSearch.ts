@@ -23,6 +23,12 @@ export default () => {
                 e.preventDefault()
                 input.value ? input.value.focus() : null
             }
+
+            if (e.key === 'Escape') {
+                search.posts = []
+                search.projects = []
+                search.query = ''
+            }
         })
 
         window.addEventListener('keyup', (e: KeyboardEvent) => {
