@@ -18,16 +18,16 @@ export default () => {
     })
 
     onMounted(() => {
-        window.addEventListener('keyup', (e: KeyboardEvent) => {
-            if (search.query === '') {
-                return
-            }
-
-            new SuggestionControls(search).handle(e.key)
-
+        window.addEventListener('keydown', (e: KeyboardEvent) => {
             if (e.key === '/') {
                 e.preventDefault()
                 input.value ? input.value.focus() : null
+            }
+        })
+
+        window.addEventListener('keyup', (e: KeyboardEvent) => {
+            if (search.query !== '') {
+                new SuggestionControls(search).handle(e.key)
             }
         })
     })
@@ -54,6 +54,7 @@ export default () => {
             return
         }
 
+        search.query = search.query.trim()
         search.loading = true
 
         makeRequestToFetchItems(search.query)
