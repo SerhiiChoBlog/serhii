@@ -13,7 +13,8 @@ export default () => {
         projects: [],
         loading: false,
         history: [],
-        index: -1,
+        suggestionsIndex: -1,
+        suggestionsTarget: 'posts',
     })
 
     onMounted(() => {

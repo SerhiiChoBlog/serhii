@@ -21,7 +21,8 @@ export interface Search {
     projects: SearchSuggestion[]
     history: SearchSuggestion[]
     loading: boolean
-    index: number
+    suggestionsIndex: number
+    suggestionsTarget: 'posts' | 'projects'
 }
 
 export interface SearchServerResponse {
