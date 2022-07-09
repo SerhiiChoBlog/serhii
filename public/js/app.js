@@ -20186,6 +20186,13 @@ exports["default"] = (0, vue_1.defineComponent)({
     var expose = _a.expose;
     expose();
     var search = __props.search;
+    window.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowDown') {
+        return;
+      }
+
+      search.posts[0].selected = true;
+    });
     var __returned__ = {
       History: History_vue_1["default"],
       NotFound: NotFound_vue_1["default"],
@@ -20222,8 +20229,6 @@ Object.defineProperty(exports, "__esModule", ({
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var NotFound_vue_1 = __importDefault(__webpack_require__(/*! ./NotFound.vue */ "./resources/ts/components/Search/NotFound.vue"));
-
 var useSearch_1 = __importDefault(__webpack_require__(/*! ../../composables/useSearch */ "./resources/ts/composables/useSearch.ts"));
 
 exports["default"] = (0, vue_1.defineComponent)({
@@ -20251,8 +20256,7 @@ exports["default"] = (0, vue_1.defineComponent)({
         linkUrl = _b.linkUrl;
     var saveItemToHistory = (0, useSearch_1["default"])().saveItemToHistory;
     var __returned__ = {
-      saveItemToHistory: saveItemToHistory,
-      NotFound: NotFound_vue_1["default"]
+      saveItemToHistory: saveItemToHistory
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -20337,11 +20341,11 @@ exports["default"] = (0, vue_1.defineComponent)({
 
     var _b = (0, useSearch_1["default"])(),
         search = _b.search,
-        makeRequestToFetchItems = _b.makeRequestToFetchItems;
+        fetchSearchSuggestions = _b.fetchSearchSuggestions;
 
     var __returned__ = {
       search: search,
-      makeRequestToFetchItems: makeRequestToFetchItems,
+      fetchSearchSuggestions: fetchSearchSuggestions,
       SearchIcon: SearchIcon_vue_1["default"],
       Dropdown: Dropdown_vue_1["default"]
     };
@@ -21011,7 +21015,7 @@ var _hoisted_3 = {
   key: 1
 };
 var _hoisted_4 = {
-  "class": "flex flex-col md:flex-row justify-between relative after:content-'' after:w-[1px] after:absolute after:h-full after:top-0 after:left-1/2 after:bg-border"
+  "class": "flex flex-col md:flex-row justify-between relative"
 };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -21020,17 +21024,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     history: $props.search.history
   }, null, 8, ["history"])) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_2, [$props.search.posts.length === 0 && $props.search.projects.length === 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["NotFound"], {
     key: 0
-  })) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_3, [(0, vue_1.createElementVNode)("div", _hoisted_4, [(0, vue_1.createVNode)($setup["DropdownItems"], {
+  })) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_3, [(0, vue_1.createElementVNode)("div", _hoisted_4, [$props.search.posts.length > 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["DropdownItems"], {
+    key: 0,
     heading: "Posts",
     items: $props.search.posts,
     "class": "pr-2",
     "link-url": "/posts/{slug}"
-  }, null, 8, ["items"]), (0, vue_1.createVNode)($setup["DropdownItems"], {
+  }, null, 8, ["items"])) : (0, vue_1.createCommentVNode)("v-if", true), $props.search.projects.length > 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["DropdownItems"], {
+    key: 1,
     heading: "Projects",
     items: $props.search.projects,
     "class": "pl-2",
     "link-url": "/projects/{slug}"
-  }, null, 8, ["items"])])]))]))]);
+  }, null, 8, ["items"])) : (0, vue_1.createCommentVNode)("v-if", true)])]))]))]);
 }
 
 exports.render = render;
@@ -21057,31 +21063,29 @@ var _hoisted_1 = {
   "class": "flex-1"
 };
 var _hoisted_2 = {
-  "class": "mx-2 mb-4 text-lg text-main-dark font-bold"
+  "class": "mx-2 mb-2 text-lg text-main-dark font-bold"
 };
 var _hoisted_3 = {
-  key: 0,
   "class": "text-md leading-5 divide-y divide-border"
 };
 var _hoisted_4 = ["href", "onClick"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createElementVNode)("h2", _hoisted_2, (0, vue_1.toDisplayString)($props.heading), 1), $props.items.length > 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("ul", _hoisted_3, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($props.items, function (item) {
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createElementVNode)("h2", _hoisted_2, (0, vue_1.toDisplayString)($props.heading), 1), (0, vue_1.createElementVNode)("ul", _hoisted_3, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($props.items, function (item) {
     return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("li", {
       key: item.slug,
       "class": "text-left"
     }, [item.slug ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
       key: 0,
       href: $props.linkUrl.replace('{slug}', item.slug),
-      "class": "hover:bg-page-hover transition-colors py-2 px-3 rounded-lg block hover:bg-page-second dark:hover:bg-border transition-colors",
+      "class": (0, vue_1.normalizeClass)(["hover:bg-page-hover transition-colors py-2 px-3 block hover:bg-page-second dark:hover:bg-border transition-colors", {
+        'bg-main': item.selected
+      }]),
       onClick: function onClick($event) {
         return $setup.saveItemToHistory(item.title, $props.linkUrl.replace('{slug}', item.slug));
       }
-    }, (0, vue_1.toDisplayString)(item.title), 9, _hoisted_4)) : (0, vue_1.createCommentVNode)("v-if", true)]);
-  }), 128))])) : ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["NotFound"], {
-    key: 1,
-    "class": "text-sm"
-  }))]);
+    }, (0, vue_1.toDisplayString)(item.title), 11, _hoisted_4)) : (0, vue_1.createCommentVNode)("v-if", true)]);
+  }), 128))])]);
 }
 
 exports.render = render;
@@ -21184,8 +21188,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.search.query = $event;
     }),
-    onKeyup: _cache[1] || (_cache[1] = function ($event) {
-      return $setup.makeRequestToFetchItems($setup.search.query);
+    onKeyup: _cache[1] || (_cache[1] = function () {
+      var args = [];
+
+      for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+      }
+
+      return $setup.fetchSearchSuggestions && $setup.fetchSearchSuggestions.apply($setup, args);
     })
   }, null, 544), [[vue_1.vModelText, $setup.search.query]])], 32)]), $setup.search.query !== '' ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Dropdown"], {
     key: 0,
@@ -21507,7 +21517,6 @@ exports["default"] = function () {
     }
 
     axios_1["default"].get("/api/search/".concat(q)).then(function (resp) {
-      console.log(resp.data);
       search.posts = resp.data.posts;
       search.projects = resp.data.projects;
     })["catch"](function (err) {
@@ -21515,17 +21524,26 @@ exports["default"] = function () {
     });
   }, 300);
 
+  function fetchSearchSuggestions(e) {
+    if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+      return;
+    }
+
+    makeRequestToFetchItems(search.query);
+  }
+
   function saveItemToHistory(title, url) {
     Cache_1["default"].add('search-history', {
       title: title,
-      url: url
+      url: url,
+      selected: false
     });
   }
 
   return {
     search: search,
     saveItemToHistory: saveItemToHistory,
-    makeRequestToFetchItems: makeRequestToFetchItems
+    fetchSearchSuggestions: fetchSearchSuggestions
   };
 };
 

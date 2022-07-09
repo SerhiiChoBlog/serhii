@@ -12,6 +12,7 @@ export interface SearchSuggestion {
     title: string
     url: string
     slug?: string
+    selected: boolean
 }
 
 export interface Search {

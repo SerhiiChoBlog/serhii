@@ -9,6 +9,14 @@ interface Props {
 }
 
 const { search } = defineProps<Props>()
+
+window.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowDown') {
+        return
+    }
+
+    search.posts[0].selected = true
+})
 </script>
 
 <template>
@@ -19,8 +27,9 @@ const { search } = defineProps<Props>()
             <not-found v-if="search.posts.length === 0 && search.projects.length === 0" />
 
             <div v-else>
-                <div class="flex flex-col md:flex-row justify-between relative after:content-'' after:w-[1px] after:absolute after:h-full after:top-0 after:left-1/2 after:bg-border">
+                <div class="flex flex-col md:flex-row justify-between relative" >
                     <dropdown-items
+                        v-if="search.posts.length > 0"
                         heading="Posts"
                         :items="search.posts"
                         class="pr-2"
@@ -28,6 +37,7 @@ const { search } = defineProps<Props>()
                     />
 
                     <dropdown-items
+                        v-if="search.projects.length > 0"
                        heading="Projects"
                        :items="search.projects"
                        class="pl-2"

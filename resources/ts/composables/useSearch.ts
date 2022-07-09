@@ -22,20 +22,27 @@ export default () => {
 
         axios.get<SearchServerResponse>(`/api/search/${q}`)
             .then(resp => {
-                console.log(resp.data)
                 search.posts = resp.data.posts
                 search.projects = resp.data.projects
             })
             .catch(err => console.error(err))
     }, 300)
 
+    function fetchSearchSuggestions(e: KeyboardEvent): void {
+        if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+            return
+        }
+
+        makeRequestToFetchItems(search.query)
+    }
+
     function saveItemToHistory(title: string, url: string): void {
-        Cache.add<SearchSuggestion>('search-history', { title, url })
+        Cache.add<SearchSuggestion>('search-history', { title, url, selected: false })
     }
 
     return {
         search,
         saveItemToHistory,
-        makeRequestToFetchItems,
+        fetchSearchSuggestions,
     }
 }
