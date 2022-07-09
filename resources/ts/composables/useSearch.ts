@@ -17,7 +17,11 @@ export default () => {
     })
 
     onMounted(() => {
-        window.addEventListener('keydown', (e: KeyboardEvent) => {
+        window.addEventListener('keyup', (e: KeyboardEvent) => {
+            if (search.query === '') {
+                return
+            }
+
             new SuggestionControls(search).handle(e.key)
 
             if (e.key === '/') {
@@ -31,6 +35,7 @@ export default () => {
         if (q === '') {
             search.posts = []
             search.projects = []
+            search.loading = false
             return
         }
 
@@ -40,12 +45,15 @@ export default () => {
                 search.projects = resp.data.projects
             })
             .catch(err => console.error(err))
+            .finally(() => search.loading = false)
     }, 300)
 
     function fetchSearchSuggestions(e: KeyboardEvent): void {
         if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
             return
         }
+
+        search.loading = true
 
         makeRequestToFetchItems(search.query)
     }

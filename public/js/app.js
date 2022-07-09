@@ -20174,6 +20174,8 @@ var NotFound_vue_1 = __importDefault(__webpack_require__(/*! ./NotFound.vue */ "
 
 var DropdownItems_vue_1 = __importDefault(__webpack_require__(/*! ./DropdownItems.vue */ "./resources/ts/components/Search/DropdownItems.vue"));
 
+var ReloadIcon_vue_1 = __importDefault(__webpack_require__(/*! ../Icons/ReloadIcon.vue */ "./resources/ts/components/Icons/ReloadIcon.vue"));
+
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Dropdown',
   props: {
@@ -20189,7 +20191,8 @@ exports["default"] = (0, vue_1.defineComponent)({
     var __returned__ = {
       History: History_vue_1["default"],
       NotFound: NotFound_vue_1["default"],
-      DropdownItems: DropdownItems_vue_1["default"]
+      DropdownItems: DropdownItems_vue_1["default"],
+      ReloadIcon: ReloadIcon_vue_1["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -20320,11 +20323,11 @@ Object.defineProperty(exports, "__esModule", ({
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var useSearch_1 = __importDefault(__webpack_require__(/*! ../../composables/useSearch */ "./resources/ts/composables/useSearch.ts"));
+
 var SearchIcon_vue_1 = __importDefault(__webpack_require__(/*! ../Icons/SearchIcon.vue */ "./resources/ts/components/Icons/SearchIcon.vue"));
 
 var Dropdown_vue_1 = __importDefault(__webpack_require__(/*! ./Dropdown.vue */ "./resources/ts/components/Search/Dropdown.vue"));
-
-var useSearch_1 = __importDefault(__webpack_require__(/*! ../../composables/useSearch */ "./resources/ts/composables/useSearch.ts"));
 
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Search',
@@ -21007,7 +21010,7 @@ var _hoisted_2 = {
   key: 1
 };
 var _hoisted_3 = {
-  key: 1
+  key: 2
 };
 var _hoisted_4 = {
   "class": "flex flex-col md:flex-row justify-between relative"
@@ -21017,8 +21020,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [$props.search.history.length > 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["History"], {
     key: 0,
     history: $props.search.history
-  }, null, 8, ["history"])) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_2, [$props.search.posts.length === 0 && $props.search.projects.length === 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["NotFound"], {
-    key: 0
+  }, null, 8, ["history"])) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_2, [$props.search.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["ReloadIcon"], {
+    key: 0,
+    "class": "animate-spin w-6 h-6 absolute left-1/2 -ml-3 top-[13px]"
+  })) : !$props.search.loading && $props.search.posts.length === 0 && $props.search.projects.length === 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["NotFound"], {
+    key: 1
   })) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_3, [(0, vue_1.createElementVNode)("div", _hoisted_4, [$props.search.posts.length > 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["DropdownItems"], {
     key: 0,
     heading: "Posts",
@@ -21175,8 +21181,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSubmit: _cache[2] || (_cache[2] = (0, vue_1.withModifiers)(function () {}, ["prevent"])),
     "class": "w-full"
   }, [(0, vue_1.createVNode)($setup["SearchIcon"], {
-    "class": "w-4 md:w-6 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-8"
-  }), (0, vue_1.withDirectives)((0, vue_1.createElementVNode)("input", {
+    "class": (0, vue_1.normalizeClass)([{
+      'animate-blink': $setup.search.loading
+    }, "w-4 md:w-6 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-8"])
+  }, null, 8, ["class"]), (0, vue_1.withDirectives)((0, vue_1.createElementVNode)("input", {
     type: "text",
     "class": "pl-10 md:pl-20 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 font-light",
     placeholder: "Press '/' to start searching",
@@ -21510,7 +21518,11 @@ exports["default"] = function () {
     index: 0
   });
   (0, vue_1.onMounted)(function () {
-    window.addEventListener('keydown', function (e) {
+    window.addEventListener('keyup', function (e) {
+      if (search.query === '') {
+        return;
+      }
+
       new SuggestionControls_1["default"](search).handle(e.key);
 
       if (e.key === '/') {
@@ -21523,6 +21535,7 @@ exports["default"] = function () {
     if (q === '') {
       search.posts = [];
       search.projects = [];
+      search.loading = false;
       return;
     }
 
@@ -21531,6 +21544,8 @@ exports["default"] = function () {
       search.projects = resp.data.projects;
     })["catch"](function (err) {
       return console.error(err);
+    })["finally"](function () {
+      return search.loading = false;
     });
   }, 300);
 
@@ -21539,6 +21554,7 @@ exports["default"] = function () {
       return;
     }
 
+    search.loading = true;
     makeRequestToFetchItems(search.query);
   }
 
@@ -21956,6 +21972,42 @@ var _hoisted_1 = {
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
   fill: "currentColor",
   d: "M105.4 182.6c12.5 12.49 32.76 12.5 45.25 .001L224 109.3V352c0 17.67 14.33 32 32 32c17.67 0 32-14.33 32-32V109.3l73.38 73.38c12.49 12.49 32.75 12.49 45.25-.001c12.49-12.49 12.49-32.75 0-45.25l-128-128C272.4 3.125 264.2 0 256 0S239.6 3.125 233.4 9.375L105.4 137.4C92.88 149.9 92.88 170.1 105.4 182.6zM480 352h-160c0 35.35-28.65 64-64 64s-64-28.65-64-64H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456z"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_3 = [_hoisted_2];
+function render(_ctx, _cache) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_1, _hoisted_3);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/Icons/ReloadIcon.vue?vue&type=template&id=79e9f408":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/Icons/ReloadIcon.vue?vue&type=template&id=79e9f408 ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  xmlns: "http://www.w3.org/2000/svg",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor",
+  "stroke-width": "2"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  d: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
 }, null, -1
 /* HOISTED */
 );
@@ -43961,6 +44013,32 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/ts/components/Icons/ReloadIcon.vue":
+/*!******************************************************!*\
+  !*** ./resources/ts/components/Icons/ReloadIcon.vue ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ReloadIcon_vue_vue_type_template_id_79e9f408__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReloadIcon.vue?vue&type=template&id=79e9f408 */ "./resources/ts/components/Icons/ReloadIcon.vue?vue&type=template&id=79e9f408");
+/* harmony import */ var _Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+const script = {}
+
+;
+const __exports__ = /*#__PURE__*/(0,_Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__["default"])(script, [['render',_ReloadIcon_vue_vue_type_template_id_79e9f408__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/components/Icons/ReloadIcon.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/ts/components/Icons/SaveIcon.vue":
 /*!****************************************************!*\
   !*** ./resources/ts/components/Icons/SaveIcon.vue ***!
@@ -44901,6 +44979,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LoadIcon_vue_vue_type_template_id_1f94b1d5__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LoadIcon_vue_vue_type_template_id_1f94b1d5__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LoadIcon.vue?vue&type=template&id=1f94b1d5 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/Icons/LoadIcon.vue?vue&type=template&id=1f94b1d5");
+
+
+/***/ }),
+
+/***/ "./resources/ts/components/Icons/ReloadIcon.vue?vue&type=template&id=79e9f408":
+/*!************************************************************************************!*\
+  !*** ./resources/ts/components/Icons/ReloadIcon.vue?vue&type=template&id=79e9f408 ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReloadIcon_vue_vue_type_template_id_79e9f408__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReloadIcon_vue_vue_type_template_id_79e9f408__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ReloadIcon.vue?vue&type=template&id=79e9f408 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/components/Icons/ReloadIcon.vue?vue&type=template&id=79e9f408");
 
 
 /***/ }),

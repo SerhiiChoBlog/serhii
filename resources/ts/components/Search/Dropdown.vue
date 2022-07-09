@@ -3,6 +3,7 @@ import { Search } from '../../types/types'
 import History from './History.vue'
 import NotFound from './NotFound.vue'
 import DropdownItems from './DropdownItems.vue'
+import ReloadIcon from '../Icons/ReloadIcon.vue'
 
 interface Props {
     search: Search
@@ -16,7 +17,8 @@ const { search } = defineProps<Props>()
         <history v-if="search.history.length > 0" :history="search.history" />
 
         <div v-else>
-            <not-found v-if="search.posts.length === 0 && search.projects.length === 0" />
+            <reload-icon v-if="search.loading" class="animate-spin w-6 h-6 absolute left-1/2 -ml-3 top-[13px]" />
+            <not-found v-else-if="!search.loading && search.posts.length === 0 && search.projects.length === 0" />
 
             <div v-else>
                 <div class="flex flex-col md:flex-row justify-between relative" >
