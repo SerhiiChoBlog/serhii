@@ -184,7 +184,7 @@
                                         <img data-src="{{ asset($image->uri) }}"
                                             alt="Post image"
                                             width="100"
-                                            class="smooth-loader rounded-md shadow-sm"
+                                            class="rounded-md shadow-sm"
                                         />
                                     </a>
                                 </td>

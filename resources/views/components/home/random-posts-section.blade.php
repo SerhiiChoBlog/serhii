@@ -12,7 +12,7 @@
                 <img
                     data-src="{{ asset($post['image_sm']) }}"
                     alt="{{ $post['title'] }}"
-                    class="smooth-loader rounded-md shadow-md mx-auto"
+                    class="rounded-md shadow-md mx-auto"
                     width="468"
                     height="255"
                 />

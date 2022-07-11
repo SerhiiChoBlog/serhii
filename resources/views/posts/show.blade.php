@@ -101,7 +101,7 @@
                             >
                                 <img data-src="{{ asset($other_post->image_sm) }}"
                                      alt="{{ $other_post->title }}"
-                                     class="smooth-loader rounded-lg shadow-lg"
+                                     class="rounded-lg shadow-lg"
                                 >
                                 <h4 class="text-lg leading-6 my-3">{{ $other_post->title }}</h4>
                             </a>

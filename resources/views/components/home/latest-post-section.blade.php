@@ -5,10 +5,10 @@
 @if ($post)
     <article class="flex flex-col md:flex-row gap-4 justify-between items-center mx-auto">
         <div class="relative">
-            <div class="text-sm lg:text-md absolute -top-1 -right-1 bg-red-700 text-white px-3 rounded-sm shadow-md">NEW</div>
+            <div class="text-sm lg:text-md absolute z-10 -top-1 -right-1 bg-red-700 text-white px-3 rounded-sm shadow-md">NEW</div>
 
             <img
-                src="{{ $post['image_sm'] }}"
+                data-src="{{ $post['image_sm'] }}"
                 alt="{{ $post['title'] }}"
                 class="rounded-lg shadow-lg w-full"
                 width="331"

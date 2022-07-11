@@ -1,7 +1,7 @@
 import smoothLoader from 'smooth-loader'
 import './components/editBlog'
 
-smoothLoader()
+smoothLoader('[data-src]')
 
 ;(function HandleLogoutButton() {
     const selector = '._logout-button'

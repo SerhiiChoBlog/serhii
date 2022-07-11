@@ -35,4 +35,4 @@ const app = createApp({
 
 app.mount("#app")
 
-smoothLoader()
+smoothLoader('[data-src]')
