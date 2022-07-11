@@ -71,6 +71,8 @@
                     <img
                         src="{{ asset($post['image_lg']) }}"
                         alt="{{ $post['title'] }}"
+                        width="600"
+                        height="327"
                         class="static mx-auto 2xl:absolute right-4 bottom-[-130px] w-[600px] rounded-lg shadow-lg mt-7 lg:mt-0"
                     />
                 </div>
