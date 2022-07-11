@@ -58,7 +58,7 @@
 
                         @if (auth()->check())
                             <a
-                                href="{{ route('admin.posts.edit', ['post' => $post['id']]) }}"
+                               href="{{ route('admin.posts.edit', ['post' => $post['id']]) }}"
                                class="flex items-center px-5 ml-2 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100 py-1 uppercase text-xs"
                             >
                                 Edit post
@@ -71,8 +71,6 @@
                     <img
                         src="{{ asset($post['image_lg']) }}"
                         alt="{{ $post['title'] }}"
-                        width="600"
-                        height="327"
                         class="static mx-auto 2xl:absolute right-4 bottom-[-130px] w-[600px] rounded-lg shadow-lg mt-7 lg:mt-0"
                     />
                 </div>
