@@ -15,39 +15,24 @@
         </div>
     </x-hero>
 
-    {{-- Welcome --}}
-    <section class="py-20">
-        <div class="container">
-            <x-home.section-title>Nice to meet you</x-home.section-title>
+    <x-home.section title="Nice to meet you">
+        <div class="text-lg lg:text-xl font-light leading-7 lg:leading-9">
+            <x-home.welcome-section />
 
-            <div class="text-lg lg:text-xl font-light leading-7 lg:leading-9">
-                <x-home.welcome-section />
-
-                <a
-                    href="{{ route('about-me') }}"
-                    class="text-link transition-colors hover:text-link-hover ml-1"
-                >
-                    Read more ...
-                </a>
-            </div>
+            <a
+                href="{{ route('about-me') }}"
+                class="text-link transition-colors hover:text-link-hover ml-1"
+            >
+                Read more ...
+            </a>
         </div>
-    </section>
+    </x-home.section>
 
-    <section class="py-20 bg-page-second relative">
-        <x-section-detail />
+    <x-home.section title="Latest post" isDark="true">
+        <x-home.latest-post-section />
+    </x-home.section>
 
-        <x-home.section-title>Latest post</x-home.section-title>
-
-        <div class="container">
-            <x-home.latest-post-section />
-        </div>
-    </section>
-
-    <section class="py-20">
-        <x-home.section-title>More random posts</x-home.section-title>
-
-        <div class="container">
-            <x-home.random-posts-section />
-        </div>
-    </section>
+    <x-home.section title="More random posts">
+        <x-home.random-posts-section />
+    </x-home.section>
 @endsection
