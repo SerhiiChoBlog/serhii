@@ -17,7 +17,7 @@ class LatestPostSection extends Component
         $this->post = $this->getPost();
     }
 
-    public function getPost(): array
+    public function getPost(): ?array
     {
         return Cache::rememberForever(CacheKey::LAST_POST, static function () {
             return Post::query()
