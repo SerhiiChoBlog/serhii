@@ -25,6 +25,10 @@
                 {{ $post['intro'] }}
             </p>
 
+            <x-post.tags :tags="$post['tags']" class="text-sm md:text-md">
+                <x-post.created :created="$post['created_at']" :pretty="$post['pretty_created_at']" />
+            </x-post.tags>
+
             <div class="mt-5 md:mt-0 text-right">
                 <a
                     type="button"
