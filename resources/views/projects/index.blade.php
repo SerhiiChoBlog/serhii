@@ -15,10 +15,10 @@
     />
 
     <div class="container my-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
             @foreach ($projects as $project)
-                <article class="xl:first:-row-start-1 xl:first:row-span-2">
+                <article>
                     <a
                         href="/projects/{{ $project['name'] }}"
                         class="bg-page-second p-7 h-full rounded-md shadow-md hover:shadow-lg transition-shadow relative flex flex-col justify-center min-h-[300px]"
