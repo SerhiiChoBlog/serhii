@@ -44,6 +44,8 @@
     </section>
 
     <section class="py-20">
+        <x-home.section-title>More random posts</x-home.section-title>
+
         <div class="container">
             <x-home.random-posts-section />
         </div>
