@@ -19,7 +19,7 @@
 
                     <img data-src="{{ asset($site['image']) }}"
                         alt="{{ $site['title'] }}"
-                        class="smooth-loader rounded-b-lg shadow-[-19px_10px_5px_rgba(0,0,0,.05)]"
+                        class="rounded-b-lg shadow-[-19px_10px_5px_rgba(0,0,0,.05)]"
                         width="350"
                         height="251"
                     />
