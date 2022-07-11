@@ -7,11 +7,6 @@ use Illuminate\View\Component;
 
 class NavbarMenu extends Component
 {
-    public function __construct()
-    {
-        //
-    }
-
     public function render(): View
     {
         return view('components.navbar-menu');
@@ -30,7 +25,7 @@ class NavbarMenu extends Component
             [
                 'href' => route('posts.index'),
                 'class' => request()->is('posts') ? $active_class : '',
-                'title' => 'Blog',
+                'title' => 'Blog posts',
             ],
             [
                 'href' => route('projects.index'),
