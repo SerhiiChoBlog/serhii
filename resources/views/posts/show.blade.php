@@ -71,8 +71,8 @@
                     <img
                         src="{{ asset($post['image_lg']) }}"
                         alt="{{ $post['title'] }}"
-                        width="600"
-                        height="327"
+                        width="1000"
+                        height="545"
                         class="static mx-auto 2xl:absolute right-4 bottom-[-130px] w-[600px] rounded-lg shadow-lg mt-7 lg:mt-0"
                     />
                 </div>
@@ -100,9 +100,11 @@
                                class="p-2 transition-opacity hover:opacity-80 min-h-[160px]"
                             >
                                 <img data-src="{{ asset($other_post->image_sm) }}"
-                                     alt="{{ $other_post->title }}"
-                                     class="rounded-lg shadow-lg"
-                                >
+                                    alt="{{ $other_post->title }}"
+                                    class="rounded-lg shadow-lg"
+                                    width="550"
+                                    height="300"
+                                />
                                 <h4 class="text-lg leading-6 my-3">{{ $other_post->title }}</h4>
                             </a>
                         @endforeach

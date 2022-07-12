@@ -7,9 +7,11 @@
     class="flex items-center justify-center gap-x-8 my-14"
 >
     <div>
-        <img src="{{ asset('storage/posts/thanks.jpeg') }}"
+        <img data-src="{{ asset('storage/posts/thanks.jpeg') }}"
             alt="Serhii Cho"
             class="rounded-full shadow-md w-28"
+            width="300"
+            height="300"
         />
     </div>
 
