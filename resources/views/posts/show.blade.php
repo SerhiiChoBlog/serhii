@@ -13,7 +13,7 @@
     <meta name="twitter:description" content="{{ $post['intro'] }}">
     <meta name="twitter:image" content="{{ asset($post['image_lg']) }}">
     <meta property="og:og:site_name" content="{{ config('app.name') }}">
-    <meta property="og:title" name="title" content="{{ $post['title'] }}">
+    <meta property="og:title" content="{{ $post['title'] }}">
     <meta property="og:description" content="{{ $post['intro'] }}" />
     <meta property="og:image" content="{{ asset($post['image_lg']) }}">
     <meta property="og:type" content="article">
