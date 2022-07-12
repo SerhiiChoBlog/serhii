@@ -16,6 +16,16 @@
     <meta property="og:description" content="{{ $post['intro'] }}" />
     <meta property="og:image" content="{{ asset($post['image_lg']) }}">
     <meta property="og:type" content="article">
+    <meta property="og:image:width" content="1000">
+    <meta property="og:image:height" content="545">
+    <meta property="article:published_time" content="{{ $post['created_at'] }}">
+    <meta property="article:modified_time" content="{{ $post['updated_at'] }}">
+    <meta property="article:publisher" content="https://www.facebook.com/serhii.cho.9/">
+
+    @foreach ($post['tags'] as $tag)
+        <meta property="article:tag" content="{{ $tag['name'] }}">
+    @endforeach
+
     <script src="{{ asset('js/highlight.js') }}" defer></script>
 @endsection
 
