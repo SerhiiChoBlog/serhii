@@ -8,6 +8,4 @@
             </span>
         </li>
     @endforeach
-
-    {{ $slot }}
 </ul>
