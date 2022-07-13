@@ -86,7 +86,7 @@ class PostController extends Controller
         $data['title'] = trim($data['title']);
         $data['intro'] = trim($data['intro']);
         $data['content'] = $this->addNotesToContent($data['content']);
-        $data['read_time'] = Post::calculateEstimatedReadingTime($data['content']);
+        $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
 
         if ($post->is_published || $is_published) {
             $this->forgetPostsCache();
