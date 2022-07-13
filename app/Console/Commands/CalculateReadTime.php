@@ -17,7 +17,7 @@ class CalculateReadTime extends Command
         $posts = Post::query()->where('is_published', true)->get();
 
         $posts->each(static function (Post $post) {
-            $post->read_time = Post::calculateEstimatedReadingTime($post->content);
+            $post->read_time = Post::calculateEstimatedReadingTime($post->content ?? '');
             $post->save();
         });
 
