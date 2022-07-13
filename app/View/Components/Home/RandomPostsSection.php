@@ -21,7 +21,7 @@ class RandomPostsSection extends Component
 
         return Post::query()
             ->with('tags:name,color')
-            ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
+            ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
             ->where('is_published', true)
             ->limit(3)
             ->when($last_post, fn(Builder $query) => $query->whereNot('id', $last_post['id']))
