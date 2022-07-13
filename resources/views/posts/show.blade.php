@@ -51,27 +51,18 @@
                             {{ $post->title }}
                         </h1>
 
-                        <x-post.tags :tags="$post->tags" class="text-sm mt-5" />
-
-                        <div class="opacity-70 flex items-center mt-3 gap-6 mt-4">
-                            <time datetime="{{ $post->created_at }}">
-                                {{ $post->pretty_created_at }}
-                            </time>
-
-                            @if ($post->page_views_count > 99)
-                                <span>{{ $post->page_views_count }} views</span>
-                            @endif
-
-                            <span>{{ $post->estimatedReadingTime() }} minutes read</span>
-                        </div>
+                        <x-post.tags :tags="$post->tags" class="text-sm mt-5 !gap-3" />
+                        <x-post.details :post="$post->toArray()" class="mt-4" />
 
                         @if (auth()->check())
-                            <a
-                                href="{{ route('admin.posts.edit', ['post' => $post->id]) }}"
-                                class="flex items-center px-5 ml-2 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100 py-1 uppercase text-xs"
-                            >
-                                Edit post
-                            </a>
+                            <div class="mt-4">
+                                <a
+                                    href="{{ route('admin.posts.edit', ['post' => $post->id]) }}"
+                                    class="px-5 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100 py-1 uppercase text-xs"
+                                >
+                                    Edit post
+                                </a>
+                            </div>
                         @endif
                     </div>
 

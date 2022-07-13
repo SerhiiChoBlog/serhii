@@ -27,6 +27,7 @@ use Serhii\Ago\TimeAgo;
  * @property Collection $pageViews
  * @property Collection $tags
  * @property int|null $page_views_count
+ * @property int $read_time
  * @property array<int, array<int, string>>|null $social
  * @property string $pretty_created_at
  * @property Carbon $created_at
@@ -116,9 +117,9 @@ class Post extends Model
         return new Attribute($get);
     }
 
-    public function estimatedReadingTime(int $wpm = 230): int
+    public static function calculateEstimatedReadingTime(string $content, int $wpm = 230): int
     {
-        $content = strip_tags($this->content);
+        $content = strip_tags($content);
         $word_count = str_word_count($content);
 
         $time = round($word_count / $wpm);

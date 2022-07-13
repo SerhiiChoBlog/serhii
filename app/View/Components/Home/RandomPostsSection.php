@@ -6,12 +6,13 @@ use App\CacheKey;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\Component;
 
 class RandomPostsSection extends Component
 {
-    public function posts(): array
+    public function posts(): Collection
     {
         $last_post = Cache::get(CacheKey::LAST_POST);
 
@@ -22,8 +23,7 @@ class RandomPostsSection extends Component
             ->limit(3)
             ->when($last_post, fn(Builder $query) => $query->whereNot('id', $last_post['id']))
             ->inRandomOrder()
-            ->get()
-            ->toArray();
+            ->get();
     }
 
     public function render(): View

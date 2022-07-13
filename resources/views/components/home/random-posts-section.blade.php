@@ -21,18 +21,11 @@
             <div class="py-5 px-2">
                 <h3 class="text-2xl font-semibold">{{ $post['title'] }}</h3>
 
-                <p class="mt-3 mb-4 text-lg">{{ $post['intro'] }}</p>
+                <p class="mt-3 text-lg">{{ $post['intro'] }}</p>
 
-                <x-post.tags :tags="$post['tags']" class="text-xs">
-                    <x-post.created :created="$post['created_at']" :pretty="$post['pretty_created_at']" />
-                </x-post.tags>
+                <x-post.tags :tags="$post['tags']" class="text-[.8em] mt-3" />
+                <x-post.details :post="$post" class="mt-2" />
             </div>
         </article>
     @endforeach
-</div>
-
-<div class="mt-8 text-center">
-    <x-button :href="route('posts.index')">
-        Go to posts
-    </x-button>
 </div>

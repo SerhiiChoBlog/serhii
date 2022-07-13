@@ -21,7 +21,7 @@ class PostController extends Controller
         $posts = Cache::remember(CacheKey::PUBLISHED_POSTS, Ttl::DAY, static function () {
             return Post::query()
                 ->with('tags:id,name,color')
-                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at')
+                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
                 ->where('is_published', true)
                 ->latest()
                 ->paginate(15);

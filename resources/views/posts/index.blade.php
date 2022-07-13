@@ -37,12 +37,11 @@
 
                         <div>
                             <h2 class="text-2xl text-font">{{ $post->title }}</h2>
-                            <p class="pb-3 pt-1 text-lg font-light text-font-second">{{ $post->intro }}</p>
+                            <p class="mt-2 text-lg font-light text-font-second">{{ $post->intro }}</p>
 
                             <div>
-                                <x-post.tags :tags="$post->tags" class="text-xs">
-                                    <x-post.created :created="$post->created_at" :pretty="$post->pretty_created_at" />
-                                </x-post.tags>
+                                <x-post.tags :tags="$post->tags" class="text-[.8em] mt-2" />
+                                <x-post.details :post="$post->toArray()" class="mt-2" />
                             </div>
                         </div>
                     </a>
