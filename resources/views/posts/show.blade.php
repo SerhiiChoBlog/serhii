@@ -107,14 +107,14 @@
                     <nav>
                         <x-post.sidebar-title>Other posts</x-post.sidebar-title>
 
-                        <div class="flex flex-col md:flex-row gap-2">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                             @foreach ($posts as $other_post)
                                 <a href="{{ route('posts.show', $other_post) }}"
                                    class="p-2 transition-opacity hover:opacity-80 min-h-[160px]"
                                 >
                                     <img data-src="{{ asset($other_post->image_sm) }}"
                                         alt="{{ $other_post->title }}"
-                                        class="rounded-lg shadow-lg"
+                                        class="rounded-lg shadow-lg mx-auto w-full"
                                         width="260"
                                         height="141"
                                     />
