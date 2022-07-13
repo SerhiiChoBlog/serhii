@@ -12,6 +12,9 @@ use Illuminate\View\Component;
 
 class RandomPostsSection extends Component
 {
+    /**
+     * @return Collection<int, Post>
+     */
     public function posts(): Collection
     {
         $last_post = Cache::get(CacheKey::LAST_POST);
