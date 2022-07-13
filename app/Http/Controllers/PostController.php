@@ -35,23 +35,17 @@ class PostController extends Controller
      */
     public function show(string $slug, Request $request): View
     {
-        $cache_key = CacheKey::POST . $slug;
+        /** @var Post | null */
+        $post = Post::query()
+            ->with('tags:id,color,name')
+            ->where('slug', $slug)
+            ->withCount('pageViews')
+            ->first();
 
-        /** @var array{id:int, is_published:bool, title:string} $post */
-        $post = Cache::remember($cache_key, Ttl::DAY, static function () use ($slug) {
-            $post = Post::query()
-                ->with('tags:id,color,name')
-                ->where('slug', $slug)
-                ->withCount('pageViews')
-                ->first();
-
-            return $post?->toArray();
-        });
-
-        abort_if(!$post['is_published'] && !Auth::check(), 404);
+        abort_if(!$post || (!$post->is_published && !Auth::check()), 404);
 
         /** @var int<0, 190> $title_len */
-        $title_len = strlen($post['title']);
+        $title_len = strlen($post->title);
 
         $title_font_size = match (true) {
             $title_len <= 10 => '5em',
@@ -63,7 +57,7 @@ class PostController extends Controller
             default => '2em',
         };
 
-        $posts = Post::getPostsForSidebar($post['id']);
+        $posts = Post::getPostsForSidebar($post->id);
         $segment = $request->segment(2);
         $ip = $request->ip();
 
