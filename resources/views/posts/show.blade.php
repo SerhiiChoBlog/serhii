@@ -115,8 +115,8 @@
                                     <img data-src="{{ asset($other_post->image_sm) }}"
                                         alt="{{ $other_post->title }}"
                                         class="rounded-lg shadow-lg"
-                                        width="550"
-                                        height="300"
+                                        width="260"
+                                        height="141"
                                     />
                                     <h4 class="text-lg leading-6 my-3">{{ $other_post->title }}</h4>
                                 </a>
