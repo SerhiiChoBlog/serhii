@@ -13,7 +13,7 @@ class LoginTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function guest_can_visit_login_page(): void
+    public function guest_can_visit_page(): void
     {
         $this->get(route('login'))
             ->assertOk()
@@ -21,7 +21,7 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function admin_cant_visit_login_page_if_authenticated(): void
+    public function admin_cant_visit_page_if_authenticated(): void
     {
         $user = User::factory()->make();
 
