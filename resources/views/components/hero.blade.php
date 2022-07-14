@@ -10,7 +10,7 @@
             @endisset
 
             @isset($subtitle)
-                <p class="text-md lg:text-xl">{!! $subtitle !!}</p>
+                <h2 class="text-md lg:text-xl">{!! $subtitle !!}</h2>
             @endisset
         </div>
 
