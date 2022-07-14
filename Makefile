@@ -28,12 +28,14 @@ check:
 
 push:
 	make check
-	yarn prod
-	git add .
-	git commit -m 'Compiled assets for production'
 	git pull origin HEAD
 	git push origin HEAD
 	git status
+
+prod:
+	yarn prod
+	git add .
+	git commit -m 'Compiled assets for production'
 
 deploy:
 	git pull origin HEAD
