@@ -19,8 +19,8 @@
         class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white"
     />
 
-    <div class="container mt-5">
-        <div class="flex flex-col gap-y-2 max-w-[1100px] mx-auto">
+    <div class="container">
+        <div class="flex flex-col gap-y-2 max-w-[1100px] mx-auto -translate-y-6 bg-white rounded-xl">
 
             @foreach ($posts as $post)
                 <article>
