@@ -72,7 +72,7 @@
                             alt="{{ $post->title }}"
                             width="1000"
                             height="545"
-                            class="static mx-auto 2xl:absolute right-4 bottom-[-130px] w-[600px] rounded-lg shadow-lg mt-7 lg:mt-0"
+                            class="static mx-auto 2xl:absolute right-4 bottom-[-130px] w-[600px] rounded-lg shadow-lg mt-7 lg:mt-0 z-10"
                         />
                     </div>
                 </div>
@@ -80,7 +80,7 @@
         </div>
 
         <div class="container pb-6">
-            <div class="grid w-full grid-cols-1 lg:grid-cols-[repeat(auto-fit,minmax(320px,auto))] gap-x-7 pt-8 lg:pt-20 mx-auto max-w-[1200px]">
+            <div class="grid w-full grid-cols-1 lg:grid-cols-[repeat(auto-fit,minmax(320px,auto))] gap-x-7 pt-10 mx-auto max-w-[1230px] bg-white lg:-translate-y-8 lg:px-8 rounded-xl">
                 <div>
                     <div class="post-content lg:prose-xl pr-2 lg:px-6"
                         id="post-content"
@@ -111,7 +111,7 @@
                     </nav>
                 </div>
 
-                <div class="spacey-y-0 lg:space-y-12 px-3 h-full max-w-[320px]">
+                <div class="spacey-y-0 lg:space-y-12 px-3 h-full max-w-[320px] pt-0 2xl:pt-20">
                     <div class="hidden lg:block">
                         <nav class="min-h-[83px]">
                             <x-post.sidebar-title>Share this post</x-post.sidebar-title>
