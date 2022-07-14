@@ -80,7 +80,7 @@
         </div>
 
         <div class="container pb-6">
-            <div class="grid w-full grid-cols-1 lg:grid-cols-[repeat(auto-fit,minmax(320px,auto))] gap-x-7 pt-10 mx-auto max-w-[1230px] bg-white lg:-translate-y-8 lg:px-8 rounded-xl">
+            <div class="grid w-full grid-cols-1 lg:grid-cols-[repeat(auto-fit,minmax(320px,auto))] gap-x-7 pt-10 mx-auto max-w-[1230px] bg-page lg:-translate-y-8 lg:px-8 rounded-xl">
                 <div>
                     <div class="post-content lg:prose-xl pr-2 lg:px-6"
                         id="post-content"
