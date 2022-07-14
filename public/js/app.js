@@ -20659,7 +20659,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0, vue_1.createElementVNode)("img", {
         src: "/storage/serhii-cho.jpg",
         alt: "Serhii Cho",
-        "class": "my-0 my-auto rounded-lg sticky top-6 mb-6 mt-6 mx-auto transition-all duration-500",
+        "class": "my-0 my-auto rounded-lg sticky top-20 mb-6 mx-auto transition-all duration-500",
         style: (0, vue_1.normalizeStyle)($setup.shadow),
         width: "250",
         height: "250"

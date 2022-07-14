@@ -11,10 +11,9 @@
     />
 
     <div class="mt-2 text-xl">
-        <section
-            class="about-me prose-xl text-[1.2rem] px-2 lg:px-6 py-8 prose-h2:mb-6 prose-h2:mt-0">
+        <section class="about-me prose-xl text-[1.2rem] px-2 lg:px-6 py-8 prose-h2:mb-6 prose-h2:mt-0">
             <div class="container">
-                <div>
+                <div class="bg-white -translate-y-16 rounded-xl pt-8">
                     <div class="grid grid-cols-1 gap-x-6 lg:grid-cols-[25%_1fr]">
                         <div class="relative">
                             <avatar />

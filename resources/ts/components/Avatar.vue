@@ -21,7 +21,7 @@ document.addEventListener('scroll', () => {
         <img
             src="/storage/serhii-cho.jpg"
             alt="Serhii Cho"
-            class="my-0 my-auto rounded-lg sticky top-6 mb-6 mt-6 mx-auto transition-all duration-500"
+            class="my-0 my-auto rounded-lg sticky top-20 mb-6 mx-auto transition-all duration-500"
             :style="shadow"
             width="250"
             height="250"
