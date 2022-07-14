@@ -19,7 +19,7 @@ cs:
 test:
 	rm -f database/database.sqlite
 	touch database/database.sqlite
-	php artisan test
+	./vendor/bin/phpunit
 
 check:
 	make stan
