@@ -11,6 +11,9 @@ class {{ factory }}Factory extends Factory
 {
     protected $model = {{ model }}::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [
