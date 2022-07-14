@@ -22,7 +22,7 @@ class ProjectTest extends TestCase
     }
 
     /** @test */
-    public function guest_can_visit_project_page(): void
+    public function guest_can_visit_page(): void
     {
         $this->get(route('projects.show', $this->project))
             ->assertOk()
@@ -30,7 +30,7 @@ class ProjectTest extends TestCase
     }
 
     /** @test */
-    public function admin_can_visit_home_page(): void
+    public function admin_can_visit_page(): void
     {
         $user = User::factory()->make();
 

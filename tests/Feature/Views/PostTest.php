@@ -22,7 +22,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function guest_can_visit_post_page(): void
+    public function guest_can_visit_page(): void
     {
         $this->get(route('posts.show', $this->post))
             ->assertOk()
@@ -30,7 +30,7 @@ class PostTest extends TestCase
     }
 
     /** @test */
-    public function admin_can_visit_home_page(): void
+    public function admin_can_visit_page(): void
     {
         $user = User::factory()->make();
 
