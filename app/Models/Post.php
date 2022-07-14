@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
-use Serhii\Ago\TimeAgo;
 
 /**
  * @property-read int $id
@@ -111,7 +110,7 @@ class Post extends Model
                 return '';
             }
 
-            return TimeAgo::trans($this->created_at);
+            return $this->created_at->format('F j, Y');
         };
 
         return new Attribute($get);
