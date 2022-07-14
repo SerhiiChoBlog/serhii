@@ -15,7 +15,7 @@
     />
 
     <div class="container my-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 -translate-y-12 bg-white rounded-xl px-5 pt-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 -translate-y-12 bg-page rounded-xl px-5 pt-5">
 
             @foreach ($projects as $project)
                 <article>
