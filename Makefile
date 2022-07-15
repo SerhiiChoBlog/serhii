@@ -28,6 +28,7 @@ check:
 
 push:
 	make check
+	make prod
 	git pull origin HEAD
 	git push origin HEAD
 	git status
