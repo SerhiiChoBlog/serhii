@@ -21204,7 +21204,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.search.query = $event;
     }),
-    onKeyup: _cache[1] || (_cache[1] = function () {
+    onInput: _cache[1] || (_cache[1] = function () {
       var args = [];
 
       for (var _i = 0; _i < arguments.length; _i++) {
