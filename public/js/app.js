@@ -21017,7 +21017,7 @@ exports.render = void 0;
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "bg-page dark:bg-page-second shadow-xl p-6 top-[calc(100%+10px)] absolute left-0 right-0 z-50 rounded-3xl dark:border-2 dark:border-border"
+  "class": "bg-page dark:bg-page-second shadow-xl p-3 md:p-6 top-[calc(100%+10px)] absolute -left-3 -right-3 z-50 rounded-3xl dark:border-2 dark:border-border"
 };
 var _hoisted_2 = {
   key: 1

@@ -13,7 +13,7 @@ const { search } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="bg-page dark:bg-page-second shadow-xl p-6 top-[calc(100%+10px)] absolute left-0 right-0 z-50 rounded-3xl dark:border-2 dark:border-border">
+    <div class="bg-page dark:bg-page-second shadow-xl p-3 md:p-6 top-[calc(100%+10px)] absolute -left-3 -right-3 z-50 rounded-3xl dark:border-2 dark:border-border">
         <history v-if="search.history.length > 0" :history="search.history" />
 
         <div v-else>
