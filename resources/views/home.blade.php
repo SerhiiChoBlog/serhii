@@ -8,7 +8,7 @@
             <search />
         </div>
 
-        <div class="absolute flex flex-col gap-y-2 items-center -bottom-4 left-1/2 -translate-x-1/2 z-10">
+        <div class="absolute flex flex-col gap-y-2 items-center -bottom-4 left-1/2 -translate-x-1/2 z-[1]">
             <div class="w-[300px] lg:w-[600px] h-1 bg-page-second"></div>
             <div class="w-[250px] lg:w-[450px] h-1 bg-page-second"></div>
             <div class="w-[200px] lg:w-[300px] h-1 bg-page-second"></div>
