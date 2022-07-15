@@ -37,11 +37,11 @@
 
                         <div>
                             <h2 class="text-2xl text-font">{{ $post->title }}</h2>
-                            <p class="mt-2 text-lg font-light text-font-second">{{ $post->intro }}</p>
+                            <p class="mt-2 text-lg font-light text-font-second font-post">{{ $post->intro }}</p>
 
                             <div>
-                                <x-post.tags :tags="$post->tags" class="text-[.8em] mt-2" />
-                                <x-post.details :post="$post->toArray()" class="mt-2" />
+                                <x-post.tags :tags="$post->tags" class="text-[.8em] mt-3" />
+                                <x-post.details :post="$post->toArray()" class="mt-3" />
                             </div>
                         </div>
                     </a>

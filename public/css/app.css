@@ -2,7 +2,7 @@
     --color-page: white;
     --color-page-second: #f7f7f7;
     --color-border: rgba(0, 0, 0, .1);
-    --color-font: #353535;
+    --color-font: #292929;
     --color-font-second: #555;
     --color-font-second-hover: #222;
     --color-link: #145DA0;
@@ -262,10 +262,6 @@
     border-radius: 0.375rem;
 
     background-color: var(--color-inline-code);
-
-    padding-top: 0.25rem;
-
-    padding-bottom: 0.25rem;
 
     padding-left: 0.5rem;
 
@@ -1453,19 +1449,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: var(--color-font);
 }
 .post-content :is(:where(h1, h2, h3, h4, th):not(:where([class~="not-prose"] *))), .project-content :is(:where(h1, h2, h3, h4, th):not(:where([class~="not-prose"] *))), .about-me :is(:where(h1, h2, h3, h4, th):not(:where([class~="not-prose"] *))) {
+  font-family: Post, arial;
   color: var(--color-font);
 }
 .post-content :is(:where(p):not(:where([class~="not-prose"] *))), .project-content :is(:where(p):not(:where([class~="not-prose"] *))), .about-me :is(:where(p):not(:where([class~="not-prose"] *))) {
-  font-family: Main, arial !important;
-  line-height: 2rem;
-}
-.post-content :is(:where(a):not(:where([class~="not-prose"] *))), .project-content :is(:where(a):not(:where([class~="not-prose"] *))), .about-me :is(:where(a):not(:where([class~="not-prose"] *))) {
-  color: var(--color-link);
-  -webkit-text-decoration-line: none;
-          text-decoration-line: none;
-}
-.post-content :is(:where(a):not(:where([class~="not-prose"] *))):hover, .project-content :is(:where(a):not(:where([class~="not-prose"] *))):hover, .about-me :is(:where(a):not(:where([class~="not-prose"] *))):hover {
-  color: var(--color-link-hover);
+  font-family: Post, arial !important;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 .post-content :is(:where(figcaption):not(:where([class~="not-prose"] *))), .project-content :is(:where(figcaption):not(:where([class~="not-prose"] *))), .about-me :is(:where(figcaption):not(:where([class~="not-prose"] *))) {
   text-align: center;
@@ -1473,17 +1463,23 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .post-content :is(:where(strong):not(:where([class~="not-prose"] *))), .project-content :is(:where(strong):not(:where([class~="not-prose"] *))), .about-me :is(:where(strong):not(:where([class~="not-prose"] *))) {
   font-weight: 900;
-  color: var(--color-font);
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 .post-content :is(:where(img):not(:where([class~="not-prose"] *))), .project-content :is(:where(img):not(:where([class~="not-prose"] *))), .about-me :is(:where(img):not(:where([class~="not-prose"] *))) {
   margin-left: auto;
   margin-right: auto;
   border-radius: 0.75rem;
 }
+.dark .post-content :is(:where(strong):not(:where([class~="not-prose"] *))), .dark .project-content :is(:where(strong):not(:where([class~="not-prose"] *))), .dark .about-me :is(:where(strong):not(:where([class~="not-prose"] *))) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
 @media (min-width: 1024px) {
 
   .post-content :is(:where(p):not(:where([class~="not-prose"] *))), .project-content :is(:where(p):not(:where([class~="not-prose"] *))), .about-me :is(:where(p):not(:where([class~="not-prose"] *))) {
-    line-height: 2.5rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 }
 .pointer-events-none {
@@ -1726,14 +1722,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mb-2 {
   margin-bottom: 0.5rem;
 }
+.mt-3 {
+  margin-top: 0.75rem;
+}
 .mt-4 {
   margin-top: 1rem;
 }
 .mt-7 {
   margin-top: 1.75rem;
-}
-.mt-3 {
-  margin-top: 0.75rem;
 }
 .ml-2 {
   margin-left: 0.5rem;
@@ -2590,6 +2586,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .font-main {
   font-family: Main, arial;
 }
+.font-post {
+  font-family: Post, arial;
+}
 .font-code {
   font-family: Code, monospace;
 }
@@ -2898,6 +2897,13 @@ Ensure the default browser behavior of the `hidden` attribute.
     font-family: 'Main';
     src: url(/fonts/Lato-Bold.ttf?636be8de934918e38ed94b9d68e67fe0) format("truetype");
     font-weight: bold;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Post';
+    src: url(/fonts/charter-400-normal.woff?e841da08e39a5d3861471cc6268c6843) format("woff");
+    font-weight: normal;
     font-display: swap;
 }
 
