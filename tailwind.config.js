@@ -39,6 +39,7 @@ module.exports = {
         fontFamily: {
             main: ['Main', 'arial'],
             code: ['Code', 'monospace'],
+            post: ['Post', 'arial'],
         },
         keyframes: {
             blink: {

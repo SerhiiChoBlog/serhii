@@ -22,6 +22,13 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Post';
+    src: url('../fonts/charter-400-normal.woff') format("woff");
+    font-weight: normal;
+    font-display: swap;
+}
+
 @layer base {
     @import "_variables.css";
 }
@@ -36,6 +43,6 @@
     .post-content,
     .project-content,
     .about-me {
-        @apply prose prose-figcaption:text-center prose-figcaption:text-font-second max-w-none prose-img:rounded-xl prose-img:mx-auto prose-a:text-link prose-a:no-underline hover:prose-a:text-link-hover prose-strong:font-black text-font prose-strong:text-font prose-p:!font-main prose-headings:text-font prose-p:leading-8 prose-p:lg:leading-10;
+        @apply prose prose-figcaption:text-center prose-figcaption:text-font-second max-w-none prose-img:rounded-xl prose-img:mx-auto prose-strong:font-black text-font prose-strong:text-black dark:prose-strong:text-white prose-headings:font-post prose-p:text-lg prose-p:lg:text-xl prose-p:!font-post prose-headings:text-font prose-p:leading-7 prose-p:lg:leading-8;
     }
 }
