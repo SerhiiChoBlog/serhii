@@ -25,7 +25,7 @@ class NavbarMenu extends Component
             [
                 'href' => route('posts.index'),
                 'class' => request()->is('posts') ? $active_class : '',
-                'title' => 'Blog posts',
+                'title' => 'Blog',
             ],
             [
                 'href' => route('projects.index'),

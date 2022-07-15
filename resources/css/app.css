@@ -43,6 +43,6 @@
     .post-content,
     .project-content,
     .about-me {
-        @apply prose prose-figcaption:text-center prose-figcaption:text-font-second max-w-none prose-img:rounded-xl prose-img:mx-auto prose-strong:font-black text-font prose-strong:text-black dark:prose-strong:text-white prose-headings:font-post prose-p:text-lg prose-p:lg:text-xl prose-p:!font-post prose-headings:text-font prose-p:leading-7 prose-p:lg:leading-8;
+        @apply prose prose-figcaption:text-center prose-figcaption:text-font-second max-w-none prose-img:rounded-xl prose-img:mx-auto prose-strong:font-black text-font prose-headings:font-post prose-p:text-lg prose-p:lg:text-xl prose-p:!font-post prose-headings:text-font prose-p:leading-7 prose-p:lg:leading-8;
     }
 }
