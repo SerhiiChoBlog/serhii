@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Chapter as ChapterType } from '../../types/types'
+import { computed } from 'vue'
 
 interface Props {
     headers: NodeListOf<HTMLElement>
@@ -22,14 +23,29 @@ function scrollToChapter(title: string): void {
 
     neededElement.scrollIntoView({ behavior: 'smooth' })
 }
+
+const title = computed(() => {
+    return chapter.title.replace(/\d+\. ?/, '')
+})
+
+const number = computed<string>(() => {
+    const match = /\d+\./.exec(chapter.title)
+    return match && match[0] ? match[0].replace('.', '') : ''
+})
 </script>
 
 <template>
     <a
-        class="border border-border rounded-full cursor-pointer relative block flex justify-start text-font-second px-5 py-2 transition-colors hover:bg-page-second select-none transition-colors"
+        class="leading-5 border border-border rounded-full cursor-pointer relative block flex justify-start text-font-second px-5 py-2 transition-colors hover:bg-page-second select-none transition-colors gap-3 items-center"
         :class="{'bg-main !text-white !border-main hover:!bg-main-hover': chapter.isActive}"
         @click="scrollToChapter(chapter.title)"
     >
-        <span>{{ chapter.title }}</span>
+        <span
+            class="font-bold text-lg"
+            :class="chapter.isActive ? 'text-white' : 'text-main'"
+        >{{ number || '&#xb7;' }}</span>
+
+
+        <span>{{ title }}</span>
     </a>
 </template>
