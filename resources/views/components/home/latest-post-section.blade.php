@@ -25,7 +25,7 @@
                     {{ $post['title'] }}
                 </h2>
 
-                <p class="text-md lg:text-lg">
+                <p class="text-md lg:text-lg font-post">
                     {{ $post['intro'] }}
                 </p>
 
