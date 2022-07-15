@@ -2,7 +2,7 @@
 
 @section('content')
     <x-hero
-        class="relative bg-home-hero-sm lg:bg-home-hero w-full h-screen bg-blend-overlay bg-cover bg-fixed bg-top bg-no-repeat"
+        class="relative bg-home-hero-sm lg:bg-home-hero w-full h-screen bg-blend-overlay bg-cover md:bg-fixed bg-top bg-no-repeat"
         navbar="text-white"
     >
         <div class="overflow-hidden h-full min-h-[280px] md:min-h-[380px]">
