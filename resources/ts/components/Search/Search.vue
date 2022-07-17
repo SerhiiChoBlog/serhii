@@ -32,6 +32,7 @@ const { search, input, fetchSearchSuggestions } = useSearch()
                         v-model="search.query"
                         @input="fetchSearchSuggestions"
                         ref="input"
+                        autocomplete="off"
                     />
                 </form>
             </div>
