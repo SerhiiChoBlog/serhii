@@ -14,7 +14,6 @@
             height: '800px',
             toolbar: 'undo redo | styleselect | bold italic | link image table | alignleft aligncenter alignright | numlist bullist | bullist numlist outdent indent | codesample code | fullscreen',
             image_caption: true,
-            content_style: "body { font-family: 'Post, arial'; font-size:16pt; color: #292929; }",
             // paste_as_text: true,
             //skin: "oxide-dark",
             //content_css: "dark",
