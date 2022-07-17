@@ -1,4 +1,4 @@
-// @ts-ignore
+// @vue-ignore
 const tinymceEditor = window.tinymce
 
 export function getEditorContent(): string {

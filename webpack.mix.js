@@ -20,7 +20,7 @@ if (mix.inProduction()) {
     )
 }
 
-mix.ts('resources/ts/app.ts', 'public/js/app.js')
+mix.ts('resources/vue/app.ts', 'public/js/app.js')
     .vue()
     .postCss("resources/css/app.css", "public/css", [
         require("tailwindcss"),
@@ -42,7 +42,7 @@ mix.ts('resources/ts/app.ts', 'public/js/app.js')
         ],
     })
 
-mix.ts('resources/ts/admin/app.ts', 'public/js/admin.js')
+mix.ts('resources/vue/admin/app.ts', 'public/js/admin.js')
     .postCss("resources/css/admin/admin.css", "public/css", [
         require("tailwindcss"),
     ])
