@@ -2054,10 +2054,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/ts/admin/app.ts":
-/*!***********************************!*\
-  !*** ./resources/ts/admin/app.ts ***!
-  \***********************************/
+/***/ "./resources/vue/admin/app.ts":
+/*!************************************!*\
+  !*** ./resources/vue/admin/app.ts ***!
+  \************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -2075,7 +2075,7 @@ Object.defineProperty(exports, "__esModule", ({
 
 var smooth_loader_1 = __importDefault(__webpack_require__(/*! smooth-loader */ "./node_modules/smooth-loader/lib/js/index.js"));
 
-__webpack_require__(/*! ./components/editBlog */ "./resources/ts/admin/components/editBlog.ts");
+__webpack_require__(/*! ./components/editBlog */ "./resources/vue/admin/components/editBlog.ts");
 
 (0, smooth_loader_1["default"])('[data-src]');
 
@@ -2108,10 +2108,10 @@ __webpack_require__(/*! ./components/editBlog */ "./resources/ts/admin/component
 
 /***/ }),
 
-/***/ "./resources/ts/admin/classes/InputLetterCounter.ts":
-/*!**********************************************************!*\
-  !*** ./resources/ts/admin/classes/InputLetterCounter.ts ***!
-  \**********************************************************/
+/***/ "./resources/vue/admin/classes/InputLetterCounter.ts":
+/*!***********************************************************!*\
+  !*** ./resources/vue/admin/classes/InputLetterCounter.ts ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2152,10 +2152,10 @@ exports["default"] = default_1;
 
 /***/ }),
 
-/***/ "./resources/ts/admin/classes/PostImageLoader.ts":
-/*!*******************************************************!*\
-  !*** ./resources/ts/admin/classes/PostImageLoader.ts ***!
-  \*******************************************************/
+/***/ "./resources/vue/admin/classes/PostImageLoader.ts":
+/*!********************************************************!*\
+  !*** ./resources/vue/admin/classes/PostImageLoader.ts ***!
+  \********************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2195,10 +2195,10 @@ exports["default"] = default_1;
 
 /***/ }),
 
-/***/ "./resources/ts/admin/classes/PostSave.ts":
-/*!************************************************!*\
-  !*** ./resources/ts/admin/classes/PostSave.ts ***!
-  \************************************************/
+/***/ "./resources/vue/admin/classes/PostSave.ts":
+/*!*************************************************!*\
+  !*** ./resources/vue/admin/classes/PostSave.ts ***!
+  \*************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -2214,7 +2214,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
-var tinymce_1 = __webpack_require__(/*! ../tinymce */ "./resources/ts/admin/tinymce.ts");
+var tinymce_1 = __webpack_require__(/*! ../tinymce */ "./resources/vue/admin/tinymce.ts");
 
 var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
 
@@ -2308,10 +2308,10 @@ exports["default"] = default_1;
 
 /***/ }),
 
-/***/ "./resources/ts/admin/classes/TagsInput.ts":
-/*!*************************************************!*\
-  !*** ./resources/ts/admin/classes/TagsInput.ts ***!
-  \*************************************************/
+/***/ "./resources/vue/admin/classes/TagsInput.ts":
+/*!**************************************************!*\
+  !*** ./resources/vue/admin/classes/TagsInput.ts ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2464,10 +2464,10 @@ exports["default"] = default_1;
 
 /***/ }),
 
-/***/ "./resources/ts/admin/components/editBlog.ts":
-/*!***************************************************!*\
-  !*** ./resources/ts/admin/components/editBlog.ts ***!
-  \***************************************************/
+/***/ "./resources/vue/admin/components/editBlog.ts":
+/*!****************************************************!*\
+  !*** ./resources/vue/admin/components/editBlog.ts ***!
+  \****************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -2483,13 +2483,13 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
-var TagsInput_1 = __importDefault(__webpack_require__(/*! ../classes/TagsInput */ "./resources/ts/admin/classes/TagsInput.ts"));
+var TagsInput_1 = __importDefault(__webpack_require__(/*! ../classes/TagsInput */ "./resources/vue/admin/classes/TagsInput.ts"));
 
-var InputLetterCounter_1 = __importDefault(__webpack_require__(/*! ../classes/InputLetterCounter */ "./resources/ts/admin/classes/InputLetterCounter.ts"));
+var InputLetterCounter_1 = __importDefault(__webpack_require__(/*! ../classes/InputLetterCounter */ "./resources/vue/admin/classes/InputLetterCounter.ts"));
 
-var PostImageLoader_1 = __importDefault(__webpack_require__(/*! ../classes/PostImageLoader */ "./resources/ts/admin/classes/PostImageLoader.ts"));
+var PostImageLoader_1 = __importDefault(__webpack_require__(/*! ../classes/PostImageLoader */ "./resources/vue/admin/classes/PostImageLoader.ts"));
 
-var PostSave_1 = __importDefault(__webpack_require__(/*! ../classes/PostSave */ "./resources/ts/admin/classes/PostSave.ts"));
+var PostSave_1 = __importDefault(__webpack_require__(/*! ../classes/PostSave */ "./resources/vue/admin/classes/PostSave.ts"));
 
 (function ExecuteTagsInputScript() {
   var tagsField = document.getElementById('post-tags');
@@ -2534,10 +2534,10 @@ var PostSave_1 = __importDefault(__webpack_require__(/*! ../classes/PostSave */ 
 
 /***/ }),
 
-/***/ "./resources/ts/admin/tinymce.ts":
-/*!***************************************!*\
-  !*** ./resources/ts/admin/tinymce.ts ***!
-  \***************************************/
+/***/ "./resources/vue/admin/tinymce.ts":
+/*!****************************************!*\
+  !*** ./resources/vue/admin/tinymce.ts ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -6875,7 +6875,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./resources/ts/admin/app.ts");
+/******/ 	var __webpack_exports__ = __webpack_require__("./resources/vue/admin/app.ts");
 /******/ 	
 /******/ })()
 ;
