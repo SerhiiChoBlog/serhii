@@ -21198,7 +21198,7 @@ var _hoisted_3 = (0, vue_1.createElementVNode)("h2", {
 }, " Blog about software development and productivity ", -1);
 
 var _hoisted_4 = {
-  "class": "relative max-w-[90%] sm:max-w-[300px] md:max-w-[700px] mx-auto"
+  "class": "relative max-w-[85%] sm:max-w-[300px] md:max-w-[700px] mx-auto"
 };
 var _hoisted_5 = {
   "class": "flex items-center justify-center mt-5 shadow-lg rounded-lg overflow-hidden bg-white mx-auto"
@@ -21238,7 +21238,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8, ["search"])) : (0, vue_1.createCommentVNode)("v-if", true)])]), (0, vue_1.createElementVNode)("button", {
     type: "button",
     "aria-label": "Scroll down to the next section",
-    "class": "absolute left-1/2 bottom-14 lg:bottom-20 text-main-dark animate-bounce bg-white/90 p-2 w-8 lg:w-10 ratio-square shadow-lg rounded-full flex items-center justify-center",
+    "class": "absolute border border-white left-1/2 bottom-14 lg:bottom-20 text-white animate-bounce p-2 w-8 lg:w-10 ratio-square shadow-lg rounded-full flex items-center justify-center",
     onClick: $setup.scrollDown
   }, [(0, vue_1.createVNode)($setup["ArrowDownIcon"])])], 64);
 }

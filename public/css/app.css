@@ -2020,6 +2020,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .max-w-\[90\%\] {
   max-width: 90%;
 }
+.max-w-\[85\%\] {
+  max-width: 85%;
+}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -2355,6 +2358,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .\!border-main {
   border-color: var(--color-main) !important;
+}
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 .border-t-border {
   border-top-color: var(--color-border);
