@@ -7,7 +7,7 @@
 @section('content')
     <div class="container">
         <div class="mb-9">
-            <x-admin.button :to="route('admin.posts.create')">
+            <x-admin.button :href="route('admin.posts.create')">
                 <i class="fas fa-plus mr-1"></i> Create post
             </x-admin.button>
         </div>
