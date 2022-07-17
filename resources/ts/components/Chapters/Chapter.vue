@@ -36,7 +36,7 @@ const number = computed<string>(() => {
 
 <template>
     <a
-        class="leading-5 border border-border rounded-full cursor-pointer relative block flex justify-start text-font-second px-5 py-2 transition-colors hover:bg-page-second select-none transition-colors gap-3 items-center"
+        class="leading-5 border border-border rounded-full cursor-pointer relative block flex justify-start text-font-second px-5 py-2 transition-colors hover:bg-page-second select-none gap-3 items-center"
         :class="{'bg-main !text-white !border-main hover:!bg-main-hover': chapter.isActive}"
         @click="scrollToChapter(chapter.title)"
     >
