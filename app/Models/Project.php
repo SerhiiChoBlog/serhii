@@ -37,7 +37,7 @@ class Project extends Model
     {
         return Cache::rememberForever(CacheKey::PROJECTS, static function () {
             return self::query()
-                ->select('title', 'language', 'description', 'name')
+                ->select('title', 'language', 'description', 'name', 'stars')
                 ->latest()
                 ->get()
                 ->toArray();
