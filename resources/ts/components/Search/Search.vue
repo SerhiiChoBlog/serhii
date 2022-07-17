@@ -17,7 +17,7 @@ const { search, input, fetchSearchSuggestions } = useSearch()
             Professional Full Stack developer
         </h2>
 
-        <div class="relative max-w-[300px] md:max-w-[700px] mx-auto">
+        <div class="relative max-w-[90%] sm:max-w-[300px] md:max-w-[700px] mx-auto">
             <div class="flex items-center justify-center mt-5 shadow-lg rounded-lg overflow-hidden bg-white mx-auto">
                 <form @submit.prevent class="w-full">
                     <search-icon
