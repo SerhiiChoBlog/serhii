@@ -26,7 +26,7 @@ const { search, input, fetchSearchSuggestions } = useSearch()
                     />
 
                     <input
-                        type="search"
+                        type="text"
                         class="pl-10 pr-7 md:pl-14 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 rounded-lg outline-none"
                         placeholder="Search posts and projects"
                         v-model="search.query"
