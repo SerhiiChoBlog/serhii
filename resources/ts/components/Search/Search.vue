@@ -26,11 +26,14 @@ const { search, input, fetchSearchSuggestions } = useSearch()
                     />
 
                     <input
-                        type="text"
+                        type="search"
                         class="pl-10 pr-7 md:pl-14 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 rounded-lg outline-none"
                         placeholder="Search posts and projects"
                         v-model="search.query"
-                        @input="fetchSearchSuggestions"
+                        @input="e => {
+                            search.query = e.target.value
+                            fetchSearchSuggestions(e)
+                        }"
                         ref="input"
                         autocomplete="off"
                     />
