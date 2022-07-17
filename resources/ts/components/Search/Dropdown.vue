@@ -13,7 +13,7 @@ const { search } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="bg-page dark:bg-page-second shadow-xl p-3 md:p-6 top-[calc(100%+10px)] absolute left-0 right-0 z-50 rounded-xl dark:border-2 dark:border-border">
+    <div class="bg-page dark:bg-page-second shadow-xl p-3 md:p-6 top-[calc(100%+10px)] absolute left-0 right-0 z-50 rounded-xl dark:border-2 dark:border-border min-h-[50px]">
         <history v-if="search.history.length > 0" :history="search.history" />
 
         <div v-else>
@@ -21,7 +21,7 @@ const { search } = defineProps<Props>()
             <not-found v-else-if="!search.loading && search.posts.length === 0 && search.projects.length === 0" />
 
             <div v-else>
-                <div class="flex flex-col md:flex-row justify-between relative" >
+                <div class="flex flex-col md:flex-row justify-between relative">
                     <dropdown-items
                         v-if="search.posts.length > 0"
                         heading="Posts"
