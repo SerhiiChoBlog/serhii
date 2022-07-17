@@ -2,8 +2,17 @@
 import useSearch from '../../composables/useSearch'
 import SearchIcon from '../Icons/SearchIcon.vue'
 import Dropdown from './Dropdown.vue'
+import ArrowDownIcon from '../Icons/ArrowDownIcon.vue'
 
 const { search, input, fetchSearchSuggestions } = useSearch()
+
+function scrollDown(): void {
+    const elem = document.getElementById('home-decoration-lines')
+
+    if (elem) {
+        elem.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+}
 </script>
 
 <template>
@@ -13,7 +22,7 @@ const { search, input, fetchSearchSuggestions } = useSearch()
             <span class="text-main drop-shadow-md">CHO</span>
         </h1>
 
-        <h2 class="text-white text-md lg:text-2xl mt-2">
+        <h2 class="text-white text-md lg:text-2xl mt-2 mx-3 leading-5">
             Blog about software development and productivity
         </h2>
 
@@ -40,10 +49,10 @@ const { search, input, fetchSearchSuggestions } = useSearch()
                 </form>
             </div>
 
-            <div class="absolute mt-7 left-0 right-0 text-center">
+            <div class="absolute mt-7 md:mt-10 left-0 right-0 text-center">
                 <a
                     href="/posts"
-                    class="px-10 py-4 text-white rounded-lg text-lg uppercase"
+                    class="px-7 md:px-10 py-2 md:py-4 text-white rounded-md md:rounded-lg text-md md:text-lg border uppercase"
                 >
                     Read blog
                 </a>
@@ -52,4 +61,13 @@ const { search, input, fetchSearchSuggestions } = useSearch()
             <dropdown v-if="search.query !== ''" :search="search" />
         </div>
     </div>
+
+    <button
+        type="button"
+        aria-label="Scroll down to the next section"
+        class="absolute left-1/2 bottom-14 lg:bottom-20 text-main-dark animate-bounce bg-white/90 p-2 w-8 lg:w-10 ratio-square shadow-lg rounded-full flex items-center justify-center"
+        @click="scrollDown"
+    >
+        <arrow-down-icon />
+    </button>
 </template>
