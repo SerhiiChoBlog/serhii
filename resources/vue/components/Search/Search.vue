@@ -26,7 +26,7 @@ function scrollDown(): void {
             Blog about software development and productivity
         </h2>
 
-        <div class="relative max-w-[90%] sm:max-w-[300px] md:max-w-[700px] mx-auto">
+        <div class="relative max-w-[85%] sm:max-w-[300px] md:max-w-[700px] mx-auto">
             <div class="flex items-center justify-center mt-5 shadow-lg rounded-lg overflow-hidden bg-white mx-auto">
                 <form @submit.prevent class="w-full">
                     <search-icon
@@ -65,7 +65,7 @@ function scrollDown(): void {
     <button
         type="button"
         aria-label="Scroll down to the next section"
-        class="absolute left-1/2 bottom-14 lg:bottom-20 text-main-dark animate-bounce bg-white/90 p-2 w-8 lg:w-10 ratio-square shadow-lg rounded-full flex items-center justify-center"
+        class="absolute border border-white left-1/2 bottom-14 lg:bottom-20 text-white animate-bounce p-2 w-8 lg:w-10 ratio-square shadow-lg rounded-full flex items-center justify-center"
         @click="scrollDown"
     >
         <arrow-down-icon />
