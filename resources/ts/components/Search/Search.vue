@@ -13,15 +13,15 @@ const { search, input, fetchSearchSuggestions } = useSearch()
             <span class="text-main drop-shadow-md">CHO</span>
         </h1>
 
-        <h2 class="text-white text-md lg:text-2xl">
-            Professional Full Stack developer
+        <h2 class="text-white text-md lg:text-2xl mt-2">
+            Blog about software development and productivity
         </h2>
 
         <div class="relative max-w-[90%] sm:max-w-[300px] md:max-w-[700px] mx-auto">
             <div class="flex items-center justify-center mt-5 shadow-lg rounded-lg overflow-hidden bg-white mx-auto">
                 <form @submit.prevent class="w-full">
                     <search-icon
-                        :class="{'animate-blink': search.loading}"
+                        :class="{ 'animate-blink': search.loading }"
                         class="w-4 md:w-5 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-5"
                     />
 
@@ -38,6 +38,15 @@ const { search, input, fetchSearchSuggestions } = useSearch()
                         autocomplete="off"
                     />
                 </form>
+            </div>
+
+            <div class="absolute mt-7 left-0 right-0 text-center">
+                <a
+                    href="/posts"
+                    class="px-10 py-4 text-white rounded-lg text-lg uppercase"
+                >
+                    Read blog
+                </a>
             </div>
 
             <dropdown v-if="search.query !== ''" :search="search" />
