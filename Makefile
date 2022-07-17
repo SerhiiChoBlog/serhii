@@ -37,6 +37,7 @@ prod:
 	yarn prod
 	git add .
 	git commit -m 'Compiled assets for production'
+	git push origin HEAD
 
 deploy:
 	git pull origin HEAD
