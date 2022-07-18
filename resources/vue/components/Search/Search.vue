@@ -18,7 +18,7 @@ function scrollDown(): void {
 <template>
     <div class="z-10 absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2 text-center w-full">
         <h1 class="text-2xl lg:text-4xl relative">
-            <span class="text-gray-300 drop-shadow-md">SERHII</span>
+            <span class="text-white drop-shadow-md">SERHII</span>
             <span class="text-main drop-shadow-md">CHO</span>
         </h1>
 
