@@ -11,3 +11,8 @@
 .tip {
     @apply bg-[#e6f5fc] text-[#06303d] before:content-['tip'] before:bg-[rgba(111,202,253,.79)];
 }
+
+.tip .d-none,
+.note .d-none {
+    @apply hidden;
+}
