@@ -42,4 +42,8 @@
             </div>
         </div>
     </article>
+@else
+    <h2 class="text-center text-2xl">
+        🤔 There is no post yet, I'm thinking what to write next
+    </h2>
 @endif
