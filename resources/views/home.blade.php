@@ -37,15 +37,15 @@
         </div>
     </x-home.section>
 
-    <x-home.section title="Latest post" isDark="true">
+    <x-home.section title="Latest article" intro="The latest published post in the blog" isDark="true">
         <x-home.latest-post-section />
     </x-home.section>
 
-    <x-home.section title="More random posts">
+    <x-home.section title="More articles" intro="Few random posts that you might be interested in">
         <x-home.random-posts-section />
     </x-home.section>
 
-    <x-home.section title="Coming soon" isDark="true">
+    <x-home.section title="Coming soon" intro="The article which I'm currently working on" isDark="true">
         <x-home.coming-soon-section />
     </x-home.section>
 @endsection
