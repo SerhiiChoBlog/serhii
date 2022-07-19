@@ -44,4 +44,8 @@
     <x-home.section title="More random posts">
         <x-home.random-posts-section />
     </x-home.section>
+
+    <x-home.section title="Coming soon" isDark="true">
+        <x-home.coming-soon-section />
+    </x-home.section>
 @endsection

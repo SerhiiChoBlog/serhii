@@ -9,7 +9,7 @@
             class="flex flex-col md:flex-row gap-4 justify-between items-center"
         >
             <div class="relative">
-                <div class="text-sm lg:text-md absolute z-10 -top-1 -right-1 bg-red-700 text-white px-3 rounded-sm shadow-md">NEW</div>
+                <x-image-label>New</x-image-label>
 
                 <img
                     data-src="{{ $post['image_sm'] }}"
