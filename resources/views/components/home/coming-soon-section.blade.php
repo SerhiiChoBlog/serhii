@@ -30,7 +30,7 @@
                     {{ $post['intro'] }}
                 </p>
 
-                <x-post.tags :tags="$post['tags']" class="text-sm md:text-md mt-2" />
+                <x-post.tags :tags="$post['tags']" class="text-sm md:text-md mt-2 !gap-2" />
 
                 <div class="opacity-70 flex items-center gap-2">
                     <span>Last update on the post:</span>

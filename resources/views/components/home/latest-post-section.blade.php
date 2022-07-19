@@ -29,7 +29,7 @@
                     {{ $post['intro'] }}
                 </p>
 
-                <x-post.tags :tags="$post['tags']" class="text-sm md:text-md mt-2" />
+                <x-post.tags :tags="$post['tags']" class="text-sm md:text-md mt-2 !gap-2" />
                 <x-post.details :post="$post" class="mt-1" />
             </div>
         </a>

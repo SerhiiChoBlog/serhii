@@ -4,7 +4,15 @@
     @endif
 
     @isset($title)
-        <x-home.section-title>{{ $title }}</x-home.section-title>
+        <h2 class="text-2xl font-bold text-font-second sm:text-3xl lg:text-4xl text-center lg:pb-2 px-3">
+            {{ $title }}
+        </h2>
+    @endisset
+
+    @isset($intro)
+        <h3 class="text-lg lg:text-xl text-font-second sm:text-3xl text-center pb-8 lg:pb-12 opacity-90 px-3">
+            {{ $intro }}
+        </h3>
     @endisset
 
     <div class="container">
