@@ -21,7 +21,8 @@
     </x-hero>
 
     <x-home.section
-        title="Nice to meet you"
+        title="Who am I?"
+        intro="Here is the short information about me"
         class="-translate-y-8 bg-page rounded-xl container"
     >
         <div class="text-lg lg:text-xl font-light leading-7 lg:leading-9">
