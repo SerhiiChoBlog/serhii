@@ -1,54 +1,29 @@
 .post-content blockquote {
-    margin: 2rem 0;
-    padding: 1.5em;
-    background-color: #e9ecef;
-    position: relative;
-    border-left: none;
-    border-radius: 30px;
-    margin-left: 140px;
-    font-size: .9em;
+    @apply mr-10 ml-[140px] p-8 bg-page-second relative border-l-0 rounded-3xl;
 }
 
 .post-content blockquote p {
-    font-family: 'Lato', serif;
-    font-style: normal;
-    margin-bottom: 1rem;
-    margin-top: 0;
-    line-height: 1.7;
+    @apply leading-7 mb-5 font-post mt-0 text-font text-lg not-italic;
 }
 
 .post-content blockquote p:last-of-type {
-    margin-bottom: 0;
+    @apply mb-0;
 }
 
 .post-content blockquote img,
 .post-content blockquote::before {
-    margin: 0;
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    top: 50%;
-    left: -130px;
-    transform: translateY(-50%);
+    @apply m-0 absolute w-[100px] h-[100px] absolute rounded-full top-1/2 left-[-130px] -translate-y-1/2;
 }
 
 .post-content blockquote::before {
-    content: "";
-    background-color: #e9ecef;
-    box-shadow: 6px 5px 8px #1e1e1e33;
+    @apply content-[''] bg-page-second shadow-md;
 }
 
 .post-content blockquote::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: -15px;
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 30px solid transparent;
-    border-right: 20px solid #e9ecef;
-    transform: translateY(-50%);
+    @apply content-[''] border-r-[20px] border-r-page-second border-t-[20px] border-t-transparent border-b-[30px] border-b-transparent block absolute top-1/2 left-[-15px] w-0 h-0 -translate-y-1/2;
+}
+
+.post-content blockquote p::after,
+.post-content blockquote p::before {
+    @apply content-none;
 }
