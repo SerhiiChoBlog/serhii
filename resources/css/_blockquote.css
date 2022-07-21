@@ -1,5 +1,5 @@
 .post-content blockquote {
-    @apply mr-10 ml-[140px] p-8 bg-page-second relative border-l-0 rounded-3xl;
+    @apply pt-[105px] sm:pt-6 sm:mr-10 sm:ml-[140px] p-6 bg-page-second relative border-none rounded-3xl;
 }
 
 .post-content blockquote p {
@@ -12,7 +12,7 @@
 
 .post-content blockquote img,
 .post-content blockquote::before {
-    @apply m-0 absolute w-[100px] h-[100px] absolute rounded-full top-1/2 left-[-130px] -translate-y-1/2;
+    @apply m-0 absolute w-[100px] h-[100px] rounded-full top-10 sm:top-1/2 left-1/2 sm:left-[-130px] -translate-x-1/2 sm:translate-x-0 -translate-y-1/2;
 }
 
 .post-content blockquote::before {
@@ -20,7 +20,7 @@
 }
 
 .post-content blockquote::after {
-    @apply content-[''] border-r-[20px] border-r-page-second border-t-[20px] border-t-transparent border-b-[30px] border-b-transparent block absolute top-1/2 left-[-15px] w-0 h-0 -translate-y-1/2;
+    @apply content-none sm:content-[''] border-r-[20px] border-r-page-second border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent block absolute top-1/2 left-[-15px] w-0 h-0 -translate-y-1/2;
 }
 
 .post-content blockquote p::after,
