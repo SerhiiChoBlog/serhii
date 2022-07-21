@@ -142,14 +142,15 @@
                         </x-admin.button>
                     </div>
 
-                    <div class="buttons">
-                        <button
+                    <div class="mt-7">
+                        <x-admin.button
                             type="button"
-                            class="button is-danger"
+                            class="bg-red-500 hover:bg-red-600"
                             onclick="document.getElementById('delete-post').click()"
                         >
                             <i class="fas fa-trash mr-2"></i> Delete
-                        </button>
+                        </x-admin.button>
+
                         <label class="checkbox">
                             <input type="checkbox"
                                 name="is-published"
@@ -172,7 +173,7 @@
                     <thead class="bg-gray-500 text-white text-left">
                         <tr>
                             @foreach (['Image', 'URI', 'Delete'] as $title)
-                                <th class="p-3 font-light">{{ $title }}</th>
+                                <th class="p-3 fonxt-light">{{ $title }}</th>
                             @endforeach
                         </tr>
                     </thead>
