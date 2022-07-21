@@ -54,6 +54,7 @@ class PostController extends Controller
             $title_len < 40 => '3.6em',
             $title_len < 50 => '3.2em',
             $title_len < 60 => '3em',
+            $title_len < 70 => '2.6em',
             default => '2em',
         };
 
