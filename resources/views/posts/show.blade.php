@@ -60,7 +60,7 @@
                                     href="{{ route('admin.posts.edit', ['post' => $post->id]) }}"
                                     class="px-5 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100 py-1 uppercase text-xs"
                                 >
-                                    Edit post
+                                    Edit
                                 </a>
                             </div>
                         @endif
