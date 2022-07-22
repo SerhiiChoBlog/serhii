@@ -19,7 +19,8 @@ class SearchController extends Controller
     public function index(string $query): Collection
     {
         return Post::query()
-            ->select('id', 'title', 'slug')
+            ->select('id', 'title', 'slug', 'image_sm')
+            ->with('tags')
             ->where(static function (Builder $q) use ($query) {
                 $q->where('title', 'LIKE', "%$query%")
                     ->orWhereHas('tags', static function (Builder $q) use ($query) {
