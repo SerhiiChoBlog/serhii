@@ -27,6 +27,8 @@ export interface Search {
 
 export interface Tag {
     id: number
+    title: string
+    description: string
     name: string
     color: string
 }
