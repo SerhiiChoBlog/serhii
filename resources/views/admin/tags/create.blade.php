@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div>
-            <x-admin.page-title>Tags</x-admin.page-title>
+            <x-admin.page-title>Create a new tag</x-admin.page-title>
 
             <form action="{{ route('admin.tags.store') }}" method="POST" class=" max-w-[1000px] mx-auto">
                 @csrf
