@@ -10,6 +10,10 @@ export default class {
     ) { }
 
     public listenForSubmitEvent(): void {
+        setTimeout(() => {
+            SweetAlert.fire('Info', 'Choose tags before saving the post', 'info')
+        }, 2000)
+
         this.form.addEventListener('submit', e => {
             e.preventDefault()
             this.handleEvent()
