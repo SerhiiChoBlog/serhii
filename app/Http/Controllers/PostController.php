@@ -4,28 +4,23 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\CacheKey;
 use App\Models\Post;
 use App\Models\Visitor;
-use App\Ttl;
 use HttpException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
     public function index(): View
     {
-        $posts = Cache::remember(CacheKey::PUBLISHED_POSTS, Ttl::DAY, static function () {
-            return Post::query()
-                ->with('tags:id,name,color')
-                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
-                ->where('is_published', true)
-                ->latest()
-                ->paginate(15);
-        });
+        $posts = Post::query()
+            ->with('tags:id,name,color')
+            ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
+            ->where('is_published', true)
+            ->latest()
+            ->paginate(15);
 
         return view('posts.index', compact('posts'));
     }

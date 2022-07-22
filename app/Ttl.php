@@ -8,5 +8,4 @@ abstract class Ttl
 {
     public const MINUTE = 60;
     public const HOUR = self::MINUTE * 60;
-    public const DAY = self::HOUR * 24;
 }
