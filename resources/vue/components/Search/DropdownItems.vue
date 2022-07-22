@@ -3,26 +3,22 @@ import type { SearchSuggestion } from '../../types/types'
 import useSearch from '../../composables/useSearch'
 
 interface Props {
-    heading: string
     items: SearchSuggestion[]
-    linkUrl: string
 }
 
-const { heading, items, linkUrl } = defineProps<Props>()
+const { items } = defineProps<Props>()
 const { saveItemToHistory } = useSearch()
 </script>
 
 <template>
-    <div class="flex-1">
-        <h2 class="mx-2 mb-2 text-lg text-main-dark font-bold">{{ heading }}</h2>
-
+    <div class="flex-1 pr-2">
         <ul class="text-md leading-5 divide-y divide-border">
             <li v-for="item in items" :key="item.slug" class="text-left">
                 <a
                     v-if="item.slug"
-                    :href="linkUrl.replace('{slug}', item.slug)"
+                    :href="`/posts/${item.slug}`"
                     class="hover:bg-page-hover transition-colors rounded-lg my-1 py-2 px-3 block hover:bg-page-second dark:hover:bg-border transition-colors"
-                    @click="saveItemToHistory(item.title, linkUrl.replace('{slug}', item.slug))"
+                    @click="saveItemToHistory(item.title, `/posts/${item.slug}`)"
                     :class="{'!bg-main-light': item.selected}"
                 >
                     {{ item.title }}
