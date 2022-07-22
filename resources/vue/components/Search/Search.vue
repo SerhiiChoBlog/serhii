@@ -27,7 +27,7 @@ function scrollDown(): void {
         </h2>
 
         <div class="relative max-w-[85%] sm:max-w-[300px] md:max-w-[600px] mx-auto">
-            <div class="flex items-center justify-center mt-5 shadow-lg rounded-lg overflow-hidden bg-white mx-auto">
+            <div class="flex items-center justify-center mt-5 shadow-lg rounded-full overflow-hidden bg-white mx-auto">
                 <form @submit.prevent class="w-full">
                     <search-icon
                         :class="{ 'animate-blink': search.loading }"
@@ -36,7 +36,7 @@ function scrollDown(): void {
 
                     <input
                         type="search"
-                        class="pl-10 pr-7 md:pl-14 py-3 md:py-3 text-sm md:text-xl w-full text-gray-500 rounded-lg outline-none"
+                        class="pl-10 pr-7 md:pl-14 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 rounded-lg outline-none"
                         placeholder="Search posts and projects"
                         v-model="search.query"
                         @input="e => {
@@ -52,7 +52,7 @@ function scrollDown(): void {
             <div class="absolute mt-7 md:mt-10 left-0 right-0 text-center">
                 <a
                     href="/posts"
-                    class="px-7 md:px-10 py-2 md:py-4 text-white rounded-md md:rounded-lg text-md md:text-lg border uppercase"
+                    class="px-7 md:px-10 py-2 md:py-4 text-white rounded-full text-md md:text-lg border uppercase transition-colors hover:text-main hover:border-main duration-500 border-r-2 border-l-2"
                 >
                     Read blog
                 </a>
@@ -65,7 +65,7 @@ function scrollDown(): void {
     <button
         type="button"
         aria-label="Scroll down to the next section"
-        class="absolute border border-white left-1/2 bottom-14 lg:bottom-20 text-white animate-bounce p-2 w-8 lg:w-10 ratio-square shadow-lg rounded-full flex items-center justify-center"
+        class="absolute border border-white left-1/2 bottom-14 lg:bottom-20 text-white animate-bounce p-2 w-8 lg:w-10 ratio-square shadow-lg rounded-full flex items-center justify-center transition-colors duration-500 hover:border-main hover:text-main"
         @click="scrollDown"
     >
         <arrow-down-icon />
