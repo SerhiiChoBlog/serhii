@@ -39,7 +39,7 @@ function scrollDown(): void {
         </h2>
 
         <div class="max-w-[85%] md:max-w-[600px] mx-auto">
-            <div class="relative flex items-center justify-center mt-5 shadow-lg rounded-full overflow-hidden bg-white mx-auto">
+            <div class="relative flex items-center justify-center mt-5 shadow-lg rounded-lg bg-page mx-auto dark:border dark:border-border">
                 <form @submit.prevent class="w-full">
                     <search-icon
                         :class="{ 'animate-blink': search.loading }"
@@ -48,7 +48,7 @@ function scrollDown(): void {
 
                     <input
                         type="search"
-                        class="pl-10 pr-7 md:pl-14 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 rounded-lg outline-none"
+                        class="pl-10 pr-7 md:pl-14 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 rounded-lg outline-none bg-page"
                         placeholder="Search blog posts"
                         v-model="search.query"
                         @input="e => {
@@ -59,6 +59,8 @@ function scrollDown(): void {
                         autocomplete="off"
                     />
                 </form>
+
+                <dropdown v-if="search.query !== ''" :search="search" />
             </div>
 
             <div class="min-h-[36px] mt-4 lg:mt-6 text-white inline-flex flex-wrap ml-2 gap-1 lg:gap-3">
@@ -82,8 +84,6 @@ function scrollDown(): void {
                     <arrow-down-icon class="w-5 h-5 inline-block -rotate-90 ml-2" />
                 </a>
             </div>
-
-            <dropdown v-if="search.query !== ''" :search="search" />
         </div>
     </div>
 

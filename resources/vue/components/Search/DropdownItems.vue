@@ -28,18 +28,18 @@ const { saveItemToHistory } = useSearch()
                             :alt="item.title"
                             width="90"
                             height="49"
-                            class="rounded-lg"
+                            class="rounded-md"
                         />
                     </div>
                     <div>
-                        <span>{{ item.title }}</span>
+                        <span class="font-bold">{{ item.title }}</span>
 
                         <div class="flex flex-wrap gap-1 mt-2">
                             <span
                                 v-if="item.tags"
                                 v-for="tag in item.tags"
                                 :key="tag.name"
-                                class="inline-flex items-center px-2 lg:px-3 py-0 lg:py-[1px] rounded-full text-[.7em] lg:text-xs font-bold leading-5 text-white capitalize bg-brand-500"
+                                class="inline-flex items-center px-1 lg:px-2 py-0 lg:py-[1px] rounded-md text-[.7em] lg:text-xs font-bold leading-5 text-white bg-brand-500"
                                 :style="{ backgroundColor: tag.color }"
                             >
                                 {{ tag.name }}
