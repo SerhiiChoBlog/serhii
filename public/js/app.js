@@ -21266,7 +21266,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
       key: tag.id,
       href: "/posts?tag=".concat(tag.name),
-      "class": "text-xs lg:text-lg inline-flex items-center p-1 transition-transform hover:scale-110"
+      "class": "text-[.8em] lg:text-lg inline-flex items-center p-1 transition-transform hover:scale-110"
     }, [(0, vue_1.createElementVNode)("b", {
       style: (0, vue_1.normalizeStyle)({
         color: tag.color

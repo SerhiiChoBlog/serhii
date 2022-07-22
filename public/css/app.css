@@ -2935,6 +2935,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-\[\.7em\] {
   font-size: .7em;
 }
+.text-\[\.9em\] {
+  font-size: .9em;
+}
 .font-light {
   font-weight: 300;
 }
