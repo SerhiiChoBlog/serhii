@@ -6,11 +6,15 @@
 
 @section('content')
     <div class="container">
-        <div class="mb-9">
-            <x-admin.button :href="route('admin.posts.create')">
-                <i class="fas fa-plus mr-1"></i> Create post
-            </x-admin.button>
-        </div>
+        <x-admin.page-title>
+            <div class="flex items-center justify-center gap-3">
+                <span>Posts</span>
+
+                <x-admin.button :href="route('admin.posts.create')">
+                    <i class="fas fa-plus"></i>
+                </x-admin.button>
+            </div>
+        </x-admin.page-title>
 
         @empty($posts->all())
             <h2 class="text-xl text-center pt-4">There are not posts</h2>
