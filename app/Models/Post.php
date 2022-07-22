@@ -116,7 +116,7 @@ class Post extends Model
         return new Attribute($get);
     }
 
-    public static function calculateEstimatedReadingTime(string $content, int $wpm = 230): int
+    public static function calculateEstimatedReadingTime(string $content, int $wpm = 180): int
     {
         $content = strip_tags($content);
         $word_count = str_word_count($content);
