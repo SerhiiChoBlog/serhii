@@ -21201,13 +21201,15 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   "class": "flex items-center justify-center mt-5 shadow-lg rounded-full overflow-hidden bg-white mx-auto"
 };
-
-var _hoisted_6 = (0, vue_1.createElementVNode)("div", {
+var _hoisted_6 = {
   "class": "absolute mt-7 md:mt-10 left-0 right-0 text-center"
-}, [(0, vue_1.createElementVNode)("a", {
+};
+var _hoisted_7 = {
   href: "/posts",
-  "class": "px-7 md:px-10 py-2 md:py-4 text-white rounded-full text-md md:text-lg border uppercase transition-colors hover:text-main hover:border-main duration-500 border-r-2 border-l-2"
-}, " Read blog ")], -1);
+  "class": "inline-flex items-center px-7 md:px-10 py-2 md:py-3 text-white rounded-full text-md md:text-lg border uppercase transition-colors hover:text-main hover:border-main duration-500 border-r-2 border-l-2"
+};
+
+var _hoisted_8 = (0, vue_1.createElementVNode)("span", null, "Read blog", -1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, [(0, vue_1.createElementVNode)("div", _hoisted_1, [_hoisted_2, _hoisted_3, (0, vue_1.createElementVNode)("div", _hoisted_4, [(0, vue_1.createElementVNode)("div", _hoisted_5, [(0, vue_1.createElementVNode)("form", {
@@ -21230,7 +21232,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     ref: "input",
     autocomplete: "off"
-  }, null, 544), [[vue_1.vModelText, $setup.search.query]])], 32)]), _hoisted_6, $setup.search.query !== '' ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Dropdown"], {
+  }, null, 544), [[vue_1.vModelText, $setup.search.query]])], 32)]), (0, vue_1.createElementVNode)("div", _hoisted_6, [(0, vue_1.createElementVNode)("a", _hoisted_7, [_hoisted_8, (0, vue_1.createVNode)($setup["ArrowDownIcon"], {
+    "class": "w-5 h-5 inline-block -rotate-90 ml-2"
+  })])]), $setup.search.query !== '' ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Dropdown"], {
     key: 0,
     search: $setup.search
   }, null, 8, ["search"])) : (0, vue_1.createCommentVNode)("v-if", true)])]), (0, vue_1.createElementVNode)("button", {

@@ -52,9 +52,10 @@ function scrollDown(): void {
             <div class="absolute mt-7 md:mt-10 left-0 right-0 text-center">
                 <a
                     href="/posts"
-                    class="px-7 md:px-10 py-2 md:py-4 text-white rounded-full text-md md:text-lg border uppercase transition-colors hover:text-main hover:border-main duration-500 border-r-2 border-l-2"
+                    class="inline-flex items-center px-7 md:px-10 py-2 md:py-3 text-white rounded-full text-md md:text-lg border uppercase transition-colors hover:text-main hover:border-main duration-500 border-r-2 border-l-2"
                 >
-                    Read blog
+                    <span>Read blog</span>
+                    <arrow-down-icon class="w-5 h-5 inline-block -rotate-90 ml-2" />
                 </a>
             </div>
 
