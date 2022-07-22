@@ -1,10 +1,22 @@
 <script setup lang="ts">
+import type { Tag } from '../../types/types'
 import useSearch from '../../composables/useSearch'
 import SearchIcon from '../Icons/SearchIcon.vue'
 import Dropdown from './Dropdown.vue'
 import ArrowDownIcon from '../Icons/ArrowDownIcon.vue'
+import { onMounted, ref } from 'vue'
+import axios from 'axios'
 
 const { search, input, fetchSearchSuggestions } = useSearch()
+const popularTags = ref<Tag[]>([])
+
+onMounted(fetchPopularTags)
+
+function fetchPopularTags(): void {
+    axios.get<Tag[]>('/api/tags/popular')
+        .then(resp => popularTags.value = resp.data)
+        .catch(err => console.error(err))
+}
 
 function scrollDown(): void {
     const elem = document.getElementById('home-decoration-lines')
@@ -26,8 +38,8 @@ function scrollDown(): void {
             Blog about software development and productivity
         </h2>
 
-        <div class="relative max-w-[85%] sm:max-w-[300px] md:max-w-[600px] mx-auto">
-            <div class="flex items-center justify-center mt-5 shadow-lg rounded-full overflow-hidden bg-white mx-auto">
+        <div class="max-w-[85%] md:max-w-[600px] mx-auto">
+            <div class="relative flex items-center justify-center mt-5 shadow-lg rounded-full overflow-hidden bg-white mx-auto">
                 <form @submit.prevent class="w-full">
                     <search-icon
                         :class="{ 'animate-blink': search.loading }"
@@ -49,10 +61,22 @@ function scrollDown(): void {
                 </form>
             </div>
 
-            <div class="absolute mt-7 md:mt-10 left-0 right-0 text-center">
+            <div class="min-h-[36px] mt-4 lg:mt-6 text-white inline-flex flex-wrap ml-2 gap-1 lg:gap-3">
+                <a
+                    v-for="tag in popularTags"
+                    :key="tag.id"
+                    :href="`/posts?tag=${tag.name}`"
+                    class="text-xs lg:text-lg inline-flex items-center p-1 transition-transform hover:scale-110"
+                >
+                    <b :style="{ color: tag.color }">&#x25C9;</b>
+                    <span class="ml-1 lg:ml-2">{{ tag.name }}</span>
+                </a>
+            </div>
+
+            <div class="mt-4 lg:mt-6 left-0 right-0 text-center">
                 <a
                     href="/posts"
-                    class="inline-flex items-center px-7 md:px-10 py-2 md:py-3 text-white rounded-full text-md md:text-lg border uppercase transition-colors hover:text-main hover:border-main duration-500 border-r-2 border-l-2"
+                    class="inline-flex items-center px-7 lg:px-10 py-2 lg:py-3 text-white rounded-full text-md lg:text-lg border uppercase transition-colors hover:text-main hover:border-main duration-500"
                 >
                     <span>Read blog</span>
                     <arrow-down-icon class="w-5 h-5 inline-block -rotate-90 ml-2" />

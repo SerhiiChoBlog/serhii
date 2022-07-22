@@ -24,3 +24,9 @@ export interface Search {
     loading: boolean
     suggestionsIndex: number
 }
+
+export interface Tag {
+    id: number
+    name: string
+    color: string
+}
