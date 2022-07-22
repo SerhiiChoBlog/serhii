@@ -11,9 +11,12 @@ use Illuminate\Support\Collection;
 
 /**
  * @property-read int $id
+ * @property string $title
+ * @property string $description
  * @property string $name
  * @property string $color
  * @property Collection<Post> $posts
+ * @property int|null $posts_count
  */
 class Tag extends Model
 {
