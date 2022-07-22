@@ -21201,14 +21201,14 @@ var _hoisted_4 = {
   "class": "relative max-w-[85%] sm:max-w-[300px] md:max-w-[600px] mx-auto"
 };
 var _hoisted_5 = {
-  "class": "flex items-center justify-center mt-5 shadow-lg rounded-lg overflow-hidden bg-white mx-auto"
+  "class": "flex items-center justify-center mt-5 shadow-lg rounded-full overflow-hidden bg-white mx-auto"
 };
 
 var _hoisted_6 = (0, vue_1.createElementVNode)("div", {
   "class": "absolute mt-7 md:mt-10 left-0 right-0 text-center"
 }, [(0, vue_1.createElementVNode)("a", {
   href: "/posts",
-  "class": "px-7 md:px-10 py-2 md:py-4 text-white rounded-md md:rounded-lg text-md md:text-lg border uppercase"
+  "class": "px-7 md:px-10 py-2 md:py-4 text-white rounded-full text-md md:text-lg border uppercase transition-colors hover:text-main hover:border-main duration-500 border-r-2 border-l-2"
 }, " Read blog ")], -1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -21221,7 +21221,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, "w-4 md:w-5 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-5"])
   }, null, 8, ["class"]), (0, vue_1.withDirectives)((0, vue_1.createElementVNode)("input", {
     type: "search",
-    "class": "pl-10 pr-7 md:pl-14 py-3 md:py-3 text-sm md:text-xl w-full text-gray-500 rounded-lg outline-none",
+    "class": "pl-10 pr-7 md:pl-14 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 rounded-lg outline-none",
     placeholder: "Search posts and projects",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.search.query = $event;
@@ -21238,7 +21238,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8, ["search"])) : (0, vue_1.createCommentVNode)("v-if", true)])]), (0, vue_1.createElementVNode)("button", {
     type: "button",
     "aria-label": "Scroll down to the next section",
-    "class": "absolute border border-white left-1/2 bottom-14 lg:bottom-20 text-white animate-bounce p-2 w-8 lg:w-10 ratio-square shadow-lg rounded-full flex items-center justify-center",
+    "class": "absolute border border-white left-1/2 bottom-14 lg:bottom-20 text-white animate-bounce p-2 w-8 lg:w-10 ratio-square shadow-lg rounded-full flex items-center justify-center transition-colors duration-500 hover:border-main hover:text-main",
     onClick: $setup.scrollDown
   }, [(0, vue_1.createVNode)($setup["ArrowDownIcon"])])], 64);
 }
