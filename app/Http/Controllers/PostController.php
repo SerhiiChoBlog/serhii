@@ -4,25 +4,32 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Post\IndexRequest;
 use App\Models\Post;
 use App\Models\Visitor;
 use HttpException;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    public function index(): View
+    public function index(IndexRequest $request): View
     {
-        $posts = Post::query()
+        $query = Post::query()
             ->with('tags:id,name,color')
             ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
             ->where('is_published', true)
-            ->latest()
-            ->paginate(15);
+            ->latest();
 
-        return view('posts.index', compact('posts'));
+        if ($request->tag) {
+            $query = $query->whereHas('tags', fn(Builder $q) => $q->where('name', $request->tag));
+        }
+
+        return view('posts.index', [
+            'posts' => $query->paginate(15),
+        ]);
     }
 
     /**
