@@ -5,8 +5,6 @@ export default class {
     private readonly keys = {
         down: 'ArrowDown',
         up: 'ArrowUp',
-        left: 'ArrowLeft',
-        right: 'ArrowRight',
         enter: 'Enter',
     };
 
@@ -18,24 +16,17 @@ export default class {
             return
         }
 
-        this.setTarget()
-
         switch (key) {
             case this.keys.enter:
                 this.handleEnterKeyPress()
                 break
             case this.keys.down:
                 this.clearAllSelectedFlags()
-                this.search.suggestionsTarget === 'posts' ? this.movePostsDown() : this.moveProjectsDown()
+                this.movePostsDown()
                 break
             case this.keys.up:
                 this.clearAllSelectedFlags()
-                this.search.suggestionsTarget === 'posts' ? this.movePostsUp() : this.moveProjectsUp()
-                break
-            case this.keys.left:
-            case this.keys.right:
-                this.clearAllSelectedFlags()
-                this.moveHorizontal()
+                this.movePostsUp()
         }
     }
 
@@ -47,13 +38,6 @@ export default class {
             return
         }
 
-        const project = this.search.projects.find(project => project.selected)
-
-        if (project) {
-            window.location.href = `/projects/${project.slug}`
-            return
-        }
-
         console.error(`Cannot find any selected suggestions`)
     }
 
@@ -62,17 +46,7 @@ export default class {
     }
 
     private suggestionsAreEmpty(): boolean {
-        return this.search.posts.length === 0 && this.search.projects.length === 0
-    }
-
-    private setTarget(): void {
-        if (this.search.suggestionsTarget === 'posts' && this.search.posts.length === 0) {
-            this.search.suggestionsTarget = 'projects'
-        }
-
-        if (this.search.suggestionsTarget === 'projects' && this.search.projects.length === 0) {
-            this.search.suggestionsTarget = 'posts'
-        }
+        return this.search.posts.length === 0
     }
 
     private clearAllSelectedFlags(): void {
@@ -80,48 +54,6 @@ export default class {
             post.selected = false
             return post
         })
-
-        this.search.projects.map(project => {
-            project.selected = false
-            return project
-        })
-    }
-
-    private moveProjectsDown(): void {
-        this.search.suggestionsIndex += 1
-
-        if (!this.search.projects[this.search.suggestionsIndex]) {
-            this.search.suggestionsIndex = 0
-        }
-
-        this.search.projects[this.search.suggestionsIndex].selected = true
-    }
-
-    private moveHorizontal(): void {
-        this.search.suggestionsIndex = 0
-
-        if (this.search.suggestionsTarget === 'posts' && this.search.projects.length > 0) {
-            this.search.suggestionsTarget = 'projects'
-            this.search.projects[0].selected = true
-            return
-        }
-
-        this.search.suggestionsTarget = 'posts'
-        this.search.posts[0].selected = true
-    }
-
-    private moveProjectsUp(): void {
-        this.search.suggestionsIndex -= 1
-
-        if (!this.search.projects[this.search.suggestionsIndex]) {
-            this.search.suggestionsIndex = this.search.posts.length - 1
-
-            if (this.search.suggestionsIndex < 0) {
-                this.search.suggestionsIndex = 0
-            }
-        }
-
-        this.search.projects[this.search.suggestionsIndex].selected = true
     }
 
     private movePostsUp(): void {

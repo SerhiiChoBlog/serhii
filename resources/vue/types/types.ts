@@ -18,14 +18,7 @@ export interface SearchSuggestion {
 export interface Search {
     query: string
     posts: SearchSuggestion[]
-    projects: SearchSuggestion[]
     history: SearchSuggestion[]
     loading: boolean
     suggestionsIndex: number
-    suggestionsTarget: 'posts' | 'projects'
-}
-
-export interface SearchServerResponse {
-    posts: SearchSuggestion[]
-    projects: SearchSuggestion[]
 }
