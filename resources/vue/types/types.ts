@@ -11,8 +11,10 @@ export interface SavedChapter {
 export interface SearchSuggestion {
     title: string
     url: string
-    slug?: string
     selected: boolean
+    slug?: string
+    tags?: { name: string, color: string }[]
+    image_sm?: string
 }
 
 export interface Search {

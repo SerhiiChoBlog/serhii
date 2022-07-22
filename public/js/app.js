@@ -21072,6 +21072,13 @@ var _hoisted_2 = {
   "class": "text-md leading-5 divide-y divide-border"
 };
 var _hoisted_3 = ["href", "onClick"];
+var _hoisted_4 = {
+  "class": "hidden md:block"
+};
+var _hoisted_5 = ["src", "alt"];
+var _hoisted_6 = {
+  "class": "flex flex-wrap gap-1 mt-2"
+};
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createElementVNode)("ul", _hoisted_2, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($props.items, function (item) {
@@ -21081,13 +21088,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [item.slug ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
       key: 0,
       href: "/posts/".concat(item.slug),
-      "class": (0, vue_1.normalizeClass)(["hover:bg-page-hover transition-colors rounded-lg my-1 py-2 px-3 block hover:bg-page-second dark:hover:bg-border transition-colors", {
+      "class": (0, vue_1.normalizeClass)(["transition-colors rounded-lg my-1 py-2 px-3 flex items-center gap-4 hover:bg-page-second dark:hover:bg-border transition-colors", {
         '!bg-main-light': item.selected
       }]),
       onClick: function onClick($event) {
         return $setup.saveItemToHistory(item.title, "/posts/".concat(item.slug));
       }
-    }, (0, vue_1.toDisplayString)(item.title), 11, _hoisted_3)) : (0, vue_1.createCommentVNode)("v-if", true)]);
+    }, [(0, vue_1.createElementVNode)("div", _hoisted_4, [item.image_sm ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("img", {
+      key: 0,
+      src: item.image_sm,
+      alt: item.title,
+      width: "90",
+      height: "49",
+      "class": "rounded-lg"
+    }, null, 8, _hoisted_5)) : (0, vue_1.createCommentVNode)("v-if", true)]), (0, vue_1.createElementVNode)("div", null, [(0, vue_1.createElementVNode)("span", null, (0, vue_1.toDisplayString)(item.title), 1), (0, vue_1.createElementVNode)("div", _hoisted_6, [item.tags ? ((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, {
+      key: 0
+    }, (0, vue_1.renderList)(item.tags, function (tag) {
+      return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("span", {
+        key: tag.name,
+        "class": "inline-flex items-center px-2 lg:px-3 py-0 lg:py-[1px] rounded-full text-[.7em] lg:text-xs font-bold leading-5 text-white capitalize bg-brand-500",
+        style: (0, vue_1.normalizeStyle)({
+          backgroundColor: tag.color
+        })
+      }, (0, vue_1.toDisplayString)(tag.name), 5);
+    }), 128)) : (0, vue_1.createCommentVNode)("v-if", true)])])], 10, _hoisted_3)) : (0, vue_1.createCommentVNode)("v-if", true)]);
   }), 128))])]);
 }
 
@@ -21552,7 +21576,8 @@ exports["default"] = function () {
     }
 
     axios_1["default"].get("/api/search/".concat(q)).then(function (resp) {
-      return search.posts = resp.data;
+      search.posts = resp.data;
+      search.suggestionsIndex = -1;
     })["catch"](function (err) {
       return console.error(err);
     })["finally"](function () {

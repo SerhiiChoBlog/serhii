@@ -43,7 +43,10 @@ export default () => {
         }
 
         axios.get<SearchSuggestion[]>(`/api/search/${q}`)
-            .then(resp => search.posts = resp.data)
+            .then(resp => {
+                search.posts = resp.data
+                search.suggestionsIndex = -1
+            })
             .catch(err => console.error(err))
             .finally(() => search.loading = false)
     }, 300)

@@ -17,11 +17,35 @@ const { saveItemToHistory } = useSearch()
                 <a
                     v-if="item.slug"
                     :href="`/posts/${item.slug}`"
-                    class="hover:bg-page-hover transition-colors rounded-lg my-1 py-2 px-3 block hover:bg-page-second dark:hover:bg-border transition-colors"
+                    class="transition-colors rounded-lg my-1 py-2 px-3 flex items-center gap-4 hover:bg-page-second dark:hover:bg-border transition-colors"
                     @click="saveItemToHistory(item.title, `/posts/${item.slug}`)"
                     :class="{'!bg-main-light': item.selected}"
                 >
-                    {{ item.title }}
+                    <div class="hidden md:block">
+                        <img
+                            v-if="item.image_sm"
+                            :src="item.image_sm"
+                            :alt="item.title"
+                            width="90"
+                            height="49"
+                            class="rounded-lg"
+                        />
+                    </div>
+                    <div>
+                        <span>{{ item.title }}</span>
+
+                        <div class="flex flex-wrap gap-1 mt-2">
+                            <span
+                                v-if="item.tags"
+                                v-for="tag in item.tags"
+                                :key="tag.name"
+                                class="inline-flex items-center px-2 lg:px-3 py-0 lg:py-[1px] rounded-full text-[.7em] lg:text-xs font-bold leading-5 text-white capitalize bg-brand-500"
+                                :style="{ backgroundColor: tag.color }"
+                            >
+                                {{ tag.name }}
+                            </span>
+                        </div>
+                    </div>
                 </a>
             </li>
         </ul>
