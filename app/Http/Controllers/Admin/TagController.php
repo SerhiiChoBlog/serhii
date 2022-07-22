@@ -14,7 +14,11 @@ class TagController extends Controller
 {
     public function index(): View
     {
-        $tags = Tag::query()->get();
+        $tags = Tag::query()
+            ->withCount('posts')
+            ->orderByDesc('posts_count')
+            ->get();
+
         return view('admin.tags.index', compact('tags'));
     }
 
@@ -28,6 +32,11 @@ class TagController extends Controller
     public function edit(Tag $tag): View
     {
         return view('admin.tags.edit', compact('tag'));
+    }
+
+    public function create(): View
+    {
+        return view('admin.tags.create');
     }
 
     public function update(Request $request, Tag $tag): RedirectResponse
