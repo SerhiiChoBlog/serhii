@@ -1,11 +1,12 @@
-<ul class="flex gap-1 flex-wrap {{ $attributes->get('class') }}">
+<div class="flex gap-1 flex-wrap {{ $attributes->get('class') }}">
     @foreach ($tags as $tag)
-        <li class="flex items-center px-2 py-[2px] rounded-md"
-            style="background-color: {{ $tag['color'] }}"
-        >
-            <span class="text-white font-semibold">
+        <span>
+            <span
+                class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-bold leading-5 text-white font-display capitalize bg-brand-500"
+                style="background-color: {{ $tag['color'] }}"
+            >
                 {{ $tag['name'] }}
             </span>
-        </li>
+        </span>
     @endforeach
-</ul>
+</div>
