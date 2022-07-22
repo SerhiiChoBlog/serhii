@@ -68,7 +68,7 @@ function scrollDown(): void {
                     v-for="tag in popularTags"
                     :key="tag.id"
                     :href="`/posts?tag=${tag.name}`"
-                    class="text-xs lg:text-lg inline-flex items-center p-1 transition-transform hover:scale-110"
+                    class="text-[.8em] lg:text-lg inline-flex items-center p-1 transition-transform hover:scale-110"
                 >
                     <b :style="{ color: tag.color }">&#x25C9;</b>
                     <span class="ml-1 lg:ml-2">{{ tag.name }}</span>
