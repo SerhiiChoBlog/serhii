@@ -24,6 +24,15 @@
             <div class="flex flex-col gap-y-2 lg:px-2">
                 <h2 class="text-lg lg:text-2xl font-bold">
                     {{ $post['title'] }}
+
+                    @if (auth()->check())
+                        <a
+                            href="{{ route('admin.posts.edit', ['post' => $post['id']]) }}"
+                            class="px-3 ml-1 tracking-wider border border-font-second border-dashed rounded-full transition-opacity hover:opacity-80 py-1 uppercase text-xs"
+                        >
+                            Edit
+                        </a>
+                    @endif
                 </h2>
 
                 <p class="text-md lg:text-lg font-post">
