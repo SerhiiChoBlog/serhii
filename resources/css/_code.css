@@ -1,6 +1,7 @@
 .project-content p code,
 .post-content p code,
-.project-content ul  li code,
+.project-content ul li code,
+.project-content ol li code,
 .post-content ul li code {
     @apply bg-inline-code rounded-md px-2 mx-1 font-light text-sm text-font before:content-none after:content-none inline-block break-all;
 }
