@@ -2,7 +2,7 @@
     <div class="container flex justify-between items-center min-h-[4rem]">
         <div class="flex items-center gap-x-1 w-full lg:w-auto">
             <a
-                href="{{ auth()->check() ? route('admin.dashboard') : route('home') }}"
+                href="{{ route('home') }}"
                 class="text-lg font-bold transition-opacity hover:opacity-80 text-lato drop-shadow-[1px_1px_0_rgba(0,0,0,.4)]"
             >
                 <div class="tracking-wide">
@@ -10,6 +10,10 @@
                     <span class="text-main-light">CHO</span>
                 </div>
             </a>
+
+            @auth
+                <a href="{{ route('admin.dashboard') }}">admin</a>
+            @endauth
 
             <hamburger :is-light="true"></hamburger>
         </div>
