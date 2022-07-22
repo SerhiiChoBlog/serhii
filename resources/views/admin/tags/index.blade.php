@@ -30,7 +30,13 @@
                                 <tr class="odd:bg-gray-50 border-b transition-colors hover:bg-gray-100">
                                     <td class="px-3 py-2">{{ $tag->name }}</td>
                                     <td class="px-3 py-2">{{ $tag->posts_count }}</td>
-                                    <td class="px-3 py-2"><pre>{{ $tag->color }}</pre></td>
+                                    <td class="px-3 py-2">
+                                        <input
+                                            type="text"
+                                            value="{{ $tag->color }}"
+                                            class="w-[80px] text-center rounded-md bg-gray-200"
+                                        >
+                                    </td>
                                     <td class="px-3 py-2">
                                         <a
                                             href="/posts?tag={{ $tag->name }}"

@@ -1115,6 +1115,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-28 {
   width: 7rem;
 }
+.w-\[\] {
+  width: ;
+}
+.w-\[85px\] {
+  width: 85px;
+}
+.w-\[80px\] {
+  width: 80px;
+}
 .min-w-\[35px\] {
   min-width: 35px;
 }
@@ -1576,6 +1585,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .\!bg-main-light {
   background-color: var(--color-main-light) !important;
+}
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
