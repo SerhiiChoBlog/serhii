@@ -47,3 +47,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('referrers', ReferrerController::class)->only(['index']);
     Route::resource('hits', HitController::class)->only(['index']);
 });
+
+Route::get('niceone', function () {
+    \App\Models\Visitor::query()->withCount('pageViews')->get('id')->filter(fn($i) => $i->page_views_count === 0)->each(fn($i) => $i->delete());
+});
