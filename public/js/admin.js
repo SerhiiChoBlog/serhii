@@ -2558,14 +2558,14 @@ Object.defineProperty(exports, "__esModule", ({
 var default_1 = function () {
   function default_1(tabs) {
     this.tabs = tabs;
-    this.activeClasses = ['bg-main-dark'];
+    this.activeClasses = ['border-b-main', '!text-main-dark', 'hover:border-b-main-hover'];
   }
 
   default_1.prototype.handle = function () {
     var _this = this;
 
     this.handleEvent();
-    window.addEventListener('hashchange', function () {
+    window.addEventListener('hashchange', function (e) {
       return _this.handleEvent();
     });
   };

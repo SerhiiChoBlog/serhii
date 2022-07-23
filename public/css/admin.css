@@ -1480,6 +1480,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-b-2 {
   border-bottom-width: 2px;
 }
+.border-b-4 {
+  border-bottom-width: 4px;
+}
 .border-dashed {
   border-style: dashed;
 }
@@ -1502,6 +1505,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .border-t-border {
   border-top-color: var(--color-border);
+}
+.border-b-main {
+  border-bottom-color: var(--color-main);
+}
+.border-b-main-dark {
+  border-bottom-color: var(--color-main-dark);
 }
 .bg-black\/30 {
   background-color: rgb(0 0 0 / 0.3);
@@ -1993,6 +2002,15 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
+.\!text-main {
+  color: var(--color-main) !important;
+}
+.\!text-main-hover {
+  color: var(--color-main-hover) !important;
+}
+.\!text-main-dark {
+  color: var(--color-main-dark) !important;
+}
 .opacity-70 {
   opacity: 0.7;
 }
@@ -2260,6 +2278,25 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: var(--color-main);
 }
 
+.hover\:border-b-gray-300:hover {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.hover\:border-b-gray-400:hover {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+
+.hover\:border-b-black:hover {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.hover\:border-b-main-hover:hover {
+  border-bottom-color: var(--color-main-hover);
+}
+
 .hover\:bg-page-second:hover {
   background-color: var(--color-page-second);
 }
@@ -2311,6 +2348,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .hover\:text-main-dark:hover {
   color: var(--color-main-dark);
+}
+
+.hover\:text-gray-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
 .hover\:opacity-80:hover {

@@ -1,6 +1,8 @@
 export default class {
     private activeClasses: string[] = [
-        'bg-main-dark',
+        'border-b-main',
+        '!text-main-dark',
+        'hover:border-b-main-hover',
     ]
 
     public constructor(private tabs: NodeListOf<HTMLAnchorElement>) {
@@ -8,7 +10,7 @@ export default class {
 
     public handle(): void {
         this.handleEvent()
-        window.addEventListener('hashchange', () => this.handleEvent())
+        window.addEventListener('hashchange', e => this.handleEvent())
     }
 
     private handleEvent(): void {
