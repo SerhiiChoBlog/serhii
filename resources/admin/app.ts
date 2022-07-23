@@ -1,7 +1,17 @@
 import smoothLoader from 'smooth-loader'
 import './components/editBlog'
+import Tabs from './modules/Tabs'
 
 smoothLoader('[data-src]');
+
+(function HandleTabs() {
+    const tabs = document.querySelectorAll<HTMLAnchorElement>('._tab')
+
+    if (!tabs)
+        return
+
+    new Tabs(tabs).handle()
+})();
 
 (function HandleLogoutButton() {
     const selector = '._logout-button'
