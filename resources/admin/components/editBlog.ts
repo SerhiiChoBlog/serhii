@@ -1,4 +1,4 @@
-import TagsInput from '../classes/TagsInput';
+import TagsInput from '../classes/TagsInput'
 import InputLetterCounter from '../classes/InputLetterCounter'
 import PostImageLoader from '../classes/PostImageLoader'
 import PostSave from '../classes/PostSave'
@@ -13,18 +13,18 @@ import PostSave from '../classes/PostSave'
         return
 
     new TagsInput(tagsField, target, popup, oldTagsField).listenForEvent()
-})()
+})();
 
-;(function ExecuteLetterCounter() {
+(function ExecuteLetterCounter() {
     const fields = document.querySelectorAll<HTMLInputElement>('._letter-counter')
 
     if (!fields)
         return
 
     new InputLetterCounter(Array.from(fields)).listenForEvents()
-})()
+})();
 
-;(function ExecutePostImageLoader() {
+(function ExecutePostImageLoader() {
     const imgElement = document.getElementById('post-image') as HTMLImageElement
     const imgInput = document.getElementById('post-image-input') as HTMLInputElement
 
@@ -32,9 +32,9 @@ import PostSave from '../classes/PostSave'
         return
 
     new PostImageLoader(imgElement, imgInput).listenForEvents()
-})()
+})();
 
-;(function ListenForEventsToSaveBlogPost() {
+(function ListenForEventsToSaveBlogPost() {
     const form = document.getElementById('edit-post-form') as HTMLFormElement
     const postIdField = document.getElementById('post-id-field') as HTMLInputElement
 
@@ -44,9 +44,9 @@ import PostSave from '../classes/PostSave'
     const postId = parseInt(postIdField.value)
 
     new PostSave(form, postId).listenForSubmitEvent()
-})()
+})();
 
-;(function ListenForSavingEventOnWholePage() {
+(function ListenForSavingEventOnWholePage() {
     const form = document.getElementById('edit-post-form') as HTMLFormElement
 
     if (!form)
