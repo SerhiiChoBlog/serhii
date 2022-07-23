@@ -1,6 +1,6 @@
 const mix = require('laravel-mix')
 const webpack = require('webpack')
-const purgecss = require('@fullhuman/postcss-purgecss');
+const purgecss = require('@fullhuman/postcss-purgecss')
 const sassOptions = []
 
 if (mix.inProduction()) {
@@ -42,7 +42,7 @@ mix.ts('resources/vue/app.ts', 'public/js/app.js')
         ],
     })
 
-mix.ts('resources/vue/admin/app.ts', 'public/js/admin.js')
+mix.ts('resources/admin/app.ts', 'public/js/admin.js')
     .postCss("resources/css/admin/admin.css", "public/css", [
         require("tailwindcss"),
     ])
@@ -52,10 +52,10 @@ mix.ts('resources/vue/admin/app.ts', 'public/js/admin.js')
                 {
                     test: /\.tsx?$/,
                     loader: 'ts-loader',
-                    options: {appendTsSuffixTo: [/\.vue$/]},
+                    options: { appendTsSuffixTo: [/\.vue$/] },
                     exclude: /node_modules/
                 }
-            ]
+            ],
         },
         resolve: {
             extensions: ['*', '.js', '.jsx', '.vue', '.ts', '.tsx']
