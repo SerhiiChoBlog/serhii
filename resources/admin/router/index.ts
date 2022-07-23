@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import routes from './routes'
 
 const router = createRouter({
-    linkActiveClass: 'active',
+    linkActiveClass: 'bg-main',
     history: createWebHistory(),
     routes,
 })

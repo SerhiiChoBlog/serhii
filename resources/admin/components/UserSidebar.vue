@@ -7,9 +7,9 @@ import links from '../router/links'</script>
             <li v-for="link in links" :key="link.routeName">
                 <router-link
                     :to="{ name: link.routeName }"
-                    class="relative w-[180px] m-auto transition-colors block border-collapse text-white text-sm leading-10 hover:bg-main-hover"
+                    class="relative w-[180px] m-auto transition-colors flex items-center border-collapse text-white text-sm leading-10 hover:bg-main-hover"
                 >
-                    <i :class="link.icon" class="fas w-[25px] text-2xl text-center ml-[7px] mr-2 align-middle"></i>
+                    <i :class="link.icon" class="fas w-[27px] text-2xl text-center ml-[7px] mr-2"></i>
                     <span>{{ link.title }}</span>
                 </router-link>
             </li>
