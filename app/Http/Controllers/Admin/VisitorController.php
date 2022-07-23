@@ -17,7 +17,7 @@ class VisitorController extends Controller
         $visitors = Visitor::query()
             ->selectRaw('*, LOWER(code) as code')
             ->withCount('pageViews')
-//            ->limit(50)
+            ->limit(100)
             ->orderByDesc('page_views_count')
             ->get();
 
