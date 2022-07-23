@@ -19,7 +19,7 @@ class DashboardController extends Controller
      * @throws InvalidDateFormatException
      * @throws MissingRuleException
      */
-    private function sections(): array
+    public function sections(): array
     {
         return [
             [

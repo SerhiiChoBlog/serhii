@@ -1,5 +1,5 @@
 export type UserSidebarLink = {
-    route_name: string
+    routeName: string
     title: string
     icon: string
 }
