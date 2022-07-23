@@ -45,7 +45,7 @@ class UserSidebar extends Component
             ],
             [
                 'href' => route('admin.page_views.index'),
-                'title' => 'Page views',
+                'title' => 'Post views',
                 'icon' => 'fa-eye',
                 'class' => request()->is('admin/page-views') ? 'bg-main' : '',
             ],

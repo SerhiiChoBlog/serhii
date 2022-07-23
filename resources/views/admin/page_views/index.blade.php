@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="container max-w-3xl">
-        <x-admin.page-title>Page views</x-admin.page-title>
+        <x-admin.page-title>Post views</x-admin.page-title>
 
         <x-admin.tabs :tabs="[
-            ['title' => 'Unique page views', 'href' => '#all-views'],
-            ['title' => 'Daily page views', 'href' => '#daily-views'],
+            ['title' => 'Unique views', 'href' => '#all-views'],
+            ['title' => 'Daily views', 'href' => '#daily-views'],
         ]" />
 
         <div id="all-views">
