@@ -10,11 +10,13 @@
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
     @yield('head')
 </head>
-<body>
+<body >
     <x-admin.user-sidebar />
-    <main class="pl-9 lg:pl-14 py-10 text-font font-main bg-page">
+
+    <main id="admin" class="pl-9 lg:pl-14 py-10 text-font font-main bg-page">
         @yield('content')
     </main>
+
     <script src="{{ asset('js/admin.js') }}" defer></script>
 </body>
 </html>
