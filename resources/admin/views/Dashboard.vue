@@ -1,9 +1,18 @@
 <script setup lang="ts">
 import type { Section } from '../types/types'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import PageTitle from '../components/PageTitle.vue'
+import axios from 'axios'
 
 const sections = ref<Section[]>([])
+
+onMounted(() => fetchSections())
+
+function fetchSections(): void {
+    axios.get<Section[]>('/ajax/dashboard/sections')
+        .then(resp => sections.value = resp.data)
+        .catch(err => console.error(err))
+}
 </script>
 
 <template>
