@@ -43,7 +43,6 @@ mix.ts('resources/vue/app.ts', 'public/js/app.js')
     })
 
 mix.ts('resources/admin/app.ts', 'public/js/admin.js')
-    .vue()
     .postCss("resources/css/admin/admin.css", "public/css", [
         require("tailwindcss"),
     ])
