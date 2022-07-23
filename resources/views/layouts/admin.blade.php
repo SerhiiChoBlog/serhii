@@ -11,7 +11,7 @@
     @yield('head')
 </head>
 <body>
-    <main id="admin-main" class="pl-9 lg:pl-14 py-10 text-font font-main bg-page"></main>
+    <main id="admin-main"></main>
 
     <script src="{{ asset('js/admin.js') }}" defer></script>
 </body>

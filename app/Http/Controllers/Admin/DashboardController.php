@@ -9,25 +9,17 @@ use App\Models\Hit;
 use App\Models\Post;
 use App\Models\Referrer;
 use App\Models\SocialShare;
-use Illuminate\Contracts\View\View;
 use Serhii\Ago\Exceptions\InvalidDateFormatException;
 use Serhii\Ago\Exceptions\MissingRuleException;
 use Serhii\Ago\TimeAgo;
 
 class DashboardController extends Controller
 {
-    public function index(): View
-    {
-        return view('admin.dashboard', [
-            'sections' => $this->getSections(),
-        ]);
-    }
-
     /**
      * @throws InvalidDateFormatException
      * @throws MissingRuleException
      */
-    private function getSections(): array
+    private function sections(): array
     {
         return [
             [
