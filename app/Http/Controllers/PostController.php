@@ -68,7 +68,7 @@ class PostController extends Controller
             throw new HttpException('Incorrect url path or IP address of the client');
         }
 
-        Visitor::incrementPageViews($segment, 'post', $ip);
+        Visitor::incrementPageViews($segment, $ip);
 
         return view('posts.show', compact('post', 'title_font_size', 'posts'));
     }

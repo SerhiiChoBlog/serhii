@@ -69,7 +69,7 @@ class Visitor extends Model
         return $visitor;
     }
 
-    public static function incrementPageViews(string $slug, string $page_type, string $ip): void
+    public static function incrementPageViews(string $slug, string $ip): void
     {
         try {
             $visitor = self::getOrCreateVisitor($ip);
@@ -90,6 +90,6 @@ class Visitor extends Model
             return;
         }
 
-        $visitor->pageViews()->create(compact('slug', 'page_type'));
+        $visitor->pageViews()->create(compact('slug'));
     }
 }
