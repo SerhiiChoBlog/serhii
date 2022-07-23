@@ -1,7 +1,7 @@
 <script setup lang="ts">
-
-</script>
+import UserSidebar from './components/UserSidebar.vue'</script>
 
 <template>
+    <user-sidebar />
     <router-view />
 </template>
