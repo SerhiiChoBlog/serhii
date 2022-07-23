@@ -1,6 +1,15 @@
 import smoothLoader from 'smooth-loader'
 import './components/editBlog'
 import Tabs from './modules/Tabs'
+import { createApp } from 'vue'
+
+const app = createApp({
+    setup() {
+        console.log('nice')
+    }
+})
+
+app.mount('#admin')
 
 smoothLoader('[data-src]');
 
