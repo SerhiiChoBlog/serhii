@@ -4,11 +4,11 @@
      */
 @endphp
 
-<div class="flex gap-4 justify-center pb-7">
+<div class="flex gap-5 justify-center pb-7">
     @foreach ($tabs as $tab)
         <a
             href="{{ $tab['href'] }}"
-            class="_tab px-3 py-2 bg-main text-white rounded-lg"
+            class="_tab px-2 py-1 border-b-4 text-gray-500 transition-colors hover:border-b-gray-400 hover:text-gray-700 rounded-sm text-md"
         >
             {{ $tab['title'] }}
         </a>
