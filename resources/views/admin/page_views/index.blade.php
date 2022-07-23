@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div>
-        <a href="#all-views" class="_tab">Unique page views</a>
-        <a href="#daily-views" class="_tab">Daily page views</a>
-    </div>
-
     <div class="container max-w-3xl">
-        <div id="all-views">
-            <x-admin.page-title>Unique page views</x-admin.page-title>
+        <x-admin.page-title>Page views</x-admin.page-title>
 
+        <x-admin.tabs :tabs="[
+            ['title' => 'Unique page views', 'href' => '#all-views'],
+            ['title' => 'Daily page views', 'href' => '#daily-views'],
+        ]" />
+
+        <div id="all-views">
             <div class="overflow-x-auto shadow-md rounded-lg mx-auto">
                 <table class="table-auto w-full">
                     <thead class="bg-gray-500 text-white text-left">

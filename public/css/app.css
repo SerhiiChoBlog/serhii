@@ -2606,6 +2606,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .\!bg-main-light {
   background-color: var(--color-main-light) !important;
 }
+.bg-main-dark {
+  background-color: var(--color-main-dark);
+}
+.bg-main-hover {
+  background-color: var(--color-main-hover);
+}
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -2839,6 +2845,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pr-7 {
   padding-right: 1.75rem;
+}
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+.pb-7 {
+  padding-bottom: 1.75rem;
 }
 .text-left {
   text-align: left;
