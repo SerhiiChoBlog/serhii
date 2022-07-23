@@ -78,7 +78,15 @@ class Visitor extends Model
             return;
         }
 
-        if ($visitor->pageViews->where('slug', $slug)->first()) {
+        $today_page_view = $visitor
+            ->pageViews()
+            ->where('slug', $slug)
+            ->whereDate('created_at', today())
+            ->first();
+
+        $exclude_ips = explode(',', config('app.hits_exclude_ips'));
+
+        if ($today_page_view || in_array($visitor->ip, $exclude_ips, true)) {
             return;
         }
 
