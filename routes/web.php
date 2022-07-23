@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\{AboutMeController, PostController, ProjectController, ThemeController};
-use App\View\Components\Admin\UserSidebarController;
+use App\Http\Controllers\{AboutMeController,
+    Admin\Invokable\UserSidebarController,
+    PostController,
+    ProjectController,
+    ThemeController};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,9 +31,10 @@ Route::middleware('hits')->group(function () {
 
 Route::get('theme', ThemeController::class);
 
+Route::view('admin/{any?}', 'layouts.admin')->middleware('auth')->name('dashboard');
+
 Route::middleware('auth')->prefix('api')->group(function () {
     Route::get('user-sidebar', UserSidebarController::class);
-    // Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
     // Route::get('page-views', [AdminPageViewController::class, 'index'])->name('page_views.index');
     // Route::get('visitors', [AdminVisitorController::class, 'index'])->name('visitors.index');
     // Route::resource('posts', AdminPostController::class)->except(['show']);
