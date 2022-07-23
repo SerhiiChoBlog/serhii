@@ -32,7 +32,25 @@
         </div>
 
         <div id="daily-views">
-            <h4>NICE</h4>
+            <div class="overflow-x-auto shadow-md rounded-lg mx-auto">
+                <table class="table-auto w-full">
+                    <thead class="bg-gray-500 text-white text-left">
+                    <tr>
+                        @foreach (['Date', 'Views'] as $title)
+                            <th class="p-3 font-light">{{ $title }}</th>
+                        @endforeach
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($daily as $day)
+                        <tr class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100 {{ $day->date === date('Y-m-d') ? '!bg-yellow-100' : '' }}">
+                            <td class="px-3 py-1">{{ date('d/m/Y', strtotime($day->date)) }}</td>
+                            <td class="px-3 py-1">{{ $day->amount }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection
