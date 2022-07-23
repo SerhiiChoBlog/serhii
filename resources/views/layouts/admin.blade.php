@@ -13,7 +13,7 @@
 <body >
     <x-admin.user-sidebar />
 
-    <main id="admin" class="pl-9 lg:pl-14 py-10 text-font font-main bg-page">
+    <main class="pl-9 lg:pl-14 py-10 text-font font-main bg-page">
         @yield('content')
     </main>
 
