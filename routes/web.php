@@ -1,11 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AboutMeController,
-    HomeController,
-    PostController,
-    ProjectController,
-    ReferrerController,
-    ThemeController};
+use App\Http\Controllers\{AboutMeController, PostController, ProjectController, ReferrerController, ThemeController};
 use App\Http\Controllers\Admin\{DashboardController as AdminDashboardController,
     HitController,
     PageViewController as AdminPageViewController,
@@ -24,7 +19,7 @@ Route::redirect('blog', 'posts');
 Route::redirect('register', 'login');
 
 Route::middleware('hits')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::view('/', 'home')->name('home');
     Route::get('about-me', [AboutMeController::class, 'index'])->name('about-me');
 
     Route::prefix('posts')->controller(PostController::class)->group(function () {
