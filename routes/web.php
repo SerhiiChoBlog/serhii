@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\{AboutMeController,
-    Admin\Invokable\UserSidebarController,
+    Admin\DashboardController,
     PostController,
     ProjectController,
     ThemeController};
@@ -31,10 +31,10 @@ Route::middleware('hits')->group(function () {
 
 Route::get('theme', ThemeController::class);
 
-Route::view('admin/{any?}', 'layouts.admin')->middleware('auth')->name('dashboard');
+Route::view('admin/{any?}', 'layouts.admin')->middleware('auth')->name('admin.dashboard');
 
-Route::middleware('auth')->prefix('api')->group(function () {
-    Route::get('user-sidebar', UserSidebarController::class);
+Route::middleware('auth')->prefix('ajax')->group(function () {
+    Route::get('dashboard/sections', [DashboardController::class, 'sections']);
     // Route::get('page-views', [AdminPageViewController::class, 'index'])->name('page_views.index');
     // Route::get('visitors', [AdminVisitorController::class, 'index'])->name('visitors.index');
     // Route::resource('posts', AdminPostController::class)->except(['show']);
