@@ -2558,7 +2558,7 @@ Object.defineProperty(exports, "__esModule", ({
 var default_1 = function () {
   function default_1(tabs) {
     this.tabs = tabs;
-    this.activeClasses = ['text-red-500', 'border-b'];
+    this.activeClasses = ['bg-main-dark'];
   }
 
   default_1.prototype.handle = function () {

@@ -1,7 +1,6 @@
 export default class {
     private activeClasses: string[] = [
-        'text-red-500',
-        'border-b',
+        'bg-main-dark',
     ]
 
     public constructor(private tabs: NodeListOf<HTMLAnchorElement>) {
