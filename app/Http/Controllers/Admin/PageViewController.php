@@ -19,10 +19,6 @@ class PageViewController extends Controller
             ->limit(50)
             ->get();
 
-        foreach ($views->filter(fn($item) => $item->amount === 1) as $item) {
-            PageView::query()->where('slug', $item->slug)->delete();
-        }
-
         $daily = PageView::query()
             ->selectRaw('DATE(created_at) as date, COUNT(*) as amount')
             ->groupBy('date')
