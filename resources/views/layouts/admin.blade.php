@@ -13,7 +13,7 @@
 <body>
     <main id="admin-main"></main>
 
-{{--    <script src="{{ asset('js/tinymce.js') }}"></script>--}}
+    <script src="{{ asset('js/tinymce.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}" defer></script>
 </body>
 </html>
