@@ -6,9 +6,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\CacheKey;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Post\StoreRequest;
 use App\Models\Post;
 use App\Utils\SaveImage;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -35,23 +35,15 @@ class PostController extends Controller
             ->get();
     }
 
-    public function create(): View
+    public function store(StoreRequest $request): int
     {
-        return view('admin.posts.create');
-    }
+        /** @var Post $post */
+        $post = Post::query()->create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+        ]);
 
-    public function store(Request $request): RedirectResponse
-    {
-        $title = $request->get('title');
-
-        $post = Post::query()->create(['title' => $title, 'slug' => Str::slug($title)]);
-
-        return redirect()->route('admin.posts.edit', $post);
-    }
-
-    public function edit(Post $post): View
-    {
-        return view('admin.posts.edit', compact('post'));
+        return $post->id;
     }
 
     /**
