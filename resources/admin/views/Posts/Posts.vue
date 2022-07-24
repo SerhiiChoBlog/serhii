@@ -45,6 +45,6 @@ const posts = ref<Post[]>([])
             </table>
         </div>
 
-        <h2 v-else class="text-xl text-center pt-4">There are not posts</h2>
+        <h2 v-else class="text-xl text-center pt-4">There are no posts</h2>
     </div>
 </template>
