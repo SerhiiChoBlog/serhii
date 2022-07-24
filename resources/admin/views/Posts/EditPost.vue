@@ -7,8 +7,15 @@ import { useRoute } from 'vue-router'
 import MainButton from '../../components/Buttons/MainButton.vue'
 import FormInput from '../../components/Form/FormInput.vue'
 import Spinner from '../../components/Spinner.vue'
+import { init } from '../../modules/tinymce'
 
-onMounted(() => fetchPost())
+onMounted(() => {
+    fetchPost()
+
+    setTimeout(() => {
+        init()
+    }, 200)
+})
 
 const route = useRoute()
 const loading = ref(true)
@@ -101,7 +108,7 @@ function savePost(): void {
                     </div>
 
                     <div class="mt-5">
-                        <textarea name="content">{{ post.content }}</textarea>
+                        <textarea id="content" name="content" aria-hidden="true">{{ post.content }}</textarea>
                     </div>
 
                     <div>

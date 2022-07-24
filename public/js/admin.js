@@ -20221,13 +20221,18 @@ var FormInput_vue_1 = __importDefault(__webpack_require__(/*! ../../components/F
 
 var Spinner_vue_1 = __importDefault(__webpack_require__(/*! ../../components/Spinner.vue */ "./resources/admin/components/Spinner.vue"));
 
+var tinymce_1 = __webpack_require__(/*! ../../modules/tinymce */ "./resources/admin/modules/tinymce.ts");
+
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'EditPost',
   setup: function setup(__props, _a) {
     var expose = _a.expose;
     expose();
     (0, vue_2.onMounted)(function () {
-      return fetchPost();
+      fetchPost();
+      setTimeout(function () {
+        (0, tinymce_1.init)();
+      }, 200);
     });
     var route = (0, vue_router_1.useRoute)();
     var loading = (0, vue_2.ref)(true);
@@ -20824,7 +20829,9 @@ var _hoisted_18 = {
   "class": "mt-5"
 };
 var _hoisted_19 = {
-  name: "content"
+  id: "content",
+  name: "content",
+  "aria-hidden": "true"
 };
 var _hoisted_20 = {
   "class": "flex flex-col justify-center fixed right-[20px] top-[70px] z-[9999] space-y-2"
@@ -21250,6 +21257,115 @@ exports["default"] = function (params) {
   if (window.screen.availWidth < 992) config.gravity = 'bottom';
   (0, toastify_js_1["default"])(config).showToast();
 };
+
+/***/ }),
+
+/***/ "./resources/admin/modules/tinymce.ts":
+/*!********************************************!*\
+  !*** ./resources/admin/modules/tinymce.ts ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.init = void 0;
+
+function init() {
+  tinymce.init({
+    selector: '#content',
+    plugins: 'codesample fullscreen code image link table lists paste',
+    height: '800px',
+    toolbar: 'undo redo | styleselect | bold italic | link image table | alignleft aligncenter alignright | numlist bullist | bullist numlist outdent indent | codesample code | fullscreen',
+    image_caption: true,
+    codesample_languages: [{
+      text: 'C#',
+      value: 'csharp'
+    }, {
+      text: 'Json',
+      value: 'json'
+    }, {
+      text: 'Nginx',
+      value: 'nginx'
+    }, {
+      text: 'SQL',
+      value: 'sql'
+    }, {
+      text: 'TypeScript',
+      value: 'typescript'
+    }, {
+      text: 'Apache',
+      value: 'apache'
+    }, {
+      text: 'C++',
+      value: 'cpp'
+    }, {
+      text: 'Go',
+      value: 'go'
+    }, {
+      text: 'Bash',
+      value: 'bash'
+    }, {
+      text: 'Java',
+      value: 'java'
+    }, {
+      text: 'Text',
+      value: 'text'
+    }, {
+      text: 'Ruby',
+      value: 'ruby'
+    }, {
+      text: 'CSS',
+      value: 'css'
+    }, {
+      text: 'HTML/XML',
+      value: 'html'
+    }, {
+      text: 'JavaScript',
+      value: 'javascript'
+    }, {
+      text: 'Makefile',
+      value: 'makefile'
+    }, {
+      text: 'PHP',
+      value: 'php'
+    }, {
+      text: 'Python',
+      value: 'python'
+    }, {
+      text: 'Yaml',
+      value: 'yaml'
+    }, {
+      text: 'C',
+      value: 'c'
+    }, {
+      text: 'Markdown',
+      value: 'markdown'
+    }, {
+      text: 'PHP Template',
+      value: 'php-template'
+    }, {
+      text: 'Scss',
+      value: 'scss'
+    }],
+    setup: function setup(editor) {
+      editor.on('blur', function () {
+        window.dispatchEvent(new CustomEvent('savePost'));
+      });
+      editor.on('keydown', function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.code === 'KeyS') {
+          e.preventDefault();
+          window.dispatchEvent(new CustomEvent('savePost'));
+        }
+      });
+    }
+  });
+}
+
+exports.init = init;
 
 /***/ }),
 
