@@ -6,6 +6,7 @@ import MainButton from '../../components/Buttons/MainButton.vue'
 import PostItem from './PostItem.vue'
 import axios from 'axios'
 import Spinner from '../../components/Spinner.vue'
+import handleError from '../../modules/handleError'
 
 const posts = ref<Post[]>([])
 const loading = ref(true)
@@ -15,7 +16,7 @@ onMounted(() => fetchPosts())
 function fetchPosts(): void {
     axios.get<Post[]>('/admin/ajax/posts')
         .then(resp => posts.value = resp.data)
-        .catch(err => console.error(err))
+        .catch(handleError)
         .finally(() => loading.value = false)
 }
 </script>

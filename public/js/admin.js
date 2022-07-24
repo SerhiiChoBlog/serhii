@@ -20321,6 +20321,8 @@ var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/a
 
 var Spinner_vue_1 = __importDefault(__webpack_require__(/*! ../../components/Spinner.vue */ "./resources/admin/components/Spinner.vue"));
 
+var handleError_1 = __importDefault(__webpack_require__(/*! ../../modules/handleError */ "./resources/admin/modules/handleError.ts"));
+
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Posts',
   setup: function setup(__props, _a) {
@@ -20335,9 +20337,7 @@ exports["default"] = (0, vue_1.defineComponent)({
     function fetchPosts() {
       axios_1["default"].get('/admin/ajax/posts').then(function (resp) {
         return posts.value = resp.data;
-      })["catch"](function (err) {
-        return console.error(err);
-      })["finally"](function () {
+      })["catch"](handleError_1["default"])["finally"](function () {
         return loading.value = false;
       });
     }
@@ -20812,10 +20812,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8, ["href"])]), (0, vue_1.createElementVNode)("td", _hoisted_13, [(0, vue_1.createVNode)($setup["IconButton"], {
     icon: "fa-pen",
     route: {
-      name: 'edit-post'
+      name: 'edit-post',
+      params: {
+        id: $props.post.id
+      }
     },
     title: "Edit post"
-  })])]);
+  }, null, 8, ["route"])])]);
 }
 
 exports.render = render;
