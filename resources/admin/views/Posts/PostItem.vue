@@ -39,7 +39,7 @@ const { post } = defineProps<Props>()
         <td class="p-3 text-center">
             <icon-button
                 icon="fa-pen"
-                :route="{ name: 'edit-post' }"
+                :route="{ name: 'edit-post', params: { id: post.id } }"
                 title="Edit post"
             />
         </td>
