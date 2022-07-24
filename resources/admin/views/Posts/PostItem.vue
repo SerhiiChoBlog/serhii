@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Post } from '../../../types/models'
+import IconButton from '../../components/Buttons/IconButton.vue'
 
 type Props = {
     post: Post
@@ -15,7 +16,7 @@ const { post } = defineProps<Props>()
             <i v-else class="fas fa-times text-red-600"></i>
         </td>
         <td class="p-1">
-            <a :href="post.image_lg" target="_blank">
+            <a :href="`/${post.image_lg}`" target="_blank">
                 <img
                     :src="`/${post.image_sm}`"
                     width="300"
@@ -29,22 +30,18 @@ const { post } = defineProps<Props>()
         <td class="p-3 text-center">{{ post.social_shares_count }}</td>
         <td class="p-3 text-center">{{ post.page_views_count }}</td>
         <td class="p-3 text-center">
-            <a :href="`/posts/${post.id}`"
-               class="text-sm border rounded-sm w-10 h-10 flex justify-center items-center transition-colors hover:bg-gray-100"
-               title="View post"
-               target="_blank"
-            >
-                <i class="fas fa-eye"></i>
-            </a>
+            <icon-button
+                icon="fa-eye"
+                :href="`/posts/${post.slug}`"
+                title="View post"
+            />
         </td>
         <td class="p-3 text-center">
-            <router-link
-                :to="{ name: 'edit-post' }"
-                class="text-sm border rounded-sm w-10 h-10 flex justify-center items-center transition-colors hover:bg-gray-100"
+            <icon-button
+                icon="fa-pen"
+                :route="{ name: 'edit-post' }"
                 title="Edit post"
-            >
-                <i class="fas fa-pen"></i>
-            </router-link>
+            />
         </td>
     </tr>
 </template>

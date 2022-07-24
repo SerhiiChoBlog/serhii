@@ -19765,10 +19765,10 @@ exports["default"] = (0, vue_1.defineComponent)({
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/AdminButton.vue?vue&type=script&setup=true&lang=ts":
-/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/AdminButton.vue?vue&type=script&setup=true&lang=ts ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/Buttons/IconButton.vue?vue&type=script&setup=true&lang=ts":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/Buttons/IconButton.vue?vue&type=script&setup=true&lang=ts ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -19781,7 +19781,64 @@ Object.defineProperty(exports, "__esModule", ({
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 exports["default"] = (0, vue_1.defineComponent)({
-  name: 'AdminButton',
+  name: 'IconButton',
+  props: {
+    icon: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    href: {
+      type: String,
+      required: false
+    },
+    route: {
+      type: null,
+      required: false
+    }
+  },
+  setup: function setup(__props, _a) {
+    var expose = _a.expose;
+    expose();
+    var _b = __props,
+        icon = _b.icon,
+        href = _b.href,
+        title = _b.title,
+        route = _b.route;
+    var classes = 'text-sm border rounded-sm w-10 h-10 flex justify-center items-center transition-colors hover:bg-gray-100';
+    var __returned__ = {
+      classes: classes
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/Buttons/MainButton.vue?vue&type=script&setup=true&lang=ts":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/Buttons/MainButton.vue?vue&type=script&setup=true&lang=ts ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+exports["default"] = (0, vue_1.defineComponent)({
+  name: 'MainButton',
   props: {
     route: {
       type: null,
@@ -19918,16 +19975,24 @@ exports["default"] = (0, vue_1.defineComponent)({
 /*!********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/views/Posts/PostItem.vue?vue&type=script&setup=true&lang=ts ***!
   \********************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var IconButton_vue_1 = __importDefault(__webpack_require__(/*! ../../components/Buttons/IconButton.vue */ "./resources/admin/components/Buttons/IconButton.vue"));
 
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'PostItem',
@@ -19941,7 +20006,9 @@ exports["default"] = (0, vue_1.defineComponent)({
     var expose = _a.expose;
     expose();
     var post = __props.post;
-    var __returned__ = {};
+    var __returned__ = {
+      IconButton: IconButton_vue_1["default"]
+    };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
       value: true
@@ -19977,11 +20044,13 @@ var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 
 var PageTitle_vue_1 = __importDefault(__webpack_require__(/*! ../../components/PageTitle.vue */ "./resources/admin/components/PageTitle.vue"));
 
-var AdminButton_vue_1 = __importDefault(__webpack_require__(/*! ../../components/AdminButton.vue */ "./resources/admin/components/AdminButton.vue"));
+var MainButton_vue_1 = __importDefault(__webpack_require__(/*! ../../components/Buttons/MainButton.vue */ "./resources/admin/components/Buttons/MainButton.vue"));
 
 var PostItem_vue_1 = __importDefault(__webpack_require__(/*! ./PostItem.vue */ "./resources/admin/views/Posts/PostItem.vue"));
 
 var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var Spinner_vue_1 = __importDefault(__webpack_require__(/*! ../../components/Spinner.vue */ "./resources/admin/components/Spinner.vue"));
 
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Posts',
@@ -20009,8 +20078,9 @@ exports["default"] = (0, vue_1.defineComponent)({
       loading: loading,
       fetchPosts: fetchPosts,
       PageTitle: PageTitle_vue_1["default"],
-      AdminButton: AdminButton_vue_1["default"],
-      PostItem: PostItem_vue_1["default"]
+      MainButton: MainButton_vue_1["default"],
+      PostItem: PostItem_vue_1["default"],
+      Spinner: Spinner_vue_1["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -20052,10 +20122,58 @@ exports.render = render;
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/AdminButton.vue?vue&type=template&id=4d85d240&ts=true":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/AdminButton.vue?vue&type=template&id=4d85d240&ts=true ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/Buttons/IconButton.vue?vue&type=template&id=d2ff682c&ts=true":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/Buttons/IconButton.vue?vue&type=template&id=d2ff682c&ts=true ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.render = void 0;
+
+var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = ["href", "title"];
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_router_link = (0, vue_1.resolveComponent)("router-link");
+
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, [$props.href ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
+    key: 0,
+    href: $props.href,
+    "class": (0, vue_1.normalizeClass)($setup.classes),
+    target: "_blank",
+    title: $props.title
+  }, [(0, vue_1.createElementVNode)("i", {
+    "class": (0, vue_1.normalizeClass)(["fas", $props.icon])
+  }, null, 2)], 8, _hoisted_1)) : (0, vue_1.createCommentVNode)("v-if", true), $props.route ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)(_component_router_link, {
+    key: 1,
+    to: $props.route,
+    "class": (0, vue_1.normalizeClass)($setup.classes),
+    title: $props.title
+  }, {
+    "default": (0, vue_1.withCtx)(function () {
+      return [(0, vue_1.createElementVNode)("i", {
+        "class": (0, vue_1.normalizeClass)(["fas", $props.icon])
+      }, null, 2)];
+    }),
+    _: 1
+  }, 8, ["to", "title"])) : (0, vue_1.createCommentVNode)("v-if", true)], 64);
+}
+
+exports.render = render;
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/Buttons/MainButton.vue?vue&type=template&id=12c7852a&ts=true":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/Buttons/MainButton.vue?vue&type=template&id=12c7852a&ts=true ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -20245,48 +20363,29 @@ var _hoisted_11 = {
 var _hoisted_12 = {
   "class": "p-3 text-center"
 };
-var _hoisted_13 = ["href"];
-
-var _hoisted_14 = (0, vue_1.createElementVNode)("i", {
-  "class": "fas fa-eye"
-}, null, -1);
-
-var _hoisted_15 = [_hoisted_14];
-var _hoisted_16 = {
+var _hoisted_13 = {
   "class": "p-3 text-center"
 };
 
-var _hoisted_17 = (0, vue_1.createElementVNode)("i", {
-  "class": "fas fa-pen"
-}, null, -1);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_router_link = (0, vue_1.resolveComponent)("router-link");
-
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("tr", _hoisted_1, [(0, vue_1.createElementVNode)("td", _hoisted_2, [$props.post.is_published ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("i", _hoisted_3)) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("i", _hoisted_4))]), (0, vue_1.createElementVNode)("td", _hoisted_5, [(0, vue_1.createElementVNode)("a", {
-    href: $props.post.image_lg,
+    href: "/".concat($props.post.image_lg),
     target: "_blank"
   }, [(0, vue_1.createElementVNode)("img", {
     src: "/".concat($props.post.image_sm),
     width: "300",
     "class": "rounded-md shadow-md",
     alt: $props.post.title
-  }, null, 8, _hoisted_7)], 8, _hoisted_6)]), (0, vue_1.createElementVNode)("td", _hoisted_8, (0, vue_1.toDisplayString)($props.post.title), 1), (0, vue_1.createElementVNode)("td", _hoisted_9, (0, vue_1.toDisplayString)($props.post.intro || '-'), 1), (0, vue_1.createElementVNode)("td", _hoisted_10, (0, vue_1.toDisplayString)($props.post.social_shares_count), 1), (0, vue_1.createElementVNode)("td", _hoisted_11, (0, vue_1.toDisplayString)($props.post.page_views_count), 1), (0, vue_1.createElementVNode)("td", _hoisted_12, [(0, vue_1.createElementVNode)("a", {
-    href: "/posts/".concat($props.post.id),
-    "class": "text-sm border rounded-sm w-10 h-10 flex justify-center items-center transition-colors hover:bg-gray-100",
-    title: "View post",
-    target: "_blank"
-  }, _hoisted_15, 8, _hoisted_13)]), (0, vue_1.createElementVNode)("td", _hoisted_16, [(0, vue_1.createVNode)(_component_router_link, {
-    to: {
+  }, null, 8, _hoisted_7)], 8, _hoisted_6)]), (0, vue_1.createElementVNode)("td", _hoisted_8, (0, vue_1.toDisplayString)($props.post.title), 1), (0, vue_1.createElementVNode)("td", _hoisted_9, (0, vue_1.toDisplayString)($props.post.intro || '-'), 1), (0, vue_1.createElementVNode)("td", _hoisted_10, (0, vue_1.toDisplayString)($props.post.social_shares_count), 1), (0, vue_1.createElementVNode)("td", _hoisted_11, (0, vue_1.toDisplayString)($props.post.page_views_count), 1), (0, vue_1.createElementVNode)("td", _hoisted_12, [(0, vue_1.createVNode)($setup["IconButton"], {
+    icon: "fa-eye",
+    href: "/posts/".concat($props.post.slug),
+    title: "View post"
+  }, null, 8, ["href"])]), (0, vue_1.createElementVNode)("td", _hoisted_13, [(0, vue_1.createVNode)($setup["IconButton"], {
+    icon: "fa-pen",
+    route: {
       name: 'edit-post'
     },
-    "class": "text-sm border rounded-sm w-10 h-10 flex justify-center items-center transition-colors hover:bg-gray-100",
     title: "Edit post"
-  }, {
-    "default": (0, vue_1.withCtx)(function () {
-      return [_hoisted_17];
-    }),
-    _: 1
   })])]);
 }
 
@@ -20324,7 +20423,7 @@ var _hoisted_4 = (0, vue_1.createElementVNode)("i", {
 }, null, -1);
 
 var _hoisted_5 = {
-  key: 0,
+  key: 1,
   "class": "relative overflow-x-auto shadow-md sm:rounded-lg"
 };
 var _hoisted_6 = {
@@ -20350,14 +20449,14 @@ var _hoisted_7 = (0, vue_1.createElementVNode)("thead", {
 }, "Edit")])], -1);
 
 var _hoisted_8 = {
-  key: 1,
+  key: 2,
   "class": "text-xl text-center pt-4"
 };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createVNode)($setup["PageTitle"], null, {
     "default": (0, vue_1.withCtx)(function () {
-      return [(0, vue_1.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0, vue_1.createVNode)($setup["AdminButton"], {
+      return [(0, vue_1.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0, vue_1.createVNode)($setup["MainButton"], {
         route: {
           name: 'create-post'
         }
@@ -20369,7 +20468,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       })])];
     }),
     _: 1
-  }), $setup.posts.length > 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_5, [(0, vue_1.createElementVNode)("table", _hoisted_6, [_hoisted_7, (0, vue_1.createElementVNode)("tbody", null, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.posts, function (post) {
+  }), $setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Spinner"], {
+    key: 0
+  })) : $setup.posts.length > 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_5, [(0, vue_1.createElementVNode)("table", _hoisted_6, [_hoisted_7, (0, vue_1.createElementVNode)("tbody", null, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.posts, function (post) {
     return (0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["PostItem"], {
       key: post.id,
       post: post
@@ -20869,27 +20970,56 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/admin/components/AdminButton.vue":
-/*!****************************************************!*\
-  !*** ./resources/admin/components/AdminButton.vue ***!
-  \****************************************************/
+/***/ "./resources/admin/components/Buttons/IconButton.vue":
+/*!***********************************************************!*\
+  !*** ./resources/admin/components/Buttons/IconButton.vue ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": () => (/* reexport safe */ _AdminButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule),
+/* harmony export */   "__esModule": () => (/* reexport safe */ _IconButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _AdminButton_vue_vue_type_template_id_4d85d240_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdminButton.vue?vue&type=template&id=4d85d240&ts=true */ "./resources/admin/components/AdminButton.vue?vue&type=template&id=4d85d240&ts=true");
-/* harmony import */ var _AdminButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminButton.vue?vue&type=script&setup=true&lang=ts */ "./resources/admin/components/AdminButton.vue?vue&type=script&setup=true&lang=ts");
+/* harmony import */ var _IconButton_vue_vue_type_template_id_d2ff682c_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IconButton.vue?vue&type=template&id=d2ff682c&ts=true */ "./resources/admin/components/Buttons/IconButton.vue?vue&type=template&id=d2ff682c&ts=true");
+/* harmony import */ var _IconButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IconButton.vue?vue&type=script&setup=true&lang=ts */ "./resources/admin/components/Buttons/IconButton.vue?vue&type=script&setup=true&lang=ts");
 /* harmony import */ var _Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AdminButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AdminButton_vue_vue_type_template_id_4d85d240_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/admin/components/AdminButton.vue"]])
+const __exports__ = /*#__PURE__*/(0,_Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_IconButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_IconButton_vue_vue_type_template_id_d2ff682c_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/admin/components/Buttons/IconButton.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/admin/components/Buttons/MainButton.vue":
+/*!***********************************************************!*\
+  !*** ./resources/admin/components/Buttons/MainButton.vue ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": () => (/* reexport safe */ _MainButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _MainButton_vue_vue_type_template_id_12c7852a_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MainButton.vue?vue&type=template&id=12c7852a&ts=true */ "./resources/admin/components/Buttons/MainButton.vue?vue&type=template&id=12c7852a&ts=true");
+/* harmony import */ var _MainButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MainButton.vue?vue&type=script&setup=true&lang=ts */ "./resources/admin/components/Buttons/MainButton.vue?vue&type=script&setup=true&lang=ts");
+/* harmony import */ var _Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MainButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MainButton_vue_vue_type_template_id_12c7852a_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/admin/components/Buttons/MainButton.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -21073,11 +21203,13 @@ if (false) {}
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": () => (/* reexport safe */ _PostItem_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _PostItem_vue_vue_type_template_id_036a4df0_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostItem.vue?vue&type=template&id=036a4df0&ts=true */ "./resources/admin/views/Posts/PostItem.vue?vue&type=template&id=036a4df0&ts=true");
 /* harmony import */ var _PostItem_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostItem.vue?vue&type=script&setup=true&lang=ts */ "./resources/admin/views/Posts/PostItem.vue?vue&type=script&setup=true&lang=ts");
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _PostItem_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _PostItem_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 /* harmony import */ var _Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
@@ -21144,19 +21276,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/admin/components/AdminButton.vue?vue&type=script&setup=true&lang=ts":
-/*!***************************************************************************************!*\
-  !*** ./resources/admin/components/AdminButton.vue?vue&type=script&setup=true&lang=ts ***!
-  \***************************************************************************************/
+/***/ "./resources/admin/components/Buttons/IconButton.vue?vue&type=script&setup=true&lang=ts":
+/*!**********************************************************************************************!*\
+  !*** ./resources/admin/components/Buttons/IconButton.vue?vue&type=script&setup=true&lang=ts ***!
+  \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AdminButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule),
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AdminButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "__esModule": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_IconButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule),
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_IconButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AdminButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AdminButton.vue?vue&type=script&setup=true&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/AdminButton.vue?vue&type=script&setup=true&lang=ts");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_IconButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./IconButton.vue?vue&type=script&setup=true&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/Buttons/IconButton.vue?vue&type=script&setup=true&lang=ts");
+ 
+
+/***/ }),
+
+/***/ "./resources/admin/components/Buttons/MainButton.vue?vue&type=script&setup=true&lang=ts":
+/*!**********************************************************************************************!*\
+  !*** ./resources/admin/components/Buttons/MainButton.vue?vue&type=script&setup=true&lang=ts ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MainButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule),
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MainButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MainButton_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./MainButton.vue?vue&type=script&setup=true&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/Buttons/MainButton.vue?vue&type=script&setup=true&lang=ts");
  
 
 /***/ }),
@@ -21210,10 +21359,13 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostItem_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule),
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostItem_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport default from dynamic */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostItem_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0___default.a)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostItem_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PostItem.vue?vue&type=script&setup=true&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/views/Posts/PostItem.vue?vue&type=script&setup=true&lang=ts");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostItem_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostItem_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostItem_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostItem_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
  
 
 /***/ }),
@@ -21255,19 +21407,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/admin/components/AdminButton.vue?vue&type=template&id=4d85d240&ts=true":
-/*!******************************************************************************************!*\
-  !*** ./resources/admin/components/AdminButton.vue?vue&type=template&id=4d85d240&ts=true ***!
-  \******************************************************************************************/
+/***/ "./resources/admin/components/Buttons/IconButton.vue?vue&type=template&id=d2ff682c&ts=true":
+/*!*************************************************************************************************!*\
+  !*** ./resources/admin/components/Buttons/IconButton.vue?vue&type=template&id=d2ff682c&ts=true ***!
+  \*************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AdminButton_vue_vue_type_template_id_4d85d240_ts_true__WEBPACK_IMPORTED_MODULE_0__.__esModule),
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AdminButton_vue_vue_type_template_id_4d85d240_ts_true__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "__esModule": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_IconButton_vue_vue_type_template_id_d2ff682c_ts_true__WEBPACK_IMPORTED_MODULE_0__.__esModule),
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_IconButton_vue_vue_type_template_id_d2ff682c_ts_true__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AdminButton_vue_vue_type_template_id_4d85d240_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AdminButton.vue?vue&type=template&id=4d85d240&ts=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/AdminButton.vue?vue&type=template&id=4d85d240&ts=true");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_IconButton_vue_vue_type_template_id_d2ff682c_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./IconButton.vue?vue&type=template&id=d2ff682c&ts=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/Buttons/IconButton.vue?vue&type=template&id=d2ff682c&ts=true");
+
+
+/***/ }),
+
+/***/ "./resources/admin/components/Buttons/MainButton.vue?vue&type=template&id=12c7852a&ts=true":
+/*!*************************************************************************************************!*\
+  !*** ./resources/admin/components/Buttons/MainButton.vue?vue&type=template&id=12c7852a&ts=true ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MainButton_vue_vue_type_template_id_12c7852a_ts_true__WEBPACK_IMPORTED_MODULE_0__.__esModule),
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MainButton_vue_vue_type_template_id_12c7852a_ts_true__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MainButton_vue_vue_type_template_id_12c7852a_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./MainButton.vue?vue&type=template&id=12c7852a&ts=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/components/Buttons/MainButton.vue?vue&type=template&id=12c7852a&ts=true");
 
 
 /***/ }),
