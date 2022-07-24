@@ -48,6 +48,8 @@ class PostController extends Controller
 
     public function edit(Post $post): Post
     {
+        $post->load('tags');
+
         return $post;
     }
 

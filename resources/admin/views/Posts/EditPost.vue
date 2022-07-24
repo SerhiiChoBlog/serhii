@@ -4,11 +4,12 @@ import axios from 'axios'
 import handleError from '../../modules/handleError'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { init } from '../../modules/tinymce'
 import MainButton from '../../components/Buttons/MainButton.vue'
 import FormInput from '../../components/Form/FormInput.vue'
 import FormTextarea from '../../components/Form/FormTextarea.vue'
 import Spinner from '../../components/Spinner.vue'
-import { init } from '../../modules/tinymce'
+import Tag from '../../components/Tag.vue'
 
 onMounted(() => {
     fetchPost()
@@ -67,7 +68,15 @@ function savePost(): void {
                                     placeholder="Choose tags"
                                 >
                                     Tags
-                                    <div class="ml-1 inline-block space-x-1"></div>
+
+                                    <div class="ml-1 inline-block space-x-1">
+                                        <tag
+                                            v-if="post.tags"
+                                            v-for="tag in post.tags"
+                                            :key="tag.id"
+                                            :tag="tag"
+                                        />
+                                    </div>
                                 </form-input>
 
                                 <ul class="bg-white shadow-md mt-2 rounded-lg overflow-hidden hidden"></ul>
@@ -115,7 +124,7 @@ function savePost(): void {
                     </div>
 
                     <div>
-                        <div class="flex flex-col justify-center fixed right-[20px] top-[70px] z-[9999] space-y-2">
+                        <div class="flex flex-col justify-center fixed right-[20px] top-8 z-[9999] space-y-2">
                             <main-button class="bg-green-500 hover:bg-green-600">
                                 <i class="fas fa-save mr-2"></i>
                                 Save
