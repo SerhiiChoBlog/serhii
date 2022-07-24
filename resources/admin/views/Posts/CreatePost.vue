@@ -1,9 +1,21 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import axios from 'axios'
 import MainButton from '../../components/Buttons/MainButton.vue'
 import FormInput from '../../components/Form/FormInput.vue'
+import handleError from '../../modules/handleError'
+
+const loading = ref(false)
 
 function createPost(): void {
-    //
+    loading.value = true
+
+    axios.post<number>('/admin/ajax/posts')
+        .then(resp => {
+            console.log(resp.data)
+        })
+        .catch(handleError)
+        .finally(() => loading.value = false)
 }
 </script>
 
@@ -23,7 +35,10 @@ function createPost(): void {
                 </form-input>
 
                 <main-button>
-                    <i class="fas fa-plus mr-2"></i>
+                    <i
+                        class="fas mr-2"
+                        :class="loading ? 'fa-spinner fa-spin' : 'fa-plus'"
+                    ></i>
                     <span>Create post</span>
                 </main-button>
             </div>

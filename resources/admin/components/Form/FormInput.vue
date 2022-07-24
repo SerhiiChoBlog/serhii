@@ -7,11 +7,10 @@ type Props = {
     type: string
     placeholder: string
     length?: number
-    error?: string
     classes?: string
 }
 
-const { id, type, placeholder, length, error, classes } = defineProps<Props>()
+const { id, type, placeholder, length, classes } = defineProps<Props>()
 const inputValue = ref<string>('')
 </script>
 
@@ -30,8 +29,6 @@ const inputValue = ref<string>('')
                 v-model="inputValue"
                 :id="id"
             />
-
-            <span v-if="error" class="text-sm text-red-700">{{ error }}</span>
 
             <letter-counter v-if="length" :length="length" :inputValue="inputValue" />
         </div>
