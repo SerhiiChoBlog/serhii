@@ -2,9 +2,10 @@
 import type { Post } from '../../../types/models'
 import { onMounted, ref } from 'vue'
 import PageTitle from '../../components/PageTitle.vue'
-import AdminButton from '../../components/AdminButton.vue'
+import MainButton from '../../components/Buttons/MainButton.vue'
 import PostItem from './PostItem.vue'
 import axios from 'axios'
+import Spinner from '../../components/Spinner.vue'
 
 const posts = ref<Post[]>([])
 const loading = ref(true)
@@ -25,13 +26,15 @@ function fetchPosts(): void {
             <div class="flex items-center justify-center gap-3">
                 <span>Posts</span>
 
-                <admin-button :route="{ name: 'create-post' }">
+                <main-button :route="{ name: 'create-post' }">
                     <i class="fas fa-plus"></i>
-                </admin-button>
+                </main-button>
             </div>
         </page-title>
 
-        <div v-if="posts.length > 0" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <spinner v-if="loading" />
+
+        <div v-else-if="posts.length > 0" class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="table-auto">
                 <thead class="bg-gray-500 text-white text-left">
                     <tr>
