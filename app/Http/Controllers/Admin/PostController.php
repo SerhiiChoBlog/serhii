@@ -46,6 +46,11 @@ class PostController extends Controller
         return $post->id;
     }
 
+    public function edit(Post $post): Post
+    {
+        return $post;
+    }
+
     /**
      * @param Request $request
      * @param Post $post

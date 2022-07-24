@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
     Route::get('dashboard/sections', [DashboardController::class, 'sections']);
-    Route::resource('posts', PostController::class)->only('index', 'store', 'update');
+    Route::resource('posts', PostController::class)->only('index', 'store', 'update', 'edit');
     // Route::get('page-views', [PageViewController::class, 'index'])->name('page_views.index');
     // Route::get('visitors', [VisitorController::class, 'index'])->name('visitors.index');
     // Route::resource('tags', TagController::class)->except(['show']);
