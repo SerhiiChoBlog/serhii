@@ -10,6 +10,11 @@ type Props = {
     classes?: string
 }
 
+type Emits = {
+    (e: 'changed', value: string): void
+}
+
+const emit = defineEmits<Emits>()
 const { id, type, placeholder, length, classes } = defineProps<Props>()
 const inputValue = ref<string>('')
 </script>
@@ -28,6 +33,7 @@ const inputValue = ref<string>('')
                 :placeholder="placeholder"
                 v-model="inputValue"
                 :id="id"
+                @keyup="emit('changed', inputValue)"
             />
 
             <letter-counter v-if="length" :length="length" :inputValue="inputValue" />
