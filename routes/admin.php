@@ -6,10 +6,6 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('{any?}', 'layouts.admin')
-    ->middleware('auth')
-    ->name('admin.dashboard');
-
 Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
     Route::get('dashboard/sections', [DashboardController::class, 'sections']);
     Route::resource('posts', PostController::class)->except(['show']);
@@ -22,3 +18,8 @@ Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
     // Route::resource('referrers', ReferrerController::class)->only(['index']);
     // Route::resource('hits', HitController::class)->only(['index']);
 });
+
+Route::view('{any}', 'layouts.admin')
+    ->middleware('auth')
+    ->name('admin.dashboard')
+    ->where('any', '.*');

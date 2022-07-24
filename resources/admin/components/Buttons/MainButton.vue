@@ -2,7 +2,7 @@
 import type { RouteLocationNormalized } from 'vue-router'
 
 type Props = {
-    route: RouteLocationNormalized
+    route?: RouteLocationNormalized
 }
 
 const { route } = defineProps<Props>()
@@ -12,12 +12,10 @@ const classes = 'inline-block uppercase text-white text-sm px-6 py-2 rounded-ful
 
 <template>
     <router-link v-if="route" :class="classes" :to="route">
-        <x-admin.spinner/>
         <slot />
     </router-link>
 
-    <button v-else>
-        <x-admin.spinner/>
+    <button type="submit" v-else :class="classes">
         <slot />
     </button>
 </template>
