@@ -1,11 +1,22 @@
 <script setup lang="ts">
 import type { Post } from '../../../types/models'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import PageTitle from '../../components/PageTitle.vue'
 import AdminButton from '../../components/AdminButton.vue'
 import PostItem from './PostItem.vue'
+import axios from 'axios'
 
 const posts = ref<Post[]>([])
+const loading = ref(true)
+
+onMounted(() => fetchPosts())
+
+function fetchPosts(): void {
+    axios.get<Post[]>('/admin/ajax/posts')
+        .then(resp => posts.value = resp.data)
+        .catch(err => console.error(err))
+        .finally(() => loading.value = false)
+}
 </script>
 
 <template>

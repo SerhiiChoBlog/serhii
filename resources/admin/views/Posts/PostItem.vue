@@ -16,7 +16,8 @@ const { post } = defineProps<Props>()
         </td>
         <td class="p-1">
             <a :href="post.image_lg" target="_blank">
-                <img :src="post.image_sm"
+                <img
+                    :src="`/${post.image_sm}`"
                     width="300"
                     class="rounded-md shadow-md"
                     :alt="post.title"

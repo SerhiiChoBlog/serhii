@@ -19888,7 +19888,7 @@ exports["default"] = (0, vue_1.defineComponent)({
     });
 
     function fetchSections() {
-      axios_1["default"].get('/ajax/dashboard/sections').then(function (resp) {
+      axios_1["default"].get('/admin/ajax/dashboard/sections').then(function (resp) {
         return sections.value = resp.data;
       })["catch"](function (err) {
         return console.error(err);
@@ -19981,14 +19981,33 @@ var AdminButton_vue_1 = __importDefault(__webpack_require__(/*! ../../components
 
 var PostItem_vue_1 = __importDefault(__webpack_require__(/*! ./PostItem.vue */ "./resources/admin/views/Posts/PostItem.vue"));
 
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Posts',
   setup: function setup(__props, _a) {
     var expose = _a.expose;
     expose();
     var posts = (0, vue_2.ref)([]);
+    var loading = (0, vue_2.ref)(true);
+    (0, vue_2.onMounted)(function () {
+      return fetchPosts();
+    });
+
+    function fetchPosts() {
+      axios_1["default"].get('/admin/ajax/posts').then(function (resp) {
+        return posts.value = resp.data;
+      })["catch"](function (err) {
+        return console.error(err);
+      })["finally"](function () {
+        return loading.value = false;
+      });
+    }
+
     var __returned__ = {
       posts: posts,
+      loading: loading,
+      fetchPosts: fetchPosts,
       PageTitle: PageTitle_vue_1["default"],
       AdminButton: AdminButton_vue_1["default"],
       PostItem: PostItem_vue_1["default"]
@@ -20248,7 +20267,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: $props.post.image_lg,
     target: "_blank"
   }, [(0, vue_1.createElementVNode)("img", {
-    src: $props.post.image_sm,
+    src: "/".concat($props.post.image_sm),
     width: "300",
     "class": "rounded-md shadow-md",
     alt: $props.post.title
