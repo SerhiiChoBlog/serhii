@@ -1,4 +1,4 @@
-import { UserSidebarLink } from '../types/types'
+import { UserSidebarLink } from '../../types/types'
 
 const links: UserSidebarLink[] = [
     {
@@ -6,11 +6,11 @@ const links: UserSidebarLink[] = [
         title: 'Dashboard',
         icon: 'fa-columns',
     },
-    // {
-    //     routeName: 'posts',
-    //     title: 'Posts',
-    //     icon: 'fa-newspaper',
-    // },
+    {
+        routeName: 'posts',
+        title: 'Posts',
+        icon: 'fa-newspaper',
+    },
     // {
     //     routeName: 'tags',
     //     title: 'Tags',
