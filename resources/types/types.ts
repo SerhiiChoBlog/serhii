@@ -1,14 +1,14 @@
-export interface Chapter {
+export type Chapter = {
     title: string
     isActive: boolean
 }
 
-export interface SavedChapter {
+export type SavedChapter = {
     chapter: Chapter
     top: number
 }
 
-export interface SearchSuggestion {
+export type SearchSuggestion = {
     title: string
     url: string
     selected: boolean
@@ -17,7 +17,7 @@ export interface SearchSuggestion {
     image_sm?: string
 }
 
-export interface Search {
+export type Search = {
     query: string
     posts: SearchSuggestion[]
     history: SearchSuggestion[]
@@ -25,10 +25,13 @@ export interface Search {
     suggestionsIndex: number
 }
 
-export interface Tag {
-    id: number
+export type UserSidebarLink = {
+    routeName: string
     title: string
-    description: string
-    name: string
-    color: string
+    icon: string
+}
+
+export type Section = {
+    title: string
+    value: string
 }

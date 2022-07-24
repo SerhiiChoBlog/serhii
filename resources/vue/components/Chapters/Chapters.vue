@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import isElementInViewport from '../../modules/isElementInViewport'
-import type { Chapter as ChapterType, SavedChapter } from '../../types/types'
+import type { Chapter as ChapterType, SavedChapter } from '../../../types/types'
 import screenSizeIs from '../../modules/screenSizeIs'
 import Chapter from './Chapter.vue'
 import ChevronDownIcon from '../Icons/ChevronDownIcon.vue'

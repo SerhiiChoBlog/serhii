@@ -1,5 +1,5 @@
 import type { UnwrapNestedRefs } from '@vue/reactivity'
-import type { Search } from '../types/types'
+import type { Search } from '../../types/types'
 
 export default class {
     private readonly keys = {
