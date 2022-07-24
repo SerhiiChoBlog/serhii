@@ -5,7 +5,12 @@ type Props = {
     tag: Tag
 }
 
+type Emits = {
+    (e: 'deleteTag', id: number): void
+}
+
 const { tag } = defineProps<Props>()
+const emit = defineEmits<Emits>()
 </script>
 
 <template>
@@ -15,8 +20,10 @@ const { tag } = defineProps<Props>()
     >
         {{ tag.name }}
 
-        <button type="button">
+        <button type="button" @click="emit('deleteTag', tag.id)">
             <i class="fas fa-times ml-1 transition-transform hover:scale-125"></i>
         </button>
+
+        <input type="hidden" name="tags[]" :value="tag.id">
     </span>
 </template>

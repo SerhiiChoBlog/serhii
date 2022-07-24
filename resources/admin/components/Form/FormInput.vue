@@ -9,6 +9,7 @@ type Props = {
     value?: string
     length?: number
     classes?: string
+    name?: string
 }
 
 type Emits = {
@@ -16,7 +17,7 @@ type Emits = {
 }
 
 const emit = defineEmits<Emits>()
-const { id, type, placeholder, length, value, classes } = defineProps<Props>()
+const { id, type, placeholder, length, value, name, classes } = defineProps<Props>()
 const inputValue = ref<string>(value || '')
 </script>
 
@@ -33,6 +34,7 @@ const inputValue = ref<string>(value || '')
                 :class="classes"
                 :placeholder="placeholder"
                 v-model="inputValue"
+                :name="name"
                 :id="id"
                 @keyup="emit('changed', inputValue)"
             />

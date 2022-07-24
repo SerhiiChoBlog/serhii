@@ -46,7 +46,7 @@ function createPost(): void {
                 <main-button>
                     <i
                         class="fas mr-2"
-                        :class="loading ? 'fa-spinner fa-spin' : 'fa-plus'"
+                        :class="loading ? 'fa-spinner animate-spin' : 'fa-plus'"
                     ></i>
                     <span>Create post</span>
                 </main-button>

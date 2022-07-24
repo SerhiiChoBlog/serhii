@@ -35,3 +35,11 @@ export type Section = {
     title: string
     value: string
 }
+
+export interface EditPostFormElements extends HTMLFormControlsCollection {
+    title: HTMLInputElement
+    intro: HTMLInputElement
+    image: HTMLInputElement
+    'tags[]': HTMLInputElement[]
+    'is-published': HTMLInputElement
+}
