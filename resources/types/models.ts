@@ -18,7 +18,7 @@ export type Post = {
     // images: Collection
     // socialShares: Collection
     // pageViews: Collection
-    // tags: Collection
+    tags: Tag[]
     // social: array<int, array<int, string>> | null
     social_shares_count: number | null
     page_views_count: number | null

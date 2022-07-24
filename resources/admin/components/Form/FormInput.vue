@@ -6,6 +6,7 @@ type Props = {
     id: string
     type: string
     placeholder: string
+    value?: string
     length?: number
     classes?: string
 }
@@ -15,8 +16,8 @@ type Emits = {
 }
 
 const emit = defineEmits<Emits>()
-const { id, type, placeholder, length, classes } = defineProps<Props>()
-const inputValue = ref<string>('')
+const { id, type, placeholder, length, value, classes } = defineProps<Props>()
+const inputValue = ref<string>(value || '')
 </script>
 
 <template>

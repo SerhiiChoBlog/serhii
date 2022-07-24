@@ -19843,12 +19843,19 @@ exports["default"] = (0, vue_1.defineComponent)({
     route: {
       type: null,
       required: false
+    },
+    type: {
+      type: String,
+      required: false
     }
   },
   setup: function setup(__props, _a) {
     var expose = _a.expose;
     expose();
-    var route = __props.route;
+    var _b = __props,
+        route = _b.route,
+        _c = _b.type,
+        type = _c === void 0 ? 'button' : _c;
     var classes = 'inline-block uppercase text-white text-sm px-6 py-2 rounded-full transition-all bg-main hover:bg-main-hover shadow-md hover:shadow-lg';
     var __returned__ = {
       classes: classes
@@ -19903,6 +19910,10 @@ exports["default"] = (0, vue_1.defineComponent)({
       type: String,
       required: true
     },
+    value: {
+      type: String,
+      required: false
+    },
     length: {
       type: Number,
       required: false
@@ -19922,8 +19933,9 @@ exports["default"] = (0, vue_1.defineComponent)({
         type = _b.type,
         placeholder = _b.placeholder,
         length = _b.length,
+        value = _b.value,
         classes = _b.classes;
-    var inputValue = (0, vue_2.ref)('');
+    var inputValue = (0, vue_2.ref)(value || '');
     var __returned__ = {
       emit: emit,
       inputValue: inputValue,
@@ -20203,6 +20215,10 @@ var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 
 var vue_router_1 = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/index.js");
 
+var MainButton_vue_1 = __importDefault(__webpack_require__(/*! ../../components/Buttons/MainButton.vue */ "./resources/admin/components/Buttons/MainButton.vue"));
+
+var FormInput_vue_1 = __importDefault(__webpack_require__(/*! ../../components/Form/FormInput.vue */ "./resources/admin/components/Form/FormInput.vue"));
+
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Post',
   setup: function setup(__props, _a) {
@@ -20224,11 +20240,16 @@ exports["default"] = (0, vue_1.defineComponent)({
       });
     }
 
+    function savePost() {}
+
     var __returned__ = {
       route: route,
       loading: loading,
       post: post,
-      fetchPost: fetchPost
+      fetchPost: fetchPost,
+      savePost: savePost,
+      MainButton: MainButton_vue_1["default"],
+      FormInput: FormInput_vue_1["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -20455,6 +20476,8 @@ exports.render = void 0;
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = ["type"];
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0, vue_1.resolveComponent)("router-link");
 
@@ -20469,9 +20492,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["to"])) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("button", {
     key: 1,
-    type: "submit",
+    type: $props.type,
     "class": (0, vue_1.normalizeClass)($setup.classes)
-  }, [(0, vue_1.renderSlot)(_ctx.$slots, "default")]));
+  }, [(0, vue_1.renderSlot)(_ctx.$slots, "default")], 8, _hoisted_1));
 }
 
 exports.render = render;
@@ -20724,7 +20747,7 @@ exports.render = render;
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/views/Posts/Post.vue?vue&type=template&id=58c6bc56&ts=true ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
@@ -20734,8 +20757,223 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.render = void 0;
 
+var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "container pb-6"
+};
+var _hoisted_2 = {
+  "class": "text-4xl text-font-second"
+};
+var _hoisted_3 = {
+  "class": "container"
+};
+var _hoisted_4 = ["onSubmit"];
+var _hoisted_5 = {
+  "class": "flex flex-col lg:flex-row gap-6 mt-10"
+};
+var _hoisted_6 = {
+  "class": "flex-1"
+};
+
+var _hoisted_7 = (0, vue_1.createTextVNode)(" Title ");
+
+var _hoisted_8 = {
+  "class": "mt-5"
+};
+
+var _hoisted_9 = (0, vue_1.createTextVNode)(" Tags ");
+
+var _hoisted_10 = (0, vue_1.createElementVNode)("div", {
+  "class": "ml-1 inline-block space-x-1"
+}, null, -1);
+
+var _hoisted_11 = (0, vue_1.createElementVNode)("ul", {
+  "class": "bg-white shadow-md mt-2 rounded-lg overflow-hidden hidden"
+}, null, -1);
+
+var _hoisted_12 = {
+  "class": "flex-1"
+};
+var _hoisted_13 = {
+  "class": "relative"
+};
+var _hoisted_14 = ["src"];
+
+var _hoisted_15 = (0, vue_1.createElementVNode)("label", {
+  "for": "post-image-input",
+  "class": "opacity-0 flex items-center hover:opacity-100 transition-opacity border-[6px] border-dashed text-center rounded-lg cursor-pointer border-gray-300 absolute right-6 top-6 left-6 bottom-6"
+}, [(0, vue_1.createElementVNode)("b", {
+  "class": "text-gray-600 px-4 py-2 rounded-xl bg-gray-300 text-3xl drop-shadow-sm mx-auto shadow-lg opacity-90"
+}, "Choose image")], -1);
+
+var _hoisted_16 = (0, vue_1.createElementVNode)("input", {
+  type: "file",
+  id: "post-image-input",
+  name: "image",
+  "class": "hidden"
+}, null, -1);
+
+var _hoisted_17 = {
+  "class": "mt-5"
+};
+var _hoisted_18 = {
+  name: "content"
+};
+var _hoisted_19 = {
+  "class": "flex flex-col justify-center fixed right-[20px] top-[70px] z-[9999] space-y-2"
+};
+
+var _hoisted_20 = (0, vue_1.createElementVNode)("i", {
+  "class": "fas fa-save mr-2"
+}, null, -1);
+
+var _hoisted_21 = (0, vue_1.createTextVNode)(" Save ");
+
+var _hoisted_22 = (0, vue_1.createElementVNode)("i", {
+  "class": "fas fa-eye mr-2"
+}, null, -1);
+
+var _hoisted_23 = (0, vue_1.createTextVNode)(" Preview ");
+
+var _hoisted_24 = {
+  "class": "mt-7"
+};
+
+var _hoisted_25 = (0, vue_1.createElementVNode)("i", {
+  "class": "fas fa-trash mr-2"
+}, null, -1);
+
+var _hoisted_26 = (0, vue_1.createTextVNode)(" Delete ");
+
+var _hoisted_27 = {
+  "class": "checkbox"
+};
+var _hoisted_28 = ["checked"];
+
+var _hoisted_29 = (0, vue_1.createElementVNode)("span", null, "publish this post", -1);
+
+var _hoisted_30 = {
+  "class": "mt-6 pt-4"
+};
+
+var _hoisted_31 = (0, vue_1.createElementVNode)("h3", {
+  "class": "text-center text-2xl mb-10"
+}, " Attached images for this post ", -1);
+
+var _hoisted_32 = {
+  "class": "overflow-x-auto shadow-md rounded-lg mx-auto mt-7"
+};
+var _hoisted_33 = {
+  "class": "table-auto w-full"
+};
+var _hoisted_34 = {
+  "class": "bg-gray-500 text-white text-left"
+};
+
+var _hoisted_35 = (0, vue_1.createElementVNode)("tbody", null, [(0, vue_1.createCommentVNode)("                        @foreach ($post->images as $image)"), (0, vue_1.createCommentVNode)("                        <tr class=\"border-b odd:bg-gray-50 transition-colors hover:bg-gray-100\">"), (0, vue_1.createCommentVNode)("                            <td class=\"px-3 py-1\">"), (0, vue_1.createCommentVNode)("                                <a href=\"{{ $image->uri }}\" target=\"_blank\">"), (0, vue_1.createCommentVNode)("                                    <img data-src=\"{{ asset($image->uri) }}\""), (0, vue_1.createCommentVNode)("                                         alt=\"Post image\""), (0, vue_1.createCommentVNode)("                                         width=\"100\""), (0, vue_1.createCommentVNode)("                                         class=\"rounded-md shadow-sm\""), (0, vue_1.createCommentVNode)("                                    />"), (0, vue_1.createCommentVNode)("                                </a>"), (0, vue_1.createCommentVNode)("                            </td>"), (0, vue_1.createCommentVNode)("                            <td class=\"px-3 py-1\">"), (0, vue_1.createCommentVNode)("                                <input type=\"text\""), (0, vue_1.createCommentVNode)("                                   value=\"{{ $image->uri }}\""), (0, vue_1.createCommentVNode)("                                   class=\"bg-gray-200 rounded-md p-2 w-full\""), (0, vue_1.createCommentVNode)("                                   disabled"), (0, vue_1.createCommentVNode)("                                />"), (0, vue_1.createCommentVNode)("                            </td>"), (0, vue_1.createCommentVNode)("                            <td class=\"px-3 py-1 text-right\">"), (0, vue_1.createCommentVNode)("                                <form action=\"route('admin.post-content-images.delete', $image)\""), (0, vue_1.createCommentVNode)("                                    method=\"post\""), (0, vue_1.createCommentVNode)("                                    onsubmit=\"return confirm('Sure you want to delete this content image?')\""), (0, vue_1.createCommentVNode)("                                >"), (0, vue_1.createCommentVNode)("                                    <main-button class=\"bg-red-500 hover:bg-red-600\">"), (0, vue_1.createCommentVNode)("                                        <i class=\"fas fa-trash mr-2\"></i> Delete"), (0, vue_1.createCommentVNode)("                                    </main-button>"), (0, vue_1.createCommentVNode)("                                </form>"), (0, vue_1.createCommentVNode)("                            </td>"), (0, vue_1.createCommentVNode)("                        </tr>"), (0, vue_1.createCommentVNode)("                        @endforeach")], -1);
+
+var _hoisted_36 = {
+  action: "route('admin.post-content-images.store', $post)",
+  method: "post",
+  enctype: "multipart/form-data",
+  "class": "mt-6"
+};
+
+var _hoisted_37 = (0, vue_1.createElementVNode)("div", {
+  "class": "inline-block mr-2"
+}, [(0, vue_1.createElementVNode)("label", {
+  "class": "border-4 text-gray-400 hover:text-gray-500 cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-300 transition-colors"
+}, [(0, vue_1.createElementVNode)("input", {
+  "class": "hidden",
+  type: "file",
+  name: "image",
+  required: ""
+}), (0, vue_1.createElementVNode)("span", null, "Choose an image...")])], -1);
+
+var _hoisted_38 = (0, vue_1.createElementVNode)("i", {
+  "class": "fas fa-upload mr-2"
+}, null, -1);
+
+var _hoisted_39 = (0, vue_1.createTextVNode)(" Upload ");
+
+var _hoisted_40 = ["value"];
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return null;
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, [(0, vue_1.createElementVNode)("div", _hoisted_1, [(0, vue_1.createElementVNode)("h1", _hoisted_2, (0, vue_1.toDisplayString)($setup.post.title), 1), (0, vue_1.createElementVNode)("div", _hoisted_3, [(0, vue_1.createElementVNode)("form", {
+    onSubmit: (0, vue_1.withModifiers)($setup.savePost, ["prevent"]),
+    enctype: "multipart/form-data"
+  }, [(0, vue_1.createElementVNode)("div", _hoisted_5, [(0, vue_1.createElementVNode)("div", _hoisted_6, [(0, vue_1.createElementVNode)("div", null, [(0, vue_1.createVNode)($setup["FormInput"], {
+    type: "text",
+    id: "title",
+    placeholder: "Enter the title",
+    length: "190",
+    value: $setup.post.title
+  }, {
+    "default": (0, vue_1.withCtx)(function () {
+      return [_hoisted_7];
+    }),
+    _: 1
+  }, 8, ["value"])]), (0, vue_1.createElementVNode)("div", _hoisted_8, [(0, vue_1.createVNode)($setup["FormInput"], {
+    type: "text",
+    id: "post-tags",
+    placeholder: "Choose tags",
+    length: "190",
+    value: $setup.post.title
+  }, {
+    "default": (0, vue_1.withCtx)(function () {
+      return [_hoisted_9, _hoisted_10];
+    }),
+    _: 1
+  }, 8, ["value"]), _hoisted_11]), (0, vue_1.createCommentVNode)("                        <div class=\"mt-5\">"), (0, vue_1.createCommentVNode)("                            <x-admin.input"), (0, vue_1.createCommentVNode)("                                :textarea=\"true\""), (0, vue_1.createCommentVNode)("                                placeholder=\"Enter a short intro\""), (0, vue_1.createCommentVNode)("                                name=\"intro\""), (0, vue_1.createCommentVNode)("                                class=\"_letter-counter min-h-[100px]\""), (0, vue_1.createCommentVNode)("                                :value=\"$post->intro\""), (0, vue_1.createCommentVNode)("                                maxlength=\"190\""), (0, vue_1.createCommentVNode)("                            >"), (0, vue_1.createCommentVNode)("                            </x-admin.input>"), (0, vue_1.createCommentVNode)("                        </div>")]), (0, vue_1.createElementVNode)("div", _hoisted_12, [(0, vue_1.createElementVNode)("div", _hoisted_13, [(0, vue_1.createElementVNode)("img", {
+    src: "/".concat($setup.post.image_sm || 'storage/posts/placeholder.jpg'),
+    alt: "image",
+    id: "post-image",
+    "class": "rounded-md shadow-lg w-full"
+  }, null, 8, _hoisted_14), _hoisted_15, _hoisted_16])])]), (0, vue_1.createElementVNode)("div", _hoisted_17, [(0, vue_1.createElementVNode)("textarea", _hoisted_18, (0, vue_1.toDisplayString)($setup.post.content), 1)]), (0, vue_1.createElementVNode)("div", null, [(0, vue_1.createElementVNode)("div", _hoisted_19, [(0, vue_1.createVNode)($setup["MainButton"], {
+    "class": "bg-green-500 hover:bg-green-600"
+  }, {
+    "default": (0, vue_1.withCtx)(function () {
+      return [_hoisted_20, _hoisted_21];
+    }),
+    _: 1
+  }), (0, vue_1.createVNode)($setup["MainButton"], {
+    href: "/posts/".concat($setup.post.slug)
+  }, {
+    "default": (0, vue_1.withCtx)(function () {
+      return [_hoisted_22, _hoisted_23];
+    }),
+    _: 1
+  }, 8, ["href"])]), (0, vue_1.createElementVNode)("div", _hoisted_24, [(0, vue_1.createVNode)($setup["MainButton"], {
+    "class": "bg-red-500 hover:bg-red-600",
+    type: "button"
+  }, {
+    "default": (0, vue_1.withCtx)(function () {
+      return [_hoisted_25, _hoisted_26];
+    }),
+    _: 1
+  }), (0, vue_1.createElementVNode)("label", _hoisted_27, [(0, vue_1.createElementVNode)("input", {
+    type: "checkbox",
+    name: "is-published",
+    "class": "ml-3 mr-1",
+    checked: $setup.post.is_published
+  }, null, 8, _hoisted_28), _hoisted_29])])])], 40, _hoisted_4)]), (0, vue_1.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0, vue_1.createElementVNode)("div", _hoisted_32, [(0, vue_1.createElementVNode)("table", _hoisted_33, [(0, vue_1.createElementVNode)("thead", _hoisted_34, [(0, vue_1.createElementVNode)("tr", null, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(['Image', 'URI', 'Delete'], function (title) {
+    return (0, vue_1.createElementVNode)("th", {
+      key: title,
+      "class": "p-3 font-light"
+    }, (0, vue_1.toDisplayString)(title), 1);
+  }), 64))])]), _hoisted_35])]), (0, vue_1.createElementVNode)("form", _hoisted_36, [_hoisted_37, (0, vue_1.createVNode)($setup["MainButton"], {
+    "class": "ml-3"
+  }, {
+    "default": (0, vue_1.withCtx)(function () {
+      return [_hoisted_38, _hoisted_39];
+    }),
+    _: 1
+  })])])]), (0, vue_1.createElementVNode)("input", {
+    type: "hidden",
+    value: $setup.post.tags,
+    id: "old-post-tags"
+  }, null, 8, _hoisted_40)], 64);
 }
 
 exports.render = render;
