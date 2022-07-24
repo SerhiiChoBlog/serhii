@@ -37,7 +37,11 @@ const inputValue = ref<string>(value || '')
                 @keyup="emit('changed', inputValue)"
             />
 
-            <letter-counter v-if="length" :length="length" :inputValue="inputValue" />
+            <letter-counter
+                v-if="length"
+                :length="length"
+                :inputValue="inputValue"
+            />
         </div>
     </div>
 </template>

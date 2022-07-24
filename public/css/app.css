@@ -1859,6 +1859,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bottom-14 {
   bottom: 3.5rem;
 }
+.\!top-0 {
+  top: 0px !important;
+}
+.\!top-3 {
+  top: 0.75rem !important;
+}
+.\!top-5 {
+  top: 1.25rem !important;
+}
+.\!top-4 {
+  top: 1rem !important;
+}
 .z-\[1\] {
   z-index: 1;
 }

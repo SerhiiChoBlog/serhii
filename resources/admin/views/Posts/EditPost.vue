@@ -6,6 +6,7 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import MainButton from '../../components/Buttons/MainButton.vue'
 import FormInput from '../../components/Form/FormInput.vue'
+import FormTextarea from '../../components/Form/FormTextarea.vue'
 import Spinner from '../../components/Spinner.vue'
 import { init } from '../../modules/tinymce'
 
@@ -64,7 +65,6 @@ function savePost(): void {
                                     type="text"
                                     id="post-tags"
                                     placeholder="Choose tags"
-                                    :length="190"
                                 >
                                     Tags
                                     <div class="ml-1 inline-block space-x-1"></div>
@@ -73,17 +73,15 @@ function savePost(): void {
                                 <ul class="bg-white shadow-md mt-2 rounded-lg overflow-hidden hidden"></ul>
                             </div>
 
-                            <!--                        <div class="mt-5">-->
-                            <!--                            <x-admin.input-->
-                            <!--                                :textarea="true"-->
-                            <!--                                placeholder="Enter a short intro"-->
-                            <!--                                name="intro"-->
-                            <!--                                class="_letter-counter min-h-[100px]"-->
-                            <!--                                :value="$post->intro"-->
-                            <!--                                maxlength="190"-->
-                            <!--                            >-->
-                            <!--                            </x-admin.input>-->
-                            <!--                        </div>-->
+                            <div class="mt-5">
+                                <form-textarea
+                                    id="intro"
+                                    placeholder="Enter a short intro"
+                                    classes="min-h-[100px]"
+                                    :value="post.intro"
+                                    :length="190"
+                                />
+                            </div>
                         </div>
 
                         <div class="flex-1">
@@ -108,7 +106,12 @@ function savePost(): void {
                     </div>
 
                     <div class="mt-5">
-                        <textarea id="content" name="content" aria-hidden="true">{{ post.content }}</textarea>
+                        <textarea
+                            id="content"
+                            name="content"
+                            aria-hidden="true"
+                            class="hidden"
+                        >{{ post.content }}</textarea>
                     </div>
 
                     <div>
