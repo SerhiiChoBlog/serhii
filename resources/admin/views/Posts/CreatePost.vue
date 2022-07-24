@@ -4,15 +4,23 @@ import axios from 'axios'
 import MainButton from '../../components/Buttons/MainButton.vue'
 import FormInput from '../../components/Form/FormInput.vue'
 import handleError from '../../modules/handleError'
+import { useRouter } from 'vue-router'
 
 const loading = ref(false)
+const router = useRouter()
+const title = ref<string>('')
 
 function createPost(): void {
     loading.value = true
 
-    axios.post<number>('/admin/ajax/posts')
+    axios.post<number>('/admin/ajax/posts', {
+        title: title.value,
+    })
         .then(resp => {
-            console.log(resp.data)
+            router.push({
+                name: 'post',
+                params: { id: resp.data },
+            })
         })
         .catch(handleError)
         .finally(() => loading.value = false)
@@ -31,6 +39,7 @@ function createPost(): void {
                     placeholder="Enter the title"
                     :length="190"
                     id="title"
+                    @changed="(value: string) => (title = value)"
                 >
                 </form-input>
 
