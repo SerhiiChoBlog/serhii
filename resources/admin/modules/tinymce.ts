@@ -1,5 +1,8 @@
+export function getEditorContent(): string {
+    return tinymce.activeEditor.getContent()
+}
+
 export function init(): void {
-    // @ts-ignore
     tinymce.init({
         // paste_as_text: true,
         //skin: "oxide-dark",

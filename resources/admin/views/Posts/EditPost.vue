@@ -8,8 +8,9 @@ import { init } from '../../modules/tinymce'
 import MainButton from '../../components/Buttons/MainButton.vue'
 import FormInput from '../../components/Form/FormInput.vue'
 import FormTextarea from '../../components/Form/FormTextarea.vue'
-import Spinner from '../../components/Spinner.vue'
 import Tag from '../../components/Tag.vue'
+import { EditPostFormElements } from '../../../types/types'
+import SavePost from '../../modules/SavePost'
 
 onMounted(() => {
     fetchPost()
@@ -32,8 +33,26 @@ function fetchPost(): void {
         .finally(() => loading.value = false)
 }
 
-function savePost(): void {
-    //
+function savePost(e: SubmitEvent): void {
+    if (!post.value)
+        return
+
+    loading.value = true
+
+    const form = e.target as HTMLFormElement
+    const elements = form.elements as EditPostFormElements
+
+    new SavePost(elements, post.value.id)
+        .save()
+        .then(postUrl => console.log(postUrl))
+        .finally(() => loading.value = false)
+}
+
+function deleteTag(id: number): void {
+    if (!post.value)
+        return
+
+    post.value.tags = post.value.tags.filter(tag => tag.id !== id)
 }
 </script>
 
@@ -54,6 +73,7 @@ function savePost(): void {
                                     type="text"
                                     id="title"
                                     placeholder="Enter the title"
+                                    name="title"
                                     :length="190"
                                     :value="post.title"
                                 >
@@ -65,6 +85,7 @@ function savePost(): void {
                                 <form-input
                                     type="text"
                                     id="post-tags"
+                                    name="post-tags"
                                     placeholder="Choose tags"
                                 >
                                     Tags
@@ -75,6 +96,7 @@ function savePost(): void {
                                             v-for="tag in post.tags"
                                             :key="tag.id"
                                             :tag="tag"
+                                            @deleteTag="deleteTag"
                                         />
                                     </div>
                                 </form-input>
@@ -89,6 +111,7 @@ function savePost(): void {
                                     classes="min-h-[100px]"
                                     :value="post.intro"
                                     :length="190"
+                                    name="intro"
                                 />
                             </div>
                         </div>
@@ -126,7 +149,8 @@ function savePost(): void {
                     <div>
                         <div class="flex flex-col justify-center fixed right-[20px] top-8 z-[9999] space-y-2">
                             <main-button class="bg-green-500 hover:bg-green-600">
-                                <i class="fas fa-save mr-2"></i>
+                                <i v-if="loading" class="fas fa-spinner animate-spin mr-2"></i>
+                                <i v-else class="fas fa-save mr-2"></i>
                                 Save
                             </main-button>
 
@@ -231,7 +255,5 @@ function savePost(): void {
                 </form>
             </div>
         </div>
-
-        <spinner v-else />
     </div>
 </template>
