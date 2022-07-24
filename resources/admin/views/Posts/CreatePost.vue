@@ -18,7 +18,7 @@ function createPost(): void {
     })
         .then(resp => {
             router.push({
-                name: 'post',
+                name: 'edit-post',
                 params: { id: resp.data },
             })
         })
