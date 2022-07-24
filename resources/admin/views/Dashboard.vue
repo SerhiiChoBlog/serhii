@@ -11,7 +11,7 @@ const loading = ref(true)
 onMounted(() => fetchSections())
 
 function fetchSections(): void {
-    axios.get<Section[]>('/ajax/dashboard/sections')
+    axios.get<Section[]>('/admin/ajax/dashboard/sections')
         .then(resp => sections.value = resp.data)
         .catch(err => console.error(err))
         .finally(() => loading.value = false)

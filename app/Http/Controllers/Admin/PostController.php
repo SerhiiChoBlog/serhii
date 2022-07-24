@@ -12,6 +12,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -21,16 +22,17 @@ class PostController extends Controller
 {
     use SaveImage;
 
-    public function index(): View
+    /**
+     * @return Collection<int, Post>
+     */
+    public function index(): Collection
     {
-        $posts = Post::query()
+        return Post::query()
             ->with(['tags', 'images'])
             ->withCount('pageViews')
             ->withCount('socialShares')
             ->latest()
             ->get();
-
-        return view('admin.posts.index', compact('posts'));
     }
 
     public function create(): View
