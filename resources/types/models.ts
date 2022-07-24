@@ -20,6 +20,7 @@ export type Post = {
     // pageViews: Collection
     // tags: Collection
     // social: array<int, array<int, string>> | null
+    social_shares_count: number | null
     page_views_count: number | null
     read_time: number
     pretty_created_at: string

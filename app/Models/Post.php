@@ -26,6 +26,7 @@ use Illuminate\Support\Collection;
  * @property Collection $pageViews
  * @property Collection $tags
  * @property int|null $page_views_count
+ * @property int|null $social_shares_count
  * @property int $read_time
  * @property array<int, array<int, string>>|null $social
  * @property string $pretty_created_at
