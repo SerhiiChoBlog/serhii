@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Post } from '../../../types/models'
+import type { Post, Tag } from '../../../types/models'
 import axios from 'axios'
 import handleError from '../../modules/handleError'
 import { onMounted, ref } from 'vue'
@@ -8,21 +8,21 @@ import { init } from '../../modules/tinymce'
 import MainButton from '../../components/Buttons/MainButton.vue'
 import FormInput from '../../components/Form/FormInput.vue'
 import FormTextarea from '../../components/Form/FormTextarea.vue'
-import Tag from '../../components/Tag.vue'
+import TagItem from '../../components/TagItem.vue'
 import { EditPostFormElements } from '../../../types/types'
 import SavePost from '../../modules/SavePost'
+import TagSuggestions from './TagSuggestions.vue'
 
 onMounted(() => {
     fetchPost()
-
-    setTimeout(() => {
-        init()
-    }, 200)
+    setTimeout(() => init(), 200)
 })
 
 const route = useRoute()
 const loading = ref(true)
 const post = ref<Post | null>(null)
+const tagInputValue = ref<string>('')
+const form = ref<HTMLFormElement | null>(null)
 
 function fetchPost(): void {
     loading.value = true
@@ -33,13 +33,12 @@ function fetchPost(): void {
         .finally(() => loading.value = false)
 }
 
-function savePost(e: SubmitEvent): void {
+function savePost(form: HTMLFormElement): void {
     if (!post.value)
         return
 
     loading.value = true
 
-    const form = e.target as HTMLFormElement
     const elements = form.elements as EditPostFormElements
 
     new SavePost(elements, post.value.id)
@@ -53,6 +52,17 @@ function deleteTag(id: number): void {
         return
 
     post.value.tags = post.value.tags.filter(tag => tag.id !== id)
+
+    setTimeout(() => form.value ? savePost(form.value) : null, 200)
+}
+
+function addTag(tag: Tag): void {
+    if (!post.value || !post.value.tags)
+        return
+
+    post.value.tags.push(tag)
+
+    setTimeout(() => form.value ? savePost(form.value) : null, 200)
 }
 </script>
 
@@ -63,8 +73,9 @@ function deleteTag(id: number): void {
 
             <div class="container">
                 <form
-                    @submit.prevent="savePost"
+                    @submit.prevent="savePost(form)"
                     enctype="multipart/form-data"
+                    ref="form"
                 >
                     <div class="flex flex-col lg:flex-row gap-6 mt-10">
                         <div class="flex-1">
@@ -87,11 +98,12 @@ function deleteTag(id: number): void {
                                     id="post-tags"
                                     name="post-tags"
                                     placeholder="Choose tags"
+                                    @changed="(val: string) => tagInputValue = val"
                                 >
                                     Tags
 
                                     <div class="ml-1 inline-block space-x-1">
-                                        <tag
+                                        <tag-item
                                             v-if="post.tags"
                                             v-for="tag in post.tags"
                                             :key="tag.id"
@@ -101,7 +113,7 @@ function deleteTag(id: number): void {
                                     </div>
                                 </form-input>
 
-                                <ul class="bg-white shadow-md mt-2 rounded-lg overflow-hidden hidden"></ul>
+                                <tag-suggestions @addTag="addTag" :value="tagInputValue" />
                             </div>
 
                             <div class="mt-5">

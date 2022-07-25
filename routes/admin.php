@@ -19,7 +19,7 @@ Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
     // Route::resource('hits', HitController::class)->only(['index']);
 });
 
-Route::view('{any}', 'layouts.admin')
+Route::view('{any?}', 'layouts.admin')
     ->middleware('auth')
     ->name('admin.dashboard')
     ->where('any', '.*');

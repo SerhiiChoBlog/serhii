@@ -36,6 +36,7 @@ const inputValue = ref<string>(value || '')
                 v-model="inputValue"
                 :name="name"
                 :id="id"
+                autocomplete="off"
                 @keyup="emit('changed', inputValue)"
             />
 
