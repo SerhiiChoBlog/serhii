@@ -21,6 +21,9 @@ watch(props, () => {
 })
 
 function fetchTags(input: string): void {
+    if (input === '')
+        return
+
     axios.post<Tag[]>(`/api/tags/search/${input}`)
         .then(resp => suggestions.value = resp.data)
         .catch(handleError)
