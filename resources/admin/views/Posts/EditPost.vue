@@ -61,6 +61,7 @@ function addTag(tag: Tag): void {
         return
 
     post.value.tags.push(tag)
+    tagInputValue.value = ''
 
     setTimeout(() => form.value ? savePost(form.value) : null, 200)
 }
