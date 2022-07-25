@@ -20357,6 +20357,8 @@ var SavePost_1 = __importDefault(__webpack_require__(/*! ../../modules/SavePost 
 
 var TagSuggestions_vue_1 = __importDefault(__webpack_require__(/*! ./TagSuggestions.vue */ "./resources/admin/views/Posts/TagSuggestions.vue"));
 
+var PostImage_vue_1 = __importDefault(__webpack_require__(/*! ./PostImage.vue */ "./resources/admin/views/Posts/PostImage.vue"));
+
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'EditPost',
   setup: function setup(__props, _a) {
@@ -20427,7 +20429,72 @@ exports["default"] = (0, vue_1.defineComponent)({
       FormInput: FormInput_vue_1["default"],
       FormTextarea: FormTextarea_vue_1["default"],
       TagItem: TagItem_vue_1["default"],
-      TagSuggestions: TagSuggestions_vue_1["default"]
+      TagSuggestions: TagSuggestions_vue_1["default"],
+      PostImage: PostImage_vue_1["default"]
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/views/Posts/PostImage.vue?vue&type=script&setup=true&lang=ts":
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/views/Posts/PostImage.vue?vue&type=script&setup=true&lang=ts ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+exports["default"] = (0, vue_1.defineComponent)({
+  name: 'PostImage',
+  props: {
+    post: {
+      type: null,
+      required: true
+    }
+  },
+  setup: function setup(__props, _a) {
+    var expose = _a.expose;
+    expose();
+    var post = __props.post;
+    var defaultImagePath = '/storage/posts/placeholder.jpg';
+    var imageSrc = (0, vue_2.ref)(post.image_lg ? "/".concat(post.image_lg) : defaultImagePath);
+
+    function updateImagePreview(e) {
+      var fileReader = new FileReader();
+      var src = e.target;
+
+      if (src.files && src.files.length !== 0) {
+        fileReader.readAsDataURL(src.files[0]);
+
+        fileReader.onload = function () {
+          imageSrc.value = this.result;
+        };
+
+        return;
+      }
+
+      imageSrc.value = defaultImagePath;
+    }
+
+    var __returned__ = {
+      defaultImagePath: defaultImagePath,
+      imageSrc: imageSrc,
+      updateImagePreview: updateImagePreview
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -21147,98 +21214,79 @@ var _hoisted_12 = {
   "class": "flex-1"
 };
 var _hoisted_13 = {
-  "class": "relative"
-};
-var _hoisted_14 = ["src"];
-
-var _hoisted_15 = (0, vue_1.createElementVNode)("label", {
-  "for": "post-image-input",
-  "class": "opacity-0 flex items-center hover:opacity-100 transition-opacity border-[6px] border-dashed text-center rounded-lg cursor-pointer border-gray-300 absolute right-6 top-6 left-6 bottom-6"
-}, [(0, vue_1.createElementVNode)("b", {
-  "class": "text-gray-600 px-4 py-2 rounded-xl bg-gray-300 text-3xl drop-shadow-sm mx-auto shadow-lg opacity-90"
-}, "Choose image")], -1);
-
-var _hoisted_16 = (0, vue_1.createElementVNode)("input", {
-  type: "file",
-  id: "post-image-input",
-  name: "image",
-  "class": "hidden"
-}, null, -1);
-
-var _hoisted_17 = {
   "class": "mt-5"
 };
-var _hoisted_18 = {
+var _hoisted_14 = {
   id: "content",
   name: "content",
   "aria-hidden": "true",
   "class": "hidden"
 };
-var _hoisted_19 = {
+var _hoisted_15 = {
   "class": "flex flex-col justify-center fixed right-[20px] top-8 z-[9999] space-y-2"
 };
-var _hoisted_20 = {
+var _hoisted_16 = {
   key: 0,
   "class": "fas fa-spinner animate-spin mr-2"
 };
-var _hoisted_21 = {
+var _hoisted_17 = {
   key: 1,
   "class": "fas fa-save mr-2"
 };
 
-var _hoisted_22 = (0, vue_1.createTextVNode)(" Save ");
+var _hoisted_18 = (0, vue_1.createTextVNode)(" Save ");
 
-var _hoisted_23 = (0, vue_1.createElementVNode)("i", {
+var _hoisted_19 = (0, vue_1.createElementVNode)("i", {
   "class": "fas fa-eye mr-2"
 }, null, -1);
 
-var _hoisted_24 = (0, vue_1.createTextVNode)(" Preview ");
+var _hoisted_20 = (0, vue_1.createTextVNode)(" Preview ");
 
-var _hoisted_25 = {
+var _hoisted_21 = {
   "class": "mt-7"
 };
 
-var _hoisted_26 = (0, vue_1.createElementVNode)("i", {
+var _hoisted_22 = (0, vue_1.createElementVNode)("i", {
   "class": "fas fa-trash mr-2"
 }, null, -1);
 
-var _hoisted_27 = (0, vue_1.createTextVNode)(" Delete ");
+var _hoisted_23 = (0, vue_1.createTextVNode)(" Delete ");
 
-var _hoisted_28 = {
+var _hoisted_24 = {
   "class": "checkbox"
 };
-var _hoisted_29 = ["checked"];
+var _hoisted_25 = ["checked"];
 
-var _hoisted_30 = (0, vue_1.createElementVNode)("span", null, "publish this post", -1);
+var _hoisted_26 = (0, vue_1.createElementVNode)("span", null, "publish this post", -1);
 
-var _hoisted_31 = {
+var _hoisted_27 = {
   "class": "mt-6 pt-4"
 };
 
-var _hoisted_32 = (0, vue_1.createElementVNode)("h3", {
+var _hoisted_28 = (0, vue_1.createElementVNode)("h3", {
   "class": "text-center text-2xl mb-10"
 }, " Attached images for this post ", -1);
 
-var _hoisted_33 = {
+var _hoisted_29 = {
   "class": "overflow-x-auto shadow-md rounded-lg mx-auto mt-7"
 };
-var _hoisted_34 = {
+var _hoisted_30 = {
   "class": "table-auto w-full"
 };
-var _hoisted_35 = {
+var _hoisted_31 = {
   "class": "bg-gray-500 text-white text-left"
 };
 
-var _hoisted_36 = (0, vue_1.createElementVNode)("tbody", null, [(0, vue_1.createCommentVNode)("                        @foreach ($post->images as $image)"), (0, vue_1.createCommentVNode)("                        <tr class=\"border-b odd:bg-gray-50 transition-colors hover:bg-gray-100\">"), (0, vue_1.createCommentVNode)("                            <td class=\"px-3 py-1\">"), (0, vue_1.createCommentVNode)("                                <a href=\"{{ $image->uri }}\" target=\"_blank\">"), (0, vue_1.createCommentVNode)("                                    <img data-src=\"{{ asset($image->uri) }}\""), (0, vue_1.createCommentVNode)("                                         alt=\"Post image\""), (0, vue_1.createCommentVNode)("                                         width=\"100\""), (0, vue_1.createCommentVNode)("                                         class=\"rounded-md shadow-sm\""), (0, vue_1.createCommentVNode)("                                    />"), (0, vue_1.createCommentVNode)("                                </a>"), (0, vue_1.createCommentVNode)("                            </td>"), (0, vue_1.createCommentVNode)("                            <td class=\"px-3 py-1\">"), (0, vue_1.createCommentVNode)("                                <input type=\"text\""), (0, vue_1.createCommentVNode)("                                   value=\"{{ $image->uri }}\""), (0, vue_1.createCommentVNode)("                                   class=\"bg-gray-200 rounded-md p-2 w-full\""), (0, vue_1.createCommentVNode)("                                   disabled"), (0, vue_1.createCommentVNode)("                                />"), (0, vue_1.createCommentVNode)("                            </td>"), (0, vue_1.createCommentVNode)("                            <td class=\"px-3 py-1 text-right\">"), (0, vue_1.createCommentVNode)("                                <form action=\"route('admin.post-content-images.delete', $image)\""), (0, vue_1.createCommentVNode)("                                    method=\"post\""), (0, vue_1.createCommentVNode)("                                    onsubmit=\"return confirm('Sure you want to delete this content image?')\""), (0, vue_1.createCommentVNode)("                                >"), (0, vue_1.createCommentVNode)("                                    <main-button class=\"bg-red-500 hover:bg-red-600\">"), (0, vue_1.createCommentVNode)("                                        <i class=\"fas fa-trash mr-2\"></i> Delete"), (0, vue_1.createCommentVNode)("                                    </main-button>"), (0, vue_1.createCommentVNode)("                                </form>"), (0, vue_1.createCommentVNode)("                            </td>"), (0, vue_1.createCommentVNode)("                        </tr>"), (0, vue_1.createCommentVNode)("                        @endforeach")], -1);
+var _hoisted_32 = (0, vue_1.createElementVNode)("tbody", null, [(0, vue_1.createCommentVNode)("                        @foreach ($post->images as $image)"), (0, vue_1.createCommentVNode)("                        <tr class=\"border-b odd:bg-gray-50 transition-colors hover:bg-gray-100\">"), (0, vue_1.createCommentVNode)("                            <td class=\"px-3 py-1\">"), (0, vue_1.createCommentVNode)("                                <a href=\"{{ $image->uri }}\" target=\"_blank\">"), (0, vue_1.createCommentVNode)("                                    <img data-src=\"{{ asset($image->uri) }}\""), (0, vue_1.createCommentVNode)("                                         alt=\"Post image\""), (0, vue_1.createCommentVNode)("                                         width=\"100\""), (0, vue_1.createCommentVNode)("                                         class=\"rounded-md shadow-sm\""), (0, vue_1.createCommentVNode)("                                    />"), (0, vue_1.createCommentVNode)("                                </a>"), (0, vue_1.createCommentVNode)("                            </td>"), (0, vue_1.createCommentVNode)("                            <td class=\"px-3 py-1\">"), (0, vue_1.createCommentVNode)("                                <input type=\"text\""), (0, vue_1.createCommentVNode)("                                   value=\"{{ $image->uri }}\""), (0, vue_1.createCommentVNode)("                                   class=\"bg-gray-200 rounded-md p-2 w-full\""), (0, vue_1.createCommentVNode)("                                   disabled"), (0, vue_1.createCommentVNode)("                                />"), (0, vue_1.createCommentVNode)("                            </td>"), (0, vue_1.createCommentVNode)("                            <td class=\"px-3 py-1 text-right\">"), (0, vue_1.createCommentVNode)("                                <form action=\"route('admin.post-content-images.delete', $image)\""), (0, vue_1.createCommentVNode)("                                    method=\"post\""), (0, vue_1.createCommentVNode)("                                    onsubmit=\"return confirm('Sure you want to delete this content image?')\""), (0, vue_1.createCommentVNode)("                                >"), (0, vue_1.createCommentVNode)("                                    <main-button class=\"bg-red-500 hover:bg-red-600\">"), (0, vue_1.createCommentVNode)("                                        <i class=\"fas fa-trash mr-2\"></i> Delete"), (0, vue_1.createCommentVNode)("                                    </main-button>"), (0, vue_1.createCommentVNode)("                                </form>"), (0, vue_1.createCommentVNode)("                            </td>"), (0, vue_1.createCommentVNode)("                        </tr>"), (0, vue_1.createCommentVNode)("                        @endforeach")], -1);
 
-var _hoisted_37 = {
+var _hoisted_33 = {
   action: "route('admin.post-content-images.store', $post)",
   method: "post",
   enctype: "multipart/form-data",
   "class": "mt-6"
 };
 
-var _hoisted_38 = (0, vue_1.createElementVNode)("div", {
+var _hoisted_34 = (0, vue_1.createElementVNode)("div", {
   "class": "inline-block mr-2"
 }, [(0, vue_1.createElementVNode)("label", {
   "class": "border-4 text-gray-400 hover:text-gray-500 cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-300 transition-colors"
@@ -21249,11 +21297,11 @@ var _hoisted_38 = (0, vue_1.createElementVNode)("div", {
   required: ""
 }), (0, vue_1.createElementVNode)("span", null, "Choose an image...")])], -1);
 
-var _hoisted_39 = (0, vue_1.createElementVNode)("i", {
+var _hoisted_35 = (0, vue_1.createElementVNode)("i", {
   "class": "fas fa-upload mr-2"
 }, null, -1);
 
-var _hoisted_40 = (0, vue_1.createTextVNode)(" Upload ");
+var _hoisted_36 = (0, vue_1.createTextVNode)(" Upload ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [$setup.post ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_2, [(0, vue_1.createElementVNode)("h1", _hoisted_3, (0, vue_1.toDisplayString)($setup.post.title), 1), (0, vue_1.createElementVNode)("div", _hoisted_4, [(0, vue_1.createElementVNode)("form", {
@@ -21305,51 +21353,94 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     value: $setup.post.intro,
     length: 190,
     name: "intro"
-  }, null, 8, ["value"])])]), (0, vue_1.createElementVNode)("div", _hoisted_12, [(0, vue_1.createElementVNode)("div", _hoisted_13, [(0, vue_1.createElementVNode)("img", {
-    src: "/".concat($setup.post.image_sm || 'storage/posts/placeholder.jpg'),
-    alt: "image",
-    id: "post-image",
-    "class": "rounded-md shadow-lg w-full"
-  }, null, 8, _hoisted_14), _hoisted_15, _hoisted_16])])]), (0, vue_1.createElementVNode)("div", _hoisted_17, [(0, vue_1.createElementVNode)("textarea", _hoisted_18, (0, vue_1.toDisplayString)($setup.post.content), 1)]), (0, vue_1.createElementVNode)("div", null, [(0, vue_1.createElementVNode)("div", _hoisted_19, [(0, vue_1.createVNode)($setup["MainButton"], {
+  }, null, 8, ["value"])])]), (0, vue_1.createElementVNode)("div", _hoisted_12, [(0, vue_1.createVNode)($setup["PostImage"], {
+    post: $setup.post
+  }, null, 8, ["post"])])]), (0, vue_1.createElementVNode)("div", _hoisted_13, [(0, vue_1.createElementVNode)("textarea", _hoisted_14, (0, vue_1.toDisplayString)($setup.post.content), 1)]), (0, vue_1.createElementVNode)("div", null, [(0, vue_1.createElementVNode)("div", _hoisted_15, [(0, vue_1.createVNode)($setup["MainButton"], {
     "class": "bg-green-500 hover:bg-green-600"
   }, {
     "default": (0, vue_1.withCtx)(function () {
-      return [$setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("i", _hoisted_20)) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("i", _hoisted_21)), _hoisted_22];
+      return [$setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("i", _hoisted_16)) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("i", _hoisted_17)), _hoisted_18];
     }),
     _: 1
   }), (0, vue_1.createVNode)($setup["MainButton"], {
     href: "/posts/".concat($setup.post.slug)
   }, {
     "default": (0, vue_1.withCtx)(function () {
-      return [_hoisted_23, _hoisted_24];
+      return [_hoisted_19, _hoisted_20];
     }),
     _: 1
-  }, 8, ["href"])]), (0, vue_1.createElementVNode)("div", _hoisted_25, [(0, vue_1.createVNode)($setup["MainButton"], {
+  }, 8, ["href"])]), (0, vue_1.createElementVNode)("div", _hoisted_21, [(0, vue_1.createVNode)($setup["MainButton"], {
     "class": "bg-red-500 hover:bg-red-600",
     type: "button"
   }, {
     "default": (0, vue_1.withCtx)(function () {
-      return [_hoisted_26, _hoisted_27];
+      return [_hoisted_22, _hoisted_23];
     }),
     _: 1
-  }), (0, vue_1.createElementVNode)("label", _hoisted_28, [(0, vue_1.createElementVNode)("input", {
+  }), (0, vue_1.createElementVNode)("label", _hoisted_24, [(0, vue_1.createElementVNode)("input", {
     type: "checkbox",
     name: "is-published",
     "class": "ml-3 mr-1",
     checked: $setup.post.is_published
-  }, null, 8, _hoisted_29), _hoisted_30])])])], 544)]), (0, vue_1.createElementVNode)("div", _hoisted_31, [_hoisted_32, (0, vue_1.createElementVNode)("div", _hoisted_33, [(0, vue_1.createElementVNode)("table", _hoisted_34, [(0, vue_1.createElementVNode)("thead", _hoisted_35, [(0, vue_1.createElementVNode)("tr", null, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(['Image', 'URI', 'Delete'], function (title) {
+  }, null, 8, _hoisted_25), _hoisted_26])])])], 544)]), (0, vue_1.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0, vue_1.createElementVNode)("div", _hoisted_29, [(0, vue_1.createElementVNode)("table", _hoisted_30, [(0, vue_1.createElementVNode)("thead", _hoisted_31, [(0, vue_1.createElementVNode)("tr", null, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(['Image', 'URI', 'Delete'], function (title) {
     return (0, vue_1.createElementVNode)("th", {
       key: title,
       "class": "p-3 font-light"
     }, (0, vue_1.toDisplayString)(title), 1);
-  }), 64))])]), _hoisted_36])]), (0, vue_1.createElementVNode)("form", _hoisted_37, [_hoisted_38, (0, vue_1.createVNode)($setup["MainButton"], {
+  }), 64))])]), _hoisted_32])]), (0, vue_1.createElementVNode)("form", _hoisted_33, [_hoisted_34, (0, vue_1.createVNode)($setup["MainButton"], {
     "class": "ml-3"
   }, {
     "default": (0, vue_1.withCtx)(function () {
-      return [_hoisted_39, _hoisted_40];
+      return [_hoisted_35, _hoisted_36];
     }),
     _: 1
   })])])])) : (0, vue_1.createCommentVNode)("v-if", true)]);
+}
+
+exports.render = render;
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/views/Posts/PostImage.vue?vue&type=template&id=18f86536&ts=true":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/views/Posts/PostImage.vue?vue&type=template&id=18f86536&ts=true ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.render = void 0;
+
+var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "relative"
+};
+var _hoisted_2 = ["src"];
+
+var _hoisted_3 = (0, vue_1.createElementVNode)("label", {
+  "for": "post-image-input",
+  "class": "opacity-0 flex items-center hover:opacity-100 transition-opacity border-[6px] border-dashed text-center rounded-lg cursor-pointer border-gray-300 absolute right-6 top-6 left-6 bottom-6"
+}, [(0, vue_1.createElementVNode)("b", {
+  "class": "text-gray-600 px-4 py-2 rounded-xl bg-gray-300 text-3xl drop-shadow-sm mx-auto shadow-lg opacity-90"
+}, "Choose image")], -1);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createElementVNode)("img", {
+    src: $setup.imageSrc,
+    alt: "image",
+    "class": "rounded-md shadow-lg w-full"
+  }, null, 8, _hoisted_2), _hoisted_3, (0, vue_1.createElementVNode)("input", {
+    onChange: $setup.updateImagePreview,
+    type: "file",
+    id: "post-image-input",
+    name: "image",
+    "class": "hidden"
+  }, null, 32)]);
 }
 
 exports.render = render;
@@ -21831,6 +21922,36 @@ exports["default"] = default_1;
 
 /***/ }),
 
+/***/ "./resources/admin/modules/dispatchEvent.ts":
+/*!**************************************************!*\
+  !*** ./resources/admin/modules/dispatchEvent.ts ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+exports["default"] = function (name, params, timeout) {
+  var event = new CustomEvent(name, {
+    detail: params
+  });
+
+  if (timeout && timeout > 0) {
+    setTimeout(function () {
+      return window.dispatchEvent(event);
+    }, timeout);
+    return;
+  }
+
+  window.dispatchEvent(event);
+};
+
+/***/ }),
+
 /***/ "./resources/admin/modules/handleError.ts":
 /*!************************************************!*\
   !*** ./resources/admin/modules/handleError.ts ***!
@@ -21906,15 +22027,23 @@ exports["default"] = function (params) {
 /*!********************************************!*\
   !*** ./resources/admin/modules/tinymce.ts ***!
   \********************************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.init = exports.getEditorContent = void 0;
+
+var dispatchEvent_1 = __importDefault(__webpack_require__(/*! ./dispatchEvent */ "./resources/admin/modules/dispatchEvent.ts"));
 
 function getEditorContent() {
   return tinymce.activeEditor.getContent();
@@ -22001,12 +22130,12 @@ function init() {
     }],
     setup: function setup(editor) {
       editor.on('blur', function () {
-        window.dispatchEvent(new CustomEvent('savePost'));
+        (0, dispatchEvent_1["default"])('savePost');
       });
       editor.on('keydown', function (e) {
         if ((e.ctrlKey || e.metaKey) && e.code === 'KeyS') {
           e.preventDefault();
-          window.dispatchEvent(new CustomEvent('savePost'));
+          (0, dispatchEvent_1["default"])('savePost');
         }
       });
     }
@@ -27231,6 +27360,35 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/admin/views/Posts/PostImage.vue":
+/*!***************************************************!*\
+  !*** ./resources/admin/views/Posts/PostImage.vue ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": () => (/* reexport safe */ _PostImage_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PostImage_vue_vue_type_template_id_18f86536_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostImage.vue?vue&type=template&id=18f86536&ts=true */ "./resources/admin/views/Posts/PostImage.vue?vue&type=template&id=18f86536&ts=true");
+/* harmony import */ var _PostImage_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostImage.vue?vue&type=script&setup=true&lang=ts */ "./resources/admin/views/Posts/PostImage.vue?vue&type=script&setup=true&lang=ts");
+/* harmony import */ var _Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PostImage_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PostImage_vue_vue_type_template_id_18f86536_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/admin/views/Posts/PostImage.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/admin/views/Posts/PostItem.vue":
 /*!**************************************************!*\
   !*** ./resources/admin/views/Posts/PostItem.vue ***!
@@ -27532,6 +27690,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/admin/views/Posts/PostImage.vue?vue&type=script&setup=true&lang=ts":
+/*!**************************************************************************************!*\
+  !*** ./resources/admin/views/Posts/PostImage.vue?vue&type=script&setup=true&lang=ts ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostImage_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule),
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostImage_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostImage_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PostImage.vue?vue&type=script&setup=true&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/views/Posts/PostImage.vue?vue&type=script&setup=true&lang=ts");
+ 
+
+/***/ }),
+
 /***/ "./resources/admin/views/Posts/PostItem.vue?vue&type=script&setup=true&lang=ts":
 /*!*************************************************************************************!*\
   !*** ./resources/admin/views/Posts/PostItem.vue?vue&type=script&setup=true&lang=ts ***!
@@ -27775,6 +27950,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditPost_vue_vue_type_template_id_c0339902_ts_true__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_EditPost_vue_vue_type_template_id_c0339902_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./EditPost.vue?vue&type=template&id=c0339902&ts=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/views/Posts/EditPost.vue?vue&type=template&id=c0339902&ts=true");
+
+
+/***/ }),
+
+/***/ "./resources/admin/views/Posts/PostImage.vue?vue&type=template&id=18f86536&ts=true":
+/*!*****************************************************************************************!*\
+  !*** ./resources/admin/views/Posts/PostImage.vue?vue&type=template&id=18f86536&ts=true ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostImage_vue_vue_type_template_id_18f86536_ts_true__WEBPACK_IMPORTED_MODULE_0__.__esModule),
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostImage_vue_vue_type_template_id_18f86536_ts_true__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PostImage_vue_vue_type_template_id_18f86536_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PostImage.vue?vue&type=template&id=18f86536&ts=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/admin/views/Posts/PostImage.vue?vue&type=template&id=18f86536&ts=true");
 
 
 /***/ }),

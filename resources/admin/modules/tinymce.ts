@@ -1,3 +1,5 @@
+import dispatchEvent from './dispatchEvent'
+
 export function getEditorContent(): string {
     return tinymce.activeEditor.getContent()
 }
@@ -40,13 +42,13 @@ export function init(): void {
 
         setup: (editor) => {
             editor.on('blur', function () {
-                window.dispatchEvent(new CustomEvent('savePost'))
+                dispatchEvent('savePost')
             })
 
             editor.on('keydown', function (e) {
                 if ((e.ctrlKey || e.metaKey) && e.code === 'KeyS') {
                     e.preventDefault()
-                    window.dispatchEvent(new CustomEvent('savePost'))
+                    dispatchEvent('savePost')
                 }
             })
         }

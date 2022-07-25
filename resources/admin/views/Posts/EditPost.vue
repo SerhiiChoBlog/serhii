@@ -12,6 +12,7 @@ import TagItem from '../../components/TagItem.vue'
 import { EditPostFormElements } from '../../../types/types'
 import SavePost from '../../modules/SavePost'
 import TagSuggestions from './TagSuggestions.vue'
+import PostImage from './PostImage.vue'
 
 onMounted(() => {
     fetchPost()
@@ -130,23 +131,7 @@ function addTag(tag: Tag): void {
                         </div>
 
                         <div class="flex-1">
-                            <div class="relative">
-                                <img
-                                    :src="`/${post.image_sm || 'storage/posts/placeholder.jpg'}`"
-                                    alt="image"
-                                    id="post-image"
-                                    class="rounded-md shadow-lg w-full"
-                                />
-
-                                <label
-                                    for="post-image-input"
-                                    class="opacity-0 flex items-center hover:opacity-100 transition-opacity border-[6px] border-dashed text-center rounded-lg cursor-pointer border-gray-300 absolute right-6 top-6 left-6 bottom-6"
-                                >
-                                    <b class="text-gray-600 px-4 py-2 rounded-xl bg-gray-300 text-3xl drop-shadow-sm mx-auto shadow-lg opacity-90">Choose image</b>
-                                </label>
-
-                                <input type="file" id="post-image-input" name="image" class="hidden">
-                            </div>
+                            <post-image :post="post" />
                         </div>
                     </div>
 

@@ -18,7 +18,7 @@ trait SaveImage
 
         $path_sm = storage_path('app/public/posts/sm');
         $path_lg = storage_path('app/public/posts/lg');
-        $image_name = Str::slug($post_name) . '-' . time() .  '.' . $photo->getClientOriginalExtension();
+        $image_name = Str::slug($post_name) . '.' . $photo->getClientOriginalExtension();
 
         Image::make($photo)
             ->fit(550, 300, fn($constraint) => $constraint->upsize())
