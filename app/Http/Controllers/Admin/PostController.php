@@ -48,7 +48,7 @@ class PostController extends Controller
 
     public function edit(Post $post): Post
     {
-        $post->load('tags');
+        $post->load('tags', 'images');
 
         return $post;
     }
