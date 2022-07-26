@@ -20468,6 +20468,14 @@ var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 
 var MainButton_vue_1 = __importDefault(__webpack_require__(/*! ../../components/Buttons/MainButton.vue */ "./resources/admin/components/Buttons/MainButton.vue"));
 
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var handleError_1 = __importDefault(__webpack_require__(/*! ../../modules/handleError */ "./resources/admin/modules/handleError.ts"));
+
+var showToast_1 = __importDefault(__webpack_require__(/*! ../../modules/showToast */ "./resources/admin/modules/showToast.ts"));
+
+var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'PostContentImages',
   props: {
@@ -20476,11 +20484,40 @@ exports["default"] = (0, vue_1.defineComponent)({
       required: true
     }
   },
+  emits: ["uploaded"],
   setup: function setup(__props, _a) {
-    var expose = _a.expose;
+    var expose = _a.expose,
+        emit = _a.emit;
     expose();
     var post = __props.post;
+    var loading = (0, vue_2.ref)(false);
+
+    function submitImage(e) {
+      loading.value = true;
+      var form = e.target;
+      var formData = new FormData();
+      var files = form.elements['image'].files;
+      var params = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      if (files.length === 0) return;
+      formData.append('image', files[0]);
+      axios_1["default"].post("/admin/ajax/post-content-images/".concat(post.id), formData, params).then(function (resp) {
+        (0, showToast_1["default"])({
+          text: 'Image has been uploaded'
+        });
+        emit('uploaded');
+      })["catch"](handleError_1["default"])["finally"](function () {
+        return loading.value = false;
+      });
+    }
+
     var __returned__ = {
+      emit: emit,
+      loading: loading,
+      submitImage: submitImage,
       MainButton: MainButton_vue_1["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -21390,7 +21427,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "ml-3 mr-1",
     checked: $setup.post.is_published
   }, null, 8, _hoisted_25), _hoisted_26])])])], 544)]), (0, vue_1.createVNode)($setup["PostContentImages"], {
-    post: $setup.post
+    post: $setup.post,
+    onUploaded: $setup.fetchPost
   }, null, 8, ["post"])])) : (0, vue_1.createCommentVNode)("v-if", true)]);
 }
 
@@ -21455,29 +21493,22 @@ var _hoisted_13 = (0, vue_1.createElementVNode)("i", {
 
 var _hoisted_14 = (0, vue_1.createTextVNode)(" Delete ");
 
-var _hoisted_15 = {
-  action: "route('admin.post-content-images.store', $post)",
-  method: "post",
-  enctype: "multipart/form-data",
-  "class": "mt-6"
+var _hoisted_15 = ["onSubmit"];
+var _hoisted_16 = {
+  "class": "inline-block mr-2"
+};
+var _hoisted_17 = {
+  "class": "border-4 text-gray-400 hover:text-gray-500 cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-300 transition-colors"
 };
 
-var _hoisted_16 = (0, vue_1.createElementVNode)("div", {
-  "class": "inline-block mr-2"
-}, [(0, vue_1.createElementVNode)("label", {
-  "class": "border-4 text-gray-400 hover:text-gray-500 cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-300 transition-colors"
-}, [(0, vue_1.createElementVNode)("input", {
+var _hoisted_18 = (0, vue_1.createElementVNode)("input", {
   "class": "hidden",
   type: "file",
   name: "image",
   required: ""
-}), (0, vue_1.createElementVNode)("span", null, "Choose an image...")])], -1);
-
-var _hoisted_17 = (0, vue_1.createElementVNode)("i", {
-  "class": "fas fa-upload mr-2"
 }, null, -1);
 
-var _hoisted_18 = (0, vue_1.createTextVNode)(" Upload ");
+var _hoisted_19 = (0, vue_1.createTextVNode)(" Upload ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0, vue_1.createElementVNode)("div", _hoisted_3, [(0, vue_1.createElementVNode)("table", _hoisted_4, [(0, vue_1.createElementVNode)("thead", _hoisted_5, [(0, vue_1.createElementVNode)("tr", null, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(['Image', 'URI', 'Delete'], function (title) {
@@ -21512,14 +21543,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }),
       _: 1
     })])])]);
-  }), 128)) : (0, vue_1.createCommentVNode)("v-if", true)])])]), (0, vue_1.createElementVNode)("form", _hoisted_15, [_hoisted_16, (0, vue_1.createVNode)($setup["MainButton"], {
+  }), 128)) : (0, vue_1.createCommentVNode)("v-if", true)])])]), (0, vue_1.createElementVNode)("form", {
+    onSubmit: (0, vue_1.withModifiers)($setup.submitImage, ["prevent"]),
+    enctype: "multipart/form-data",
+    "class": "mt-6"
+  }, [(0, vue_1.createElementVNode)("div", _hoisted_16, [(0, vue_1.createElementVNode)("label", _hoisted_17, [_hoisted_18, (0, vue_1.createElementVNode)("span", null, (0, vue_1.toDisplayString)($setup.loading ? 'Uploading image...' : 'Choose an image...'), 1)])]), (0, vue_1.createVNode)($setup["MainButton"], {
     "class": "ml-3"
   }, {
     "default": (0, vue_1.withCtx)(function () {
-      return [_hoisted_17, _hoisted_18];
+      return [(0, vue_1.createElementVNode)("i", {
+        "class": (0, vue_1.normalizeClass)([$setup.loading ? 'fa-spinner animate-spin' : 'fa-upload', "fas mr-2"])
+      }, null, 2), _hoisted_19];
     }),
     _: 1
-  })])]);
+  })], 40, _hoisted_15)]);
 }
 
 exports.render = render;
