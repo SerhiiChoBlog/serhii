@@ -1,6 +1,14 @@
 import { UserSidebarLink } from '../../types/types'
+import dispatchEvent from '../modules/dispatchEvent'
+import appConfig from '../appConfig'
 
 const links: UserSidebarLink[] = [
+    {
+        href: '/',
+        routeName: null,
+        title: 'Site',
+        icon: 'fa-home',
+    },
     {
         routeName: 'dashboard',
         title: 'Dashboard',
@@ -41,11 +49,13 @@ const links: UserSidebarLink[] = [
     //     title: 'Hits',
     //     icon: 'fa-shoe-prints',
     // },
-    // {
-    //     routeName: 'logout',
-    //     title: 'Logout',
-    //     icon: 'fa-sign-out-alt',
-    // },
+    {
+        routeName: null,
+        href: 'javascript:',
+        title: 'Logout',
+        icon: 'fa-sign-out-alt',
+        action: () => dispatchEvent(appConfig.events.logout),
+    },
 ]
 
 export default links

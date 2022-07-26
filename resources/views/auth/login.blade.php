@@ -13,7 +13,7 @@
             type="password"
             class="px-8 py-3 rounded-full text-center"
             name="password"
-            placeholder="Welcome..."
+            placeholder="."
             required
         >
     </form>

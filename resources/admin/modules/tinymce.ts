@@ -1,4 +1,5 @@
 import dispatchEvent from './dispatchEvent'
+import appConfig from '../appConfig'
 
 export function getEditorContent(): string {
     return tinymce.activeEditor.getContent()
@@ -7,8 +8,8 @@ export function getEditorContent(): string {
 export function init(): void {
     tinymce.init({
         // paste_as_text: true,
-        //skin: "oxide-dark",
-        //content_css: "dark",
+        // skin: "oxide-dark",
+        // content_css: "dark",
         selector: '#content',
         plugins: 'codesample fullscreen code image link table lists paste',
         height: '800px',
@@ -42,13 +43,13 @@ export function init(): void {
 
         setup: (editor) => {
             editor.on('blur', function () {
-                dispatchEvent('savePost')
+                dispatchEvent(appConfig.events.savePost)
             })
 
             editor.on('keydown', function (e) {
                 if ((e.ctrlKey || e.metaKey) && e.code === 'KeyS') {
                     e.preventDefault()
-                    dispatchEvent('savePost')
+                    dispatchEvent(appConfig.events.savePost)
                 }
             })
         }
