@@ -49,7 +49,7 @@ function savePost(form: HTMLFormElement): void {
 }
 
 function deleteTag(id: number): void {
-    if (!post.value)
+    if (!post.value || !post.value.tags)
         return
 
     post.value.tags = post.value.tags.filter(tag => tag.id !== id)
@@ -197,39 +197,42 @@ function addTag(tag: Tag): void {
                         </tr>
                         </thead>
                         <tbody>
+                            <tr
+                                v-if="post.images"
+                                v-for="image in post.images"
+                                :key="image.id"
+                                class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100"
+                            >
+                                <td class="px-3 py-1">
+                                    <a :href="image.uri" target="_blank">
+                                        <img
+                                            :src="image.uri"
+                                            alt="Post image"
+                                            width="100"
+                                            class="rounded-md shadow-sm"
+                                        />
+                                    </a>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <input type="text"
+                                       :value="image.uri"
+                                       class="bg-gray-200 rounded-md p-2 w-full"
+                                       disabled
+                                    />
+                                </td>
+                                <td class="px-3 py-1 text-right">
+                                    <form action="route('admin.post-content-images.delete', $image)"
+                                        method="post"
+                                        onsubmit="return confirm('Sure you want to delete this content image?')"
+                                    >
 
-                        <!--                        @foreach ($post->images as $image)-->
-                        <!--                        <tr class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100">-->
-                        <!--                            <td class="px-3 py-1">-->
-                        <!--                                <a href="{{ $image->uri }}" target="_blank">-->
-                        <!--                                    <img data-src="{{ asset($image->uri) }}"-->
-                        <!--                                         alt="Post image"-->
-                        <!--                                         width="100"-->
-                        <!--                                         class="rounded-md shadow-sm"-->
-                        <!--                                    />-->
-                        <!--                                </a>-->
-                        <!--                            </td>-->
-                        <!--                            <td class="px-3 py-1">-->
-                        <!--                                <input type="text"-->
-                        <!--                                   value="{{ $image->uri }}"-->
-                        <!--                                   class="bg-gray-200 rounded-md p-2 w-full"-->
-                        <!--                                   disabled-->
-                        <!--                                />-->
-                        <!--                            </td>-->
-                        <!--                            <td class="px-3 py-1 text-right">-->
-                        <!--                                <form action="route('admin.post-content-images.delete', $image)"-->
-                        <!--                                    method="post"-->
-                        <!--                                    onsubmit="return confirm('Sure you want to delete this content image?')"-->
-                        <!--                                >-->
-
-                        <!--                                    <main-button class="bg-red-500 hover:bg-red-600">-->
-                        <!--                                        <i class="fas fa-trash mr-2"></i> Delete-->
-                        <!--                                    </main-button>-->
-                        <!--                                </form>-->
-                        <!--                            </td>-->
-                        <!--                        </tr>-->
-                        <!--                        @endforeach-->
-
+                                        <main-button class="bg-red-500 hover:bg-red-600">
+                                            <i class="fas fa-trash mr-2"></i>
+                                            Delete
+                                        </main-button>
+                                    </form>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

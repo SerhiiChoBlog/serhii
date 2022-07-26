@@ -6,6 +6,14 @@ export type Tag = {
     color: string
 }
 
+export type PostContentImage = {
+    id: number
+    post_id: number
+    uri: string
+    path: string
+    post: Post
+}
+
 export type Post = {
     id: number
     title: string
@@ -15,11 +23,11 @@ export type Post = {
     is_published: boolean
     image_sm: string
     image_lg: string
-    // images: Collection
-    // socialShares: Collection
-    // pageViews: Collection
-    tags: Tag[]
-    // social: array<int, array<int, string>> | null
+    images?: PostContentImage[]
+    // socialShares?: Collection
+    // pageViews?: Collection
+    // social?: array<int, array<int, string>> | null
+    tags?: Tag[]
     social_shares_count: number | null
     page_views_count: number | null
     read_time: number
