@@ -11,11 +11,11 @@ const links: UserSidebarLink[] = [
         title: 'Posts',
         icon: 'fa-newspaper',
     },
-    // {
-    //     routeName: 'tags',
-    //     title: 'Tags',
-    //     icon: 'fa-tags',
-    // },
+    {
+        routeName: 'tags',
+        title: 'Tags',
+        icon: 'fa-tags',
+    },
     // {
     //     routeName: 'page-views',
     //     title: 'Post views',
