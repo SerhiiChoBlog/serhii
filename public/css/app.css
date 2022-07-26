@@ -2630,6 +2630,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .\!bg-main-light {
   background-color: var(--color-main-light) !important;
 }
+.bg-green-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+}
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -3368,6 +3372,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .hover\:\!bg-main-hover:hover {
   background-color: var(--color-main-hover) !important;
+}
+
+.hover\:bg-green-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(21 128 61 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-opacity-50:hover {

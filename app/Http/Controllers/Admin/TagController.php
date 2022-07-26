@@ -24,7 +24,13 @@ class TagController extends Controller
 
     public function store(Request $request): void
     {
-        $request->validate(['name' => 'required']);
+        $request->validate([
+            'name' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'color' => 'required',
+        ]);
+
         Tag::query()->create($request->all());
     }
 
@@ -35,6 +41,13 @@ class TagController extends Controller
 
     public function update(Request $request, Tag $tag): void
     {
+        $request->validate([
+            'name' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'color' => 'required',
+        ]);
+
         $tag->update($request->all());
     }
 

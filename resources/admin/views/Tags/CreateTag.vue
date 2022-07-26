@@ -22,7 +22,7 @@ const form = reactive({
 function createPost(): void {
     loading.value = true
 
-    axios.post('', form)
+    axios.post('/admin/ajax/tags', form)
         .then(resp => {
             showToast({ text: `Tag "${form.name}" has been created` })
             router.push({ name: 'tags' })
@@ -40,26 +40,41 @@ function createPost(): void {
 
         <form v-else @submit="createPost" class="max-w-[1000px] mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <form-input v-model="form.title" id="title" type="text" placeholder="Enter the title">
+                <form-input
+                    @changed="title => form.title = title"
+                    id="title"
+                    type="text"
+                    placeholder="Enter the title"
+                >
                     Full title
                 </form-input>
 
-                <form-input v-model="form.name" id="name" type="text" placeholder="Enter the slug">
+                <form-input
+                    @changed="name => form.name = name"
+                    id="name"
+                    type="text"
+                    placeholder="Enter the slug"
+                >
                     Short name (slug)
                 </form-input>
 
-                <form-input v-model="form.color" id="color" type="color" classes="min-h-[50px]">
+                <form-input
+                    @changed="color => form.color = color"
+                    id="color"
+                    type="color"
+                    classes="min-h-[50px]"
+                >
                     Choose the color
                 </form-input>
             </div>
 
             <div class="mt-4">
                 <form-textarea
-                    v-model="form.description"
                     type="text"
                     placeholder="Enter the description"
                     :length="190"
                     id="description"
+                    @changed="desc => form.description = desc"
                 >
                     Enter the description
                 </form-textarea>

@@ -37,7 +37,7 @@ const inputValue = ref<string>(value || '')
                 :name="name"
                 :id="id"
                 autocomplete="off"
-                @keyup="emit('changed', inputValue)"
+                @input="emit('changed', inputValue)"
             />
 
             <letter-counter
