@@ -20628,25 +20628,48 @@ var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 
 var vue_3 = __webpack_require__(/*! @headlessui/vue */ "./node_modules/@headlessui/vue/dist/index.cjs");
 
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var handleError_1 = __importDefault(__webpack_require__(/*! ../modules/handleError */ "./resources/admin/modules/handleError.ts"));
+
 var PageTitle_vue_1 = __importDefault(__webpack_require__(/*! ../components/PageTitle.vue */ "./resources/admin/components/PageTitle.vue"));
+
+var Spinner_vue_1 = __importDefault(__webpack_require__(/*! ../components/Spinner.vue */ "./resources/admin/components/Spinner.vue"));
 
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'PostViews',
   setup: function setup(__props, _a) {
     var expose = _a.expose;
     expose();
+    var loading = (0, vue_2.ref)(true);
     var views = (0, vue_2.reactive)({
       unique: null,
       daily: null
     });
+    (0, vue_2.onMounted)(function () {
+      return fetchViews();
+    });
+
+    function fetchViews() {
+      axios_1["default"].get('/admin/ajax/page-views').then(function (resp) {
+        views.unique = resp.data.unique;
+        views.daily = resp.data.daily;
+      })["catch"](handleError_1["default"])["finally"](function () {
+        return loading.value = false;
+      });
+    }
+
     var __returned__ = {
+      loading: loading,
       views: views,
+      fetchViews: fetchViews,
       Tab: vue_3.Tab,
       TabGroup: vue_3.TabGroup,
       TabList: vue_3.TabList,
       TabPanel: vue_3.TabPanel,
       TabPanels: vue_3.TabPanels,
-      PageTitle: PageTitle_vue_1["default"]
+      PageTitle: PageTitle_vue_1["default"],
+      Spinner: Spinner_vue_1["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -22036,7 +22059,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_2];
     }),
     _: 1
-  }), (0, vue_1.createVNode)($setup["TabGroup"], null, {
+  }), $setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Spinner"], {
+    key: 0
+  })) : ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["TabGroup"], {
+    key: 1
+  }, {
     "default": (0, vue_1.withCtx)(function () {
       return [(0, vue_1.createVNode)($setup["TabList"], {
         "class": "flex space-x-1 rounded-xl bg-gray-200 p-1"
@@ -22093,7 +22120,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       })];
     }),
     _: 1
-  })]);
+  }))]);
 }
 
 exports.render = render;
