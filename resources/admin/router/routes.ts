@@ -6,6 +6,7 @@ import EditPost from '../views/Posts/EditPost.vue'
 import Tags from '../views/Tags/Tags.vue'
 import CreateTag from '../views/Tags/CreateTag.vue'
 import EditTag from '../views/Tags/EditTag.vue'
+import PostViews from '../views/PostViews.vue'
 
 const routes: RouteRecordRaw[] = [
     {
@@ -42,6 +43,11 @@ const routes: RouteRecordRaw[] = [
         path: '/admin/tags/:id/edit',
         name: 'tags-edit',
         component: EditTag,
+    },
+    {
+        path: '/admin/post-views',
+        name: 'post-views',
+        component: PostViews,
     },
 ]
 
