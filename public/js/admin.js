@@ -20941,7 +20941,7 @@ exports["default"] = (0, vue_1.defineComponent)({
       description: ''
     });
 
-    function createPost() {
+    function createTag() {
       loading.value = true;
       axios_1["default"].post('/admin/ajax/tags', form).then(function (resp) {
         (0, showToast_1["default"])({
@@ -20959,7 +20959,7 @@ exports["default"] = (0, vue_1.defineComponent)({
       loading: loading,
       router: router,
       form: form,
-      createPost: createPost,
+      createTag: createTag,
       PageTitle: PageTitle_vue_1["default"],
       FormInput: FormInput_vue_1["default"],
       FormTextarea: FormTextarea_vue_1["default"],
@@ -21024,6 +21024,7 @@ exports["default"] = (0, vue_1.defineComponent)({
     expose();
     var loading = (0, vue_2.ref)(true);
     var route = (0, vue_router_1.useRoute)();
+    var router = (0, vue_router_1.useRouter)();
     var form = (0, vue_2.reactive)({
       title: '',
       name: '',
@@ -21047,7 +21048,7 @@ exports["default"] = (0, vue_1.defineComponent)({
       });
     }
 
-    function updatePost() {
+    function updateTag() {
       loading.value = true;
       axios_1["default"].put("/admin/ajax/tags/".concat(route.params.id), form).then(function (resp) {
         (0, showToast_1["default"])({
@@ -21058,12 +21059,29 @@ exports["default"] = (0, vue_1.defineComponent)({
       });
     }
 
+    function deleteTag() {
+      if (!confirm("Delete tag \"".concat(form.name, "\"?"))) return;
+      loading.value = true;
+      axios_1["default"]["delete"]("/admin/ajax/tags/".concat(route.params.id)).then(function (resp) {
+        (0, showToast_1["default"])({
+          text: "Tag \"".concat(form.name, "\" has been deleted")
+        });
+        router.push({
+          name: 'tags'
+        });
+      })["catch"](handleError_1["default"])["finally"](function () {
+        return loading.value = false;
+      });
+    }
+
     var __returned__ = {
       loading: loading,
       route: route,
+      router: router,
       form: form,
       fetchTag: fetchTag,
-      updatePost: updatePost,
+      updateTag: updateTag,
+      deleteTag: deleteTag,
       PageTitle: PageTitle_vue_1["default"],
       FormInput: FormInput_vue_1["default"],
       FormTextarea: FormTextarea_vue_1["default"],
@@ -22266,7 +22284,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 0
   })) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("form", {
     key: 1,
-    onSubmit: $setup.createPost,
+    onSubmit: $setup.createTag,
     "class": "max-w-[1000px] mx-auto"
   }, [(0, vue_1.createElementVNode)("div", _hoisted_3, [(0, vue_1.createVNode)($setup["FormInput"], {
     onChanged: _cache[0] || (_cache[0] = function (title) {
@@ -22375,13 +22393,19 @@ var _hoisted_10 = (0, vue_1.createElementVNode)("i", {
   "class": "fas fa-save mr-2"
 }, null, -1);
 
-var _hoisted_11 = (0, vue_1.createTextVNode)(" Update tag ");
+var _hoisted_11 = (0, vue_1.createTextVNode)(" Update ");
 
 var _hoisted_12 = (0, vue_1.createElementVNode)("i", {
   "class": "fas fa-tag mr-2"
 }, null, -1);
 
 var _hoisted_13 = (0, vue_1.createTextVNode)(" Go to tags ");
+
+var _hoisted_14 = (0, vue_1.createElementVNode)("i", {
+  "class": "fas fa-trash mr-2"
+}, null, -1);
+
+var _hoisted_15 = (0, vue_1.createTextVNode)(" Delete ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [$setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Spinner"], {
@@ -22392,7 +22416,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     _: 1
   }), (0, vue_1.createElementVNode)("form", {
-    onSubmit: $setup.updatePost,
+    onSubmit: $setup.updateTag,
     "class": "max-w-[1000px] mx-auto"
   }, [(0, vue_1.createElementVNode)("div", _hoisted_3, [(0, vue_1.createVNode)($setup["FormInput"], {
     onChanged: _cache[0] || (_cache[0] = function (title) {
@@ -22461,6 +22485,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0, vue_1.withCtx)(function () {
       return [_hoisted_12, _hoisted_13];
+    }),
+    _: 1
+  }), (0, vue_1.createVNode)($setup["MainButton"], {
+    type: "button",
+    "class": "bg-red-600 hover:bg-red-700",
+    onClick: $setup.deleteTag
+  }, {
+    "default": (0, vue_1.withCtx)(function () {
+      return [_hoisted_14, _hoisted_15];
     }),
     _: 1
   })])], 32)]))]);

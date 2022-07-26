@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Tag } from '../../../types/models'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { onMounted, reactive, ref } from 'vue'
 import handleError from '../../modules/handleError'
 import showToast from '../../modules/showToast'
@@ -13,6 +13,7 @@ import Spinner from '../../components/Spinner.vue'
 
 const loading = ref(true)
 const route = useRoute()
+const router = useRouter()
 const form = reactive({
     title: '',
     name: '',
@@ -38,12 +39,27 @@ function fetchTag(): void {
         .finally(() => loading.value = false)
 }
 
-function updatePost(): void {
+function updateTag(): void {
     loading.value = true
 
     axios.put(`/admin/ajax/tags/${route.params.id}`, form)
         .then(resp => {
             showToast({ text: `Tag "${form.name}" has been updated` })
+        })
+        .catch(handleError)
+        .finally(() => loading.value = false)
+}
+
+function deleteTag(): void {
+    if (!confirm(`Delete tag "${form.name}"?`))
+        return
+
+    loading.value = true
+
+    axios.delete(`/admin/ajax/tags/${route.params.id}`)
+        .then(resp => {
+            showToast({ text: `Tag "${form.name}" has been deleted` })
+            router.push({ name: 'tags' })
         })
         .catch(handleError)
         .finally(() => loading.value = false)
@@ -58,7 +74,7 @@ function updatePost(): void {
         <div v-else>
             <page-title>{{ form.title }}</page-title>
 
-            <form @submit="updatePost" class="max-w-[1000px] mx-auto">
+            <form @submit="updateTag" class="max-w-[1000px] mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     <form-input
                         @changed="title => form.title = title"
@@ -107,7 +123,7 @@ function updatePost(): void {
                 <div class="mt-7 flex gap-3">
                     <main-button>
                         <i class="fas fa-save mr-2"></i>
-                        Update tag
+                        Update
                     </main-button>
 
                     <main-button
@@ -117,6 +133,15 @@ function updatePost(): void {
                     >
                         <i class="fas fa-tag mr-2"></i>
                         Go to tags
+                    </main-button>
+
+                    <main-button
+                        type="button"
+                        class="bg-red-600 hover:bg-red-700"
+                        @click="deleteTag"
+                    >
+                        <i class="fas fa-trash mr-2"></i>
+                        Delete
                     </main-button>
                 </div>
             </form>

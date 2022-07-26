@@ -19,7 +19,7 @@ const form = reactive({
     description: '',
 })
 
-function createPost(): void {
+function createTag(): void {
     loading.value = true
 
     axios.post('/admin/ajax/tags', form)
@@ -38,7 +38,7 @@ function createPost(): void {
 
         <spinner v-if="loading" />
 
-        <form v-else @submit="createPost" class="max-w-[1000px] mx-auto">
+        <form v-else @submit="createTag" class="max-w-[1000px] mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 <form-input
                     @changed="title => form.title = title"
