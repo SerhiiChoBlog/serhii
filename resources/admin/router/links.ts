@@ -21,11 +21,11 @@ const links: UserSidebarLink[] = [
         title: 'Post views',
         icon: 'fa-eye',
     },
-    // {
-    //     routeName: 'visitors',
-    //     title: 'Visitors',
-    //     icon: 'fa-users',
-    // },
+    {
+        routeName: 'visitors',
+        title: 'Visitors',
+        icon: 'fa-users',
+    },
     // {
     //     routeName: 'social-shares',
     //     title: 'Shares',

@@ -26,8 +26,7 @@ export type Post = {
     image_lg: string
     images?: PostContentImage[]
     pageViews?: PageView[]
-    // socialShares?: Collection
-    // social?: array<int, array<int, string>> | null
+    socialShares?: SocialShare[]
     tags?: Tag[]
     social_shares_count: number | null
     page_views_count: number | null
@@ -46,4 +45,25 @@ export type PageView = {
     created_at: string
     updated_at: string
     date: string | null
+}
+
+export type Visitor = {
+    id: number
+    ip: string
+    country: string
+    city: string
+    code: string
+    page_views_count: number | null
+    pageViews?: PageView[]
+    socialShares?: SocialShare[]
+}
+
+export type SocialShare = {
+    id: number
+    post_id: number
+    visitor_id: number
+    social: string
+    post?: Post
+    visitor?: Visitor
+    created_at: string
 }
