@@ -1,12 +1,44 @@
 <script setup lang="ts">
 import type { Post } from '../../../types/models'
 import MainButton from '../../components/Buttons/MainButton.vue'
+import axios from 'axios'
+import handleError from '../../modules/handleError'
+import showToast from '../../modules/showToast'
+import { ref } from 'vue'
 
 type Props = {
     post: Post
 }
 
+type Emits = {
+    (e: 'uploaded'): void,
+}
+
+const emit = defineEmits<Emits>()
 const { post } = defineProps<Props>()
+const loading = ref(false)
+
+function submitImage(e: SubmitEvent): void {
+    loading.value = true
+
+    const form = e.target! as HTMLFormElement
+    const formData = new FormData()
+    const files = form.elements['image']!.files as FileList
+    const params = { headers: { 'content-type': 'multipart/form-data' } }
+
+    if (files.length === 0)
+        return
+
+    formData.append('image', files[0])
+
+    axios.post(`/admin/ajax/post-content-images/${post.id}`, formData, params)
+        .then(resp => {
+            showToast({ text: 'Image has been uploaded' })
+            emit('uploaded')
+        })
+        .catch(handleError)
+        .finally(() => loading.value = false)
+}
 </script>
 
 <template>
@@ -74,20 +106,22 @@ const { post } = defineProps<Props>()
         </div>
 
         <form
-            action="route('admin.post-content-images.store', $post)"
-            method="post"
+            @submit.prevent="submitImage"
             enctype="multipart/form-data"
             class="mt-6"
         >
             <div class="inline-block mr-2">
                 <label class="border-4 text-gray-400 hover:text-gray-500 cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-300 transition-colors">
                     <input class="hidden" type="file" name="image" required>
-                    <span>Choose an image...</span>
+                    <span>{{ loading ? 'Uploading image...' : 'Choose an image...' }}</span>
                 </label>
             </div>
 
             <main-button class="ml-3">
-                <i class="fas fa-upload mr-2"></i>
+                <i
+                    :class="loading ? 'fa-spinner animate-spin' : 'fa-upload'"
+                    class="fas mr-2"
+                ></i>
                 Upload
             </main-button>
         </form>
