@@ -12,6 +12,7 @@ type Props = {
 
 type Emits = {
     (e: 'uploaded'): void,
+    (e: 'removed'): void,
 }
 
 const emit = defineEmits<Emits>()
@@ -35,6 +36,21 @@ function submitImage(e: SubmitEvent): void {
         .then(resp => {
             showToast({ text: 'Image has been uploaded' })
             emit('uploaded')
+        })
+        .catch(handleError)
+        .finally(() => loading.value = false)
+}
+
+function deleteImage(id: number): void {
+    if (!confirm('Sure you want to delete this content image?'))
+        return
+
+    loading.value = true
+
+    axios.delete(`/admin/ajax/post-content-images/${id}`)
+        .then(resp => {
+            showToast({ text: 'Image has been removed' })
+            emit('removed')
         })
         .catch(handleError)
         .finally(() => loading.value = false)
@@ -88,12 +104,7 @@ function submitImage(e: SubmitEvent): void {
                         </td>
 
                         <td class="px-3 py-1 text-right">
-                            <form
-                                action="route('admin.post-content-images.delete', $image)"
-                                method="post"
-                                onsubmit="return confirm('Sure you want to delete this content image?')"
-                            >
-
+                            <form @submit.prevent="deleteImage(image.id)">
                                 <main-button class="bg-red-500 hover:bg-red-600">
                                     <i class="fas fa-trash mr-2"></i>
                                     Delete

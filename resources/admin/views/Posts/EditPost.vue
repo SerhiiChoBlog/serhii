@@ -179,7 +179,11 @@ function addTag(tag: Tag): void {
                 </form>
             </div>
 
-            <post-content-images :post="post" @uploaded="fetchPost" />
+            <post-content-images
+                :post="post"
+                @uploaded="fetchPost"
+                @removed="fetchPost"
+            />
         </div>
     </div>
 </template>
