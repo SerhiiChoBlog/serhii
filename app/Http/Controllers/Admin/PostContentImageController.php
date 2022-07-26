@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostContentImage;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +15,7 @@ use Intervention\Image\Facades\Image;
 
 class PostContentImageController extends Controller
 {
-    public function store(Post $post, Request $request): RedirectResponse
+    public function store(Post $post, Request $request): void
     {
         /** @var UploadedFile $image */
         $image = $request->file('image');
@@ -33,14 +32,11 @@ class PostContentImageController extends Controller
             'uri' => "/storage/posts/content/$image_name",
             'path' => "/public/posts/content/$image_name",
         ]);
-
-        return redirect()->route('admin.posts.edit', $post);
     }
 
-    public function destroy(PostContentImage $image): RedirectResponse
+    public function destroy(PostContentImage $image): void
     {
         Storage::delete($image->path);
         $image->delete();
-        return back();
     }
 }
