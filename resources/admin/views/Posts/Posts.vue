@@ -27,7 +27,7 @@ function fetchPosts(): void {
             <div class="flex items-center justify-center gap-3">
                 <span>Posts</span>
 
-                <main-button :route="{ name: 'create-post' }">
+                <main-button :route="{ name: 'posts-create' }">
                     <i class="fas fa-plus"></i>
                 </main-button>
             </div>

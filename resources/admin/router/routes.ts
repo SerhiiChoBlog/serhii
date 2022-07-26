@@ -20,12 +20,12 @@ const routes: RouteRecordRaw[] = [
     },
     {
         path: '/admin/posts/create',
-        name: 'create-post',
+        name: 'posts-create',
         component: CreatePost,
     },
     {
         path: '/admin/posts/:id/edit',
-        name: 'edit-post',
+        name: 'posts-edit',
         component: EditPost,
     },
     {
@@ -35,12 +35,12 @@ const routes: RouteRecordRaw[] = [
     },
     {
         path: '/admin/tags/create',
-        name: 'create-tag',
+        name: 'tags-create',
         component: CreateTag,
     },
     {
         path: '/admin/tags/:id/edit',
-        name: 'edit-tag',
+        name: 'tags-edit',
         component: EditTag,
     },
 ]
