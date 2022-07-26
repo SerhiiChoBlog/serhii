@@ -6,13 +6,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\PageView;
-use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 
 class PageViewController extends Controller
 {
-    public function index(): View
+    /**
+     * @return array{unique:Collection<int, PageView>, daily:Collection<int, PageView>}
+     */
+    public function index(): array
     {
-        $views = PageView::query()
+        $unique = PageView::query()
             ->selectRaw('slug, COUNT(*) as amount')
             ->groupBy('slug')
             ->orderByDesc('amount')
@@ -26,7 +29,6 @@ class PageViewController extends Controller
             ->limit(50)
             ->get();
 
-
-        return view('admin.page_views.index', compact('views', 'daily'));
+        return compact('unique', 'daily');
     }
 }

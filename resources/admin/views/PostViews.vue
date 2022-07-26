@@ -1,25 +1,43 @@
 <script setup lang="ts">
 import type { PageView } from '../../types/models'
-import { reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/vue'
+import axios from 'axios'
+import handleError from '../modules/handleError'
 import PageTitle from '../components/PageTitle.vue'
+import Spinner from '../components/Spinner.vue'
 
 type Views = {
     unique: PageView[] | null
     daily: PageView[] | null
 }
 
+const loading = ref(true)
 const views = reactive<Views>({
     unique: null,
     daily: null,
 })
+
+onMounted(() => fetchViews())
+
+function fetchViews(): void {
+    axios.get<Views>('/admin/ajax/page-views')
+        .then(resp => {
+            views.unique = resp.data.unique
+            views.daily = resp.data.daily
+        })
+        .catch(handleError)
+        .finally(() => loading.value = false)
+}
 </script>
 
 <template>
     <div class="container max-w-3xl">
         <page-title>Post views</page-title>
 
-        <tab-group>
+        <spinner v-if="loading" />
+
+        <tab-group v-else>
             <tab-list class="flex space-x-1 rounded-xl bg-gray-200 p-1">
                 <tab
                     v-for="title in ['Unique views', 'Daily views']"
