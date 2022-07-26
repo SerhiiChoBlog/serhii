@@ -1,16 +1,31 @@
 <script setup lang="ts">
 import type { Visitor } from '../../types/models'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import axios from 'axios'
+import handleError from '../modules/handleError'
 import PageTitle from '../components/PageTitle.vue'
+import Spinner from '../components/Spinner.vue'
 
 const visitors = ref<Visitor[]>([])
+const loading = ref(false)
+
+onMounted(() => fetchVisitors())
+
+function fetchVisitors(): void {
+    axios.get<Visitor[]>('/admin/ajax/visitors')
+        .then(resp => visitors.value = resp.data)
+        .catch(handleError)
+        .finally(() => loading.value = false)
+}
 </script>
 
 <template>
     <div class="container max-w-3xl">
         <page-title>Unique visitors</page-title>
 
-        <div class="overflow-x-auto shadow-md rounded-lg mx-auto mt-7">
+        <spinner v-if="loading" />
+
+        <div v-else class="overflow-x-auto shadow-md rounded-lg mx-auto mt-7">
             <table class="table-auto w-full">
                 <thead class="bg-gray-500 text-white text-left">
                     <tr>
@@ -35,7 +50,7 @@ const visitors = ref<Visitor[]>([])
                         <td class="px-3 py-1">{{ visitor.country || '-' }}</td>
                         <td class="px-3 py-1">{{ visitor.city || '-' }}</td>
                         <td class="px-3 py-1">
-                            <img v-if="visitor.code" :src="`storage/admin/flags/${visitor.code}.png`" width="30" />
+                            <img v-if="visitor.code" :src="`/storage/admin/flags/${visitor.code}.png`" width="30" />
                             <img v-else src="/storage/admin/flags/unknown.png" width="30" />
                         </td>
                     </tr>

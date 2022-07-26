@@ -21270,7 +21270,13 @@ var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 
 var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var handleError_1 = __importDefault(__webpack_require__(/*! ../modules/handleError */ "./resources/admin/modules/handleError.ts"));
+
 var PageTitle_vue_1 = __importDefault(__webpack_require__(/*! ../components/PageTitle.vue */ "./resources/admin/components/PageTitle.vue"));
+
+var Spinner_vue_1 = __importDefault(__webpack_require__(/*! ../components/Spinner.vue */ "./resources/admin/components/Spinner.vue"));
 
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Visitors',
@@ -21278,9 +21284,25 @@ exports["default"] = (0, vue_1.defineComponent)({
     var expose = _a.expose;
     expose();
     var visitors = (0, vue_2.ref)([]);
+    var loading = (0, vue_2.ref)(false);
+    (0, vue_2.onMounted)(function () {
+      return fetchVisitors();
+    });
+
+    function fetchVisitors() {
+      axios_1["default"].get('/admin/ajax/visitors').then(function (resp) {
+        return visitors.value = resp.data;
+      })["catch"](handleError_1["default"])["finally"](function () {
+        return loading.value = false;
+      });
+    }
+
     var __returned__ = {
       visitors: visitors,
-      PageTitle: PageTitle_vue_1["default"]
+      loading: loading,
+      fetchVisitors: fetchVisitors,
+      PageTitle: PageTitle_vue_1["default"],
+      Spinner: Spinner_vue_1["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -22918,6 +22940,7 @@ var _hoisted_1 = {
 var _hoisted_2 = (0, vue_1.createTextVNode)("Unique visitors");
 
 var _hoisted_3 = {
+  key: 1,
   "class": "overflow-x-auto shadow-md rounded-lg mx-auto mt-7"
 };
 var _hoisted_4 = {
@@ -22954,7 +22977,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_2];
     }),
     _: 1
-  }), (0, vue_1.createElementVNode)("div", _hoisted_3, [(0, vue_1.createElementVNode)("table", _hoisted_4, [(0, vue_1.createElementVNode)("thead", _hoisted_5, [(0, vue_1.createElementVNode)("tr", null, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(['Views', 'IP', 'Country', 'City', 'Flag'], function (title) {
+  }), $setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Spinner"], {
+    key: 0
+  })) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_3, [(0, vue_1.createElementVNode)("table", _hoisted_4, [(0, vue_1.createElementVNode)("thead", _hoisted_5, [(0, vue_1.createElementVNode)("tr", null, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(['Views', 'IP', 'Country', 'City', 'Flag'], function (title) {
     return (0, vue_1.createElementVNode)("th", {
       key: title,
       "class": "p-3"
@@ -22965,10 +22990,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": "border-b odd:bg-gray-50 transition-colors hover:bg-gray-100"
     }, [(0, vue_1.createElementVNode)("td", _hoisted_6, (0, vue_1.toDisplayString)(visitor.page_views_count), 1), (0, vue_1.createElementVNode)("td", _hoisted_7, (0, vue_1.toDisplayString)(visitor.ip), 1), (0, vue_1.createElementVNode)("td", _hoisted_8, (0, vue_1.toDisplayString)(visitor.country || '-'), 1), (0, vue_1.createElementVNode)("td", _hoisted_9, (0, vue_1.toDisplayString)(visitor.city || '-'), 1), (0, vue_1.createElementVNode)("td", _hoisted_10, [visitor.code ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("img", {
       key: 0,
-      src: "storage/admin/flags/".concat(visitor.code, ".png"),
+      src: "/storage/admin/flags/".concat(visitor.code, ".png"),
       width: "30"
     }, null, 8, _hoisted_11)) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("img", _hoisted_12))])]);
-  }), 128))])])])]);
+  }), 128))])])]))]);
 }
 
 exports.render = render;
