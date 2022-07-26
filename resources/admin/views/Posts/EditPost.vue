@@ -7,14 +7,14 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { init } from '../../modules/tinymce'
 import SavePost from '../../modules/SavePost'
-import PostContentImages from './PostContentImages.vue'
+import PostContentImages from '../../components/Post/PostContentImages.vue'
 import FormTextarea from '../../components/Form/FormTextarea.vue'
 import MainButton from '../../components/Buttons/MainButton.vue'
 import FormInput from '../../components/Form/FormInput.vue'
 import TagItem from '../../components/TagItem.vue'
-import TagSuggestions from './TagSuggestions.vue'
-import PostImage from './PostImage.vue'
-import DeletePost from './DeletePost.vue'
+import TagSuggestions from '../../components/Post/TagSuggestions.vue'
+import PostImage from '../../components/Post/PostImage.vue'
+import DeletePost from '../../components/Post/DeletePost.vue'
 
 onMounted(() => {
     fetchPost()

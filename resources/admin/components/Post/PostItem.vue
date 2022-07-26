@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Post } from '../../../types/models'
-import IconButton from '../../components/Buttons/IconButton.vue'
+import IconButton from '../Buttons/IconButton.vue'
 
 type Props = {
     post: Post
