@@ -2169,6 +2169,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .min-w-\[300px\] {
   min-width: 300px;
 }
+.min-w-\[140px\] {
+  min-width: 140px;
+}
+.min-w-\[165px\] {
+  min-width: 165px;
+}
 .max-w-full {
   max-width: 100%;
 }
