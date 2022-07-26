@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
     Route::get('dashboard/sections', [DashboardController::class, 'sections']);
-    Route::resource('posts', PostController::class)->only('index', 'store', 'update', 'edit');
+    Route::resource('posts', PostController::class);
     Route::post('post-content-images/{post}', [PostContentImageController::class, 'store']);
     Route::delete('post-content-images/{image}', [PostContentImageController::class, 'destroy']);
     // Route::get('page-views', [PageViewController::class, 'index'])->name('page_views.index');

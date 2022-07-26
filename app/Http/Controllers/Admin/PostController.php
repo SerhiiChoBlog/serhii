@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\StoreRequest;
 use App\Models\Post;
 use App\Utils\SaveImage;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
@@ -90,7 +89,7 @@ class PostController extends Controller
         $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
 
         if ($post->is_published || $is_published) {
-            $this->forgetPostsCache();
+            Cache::forget(CacheKey::LAST_POST);
         }
 
         if (!$post->is_published && $is_published) {
@@ -118,25 +117,18 @@ class PostController extends Controller
         );
     }
 
-    public function destroy(Post $post): RedirectResponse
+    public function destroy(Post $post): void
     {
         $post->images->each(static function ($image) {
             Storage::delete($image->path);
         });
 
         if ($post->is_published) {
-            $this->forgetPostsCache();
+            Cache::forget(CacheKey::LAST_POST);
         }
 
         $post->images()->delete();
         $post->tags()->detach();
         $post->delete();
-
-        return redirect()->route('admin.posts.index');
-    }
-
-    public function forgetPostsCache(): void
-    {
-        Cache::forget(CacheKey::LAST_POST);
     }
 }

@@ -14,10 +14,11 @@ import FormInput from '../../components/Form/FormInput.vue'
 import TagItem from '../../components/TagItem.vue'
 import TagSuggestions from './TagSuggestions.vue'
 import PostImage from './PostImage.vue'
+import DeletePost from './DeletePost.vue'
 
 onMounted(() => {
     fetchPost()
-    setTimeout(() => init(), 200)
+    setTimeout(() => init(), 500)
 })
 
 const route = useRoute()
@@ -159,22 +160,7 @@ function addTag(tag: Tag): void {
                             </main-button>
                         </div>
 
-                        <div class="mt-7">
-                            <main-button class="bg-red-500 hover:bg-red-600" type="button">
-                                <i class="fas fa-trash mr-2"></i>
-                                Delete
-                            </main-button>
-
-                            <label class="checkbox">
-                                <input
-                                    type="checkbox"
-                                    name="is-published"
-                                    class="ml-3 mr-1"
-                                    :checked="post.is_published"
-                                />
-                                <span>publish this post</span>
-                            </label>
-                        </div>
+                        <delete-post :post="post" />
                     </div>
                 </form>
             </div>
