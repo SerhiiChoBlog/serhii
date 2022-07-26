@@ -28,7 +28,7 @@ function fetchTags(): void {
             <div class="flex items-center justify-center gap-3">
                 <span>Tags</span>
 
-                <main-button type="button" :route="{ name: 'create-tag' }" title="Add new tag">
+                <main-button type="button" :route="{ name: 'tags-create' }" title="Add new tag">
                     <i class="fas fa-plus"></i>
                 </main-button>
             </div>
@@ -84,7 +84,7 @@ function fetchTags(): void {
                             </td>
                             <td class="px-3 py-2">
                                 <router-link
-                                    :to="{ name: 'edit-tag', params: { id: tag.id } }"
+                                    :to="{ name: 'tags-edit', params: { id: tag.id } }"
                                     class="text-font-second inline-block text-xs transition-colors hover:text-main-dark p-1"
                                     title="Edit tag"
                                 >

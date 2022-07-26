@@ -5,7 +5,7 @@ import { ref } from 'vue'
 type Props = {
     id: string
     type: string
-    placeholder: string
+    placeholder?: string
     value?: string
     length?: number
     classes?: string
