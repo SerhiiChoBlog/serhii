@@ -4,6 +4,7 @@ export type Tag = {
     description: string
     name: string
     color: string
+    posts_count: number | null
 }
 
 export type PostContentImage = {
