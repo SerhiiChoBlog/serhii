@@ -12,7 +12,7 @@
             </a>
 
             @auth
-                <a href="{{ route('admin.dashboard') }}">admin</a>
+                <a href="/admin/dashboard">admin</a>
             @endauth
 
             <hamburger :is-light="true"></hamburger>
