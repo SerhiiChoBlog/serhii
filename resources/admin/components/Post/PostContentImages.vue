@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Post } from '../../../types/models'
-import MainButton from '../../components/Buttons/MainButton.vue'
+import MainButton from '../Buttons/MainButton.vue'
 import axios from 'axios'
 import handleError from '../../modules/handleError'
 import showToast from '../../modules/showToast'
