@@ -20484,7 +20484,7 @@ exports["default"] = (0, vue_1.defineComponent)({
       required: true
     }
   },
-  emits: ["uploaded"],
+  emits: ["uploaded", "removed"],
   setup: function setup(__props, _a) {
     var expose = _a.expose,
         emit = _a.emit;
@@ -20514,10 +20514,24 @@ exports["default"] = (0, vue_1.defineComponent)({
       });
     }
 
+    function deleteImage(id) {
+      if (!confirm('Sure you want to delete this content image?')) return;
+      loading.value = true;
+      axios_1["default"]["delete"]("/admin/ajax/post-content-images/".concat(id)).then(function (resp) {
+        (0, showToast_1["default"])({
+          text: 'Image has been removed'
+        });
+        emit('removed');
+      })["catch"](handleError_1["default"])["finally"](function () {
+        return loading.value = false;
+      });
+    }
+
     var __returned__ = {
       emit: emit,
       loading: loading,
       submitImage: submitImage,
+      deleteImage: deleteImage,
       MainButton: MainButton_vue_1["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -21428,7 +21442,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     checked: $setup.post.is_published
   }, null, 8, _hoisted_25), _hoisted_26])])])], 544)]), (0, vue_1.createVNode)($setup["PostContentImages"], {
     post: $setup.post,
-    onUploaded: $setup.fetchPost
+    onUploaded: $setup.fetchPost,
+    onRemoved: $setup.fetchPost
   }, null, 8, ["post"])])) : (0, vue_1.createCommentVNode)("v-if", true)]);
 }
 
@@ -21481,11 +21496,7 @@ var _hoisted_10 = ["value"];
 var _hoisted_11 = {
   "class": "px-3 py-1 text-right"
 };
-var _hoisted_12 = {
-  action: "route('admin.post-content-images.delete', $image)",
-  method: "post",
-  onsubmit: "return confirm('Sure you want to delete this content image?')"
-};
+var _hoisted_12 = ["onSubmit"];
 
 var _hoisted_13 = (0, vue_1.createElementVNode)("i", {
   "class": "fas fa-trash mr-2"
@@ -21535,14 +21546,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       value: image.uri,
       "class": "bg-gray-200 rounded-md p-2 w-full",
       disabled: ""
-    }, null, 8, _hoisted_10)]), (0, vue_1.createElementVNode)("td", _hoisted_11, [(0, vue_1.createElementVNode)("form", _hoisted_12, [(0, vue_1.createVNode)($setup["MainButton"], {
+    }, null, 8, _hoisted_10)]), (0, vue_1.createElementVNode)("td", _hoisted_11, [(0, vue_1.createElementVNode)("form", {
+      onSubmit: (0, vue_1.withModifiers)(function ($event) {
+        return $setup.deleteImage(image.id);
+      }, ["prevent"])
+    }, [(0, vue_1.createVNode)($setup["MainButton"], {
       "class": "bg-red-500 hover:bg-red-600"
     }, {
       "default": (0, vue_1.withCtx)(function () {
         return [_hoisted_13, _hoisted_14];
       }),
       _: 1
-    })])])]);
+    })], 40, _hoisted_12)])]);
   }), 128)) : (0, vue_1.createCommentVNode)("v-if", true)])])]), (0, vue_1.createElementVNode)("form", {
     onSubmit: (0, vue_1.withModifiers)($setup.submitImage, ["prevent"]),
     enctype: "multipart/form-data",
