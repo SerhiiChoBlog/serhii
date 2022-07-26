@@ -20907,11 +20907,17 @@ Object.defineProperty(exports, "__esModule", ({
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var handleError_1 = __importDefault(__webpack_require__(/*! ../../modules/handleError */ "./resources/admin/modules/handleError.ts"));
+
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
 var PageTitle_vue_1 = __importDefault(__webpack_require__(/*! ../../components/PageTitle.vue */ "./resources/admin/components/PageTitle.vue"));
 
 var MainButton_vue_1 = __importDefault(__webpack_require__(/*! ../../components/Buttons/MainButton.vue */ "./resources/admin/components/Buttons/MainButton.vue"));
 
-var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+var Spinner_vue_1 = __importDefault(__webpack_require__(/*! ../../components/Spinner.vue */ "./resources/admin/components/Spinner.vue"));
 
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Tags',
@@ -20919,10 +20925,27 @@ exports["default"] = (0, vue_1.defineComponent)({
     var expose = _a.expose;
     expose();
     var tags = (0, vue_2.ref)([]);
+    var loading = (0, vue_2.ref)(true);
+    (0, vue_2.onMounted)(function () {
+      return fetchTags();
+    });
+
+    function fetchTags() {
+      loading.value = true;
+      axios_1["default"].get('/admin/ajax/tags').then(function (resp) {
+        return tags.value = resp.data;
+      })["catch"](handleError_1["default"])["finally"](function () {
+        return loading.value = false;
+      });
+    }
+
     var __returned__ = {
       tags: tags,
+      loading: loading,
+      fetchTags: fetchTags,
       PageTitle: PageTitle_vue_1["default"],
-      MainButton: MainButton_vue_1["default"]
+      MainButton: MainButton_vue_1["default"],
+      Spinner: Spinner_vue_1["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -22024,11 +22047,11 @@ var _hoisted_5 = {
   "class": "mt-5"
 };
 var _hoisted_6 = {
-  key: 0,
+  key: 1,
   "class": "text-center text-xl mt-6"
 };
 var _hoisted_7 = {
-  key: 1,
+  key: 2,
   "class": "relative overflow-x-auto shadow-md sm:rounded-lg"
 };
 var _hoisted_8 = {
@@ -22038,10 +22061,10 @@ var _hoisted_9 = {
   "class": "bg-gray-500 text-left"
 };
 var _hoisted_10 = {
-  "class": "odd:bg-gray-50 border-b transition-colors hover:bg-gray-100"
+  "class": "px-3 py-2"
 };
 var _hoisted_11 = {
-  "class": "px-3 py-2"
+  "class": "px-3 py-2 min-w-[165px]"
 };
 var _hoisted_12 = {
   "class": "px-3 py-2"
@@ -22049,22 +22072,19 @@ var _hoisted_12 = {
 var _hoisted_13 = {
   "class": "px-3 py-2"
 };
-var _hoisted_14 = {
+var _hoisted_14 = ["value"];
+var _hoisted_15 = {
+  "class": "px-3 py-2 min-w-[140px]"
+};
+var _hoisted_16 = ["href"];
+var _hoisted_17 = {
   "class": "px-3 py-2"
 };
-var _hoisted_15 = ["value"];
-var _hoisted_16 = {
-  "class": "px-3 py-2"
-};
-var _hoisted_17 = ["href"];
 var _hoisted_18 = {
   "class": "px-3 py-2"
 };
-var _hoisted_19 = {
-  "class": "px-3 py-2"
-};
 
-var _hoisted_20 = (0, vue_1.createElementVNode)("i", {
+var _hoisted_19 = (0, vue_1.createElementVNode)("i", {
   "class": "fas fa-pen"
 }, null, -1);
 
@@ -22087,36 +22107,43 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       })])];
     }),
     _: 1
-  }), (0, vue_1.createElementVNode)("div", _hoisted_5, [$setup.tags.length === 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("h2", _hoisted_6, " There are not tags ")) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_7, [(0, vue_1.createElementVNode)("table", _hoisted_8, [(0, vue_1.createElementVNode)("thead", _hoisted_9, [(0, vue_1.createElementVNode)("tr", null, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(['Title', 'Slug', 'Posts', 'Color', 'Tag', 'Description', ''], function (title) {
+  }), (0, vue_1.createElementVNode)("div", _hoisted_5, [$setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Spinner"], {
+    key: 0
+  })) : $setup.tags.length === 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("h2", _hoisted_6, " There are not tags ")) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_7, [(0, vue_1.createElementVNode)("table", _hoisted_8, [(0, vue_1.createElementVNode)("thead", _hoisted_9, [(0, vue_1.createElementVNode)("tr", null, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(['Title', 'Slug', 'Posts', 'Color', 'Tag', 'Description', ''], function (title) {
     return (0, vue_1.createElementVNode)("th", {
       key: title,
       "class": "text-white p-3 font-light"
     }, (0, vue_1.toDisplayString)(title), 1);
-  }), 64))])]), (0, vue_1.createElementVNode)("tbody", null, [(0, vue_1.createElementVNode)("tr", _hoisted_10, [(0, vue_1.createElementVNode)("td", _hoisted_11, (0, vue_1.toDisplayString)(_ctx.tag.title), 1), (0, vue_1.createElementVNode)("td", _hoisted_12, (0, vue_1.toDisplayString)(_ctx.tag.name), 1), (0, vue_1.createElementVNode)("td", _hoisted_13, (0, vue_1.toDisplayString)(_ctx.tag.posts_count), 1), (0, vue_1.createElementVNode)("td", _hoisted_14, [(0, vue_1.createElementVNode)("input", {
-    type: "text",
-    value: _ctx.tag.color,
-    "class": "w-[80px] text-center rounded-md bg-gray-200"
-  }, null, 8, _hoisted_15)]), (0, vue_1.createElementVNode)("td", _hoisted_16, [(0, vue_1.createElementVNode)("a", {
-    href: "/posts?tag=".concat(_ctx.tag.name),
-    "class": "py-[3px] inline-block font-white px-2 rounded-md text-white text-xs",
-    style: (0, vue_1.normalizeStyle)({
-      backgroundColor: _ctx.tag.color
-    })
-  }, (0, vue_1.toDisplayString)(_ctx.tag.name), 13, _hoisted_17)]), (0, vue_1.createElementVNode)("td", _hoisted_18, (0, vue_1.toDisplayString)(_ctx.tag.description), 1), (0, vue_1.createElementVNode)("td", _hoisted_19, [(0, vue_1.createVNode)(_component_router_link, {
-    to: {
-      name: 'edit-tag',
-      params: {
-        id: _ctx.tag.id
-      }
-    },
-    "class": "text-font-second inline-block text-xs transition-colors hover:text-main-dark p-1",
-    title: "Edit tag"
-  }, {
-    "default": (0, vue_1.withCtx)(function () {
-      return [_hoisted_20];
-    }),
-    _: 1
-  }, 8, ["to"])])])])])]))])]);
+  }), 64))])]), (0, vue_1.createElementVNode)("tbody", null, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.tags, function (tag) {
+    return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("tr", {
+      key: tag.id,
+      "class": "odd:bg-gray-50 border-b transition-colors hover:bg-gray-100"
+    }, [(0, vue_1.createElementVNode)("td", _hoisted_10, (0, vue_1.toDisplayString)(tag.title), 1), (0, vue_1.createElementVNode)("td", _hoisted_11, (0, vue_1.toDisplayString)(tag.name), 1), (0, vue_1.createElementVNode)("td", _hoisted_12, (0, vue_1.toDisplayString)(tag.posts_count), 1), (0, vue_1.createElementVNode)("td", _hoisted_13, [(0, vue_1.createElementVNode)("input", {
+      type: "text",
+      value: tag.color,
+      "class": "w-[80px] text-center rounded-md bg-gray-200"
+    }, null, 8, _hoisted_14)]), (0, vue_1.createElementVNode)("td", _hoisted_15, [(0, vue_1.createElementVNode)("a", {
+      href: "/posts?tag=".concat(tag.name),
+      "class": "py-[3px] inline-block font-white px-2 rounded-md text-white text-xs",
+      style: (0, vue_1.normalizeStyle)({
+        backgroundColor: tag.color
+      })
+    }, (0, vue_1.toDisplayString)(tag.name), 13, _hoisted_16)]), (0, vue_1.createElementVNode)("td", _hoisted_17, (0, vue_1.toDisplayString)(tag.description), 1), (0, vue_1.createElementVNode)("td", _hoisted_18, [(0, vue_1.createVNode)(_component_router_link, {
+      to: {
+        name: 'edit-tag',
+        params: {
+          id: tag.id
+        }
+      },
+      "class": "text-font-second inline-block text-xs transition-colors hover:text-main-dark p-1",
+      title: "Edit tag"
+    }, {
+      "default": (0, vue_1.withCtx)(function () {
+        return [_hoisted_19];
+      }),
+      _: 2
+    }, 1032, ["to"])])]);
+  }), 128))])])]))])]);
 }
 
 exports.render = render;
