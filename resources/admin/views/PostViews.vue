@@ -95,7 +95,7 @@ function fetchViews(): void {
                                 <thead class="bg-gray-500 text-white text-left">
                                     <tr>
                                         <th
-                                            v-for="title in ['Views', 'Page slug']"
+                                            v-for="title in ['Views', 'Post title']"
                                             class="p-3 font-light"
                                         >
                                             {{ title }}
@@ -112,7 +112,7 @@ function fetchViews(): void {
                                     >
                                         <td class="px-3 py-1">{{ view.amount }}</td>
                                         <td class="px-3 py-1 flex items-center">
-                                            {{ view.slug }}
+                                            <span class="first-letter:uppercase">{{ view.slug.replaceAll('-', ' ') }}</span>
 
                                             <div
                                                 v-if="lastNewView.country && lastNewView.slug === view.slug"
