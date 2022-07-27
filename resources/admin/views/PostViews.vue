@@ -13,8 +13,18 @@ type Views = {
     daily: PageView[] | null
 }
 
+type EchoData = {
+    slug: string | null
+    country: string | null
+}
+
 const loading = ref(true)
-const lastNewView = ref<string | null>(null)
+
+const lastNewView = reactive<EchoData>({
+    slug: null,
+    country: null,
+})
+
 const views = reactive<Views>({
     unique: null,
     daily: null,
@@ -23,19 +33,21 @@ const views = reactive<Views>({
 onMounted(() => {
     fetchViews()
 
-    echo<{ slug: string }>('notification', 'NewPostView', ({ slug }) => {
+    echo<EchoData>('notification', 'NewPostView', ({ slug, country }) => {
         fetchViews()
-        lastNewView.value = slug
+        lastNewView.slug = slug
+        lastNewView.country = country
 
-        new Audio('/storage/new-message.mp3')
+        new Audio('/storage/new-message.wav')
             .play()
             .catch(err => console.error(err))
 
         setTimeout(() => {
-            if (lastNewView.value === slug) {
-                lastNewView.value = null
+            if (lastNewView.slug === slug) {
+                lastNewView.slug = null
+                lastNewView.country = null
             }
-        }, 5000)
+        }, 10000)
     })
 })
 
@@ -96,10 +108,28 @@ function fetchViews(): void {
                                         v-for="view in views.unique"
                                         :key="view.id"
                                         class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100 transition-colors duration-500"
-                                        :class="{ '!bg-yellow-200 animate-pulse': lastNewView === view.slug }"
+                                        :class="{ '!bg-yellow-200 animate-pulse': lastNewView.slug === view.slug }"
                                     >
                                         <td class="px-3 py-1">{{ view.amount }}</td>
-                                        <td class="px-3 py-1">{{ view.slug }}</td>
+                                        <td class="px-3 py-1 flex items-center">
+                                            {{ view.slug }}
+
+                                            <div
+                                                v-if="lastNewView.country"
+                                                class="animate-bounce inline-flex items-center"
+                                            >
+                                                <img
+                                                    :src="`/storage/admin/flags/${lastNewView.country}.png`"
+                                                    :alt="lastNewView.country"
+                                                    width="20"
+                                                    class="inline-block ml-2 rounded-sm shadow-sm"
+                                                >
+
+                                                <span class="ml-2 text-xs font-bold capitalize">
+                                                    {{ lastNewView.country }}
+                                                </span>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
