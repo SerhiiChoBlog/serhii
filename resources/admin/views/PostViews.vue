@@ -119,13 +119,13 @@ function fetchViews(): void {
                                                 class="animate-bounce inline-flex items-center"
                                             >
                                                 <img
-                                                    :src="`/storage/admin/flags/${lastNewView.country}.png`"
+                                                    :src="`/storage/admin/flags/${lastNewView.country.toLowerCase()}.png`"
                                                     :alt="lastNewView.country"
                                                     width="20"
                                                     class="inline-block ml-2 rounded-sm shadow-sm"
                                                 >
 
-                                                <span class="ml-2 text-xs font-bold uppercase">
+                                                <span class="ml-2 text-xs font-bold">
                                                     {{ lastNewView.country }}
                                                 </span>
                                             </div>
