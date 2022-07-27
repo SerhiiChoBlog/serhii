@@ -6,13 +6,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use Illuminate\Contracts\View\View;
+use App\Models\SocialShare;
+use Illuminate\Support\Collection;
 
 class SocialShareController extends Controller
 {
-    public function index(): View
+    /**
+     * @return Collection<int, SocialShare>
+     */
+    public function index(): Collection
     {
-        $posts = Post::query()
+        return Post::query()
             ->with('socialShares')
             ->get()
             ->map(static function (Post $post) {
@@ -20,7 +24,5 @@ class SocialShareController extends Controller
                 return $post;
             })
             ->filter(fn(Post $post) => !empty($post->social));
-
-        return view('admin.social_shares.index', compact('posts'));
     }
 }
