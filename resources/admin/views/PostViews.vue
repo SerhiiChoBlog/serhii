@@ -115,7 +115,7 @@ function fetchViews(): void {
                                             {{ view.slug }}
 
                                             <div
-                                                v-if="lastNewView.country"
+                                                v-if="lastNewView.country && lastNewView.slug === view.slug"
                                                 class="animate-bounce inline-flex items-center"
                                             >
                                                 <img

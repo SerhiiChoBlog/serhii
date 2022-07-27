@@ -91,8 +91,7 @@ class Visitor extends Model
             return;
         }
 
-
-        event(new NewPostView($slug, $visitor->country));
+        event(new NewPostView($slug, $visitor->country ?? 'unknown'));
 
         $visitor->pageViews()->create(compact('slug'));
     }
