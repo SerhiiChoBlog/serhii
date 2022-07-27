@@ -27,11 +27,15 @@ onMounted(() => {
         fetchViews()
         lastNewView.value = slug
 
+        new Audio('/storage/new-message.mp3')
+            .play()
+            .catch(err => console.error(err))
+
         setTimeout(() => {
             if (lastNewView.value === slug) {
                 lastNewView.value = null
             }
-        }, 2000)
+        }, 5000)
     })
 })
 
@@ -92,7 +96,7 @@ function fetchViews(): void {
                                         v-for="view in views.unique"
                                         :key="view.id"
                                         class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100 transition-colors duration-500"
-                                        :class="{ '!bg-yellow-200': lastNewView === view.slug }"
+                                        :class="{ '!bg-yellow-200 animate-pulse': lastNewView === view.slug }"
                                     >
                                         <td class="px-3 py-1">{{ view.amount }}</td>
                                         <td class="px-3 py-1">{{ view.slug }}</td>

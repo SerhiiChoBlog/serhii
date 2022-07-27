@@ -5,6 +5,14 @@
   */
 
 /*!
+ * Pusher JavaScript Library v7.3.0
+ * https://pusher.com/
+ *
+ * Copyright 2020, Pusher
+ * Released under the MIT licence.
+ */
+
+/*!
  * Toastify js 1.12.0
  * https://github.com/apvarun/toastify-js
  * @license MIT licensed
