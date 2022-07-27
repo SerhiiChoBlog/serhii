@@ -107,7 +107,7 @@ function addTag(tag: Tag): void {
                                     Tags
 
                                     <div class="ml-1 inline-block space-x-1">
-                                        <template v-if="post.tags">
+                                        <template v-if="post && post.tags">
                                             <tag-item
                                                 v-for="tag in post.tags"
                                                 :key="tag.id"
