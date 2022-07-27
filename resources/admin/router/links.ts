@@ -39,11 +39,11 @@ const links: UserSidebarLink[] = [
         title: 'Shares',
         icon: 'fa-share-alt',
     },
-    // {
-    //     routeName: 'referrers',
-    //     title: 'Referrers',
-    //     icon: 'fa-link',
-    // },
+    {
+        routeName: 'referrers',
+        title: 'Referrers',
+        icon: 'fa-link',
+    },
     {
         routeName: 'hits',
         title: 'Hits',
