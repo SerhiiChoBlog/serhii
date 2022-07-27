@@ -6,25 +6,24 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hit;
+use App\Models\PageView;
 use App\Models\Post;
 use App\Models\Referrer;
 use App\Models\SocialShare;
-use Serhii\Ago\Exceptions\InvalidDateFormatException;
-use Serhii\Ago\Exceptions\MissingRuleException;
-use Serhii\Ago\TimeAgo;
 
 class DashboardController extends Controller
 {
-    /**
-     * @throws InvalidDateFormatException
-     * @throws MissingRuleException
-     */
     public function sections(): array
     {
         return [
             [
-                'title' => 'Last visit',
-                'value' => TimeAgo::trans(Hit::query()->latest()->value('updated_at')),
+                'title' => 'Post views today',
+                'value' => PageView::query()
+                    ->selectRaw('DATE(created_at) as date, COUNT(*) as amount')
+                    ->groupBy('date')
+                    ->orderByDesc('date')
+                    ->first()
+                    ?->amount,
             ],
             [
                 'title' => 'Hits today',
