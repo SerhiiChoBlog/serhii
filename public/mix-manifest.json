@@ -1,9 +1,4 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/js/admin.js": "/js/admin.js",
-    "/css/app.css": "/css/app.css",
-    "/css/admin.css": "/css/admin.css",
-    "/css/font-awesome.css": "/css/font-awesome.css",
     "/fonts/AmaticSC-Bold.ttf": "/fonts/AmaticSC-Bold.ttf",
     "/fonts/AmaticSC-Regular.ttf": "/fonts/AmaticSC-Regular.ttf",
     "/fonts/ArizonaPlusVariable.woff2": "/fonts/ArizonaPlusVariable.woff2",

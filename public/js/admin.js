@@ -19850,6 +19850,10 @@ exports["default"] = (0, vue_1.defineComponent)({
     type: {
       type: String,
       required: false
+    },
+    href: {
+      type: String,
+      required: false
     }
   },
   setup: function setup(__props, _a) {
@@ -19858,7 +19862,8 @@ exports["default"] = (0, vue_1.defineComponent)({
     var _b = __props,
         route = _b.route,
         _c = _b.type,
-        type = _c === void 0 ? 'button' : _c;
+        type = _c === void 0 ? 'button' : _c,
+        href = _b.href;
     var classes = 'inline-block uppercase text-white text-sm px-6 py-2 rounded-full transition-all bg-main hover:bg-main-hover shadow-md hover:shadow-lg';
     var __returned__ = {
       classes: classes
@@ -21677,13 +21682,18 @@ exports.render = void 0;
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = ["type"];
+var _hoisted_1 = ["href"];
+var _hoisted_2 = ["type"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0, vue_1.resolveComponent)("router-link");
 
-  return $props.route ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)(_component_router_link, {
+  return $props.href ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
     key: 0,
+    href: $props.href,
+    "class": (0, vue_1.normalizeClass)($setup.classes)
+  }, [(0, vue_1.renderSlot)(_ctx.$slots, "default")], 8, _hoisted_1)) : $props.route ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)(_component_router_link, {
+    key: 1,
     "class": (0, vue_1.normalizeClass)($setup.classes),
     to: $props.route
   }, {
@@ -21692,10 +21702,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     _: 3
   }, 8, ["to"])) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("button", {
-    key: 1,
+    key: 2,
     type: $props.type,
     "class": (0, vue_1.normalizeClass)($setup.classes)
-  }, [(0, vue_1.renderSlot)(_ctx.$slots, "default")], 8, _hoisted_1));
+  }, [(0, vue_1.renderSlot)(_ctx.$slots, "default")], 8, _hoisted_2));
 }
 
 exports.render = render;
