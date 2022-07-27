@@ -2,12 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Events\NewPostView;
 use App\Http\Controllers\AboutMeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ThemeController;
-use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +31,3 @@ Route::middleware('hits')->group(function () {
 });
 
 Route::get('theme', ThemeController::class);
-
-Route::get('test', function () {
-    event(new NewPostView(Post::query()->first()));
-});

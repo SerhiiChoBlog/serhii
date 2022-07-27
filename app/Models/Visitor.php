@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Events\NewPostView;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -89,6 +90,8 @@ class Visitor extends Model
         if ($today_page_view || in_array($visitor->ip, $exclude_ips, true)) {
             return;
         }
+
+        event(new NewPostView($slug));
 
         $visitor->pageViews()->create(compact('slug'));
     }
