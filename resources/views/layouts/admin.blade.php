@@ -10,17 +10,10 @@
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
     @yield('head')
 </head>
-<body >
-    <x-admin.user-sidebar />
+<body>
+    <main id="admin-main"></main>
 
-    <main class="pl-9 lg:pl-14 py-10 text-font font-main bg-page">
-        @yield('content')
-    </main>
-
+    <script src="{{ asset('js/tinymce.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}" defer></script>
 </body>
 </html>
-
-<form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-    @csrf
-</form>

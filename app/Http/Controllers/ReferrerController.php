@@ -5,13 +5,15 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Referrer;
-use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 
 class ReferrerController extends Controller
 {
-    public function index(): View
+    /**
+     * @return Collection<int, Referrer>
+     */
+    public function index(): Collection
     {
-        $referrers = Referrer::query()->orderByDesc('hits')->get();
-        return view('admin.referrers.index', compact('referrers'));
+        return Referrer::query()->orderByDesc('hits')->get();
     }
 }

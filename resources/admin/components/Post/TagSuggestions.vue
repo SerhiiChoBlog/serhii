@@ -1,0 +1,52 @@
+<script setup lang="ts">
+import { Tag } from '../../../types/models'
+import { ref, watch } from 'vue'
+import axios from 'axios'
+import handleError from '../../modules/handleError'
+
+type Props = {
+    value: string
+}
+
+type Emits = {
+    (e: 'addTag', tag: Tag): void
+}
+
+const emit = defineEmits<Emits>()
+const props = defineProps<Props>()
+const suggestions = ref<Tag[]>([])
+
+watch(props, () => {
+    fetchTags(props.value)
+})
+
+function fetchTags(input: string): void {
+    if (input === '')
+        return
+
+    axios.post<Tag[]>(`/api/tags/search/${input}`)
+        .then(resp => suggestions.value = resp.data)
+        .catch(handleError)
+}
+
+function chooseTag(tag: Tag): void {
+    emit('addTag', tag)
+    suggestions.value = []
+}
+</script>
+
+<template>
+    <ul
+        v-if="suggestions.length > 0"
+        class="bg-white shadow-md mt-2 rounded-lg overflow-hidden"
+    >
+        <li
+            v-for="tag in suggestions"
+            :key="tag.id"
+            class="transition-colors hover:bg-page-second px-3 py-1"
+            @click="chooseTag(tag)"
+        >
+            {{ tag.name }}
+        </li>
+    </ul>
+</template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Tag } from '../../types/types'
+import type { Tag } from '../../../types/models'
 import useSearch from '../../composables/useSearch'
 import SearchIcon from '../Icons/SearchIcon.vue'
 import Dropdown from './Dropdown.vue'
