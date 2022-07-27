@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Events;
 
-use App\Models\Post;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
@@ -18,7 +17,7 @@ class NewPostView implements ShouldBroadcast, ShouldBroadcastNow
     use InteractsWithSockets;
     use SerializesModels;
 
-    public function __construct(public Post $post)
+    public function __construct(public string $slug)
     {
     }
 
@@ -29,6 +28,6 @@ class NewPostView implements ShouldBroadcast, ShouldBroadcastNow
 
     public function broadcastWith(): array
     {
-        return ['slug' => $this->post->slug];
+        return ['slug' => $this->slug];
     }
 }
