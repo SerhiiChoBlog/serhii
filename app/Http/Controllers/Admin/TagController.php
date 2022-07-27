@@ -6,48 +6,53 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class TagController extends Controller
 {
-    public function index(): View
+    /**
+     * @return Collection<int, Tag>
+     */
+    public function index(): Collection
     {
-        $tags = Tag::query()
+        return Tag::query()
             ->withCount('posts')
             ->orderByDesc('posts_count')
             ->get();
-
-        return view('admin.tags.index', compact('tags'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request): void
     {
-        $request->validate(['name' => 'required']);
+        $request->validate([
+            'name' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'color' => 'required',
+        ]);
+
         Tag::query()->create($request->all());
-        return redirect()->route('admin.tags.index');
     }
 
-    public function edit(Tag $tag): View
+    public function edit(Tag $tag): Tag
     {
-        return view('admin.tags.edit', compact('tag'));
+        return $tag;
     }
 
-    public function create(): View
+    public function update(Request $request, Tag $tag): void
     {
-        return view('admin.tags.create');
-    }
+        $request->validate([
+            'name' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'color' => 'required',
+        ]);
 
-    public function update(Request $request, Tag $tag): RedirectResponse
-    {
         $tag->update($request->all());
-        return redirect()->route('admin.tags.index');
     }
 
-    public function destroy(Tag $tag): RedirectResponse
+    public function destroy(Tag $tag): void
     {
         $tag->delete();
-        return redirect()->route('admin.tags.index');
     }
 }

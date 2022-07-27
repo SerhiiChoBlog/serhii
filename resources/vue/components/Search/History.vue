@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SearchSuggestion } from '../../types/types'
+import type { SearchSuggestion } from '../../../types/types'
 
 interface Props {
     history: SearchSuggestion[]

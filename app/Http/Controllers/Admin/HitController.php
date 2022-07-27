@@ -6,13 +6,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hit;
-use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 
 class HitController extends Controller
 {
-    public function index(): View
+    /**
+     * @return Collection<int, Hit>
+     */
+    public function index(): Collection
     {
-        $hits = Hit::query()->orderByDesc('created_at')->paginate(30);
-        return view('admin.hits.index', compact('hits'));
+        return Hit::query()
+            ->orderByDesc('created_at')
+            ->limit(20)
+            ->get();
     }
 }

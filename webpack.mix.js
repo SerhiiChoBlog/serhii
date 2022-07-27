@@ -43,6 +43,15 @@ mix.ts('resources/vue/app.ts', 'public/js/app.js')
     })
 
 mix.ts('resources/admin/app.ts', 'public/js/admin.js')
+    .vue()
+    .webpackConfig({
+        plugins: [
+            new webpack.DefinePlugin({
+                __VUE_OPTIONS_API__: true,
+                __VUE_PROD_DEVTOOLS__: false,
+            }),
+        ],
+    })
     .postCss("resources/css/admin/admin.css", "public/css", [
         require("tailwindcss"),
     ])
