@@ -42,12 +42,10 @@ onMounted(() => {
             .play()
             .catch(err => console.error(err))
 
-        setTimeout(() => {
-            if (lastNewView.slug === slug) {
-                lastNewView.slug = null
-                lastNewView.country = null
-            }
-        }, 10000)
+        if (lastNewView.slug === slug) {
+            lastNewView.slug = null
+            lastNewView.country = null
+        }
     })
 })
 
@@ -102,6 +100,7 @@ function fetchViews(): void {
                                         </th>
                                     </tr>
                                 </thead>
+
                                 <tbody v-if="views.unique">
                                     <tr
                                         v-if="views.unique"
@@ -112,23 +111,22 @@ function fetchViews(): void {
                                     >
                                         <td class="px-3 py-1">{{ view.amount }}</td>
                                         <td class="px-3 py-1 flex items-center">
-                                            <span class="first-letter:uppercase">{{ view.slug.replaceAll('-', ' ') }}</span>
+                                            <span class="first-letter:uppercase leading-5">
+                                                {{ view.slug.replaceAll('-', ' ') }}
 
-                                            <div
-                                                v-if="lastNewView.country && lastNewView.slug === view.slug"
-                                                class="animate-bounce inline-flex items-center"
-                                            >
-                                                <img
-                                                    :src="`/storage/admin/flags/${lastNewView.country.toLowerCase()}.png`"
-                                                    :alt="lastNewView.country"
-                                                    width="20"
-                                                    class="inline-block ml-2 rounded-sm shadow-sm"
-                                                >
+                                                <template v-if="lastNewView.country && lastNewView.slug === view.slug">
+                                                    <img
+                                                        :src="`/storage/admin/flags/${lastNewView.country.toLowerCase()}.png`"
+                                                        :alt="lastNewView.country"
+                                                        width="20"
+                                                        class="inline-block ml-1 rounded-sm shadow-sm"
+                                                    >
 
-                                                <span class="ml-2 text-xs font-bold">
-                                                    {{ lastNewView.country }}
-                                                </span>
-                                            </div>
+                                                    <span class="ml-1 text-xs font-bold">
+                                                        {{ lastNewView.country }}
+                                                    </span>
+                                                </template>
+                                            </span>
                                         </td>
                                     </tr>
                                 </tbody>
