@@ -26,7 +26,7 @@ class WelcomeSection extends Component
         $months = (int) $this->date_diff->format('%m');
         $years = (int) $this->date_diff->format('%y');
 
-        if ($months === 0 || $months === 1) {
+        if (in_array($months, [1, 2, 3], true)) {
             return "$years+";
         }
 
