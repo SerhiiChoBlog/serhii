@@ -13,6 +13,7 @@
         "laravel/framework": "^9.0",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
+        "pusher/pusher-php-server": "^7.0",
         "serhii/ago": "^2.0",
         "serhii/short-number": "^3.0",
         "stevebauman/location": "^6.1"
