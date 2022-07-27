@@ -11,13 +11,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 use Stevebauman\Location\Location;
+use Throwable;
 
 /**
  * @property-read int $id
  * @property string $ip
- * @property string $country
- * @property string $city
- * @property string $code
+ * @property string|null $country
+ * @property string|null $city
+ * @property string|null $code
  * @property Collection<SocialShare> $socialShares
  * @property Collection<PageView> $pageViews
  */
@@ -55,27 +56,27 @@ class Visitor extends Model
     {
         $visitor = self::query()->with('pageViews')->where('ip', $ip)->first();
 
-        if (!$visitor) {
-            $location = app(Location::class);
-            $position = $location->get($ip);
-
-            $visitor = self::query()->create([
-                'ip' => $ip,
-                'country' => $position->countryName ?? null,
-                'city' => $position->cityName ?? null,
-                'code' => $position->countryCode ?? null,
-            ]);
+        if ($visitor) {
+            return $visitor;
         }
 
-        return $visitor;
+        $location = app(Location::class);
+        $position = $location->get($ip);
+
+        return self::query()->create([
+            'ip' => $ip,
+            'country' => $position->countryName ?? null,
+            'city' => $position->cityName ?? null,
+            'code' => $position->countryCode ?? null,
+        ]);
     }
 
     public static function incrementPageViews(string $slug, string $ip): void
     {
         try {
             $visitor = self::getOrCreateVisitor($ip);
-        } catch (QueryException $e) {
-            logger()->warning($e);
+        } catch (Throwable $e) {
+            logger()->error($e);
             return;
         }
 

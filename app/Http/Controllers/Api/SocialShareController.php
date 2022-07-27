@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
+use Throwable;
 
 class SocialShareController extends Controller
 {
@@ -19,7 +20,12 @@ class SocialShareController extends Controller
             return;
         }
 
-        $visitor = Visitor::getOrCreateVisitor($ip);
+        try {
+            $visitor = Visitor::getOrCreateVisitor($ip);
+        } catch (Throwable $e) {
+            logger()->error($e);
+            return;
+        }
 
         $has_old_record = $post->socialShares()
             ->where('visitor_id', $visitor->id)
