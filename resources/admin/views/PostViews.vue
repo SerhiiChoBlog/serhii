@@ -125,7 +125,7 @@ function fetchViews(): void {
                                                     class="inline-block ml-2 rounded-sm shadow-sm"
                                                 >
 
-                                                <span class="ml-2 text-xs font-bold capitalize">
+                                                <span class="ml-2 text-xs font-bold uppercase">
                                                     {{ lastNewView.country }}
                                                 </span>
                                             </div>
