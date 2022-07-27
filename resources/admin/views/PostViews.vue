@@ -3,6 +3,7 @@ import type { PageView } from '../../types/models'
 import { onMounted, reactive, ref } from 'vue'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/vue'
 import axios from 'axios'
+import echo from '../modules/echo'
 import handleError from '../modules/handleError'
 import PageTitle from '../components/PageTitle.vue'
 import Spinner from '../components/Spinner.vue'
@@ -13,12 +14,26 @@ type Views = {
 }
 
 const loading = ref(true)
+const lastNewView = ref<string | null>(null)
 const views = reactive<Views>({
     unique: null,
     daily: null,
 })
 
-onMounted(() => fetchViews())
+onMounted(() => {
+    fetchViews()
+
+    echo<{ slug: string }>('notification', 'NewPostView', ({ slug }) => {
+        fetchViews()
+        lastNewView.value = slug
+
+        setTimeout(() => {
+            if (lastNewView.value === slug) {
+                lastNewView.value = null
+            }
+        }, 2000)
+    })
+})
 
 function fetchViews(): void {
     axios.get<Views>('/admin/ajax/page-views')
@@ -76,7 +91,8 @@ function fetchViews(): void {
                                         v-if="views.unique"
                                         v-for="view in views.unique"
                                         :key="view.id"
-                                        class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100"
+                                        class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100 transition-colors duration-500"
+                                        :class="{ '!bg-yellow-200': lastNewView === view.slug }"
                                     >
                                         <td class="px-3 py-1">{{ view.amount }}</td>
                                         <td class="px-3 py-1">{{ view.slug }}</td>
