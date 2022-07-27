@@ -38,7 +38,7 @@ function fetchViews(): void {
         <spinner v-if="loading" />
 
         <tab-group v-else>
-            <tab-list class="flex space-x-1 rounded-xl bg-gray-200 p-1">
+            <tab-list class="flex gap-2 rounded-xl bg-gray-500 p-1">
                 <tab
                     v-for="title in ['Unique views', 'Daily views']"
                     as="template"
@@ -48,7 +48,7 @@ function fetchViews(): void {
                         :class="[
                           'w-full rounded-lg py-3 text-md font-medium leading-5',
                           'ring-white ring-opacity-60 ring-offset-2 ring-offset-gray-400 focus:outline-none focus:ring-2',
-                          selected ? 'bg-white shadow' : 'hover:bg-white/50',
+                          selected ? 'bg-white shadow' : 'hover:bg-white/30 text-white',
                         ]"
                       >
                           {{ title }}
@@ -103,13 +103,13 @@ function fetchViews(): void {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr
-                                    v-for="view in views.daily"
-                                    class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100"
-                                >
-                                    <td class="px-3 py-1">{{ view.date }}</td>
-                                    <td class="px-3 py-1">{{ view.amount }}</td>
-                                </tr>
+                                    <tr
+                                        v-for="view in views.daily"
+                                        class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100 first:!bg-yellow-200"
+                                    >
+                                        <td class="px-3 py-1">{{ view.date }}</td>
+                                        <td class="px-3 py-1">{{ view.amount }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HitController;
 use App\Http\Controllers\Admin\PageViewController;
 use App\Http\Controllers\Admin\PostContentImageController;
 use App\Http\Controllers\Admin\PostController;
@@ -16,11 +17,11 @@ Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
     Route::post('post-content-images/{post}', [PostContentImageController::class, 'store']);
     Route::delete('post-content-images/{image}', [PostContentImageController::class, 'destroy']);
     Route::resource('tags', TagController::class)->except('show', 'create');
-     Route::get('page-views', [PageViewController::class, 'index']);
-     Route::get('visitors', [VisitorController::class, 'index']);
+    Route::resource('page-views', PageViewController::class)->only('index');
+    Route::resource('visitors', VisitorController::class)->only('index');
     // Route::resource('social-shares', SocialShareController::class)->only('index');
     // Route::resource('referrers', ReferrerController::class)->only('index');
-    // Route::resource('hits', HitController::class)->only('index');
+    Route::resource('hits', HitController::class)->only('index');
 });
 
 Route::view('{any?}', 'layouts.admin')

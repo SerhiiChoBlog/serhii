@@ -67,3 +67,10 @@ export type SocialShare = {
     visitor?: Visitor
     created_at: string
 }
+
+export type Hit = {
+    id: number
+    amount: number
+    updated_at: number
+    created_at: number
+}
