@@ -7,8 +7,10 @@ use App\Http\Controllers\Admin\HitController;
 use App\Http\Controllers\Admin\PageViewController;
 use App\Http\Controllers\Admin\PostContentImageController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SocialShareController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\VisitorController;
+use App\Http\Controllers\ReferrerController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
@@ -19,8 +21,8 @@ Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('tags', TagController::class)->except('show', 'create');
     Route::resource('page-views', PageViewController::class)->only('index');
     Route::resource('visitors', VisitorController::class)->only('index');
-    // Route::resource('social-shares', SocialShareController::class)->only('index');
-    // Route::resource('referrers', ReferrerController::class)->only('index');
+     Route::resource('social-shares', SocialShareController::class)->only('index');
+     Route::resource('referrers', ReferrerController::class)->only('index');
     Route::resource('hits', HitController::class)->only('index');
 });
 

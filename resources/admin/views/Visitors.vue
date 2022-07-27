@@ -50,7 +50,11 @@ function fetchVisitors(): void {
                         <td class="px-3 py-1">{{ visitor.country || '-' }}</td>
                         <td class="px-3 py-1">{{ visitor.city || '-' }}</td>
                         <td class="px-3 py-1">
-                            <img v-if="visitor.code" :src="`/storage/admin/flags/${visitor.code}.png`" width="30" />
+                            <img
+                                v-if="visitor.code"
+                                :src="`/storage/admin/flags/${visitor.code}.png`"
+                                width="30"
+                            />
                             <img v-else src="/storage/admin/flags/unknown.png" width="30" />
                         </td>
                     </tr>

@@ -27,6 +27,7 @@ export type Post = {
     images?: PostContentImage[]
     pageViews?: PageView[]
     socialShares?: SocialShare[]
+    social?: string[][] | null
     tags?: Tag[]
     social_shares_count: number | null
     page_views_count: number | null
