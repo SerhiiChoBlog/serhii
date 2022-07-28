@@ -8,7 +8,7 @@ import { ListboxOptions } from '@headlessui/vue'</script>
         leave-to-class="opacity-0"
     >
         <listbox-options
-            class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+            class="absolute mt-1 z-10 max-h-96 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
         >
             <slot />
         </listbox-options>

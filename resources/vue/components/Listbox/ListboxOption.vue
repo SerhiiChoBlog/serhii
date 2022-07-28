@@ -9,7 +9,7 @@ import { ListboxOption } from '@headlessui/vue'</script>
         <li
             :class="[
                 active ? 'bg-main-light text-black' : 'text-gray-900',
-                'relative cursor-default select-none py-2 pl-10 pr-4',
+                'relative cursor-default select-none py-2 px-4 border-b border-border',
             ]"
         >
             <span
