@@ -21532,6 +21532,8 @@ var Tip_vue_1 = __importDefault(__webpack_require__(/*! ./components/Tip.vue */ 
 
 var Search_vue_1 = __importDefault(__webpack_require__(/*! ./components/Search/Search.vue */ "./resources/vue/components/Search/Search.vue"));
 
+var Posts_vue_1 = __importDefault(__webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/Posts.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())));
+
 var app = (0, vue_1.createApp)({
   components: {
     ContactModal: ContactModal_vue_1["default"],
@@ -21543,7 +21545,8 @@ var app = (0, vue_1.createApp)({
     ToTop: ToTop_vue_1["default"],
     Popper: vue3_popper_1["default"],
     Search: Search_vue_1["default"],
-    Tip: Tip_vue_1["default"]
+    Tip: Tip_vue_1["default"],
+    Posts: Posts_vue_1["default"]
   },
   setup: function setup() {
     (0, vue_1.onMounted)(function () {
