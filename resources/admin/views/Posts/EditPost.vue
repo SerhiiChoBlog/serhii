@@ -19,6 +19,7 @@ import DeletePost from '../../components/Post/DeletePost.vue'
 onMounted(() => {
     fetchPost()
     setTimeout(() => init(), 500)
+    document.addEventListener('keydown', savePostWithCorrectKeyBinds)
 })
 
 const route = useRoute()
@@ -46,8 +47,16 @@ function savePost(form: HTMLFormElement | null): void {
 
     new SavePost(elements, post.value.id)
         .save()
-        .then(postUrl => console.log(postUrl))
+        .then(handleSavePostResponse)
         .finally(() => loading.value = false)
+}
+
+function handleSavePostResponse(postSlug: string | null): void {
+    if (!post.value || !postSlug) {
+        return
+    }
+
+    post.value.slug = postSlug
 }
 
 function deleteTag(id: number): void {
@@ -55,8 +64,6 @@ function deleteTag(id: number): void {
         return
 
     post.value.tags = post.value.tags.filter(tag => tag.id !== id)
-
-    setTimeout(() => form.value ? savePost(form.value) : null, 200)
 }
 
 function addTag(tag: Tag): void {
@@ -65,9 +72,15 @@ function addTag(tag: Tag): void {
 
     post.value.tags.push(tag)
     tagInputValue.value = ''
-
-    setTimeout(() => form.value ? savePost(form.value) : null, 200)
 }
+
+function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
+    if ((e.ctrlKey || e.metaKey) && e.code === 'KeyS') {
+        e.preventDefault()
+        savePost(form.value)
+    }
+}
+
 </script>
 
 <template>
