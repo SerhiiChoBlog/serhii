@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Listbox } from '@headlessui/vue'
-import ListboxButton from '../Listbox/ListboxButton.vue'
-import ListboxOptions from '../Listbox/ListboxOptions.vue'
-import ListboxOption from '../Listbox/ListboxOption.vue'
+import ListboxButton from '../../Listbox/ListboxButton.vue'
+import ListboxOptions from '../../Listbox/ListboxOptions.vue'
+import ListboxOption from '../../Listbox/ListboxOption.vue'
 
 const tags = [
     {id: 1, name: 'Durward Reynolds', unavailable: false},
