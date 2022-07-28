@@ -16,7 +16,13 @@ const router = useRouter()
 const loading = ref(false)
 
 function deletePost(): void {
-    if (!confirm(`Are you sure you want to delete post "${post.title}"`))
+    if (!confirm(`STEP 1/3. Are you sure you want to delete post "${post.title}"`))
+        return
+
+    if (!confirm(`STEP 2/3. You will not be able to restore this post. Are you sure you want to remove it forever?`))
+        return
+
+    if (!confirm(`STEP 3/3. Last confirmation. Are you sure?`))
         return
 
     loading.value = true

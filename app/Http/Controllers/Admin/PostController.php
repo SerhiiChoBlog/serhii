@@ -81,7 +81,8 @@ class PostController extends Controller
             $data = array_merge($data, ['image_sm' => $images['sm'], 'image_lg' => $images['lg']]);
         }
 
-        $data = array_merge($data, ['slug' => Str::slug($request->get('title'))]);
+        $slug = Str::slug($request->get('title'));
+        $data = array_merge($data, compact('slug'));
 
         $data['title'] = trim($data['title']);
         $data['intro'] = trim($data['intro']);
@@ -98,7 +99,7 @@ class PostController extends Controller
 
         $post->update($data);
 
-        return route('posts.show', $post);
+        return $slug;
     }
 
     private function addNotesToContent(?string $content): ?string
