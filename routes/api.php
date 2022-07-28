@@ -12,4 +12,4 @@ Route::controller(TagController::class)->prefix('tags')->group(function () {
 Route::post('social-shares/{post}', [SocialShareController::class, 'store']);
 Route::get('search/{query}', [SearchController::class, 'index']);
 
-Route::resource('posts', PostController::class)->only('index');
+Route::get('posts', [PostController::class, 'index']);
