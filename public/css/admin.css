@@ -1704,6 +1704,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .\!bg-main-light{
   background-color: var(--color-main-light) !important;
 }
+.bg-main-light{
+  background-color: var(--color-main-light);
+}
 .bg-gradient-to-r{
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
