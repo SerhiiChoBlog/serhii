@@ -7,11 +7,6 @@ type Props = {
     post: Post
 }
 
-type Emits = {
-    (e: 'tagChosen', id: number): void
-}
-
-const emit = defineEmits<Emits>()
 const { post } = defineProps<Props>()
 </script>
 

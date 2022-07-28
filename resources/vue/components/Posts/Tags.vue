@@ -19,10 +19,10 @@ const emit = defineEmits<Emits>()
         <tip
             v-for="tag in tags"
             :key="tag.id"
-            :content="`<b class='text-lg'>${tag.title}</b><br />${tag.description}`"
+            :content="tag.title"
         >
-            <button
-                type="button"
+            <a
+                :href="`/posts?tag=${tag.name}`"
                 aria-label="Post tag"
                 @click="emit('tagChosen', tag)"
             >
@@ -32,7 +32,7 @@ const emit = defineEmits<Emits>()
                 >
                     {{ tag.name }}
                 </span>
-            </button>
+            </a>
         </tip>
     </div>
 </template>
