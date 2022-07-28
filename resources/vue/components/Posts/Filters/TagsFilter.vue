@@ -6,34 +6,37 @@ import { Listbox } from '@headlessui/vue'
 import ListboxButton from '../../Listbox/ListboxButton.vue'
 import ListboxOptions from '../../Listbox/ListboxOptions.vue'
 import ListboxOption from '../../Listbox/ListboxOption.vue'
+import FilterTagLabel from './FilterTagLabel.vue'
 
-const tags = ref<Tag[]>([])
-const selectedTag = ref<Tag | null>(null)
+const tags = ref<Tag[]>([
+    {
+        id: 0,
+        title: '--- Choose tag ---',
+        description: '',
+        name: 'unknown',
+        color: 'no',
+    },
+])
+
+const selectedTag = ref<Tag>(tags.value[0])
 
 onMounted(() => fetchTags())
 
 function fetchTags(): void {
     axios.get<Tag[]>('/api/tags')
-        .then(resp => {
-            tags.value = resp.data
-            selectedTag.value = resp.data[0]
-        })
+        .then(resp => tags.value.push(...resp.data))
         .catch(err => console.error(err))
 }
 </script>
 
 <template>
-    <listbox v-if="selectedTag" v-model="selectedTag">
+    <listbox v-model="selectedTag">
         <div class="relative">
-            <listbox-button class="flex gap-3">
-                <div
-                    class="py-[3px] inline-block font-white px-2 rounded-md text-white text-xs flex-shrink-0"
-                    :style="{ backgroundColor: selectedTag.color }"
-                >
-                    {{ selectedTag.name }}
+            <listbox-button>
+                <div class="flex gap-2">
+                    <filter-tag-label v-if="selectedTag.color !== 'no'" :tag="selectedTag" />
+                    {{ selectedTag.title }}
                 </div>
-
-                <span class="truncate block">{{ selectedTag.title }}</span>
             </listbox-button>
 
             <listbox-options>
@@ -42,14 +45,8 @@ function fetchTags(): void {
                     :key="tag.name"
                     :value="tag"
                 >
-                    <div class="flex gap-3">
-                        <span
-                            class="bg-red-600 py-[3px] inline-block font-white px-2 rounded-md text-white text-xs"
-                            :style="{ backgroundColor: tag.color }"
-                        >
-                            {{ tag.name }}
-                        </span>
-
+                    <div class="flex gap-2">
+                        <filter-tag-label v-if="tag.color !== 'no'" :tag="tag" />
                         {{ tag.title }}
                     </div>
                 </listbox-option>
