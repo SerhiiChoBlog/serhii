@@ -28,7 +28,7 @@ class PostController extends Controller
         }
 
         return view('posts.index', [
-            'posts' => $query->paginate(15),
+            'posts' => $query->paginate(20),
         ]);
     }
 
