@@ -2199,6 +2199,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .max-w-\[1000px\] {
   max-width: 1000px;
 }
+.max-w-\[360px\] {
+  max-width: 360px;
+}
 .max-w-\[350px\] {
   max-width: 350px;
 }
@@ -2221,9 +2224,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .max-w-\[85\%\] {
   max-width: 85%;
-}
-.max-w-\[360px\] {
-  max-width: 360px;
 }
 .flex-1 {
   flex: 1 1 0%;

@@ -8,6 +8,12 @@ import ListboxOptions from '../../Listbox/ListboxOptions.vue'
 import ListboxOption from '../../Listbox/ListboxOption.vue'
 import FilterTagLabel from './FilterTagLabel.vue'
 
+type Props = {
+    tagSlug: string
+}
+
+const { tagSlug } = defineProps<Props>()
+
 const tags = ref<Tag[]>([
     {
         id: 0,
@@ -24,7 +30,17 @@ onMounted(() => fetchTags())
 
 function fetchTags(): void {
     axios.get<Tag[]>('/api/tags')
-        .then(resp => tags.value.push(...resp.data))
+        .then(resp => {
+            tags.value.push(...resp.data)
+
+            if (tagSlug) {
+                const match = resp.data.find(tag => tag.name === tagSlug.trim())
+
+                if (match) {
+                    selectedTag.value = match
+                }
+            }
+        })
         .catch(err => console.error(err))
 }
 </script>

@@ -10,14 +10,10 @@ import { ListboxOption } from '@headlessui/vue'</script>
             :class="[
                 active ? 'bg-main-light text-black' : 'text-gray-900',
                 'relative cursor-default select-none py-2 px-4 border-b border-border',
+                selected ? 'bg-main-light' : ''
             ]"
         >
-            <span
-                :class="[
-                    selected ? 'font-medium' : 'font-normal',
-                    'block truncate',
-                ]"
-            >
+            <span class="block truncate">
                 <slot />
             </span>
         </li>
