@@ -21,13 +21,13 @@
             <a
                 href="{{ $project->url }}"
                 target="_blank"
-                class="bg-gradient bg-gradient-to-br from-gray-200 via-white to-gray-200 text-black px-7 py-3 rounded-full inline-flex mt-5 hover:scale-105 transition-transform shadow-md mx-auto"
+                class="bg-gradient bg-gradient-to-br from-gray-200 via-white to-gray-200 text-black px-7 py-3 rounded-full inline-flex mt-5 hover:scale-105 transition-transform shadow-md mx-auto items-center"
                 aria-label="{{ $project->title }}"
                 title="Link to GitHub repo '{{ $project->title }}'"
             >
                 <div>
                     <img
-                        src="{{ asset('storage/icons/github-dark.png') }}"
+                        src="{{ asset('storage/icons/github-dark.webp') }}"
                         width="20"
                         height="20"
                         alt="Github logo"

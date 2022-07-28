@@ -24,6 +24,6 @@ class PostController extends Controller
             $query = $query->whereHas('tags', fn(Builder $q) => $q->where('name', $request->tag));
         }
 
-        return $query->simplePaginate(20);
+        return $query->simplePaginate(10)->appends($request->input());
     }
 }
