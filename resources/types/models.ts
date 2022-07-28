@@ -4,7 +4,7 @@ export type Tag = {
     description: string
     name: string
     color: string
-    posts_count: number | null
+    posts_count?: number
 }
 
 export type PostContentImage = {
@@ -27,10 +27,10 @@ export type Post = {
     images?: PostContentImage[]
     pageViews?: PageView[]
     socialShares?: SocialShare[]
-    social?: string[][] | null
+    social?: string[][]
     tags?: Tag[]
-    social_shares_count: number | null
-    page_views_count: number | null
+    social_shares_count?: number
+    page_views_count?: number
     read_time: number
     pretty_created_at: string
     created_at: string

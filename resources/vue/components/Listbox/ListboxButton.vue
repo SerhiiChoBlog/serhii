@@ -6,7 +6,9 @@ import SelectorIcon from '../Icons/SelectorIcon.vue'</script>
     <listbox-button
         class="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left focus:outline-none border border-border sm:text-sm"
     >
-        <slot />
+        <span class="truncate block">
+            <slot />
+        </span>
 
         <span
             class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"
