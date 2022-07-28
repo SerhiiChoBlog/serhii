@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Tag } from '../../types/models'
+import type { Tag } from '../../../types/models'
 
 type Props = {
     tags: Tag[]

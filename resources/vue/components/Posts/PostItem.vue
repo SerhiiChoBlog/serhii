@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Post } from '../../../types/models'
-import Tags from '../Tags.vue'
+import Tags from './Tags.vue'
 
 type Props = {
     post: Post
