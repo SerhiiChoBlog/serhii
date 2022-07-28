@@ -20548,16 +20548,24 @@ exports["default"] = (0, vue_1.defineComponent)({
 /*!*******************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/vue/components/Posts/Tags.vue?vue&type=script&setup=true&lang=ts ***!
   \*******************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var Tip_vue_1 = __importDefault(__webpack_require__(/*! ../Tip.vue */ "./resources/vue/components/Tip.vue"));
 
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Tags',
@@ -20567,11 +20575,16 @@ exports["default"] = (0, vue_1.defineComponent)({
       required: true
     }
   },
+  emits: ["tagChosen"],
   setup: function setup(__props, _a) {
-    var expose = _a.expose;
+    var expose = _a.expose,
+        emit = _a.emit;
     expose();
     var tags = __props.tags;
-    var __returned__ = {};
+    var __returned__ = {
+      emit: emit,
+      Tip: Tip_vue_1["default"]
+    };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
       value: true
@@ -21175,6 +21188,11 @@ exports["default"] = (0, vue_1.defineComponent)({
     }
 
     function filterPosts(tag) {
+      if (tag.name === 'everything') {
+        clearFilters();
+        return;
+      }
+
       var query = (0, replaceQueryParam_1["default"])('tag', tag.name);
 
       if (window.location.search != query) {
@@ -21185,7 +21203,10 @@ exports["default"] = (0, vue_1.defineComponent)({
       fetchPosts("/api/posts".concat(query), true);
     }
 
-    function clearFilters() {}
+    function clearFilters() {
+      window.history.replaceState(null, '', '/posts');
+      fetchPosts('/api/posts', true);
+    }
 
     function onScroll() {
       var wrap = document.querySelector('#app');
@@ -21599,7 +21620,7 @@ var _hoisted_2 = {
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["ListboxButton"], {
-    "class": "relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left focus:outline-none border border-border sm:text-sm"
+    "class": "relative w-full cursor-default rounded-lg bg-page py-2 pl-3 pr-10 text-left focus:outline-none border border-border sm:text-sm"
   }, {
     "default": (0, vue_1.withCtx)(function () {
       return [(0, vue_1.createElementVNode)("span", _hoisted_1, [(0, vue_1.renderSlot)(_ctx.$slots, "default")]), (0, vue_1.createElementVNode)("span", _hoisted_2, [(0, vue_1.createVNode)($setup["SelectorIcon"], {
@@ -21632,7 +21653,7 @@ exports.render = void 0;
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "block truncate"
+  "class": "block truncate text-font"
 };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -21643,7 +21664,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       var active = _a.active,
           selected = _a.selected;
       return [(0, vue_1.createElementVNode)("li", {
-        "class": (0, vue_1.normalizeClass)([active ? 'bg-main-light text-black' : 'text-gray-900', 'relative cursor-default select-none py-2 px-4 border-b border-border', selected ? 'bg-main-light' : ''])
+        "class": (0, vue_1.normalizeClass)([active ? 'bg-main-light text-black dark:bg-page-second' : 'text-gray-900', 'relative cursor-default select-none py-2 px-4 border-b border-border', selected ? 'bg-main-light dark:bg-page-second' : ''])
       }, [(0, vue_1.createElementVNode)("span", _hoisted_1, [(0, vue_1.renderSlot)(_ctx.$slots, "default")])], 2)];
     }),
     _: 3
@@ -21678,7 +21699,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0, vue_1.withCtx)(function () {
       return [(0, vue_1.createVNode)($setup["ListboxOptions"], {
-        "class": "absolute mt-1 z-10 max-h-96 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+        "class": "absolute mt-1 z-10 max-h-96 w-full overflow-auto rounded-md bg-page py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
       }, {
         "default": (0, vue_1.withCtx)(function () {
           return [(0, vue_1.renderSlot)(_ctx.$slots, "default")];
@@ -21905,12 +21926,12 @@ var _hoisted_6 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("article", null, [(0, vue_1.createElementVNode)("div", _hoisted_1, [(0, vue_1.createElementVNode)("a", {
     href: "/posts/".concat($props.post.slug),
-    "class": "block w-full max-w-max lg:max-w-[260px]"
+    "class": "block w-full max-w-max lg:max-w-[270px]"
   }, [(0, vue_1.createElementVNode)("img", {
     src: "/".concat($props.post.image_sm),
-    "class": "rounded-lg shadow-[rgba(0,0,0,.2)] w-full",
-    width: "260",
-    height: "141",
+    "class": "rounded-lg shadow-md shadow-[rgba(0,0,0,.2)] w-full",
+    width: "270",
+    height: "147",
     alt: $props.post.title
   }, null, 8, _hoisted_3)], 8, _hoisted_2), (0, vue_1.createElementVNode)("div", null, [(0, vue_1.createElementVNode)("a", {
     href: "/posts/".concat($props.post.slug)
@@ -21947,20 +21968,30 @@ var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 var _hoisted_1 = {
   "class": "flex gap-1 flex-wrap"
 };
-var _hoisted_2 = ["href"];
+var _hoisted_2 = ["onClick"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($props.tags, function (tag) {
-    return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("a", {
+    return (0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Tip"], {
       key: tag.id,
-      "aria-label": "Post tag",
-      href: "/posts?tag=".concat(tag.name)
-    }, [(0, vue_1.createElementVNode)("span", {
-      "class": "cursor-pointer inline-flex items-center px-3 py-0.5 rounded-md text-xs font-bold leading-5 text-white bg-brand-500 transition-transform hover:scale-105 duration-300",
-      style: (0, vue_1.normalizeStyle)({
-        backgroundColor: tag.color
-      })
-    }, (0, vue_1.toDisplayString)(tag.name), 5)], 8, _hoisted_2);
+      content: "<b class='text-lg'>".concat(tag.title, "</b><br />").concat(tag.description)
+    }, {
+      "default": (0, vue_1.withCtx)(function () {
+        return [(0, vue_1.createElementVNode)("button", {
+          type: "button",
+          "aria-label": "Post tag",
+          onClick: function onClick($event) {
+            return $setup.emit('tagChosen', tag);
+          }
+        }, [(0, vue_1.createElementVNode)("span", {
+          "class": "cursor-pointer inline-flex items-center px-3 py-0.5 rounded-md text-xs font-bold leading-5 text-white bg-brand-500 transition-transform hover:scale-105 duration-300",
+          style: (0, vue_1.normalizeStyle)({
+            backgroundColor: tag.color
+          })
+        }, (0, vue_1.toDisplayString)(tag.name), 5)], 8, _hoisted_2)];
+      }),
+      _: 2
+    }, 1032, ["content"]);
   }), 128))]);
 }
 
@@ -22365,9 +22396,7 @@ exports.render = void 0;
 
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "bg-font dark:bg-page-second dark:text-white px-4 py-2 text-white rounded-lg text-sm shadow-md"
-};
+var _hoisted_1 = ["innerHTML"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Popper"], {
@@ -22375,7 +22404,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     content: $props.content
   }, {
     content: (0, vue_1.withCtx)(function () {
-      return [(0, vue_1.createElementVNode)("div", _hoisted_1, (0, vue_1.toDisplayString)($props.content), 1)];
+      return [(0, vue_1.createElementVNode)("div", {
+        "class": "bg-font dark:bg-page-second dark:text-white dark:border dark:border-gray-800 px-4 py-2 text-white rounded-lg text-sm shadow-md",
+        innerHTML: $props.content
+      }, null, 8, _hoisted_1)];
     }),
     "default": (0, vue_1.withCtx)(function () {
       return [(0, vue_1.renderSlot)(_ctx.$slots, "default")];
@@ -45643,11 +45675,13 @@ if (false) {}
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": () => (/* reexport safe */ _Tags_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Tags_vue_vue_type_template_id_29cb3a46_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tags.vue?vue&type=template&id=29cb3a46&ts=true */ "./resources/vue/components/Posts/Tags.vue?vue&type=template&id=29cb3a46&ts=true");
 /* harmony import */ var _Tags_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tags.vue?vue&type=script&setup=true&lang=ts */ "./resources/vue/components/Posts/Tags.vue?vue&type=script&setup=true&lang=ts");
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _Tags_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _Tags_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 /* harmony import */ var _Users_serhiichornenkyi_www_work_serhii_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
@@ -46310,10 +46344,13 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tags_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule),
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tags_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport default from dynamic */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tags_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0___default.a)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tags_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Tags.vue?vue&type=script&setup=true&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/vue/components/Posts/Tags.vue?vue&type=script&setup=true&lang=ts");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tags_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tags_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tags_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Tags_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
  
 
 /***/ }),

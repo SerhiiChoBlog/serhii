@@ -18,12 +18,12 @@ const { post } = defineProps<Props>()
 <template>
     <article>
         <div class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl max-w-[550px] lg:max-w-full mx-auto transition-colors hover:bg-page-second">
-            <a :href="`/posts/${post.slug}`" class="block w-full max-w-max lg:max-w-[260px]">
+            <a :href="`/posts/${post.slug}`" class="block w-full max-w-max lg:max-w-[270px]">
                 <img
                     :src="`/${post.image_sm}`"
-                    class="rounded-lg shadow-[rgba(0,0,0,.2)] w-full"
-                    width="260"
-                    height="141"
+                    class="rounded-lg shadow-md shadow-[rgba(0,0,0,.2)] w-full"
+                    width="270"
+                    height="147"
                     :alt="post.title"
                 />
             </a>
