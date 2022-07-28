@@ -34,7 +34,7 @@ module.exports = {
         backgroundImage: {
             'home-hero': 'url(/storage/heros/home-hero.webp)',
             'home-hero-sm': 'url(/storage/heros/home-hero-sm.webp)',
-            'mac-buttons': 'url(/storage/tools/mac-buttons.png)',
+            'mac-buttons': 'url(/storage/tools/mac-buttons.webp)',
         },
         fontFamily: {
             main: ['Main', 'arial'],
