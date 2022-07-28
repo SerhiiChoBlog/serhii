@@ -26,10 +26,6 @@ function fetchPosts(): void {
 function clearFilters(): void {
     console.log('filter')
 }
-
-function fetchPostsWithTag(tagId: number): void {
-    console.log(tagId)
-}
 </script>
 
 <template>
@@ -45,7 +41,6 @@ function fetchPostsWithTag(tagId: number): void {
                         v-for="post in posts"
                         :key="post.id"
                         :post="post"
-                        @tagChosen="fetchPostsWithTag"
                     />
                 </div>
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Post } from '../../../types/models'
 import Tags from './Tags.vue'
+import PostDetails from './PostDetails.vue'
 
 type Props = {
     post: Post
@@ -36,12 +37,11 @@ const { post } = defineProps<Props>()
                 <div>
                     <tags
                         v-if="post.tags"
-                        @chosen="(id: number) => emit('tagChosen', id)"
                         :tags="post.tags"
                         class="text-[.8em] mt-3"
                     />
 
-<!--                    <x-post.details :post="post" class="mt-3" />-->
+                    <post-details :post="post" class="mt-3" />
                 </div>
             </div>
         </div>
