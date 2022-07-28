@@ -26,7 +26,7 @@
                     >
                         <div>
                             <img
-                                src="{{ asset('/storage/languages/' . strtolower($project['language']) . '.png') }}"
+                                src="{{ asset('/storage/languages/' . strtolower($project['language']) . '.webp') }}"
                                 alt="{{ $project['title'] }}"
                                 class="absolute right-4 top-4"
                                 width="50"

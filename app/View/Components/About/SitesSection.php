@@ -9,17 +9,17 @@ class SitesSection extends Component
 {
     public array $sites = [
         [
-            'image' => 'storage/tools/site-sho.png',
+            'image' => 'storage/tools/site-sho.webp',
             'title' => 'Shobar',
             'href' => 'https://shobar.com.ua/',
         ],
         [
-            'image' => 'storage/tools/site-zoo.png',
+            'image' => 'storage/tools/site-zoo.webp',
             'title' => 'ZooZooZoo',
             'href' => 'https://zoo-zoo-zoo.com.ua/',
         ],
         [
-            'image' => 'storage/tools/site-olexiy.png',
+            'image' => 'storage/tools/site-olexiy.webp',
             'title' => 'Jiskelo',
             'href' => 'https://jiskelo.dev/',
         ],

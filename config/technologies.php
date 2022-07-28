@@ -4,7 +4,7 @@ return [
 
     'languages' => [
         [
-            'image' => 'storage/tools/php.png',
+            'image' => 'storage/tools/php.webp',
             'title' => 'PHP',
             'content' => <<<TEXT
             PHP was my first programming language.
@@ -14,7 +14,7 @@ return [
             TEXT,
         ],
         [
-            'image' => 'storage/tools/go.png',
+            'image' => 'storage/tools/go.webp',
             'title' => 'Go',
             'content' => <<<TEXT
             I've been using Go since 2019 mostly for my personal projects.
@@ -22,7 +22,7 @@ return [
             TEXT,
         ],
         [
-            'image' => 'storage/tools/ts.png',
+            'image' => 'storage/tools/ts.webp',
             'title' => 'TypeScript',
             'content' => <<<TEXT
             TypeScript is my go-to when I'm working with Vue, React or native JavaScript.
@@ -30,7 +30,7 @@ return [
             TEXT,
         ],
         [
-            'image' => 'storage/tools/sql.png',
+            'image' => 'storage/tools/sql.webp',
             'title' => 'SQL',
             'content' => <<<TEXT
             SQL is a must have language for building backend applications with SQL-databases.
@@ -41,22 +41,22 @@ return [
 
     'frameworks' => [
         [
-            'image' => 'storage/tools/laravel.png',
+            'image' => 'storage/tools/laravel.webp',
             'title' => 'Laravel',
             'content' => "Laravel is my primary technology. I like to use all the features of the framework along with the repository pattern and TDD. It helps to organize and structure code in a very simple and readable way.",
         ],
         [
-            'image' => 'storage/tools/vue.png',
+            'image' => 'storage/tools/vue.webp',
             'title' => 'Vue',
             'content' => "I've been using Vue along with the VueRouter and Vuex mostly for building Single Page Applications. I enjoy working with Vue 3, TypeScript and script setup.",
         ],
         [
-            'image' => 'storage/tools/react.png',
+            'image' => 'storage/tools/react.webp',
             'title' => 'React',
             'content' => "React.js with TypeScript is another JavaScript framework that I'm using from time to time. Usually I'm reaching for it when I need a library that Vue doesn't have. One of those amazing libraries is react-pdf.",
         ],
         [
-            'image' => 'storage/tools/wordpress.png',
+            'image' => 'storage/tools/wordpress.webp',
             'title' => 'WordPress',
             'content' => "Mostly I'm building plugins for business sites, that need integration of payment systems like Mollie, Wayforpay and Bitpay, plugins for Megaplan CRM and Exact Online, web hooks and other functionalities.",
         ],
@@ -64,12 +64,12 @@ return [
 
     'projects' => [
         [
-            'image' => 'storage/tools/site-sho.png',
+            'image' => 'storage/tools/site-sho.webp',
             'title' => 'Shobar',
             'content' => "",
         ],
         [
-            'image' => 'storage/tools/site-zoo.png',
+            'image' => 'storage/tools/site-zoo.webp',
             'title' => 'ZooZooZoo',
             'content' => "",
         ],
@@ -77,7 +77,7 @@ return [
 
     'technologies' => [
         [
-            'image' => 'storage/tools/docker.png',
+            'image' => 'storage/tools/docker.webp',
             'title' => 'Docker',
             'content' => <<<TEXT
             My first Docker experience started in 2018. I was fortunate to start using it so early in my career.
@@ -85,7 +85,7 @@ return [
             TEXT,
         ],
         [
-            'image' => 'storage/tools/linux.png',
+            'image' => 'storage/tools/linux.webp',
             'title' => 'Linux',
             'content' => <<<TEXT
             I feel free using Unix based operating system like Linux and macOS.
@@ -94,7 +94,7 @@ return [
             TEXT,
         ],
         [
-            'image' => 'storage/tools/tailwind.png',
+            'image' => 'storage/tools/tailwind.webp',
             'title' => 'Tailwind CSS',
             'content' => <<<TEXT
             Tailwind CSS is on my radar since the beginning of 2021.
@@ -106,7 +106,7 @@ return [
 
     'skills' => [
         [
-            'image' => 'storage/tools/communication.png',
+            'image' => 'storage/tools/communication.webp',
             'title' => 'Communication',
             'content' => <<<TEXT
             I put communication skills on the first place because I think it's the most important personal skill for a person working in a team.
@@ -115,7 +115,7 @@ return [
             TEXT,
         ],
         [
-            'image' => 'storage/tools/english.png',
+            'image' => 'storage/tools/english.webp',
             'title' => 'English Mastery',
             'content' => <<<TEXT
             At the end of 2014, I've decided to start learning English daily.
@@ -124,7 +124,7 @@ return [
             TEXT,
         ],
         [
-            'image' => 'storage/tools/keyboard.png',
+            'image' => 'storage/tools/keyboard.webp',
             'title' => 'Touch Typing',
             'content' => <<<TEXT
             We are coders, and we like to type countless number of symbols on the screen.

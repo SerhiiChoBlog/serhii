@@ -36,7 +36,7 @@
                                 programs for stuff management, communication with clients, chat bots and tons of web API.
                             </p>
 
-                            <h2>Looking for job</h2>
+{{--                            <h2>Looking for job</h2>--}}
 
 {{--                            <p>--}}
 {{--                                I'm looking forward to work in company from 🇪🇺 🇺🇸 🇨🇦 🇦🇺 🏴󠁧󠁢󠁥󠁮󠁧󠁿 by a contract.--}}
