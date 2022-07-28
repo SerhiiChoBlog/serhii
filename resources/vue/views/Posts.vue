@@ -7,7 +7,7 @@ import PostItem from '../components/Posts/PostItem.vue'
 import axios from 'axios'
 import Spinner from '../components/Spinner.vue'
 import SlideUpTransition from '../components/Transitions/SlideUpTransition.vue'
-import Filters from '../components/Posts/Filters.vue'
+import Filters from '../components/Posts/Filters/Filters.vue'
 
 const posts = ref<Post[]>([])
 const loading = ref(true)
