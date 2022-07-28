@@ -13,7 +13,7 @@ import { ListboxOption } from '@headlessui/vue'</script>
                 selected ? 'bg-main-light dark:bg-page-second' : ''
             ]"
         >
-            <span class="block truncate text-font">
+            <span class="block truncate text-font text-xs sm:text-sm">
                 <slot />
             </span>
         </li>

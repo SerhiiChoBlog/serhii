@@ -4,7 +4,7 @@ import SelectorIcon from '../Icons/SelectorIcon.vue'</script>
 
 <template>
     <listbox-button
-        class="relative w-full cursor-default rounded-lg bg-page py-2 pl-3 pr-10 text-left focus:outline-none border border-border sm:text-sm"
+        class="relative w-full cursor-default rounded-lg bg-page py-2 pl-3 pr-9 text-left focus:outline-none border border-border text-xs sm:text-sm"
     >
         <span class="truncate block">
             <slot />

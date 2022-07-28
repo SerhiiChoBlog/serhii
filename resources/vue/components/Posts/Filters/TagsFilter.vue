@@ -56,7 +56,7 @@ function fetchTags(): void {
     <listbox v-model="selectedTag">
         <div class="relative">
             <listbox-button>
-                <div class="flex gap-2">
+                <div class="flex items-center gap-2">
                     <filter-tag-label :tag="selectedTag" />
                     {{ selectedTag.title }}
                 </div>
@@ -68,7 +68,7 @@ function fetchTags(): void {
                     :key="tag.name"
                     :value="tag"
                 >
-                    <div class="flex gap-2">
+                    <div class="flex items-center gap-2">
                         <filter-tag-label :tag="tag" />
                         {{ tag.title }}
                     </div>
