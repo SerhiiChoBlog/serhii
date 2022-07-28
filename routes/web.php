@@ -20,7 +20,7 @@ Route::middleware('hits')->group(function () {
     Route::get('about-me', [AboutMeController::class, 'index'])->name('about-me');
 
     Route::prefix('posts')->controller(PostController::class)->group(function () {
-        Route::get('/', 'index')->name('posts.index');
+        Route::view('/', 'posts.index')->name('posts.index');
         Route::get('{post:slug}', 'show')->name('posts.show');
     });
 
