@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions, } from '@headlessui/vue'
-import SelectorIcon from './Icons/SelectorIcon.vue'
+import SelectorIcon from '../Icons/SelectorIcon.vue'
 
 const tags = [
     {id: 1, name: 'Durward Reynolds', unavailable: false},

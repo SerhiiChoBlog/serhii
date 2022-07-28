@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Requests\Post;
+namespace App\Http\Requests\Post\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
