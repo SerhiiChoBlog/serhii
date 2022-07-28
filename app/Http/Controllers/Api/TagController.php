@@ -11,6 +11,14 @@ use Illuminate\Support\Collection;
 class TagController extends Controller
 {
     /**
+     * @return Collection<int, Tag>
+     */
+    public function index(): Collection
+    {
+        return Tag::query()->get();
+    }
+
+    /**
      * @param string $word
      *
      * @return Collection<int, Tag>
