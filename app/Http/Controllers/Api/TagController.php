@@ -15,7 +15,7 @@ class TagController extends Controller
      */
     public function index(): Collection
     {
-        return Tag::query()->get();
+        return Tag::query()->has('posts')->get();
     }
 
     /**

@@ -2974,9 +2974,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .font-black {
   font-weight: 900;
 }
-.font-normal {
-  font-weight: 400;
-}
 .uppercase {
   text-transform: uppercase;
 }
