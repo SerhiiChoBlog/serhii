@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Tag } from '../../../../types/models'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import axios from 'axios'
 import { Listbox } from '@headlessui/vue'
 import ListboxButton from '../../Listbox/ListboxButton.vue'
@@ -12,7 +12,12 @@ type Props = {
     tagSlug: string
 }
 
+type Emits = {
+    (e: 'filterPosts', tag: Tag): void
+}
+
 const { tagSlug } = defineProps<Props>()
+const emit = defineEmits<Emits>()
 
 const tags = ref<Tag[]>([
     {
@@ -25,6 +30,8 @@ const tags = ref<Tag[]>([
 ])
 
 const selectedTag = ref<Tag>(tags.value[0])
+
+watch(selectedTag, () => emit('filterPosts', selectedTag.value))
 
 onMounted(() => fetchTags())
 
