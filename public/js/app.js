@@ -20523,14 +20523,11 @@ exports["default"] = (0, vue_1.defineComponent)({
       required: true
     }
   },
-  emits: ["tagChosen"],
   setup: function setup(__props, _a) {
-    var expose = _a.expose,
-        emit = _a.emit;
+    var expose = _a.expose;
     expose();
     var post = __props.post;
     var __returned__ = {
-      emit: emit,
       Tags: Tags_vue_1["default"],
       PostDetails: PostDetails_vue_1["default"]
     };
@@ -21968,17 +21965,17 @@ var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 var _hoisted_1 = {
   "class": "flex gap-1 flex-wrap"
 };
-var _hoisted_2 = ["onClick"];
+var _hoisted_2 = ["href", "onClick"];
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($props.tags, function (tag) {
     return (0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Tip"], {
       key: tag.id,
-      content: "<b class='text-lg'>".concat(tag.title, "</b><br />").concat(tag.description)
+      content: tag.title
     }, {
       "default": (0, vue_1.withCtx)(function () {
-        return [(0, vue_1.createElementVNode)("button", {
-          type: "button",
+        return [(0, vue_1.createElementVNode)("a", {
+          href: "/posts?tag=".concat(tag.name),
           "aria-label": "Post tag",
           onClick: function onClick($event) {
             return $setup.emit('tagChosen', tag);
