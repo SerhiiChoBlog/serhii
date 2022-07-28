@@ -21,7 +21,7 @@ function fetchPosts(): void {
 
 <template>
     <div class="container">
-        <page-title>Visitors</page-title>
+        <page-title>Social shares</page-title>
 
         <spinner v-if="loading" />
 
@@ -32,7 +32,7 @@ function fetchPosts(): void {
                 <thead class="bg-gray-500 text-left">
                     <tr>
                         <th
-                            v-for="title in ['Article', '', '', '', '']"
+                            v-for="title in ['Image', 'Article', 'Social']"
                             :key="title"
                             class="text-white p-3 font-light"
                         >
@@ -46,24 +46,39 @@ function fetchPosts(): void {
                         :key="post.id"
                         class="odd:bg-gray-50 border-b transition-colors hover:bg-gray-100"
                     >
-                        <td class="p-2">{{ post.title }}</td>
+                        <td class="p-1">
+                            <img
+                                :src="`/${post.image_sm}`"
+                                width="120"
+                                class="rounded-md shadow-md"
+                                :alt="post.title"
+                            />
+                        </td>
 
-                        <td
-                            v-if="post.social"
-                            v-for="(items, social) in post.social"
-                            :key="social"
-                            class="p-1"
-                        >
-                            <div class="flex flex-col lg:flex-row gap-x-2 items-center">
-                                <img
-                                    :src="`/storage/icons/${social.toString()}.png`"
-                                    :alt="social"
-                                    width="20"
-                                />
+                        <td class="p-2">
+                            <a :href="`/posts/${post.slug}`" target="_blank" class="text-lg">
+                                {{ post.title }}
+                            </a>
+                        </td>
 
-                                <span class="text-md font-bold text-font-second">
-                                    {{ items.length }}
-                                </span>
+                        <td class="p-1">
+                            <div class="flex gap-3">
+                                <div
+                                    class="flex flex-col lg:flex-row gap-x-1 items-center"
+                                    v-if="post.social"
+                                    v-for="(items, social) in post.social"
+                                    :key="social"
+                                >
+                                    <img
+                                        :src="`/storage/icons/${social.toString()}.webp`"
+                                        :alt="social"
+                                        width="20"
+                                    />
+
+                                    <span class="text-md font-bold text-font-second">
+                                        {{ items.length }}
+                                    </span>
+                                </div>
                             </div>
                         </td>
                     </tr>

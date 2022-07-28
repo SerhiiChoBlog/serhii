@@ -23041,7 +23041,7 @@ var _hoisted_1 = {
   "class": "container"
 };
 
-var _hoisted_2 = (0, vue_1.createTextVNode)("Visitors");
+var _hoisted_2 = (0, vue_1.createTextVNode)("Social shares");
 
 var _hoisted_3 = {
   key: 1,
@@ -23058,13 +23058,21 @@ var _hoisted_6 = {
   "class": "bg-gray-500 text-left"
 };
 var _hoisted_7 = {
+  "class": "p-1"
+};
+var _hoisted_8 = ["src", "alt"];
+var _hoisted_9 = {
   "class": "p-2"
 };
-var _hoisted_8 = {
-  "class": "flex flex-col lg:flex-row gap-x-2 items-center"
+var _hoisted_10 = ["href"];
+var _hoisted_11 = {
+  "class": "p-1"
 };
-var _hoisted_9 = ["src", "alt"];
-var _hoisted_10 = {
+var _hoisted_12 = {
+  "class": "flex gap-3"
+};
+var _hoisted_13 = ["src", "alt"];
+var _hoisted_14 = {
   "class": "text-md font-bold text-font-second"
 };
 
@@ -23076,7 +23084,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
   }), $setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Spinner"], {
     key: 0
-  })) : $setup.posts.length === 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("h2", _hoisted_3, "There are no posts")) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_4, [(0, vue_1.createElementVNode)("table", _hoisted_5, [(0, vue_1.createElementVNode)("thead", _hoisted_6, [(0, vue_1.createElementVNode)("tr", null, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(['Article', '', '', '', ''], function (title) {
+  })) : $setup.posts.length === 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("h2", _hoisted_3, "There are no posts")) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_4, [(0, vue_1.createElementVNode)("table", _hoisted_5, [(0, vue_1.createElementVNode)("thead", _hoisted_6, [(0, vue_1.createElementVNode)("tr", null, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(['Image', 'Article', 'Social'], function (title) {
     return (0, vue_1.createElementVNode)("th", {
       key: title,
       "class": "text-white p-3 font-light"
@@ -23085,18 +23093,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("tr", {
       key: post.id,
       "class": "odd:bg-gray-50 border-b transition-colors hover:bg-gray-100"
-    }, [(0, vue_1.createElementVNode)("td", _hoisted_7, (0, vue_1.toDisplayString)(post.title), 1), post.social ? ((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, {
+    }, [(0, vue_1.createElementVNode)("td", _hoisted_7, [(0, vue_1.createElementVNode)("img", {
+      src: "/".concat(post.image_sm),
+      width: "120",
+      "class": "rounded-md shadow-md",
+      alt: post.title
+    }, null, 8, _hoisted_8)]), (0, vue_1.createElementVNode)("td", _hoisted_9, [(0, vue_1.createElementVNode)("a", {
+      href: "/posts/".concat(post.slug),
+      target: "_blank",
+      "class": "text-lg"
+    }, (0, vue_1.toDisplayString)(post.title), 9, _hoisted_10)]), (0, vue_1.createElementVNode)("td", _hoisted_11, [(0, vue_1.createElementVNode)("div", _hoisted_12, [post.social ? ((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, {
       key: 0
     }, (0, vue_1.renderList)(post.social, function (items, social) {
-      return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("td", {
-        key: social,
-        "class": "p-1"
-      }, [(0, vue_1.createElementVNode)("div", _hoisted_8, [(0, vue_1.createElementVNode)("img", {
-        src: "/storage/icons/".concat(social.toString(), ".png"),
+      return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", {
+        "class": "flex flex-col lg:flex-row gap-x-1 items-center",
+        key: social
+      }, [(0, vue_1.createElementVNode)("img", {
+        src: "/storage/icons/".concat(social.toString(), ".webp"),
         alt: social,
         width: "20"
-      }, null, 8, _hoisted_9), (0, vue_1.createElementVNode)("span", _hoisted_10, (0, vue_1.toDisplayString)(items.length), 1)])]);
-    }), 128)) : (0, vue_1.createCommentVNode)("v-if", true)]);
+      }, null, 8, _hoisted_13), (0, vue_1.createElementVNode)("span", _hoisted_14, (0, vue_1.toDisplayString)(items.length), 1)]);
+    }), 128)) : (0, vue_1.createCommentVNode)("v-if", true)])])]);
   }), 128))])])]))]);
 }
 
