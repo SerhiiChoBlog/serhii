@@ -20248,12 +20248,15 @@ var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'NoPosts',
+  emits: ["clearFilters"],
   setup: function setup(__props, _a) {
-    var expose = _a.expose;
+    var expose = _a.expose,
+        emit = _a.emit;
     expose();
     var linkClasses = 'px-10 py-2 border border-border rounded-full uppercase hover:border-main hover:text-main transition-colors';
     var __returned__ = {
-      linkClasses: linkClasses
+      linkClasses: linkClasses,
+      emit: emit
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -20846,14 +20849,39 @@ var NoPosts_vue_1 = __importDefault(__webpack_require__(/*! ../components/Posts/
 
 var PostItem_vue_1 = __importDefault(__webpack_require__(/*! ../components/Posts/PostItem.vue */ "./resources/vue/components/Posts/PostItem.vue"));
 
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Posts',
   setup: function setup(__props, _a) {
     var expose = _a.expose;
     expose();
     var posts = (0, vue_2.ref)([]);
+    var loading = (0, vue_2.ref)(true);
+    (0, vue_2.onMounted)(function () {
+      return fetchPosts();
+    });
+
+    function fetchPosts() {
+      var uri = '/api/posts' + window.location.search;
+      axios_1["default"].get(uri).then(function (resp) {
+        posts.value = resp.data.data;
+      })["catch"](function (err) {
+        return console.error(err);
+      })["finally"](function () {
+        return loading.value = false;
+      });
+    }
+
+    function clearFilters() {
+      console.log('filter');
+    }
+
     var __returned__ = {
       posts: posts,
+      loading: loading,
+      fetchPosts: fetchPosts,
+      clearFilters: clearFilters,
       Filters: Filters_vue_1["default"],
       NoPosts: NoPosts_vue_1["default"],
       PostItem: PostItem_vue_1["default"]
@@ -21337,16 +21365,21 @@ var _hoisted_1 = (0, vue_1.createElementVNode)("h2", {
   "class": "text-center text-xl mt-5"
 }, " There are no posts found ", -1);
 
+var _hoisted_2 = {
+  "class": "flex gap-3 justify-center mt-5"
+};
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, [_hoisted_1, (0, vue_1.createElementVNode)("div", {
-    "class": "flex gap-3 justify-center mt-5"
-  }, [(0, vue_1.createElementVNode)("a", {
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, [_hoisted_1, (0, vue_1.createElementVNode)("div", _hoisted_2, [(0, vue_1.createElementVNode)("a", {
     href: "/",
     "class": (0, vue_1.normalizeClass)($setup.linkClasses)
   }, "Go home"), (0, vue_1.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $setup.emit('clearFilters');
+    }),
     type: "button",
     "class": (0, vue_1.normalizeClass)($setup.linkClasses)
-  }, "Clear filters")])], 64);
+  }, " Clear filters ")])], 64);
 }
 
 exports.render = render;
@@ -21901,7 +21934,8 @@ var _hoisted_5 = (0, vue_1.createElementVNode)("div", {
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createElementVNode)("div", _hoisted_2, [(0, vue_1.createVNode)($setup["Filters"]), $setup.posts.length === 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["NoPosts"], {
-    key: 0
+    key: 0,
+    onClearFilters: $setup.clearFilters
   })) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_3, [(0, vue_1.createElementVNode)("div", _hoisted_4, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.posts, function (post) {
     return (0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["PostItem"], {
       key: post.id,

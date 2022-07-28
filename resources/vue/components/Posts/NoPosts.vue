@@ -1,5 +1,11 @@
 <script setup lang="ts">
 const linkClasses = 'px-10 py-2 border border-border rounded-full uppercase hover:border-main hover:text-main transition-colors'
+
+type Emits = {
+    (e: 'clearFilters'): void,
+}
+
+const emit = defineEmits<Emits>()
 </script>
 
 <template>
@@ -9,6 +15,13 @@ const linkClasses = 'px-10 py-2 border border-border rounded-full uppercase hove
 
     <div class="flex gap-3 justify-center mt-5">
         <a href="/" :class="linkClasses">Go home</a>
-        <button type="button" :class="linkClasses">Clear filters</button>
+
+        <button
+            @click="emit('clearFilters')"
+            type="button"
+            :class="linkClasses"
+        >
+            Clear filters
+        </button>
     </div>
 </template>
