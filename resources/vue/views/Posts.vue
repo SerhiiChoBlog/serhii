@@ -2,6 +2,7 @@
 import type { Post, Tag } from '../../types/models'
 import type { Pagination } from '../../types/response'
 import { onMounted, ref } from 'vue'
+import replaceQueryParam from '../modules/replaceQueryParam'
 import NoPosts from '../components/Posts/NoPosts.vue'
 import PostItem from '../components/Posts/PostItem.vue'
 import axios from 'axios'
@@ -21,16 +22,18 @@ const nextPageUrl = ref<string | null>(null)
 
 onMounted(() => {
     fetchPosts('/api/posts' + window.location.search)
-
     window.addEventListener('scroll', () => onScroll())
 })
 
-function fetchPosts(url: string): void {
+function fetchPosts(url: string, refresh = false): void {
     loading.value = true
 
     axios.get<Pagination<Post[]>>(url)
         .then(resp => {
-            posts.value.push(...resp.data.data)
+            refresh
+                ? posts.value = resp.data.data
+                : posts.value.push(...resp.data.data)
+
             nextPageUrl.value = resp.data.next_page_url
         })
         .catch(err => console.error(err))
@@ -41,7 +44,18 @@ function fetchPosts(url: string): void {
 }
 
 function filterPosts(tag: Tag): void {
-    console.log(tag)
+    const query = replaceQueryParam('tag', tag.name)
+
+    if (window.location.search != query) {
+        const newUrl = `/posts${query}`
+        window.history.replaceState(null, '', newUrl)
+    }
+
+    fetchPosts(`/api/posts${query}`, true)
+}
+
+function clearFilters(): void {
+    // todo: here
 }
 
 function onScroll(): void {

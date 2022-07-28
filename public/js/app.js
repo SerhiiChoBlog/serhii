@@ -21119,6 +21119,8 @@ var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 
 var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var replaceQueryParam_1 = __importDefault(__webpack_require__(/*! ../modules/replaceQueryParam */ "./resources/vue/modules/replaceQueryParam.ts"));
+
 var NoPosts_vue_1 = __importDefault(__webpack_require__(/*! ../components/Posts/NoPosts.vue */ "./resources/vue/components/Posts/NoPosts.vue"));
 
 var PostItem_vue_1 = __importDefault(__webpack_require__(/*! ../components/Posts/PostItem.vue */ "./resources/vue/components/Posts/PostItem.vue"));
@@ -21153,13 +21155,16 @@ exports["default"] = (0, vue_1.defineComponent)({
       });
     });
 
-    function fetchPosts(url) {
+    function fetchPosts(url, refresh) {
+      if (refresh === void 0) {
+        refresh = false;
+      }
+
       loading.value = true;
       axios_1["default"].get(url).then(function (resp) {
         var _a;
 
-        (_a = posts.value).push.apply(_a, resp.data.data);
-
+        refresh ? posts.value = resp.data.data : (_a = posts.value).push.apply(_a, resp.data.data);
         nextPageUrl.value = resp.data.next_page_url;
       })["catch"](function (err) {
         return console.error(err);
@@ -21170,8 +21175,17 @@ exports["default"] = (0, vue_1.defineComponent)({
     }
 
     function filterPosts(tag) {
-      console.log(tag);
+      var query = (0, replaceQueryParam_1["default"])('tag', tag.name);
+
+      if (window.location.search != query) {
+        var newUrl = "/posts".concat(query);
+        window.history.replaceState(null, '', newUrl);
+      }
+
+      fetchPosts("/api/posts".concat(query), true);
     }
+
+    function clearFilters() {}
 
     function onScroll() {
       var wrap = document.querySelector('#app');
@@ -21190,6 +21204,7 @@ exports["default"] = (0, vue_1.defineComponent)({
       nextPageUrl: nextPageUrl,
       fetchPosts: fetchPosts,
       filterPosts: filterPosts,
+      clearFilters: clearFilters,
       onScroll: onScroll,
       NoPosts: NoPosts_vue_1["default"],
       PostItem: PostItem_vue_1["default"],
@@ -22457,8 +22472,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onFilterPosts: $setup.filterPosts
   }, null, 8, ["tagSlug"])])]), !$setup.loading && $setup.posts.length === 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["NoPosts"], {
     key: 0,
-    onClearFilters: _ctx.clearFilters
-  }, null, 8, ["onClearFilters"])) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_5, [(0, vue_1.createElementVNode)("div", _hoisted_6, [(0, vue_1.createVNode)($setup["SlideUpTransition"], null, {
+    onClearFilters: $setup.clearFilters
+  })) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_5, [(0, vue_1.createElementVNode)("div", _hoisted_6, [(0, vue_1.createVNode)($setup["SlideUpTransition"], null, {
     "default": (0, vue_1.withCtx)(function () {
       return [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.posts, function (post) {
         return (0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["PostItem"], {
@@ -22913,6 +22928,27 @@ exports["default"] = function (el) {
   }
 
   return top >= window.scrollY && left >= window.scrollX && top + height <= window.scrollY + window.innerHeight && left + width <= window.scrollX + window.innerWidth;
+};
+
+/***/ }),
+
+/***/ "./resources/vue/modules/replaceQueryParam.ts":
+/*!****************************************************!*\
+  !*** ./resources/vue/modules/replaceQueryParam.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+exports["default"] = function (param, newVal) {
+  var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+  var query = window.location.search.replace(regex, "$1").replace(/&$/, '');
+  return (query.length > 2 ? query + "&" : "?") + (newVal ? param + "=" + newVal : '');
 };
 
 /***/ }),
