@@ -8,17 +8,17 @@ export default [
         `,
         links: [
             {
-                img: '/storage/icons/linkedin.png',
+                img: '/storage/icons/linkedin.webp',
                 href: 'https://www.linkedin.com/in/serhiicho',
                 title: 'LinkedIn',
             },
             {
-                img: '/storage/icons/instagram.png',
+                img: '/storage/icons/instagram.webp',
                 href: 'https://www.instagram.com/serhiicho',
                 title: 'Instagram',
             },
             {
-                img: '/storage/icons/twitter.png',
+                img: '/storage/icons/twitter.webp',
                 href: 'https://twitter.com/SerhiiCho',
                 title: 'Twitter',
             },
@@ -29,22 +29,22 @@ export default [
         content: "There are some places where I'm usually hanging out. I spend a lot of time on websites that are linked below.",
         links: [
             {
-                img: '/storage/icons/github-dark.png',
+                img: '/storage/icons/github-dark.webp',
                 href: 'https://github.com/SerhiiCho',
                 title: 'GitHub',
             },
             {
-                img: '/storage/icons/laracasts.png',
+                img: '/storage/icons/laracasts.webp',
                 href: 'https://laracasts.com/@SerhiiCho',
                 title: 'Laracasts',
             },
             {
-                img: '/storage/icons/codewars.png',
+                img: '/storage/icons/codewars.webp',
                 href: 'https://www.codewars.com/users/serhii_cho',
                 title: 'Codewars',
             },
             {
-                img: '/storage/icons/codepen.png',
+                img: '/storage/icons/codepen.webp',
                 href: 'https://codepen.io/serhii_cho',
                 title: 'Codepen',
             },
@@ -55,12 +55,12 @@ export default [
         content: "There are also libraries and packages that I've contributed to the open-source community. Some of them you can find by links below.",
         links: [
             {
-                img: '/storage/icons/packagist.png',
+                img: '/storage/icons/packagist.webp',
                 href: 'https://packagist.org/packages/serhii',
                 title: 'Packagist',
             },
             {
-                img: '/storage/icons/npm.png',
+                img: '/storage/icons/npm.webp',
                 href: 'https://www.npmjs.com/~serhiicho',
                 title: 'NPM',
             },
