@@ -22,6 +22,10 @@ const links = [
         title: 'twitter',
     },
     {
+        href: `https://t.me/share/url?url=${url}&text=${postTitle}`,
+        title: 'telegram',
+    },
+    {
         href: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
         title: 'facebook',
     },
@@ -43,7 +47,7 @@ function saveShare(social: string): void {
             rel="nofollow noopener noreferrer"
             @mousedown="saveShare(link.title)"
         >
-            <img :src="`/storage/icons/${link.title}.png`"
+            <img :src="`/storage/icons/${link.title}.webp`"
                 :alt="link.title"
                 width="30"
             >
