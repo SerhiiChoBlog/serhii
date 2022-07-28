@@ -9,5 +9,5 @@
         class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white"
     />
 
-    <posts></posts>
+    <posts tag-slug="{{ request('tag') }} "></posts>
 @endsection
