@@ -38,18 +38,18 @@
 
                             <h2>Looking for job</h2>
 
-                            <p>
-                                I'm looking forward to work in company from 🇪🇺 🇺🇸 🇨🇦 🇦🇺 🏴󠁧󠁢󠁥󠁮󠁧󠁿 by a contract.
-                                I'll be comfortable to work remotely <strong>120 hours per month</strong> in non
-                                outsource company. I'm also ready to relocate from Ukraine and work in the office in countries
-                                listed above.
-                            </p>
+{{--                            <p>--}}
+{{--                                I'm looking forward to work in company from 🇪🇺 🇺🇸 🇨🇦 🇦🇺 🏴󠁧󠁢󠁥󠁮󠁧󠁿 by a contract.--}}
+{{--                                I'll be comfortable to work remotely <strong>120 hours per month</strong> in non--}}
+{{--                                outsource company. I'm also ready to relocate from Ukraine and work in the office in countries--}}
+{{--                                listed above.--}}
+{{--                            </p>--}}
 
-                            <p>
-                                I can work on a backend as a Laravel developer, as I have lots of experience with <strong>Laravel</strong>
-                                and <strong>PHP</strong>. Or, I can also work on the frontend with <strong>Vue.js</strong> or
-                                <strong>React.js</strong> on different variety of projects.
-                            </p>
+{{--                            <p>--}}
+{{--                                I can work on a backend as a Laravel developer, as I have lots of experience with <strong>Laravel</strong>--}}
+{{--                                and <strong>PHP</strong>. Or, I can also work on the frontend with <strong>Vue.js</strong> or--}}
+{{--                                <strong>React.js</strong> on different variety of projects.--}}
+{{--                            </p>--}}
 
                             <h2>My way of working</h2>
 
