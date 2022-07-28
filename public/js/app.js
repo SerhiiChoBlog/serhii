@@ -20353,8 +20353,10 @@ exports["default"] = (0, vue_1.defineComponent)({
       required: true
     }
   },
+  emits: ["filterPosts"],
   setup: function setup(__props, _a) {
-    var expose = _a.expose;
+    var expose = _a.expose,
+        emit = _a.emit;
     expose();
     var tagSlug = __props.tagSlug;
     var tags = (0, vue_2.ref)([{
@@ -20365,6 +20367,9 @@ exports["default"] = (0, vue_1.defineComponent)({
       color: '#7F6084'
     }]);
     var selectedTag = (0, vue_2.ref)(tags.value[0]);
+    (0, vue_2.watch)(selectedTag, function () {
+      return emit('filterPosts', selectedTag.value);
+    });
     (0, vue_2.onMounted)(function () {
       return fetchTags();
     });
@@ -20390,6 +20395,7 @@ exports["default"] = (0, vue_1.defineComponent)({
     }
 
     var __returned__ = {
+      emit: emit,
       tags: tags,
       selectedTag: selectedTag,
       fetchTags: fetchTags,
@@ -21163,8 +21169,8 @@ exports["default"] = (0, vue_1.defineComponent)({
       });
     }
 
-    function clearFilters() {
-      console.log('filter');
+    function filterPosts(tag) {
+      console.log(tag);
     }
 
     function onScroll() {
@@ -21183,7 +21189,7 @@ exports["default"] = (0, vue_1.defineComponent)({
       loading: loading,
       nextPageUrl: nextPageUrl,
       fetchPosts: fetchPosts,
-      clearFilters: clearFilters,
+      filterPosts: filterPosts,
       onScroll: onScroll,
       NoPosts: NoPosts_vue_1["default"],
       PostItem: PostItem_vue_1["default"],
@@ -22447,11 +22453,12 @@ var _hoisted_6 = {
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createElementVNode)("div", _hoisted_2, [(0, vue_1.createElementVNode)("div", _hoisted_3, [(0, vue_1.createElementVNode)("div", _hoisted_4, [(0, vue_1.createVNode)($setup["TagsFilter"], {
-    tagSlug: $props.tagSlug
+    tagSlug: $props.tagSlug,
+    onFilterPosts: $setup.filterPosts
   }, null, 8, ["tagSlug"])])]), !$setup.loading && $setup.posts.length === 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["NoPosts"], {
     key: 0,
-    onClearFilters: $setup.clearFilters
-  })) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_5, [(0, vue_1.createElementVNode)("div", _hoisted_6, [(0, vue_1.createVNode)($setup["SlideUpTransition"], null, {
+    onClearFilters: _ctx.clearFilters
+  }, null, 8, ["onClearFilters"])) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_5, [(0, vue_1.createElementVNode)("div", _hoisted_6, [(0, vue_1.createVNode)($setup["SlideUpTransition"], null, {
     "default": (0, vue_1.withCtx)(function () {
       return [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.posts, function (post) {
         return (0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["PostItem"], {

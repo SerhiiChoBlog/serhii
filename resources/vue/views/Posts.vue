@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Post } from '../../types/models'
+import type { Post, Tag } from '../../types/models'
 import type { Pagination } from '../../types/response'
 import { onMounted, ref } from 'vue'
 import NoPosts from '../components/Posts/NoPosts.vue'
@@ -40,8 +40,8 @@ function fetchPosts(url: string): void {
         })
 }
 
-function clearFilters(): void {
-    console.log('filter')
+function filterPosts(tag: Tag): void {
+    console.log(tag)
 }
 
 function onScroll(): void {
@@ -61,7 +61,7 @@ function onScroll(): void {
         <div class="bg-page max-w-[1100px] mx-auto -translate-y-6 rounded-xl px-3 pt-3">
             <div class="mb-2 flex items-center">
                 <div class="w-full max-w-[360px]">
-                    <tags-filter :tagSlug="tagSlug" />
+                    <tags-filter :tagSlug="tagSlug" @filterPosts="filterPosts" />
                 </div>
             </div>
 
