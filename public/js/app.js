@@ -21617,7 +21617,7 @@ var _hoisted_2 = {
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["ListboxButton"], {
-    "class": "relative w-full cursor-default rounded-lg bg-page py-2 pl-3 pr-10 text-left focus:outline-none border border-border sm:text-sm"
+    "class": "relative w-full cursor-default rounded-lg bg-page py-2 pl-3 pr-9 text-left focus:outline-none border border-border text-xs sm:text-sm"
   }, {
     "default": (0, vue_1.withCtx)(function () {
       return [(0, vue_1.createElementVNode)("span", _hoisted_1, [(0, vue_1.renderSlot)(_ctx.$slots, "default")]), (0, vue_1.createElementVNode)("span", _hoisted_2, [(0, vue_1.createVNode)($setup["SelectorIcon"], {
@@ -21650,7 +21650,7 @@ exports.render = void 0;
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "block truncate text-font"
+  "class": "block truncate text-font text-xs sm:text-sm"
 };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -21761,10 +21761,10 @@ var _hoisted_1 = {
   "class": "relative"
 };
 var _hoisted_2 = {
-  "class": "flex gap-2"
+  "class": "flex items-center gap-2"
 };
 var _hoisted_3 = {
-  "class": "flex gap-2"
+  "class": "flex items-center gap-2"
 };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
