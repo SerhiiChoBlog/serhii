@@ -2583,6 +2583,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-t-border {
   border-top-color: var(--color-border);
 }
+.border-b-border {
+  border-bottom-color: var(--color-border);
+}
 .bg-black\/30 {
   background-color: rgb(0 0 0 / 0.3);
 }
@@ -3547,8 +3550,27 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: var(--color-border);
 }
 
+.dark .dark\:border-gray-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity));
+}
+
+.dark .dark\:border-gray-900 {
+  --tw-border-opacity: 1;
+  border-color: rgb(17 24 39 / var(--tw-border-opacity));
+}
+
+.dark .dark\:border-gray-800 {
+  --tw-border-opacity: 1;
+  border-color: rgb(31 41 55 / var(--tw-border-opacity));
+}
+
 .dark .dark\:bg-page-second {
   background-color: var(--color-page-second);
+}
+
+.dark .dark\:bg-main-dark {
+  background-color: var(--color-main-dark);
 }
 
 .dark .dark\:text-main {
@@ -3952,8 +3974,8 @@ Ensure the default browser behavior of the `hidden` attribute.
     max-width: 100%;
   }
 
-  .lg\:max-w-\[260px\] {
-    max-width: 260px;
+  .lg\:max-w-\[270px\] {
+    max-width: 270px;
   }
 
   .lg\:-translate-y-8 {

@@ -44,6 +44,11 @@ function fetchPosts(url: string, refresh = false): void {
 }
 
 function filterPosts(tag: Tag): void {
+    if (tag.name === 'everything') {
+        clearFilters()
+        return
+    }
+
     const query = replaceQueryParam('tag', tag.name)
 
     if (window.location.search != query) {
@@ -55,7 +60,8 @@ function filterPosts(tag: Tag): void {
 }
 
 function clearFilters(): void {
-    // todo: here
+    window.history.replaceState(null, '', '/posts')
+    fetchPosts('/api/posts', true)
 }
 
 function onScroll(): void {
