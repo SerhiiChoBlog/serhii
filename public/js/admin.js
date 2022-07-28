@@ -23992,7 +23992,7 @@ var showToast_1 = __importDefault(__webpack_require__(/*! ./showToast */ "./reso
 
 exports["default"] = function (err) {
   (0, showToast_1["default"])({
-    text: err.response.data.message || err.response.data.exception || 'Uknown error',
+    text: err.response.data.message || err.response.data.exception || 'Unknown error',
     success: false
   });
 };
