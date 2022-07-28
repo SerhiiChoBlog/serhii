@@ -17,10 +17,10 @@ const { tagSlug } = defineProps<Props>()
 const tags = ref<Tag[]>([
     {
         id: 0,
-        title: '--- Choose tag ---',
+        title: 'Show everything',
         description: '',
-        name: 'unknown',
-        color: 'no',
+        name: 'everything',
+        color: '#7F6084',
     },
 ])
 
@@ -50,7 +50,7 @@ function fetchTags(): void {
         <div class="relative">
             <listbox-button>
                 <div class="flex gap-2">
-                    <filter-tag-label v-if="selectedTag.color !== 'no'" :tag="selectedTag" />
+                    <filter-tag-label :tag="selectedTag" />
                     {{ selectedTag.title }}
                 </div>
             </listbox-button>
@@ -62,7 +62,7 @@ function fetchTags(): void {
                     :value="tag"
                 >
                     <div class="flex gap-2">
-                        <filter-tag-label v-if="tag.color !== 'no'" :tag="tag" />
+                        <filter-tag-label :tag="tag" />
                         {{ tag.title }}
                     </div>
                 </listbox-option>

@@ -20359,10 +20359,10 @@ exports["default"] = (0, vue_1.defineComponent)({
     var tagSlug = __props.tagSlug;
     var tags = (0, vue_2.ref)([{
       id: 0,
-      title: '--- Choose tag ---',
+      title: 'Show everything',
       description: '',
-      name: 'unknown',
-      color: 'no'
+      name: 'everything',
+      color: '#7F6084'
     }]);
     var selectedTag = (0, vue_2.ref)(tags.value[0]);
     (0, vue_2.onMounted)(function () {
@@ -21738,10 +21738,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0, vue_1.withCtx)(function () {
       return [(0, vue_1.createElementVNode)("div", _hoisted_1, [(0, vue_1.createVNode)($setup["ListboxButton"], null, {
         "default": (0, vue_1.withCtx)(function () {
-          return [(0, vue_1.createElementVNode)("div", _hoisted_2, [$setup.selectedTag.color !== 'no' ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["FilterTagLabel"], {
-            key: 0,
+          return [(0, vue_1.createElementVNode)("div", _hoisted_2, [(0, vue_1.createVNode)($setup["FilterTagLabel"], {
             tag: $setup.selectedTag
-          }, null, 8, ["tag"])) : (0, vue_1.createCommentVNode)("v-if", true), (0, vue_1.createTextVNode)(" " + (0, vue_1.toDisplayString)($setup.selectedTag.title), 1)])];
+          }, null, 8, ["tag"]), (0, vue_1.createTextVNode)(" " + (0, vue_1.toDisplayString)($setup.selectedTag.title), 1)])];
         }),
         _: 1
       }), (0, vue_1.createVNode)($setup["ListboxOptions"], null, {
@@ -21752,10 +21751,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               value: tag
             }, {
               "default": (0, vue_1.withCtx)(function () {
-                return [(0, vue_1.createElementVNode)("div", _hoisted_3, [tag.color !== 'no' ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["FilterTagLabel"], {
-                  key: 0,
+                return [(0, vue_1.createElementVNode)("div", _hoisted_3, [(0, vue_1.createVNode)($setup["FilterTagLabel"], {
                   tag: tag
-                }, null, 8, ["tag"])) : (0, vue_1.createCommentVNode)("v-if", true), (0, vue_1.createTextVNode)(" " + (0, vue_1.toDisplayString)(tag.title), 1)])];
+                }, null, 8, ["tag"]), (0, vue_1.createTextVNode)(" " + (0, vue_1.toDisplayString)(tag.title), 1)])];
               }),
               _: 2
             }, 1032, ["value"]);
