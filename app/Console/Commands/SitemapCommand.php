@@ -6,6 +6,7 @@ namespace App\Console\Commands;
 
 use App\Models\Post;
 use App\Models\Project;
+use App\Models\Tag;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Spatie\Sitemap\SitemapGenerator;
@@ -23,6 +24,7 @@ class SitemapCommand extends Command
             ->getSitemap()
             ->add($this->getPostsLinks())
             ->add($this->getProjectsLinks())
+            ->add($this->getTaggedPosts())
             ->writeToFile($path);
 
         $this->replaceSiteUrl($path);
@@ -59,5 +61,16 @@ class SitemapCommand extends Command
         return Project::query()
             ->pluck('name')
             ->map(fn(string $name) => route('projects.show', $name));
+    }
+
+    /**
+     * @return Collection<int, string>
+     */
+    private function getTaggedPosts(): Collection
+    {
+        return Tag::query()
+            ->has('posts')
+            ->pluck('name')
+            ->map(fn(string $tag) => route('posts.index', ['tag' => $tag]));
     }
 }
