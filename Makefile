@@ -29,6 +29,7 @@ check:
 push:
 	make check
 	make prod
+	php artisan make:sitemap
 	git pull origin HEAD
 	git push origin HEAD
 	git status
