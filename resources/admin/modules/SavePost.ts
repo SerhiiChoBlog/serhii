@@ -31,6 +31,7 @@ export default class {
         formData.append('image', imageFile)
         formData.append('tags', JSON.stringify(tags.map(tag => tag.value)))
         formData.append('is-published', this.elements['is-published'].checked ? 'on' : 'off')
+        formData.append('_method', 'put')
 
         const params = {
             headers: { 'content-type': 'multipart/form-data' },
