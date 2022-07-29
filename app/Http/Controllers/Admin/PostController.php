@@ -63,7 +63,7 @@ class PostController extends Controller
     {
         $post->tags()->detach();
 
-        if ($request->get('tags')) {
+        if ($request->has('tags')) {
             $tags = json_decode($request->get('tags'), true, 512, JSON_THROW_ON_ERROR);
             $post->tags()->attach($tags);
         }

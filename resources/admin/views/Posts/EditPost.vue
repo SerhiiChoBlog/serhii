@@ -18,8 +18,12 @@ import DeletePost from '../../components/Post/DeletePost.vue'
 
 onMounted(() => {
     fetchPost()
-    setTimeout(() => init(), 500)
+    setTimeout(() => init(), 1000)
     document.addEventListener('keydown', savePostWithCorrectKeyBinds)
+
+    // listenEvent(appConfig.events.savePost, () => {
+    //     console.log('fired')
+    // })
 })
 
 const route = useRoute()
@@ -80,7 +84,6 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
         savePost(form.value)
     }
 }
-
 </script>
 
 <template>
