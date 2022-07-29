@@ -116,6 +116,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                     name="post-tags"
                                     placeholder="Choose tags"
                                     @changed="(val: string) => tagInputValue = val"
+                                    :value="tagInputValue"
                                 >
                                     Tags
 

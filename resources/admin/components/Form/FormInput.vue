@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import LetterCounter from './LetterCounter.vue'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 type Props = {
     id: string
@@ -17,32 +17,38 @@ type Emits = {
 }
 
 const emit = defineEmits<Emits>()
-const { id, type, placeholder, length, value, name, classes } = defineProps<Props>()
-const inputValue = ref<string>(value || '')
+const props = defineProps<Props>()
+const inputValue = ref<string>(props.value || '')
+
+watch(() => props.value, (newValue) => {
+    if (typeof newValue !== 'undefined') {
+        inputValue.value = newValue
+    }
+})
 </script>
 
 <template>
     <div class="inline-block w-full">
-        <label :for="id" class="font-bold text-sm mb-2 text-font-second block">
+        <label :for="props.id" class="font-bold text-sm mb-2 text-font-second block">
             <slot />
         </label>
 
         <div class="inline-block relative w-full">
             <input
-                :type="type"
+                :type="props.type"
                 class="border py-3 px-4 rounded-md w-full"
-                :class="classes"
-                :placeholder="placeholder"
+                :class="props.classes"
+                :placeholder="props.placeholder"
                 v-model="inputValue"
-                :name="name"
-                :id="id"
+                :name="props.name"
+                :id="props.id"
                 autocomplete="off"
                 @input="emit('changed', inputValue)"
             />
 
             <letter-counter
-                v-if="length"
-                :length="length"
+                v-if="props.length"
+                :length="props.length"
                 :inputValue="inputValue"
             />
         </div>
