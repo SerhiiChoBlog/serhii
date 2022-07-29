@@ -20,6 +20,9 @@ class SitemapCommand extends Command
             ->writeToFile($path);
 
         $this->replaceSiteUrl($path);
+
+        $this->info('Sitemap is generated:');
+        $this->comment($path);
     }
 
     public function replaceSiteUrl(string $path): void
