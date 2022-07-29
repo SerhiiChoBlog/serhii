@@ -10,6 +10,9 @@ use Illuminate\Support\Collection;
 
 class VisitorController extends Controller
 {
+    /**
+     * @return Collection<int, Visitor>
+     */
     public function index(): Collection
     {
         return Visitor::query()
