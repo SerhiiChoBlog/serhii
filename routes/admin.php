@@ -21,8 +21,8 @@ Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('tags', TagController::class)->except('show', 'create');
     Route::resource('page-views', PageViewController::class)->only('index');
     Route::resource('visitors', VisitorController::class)->only('index');
-     Route::resource('social-shares', SocialShareController::class)->only('index');
-     Route::resource('referrers', ReferrerController::class)->only('index');
+    Route::resource('social-shares', SocialShareController::class)->only('index');
+    Route::resource('referrers', ReferrerController::class)->only('index');
     Route::resource('hits', HitController::class)->only('index');
 });
 

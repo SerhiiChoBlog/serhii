@@ -13,18 +13,12 @@ class PostTest extends TestCase
 {
     use RefreshDatabase;
 
-    private Post $post;
-
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->post = Post::factory()->create();
-    }
-
     /** @test */
-    public function guest_can_visit_page(): void
+    public function guest_can_visit_published_post_page(): void
     {
-        $this->get(route('posts.show', $this->post))
+        $published_post = Post::factory()->published()->create();
+
+        $this->get(route('posts.show', $published_post))
             ->assertOk()
             ->assertViewIs('posts.show');
     }
@@ -32,11 +26,37 @@ class PostTest extends TestCase
     /** @test */
     public function admin_can_visit_page(): void
     {
+        $published_post = Post::factory()->published()->create();
         $user = User::factory()->make();
 
         $this->actingAs($user)
-            ->get(route('posts.show', $this->post))
+            ->get(route('posts.show', $published_post))
             ->assertOk()
             ->assertViewIs('posts.show');
+    }
+
+    public function test_user_cant_see_the_post_if_its_not_published(): void
+    {
+        $post = Post::factory()->create();
+        $this->get(route('posts.show', $post))->assertNotFound();
+    }
+
+    public function test_admin_can_see_the_post_if_its_not_published(): void
+    {
+        $user = User::factory()->make();
+        $post = Post::factory()->create();
+
+        $this->actingAs($user)
+            ->get(route('posts.show', $post))
+            ->assertOk();
+    }
+
+    public function test_post_page_has_post_title(): void
+    {
+        $post_title = 'This is some nice title for the post';
+        $post = Post::factory()->published()->title($post_title)->create();
+
+        $this->get(route('posts.show', $post))
+             ->assertSeeText($post_title);
     }
 }
