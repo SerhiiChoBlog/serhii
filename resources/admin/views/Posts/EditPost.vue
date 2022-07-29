@@ -5,7 +5,6 @@ import axios from 'axios'
 import handleError from '../../modules/handleError'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { init } from '../../modules/tinymce'
 import SavePost from '../../modules/SavePost'
 import PostContentImages from '../../components/Post/PostContentImages.vue'
 import FormTextarea from '../../components/Form/FormTextarea.vue'
@@ -15,15 +14,12 @@ import TagItem from '../../components/TagItem.vue'
 import TagSuggestions from '../../components/Post/TagSuggestions.vue'
 import PostImage from '../../components/Post/PostImage.vue'
 import DeletePost from '../../components/Post/DeletePost.vue'
+import Editor from '@tinymce/tinymce-vue'
+import { tinymceConfig } from '../../modules/tinymce'
 
 onMounted(() => {
     fetchPost()
-    setTimeout(() => init(), 1000)
     document.addEventListener('keydown', savePostWithCorrectKeyBinds)
-
-    // listenEvent(appConfig.events.savePost, () => {
-    //     console.log('fired')
-    // })
 })
 
 const route = useRoute()
@@ -50,7 +46,7 @@ function savePost(form: HTMLFormElement | null): void {
     const elements = form.elements as EditPostFormElements
 
     new SavePost(elements, post.value.id)
-        .save()
+        .save(post.value.content || '')
         .then(handleSavePostResponse)
         .finally(() => loading.value = false)
 }
@@ -156,12 +152,13 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                     </div>
 
                     <div class="mt-5">
-                        <textarea
-                            id="content"
-                            name="content"
-                            aria-hidden="true"
-                            class="hidden"
-                        >{{ post.content }}</textarea>
+                        <editor
+                            api-key="jmzusr7d7slf7c7crr4p3uv10uxzm18be4w8njz8qxsewhdn"
+                            :initialValue="post.content"
+                            :init="tinymceConfig"
+                            v-model="post.content"
+                            @keydown="savePostWithCorrectKeyBinds"
+                        />
                     </div>
 
                     <div>
