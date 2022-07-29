@@ -37,7 +37,7 @@ export default class {
         }
 
         try {
-            const response = await axios.put<string>(`/admin/ajax/posts/${this.postId}`, formData, params)
+            const response = await axios.post<string>(`/admin/ajax/posts/${this.postId}`, formData, params)
             return response.data
         } catch (err) {
             handleError(err)
