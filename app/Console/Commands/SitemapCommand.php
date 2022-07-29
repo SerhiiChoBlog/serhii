@@ -10,6 +10,7 @@ use App\Models\Tag;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\Tags\Url;
 
 class SitemapCommand extends Command
 {
@@ -48,9 +49,16 @@ class SitemapCommand extends Command
     private function getPostsLinks(): Collection
     {
         return Post::query()
+            ->select('id', 'title', 'image_lg', 'slug')
             ->where('is_published', true)
-            ->pluck('slug')
-            ->map(fn(string $slug) => route('posts.show', $slug));
+            ->get()
+            ->map(function (Post $post) {
+                $img = config('app.url') . '/' . $post->image_lg;
+
+                // todo: images are not generated
+                return Url::create(route('posts.show', $post->slug))
+                    ->addImage($img, $post->title, '', $post->title);
+            });
     }
 
     /**
@@ -60,7 +68,7 @@ class SitemapCommand extends Command
     {
         return Project::query()
             ->pluck('name')
-            ->map(fn(string $name) => route('projects.show', $name));
+            ->map(fn(string $name) => Url::create(route('projects.show', $name)));
     }
 
     /**
@@ -71,6 +79,11 @@ class SitemapCommand extends Command
         return Tag::query()
             ->has('posts')
             ->pluck('name')
-            ->map(fn(string $tag) => route('posts.index', ['tag' => $tag]));
+            ->map(fn(string $tag) => Url::create(route('posts.index', ['tag' => $tag])));
+    }
+
+    private function getImages(): Collection
+    {
+        return collect();
     }
 }
