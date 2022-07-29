@@ -4,12 +4,12 @@
 
 @extends('layouts.app')
 
-@section('title', 'Open-source projects')
+@section('title', 'Open-source')
 @section('description', "I'm a the maintainer of se")
 
 @section('content')
     <x-hero
-        title="Open-source projects"
+        title="Open-source"
         subtitle="I'm the maintainer of several open-source libraries and browser extension.<br>You can contribute to any of them on GitHub, and I would gladly look into your pull request or issue."
         class="bg-gradient-to-r from-[#51895c] via-[#4c5f7d] to-[#51895c] text-white"
     />
