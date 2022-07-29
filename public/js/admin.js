@@ -1,6 +1,472 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/ScriptLoader.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/ScriptLoader.js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ScriptLoader": () => (/* binding */ ScriptLoader)
+/* harmony export */ });
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Utils */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js");
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+var createState = function () { return ({
+    listeners: [],
+    scriptId: (0,_Utils__WEBPACK_IMPORTED_MODULE_0__.uuid)('tiny-script'),
+    scriptLoaded: false
+}); };
+var CreateScriptLoader = function () {
+    var state = createState();
+    var injectScriptTag = function (scriptId, doc, url, callback) {
+        var scriptTag = doc.createElement('script');
+        scriptTag.referrerPolicy = 'origin';
+        scriptTag.type = 'application/javascript';
+        scriptTag.id = scriptId;
+        scriptTag.src = url;
+        var handler = function () {
+            scriptTag.removeEventListener('load', handler);
+            callback();
+        };
+        scriptTag.addEventListener('load', handler);
+        if (doc.head) {
+            doc.head.appendChild(scriptTag);
+        }
+    };
+    var load = function (doc, url, callback) {
+        if (state.scriptLoaded) {
+            callback();
+        }
+        else {
+            state.listeners.push(callback);
+            if (!doc.getElementById(state.scriptId)) {
+                injectScriptTag(state.scriptId, doc, url, function () {
+                    state.listeners.forEach(function (fn) { return fn(); });
+                    state.scriptLoaded = true;
+                });
+            }
+        }
+    };
+    // Only to be used by tests.
+    var reinitialize = function () {
+        state = createState();
+    };
+    return {
+        load: load,
+        reinitialize: reinitialize
+    };
+};
+var ScriptLoader = CreateScriptLoader();
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/TinyMCE.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/TinyMCE.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getTinymce": () => (/* binding */ getTinymce)
+/* harmony export */ });
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+var getGlobal = function () { return (typeof window !== 'undefined' ? window : __webpack_require__.g); };
+var getTinymce = function () {
+    var global = getGlobal();
+    return global && global.tinymce ? global.tinymce : null;
+};
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "bindHandlers": () => (/* binding */ bindHandlers),
+/* harmony export */   "bindModelHandlers": () => (/* binding */ bindModelHandlers),
+/* harmony export */   "initEditor": () => (/* binding */ initEditor),
+/* harmony export */   "isNullOrUndefined": () => (/* binding */ isNullOrUndefined),
+/* harmony export */   "isTextarea": () => (/* binding */ isTextarea),
+/* harmony export */   "isValidKey": () => (/* binding */ isValidKey),
+/* harmony export */   "mergePlugins": () => (/* binding */ mergePlugins),
+/* harmony export */   "uuid": () => (/* binding */ uuid)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+var validEvents = [
+    'onActivate',
+    'onAddUndo',
+    'onBeforeAddUndo',
+    'onBeforeExecCommand',
+    'onBeforeGetContent',
+    'onBeforeRenderUI',
+    'onBeforeSetContent',
+    'onBeforePaste',
+    'onBlur',
+    'onChange',
+    'onClearUndos',
+    'onClick',
+    'onContextMenu',
+    'onCopy',
+    'onCut',
+    'onDblclick',
+    'onDeactivate',
+    'onDirty',
+    'onDrag',
+    'onDragDrop',
+    'onDragEnd',
+    'onDragGesture',
+    'onDragOver',
+    'onDrop',
+    'onExecCommand',
+    'onFocus',
+    'onFocusIn',
+    'onFocusOut',
+    'onGetContent',
+    'onHide',
+    'onInit',
+    'onKeyDown',
+    'onKeyPress',
+    'onKeyUp',
+    'onLoadContent',
+    'onMouseDown',
+    'onMouseEnter',
+    'onMouseLeave',
+    'onMouseMove',
+    'onMouseOut',
+    'onMouseOver',
+    'onMouseUp',
+    'onNodeChange',
+    'onObjectResizeStart',
+    'onObjectResized',
+    'onObjectSelected',
+    'onPaste',
+    'onPostProcess',
+    'onPostRender',
+    'onPreProcess',
+    'onProgressState',
+    'onRedo',
+    'onRemove',
+    'onReset',
+    'onSaveContent',
+    'onSelectionChange',
+    'onSetAttrib',
+    'onSetContent',
+    'onShow',
+    'onSubmit',
+    'onUndo',
+    'onVisualAid'
+];
+var isValidKey = function (key) {
+    return validEvents.map(function (event) { return event.toLowerCase(); }).indexOf(key.toLowerCase()) !== -1;
+};
+var bindHandlers = function (initEvent, listeners, editor) {
+    Object.keys(listeners)
+        .filter(isValidKey)
+        .forEach(function (key) {
+        var handler = listeners[key];
+        if (typeof handler === 'function') {
+            if (key === 'onInit') {
+                handler(initEvent, editor);
+            }
+            else {
+                editor.on(key.substring(2), function (e) { return handler(e, editor); });
+            }
+        }
+    });
+};
+var bindModelHandlers = function (props, ctx, editor, modelValue) {
+    var modelEvents = props.modelEvents ? props.modelEvents : null;
+    var normalizedEvents = Array.isArray(modelEvents) ? modelEvents.join(' ') : modelEvents;
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(modelValue, function (val, prevVal) {
+        if (editor && typeof val === 'string' && val !== prevVal && val !== editor.getContent({ format: props.outputFormat })) {
+            editor.setContent(val);
+        }
+    });
+    editor.on(normalizedEvents ? normalizedEvents : 'change input undo redo', function () {
+        ctx.emit('update:modelValue', editor.getContent({ format: props.outputFormat }));
+    });
+};
+var initEditor = function (initEvent, props, ctx, editor, modelValue, content) {
+    editor.setContent(content());
+    if (ctx.attrs['onUpdate:modelValue']) {
+        bindModelHandlers(props, ctx, editor, modelValue);
+    }
+    bindHandlers(initEvent, ctx.attrs, editor);
+};
+var unique = 0;
+var uuid = function (prefix) {
+    var time = Date.now();
+    var random = Math.floor(Math.random() * 1000000000);
+    unique++;
+    return prefix + '_' + random + unique + String(time);
+};
+var isTextarea = function (element) {
+    return element !== null && element.tagName.toLowerCase() === 'textarea';
+};
+var normalizePluginArray = function (plugins) {
+    if (typeof plugins === 'undefined' || plugins === '') {
+        return [];
+    }
+    return Array.isArray(plugins) ? plugins : plugins.split(' ');
+};
+var mergePlugins = function (initPlugins, inputPlugins) {
+    return normalizePluginArray(initPlugins).concat(normalizePluginArray(inputPlugins));
+};
+var isNullOrUndefined = function (value) {
+    return value === null || value === undefined;
+};
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/Editor.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/Editor.js ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Editor": () => (/* binding */ Editor)
+/* harmony export */ });
+/* harmony import */ var _ScriptLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../ScriptLoader */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/ScriptLoader.js");
+/* harmony import */ var _TinyMCE__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../TinyMCE */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/TinyMCE.js");
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Utils */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js");
+/* harmony import */ var _EditorPropTypes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditorPropTypes */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/EditorPropTypes.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+
+
+
+
+var renderInline = function (ce, id, elementRef, tagName) {
+    return ce(tagName ? tagName : 'div', {
+        id: id,
+        ref: elementRef
+    });
+};
+var renderIframe = function (ce, id, elementRef) {
+    return ce('textarea', {
+        id: id,
+        visibility: 'hidden',
+        ref: elementRef
+    });
+};
+var Editor = (0,vue__WEBPACK_IMPORTED_MODULE_4__.defineComponent)({
+    props: _EditorPropTypes__WEBPACK_IMPORTED_MODULE_3__.editorProps,
+    setup: function (props, ctx) {
+        var conf = props.init ? __assign({}, props.init) : {};
+        var _a = (0,vue__WEBPACK_IMPORTED_MODULE_4__.toRefs)(props), disabled = _a.disabled, modelValue = _a.modelValue, tagName = _a.tagName;
+        var element = (0,vue__WEBPACK_IMPORTED_MODULE_4__.ref)(null);
+        var vueEditor = null;
+        var elementId = props.id || (0,_Utils__WEBPACK_IMPORTED_MODULE_2__.uuid)('tiny-vue');
+        var inlineEditor = (props.init && props.init.inline) || props.inline;
+        var modelBind = !!ctx.attrs['onUpdate:modelValue'];
+        var mounting = true;
+        var initialValue = props.initialValue ? props.initialValue : '';
+        var cache = '';
+        var getContent = function (isMounting) { return modelBind ?
+            function () { return ((modelValue === null || modelValue === void 0 ? void 0 : modelValue.value) ? modelValue.value : ''); } :
+            function () { return isMounting ? initialValue : cache; }; };
+        var initWrapper = function () {
+            var content = getContent(mounting);
+            var finalInit = __assign(__assign({}, conf), { readonly: props.disabled, selector: "#" + elementId, plugins: (0,_Utils__WEBPACK_IMPORTED_MODULE_2__.mergePlugins)(conf.plugins, props.plugins), toolbar: props.toolbar || (conf.toolbar), inline: inlineEditor, setup: function (editor) {
+                    vueEditor = editor;
+                    editor.on('init', function (e) { return (0,_Utils__WEBPACK_IMPORTED_MODULE_2__.initEditor)(e, props, ctx, editor, modelValue, content); });
+                    if (typeof conf.setup === 'function') {
+                        conf.setup(editor);
+                    }
+                } });
+            if ((0,_Utils__WEBPACK_IMPORTED_MODULE_2__.isTextarea)(element.value)) {
+                element.value.style.visibility = '';
+            }
+            (0,_TinyMCE__WEBPACK_IMPORTED_MODULE_1__.getTinymce)().init(finalInit);
+            mounting = false;
+        };
+        (0,vue__WEBPACK_IMPORTED_MODULE_4__.watch)(disabled, function (disable) {
+            var _a;
+            if (vueEditor !== null) {
+                if (typeof ((_a = vueEditor.mode) === null || _a === void 0 ? void 0 : _a.set) === 'function') {
+                    vueEditor.mode.set(disable ? 'readonly' : 'design');
+                }
+                else {
+                    vueEditor.setMode(disable ? 'readonly' : 'design');
+                }
+            }
+        });
+        (0,vue__WEBPACK_IMPORTED_MODULE_4__.watch)(tagName, function (_) {
+            var _a;
+            if (!modelBind) {
+                cache = vueEditor.getContent();
+            }
+            (_a = (0,_TinyMCE__WEBPACK_IMPORTED_MODULE_1__.getTinymce)()) === null || _a === void 0 ? void 0 : _a.remove(vueEditor);
+            (0,vue__WEBPACK_IMPORTED_MODULE_4__.nextTick)(function () { return initWrapper(); });
+        });
+        (0,vue__WEBPACK_IMPORTED_MODULE_4__.onMounted)(function () {
+            if ((0,_TinyMCE__WEBPACK_IMPORTED_MODULE_1__.getTinymce)() !== null) {
+                initWrapper();
+            }
+            else if (element.value && element.value.ownerDocument) {
+                var channel = props.cloudChannel ? props.cloudChannel : '5';
+                var apiKey = props.apiKey ? props.apiKey : 'no-api-key';
+                var scriptSrc = (0,_Utils__WEBPACK_IMPORTED_MODULE_2__.isNullOrUndefined)(props.tinymceScriptSrc) ?
+                    "https://cdn.tiny.cloud/1/" + apiKey + "/tinymce/" + channel + "/tinymce.min.js" :
+                    props.tinymceScriptSrc;
+                _ScriptLoader__WEBPACK_IMPORTED_MODULE_0__.ScriptLoader.load(element.value.ownerDocument, scriptSrc, initWrapper);
+            }
+        });
+        (0,vue__WEBPACK_IMPORTED_MODULE_4__.onBeforeUnmount)(function () {
+            if ((0,_TinyMCE__WEBPACK_IMPORTED_MODULE_1__.getTinymce)() !== null) {
+                (0,_TinyMCE__WEBPACK_IMPORTED_MODULE_1__.getTinymce)().remove(vueEditor);
+            }
+        });
+        if (!inlineEditor) {
+            (0,vue__WEBPACK_IMPORTED_MODULE_4__.onActivated)(function () {
+                if (!mounting) {
+                    initWrapper();
+                }
+            });
+            (0,vue__WEBPACK_IMPORTED_MODULE_4__.onDeactivated)(function () {
+                var _a;
+                if (!modelBind) {
+                    cache = vueEditor.getContent();
+                }
+                (_a = (0,_TinyMCE__WEBPACK_IMPORTED_MODULE_1__.getTinymce)()) === null || _a === void 0 ? void 0 : _a.remove(vueEditor);
+            });
+        }
+        var rerender = function (init) {
+            var _a;
+            cache = vueEditor.getContent();
+            (_a = (0,_TinyMCE__WEBPACK_IMPORTED_MODULE_1__.getTinymce)()) === null || _a === void 0 ? void 0 : _a.remove(vueEditor);
+            conf = __assign(__assign({}, conf), init);
+            (0,vue__WEBPACK_IMPORTED_MODULE_4__.nextTick)(function () { return initWrapper(); });
+        };
+        ctx.expose({
+            rerender: rerender
+        });
+        return function () { return inlineEditor ?
+            renderInline(vue__WEBPACK_IMPORTED_MODULE_4__.h, elementId, element, props.tagName) :
+            renderIframe(vue__WEBPACK_IMPORTED_MODULE_4__.h, elementId, element); };
+    }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/EditorPropTypes.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/EditorPropTypes.js ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "editorProps": () => (/* binding */ editorProps)
+/* harmony export */ });
+var editorProps = {
+    apiKey: String,
+    cloudChannel: String,
+    id: String,
+    init: Object,
+    initialValue: String,
+    inline: Boolean,
+    modelEvents: [String, Array],
+    plugins: [String, Array],
+    tagName: String,
+    toolbar: [String, Array],
+    modelValue: String,
+    disabled: Boolean,
+    tinymceScriptSrc: String,
+    outputFormat: {
+        type: String,
+        validator: function (prop) { return prop === 'html' || prop === 'text'; }
+    },
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _components_Editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Editor */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/Editor.js");
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_components_Editor__WEBPACK_IMPORTED_MODULE_0__.Editor);
+
+
+/***/ }),
+
 /***/ "./node_modules/@vue/compiler-core/dist/compiler-core.esm-bundler.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/@vue/compiler-core/dist/compiler-core.esm-bundler.js ***!
@@ -20951,8 +21417,6 @@ var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 
 var vue_router_1 = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/index.js");
 
-var tinymce_1 = __webpack_require__(/*! ../../modules/tinymce */ "./resources/admin/modules/tinymce.ts");
-
 var SavePost_1 = __importDefault(__webpack_require__(/*! ../../modules/SavePost */ "./resources/admin/modules/SavePost.ts"));
 
 var PostContentImages_vue_1 = __importDefault(__webpack_require__(/*! ../../components/Post/PostContentImages.vue */ "./resources/admin/components/Post/PostContentImages.vue"));
@@ -20971,6 +21435,10 @@ var PostImage_vue_1 = __importDefault(__webpack_require__(/*! ../../components/P
 
 var DeletePost_vue_1 = __importDefault(__webpack_require__(/*! ../../components/Post/DeletePost.vue */ "./resources/admin/components/Post/DeletePost.vue"));
 
+var tinymce_vue_1 = __importDefault(__webpack_require__(/*! @tinymce/tinymce-vue */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js"));
+
+var tinymce_1 = __webpack_require__(/*! ../../modules/tinymce */ "./resources/admin/modules/tinymce.ts");
+
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'EditPost',
   setup: function setup(__props, _a) {
@@ -20978,9 +21446,6 @@ exports["default"] = (0, vue_1.defineComponent)({
     expose();
     (0, vue_2.onMounted)(function () {
       fetchPost();
-      setTimeout(function () {
-        return (0, tinymce_1.init)();
-      }, 1000);
       document.addEventListener('keydown', savePostWithCorrectKeyBinds);
     });
     var route = (0, vue_router_1.useRoute)();
@@ -21002,7 +21467,7 @@ exports["default"] = (0, vue_1.defineComponent)({
       if (!post.value || !form) return;
       loading.value = true;
       var elements = form.elements;
-      new SavePost_1["default"](elements, post.value.id).save().then(handleSavePostResponse)["finally"](function () {
+      new SavePost_1["default"](elements, post.value.id).save(post.value.content || '').then(handleSavePostResponse)["finally"](function () {
         return loading.value = false;
       });
     }
@@ -21054,7 +21519,9 @@ exports["default"] = (0, vue_1.defineComponent)({
       TagItem: TagItem_vue_1["default"],
       TagSuggestions: TagSuggestions_vue_1["default"],
       PostImage: PostImage_vue_1["default"],
-      DeletePost: DeletePost_vue_1["default"]
+      DeletePost: DeletePost_vue_1["default"],
+      Editor: tinymce_vue_1["default"],
+      tinymceConfig: tinymce_1.tinymceConfig
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -22744,34 +23211,28 @@ var _hoisted_13 = {
   "class": "mt-5"
 };
 var _hoisted_14 = {
-  id: "content",
-  name: "content",
-  "aria-hidden": "true",
-  "class": "hidden"
-};
-var _hoisted_15 = {
   "class": "flex flex-col justify-center fixed right-[20px] top-8 z-[9999] space-y-2"
 };
-var _hoisted_16 = {
+var _hoisted_15 = {
   key: 0,
   "class": "fas fa-spinner animate-spin mr-2"
 };
-var _hoisted_17 = {
+var _hoisted_16 = {
   key: 1,
   "class": "fas fa-save mr-2"
 };
 
-var _hoisted_18 = (0, vue_1.createTextVNode)(" Save ");
+var _hoisted_17 = (0, vue_1.createTextVNode)(" Save ");
 
-var _hoisted_19 = (0, vue_1.createElementVNode)("i", {
+var _hoisted_18 = (0, vue_1.createElementVNode)("i", {
   "class": "fas fa-eye mr-2"
 }, null, -1);
 
-var _hoisted_20 = (0, vue_1.createTextVNode)(" Preview ");
+var _hoisted_19 = (0, vue_1.createTextVNode)(" Preview ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [$setup.post ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_2, [(0, vue_1.createElementVNode)("h1", _hoisted_3, (0, vue_1.toDisplayString)($setup.post.title), 1), (0, vue_1.createElementVNode)("div", _hoisted_4, [(0, vue_1.createElementVNode)("form", {
-    onSubmit: _cache[1] || (_cache[1] = (0, vue_1.withModifiers)(function ($event) {
+    onSubmit: _cache[2] || (_cache[2] = (0, vue_1.withModifiers)(function ($event) {
       return $setup.savePost($setup.form);
     }, ["prevent"])),
     enctype: "multipart/form-data",
@@ -22822,18 +23283,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "intro"
   }, null, 8, ["value"])])]), (0, vue_1.createElementVNode)("div", _hoisted_12, [(0, vue_1.createVNode)($setup["PostImage"], {
     post: $setup.post
-  }, null, 8, ["post"])])]), (0, vue_1.createElementVNode)("div", _hoisted_13, [(0, vue_1.createElementVNode)("textarea", _hoisted_14, (0, vue_1.toDisplayString)($setup.post.content), 1)]), (0, vue_1.createElementVNode)("div", null, [(0, vue_1.createElementVNode)("div", _hoisted_15, [(0, vue_1.createVNode)($setup["MainButton"], {
+  }, null, 8, ["post"])])]), (0, vue_1.createElementVNode)("div", _hoisted_13, [(0, vue_1.createVNode)($setup["Editor"], {
+    "api-key": "jmzusr7d7slf7c7crr4p3uv10uxzm18be4w8njz8qxsewhdn",
+    initialValue: $setup.post.content,
+    init: $setup.tinymceConfig,
+    modelValue: $setup.post.content,
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $setup.post.content = $event;
+    }),
+    onKeydown: $setup.savePostWithCorrectKeyBinds
+  }, null, 8, ["initialValue", "init", "modelValue"])]), (0, vue_1.createElementVNode)("div", null, [(0, vue_1.createElementVNode)("div", _hoisted_14, [(0, vue_1.createVNode)($setup["MainButton"], {
     "class": "bg-green-500 hover:bg-green-600"
   }, {
     "default": (0, vue_1.withCtx)(function () {
-      return [$setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("i", _hoisted_16)) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("i", _hoisted_17)), _hoisted_18];
+      return [$setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("i", _hoisted_15)) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("i", _hoisted_16)), _hoisted_17];
     }),
     _: 1
   }), (0, vue_1.createVNode)($setup["MainButton"], {
     href: "/posts/".concat($setup.post.slug)
   }, {
     "default": (0, vue_1.withCtx)(function () {
-      return [_hoisted_19, _hoisted_20];
+      return [_hoisted_18, _hoisted_19];
     }),
     _: 1
   }, 8, ["href"])]), (0, vue_1.createVNode)($setup["DeletePost"], {
@@ -23665,8 +24135,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = {
   events: {
-    logout: 'logout',
-    savePost: 'savepost'
+    logout: 'logout'
   }
 };
 
@@ -23834,8 +24303,6 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
-var tinymce_1 = __webpack_require__(/*! ./tinymce */ "./resources/admin/modules/tinymce.ts");
-
 var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
 
 var sweetalert2_1 = __importDefault(__webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js"));
@@ -23848,7 +24315,7 @@ var default_1 = function () {
     this.postId = postId;
   }
 
-  default_1.prototype.save = function () {
+  default_1.prototype.save = function (content) {
     return __awaiter(this, void 0, void 0, function () {
       var formData, tagsElems, tags, imageFile, params, response, err_1;
       return __generator(this, function (_a) {
@@ -23866,7 +24333,7 @@ var default_1 = function () {
             imageFile = this.elements.image.files[0];
             formData.append('title', this.elements.title.value);
             formData.append('intro', this.elements.intro.value);
-            formData.append('content', (0, tinymce_1.getEditorContent)());
+            formData.append('content', content);
             formData.append('image', imageFile);
             formData.append('tags', JSON.stringify(tags.map(function (tag) {
               return tag.value;
@@ -24067,124 +24534,92 @@ exports["default"] = function (params) {
 /*!********************************************!*\
   !*** ./resources/admin/modules/tinymce.ts ***!
   \********************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.init = exports.getEditorContent = void 0;
-
-var dispatchEvent_1 = __importDefault(__webpack_require__(/*! ./dispatchEvent */ "./resources/admin/modules/dispatchEvent.ts"));
-
-var appConfig_1 = __importDefault(__webpack_require__(/*! ../appConfig */ "./resources/admin/appConfig.ts"));
-
-function getEditorContent() {
-  return tinymce.activeEditor.getContent();
-}
-
-exports.getEditorContent = getEditorContent;
-
-function init() {
-  tinymce.init({
-    selector: '#content',
-    plugins: 'codesample fullscreen code image link table lists paste',
-    height: '800px',
-    toolbar: 'undo redo | styleselect | bold italic | link image table | alignleft aligncenter alignright | numlist bullist | bullist numlist outdent indent | codesample code | fullscreen',
-    image_caption: true,
-    codesample_languages: [{
-      text: 'C#',
-      value: 'csharp'
-    }, {
-      text: 'Json',
-      value: 'json'
-    }, {
-      text: 'Nginx',
-      value: 'nginx'
-    }, {
-      text: 'SQL',
-      value: 'sql'
-    }, {
-      text: 'TypeScript',
-      value: 'typescript'
-    }, {
-      text: 'Apache',
-      value: 'apache'
-    }, {
-      text: 'C++',
-      value: 'cpp'
-    }, {
-      text: 'Go',
-      value: 'go'
-    }, {
-      text: 'Bash',
-      value: 'bash'
-    }, {
-      text: 'Java',
-      value: 'java'
-    }, {
-      text: 'Text',
-      value: 'text'
-    }, {
-      text: 'Ruby',
-      value: 'ruby'
-    }, {
-      text: 'CSS',
-      value: 'css'
-    }, {
-      text: 'HTML/XML',
-      value: 'html'
-    }, {
-      text: 'JavaScript',
-      value: 'javascript'
-    }, {
-      text: 'Makefile',
-      value: 'makefile'
-    }, {
-      text: 'PHP',
-      value: 'php'
-    }, {
-      text: 'Python',
-      value: 'python'
-    }, {
-      text: 'Yaml',
-      value: 'yaml'
-    }, {
-      text: 'C',
-      value: 'c'
-    }, {
-      text: 'Markdown',
-      value: 'markdown'
-    }, {
-      text: 'PHP Template',
-      value: 'php-template'
-    }, {
-      text: 'Scss',
-      value: 'scss'
-    }],
-    setup: function setup(editor) {
-      editor.on('blur', function () {
-        (0, dispatchEvent_1["default"])(appConfig_1["default"].events.savePost);
-      });
-      editor.on('keydown', function (e) {
-        if ((e.ctrlKey || e.metaKey) && e.code === 'KeyS') {
-          e.preventDefault();
-          (0, dispatchEvent_1["default"])(appConfig_1["default"].events.savePost);
-        }
-      });
-    }
-  });
-}
-
-exports.init = init;
+exports.tinymceConfig = void 0;
+exports.tinymceConfig = {
+  selector: '#content',
+  plugins: 'codesample fullscreen code image link table lists paste',
+  height: '800px',
+  toolbar: 'undo redo | styleselect | bold italic | link image table | alignleft aligncenter alignright | numlist bullist | bullist numlist outdent indent | codesample code | fullscreen',
+  image_caption: true,
+  codesample_languages: [{
+    text: 'C#',
+    value: 'csharp'
+  }, {
+    text: 'Json',
+    value: 'json'
+  }, {
+    text: 'Nginx',
+    value: 'nginx'
+  }, {
+    text: 'SQL',
+    value: 'sql'
+  }, {
+    text: 'TypeScript',
+    value: 'typescript'
+  }, {
+    text: 'Apache',
+    value: 'apache'
+  }, {
+    text: 'C++',
+    value: 'cpp'
+  }, {
+    text: 'Go',
+    value: 'go'
+  }, {
+    text: 'Bash',
+    value: 'bash'
+  }, {
+    text: 'Java',
+    value: 'java'
+  }, {
+    text: 'Text',
+    value: 'text'
+  }, {
+    text: 'Ruby',
+    value: 'ruby'
+  }, {
+    text: 'CSS',
+    value: 'css'
+  }, {
+    text: 'HTML/XML',
+    value: 'html'
+  }, {
+    text: 'JavaScript',
+    value: 'javascript'
+  }, {
+    text: 'Makefile',
+    value: 'makefile'
+  }, {
+    text: 'PHP',
+    value: 'php'
+  }, {
+    text: 'Python',
+    value: 'python'
+  }, {
+    text: 'Yaml',
+    value: 'yaml'
+  }, {
+    text: 'C',
+    value: 'c'
+  }, {
+    text: 'Markdown',
+    value: 'markdown'
+  }, {
+    text: 'PHP Template',
+    value: 'php-template'
+  }, {
+    text: 'Scss',
+    value: 'scss'
+  }]
+};
 
 /***/ }),
 
