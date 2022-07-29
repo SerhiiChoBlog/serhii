@@ -45,6 +45,11 @@ const links: UserSidebarLink[] = [
         icon: 'fa-link',
     },
     {
+        routeName: 'hits',
+        title: 'Hits',
+        icon: 'fa-shoe-prints',
+    },
+    {
         routeName: null,
         href: 'javascript:',
         title: 'Logout',

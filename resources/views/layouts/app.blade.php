@@ -9,14 +9,6 @@
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
     <title>@yield('title'){{ request()->is('/') ? '' : ' | ' }}{{ config('app.name', 'Serhii API') }}</title>
     <link href="{{ App\FileVersion::append('/css/app.css') }}" rel="stylesheet">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y5KMLPDH8Y"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-Y5KMLPDH8Y');
-    </script>
     @yield('head')
 </head>
 <body class="text-font font-main bg-page {{ request()->cookie('theme') }}">
