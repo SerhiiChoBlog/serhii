@@ -14,12 +14,13 @@
     <meta name="twitter:title" content="{{ $post->title }}">
     <meta name="twitter:description" content="{{ $post->intro }}">
     <meta name="twitter:image" content="{{ asset($post->image_lg) }}">
-    <meta property="og:og:site_name" content="{{ config('app.name') }}">
+    <meta property="og:site_name" content="{{ config('app.name') }}">
     <meta property="og:title" content="{{ $post->title }}">
     <meta property="og:description" content="{{ $post->intro }}" />
-    <meta property="og:image" content="{{ asset($post->image_lg) }}">
     <meta property="og:type" content="article">
+    <meta property="og:locale" content="en_US">
     <meta property="og:url" content="{{ route('posts.show', $post->slug) }}">
+    <meta property="og:image" content="{{ asset($post->image_lg) }}">
     <meta property="og:image:width" content="1000">
     <meta property="og:image:height" content="545">
     <meta property="article:published_time" content="{{ $post->created_at }}">
