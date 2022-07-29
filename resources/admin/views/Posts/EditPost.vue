@@ -156,7 +156,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                             api-key="jmzusr7d7slf7c7crr4p3uv10uxzm18be4w8njz8qxsewhdn"
                             :initialValue="post.content"
                             :init="tinymceConfig"
-                            v-model="post.content"
+                            v-model="post!.content"
                             @keydown="savePostWithCorrectKeyBinds"
                         />
                     </div>
