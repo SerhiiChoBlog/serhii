@@ -57,7 +57,7 @@
                         @if (auth()->check())
                             <div class="mt-4">
                                 <a
-                                    href="{{ route('admin.posts.edit', ['post' => $post->id]) }}"
+                                    href="/admin/posts/{{ $post->id }}/edit"
                                     class="px-5 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100 py-1 uppercase text-xs"
                                 >
                                     Edit

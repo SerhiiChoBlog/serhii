@@ -27,7 +27,7 @@
 
                     @if (auth()->check())
                         <a
-                            href="{{ route('admin.posts.edit', ['post' => $post['id']]) }}"
+                            href="/admin/posts/{{ $post->id }}/edit"
                             class="px-3 ml-1 tracking-wider border border-font-second border-dashed rounded-full transition-opacity hover:opacity-80 py-1 uppercase text-xs"
                         >
                             Edit
