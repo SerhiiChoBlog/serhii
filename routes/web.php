@@ -15,19 +15,17 @@ Route::redirect('about', 'about-me');
 Route::redirect('blog', 'posts');
 Route::redirect('register', 'login');
 
-Route::middleware('hits')->group(function () {
-    Route::view('/', 'home')->name('home');
-    Route::get('about-me', [AboutMeController::class, 'index'])->name('about-me');
+Route::view('/', 'home')->name('home');
+Route::get('about-me', [AboutMeController::class, 'index'])->name('about-me');
 
-    Route::prefix('posts')->controller(PostController::class)->group(function () {
-        Route::view('/', 'posts.index')->name('posts.index');
-        Route::get('{post:slug}', 'show')->name('posts.show');
-    });
+Route::prefix('posts')->controller(PostController::class)->group(function () {
+    Route::view('/', 'posts.index')->name('posts.index');
+    Route::get('{post:slug}', 'show')->name('posts.show');
+});
 
-    Route::prefix('projects')->controller(ProjectController::class)->group(function () {
-        Route::get('/', 'index')->name('projects.index');
-        Route::get('{project:name}', 'show')->name('projects.show');
-    });
+Route::prefix('projects')->controller(ProjectController::class)->group(function () {
+    Route::get('/', 'index')->name('projects.index');
+    Route::get('{project:name}', 'show')->name('projects.show');
 });
 
 Route::get('theme', ThemeController::class);
