@@ -6,13 +6,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use App\Models\SocialShare;
 use Illuminate\Support\Collection;
 
 class SocialShareController extends Controller
 {
     /**
-     * @return Collection<int, SocialShare>
+     * @return Collection<int, Post>
      */
     public function index(): Collection
     {
