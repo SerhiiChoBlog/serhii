@@ -28,7 +28,26 @@ class PostFactory extends Factory
             'title' => $title,
             'intro' => $this->faker->paragraph(),
             'slug' => Str::slug($title),
-            'is_published' => true,
+            'is_published' => false,
         ];
+    }
+
+    public function published(): static
+    {
+        return $this->state(
+            fn (array $attributes): array => [
+                'is_published' => true,
+            ],
+        );
+    }
+
+    public function title(string $title): static
+    {
+        return $this->state(
+            fn(array $attributes) => [
+                'title' => $title,
+                'slug' => str($title)->slug(),
+            ],
+        );
     }
 }
