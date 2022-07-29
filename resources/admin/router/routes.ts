@@ -10,6 +10,7 @@ import PostViews from '../views/PostViews.vue'
 import Visitors from '../views/Visitors.vue'
 import SocialShares from '../views/SocialShares.vue'
 import Referrers from '../views/Referrers.vue'
+import Hits from '../views/Hits.vue'
 
 const routes: RouteRecordRaw[] = [
     { path: '/admin/dashboard', name: 'dashboard', component: Dashboard },
@@ -23,6 +24,7 @@ const routes: RouteRecordRaw[] = [
     { path: '/admin/visitors', name: 'visitors', component: Visitors },
     { path: '/admin/social-shares', name: 'social-shares', component: SocialShares },
     { path: '/admin/referrers', name: 'referrers', component: Referrers },
+    { path: '/admin/hits', name: 'hits', component: Hits },
 ]
 
 export default routes

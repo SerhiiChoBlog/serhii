@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HitController;
 use App\Http\Controllers\Admin\PageViewController;
 use App\Http\Controllers\Admin\PostContentImageController;
 use App\Http\Controllers\Admin\PostController;
@@ -22,6 +23,7 @@ Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('visitors', VisitorController::class)->only('index');
     Route::resource('social-shares', SocialShareController::class)->only('index');
     Route::resource('referrers', ReferrerController::class)->only('index');
+    Route::resource('hits', HitController::class)->only('index');
 });
 
 Route::view('{any?}', 'layouts.admin')
