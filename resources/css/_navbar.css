@@ -3,7 +3,7 @@
 }
 
 .navbar-menu--active {
-    @apply flex flex-col bg-[#363636] absolute right-[20px] left-[20px] md:right-[120px] md:left-[120px] top-[52px] p-0 shadow-lg rounded-lg z-10 !overflow-hidden;
+    @apply flex flex-col bg-[#363636] absolute right-[20px] left-[20px] md:right-[120px] md:left-[120px] top-[60px] p-0 shadow-lg rounded-lg z-10;
 }
 
 .navbar-link::before {
