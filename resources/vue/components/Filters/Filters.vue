@@ -20,7 +20,7 @@ function setTag(newTag: Tag): void {
 <template>
     <appear-transition>
         <div class="mb-2 flex flex-col md:flex-row items-center gap-4">
-            <div class="w-full max-w-[300px]">
+            <div class="w-full max-w-[280px]">
                 <tags-filter :tagSlug="tagSlug" @tagIsLoaded="setTag" />
             </div>
 
