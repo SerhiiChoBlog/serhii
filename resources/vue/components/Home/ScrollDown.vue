@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ArrowDownIcon from './Icons/ArrowDownIcon.vue'
+import ArrowDownIcon from '../Icons/ArrowDownIcon.vue'
 
 function scrollDown(): void {
     const elem = document.getElementById('home-decoration-lines')
