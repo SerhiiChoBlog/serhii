@@ -12,6 +12,7 @@ import LoadIcon from '../Icons/LoadIcon.vue'
 import sweetAlert from 'sweetalert2'
 import ControlButton from './ControlButton.vue'
 import SlideUpTransition from '../Transitions/SlideUpTransition.vue'
+import showToast from '../../modules/showToast'
 
 interface Props {
     slug: string
@@ -80,9 +81,10 @@ function deleteSave(): void {
     localStorage.removeItem(`chapter:${slug}`)
     savedChapter.value = null
 
-    sweetAlert.fire({
-        title: 'Deleted',
-        html: `Your saved position in the post has been deleted!`,
+    showToast({
+        text: `Your saved position in the post has been deleted!`,
+        success: true,
+        duration: 6000,
     })
 }
 
@@ -130,9 +132,10 @@ function saveCurrentChapter(): void {
 
     localStorage.setItem(`chapter:${slug}`, JSON.stringify(savedChapter.value))
 
-    sweetAlert.fire({
-        title: 'Saved',
-        html: `You've saved current position in the post. You'll be able to go back to it at any time`,
+    showToast({
+        text: `You've saved current position in the post. You'll be able to go back to it at any time`,
+        success: true,
+        duration: 6000,
     })
 
     if (screenSizeIs('lg')) {
