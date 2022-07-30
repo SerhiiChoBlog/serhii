@@ -18,7 +18,11 @@
                     Blog about software development and productivity
                 </h2>
 
-                <search />
+                <div class="min-h-[44px] lg:min-h-[60px]">
+                    <search></search>
+                </div>
+
+                <x-home.tag-suggestions />
             </div>
 
             <scroll-down />

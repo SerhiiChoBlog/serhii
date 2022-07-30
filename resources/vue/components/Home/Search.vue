@@ -2,39 +2,37 @@
 import useSearch from '../../composables/useSearch'
 import SearchIcon from '../Icons/SearchIcon.vue'
 import Dropdown from './Dropdown.vue'
-import TagSuggestions from './TagSuggestions.vue'
-import ReadBlogButton from './ReadBlogButton.vue'
+import AppearTransition from '../Transitions/AppearTransition.vue'
 
 const { search, input, fetchSearchSuggestions } = useSearch()
 </script>
 
 <template>
-    <div class="max-w-[85%] md:max-w-[600px] mx-auto">
-        <div class="relative flex items-center justify-center mt-5 shadow-lg rounded-lg bg-page mx-auto dark:border dark:border-border">
-            <form @submit.prevent class="w-full m-0">
-                <search-icon
-                    :class="{ 'animate-blink': search.loading }"
-                    class="w-4 md:w-5 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-5"
-                />
+    <appear-transition>
+        <div class="max-w-[85%] md:max-w-[600px] mx-auto">
+            <div class="relative flex items-center justify-center mt-5 shadow-lg rounded-lg bg-page mx-auto dark:border dark:border-border">
+                <form @submit.prevent class="w-full m-0">
+                    <search-icon
+                        :class="{ 'animate-blink': search.loading }"
+                        class="w-4 md:w-5 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-5"
+                    />
 
-                <input
-                    type="search"
-                    class="pl-10 pr-7 md:pl-14 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 rounded-lg outline-none bg-page"
-                    placeholder="Search blog posts"
-                    v-model="search.query"
-                    @input="e => {
-                        search.query = e.target.value
-                        fetchSearchSuggestions(e)
-                    }"
-                    ref="input"
-                    autocomplete="off"
-                />
-            </form>
+                    <input
+                        type="search"
+                        class="pl-10 pr-7 md:pl-14 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 rounded-lg outline-none bg-page"
+                        placeholder="Search blog posts"
+                        v-model="search.query"
+                        @input="e => {
+                            search.query = e.target.value
+                            fetchSearchSuggestions(e)
+                        }"
+                        ref="input"
+                        autocomplete="off"
+                    />
+                </form>
 
-            <dropdown v-if="search.query !== ''" :search="search" />
+                <dropdown v-if="search.query !== ''" :search="search" />
+            </div>
         </div>
-
-        <tag-suggestions />
-        <read-blog-button />
-    </div>
+    </appear-transition>
 </template>
