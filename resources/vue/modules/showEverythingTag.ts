@@ -5,7 +5,7 @@ const tag: Tag = {
     title: 'Show everything',
     description: 'Show every post in the blog',
     name: 'everything',
-    color: '#694c6d',
+    color: '#826388',
 }
 
 export default tag
