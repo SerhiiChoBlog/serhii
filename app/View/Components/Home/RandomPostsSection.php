@@ -20,7 +20,7 @@ class RandomPostsSection extends Component
         $last_post = Cache::get(CacheKey::LAST_POST);
 
         return Post::query()
-            ->with('tags:name,color')
+            ->with('tags:name,color,title')
             ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
             ->where('is_published', true)
             ->limit(3)

@@ -14,7 +14,7 @@ const { content } = defineProps<Props>()
 
         <template #content>
             <div
-                class="bg-font dark:bg-page-second dark:text-white dark:border dark:border-gray-800 px-4 py-2 text-white rounded-lg text-sm shadow-md"
+                class="bg-font dark:bg-page-second opacity-90 dark:text-white dark:border dark:border-gray-800 px-3 py-1 text-white rounded-md text-sm shadow-md"
                 v-html="content"
             ></div>
         </template>
