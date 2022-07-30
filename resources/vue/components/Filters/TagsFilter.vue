@@ -8,21 +8,21 @@ import ListboxOptions from '../Listbox/ListboxOptions.vue'
 import ListboxOption from '../Listbox/ListboxOption.vue'
 import FilterTagLabel from './FilterTagLabel.vue'
 import replaceQueryParam from '../../modules/replaceQueryParam'
+import showEverythingTag from '../../modules/showEverythingTag'
 
 type Props = {
     tagSlug: string
 }
 
+type Emits = {
+    (e: 'tagIsLoaded', tag: Tag): void
+}
+
+const emit = defineEmits<Emits>()
 const { tagSlug } = defineProps<Props>()
 
 const tags = ref<Tag[]>([
-    {
-        id: 0,
-        title: 'Show everything',
-        description: '',
-        name: 'everything',
-        color: '#7F6084',
-    },
+    showEverythingTag,
 ])
 
 const selectedTag = ref<Tag>(tags.value[0])
@@ -60,6 +60,9 @@ function fetchTags(): void {
 
                 if (match) {
                     selectedTag.value = match
+                    emit('tagIsLoaded', match)
+                } else {
+                    emit('tagIsLoaded', tags.value[0])
                 }
             }
         })

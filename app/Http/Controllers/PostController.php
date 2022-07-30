@@ -18,7 +18,7 @@ class PostController extends Controller
     public function index(IndexRequest $request): View
     {
         $query = Post::query()
-            ->with('tags:id,name,color')
+            ->with('tags:id,name,color,title')
             ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
             ->where('is_published', true)
             ->latest();
