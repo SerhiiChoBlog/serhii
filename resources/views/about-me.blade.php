@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Information about me')
-@section('description', "Hi, my name is Serhii, I live in Kharkiv, Ukraine. Thanks for coming to my little and cozy place. Here, you can find information that might help you to find out more about me")
+@section('title', 'Serhii Cho information')
+@section('description', "Serhii Cho is a Ukrainian web developer and blogger who is writing about enhancing your knowledge in creating fast and robust web apps")
 
 @section('content')
     <x-hero
-        title="Information about me"
-        subtitle="Hi, my name is Serhii, I live in Kharkiv, Ukraine. Thanks for coming to my little and cozy place.<br>Down below, you can find technologies that I'm working with and other information that might help you to know more about me."
+        title="Serhii Chornenkyi"
+        subtitle="Serhii Cho is a Ukrainian web developer and blogger who is writing about<br />enhancing your knowledge in creating fast and robust web apps"
         class="bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1] text-white"
     />
 
@@ -16,7 +16,7 @@
                 <div class="bg-page -translate-y-16 rounded-xl pt-8">
                     <div class="grid grid-cols-1 gap-x-6 lg:grid-cols-[25%_1fr]">
                         <div class="relative">
-                            <div class="w-[250px] h-[250px] mx-auto bg-page-second rounded-lg shadow-lg">
+                            <div class="w-[250px] h-[250px] mx-auto bg-page-second rounded-lg shadow-lg sticky top-20 mb-6">
                                 <avatar />
                             </div>
                         </div>

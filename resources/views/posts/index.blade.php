@@ -9,13 +9,13 @@
 
 @extends('layouts.app')
 
-@section('title', 'Blog for the web')
-@section('description', "Blog that helps you to become a better web developer and enhance your knowledge about Laravel, Vue, JavaScript, TypeScript and webpage performance")
+@section('title', 'Web blog')
+@section('description', "Blog that helps you to become a better web developer and enhance your knowledge in programming with TypeScript, Go lang and PHP")
 
 @section('content')
     <x-hero
-        title="Blog for the web"
-        subtitle="Blog that helps you to become a better web developer and enhance your knowledge about<br />Laravel, Vue, JavaScript, TypeScript and webpage performance"
+        title="Web blog"
+        subtitle="Blog that helps you to become a better web developer and<br />enhance your knowledge in programming with TypeScript, Go lang and PHP"
         class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white"
     />
 
