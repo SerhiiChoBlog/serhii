@@ -6,11 +6,11 @@ import TagsFilter from './TagsFilter.vue'
 import AppearTransition from '../Transitions/AppearTransition.vue'
 
 type Props = {
-    tagSlug: string
+    currentTag: Tag | null
 }
 
-const { tagSlug } = defineProps<Props>()
-const tag = ref<Tag>(showEverythingTag)
+const { currentTag } = defineProps<Props>()
+const tag = ref<Tag>(currentTag || showEverythingTag)
 
 function setTag(newTag: Tag): void {
     tag.value = newTag
@@ -19,9 +19,9 @@ function setTag(newTag: Tag): void {
 
 <template>
     <appear-transition>
-        <div class="mb-2 flex flex-col md:flex-row items-center gap-4">
-            <div class="w-full max-w-[280px]">
-                <tags-filter :tagSlug="tagSlug" @tagIsLoaded="setTag" />
+        <div class="mb-2 flex flex-col md:flex-row items-center gap-1">
+            <div class="w-full max-w-[320px]">
+                <tags-filter :tag="tag" />
             </div>
 
             <div class="text-md leading-5">

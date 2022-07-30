@@ -1,20 +1,25 @@
 @php
+    use App\Models\Tag;
     use Illuminate\Pagination\LengthAwarePaginator;
     use App\Models\Post;
+
     /**
      * @var LengthAwarePaginator<Post> $posts
      * @var Post $post
+     * @var Tag|null $tag
      */
+
+    $title = $tag ? sprintf("Articles on %s topic", $tag->title) : 'Web blog';
 @endphp
 
 @extends('layouts.app')
 
-@section('title', 'Web blog')
+@section('title', $title)
 @section('description', "Blog that helps you to become a better web developer and enhance your knowledge in programming with TypeScript, Go lang and PHP")
 
 @section('content')
     <x-hero
-        title="Web blog"
+        :title="$title"
         subtitle="Blog that helps you to become a better web developer and<br />enhance your knowledge in programming with TypeScript, Go lang and PHP"
         class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white"
     />
@@ -22,17 +27,18 @@
     <div class="container">
         <div class="bg-page max-w-[1100px] mx-auto -translate-y-6 rounded-xl px-3 pt-3">
             <div class="min-h-[40px]">
-                <filters tag-slug="{{ request()->get('tag') }}"></filters>
+                <filters :current-tag="{{ $tag ?? 'null' }}"></filters>
             </div>
 
-           @if ($posts->isEmpty())
-                <x-posts.no-posts />
+            @if ($posts->isEmpty())
+                <x-posts.no-posts/>
             @else
                 <div class="flex flex-col gap-y-2">
 
                     @foreach ($posts as $post)
                         <article>
-                            <div class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl max-w-[550px] lg:max-w-full mx-auto transition-colors hover:bg-page-second">
+                            <div
+                                class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl max-w-[550px] lg:max-w-full mx-auto transition-colors hover:bg-page-second">
                                 <a href="/posts/{{ $post->slug }}" class="block w-full max-w-max lg:max-w-[260px]">
                                     <img
                                         @if ($loop->index === 0)
@@ -54,8 +60,8 @@
                                     </a>
 
                                     <div>
-                                        <x-post.tags :tags="$post->tags" class="text-[.8em] mt-3" />
-                                        <x-post.details :post="$post->toArray()" class="mt-3" />
+                                        <x-post.tags :tags="$post->tags" class="text-[.8em] mt-3"/>
+                                        <x-post.details :post="$post->toArray()" class="mt-3"/>
                                     </div>
                                 </div>
                             </div>
