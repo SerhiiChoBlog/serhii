@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
+        <loc>https://serhii.io</loc>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+    <image:loc>https://serhii.io/storage/heros/home-hero-sm.webp</image:loc>
+    <image:caption>Serhii Cho small hero image</image:caption>
+</image:image>
+<image:image>
+    <image:loc>https://serhii.io/storage/heros/home-hero.webp</image:loc>
+    <image:caption>Serhii Cho big hero image</image:caption>
+</image:image>
+</url>
+    <url>
+        <loc>https://serhii.io/about-me</loc>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+    <image:loc>https://serhii.io/storage/serhii-cho.jpg</image:loc>
+    <image:caption>Serhii Cho photo</image:caption>
+</image:image>
+</url>
+    <url>
         <loc>https://serhii.io/posts/how-custom-events-in-javascript-can-decouple-your-code</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/posts/lg/how-custom-events-in-javascript-can-decouple-your-code.jpg</image:loc>
     <image:caption>How custom events in JavaScript can decouple your code</image:caption>
-    <image:title>https://serhii.io/How custom events in JavaScript can decouple your code</image:title>
 </image:image>
 <image:image>
     <image:loc>https://serhii.io/storage/posts/content/how-custom-events-in-javascript-can-decouple-your-code-1.png</image:loc>
@@ -22,13 +45,12 @@
 </url>
     <url>
         <loc>https://serhii.io/posts/10-features-in-laravel-that-i-didnt-know-existed</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/posts/lg/10-features-in-laravel-that-i-didnt-know-existed.jpg</image:loc>
     <image:caption>10 features in Laravel that I didn&#039;t know existed</image:caption>
-    <image:title>https://serhii.io/10 features in Laravel that I didn&#039;t know existed</image:title>
 </image:image>
 <image:image>
     <image:loc>https://serhii.io/storage/posts/content/10-features-in-laravel-that-i-didnt-know-existed-1.png</image:loc>
@@ -48,13 +70,12 @@
 </url>
     <url>
         <loc>https://serhii.io/posts/what-4-years-of-coding-have-taught-me</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/posts/lg/what-4-years-of-coding-have-taught-me.jpg</image:loc>
     <image:caption>What 4 years of coding have taught me</image:caption>
-    <image:title>https://serhii.io/What 4 years of coding have taught me</image:title>
 </image:image>
 <image:image>
     <image:loc>https://serhii.io/storage/posts/content/what-4-years-of-coding-have-taught-me-1.png</image:loc>
@@ -68,13 +89,12 @@
 </url>
     <url>
         <loc>https://serhii.io/posts/how-to-make-your-software-developer-job-more-enjoyable</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/posts/lg/how-to-make-your-job-as-a-software-developer-more-enjoyable.jpg</image:loc>
     <image:caption>How to make your software developer job more enjoyable</image:caption>
-    <image:title>https://serhii.io/How to make your software developer job more enjoyable</image:title>
 </image:image>
 <image:image>
     <image:loc>https://serhii.io/storage/posts/content/how-to-make-your-software-developer-job-more-enjoyable-7.png</image:loc>
@@ -106,13 +126,12 @@
 </url>
     <url>
         <loc>https://serhii.io/posts/5-techniques-that-i-use-for-building-fast-websites</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/posts/lg/5-techniques-that-i-use-for-building-fast-websites.jpg</image:loc>
     <image:caption>5 techniques that I use for building fast websites</image:caption>
-    <image:title>https://serhii.io/5 techniques that I use for building fast websites</image:title>
 </image:image>
 <image:image>
     <image:loc>https://serhii.io/storage/posts/content/5-techniques-that-i-use-for-building-fast-websites-1.jpg</image:loc>
@@ -132,13 +151,12 @@
 </url>
     <url>
         <loc>https://serhii.io/posts/how-to-use-recursion-in-web-development</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/posts/lg/how-to-use-recursion-in-web-development.jpg</image:loc>
     <image:caption>How to use recursion in web development</image:caption>
-    <image:title>https://serhii.io/How to use recursion in web development</image:title>
 </image:image>
 <image:image>
     <image:loc>https://serhii.io/storage/posts/content/how-to-use-recursion-in-web-development-1.png</image:loc>
@@ -152,13 +170,12 @@
 </url>
     <url>
         <loc>https://serhii.io/posts/telegram-bot-with-botman-and-latest-laravel-version</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/posts/lg/telegram-bot-with-botman-and-latest-laravel-version.jpg</image:loc>
     <image:caption>Telegram bot with BotMan and latest Laravel version</image:caption>
-    <image:title>https://serhii.io/Telegram bot with BotMan and latest Laravel version</image:title>
 </image:image>
 <image:image>
     <image:loc>https://serhii.io/storage/posts/content/telegram-bot-with-botman-and-latest-laravel-version-2.png</image:loc>
@@ -187,13 +204,12 @@
 </url>
     <url>
         <loc>https://serhii.io/posts/script-setup-is-the-future-of-vuejs</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/posts/lg/script-setup-is-the-future-of-vuejs.jpg</image:loc>
     <image:caption>Script setup is the future of Vue.js</image:caption>
-    <image:title>https://serhii.io/Script setup is the future of Vue.js</image:title>
 </image:image>
 <image:image>
     <image:loc>https://serhii.io/storage/posts/content/script-setup-is-the-future-of-vuejs-1.png</image:loc>
@@ -201,13 +217,12 @@
 </url>
     <url>
         <loc>https://serhii.io/posts/moving-from-linux-to-macos-as-a-programmer</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/posts/lg/moving-from-linux-to-macos-as-a-programmer.jpg</image:loc>
     <image:caption>Moving from Linux to macOS as a programmer</image:caption>
-    <image:title>https://serhii.io/Moving from Linux to macOS as a programmer</image:title>
 </image:image>
 <image:image>
     <image:loc>https://serhii.io/storage/posts/content/moving-from-linux-to-macos-as-a-programmer-1.jpeg</image:loc>
@@ -230,13 +245,12 @@
 </url>
     <url>
         <loc>https://serhii.io/posts/what-its-like-to-be-a-programmer-in-a-country-with-the-war</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/posts/lg/what-its-like-to-be-a-programmer-in-a-country-with-the-war.jpg</image:loc>
     <image:caption>What it&#039;s like to be a programmer in a country with the war</image:caption>
-    <image:title>https://serhii.io/What it&#039;s like to be a programmer in a country with the war</image:title>
 </image:image>
 <image:image>
     <image:loc>https://serhii.io/storage/posts/content/what-its-like-to-be-a-programmer-in-a-country-with-the-war-1.jpeg</image:loc>
@@ -262,13 +276,12 @@
 </url>
     <url>
         <loc>https://serhii.io/posts/abstracting-external-services-with-interfaces-in-laravel-apps</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/posts/lg/abstracting-external-services-with-interfaces-in-laravel-apps.jpg</image:loc>
     <image:caption>Abstracting external services with interfaces in Laravel apps</image:caption>
-    <image:title>https://serhii.io/Abstracting external services with interfaces in Laravel apps</image:title>
 </image:image>
 <image:image>
     <image:loc>https://serhii.io/storage/posts/content/when-should-you-use-interfaces-in-laravel-apps-1658132781.webp</image:loc>
@@ -303,180 +316,162 @@
 </url>
     <url>
         <loc>https://serhii.io/projects/ago</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/languages/php.webp</image:loc>
     <image:caption>PHP</image:caption>
-    <image:title>https://serhii.io/PHP</image:title>
 </image:image>
 </url>
     <url>
         <loc>https://serhii.io/projects/goodbye-html</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/languages/php.webp</image:loc>
     <image:caption>PHP</image:caption>
-    <image:title>https://serhii.io/PHP</image:title>
 </image:image>
 </url>
     <url>
         <loc>https://serhii.io/projects/php-revival</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/languages/sass.webp</image:loc>
     <image:caption>Sass</image:caption>
-    <image:title>https://serhii.io/Sass</image:title>
 </image:image>
 </url>
     <url>
         <loc>https://serhii.io/projects/short-number</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/languages/php.webp</image:loc>
     <image:caption>PHP</image:caption>
-    <image:title>https://serhii.io/PHP</image:title>
 </image:image>
 </url>
     <url>
         <loc>https://serhii.io/projects/smooth-loader</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/languages/typescript.webp</image:loc>
     <image:caption>TypeScript</image:caption>
-    <image:title>https://serhii.io/TypeScript</image:title>
 </image:image>
 </url>
     <url>
         <loc>https://serhii.io/projects/timeago</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/languages/go.webp</image:loc>
     <image:caption>Go</image:caption>
-    <image:title>https://serhii.io/Go</image:title>
 </image:image>
 </url>
     <url>
         <loc>https://serhii.io/projects/tiny-logger</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         <image:image>
     <image:loc>https://serhii.io/storage/languages/php.webp</image:loc>
     <image:caption>PHP</image:caption>
-    <image:title>https://serhii.io/PHP</image:title>
 </image:image>
 </url>
     <url>
         <loc>https://serhii.io/posts?tag=php</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=javascript</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=typescript</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=tutorial</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=laravel</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=seo</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=language-agnostic</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=web</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=story</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=philosophy</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=bot</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=backend</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=vue</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=apple</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
     <url>
         <loc>https://serhii.io/posts?tag=linux</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
+        <lastmod>2022-07-30T12:54:30+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
-    <url>
-        <loc>https://serhii.io/about-me</loc>
-        <lastmod>2022-07-30T12:45:36+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        <image:image>
-    <image:loc>https://serhii.io/storage/serhii-cho.jpg</image:loc>
-    <image:caption>Serhii Cho photo</image:caption>
-    <image:title>https://serhii.io/Serhii Cho photo</image:title>
-</image:image>
-</url>
 </urlset>
