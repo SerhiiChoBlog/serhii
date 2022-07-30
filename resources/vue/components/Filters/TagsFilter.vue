@@ -1,23 +1,19 @@
 <script setup lang="ts">
-import type { Tag } from '../../../../types/models'
+import type { Tag } from '../../../types/models'
 import { onMounted, ref, watch } from 'vue'
 import axios from 'axios'
 import { Listbox } from '@headlessui/vue'
-import ListboxButton from '../../Listbox/ListboxButton.vue'
-import ListboxOptions from '../../Listbox/ListboxOptions.vue'
-import ListboxOption from '../../Listbox/ListboxOption.vue'
+import ListboxButton from '../Listbox/ListboxButton.vue'
+import ListboxOptions from '../Listbox/ListboxOptions.vue'
+import ListboxOption from '../Listbox/ListboxOption.vue'
 import FilterTagLabel from './FilterTagLabel.vue'
+import replaceQueryParam from '../../modules/replaceQueryParam'
 
 type Props = {
     tagSlug: string
 }
 
-type Emits = {
-    (e: 'filterPosts', tag: Tag): void
-}
-
 const { tagSlug } = defineProps<Props>()
-const emit = defineEmits<Emits>()
 
 const tags = ref<Tag[]>([
     {
@@ -31,9 +27,28 @@ const tags = ref<Tag[]>([
 
 const selectedTag = ref<Tag>(tags.value[0])
 
-watch(selectedTag, () => emit('filterPosts', selectedTag.value))
+watch(selectedTag, () => {
+    filterPosts(selectedTag.value)
+})
 
 onMounted(() => fetchTags())
+
+function filterPosts(tag: Tag): void {
+    if (tag.name === 'everything') {
+        clearFilters()
+        return
+    }
+
+    const query = replaceQueryParam('tag', tag.name)
+
+    if (window.location.search != query) {
+        window.location.href = `/posts${query}`
+    }
+}
+
+function clearFilters(): void {
+    window.location.href = `/posts`
+}
 
 function fetchTags(): void {
     axios.get<Tag[]>('/api/tags')
