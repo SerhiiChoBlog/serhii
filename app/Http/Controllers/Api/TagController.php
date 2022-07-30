@@ -29,16 +29,4 @@ class TagController extends Controller
             ->where('name', 'LIKE', "%$word%")
             ->get();
     }
-
-    /**
-     * @return Collection<int, Tag>
-     */
-    public function popular(): Collection
-    {
-        return Tag::query()
-            ->withCount('posts')
-            ->orderByDesc('posts_count')
-            ->limit(5)
-            ->get();
-    }
 }
