@@ -10,7 +10,7 @@ import Avatar from './components/Avatar.vue'
 import ToTop from './components/ToTop.vue'
 import Popper from "vue3-popper"
 import Tip from './components/Tip.vue'
-import Search from './components/Search/Search.vue'
+import Search from './components/Home/Search.vue'
 import Filters from './components/Filters/Filters.vue'
 import ScrollDown from './components/ScrollDown.vue'
 
