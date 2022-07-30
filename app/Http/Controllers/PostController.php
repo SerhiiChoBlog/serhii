@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Post\IndexRequest;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\Visitor;
 use HttpException;
 use Illuminate\Contracts\View\View;
@@ -29,6 +30,7 @@ class PostController extends Controller
 
         return view('posts.index', [
             'posts' => $query->paginate(15),
+            'tag' => $request->tag ? Tag::query()->where('name', $request->tag)->first() : null,
         ]);
     }
 

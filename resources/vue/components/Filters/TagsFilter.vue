@@ -9,23 +9,15 @@ import ListboxOption from '../Listbox/ListboxOption.vue'
 import FilterTagLabel from './FilterTagLabel.vue'
 import replaceQueryParam from '../../modules/replaceQueryParam'
 import showEverythingTag from '../../modules/showEverythingTag'
+import CloseIcon from '../Icons/CloseIcon.vue'
 
 type Props = {
-    tagSlug: string
+    tag: Tag
 }
 
-type Emits = {
-    (e: 'tagIsLoaded', tag: Tag): void
-}
-
-const emit = defineEmits<Emits>()
-const { tagSlug } = defineProps<Props>()
-
-const tags = ref<Tag[]>([
-    showEverythingTag,
-])
-
-const selectedTag = ref<Tag>(tags.value[0])
+const { tag } = defineProps<Props>()
+const tags = ref<Tag[]>([showEverythingTag])
+const selectedTag = ref<Tag>(tag)
 
 watch(selectedTag, () => {
     filterPosts(selectedTag.value)
@@ -54,44 +46,47 @@ function fetchTags(): void {
     axios.get<Tag[]>('/api/tags')
         .then(resp => {
             tags.value.push(...resp.data)
-
-            if (tagSlug) {
-                const match = resp.data.find(tag => tag.name === tagSlug.trim())
-
-                if (match) {
-                    selectedTag.value = match
-                    emit('tagIsLoaded', match)
-                } else {
-                    emit('tagIsLoaded', tags.value[0])
-                }
-            }
         })
         .catch(err => console.error(err))
 }
 </script>
 
 <template>
-    <listbox v-model="selectedTag">
-        <div class="relative">
-            <listbox-button>
-                <div class="flex items-center gap-2">
-                    <filter-tag-label :tag="selectedTag" />
-                    {{ selectedTag.title }}
-                </div>
-            </listbox-button>
-
-            <listbox-options>
-                <listbox-option
-                    v-for="tag in tags"
-                    :key="tag.name"
-                    :value="tag"
-                >
+    <div
+        class="grid"
+        :class="tag.name === showEverythingTag.name ? 'grid-cols-1 mr-3' : 'grid-cols-[280px_35px] gap-1'"
+    >
+        <listbox v-model="selectedTag">
+            <div class="relative">
+                <listbox-button>
                     <div class="flex items-center gap-2">
-                        <filter-tag-label :tag="tag" />
-                        {{ tag.title }}
+                        <filter-tag-label :tag="selectedTag" />
+                        {{ selectedTag.title }}
                     </div>
-                </listbox-option>
-            </listbox-options>
-        </div>
-    </listbox>
+                </listbox-button>
+
+                <listbox-options>
+                    <listbox-option
+                        v-for="tag in tags"
+                        :key="tag.name"
+                        :value="tag"
+                    >
+                        <div class="flex items-center gap-2">
+                            <filter-tag-label :tag="tag" />
+                            {{ tag.title }}
+                        </div>
+                    </listbox-option>
+                </listbox-options>
+            </div>
+        </listbox>
+
+        <button
+            @click="clearFilters"
+            type="button"
+            class="p-2 rounded-lg transition-colors hover:bg-page-second hover:text-red-700"
+            v-if="tag.name !== showEverythingTag.name"
+        >
+            <close-icon class="w-5 h-5 text-font-second" />
+        </button>
+    </div>
 </template>
