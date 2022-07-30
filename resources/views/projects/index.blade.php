@@ -4,8 +4,8 @@
 
 @extends('layouts.app')
 
-@section('title', 'Open-source')
-@section('description', "I'm a the maintainer of se")
+@section('title', 'Open-source projects')
+@section('description', "Serhii Cho is a maintainer of several open-source libraries which you can contribute to any of them on GitHub")
 
 @section('content')
     <x-hero

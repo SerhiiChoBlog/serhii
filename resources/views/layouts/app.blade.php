@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="Serhii Cho">
-    <meta name="description" content="@yield('description', "Serhii Cho is a software developer and blogger with lots of experience creating web applications and programs written in Laravel, Vue and React")">
+    <meta name="description" content="@yield('description', "Serhii Cho is a software developer and blogger with lots of experience creating web applications and programs written in PHP, Laravel, Vue and TypeScript")">
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
-    <title>@yield('title'){{ request()->is('/') ? '' : ' | ' }}{{ config('app.name', 'Serhii API') }}</title>
+    <title>@yield('title'){{ request()->is('/') ? '' : ' | ' }}{{ config('app.name', 'Serhii Cho') }}</title>
     <link href="{{ App\FileVersion::append('/css/app.css') }}" rel="stylesheet">
     @yield('head')
 </head>
