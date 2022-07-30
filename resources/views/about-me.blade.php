@@ -16,8 +16,11 @@
                 <div class="bg-page -translate-y-16 rounded-xl pt-8">
                     <div class="grid grid-cols-1 gap-x-6 lg:grid-cols-[25%_1fr]">
                         <div class="relative">
-                            <avatar />
+                            <div class="w-[250px] h-[250px] mx-auto bg-page-second rounded-lg shadow-lg">
+                                <avatar />
+                            </div>
                         </div>
+
                         <div>
                             <h2>Experience</h2>
 
