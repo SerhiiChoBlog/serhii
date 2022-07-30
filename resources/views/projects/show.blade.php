@@ -39,9 +39,11 @@
         </div>
     </x-hero>
 
-    <div class="container mt-6 pb-6 px-8 lg:px-0">
-        <div class="project-content text-[1.2rem] prose-h1:text-4xl prose-h2:text-3xl prose-a:inline-block prose-a:mr-2 max-w-4xl mx-auto prose-blockquote:text-font" v-pre>
-            {!! $project->content !!}
+    <div class="container">
+        <div class="bg-page max-w-[900px] mx-auto -translate-y-6 rounded-xl px-3 pt-3">
+            <div class="project-content text-[1.2rem] prose-h1:text-4xl prose-h2:text-3xl prose-a:inline-block prose-a:mr-2 max-w-4xl mx-auto prose-blockquote:text-font" v-pre>
+                {!! $project->content !!}
+            </div>
         </div>
     </div>
 @endsection

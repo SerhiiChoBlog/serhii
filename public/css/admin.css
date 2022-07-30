@@ -1295,6 +1295,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .max-w-\[85\%\]{
   max-width: 85%;
 }
+.max-w-\[900px\]{
+  max-width: 900px;
+}
 .flex-1{
   flex: 1 1 0%;
 }
