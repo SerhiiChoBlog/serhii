@@ -38,13 +38,17 @@ class SitemapCommand extends Command
     {
         $content = file_get_contents($path);
 
+        if (!$content) {
+            return;
+        }
+
         $content = str_replace(config('app.url'), 'https://serhii.io', $content);
 
         file_put_contents($path, $content);
     }
 
     /**
-     * @return Collection<int, string>
+     * @return Collection<int, Url>
      */
     private function getPostsLinks(): Collection
     {
@@ -62,7 +66,7 @@ class SitemapCommand extends Command
     }
 
     /**
-     * @return Collection<int, string>
+     * @return Collection<int, Url>
      */
     private function getProjectsLinks(): Collection
     {
@@ -72,7 +76,7 @@ class SitemapCommand extends Command
     }
 
     /**
-     * @return Collection<int, string>
+     * @return Collection<int, Url>
      */
     private function getTaggedPosts(): Collection
     {
@@ -82,8 +86,8 @@ class SitemapCommand extends Command
             ->map(fn(string $tag) => Url::create(route('posts.index', ['tag' => $tag])));
     }
 
-    private function getImages(): Collection
-    {
-        return collect();
-    }
+//    private function getImages(): Collection
+//    {
+//        return collect([]);
+//    }
 }
