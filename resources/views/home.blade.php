@@ -23,6 +23,7 @@
                 </div>
 
                 <x-home.tag-suggestions />
+                <x-home.read-blog-button />
             </div>
 
             <scroll-down />
