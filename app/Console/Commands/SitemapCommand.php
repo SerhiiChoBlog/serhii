@@ -8,8 +8,7 @@ use App\Models\Post;
 use App\Models\Project;
 use App\Models\Tag;
 use Illuminate\Console\Command;
-use Illuminate\Support\Collection;
-use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 
 class SitemapCommand extends Command
@@ -21,17 +20,17 @@ class SitemapCommand extends Command
     {
         $path = public_path('sitemap.xml');
 
-        SitemapGenerator::create(config('app.url'))
-            ->getSitemap()
+        $result = Sitemap::create()
             ->add($this->getPostsLinks())
             ->add($this->getProjectsLinks())
             ->add($this->getTaggedPosts())
             ->writeToFile($path);
 
+        $tags_count = count($result->getTags());
+
         $this->replaceSiteUrl($path);
 
-        $this->info('Sitemap is generated:');
-        $this->comment($path);
+        $this->info("Sitemap is generated with <fg=yellow>$tags_count</> tags.");
     }
 
     private function replaceSiteUrl(string $path): void
@@ -48,9 +47,9 @@ class SitemapCommand extends Command
     }
 
     /**
-     * @return Collection<int, Url>
+     * @return array<int, Url>
      */
-    private function getPostsLinks(): Collection
+    private function getPostsLinks(): array
     {
         return Post::query()
             ->select('id', 'title', 'image_lg', 'slug')
@@ -59,35 +58,32 @@ class SitemapCommand extends Command
             ->map(function (Post $post) {
                 $img = config('app.url') . '/' . $post->image_lg;
 
-                // todo: images are not generated
                 return Url::create(route('posts.show', $post->slug))
                     ->addImage($img, $post->title, '', $post->title);
-            });
+            })
+            ->toArray();
     }
 
     /**
-     * @return Collection<int, Url>
+     * @return array<int, Url>
      */
-    private function getProjectsLinks(): Collection
+    private function getProjectsLinks(): array
     {
         return Project::query()
             ->pluck('name')
-            ->map(fn(string $name) => Url::create(route('projects.show', $name)));
+            ->map(fn(string $name) => Url::create(route('projects.show', $name)))
+            ->toArray();
     }
 
     /**
-     * @return Collection<int, Url>
+     * @return array<int, Url>
      */
-    private function getTaggedPosts(): Collection
+    private function getTaggedPosts(): array
     {
         return Tag::query()
             ->has('posts')
             ->pluck('name')
-            ->map(fn(string $tag) => Url::create(route('posts.index', ['tag' => $tag])));
+            ->map(fn(string $tag) => Url::create(route('posts.index', ['tag' => $tag])))
+            ->toArray();
     }
-
-//    private function getImages(): Collection
-//    {
-//        return collect([]);
-//    }
 }
