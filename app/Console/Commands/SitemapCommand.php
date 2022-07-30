@@ -32,6 +32,7 @@ class SitemapCommand extends Command
             ->add($this->getPostsLinks())
             ->add($this->getProjectsLinks())
             ->add($this->getTaggedPosts())
+            ->add($this->aboutMe())
             ->writeToFile($path);
 
         $tags_count = count($result->getTags());
@@ -87,8 +88,15 @@ class SitemapCommand extends Command
     private function getProjectsLinks(): array
     {
         return Project::query()
-            ->pluck('name')
-            ->map(fn(string $name) => Url::create(route('projects.show', $name)))
+            ->select('name', 'language')
+            ->get()
+            ->map(function (Project $project) {
+                $lang = strtolower($project->language);
+                $image_url = url("/storage/languages/$lang.webp");
+
+                return Url::create(route('projects.show', $project->name))
+                    ->addImage($image_url, $project->language, '', $project->language);
+            })
             ->toArray();
     }
 
@@ -98,9 +106,17 @@ class SitemapCommand extends Command
     private function getTaggedPosts(): array
     {
         return Tag::query()
-            ->has('posts')
+            ->whereHas('posts')
             ->pluck('name')
             ->map(fn(string $tag) => Url::create(route('posts.index', ['tag' => $tag])))
             ->toArray();
+    }
+
+    private function aboutMe(): Url
+    {
+        $image_url = url('/storage/serhii-cho.jpg');
+
+        return Url::create(url('/about-me'))
+            ->addImage($image_url, 'Serhii Cho photo', '', 'Serhii Cho photo');
     }
 }

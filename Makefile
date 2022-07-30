@@ -26,10 +26,15 @@ check:
 	make cs
 	make test
 
+sitemap:
+	php artisan make:sitemap
+	git add public/sitemap.xml
+	git commit -m 'Generated sitemap'
+
 push:
 	make check
 	make prod
-	php artisan make:sitemap
+	make sitemap
 	git pull origin HEAD
 	git push origin HEAD
 	git status
