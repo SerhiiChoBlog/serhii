@@ -9,6 +9,7 @@ use App\Models\PostContentImage;
 use App\Models\Project;
 use App\Models\Tag;
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 
@@ -107,7 +108,7 @@ class SitemapCommand extends Command
     private function taggedPosts(): array
     {
         return Tag::query()
-            ->whereHas('posts')
+            ->whereHas('posts', fn(Builder $q) => $q->where('is_published', true))
             ->pluck('name')
             ->map(fn(string $tag) => Url::create(route('posts.index', ['tag' => $tag])))
             ->toArray();
