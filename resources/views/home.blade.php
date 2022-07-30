@@ -7,7 +7,21 @@
     >
         <div class="overflow-hidden h-full min-h-[280px] md:min-h-[380px]">
             <div class="absolute left-0 right-0 top-0 bottom-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-gray-900/50"></div>
-            <search />
+
+            <div class="z-10 absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2 text-center w-full">
+                <h1 class="text-2xl lg:text-4xl relative">
+                    <span class="text-white drop-shadow-md">SERHII</span>
+                    <span class="text-main drop-shadow-md">CHO</span>
+                </h1>
+
+                <h2 class="text-white text-md lg:text-2xl mt-2 mx-4 leading-5">
+                    Blog about software development and productivity
+                </h2>
+
+                <search />
+            </div>
+
+            <scroll-down />
         </div>
 
         <div
@@ -50,3 +64,10 @@
         <x-home.coming-soon-section />
     </x-home.section>
 @endsection
+<script>
+    import ScrollDown from '../vue/components/ScrollDown'
+
+    export default {
+        components: { ScrollDown }
+    }
+</script>
