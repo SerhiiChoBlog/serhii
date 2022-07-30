@@ -64,10 +64,3 @@
         <x-home.coming-soon-section />
     </x-home.section>
 @endsection
-<script>
-    import ScrollDown from '../vue/components/ScrollDown'
-
-    export default {
-        components: { ScrollDown }
-    }
-</script>
