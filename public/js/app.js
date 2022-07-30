@@ -21880,7 +21880,7 @@ var _hoisted_8 = (0, vue_1.createElementVNode)("span", null, "Read blog", -1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createElementVNode)("div", _hoisted_2, [(0, vue_1.createElementVNode)("form", {
     onSubmit: _cache[2] || (_cache[2] = (0, vue_1.withModifiers)(function () {}, ["prevent"])),
-    "class": "w-full"
+    "class": "w-full m-0"
   }, [(0, vue_1.createVNode)($setup["SearchIcon"], {
     "class": (0, vue_1.normalizeClass)([{
       'animate-blink': $setup.search.loading

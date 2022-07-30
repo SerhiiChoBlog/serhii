@@ -22,7 +22,7 @@ function fetchPopularTags(): void {
 <template>
     <div class="max-w-[85%] md:max-w-[600px] mx-auto">
         <div class="relative flex items-center justify-center mt-5 shadow-lg rounded-lg bg-page mx-auto dark:border dark:border-border">
-            <form @submit.prevent class="w-full">
+            <form @submit.prevent class="w-full m-0">
                 <search-icon
                     :class="{ 'animate-blink': search.loading }"
                     class="w-4 md:w-5 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-5"
