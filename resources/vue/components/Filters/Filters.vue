@@ -19,12 +19,12 @@ function setTag(newTag: Tag): void {
 
 <template>
     <appear-transition>
-        <div class="mb-2 flex items-center gap-4">
-            <div class="w-full max-w-[330px]">
+        <div class="mb-2 flex flex-col md:flex-row items-center gap-4">
+            <div class="w-full max-w-[300px]">
                 <tags-filter :tagSlug="tagSlug" @tagIsLoaded="setTag" />
             </div>
 
-            <div class="hidden lg:block text-md leading-5">
+            <div class="text-md leading-5">
                 <h2>
                     <b :style="{ color: tag.color }">{{ tag.title }}.</b>
                     <span class="ml-2 text-font-second">{{ tag.description }}</span>
