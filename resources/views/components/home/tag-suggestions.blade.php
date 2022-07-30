@@ -6,7 +6,7 @@
 @endphp
 
 <div>
-    <div class="min-h-[36px] mt-4 lg:mt-6 text-white inline-flex flex-wrap gap-1 lg:gap-3">
+    <div class="min-h-[36px] mt-4 lg:mt-6 text-white flex justify-center items-center flex-wrap gap-1 lg:gap-3">
         @foreach ($getTags() as $tag)
             <a
                 href="/posts?tag={{ $tag['name'] }}"
