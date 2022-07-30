@@ -29,10 +29,11 @@ class SitemapCommand extends Command
         $path = public_path('sitemap.xml');
 
         $result = Sitemap::create()
-            ->add($this->getPostsLinks())
-            ->add($this->getProjectsLinks())
-            ->add($this->getTaggedPosts())
+            ->add($this->homePage())
             ->add($this->aboutMe())
+            ->add($this->posts())
+            ->add($this->projects())
+            ->add($this->taggedPosts())
             ->writeToFile($path);
 
         $tags_count = count($result->getTags());
@@ -58,7 +59,7 @@ class SitemapCommand extends Command
     /**
      * @return array<int, Url>
      */
-    private function getPostsLinks(): array
+    private function posts(): array
     {
         return Post::query()
             ->with('images')
@@ -69,7 +70,7 @@ class SitemapCommand extends Command
                 $main_image = "$this->site_url/$post->image_lg";
 
                 $url = Url::create(route('posts.show', $post->slug))
-                    ->addImage($main_image, $post->title, '', $post->title);
+                    ->addImage($main_image, $post->title);
 
                 /** @var PostContentImage $image */
                 foreach ($post->images as $image) {
@@ -85,7 +86,7 @@ class SitemapCommand extends Command
     /**
      * @return array<int, Url>
      */
-    private function getProjectsLinks(): array
+    private function projects(): array
     {
         return Project::query()
             ->select('name', 'language')
@@ -95,7 +96,7 @@ class SitemapCommand extends Command
                 $image_url = url("/storage/languages/$lang.webp");
 
                 return Url::create(route('projects.show', $project->name))
-                    ->addImage($image_url, $project->language, '', $project->language);
+                    ->addImage($image_url, $project->language);
             })
             ->toArray();
     }
@@ -103,7 +104,7 @@ class SitemapCommand extends Command
     /**
      * @return array<int, Url>
      */
-    private function getTaggedPosts(): array
+    private function taggedPosts(): array
     {
         return Tag::query()
             ->whereHas('posts')
@@ -117,6 +118,16 @@ class SitemapCommand extends Command
         $image_url = url('/storage/serhii-cho.jpg');
 
         return Url::create(url('/about-me'))
-            ->addImage($image_url, 'Serhii Cho photo', '', 'Serhii Cho photo');
+            ->addImage($image_url, 'Serhii Cho photo');
+    }
+
+    private function homePage(): Url
+    {
+        $small_img = url('/storage/heros/home-hero-sm.webp');
+        $big_img = url('/storage/heros/home-hero.webp');
+
+        return Url::create(url('/'))
+            ->addImage($small_img, 'Serhii Cho small hero image')
+            ->addImage($big_img, 'Serhii Cho big hero image');
     }
 }
