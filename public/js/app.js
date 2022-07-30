@@ -21397,13 +21397,13 @@ exports.render = void 0;
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "mb-2 flex items-center gap-4"
+  "class": "mb-2 flex flex-col md:flex-row items-center gap-4"
 };
 var _hoisted_2 = {
-  "class": "w-full max-w-[330px]"
+  "class": "w-full max-w-[300px]"
 };
 var _hoisted_3 = {
-  "class": "hidden lg:block text-md leading-5"
+  "class": "text-md leading-5"
 };
 var _hoisted_4 = {
   "class": "ml-2 text-font-second"
