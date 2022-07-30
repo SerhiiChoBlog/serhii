@@ -34,7 +34,6 @@ sitemap:
 push:
 	make check
 	make prod
-	make sitemap
 	git pull origin HEAD
 	git push origin HEAD
 	git status
