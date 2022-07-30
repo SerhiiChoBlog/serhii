@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Models\Post;
+use App\Models\PostContentImage;
 use App\Models\Project;
 use App\Models\Tag;
 use Illuminate\Console\Command;
@@ -15,6 +16,13 @@ class SitemapCommand extends Command
 {
     protected $signature = 'make:sitemap';
     protected $description = 'Generate sitemap for the website';
+    private string $site_url;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->site_url = config('app.url');
+    }
 
     public function handle(): void
     {
@@ -41,7 +49,7 @@ class SitemapCommand extends Command
             return;
         }
 
-        $content = str_replace(config('app.url'), 'https://serhii.io', $content);
+        $content = str_replace($this->site_url, 'https://serhii.io', $content);
 
         file_put_contents($path, $content);
     }
@@ -52,14 +60,23 @@ class SitemapCommand extends Command
     private function getPostsLinks(): array
     {
         return Post::query()
+            ->with('images')
             ->select('id', 'title', 'image_lg', 'slug')
             ->where('is_published', true)
             ->get()
             ->map(function (Post $post) {
-                $img = config('app.url') . '/' . $post->image_lg;
+                $main_image = "$this->site_url/$post->image_lg";
 
-                return Url::create(route('posts.show', $post->slug))
-                    ->addImage($img, $post->title, '', $post->title);
+                $url = Url::create(route('posts.show', $post->slug))
+                    ->addImage($main_image, $post->title, '', $post->title);
+
+                /** @var PostContentImage $image */
+                foreach ($post->images as $image) {
+                    $img_url = "$this->site_url$image->uri";
+                    $url = $url->addImage($img_url);
+                }
+
+                return $url;
             })
             ->toArray();
     }
