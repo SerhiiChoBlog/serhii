@@ -11,7 +11,7 @@ import ToTop from './components/ToTop.vue'
 import Popper from "vue3-popper"
 import Tip from './components/Tip.vue'
 import Search from './components/Search/Search.vue'
-import Posts from './views/Posts.vue'
+import Filters from './components/Filters/Filters.vue'
 
 const app = createApp({
     components: {
@@ -25,7 +25,7 @@ const app = createApp({
         Popper,
         Search,
         Tip,
-        Posts,
+        Filters,
     },
 
     setup() {
