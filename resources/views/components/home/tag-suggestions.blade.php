@@ -12,7 +12,7 @@
                 href="/posts?tag={{ $tag['name'] }}"
                 class="text-[.8em] lg:text-lg inline-flex items-center p-1 transition-transform hover:scale-110"
             >
-                <b style="color: {{ $tag['color'] }}">&#x25C9;</b>
+                <b aria-hidden="true" style="color: {{ $tag['color'] }}">&#x25C9;</b>
                 <span class="ml-1 lg:ml-2">{{ $tag['name'] }}</span>
             </a>
         @endforeach

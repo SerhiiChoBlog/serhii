@@ -96,16 +96,18 @@
 
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                             @foreach ($posts as $other_post)
-                                <a href="{{ route('posts.show', $other_post) }}"
-                                   class="p-2 transition-opacity hover:opacity-80 min-h-[160px]"
+                                <a
+                                    href="{{ route('posts.show', $other_post) }}"
+                                    class="p-2 transition-opacity hover:opacity-80 min-h-[160px]"
                                 >
-                                    <img data-src="{{ asset($other_post->image_sm) }}"
-                                        alt="{{ $other_post->title }}"
+                                    <img
+                                        data-src="{{ asset($other_post->image_sm) }}"
+                                        alt="Main photo of the post '{{ $other_post->title }}'"
                                         class="rounded-lg shadow-lg mx-auto w-full"
                                         width="260"
                                         height="141"
                                     />
-                                    <h4 class="text-lg leading-6 my-3">{{ $other_post->title }}</h4>
+                                    <h2 class="text-lg leading-6 my-3">{{ $other_post->title }}</h2>
                                 </a>
                             @endforeach
                         </div>

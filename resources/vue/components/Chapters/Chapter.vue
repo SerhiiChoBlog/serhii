@@ -43,6 +43,7 @@ const number = computed<string>(() => {
         <span
             class="font-bold text-lg"
             :class="chapter.isActive ? 'text-white' : 'text-main'"
+            aria-hidden="true"
         >{{ number || '&#xb7;' }}</span>
 
 

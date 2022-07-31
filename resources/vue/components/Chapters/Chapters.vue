@@ -184,6 +184,7 @@ function handleChapterClick(): void {
                             <control-button
                                 tipContent="Load saved position and get back to where you've left off"
                                 :disabled="!savedChapter"
+                                label="Scroll to a saved position"
                                 @click="goToSavedChapter"
                             >
                                 <LoadIcon class="w-4" />
@@ -192,6 +193,7 @@ function handleChapterClick(): void {
                             <control-button
                                 @click="saveCurrentChapter"
                                 :disabled="false"
+                                label="Save the current position"
                                 tipContent="Save current position. You'll be able to load it and get back to where you've left off"
                             >
                                 <SaveIcon class="w-4" />
@@ -199,6 +201,7 @@ function handleChapterClick(): void {
 
                             <control-button
                                 @click="deleteSave"
+                                label="Delete saved position"
                                 tipContent="Delete current saved position"
                                 :disabled="!savedChapter"
                             >
