@@ -73,8 +73,9 @@ function saveShare(social: string): void {
                 @mousedown="saveShare(link.title)"
                 @click="link.action ? link.action() : null"
             >
-                <img :src="`/storage/icons/${link.title}.webp`"
-                    :alt="link.title"
+                <img
+                    :src="`/storage/icons/${link.title}.webp`"
+                    :alt="`Logo of the ${link.title}`"
                     width="30"
                     height="30"
                 >
