@@ -11,7 +11,7 @@
             >
                 <img
                     data-src="{{ asset($post['image_sm']) }}"
-                    alt="{{ $post['title'] }}"
+                    alt="Main image for the post '{{ $post['title'] }}'"
                     class="rounded-md shadow-md mx-auto"
                     width="468"
                     height="255"

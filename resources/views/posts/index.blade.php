@@ -49,7 +49,7 @@
                                         class="rounded-lg shadow-md shadow-[rgba(0,0,0,.2)] w-full"
                                         width="260"
                                         height="141"
-                                        alt="{{ $post->title }}"
+                                        alt="Main image for the post '{{ $post->title }}'"
                                     />
                                 </a>
 

@@ -4,9 +4,10 @@ import Tip from '../Tip.vue'
 interface Props {
     tipContent: string
     disabled: boolean
+    label: string
 }
 
-const { tipContent, disabled } = defineProps<Props>()
+const { tipContent, disabled, label } = defineProps<Props>()
 </script>
 
 <template>
@@ -14,6 +15,7 @@ const { tipContent, disabled } = defineProps<Props>()
         <button
             type="button"
             class="flex items-center transition-transform"
+            :aria-label="label"
             :class="{
                 'opacity-40 cursor-not-allowed': disabled,
                 'hover:scale-125': !disabled,
