@@ -41,7 +41,7 @@ class PostController extends Controller
     {
         /** @var Post | null */
         $post = Post::query()
-            ->with('tags:id,color,name')
+            ->with('tags:id,color,name,title')
             ->where('slug', $slug)
             ->withCount('pageViews')
             ->first();
