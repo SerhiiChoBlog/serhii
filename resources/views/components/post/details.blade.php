@@ -7,11 +7,11 @@
         {{ $post['pretty_created_at'] }}
     </time>
 
-    <span>&#8226;</span>
+    <span aria-hidden="true">&#8226;</span>
 
     @if (isset($post['page_views_count']) && $post['page_views_count'] > 99)
         <span>{{ $post['page_views_count'] }} views</span>
-        <span>&#8226;</span>
+        <span aria-hidden="true">&#8226;</span>
     @endif
 
     @if (isset($post['read_time']) && $post['read_time'] > 0)

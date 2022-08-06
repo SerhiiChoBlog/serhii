@@ -11,7 +11,7 @@ const { tipContent, disabled, label } = defineProps<Props>()
 </script>
 
 <template>
-    <tip :content="tipContent">
+    <tip :content="tipContent" :aria-label="tipContent">
         <button
             type="button"
             class="flex items-center transition-transform"

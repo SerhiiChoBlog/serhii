@@ -60,18 +60,19 @@ function saveShare(social: string): void {
 
 <template>
     <div class="flex gap-x-4">
-        <tip
-            :content="link.tip"
+        <a
             v-for="link in links"
             :key="link.title"
-            class="transition-opacity hover:opacity-80"
+            :href="link.href ? link.href : 'javascript:'"
+            :target="link.href ? '_blank' : null"
+            rel="nofollow noopener noreferrer"
+            @mousedown="saveShare(link.title)"
+            @click="link.action ? link.action() : null"
+            :aria-label="link.tip"
         >
-            <a
-                :href="link.href ? link.href : 'javascript:'"
-                :target="link.href ? '_blank' : null"
-                rel="nofollow noopener noreferrer"
-                @mousedown="saveShare(link.title)"
-                @click="link.action ? link.action() : null"
+            <tip
+                :content="link.tip"
+                class="transition-opacity hover:opacity-80"
             >
                 <img
                     :src="`/storage/icons/${link.title}.webp`"
@@ -79,7 +80,7 @@ function saveShare(social: string): void {
                     width="30"
                     height="30"
                 >
-            </a>
-        </tip>
+            </tip>
+        </a>
     </div>
 </template>
