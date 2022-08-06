@@ -56,7 +56,7 @@
                         <x-post.details :post="$post->toArray()" class="mt-4" />
 
                         @if (auth()->check())
-                            <div class="mt-4">
+                            <div class="mt-4" aria-hidden="true">
                                 <a
                                     href="/admin/posts/{{ $post->id }}/edit"
                                     class="px-5 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100 py-1 uppercase text-xs"
@@ -70,7 +70,7 @@
                     <div>
                         <img
                             src="{{ asset($post->image_lg) }}"
-                            alt="{{ $post->title }}"
+                            alt="Post {{ $post->title }}"
                             width="1000"
                             height="545"
                             class="static mx-auto 2xl:absolute right-4 bottom-[-130px] w-[600px] rounded-lg shadow-lg mt-7 lg:mt-0 z-10"
@@ -91,7 +91,7 @@
                     <x-post.footer :post="$post" />
 
                     {{-- Other posts --}}
-                    <nav>
+                    <nav role="navigation">
                         <x-post.sidebar-title>Other posts</x-post.sidebar-title>
 
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -99,14 +99,16 @@
                                 <a
                                     href="{{ route('posts.show', $other_post) }}"
                                     class="p-2 transition-opacity hover:opacity-80 min-h-[160px]"
+                                    aria-label="Go to a post {{ $other_post->title }}"
                                 >
                                     <img
                                         data-src="{{ asset($other_post->image_sm) }}"
-                                        alt="Main photo of the post '{{ $other_post->title }}'"
+                                        alt="Photo of the post '{{ $other_post->title }}'"
                                         class="rounded-lg shadow-lg mx-auto w-full"
                                         width="260"
                                         height="141"
                                     />
+
                                     <h2 class="text-lg leading-6 my-3">{{ $other_post->title }}</h2>
                                 </a>
                             @endforeach

@@ -6,9 +6,12 @@
     <a
         href="{{ route('about-me') }}"
         target="_blank"
+        aria-label="To about me page"
+        title="To about me page"
     >
-        <img data-src="{{ asset('storage/posts/thanks.jpeg') }}"
-            alt="Serhii Cho"
+        <img
+            data-src="{{ asset('storage/posts/thanks.jpeg') }}"
+            alt="Serhii Cho's photo"
             class="rounded-full shadow-md w-28"
             width="300"
             height="300"
