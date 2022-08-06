@@ -19,5 +19,5 @@ pre {
 }
 
 code.hljs {
-    @apply font-code text-[.7rem] lg:text-[.8rem] rounded-sm py-7 px-3 lg:p-7 block;
+    @apply font-code text-[.7rem] lg:text-[.9rem] rounded-sm py-7 px-3 lg:p-7 block;
 }
