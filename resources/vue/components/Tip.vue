@@ -16,6 +16,7 @@ const { content } = defineProps<Props>()
             <div
                 class="bg-font dark:bg-page-second opacity-90 dark:text-white dark:border dark:border-gray-800 px-3 py-1 text-white rounded-md text-sm shadow-md"
                 v-html="content"
+                :aria-label="content"
             ></div>
         </template>
     </popper>
