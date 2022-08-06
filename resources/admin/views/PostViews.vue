@@ -41,11 +41,6 @@ onMounted(() => {
         new Audio('/storage/new-message.wav')
             .play()
             .catch(err => console.error(err))
-
-        if (lastNewView.slug === slug) {
-            lastNewView.slug = null
-            lastNewView.country = null
-        }
     })
 })
 
