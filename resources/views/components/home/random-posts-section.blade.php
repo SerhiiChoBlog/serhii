@@ -2,7 +2,7 @@
     /** @var array[] $posts */
 @endphp
 
-<div class="flex flex-col lg:flex-row gap-8 overflow-x-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 overflow-x-hidden">
     @foreach ($posts as $post)
         <article class="max-w-md mx-auto">
             <a
@@ -12,9 +12,9 @@
                 <img
                     data-src="{{ asset($post['image_sm']) }}"
                     alt="Main image for the post '{{ $post['title'] }}'"
-                    class="rounded-md shadow-md mx-auto"
-                    width="468"
-                    height="255"
+                    class="rounded-md shadow-md mx-auto w-full"
+                    width="500"
+                    height="275"
                 />
             </a>
 
