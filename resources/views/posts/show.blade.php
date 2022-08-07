@@ -18,7 +18,6 @@
     <meta property="og:title" content="{{ $post->title }}">
     <meta property="og:description" content="{{ $post->intro }}" />
     <meta property="og:type" content="article">
-    <meta property="og:locale" content="en_US">
     <meta property="og:url" content="{{ route('posts.show', $post->slug) }}">
     <meta property="og:image" content="{{ asset($post->image_lg) }}">
     <meta property="og:image:width" content="1000">
