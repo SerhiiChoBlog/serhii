@@ -13,7 +13,7 @@
     <meta name="twitter:creator" content="@SerhiiCho">
     <meta name="twitter:title" content="{{ $post->title }}">
     <meta name="twitter:description" content="{{ $post->intro }}">
-    <meta name="twitter:image" content="https://imgur.com/a/s2TQnYh">
+    <meta name="twitter:image" content="{{ asset($post->image_sm) }}">
     <meta property="og:site_name" content="{{ config('app.name') }}">
     <meta property="og:title" content="{{ $post->title }}">
     <meta property="og:description" content="{{ $post->intro }}" />
