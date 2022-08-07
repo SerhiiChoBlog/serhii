@@ -163,8 +163,8 @@ function handleChapterClick(): void {
         class="flex lg:hidden items-center shadow-md gap-x-1 justify-center fixed border border-border top-0 bg-page w-full py-1 px-4 z-40 left-1/2 -translate-x-1/2"
         @click="showChapters = !showChapters"
     >
-        <ChevronUpIcon v-if="showChapters" class="w-6 h-6 inline-block" />
-        <ChevronDownIcon v-else class="w-6 h-6 inline-block" />
+        <chevron-up-icon v-if="showChapters" class="w-6 h-6 inline-block" />
+        <chevron-down-icon v-else class="w-6 h-6 inline-block" />
         <span class="tracking-wide">{{ currentChapter.title }}</span>
     </button>
 
