@@ -21,7 +21,7 @@
     <meta property="og:url" content="{{ route('posts.show', $post->slug) }}">
     <meta property="og:image" content="{{ asset($post->image_lg) }}">
     <meta property="og:image:width" content="1000">
-    <meta property="og:image:height" content="545">
+    <meta property="og:image:height" content="500">
     <meta property="article:published_time" content="{{ $post->created_at }}">
     <meta property="article:modified_time" content="{{ $post->updated_at }}">
     <meta property="article:publisher" content="https://www.facebook.com/serhii.cho.9/">
