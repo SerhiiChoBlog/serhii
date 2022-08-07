@@ -47,8 +47,8 @@
                                             data-src="{{ asset($post->image_sm) }}"
                                         @endif
                                         class="rounded-lg shadow-md shadow-[rgba(0,0,0,.2)] w-full"
-                                        width="260"
-                                        height="141"
+                                        width="550"
+                                        height="275"
                                         alt="Main image for the post '{{ $post->title }}'"
                                     />
                                 </a>
