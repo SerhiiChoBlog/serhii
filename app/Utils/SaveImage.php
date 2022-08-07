@@ -21,11 +21,11 @@ trait SaveImage
         $image_name = Str::slug($post_name) . '.' . $photo->getClientOriginalExtension();
 
         Image::make($photo)
-            ->fit(550, 300, fn($constraint) => $constraint->upsize())
+            ->fit(550, 275, fn($constraint) => $constraint->upsize())
             ->save("$path_sm/$image_name");
 
         Image::make($photo)
-            ->fit(1100, 600, fn($constraint) => $constraint->upsize())
+            ->fit(1000, 500, fn($constraint) => $constraint->upsize())
             ->save("$path_lg/$image_name");
 
         return [
