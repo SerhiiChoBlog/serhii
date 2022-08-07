@@ -72,7 +72,7 @@
                             alt="Post {{ $post->title }}"
                             width="1000"
                             height="500"
-                            class="static mx-auto 2xl:absolute right-4 bottom-[-130px] w-[600px] rounded-lg shadow-lg mt-7 lg:mt-0 z-10"
+                            class="static mx-auto 2xl:absolute right-4 bottom-[-130px] w-[600px] xl:w-[700px] rounded-lg shadow-lg mt-7 lg:mt-0 z-10"
                         />
                     </div>
                 </div>
