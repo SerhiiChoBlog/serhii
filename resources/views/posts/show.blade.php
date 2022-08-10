@@ -34,7 +34,7 @@
 @endsection
 
 @section('title', $post->title)
-@section('description', $post->intro)
+@section('description', str($post->intro)->limit(147))
 
 @section('content')
     <article>
