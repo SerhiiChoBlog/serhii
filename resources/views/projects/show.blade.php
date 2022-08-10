@@ -8,8 +8,8 @@
     <script src="{{ asset('js/highlight.js') }}" defer></script>
 @endsection
 
-@section('title', $project->title)
-@section('description', $project->description)
+@section('title', "$project->title | Serhii Cho")
+@section('description', str($project->description)->limit(147))
 
 @section('content')
     <x-hero
