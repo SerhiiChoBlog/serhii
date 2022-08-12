@@ -59,7 +59,7 @@ function saveShare(social: string): void {
 </script>
 
 <template>
-    <div class="flex gap-x-4">
+    <div class="flex gap-x-2 lg:gap-x-3">
         <a
             v-for="link in links"
             :key="link.title"
@@ -77,8 +77,8 @@ function saveShare(social: string): void {
                 <img
                     :src="`/storage/icons/${link.title}.webp`"
                     :alt="`Logo of the ${link.title}`"
-                    width="30"
-                    height="30"
+                    width="27"
+                    height="27"
                 >
             </tip>
         </a>
