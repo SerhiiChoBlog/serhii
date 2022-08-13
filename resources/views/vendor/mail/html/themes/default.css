@@ -206,7 +206,7 @@ img {
     -premailer-cellpadding: 0;
     -premailer-cellspacing: 0;
     -premailer-width: 100%;
-    margin: 30px auto;
+    margin: 30px auto auto auto;
     padding: 0;
     text-align: center;
     width: 100%;
@@ -219,6 +219,8 @@ img {
     display: inline-block;
     overflow: hidden;
     text-decoration: none;
+    box-shadow: 2px 2px 10px rgb(27 37 54 / 15%);
+    font-size: 1.2rem;
 }
 
 .button-blue,
@@ -278,4 +280,28 @@ img {
 
 .break-all {
     word-break: break-all;
+}
+
+.tags {
+    display: flex;
+    gap: 5px;
+}
+
+.tags a {
+    margin: 15px 0;
+    text-decoration: none;
+}
+
+.tag {
+    display: inline-block;
+    padding: 2px 10px;
+    line-height: 1.5;
+    border-radius: 6px;
+    font-size: .8em;
+    color: white;
+}
+
+.post-image {
+    box-shadow: 3px 3px 13px rgb(27 37 54 / 20%);
+    border-radius: 10px;
 }
