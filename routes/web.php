@@ -6,6 +6,7 @@ use App\Http\Controllers\AboutMeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ThemeController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,8 +32,13 @@ Route::middleware('hits')->group(function () {
 });
 
 Route::get('theme', ThemeController::class);
-//
-//Route::get('test', function () {
-//    \Illuminate\Support\Facades\Notification::route('mail', 'serhiicho@protonmail.com')
-//        ->notify(new \App\Notifications\Test());
-//});
+
+Route::get('new', function () {
+    $markdown = new \Illuminate\Mail\Markdown(view(), config('mail.markdown'));
+    return $markdown->render("mail.post-published", ['post' => Post::query()->where('id', 7)->first()]);
+});
+
+Route::get('test', function () {
+    \Illuminate\Support\Facades\Notification::route('mail', 'serhiicho@protonmail.com')
+        ->notify(new \App\Notifications\PostPublished(Post::query()->latest()->first()));
+});
