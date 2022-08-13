@@ -1,6 +1,6 @@
 <tr>
 <td class="header">
-<a href="{{ $url }}" class="logo">
+<a href="{{ config('app.url') }}" class="logo" target="_blank">
     <span style="color: white">SERHII</span><span style="color:#6dade1">CHO</span>
 </a>
 </td>
