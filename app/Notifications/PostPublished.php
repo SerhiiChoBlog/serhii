@@ -31,6 +31,14 @@ class PostPublished extends Notification
     {
         return (new MailMessage)
             ->subject(sprintf('New post: "%s"', $this->post->title))
-            ->markdown('mail.post-published', ['post'=> $this->post]);
+            ->markdown('mail.post-published', [
+                'post'=> $this->post,
+                'unsubscribe' => $this->unsubscribeUrl(),
+            ]);
+    }
+
+    private function unsubscribeUrl(): string
+    {
+        return '';
     }
 }

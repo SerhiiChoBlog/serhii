@@ -3,10 +3,16 @@ use App\Models\Post;
 
 /**
  * @var Post $post
+ * @var string $unsubscribe
  */
 @endphp
 
-@component('mail::message')
+@component('mail::layout')
+@slot('header')
+    @component('mail::header')
+    @endcomponent
+@endslot
+
 <p style="margin-bottom: 2px">Hi, the new post is already published!</p>
 
 <h1>{{ $post->title }}</h1>
@@ -43,4 +49,11 @@ Read the post
     If you're having trouble clicking the button, copy and paste the URL into your web browser:
     <a href="{{ route('posts.show', $post) }}">{{ route('posts.show', $post) }}</a>
 @endcomponent
+
+@slot('footer')
+@component('mail::footer')
+<a href="{{ $unsubscribe }}" target="_blank">Unsubscribe</a>
+@endcomponent
+@endslot
+
 @endcomponent

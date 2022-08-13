@@ -20,6 +20,10 @@ body {
     width: 100% !important;
 }
 
+body a {
+    color: rgb(186, 98, 142);
+}
+
 p,
 ul,
 ol,

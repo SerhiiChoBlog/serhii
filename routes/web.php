@@ -33,11 +33,6 @@ Route::middleware('hits')->group(function () {
 
 Route::get('theme', ThemeController::class);
 
-Route::get('new', function () {
-    $markdown = new \Illuminate\Mail\Markdown(view(), config('mail.markdown'));
-    return $markdown->render("mail.post-published", ['post' => Post::with('tags')->where('id', 13)->first()]);
-});
-
 Route::get('test', function () {
     \Illuminate\Support\Facades\Notification::route('mail', 'serhiicho@protonmail.com')
         ->notify(new \App\Notifications\PostPublished(Post::with('tags')->where('id', 13)->first()));
