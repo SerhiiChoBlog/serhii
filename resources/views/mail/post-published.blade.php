@@ -8,6 +8,7 @@ use App\Models\Post;
 
 @component('mail::message')
 <p style="margin-bottom: 2px">Hi, the new post is already published!</p>
+
 <h1>{{ $post->title }}</h1>
 <a href="{{ route('posts.show', $post) }}" target="_blank">
     <img
@@ -38,4 +39,8 @@ use App\Models\Post;
 Read the post
 @endcomponent
 
+@component('mail::subcopy')
+    If you're having trouble clicking the button, copy and paste the URL into your web browser:
+    <a href="{{ route('posts.show', $post) }}">{{ route('posts.show', $post) }}</a>
+@endcomponent
 @endcomponent

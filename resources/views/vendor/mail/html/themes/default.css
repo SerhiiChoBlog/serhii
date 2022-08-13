@@ -214,13 +214,12 @@ img {
 
 .button {
     -webkit-text-size-adjust: none;
-    border-radius: 50px;
+    border-radius: 8px;
     color: #fff;
     display: inline-block;
     overflow: hidden;
     text-decoration: none;
     box-shadow: 2px 2px 10px rgb(27 37 54 / 15%);
-    font-size: 1.2rem;
 }
 
 .button-blue,
