@@ -13,7 +13,7 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-            $table->unsignedBigInteger('visits')->default(0);
+            $table->timestamp('confirmed_at')->nullable();
             $table->timestamps();
         });
     }
