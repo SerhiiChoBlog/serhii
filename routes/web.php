@@ -31,3 +31,8 @@ Route::middleware('hits')->group(function () {
 });
 
 Route::get('theme', ThemeController::class);
+
+Route::get('test', function () {
+    \Illuminate\Support\Facades\Notification::route('mail', 'serhiicho@protonmail.com')
+        ->notify(new \App\Notifications\Test());
+});
