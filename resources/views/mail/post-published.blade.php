@@ -53,6 +53,8 @@ Read the post
 
 @slot('footer')
 @component('mail::footer')
+You are receiving this because you subscribed to new posts on {{ config('app.name') }}.
+<br />
 <a href="{{ $unsubscribe }}" target="_blank">Unsubscribe</a>
 @endcomponent
 @endslot

@@ -165,13 +165,13 @@ img {
 }
 
 .footer p {
-    color: #b0adc5;
+    color: #dcd8f3;
     font-size: 12px;
     text-align: center;
 }
 
 .footer a {
-    color: #b0adc5;
+    color: #dcd8f3;
     text-decoration: underline;
 }
 
@@ -210,7 +210,7 @@ img {
     -premailer-cellpadding: 0;
     -premailer-cellspacing: 0;
     -premailer-width: 100%;
-    margin: 30px auto auto auto;
+    margin: 30px auto;
     padding: 0;
     text-align: center;
     width: 100%;
@@ -233,22 +233,13 @@ img {
     background: linear-gradient(90deg, rgba(208,116,162,1) 0%, rgba(42,75,103,1) 100%);
 }
 
-.button-green,
-.button-success {
-    background-color: #48bb78;
-    border-bottom: 8px solid #48bb78;
-    border-left: 18px solid #48bb78;
-    border-right: 18px solid #48bb78;
-    border-top: 8px solid #48bb78;
-}
-
-.button-red,
-.button-error {
-    background-color: #e53e3e;
-    border-bottom: 8px solid #e53e3e;
-    border-left: 18px solid #e53e3e;
-    border-right: 18px solid #e53e3e;
-    border-top: 8px solid #e53e3e;
+.button-decline {
+    background: transparent;
+    color: brown;
+    box-shadow: none;
+    border: 1px solid brown;
+    border-right-width: 3px;
+    border-left-width: 3px;
 }
 
 /* Panels */
