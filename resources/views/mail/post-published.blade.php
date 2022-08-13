@@ -40,6 +40,7 @@ use App\Models\Post;
 </div>
 
 <p>{{ $post->intro }}</p>
+<p>The read time is approximately <b>{{ $post->read_time }} minutes</b>.</p>
 
 @component('mail::button', ['url' => route('posts.show', $post)])
 Read the post
