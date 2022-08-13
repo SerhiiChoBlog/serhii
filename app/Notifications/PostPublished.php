@@ -39,6 +39,6 @@ class PostPublished extends Notification
 
     private function unsubscribeUrl(): string
     {
-        return '';
+        return url('/');
     }
 }
