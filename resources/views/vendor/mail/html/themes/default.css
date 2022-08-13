@@ -238,8 +238,6 @@ img {
     color: brown;
     box-shadow: none;
     border: 1px solid brown;
-    border-right-width: 3px;
-    border-left-width: 3px;
 }
 
 /* Panels */
