@@ -2669,8 +2669,23 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: var(--color-main-hover) !important;
 }
 
+.hover\:bg-gray-200:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-opacity-50:hover{
   --tw-bg-opacity: 0.5;
+}
+
+.hover\:px-9:hover{
+  padding-left: 2.25rem;
+  padding-right: 2.25rem;
+}
+
+.hover\:px-10:hover{
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 .hover\:text-link-hover:hover{

@@ -1,32 +1,49 @@
 <script setup lang="ts">
+import AppearTransition from '../Transitions/AppearTransition.vue'
+import { ref } from 'vue'
 
+const email = ref<string>('')
+const loading = ref(false)
+
+function subscribe(): void {
+    if (email.value === '' || loading.value) {
+        return
+    }
+
+    loading.value = true
+    email.value = ''
+}
 </script>
 
 <template>
-    <footer class="bg-gradient bg-gradient-to-r from-gray-800 to-gray-700 text-white px-8 py-24">
-        <form action="" method="post" class="w-[480px] mx-auto">
-            <label
-                for="subscription"
-                class="block mb-4 text-2xl text-center drop-shadow-md"
-            >
-                Subscribe to get the latest posts
-            </label>
-
-            <div class="flex h-[53px] bg-gray-600 p-1 inline-block rounded-full shadow-sm">
-                <input
-                    type="email"
-                    id="subscription"
-                    class="px-6 h-full bg-transparent w-full focus:outline-none text-white placeholder-gray-300"
-                    placeholder="Your email address"
+    <appear-transition>
+        <footer class="bg-gradient bg-gradient-to-r from-gray-800 to-gray-700 text-white px-8 py-24 relative z-10">
+            <form @submit.prevent="subscribe" class="w-[480px] mx-auto">
+                <label
+                    for="subscription"
+                    class="block mb-4 text-2xl text-center drop-shadow-md"
                 >
+                    Subscribe to get the latest posts
+                </label>
 
-                <button
-                    type="submit"
-                    class="bg-white h-full text-gray-700 px-7 rounded-full"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </form>
-    </footer>
+                <div class="flex h-[53px] bg-gray-600 p-1 inline-block rounded-full shadow-sm">
+                    <input
+                        type="email"
+                        id="subscription"
+                        class="px-6 h-full bg-transparent w-full focus:outline-none text-white placeholder-gray-300"
+                        placeholder="Your email address"
+                        v-model="email"
+                    >
+
+                    <button
+                        type="submit"
+                        class="bg-white transition-all hover:px-10 h-full text-gray-700 px-7 rounded-full"
+                    >
+                        <span v-if="loading">Processing...</span>
+                        <span v-else>Subscribe</span>
+                    </button>
+                </div>
+            </form>
+        </footer>
+    </appear-transition>
 </template>
