@@ -20881,6 +20881,10 @@ var AppearTransition_vue_1 = __importDefault(__webpack_require__(/*! ../Transiti
 
 var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var showToast_1 = __importDefault(__webpack_require__(/*! ../../modules/showToast */ "./resources/vue/modules/showToast.ts"));
+
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Subscription',
   setup: function setup(__props, _a) {
@@ -20895,7 +20899,18 @@ exports["default"] = (0, vue_1.defineComponent)({
       }
 
       loading.value = true;
-      email.value = '';
+      axios_1["default"].post("/api/subscription/".concat(email.value)).then(function (resp) {
+        console.log(resp.data);
+        email.value = '';
+        (0, showToast_1["default"])({
+          text: 'Please, check you email to confirm your subscription',
+          duration: 7000
+        });
+      })["catch"](function (err) {
+        return console.error(err);
+      })["finally"](function () {
+        return loading.value = false;
+      });
     }
 
     var __returned__ = {
@@ -22105,7 +22120,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, [_hoisted_3, (0, vue_1.createElementVNode)("div", _hoisted_4, [(0, vue_1.withDirectives)((0, vue_1.createElementVNode)("input", {
         type: "email",
         id: "subscription",
-        "class": "px-6 h-full bg-transparent w-full focus:outline-none text-white placeholder-gray-300",
+        "class": "px-6 h-full bg-transparent rounded-full w-full focus:outline-none text-white placeholder-gray-300",
         placeholder: "Your email address",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return $setup.email = $event;
