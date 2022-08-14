@@ -33,6 +33,18 @@ Route::middleware('hits')->group(function () {
 
 Route::get('theme', ThemeController::class);
 
+Route::get('new', function () {
+    $markdown = new \Illuminate\Mail\Markdown(view(), config('mail.markdown'));
+//    return $markdown->render("mail.post-published", [
+//        'post' => Post::query()->where('id', 7)->first(),
+//        'unsubscribe' => url('/'),
+//    ]);
+    return $markdown->render("mail.confirm-subscription", [
+        'confirmation_url' => url('/'),
+        'decline_url' => url('/'),
+    ]);
+});
+
 Route::get('test', function () {
     \Illuminate\Support\Facades\Notification::route('mail', 'serhiicho@protonmail.com')
         ->notify(new \App\Notifications\PostPublished(Post::with('tags')->where('id', 13)->first()));

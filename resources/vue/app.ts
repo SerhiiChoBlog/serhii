@@ -13,6 +13,7 @@ import Tip from './components/Tip.vue'
 import Search from './components/Home/Search.vue'
 import Filters from './components/Filters/Filters.vue'
 import ScrollDown from './components/Home/ScrollDown.vue'
+import Subscription from './components/Subscription/Subscription.vue'
 
 const app = createApp({
     components: {
@@ -28,6 +29,7 @@ const app = createApp({
         Tip,
         Filters,
         ScrollDown,
+        Subscription,
     },
 
     setup() {
