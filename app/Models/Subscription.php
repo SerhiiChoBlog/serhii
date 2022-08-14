@@ -35,6 +35,6 @@ class Subscription extends Model
 
     public function notifyPostPublished(Post $post): void
     {
-        Notification::route('mail', $this->email)->notify(new PostPublished($post));
+        Notification::route('mail', $this->email)->notify(new PostPublished($post, $this));
     }
 }

@@ -23,7 +23,7 @@ class SubscriptionController extends Controller
         return view('subscriptions.confirm');
     }
 
-    public function decline(string $slug): View | RedirectResponse
+    public function decline(string $slug): View
     {
         $sub = Subscription::query()->where('slug', $slug)->first();
 
@@ -34,5 +34,18 @@ class SubscriptionController extends Controller
         $sub->delete();
 
         return view('subscriptions.decline');
+    }
+
+    public function unsubscribe(string $slug): View
+    {
+        $sub = Subscription::query()->where('slug', $slug)->first();
+
+        if (!$sub) {
+            return view('subscriptions.unsubscribe');
+        }
+
+        $sub->delete();
+
+        return view('subscriptions.unsubscribe');
     }
 }

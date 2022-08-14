@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Post;
+use App\Models\Subscription;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\SimpleMessage;
@@ -12,9 +13,8 @@ class PostPublished extends Notification
 {
     use Queueable;
 
-    public function __construct(private Post $post)
+    public function __construct(private Post $post, private Subscription $subscription)
     {
-        //
     }
 
     /**
@@ -39,6 +39,6 @@ class PostPublished extends Notification
 
     private function unsubscribeUrl(): string
     {
-        return url('/');
+        return route('subscriptions.unsubscribe', $this->subscription->slug);
     }
 }
