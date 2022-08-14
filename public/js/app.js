@@ -22100,13 +22100,18 @@ var _hoisted_4 = {
   "class": "flex h-[53px] bg-gray-600 p-1 inline-block rounded-full shadow-sm"
 };
 var _hoisted_5 = {
-  type: "submit",
-  "class": "bg-white transition-all hover:px-10 h-full text-gray-700 px-7 rounded-full"
+  key: 0,
+  "class": "flex gap-4"
 };
-var _hoisted_6 = {
-  key: 0
-};
-var _hoisted_7 = {
+
+var _hoisted_6 = (0, vue_1.createElementVNode)("b", {
+  "class": "animate-spin inline-block"
+}, "/", -1);
+
+var _hoisted_7 = (0, vue_1.createElementVNode)("span", null, "Processing...", -1);
+
+var _hoisted_8 = [_hoisted_6, _hoisted_7];
+var _hoisted_9 = {
   key: 1
 };
 
@@ -22124,7 +22129,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return $setup.email = $event;
         })
-      }, null, 512), [[vue_1.vModelText, $setup.email]]), (0, vue_1.createElementVNode)("button", _hoisted_5, [$setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("span", _hoisted_6, "Processing...")) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("span", _hoisted_7, "Subscribe"))])])], 40, _hoisted_2)])];
+      }, null, 512), [[vue_1.vModelText, $setup.email]]), (0, vue_1.createElementVNode)("button", {
+        type: "submit",
+        "class": (0, vue_1.normalizeClass)(["transition-all hover:px-10 h-full px-7 rounded-full", $setup.loading ? 'bg-main text-white' : 'bg-white text-gray-700'])
+      }, [$setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("span", _hoisted_5, _hoisted_8)) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("span", _hoisted_9, "Subscribe"))], 2)])], 40, _hoisted_2)])];
     }),
     _: 1
   });
