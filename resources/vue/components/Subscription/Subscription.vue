@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import AppearTransition from '../Transitions/AppearTransition.vue'
 import { ref } from 'vue'
+import axios from 'axios'
+import showToast from '../../modules/showToast'
 
 const email = ref<string>('')
 const loading = ref(false)
@@ -11,7 +13,18 @@ function subscribe(): void {
     }
 
     loading.value = true
-    email.value = ''
+
+    axios.post(`/api/subscription/${email.value}`)
+        .then(resp => {
+            console.log(resp.data)
+            email.value = ''
+            showToast({
+                text: 'Please, check you email to confirm your subscription',
+                duration: 7000,
+            })
+        })
+        .catch(err => console.error(err))
+        .finally(() => loading.value = false)
 }
 </script>
 
@@ -30,7 +43,7 @@ function subscribe(): void {
                     <input
                         type="email"
                         id="subscription"
-                        class="px-6 h-full bg-transparent w-full focus:outline-none text-white placeholder-gray-300"
+                        class="px-6 h-full bg-transparent rounded-full w-full focus:outline-none text-white placeholder-gray-300"
                         placeholder="Your email address"
                         v-model="email"
                     >

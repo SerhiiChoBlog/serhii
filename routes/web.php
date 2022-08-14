@@ -5,8 +5,8 @@ declare(strict_types=1);
 use App\Http\Controllers\AboutMeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ThemeController;
-use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,23 +29,11 @@ Route::middleware('hits')->group(function () {
         Route::get('/', 'index')->name('projects.index');
         Route::get('{project:name}', 'show')->name('projects.show');
     });
+
+    Route::prefix('subscriptions')->controller(SubscriptionController::class)->group(function () {
+        Route::get('confirm', 'confirm')->name('subscriptions.confirm');
+        Route::get('decline', 'decline')->name('subscriptions.decline');
+    });
 });
 
 Route::get('theme', ThemeController::class);
-
-Route::get('new', function () {
-    $markdown = new \Illuminate\Mail\Markdown(view(), config('mail.markdown'));
-//    return $markdown->render("mail.post-published", [
-//        'post' => Post::query()->where('id', 7)->first(),
-//        'unsubscribe' => url('/'),
-//    ]);
-    return $markdown->render("mail.confirm-subscription", [
-        'confirmation_url' => url('/'),
-        'decline_url' => url('/'),
-    ]);
-});
-
-Route::get('test', function () {
-    \Illuminate\Support\Facades\Notification::route('mail', 'serhiicho@protonmail.com')
-        ->notify(new \App\Notifications\PostPublished(Post::with('tags')->where('id', 13)->first()));
-});
