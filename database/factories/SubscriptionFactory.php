@@ -24,4 +24,11 @@ class SubscriptionFactory extends Factory
             'slug' => Str::random(50),
         ];
     }
+
+    public function confirmed(): self
+    {
+        return $this->state(function (array $attributes) {
+            return ['confirmed_at' => now()];
+        });
+    }
 }
