@@ -3,9 +3,17 @@ import AppearTransition from '../Transitions/AppearTransition.vue'
 import { ref } from 'vue'
 import axios from 'axios'
 import showToast from '../../modules/showToast'
+import CheckIcon from '../Icons/CheckIcon.vue'
 
 const email = ref<string>('')
 const loading = ref(false)
+
+const advantages = [
+    'No spam',
+    'No advertisements, only new posts',
+    'Your email is kept private and safe',
+    'You can unsubscribe any time',
+]
 
 function subscribe(): void {
     if (email.value === '' || loading.value) {
@@ -30,8 +38,8 @@ function subscribe(): void {
 
 <template>
     <appear-transition>
-        <footer class="bg-gradient bg-gradient-to-r from-gray-800 to-gray-700 text-white px-8 py-24 relative z-10">
-            <form @submit.prevent="subscribe" class="w-[480px] mx-auto">
+        <footer class="grid grid-cols-2 gap-20 bg-gradient-to-r from-gray-800 to-gray-700 text-white px-8 py-24 relative z-10">
+            <form @submit.prevent="subscribe" class="max-w-[480px] w-full mx-auto">
                 <label
                     for="subscription"
                     class="block mb-4 text-2xl text-center drop-shadow-md"
@@ -61,6 +69,19 @@ function subscribe(): void {
                     </button>
                 </div>
             </form>
+
+            <div class="mt-4 text-lg space-y-3">
+                <ul class="space-y-1">
+                    <li
+                        v-for="item in advantages"
+                        :key="item"
+                        class="flex gap-2 items-center"
+                    >
+                        <check-icon class="w-7 h-7 text-green-500" />
+                        <span>{{ item }}</span>
+                    </li>
+                </ul>
+            </div>
         </footer>
     </appear-transition>
 </template>
