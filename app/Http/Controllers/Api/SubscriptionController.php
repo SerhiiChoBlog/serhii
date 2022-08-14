@@ -25,8 +25,12 @@ class SubscriptionController extends Controller
             return 'Please, check you email to confirm the subscription, or try tomorrow';
         }
 
-        /** @var Subscription $subscription */
-        $subscription = Subscription::query()->create(compact('email', 'slug'));
+        if ($old_sub) {
+            $subscription = $old_sub;
+        } else {
+            /** @var Subscription $subscription */
+            $subscription = Subscription::query()->create(compact('email', 'slug'));
+        }
 
         $subscription->notifySubConfirmation();
 
