@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ThemeController;
+use App\Models\Subscription;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,3 +40,8 @@ Route::middleware('hits')->group(function () {
 });
 
 Route::get('theme', ThemeController::class);
+
+Route::get('test', function () {
+    $sub = Subscription::query()->first();
+    $sub->notifyPostPublished(App\Models\Post::query()->latest()->first());
+});
