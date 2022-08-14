@@ -57,4 +57,21 @@ class SubscriptionControllerTest extends TestCase
 
         $this->assertSame(1, Subscription::query()->count());
     }
+
+    public function test_subscription_can_be_created(): void
+    {
+        Notification::fake();
+
+        $email = 'test@mail.com';
+
+        $response = $this->post("/api/subscriptions/$email")
+            ->getContent();
+
+        $this->assertSame('Please, check you email to confirm your subscription', $response);
+
+        Notification::assertTimesSent(1, ConfirmSubscription::class);
+
+        $this->assertSame(1, Subscription::query()->count());
+        $this->assertDatabaseHas('subscriptions', compact('email'));
+    }
 }
