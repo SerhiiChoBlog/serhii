@@ -4,6 +4,8 @@ use App\Models\Post;
 /**
  * @var Post $post
  * @var string $unsubscribe
+ * @var string $url
+ * @var string $nice_url
  */
 @endphp
 
@@ -16,7 +18,7 @@ use App\Models\Post;
 <p style="margin-bottom: 2px">Hi, the new post is already published!</p>
 
 <h1>{{ $post->title }}</h1>
-<a href="{{ route('posts.show', $post) }}" target="_blank">
+<a href="{{ $url }}" target="_blank">
     <img
         src="{{ url($post->image_sm) }}"
         alt="{{ $post->title }}"
@@ -42,13 +44,13 @@ use App\Models\Post;
 <p>{{ $post->intro }}</p>
 <p>The read time is approximately <b>{{ $post->read_time }} minutes</b>.</p>
 
-@component('mail::button', ['url' => route('posts.show', $post)])
+@component('mail::button', compact('url'))
 Read the post
 @endcomponent
 
 @component('mail::subcopy')
     If you're having trouble clicking the button, copy and paste the URL into your web browser:
-    <a href="{{ route('posts.show', $post) }}">{{ route('posts.show', $post) }}</a>
+    <a href="{{ $url }}" target="_blank">{{ $nice_url }}</a>
 @endcomponent
 
 @slot('footer')
