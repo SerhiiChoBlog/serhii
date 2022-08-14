@@ -20899,11 +20899,10 @@ exports["default"] = (0, vue_1.defineComponent)({
       }
 
       loading.value = true;
-      axios_1["default"].post("/api/subscription/".concat(email.value)).then(function (resp) {
-        console.log(resp.data);
+      axios_1["default"].post("/api/subscriptions/".concat(email.value)).then(function (resp) {
         email.value = '';
         (0, showToast_1["default"])({
-          text: 'Please, check you email to confirm your subscription',
+          text: resp.data,
           duration: 7000
         });
       })["catch"](function (err) {

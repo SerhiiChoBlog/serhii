@@ -14,6 +14,6 @@ Route::controller(TagController::class)->prefix('tags')->group(function () {
 
 Route::post('social-shares/{post}', [SocialShareController::class, 'store']);
 Route::get('search/{query}', [SearchController::class, 'index']);
-Route::post('subscription/{email}', [SubscriptionController::class, 'subscribe']);
+Route::post('subscriptions/{email}', [SubscriptionController::class, 'subscribe']);
 
 Route::get('posts', [PostController::class, 'index']);

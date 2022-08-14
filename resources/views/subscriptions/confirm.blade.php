@@ -1,17 +1,15 @@
 @extends('layouts.app')
 
 @section('title', 'Subscribed to Serhii Cho')
-@section('description', "Your subscription has been confirmed and you've been added to the liet")
+@section('description', "Your subscription has been confirmed and you've been added to the list")
 
 @section('content')
-    <x-hero
-        class="bg-gradient-to-r from-gray-700 to-gray-600 text-white"
-    />
+    <x-hero class="bg-gradient-to-r from-gray-700 to-gray-600 text-white" />
 
     <div class="container py-48 px-16 flex gap-14 items-center">
         <div>
             <img
-                src="{{ asset('storage/letter.svg') }}"
+                src="{{ asset('storage/subscription/letter.svg') }}"
                 alt="Letter"
                 width="200"
                 height="115"
@@ -29,8 +27,9 @@
                 Subscribed
             </h1>
 
-            <p class="text-xl">Your subscription has been confirmed and you've been added to the list.</p>
-            <p class="text-xl">You'll receive a letter every time a new post is published.</p>
+            <p class="text-xl"></p>
+            <p class="text-xl">Your subscription has been confirmed, and you've been added to the list.</p>
+            <p class="text-xl">You'll receive a letter every time a new post is published. 🥳</p>
         </div>
     </div>
 @endsection
