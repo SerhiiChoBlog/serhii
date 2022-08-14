@@ -50,9 +50,13 @@ function subscribe(): void {
 
                     <button
                         type="submit"
-                        class="bg-white transition-all hover:px-10 h-full text-gray-700 px-7 rounded-full"
+                        class="transition-all hover:px-10 h-full px-7 rounded-full"
+                        :class="loading ? 'bg-main text-white' : 'bg-white text-gray-700'"
                     >
-                        <span v-if="loading">Processing...</span>
+                        <span v-if="loading" class="flex gap-4">
+                            <b class="animate-spin inline-block">/</b>
+                            <span>Processing...</span>
+                        </span>
                         <span v-else>Subscribe</span>
                     </button>
                 </div>
