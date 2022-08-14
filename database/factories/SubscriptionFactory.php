@@ -7,6 +7,7 @@ namespace Database\Factories;
 use App\Models\Subscription;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class SubscriptionFactory extends Factory
 {
@@ -20,6 +21,7 @@ class SubscriptionFactory extends Factory
     {
         return [
             'email' => $this->faker->email(),
+            'slug' => Str::random(50),
         ];
     }
 }

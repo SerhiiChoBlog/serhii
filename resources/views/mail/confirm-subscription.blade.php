@@ -24,7 +24,7 @@ Confirm subscription
 @component('mail::subcopy')
 <p>If you subscribed in error, click the button below and you will be instantly removed from the list:</p>
 
-@component('mail::button', ['url' => $confirmation_url, 'color' => 'decline'])
+@component('mail::button', ['url' => $decline_url, 'color' => 'decline'])
     Decline subscription
 @endcomponent
 

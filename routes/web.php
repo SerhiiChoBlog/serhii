@@ -31,8 +31,9 @@ Route::middleware('hits')->group(function () {
     });
 
     Route::prefix('subscriptions')->controller(SubscriptionController::class)->group(function () {
-        Route::get('confirm', 'confirm')->name('subscriptions.confirm');
-        Route::get('decline', 'decline')->name('subscriptions.decline');
+        Route::get('confirm/{slug}', 'confirm')->name('subscriptions.confirm');
+        Route::get('decline/{slug}', 'decline')->name('subscriptions.decline');
+        Route::view('error', 'subscriptions.error')->name('subscriptions.error');
     });
 });
 

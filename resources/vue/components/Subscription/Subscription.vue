@@ -14,12 +14,12 @@ function subscribe(): void {
 
     loading.value = true
 
-    axios.post(`/api/subscription/${email.value}`)
+    axios.post<string>(`/api/subscriptions/${email.value}`)
         .then(resp => {
-            console.log(resp.data)
             email.value = ''
+
             showToast({
-                text: 'Please, check you email to confirm your subscription',
+                text: resp.data,
                 duration: 7000,
             })
         })

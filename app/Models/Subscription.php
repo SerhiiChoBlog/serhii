@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Notification;
 /**
  * @property-read int $id
  * @property string $email
+ * @property string $slug
  * @property Carbon|null $confirmed_at
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -29,7 +30,7 @@ class Subscription extends Model
 
     public function notifySubConfirmation(): void
     {
-        Notification::route('mail', $this->email)->notify(new ConfirmSubscription());
+        Notification::route('mail', $this->email)->notify(new ConfirmSubscription($this));
     }
 
     public function notifyPostPublished(Post $post): void
