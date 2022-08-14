@@ -33,6 +33,7 @@ Route::middleware('hits')->group(function () {
     Route::prefix('subscriptions')->controller(SubscriptionController::class)->group(function () {
         Route::get('confirm/{slug}', 'confirm')->name('subscriptions.confirm');
         Route::get('decline/{slug}', 'decline')->name('subscriptions.decline');
+        Route::get('unsubscribe/{slug}', 'unsubscribe')->name('subscriptions.unsubscribe');
         Route::view('error', 'subscriptions.error')->name('subscriptions.error');
     });
 });
