@@ -23051,6 +23051,9 @@ var _hoisted_10 = {
 var _hoisted_11 = {
   "class": "px-3 py-1"
 };
+var _hoisted_12 = {
+  "class": "px-3 py-1"
+};
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_1, [(0, vue_1.createVNode)($setup["PageTitle"], null, {
@@ -23060,7 +23063,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
   }), $setup.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Spinner"], {
     key: 0
-  })) : $setup.publications.length === 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_3, _hoisted_5)) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_6, [(0, vue_1.createElementVNode)("table", _hoisted_7, [(0, vue_1.createElementVNode)("thead", _hoisted_8, [(0, vue_1.createElementVNode)("tr", null, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(['#', 'Post', 'Created'], function (title) {
+  })) : $setup.publications.length === 0 ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_3, _hoisted_5)) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", _hoisted_6, [(0, vue_1.createElementVNode)("table", _hoisted_7, [(0, vue_1.createElementVNode)("thead", _hoisted_8, [(0, vue_1.createElementVNode)("tr", null, [((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)(['#', 'People', 'Post', 'Created'], function (title) {
     return (0, vue_1.createElementVNode)("th", {
       key: title,
       "class": "p-3"
@@ -23069,7 +23072,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("tr", {
       key: publication.id,
       "class": "border-b odd:bg-gray-50 transition-colors hover:bg-gray-100"
-    }, [(0, vue_1.createElementVNode)("td", _hoisted_9, (0, vue_1.toDisplayString)(publication.id), 1), (0, vue_1.createElementVNode)("td", _hoisted_10, (0, vue_1.toDisplayString)(publication.post ? publication.post.title : '-no-'), 1), (0, vue_1.createElementVNode)("td", _hoisted_11, (0, vue_1.toDisplayString)(publication.created_at), 1)]);
+    }, [(0, vue_1.createElementVNode)("td", _hoisted_9, (0, vue_1.toDisplayString)(publication.id), 1), (0, vue_1.createElementVNode)("td", _hoisted_10, (0, vue_1.toDisplayString)(publication.people_notified), 1), (0, vue_1.createElementVNode)("td", _hoisted_11, (0, vue_1.toDisplayString)(publication.post ? publication.post.title : '-no-'), 1), (0, vue_1.createElementVNode)("td", _hoisted_12, (0, vue_1.toDisplayString)(publication.created_at), 1)]);
   }), 128))])])]))]);
 }
 

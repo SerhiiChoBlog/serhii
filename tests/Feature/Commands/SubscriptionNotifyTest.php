@@ -100,4 +100,17 @@ class SubscriptionNotifyTest extends TestCase
 
         Notification::assertTimesSent(3, PostPublished::class);
     }
+
+    public function test_no_notifications_without_subscribers(): void
+    {
+        Post::factory()->published()->create();
+
+        $this->artisan('subscriptions:notify')
+            ->expectsOutput("No subscriptions")
+            ->assertFailed();
+
+        $this->assertSame(0, PostPublication::query()->count());
+
+        Notification::assertNothingSent();
+    }
 }
