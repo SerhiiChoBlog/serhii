@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
 
 /**
@@ -81,6 +82,11 @@ class Post extends Model
     public function pageViews(): HasMany
     {
         return $this->hasMany(PageView::class, 'slug', 'slug');
+    }
+
+    public function postPublication(): HasOne
+    {
+        return $this->hasOne(PostPublication::class);
     }
 
     /**

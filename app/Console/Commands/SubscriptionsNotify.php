@@ -23,17 +23,20 @@ class SubscriptionsNotify extends Command
     {
         $subs = $this->getSubs();
         $last_post = $this->getLastPost();
+        $people_notified = 0;
 
         if ($this->hasPublicationWithThisPost($last_post->id)) {
             $this->error("Subscribers were already notified with post <fg=green>$last_post->title</>");
             return 1;
         }
 
-        $subs->each(function (Subscription $sub) {
-            //
-        });
+        foreach ($subs as $sub) {
+            $people_notified += 1;
+        }
 
-        $this->info("2 subscribers were successfully notified");
+        $last_post->postPublication()->create(compact('people_notified'));
+
+        $this->info("$people_notified subscribers were successfully notified");
 
         return 0;
     }
