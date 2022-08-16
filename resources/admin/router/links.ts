@@ -50,6 +50,11 @@ const links: UserSidebarLink[] = [
         icon: 'fa-shoe-prints',
     },
     {
+        routeName: 'post-publications',
+        title: 'Publications',
+        icon: 'fa-envelope',
+    },
+    {
         routeName: null,
         href: 'javascript:',
         title: 'Logout',

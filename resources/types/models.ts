@@ -86,3 +86,12 @@ export type Referrer = {
     created_at: string
     updated_at: string
 }
+
+export type PostPublication = {
+    id: number
+    user_id: number
+    people_notified: number
+    post?: Post
+    created_at: string
+    updated_at: string
+}

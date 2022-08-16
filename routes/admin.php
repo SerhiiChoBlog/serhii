@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\HitController;
 use App\Http\Controllers\Admin\PageViewController;
 use App\Http\Controllers\Admin\PostContentImageController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\PostPublicationController;
 use App\Http\Controllers\Admin\SocialShareController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\VisitorController;
@@ -24,6 +25,7 @@ Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('social-shares', SocialShareController::class)->only('index');
     Route::resource('referrers', ReferrerController::class)->only('index');
     Route::resource('hits', HitController::class)->only('index');
+    Route::resource('post-publications', PostPublicationController::class)->only('index');
 });
 
 Route::view('{any?}', 'layouts.admin')
