@@ -7,6 +7,7 @@ namespace Tests\Feature\Commands;
 use App\Models\Post;
 use App\Models\PostPublication;
 use App\Models\Subscription;
+use App\Notifications\PostPublished;
 use Exception;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
@@ -30,17 +31,17 @@ class SubscriptionNotifyTest extends TestCase
 
         $this->artisan('subscriptions:notify')
             ->expectsOutput("Subscribers were already notified with post $post->title")
-            ->assertExitCode(1);
+            ->assertFailed();
     }
 
     public function test_2_subscribers_are_notified_when_with_new_post(): void
     {
-        Post::factory()->published()->create();
+        $post = Post::factory()->published()->create();
         Subscription::factory()->count(2)->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
-             ->expectsOutput('2 subscribers were successfully notified')
-             ->assertExitCode(0);
+            ->expectsOutput("2 subscribers were successfully notified with post $post->title")
+            ->assertSuccessful();
 
         $this->assertDatabaseHas('post_publications', ['people_notified' => 2]);
         $this->assertSame(1, PostPublication::query()->count());
@@ -63,10 +64,38 @@ class SubscriptionNotifyTest extends TestCase
         $sub = Subscription::factory()->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
-            ->expectsOutput('1 subscribers were successfully notified')
-            ->assertExitCode(0);
+            ->expectsOutput("1 subscribers were successfully notified with post $post->title")
+            ->assertSuccessful();
 
         $this->assertDatabaseHas('post_publications', ['people_notified' => 1]);
         $this->assertSame(1, PostPublication::query()->count());
+    }
+
+    public function test_each_person_is_notified_via_email(): void
+    {
+        $post = Post::factory()->published()->create();
+        $subs = Subscription::factory()->count(3)->confirmed()->create();
+
+        $this->artisan('subscriptions:notify')
+            ->expectsOutput("3 subscribers were successfully notified with post $post->title")
+            ->assertSuccessful();
+
+        Notification::assertTimesSent(3, PostPublished::class);
+    }
+
+    public function test_subs_are_notified_with_correct_post(): void
+    {
+        Post::factory()->published()->title('First')->create(['created_at' => now()->subDay()]);
+        Post::factory()->published()->title('Second')->create(['created_at' => now()->subDays(10)]);
+        Post::factory()->published()->title('Third')->create(['created_at' => now()->subMonth()]);
+        $latest_post = Post::factory()->published()->title('Last one')->create(['created_at' => now()->subHour()]);
+
+        $subs = Subscription::factory()->count(3)->confirmed()->create();
+
+        $this->artisan('subscriptions:notify')
+            ->expectsOutput("3 subscribers were successfully notified with post $latest_post->title")
+            ->assertSuccessful();
+
+        Notification::assertTimesSent(3, PostPublished::class);
     }
 }

@@ -31,12 +31,13 @@ class SubscriptionsNotify extends Command
         }
 
         foreach ($subs as $sub) {
-            $people_notified += 1;
+            ++$people_notified;
+            $sub->notifyPostPublished($last_post);
         }
 
         $last_post->postPublication()->create(compact('people_notified'));
 
-        $this->info("$people_notified subscribers were successfully notified");
+        $this->info("$people_notified subscribers were successfully notified with post <fg=green>$last_post->title</>");
 
         return 0;
     }
