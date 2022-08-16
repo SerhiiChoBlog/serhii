@@ -84,6 +84,9 @@ class Post extends Model
         return $this->hasMany(PageView::class, 'slug', 'slug');
     }
 
+    /**
+     * @return HasOne<PostPublication>
+     */
     public function postPublication(): HasOne
     {
         return $this->hasOne(PostPublication::class);
