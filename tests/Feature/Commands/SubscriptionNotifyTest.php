@@ -26,6 +26,7 @@ class SubscriptionNotifyTest extends TestCase
     public function test_cannot_notify_post_publication_when_it_is_already_notified(): void
     {
         $post = Post::factory()->published()->create();
+        Subscription::factory()->confirmed()->create();
 
         PostPublication::query()->create(['post_id' => $post->id]);
 
@@ -53,6 +54,8 @@ class SubscriptionNotifyTest extends TestCase
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('There are no posts in database');
+
+        Subscription::factory()->confirmed()->create();
 
         $this->artisan('subscriptions:notify');
 
