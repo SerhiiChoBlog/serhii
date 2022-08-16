@@ -30,7 +30,7 @@ use App\Models\Post;
 
 <div class="tags">
     @foreach ($post->tags as $tag)
-        <a href="/posts?tag={{ $tag->name }}" aria-label="Filter posts by tag: {{ $tag->title }}">
+        <a href="{{ url('/') }}/posts?tag={{ $tag->name }}" aria-label="Filter posts by tag: {{ $tag->title }}">
             <span
                 class="tag"
                 style="background-color: {{ $tag->color }}"
