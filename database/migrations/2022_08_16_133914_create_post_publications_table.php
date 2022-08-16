@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('post_publications', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Post::class);
+            $table->foreignIdFor(Post::class)->unique();
             $table->unsignedInteger('people_notified')->default(0);
             $table->timestamps();
         });
