@@ -23,15 +23,17 @@ class SubscriptionNotifyTest extends TestCase
         Notification::fake();
     }
 
-    public function test_cannot_publish_post_when_it_is_already_published(): void
+    public function test_cannot_notify_post_publication_when_it_is_already_notified(): void
     {
         $post = Post::factory()->published()->create();
 
         PostPublication::query()->create(['post_id' => $post->id]);
 
         $this->artisan('subscriptions:notify')
-            ->expectsOutput("Subscribers were already notified with post $post->title")
+            ->expectsOutput("Subscribers were already notified with post:\n\"$post->title\"")
             ->assertFailed();
+
+        Notification::assertNothingSent();
     }
 
     public function test_2_subscribers_are_notified_when_with_new_post(): void
@@ -40,7 +42,7 @@ class SubscriptionNotifyTest extends TestCase
         Subscription::factory()->count(2)->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
-            ->expectsOutput("2 subscribers were successfully notified with post $post->title")
+            ->expectsOutput("2 subscribers were successfully notified with post:\n\"$post->title\"")
             ->assertSuccessful();
 
         $this->assertDatabaseHas('post_publications', ['people_notified' => 2]);
@@ -64,7 +66,7 @@ class SubscriptionNotifyTest extends TestCase
         $sub = Subscription::factory()->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
-            ->expectsOutput("1 subscribers were successfully notified with post $post->title")
+            ->expectsOutput("1 subscribers were successfully notified with post:\n\"$post->title\"")
             ->assertSuccessful();
 
         $this->assertDatabaseHas('post_publications', ['people_notified' => 1]);
@@ -77,7 +79,7 @@ class SubscriptionNotifyTest extends TestCase
         $subs = Subscription::factory()->count(3)->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
-            ->expectsOutput("3 subscribers were successfully notified with post $post->title")
+            ->expectsOutput("3 subscribers were successfully notified with post:\n\"$post->title\"")
             ->assertSuccessful();
 
         Notification::assertTimesSent(3, PostPublished::class);
@@ -93,7 +95,7 @@ class SubscriptionNotifyTest extends TestCase
         $subs = Subscription::factory()->count(3)->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
-            ->expectsOutput("3 subscribers were successfully notified with post $latest_post->title")
+            ->expectsOutput("3 subscribers were successfully notified with post:\n\"$latest_post->title\"")
             ->assertSuccessful();
 
         Notification::assertTimesSent(3, PostPublished::class);

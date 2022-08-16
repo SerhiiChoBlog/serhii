@@ -10,6 +10,7 @@ use App\Models\Subscription;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use Throwable;
 
 class SubscriptionsNotify extends Command
 {
@@ -24,20 +25,34 @@ class SubscriptionsNotify extends Command
         $subs = $this->getSubs();
         $last_post = $this->getLastPost();
         $people_notified = 0;
+        $errors = [];
 
         if ($this->hasPublicationWithThisPost($last_post->id)) {
-            $this->error("Subscribers were already notified with post <fg=green>$last_post->title</>");
+            $this->error("<fg=red>Subscribers were already notified with post:\n</><fg=blue>\"$last_post->title\"</>");
             return 1;
         }
 
         foreach ($subs as $sub) {
             ++$people_notified;
-            $sub->notifyPostPublished($last_post);
+
+            try {
+                $sub->notifyPostPublished($last_post);
+            } catch (Throwable $e) {
+                $errors[] = $e->getMessage();
+                continue;
+            }
         }
 
         $last_post->postPublication()->create(compact('people_notified'));
 
-        $this->info("$people_notified subscribers were successfully notified with post <fg=green>$last_post->title</>");
+        if (!empty($errors)) {
+            logger()->error(implode("\n", $errors));
+            $this->warn(sprintf("There were %d errors! Check your logs", count($errors)));
+        }
+
+        $msg = "$people_notified subscribers were successfully notified with post:\n<fg=blue>\"$last_post->title\"</>";
+
+        $this->info($msg);
 
         return 0;
     }
