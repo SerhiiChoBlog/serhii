@@ -26,6 +26,9 @@ class PostPublication extends Model
      */
     protected $guarded = ['id'];
 
+    /**
+     * @return BelongsTo<Post, self>
+     */
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);

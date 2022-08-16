@@ -28,11 +28,11 @@ class ConfirmSubscription extends Notification
 
     public function toMail(): SimpleMessage
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject('Confirm your subscription to Serhii Cho email list')
             ->markdown('mail.confirm-subscription', [
-                'confirmation_url'=> $this->getConfirmationUrl(),
-                'decline_url'=> $this->getDeclineUrl(),
+                'confirmation_url' => $this->getConfirmationUrl(),
+                'decline_url' => $this->getDeclineUrl(),
             ]);
     }
 

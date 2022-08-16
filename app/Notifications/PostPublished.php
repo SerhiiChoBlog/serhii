@@ -29,10 +29,10 @@ class PostPublished extends Notification
 
     public function toMail(): SimpleMessage
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject(sprintf('New post: "%s"', $this->post->title))
             ->markdown('mail.post-published', [
-                'post'=> $this->post,
+                'post' => $this->post,
                 'url' => route('posts.show', $this->post) . '?welcome=lEqP1',
                 'nice_url' => route('posts.show', $this->post),
                 'unsubscribe' => $this->unsubscribeUrl(),

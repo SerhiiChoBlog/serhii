@@ -14,7 +14,7 @@ class SubscriptionController extends Controller
     {
         $slug = Str::random(50);
 
-        /** @var Subscription $old_sub */
+        /** @var Subscription|null $old_sub */
         $old_sub = Subscription::query()->where('email', $email)->first();
 
         if ($old_sub && $old_sub->confirmed_at) {
