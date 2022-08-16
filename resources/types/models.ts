@@ -93,5 +93,4 @@ export type PostPublication = {
     people_notified: number
     post?: Post
     created_at: string
-    updated_at: string
 }

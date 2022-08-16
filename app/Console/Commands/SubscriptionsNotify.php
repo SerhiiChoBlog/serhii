@@ -23,6 +23,12 @@ class SubscriptionsNotify extends Command
     public function handle(): int
     {
         $subs = $this->getSubs();
+
+        if ($subs->isEmpty()) {
+            $this->error('No subscriptions');
+            return 1;
+        }
+
         $last_post = $this->getLastPost();
         $people_notified = 0;
         $errors = [];

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Post::class)->unique();
             $table->unsignedInteger('people_notified')->default(0);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
