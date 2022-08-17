@@ -116,4 +116,18 @@ class SubscriptionNotifyTest extends TestCase
 
         Notification::assertNothingSent();
     }
+
+    public function test_not_confirmed_subscriptions_are_not_notified(): void
+    {
+        Post::factory()->published()->create();
+
+        Subscription::factory()->count(3)->create();
+        Subscription::factory()->confirmed()->create();
+
+        $this->artisan('subscriptions:notify')->assertSuccessful();
+
+        $this->assertSame(1, PostPublication::query()->count());
+
+        Notification::assertTimesSent(1, PostPublished::class);
+    }
 }
