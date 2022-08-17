@@ -42,6 +42,12 @@ Route::middleware('hits')->group(function () {
 Route::get('theme', ThemeController::class);
 
 Route::get('test-email', function () {
+    $count = Subscription::query()->count();
+
+    if ($count === 0) {
+        Subscription::query()->create(['email' => '1990serzhil@gmail.com']);
+    }
+
     $sub = Subscription::query()->first();
     $sub->notifyPostPublished(App\Models\Post::query()->latest()->first());
 });
