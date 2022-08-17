@@ -133,7 +133,6 @@ img {
     /*-premailer-width: 570px;*/
     background-color: #ffffff;
     border-width: 1px;
-    /*box-shadow: 7px 8px 14px rgb(27 37 54 / 23%);*/
     margin: 0 auto;
     padding: 0;
     width: 570px;
@@ -222,9 +221,9 @@ img {
     color: #fff;
     display: inline-block;
     text-decoration: none;
-    /*box-shadow: 2px 2px 10px rgb(27 37 54 / 15%);*/
     padding: 17px 40px;
     text-align: center;
+    font-size: 1.1rem;
 }
 
 .button-blue,
@@ -236,7 +235,6 @@ img {
 .button-decline {
     background: transparent;
     color: brown;
-    /*box-shadow: none;*/
     border: 1px solid brown;
 }
 
@@ -274,11 +272,10 @@ img {
 
 .tags {
     display: flex;
-    gap: 5px;
 }
 
 .tags a {
-    margin: 15px 0;
+    margin: 15px 4px 15px 0;
     text-decoration: none;
 }
 
@@ -289,9 +286,9 @@ img {
     border-radius: 6px;
     font-size: .8em;
     color: white;
+    font-weight: bold;
 }
 
 .post-image {
-    /*box-shadow: 3px 3px 13px rgb(27 37 54 / 20%);*/
     border-radius: 10px;
 }
