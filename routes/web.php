@@ -41,7 +41,7 @@ Route::middleware('hits')->group(function () {
 
 Route::get('theme', ThemeController::class);
 
-Route::get('test', function () {
+Route::get('test-email', function () {
     $sub = Subscription::query()->first();
     $sub->notifyPostPublished(App\Models\Post::query()->latest()->first());
 });
