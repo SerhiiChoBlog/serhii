@@ -10,6 +10,7 @@ use App\Http\Controllers\ThemeController;
 use App\Models\Subscription;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 Auth::routes();
 
@@ -45,7 +46,7 @@ Route::get('test-email', function () {
     $count = Subscription::query()->count();
 
     if ($count === 0) {
-        Subscription::query()->create(['email' => '1990serzhil@gmail.com']);
+        Subscription::query()->create(['email' => '1990serzhil@gmail.com', 'slug' => Str::random(50)]);
     }
 
     $sub = Subscription::query()->first();
