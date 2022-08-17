@@ -291,4 +291,5 @@ img {
 
 .post-image {
     border-radius: 10px;
+    height: auto;
 }
