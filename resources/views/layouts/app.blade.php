@@ -16,7 +16,7 @@
     <main id="app">
         @yield('content')
         <to-top></to-top>
-{{--        <subscription></subscription>--}}
+        <subscription></subscription>
     </main>
 
     <script src="{{ App\FileVersion::append('/js/app.js') }}"></script>
