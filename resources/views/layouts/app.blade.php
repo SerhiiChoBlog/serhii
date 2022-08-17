@@ -16,9 +16,7 @@
     <main id="app">
         @yield('content')
         <to-top></to-top>
-        @auth
         <subscription></subscription>
-        @endauth
     </main>
 
     <script src="{{ App\FileVersion::append('/js/app.js') }}"></script>
