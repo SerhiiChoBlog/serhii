@@ -7,10 +7,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ThemeController;
-use App\Models\Subscription;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
 
 Auth::routes();
 
@@ -41,14 +39,3 @@ Route::middleware('hits')->group(function () {
 });
 
 Route::get('theme', ThemeController::class);
-
-Route::get('test-email', function () {
-    $count = Subscription::query()->count();
-
-    if ($count === 0) {
-        Subscription::query()->create(['email' => '1990serzhil@gmail.com', 'slug' => Str::random(50)]);
-    }
-
-    $sub = Subscription::query()->first();
-    $sub->notifyPostPublished(App\Models\Post::query()->latest()->first());
-});
