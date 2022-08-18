@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Hit;
 use App\Models\PageView;
-use App\Models\Post;
 use App\Models\Referrer;
 use App\Models\SocialShare;
 
@@ -35,18 +34,8 @@ class DashboardController extends Controller
             ],
             [
                 'title' => 'Guest shares',
-                'value' => $this->getShares(),
+                'value' => SocialShare::query()->count(),
             ],
         ];
-    }
-
-    private function getShares(): int
-    {
-        $posts_count = Post::query()->where('is_published', true)->count();
-        $my_shares = $posts_count * 4;
-
-        $all_shares = SocialShare::query()->count();
-
-        return $all_shares - $my_shares;
     }
 }

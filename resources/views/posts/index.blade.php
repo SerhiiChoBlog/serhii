@@ -15,7 +15,7 @@
 @extends('layouts.app')
 
 @section('title', "$title | Serhii Cho")
-@section('description', "Blog that helps you to become a better web developer and enhance your knowledge in programming with TypeScript, Go lang and PHP")
+@section('description', "Blog that helps you to become a better web developer and enhance your knowledge in programming with TypeScript, Laravel and PHP")
 
 @section('content')
     <x-hero
