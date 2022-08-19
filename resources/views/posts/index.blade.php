@@ -15,12 +15,12 @@
 @extends('layouts.app')
 
 @section('title', "$title | Serhii Cho")
-@section('description', "Blog that helps you to become a better web developer and enhance your knowledge in programming with TypeScript, Laravel and PHP")
+@section('description', "Blog that helps you to become a better web developer and create beautiful, functional and responsive websites using the latest web technologies and best practices")
 
 @section('content')
     <x-hero
         :title="$title"
-        subtitle="Blog that helps you to become a better web developer and<br />enhance your knowledge in programming with TypeScript, Go lang and PHP"
+        subtitle="Blog that helps you to become a better web developer and<br />create beautiful, functional and responsive websites using the latest web technologies and best practices"
         class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white"
     />
 
