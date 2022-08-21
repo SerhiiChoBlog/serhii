@@ -28,9 +28,9 @@
                             <img
                                 src="{{ asset('/storage/languages/' . strtolower($project['language']) . '.webp') }}"
                                 alt="{{ $project['title'] }}"
-                                class="absolute right-4 top-4"
-                                width="50"
-                                height="50"
+                                class="absolute right-4 top-4 w-12 aspect-square"
+                                width="80"
+                                height="80"
                             />
 
                             <div>

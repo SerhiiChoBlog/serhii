@@ -67,21 +67,25 @@ return [
             'image' => 'storage/tools/site-sho.webp',
             'title' => 'Shobar',
             'href' => 'https://shobar.com.ua/',
+            'technologies' => ['wordpress', 'php', 'typescript'],
         ],
         [
             'image' => 'storage/tools/site-zoo.webp',
             'title' => 'ZooZooZoo',
             'href' => 'https://zoo-zoo-zoo.com.ua/',
+            'technologies' => ['vue', 'typescript', 'php', 'laravel'],
         ],
         [
             'image' => 'storage/tools/site-olexiy.webp',
             'title' => 'Jiskelo',
             'href' => 'https://jiskelo.dev/',
+            'technologies' => ['react', 'typescript', 'tailwind'],
         ],
         [
             'image' => 'storage/tools/blitz.webp',
             'title' => 'Blitz',
             'href' => 'https://blitz.nalog.nl/',
+            'technologies' => ['vue', 'typescript', 'php', 'laravel', 'tailwind'],
         ],
     ],
 
