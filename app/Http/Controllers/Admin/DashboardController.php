@@ -7,13 +7,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Hit;
 use App\Models\PageView;
-use App\Models\Referrer;
 use App\Models\SocialShare;
+use App\Models\Subscription;
 
 class DashboardController extends Controller
 {
     public function sections(): array
     {
+        $confirmed_subs = Subscription::query()->whereNotNull('confirmed_at')->count();
+        $not_confirmed_subs = Subscription::query()->count();
+
         return [
             [
                 'title' => 'Post views today',
@@ -29,8 +32,8 @@ class DashboardController extends Controller
                 'value' => Hit::query()->whereDate('updated_at', today())->value('amount') ?? 0,
             ],
             [
-                'title' => 'Referrers',
-                'value' => Referrer::query()->sum('hits'),
+                'title' => 'Subscribers',
+                'value' => "$confirmed_subs/$not_confirmed_subs",
             ],
             [
                 'title' => 'Guest shares',

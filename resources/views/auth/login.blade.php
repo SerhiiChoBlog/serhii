@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex justify-center pt-10">
+<div class="flex justify-center py-10">
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -13,7 +13,7 @@
             type="password"
             class="px-8 py-3 rounded-full text-center"
             name="password"
-            placeholder="."
+            placeholder="404 Page not found"
             required
         >
     </form>
