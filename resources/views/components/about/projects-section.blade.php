@@ -6,7 +6,7 @@
     <div class="flex flex-col lg:flex-row items-center justify-center py-7">
         @foreach ($sites as $site)
             <div class="
-            skew-y-[-4deg] mb-5 first:ml-0 hover:translate-y-[-10px] duration-300 relative lg:transition-transform
+            lg:skew-y-[-3deg] mb-5 first:ml-0 hover:translate-y-[-20px] duration-300 relative lg:transition-transform
             lg:ml-[-100px] lg:mb-0 before:left-0 before:absolute before:right-0 before:h-3 before:bg-[#282829]
             before:top-[-11px] before:rounded-t-lg
             ">
