@@ -31,7 +31,7 @@
                     <div class="flex gap-3 justify-center mt-3">
                         @foreach ($site['technologies'] as $tech)
                             <img
-                                src="{{ asset("storage/languages/$tech.webp") }}"
+                                data-src="{{ asset("storage/languages/$tech.webp") }}"
                                 alt="{{ $tech }}"
                                 width="80"
                                 height="80"
