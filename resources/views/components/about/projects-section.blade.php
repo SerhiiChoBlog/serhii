@@ -24,22 +24,23 @@
                         height="251"
                     />
 
-                    <span class="block text-font-second text-xl text-center mt-3 font-light">
-                        {{ $site['title'] }}
-                    </span>
+                    <div>
+                        <h2 class="block text-font-second text-xl text-center mt-3 font-light">
+                            {{ $site['title'] }}
+                        </h2>
 
-                    <div class="flex gap-3 justify-center mt-3">
-                        @foreach ($site['technologies'] as $tech)
-                            <img
-                                data-src="{{ asset("storage/languages/$tech.webp") }}"
-                                alt="{{ $tech }}"
-                                width="80"
-                                height="80"
-                                class="w-8 h-8 filter"
-                            />
-                        @endforeach
+                        <div class="flex gap-3 justify-center mt-3">
+                            @foreach ($site['technologies'] as $tech)
+                                <img
+                                    data-src="{{ asset("storage/languages/$tech.webp") }}"
+                                    alt="{{ $tech }}"
+                                    width="80"
+                                    height="80"
+                                    class="w-8 h-8 filter"
+                                />
+                            @endforeach
+                        </div>
                     </div>
-
                 </a>
             </div>
         @endforeach

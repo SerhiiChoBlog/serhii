@@ -76,6 +76,12 @@ return [
             'technologies' => ['vue', 'typescript', 'php', 'laravel'],
         ],
         [
+            'image' => 'storage/tools/client-cabinet.webp',
+            'title' => 'Client cabinet',
+            'href' => 'https://mijn.nalog.nl/',
+            'technologies' => ['vue', 'typescript', 'php', 'laravel', 'tailwind'],
+        ],
+        [
             'image' => 'storage/tools/site-olexiy.webp',
             'title' => 'Jiskelo',
             'href' => 'https://jiskelo.dev/',
