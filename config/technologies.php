@@ -66,12 +66,22 @@ return [
         [
             'image' => 'storage/tools/site-sho.webp',
             'title' => 'Shobar',
-            'content' => "",
+            'href' => 'https://shobar.com.ua/',
         ],
         [
             'image' => 'storage/tools/site-zoo.webp',
             'title' => 'ZooZooZoo',
-            'content' => "",
+            'href' => 'https://zoo-zoo-zoo.com.ua/',
+        ],
+        [
+            'image' => 'storage/tools/site-olexiy.webp',
+            'title' => 'Jiskelo',
+            'href' => 'https://jiskelo.dev/',
+        ],
+        [
+            'image' => 'storage/tools/blitz.webp',
+            'title' => 'Blitz',
+            'href' => 'https://blitz.nalog.nl/',
         ],
     ],
 

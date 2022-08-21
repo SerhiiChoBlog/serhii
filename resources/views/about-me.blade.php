@@ -115,7 +115,7 @@
 
         <x-about.section isDark="true" header="Latest projects">
             <x-section-detail />
-            <x-about.sites-section/>
+            <x-about.projects-section/>
         </x-about.section>
     </div>
 @endsection
