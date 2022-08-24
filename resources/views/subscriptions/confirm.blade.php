@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Subscribed to Serhii Cho')
-@section('description', "Your subscription has been confirmed and you've been added to the list")
+@push('title', 'Subscribed to Serhii Cho')
+@push('description', "Your subscription has been confirmed and you've been added to the list")
 
 @section('content')
     <x-hero class="bg-gradient-to-r from-gray-700 to-gray-600 text-white" />

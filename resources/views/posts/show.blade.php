@@ -8,7 +8,7 @@
 
 @extends('layouts.app')
 
-@section('head')
+@push('head')
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@SerhiiCho">
     <meta name="twitter:title" content="{{ $post->title }}">
@@ -31,10 +31,10 @@
     @endforeach
 
     <script src="{{ asset('js/highlight.js') }}" defer></script>
-@endsection
+@endpush
 
-@section('title', $post->title)
-@section('description', str($post->intro)->limit(147))
+@push('title', $post->title)
+@push('description', str($post->intro)->limit(147))
 
 @section('content')
     <article>

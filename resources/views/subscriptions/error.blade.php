@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Subscription error')
-@section('description', "There is an error occurred while trying to subscribe to a mail list")
+@push('title', 'Subscription error')
+@push('description', "There is an error occurred while trying to subscribe to a mail list")
 
 @section('content')
     <x-hero class="bg-gradient-to-r from-gray-700 to-gray-600 text-white" />

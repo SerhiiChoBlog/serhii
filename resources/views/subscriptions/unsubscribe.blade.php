@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Unsubscribed')
-@section('description', "Your subscription has been removed, I will be missing you so much. If you change your mind, you will be welcomed back")
+@push('title', 'Unsubscribed')
+@push('description', "Your subscription has been removed, I will be missing you so much. If you change your mind, you will be welcomed back")
 
 @section('content')
     <x-hero class="bg-gradient-to-r from-gray-700 to-gray-600 text-white" />
