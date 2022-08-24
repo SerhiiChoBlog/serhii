@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Decline subscription')
-@section('description', "Your subscription has not been confirmed, therefore it was remove from the list")
+@push('title', 'Decline subscription')
+@push('description', "Your subscription has not been confirmed, therefore it was remove from the list")
 
 @section('content')
     <x-hero class="bg-gradient-to-r from-gray-700 to-gray-600 text-white" />

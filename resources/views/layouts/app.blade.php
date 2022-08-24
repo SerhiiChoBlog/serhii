@@ -8,9 +8,9 @@
     <meta name="description" content="@yield('description', "Serhii Cho is a software developer and blogger with lots of experience creating web applications and programs written in PHP, Laravel, and TypeScript")">
     <meta property="og:locale" content="en_US">
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png" sizes="50x50">
-    <title>@yield('title'){{ request()->is('/') ? 'Serhii Cho' : '' }}</title>
+    <title>@stack('title'){{ request()->is('/') ? 'Serhii Cho' : '' }}</title>
     <link href="{{ App\FileVersion::append('/css/app.css') }}" rel="stylesheet">
-    @yield('head')
+    @stack('head')
 </head>
 <body class="text-font font-main bg-page {{ request()->cookie('theme') }}">
     <main id="app">

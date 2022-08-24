@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Information about Serhii Cho')
-@section('description', "Serhii Cho is a Ukrainian web developer and blogger who is writing about enhancing your knowledge in creating fast and robust web apps")
+@push('title', 'Information about Serhii Cho')
+@push('description', "Serhii Cho is a Ukrainian web developer and blogger who is writing about enhancing your knowledge in creating fast and robust web apps")
 
 @section('content')
     <x-hero

@@ -4,12 +4,12 @@
 
 @extends('layouts.app')
 
-@section('head')
+@push('head')
     <script src="{{ asset('js/highlight.js') }}" defer></script>
-@endsection
+@endpush
 
-@section('title', "$project->title | Serhii Cho")
-@section('description', str($project->description)->limit(147))
+@push('title', "$project->title | Serhii Cho")
+@push('description', str($project->description)->limit(147))
 
 @section('content')
     <x-hero
