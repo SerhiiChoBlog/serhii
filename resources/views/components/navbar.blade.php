@@ -13,11 +13,11 @@
                         <span class="text-main-light">CHO</span>
                     </div>
                 </a>
-
-                @auth
-                    <a href="/admin/dashboard" aria-hidden="true" tabindex="-1">admin</a>
-                @endauth
             @endunless
+
+            @auth
+                <a href="/admin/dashboard" aria-hidden="true" tabindex="-1">admin</a>
+            @endauth
 
             <hamburger :is-light="true"></hamburger>
         </div>
