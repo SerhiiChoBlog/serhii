@@ -16,6 +16,7 @@ class ProjectsSection extends Component
 
     public function render(): View
     {
+
         return view('components.about.projects-section');
     }
 }
