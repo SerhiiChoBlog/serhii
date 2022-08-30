@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hit;
-use App\Models\PageView;
+use App\Models\PostView;
 use App\Models\SocialShare;
 use App\Models\Subscription;
 
@@ -20,7 +20,7 @@ class DashboardController extends Controller
         return [
             [
                 'title' => 'Post views today',
-                'value' => PageView::query()
+                'value' => PostView::query()
                     ->selectRaw('DATE(created_at) as date, COUNT(*) as amount')
                     ->groupBy('date')
                     ->orderByDesc('date')

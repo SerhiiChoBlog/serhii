@@ -5,19 +5,16 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\PageView;
 use App\Models\Post;
 use App\Models\PostView;
-use Illuminate\Support\Collection;
 
 class PostViewController extends Controller
 {
-    /**
-     * @return array{unique:Collection<int, PageView>, daily:Collection<int, PageView>}
-     */
     public function index(): array
     {
-        $unique = PostView::query()
+        $unique = [];
+
+        $unique_from_db = PostView::query()
             ->selectRaw('post_id, COUNT(*) as amount')
             ->groupBy('post_id')
             ->orderByDesc('amount')
@@ -31,14 +28,16 @@ class PostViewController extends Controller
             ->limit(50)
             ->get();
 
-        $unique = $unique->map(function ($item) {
-            $item->post = Post::query()
-                ->select('id', 'title', 'image_sm')
-                ->where('id', $item->post_id)
-                ->first();
-
-            return $item;
-        });
+        foreach ($unique_from_db as $unique_item) {
+            $unique[] = [
+                'amount' => $unique_item->amount,
+                'post_id' => $unique_item->post_id,
+                'post' => Post::query()
+                    ->select('id', 'title', 'image_sm')
+                    ->where('id', $unique_item->post_id)
+                    ->first(),
+            ];
+        }
 
         return compact('unique', 'daily');
     }
