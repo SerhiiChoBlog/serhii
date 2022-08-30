@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PostView } from '../../types/models'
+import type { Post } from '../../types/models'
 import { onMounted, reactive, ref } from 'vue'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/vue'
 import axios from 'axios'
@@ -9,8 +9,8 @@ import PageTitle from '../components/PageTitle.vue'
 import Spinner from '../components/Spinner.vue'
 
 type Views = {
-    unique: PostView[] | null
-    daily: PostView[] | null
+    unique: { post_id: number, amount: number, post: Post }[] | null
+    daily: { date: string, amount:number }[] | null
 }
 
 type EchoData = {
@@ -45,7 +45,7 @@ onMounted(() => {
 })
 
 function fetchViews(): void {
-    axios.get<Views>('/admin/ajax/page-views')
+    axios.get<Views>('/admin/ajax/post-views')
         .then(resp => {
             views.unique = resp.data.unique
             views.daily = resp.data.daily
@@ -88,7 +88,7 @@ function fetchViews(): void {
                                 <thead class="bg-gray-500 text-white text-left">
                                     <tr>
                                         <th
-                                            v-for="title in ['Views', 'Post title']"
+                                            v-for="title in ['Image', 'Views', 'Post title']"
                                             class="p-3 font-light"
                                         >
                                             {{ title }}
@@ -100,14 +100,21 @@ function fetchViews(): void {
                                     <tr
                                         v-if="views.unique"
                                         v-for="view in views.unique"
-                                        :key="view.id"
+                                        :key="view.post_id"
                                         class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100 transition-colors duration-500"
                                         :class="{ '!bg-yellow-200 animate-pulse': lastNewView.post_id === view.post_id }"
                                     >
+                                        <td class="px-3 py-1">
+                                            <img
+                                                :src="'/' + view.post.image_sm"
+                                                :alt="view.post.title"
+                                                class="w-[80px] rounded-sm shadow-sm"
+                                            />
+                                        </td>
                                         <td class="px-3 py-1">{{ view.amount }}</td>
                                         <td class="px-3 py-1 flex items-center">
                                             <span class="first-letter:uppercase leading-5">
-                                                {{ view.slug.replaceAll('-', ' ') }}
+                                                {{ view.post.title }}
 
                                                 <template v-if="lastNewView.country && lastNewView.post_id === view.post_id">
                                                     <img

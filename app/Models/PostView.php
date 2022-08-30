@@ -7,6 +7,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property-read int $id
@@ -30,4 +31,9 @@ class PostView extends Model
      * @var string[]
      */
     protected $guarded = ['id'];
+
+    public function post(): BelongsTo
+    {
+        return $this->belongsTo(Post::class);
+    }
 }
