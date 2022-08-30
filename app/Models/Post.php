@@ -85,6 +85,14 @@ class Post extends Model
     }
 
     /**
+     * @return HasMany<PostView>
+     */
+    public function postViews(): HasMany
+    {
+        return $this->hasMany(PostView::class);
+    }
+
+    /**
      * @return HasOne<PostPublication>
      */
     public function postPublication(): HasOne

@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int $id
  * @property int $visitor_id
  * @property string $slug
- * @property int|null $amount
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */

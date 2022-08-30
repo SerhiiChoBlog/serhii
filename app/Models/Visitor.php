@@ -42,6 +42,14 @@ class Visitor extends Model
     }
 
     /**
+     * @return HasMany<PostView>
+     */
+    public function postViews(): HasMany
+    {
+        return $this->hasMany(PostView::class);
+    }
+
+    /**
      * @return HasMany<SocialShare>
      */
     public function socialShares(): HasMany
@@ -71,7 +79,7 @@ class Visitor extends Model
         ]);
     }
 
-    public static function incrementPageViews(string $slug, string $ip): void
+    public static function incrementPostViews(Post $post, string $ip): void
     {
         try {
             $visitor = self::getOrCreateVisitor($ip);
@@ -80,20 +88,20 @@ class Visitor extends Model
             return;
         }
 
-        $today_page_view = $visitor
-            ->pageViews()
-            ->where('slug', $slug)
+        $today_post_view = $visitor
+            ->postViews()
+            ->where('post_id', $post->id)
             ->whereDate('created_at', today())
             ->first();
 
         $exclude_ips = explode(',', config('app.hits_exclude_ips'));
 
-        if ($today_page_view || in_array($visitor->ip, $exclude_ips, true)) {
+        if ($today_post_view || in_array($visitor->ip, $exclude_ips, true)) {
             return;
         }
 
-        event(new NewPostView($slug, $visitor->code ?? 'unknown'));
+        event(new NewPostView($post->slug, $visitor->code ?? 'unknown'));
 
-        $visitor->pageViews()->create(compact('slug'));
+        $visitor->postViews()->create(['post_id' => $post->id]);
     }
 }
