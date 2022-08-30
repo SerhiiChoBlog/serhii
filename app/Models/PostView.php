@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read int $id
  * @property int $post_id
  * @property int $visitor_id
+ * @property int|null $amount
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -32,6 +33,9 @@ class PostView extends Model
      */
     protected $guarded = ['id'];
 
+    /**
+     * @return BelongsTo<Post, self>
+     */
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
