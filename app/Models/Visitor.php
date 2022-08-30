@@ -71,7 +71,7 @@ class Visitor extends Model
         ]);
     }
 
-    public static function incrementPostViews(Post $post, string $ip): void
+    public static function incrementPostViews(int $post_id, string $ip): void
     {
         try {
             $visitor = self::getOrCreateVisitor($ip);
@@ -82,7 +82,7 @@ class Visitor extends Model
 
         $today_post_view = $visitor
             ->postViews()
-            ->where('post_id', $post->id)
+            ->where('post_id', $post_id)
             ->whereDate('created_at', today())
             ->first();
 
@@ -92,8 +92,8 @@ class Visitor extends Model
             return;
         }
 
-        event(new NewPostView($post->slug, $visitor->code ?? 'unknown'));
+        event(new NewPostView($post_id, $visitor->code ?? 'unknown'));
 
-        $visitor->postViews()->create(['post_id' => $post->id]);
+        $visitor->postViews()->create(compact('post_id'));
     }
 }

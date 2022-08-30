@@ -17,7 +17,7 @@ class NewPostView implements ShouldBroadcast, ShouldBroadcastNow
     use InteractsWithSockets;
     use SerializesModels;
 
-    public function __construct(public string $slug, public string $country)
+    public function __construct(public int $post_id, public string $country)
     {
     }
 
@@ -29,7 +29,7 @@ class NewPostView implements ShouldBroadcast, ShouldBroadcastNow
     public function broadcastWith(): array
     {
         return [
-            'slug' => $this->slug,
+            'post_id' => $this->post_id,
             'country' => $this->country,
         ];
     }

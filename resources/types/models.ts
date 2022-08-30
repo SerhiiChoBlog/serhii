@@ -45,6 +45,7 @@ export type PostView = {
     post?: Post
     visitor?: Visitor
     created_at: string
+    amount?: number
     date: string | null
 }
 

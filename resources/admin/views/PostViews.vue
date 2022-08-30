@@ -14,14 +14,14 @@ type Views = {
 }
 
 type EchoData = {
-    slug: string | null
+    post_id: number | null
     country: string | null
 }
 
 const loading = ref(true)
 
 const lastNewView = reactive<EchoData>({
-    slug: null,
+    post_id: null,
     country: null,
 })
 
@@ -33,9 +33,9 @@ const views = reactive<Views>({
 onMounted(() => {
     fetchViews()
 
-    echo<EchoData>('notification', 'NewPostView', ({ slug, country }) => {
+    echo<EchoData>('notification', 'NewPostView', ({ post_id, country }) => {
         fetchViews()
-        lastNewView.slug = slug
+        lastNewView.post_id = post_id
         lastNewView.country = country
 
         new Audio('/storage/new-message.wav')
@@ -102,14 +102,14 @@ function fetchViews(): void {
                                         v-for="view in views.unique"
                                         :key="view.id"
                                         class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100 transition-colors duration-500"
-                                        :class="{ '!bg-yellow-200 animate-pulse': lastNewView.slug === view.slug }"
+                                        :class="{ '!bg-yellow-200 animate-pulse': lastNewView.post_id === view.post_id }"
                                     >
                                         <td class="px-3 py-1">{{ view.amount }}</td>
                                         <td class="px-3 py-1 flex items-center">
                                             <span class="first-letter:uppercase leading-5">
                                                 {{ view.slug.replaceAll('-', ' ') }}
 
-                                                <template v-if="lastNewView.country && lastNewView.slug === view.slug">
+                                                <template v-if="lastNewView.country && lastNewView.post_id === view.post_id">
                                                     <img
                                                         :src="`/storage/admin/flags/${lastNewView.country.toLowerCase()}.png`"
                                                         :alt="lastNewView.country"
