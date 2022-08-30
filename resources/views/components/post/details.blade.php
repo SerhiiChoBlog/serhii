@@ -9,8 +9,8 @@
 
     <span aria-hidden="true">&#8226;</span>
 
-    @if (isset($post['page_views_count']) && $post['page_views_count'] > 99)
-        <span>{{ $post['page_views_count'] }} views</span>
+    @if (isset($post['post_views_count']) && $post['post_views_count'] > 99)
+        <span>{{ $post['post_views_count'] }} views</span>
         <span aria-hidden="true">&#8226;</span>
     @endif
 

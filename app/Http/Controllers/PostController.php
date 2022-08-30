@@ -39,11 +39,11 @@ class PostController extends Controller
      */
     public function show(string $slug, Request $request): View
     {
-        /** @var Post | null */
+        /** @var Post|null $post */
         $post = Post::query()
             ->with('tags:id,color,name,title')
             ->where('slug', $slug)
-            ->withCount('pageViews')
+            ->withCount('postViews')
             ->first();
 
         abort_if(!$post || (!$post->is_published && !Auth::check()), 404);

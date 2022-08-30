@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PageView } from '../../types/models'
+import type { PostView } from '../../types/models'
 import { onMounted, reactive, ref } from 'vue'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/vue'
 import axios from 'axios'
@@ -9,8 +9,8 @@ import PageTitle from '../components/PageTitle.vue'
 import Spinner from '../components/Spinner.vue'
 
 type Views = {
-    unique: PageView[] | null
-    daily: PageView[] | null
+    unique: PostView[] | null
+    daily: PostView[] | null
 }
 
 type EchoData = {

@@ -25,12 +25,12 @@ export type Post = {
     image_sm: string
     image_lg: string
     images?: PostContentImage[]
-    pageViews?: PageView[]
+    postViews?: PostView[]
     socialShares?: SocialShare[]
     social?: string[][]
     tags?: Tag[]
     social_shares_count?: number
-    page_views_count?: number
+    post_views_count?: number
     read_time: number
     pretty_created_at: string
     created_at: string
@@ -38,13 +38,13 @@ export type Post = {
     published_at: string
 }
 
-export type PageView = {
+export type PostView = {
     id: number
     visitor_id: number
-    slug: string
-    amount: number | null
+    post_id: number
+    post?: Post
+    visitor?: Visitor
     created_at: string
-    updated_at: string
     date: string | null
 }
 
@@ -54,8 +54,8 @@ export type Visitor = {
     country: string
     city: string
     code: string
-    page_views_count: number | null
-    pageViews?: PageView[]
+    post_views_count: number | null
+    postViews?: PostView[]
     socialShares?: SocialShare[]
 }
 

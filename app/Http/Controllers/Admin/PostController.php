@@ -28,7 +28,7 @@ class PostController extends Controller
     {
         return Post::query()
             ->with(['tags', 'images'])
-            ->withCount('pageViews')
+            ->withCount('postViews')
             ->withCount('socialShares')
             ->latest()
             ->get();
