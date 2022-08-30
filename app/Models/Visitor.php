@@ -20,7 +20,7 @@ use Throwable;
  * @property string|null $city
  * @property string|null $code
  * @property Collection<SocialShare> $socialShares
- * @property Collection<PageView> $pageViews
+ * @property Collection<PostView> $postViews
  */
 class Visitor extends Model
 {
@@ -32,14 +32,6 @@ class Visitor extends Model
      * @var string[]
      */
     protected $guarded = ['id'];
-
-    /**
-     * @return HasMany<PageView>
-     */
-    public function pageViews(): HasMany
-    {
-        return $this->hasMany(PageView::class);
-    }
 
     /**
      * @return HasMany<PostView>
@@ -62,7 +54,7 @@ class Visitor extends Model
      */
     public static function getOrCreateVisitor(string $ip): Visitor
     {
-        $visitor = self::query()->with('pageViews')->where('ip', $ip)->first();
+        $visitor = self::query()->with('postViews')->where('ip', $ip)->first();
 
         if ($visitor) {
             return $visitor;

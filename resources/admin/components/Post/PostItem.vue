@@ -28,7 +28,7 @@ const { post } = defineProps<Props>()
         <td class="p-3 text-xl leading-6">{{ post.title }}</td>
         <td class="p-3 text-sm">{{ post.intro || '-' }}</td>
         <td class="p-3 text-center">{{ post.social_shares_count }}</td>
-        <td class="p-3 text-center">{{ post.page_views_count }}</td>
+        <td class="p-3 text-center">{{ post.post_views_count }}</td>
         <td class="p-3 text-center">
             <icon-button
                 icon="fa-eye"

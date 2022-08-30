@@ -22,11 +22,11 @@ use Illuminate\Support\Collection;
  * @property bool $is_published
  * @property string $image_sm
  * @property string $image_lg
- * @property Collection $images
- * @property Collection $socialShares
- * @property Collection $pageViews
- * @property Collection $tags
- * @property int|null $page_views_count
+ * @property Collection<int, PostContentImage> $images
+ * @property Collection<int, SocialShare> $socialShares
+ * @property Collection<int, PostView> $postViews
+ * @property Collection<int, Tag> $tags
+ * @property int|null $post_views_count
  * @property int|null $social_shares_count
  * @property int $read_time
  * @property array<int, array<int, string>>|null $social
@@ -74,14 +74,6 @@ class Post extends Model
     public function socialShares(): HasMany
     {
         return $this->hasMany(SocialShare::class);
-    }
-
-    /**
-     * @return HasMany<PageView>
-     */
-    public function pageViews(): HasMany
-    {
-        return $this->hasMany(PageView::class, 'slug', 'slug');
     }
 
     /**
