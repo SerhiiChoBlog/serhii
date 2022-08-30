@@ -92,7 +92,9 @@ class Visitor extends Model
             return;
         }
 
-        event(new NewPostView($post_id, $visitor->code ?? 'unknown'));
+        if (app()->environment('production')) {
+            event(new NewPostView($post_id, $visitor->code ?? 'unknown'));
+        }
 
         $visitor->postViews()->create(compact('post_id'));
     }
