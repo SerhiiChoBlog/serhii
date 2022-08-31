@@ -38,7 +38,7 @@ module.exports = {
         },
         fontFamily: {
             main: ['Main', 'arial'],
-            code: ['monospace'],
+            code: ['Code', 'monospace'],
             post: ['Post', 'sans-serif'],
         },
         keyframes: {
