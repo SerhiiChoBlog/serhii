@@ -17,6 +17,14 @@
     @import "_sweet-alert.css";
     @import "_note.css";
 
+    .scrollbar::-webkit-scrollbar {
+        @apply bg-transparent rounded-full h-1 w-2;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        @apply bg-black/30 rounded-full;
+    }
+
     .post-content,
     .project-content,
     .about-me {
