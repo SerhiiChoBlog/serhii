@@ -19,9 +19,7 @@ class HitMiddleware
         /** @var Hit|null $today_hit */
         $today_hit = Hit::query()->whereDate('created_at', today())->first();
 
-        $exclude_ips = explode(',', config('app.hits_exclude_ips'));
-
-        if (in_array($request->ip(), $exclude_ips, true) || auth()->check()) {
+        if (auth()->check()) {
             return $next($request);
         }
 

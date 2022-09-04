@@ -15,9 +15,8 @@ class SocialShareController extends Controller
     public function store(Post $post, Request $request): void
     {
         $ip = $request->ip();
-        $exclude_ips = explode(',', config('app.hits_exclude_ips'));
 
-        if (!$ip || in_array($ip, $exclude_ips, true)) {
+        if (!$ip || auth()->check()) {
             return;
         }
 
