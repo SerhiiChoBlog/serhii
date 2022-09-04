@@ -21,7 +21,7 @@ class HitMiddleware
 
         $exclude_ips = explode(',', config('app.hits_exclude_ips'));
 
-        if (in_array($request->ip(), $exclude_ips, true)) {
+        if (in_array($request->ip(), $exclude_ips, true) || auth()->check()) {
             return $next($request);
         }
 
