@@ -86,9 +86,7 @@ class Visitor extends Model
             ->whereDate('created_at', today())
             ->first();
 
-        $exclude_ips = explode(',', config('app.hits_exclude_ips'));
-
-        if ($today_post_view || in_array($visitor->ip, $exclude_ips, true)) {
+        if ($today_post_view || auth()->check()) {
             return;
         }
 
