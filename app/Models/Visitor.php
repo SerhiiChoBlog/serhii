@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 use Stevebauman\Location\Location;
+use Stevebauman\Location\Position;
 use Throwable;
 
 /**
@@ -58,6 +59,8 @@ class Visitor extends Model
 
         try {
             $location = app(Location::class);
+
+            /** @var Position $position */
             $position = $location->get($ip);
         } catch (Throwable $e) {
             logger()->warning($e);
