@@ -54,20 +54,19 @@ class Visitor extends Model
      */
     public static function getOrCreateVisitor(string $ip): Visitor
     {
-        $visitor = self::query()->with('postViews')->where('ip', $ip)->first();
+        $position = null;
 
-        if ($visitor) {
-            return $visitor;
+        try {
+            $location = app(Location::class);
+            $position = $location->get($ip);
+        } catch (Throwable $e) {
+            logger()->warning($e);
         }
 
-        $location = app(Location::class);
-        $position = $location->get($ip);
-
-        return self::query()->create([
-            'ip' => $ip,
-            'country' => $position->countryName ?? null,
-            'city' => $position->cityName ?? null,
-            'code' => $position->countryCode ?? null,
+        return self::query()->with('postViews')->firstOrCreate(compact('ip'), [
+            'country' => $position?->countryName,
+            'city' => $position?->cityName,
+            'code' => $position?->countryCode,
         ]);
     }
 
