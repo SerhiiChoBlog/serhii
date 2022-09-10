@@ -169,7 +169,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                 Save
                             </main-button>
 
-                            <main-button :href="`/posts/${post.slug}`">
+                            <main-button :href="`/posts/${post.slug}`" target="_blank">
                                 <i class="fas fa-eye mr-2"></i>
                                 Preview
                             </main-button>
