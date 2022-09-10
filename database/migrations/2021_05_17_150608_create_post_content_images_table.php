@@ -12,7 +12,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedSmallInteger('post_id');
             $table->foreign('post_id')->references('id')->on('posts')->cascadeOnDelete();
-            $table->string('alt');
             $table->string('uri');
             $table->string('path');
         });
