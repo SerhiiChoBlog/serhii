@@ -118,4 +118,6 @@
             <x-about.projects-section/>
         </x-about.section>
     </div>
+
+    <subscription></subscription>
 @endsection

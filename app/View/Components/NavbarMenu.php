@@ -37,6 +37,11 @@ class NavbarMenu extends Component
                 'class' => request()->is('about-me') ? $active_class : '',
                 'title' => 'About',
             ],
+            [
+                'href' => route('subscribe'),
+                'class' => request()->is('subscribe') ? $active_class : '',
+                'title' => 'Subscribe',
+            ],
         ];
     }
 }
