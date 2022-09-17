@@ -30,6 +30,8 @@ Route::middleware('hits')->group(function () {
         Route::get('{project:name}', 'show')->name('projects.show');
     });
 
+    Route::view('subscribe', 'subscribe')->name('subscribe');
+
     Route::prefix('subscriptions')->controller(SubscriptionController::class)->group(function () {
         Route::get('confirm/{slug}', 'confirm')->name('subscriptions.confirm');
         Route::get('decline/{slug}', 'decline')->name('subscriptions.decline');
