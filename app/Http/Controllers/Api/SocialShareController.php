@@ -27,6 +27,11 @@ class SocialShareController extends Controller
             return;
         }
 
+
+        if (!$visitor) {
+            return;
+        }
+
         $has_old_record = $post->socialShares()
             ->where('visitor_id', $visitor->id)
             ->where('social', $request->get('social'))
