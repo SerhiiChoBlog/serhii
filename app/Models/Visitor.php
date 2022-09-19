@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
+use PDOException;
 use Stevebauman\Location\Location;
 use Stevebauman\Location\Position;
 use Throwable;
@@ -66,11 +67,15 @@ class Visitor extends Model
             logger()->warning($e);
         }
 
-        return self::query()->with('postViews')->firstOrCreate(compact('ip'), [
-            'country' => $position?->countryName,
-            'city' => $position?->cityName,
-            'code' => $position?->countryCode,
-        ]);
+        try {
+            return self::query()->with('postViews')->firstOrCreate(compact('ip'), [
+                'country' => $position?->countryName,
+                'city' => $position?->cityName,
+                'code' => $position?->countryCode,
+            ]);
+        } catch (PDOException $e) {
+            return self::query()->with('postViews')->where('ip', $ip)->first();
+        }
     }
 
     public static function incrementPostViews(int $post_id, string $ip): void
