@@ -5,11 +5,12 @@ import showToast from '../modules/showToast'
 import Tip from '../components/Tip.vue'
 
 interface Props {
+    isAuth: boolean
     postTitle: string
     postId: number
 }
 
-const { postTitle, postId } = defineProps<Props>()
+const { postTitle, postId, isAuth } = defineProps<Props>()
 const url = window.location.href
 const links = [
     {
@@ -53,6 +54,10 @@ const links = [
 ]
 
 function saveShare(social: string): void {
+    if (isAuth) {
+        return
+    }
+
     axios.post(`/api/social-shares/${postId}`, { social })
         .catch(err => console.error(err))
 }

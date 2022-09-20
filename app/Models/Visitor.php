@@ -87,6 +87,10 @@ class Visitor extends Model
             return;
         }
 
+        if (!$visitor) {
+            return;
+        }
+
         $today_post_view = $visitor
             ->postViews()
             ->where('post_id', $post_id)
