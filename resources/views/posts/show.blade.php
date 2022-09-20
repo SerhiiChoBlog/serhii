@@ -119,7 +119,11 @@
                     <div class="hidden lg:block">
                         <nav class="min-h-[83px]">
                             <x-post.sidebar-title>Share this post</x-post.sidebar-title>
-                            <share-post-buttons post-title="{{ $post->title }}" :post-id="{{ $post->id }}" />
+                            <share-post-buttons
+                                :is-auth="{{ auth()->check() ? 'true' : 'false' }}"
+                                post-title="{{ $post->title }}"
+                                :post-id="{{ $post->id }}"
+                            />
                         </nav>
                     </div>
 
