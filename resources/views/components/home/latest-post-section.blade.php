@@ -3,7 +3,7 @@
 @endphp
 
 @if ($post)
-    <article class="mx-auto">
+    <article class="mx-auto px-4">
         <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
             <div class="relative">
                 <x-image-label>New</x-image-label>
