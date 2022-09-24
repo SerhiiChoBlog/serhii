@@ -21,7 +21,7 @@
                         <img
                             data-src="{{ $post['image_sm'] }}"
                             alt="Main image for the post '{{ $post['title'] }}'"
-                            class="rounded-lg shadow-lg w-full max-w-[400px]"
+                            class="rounded-lg shadow-lg w-full min-w-[350px] max-w-[400px]"
                             width="331"
                             height="180"
                         >
@@ -57,7 +57,7 @@
                     </div>
 
                     @if (count($posts) > 1)
-                        <div class="border-4 border-dotted border-border w-24 aspect-square rounded-full flex items-center justify-center">
+                        <div class="hidden xl:flex border-4 border-dotted border-border w-24 aspect-square rounded-full flex items-center justify-center">
                             <span class="text-4xl font-post text-font-second">{{ $loop->iteration }}</span>
                         </div>
                     @endif
