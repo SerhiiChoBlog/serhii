@@ -65,7 +65,7 @@
         <x-home.random-posts-section />
     </x-home.section>
 
-    <x-home.section title="Coming soon" intro="The article which I'm currently working on" isDark="true">
+    <x-home.section title="Coming soon" intro="The articles which I'm currently working on" isDark="true">
         <x-home.coming-soon-section />
     </x-home.section>
 
