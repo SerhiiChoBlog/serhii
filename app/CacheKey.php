@@ -7,5 +7,5 @@ namespace App;
 abstract class CacheKey
 {
     public const PROJECTS = 'projects';
-    public const LAST_POST = 'last-post';
+    public const LAST_POSTS = 'last-posts';
 }

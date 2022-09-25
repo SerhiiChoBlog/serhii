@@ -90,7 +90,7 @@ class PostController extends Controller
         $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
 
         if ($post->is_published || $is_published) {
-            Cache::forget(CacheKey::LAST_POST);
+            Cache::forget(CacheKey::LAST_POSTS);
         }
 
         if (!$post->is_published && $is_published) {
@@ -125,7 +125,7 @@ class PostController extends Controller
         });
 
         if ($post->is_published) {
-            Cache::forget(CacheKey::LAST_POST);
+            Cache::forget(CacheKey::LAST_POSTS);
         }
 
         $post->images()->delete();
