@@ -10,22 +10,23 @@ use Illuminate\View\Component;
 
 class LatestPostSection extends Component
 {
-    public ?array $post;
+    public array $posts;
 
     public function __construct()
     {
-        $this->post = $this->getPost();
+        $this->posts = $this->getPosts();
     }
 
-    public function getPost(): ?array
+    public function getPosts(): ?array
     {
-        return Cache::rememberForever(CacheKey::LAST_POST, static function () {
+        return Cache::rememberForever(CacheKey::LAST_POSTS, static function () {
             return Post::query()
                 ->with('tags:name,color,title')
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
                 ->where('is_published', true)
-                ->latest()
-                ->first()
+                ->orderByDesc('created_at')
+                ->limit(2)
+                ->get()
                 ?->toArray();
         });
     }
