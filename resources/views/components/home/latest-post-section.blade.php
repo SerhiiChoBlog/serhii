@@ -2,9 +2,9 @@
     /** @var array $posts */
 @endphp
 
-<div>
+<div class="divide-y">
     @foreach($posts as $post)
-        <article class="mx-auto px-4">
+        <article class="px-4 mx-auto pt-8 pb-5">
             <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
                 <div class="relative">
                     <x-image-label>New</x-image-label>
@@ -13,7 +13,7 @@
                         <img
                             data-src="{{ $post['image_sm'] }}"
                             alt="Main image for the post '{{ $post['title'] }}'"
-                            class="rounded-lg shadow-lg w-full"
+                            class="rounded-lg shadow-lg w-full min-w-[350px] max-w-[400px]"
                             width="331"
                             height="180"
                         >
