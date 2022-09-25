@@ -57,7 +57,7 @@
         </div>
     </x-home.section>
 
-    <x-home.section title="Latest article" intro="The latest published post in the blog" isDark="true">
+    <x-home.section title="Latest articles" intro="The latest published posts in the blog" isDark="true">
         <x-home.latest-post-section />
     </x-home.section>
 
