@@ -34,7 +34,7 @@ Confirm subscription
 
 @slot('footer')
 @component('mail::footer')
-<p>Add color to your workdays by following this blog</p>
+<p>Add color to your workdays</p>
 @endcomponent
 @endslot
 
