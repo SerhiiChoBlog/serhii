@@ -14,13 +14,13 @@
                     <span class="text-main drop-shadow-md">CHO</span>
                 </h1>
 
-                <h2 class="text-white text-md lg:text-2xl mt-2 mx-4 leading-5">
-                    Add color to your workdays by following this blog
+                <h2 class="text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md">
+                    Push yourself to the edge of your ability
                 </h2>
 
-                <div class="min-h-[44px] lg:min-h-[60px]">
-                    <search></search>
-                </div>
+                <search>
+                    <div class="min-h-[44px] lg:min-h-[60px]"></div>
+                </search>
 
                 <x-home.tag-suggestions />
                 <x-home.read-blog-button />
