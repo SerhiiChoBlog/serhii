@@ -1,5 +1,8 @@
-@extends('errors::minimal')
+@extends('layouts.app')
 
-@section('title', __('Unauthorized'))
-@section('code', '401')
-@section('message', __('Unauthorized'))
+@section('content')
+    <x-error-page
+        header="Looks like you unauthorized"
+        :code="401"
+    />
+@endsection
