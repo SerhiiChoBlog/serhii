@@ -21,6 +21,7 @@ class ErrorPage extends Component
     {
         return view('components.error-page', [
             'posts' => $this->getPosts(),
+            'links' => $this->getLinks(),
         ]);
     }
 
@@ -28,12 +29,20 @@ class ErrorPage extends Component
     {
         return Cache::remember(CacheKey::RANDOM_POSTS, Ttl::HOUR, static function () {
             return Post::query()
-                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
+                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'read_time')
                 ->where('is_published', true)
                 ->limit(3)
                 ->inRandomOrder()
                 ->get()
                 ->toArray();
         });
+    }
+
+    private function getLinks(): array
+    {
+        return [
+            'Go home' => route('home'),
+            'Blog' => route('posts.index'),
+        ];
     }
 }
