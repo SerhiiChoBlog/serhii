@@ -11,4 +11,6 @@
             </tip>
         </a>
     @endforeach
+
+    {{ $slot }}
 </div>

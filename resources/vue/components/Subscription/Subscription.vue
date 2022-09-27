@@ -46,7 +46,7 @@ function subscribe(): void {
     <appear-transition>
         <footer :class="{ 'bg-gradient-to-r from-gray-800 to-gray-700': !removeBg }">
             <div class="container grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20  text-white px-8 py-14 lg:py-24 relative z-10">
-                <form @submit.prevent="subscribe" class="max-w-[480px] w-full mx-auto">
+                <form @submit.prevent="subscribe" class="max-w-[500px] w-full mx-auto">
                     <label
                         for="subscription"
                         class="block mb-4 text-lg lg:text-2xl text-center drop-shadow-md"

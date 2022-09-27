@@ -19,7 +19,7 @@ class ComingSoonSection extends Component
     {
         return Post::query()
             ->with('tags:name,color,title')
-            ->select('id', 'title', 'intro', 'image_sm', 'updated_at')
+            ->select('id', 'title', 'intro', 'image_sm', 'slug', 'updated_at')
             ->where('is_published', false)
             ->latest('updated_at')
             ->get()

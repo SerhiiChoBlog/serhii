@@ -115,15 +115,13 @@ class Post extends Model
      */
     protected function prettyCreatedAt(): Attribute
     {
-        $get = function (): string {
+        return Attribute::get(function (): string {
             if ($this->created_at === null) {
                 return '';
             }
 
             return $this->created_at->format('F j, Y');
-        };
-
-        return new Attribute($get);
+        });
     }
 
     public static function calculateEstimatedReadingTime(string $content, int $wpm = 180): int
