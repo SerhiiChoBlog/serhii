@@ -19,6 +19,7 @@ class LatestPostSection extends Component
 
     public function getPosts(): ?array
     {
+        Cache::forget(CacheKey::LAST_POSTS);
         return Cache::rememberForever(CacheKey::LAST_POSTS, static function () {
             return Post::query()
                 ->with('tags:name,color,title')

@@ -12,10 +12,8 @@
     <div class="divide-y">
         @foreach($posts as $post)
             <article class="px-4 mx-auto pt-8 pb-5">
-                <div
-                    class="flex flex-col md:flex-row gap-7 justify-between items-center"
-                >
-                    <div class="relative">
+                <div class="flex flex-col md:flex-row gap-7 justify-between items-center">
+                    <a href="{{ route('posts.show', $post['slug']) }}" class="relative">
                         <x-image-label>In progress</x-image-label>
 
                         <img
@@ -25,27 +23,32 @@
                             width="331"
                             height="180"
                         >
-                    </div>
+                    </a>
 
                     <div class="flex flex-col gap-y-2">
-                        <h2 class="text-lg lg:text-2xl font-bold">
-                            {{ $post['title'] }}
+                        <a
+                            href="{{ route('posts.show', $post['slug']) }}"
+                            class="flex flex-col gap-y-2"
+                        >
+                            <h2 class="text-lg lg:text-2xl font-bold">
+                                {{ $post['title'] }}
+                            </h2>
 
+                            <p class="text-md lg:text-lg font-post">
+                                {{ $post['intro'] }}
+                            </p>
+                        </a>
+
+                        <x-post.tags :tags="$post['tags']" class="text-sm md:text-md mt-2 !gap-2">
                             @if (auth()->check())
                                 <a
                                     href="/admin/posts/{{ $post['id'] }}/edit"
-                                    class="px-3 ml-1 tracking-wider border border-font-second border-dashed rounded-full transition-opacity hover:opacity-80 py-1 uppercase text-xs"
+                                    class="px-3 leading-[1.5] py-0.5 tracking-wider border border-font-second border-dashed rounded-full transition-opacity hover:opacity-80 uppercase text-xs"
                                 >
                                     Edit
                                 </a>
                             @endif
-                        </h2>
-
-                        <p class="text-md lg:text-lg font-post">
-                            {{ $post['intro'] }}
-                        </p>
-
-                        <x-post.tags :tags="$post['tags']" class="text-sm md:text-md mt-2 !gap-2" />
+                        </x-post.tags>
 
                         <div class="opacity-70 flex items-center gap-2">
                             <span>Last update on the post:</span>

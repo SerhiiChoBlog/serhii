@@ -12,7 +12,6 @@ use HttpException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -46,7 +45,9 @@ class PostController extends Controller
             ->withCount('postViews')
             ->first();
 
-        abort_if(!$post || (!$post->is_published && !Auth::check()), 404);
+        if (!$post) {
+            abort(404, 'Post not found');
+        }
 
         /** @var int<0, 190> $title_len */
         $title_len = strlen($post->title);

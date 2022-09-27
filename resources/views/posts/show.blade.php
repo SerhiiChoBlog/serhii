@@ -82,12 +82,18 @@
         <div class="container pb-6">
             <div class="grid w-full grid-cols-1 lg:grid-cols-[repeat(auto-fit,minmax(320px,auto))] gap-x-7 pt-10 mx-auto max-w-[1230px] bg-page lg:-translate-y-8 lg:px-8 rounded-xl">
                 <div>
-                    <div class="post-content lg:prose-xl pr-2 lg:px-6"
-                        id="post-content"
-                        v-pre
-                    >{!! $post->content !!}</div>
+                    @published ($post)
+                        <div class="post-content lg:prose-xl pr-2 lg:px-6"
+                            id="post-content"
+                            v-pre
+                        >
+                            {!! $post->content !!}
+                        </div>
 
-                    <x-post.footer :post="$post" />
+                        <x-post.footer :post="$post" />
+                    @else
+                        <x-post.post-is-in-process />
+                    @endpublished
 
                     {{-- Other posts --}}
                     <nav role="navigation">
@@ -108,27 +114,29 @@
                                         height="141"
                                     />
 
-                                    <h2 class="text-lg leading-6 my-3">{{ $other_post->title }}</h2>
+                                    <h2 class="text-xl leading-6 my-3">{{ $other_post->title }}</h2>
                                 </a>
                             @endforeach
                         </div>
                     </nav>
                 </div>
 
-                <div class="spacey-y-0 lg:space-y-12 px-3 h-full max-w-[320px] pt-0 2xl:pt-20">
-                    <div class="hidden lg:block">
-                        <nav class="min-h-[83px]">
-                            <x-post.sidebar-title>Share this post</x-post.sidebar-title>
-                            <share-post-buttons
-                                :is-auth="{{ auth()->check() ? 'true' : 'false' }}"
-                                post-title="{{ $post->title }}"
-                                :post-id="{{ $post->id }}"
-                            />
-                        </nav>
-                    </div>
+                @published ($post)
+                    <div class="spacey-y-0 lg:space-y-12 px-3 h-full max-w-[320px] pt-0 2xl:pt-20">
+                        <div class="hidden lg:block">
+                            <nav class="min-h-[83px]">
+                                <x-post.sidebar-title>Share this post</x-post.sidebar-title>
+                                <share-post-buttons
+                                    :is-auth="{{ auth()->check() ? 'true' : 'false' }}"
+                                    post-title="{{ $post->title }}"
+                                    :post-id="{{ $post->id }}"
+                                />
+                            </nav>
+                        </div>
 
-                    <chapters slug="{{ $post->slug }}" />
-                </div>
+                        <chapters slug="{{ $post->slug }}" />
+                    </div>
+                @endpublished
             </div>
         </div>
     </article>
