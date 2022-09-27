@@ -17,7 +17,7 @@ class LatestPostSection extends Component
         $this->posts = $this->getPosts();
     }
 
-    public function getPosts(): ?array
+    public function getPosts(): array
     {
         return Cache::rememberForever(CacheKey::LAST_POSTS, static function () {
             return Post::query()
@@ -27,7 +27,7 @@ class LatestPostSection extends Component
                 ->orderByDesc('created_at')
                 ->limit(2)
                 ->get()
-                ?->toArray();
+                ->toArray();
         });
     }
 

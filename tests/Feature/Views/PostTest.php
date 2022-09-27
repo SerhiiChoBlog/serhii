@@ -35,10 +35,10 @@ class PostTest extends TestCase
             ->assertViewIs('posts.show');
     }
 
-    public function test_user_cant_see_the_post_if_its_not_published(): void
+    public function test_user_can_see_the_post_if_its_not_published(): void
     {
         $post = Post::factory()->create();
-        $this->get(route('posts.show', $post))->assertNotFound();
+        $this->get(route('posts.show', $post))->assertSuccessful();
     }
 
     public function test_admin_can_see_the_post_if_its_not_published(): void
