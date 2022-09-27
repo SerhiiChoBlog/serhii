@@ -2,7 +2,11 @@
 
 namespace App\View\Components;
 
+use App\CacheKey;
+use App\Models\Post;
+use App\Ttl;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\Component;
 
 class ErrorPage extends Component
@@ -15,6 +19,21 @@ class ErrorPage extends Component
 
     public function render(): View
     {
-        return view('components.error-page');
+        return view('components.error-page', [
+            'posts' => $this->getPosts(),
+        ]);
+    }
+
+    private function getPosts(): array
+    {
+        return Cache::remember(CacheKey::RANDOM_POSTS, Ttl::HOUR, static function () {
+            return Post::query()
+                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
+                ->where('is_published', true)
+                ->limit(3)
+                ->inRandomOrder()
+                ->get()
+                ->toArray();
+        });
     }
 }
