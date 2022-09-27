@@ -1,5 +1,8 @@
-@extends('errors::minimal')
+@extends('layouts.app')
 
-@section('title', __('Forbidden'))
-@section('code', '403')
-@section('message', __($exception->getMessage() ?: 'Forbidden'))
+@section('content')
+    <x-error-page
+        :header="__($exception->getMessage() ?: 'Forbidden')"
+        :code="403"
+    />
+@endsection

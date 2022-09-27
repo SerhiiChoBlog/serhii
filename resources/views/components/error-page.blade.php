@@ -1,3 +1,6 @@
+@push('title', "$code | Serhii Cho")
+@push('description', $header)
+
 <div class="bg-gradient-to-t from-[#593468] to-[#423263] text-white h-screen">
     <x-hero class="bg-transparent text-white" />
 

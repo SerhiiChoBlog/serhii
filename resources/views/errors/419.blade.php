@@ -1,5 +1,8 @@
-@extends('errors::minimal')
+@extends('layouts.app')
 
-@section('title', __('Page Expired'))
-@section('code', '419')
-@section('message', __('Page Expired'))
+@section('content')
+    <x-error-page
+        header="Looks like, this page has expired"
+        :code="419"
+    />
+@endsection
