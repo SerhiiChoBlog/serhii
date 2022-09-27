@@ -2,7 +2,7 @@
     /** @var array $posts */
 @endphp
 
-<div class="divide-y">
+<div class="divide-y divide-border">
     @foreach($posts as $post)
         <article class="px-4 mx-auto pt-8 pb-5">
             <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
