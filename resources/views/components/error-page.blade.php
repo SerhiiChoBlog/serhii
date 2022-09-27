@@ -9,7 +9,6 @@
 
         <h2 class="flex flex-col text-2xl gap-2 font-post">
             <span>{{ $header }}</span>
-            <span>Maybe you will be interested in posts below?</span>
         </h2>
 
         <div>
