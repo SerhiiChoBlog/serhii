@@ -11,16 +11,16 @@
 
 <div class="bg-gradient-to-t from-[#593468] to-[#423263] text-white min-h-screen">
     <div class="container py-8">
-        <div class="flex gap-10 items-center justify-center">
-            <h1 class="text-[10rem] font-main font-black leading-[120%]">
+        <div class="flex flex-col lg:flex-row gap-4 lg:gap-10 items-center justify-center">
+            <h1 class="text-8xl md:text-[10rem] font-main font-black leading-[120%]">
                 {{ $code }}
             </h1>
 
-            <h2 class="flex flex-col text-2xl font-post">
+            <h2 class="flex flex-col text-md md:text-xl lg:text-2xl font-post">
                 <span>{{ $header }}</span>
                 <span>How about posts below?</span>
 
-                <div class="mt-3 flex gap-4">
+                <div class="flex gap-4 mt-8 lg:mt-3 justify-center lg:justify-start">
                     @foreach($links as $title => $link)
                         <a
                             href="{{ $link }}"
@@ -33,16 +33,12 @@
             </h2>
         </div>
 
-        <div class="flex gap-4 mt-10">
+        <div class="flex flex-col lg:flex-row gap-4 mt-7">
             @foreach($posts as $post)
                 <a
                     href="{{ route('posts.show', $post['slug']) }}"
-                    class="border border-transparent transition-colors hover:border-white/30 p-4 rounded-lg"
+                    class="flex shadow-xl hover:shadow-purple-800 duration-300 opacity-90 hover:opacity-100 flex-col justify-between bg-black/20 max-w-md mx-auto transition-all p-5 rounded-xl"
                 >
-                    <span class="block mb-1 tracking-wide">
-                        {{ $post['read_time'] }} minutes read
-                    </span>
-
                     <article class="space-y-4">
                         <img
                             src="{{ asset($post['image_sm']) }}"
@@ -50,12 +46,16 @@
                             class="rounded-lg shadow-lg"
                         />
 
-                        <h2 class="text-xl">
+                        <h2 class="text-xl font-black font-main">
                             {{ $post['title'] }}
                         </h2>
 
-                        <p class="text-lg">{{ $post['intro'] }}</p>
+                        <p class="text-lg font-post">{{ $post['intro'] }}</p>
                     </article>
+
+                    <span class="block text-right font-second tracking-wide">
+                        {{ $post['read_time'] }} minutes read
+                    </span>
                 </a>
             @endforeach
         </div>
