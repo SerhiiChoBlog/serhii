@@ -8,14 +8,14 @@ use Illuminate\View\Component;
 
 class ComingSoonSection extends Component
 {
-    public ?array $posts;
+    public array $posts;
 
     public function __construct()
     {
         $this->posts = $this->getPosts();
     }
 
-    public function getPosts(): ?array
+    public function getPosts(): array
     {
         return Post::query()
             ->with('tags:name,color,title')
@@ -23,7 +23,7 @@ class ComingSoonSection extends Component
             ->where('is_published', false)
             ->latest('updated_at')
             ->get()
-            ?->toArray();
+            ->toArray();
     }
 
     public function render(): View
