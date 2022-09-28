@@ -84,8 +84,8 @@ class PostController extends Controller
         $slug = Str::slug($request->get('title'));
         $data = array_merge($data, compact('slug'));
 
-        $data['title'] = trim($data['title']);
-        $data['intro'] = trim($data['intro']);
+        $data['title'] = trim($data['title'] ?? '');
+        $data['intro'] = trim($data['intro'] ?? '');
         $data['content'] = $this->addNotesToContent($data['content']);
         $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
 
