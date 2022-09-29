@@ -7,7 +7,7 @@
      */
 @endphp
 
-<article>
+<article {{ $attributes->class([]) }}>
     <div
         class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl max-w-[550px] lg:max-w-full mx-auto transition-colors hover:bg-page-second">
         <a href="/posts/{{ $post->slug ?? $post['slug'] }}" class="block w-full max-w-max lg:max-w-[300px]">

@@ -23,7 +23,7 @@ class RandomPostsSection extends Component
             ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
             ->whereNotIn('id', array_column($last_posts, 'id'))
             ->where('is_published', true)
-            ->limit(4)
+            ->limit(5)
             ->inRandomOrder()
             ->get();
     }
