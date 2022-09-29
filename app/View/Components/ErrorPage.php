@@ -27,7 +27,7 @@ class ErrorPage extends Component
 
     private function getPosts(): array
     {
-        return Cache::remember(CacheKey::RANDOM_POSTS, Ttl::HOUR, static function () {
+        return Cache::remember(CacheKey::ERROR_RANDOM_POSTS, Ttl::HOUR, static function () {
             return Post::query()
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'read_time')
                 ->where('is_published', true)

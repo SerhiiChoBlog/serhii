@@ -91,6 +91,7 @@ class PostController extends Controller
 
         if ($post->is_published || $is_published) {
             Cache::forget(CacheKey::LAST_POSTS);
+            Cache::forget(CacheKey::HOME_RANDOM_POSTS);
         }
 
         if (!$post->is_published && $is_published) {
@@ -126,6 +127,7 @@ class PostController extends Controller
 
         if ($post->is_published) {
             Cache::forget(CacheKey::LAST_POSTS);
+            Cache::forget(CacheKey::HOME_RANDOM_POSTS);
         }
 
         $post->images()->delete();

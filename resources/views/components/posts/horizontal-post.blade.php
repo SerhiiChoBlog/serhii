@@ -1,13 +1,15 @@
 @php
     use App\Models\Post;
+    use Illuminate\View\ComponentAttributeBag;
 
     /**
      * @var array{id: int, slug: string, title: string, intro: string, image_sm: string, tags: array}|Post $post
      * @var bool $lazy
+     * @var ComponentAttributeBag $attributes
      */
 @endphp
 
-<article {{ $attributes->class([]) }}>
+<article class="{{ $attributes->getAttributes()['class'] ?? '' }}">
     <div
         class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl max-w-[550px] lg:max-w-full mx-auto transition-colors hover:bg-page-second">
         <a href="/posts/{{ $post->slug ?? $post['slug'] }}" class="block w-full max-w-max lg:max-w-[300px]">
