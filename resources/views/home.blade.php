@@ -14,7 +14,7 @@
                     <span class="text-main drop-shadow-md">CHO</span>
                 </h1>
 
-                <h2 class="text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md">
+                <h2 class="font-post text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md">
                     Push yourself to the edge of your ability
                 </h2>
 
