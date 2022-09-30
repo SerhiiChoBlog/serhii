@@ -133,6 +133,8 @@ class PostController extends Controller
         $post->images()->delete();
         $post->tags()->detach();
         $post->postViews()->delete();
+        $post->socialShares();
+        $post->postPublication()->delete();
         $post->delete();
     }
 }
