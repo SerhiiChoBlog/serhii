@@ -64,7 +64,7 @@ function saveShare(social: string): void {
 </script>
 
 <template>
-    <div class="flex gap-x-2 lg:gap-x-3">
+    <div class="flex gap-x-2 lg:gap-x-3 print:hidden">
         <a
             v-for="link in links"
             :key="link.title"
