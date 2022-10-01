@@ -160,7 +160,7 @@ function handleChapterClick(): void {
 <template>
     <button
         v-if="currentChapter"
-        class="flex lg:hidden items-center shadow-md gap-x-1 justify-center fixed border border-border top-0 bg-page w-full py-1 px-4 z-40 left-1/2 -translate-x-1/2"
+        class="flex print:hidden lg:hidden items-center shadow-md gap-x-1 justify-center fixed border border-border top-0 bg-page w-full py-1 px-4 z-40 left-1/2 -translate-x-1/2"
         @click="showChapters = !showChapters"
     >
         <chevron-up-icon v-if="showChapters" class="w-6 h-6 inline-block" />
@@ -171,7 +171,7 @@ function handleChapterClick(): void {
     <slide-up-transition>
         <div
             v-if="showChapters"
-            class="h-[98%] lg:h-full fixed lg:static w-full max-w-md left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 border border-border lg:border-none top-[3%] lg:top-0 bottom-[3%] p-4 lg:p-0 rounded-2xl shadow-xl lg:shadow-none lg:relative z-30"
+            class="h-[98%] print:hidden lg:h-full fixed lg:static w-full max-w-md left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 border border-border lg:border-none top-[3%] lg:top-0 bottom-[3%] p-4 lg:p-0 rounded-2xl shadow-xl lg:shadow-none lg:relative z-30"
         >
             <nav class="sticky h-screen overflow-y-scroll scrollbar pr-2 top-3 lg:top-12 mt-7 text-center lg:text-left">
                 <div class="mb-5">

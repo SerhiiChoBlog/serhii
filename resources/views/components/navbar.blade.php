@@ -5,7 +5,7 @@
                 <a
                     tabindex="1"
                     href="{{ route('home') }}"
-                    class="text-lg font-bold transition-opacity hover:opacity-80 text-lato drop-shadow-[1px_1px_0_rgba(0,0,0,.4)]"
+                    class="print:hidden text-lg font-bold transition-opacity hover:opacity-80 text-lato drop-shadow-[1px_1px_0_rgba(0,0,0,.4)]"
                     aria-label="Visit main page"
                 >
                     <div class="tracking-wide">
