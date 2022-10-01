@@ -36,7 +36,7 @@
 }
 
 .post-content blockquote::after {
-    @apply content-none sm:content-[''] border-r-[20px] border-r-page-second border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent block absolute top-1/2 left-[-15px] w-0 h-0 -translate-y-1/2;
+    @apply content-none sm:content-[''] print:hidden border-r-[20px] border-r-page-second border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent block absolute top-1/2 left-[-15px] w-0 h-0 -translate-y-1/2;
 }
 
 .post-content blockquote p::after,
