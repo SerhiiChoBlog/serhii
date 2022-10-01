@@ -1,4 +1,4 @@
-<div class="flex gap-1 flex-wrap {{ $attributes->get('class') }}">
+<div class="flex print:justify-center gap-1 flex-wrap {{ $attributes->get('class') }}">
     @foreach ($tags as $tag)
         <a
             href="/posts?tag={{ $tag['name'] }}"

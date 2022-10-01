@@ -38,7 +38,7 @@
 
 @section('content')
     <article>
-        <div class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white">
+        <div class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white print:bg-none print:text-black">
             <x-navbar />
 
             <div class="py-[2rem] px-[1.5rem] lg:py-[6rem] lg:px-[1.5rem] container">
@@ -80,7 +80,7 @@
         </div>
 
         <div class="container pb-6">
-            <div class="grid w-full grid-cols-1 lg:grid-cols-[repeat(auto-fit,minmax(320px,auto))] gap-x-7 pt-10 mx-auto max-w-[1230px] bg-page lg:-translate-y-8 lg:px-8 rounded-xl">
+            <div class="grid w-full grid-cols-1 lg:grid-cols-[repeat(auto-fit,minmax(320px,auto))] gap-x-7 pt-10 print:pt-0 mx-auto max-w-[1230px] bg-page lg:-translate-y-8 lg:px-8 rounded-xl">
                 <div>
                     @published ($post)
                         <div class="post-content lg:prose-xl pr-2 lg:px-6"
@@ -96,7 +96,7 @@
                     @endpublished
 
                     {{-- Other posts --}}
-                    <nav role="navigation">
+                    <nav role="navigation" class="print:hidden">
                         <x-post.sidebar-title>Other posts</x-post.sidebar-title>
 
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">

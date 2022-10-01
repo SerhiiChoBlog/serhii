@@ -2,7 +2,7 @@
     /** @var array $post */
 @endphp
 
-<div class="opacity-70 flex items-center gap-2 {{ $attributes->get('class') }}">
+<div class="opacity-70 flex print:justify-center items-center gap-2 {{ $attributes->get('class') }}">
     <time datetime="{{ $post['created_at'] }}">
         {{ $post['pretty_created_at'] }}
     </time>
