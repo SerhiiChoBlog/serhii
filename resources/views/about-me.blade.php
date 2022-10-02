@@ -8,11 +8,7 @@
         title="Serhii Chornenkyi"
         subtitle="Serhii Cho is a Ukrainian web developer and blogger who is writing about<br />enhancing your knowledge in creating fast and robust web apps"
         class="bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1] text-white print:bg-none print:text-black"
-    >
-        <div class="text-center">
-            <x-print-button class="mt-7" />
-        </div>
-    </x-hero>
+    />
 
     <div class="mt-2 text-xl">
         <section class="about-me prose-xl text-[1.2rem] px-2 lg:px-6 py-8 prose-h2:mb-6 prose-h2:mt-0">
@@ -20,8 +16,18 @@
                 <div class="bg-page -translate-y-16 rounded-xl pt-8">
                     <div class="grid grid-cols-1 gap-x-6 lg:grid-cols-[25%_1fr]">
                         <div class="relative">
-                            <div class="w-[250px] h-[250px] mx-auto rounded-lg shadow-lg sticky top-20 mb-6">
-                                <avatar />
+                            <div class="w-[250px] mx-auto rounded-lg sticky top-20 mb-6">
+                                <img
+                                    src="/storage/serhii-cho.jpg"
+                                    alt="Serhii Cho"
+                                    class="my-0 my-auto rounded-lg mx-auto transition-all duration-500 shadow-lg"
+                                    width="250"
+                                    height="250"
+                                />
+
+                                <div>
+                                    <x-download-pdf-button class="h-16 mt-10 shadow-lg px-0 w-full" />
+                                </div>
                             </div>
                         </div>
 
