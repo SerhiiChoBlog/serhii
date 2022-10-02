@@ -32,7 +32,7 @@
 }
 
 .post-content blockquote::before {
-    @apply content-[''] bg-page-second shadow-md;
+    @apply content-[''] bg-page-second shadow-md print:shadow-none;
 }
 
 .post-content blockquote::after {
