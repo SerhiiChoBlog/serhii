@@ -11,7 +11,7 @@
             before:top-[-11px] before:rounded-t-lg
             ">
                 <a href="{{ $site['href'] }}" target="_blank" class="max-w-[350px] block">
-                    <img src="{{ asset('storage/tools/mac-buttons.webp') }}"
+                    <img data-src="{{ asset('storage/tools/mac-buttons.webp') }}"
                         class="absolute top-[-8px] left-2"
                         width="18"
                         alt="mac buttons"

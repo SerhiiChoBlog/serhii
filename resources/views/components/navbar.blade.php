@@ -1,4 +1,4 @@
-<nav class="relative z-20">
+<nav class="relative z-20 print:hidden">
     <div class="container flex justify-between items-center min-h-[4rem]">
         <div class="flex items-center gap-x-1 w-full lg:w-auto">
             @unless (request()->is('/'))
