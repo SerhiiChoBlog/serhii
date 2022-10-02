@@ -83,6 +83,10 @@
             <div class="grid w-full grid-cols-1 lg:grid-cols-[repeat(auto-fit,minmax(320px,auto))] gap-x-7 pt-10 print:pt-0 mx-auto max-w-[1230px] bg-page lg:-translate-y-8 lg:px-8 rounded-xl">
                 <div>
                     @published ($post)
+                        <div class="text-center mb-8 lg:hidden">
+                            <x-download-pdf-button />
+                        </div>
+
                         <div class="post-content lg:prose-xl pr-2 lg:px-6"
                             id="post-content"
                             v-pre
