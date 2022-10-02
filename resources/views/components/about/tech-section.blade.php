@@ -3,10 +3,10 @@
 @endphp
 
 <div>
-    <div class="grid grid-cols-1 {{ count($techs) === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4' }} gap-7">
+    <div class="grid grid-cols-1 {{ count($techs) === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4' }} print:grid-cols-2 gap-7">
         @foreach ($techs as $tech)
             <div class="max-w-[420px] mx-auto">
-                <div>
+                <div class="print:hidden">
                     <figure>
                         <img
                             data-src="{{ asset($tech['image']) }}"

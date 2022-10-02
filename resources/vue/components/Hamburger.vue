@@ -29,7 +29,7 @@ function toggleNavbar(): void {
 
 <template>
     <a role="button"
-       class="block lg:hidden ml-auto relative w-[3.25rem] h-[3.25rem] transition-transform duration-300 delay-300"
+       class="block lg:hidden ml-auto relative w-[3.25rem] h-[3.25rem] transition-transform duration-300 delay-300 print:hidden"
        :class="isActive ? 'rotate-45' : ''"
        @click="toggleNavbar"
        aria-label="Show mobile menu"
