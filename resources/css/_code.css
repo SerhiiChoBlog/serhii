@@ -15,9 +15,9 @@
 }
 
 pre {
-    @apply !p-0 bg-transparent rounded-md relative;
+    @apply break-inside-avoid print:mt-2 !p-0 bg-transparent rounded-md relative;
 }
 
 code.hljs {
-    @apply font-code text-[.7rem] lg:text-[.8rem] rounded-sm py-7 px-3 lg:p-7 block leading-5 lg:leading-6;
+    @apply font-code text-[.7rem] lg:text-[.8rem] rounded-sm pb-4 pt-6 px-4 lg:px-7 lg:pb-5 lg:pt-6 block leading-5 lg:leading-6;
 }

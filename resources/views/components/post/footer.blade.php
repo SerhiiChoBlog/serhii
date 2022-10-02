@@ -2,7 +2,7 @@
     /** @var array $post */
 @endphp
 
-<div class="flex items-center justify-center gap-x-8 my-14">
+<div class="flex items-center justify-center gap-x-8 my-14 print:my-0">
     <a
         href="{{ route('about-me') }}"
         target="_blank"
@@ -10,9 +10,9 @@
         title="To about me page"
     >
         <img
-            data-src="{{ asset('storage/posts/thanks.jpeg') }}"
+            src="{{ asset('storage/posts/thanks.jpeg') }}"
             alt="Serhii Cho's photo"
-            class="rounded-full shadow-md w-28"
+            class="rounded-full shadow-md print:shadow-none w-28"
             width="300"
             height="300"
         />
