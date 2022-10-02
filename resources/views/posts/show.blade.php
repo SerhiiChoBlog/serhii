@@ -122,7 +122,7 @@
                 </div>
 
                 @published ($post)
-                    <div class="spacey-y-0 lg:space-y-12 px-3 h-full max-w-[320px] pt-0 2xl:pt-20">
+                    <div class="spacey-y-0 lg:space-y-10 px-3 h-full max-w-[320px] pt-0 2xl:pt-20">
                         <div class="hidden lg:block">
                             <nav class="min-h-[83px]">
                                 <x-post.sidebar-title>Share this post</x-post.sidebar-title>
@@ -133,6 +133,8 @@
                                 />
                             </nav>
                         </div>
+
+                        <x-print-button class="" />
 
                         <chapters slug="{{ $post->slug }}" />
                     </div>

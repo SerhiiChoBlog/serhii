@@ -2,7 +2,7 @@
     /** @var array $post */
 @endphp
 
-<div class="flex items-center justify-center gap-x-8 my-14 print:my-0">
+<div class="flex items-center justify-center gap-x-8 my-14 print:mb-0 print:mt-8">
     <a
         href="{{ route('about-me') }}"
         target="_blank"
