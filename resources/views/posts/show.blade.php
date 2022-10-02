@@ -134,7 +134,7 @@
                             </nav>
                         </div>
 
-                        <x-print-button class="" />
+                        <x-download-pdf-button class="" />
 
                         <chapters slug="{{ $post->slug }}" />
                     </div>
