@@ -66,7 +66,7 @@
                         @endif
                     </div>
 
-                    <div class="print:hidden">
+                    <div>
                         <img
                             src="{{ asset($post->image_lg) }}"
                             alt="Post {{ $post->title }}"
