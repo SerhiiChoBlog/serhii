@@ -40,4 +40,4 @@ Route::middleware('hits')->group(function () {
     });
 });
 
-Route::get('theme', ThemeController::class);
+Route::get('theme/{to}', ThemeController::class);

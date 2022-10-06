@@ -25,7 +25,7 @@ const title = computed(() => {
 
 onMounted(() => {
     if (theme === 'missing' && systemThemeIsDark()) {
-        changeInterfaceTo('dark')
+        switchTheme('dark')
     }
 })
 
@@ -33,9 +33,9 @@ function systemThemeIsDark(): boolean {
     return window.matchMedia('(prefers-color-scheme: dark)').matches
 }
 
-function switchTheme(): void {
-    axios.get('/theme')
-        .then(() => changeInterfaceTo(currentTheme.value === 'light' ? 'dark' : 'light'))
+function switchTheme(toTheme: 'dark' | 'light'): void {
+    axios.get(`/theme/${toTheme}`)
+        .then(() => changeInterfaceTo(toTheme))
         .catch((err) => console.error(err))
 }
 
@@ -53,7 +53,7 @@ function changeInterfaceTo(toTheme: 'light' | 'dark'): void {
                 <button
                     type="button"
                     class="drop-shadow-md relative text-yellow-300 dark:text-main flex py-2 px-4 lg:px-2 bg-transparent text-white hover:bg-gray-500 hover:bg-opacity-50 rounded-full transition-colors"
-                    @click="switchTheme"
+                    @click="() => switchTheme(currentTheme === 'light' ? 'dark' : 'light')"
                     aria-label="Toggle between light and dark themes"
                 >
                     <svg
