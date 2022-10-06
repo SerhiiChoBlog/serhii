@@ -19,7 +19,7 @@
 
 @section('content')
     <x-hero
-        :title="$title"
+        :mainTitle="$title"
         subtitle="Blog that helps you to become a better web developer and create beautiful,<br />functional websites using the latest web technologies and best practices"
         class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white"
     />

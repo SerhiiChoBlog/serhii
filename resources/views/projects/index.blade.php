@@ -9,7 +9,7 @@
 
 @section('content')
     <x-hero
-        title="Open-source"
+        mainTitle="Open-source"
         subtitle="I'm the maintainer of several open-source libraries and browser extension.<br>You can contribute to any of them on GitHub, and I would gladly look into your pull request or issue."
         class="bg-gradient-to-r from-[#51895c] via-[#4c5f7d] to-[#51895c] text-white"
     />
