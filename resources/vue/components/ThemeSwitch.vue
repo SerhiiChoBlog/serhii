@@ -4,7 +4,7 @@ import axios from 'axios'
 import AppearTransition from './Transitions/AppearTransition.vue'
 import Tip from './Tip.vue'
 
-type Theme = 'light' | 'dark' | 'missing'
+type Theme = 'light' | 'dark' | 'system'
 
 interface Props {
     theme: Theme
@@ -24,7 +24,7 @@ const title = computed(() => {
 })
 
 onMounted(() => {
-    if (theme === 'missing') {
+    if (theme === 'system') {
         switchTheme(systemThemeIsDark() ? 'dark' : 'light')
     }
 })

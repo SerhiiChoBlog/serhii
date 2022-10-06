@@ -14,6 +14,6 @@
     </contact-modal>
 
     <div class="min-w-[35px] mx-auto">
-        <theme-switch theme="{{ request()->cookie('theme', 'missing') }}" />
+        <theme-switch theme="{{ request()->cookie('theme', 'system') }}" />
     </div>
 </div>
