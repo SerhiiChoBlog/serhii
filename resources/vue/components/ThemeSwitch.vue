@@ -24,8 +24,8 @@ const title = computed(() => {
 })
 
 onMounted(() => {
-    if (theme === 'missing' && systemThemeIsDark()) {
-        switchTheme('dark')
+    if (theme === 'missing') {
+        switchTheme(systemThemeIsDark() ? 'dark' : 'light')
     }
 })
 
