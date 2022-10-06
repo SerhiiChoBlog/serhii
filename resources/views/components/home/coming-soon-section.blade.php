@@ -13,7 +13,7 @@
         @foreach($posts as $post)
             <article class="px-4 mx-auto pt-8 pb-5">
                 <div class="flex flex-col md:flex-row gap-7 justify-between items-center">
-                    <a href="{{ route('posts.show', $post['slug']) }}" class="relative">
+                    <div class="relative">
                         <x-image-label>In progress</x-image-label>
 
                         <img
@@ -23,13 +23,10 @@
                             width="331"
                             height="180"
                         >
-                    </a>
+                    </div>
 
                     <div class="flex flex-col gap-y-2">
-                        <a
-                            href="{{ route('posts.show', $post['slug']) }}"
-                            class="flex flex-col gap-y-2"
-                        >
+                        <div class="flex flex-col gap-y-2">
                             <h2 class="text-lg lg:text-2xl font-bold">
                                 {{ $post['title'] }}
                             </h2>
@@ -37,16 +34,16 @@
                             <p class="text-md lg:text-lg font-post">
                                 {{ $post['intro'] }}
                             </p>
-                        </a>
+                        </div>
 
                         <x-post.tags :tags="$post['tags']" class="text-sm md:text-md mt-2 !gap-2">
                             @if (auth()->check())
-                                <a
+                                <div
                                     href="/admin/posts/{{ $post['id'] }}/edit"
                                     class="px-3 leading-[1.5] py-0.5 tracking-wider border border-font-second border-dashed rounded-full transition-opacity hover:opacity-80 uppercase text-xs"
                                 >
                                     Edit
-                                </a>
+                                </div>
                             @endif
                         </x-post.tags>
 
