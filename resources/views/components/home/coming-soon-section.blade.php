@@ -38,12 +38,12 @@
 
                         <x-post.tags :tags="$post['tags']" class="text-sm md:text-md mt-2 !gap-2">
                             @if (auth()->check())
-                                <div
+                                <a
                                     href="/admin/posts/{{ $post['id'] }}/edit"
                                     class="px-3 leading-[1.5] py-0.5 tracking-wider border border-font-second border-dashed rounded-full transition-opacity hover:opacity-80 uppercase text-xs"
                                 >
                                     Edit
-                                </div>
+                                </a>
                             @endif
                         </x-post.tags>
 
