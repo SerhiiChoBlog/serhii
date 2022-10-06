@@ -5,7 +5,7 @@
 
 @section('content')
     <x-hero
-        title="Serhii Chornenkyi"
+        mainTitle="Serhii Chornenkyi"
         subtitle="Serhii Cho is a Ukrainian web developer and blogger who is writing about<br />enhancing your knowledge in creating fast and robust web apps"
         class="bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1] text-white print:bg-none print:text-black"
     />

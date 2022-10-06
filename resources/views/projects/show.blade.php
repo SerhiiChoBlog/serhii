@@ -13,7 +13,7 @@
 
 @section('content')
     <x-hero
-        :title="$project->title"
+        :mainTitle="$project->title"
         :subtitle="$project->description"
         class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white"
     >
