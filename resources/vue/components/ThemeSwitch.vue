@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import axios from 'axios'
 import AppearTransition from './Transitions/AppearTransition.vue'
 import Tip from './Tip.vue'
 
-type Theme = 'light' | 'dark'
+type Theme = 'light' | 'dark' | 'missing'
 
 interface Props {
     theme: Theme
@@ -12,20 +12,37 @@ interface Props {
 
 const { theme } = defineProps<Props>()
 const currentTheme = ref<Theme>(theme)
-const title = computed(() => `Switch to ${currentTheme.value === 'light' ? 'dark' : 'light'} theme`)
+
+const title = computed(() => {
+    let switchTo = 'light'
+
+    if (currentTheme.value === 'light') {
+        switchTo = 'dark'
+    }
+
+    return `Switch to ${switchTo} theme`
+})
+
+onMounted(() => {
+    if (theme === 'missing' && systemThemeIsDark()) {
+        changeInterfaceTo('dark')
+    }
+})
+
+function systemThemeIsDark(): boolean {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+}
 
 function switchTheme(): void {
     axios.get('/theme')
-        .then((res) => {
-            if (currentTheme.value === 'light') {
-                currentTheme.value = 'dark'
-                document.body.classList.add('dark')
-            } else {
-                currentTheme.value = 'light'
-                document.body.classList.remove('dark')
-            }
-        })
+        .then(() => changeInterfaceTo(currentTheme.value === 'light' ? 'dark' : 'light'))
         .catch((err) => console.error(err))
+}
+
+function changeInterfaceTo(toTheme: 'light' | 'dark'): void {
+    currentTheme.value = toTheme
+    document.body.classList.add(toTheme)
+    document.body.classList.remove(toTheme === 'dark' ? 'light' : 'dark')
 }
 </script>
 
@@ -38,7 +55,6 @@ function switchTheme(): void {
                     class="drop-shadow-md relative text-yellow-300 dark:text-main flex py-2 px-4 lg:px-2 bg-transparent text-white hover:bg-gray-500 hover:bg-opacity-50 rounded-full transition-colors"
                     @click="switchTheme"
                     aria-label="Toggle between light and dark themes"
-                    title="Toggle between light and dark themes"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
