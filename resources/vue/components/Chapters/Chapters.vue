@@ -177,7 +177,7 @@ function handleChapterClick(): void {
                 <div class="mb-5">
                     <div class="flex items-center gap-x-5 text-font-second">
                         <span class="text-2xl font-bold font-bold">
-                            Sections
+                            Chapters
                         </span>
 
                         <div class="flex items-center gap-x-4 text-font-second">
