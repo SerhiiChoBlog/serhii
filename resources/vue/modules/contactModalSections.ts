@@ -24,9 +24,14 @@ export default [
         ],
     },
     {
-        title: 'Find me',
+        title: 'Follow me',
         content: "There are some places where I'm usually hanging out. I spend a lot of time on websites that are linked below.",
         links: [
+            {
+                img: '/storage/icons/youtube.webp',
+                href: 'https://www.youtube.com/channel/UCL-MGuK7gMg_Rw63uBHdWbA',
+                title: 'YouTube',
+            },
             {
                 img: '/storage/icons/laracasts.webp',
                 href: 'https://laracasts.com/@SerhiiCho',
@@ -41,6 +46,11 @@ export default [
                 img: '/storage/icons/codepen.webp',
                 href: 'https://codepen.io/serhii_cho',
                 title: 'Codepen',
+            },
+            {
+                img: '/storage/icons/bymeacoffee.webp',
+                href: 'https://www.buymeacoffee.com/serhiicho',
+                title: 'Buy me a coffee',
             },
         ],
     },
