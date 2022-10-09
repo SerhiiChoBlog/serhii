@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue'
 import contactModalSections from '../modules/contactModalSections'
 import AppearTransition from './Transitions/AppearTransition.vue'
-import Tip from '../components/Tip.vue'
 
 const isOpen = ref(false)
 
@@ -76,17 +75,16 @@ onMounted(() => {
                                     :key="link.title"
                                     :href="link.href"
                                     target="_blank"
+                                    :title="link.title"
                                     class="transition-transform hover:scale-125"
                                     :aria-label="link.title"
                                 >
-                                    <tip :content="link.title">
-                                        <img
-                                            :src="link.img"
-                                            :alt="link.title"
-                                            width="30"
-                                            height="30"
-                                        />
-                                    </tip>
+                                    <img
+                                        :src="link.img"
+                                        :alt="link.title"
+                                        width="30"
+                                        height="30"
+                                    />
                                 </a>
                             </div>
                         </section>
