@@ -21,7 +21,7 @@ class UpdatePostTest extends TestCase
         $data = [
             'title' => 'Cool title is here and it must be long',
             'intro' => 'Short, but very interesting intro for the post',
-            'content' => '',
+            'content' => null,
         ];
 
         $slug = $this->actingAs($user)
