@@ -7,9 +7,9 @@ namespace App\Http\Controllers\Admin;
 use App\CacheKey;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\StoreRequest;
+use App\Http\Requests\Admin\Post\UpdateRequest;
 use App\Models\Post;
 use App\Utils\SaveImage;
-use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -53,54 +53,42 @@ class PostController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param Post $post
-     *
-     * @return string
      * @throws JsonException
      */
-    public function update(Request $request, Post $post): string
+    public function update(UpdateRequest $request, Post $post): string
     {
         $post->tags()->detach();
 
-        if ($request->has('tags')) {
-            $tags = json_decode($request->get('tags'), true, 512, JSON_THROW_ON_ERROR);
-            $post->tags()->attach($tags);
+        if ($request->tags) {
+            $post->tags()->attach($request->tags);
         }
 
-        $is_published = $request->boolean('is-published');
+        $data = $request->collect()->forget(['_method', 'is-published']);
 
-        $data = array_merge($request->all(), compact('is_published'));
+        /** @var UploadedFile|null $image */
+        $image = $request->file('image');
 
-        /** @var UploadedFile $photo */
-        $photo = $request->file('image');
-
-        $images = $this->savePhotoIfExist($photo, $post->title);
+        $images = $this->savePhotoIfExist($image, $post->title);
 
         if ($images) {
-            $data = array_merge($data, ['image_sm' => $images['sm'], 'image_lg' => $images['lg']]);
+            $data = $data->merge(['image_sm' => $images['sm'], 'image_lg' => $images['lg']]);
         }
 
-        $slug = Str::slug($request->get('title'));
-        $data = array_merge($data, compact('slug'));
-
-        $data['title'] = trim($data['title'] ?? '');
-        $data['intro'] = trim($data['intro'] ?? '');
-        $data['content'] = $this->addNotesToContent($data['content']);
+        $data['content'] = $this->addNotesToContent($request->content);
         $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
 
-        if ($post->is_published || $is_published) {
+        if ($post->is_published || $request->is_published) {
             Cache::forget(CacheKey::LAST_POSTS);
             Cache::forget(CacheKey::HOME_RANDOM_POSTS);
         }
 
-        if (!$post->is_published && $is_published) {
-            $data = array_merge($data, ['created_at' => now()]);
+        if (!$post->is_published && $request->is_published) {
+            $data = $data->merge(['created_at' => now()]);
         }
 
-        $post->update($data);
+        $post->update($data->toArray());
 
-        return $slug;
+        return $request->slug;
     }
 
     public function destroy(Post $post): void
