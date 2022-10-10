@@ -103,22 +103,6 @@ class PostController extends Controller
         return $slug;
     }
 
-    private function addNotesToContent(?string $content): ?string
-    {
-        if (!$content) {
-            return null;
-        }
-
-        return str_replace(
-            ['<p>Note. ', '<p>Tip. '],
-            [
-                '<p class="note"><span class="hidden" aria-label="Note">Note. </span>',
-                '<p class="tip"><span class="hidden" aria-label="Tip">Tip. </span>',
-            ],
-            $content,
-        );
-    }
-
     public function destroy(Post $post): void
     {
         $post->images->each(static function ($image) {
@@ -136,5 +120,21 @@ class PostController extends Controller
         $post->socialShares();
         $post->postPublication()->delete();
         $post->delete();
+    }
+
+    private function addNotesToContent(?string $content): ?string
+    {
+        if (!$content) {
+            return null;
+        }
+
+        return str_replace(
+            ['<p>Note. ', '<p>Tip. '],
+            [
+                '<p class="note"><span class="hidden" aria-label="Note">Note. </span>',
+                '<p class="tip"><span class="hidden" aria-label="Tip">Tip. </span>',
+            ],
+            $content,
+        );
     }
 }
