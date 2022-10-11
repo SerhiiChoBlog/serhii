@@ -11,14 +11,17 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
 
 class PostContentImageController extends Controller
 {
     public function store(Post $post, Request $request): void
     {
-        /** @var UploadedFile $image */
+        /** @var UploadedFile|null $image */
         $image = $request->file('image');
+
+        if (!$image) {
+            return;
+        }
 
         $path = storage_path('app/public/posts/content');
 
@@ -26,7 +29,7 @@ class PostContentImageController extends Controller
 
         $image_name = sprintf("%s-%s.%s", $slug, time(), $image->getClientOriginalExtension());
 
-        Image::make($image)->save("$path/$image_name");
+        $image->move($path, $image_name);
 
         $post->images()->create([
             'uri' => "/storage/posts/content/$image_name",
