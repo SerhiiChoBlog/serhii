@@ -10,4 +10,5 @@ abstract class CacheKey
     public const LAST_POSTS = 'last-posts';
     public const ERROR_RANDOM_POSTS = 'error-random-posts';
     public const HOME_RANDOM_POSTS = 'home-random-posts';
+    public const HOME_POPULAR_VIDEOS = 'home-popular-videos';
 }
