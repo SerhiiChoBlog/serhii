@@ -8,6 +8,7 @@ use App\CacheKey;
 use App\Dto\YouTube\YTVideo;
 use App\Exceptions\FetchVideosHttpException;
 use App\Models\Video;
+use App\Ttl;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -21,12 +22,12 @@ class FetchVideos extends Command
     public function handle(): void
     {
         try {
-            /** @var Collection<int, Video> $old_videos */
-            $old_videos = Video::query()->get();
-            $videos = $this->fetchVideos();
+            /** @var Collection<int, Video> $videos */
+            $videos = Video::query()->get();
+            $yt_videos = Cache::remember(CacheKey::FETCHED_YOUTUBE_VIDEOS, Ttl::HOUR, fn() => $this->fetchVideos());
 
-            $updated = $this->updateExistingVideos($videos, $old_videos);
-            $created = $this->createMissingVideos($videos, $old_videos);
+            $updated = $this->updateExistingVideos($yt_videos, $videos);
+            $created = $this->createMissingVideos($yt_videos, $videos);
 
             Cache::forget(CacheKey::HOME_POPULAR_VIDEOS);
 
@@ -64,26 +65,66 @@ class FetchVideos extends Command
     }
 
     /**
-     * @param Collection<int, YTVideo> $videos
-     * @param Collection<int, Video> $old_videos
+     * @param Collection<int, YTVideo> $yt_videos
+     * @param Collection<int, Video> $videos
      *
      * @return int Amount of updated videos
      */
-    private function updateExistingVideos(Collection $videos, Collection $old_videos): int
+    private function updateExistingVideos(Collection $yt_videos, Collection $videos): int
     {
-        return 0;
+        $updated = 0;
+
+        foreach ($videos as $video) {
+            /** @var YTVideo|null $yt_video */
+            $yt_video = $yt_videos->where('id.video_id', $video->video_id)->first();
+
+            if (!$yt_video || $this->videosHasNotChanged($video, $yt_video)) {
+                continue;
+            }
+
+            $this->updateVideoInDatabase($video, $yt_video);
+
+            ++$updated;
+        }
+
+        return $updated;
     }
 
     /**
-     * @param Collection<int, YTVideo> $videos
-     * @param Collection<int, Video> $old_videos
+     * @param Collection<int, YTVideo> $yt_videos
+     * @param Collection<int, Video> $videos
      *
      * @return int Amount of created videos
      */
-    private function createMissingVideos(Collection $videos, Collection $old_videos): int
+    private function createMissingVideos(Collection $yt_videos, Collection $videos): int
     {
-        $videos->filter(fn(YTVideo $video) => $video->id);
+        $new = $yt_videos->filter(fn(YTVideo $v) => !$videos->contains('video_id', $v->id->video_id));
 
-        return 0;
+        $new->each(function (YTVideo $v) {
+            $this->updateVideoInDatabase(new Video(), $v);
+        });
+
+        return $new->count();
+    }
+
+    private function updateVideoInDatabase(Video $video, YTVideo $yt_video): void
+    {
+        $video->video_id = $yt_video->id->video_id;
+        $video->title = $yt_video->snippet->title;
+        $video->description = $yt_video->snippet->description;
+        $video->image = $yt_video->snippet->thumbnails->high->url;
+        $video->url = "https://www.youtube.com/watch?v={$yt_video->id->video_id}";
+        $video->published_at = $yt_video->snippet->published_at;
+
+        $video->save();
+    }
+
+    public function videosHasNotChanged(Video $video, YTVideo $yt_video): bool
+    {
+        $same_title = $video->title === $yt_video->snippet->title;
+        $same_description = $video->description === $yt_video->snippet->description;
+        $same_image = $video->image === $yt_video->snippet->thumbnails->high->url;
+
+        return $same_title && $same_description && $same_image;
     }
 }
