@@ -24,6 +24,8 @@ class FetchVideos extends Command
         try {
             /** @var Collection<int, Video> $videos */
             $videos = Video::query()->get();
+
+            /** @var Collection<int, YTVideo> $yt_videos */
             $yt_videos = Cache::remember(CacheKey::FETCHED_YOUTUBE_VIDEOS, Ttl::HOUR, fn() => $this->fetchVideos());
 
             $updated = $this->updateExistingVideos($yt_videos, $videos);
@@ -112,7 +114,7 @@ class FetchVideos extends Command
         $video->id = $yt_video->id->video_id;
         $video->title = $yt_video->snippet->title;
         $video->description = $yt_video->snippet->description;
-        $video->image = $yt_video->snippet->thumbnails->high->url;
+        $video->image = "https://img.youtube.com/vi/{$yt_video->id->video_id}/mqdefault.jpg";
         $video->url = "https://www.youtube.com/watch?v={$yt_video->id->video_id}";
         $video->published_at = $yt_video->snippet->published_at;
 
