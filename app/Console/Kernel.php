@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\FetchGithubProjects;
+use App\Console\Commands\FetchVideos;
 use App\Console\Commands\SubscriptionsNotify;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -16,11 +17,14 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         FetchGithubProjects::class,
+        SubscriptionsNotify::class,
+        FetchVideos::class,
     ];
 
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command(FetchGithubProjects::class)->daily();
+        $schedule->command(FetchGithubProjects::class)->dailyAt('18:00');
+        $schedule->command(FetchVideos::class)->dailyAt('18:01');
         $schedule->command(SubscriptionsNotify::class)->hourly();
     }
 
