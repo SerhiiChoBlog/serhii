@@ -6,13 +6,13 @@ namespace App\Dto\YouTube;
 
 use Illuminate\Support\Carbon;
 
-class YouTubeSnippet
+class YTSnippet
 {
     public Carbon $published_at;
     public string $channel_id;
     public string $title;
     public string $description;
-    public YouTubeThumbnails $thumbnails;
+    public YTThumbnails $thumbnails;
     public string $channel_title;
     public string $live_broadcast_content;
     public Carbon $publish_time;
@@ -23,7 +23,7 @@ class YouTubeSnippet
         $this->channel_id = $data['channelId'];
         $this->title = $data['title'];
         $this->description = $data['description'];
-        $this->thumbnails = new YouTubeThumbnails($data['thumbnails']);
+        $this->thumbnails = new YTThumbnails($data['thumbnails']);
         $this->channel_title = $data['channelTitle'];
         $this->live_broadcast_content = $data['liveBroadcastContent'];
         $this->publish_time = Carbon::make($data['publishTime']);

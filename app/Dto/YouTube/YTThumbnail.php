@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Dto\YouTube;
 
-class YouTubeThumbnail
+class YTThumbnail
 {
     public string $url;
     public int $width;
