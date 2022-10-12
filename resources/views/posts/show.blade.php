@@ -126,7 +126,7 @@
                 </div>
 
                 @published ($post)
-                    <div class="spacey-y-0 lg:space-y-10 px-3 h-full max-w-[320px] pt-0 2xl:pt-20">
+                    <div class="spacey-y-0 lg:space-y-10 px-3 h-full max-w-[500px] mx-auto lg:max-w-[320px] pt-0 2xl:pt-20">
                         <div class="hidden lg:block">
                             <nav class="min-h-[83px]">
                                 <x-post.sidebar-title>Share this post</x-post.sidebar-title>
@@ -138,7 +138,16 @@
                             </nav>
                         </div>
 
-                        <x-download-pdf-button class="" />
+                        <div class="hidden lg:block">
+                            <x-download-pdf-button />
+                        </div>
+
+                        @if ($post->video)
+                            <div class="mt-4">
+                                <x-post.sidebar-title>Related video</x-post.sidebar-title>
+                                <x-post.video :video="$post->video" />
+                            </div>
+                        @endif
 
                         <chapters slug="{{ $post->slug }}" />
                     </div>

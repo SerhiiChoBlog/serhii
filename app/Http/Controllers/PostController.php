@@ -40,7 +40,7 @@ class PostController extends Controller
     {
         /** @var Post|null $post */
         $post = Post::query()
-            ->with('tags:id,color,name,title')
+            ->with('tags:id,color,name,title', 'video:post_id,title,url,image')
             ->where('slug', $slug)
             ->withCount('postViews')
             ->first();
