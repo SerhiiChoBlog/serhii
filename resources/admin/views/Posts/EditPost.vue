@@ -10,8 +10,6 @@ import PostContentImages from '../../components/Post/PostContentImages.vue'
 import FormTextarea from '../../components/Form/FormTextarea.vue'
 import MainButton from '../../components/Buttons/MainButton.vue'
 import FormInput from '../../components/Form/FormInput.vue'
-import TagItem from '../../components/TagItem.vue'
-import TagSuggestions from '../../components/Post/TagSuggestions.vue'
 import PostImage from '../../components/Post/PostImage.vue'
 import DeletePost from '../../components/Post/DeletePost.vue'
 import Editor from '@tinymce/tinymce-vue'
@@ -106,32 +104,6 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                 >
                                     Title
                                 </form-input>
-                            </div>
-
-                            <div class="mt-5">
-                                <form-input
-                                    type="text"
-                                    id="post-tags"
-                                    name="post-tags"
-                                    placeholder="Choose tags"
-                                    @changed="(val: string) => tagInputValue = val"
-                                    :value="tagInputValue"
-                                >
-                                    Tags
-
-                                    <div class="ml-1 inline-block space-x-1">
-                                        <template v-if="post && post.tags">
-                                            <tag-item
-                                                v-for="tag in post.tags"
-                                                :key="tag.id"
-                                                :tag="tag"
-                                                @deleteTag="deleteTag"
-                                            />
-                                        </template>
-                                    </div>
-                                </form-input>
-
-                                <tag-suggestions @addTag="addTag" :value="tagInputValue" />
                             </div>
 
                             <div class="mt-5">
