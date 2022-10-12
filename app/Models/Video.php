@@ -14,6 +14,7 @@ use Illuminate\Support\Carbon;
  * @property string $title
  * @property string $description
  * @property string $image
+ * @property string $url
  * @property Carbon $published_at
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -22,7 +23,13 @@ class Video extends Model
 {
     use HasFactory;
 
+    /**
+     * @var string[]
+     */
     protected $guarded = ['id'];
 
+    /**
+     * @var string[]
+     */
     protected $dates = ['published_at'];
 }
