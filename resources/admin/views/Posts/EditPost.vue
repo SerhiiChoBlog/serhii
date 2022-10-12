@@ -10,6 +10,8 @@ import PostContentImages from '../../components/Post/PostContentImages.vue'
 import FormTextarea from '../../components/Form/FormTextarea.vue'
 import MainButton from '../../components/Buttons/MainButton.vue'
 import FormInput from '../../components/Form/FormInput.vue'
+import TagItem from '../../components/TagItem.vue'
+import TagSuggestions from '../../components/Post/TagSuggestions.vue'
 import PostImage from '../../components/Post/PostImage.vue'
 import DeletePost from '../../components/Post/DeletePost.vue'
 import Editor from '@tinymce/tinymce-vue'
@@ -107,20 +109,70 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                             </div>
 
                             <div class="mt-5">
-                                <form-textarea
-                                    id="intro"
-                                    placeholder="Enter a short intro"
-                                    classes="min-h-[100px]"
-                                    :value="post.intro"
-                                    :length="190"
-                                    name="intro"
-                                />
+                                <form-input
+                                    type="text"
+                                    id="post-tags"
+                                    name="post-tags"
+                                    placeholder="Choose tags"
+                                    @changed="(val: string) => tagInputValue = val"
+                                    :value="tagInputValue"
+                                >
+                                    Tags
+
+                                    <div class="ml-1 inline-block space-x-1">
+                                        <template v-if="post && post.tags">
+                                            <tag-item
+                                                v-for="tag in post.tags"
+                                                :key="tag.id"
+                                                :tag="tag"
+                                                @deleteTag="deleteTag"
+                                            />
+                                        </template>
+                                    </div>
+                                </form-input>
+
+                                <tag-suggestions @addTag="addTag" :value="tagInputValue" />
+                            </div>
+
+                            <div class="flex items-center justify-between gap-8 mt-5">
+                                <div class="w-full">
+                                    <form-input
+                                        type="text"
+                                        id="video"
+                                        placeholder="Enter a YouTube video ID"
+                                        classes=""
+                                        :value="post.video ? post.video.id : null"
+                                        :length="190"
+                                        name="video"
+                                    >YouTube video ID</form-input>
+                                </div>
+
+                                <a v-if="post.video" :href="post.video.url" target="_blank">
+                                    <img
+                                        :src="post.video.image"
+                                        :alt="post.video.title"
+                                        width="480"
+                                        height="360"
+                                        class="max-w-[100px] rounded-md shadow-md"
+                                    />
+                                </a>
                             </div>
                         </div>
 
                         <div class="flex-1">
                             <post-image :post="post" />
                         </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <form-textarea
+                            id="intro"
+                            placeholder="Enter a short intro"
+                            classes="min-h-[70px]"
+                            :value="post.intro"
+                            :length="190"
+                            name="intro"
+                        >Short intro</form-textarea>
                     </div>
 
                     <div class="mt-5">
