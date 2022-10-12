@@ -17,6 +17,7 @@ export type PostContentImage = {
 
 export type Post = {
     id: number
+    video_id: number | null
     title: string
     slug: string
     intro: string | null
@@ -27,8 +28,9 @@ export type Post = {
     images?: PostContentImage[]
     postViews?: PostView[]
     socialShares?: SocialShare[]
-    social?: string[][]
     tags?: Tag[]
+    video?: Video | null
+    social?: string[][]
     social_shares_count?: number
     post_views_count?: number
     read_time: number
@@ -36,6 +38,18 @@ export type Post = {
     created_at: string
     updated_at: string
     published_at: string
+}
+
+export type Video = {
+    id: string
+    post_id: number | null
+    title: string
+    description: string
+    image: string
+    url: string
+    published_at: string
+    created_at: string
+    updated_at: string
 }
 
 export type PostView = {
