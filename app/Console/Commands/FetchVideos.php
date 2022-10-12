@@ -76,7 +76,7 @@ class FetchVideos extends Command
 
         foreach ($videos as $video) {
             /** @var YTVideo|null $yt_video */
-            $yt_video = $yt_videos->where('id.video_id', $video->video_id)->first();
+            $yt_video = $yt_videos->where('id.video_id', $video->id)->first();
 
             if (!$yt_video || $this->videosHasNotChanged($video, $yt_video)) {
                 continue;
@@ -98,7 +98,7 @@ class FetchVideos extends Command
      */
     private function createMissingVideos(Collection $yt_videos, Collection $videos): int
     {
-        $new = $yt_videos->filter(fn(YTVideo $v) => !$videos->contains('video_id', $v->id->video_id));
+        $new = $yt_videos->filter(fn(YTVideo $v) => !$videos->contains('id', $v->id->video_id));
 
         $new->each(function (YTVideo $v) {
             $this->updateVideoInDatabase(new Video(), $v);
@@ -109,7 +109,7 @@ class FetchVideos extends Command
 
     private function updateVideoInDatabase(Video $video, YTVideo $yt_video): void
     {
-        $video->video_id = $yt_video->id->video_id;
+        $video->id = $yt_video->id->video_id;
         $video->title = $yt_video->snippet->title;
         $video->description = $yt_video->snippet->description;
         $video->image = $yt_video->snippet->thumbnails->high->url;

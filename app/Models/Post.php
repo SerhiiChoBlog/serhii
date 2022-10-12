@@ -92,6 +92,11 @@ class Post extends Model
         return $this->hasOne(PostPublication::class);
     }
 
+    public function video(): HasOne
+    {
+        return $this->hasOne(Video::class);
+    }
+
     /**
      * @param int $exclude_id
      *

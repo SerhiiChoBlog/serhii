@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
- * @property-read int $id
- * @property string $video_id
+ * @property string $id
+ * @property int|null $post_id
  * @property string $title
  * @property string $description
  * @property string $image
@@ -24,12 +24,19 @@ class Video extends Model
     use HasFactory;
 
     /**
-     * @var string[]
+     * @var array<int, string>
      */
     protected $guarded = ['id'];
 
     /**
-     * @var string[]
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'id' => 'string',
+    ];
+
+    /**
+     * @var array<int, string>
      */
     protected $dates = ['published_at'];
 }
