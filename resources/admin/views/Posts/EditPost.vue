@@ -153,7 +153,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                         :alt="post.video.title"
                                         width="480"
                                         height="360"
-                                        class="max-w-[100px] rounded-md shadow-md"
+                                        class="max-w-[140px] rounded-md shadow-md"
                                     />
                                 </a>
                             </div>
