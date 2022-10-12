@@ -134,21 +134,45 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                 <tag-suggestions @addTag="addTag" :value="tagInputValue" />
                             </div>
 
-                            <div class="mt-5">
-                                <form-textarea
-                                    id="intro"
-                                    placeholder="Enter a short intro"
-                                    classes="min-h-[100px]"
-                                    :value="post.intro"
-                                    :length="190"
-                                    name="intro"
-                                />
+                            <div class="flex items-center justify-between gap-8 mt-5">
+                                <div class="w-full">
+                                    <form-input
+                                        type="text"
+                                        id="video"
+                                        placeholder="Enter a YouTube video ID"
+                                        classes=""
+                                        :value="post.video ? post.video.id : null"
+                                        :length="190"
+                                        name="video"
+                                    >YouTube video ID</form-input>
+                                </div>
+
+                                <a v-if="post.video" :href="post.video.url" target="_blank">
+                                    <img
+                                        :src="post.video.image"
+                                        :alt="post.video.title"
+                                        width="480"
+                                        height="360"
+                                        class="max-w-[140px] rounded-md shadow-md"
+                                    />
+                                </a>
                             </div>
                         </div>
 
                         <div class="flex-1">
                             <post-image :post="post" />
                         </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <form-textarea
+                            id="intro"
+                            placeholder="Enter a short intro"
+                            classes="min-h-[70px]"
+                            :value="post.intro"
+                            :length="190"
+                            name="intro"
+                        >Short intro</form-textarea>
                     </div>
 
                     <div class="mt-5">
