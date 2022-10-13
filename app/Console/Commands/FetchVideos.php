@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use App\CacheKey;
 use App\Dto\YouTube\YTVideo;
 use App\Exceptions\FetchVideosHttpException;
 use App\Models\Video;
-use App\Ttl;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -22,11 +20,9 @@ class FetchVideos extends Command
     public function handle(): void
     {
         try {
-            /** @var Collection<int, Video> $videos */
             $videos = Video::query()->get();
 
-            /** @var Collection<int, YTVideo> $yt_videos */
-            $yt_videos = Cache::remember(CacheKey::FETCHED_YOUTUBE_VIDEOS, Ttl::HOUR, fn() => $this->fetchVideos());
+            $yt_videos = $this->fetchVideos();
 
             $updated = $this->updateExistingVideos($yt_videos, $videos);
             $created = $this->createMissingVideos($yt_videos, $videos);
