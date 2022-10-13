@@ -92,6 +92,9 @@ class Post extends Model
         return $this->hasOne(PostPublication::class);
     }
 
+    /**
+     * @return HasOne<Video>
+     */
     public function video(): HasOne
     {
         return $this->hasOne(Video::class);

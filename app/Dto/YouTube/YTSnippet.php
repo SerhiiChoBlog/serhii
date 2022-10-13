@@ -19,13 +19,13 @@ class YTSnippet
 
     public function __construct(array $data)
     {
-        $this->published_at = Carbon::make($data['publishedAt']);
+        $this->published_at = Carbon::make($data['publishedAt']) ?? Carbon::now();
         $this->channel_id = $data['channelId'];
         $this->title = $data['title'];
         $this->description = $data['description'];
         $this->thumbnails = new YTThumbnails($data['thumbnails']);
         $this->channel_title = $data['channelTitle'];
         $this->live_broadcast_content = $data['liveBroadcastContent'];
-        $this->publish_time = Carbon::make($data['publishTime']);
+        $this->publish_time = Carbon::make($data['publishTime']) ?? Carbon::now();
     }
 }

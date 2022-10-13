@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Throwable;
 
 class SocialShareController extends Controller
@@ -23,7 +24,7 @@ class SocialShareController extends Controller
         try {
             $visitor = Visitor::getOrCreateVisitor($ip);
         } catch (Throwable $e) {
-            logger()->error($e);
+            Log::error($e);
             return;
         }
 

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Stevebauman\Location\Location;
 use Stevebauman\Location\Position;
 use Throwable;
@@ -63,7 +64,7 @@ class Visitor extends Model
             /** @var Position $position */
             $position = $location->get($ip);
         } catch (Throwable $e) {
-            logger()->warning($e);
+            Log::warning($e);
         }
 
         try {
@@ -73,7 +74,7 @@ class Visitor extends Model
                 'code' => $position?->countryCode,
             ]);
         } catch (Throwable $e) {
-            logger()->warning($e);
+            Log::warning($e);
             return null;
         }
     }
@@ -83,7 +84,7 @@ class Visitor extends Model
         try {
             $visitor = self::getOrCreateVisitor($ip);
         } catch (Throwable $e) {
-            logger()->error($e);
+            Log::error($e);
             return;
         }
 

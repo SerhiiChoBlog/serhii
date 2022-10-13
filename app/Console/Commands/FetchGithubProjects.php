@@ -11,6 +11,7 @@ use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Parsedown;
 
@@ -32,7 +33,7 @@ class FetchGithubProjects extends Command
             $this->info(sprintf('%d projects has been uploaded to a database', $projects->count()));
         } catch (RequestException $e) {
             $this->error($e->getMessage());
-            logger()->error($e);
+            Log::error($e);
         }
     }
 
@@ -78,7 +79,7 @@ class FetchGithubProjects extends Command
             $parser = new Parsedown();
             return $parser->text($content);
         } catch (RequestException $e) {
-            logger()->error($e);
+            Log::error($e);
             return '';
         }
     }
