@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use App\CacheKey;
 use App\Dto\YouTube\YTVideo;
 use App\Exceptions\FetchVideosHttpException;
 use App\Models\Video;
@@ -11,6 +12,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class FetchVideos extends Command
 {
@@ -32,7 +34,7 @@ class FetchVideos extends Command
             $this->info("Videos updated: $updated. Videos created: $created");
         } catch (FetchVideosHttpException $e) {
             $this->error($e->getMessage());
-            logger()->error($e);
+            Log::error($e);
         }
     }
 

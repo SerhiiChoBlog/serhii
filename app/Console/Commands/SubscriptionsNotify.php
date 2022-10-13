@@ -10,6 +10,7 @@ use App\Models\Subscription;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Throwable;
 
 class SubscriptionsNotify extends Command
@@ -52,7 +53,7 @@ class SubscriptionsNotify extends Command
         $last_post->postPublication()->create(compact('people_notified'));
 
         if (!empty($errors)) {
-            logger()->error(implode("\n", $errors));
+            Log::error(implode("\n", $errors));
             $this->warn(sprintf("There were %d errors! Check your logs", count($errors)));
         }
 
