@@ -1,13 +1,13 @@
 <?php
 
-namespace App\View\Components\Home;
+namespace App\View\Components\About;
 
 use DateInterval;
 use DateTime;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class WelcomeSection extends Component
+class Intro extends Component
 {
     private DateInterval $date_diff;
 
@@ -18,7 +18,7 @@ class WelcomeSection extends Component
 
     public function render(): View
     {
-        return view('components.home.welcome-section');
+        return view('components.about.intro');
     }
 
     public function yearsExperience(): string
