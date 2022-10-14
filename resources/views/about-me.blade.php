@@ -34,9 +34,7 @@
                         <div>
                             <h2>Experience</h2>
 
-                            <p>
-                                <x-home.welcome-section/>
-                            </p>
+                            <x-about.intro />
 
                             <p>
                                 I've worked with integration services like <strong>Megaplan CRM</strong>,
