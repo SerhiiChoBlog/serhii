@@ -15,7 +15,7 @@
                 </h1>
 
                 <h2 class="font-post text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md">
-                    The dogs bark, but the caravan goes on
+                    Push yourself to the edge of your ability
                 </h2>
 
                 <search>
@@ -40,16 +40,12 @@
     </x-hero>
 
     <x-home.section
-        title="Programming with PHP"
-        intro="Let's make the web a better place"
+        title="Blog about web development"
+        intro="Here is the short information about me"
         class="-translate-y-8 bg-page rounded-xl container"
     >
         <div class="text-lg lg:text-xl font-light leading-7 lg:leading-9">
-            While PHP haters are thinking about a new meme to create, we are going to focus on a topic that is more important – learning programming.
-            This blog is about how you can use PHP to create readable, reliable, and fast web applications and programs.
-            Whether you're a beginner or an experienced developer, I'm sure you'll not be disappointed.
-            I am an IT specialist and have been working with computers for many years.
-            I'm passionate in helping others to solve their problems and develop their technical knowledge.
+            <x-about.intro />
         </div>
     </x-home.section>
 
