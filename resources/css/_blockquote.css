@@ -28,7 +28,7 @@
 
 .post-content blockquote img,
 .post-content blockquote::before {
-    @apply m-0 absolute w-[100px] h-[100px] rounded-full top-10 sm:top-1/2 left-1/2 sm:left-[-130px] -translate-x-1/2 sm:translate-x-0 -translate-y-1/2;
+    @apply m-0 absolute w-[100px] h-[100px] rounded-full top-10 sm:top-1/2 left-1/2 sm:left-[-130px] -translate-x-1/2 sm:translate-x-0 -translate-y-1/2 border-4;
 }
 
 .post-content blockquote::before {

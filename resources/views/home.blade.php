@@ -40,8 +40,8 @@
     </x-hero>
 
     <x-home.section
-        title="Blog about web development"
-        intro="Here is the short information about me"
+        title="Master your programming"
+        intro="Stick around if you want to learn"
         class="-translate-y-8 bg-page rounded-xl container"
     >
         <div class="text-lg lg:text-xl font-light leading-7 lg:leading-9">
