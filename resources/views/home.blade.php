@@ -40,8 +40,8 @@
     </x-hero>
 
     <x-home.section
-        title="Improve your PHP code"
-        intro="Let's push ourselves to the edge of our abilities together"
+        title="Programming with PHP"
+        intro="Let's make the web a better place"
         class="-translate-y-8 bg-page rounded-xl container"
     >
         <div class="text-lg lg:text-xl font-light leading-7 lg:leading-9">
