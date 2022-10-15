@@ -46,7 +46,7 @@ function fetchTags(): void {
                     <thead class="bg-gray-500 text-left">
                     <tr>
                         <th
-                            v-for="title in ['Title', 'Slug', 'Posts', 'Color', 'Tag', 'Description', '']"
+                            v-for="title in ['Img', 'Title', 'Slug', 'Posts', 'Color', 'Tag', 'Description', '']"
                             :key="title"
                             class="text-white p-3 font-light"
                         >
@@ -60,6 +60,15 @@ function fetchTags(): void {
                             :key="tag.id"
                             class="odd:bg-gray-50 border-b transition-colors hover:bg-gray-100"
                         >
+                            <td class="px-3 py-2">
+                                <img
+                                    :src="`/storage/tags/${tag.name}.webp`"
+                                    :alt="`Logo of ${tag.name}`"
+                                    width="200"
+                                    height="200"
+                                    class="w-[20px]"
+                                />
+                            </td>
                             <td class="px-3 py-2">{{ tag.title }}</td>
                             <td class="px-3 py-2 min-w-[165px]">{{ tag.name }}</td>
                             <td class="px-3 py-2">{{ tag.posts_count }}</td>

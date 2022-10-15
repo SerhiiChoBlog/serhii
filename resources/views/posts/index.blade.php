@@ -21,8 +21,18 @@
     <x-hero
         :mainTitle="$title"
         subtitle="Blog that helps you to become a better web developer and create beautiful,<br />functional websites using the latest web technologies and best practices"
-        class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white"
-    />
+        class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white relative"
+    >
+        @if ($tag)
+            <img
+                src="{{ asset("/storage/tags/$tag->name.webp") }}"
+                alt="The logo of {{ $tag->name }}"
+                class="absolute top-1/2 left-1/4 -translate-y-1/2 opacity-50 max-h-[160px]"
+                width="200"
+                height="200"
+            />
+        @endif
+    </x-hero>
 
     <div class="container">
         <div class="bg-page max-w-[1100px] mx-auto -translate-y-6 rounded-xl px-3 pt-3">
