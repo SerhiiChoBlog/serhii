@@ -5,6 +5,7 @@ export type Tag = {
     name: string
     color: string
     posts_count?: number
+    subscriptions?: Subscription[]
 }
 
 export type PostContentImage = {
@@ -108,4 +109,14 @@ export type PostPublication = {
     people_notified: number
     post?: Post
     created_at: string
+}
+
+export type Subscription = {
+    id: number
+    email: string
+    slug: string
+    confirmed_at: string | null
+    created_at: string
+    updated_at: string
+    tags?: Tag[]
 }

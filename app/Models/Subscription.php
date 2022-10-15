@@ -9,6 +9,8 @@ use App\Notifications\PostPublished;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Notification;
 
 /**
@@ -18,6 +20,7 @@ use Illuminate\Support\Facades\Notification;
  * @property Carbon|null $confirmed_at
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * @property Collection<int, Tag>|null $tags
  */
 class Subscription extends Model
 {
@@ -27,6 +30,11 @@ class Subscription extends Model
      * @var string[]
      */
     protected $guarded = ['id'];
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 
     public function notifySubConfirmation(): void
     {
