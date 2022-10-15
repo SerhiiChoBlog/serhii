@@ -14,8 +14,8 @@
                     <span class="text-main drop-shadow-md">CHO</span>
                 </h1>
 
-                <h2 class="font-post text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md">
-                    Push yourself to the edge of your ability
+                <h2 class="text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md">
+                    Let's make the Web a better place
                 </h2>
 
                 <search>
@@ -41,11 +41,14 @@
 
     <x-home.section
         title="Blog about web development"
-        intro="Here is the short information about me"
+        intro="Let's learn how to write readable, maintainable, and efficient code together"
         class="-translate-y-8 bg-page rounded-xl container"
     >
-        <div class="text-lg lg:text-xl font-light leading-7 lg:leading-9">
-            <x-about.intro />
+        <div class="text-lg lg:text-xl font-light leading-7 lg:leading-9 first-letter:text-2xl">
+            While PHP continues being the most used server-side language on the Internet, it attracts plenty of new programmers.
+            Whether you're a beginner or an experienced developer, I'm sure you'll not be disappointed if you choose to stay.
+            Whether you are a full-stack developer or just a back-end developer, <b class="font-sans font-bold">this blog will help you to write readable, maintainable, and high-quality code.</b>
+            Moreover, you'll be able to expand your knowledge about different coding practices, methodologies, libraries, and tools.
         </div>
     </x-home.section>
 
