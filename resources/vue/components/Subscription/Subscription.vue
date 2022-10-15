@@ -54,8 +54,8 @@ function subscribe(): void {
                         for="subscription"
                         class="flex flex-col mb-4 drop-shadow-md pl-4"
                     >
-                        <span class="text-lg lg:text-2xl">Don't miss the Next post</span>
-                        <span>Leave me your email and I'll let you know when the next post is out</span>
+                        <span class="text-lg lg:text-2xl">Don't miss the Next article</span>
+                        <span>Leave me your email and I'll let you know when the next article is out</span>
                     </label>
 
                     <div class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 inline-block rounded-full shadow-sm">
