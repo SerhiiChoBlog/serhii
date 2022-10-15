@@ -27,7 +27,7 @@
             <img
                 src="{{ asset("/storage/tags/$tag->name.webp") }}"
                 alt="The logo of {{ $tag->name }}"
-                class="absolute top-1/2 left-1/4 -translate-y-1/2 opacity-50 max-h-[160px]"
+                class="absolute top-1/2 left-1/4 -translate-y-1/2 opacity-50 w-[160px] h-[160px]"
                 width="200"
                 height="200"
             />
