@@ -15,8 +15,9 @@ use Illuminate\Support\Collection;
  * @property string $description
  * @property string $name
  * @property string $color
- * @property Collection<Post> $posts
  * @property int|null $posts_count
+ * @property Collection<int, Post> $posts
+ * @property Collection<int, Subscription> $subscriptions
  */
 class Tag extends Model
 {
@@ -35,5 +36,10 @@ class Tag extends Model
     public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class);
+    }
+
+    public function subscriptions(): BelongsToMany
+    {
+        return $this->belongsToMany(Subscription::class);
     }
 }
