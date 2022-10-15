@@ -6,10 +6,10 @@ import { Listbox } from '@headlessui/vue'
 import ListboxButton from '../Listbox/ListboxButton.vue'
 import ListboxOptions from '../Listbox/ListboxOptions.vue'
 import ListboxOption from '../Listbox/ListboxOption.vue'
-import FilterTagLabel from './FilterTagLabel.vue'
 import replaceQueryParam from '../../modules/replaceQueryParam'
 import showEverythingTag from '../../modules/showEverythingTag'
 import CloseIcon from '../Icons/CloseIcon.vue'
+import TagImage from './TagImage.vue'
 
 type Props = {
     tag: Tag
@@ -60,7 +60,7 @@ function fetchTags(): void {
             <div class="relative">
                 <listbox-button>
                     <div class="flex items-center gap-2">
-                        <filter-tag-label :tag="selectedTag" />
+                        <tag-image :tagName="tag.name" />
                         {{ selectedTag.title }}
                     </div>
                 </listbox-button>
@@ -72,7 +72,7 @@ function fetchTags(): void {
                         :value="tag"
                     >
                         <div class="flex items-center gap-2">
-                            <filter-tag-label :tag="tag" />
+                            <tag-image :tagName="tag.name" />
                             {{ tag.title }}
                         </div>
                     </listbox-option>
