@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Tag } from '@/../types/models'
-import type { SubscriptionForm, SubscriptionTagsModal } from '@/../types'
+import type { SubscriptionDemandResponse, SubscriptionForm, SubscriptionTagsModal } from '@/../types'
 import AppearTransition from '@/components/Transitions/AppearTransition.vue'
 import { onMounted, reactive, ref } from 'vue'
 import axios from 'axios'
@@ -104,21 +104,29 @@ function subscribe(): void {
 
     modalForm.loading = true
 
-    axios.post<string>(`/api/subscriptions?email=${modalForm.email}&tags=${tagsParam}`)
+    const uri = `/api/subscriptions?email=${modalForm.email}&tags=${tagsParam}`
+
+    axios.post<SubscriptionDemandResponse>(uri)
         .then(resp => {
             modalForm.email = ''
 
-            showToast({
-                text: resp.data,
-                duration: 7000,
-            })
+            showToastAfterResponse(resp.data)
+
+            if (resp.data.success) {
+                SubscriptionCache.deleteAll()
+                SubscriptionButton.setAllTags()
+            }
         })
         .catch(err => console.error(err))
-        .finally(() => {
-            modalForm.loading = false
-            SubscriptionCache.deleteAll()
-            SubscriptionButton.setAllTags()
-        })
+        .finally(() => modalForm.loading = false)
+}
+
+function showToastAfterResponse(data: SubscriptionDemandResponse): void {
+    showToast({
+        text: data.message,
+        success: data.success,
+        duration: 7000,
+    })
 }
 </script>
 
