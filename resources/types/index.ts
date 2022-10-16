@@ -50,11 +50,11 @@ export interface EditPostFormElements extends HTMLFormControlsCollection {
 
 export type SubscriptionForm = {
     loading: boolean
-    showModal: boolean
     email: string
 }
 
-export type SubscriptionTags = {
+export type SubscriptionTagsModal = {
+    showModal: boolean
     loading: boolean
     items: Tag[]
 }
