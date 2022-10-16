@@ -1,25 +1,9 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import contactModalSections from '../modules/contactModalSections'
-import AppearTransition from './Transitions/AppearTransition.vue'
+import Modal from './Modal.vue'
 
 const isOpen = ref(false)
-
-function openContactModal(): void {
-    isOpen.value = true
-}
-
-function closeContactModal(): void {
-    isOpen.value = false
-}
-
-onMounted(() => {
-    window.addEventListener('keydown', e => {
-        if (e.key === 'Escape') {
-            closeContactModal()
-        }
-    })
-})
 </script>
 
 <template>
@@ -27,70 +11,45 @@ onMounted(() => {
         <button
             type="button"
             class="w-full mx-auto shadow-md bg-main lg:w-auto font-semibold text-white py-2 px-6 rounded-full transition-colors hover:bg-main-hover uppercase text-sm tracking-widest"
-            @click="openContactModal"
+            @click="isOpen = true"
             aria-label="Open contacts modal"
         >
             Contacts
         </button>
     </div>
 
-    <appear-transition>
-        <aside v-show="isOpen" class="fixed left-0 right-0 top-0 bottom-0 z-40 bg-[hsla(0,0%,4%,.86)]">
-            <div
-                v-if="isOpen"
-                class="overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto max-h-[calc(100vh-40px)]"
+    <modal :opened="isOpen" @close="isOpen = false">
+        <div class="divide-y divide-border">
+            <section
+                v-for="section in contactModalSections"
+                :key="section.title"
+                class="py-5 first:pt-0 last:pb-0"
             >
-                <div class="bg-page text-font shadow-xl rounded-lg p-10 h-full relative">
-                    <!-- Close modal button -->
-                    <button
-                        @click="closeContactModal"
-                        type="button"
-                        class="absolute top-2 right-2 p-3 text-font-second hover:text-main transition-colors"
-                        aria-label="Close contacts modal button"
+                <h2 class="text-center text-2xl mb-3 font-bold">
+                    {{ section.title }}
+                </h2>
+
+                <p v-html="section.content" class="text-center text-lg"></p>
+
+                <div class="flex justify-center gap-x-5 mt-5">
+                    <a
+                        v-for="link in section.links"
+                        :key="link.title"
+                        :href="link.href"
+                        target="_blank"
+                        :title="link.title"
+                        class="transition-transform hover:scale-125"
+                        :aria-label="link.title"
                     >
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clip-rule="evenodd">
-                            </path>
-                        </svg>
-                    </button>
-
-                    <div class="divide-y divide-border">
-                        <section
-                            v-for="section in contactModalSections"
-                            :key="section.title"
-                            class="py-5 first:pt-0 last:pb-0"
-                        >
-                            <h2 class="text-center text-2xl mb-3 font-bold">
-                                {{ section.title }}
-                            </h2>
-
-                            <p v-html="section.content" class="text-center text-lg"></p>
-
-                            <div class="flex justify-center gap-x-5 mt-5">
-                                <a
-                                    v-for="link in section.links"
-                                    :key="link.title"
-                                    :href="link.href"
-                                    target="_blank"
-                                    :title="link.title"
-                                    class="transition-transform hover:scale-125"
-                                    :aria-label="link.title"
-                                >
-                                    <img
-                                        :src="link.img"
-                                        :alt="link.title"
-                                        width="30"
-                                        height="30"
-                                    />
-                                </a>
-                            </div>
-                        </section>
-                    </div>
+                        <img
+                            :src="link.img"
+                            :alt="link.title"
+                            width="30"
+                            height="30"
+                        />
+                    </a>
                 </div>
-            </div>
-        </aside>
-    </appear-transition>
+            </section>
+        </div>
+    </modal>
 </template>
