@@ -1,16 +1,40 @@
 <script setup lang="ts">
 import type { SubscriptionTagsModal } from '@/../types'
+import type { Tag } from '@/../types/models'
 import Spinner from '@/components/Spinner.vue'
-import { ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import CheckIcon from '@/components/Icons/CheckIcon.vue'
-import { Tag } from '@/../types/models'
+import CloseIcon from '@/components/Icons/CloseIcon.vue'
 
 type Props = {
     tags: SubscriptionTagsModal
 }
 
 const props = defineProps<Props>()
-const subjects = ref<number[]>([])
+const subjects = ref<number[]>(props.tags.items.map(tag => tag.id))
+
+watch(props, (props: Props) => {
+    if (subjects.value.length === 0) {
+        selectAllSubjects()
+    }
+})
+
+const allTagsAreChosen = computed(() => {
+    return props.tags.items.length === subjects.value.length
+})
+
+function selectAllSubjects(): void {
+    subjects.value = props.tags.items.map(tag => tag.id)
+}
+
+function toggleAll(): void {
+    if (allTagsAreChosen.value) {
+        subjects.value = []
+        return
+    }
+
+    selectAllSubjects()
+}
 
 function chooseSubject(tag: Tag): void {
     if (!subjects.value.includes(tag.id)) {
@@ -26,14 +50,31 @@ function chooseSubject(tag: Tag): void {
 
 <template>
     <div>
-        <div class="mb-7 text-center">
+        <div class="mb-5 text-center">
             <h2 class="text-2xl">Choose subjects to subscribe</h2>
             <p class="text-xl">
                 Subjects chosen:
                 <b class="text-green-700 font-sans">
-                    {{ subjects.length === props.tags.items.length ? 'everything' : `${subjects.length} out of ${props.tags.items.length}` }}
+                    {{ allTagsAreChosen ? 'everything' : `${subjects.length} out of ${props.tags.items.length}` }}
                 </b>
             </p>
+
+            <button
+                type="button"
+                class="px-7 py-0.5 border border-gray-400 rounded-full mt-3"
+                @click="toggleAll"
+            >
+                <span class="flex items-center gap-2">
+                    <template v-if="allTagsAreChosen" >
+                        <close-icon class="w-5 h-5 text-red-800" />
+                        Remove all
+                    </template>
+                    <template v-else>
+                        <check-icon class="w-5 h-5 text-green-700" />
+                        Select all
+                    </template>
+                </span>
+            </button>
         </div>
 
         <spinner v-if="props.tags.loading" />
