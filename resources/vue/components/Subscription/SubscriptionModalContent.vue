@@ -89,12 +89,13 @@ function subjectsHaveTag(tag: Tag): boolean {
             </button>
         </div>
 
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <li
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <button
+                type="button"
                 v-for="tag in props.tags.items"
                 :key="tag.id"
-                class="flex items-center gap-7 border rounded-lg py-2 px-3 relative"
-                :class="subjectsHaveTag(tag) ? 'border-green-500 bg-green-50' : 'border-border'"
+                class="flex items-center gap-7 border rounded-lg py-2 px-3 relative pointer outline outline-2 outline-transparent transition-all hover:outline-gray-400 dark:hover:outline-gray-600"
+                :class="subjectsHaveTag(tag) ? 'border-green-500 dark:border-green-900 bg-green-50 dark:bg-page-second' : 'border-border'"
                 aria-label="Subscription subject"
                 @click="chooseSubject(tag)"
             >
@@ -115,7 +116,7 @@ function subjectsHaveTag(tag: Tag): boolean {
                     <h3 class="font-semibold font-sans text-lg">{{ tag.title }}</h3>
                     <p class="text-font-second text-md">{{ tag.description }}</p>
                 </div>
-            </li>
-        </ul>
+            </button>
+        </div>
     </div>
 </template>
