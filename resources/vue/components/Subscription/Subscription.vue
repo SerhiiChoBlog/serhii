@@ -34,10 +34,11 @@ const tags = reactive<SubscriptionTagsModal>({
 })
 
 const advantages = [
-    'No spam',
-    'No advertisements, only new posts',
+    'Receive emails only for specific topics',
     'Your email is kept private and safe',
     'You can unsubscribe any time',
+    'No advertisements',
+    'No spam',
 ]
 
 onMounted(() => {
@@ -159,8 +160,10 @@ function subscribe(): void {
                             />
                         </div>
 
-                        <div class="flex gap-2 mt-4 justify-center">
-                            <subscription-tag-icon v-for="tag in chosenTags" :key="tag.id" :tag="tag" />
+                        <div class="text-center">
+                            <div class="inline-flex gap-2 flex-wrap mt-4 justify-center">
+                                <subscription-tag-icon v-for="tag in chosenTags" :key="tag.id" :tag="tag" />
+                            </div>
                         </div>
                     </form>
 
