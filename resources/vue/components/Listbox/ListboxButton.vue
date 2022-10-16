@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ListboxButton } from '@headlessui/vue'
-import SelectorIcon from '../Icons/SelectorIcon.vue'</script>
+import SelectorIcon from '@/components/Icons/SelectorIcon.vue'</script>
 
 <template>
     <listbox-button

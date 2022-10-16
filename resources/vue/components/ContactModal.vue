@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import contactModalSections from '../modules/contactModalSections'
-import Modal from './Modal.vue'
+import contactModalSections from '@/modules/contactModalSections'
+import Modal from '@/components/Modal.vue'
 
 const isOpen = ref(false)
 </script>

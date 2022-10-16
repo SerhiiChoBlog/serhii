@@ -1,9 +1,9 @@
-import type { Search, SearchSuggestion } from '../../types/types'
+import type { Search, SearchSuggestion } from '@/../types/types'
 import { onMounted, reactive, ref } from 'vue'
 import { debounce } from 'lodash'
 import axios from 'axios'
-import Cache from '../modules/Cache'
-import SuggestionControls from '../modules/SuggestionControls'
+import Cache from '@/modules/Cache'
+import SuggestionControls from '@/modules/SuggestionControls'
 
 export default () => {
     const input = ref<HTMLInputElement | null>(null)

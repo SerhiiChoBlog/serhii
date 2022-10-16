@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { SearchSuggestion } from '../../../types/types'
-import useSearch from '../../composables/useSearch'
+import type { SearchSuggestion } from '@/../types/types'
+import useSearch from '@/composables/useSearch'
 
 interface Props {
     items: SearchSuggestion[]
