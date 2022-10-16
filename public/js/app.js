@@ -20913,6 +20913,9 @@ exports["default"] = (0, vue_1.defineComponent)({
     expose();
     var _b = __props.removeBg,
         removeBg = _b === void 0 ? false : _b;
+    (0, vue_2.onMounted)(function () {
+      showModalWithTags();
+    });
     var modalForm = (0, vue_2.reactive)({
       loading: false,
       email: ''
@@ -21011,6 +21014,8 @@ var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 
 var CheckIcon_vue_1 = __importDefault(__webpack_require__(/*! @/components/Icons/CheckIcon.vue */ "./resources/vue/components/Icons/CheckIcon.vue"));
 
+var CloseIcon_vue_1 = __importDefault(__webpack_require__(/*! @/components/Icons/CloseIcon.vue */ "./resources/vue/components/Icons/CloseIcon.vue"));
+
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'SubscriptionModalContent',
   props: {
@@ -21023,7 +21028,32 @@ exports["default"] = (0, vue_1.defineComponent)({
     var expose = _a.expose;
     expose();
     var props = __props;
-    var subjects = (0, vue_2.ref)([]);
+    var subjects = (0, vue_2.ref)(props.tags.items.map(function (tag) {
+      return tag.id;
+    }));
+    (0, vue_2.watch)(props, function (props) {
+      if (subjects.value.length === 0) {
+        selectAllSubjects();
+      }
+    });
+    var allTagsAreChosen = (0, vue_2.computed)(function () {
+      return props.tags.items.length === subjects.value.length;
+    });
+
+    function selectAllSubjects() {
+      subjects.value = props.tags.items.map(function (tag) {
+        return tag.id;
+      });
+    }
+
+    function toggleAll() {
+      if (allTagsAreChosen.value) {
+        subjects.value = [];
+        return;
+      }
+
+      selectAllSubjects();
+    }
 
     function chooseSubject(tag) {
       if (!subjects.value.includes(tag.id)) {
@@ -21038,9 +21068,13 @@ exports["default"] = (0, vue_1.defineComponent)({
     var __returned__ = {
       props: props,
       subjects: subjects,
+      allTagsAreChosen: allTagsAreChosen,
+      selectAllSubjects: selectAllSubjects,
+      toggleAll: toggleAll,
       chooseSubject: chooseSubject,
       Spinner: Spinner_vue_1["default"],
-      CheckIcon: CheckIcon_vue_1["default"]
+      CheckIcon: CheckIcon_vue_1["default"],
+      CloseIcon: CloseIcon_vue_1["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -22340,7 +22374,7 @@ exports.render = void 0;
 var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "mb-7 text-center"
+  "class": "mb-5 text-center"
 };
 
 var _hoisted_2 = (0, vue_1.createElementVNode)("h2", {
@@ -22357,22 +22391,42 @@ var _hoisted_5 = {
   "class": "text-green-700 font-sans"
 };
 var _hoisted_6 = {
+  "class": "flex items-center gap-2"
+};
+
+var _hoisted_7 = (0, vue_1.createTextVNode)(" Remove all ");
+
+var _hoisted_8 = (0, vue_1.createTextVNode)(" Select all ");
+
+var _hoisted_9 = {
   key: 1,
   "class": "grid grid-cols-1 lg:grid-cols-2 gap-3"
 };
-var _hoisted_7 = ["onClick"];
-var _hoisted_8 = ["src", "alt"];
-var _hoisted_9 = {
+var _hoisted_10 = ["onClick"];
+var _hoisted_11 = ["src", "alt"];
+var _hoisted_12 = {
   "class": "font-semibold font-sans text-lg"
 };
-var _hoisted_10 = {
+var _hoisted_13 = {
   "class": "text-font-second text-md"
 };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", null, [(0, vue_1.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0, vue_1.createElementVNode)("p", _hoisted_3, [_hoisted_4, (0, vue_1.createElementVNode)("b", _hoisted_5, (0, vue_1.toDisplayString)($setup.subjects.length === $setup.props.tags.items.length ? 'everything' : "".concat($setup.subjects.length, " out of ").concat($setup.props.tags.items.length)), 1)])]), $setup.props.tags.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Spinner"], {
+  return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("div", null, [(0, vue_1.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0, vue_1.createElementVNode)("p", _hoisted_3, [_hoisted_4, (0, vue_1.createElementVNode)("b", _hoisted_5, (0, vue_1.toDisplayString)($setup.allTagsAreChosen ? 'everything' : "".concat($setup.subjects.length, " out of ").concat($setup.props.tags.items.length)), 1)]), (0, vue_1.createElementVNode)("button", {
+    type: "button",
+    "class": "px-7 py-0.5 border border-gray-400 rounded-full mt-3",
+    onClick: $setup.toggleAll
+  }, [(0, vue_1.createElementVNode)("span", _hoisted_6, [$setup.allTagsAreChosen ? ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, {
     key: 0
-  })) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("ul", _hoisted_6, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.props.tags.items, function (tag) {
+  }, [(0, vue_1.createVNode)($setup["CloseIcon"], {
+    "class": "w-5 h-5 text-red-800"
+  }), _hoisted_7], 64)) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)(vue_1.Fragment, {
+    key: 1
+  }, [(0, vue_1.createVNode)($setup["CheckIcon"], {
+    "class": "w-5 h-5 text-green-700"
+  }), _hoisted_8], 64))])])]), $setup.props.tags.loading ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["Spinner"], {
+    key: 0
+  })) : ((0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("ul", _hoisted_9, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.props.tags.items, function (tag) {
     return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("li", {
       key: tag.id,
       "class": (0, vue_1.normalizeClass)(["flex items-center gap-7 border rounded-lg py-2 px-3 relative", $setup.subjects.includes(tag.id) ? 'border-green-500 bg-green-50' : 'border-border']),
@@ -22389,7 +22443,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       width: "200",
       height: "200",
       "class": "w-[50px] rounded-md drop-shadow-md"
-    }, null, 8, _hoisted_8), (0, vue_1.createElementVNode)("div", null, [(0, vue_1.createElementVNode)("h3", _hoisted_9, (0, vue_1.toDisplayString)(tag.title), 1), (0, vue_1.createElementVNode)("p", _hoisted_10, (0, vue_1.toDisplayString)(tag.description), 1)])], 10, _hoisted_7);
+    }, null, 8, _hoisted_11), (0, vue_1.createElementVNode)("div", null, [(0, vue_1.createElementVNode)("h3", _hoisted_12, (0, vue_1.toDisplayString)(tag.title), 1), (0, vue_1.createElementVNode)("p", _hoisted_13, (0, vue_1.toDisplayString)(tag.description), 1)])], 10, _hoisted_10);
   }), 128))]))]);
 }
 
