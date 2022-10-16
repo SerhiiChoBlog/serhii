@@ -39,7 +39,7 @@ onMounted(() => {
                     <button
                         @click="emit('close')"
                         type="button"
-                        class="absolute top-2 right-2 p-3 text-font-second hover:text-main transition-colors"
+                        class="absolute top-2 right-2 p-3 text-font-second hover:text-red-600 transition-colors"
                         aria-label="Close contacts modal button"
                     >
                         <close-icon class="w-6 h-6" />
