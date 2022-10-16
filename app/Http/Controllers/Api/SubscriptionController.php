@@ -11,23 +11,37 @@ use Illuminate\Support\Str;
 
 class SubscriptionController extends Controller
 {
-    public function subscribe(SubscribeRequest $request): string
+    /**
+     * @param SubscribeRequest $request
+     *
+     * @return array{success: bool, message: string}
+     */
+    public function subscribe(SubscribeRequest $request): array
     {
         $slug = Str::random(50);
 
         if ($request->tags->is(SubscribeRequest::NO_TAGS)) {
-            return 'Choose topics to subscribe';
+            return [
+                'success' => false,
+                'message' => 'Choose topics to subscribe'
+            ];
         }
 
         /** @var Subscription|null $old_sub */
         $old_sub = Subscription::query()->where('email', $request->email)->first();
 
         if ($old_sub && $old_sub->confirmed_at) {
-            return 'Thank you! You are already subscribed. You will be notified when the new post is published';
+            return [
+                'success' => true,
+                'message' => 'Thank you! You are already subscribed. You will be notified when the new post is published'
+            ];
         }
 
         if ($old_sub && !$old_sub->confirmed_at && $old_sub->created_at->isToday()) {
-            return 'Please, check you email to confirm the subscription, or try tomorrow';
+            return [
+                'success' => true,
+                'message' => 'Please, check you email to confirm the subscription, or try tomorrow'
+            ];
         }
 
         if ($old_sub) {
@@ -47,6 +61,9 @@ class SubscriptionController extends Controller
 
         $subscription->notifySubConfirmation();
 
-        return 'Please, check you email to confirm your subscription';
+        return [
+            'success' => true,
+            'message' => 'Please, check you email to confirm your subscription'
+        ];
     }
 }

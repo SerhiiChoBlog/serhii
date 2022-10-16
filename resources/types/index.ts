@@ -57,3 +57,8 @@ export type SubscriptionTagsModal = {
     loading: boolean
     items: Tag[]
 }
+
+export type SubscriptionDemandResponse = {
+    message: string
+    success: boolean
+}
