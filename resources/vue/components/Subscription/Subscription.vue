@@ -2,7 +2,7 @@
 import type { Tag } from '@/../types/models'
 import type { SubscriptionForm, SubscriptionTagsModal } from '@/../types'
 import AppearTransition from '@/components/Transitions/AppearTransition.vue'
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import axios from 'axios'
 import showToast from '@/modules/showToast'
 import CheckIcon from '@/components/Icons/CheckIcon.vue'
@@ -10,12 +10,16 @@ import Modal from '@/components/Modal.vue'
 import SubscriptionModalContent from './SubscriptionModalContent.vue'
 import ChooseTagsButton from './ChooseTagsButton.vue'
 import SubscriptionButton from '@/modules/Subscription/SubscriptionButton'
+import SubscriptionCache from '@/modules/Subscription/SubscriptionCache'
+import listenEvent from '@/modules/listenEvent'
+import appConfig from '@/appConfig'
 
 type Props = {
     removeBg?: boolean
 }
 
 const { removeBg = false } = defineProps<Props>()
+const chosenTags = ref<Tag[]>([])
 
 const modalForm = reactive<SubscriptionForm>({
     loading: false,
@@ -35,7 +39,29 @@ const advantages = [
     'You can unsubscribe any time',
 ]
 
-onMounted(() => SubscriptionButton.rename())
+onMounted(() => {
+    if (SubscriptionCache.isEmpty()) {
+        SubscriptionCache.deleteAll()
+    }
+
+    SubscriptionButton.rename()
+
+    updateChosenTags()
+
+    listenEvent(appConfig.events.subscribeTagsButtonTitle, () => {
+        updateChosenTags()
+    })
+})
+
+function updateChosenTags(): void {
+    const cachedTags = SubscriptionCache.get()
+
+    if (!cachedTags) {
+        return
+    }
+
+    chosenTags.value = cachedTags
+}
 
 function showModalWithTags(): void {
     tags.showModal = true
@@ -127,6 +153,18 @@ function subscribe(): void {
                             <choose-tags-button
                                 class="!bg-white !text-font w-full h-10 mt-2 text-center mx-auto"
                                 @clicked="showModalWithTags"
+                            />
+                        </div>
+
+                        <div class="flex gap-2 mt-4 justify-center">
+                            <img
+                                v-for="tag in chosenTags"
+                                :key="tag.id"
+                                :src="`/storage/tags/${tag.name}.webp`"
+                                :alt="tag.name"
+                                class="w-[25px] h-[25px]"
+                                width="200"
+                                height="200"
                             />
                         </div>
                     </form>
