@@ -5,14 +5,17 @@ declare(strict_types=1);
 namespace App\Http\Requests\Subscription;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Collection;
+use Illuminate\Support\Stringable;
 
 /**
  * @property string $email
- * @property Collection<int, string> $tags
+ * @property Stringable $tags
  */
 class SubscribeRequest extends FormRequest
 {
+    public const ALL_TAGS = 'all';
+    public const NO_TAGS = 'none';
+
     public function authorize(): bool
     {
         return true;
@@ -27,16 +30,14 @@ class SubscribeRequest extends FormRequest
     {
         return [
             'email' => ['required', 'email'],
-            'tags' => ['nullable'],
+            'tags' => ['required'],
         ];
     }
 
     protected function prepareForValidation(): void
     {
-        $tags = request()->str('tags');
-
         $this->merge([
-            'tags' => $tags->isEmpty() ? collect([]) : $tags->explode(','),
+            'tags' => request()->str('tags'),
         ]);
     }
 }

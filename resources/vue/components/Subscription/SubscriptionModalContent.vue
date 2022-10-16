@@ -23,23 +23,22 @@ onMounted(() => {
     subjects.value = cachedTags ? cachedTags : props.tags.items
 })
 
-function selectAllSubjects(): void {
+function toggleAll(): void {
+    allTagsAreChosen.value ? removeAll() : selectAll();
+}
+
+function selectAll(): void {
     subjects.value = props.tags.items
 
     SubscriptionCache.set(props.tags.items)
     SubscriptionButton.setAllTags()
 }
 
-function toggleAll(): void {
-    if (allTagsAreChosen.value) {
-        subjects.value = []
+function removeAll(): void {
+    subjects.value = []
 
-        SubscriptionCache.set([])
-        SubscriptionButton.setNoTags()
-        return
-    }
-
-    selectAllSubjects()
+    SubscriptionCache.set([])
+    SubscriptionButton.setNoTags()
 }
 
 function chooseSubject(tag: Tag): void {
@@ -76,16 +75,14 @@ function subjectsHaveTag(tag: Tag): boolean {
                 class="px-7 py-0.5 border border-gray-400 rounded-full mt-3"
                 @click="toggleAll"
             >
-                <span class="flex items-center gap-2">
-                    <template v-if="allTagsAreChosen" >
-                        <close-icon class="w-5 h-5 text-red-800" />
-                        Remove all
-                    </template>
-                    <template v-else>
-                        <check-icon class="w-5 h-5 text-green-700" />
-                        Select all
-                    </template>
-                </span>
+                <div v-if="allTagsAreChosen" class="flex items-center gap-2">
+                    <close-icon class="w-5 h-5 text-red-800" />
+                    Remove all
+                </div>
+                <div v-else class="flex items-center gap-2">
+                    <check-icon class="w-5 h-5 text-green-700" />
+                    Select all
+                </div>
             </button>
         </div>
 
