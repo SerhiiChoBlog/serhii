@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Tag } from '@/../types/models'
 import AppearTransition from '@/components/Transitions/AppearTransition.vue'
-import { onMounted, reactive } from 'vue'
+import { reactive } from 'vue'
 import axios from 'axios'
 import showToast from '@/modules/showToast'
 import CheckIcon from '@/components/Icons/CheckIcon.vue'
@@ -15,10 +15,6 @@ type Props = {
 }
 
 const { removeBg = false } = defineProps<Props>()
-
-onMounted(() => {
-    showModalWithTags()
-})
 
 const modalForm = reactive<SubscriptionForm>({
     loading: false,
@@ -49,7 +45,6 @@ function showModalWithTags(): void {
 
     axios.get<Tag[]>('/api/tags')
         .then(resp => {
-            console.log(resp.data)
             tags.items.push(...resp.data)
         })
         .catch(err => console.error(err))
