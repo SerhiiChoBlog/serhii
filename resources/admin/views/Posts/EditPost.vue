@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Post, Tag } from '../../../types/models'
-import type { EditPostFormElements } from '../../../types/types'
+import type { EditPostFormElements } from '@/../types'
 import axios from 'axios'
 import handleError from '../../modules/handleError'
 import { onMounted, ref } from 'vue'

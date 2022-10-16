@@ -1,4 +1,4 @@
-import { UserSidebarLink } from '../../types/types'
+import { UserSidebarLink } from '@/../types'
 import dispatchEvent from '../modules/dispatchEvent'
 import appConfig from '../appConfig'
 

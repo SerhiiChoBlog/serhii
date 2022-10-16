@@ -1,4 +1,4 @@
-import type { Search, SearchSuggestion } from '@/../types/types'
+import type { Search, SearchSuggestion } from '@/../types'
 import { onMounted, reactive, ref } from 'vue'
 import { debounce } from 'lodash'
 import axios from 'axios'
