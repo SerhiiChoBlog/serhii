@@ -5,6 +5,7 @@ import axios from 'axios'
 import showToast from '../../modules/showToast'
 import CheckIcon from '../Icons/CheckIcon.vue'
 import ChevronDown from '../Icons/ChevronDownIcon.vue'
+import Modal from '../Modal.vue'
 
 type Props = {
     removeBg?: boolean
@@ -13,7 +14,8 @@ type Props = {
 const { removeBg = false } = defineProps<Props>()
 
 const email = ref<string>('')
-const loading = ref(false)
+const loading = ref<boolean>(false)
+const showModal = ref<boolean>(false)
 
 const advantages = [
     'No spam',
@@ -44,64 +46,71 @@ function subscribe(): void {
 </script>
 
 <template>
-    <appear-transition>
-        <footer
-            :class="{ 'bg-gradient-to-r from-gray-800 to-gray-700': !removeBg }"
-            class="print:hidden"
-        >
-            <div class="container grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20  text-white px-8 py-14 lg:py-24 relative z-10">
-                <form @submit.prevent="subscribe" class="max-w-[570px] w-full mx-auto">
-                    <label
-                        for="subscription"
-                        class="flex flex-col mb-4 drop-shadow-md pl-4"
-                    >
-                        <span class="text-lg lg:text-2xl">Don't miss the Next article</span>
-                        <span class="text-sm lg:text-lg">You can subscribe to specific tags and be notified when it's out</span>
-                    </label>
-
-                    <div class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 inline-block rounded-full shadow-sm">
-                        <button
-                            type="button"
-                            class="inline-flex items-center justify-center gap-1 bg-gray-700 text-gray-100 h-full px-4 rounded-full min-w-[150px] transition-shadow shadow-md hover:shadow-none"
+    <div>
+        <appear-transition>
+            <footer
+                :class="{ 'bg-gradient-to-r from-gray-800 to-gray-700': !removeBg }"
+                class="print:hidden"
+            >
+                <div class="container grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-7 md:gap-20 text-white px-8 py-14 lg:py-24 relative z-10">
+                    <form @submit.prevent="subscribe" class="w-[550px] w-full mx-auto">
+                        <label
+                            for="subscription"
+                            class="flex flex-col mb-4 drop-shadow-md pl-4"
                         >
-                            <span>All</span> <chevron-down class="w-5 h-5" />
-                        </button>
+                            <span class="text-lg lg:text-2xl">Don't miss the Next article</span>
+                            <span class="text-sm lg:text-lg">You can subscribe to specific tags and be notified when it's out</span>
+                        </label>
 
-                        <input
-                            type="email"
-                            id="subscription"
-                            class="px-6 h-full bg-transparent rounded-full w-full focus:outline-none text-white placeholder-gray-300"
-                            placeholder="Your email address"
-                            v-model="email"
-                        >
+                        <div class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 inline-block rounded-full shadow-sm">
+                            <button
+                                @click="showModal = true"
+                                type="button"
+                                class="inline-flex items-center justify-center gap-1 bg-gray-700 text-gray-100 h-full px-4 rounded-full min-w-[150px] transition-shadow shadow-md hover:shadow-none"
+                            >
+                                <span>All</span> <chevron-down class="w-5 h-5" />
+                            </button>
 
-                        <button
-                            type="submit"
-                            class="transition-all hover:px-10 h-full px-4 lg:px-7 rounded-full shadow-md"
-                            :class="loading ? 'bg-main text-white' : 'bg-white text-gray-700'"
-                        >
-                            <span v-if="loading" class="flex gap-4">
-                                <b class="animate-spin inline-block">/</b>
-                                <span>Processing...</span>
-                            </span>
-                            <span v-else>Subscribe</span>
-                        </button>
+                            <input
+                                type="email"
+                                id="subscription"
+                                class="px-6 h-full bg-transparent rounded-full w-full focus:outline-none text-white placeholder-gray-300"
+                                placeholder="Your email address"
+                                v-model="email"
+                            >
+
+                            <button
+                                type="submit"
+                                class="transition-all hover:px-10 h-full px-4 lg:px-7 rounded-full shadow-md"
+                                :class="loading ? 'bg-main text-white' : 'bg-white text-gray-700'"
+                            >
+                                <span v-if="loading" class="flex gap-4">
+                                    <b class="animate-spin inline-block">/</b>
+                                    <span>Processing...</span>
+                                </span>
+                                <span v-else>Subscribe</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="mt-4 text-md lg:text-lg space-y-3">
+                        <ul class="space-y-1">
+                            <li
+                                v-for="item in advantages"
+                                :key="item"
+                                class="flex gap-2 items-center"
+                            >
+                                <check-icon class="w-5 lg:w-7 h-5 lg:h-7 text-green-500" />
+                                <span>{{ item }}</span>
+                            </li>
+                        </ul>
                     </div>
-                </form>
-
-                <div class="mt-4 text-md lg:text-lg space-y-3">
-                    <ul class="space-y-1">
-                        <li
-                            v-for="item in advantages"
-                            :key="item"
-                            class="flex gap-2 items-center"
-                        >
-                            <check-icon class="w-5 lg:w-7 h-5 lg:h-7 text-green-500" />
-                            <span>{{ item }}</span>
-                        </li>
-                    </ul>
                 </div>
-            </div>
-        </footer>
-    </appear-transition>
+            </footer>
+        </appear-transition>
+
+        <modal :opened="showModal" @close="showModal = false">
+            here
+        </modal>
+    </div>
 </template>
