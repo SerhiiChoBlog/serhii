@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { Tag } from '@/../types/models'
+import type { SubscriptionForm, SubscriptionTagsModal } from '@/../types'
 import AppearTransition from '@/components/Transitions/AppearTransition.vue'
 import { reactive } from 'vue'
 import axios from 'axios'
 import showToast from '@/modules/showToast'
 import CheckIcon from '@/components/Icons/CheckIcon.vue'
-import ChevronDown from '@/components/Icons/ChevronDownIcon.vue'
 import Modal from '@/components/Modal.vue'
 import SubscriptionModalContent from './SubscriptionModalContent.vue'
-import type { SubscriptionForm, SubscriptionTagsModal } from '@/../types'
+import ChooseTagsButton from './ChooseTagsButton.vue'
 
 type Props = {
     removeBg?: boolean
@@ -79,8 +79,8 @@ function subscribe(): void {
                 :class="{ 'bg-gradient-to-r from-gray-800 to-gray-700': !removeBg }"
                 class="print:hidden"
             >
-                <div class="container grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-7 md:gap-20 text-white px-8 py-14 lg:py-24 relative z-10">
-                    <form @submit.prevent="subscribe" class="w-[550px] w-full mx-auto">
+                <div class="container grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-7 md:gap-20 text-white px-8 py-14 lg:py-24 relative z-10">
+                    <form @submit.prevent="subscribe" class="w-full lg:w-[550px] mx-auto">
                         <label
                             for="subscription"
                             class="flex flex-col mb-4 drop-shadow-md pl-4"
@@ -90,13 +90,10 @@ function subscribe(): void {
                         </label>
 
                         <div class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 inline-block rounded-full shadow-sm">
-                            <button
-                                @click="showModalWithTags"
-                                type="button"
-                                class="inline-flex items-center justify-center gap-1 bg-gray-700 text-gray-100 h-full px-4 rounded-full min-w-[150px] transition-shadow shadow-md hover:shadow-none"
-                            >
-                                <span>All</span> <chevron-down class="w-5 h-5" />
-                            </button>
+                            <choose-tags-button
+                                class="hidden md:inline-flex"
+                                @clicked="showModalWithTags"
+                            />
 
                             <input
                                 type="email"
@@ -117,6 +114,13 @@ function subscribe(): void {
                                 </span>
                                 <span v-else>Subscribe</span>
                             </button>
+                        </div>
+
+                        <div class="md:hidden text-center">
+                            <choose-tags-button
+                                class="!bg-white !text-font w-full h-10 mt-2 text-center mx-auto"
+                                @clicked="showModalWithTags"
+                            />
                         </div>
                     </form>
 
