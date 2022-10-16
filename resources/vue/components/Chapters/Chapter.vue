@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Chapter as ChapterType } from '@/../types/types'
+import type { Chapter as ChapterType } from '@/../types'
 import { computed } from 'vue'
 
 interface Props {

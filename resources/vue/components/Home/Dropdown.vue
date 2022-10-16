@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Search } from '@/../types/types'
+import { Search } from '@/../types'
 import History from './History.vue'
 import NotFound from './NotFound.vue'
 import DropdownItems from './DropdownItems.vue'

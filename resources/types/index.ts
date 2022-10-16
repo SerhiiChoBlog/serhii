@@ -1,3 +1,5 @@
+import type { Tag } from './models'
+
 export type Chapter = {
     title: string
     isActive: boolean
@@ -44,4 +46,15 @@ export interface EditPostFormElements extends HTMLFormControlsCollection {
     image: HTMLInputElement
     'tags[]': HTMLInputElement[]
     'is-published': HTMLInputElement
+}
+
+export type SubscriptionForm = {
+    loading: boolean
+    showModal: boolean
+    email: string
+}
+
+export type SubscriptionTags = {
+    loading: boolean
+    items: Tag[]
 }

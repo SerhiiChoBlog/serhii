@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import type { Tag } from '@/../types/models'
 import AppearTransition from '@/components/Transitions/AppearTransition.vue'
-import { ref } from 'vue'
+import { reactive } from 'vue'
 import axios from 'axios'
 import showToast from '@/modules/showToast'
 import CheckIcon from '@/components/Icons/CheckIcon.vue'
 import ChevronDown from '@/components/Icons/ChevronDownIcon.vue'
 import Modal from '@/components/Modal.vue'
+import SubscriptionModalContent from './SubscriptionModalContent.vue'
+import type { SubscriptionForm } from '@/../types'
+import { SubscriptionTags } from '@/../types'
 
 type Props = {
     removeBg?: boolean
@@ -14,10 +17,16 @@ type Props = {
 
 const { removeBg = false } = defineProps<Props>()
 
-const email = ref<string>('')
-const loading = ref<boolean>(false)
-const showModal = ref<boolean>(false)
-const tags = ref<Tag[]>([])
+const modalForm = reactive<SubscriptionForm>({
+    loading: false,
+    showModal: false,
+    email: '',
+})
+
+const tags = reactive<SubscriptionTags>({
+    items: [],
+    loading: false,
+})
 
 const advantages = [
     'No spam',
@@ -27,30 +36,30 @@ const advantages = [
 ]
 
 function showModalWithTags(): void {
-    showModal.value = true
+    modalForm.showModal = true
 
-    if (tags.value.length > 0) {
+    if (tags.items.length > 0) {
         return
     }
 
     axios.get<Tag[]>('/api/tags')
         .then(resp => {
             console.log(resp.data)
-            tags.value.push(...resp.data)
+            tags.items.push(...resp.data)
         })
         .catch(err => console.error(err))
 }
 
 function subscribe(): void {
-    if (email.value === '' || loading.value) {
+    if (modalForm.email === '' || modalForm.loading) {
         return
     }
 
-    loading.value = true
+    modalForm.loading = true
 
-    axios.post<string>(`/api/subscriptions/${email.value}`)
+    axios.post<string>(`/api/subscriptions/${modalForm.email}`)
         .then(resp => {
-            email.value = ''
+            modalForm.email = ''
 
             showToast({
                 text: resp.data,
@@ -58,7 +67,7 @@ function subscribe(): void {
             })
         })
         .catch(err => console.error(err))
-        .finally(() => loading.value = false)
+        .finally(() => modalForm.loading = false)
 }
 </script>
 
@@ -93,15 +102,15 @@ function subscribe(): void {
                                 id="subscription"
                                 class="px-6 h-full bg-transparent rounded-full w-full focus:outline-none text-white placeholder-gray-300"
                                 placeholder="Your email address"
-                                v-model="email"
+                                v-model="modalForm.email"
                             >
 
                             <button
                                 type="submit"
                                 class="transition-all hover:px-10 h-full px-4 lg:px-7 rounded-full shadow-md"
-                                :class="loading ? 'bg-main text-white' : 'bg-white text-gray-700'"
+                                :class="modalForm.loading ? 'bg-main text-white' : 'bg-white text-gray-700'"
                             >
-                                <span v-if="loading" class="flex gap-4">
+                                <span v-if="modalForm.loading" class="flex gap-4">
                                     <b class="animate-spin inline-block">/</b>
                                     <span>Processing...</span>
                                 </span>
@@ -126,8 +135,8 @@ function subscribe(): void {
             </footer>
         </appear-transition>
 
-        <modal :opened="showModal" @close="showModal = false">
-            here
+        <modal :opened="modalForm.showModal" @close="modalForm.showModal = false">
+            <subscription-modal-content :tags="tags.items" />
         </modal>
     </div>
 </template>

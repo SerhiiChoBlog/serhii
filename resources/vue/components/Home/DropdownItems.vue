@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SearchSuggestion } from '@/../types/types'
+import type { SearchSuggestion } from '@/../types'
 import useSearch from '@/composables/useSearch'
 
 interface Props {

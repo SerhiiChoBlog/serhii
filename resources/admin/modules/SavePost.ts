@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { EditPostFormElements } from '../../types/types'
+import { EditPostFormElements } from '@/../types'
 import SweetAlert from 'sweetalert2'
 import handleError from './handleError'
 
