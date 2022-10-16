@@ -25,12 +25,14 @@ class SubscriptionController extends Controller
 
     public function decline(string $slug): View
     {
+        /** @var Subscription|null $sub */
         $sub = Subscription::query()->where('slug', $slug)->first();
 
         if (!$sub) {
             return view('subscriptions.decline');
         }
 
+        $sub->tags()->detach();
         $sub->delete();
 
         return view('subscriptions.decline');
@@ -38,12 +40,14 @@ class SubscriptionController extends Controller
 
     public function unsubscribe(string $slug): View
     {
+        /** @var Subscription|null $sub */
         $sub = Subscription::query()->where('slug', $slug)->first();
 
         if (!$sub) {
             return view('subscriptions.unsubscribe');
         }
 
+        $sub->tags()->detach();
         $sub->delete();
 
         return view('subscriptions.unsubscribe');

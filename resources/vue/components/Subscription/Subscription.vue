@@ -92,8 +92,13 @@ function subscribe(): void {
     }
 
     modalForm.loading = true
+    let tagsParam = ''
 
-    axios.post<string>(`/api/subscriptions/${modalForm.email}`)
+    if (!allTagsAreSelected()) {
+        tagsParam = chosenTags.value.map(t => t.id).join(',')
+    }
+
+    axios.post<string>(`/api/subscriptions?email=${modalForm.email}&tags=${tagsParam}`)
         .then(resp => {
             modalForm.email = ''
 
@@ -103,7 +108,15 @@ function subscribe(): void {
             })
         })
         .catch(err => console.error(err))
-        .finally(() => modalForm.loading = false)
+        .finally(() => {
+            modalForm.loading = false
+            SubscriptionCache.deleteAll()
+            SubscriptionButton.setAllTags()
+        })
+}
+
+function allTagsAreSelected(): boolean {
+    return chosenTags.value.length === tags.items.length
 }
 </script>
 

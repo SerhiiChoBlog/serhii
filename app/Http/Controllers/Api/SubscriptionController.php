@@ -5,17 +5,18 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Subscription\SubscribeRequest;
 use App\Models\Subscription;
 use Illuminate\Support\Str;
 
 class SubscriptionController extends Controller
 {
-    public function subscribe(string $email): string
+    public function subscribe(SubscribeRequest $request): string
     {
         $slug = Str::random(50);
 
         /** @var Subscription|null $old_sub */
-        $old_sub = Subscription::query()->where('email', $email)->first();
+        $old_sub = Subscription::query()->where('email', $request->email)->first();
 
         if ($old_sub && $old_sub->confirmed_at) {
             return 'Thank you! You are already subscribed. You will be notified when the new post is published';
@@ -29,7 +30,14 @@ class SubscriptionController extends Controller
             $subscription = $old_sub;
         } else {
             /** @var Subscription $subscription */
-            $subscription = Subscription::query()->create(compact('email', 'slug'));
+            $subscription = Subscription::query()->create([
+                'email' => $request->email,
+                'slug' => $slug,
+            ]);
+        }
+
+        if (!$old_sub && $request->tags->isNotEmpty()) {
+            $subscription->tags()->attach($request->tags);
         }
 
         $subscription->notifySubConfirmation();
