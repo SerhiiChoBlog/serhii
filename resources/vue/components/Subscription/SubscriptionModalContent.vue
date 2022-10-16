@@ -34,7 +34,7 @@ function toggleAll(): void {
     if (allTagsAreChosen.value) {
         subjects.value = []
 
-        SubscriptionCache.deleteAll()
+        SubscriptionCache.set([])
         SubscriptionButton.setNoTags()
         return
     }

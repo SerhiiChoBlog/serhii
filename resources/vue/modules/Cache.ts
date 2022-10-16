@@ -7,4 +7,8 @@ export default class {
         const result = localStorage.getItem(key)
         return result ? JSON.parse(result) : null
     }
+
+    public static delete(key: string): void {
+        localStorage.removeItem(key)
+    }
 }
