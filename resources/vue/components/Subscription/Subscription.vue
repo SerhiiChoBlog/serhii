@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import axios from 'axios'
 import showToast from '../../modules/showToast'
 import CheckIcon from '../Icons/CheckIcon.vue'
+import ChevronDown from '../Icons/ChevronDownIcon.vue'
 
 type Props = {
     removeBg?: boolean
@@ -55,10 +56,17 @@ function subscribe(): void {
                         class="flex flex-col mb-4 drop-shadow-md pl-4"
                     >
                         <span class="text-lg lg:text-2xl">Don't miss the Next article</span>
-                        <span>Leave me your email and I'll let you know when the next article is out</span>
+                        <span class="text-sm lg:text-lg">You can subscribe to specific tags and be notified when it's out</span>
                     </label>
 
                     <div class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 inline-block rounded-full shadow-sm">
+                        <button
+                            type="button"
+                            class="inline-flex items-center justify-center gap-1 bg-gray-700 text-gray-100 h-full px-4 rounded-full min-w-[150px] transition-shadow shadow-md hover:shadow-none"
+                        >
+                            <span>All</span> <chevron-down class="w-5 h-5" />
+                        </button>
+
                         <input
                             type="email"
                             id="subscription"
@@ -69,7 +77,7 @@ function subscribe(): void {
 
                         <button
                             type="submit"
-                            class="transition-all hover:px-10 h-full px-4 lg:px-7 rounded-full"
+                            class="transition-all hover:px-10 h-full px-4 lg:px-7 rounded-full shadow-md"
                             :class="loading ? 'bg-main text-white' : 'bg-white text-gray-700'"
                         >
                             <span v-if="loading" class="flex gap-4">
