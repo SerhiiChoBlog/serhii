@@ -12,23 +12,21 @@ type Props = {
 }
 
 const props = defineProps<Props>()
-const subjects = ref<number[]>([])
+const subjects = ref<Tag[]>([])
 
 const allTagsAreChosen = computed(() => {
     return props.tags.items.length === subjects.value.length
 })
 
 onMounted(() => {
-    const ids = SubscriptionCache.get()
-    subjects.value = ids ? ids : props.tags.items.map(item => item.id)
+    const cachedTags = SubscriptionCache.get()
+    subjects.value = cachedTags ? cachedTags : props.tags.items
 })
 
 function selectAllSubjects(): void {
-    const allIds = props.tags.items.map(tag => tag.id)
+    subjects.value = props.tags.items
 
-    subjects.value = allIds
-
-    SubscriptionCache.set(allIds)
+    SubscriptionCache.set(props.tags.items)
     SubscriptionButton.setAllTags()
 }
 
@@ -45,16 +43,20 @@ function toggleAll(): void {
 }
 
 function chooseSubject(tag: Tag): void {
-    if (!subjects.value.includes(tag.id)) {
-        subjects.value.push(tag.id)
+    if (subjectsHaveTag(tag)) {
+        subjects.value = subjects.value.filter(subject => {
+            return subject.id !== tag.id
+        })
     } else {
-        const index = subjects.value.indexOf(tag.id)
-        subjects.value.splice(index, 1)
+        subjects.value.push(tag)
     }
 
     SubscriptionCache.set(subjects.value)
     SubscriptionButton.setTagsAmount(subjects.value.length)
+}
 
+function subjectsHaveTag(tag: Tag): boolean {
+    return !!subjects.value.find(subject => subject.id === tag.id)
 }
 </script>
 
@@ -92,12 +94,12 @@ function chooseSubject(tag: Tag): void {
                 v-for="tag in props.tags.items"
                 :key="tag.id"
                 class="flex items-center gap-7 border rounded-lg py-2 px-3 relative"
-                :class="subjects.includes(tag.id) ? 'border-green-500 bg-green-50' : 'border-border'"
+                :class="subjectsHaveTag(tag) ? 'border-green-500 bg-green-50' : 'border-border'"
                 aria-label="Subscription subject"
                 @click="chooseSubject(tag)"
             >
                 <check-icon
-                    v-if="subjects.includes(tag.id)"
+                    v-if="subjectsHaveTag(tag)"
                     class="w-6 h-6 absolute top-1 right-1 text-green-700"
                 />
 

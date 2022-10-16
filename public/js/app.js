@@ -20903,9 +20903,7 @@ var SubscriptionModalContent_vue_1 = __importDefault(__webpack_require__(/*! ./S
 
 var ChooseTagsButton_vue_1 = __importDefault(__webpack_require__(/*! ./ChooseTagsButton.vue */ "./resources/vue/components/Subscription/ChooseTagsButton.vue"));
 
-var dispatchEvent_1 = __importDefault(__webpack_require__(/*! @/modules/dispatchEvent */ "./resources/vue/modules/dispatchEvent.ts"));
-
-var appConfig_1 = __importDefault(__webpack_require__(/*! @/appConfig */ "./resources/vue/appConfig.ts"));
+var SubscriptionButton_1 = __importDefault(__webpack_require__(/*! @/modules/Subscription/SubscriptionButton */ "./resources/vue/modules/Subscription/SubscriptionButton.ts"));
 
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'Subscription',
@@ -20926,20 +20924,23 @@ exports["default"] = (0, vue_1.defineComponent)({
     });
     var tags = (0, vue_2.reactive)({
       showModal: false,
-      loading: true,
+      loading: false,
       items: []
     });
     var advantages = ['No spam', 'No advertisements, only new posts', 'Your email is kept private and safe', 'You can unsubscribe any time'];
+    (0, vue_2.onMounted)(function () {
+      return SubscriptionButton_1["default"].rename();
+    });
 
     function showModalWithTags() {
       tags.showModal = true;
-      (0, dispatchEvent_1["default"])(appConfig_1["default"].events.subscribeTagsButtonTitle, 'Loading...');
 
       if (tags.items.length > 0) {
         return;
       }
 
       tags.loading = true;
+      SubscriptionButton_1["default"].setLoading();
       axios_1["default"].get('/api/tags').then(function (resp) {
         var _a;
 
@@ -20948,7 +20949,7 @@ exports["default"] = (0, vue_1.defineComponent)({
         return console.error(err);
       })["finally"](function () {
         tags.loading = false;
-        (0, dispatchEvent_1["default"])(appConfig_1["default"].events.subscribeTagsButtonTitle, 'All tags');
+        SubscriptionButton_1["default"].setAllTags();
       });
     }
 
@@ -21016,15 +21017,13 @@ var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bund
 
 var vue_2 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var dispatchEvent_1 = __importDefault(__webpack_require__(/*! @/modules/dispatchEvent */ "./resources/vue/modules/dispatchEvent.ts"));
-
 var CheckIcon_vue_1 = __importDefault(__webpack_require__(/*! @/components/Icons/CheckIcon.vue */ "./resources/vue/components/Icons/CheckIcon.vue"));
 
 var CloseIcon_vue_1 = __importDefault(__webpack_require__(/*! @/components/Icons/CloseIcon.vue */ "./resources/vue/components/Icons/CloseIcon.vue"));
 
-var appConfig_1 = __importDefault(__webpack_require__(/*! @/appConfig */ "./resources/vue/appConfig.ts"));
+var SubscriptionButton_1 = __importDefault(__webpack_require__(/*! @/modules/Subscription/SubscriptionButton */ "./resources/vue/modules/Subscription/SubscriptionButton.ts"));
 
-var Cache_1 = __importDefault(__webpack_require__(/*! @/modules/Cache */ "./resources/vue/modules/Cache.ts"));
+var SubscriptionCache_1 = __importDefault(__webpack_require__(/*! @/modules/Subscription/SubscriptionCache */ "./resources/vue/modules/Subscription/SubscriptionCache.ts"));
 
 exports["default"] = (0, vue_1.defineComponent)({
   name: 'SubscriptionModalContent',
@@ -21038,27 +21037,26 @@ exports["default"] = (0, vue_1.defineComponent)({
     var expose = _a.expose;
     expose();
     var props = __props;
-    var subjects = (0, vue_2.ref)(props.tags.items.map(function (tag) {
-      return tag.id;
-    }));
+    var subjects = (0, vue_2.ref)([]);
     var allTagsAreChosen = (0, vue_2.computed)(function () {
       return props.tags.items.length === subjects.value.length;
     });
+    (0, vue_2.onMounted)(function () {
+      var cachedTags = SubscriptionCache_1["default"].get();
+      subjects.value = cachedTags ? cachedTags : props.tags.items;
+    });
 
     function selectAllSubjects() {
-      var allIds = props.tags.items.map(function (tag) {
-        return tag.id;
-      });
-      subjects.value = allIds;
-      Cache_1["default"].add(appConfig_1["default"].storage.selectedSubscriptionTags, allIds);
-      (0, dispatchEvent_1["default"])(appConfig_1["default"].events.subscribeTagsButtonTitle, 'All tags');
+      subjects.value = props.tags.items;
+      SubscriptionCache_1["default"].set(props.tags.items);
+      SubscriptionButton_1["default"].setAllTags();
     }
 
     function toggleAll() {
       if (allTagsAreChosen.value) {
         subjects.value = [];
-        Cache_1["default"].add(appConfig_1["default"].storage.selectedSubscriptionTags, []);
-        (0, dispatchEvent_1["default"])(appConfig_1["default"].events.subscribeTagsButtonTitle, 'No tags');
+        SubscriptionCache_1["default"].deleteAll();
+        SubscriptionButton_1["default"].setNoTags();
         return;
       }
 
@@ -21066,15 +21064,22 @@ exports["default"] = (0, vue_1.defineComponent)({
     }
 
     function chooseSubject(tag) {
-      if (!subjects.value.includes(tag.id)) {
-        subjects.value.push(tag.id);
+      if (subjectsHaveTag(tag)) {
+        subjects.value = subjects.value.filter(function (subject) {
+          return subject.id !== tag.id;
+        });
       } else {
-        var index = subjects.value.indexOf(tag.id);
-        subjects.value.splice(index, 1);
+        subjects.value.push(tag);
       }
 
-      Cache_1["default"].add(appConfig_1["default"].storage.selectedSubscriptionTags, subjects.value);
-      (0, dispatchEvent_1["default"])(appConfig_1["default"].events.subscribeTagsButtonTitle, "".concat(subjects.value.length, " tags"));
+      SubscriptionCache_1["default"].set(subjects.value);
+      SubscriptionButton_1["default"].setTagsAmount(subjects.value.length);
+    }
+
+    function subjectsHaveTag(tag) {
+      return !!subjects.value.find(function (subject) {
+        return subject.id === tag.id;
+      });
     }
 
     var __returned__ = {
@@ -21084,6 +21089,7 @@ exports["default"] = (0, vue_1.defineComponent)({
       selectAllSubjects: selectAllSubjects,
       toggleAll: toggleAll,
       chooseSubject: chooseSubject,
+      subjectsHaveTag: subjectsHaveTag,
       CheckIcon: CheckIcon_vue_1["default"],
       CloseIcon: CloseIcon_vue_1["default"]
     };
@@ -22415,12 +22421,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), _hoisted_8], 64))])])]), (0, vue_1.createElementVNode)("ul", _hoisted_9, [((0, vue_1.openBlock)(true), (0, vue_1.createElementBlock)(vue_1.Fragment, null, (0, vue_1.renderList)($setup.props.tags.items, function (tag) {
     return (0, vue_1.openBlock)(), (0, vue_1.createElementBlock)("li", {
       key: tag.id,
-      "class": (0, vue_1.normalizeClass)(["flex items-center gap-7 border rounded-lg py-2 px-3 relative", $setup.subjects.includes(tag.id) ? 'border-green-500 bg-green-50' : 'border-border']),
+      "class": (0, vue_1.normalizeClass)(["flex items-center gap-7 border rounded-lg py-2 px-3 relative", $setup.subjectsHaveTag(tag) ? 'border-green-500 bg-green-50' : 'border-border']),
       "aria-label": "Subscription subject",
       onClick: function onClick($event) {
         return $setup.chooseSubject(tag);
       }
-    }, [$setup.subjects.includes(tag.id) ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["CheckIcon"], {
+    }, [$setup.subjectsHaveTag(tag) ? ((0, vue_1.openBlock)(), (0, vue_1.createBlock)($setup["CheckIcon"], {
       key: 0,
       "class": "w-6 h-6 absolute top-1 right-1 text-green-700"
     })) : (0, vue_1.createCommentVNode)("v-if", true), (0, vue_1.createElementVNode)("img", {
@@ -22785,7 +22791,7 @@ exports["default"] = function () {
 /*!****************************************!*\
   !*** ./resources/vue/modules/Cache.ts ***!
   \****************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
@@ -22794,27 +22800,124 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
-var lodash_1 = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-
 var default_1 = function () {
   function default_1() {}
-
-  default_1.add = function (key, item) {
-    var oldItems = this.get(key);
-    oldItems = oldItems.filter(function (oldItem) {
-      return !(0, lodash_1.isEqual)(oldItem, item);
-    });
-    oldItems.push(item);
-    localStorage.setItem(key, JSON.stringify(oldItems));
-  };
 
   default_1.set = function (key, item) {
     localStorage.setItem(key, JSON.stringify(item));
   };
 
   default_1.get = function (key) {
-    var history = localStorage.getItem(key);
-    return history ? JSON.parse(history) : [];
+    var result = localStorage.getItem(key);
+    return result ? JSON.parse(result) : null;
+  };
+
+  return default_1;
+}();
+
+exports["default"] = default_1;
+
+/***/ }),
+
+/***/ "./resources/vue/modules/Subscription/SubscriptionButton.ts":
+/*!******************************************************************!*\
+  !*** ./resources/vue/modules/Subscription/SubscriptionButton.ts ***!
+  \******************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var Cache_1 = __importDefault(__webpack_require__(/*! @/modules/Cache */ "./resources/vue/modules/Cache.ts"));
+
+var appConfig_1 = __importDefault(__webpack_require__(/*! @/appConfig */ "./resources/vue/appConfig.ts"));
+
+var dispatchEvent_1 = __importDefault(__webpack_require__(/*! @/modules/dispatchEvent */ "./resources/vue/modules/dispatchEvent.ts"));
+
+var default_1 = function () {
+  function default_1() {}
+
+  default_1.rename = function () {
+    var ids = Cache_1["default"].get(appConfig_1["default"].storage.selectedSubscriptionTags);
+
+    if (ids) {
+      this.setTitle("".concat(ids.length, " tags"));
+    }
+  };
+
+  default_1.setLoading = function () {
+    this.setTitle('Loading...');
+  };
+
+  default_1.setAllTags = function () {
+    this.setTitle('All tags');
+  };
+
+  default_1.setNoTags = function () {
+    this.setTitle('No tags');
+  };
+
+  default_1.setTagsAmount = function (amount) {
+    this.setTitle("".concat(amount, " tags"));
+  };
+
+  default_1.setTitle = function (title) {
+    (0, dispatchEvent_1["default"])(appConfig_1["default"].events.subscribeTagsButtonTitle, title);
+  };
+
+  return default_1;
+}();
+
+exports["default"] = default_1;
+
+/***/ }),
+
+/***/ "./resources/vue/modules/Subscription/SubscriptionCache.ts":
+/*!*****************************************************************!*\
+  !*** ./resources/vue/modules/Subscription/SubscriptionCache.ts ***!
+  \*****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var Cache_1 = __importDefault(__webpack_require__(/*! @/modules/Cache */ "./resources/vue/modules/Cache.ts"));
+
+var appConfig_1 = __importDefault(__webpack_require__(/*! @/appConfig */ "./resources/vue/appConfig.ts"));
+
+var default_1 = function () {
+  function default_1() {}
+
+  default_1.set = function (tags) {
+    Cache_1["default"].set(appConfig_1["default"].storage.selectedSubscriptionTags, tags);
+  };
+
+  default_1.get = function () {
+    return Cache_1["default"].get(appConfig_1["default"].storage.selectedSubscriptionTags);
+  };
+
+  default_1.deleteAll = function () {
+    this.set([]);
   };
 
   return default_1;
