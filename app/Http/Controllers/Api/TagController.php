@@ -18,6 +18,8 @@ class TagController extends Controller
     {
         return Tag::query()
             ->whereHas('posts', fn(Builder $q) => $q->where('is_published', true))
+            ->withCount('posts')
+            ->orderByDesc('posts_count')
             ->get();
     }
 
