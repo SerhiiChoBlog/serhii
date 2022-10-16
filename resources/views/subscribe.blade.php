@@ -7,11 +7,9 @@
     <x-hero
         class="relative bg-home-hero-sm lg:bg-home-hero w-full h-screen bg-blend-overlay bg-cover md:bg-fixed bg-top bg-no-repeat"
         navbar="text-white"
-    />
-
-    <div class="absolute left-0 right-0 top-0 bottom-0 bg-gradient-to-r from-transparent to-black/70"></div>
-
-    <div class="absolute top-1/2 -translate-y-1/2 w-full">
-        <subscription :remove-bg="true"></subscription>
-    </div>
+    >
+        <div class="flex items-center justify-center absolute top-0 left-0 w-full h-screen bg-gradient-to-r from-transparent to-black/70">
+            <subscription :remove-bg="true"></subscription>
+        </div>
+    </x-hero>
 @endsection
