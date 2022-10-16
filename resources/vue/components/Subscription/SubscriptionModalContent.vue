@@ -1,22 +1,26 @@
 <script setup lang="ts">
 import type { SubscriptionTagsModal } from '@/../types'
 import type { Tag } from '@/../types/models'
-import { computed, ref } from 'vue'
-import dispatchEvent from '@/modules/dispatchEvent'
+import { computed, onMounted, ref } from 'vue'
 import CheckIcon from '@/components/Icons/CheckIcon.vue'
 import CloseIcon from '@/components/Icons/CloseIcon.vue'
-import appConfig from '@/appConfig'
-import Cache from '@/modules/Cache'
+import SubscriptionButton from '@/modules/Subscription/SubscriptionButton'
+import SubscriptionCache from '@/modules/Subscription/SubscriptionCache'
 
 type Props = {
     tags: SubscriptionTagsModal
 }
 
 const props = defineProps<Props>()
-const subjects = ref<number[]>(props.tags.items.map(tag => tag.id))
+const subjects = ref<number[]>([])
 
 const allTagsAreChosen = computed(() => {
     return props.tags.items.length === subjects.value.length
+})
+
+onMounted(() => {
+    const ids = SubscriptionCache.get()
+    subjects.value = ids ? ids : props.tags.items.map(item => item.id)
 })
 
 function selectAllSubjects(): void {
@@ -24,16 +28,16 @@ function selectAllSubjects(): void {
 
     subjects.value = allIds
 
-    Cache.add<number[]>(appConfig.storage.selectedSubscriptionTags, allIds)
-    dispatchEvent(appConfig.events.subscribeTagsButtonTitle, 'All tags')
+    SubscriptionCache.set(allIds)
+    SubscriptionButton.setAllTags()
 }
 
 function toggleAll(): void {
     if (allTagsAreChosen.value) {
         subjects.value = []
 
-        Cache.add<number[]>(appConfig.storage.selectedSubscriptionTags, [])
-        dispatchEvent(appConfig.events.subscribeTagsButtonTitle, 'No tags')
+        SubscriptionCache.deleteAll()
+        SubscriptionButton.setNoTags()
         return
     }
 
@@ -48,8 +52,9 @@ function chooseSubject(tag: Tag): void {
         subjects.value.splice(index, 1)
     }
 
-    Cache.add<number[]>(appConfig.storage.selectedSubscriptionTags, subjects.value)
-    dispatchEvent(appConfig.events.subscribeTagsButtonTitle, `${subjects.value.length} tags`)
+    SubscriptionCache.set(subjects.value)
+    SubscriptionButton.setTagsAmount(subjects.value.length)
+
 }
 </script>
 
