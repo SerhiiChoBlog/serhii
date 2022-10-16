@@ -2,15 +2,14 @@
 import type { Tag } from '@/../types/models'
 import type { SubscriptionForm, SubscriptionTagsModal } from '@/../types'
 import AppearTransition from '@/components/Transitions/AppearTransition.vue'
-import { reactive } from 'vue'
+import { onMounted, reactive } from 'vue'
 import axios from 'axios'
 import showToast from '@/modules/showToast'
 import CheckIcon from '@/components/Icons/CheckIcon.vue'
 import Modal from '@/components/Modal.vue'
 import SubscriptionModalContent from './SubscriptionModalContent.vue'
 import ChooseTagsButton from './ChooseTagsButton.vue'
-import dispatchEvent from '@/modules/dispatchEvent'
-import appConfig from '@/appConfig'
+import SubscriptionButton from '@/modules/Subscription/SubscriptionButton'
 
 type Props = {
     removeBg?: boolean
@@ -25,7 +24,7 @@ const modalForm = reactive<SubscriptionForm>({
 
 const tags = reactive<SubscriptionTagsModal>({
     showModal: false,
-    loading: true,
+    loading: false,
     items: [],
 })
 
@@ -36,15 +35,17 @@ const advantages = [
     'You can unsubscribe any time',
 ]
 
+onMounted(() => SubscriptionButton.rename())
+
 function showModalWithTags(): void {
     tags.showModal = true
-    dispatchEvent(appConfig.events.subscribeTagsButtonTitle, 'Loading...')
 
     if (tags.items.length > 0) {
         return
     }
 
     tags.loading = true
+    SubscriptionButton.setLoading()
 
     axios.get<Tag[]>('/api/tags')
         .then(resp => {
@@ -53,7 +54,7 @@ function showModalWithTags(): void {
         .catch(err => console.error(err))
         .finally(() => {
             tags.loading = false
-            dispatchEvent(appConfig.events.subscribeTagsButtonTitle, 'All tags')
+            SubscriptionButton.setAllTags()
         })
 }
 
