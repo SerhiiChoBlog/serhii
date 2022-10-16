@@ -1,6 +1,7 @@
 const mix = require('laravel-mix')
 const webpack = require('webpack')
 const purgecss = require('@fullhuman/postcss-purgecss')
+const path = require('path')
 const sassOptions = []
 
 if (mix.inProduction()) {
@@ -21,6 +22,9 @@ if (mix.inProduction()) {
 }
 
 mix.ts('resources/vue/app.ts', 'public/js/app.js')
+    .alias({
+        '@': path.join(__dirname, 'resources/vue')
+    })
     .vue()
     .postCss("resources/css/app.css", "public/css", [
         require("tailwindcss"),
