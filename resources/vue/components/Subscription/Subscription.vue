@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import type { Tag } from '@/../types/models'
 import AppearTransition from '@/components/Transitions/AppearTransition.vue'
-import { reactive } from 'vue'
+import { onMounted, reactive } from 'vue'
 import axios from 'axios'
 import showToast from '@/modules/showToast'
 import CheckIcon from '@/components/Icons/CheckIcon.vue'
 import ChevronDown from '@/components/Icons/ChevronDownIcon.vue'
 import Modal from '@/components/Modal.vue'
 import SubscriptionModalContent from './SubscriptionModalContent.vue'
-import type { SubscriptionForm } from '@/../types'
-import { SubscriptionTags } from '@/../types'
+import type { SubscriptionForm, SubscriptionTagsModal } from '@/../types'
 
 type Props = {
     removeBg?: boolean
@@ -17,15 +16,19 @@ type Props = {
 
 const { removeBg = false } = defineProps<Props>()
 
+onMounted(() => {
+    showModalWithTags()
+})
+
 const modalForm = reactive<SubscriptionForm>({
     loading: false,
-    showModal: false,
     email: '',
 })
 
-const tags = reactive<SubscriptionTags>({
-    items: [],
+const tags = reactive<SubscriptionTagsModal>({
+    showModal: false,
     loading: false,
+    items: [],
 })
 
 const advantages = [
@@ -36,11 +39,13 @@ const advantages = [
 ]
 
 function showModalWithTags(): void {
-    modalForm.showModal = true
+    tags.showModal = true
 
     if (tags.items.length > 0) {
         return
     }
+
+    tags.loading = true
 
     axios.get<Tag[]>('/api/tags')
         .then(resp => {
@@ -48,6 +53,7 @@ function showModalWithTags(): void {
             tags.items.push(...resp.data)
         })
         .catch(err => console.error(err))
+        .finally(() => tags.loading = false)
 }
 
 function subscribe(): void {
@@ -135,8 +141,8 @@ function subscribe(): void {
             </footer>
         </appear-transition>
 
-        <modal :opened="modalForm.showModal" @close="modalForm.showModal = false">
-            <subscription-modal-content :tags="tags.items" />
+        <modal :opened="tags.showModal" @close="tags.showModal = false">
+            <subscription-modal-content :tags="tags" />
         </modal>
     </div>
 </template>
