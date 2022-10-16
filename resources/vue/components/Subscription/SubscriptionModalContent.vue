@@ -79,7 +79,7 @@ function chooseSubject(tag: Tag): void {
 
         <spinner v-if="props.tags.loading" />
 
-        <ul v-else class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <ul v-else class="grid grid-cols-1 md:grid-cols-2 gap-3">
             <li
                 v-for="tag in props.tags.items"
                 :key="tag.id"
