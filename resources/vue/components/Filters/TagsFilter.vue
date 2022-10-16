@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { Tag } from '../../../types/models'
+import type { Tag } from '@/../types/models'
 import { onMounted, ref, watch } from 'vue'
 import axios from 'axios'
 import { Listbox } from '@headlessui/vue'
-import ListboxButton from '../Listbox/ListboxButton.vue'
-import ListboxOptions from '../Listbox/ListboxOptions.vue'
-import ListboxOption from '../Listbox/ListboxOption.vue'
-import replaceQueryParam from '../../modules/replaceQueryParam'
-import showEverythingTag from '../../modules/showEverythingTag'
-import CloseIcon from '../Icons/CloseIcon.vue'
+import ListboxButton from '@/components/Listbox/ListboxButton.vue'
+import ListboxOptions from '@/components/Listbox/ListboxOptions.vue'
+import ListboxOption from '@/components/Listbox/ListboxOption.vue'
+import replaceQueryParam from '@/modules/replaceQueryParam'
+import showEverythingTag from '@/modules/showEverythingTag'
+import CloseIcon from '@/components/Icons/CloseIcon.vue'
 import TagImage from './TagImage.vue'
 
 type Props = {

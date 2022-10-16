@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Tag } from '../../../types/models'
+import type { Tag } from '@/../types/models'
 import { ref } from 'vue'
-import showEverythingTag from '../../modules/showEverythingTag'
+import showEverythingTag from '@/modules/showEverythingTag'
 import TagsFilter from './TagsFilter.vue'
-import AppearTransition from '../Transitions/AppearTransition.vue'
+import AppearTransition from '@/components/Transitions/AppearTransition.vue'
 
 type Props = {
     currentTag: Tag | null

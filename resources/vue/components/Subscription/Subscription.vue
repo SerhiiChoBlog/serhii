@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import AppearTransition from '../Transitions/AppearTransition.vue'
+import type { Tag } from '@/../types/models'
+import AppearTransition from '@/components/Transitions/AppearTransition.vue'
 import { ref } from 'vue'
 import axios from 'axios'
-import showToast from '../../modules/showToast'
-import CheckIcon from '../Icons/CheckIcon.vue'
-import ChevronDown from '../Icons/ChevronDownIcon.vue'
-import Modal from '../Modal.vue'
+import showToast from '@/modules/showToast'
+import CheckIcon from '@/components/Icons/CheckIcon.vue'
+import ChevronDown from '@/components/Icons/ChevronDownIcon.vue'
+import Modal from '@/components/Modal.vue'
 
 type Props = {
     removeBg?: boolean
@@ -16,6 +17,7 @@ const { removeBg = false } = defineProps<Props>()
 const email = ref<string>('')
 const loading = ref<boolean>(false)
 const showModal = ref<boolean>(false)
+const tags = ref<Tag[]>([])
 
 const advantages = [
     'No spam',
@@ -23,6 +25,21 @@ const advantages = [
     'Your email is kept private and safe',
     'You can unsubscribe any time',
 ]
+
+function showModalWithTags(): void {
+    showModal.value = true
+
+    if (tags.value.length > 0) {
+        return
+    }
+
+    axios.get<Tag[]>('/api/tags')
+        .then(resp => {
+            console.log(resp.data)
+            tags.value.push(...resp.data)
+        })
+        .catch(err => console.error(err))
+}
 
 function subscribe(): void {
     if (email.value === '' || loading.value) {
@@ -64,7 +81,7 @@ function subscribe(): void {
 
                         <div class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 inline-block rounded-full shadow-sm">
                             <button
-                                @click="showModal = true"
+                                @click="showModalWithTags"
                                 type="button"
                                 class="inline-flex items-center justify-center gap-1 bg-gray-700 text-gray-100 h-full px-4 rounded-full min-w-[150px] transition-shadow shadow-md hover:shadow-none"
                             >

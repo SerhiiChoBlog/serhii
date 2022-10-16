@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Tip from '../Tip.vue'
+import Tip from '@/components/Tip.vue'
 
 interface Props {
     tipContent: string

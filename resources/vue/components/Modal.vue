@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
-import AppearTransition from './Transitions/AppearTransition.vue'
-import CloseIcon from './Icons/CloseIcon.vue'
+import AppearTransition from '@/components/Transitions/AppearTransition.vue'
+import CloseIcon from '@/components/Icons/CloseIcon.vue'
 
 type Props = {
     opened: boolean

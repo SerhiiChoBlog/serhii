@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import useSearch from '../../composables/useSearch'
-import SearchIcon from '../Icons/SearchIcon.vue'
+import useSearch from '@/composables/useSearch'
+import SearchIcon from '@/components/Icons/SearchIcon.vue'
 import Dropdown from './Dropdown.vue'
-import AppearTransition from '../Transitions/AppearTransition.vue'
+import AppearTransition from '@/components/Transitions/AppearTransition.vue'
 
 const { search, input, fetchSearchSuggestions } = useSearch()
 </script>

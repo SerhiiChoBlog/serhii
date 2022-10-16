@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import isElementInViewport from '../../modules/isElementInViewport'
-import type { Chapter as ChapterType, SavedChapter } from '../../../types/types'
-import screenSizeIs from '../../modules/screenSizeIs'
+import isElementInViewport from '@/modules/isElementInViewport'
+import type { Chapter as ChapterType, SavedChapter } from '@/../types/types'
+import screenSizeIs from '@/modules/screenSizeIs'
 import Chapter from './Chapter.vue'
-import ChevronDownIcon from '../Icons/ChevronDownIcon.vue'
-import ChevronUpIcon from '../Icons/ChevronUpIcon.vue'
-import SaveIcon from '../Icons/SaveIcon.vue'
-import DeleteIcon from '../Icons/DeleteIcon.vue'
-import LoadIcon from '../Icons/LoadIcon.vue'
+import ChevronDownIcon from '@/components/Icons/ChevronDownIcon.vue'
+import ChevronUpIcon from '@/components/Icons/ChevronUpIcon.vue'
+import SaveIcon from '@/components/Icons/SaveIcon.vue'
+import DeleteIcon from '@/components/Icons/DeleteIcon.vue'
+import LoadIcon from '@/components/Icons/LoadIcon.vue'
 import sweetAlert from 'sweetalert2'
 import ControlButton from './ControlButton.vue'
-import SlideUpTransition from '../Transitions/SlideUpTransition.vue'
-import showToast from '../../modules/showToast'
+import SlideUpTransition from '@/components/Transitions/SlideUpTransition.vue'
+import showToast from '@/modules/showToast'
 
 interface Props {
     slug: string

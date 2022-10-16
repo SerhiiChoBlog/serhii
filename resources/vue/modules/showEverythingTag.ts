@@ -1,4 +1,4 @@
-import type { Tag } from '../../types/models'
+import type { Tag } from '@/../types/models'
 
 const tag: Tag = {
     id: 0,
