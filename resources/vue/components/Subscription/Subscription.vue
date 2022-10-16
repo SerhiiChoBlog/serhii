@@ -9,6 +9,8 @@ import CheckIcon from '@/components/Icons/CheckIcon.vue'
 import Modal from '@/components/Modal.vue'
 import SubscriptionModalContent from './SubscriptionModalContent.vue'
 import ChooseTagsButton from './ChooseTagsButton.vue'
+import dispatchEvent from '@/modules/dispatchEvent'
+import appConfig from '@/appConfig'
 
 type Props = {
     removeBg?: boolean
@@ -23,7 +25,7 @@ const modalForm = reactive<SubscriptionForm>({
 
 const tags = reactive<SubscriptionTagsModal>({
     showModal: false,
-    loading: false,
+    loading: true,
     items: [],
 })
 
@@ -36,6 +38,7 @@ const advantages = [
 
 function showModalWithTags(): void {
     tags.showModal = true
+    dispatchEvent(appConfig.events.subscribeTagsButtonTitle, 'Loading...')
 
     if (tags.items.length > 0) {
         return
@@ -48,7 +51,10 @@ function showModalWithTags(): void {
             tags.items.push(...resp.data)
         })
         .catch(err => console.error(err))
-        .finally(() => tags.loading = false)
+        .finally(() => {
+            tags.loading = false
+            dispatchEvent(appConfig.events.subscribeTagsButtonTitle, 'All tags')
+        })
 }
 
 function subscribe(): void {
@@ -140,7 +146,11 @@ function subscribe(): void {
             </footer>
         </appear-transition>
 
-        <modal :opened="tags.showModal" @close="tags.showModal = false">
+        <modal
+            v-if="!tags.loading"
+            :opened="tags.showModal"
+            @close="tags.showModal = false"
+        >
             <subscription-modal-content :tags="tags" />
         </modal>
     </div>

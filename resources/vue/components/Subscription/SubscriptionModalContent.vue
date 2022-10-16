@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { SubscriptionTagsModal } from '@/../types'
 import type { Tag } from '@/../types/models'
-import Spinner from '@/components/Spinner.vue'
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
+import dispatchEvent from '@/modules/dispatchEvent'
 import CheckIcon from '@/components/Icons/CheckIcon.vue'
 import CloseIcon from '@/components/Icons/CloseIcon.vue'
+import appConfig from '@/appConfig'
+import Cache from '@/modules/Cache'
 
 type Props = {
     tags: SubscriptionTagsModal
@@ -13,23 +15,25 @@ type Props = {
 const props = defineProps<Props>()
 const subjects = ref<number[]>(props.tags.items.map(tag => tag.id))
 
-watch(props, (props: Props) => {
-    if (subjects.value.length === 0) {
-        selectAllSubjects()
-    }
-})
-
 const allTagsAreChosen = computed(() => {
     return props.tags.items.length === subjects.value.length
 })
 
 function selectAllSubjects(): void {
-    subjects.value = props.tags.items.map(tag => tag.id)
+    const allIds = props.tags.items.map(tag => tag.id)
+
+    subjects.value = allIds
+
+    Cache.add<number[]>(appConfig.storage.selectedSubscriptionTags, allIds)
+    dispatchEvent(appConfig.events.subscribeTagsButtonTitle, 'All tags')
 }
 
 function toggleAll(): void {
     if (allTagsAreChosen.value) {
         subjects.value = []
+
+        Cache.add<number[]>(appConfig.storage.selectedSubscriptionTags, [])
+        dispatchEvent(appConfig.events.subscribeTagsButtonTitle, 'No tags')
         return
     }
 
@@ -39,12 +43,13 @@ function toggleAll(): void {
 function chooseSubject(tag: Tag): void {
     if (!subjects.value.includes(tag.id)) {
         subjects.value.push(tag.id)
-        return
+    } else {
+        const index = subjects.value.indexOf(tag.id)
+        subjects.value.splice(index, 1)
     }
 
-    const index = subjects.value.indexOf(tag.id)
-
-    subjects.value.splice(index, 1)
+    Cache.add<number[]>(appConfig.storage.selectedSubscriptionTags, subjects.value)
+    dispatchEvent(appConfig.events.subscribeTagsButtonTitle, `${subjects.value.length} tags`)
 }
 </script>
 
@@ -77,9 +82,7 @@ function chooseSubject(tag: Tag): void {
             </button>
         </div>
 
-        <spinner v-if="props.tags.loading" />
-
-        <ul v-else class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
             <li
                 v-for="tag in props.tags.items"
                 :key="tag.id"
