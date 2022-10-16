@@ -7,9 +7,11 @@ export default class {
         oldItems = oldItems.filter(oldItem => !isEqual(oldItem, item))
         oldItems.push(item)
 
-        const newItems = oldItems.reverse().splice(0, 5).reverse()
+        localStorage.setItem(key, JSON.stringify(oldItems))
+    }
 
-        localStorage.setItem(key, JSON.stringify(newItems))
+    public static set<T>(key: string, item: T): void {
+        localStorage.setItem(key, JSON.stringify(item))
     }
 
     public static get<T>(key: string): T[] {

@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import type { SearchSuggestion } from '@/../types'
-import useSearch from '@/composables/useSearch'
 
 interface Props {
     items: SearchSuggestion[]
 }
 
 const { items } = defineProps<Props>()
-const { saveItemToHistory } = useSearch()
 </script>
 
 <template>
@@ -18,7 +16,6 @@ const { saveItemToHistory } = useSearch()
                     v-if="item.slug"
                     :href="`/posts/${item.slug}`"
                     class="rounded-lg my-1 py-2 px-3 flex items-center gap-4 hover:bg-page-second dark:hover:bg-border transition-colors"
-                    @click="saveItemToHistory(item.title, `/posts/${item.slug}`)"
                     :class="{ '!bg-main-light text-black': item.selected }"
                 >
                     <div class="hidden md:block">

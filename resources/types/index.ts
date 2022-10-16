@@ -22,7 +22,6 @@ export type SearchSuggestion = {
 export type Search = {
     query: string
     posts: SearchSuggestion[]
-    history: SearchSuggestion[]
     loading: boolean
     suggestionsIndex: number
 }

@@ -2,7 +2,6 @@ import type { Search, SearchSuggestion } from '@/../types'
 import { onMounted, reactive, ref } from 'vue'
 import { debounce } from 'lodash'
 import axios from 'axios'
-import Cache from '@/modules/Cache'
 import SuggestionControls from '@/modules/SuggestionControls'
 
 export default () => {
@@ -11,7 +10,6 @@ export default () => {
         query: '',
         posts: [],
         loading: false,
-        history: [],
         suggestionsIndex: -1,
     })
 
@@ -62,14 +60,9 @@ export default () => {
         makeRequestToFetchItems(search.query)
     }
 
-    function saveItemToHistory(title: string, url: string): void {
-        Cache.add<SearchSuggestion>('search-history', { title, url, selected: false })
-    }
-
     return {
         input,
         search,
-        saveItemToHistory,
         fetchSearchSuggestions,
     }
 }
