@@ -9,6 +9,7 @@ import CheckIcon from '@/components/Icons/CheckIcon.vue'
 import Modal from '@/components/Modal.vue'
 import SubscriptionModalContent from './SubscriptionModalContent.vue'
 import ChooseTagsButton from './ChooseTagsButton.vue'
+import SubscriptionTagIcon from './SubscriptionTagIcon.vue'
 import SubscriptionButton from '@/modules/Subscription/SubscriptionButton'
 import SubscriptionCache from '@/modules/Subscription/SubscriptionCache'
 import listenEvent from '@/modules/listenEvent'
@@ -119,7 +120,9 @@ function subscribe(): void {
                             class="flex flex-col mb-4 drop-shadow-md pl-4"
                         >
                             <span class="text-lg lg:text-2xl">Don't miss the Next article</span>
-                            <span class="text-sm lg:text-lg">You can subscribe to specific tags and be notified when it's out</span>
+                            <span class="text-sm lg:text-lg">
+                                You can subscribe to specific tags and be notified when it's out
+                            </span>
                         </label>
 
                         <div class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 inline-block rounded-full shadow-sm">
@@ -157,15 +160,7 @@ function subscribe(): void {
                         </div>
 
                         <div class="flex gap-2 mt-4 justify-center">
-                            <img
-                                v-for="tag in chosenTags"
-                                :key="tag.id"
-                                :src="`/storage/tags/${tag.name}.webp`"
-                                :alt="tag.name"
-                                class="w-[25px] h-[25px]"
-                                width="200"
-                                height="200"
-                            />
+                            <subscription-tag-icon v-for="tag in chosenTags" :key="tag.id" :tag="tag" />
                         </div>
                     </form>
 
