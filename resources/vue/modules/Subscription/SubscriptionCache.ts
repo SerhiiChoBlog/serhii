@@ -11,6 +11,10 @@ export default class {
         return Cache.get<Tag[]>(appConfig.storage.selectedSubscriptionTags)
     }
 
+    public static wantsAllTags(): boolean {
+        return this.get() === null
+    }
+
     public static isEmpty(): boolean {
         const items = this.get()
         return !items || items.length === 0

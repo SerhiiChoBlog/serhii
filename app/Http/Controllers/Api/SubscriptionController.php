@@ -15,6 +15,10 @@ class SubscriptionController extends Controller
     {
         $slug = Str::random(50);
 
+        if ($request->tags->is(SubscribeRequest::NO_TAGS)) {
+            return 'Choose topics to subscribe';
+        }
+
         /** @var Subscription|null $old_sub */
         $old_sub = Subscription::query()->where('email', $request->email)->first();
 
@@ -36,8 +40,9 @@ class SubscriptionController extends Controller
             ]);
         }
 
-        if (!$old_sub && $request->tags->isNotEmpty()) {
-            $subscription->tags()->attach($request->tags);
+        if (!$old_sub && !$request->tags->is(SubscribeRequest::ALL_TAGS)) {
+            $tags = $request->tags->explode(',');
+            $subscription->tags()->attach($tags);
         }
 
         $subscription->notifySubConfirmation();

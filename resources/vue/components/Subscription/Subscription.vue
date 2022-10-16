@@ -91,12 +91,18 @@ function subscribe(): void {
         return
     }
 
-    modalForm.loading = true
     let tagsParam = ''
+    const allTagsSelected = chosenTags.value.length === tags.items.length
 
-    if (!allTagsAreSelected()) {
+    if (SubscriptionCache.wantsAllTags() || allTagsSelected) {
+        tagsParam = 'all'
+    } else if (SubscriptionCache.isEmpty()) {
+        tagsParam = 'none'
+    } else  {
         tagsParam = chosenTags.value.map(t => t.id).join(',')
     }
+
+    modalForm.loading = true
 
     axios.post<string>(`/api/subscriptions?email=${modalForm.email}&tags=${tagsParam}`)
         .then(resp => {
@@ -113,10 +119,6 @@ function subscribe(): void {
             SubscriptionCache.deleteAll()
             SubscriptionButton.setAllTags()
         })
-}
-
-function allTagsAreSelected(): boolean {
-    return chosenTags.value.length === tags.items.length
 }
 </script>
 
