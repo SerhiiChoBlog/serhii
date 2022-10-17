@@ -7,6 +7,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ThemeController;
+use App\Models\Subscription;
+use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -41,3 +43,13 @@ Route::middleware('hits')->group(function () {
 });
 
 Route::get('theme/{to}', ThemeController::class);
+
+Route::get('test', function () {
+    $markdown = new Markdown(view(), config('mail.markdown'));
+
+    return $markdown->render('mail.confirm-subscription', [
+        'confirmation_url' => 'https://anna.com',
+        'decline_url' => 'https://serhii.com',
+        'subscription' => Subscription::with('tags')->first(),
+    ]);
+});

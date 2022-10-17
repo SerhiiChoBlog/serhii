@@ -15,7 +15,7 @@
                 </h1>
 
                 <h2 class="text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md">
-                    Let's make the Web a better place
+                    Add color to your workdays
                 </h2>
 
                 <search>
