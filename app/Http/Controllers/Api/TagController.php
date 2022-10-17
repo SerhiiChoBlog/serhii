@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
 class TagController extends Controller
@@ -17,7 +16,6 @@ class TagController extends Controller
     public function index(): Collection
     {
         return Tag::query()
-            ->whereHas('posts', fn(Builder $q) => $q->where('is_published', true))
             ->withCount('posts')
             ->orderByDesc('posts_count')
             ->get();
