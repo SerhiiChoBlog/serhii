@@ -13,9 +13,6 @@ use Illuminate\Support\Stringable;
  */
 class SubscribeRequest extends FormRequest
 {
-    public const ALL_TAGS = 'all';
-    public const NO_TAGS = 'none';
-
     public function authorize(): bool
     {
         return true;
