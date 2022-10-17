@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Subscription\SubscribeRequest;
 use App\Services\SubscriptionDemandService;
 
-class SubscriptionController extends Controller
+class SubscriptionDemandController extends Controller
 {
     public function subscribe(SubscribeRequest $request): DemandResponse
     {

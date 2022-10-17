@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\Api\{PostController,
-    SearchController,
-    SocialShareController,
-    SubscriptionController,
-    TagController};
+use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\SearchController;
+use App\Http\Controllers\Api\SocialShareController;
+use App\Http\Controllers\Api\SubscriptionDemandController;
+use App\Http\Controllers\Api\TagController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(TagController::class)->prefix('tags')->group(function () {
@@ -15,6 +15,6 @@ Route::controller(TagController::class)->prefix('tags')->group(function () {
 Route::post('social-shares/{post}', [SocialShareController::class, 'store']);
 Route::get('search/{query}', [SearchController::class, 'index']);
 
-Route::post('subscriptions', [SubscriptionController::class, 'subscribe']);
+Route::post('subscriptions', [SubscriptionDemandController::class, 'subscribe']);
 
 Route::get('posts', [PostController::class, 'index']);
