@@ -62,9 +62,9 @@ function subjectsHaveTag(tag: Tag): boolean {
 <template>
     <div>
         <div class="mb-5 text-center">
-            <h2 class="text-2xl">Choose subjects to subscribe</h2>
+            <h2 class="text-2xl">Choose tags to subscribe</h2>
             <p class="text-xl">
-                Subjects chosen:
+                Tags chosen:
                 <b class="text-green-700 font-sans">
                     {{ allTagsAreChosen ? 'everything' : `${subjects.length} out of ${props.tags.items.length}` }}
                 </b>

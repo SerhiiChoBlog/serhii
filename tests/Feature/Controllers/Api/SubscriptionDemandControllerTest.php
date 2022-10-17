@@ -119,7 +119,7 @@ class SubscriptionDemandControllerTest extends TestCase
             'tags' => SubscriptionDemandService::NO_TAGS,
         ]);
 
-        $expect = new DemandResponse(false, 'Choose topics to subscribe');
+        $expect = new DemandResponse(false, 'Choose tags to subscribe');
 
         $this->assertSame($expect->toArray(), $response->json());
     }
