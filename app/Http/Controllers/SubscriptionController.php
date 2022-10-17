@@ -12,15 +12,15 @@ class SubscriptionController extends Controller
 {
     public function confirm(string $slug): View | RedirectResponse
     {
-        $sub = Subscription::query()->where('slug', $slug)->first();
+        $subscription = Subscription::with('tags')->where('slug', $slug)->first();
 
-        if (!$sub) {
+        if (!$subscription) {
             return to_route('subscriptions.error');
         }
 
-        $sub->update(['confirmed_at' => now()]);
+        $subscription->update(['confirmed_at' => now()]);
 
-        return view('subscriptions.confirm');
+        return view('subscriptions.confirm', compact('subscription'));
     }
 
     public function decline(string $slug): View

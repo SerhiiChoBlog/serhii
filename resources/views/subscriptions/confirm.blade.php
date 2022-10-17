@@ -1,3 +1,9 @@
+@php
+    /**
+     * @var App\Models\Subscription $subscription
+     */
+@endphp
+
 @extends('layouts.app')
 
 @push('title', 'Subscribed to Serhii Cho')
@@ -6,18 +12,19 @@
 @section('content')
     <x-hero class="bg-gradient-to-r from-gray-700 to-gray-600 text-white" />
 
-    <div class="container py-48 px-16 flex gap-14 items-center">
+    <div class="container py-10 lg:py-48 px-5 flex flex-col lg:flex-row gap-14 items-center">
         <div>
             <img
                 src="{{ asset('storage/subscription/letter.svg') }}"
                 alt="Letter"
                 width="200"
                 height="115"
+                class="w-32 md:w-44 lg:w-52"
             >
         </div>
         <div>
             <h1
-                class="text-[5rem] font-black text-main inline-block"
+                class="text-3xl lg:text-7xl font-black text-main inline-block"
                 style="
                     background: -webkit-linear-gradient(45deg, #d074a2, #2a4b67);
                     -webkit-background-clip: text;
@@ -29,7 +36,30 @@
 
             <p class="text-xl"></p>
             <p class="text-xl">Your subscription has been confirmed, and you've been added to the list.</p>
-            <p class="text-xl">You'll receive a letter every time a new post is published. 🥳</p>
+
+            @if ($subscription->tags->isEmpty())
+                <p class="text-xl">You'll receive a letter every time a new post is published. 🥳</p>
+            @else
+                <p class="text-xl">You'll receive a letter every time a new post is published with subjects that you've chosen. 🥳</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 xl:grid-cols-3 mt-8">
+                    @foreach ($subscription->tags as $tag)
+                        <a
+                            href="/posts?tag={{ $tag->name }}"
+                            class="flex items-center gap-3 bg-page-second px-4 py-2 rounded-md shadow-lg transition-shadow hover:shadow-xl"
+                        >
+                            <img
+                                src="{{ asset("/storage/tags/{$tag->name}.webp") }}"
+                                alt="Logo of {{ $tag->name }}"
+                                width="200"
+                                height="200"
+                                class="w-10 h-10 drop-shadow-md"
+                            />
+                            <span class="text-lg">{{ $tag->title }}</span>
+                        </a>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 @endsection
