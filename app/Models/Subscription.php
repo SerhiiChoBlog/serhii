@@ -41,7 +41,8 @@ class Subscription extends Model
 
     public function notifySubConfirmation(): void
     {
-        Notification::route('mail', $this->email)->notify(new ConfirmSubscription($this));
+        $self = $this->load('tags');
+        Notification::route('mail', $this->email)->notify(new ConfirmSubscription($self));
     }
 
     public function notifyPostPublished(Post $post): void

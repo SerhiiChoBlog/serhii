@@ -1,7 +1,10 @@
 @php
+use App\Models\Subscription
+
 /**
  * @var string $confirmation_url
  * @var string $decline_url
+ * @var Subscription $subscription
  */
 @endphp
 
@@ -12,7 +15,25 @@
 @endslot
 
 <h1>Thanks for subscribing to the Serhii Cho email list</h1>
-<p style="margin-bottom:0">To complete your subscription, you need to confirm you got this email. To do so, please click the button below:</p>
+
+@if ($subscription->tags->isEmpty())
+<p>You've requested a subscription to all the new articles.</p>
+@else
+
+<p>You've requested a subscription to <strong>{{ $subscription->tags->count() }} {{ str('subject')->plural($subscription->tags->count()) }}</strong> which you can see down below:</p>
+
+<ul style="display: flex; flex-wrap: wrap; padding: 0;">
+@foreach ($subscription->tags as $tag)
+<li style="display: flex; align-items: center; gap: 10px; margin-bottom: 7px; flex: 0 0 50%;">
+<img src="{{ asset("/storage/tags/{$tag->name}.webp") }}" width="20" height="20" style="border-radius: 3px;" />
+<span>{{ $tag->title }}</span>
+</li>
+@endforeach
+</ul>
+
+@endif
+
+<p style="margin-bottom: 0;">To complete your subscription, you need to confirm you got this email. To do so, please click the button below:</p>
 
 @component('mail::button', ['url' => $confirmation_url])
 Confirm subscription

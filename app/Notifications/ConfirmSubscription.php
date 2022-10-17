@@ -33,6 +33,7 @@ class ConfirmSubscription extends Notification
             ->markdown('mail.confirm-subscription', [
                 'confirmation_url' => $this->getConfirmationUrl(),
                 'decline_url' => $this->getDeclineUrl(),
+                'subscription' => $this->subscription,
             ]);
     }
 
