@@ -40,7 +40,7 @@
             @if ($subscription->tags->isEmpty())
                 <p class="text-xl">You'll receive a letter every time a new post is published. 🥳</p>
             @else
-                <p class="text-xl">You'll receive a letter every time a new post is published with subjects that you've chosen. 🥳</p>
+                <p class="text-xl">You'll receive a letter every time a new post is published with tags that you've chosen. 🥳</p>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 xl:grid-cols-3 mt-8">
                     @foreach ($subscription->tags as $tag)

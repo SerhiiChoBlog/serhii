@@ -48,6 +48,11 @@
             Whether you're a beginner or an experienced developer, I'm sure you'll not be disappointed if you choose to stay.
             Whether you are a full-stack developer or just a back-end developer, <b class="font-sans font-bold">this blog will help you to write readable, maintainable, and high-quality code.</b>
             Moreover, you'll be able to expand your knowledge about different coding practices, methodologies, libraries, and tools.
+            <br /><br />
+            Since I'm a full-stack software developer, this blog includes several programming languages and frameworks.
+            You can choose in what tags you are interested and <a href="{{ route('subscribe') }}" class="text-black dark:text-white underline" title="To subscription page">subscribe</a> to new posts.
+            As soon as the article with your tag will be published, you will receive an email notification.
+            My email subscription is literally the best you can find out there. <a href="{{ route('subscribe') }}" title="To subscription page" class="text-black underline dark:text-white">Check this out!</a>
         </div>
     </x-home.section>
 

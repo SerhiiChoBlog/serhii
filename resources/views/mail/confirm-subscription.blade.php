@@ -20,7 +20,7 @@ use App\Models\Subscription
 <p>You've requested a subscription to all the new articles.</p>
 @else
 
-<p>You've requested a subscription to <strong>{{ $subscription->tags->count() }} {{ str('subject')->plural($subscription->tags->count()) }}</strong> which you can see down below:</p>
+<p>You've requested a subscription to <strong>{{ $subscription->tags->count() }} {{ str('tag')->plural($subscription->tags->count()) }}</strong> which you can see down below:</p>
 
 <ul style="display: flex; flex-wrap: wrap; padding: 0;">
 @foreach ($subscription->tags as $tag)

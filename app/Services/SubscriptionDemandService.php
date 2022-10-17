@@ -21,7 +21,7 @@ class SubscriptionDemandService
     public function handle(): DemandResponse
     {
         if ($this->tags->is(self::NO_TAGS)) {
-            return new DemandResponse(false, 'Choose topics to subscribe');
+            return new DemandResponse(false, 'Choose tags to subscribe');
         }
 
         $old_sub = $this->getOldSubscription();
