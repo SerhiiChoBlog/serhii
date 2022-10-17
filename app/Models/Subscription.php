@@ -31,6 +31,9 @@ class Subscription extends Model
      */
     protected $guarded = ['id'];
 
+    /**
+     * @return BelongsToMany<Tag>
+     */
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
