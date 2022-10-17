@@ -34,7 +34,7 @@ class SubscribeRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'tags' => request()->str('tags'),
+            'tags' => request('tags') ? request()->str('tags') : str(''),
         ]);
     }
 }

@@ -79,6 +79,6 @@ class SubscriptionDemandService
 
     public function notAllTagsSelected(): bool
     {
-        return !$this->tags->is(self::ALL_TAGS);
+        return !$this->tags->is('') && !$this->tags->is(self::ALL_TAGS);
     }
 }
