@@ -45,7 +45,6 @@
         class="-translate-y-8 bg-page rounded-xl container"
     >
         <div class="text-lg lg:text-xl font-light leading-7 lg:leading-9 first-letter:text-2xl">
-            While PHP continues being the most used server-side language on the Internet, it attracts plenty of new programmers.
             Whether you're a beginner or an experienced developer, I'm sure you'll not be disappointed if you choose to stay.
             Whether you are a full-stack developer or just a back-end developer, <b class="font-sans font-bold">this blog will help you to write readable, maintainable, and high-quality code.</b>
             Moreover, you'll be able to expand your knowledge about different coding practices, methodologies, libraries, and tools.
