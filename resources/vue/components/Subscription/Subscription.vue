@@ -193,11 +193,12 @@ function showToastAfterResponse(data: SubscriptionDemandResponse): void {
                     <div class="mt-4 text-md lg:text-lg space-y-3">
                         <ul class="space-y-1">
                             <li
-                                v-for="item in advantages"
+                                v-for="(item, index) in advantages"
                                 :key="item"
                                 class="flex gap-2 items-center"
                             >
-                                <check-icon class="w-5 lg:w-7 h-5 lg:h-7 text-green-500" />
+                                <span v-if="index === 0" class="mx-1 text-xl">❤️</span>
+                                <check-icon v-else class="w-5 lg:w-7 h-5 lg:h-7 text-green-500" />
                                 <span>{{ item }}</span>
                             </li>
                         </ul>
