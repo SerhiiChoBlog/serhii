@@ -38,6 +38,9 @@ class Tag extends Model
         return $this->belongsToMany(Post::class);
     }
 
+    /**
+     * @return BelongsToMany<Subscription>
+     */
     public function subscriptions(): BelongsToMany
     {
         return $this->belongsToMany(Subscription::class);
