@@ -6,17 +6,18 @@
 @section('content')
     <x-hero class="bg-gradient-to-r from-gray-700 to-gray-600 text-white" />
 
-    <div class="container py-48 px-16 flex gap-14 items-center">
+    <div class="container py-10 lg:py-48 px-5 flex flex-col lg:flex-row gap-14 items-center">
         <div>
             <img
                 src="{{ asset('storage/subscription/error.svg') }}"
                 alt="Letter"
                 width="70"
                 height="170"
+                class="w-14 lg:w-24"
             >
         </div>
         <div>
-            <h1 class="text-[5rem] font-black text-red-600 inline-block">
+            <h1 class="text-3xl lg:text-7xl font-black text-red-600 inline-block">
                 Error
             </h1>
 
