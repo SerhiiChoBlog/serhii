@@ -87,42 +87,44 @@ function subscribe(): void {
         return
     }
 
-    let tagsParam = ''
-    const allTagsSelected = selectedTags.value.length === tags.items.length
-
-    if (SubscriptionCache.wantsAllTags() || allTagsSelected) {
-        tagsParam = 'all'
-    } else if (SubscriptionCache.isEmpty()) {
-        tagsParam = 'none'
-    } else  {
-        tagsParam = selectedTags.value.map(t => t.id).join(',')
-    }
-
     modalForm.loading = true
 
-    const uri = `/api/subscriptions?email=${modalForm.email}&tags=${tagsParam}`
+    const uri = `/api/subscriptions?email=${modalForm.email}&tags=${generateTagsUrlParam()}`
 
     axios.post<SubscriptionDemandResponse>(uri)
-        .then(resp => {
-            modalForm.email = ''
-
-            showToastAfterResponse(resp.data)
-
-            if (resp.data.success) {
-                SubscriptionCache.deleteAll()
-                SubscriptionButton.setAllTags()
-            }
-        })
+        .then(resp => handleSubscribeResponse(resp.data))
         .catch(err => console.error(err))
         .finally(() => modalForm.loading = false)
 }
 
-function showToastAfterResponse(data: SubscriptionDemandResponse): void {
+function handleSubscribeResponse(data: SubscriptionDemandResponse): void {
+    modalForm.email = ''
+
     showToast({
         text: data.message,
         success: data.success,
         duration: 7000,
     })
+
+    if (data.success) {
+        SubscriptionCache.deleteAll()
+        SubscriptionButton.setAllTags()
+        selectedTags.value = []
+    }
+}
+
+function generateTagsUrlParam() {
+    const allTagsSelected = selectedTags.value.length === tags.items.length
+
+    if (SubscriptionCache.wantsAllTags() || allTagsSelected) {
+        return 'all'
+    }
+
+    if (SubscriptionCache.isEmpty()) {
+        return 'none'
+    }
+
+    return selectedTags.value.map(t => t.id).join(',')
 }
 </script>
 
