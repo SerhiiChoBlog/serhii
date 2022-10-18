@@ -1,14 +1,10 @@
 @import 'toastify-js/src/toastify.css';
 @import '../_fonts.css';
+@import "../_variables.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-@layer base {
-    @import "../_variables.css";
-}
 
 .swal2-container {
     z-index: 1700 !important;

@@ -9,7 +9,7 @@
     <meta property="og:locale" content="en_US">
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png" sizes="50x50">
     <title>@stack('title'){{ request()->is('/') ? 'Serhii Cho' : '' }}</title>
-    <link href="{{ App\FileVersion::append('/css/app.css') }}" rel="stylesheet">
+    @vite('resources/css/app.css')
     @stack('head')
 </head>
 <body class="text-font font-main bg-page {{ request()->cookie('theme') }}">
@@ -17,7 +17,6 @@
         @yield('content')
         <to-top></to-top>
     </main>
-
-    <script src="{{ App\FileVersion::append('/js/app.js') }}"></script>
+    @vite('resources/vue/app.ts')
 </body>
 </html>

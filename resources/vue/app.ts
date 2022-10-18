@@ -1,4 +1,5 @@
-import { createApp, onMounted } from 'vue'
+import { onMounted } from 'vue'
+import { createApp } from "vue/dist/vue.esm-bundler"
 import ContactModal from './components/ContactModal.vue'
 import Hamburger from './components/Hamburger.vue'
 import SharePostButtons from './components/SharePostButtons.vue'

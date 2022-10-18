@@ -1,22 +1,18 @@
 @import 'toastify-js/src/toastify.css';
+@import "_variables.css";
 @import '_fonts.css';
+@import "_navbar.css";
+@import "_material-theme.css";
+@import "_code.css";
+@import "_blockquote.css";
+@import "_sweet-alert.css";
+@import "_note.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    @import "_variables.css";
-}
-
 @layer components {
-    @import "_navbar.css";
-    @import "_material-theme.css";
-    @import "_code.css";
-    @import "_blockquote.css";
-    @import "_sweet-alert.css";
-    @import "_note.css";
-
     .scrollbar {
         scrollbar-color: rgba(0, 0, 0, .3) transparent;
         scrollbar-width: thin;

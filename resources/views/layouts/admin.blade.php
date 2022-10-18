@@ -6,13 +6,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
     <title>{{ config('app.name', 'Serhii API') }}</title>
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
+    @vite('resources/css/admin/admin.css')
+    @vite('resources/css/admin/font-awesome.css')
     @stack('head')
 </head>
 <body>
     <main id="admin-main"></main>
-
-    <script src="{{ asset('js/admin.js') }}" defer></script>
+    @vite('resources/admin/app.ts')
 </body>
 </html>

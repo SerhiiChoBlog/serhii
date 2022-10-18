@@ -1,9 +1,0 @@
-@charset "UTF-8";/*!
- * Font Awesome Free 5.3.1 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- */.fas{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;text-rendering:auto;display:inline-block;font-style:normal;font-variant:normal;line-height:1}@-webkit-keyframes fa-spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@keyframes fa-spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.fa-check:before{content:""}.fa-columns:before{content:""}.fa-envelope:before{content:""}.fa-eye:before{content:""}.fa-home:before{content:""}.fa-link:before{content:""}.fa-newspaper:before{content:""}.fa-pen:before{content:""}.fa-plus:before{content:""}.fa-save:before{content:""}.fa-share-alt:before{content:""}.fa-shoe-prints:before{content:""}.fa-sign-out-alt:before{content:""}.fa-spinner:before{content:""}.fa-tag:before{content:""}.fa-tags:before{content:""}.fa-times:before{content:""}.fa-trash:before{content:""}.fa-upload:before{content:""}.fa-users:before{content:""}
-
-/*!
- * Font Awesome Free 5.3.1 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- */@font-face{font-family:Font Awesome\ 5 Free;font-style:normal;font-weight:900;src:url(/fonts/fa-solid-900.eot?5b08d3ada9ef0666cabc108e56cd3881);src:url(/fonts/fa-solid-900.eot?5b08d3ada9ef0666cabc108e56cd3881) format("embedded-opentype"),url(/fonts/fa-solid-900.woff2?85475257955f4bf4f6d944d90be035ca) format("woff2"),url(/fonts/fa-solid-900.woff?e98fbd160b2f50ebfe4dbdc5383fce03) format("woff"),url(/fonts/fa-solid-900.ttf?cbd59280a84ea502978e021dd09c8f29) format("truetype"),url(/fonts/fa-solid-900.svg?e15864144b9712e2ef72ac9da83fcaea) format("svg")}.fas{font-family:Font Awesome\ 5 Free;font-weight:900}
