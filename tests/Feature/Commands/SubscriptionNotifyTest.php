@@ -7,6 +7,7 @@ namespace Tests\Feature\Commands;
 use App\Models\Post;
 use App\Models\PostPublication;
 use App\Models\Subscription;
+use App\Models\Tag;
 use App\Notifications\PostPublished;
 use Exception;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -21,6 +22,17 @@ class SubscriptionNotifyTest extends TestCase
     {
         parent::setUp();
         Notification::fake();
+    }
+
+    private function finalNotificationMessage(Post $post, int $notified, ?int $skipped = 0): string
+    {
+        return <<<TEXT
+        - Notified: $notified subscribers;
+        - Skipped: $skipped subscribers;
+        Post published:
+        "$post->title"
+        TEXT;
+
     }
 
     public function test_cannot_notify_post_publication_when_it_is_already_notified(): void
@@ -43,7 +55,7 @@ class SubscriptionNotifyTest extends TestCase
         Subscription::factory()->count(2)->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
-            ->expectsOutput("2 subscribers were successfully notified with post:\n\"$post->title\"")
+            ->expectsOutput($this->finalNotificationMessage($post, 2))
             ->assertSuccessful();
 
         $this->assertDatabaseHas('post_publications', ['people_notified' => 2]);
@@ -69,7 +81,7 @@ class SubscriptionNotifyTest extends TestCase
         $sub = Subscription::factory()->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
-            ->expectsOutput("1 subscribers were successfully notified with post:\n\"$post->title\"")
+            ->expectsOutput($this->finalNotificationMessage($post, 1))
             ->assertSuccessful();
 
         $this->assertDatabaseHas('post_publications', ['people_notified' => 1]);
@@ -82,7 +94,7 @@ class SubscriptionNotifyTest extends TestCase
         $subs = Subscription::factory()->count(3)->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
-            ->expectsOutput("3 subscribers were successfully notified with post:\n\"$post->title\"")
+            ->expectsOutput($this->finalNotificationMessage($post, 3))
             ->assertSuccessful();
 
         Notification::assertTimesSent(3, PostPublished::class);
@@ -93,12 +105,12 @@ class SubscriptionNotifyTest extends TestCase
         Post::factory()->published()->title('First')->create(['created_at' => now()->subDay()]);
         Post::factory()->published()->title('Second')->create(['created_at' => now()->subDays(10)]);
         Post::factory()->published()->title('Third')->create(['created_at' => now()->subMonth()]);
-        $latest_post = Post::factory()->published()->title('Last one')->create(['created_at' => now()->subHour()]);
+        $post = Post::factory()->published()->title('Last one')->create(['created_at' => now()->subHour()]);
 
-        $subs = Subscription::factory()->count(3)->confirmed()->create();
+        Subscription::factory()->count(3)->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
-            ->expectsOutput("3 subscribers were successfully notified with post:\n\"$latest_post->title\"")
+            ->expectsOutput($this->finalNotificationMessage($post, 3))
             ->assertSuccessful();
 
         Notification::assertTimesSent(3, PostPublished::class);
@@ -127,6 +139,55 @@ class SubscriptionNotifyTest extends TestCase
         $this->artisan('subscriptions:notify')->assertSuccessful();
 
         $this->assertSame(1, PostPublication::query()->count());
+
+        Notification::assertTimesSent(1, PostPublished::class);
+    }
+
+    public function test_if_subscriber_is_not_subscribed_to_tag_they_are_not_notified(): void
+    {
+        $tag1 = Tag::factory()->create();
+        $tag2 = Tag::factory()->create();
+
+        $post_tag1 = Tag::factory()->create();
+        $post_tag2 = Tag::factory()->create();
+
+        /** @var Post $post */
+        $post = Post::factory()->published()->create();
+        $post->tags()->attach([$post_tag1->id, $post_tag2->id]);
+
+        /** @var Subscription $subscriber */
+        $subscriber = Subscription::factory()->confirmed()->create();
+        $subscriber->tags()->attach([$tag1->id, $tag2->id]);
+
+        $this->artisan('subscriptions:notify')->assertSuccessful();
+
+        /** @var PostPublication $publication */
+        $publication = PostPublication::query()->first();
+
+        $this->assertSame(0, $publication->people_notified);
+
+        Notification::assertTimesSent(0, PostPublished::class);
+    }
+
+    public function test_if_subscriber_is_subscribed_to_tag_they_will_be_notified(): void
+    {
+        $tag1 = Tag::factory()->create();
+        $tag2 = Tag::factory()->create();
+
+        /** @var Post $post */
+        $post = Post::factory()->published()->create();
+        $post->tags()->attach([$tag1->id, $tag2->id]);
+
+        /** @var Subscription $subscriber */
+        $subscriber = Subscription::factory()->confirmed()->create();
+        $subscriber->tags()->attach([$tag1->id]);
+
+        $this->artisan('subscriptions:notify')->assertSuccessful();
+
+        /** @var PostPublication $publication */
+        $publication = PostPublication::query()->first();
+
+        $this->assertSame(1, $publication->people_notified);
 
         Notification::assertTimesSent(1, PostPublished::class);
     }

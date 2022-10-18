@@ -31,7 +31,7 @@ class SubscriptionsNotify extends Command
         }
 
         $last_post = $this->getLastPost();
-        $people_notified = 0;
+        $info = ['people_notified' => 0, 'people_skipped' => 0];
         $errors = [];
 
         if ($this->hasPublicationWithThisPost($last_post->id)) {
@@ -40,7 +40,11 @@ class SubscriptionsNotify extends Command
         }
 
         foreach ($subs as $sub) {
-            ++$people_notified;
+            if ($this->subscriberIsNotSubscribedToTags($sub, $last_post)) {
+                continue;
+            }
+
+            ++$info['people_notified'];
 
             try {
                 $sub->notifyPostPublished($last_post);
@@ -50,14 +54,19 @@ class SubscriptionsNotify extends Command
             }
         }
 
-        $last_post->postPublication()->create(compact('people_notified'));
+        $last_post->postPublication()->create($info);
 
         if (!empty($errors)) {
             Log::error(implode("\n", $errors));
             $this->warn(sprintf("There were %d errors! Check your logs", count($errors)));
         }
 
-        $msg = "$people_notified subscribers were successfully notified with post:\n<fg=blue>\"$last_post->title\"</>";
+        $msg = <<<TEXT
+        - Notified: {$info['people_notified']} subscribers;
+        - Skipped: {$info['people_skipped']} subscribers;
+        Post published:
+        <fg=blue>"$last_post->title"</>
+        TEXT;
 
         $this->info($msg);
 
@@ -77,7 +86,7 @@ class SubscriptionsNotify extends Command
      */
     private function getLastPost(): Post
     {
-        $post = Post::query()->where('is_published', true)->latest()->first();
+        $post = Post::with('tags')->where('is_published', true)->latest()->first();
 
         if (!$post) {
             throw new Exception('There are no posts in database');
@@ -91,5 +100,17 @@ class SubscriptionsNotify extends Command
         return PostPublication::query()
             ->where('post_id', $post_id)
             ->exists();
+    }
+
+    private function subscriberIsNotSubscribedToTags(Subscription $subscriber, Post $post): bool
+    {
+        /** @var Collection<int, int> $subscriber_tags */
+        $subscriber_tags = $subscriber->tags->pluck('id');
+
+        if ($subscriber_tags->isEmpty()) {
+            return false;
+        }
+
+        return $post->tags->pluck('id')->doesntContain(...$subscriber_tags);
     }
 }
