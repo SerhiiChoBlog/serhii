@@ -191,4 +191,52 @@ class SubscriptionNotifyTest extends TestCase
 
         Notification::assertTimesSent(1, PostPublished::class);
     }
+
+    public function test_if_subscriber_is_subscribed_to_last_tag_in_the_post_they_will_receive_email(): void
+    {
+        $tag1 = Tag::factory()->create();
+        $tag2 = Tag::factory()->create();
+        $last_tag = Tag::factory()->create();
+
+        /** @var Post $post */
+        $post = Post::factory()->published()->create();
+        $post->tags()->attach([$tag1->id, $tag2->id, $last_tag->id]);
+
+        /** @var Subscription $subscriber */
+        $subscriber = Subscription::factory()->confirmed()->create();
+        $subscriber->tags()->attach([$last_tag->id]);
+
+        $this->artisan('subscriptions:notify')->assertSuccessful();
+
+        /** @var PostPublication $publication */
+        $publication = PostPublication::query()->first();
+
+        $this->assertSame(1, $publication->people_notified);
+
+        Notification::assertTimesSent(1, PostPublished::class);
+    }
+
+    public function test_if_subscriber_is_subscribed_to_the_first_tag_in_the_post_they_will_receive_email(): void
+    {
+        $first_tag = Tag::factory()->create();
+        $tag2 = Tag::factory()->create();
+        $tag3 = Tag::factory()->create();
+
+        /** @var Post $post */
+        $post = Post::factory()->published()->create();
+        $post->tags()->attach([$first_tag->id, $tag2->id, $tag3->id]);
+
+        /** @var Subscription $subscriber */
+        $subscriber = Subscription::factory()->confirmed()->create();
+        $subscriber->tags()->attach([$first_tag->id]);
+
+        $this->artisan('subscriptions:notify')->assertSuccessful();
+
+        /** @var PostPublication $publication */
+        $publication = PostPublication::query()->first();
+
+        $this->assertSame(1, $publication->people_notified);
+
+        Notification::assertTimesSent(1, PostPublished::class);
+    }
 }
