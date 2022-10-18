@@ -107,6 +107,7 @@ export type PostPublication = {
     id: number
     user_id: number
     people_notified: number
+    people_skipped: number
     post?: Post
     created_at: string
 }

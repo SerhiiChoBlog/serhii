@@ -34,7 +34,7 @@ function fetchVisitors(): void {
                 <thead class="bg-gray-500 text-white text-left">
                     <tr>
                         <th
-                            v-for="title in ['#', 'People', 'Post', 'Created']"
+                            v-for="title in ['#', 'Notified', 'Skipped', 'Post', 'Created']"
                             :key="title"
                             class="p-3"
                         >
@@ -51,8 +51,9 @@ function fetchVisitors(): void {
                     >
                         <td class="px-3 py-1">{{ publication.id }}</td>
                         <td class="px-3 py-1">{{ publication.people_notified }}</td>
+                        <td class="px-3 py-1">{{ publication.people_skipped }}</td>
                         <td class="px-3 py-1">{{ publication.post ? publication.post.title : '-no-' }}</td>
-                        <td class="px-3 py-1">{{ publication.created_at }}</td>
+                        <td class="px-3 py-1 min-w-[160px]">{{ publication.created_at }}</td>
                     </tr>
                 </tbody>
             </table>
