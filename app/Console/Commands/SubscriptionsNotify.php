@@ -111,6 +111,6 @@ class SubscriptionsNotify extends Command
             return false;
         }
 
-        return $post->tags->pluck('id')->doesntContain(...$subscriber_tags);
+        return $post->tags->pluck('id')->intersect($subscriber_tags)->isEmpty();
     }
 }
