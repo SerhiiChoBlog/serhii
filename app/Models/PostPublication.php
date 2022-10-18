@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read int $id
  * @property int $post_id
  * @property int $people_notified
+ * @property int $people_skipped
  * @property Post $post
  * @property Carbon $created_at
  */
@@ -30,6 +31,7 @@ class PostPublication extends Model
     protected $casts = [
         'created_at' => 'date:d.m.Y H:m',
         'people_notified' => 'int',
+        'people_skipped' => 'int',
     ];
 
     /**
