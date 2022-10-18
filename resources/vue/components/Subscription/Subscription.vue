@@ -20,7 +20,7 @@ type Props = {
 }
 
 const { removeBg = false } = defineProps<Props>()
-const chosenTags = ref<Tag[]>([])
+const selectedTags = ref<Tag[]>([])
 
 const modalForm = reactive<SubscriptionForm>({
     loading: false,
@@ -62,7 +62,7 @@ function updateChosenTags(): void {
         return
     }
 
-    chosenTags.value = cachedTags
+    selectedTags.value = cachedTags
 }
 
 function showModalWithTags(): void {
@@ -88,14 +88,14 @@ function subscribe(): void {
     }
 
     let tagsParam = ''
-    const allTagsSelected = chosenTags.value.length === tags.items.length
+    const allTagsSelected = selectedTags.value.length === tags.items.length
 
     if (SubscriptionCache.wantsAllTags() || allTagsSelected) {
         tagsParam = 'all'
     } else if (SubscriptionCache.isEmpty()) {
         tagsParam = 'none'
     } else  {
-        tagsParam = chosenTags.value.map(t => t.id).join(',')
+        tagsParam = selectedTags.value.map(t => t.id).join(',')
     }
 
     modalForm.loading = true
@@ -181,7 +181,7 @@ function showToastAfterResponse(data: SubscriptionDemandResponse): void {
 
                         <div class="text-center">
                             <div class="inline-flex gap-2 flex-wrap mt-4 justify-center">
-                                <subscription-tag-icon v-for="tag in chosenTags" :key="tag.id" :tag="tag" />
+                                <subscription-tag-icon v-for="tag in selectedTags" :key="tag.id" :tag="tag" />
                             </div>
                         </div>
                     </form>

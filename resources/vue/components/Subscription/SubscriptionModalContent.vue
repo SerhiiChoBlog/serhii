@@ -12,15 +12,15 @@ type Props = {
 }
 
 const props = defineProps<Props>()
-const subjects = ref<Tag[]>([])
+const selectedTags = ref<Tag[]>([])
 
 const allTagsAreChosen = computed(() => {
-    return props.tags.items.length === subjects.value.length
+    return props.tags.items.length === selectedTags.value.length
 })
 
 onMounted(() => {
     const cachedTags = SubscriptionCache.get()
-    subjects.value = cachedTags ? cachedTags : props.tags.items
+    selectedTags.value = cachedTags ? cachedTags : props.tags.items
 })
 
 function toggleAll(): void {
@@ -28,34 +28,34 @@ function toggleAll(): void {
 }
 
 function selectAll(): void {
-    subjects.value = props.tags.items
+    selectedTags.value = props.tags.items
 
     SubscriptionCache.set(props.tags.items)
     SubscriptionButton.setAllTags()
 }
 
 function removeAll(): void {
-    subjects.value = []
+    selectedTags.value = []
 
     SubscriptionCache.set([])
     SubscriptionButton.setNoTags()
 }
 
 function chooseSubject(tag: Tag): void {
-    if (subjectsHaveTag(tag)) {
-        subjects.value = subjects.value.filter(subject => {
+    if (selectedTagsHaveTag(tag)) {
+        selectedTags.value = selectedTags.value.filter(subject => {
             return subject.id !== tag.id
         })
     } else {
-        subjects.value.push(tag)
+        selectedTags.value.push(tag)
     }
 
-    SubscriptionCache.set(subjects.value)
-    SubscriptionButton.setTagsAmount(subjects.value.length)
+    SubscriptionCache.set(selectedTags.value)
+    SubscriptionButton.setTagsAmount(selectedTags.value.length)
 }
 
-function subjectsHaveTag(tag: Tag): boolean {
-    return !!subjects.value.find(subject => subject.id === tag.id)
+function selectedTagsHaveTag(tag: Tag): boolean {
+    return !!selectedTags.value.find(subject => subject.id === tag.id)
 }
 </script>
 
@@ -66,7 +66,7 @@ function subjectsHaveTag(tag: Tag): boolean {
             <p class="text-xl">
                 Tags chosen:
                 <b class="text-green-700 font-sans">
-                    {{ allTagsAreChosen ? 'everything' : `${subjects.length} out of ${props.tags.items.length}` }}
+                    {{ allTagsAreChosen ? 'everything' : `${selectedTags.length} out of ${props.tags.items.length}` }}
                 </b>
             </p>
 
@@ -92,12 +92,12 @@ function subjectsHaveTag(tag: Tag): boolean {
                 v-for="tag in props.tags.items"
                 :key="tag.id"
                 class="flex items-center gap-7 border rounded-lg py-2 px-3 relative pointer outline outline-2 outline-transparent transition-all hover:outline-gray-400 dark:hover:outline-gray-600"
-                :class="subjectsHaveTag(tag) ? 'border-green-500 dark:border-green-900 bg-green-50 dark:bg-page-second' : 'border-border'"
+                :class="selectedTagsHaveTag(tag) ? 'border-green-500 dark:border-green-900 bg-green-50 dark:bg-page-second' : 'border-border'"
                 aria-label="Subscription subject"
                 @click="chooseSubject(tag)"
             >
                 <check-icon
-                    v-if="subjectsHaveTag(tag)"
+                    v-if="selectedTagsHaveTag(tag)"
                     class="w-6 h-6 absolute top-1 right-1 text-green-700"
                 />
 
