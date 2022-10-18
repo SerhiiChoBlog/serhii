@@ -112,9 +112,7 @@ function handleSubscribeResponse(data: SubscriptionDemandResponse): void {
 }
 
 function generateTagsUrlParam() {
-    const allTagsSelected = selectedTags.value.length === tags.items.length
-
-    if (SubscriptionCache.wantsAllTags() || allTagsSelected) {
+    if (SubscriptionCache.wantsAllTags() || allTagsSelected()) {
         return 'all'
     }
 
@@ -123,6 +121,10 @@ function generateTagsUrlParam() {
     }
 
     return selectedTags.value.map(t => t.id).join(',')
+}
+
+function allTagsSelected(): boolean {
+    return selectedTags.value.length === tags.items.length
 }
 </script>
 
