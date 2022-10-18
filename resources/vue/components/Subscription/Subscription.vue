@@ -73,17 +73,13 @@ function showModalWithTags(): void {
     }
 
     tags.loading = true
-    SubscriptionButton.setLoading()
 
     axios.get<Tag[]>('/api/tags')
         .then(resp => {
             tags.items.push(...resp.data)
         })
         .catch(err => console.error(err))
-        .finally(() => {
-            tags.loading = false
-            SubscriptionButton.setAllTags()
-        })
+        .finally(() => tags.loading = false)
 }
 
 function subscribe(): void {
