@@ -32,6 +32,9 @@ class Subscription extends Model
     protected $guarded = ['id'];
 
     /**
+     * @note If subscriber doesn't have any tags, it means
+     * that the person subscribed to all the publications.
+     *
      * @return BelongsToMany<Tag>
      */
     public function tags(): BelongsToMany
