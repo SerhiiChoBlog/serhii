@@ -39,7 +39,7 @@ push:
 	git status
 
 prod:
-	yarn prod
+	yarn build
 	git add .
 	git commit -m 'Compiled assets for production'
 	git push origin HEAD
