@@ -11,10 +11,6 @@ export default class {
         }
     }
 
-    public static setLoading(): void {
-        this.setTitle('Loading...')
-    }
-
     public static setAllTags(): void {
         this.setTitle('All tags')
     }
