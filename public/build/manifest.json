@@ -1,7 +1,7 @@
 {
-  "resources/fonts/Lato-Regular.ttf": {
-    "file": "assets/Lato-Regular.e82542ae.ttf",
-    "src": "resources/fonts/Lato-Regular.ttf"
+  "storage/app/public/heros/home-hero.jpeg": {
+    "file": "assets/home-hero.73b4380b.jpeg",
+    "src": "storage/app/public/heros/home-hero.jpeg"
   },
   "storage/app/public/heros/home-hero-sm.jpeg": {
     "file": "assets/home-hero-sm.c2b8b6d3.jpeg",
@@ -15,9 +15,9 @@
     "file": "assets/charter-400-normal.ce74d314.woff",
     "src": "resources/fonts/charter-400-normal.woff"
   },
-  "storage/app/public/heros/home-hero.jpeg": {
-    "file": "assets/home-hero.73b4380b.jpeg",
-    "src": "storage/app/public/heros/home-hero.jpeg"
+  "resources/fonts/Lato-Regular.ttf": {
+    "file": "assets/Lato-Regular.e82542ae.ttf",
+    "src": "resources/fonts/Lato-Regular.ttf"
   },
   "resources/vue/app.ts": {
     "file": "assets/app.901698fe.js",
@@ -44,12 +44,12 @@
     "isEntry": true
   },
   "resources/css/admin/admin.css": {
-    "file": "assets/admin.fe7df69b.css",
+    "file": "assets/admin.d0e1e216.css",
     "src": "resources/css/admin/admin.css",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.314c9487.css",
+    "file": "assets/app.b7fee561.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }
