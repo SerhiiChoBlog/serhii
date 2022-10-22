@@ -17,6 +17,7 @@ class ReferrerMiddleware
         }
 
         $hash = $request->get('welcome');
+
         Referrer::query()->where('hash', $hash)->increment('hits');
 
         return $next($request);
