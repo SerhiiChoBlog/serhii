@@ -44,7 +44,9 @@ const number = computed<string>(() => {
             class="font-bold text-lg"
             :class="chapter.isActive ? 'text-white' : 'text-main'"
             aria-hidden="true"
-        >{{ number || '&#xb7;' }}</span>
+        >
+            {{ number || '&#xb7;' }}
+        </span>
 
 
         <span>{{ title }}</span>
