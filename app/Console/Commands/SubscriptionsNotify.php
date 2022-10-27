@@ -104,6 +104,10 @@ class SubscriptionsNotify extends Command
 
     private function subscriberIsNotSubscribedToTags(Subscription $subscriber, Post $post): bool
     {
+        if (!$subscriber->tags) {
+            return false;
+        }
+
         /** @var Collection<int, int> $subscriber_tags */
         $subscriber_tags = $subscriber->tags->pluck('id');
 
