@@ -28,8 +28,6 @@ check:
 
 sitemap:
 	php artisan make:sitemap
-	git add public/sitemap.xml
-	git commit -m 'Generated sitemap'
 
 push:
 	make check
