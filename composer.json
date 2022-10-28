@@ -17,6 +17,7 @@
         "serhii/ago": "^2.0",
         "serhii/short-number": "^3.0",
         "stevebauman/location": "^6.1",
+        "spatie/laravel-sitemap": "^6.2",
         "ext-pdo": "*"
     },
     "require-dev": {
@@ -27,7 +28,6 @@
         "nunomaduro/larastan": "^2.0",
         "phpunit/phpunit": "^9.3.3",
         "spatie/laravel-ignition": "^1.0",
-        "spatie/laravel-sitemap": "^6.2",
         "squizlabs/php_codesniffer": "^3.6"
     },
     "autoload": {
