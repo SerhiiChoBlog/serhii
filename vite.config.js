@@ -11,7 +11,6 @@ export default defineConfig({
             // admin
             'resources/admin/app.ts',
             'resources/css/admin/admin.css',
-            'resources/css/admin/font-awesome.css',
         ]),
         vue({
             template: {

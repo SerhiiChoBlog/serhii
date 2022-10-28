@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hit;
+use App\Models\Post;
 use App\Models\PostView;
 use App\Models\SocialShare;
 use App\Models\Subscription;
@@ -38,6 +39,10 @@ class DashboardController extends Controller
             [
                 'title' => 'Guest shares',
                 'value' => SocialShare::query()->count(),
+            ],
+            [
+                'title' => 'Posts',
+                'value' => Post::query()->count(),
             ],
         ];
     }
