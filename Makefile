@@ -46,6 +46,7 @@ deploy:
 	git pull origin HEAD
 	php artisan migrate
 	composer update --no-dev
+	make sitemap
 	make cache
 
 .DEFAULT_GOAL := push
