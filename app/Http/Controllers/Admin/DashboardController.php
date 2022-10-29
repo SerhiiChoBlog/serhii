@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Hit;
 use App\Models\Post;
 use App\Models\PostView;
+use App\Models\Referrer;
 use App\Models\SocialShare;
 use App\Models\Subscription;
 
@@ -15,8 +16,8 @@ class DashboardController extends Controller
 {
     public function sections(): array
     {
-        $confirmed_subs = Subscription::query()->whereNotNull('confirmed_at')->count();
-        $not_confirmed_subs = Subscription::query()->count();
+        $subs = Subscription::query()->select(['id', 'confirmed_at'])->get();
+        $posts = Post::query()->select(['id', 'is_published'])->get();
 
         return [
             [
@@ -34,15 +35,19 @@ class DashboardController extends Controller
             ],
             [
                 'title' => 'Subscribers',
-                'value' => "$confirmed_subs/$not_confirmed_subs",
+                'value' => sprintf("%s/%s", $subs->whereNotNull('confirmed_at')->count(), $subs->count()),
             ],
             [
-                'title' => 'Guest shares',
+                'title' => 'Shares',
                 'value' => SocialShare::query()->count(),
             ],
             [
                 'title' => 'Posts',
-                'value' => Post::query()->count(),
+                'value' => sprintf('%d/%d', $posts->where('is_published', true)->count(), $posts->count()),
+            ],
+            [
+                'title' => 'Refers',
+                'value' => Referrer::query()->sum('hits'),
             ],
         ];
     }
