@@ -4,8 +4,8 @@ import { Channel } from 'laravel-echo/dist/channel'
 export default <T>(channel: string, event: string, callback: (e: T) => void): Channel => {
     return new Echo({
         broadcaster: 'pusher',
-        key: process.env.VITE_PUSHER_APP_KEY,
-        cluster: process.env.VITE_PUSHER_APP_CLUSTER,
+        key: import.meta.env.VITE_PUSHER_APP_KEY,
+        cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
         forceTLS: true,
         encrypted: true,
     })
