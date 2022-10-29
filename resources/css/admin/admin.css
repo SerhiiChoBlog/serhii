@@ -1,7 +1,6 @@
 @import 'toastify-js/src/toastify.css';
 @import '../_fonts.css';
 @import "../_variables.css";
-@import "./_font-awesome.css";
 
 @tailwind base;
 @tailwind components;
