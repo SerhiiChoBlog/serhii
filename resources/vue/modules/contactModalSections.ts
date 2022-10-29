@@ -47,11 +47,6 @@ export default [
                 href: 'https://codepen.io/serhii_cho',
                 title: 'Codepen',
             },
-            {
-                img: '/storage/icons/bymeacoffee.webp',
-                href: 'https://www.buymeacoffee.com/serhiicho',
-                title: 'Buy me a coffee',
-            },
         ],
     },
     {
