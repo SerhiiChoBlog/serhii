@@ -20,6 +20,8 @@ class ReferrerMiddleware
 
         Referrer::query()->where('hash', $hash)->increment('hits');
 
-        return $next($request);
+        $new_url = $request->fullUrlWithoutQuery('welcome');
+
+        return redirect()->to($new_url);
     }
 }
