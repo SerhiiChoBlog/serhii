@@ -65,6 +65,7 @@ function fetchViews(): void {
             <tab-list class="flex gap-2 rounded-xl bg-gray-500 p-1">
                 <tab
                     v-for="title in ['Unique views', 'Daily views']"
+                    :key="title"
                     as="template"
                     v-slot="{ selected }"
                 >
@@ -89,6 +90,7 @@ function fetchViews(): void {
                                     <tr>
                                         <th
                                             v-for="title in ['Image', 'Views', 'Post title']"
+                                            :key="title"
                                             class="p-3 font-light"
                                         >
                                             {{ title }}
@@ -155,6 +157,7 @@ function fetchViews(): void {
                                 <tbody v-if="views.daily">
                                     <tr
                                         v-for="view in views.daily"
+                                        :key="view.amount"
                                         class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100 first:!bg-yellow-200"
                                     >
                                         <td class="px-3 py-1">{{ view.date }}</td>
