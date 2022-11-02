@@ -22,6 +22,26 @@ class TagController extends Controller
     }
 
     /**
+     * @return Collection<int, Tag>
+     */
+    public function subscription(): Collection
+    {
+        return Tag::query()
+            ->withCount('posts')
+            ->whereNotIn('name', [
+                'react',
+                'vue',
+                'seo',
+                'html',
+                'story',
+                'typescript',
+                'javascript',
+            ])
+            ->orderByDesc('posts_count')
+            ->get();
+    }
+
+    /**
      * @param string $word
      *
      * @return Collection<int, Tag>

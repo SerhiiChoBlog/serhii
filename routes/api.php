@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(TagController::class)->prefix('tags')->group(function () {
     Route::get('/', 'index');
+    Route::get('subscription', 'subscription');
     Route::post('search/{word}', 'search');
 });
 

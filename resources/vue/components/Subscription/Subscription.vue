@@ -74,7 +74,7 @@ function showModalWithTags(): void {
 
     tags.loading = true
 
-    axios.get<Tag[]>('/api/tags')
+    axios.get<Tag[]>('/api/tags/subscription')
         .then(resp => tags.items.push(...resp.data))
         .catch(err => console.error(err))
         .finally(() => tags.loading = false)
