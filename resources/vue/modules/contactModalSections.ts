@@ -29,7 +29,7 @@ export default [
         links: [
             {
                 img: '/storage/icons/youtube.webp',
-                href: 'youtube.com/@serhiicho',
+                href: 'https://www.youtube.com/@serhiicho',
                 title: 'YouTube',
             },
             {
