@@ -1,5 +1,5 @@
 export const tinymceConfig = {
-    paste_as_text: true,
+    paste_as_text: false,
     // content_css: "dark",
     // skin: "oxide-dark",
     selector: '#content',
