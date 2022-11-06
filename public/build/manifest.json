@@ -23,10 +23,6 @@
     "file": "assets/Lato-Regular.e82542ae.ttf",
     "src": "resources/fonts/Lato-Regular.ttf"
   },
-  "resources/fonts/JetBrainsMono-Regular.ttf": {
-    "file": "assets/JetBrainsMono-Regular.3c5fb9d7.ttf",
-    "src": "resources/fonts/JetBrainsMono-Regular.ttf"
-  },
   "storage/app/public/heros/home-hero-sm.jpeg": {
     "file": "assets/home-hero-sm.c2b8b6d3.jpeg",
     "src": "storage/app/public/heros/home-hero-sm.jpeg"
@@ -34,6 +30,10 @@
   "storage/app/public/heros/home-hero.jpeg": {
     "file": "assets/home-hero.73b4380b.jpeg",
     "src": "storage/app/public/heros/home-hero.jpeg"
+  },
+  "resources/fonts/JetBrainsMono-Regular.ttf": {
+    "file": "assets/JetBrainsMono-Regular.3c5fb9d7.ttf",
+    "src": "resources/fonts/JetBrainsMono-Regular.ttf"
   },
   "resources/fonts/fa-solid-900.svg": {
     "file": "assets/fa-solid-900.f6bd8f51.svg",
@@ -48,7 +48,7 @@
     ]
   },
   "resources/admin/app.ts": {
-    "file": "assets/app.b6a569d6.js",
+    "file": "assets/app.de9ac3cf.js",
     "src": "resources/admin/app.ts",
     "isEntry": true,
     "imports": [
