@@ -63,12 +63,17 @@ function selectedTagsHaveTag(tag: Tag): boolean {
     <div>
         <div class="mb-5 text-center">
             <h2 class="text-2xl">Choose tags to subscribe</h2>
+
             <p class="text-xl">
                 Tags chosen:
                 <b class="text-green-700 font-sans">
                     {{ allTagsAreChosen ? 'everything' : `${selectedTags.length} out of ${props.tags.items.length}` }}
                 </b>
             </p>
+
+            <div>
+                <small>You can choose only tags that I'm passionate to write about</small>
+            </div>
 
             <button
                 type="button"

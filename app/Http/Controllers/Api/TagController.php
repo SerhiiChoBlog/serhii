@@ -33,6 +33,8 @@ class TagController extends Controller
                 'vue',
                 'seo',
                 'html',
+                'linux',
+                'wordpress',
                 'story',
                 'typescript',
                 'javascript',
