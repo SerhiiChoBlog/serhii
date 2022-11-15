@@ -23,17 +23,21 @@ class PostContentImageController extends Controller
             return;
         }
 
-        $path = storage_path('app/public/posts/content');
-
         $slug = Str::slug($post->title);
+        $path = storage_path('app/public/posts/content');
+        $original_name = $image->getClientOriginalName();
 
-        $image_name = sprintf("%s-%s.%s", $slug, time(), $image->getClientOriginalExtension());
+        if (str_starts_with($original_name, $slug)) {
+            $image_name = $original_name;
+        } else {
+            $image_name = sprintf("%s-%s.%s", $slug, time(), $image->getClientOriginalExtension());
+        }
 
         $image->move($path, $image_name);
 
         $post->images()->create([
-            'uri' => "/storage/posts/content/$image_name",
-            'path' => "/public/posts/content/$image_name",
+            'uri' => "/storage/posts/content/{$image_name}",
+            'path' => "/public/posts/content/{$image_name}",
         ]);
     }
 
