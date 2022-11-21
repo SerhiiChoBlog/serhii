@@ -28,6 +28,13 @@ class TagController extends Controller
     {
         return Tag::query()
             ->withCount('posts')
+            ->whereNotIn('name', [
+                'react',
+                'seo',
+                'html',
+                'story',
+                'javascript',
+            ])
             ->orderByDesc('posts_count')
             ->get();
     }
