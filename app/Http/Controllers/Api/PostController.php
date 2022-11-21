@@ -12,6 +12,11 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PostController extends Controller
 {
+    /**
+     * @param IndexRequest $request
+     *
+     * @return Paginator<Post>
+     */
     public function index(IndexRequest $request): Paginator
     {
         $query = Post::query()
