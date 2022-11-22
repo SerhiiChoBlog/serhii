@@ -177,8 +177,8 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
 
                     <div class="mt-5">
                         <editor
-                            api-key="jmzusr7d7slf7c7crr4p3uv10uxzm18be4w8njz8qxsewhdn"
                             :initialValue="post.content"
+                            tinymce-script-src="/js/tinymce/tinymce.min.js"
                             :init="tinymceConfig"
                             v-model="post!.content"
                             @keydown="savePostWithCorrectKeyBinds"
