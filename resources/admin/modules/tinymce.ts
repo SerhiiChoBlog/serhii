@@ -3,7 +3,7 @@ export const tinymceConfig = {
     // content_css: "dark",
     // skin: "oxide-dark",
     selector: '#content',
-    plugins: 'codesample fullscreen code image link table lists paste',
+    plugins: 'codesample fullscreen code image link table lists', // todo: paste plugin not available
     height: '800px',
     toolbar: 'undo redo | styleselect | bold italic | link image table | alignleft aligncenter alignright | numlist bullist | bullist numlist outdent indent | codesample code | fullscreen',
     image_caption: true,
