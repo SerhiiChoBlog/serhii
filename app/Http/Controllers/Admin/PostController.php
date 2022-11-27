@@ -27,7 +27,7 @@ class PostController extends Controller
     public function index(): Collection
     {
         return Post::query()
-            ->select('id', 'title', 'intro', 'image_sm', 'is_published')
+            ->select('id', 'title', 'intro', 'slug', 'image_sm', 'is_published')
             ->withCount('postViews')
             ->withCount('socialShares')
             ->latest()
