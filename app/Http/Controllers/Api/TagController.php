@@ -33,7 +33,6 @@ class TagController extends Controller
                 'seo',
                 'html',
                 'story',
-                'javascript',
             ])
             ->orderByDesc('posts_count')
             ->get();
