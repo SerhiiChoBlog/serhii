@@ -8,7 +8,6 @@
             <x-posts.horizontal-post
                 class="max-w-md lg:max-w-none mx-auto lg:mx-0 lg:col-span-4"
                 :post="$post"
-                :lazy="true"
             />
         @else
             <x-posts.vertical-post :post="$post" />

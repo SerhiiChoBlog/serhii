@@ -46,10 +46,7 @@
                 <div class="flex flex-col gap-y-2">
 
                     @foreach ($posts as $post)
-                        <x-posts.horizontal-post
-                            :post="$post"
-                            :lazy="$loop->index > 1"
-                        />
+                        <x-posts.horizontal-post :post="$post" />
                     @endforeach
 
                     <div class="my-6 mx-4">

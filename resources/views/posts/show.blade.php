@@ -111,6 +111,7 @@
                                     aria-label="Go to a post {{ $other_post->title }}"
                                 >
                                     <img
+                                        src="{{ asset($other_post->image_xs) }}"
                                         data-src="{{ asset($other_post->image_sm) }}"
                                         alt="Photo of the post '{{ $other_post->title }}'"
                                         class="rounded-lg shadow-lg mx-auto w-full"

@@ -5,10 +5,12 @@
 /storage/*.key
 /storage/app/public/posts/lg/*
 /storage/app/public/posts/sm/*
+/storage/app/public/posts/xs/*
 /storage/app/public/posts/content/*
 !/storage/app/public/posts/content/.gitkeep
 !/storage/app/public/posts/lg/.gitkeep
 !/storage/app/public/posts/sm/.gitkeep
+!/storage/app/public/posts/xs/.gitkeep
 /vendor
 .env
 .env.backup
