@@ -10,6 +10,7 @@
         class="transition-opacity hover:opacity-70"
     >
         <img
+            src="{{ asset($post['image_xs']) }}"
             data-src="{{ asset($post['image_sm']) }}"
             alt="Main image for the post '{{ $post['title'] }}'"
             class="rounded-md shadow-md mx-auto w-full"

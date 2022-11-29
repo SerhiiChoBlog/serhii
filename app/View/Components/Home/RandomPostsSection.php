@@ -27,7 +27,7 @@ class RandomPostsSection extends Component
             $last_posts = Cache::get(CacheKey::LAST_POSTS);
 
             return Post::with('tags:name,color,title')
-                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
+                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time')
                 ->whereNotIn('id', array_column($last_posts, 'id'))
                 ->where('is_published', true)
                 ->limit(5)

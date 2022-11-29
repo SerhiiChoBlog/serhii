@@ -22,7 +22,7 @@ class LatestPostSection extends Component
         return Cache::rememberForever(CacheKey::LAST_POSTS, static function () {
             return Post::query()
                 ->with('tags:name,color,title')
-                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
+                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time')
                 ->where('is_published', true)
                 ->orderByDesc('created_at')
                 ->limit(2)

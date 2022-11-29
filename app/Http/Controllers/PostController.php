@@ -19,7 +19,7 @@ class PostController extends Controller
     {
         $query = Post::query()
             ->with('tags:id,name,color,title')
-            ->select('id', 'slug', 'title', 'intro', 'image_sm', 'created_at', 'read_time')
+            ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time')
             ->where('is_published', true)
             ->latest();
 

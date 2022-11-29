@@ -11,6 +11,7 @@
 
                     <a href="{{ route('posts.show', $post['slug']) }}">
                         <img
+                            src="{{ $post['image_xs'] }}"
                             data-src="{{ $post['image_sm'] }}"
                             alt="Main image for the post '{{ $post['title'] }}'"
                             class="rounded-lg shadow-lg w-full min-w-[350px] max-w-[400px]"

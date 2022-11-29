@@ -4,7 +4,6 @@
 
     /**
      * @var array{id: int, slug: string, title: string, intro: string, image_sm: string, tags: array}|Post $post
-     * @var bool $lazy
      * @var ComponentAttributeBag $attributes
      */
 @endphp
@@ -14,11 +13,8 @@
         class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl max-w-[550px] lg:max-w-full mx-auto transition-colors hover:bg-page-second">
         <a href="/posts/{{ $post->slug ?? $post['slug'] }}" class="block w-full max-w-max lg:max-w-[300px]">
             <img
-                @if ($lazy)
-                    data-src="{{ asset($post->image_sm ?? $post['image_sm']) }}"
-                @else
-                    src="{{ asset($post->image_sm ?? $post['image_sm']) }}"
-                @endif
+                src="{{ asset($post->image_xs ?? $post['image_xs']) }}"
+                data-src="{{ asset($post->image_sm ?? $post['image_sm']) }}"
                 class="rounded-lg shadow-md shadow-[rgba(0,0,0,.2)] w-full"
                 width="550"
                 height="275"
