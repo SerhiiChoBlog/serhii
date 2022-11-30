@@ -16,21 +16,28 @@ trait SaveImage
             return null;
         }
 
+        $path_xs = storage_path('app/public/posts/xs');
         $path_sm = storage_path('app/public/posts/sm');
         $path_lg = storage_path('app/public/posts/lg');
         $image_name = Str::slug($post_name) . '.' . $photo->getClientOriginalExtension();
 
+
+        Image::make($photo)
+             ->fit(100, 50, fn($constraint) => $constraint->upsize())
+             ->save("{$path_xs}/{$image_name}");
+
         Image::make($photo)
             ->fit(550, 275, fn($constraint) => $constraint->upsize())
-            ->save("$path_sm/$image_name");
+            ->save("{$path_sm}/{$image_name}");
 
         Image::make($photo)
             ->fit(1000, 500, fn($constraint) => $constraint->upsize())
-            ->save("$path_lg/$image_name");
+            ->save("{$path_lg}/{$image_name}");
 
         return [
-            'sm' => "storage/posts/sm/$image_name",
-            'lg' => "storage/posts/lg/$image_name",
+            'xs' => "storage/posts/xs/{$image_name}",
+            'sm' => "storage/posts/sm/{$image_name}",
+            'lg' => "storage/posts/lg/{$image_name}",
         ];
     }
 }
