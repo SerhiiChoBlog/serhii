@@ -9,6 +9,7 @@
                 <div class="print:hidden">
                     <figure>
                         <img
+                            src="{{ asset($tech['image_xs']) }}"
                             data-src="{{ asset($tech['image']) }}"
                             alt="{{ $tech['title'] }}"
                             class="max-w-[130px] mx-auto drop-shadow-md"
