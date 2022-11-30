@@ -70,7 +70,11 @@ class PostController extends Controller
         $images = $this->savePhotoIfExist($image, $post->title);
 
         if ($images) {
-            $data = $data->merge(['image_sm' => $images['sm'], 'image_lg' => $images['lg']]);
+            $data = $data->merge([
+                'image_xs' => $images['xs'],
+                'image_sm' => $images['sm'],
+                'image_lg' => $images['lg'],
+            ]);
         }
 
         $data['content'] = $this->addNotesToContent($request->content);
