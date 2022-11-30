@@ -11,13 +11,16 @@
             before:top-[-11px] before:rounded-t-lg
             ">
                 <a href="{{ $site['href'] }}" target="_blank" class="max-w-[350px] block">
-                    <img data-src="{{ asset('storage/tools/mac-buttons.webp') }}"
+                    <img
+                        src="{{ asset('storage/tools/mac-buttons.webp') }}"
                         class="absolute top-[-8px] left-2"
                         width="18"
                         alt="mac buttons"
                     >
 
-                    <img data-src="{{ asset($site['image']) }}"
+                    <img
+                        src="{{ asset($site['image_xs']) }}"
+                        data-src="{{ asset($site['image']) }}"
                         alt="{{ $site['title'] }}"
                         class="rounded-b-lg shadow-[-10px_10px_5px_rgba(0,0,0,.05)]"
                         width="350"
@@ -32,7 +35,8 @@
                         <div class="flex gap-3 justify-center mt-3">
                             @foreach ($site['technologies'] as $tech)
                                 <img
-                                    data-src="{{ asset("storage/languages/$tech.webp") }}"
+                                    src="{{ asset("storage/languages/{$tech}-min.webp") }}"
+                                    data-src="{{ asset("storage/languages/{$tech}.webp") }}"
                                     alt="{{ $tech }}"
                                     width="80"
                                     height="80"

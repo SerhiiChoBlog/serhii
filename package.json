@@ -37,7 +37,7 @@
         "flatpickr": "^4.6.9",
         "laravel-echo": "^1.13.0",
         "pusher-js": "^7.3.0",
-        "smooth-loader": "^1.0.7",
+        "smooth-loader": "^1.1.0-beta.1",
         "sweetalert2": "^11.4.18",
         "tinymce": "^6",
         "toastify-js": "^1.12.0",

@@ -5,6 +5,7 @@ return [
     'languages' => [
         [
             'image' => 'storage/tools/php.webp',
+            'image_xs' => 'storage/tools/php-min.webp',
             'title' => 'PHP',
             'content' => <<<TEXT
             PHP was my first programming language.
@@ -15,6 +16,7 @@ return [
         ],
         [
             'image' => 'storage/tools/go.webp',
+            'image_xs' => 'storage/tools/go-min.webp',
             'title' => 'Go',
             'content' => <<<TEXT
             I've been using Go since 2019 mostly for my personal projects.
@@ -23,6 +25,7 @@ return [
         ],
         [
             'image' => 'storage/tools/ts.webp',
+            'image_xs' => 'storage/tools/ts-min.webp',
             'title' => 'TypeScript',
             'content' => <<<TEXT
             TypeScript is my go-to when I'm working with Vue, React or native JavaScript.
@@ -31,6 +34,7 @@ return [
         ],
         [
             'image' => 'storage/tools/sql.webp',
+            'image_xs' => 'storage/tools/sql-min.webp',
             'title' => 'SQL',
             'content' => <<<TEXT
             SQL is a must have language for building backend applications with SQL-databases.
@@ -42,21 +46,25 @@ return [
     'frameworks' => [
         [
             'image' => 'storage/tools/laravel.webp',
+            'image_xs' => 'storage/tools/laravel-min.webp',
             'title' => 'Laravel',
             'content' => "Laravel is my primary technology. I like to use all the features of the framework along with the repository pattern and TDD. It helps to organize and structure code in a very simple and readable way.",
         ],
         [
             'image' => 'storage/tools/vue.webp',
+            'image_xs' => 'storage/tools/vue-min.webp',
             'title' => 'Vue',
             'content' => "I've been using Vue along with the VueRouter and Vuex mostly for building Single Page Applications. I enjoy working with Vue 3, TypeScript and script setup.",
         ],
         [
             'image' => 'storage/tools/react.webp',
+            'image_xs' => 'storage/tools/react-min.webp',
             'title' => 'React',
             'content' => "React.js with TypeScript is another JavaScript framework that I'm using from time to time. Usually I'm reaching for it when I need a library that Vue doesn't have. One of those amazing libraries is react-pdf.",
         ],
         [
             'image' => 'storage/tools/wordpress.webp',
+            'image_xs' => 'storage/tools/wordpress-min.webp',
             'title' => 'WordPress',
             'content' => "Mostly I'm building plugins for business sites, that need integration of payment systems like Mollie, Wayforpay and Bitpay, plugins for Megaplan CRM and Exact Online, web hooks and other functionalities.",
         ],
@@ -65,30 +73,35 @@ return [
     'projects' => [
         [
             'image' => 'storage/tools/site-sho.webp',
+            'image_xs' => 'storage/tools/site-sho-min.webp',
             'title' => 'Shobar',
             'href' => 'https://shobar.com.ua/',
             'technologies' => ['wordpress', 'php', 'typescript'],
         ],
         [
             'image' => 'storage/tools/site-zoo.webp',
+            'image_xs' => 'storage/tools/site-zoo-min.webp',
             'title' => 'ZooZooZoo',
             'href' => 'https://zoo-zoo-zoo.com.ua/',
             'technologies' => ['vue', 'typescript', 'php', 'laravel'],
         ],
         [
             'image' => 'storage/tools/client-cabinet.webp',
+            'image_xs' => 'storage/tools/client-cabinet-min.webp',
             'title' => 'Client cabinet',
             'href' => 'https://mijn.nalog.nl/',
             'technologies' => ['vue', 'typescript', 'php', 'laravel', 'tailwind'],
         ],
         [
             'image' => 'storage/tools/site-olexiy.webp',
+            'image_xs' => 'storage/tools/site-olexiy-min.webp',
             'title' => 'Jiskelo',
             'href' => 'https://jiskelo.dev/',
             'technologies' => ['react', 'typescript', 'tailwind'],
         ],
         [
             'image' => 'storage/tools/blitz.webp',
+            'image_xs' => 'storage/tools/blitz-min.webp',
             'title' => 'Blitz',
             'href' => 'https://blitz.nalog.nl/',
             'technologies' => ['vue', 'typescript', 'php', 'laravel', 'tailwind'],
@@ -98,6 +111,7 @@ return [
     'technologies' => [
         [
             'image' => 'storage/tools/docker.webp',
+            'image_xs' => 'storage/tools/docker-min.webp',
             'title' => 'Docker',
             'content' => <<<TEXT
             My first Docker experience started in 2018. I was fortunate to start using it so early in my career.
@@ -106,6 +120,7 @@ return [
         ],
         [
             'image' => 'storage/tools/linux.webp',
+            'image_xs' => 'storage/tools/linux-min.webp',
             'title' => 'Linux',
             'content' => <<<TEXT
             I feel free using Unix based operating system like Linux and macOS.
@@ -115,6 +130,7 @@ return [
         ],
         [
             'image' => 'storage/tools/tailwind.webp',
+            'image_xs' => 'storage/tools/tailwind-min.webp',
             'title' => 'Tailwind CSS',
             'content' => <<<TEXT
             Tailwind CSS is on my radar since the beginning of 2021.
@@ -127,6 +143,7 @@ return [
     'skills' => [
         [
             'image' => 'storage/tools/communication.webp',
+            'image_xs' => 'storage/tools/communication-min.webp',
             'title' => 'Communication',
             'content' => <<<TEXT
             I put communication skills on the first place because I think it's the most important personal skill for a person working in a team.
@@ -136,6 +153,7 @@ return [
         ],
         [
             'image' => 'storage/tools/english.webp',
+            'image_xs' => 'storage/tools/english-min.webp',
             'title' => 'English Mastery',
             'content' => <<<TEXT
             At the end of 2014, I've decided to start learning English daily.
@@ -145,6 +163,7 @@ return [
         ],
         [
             'image' => 'storage/tools/keyboard.webp',
+            'image_xs' => 'storage/tools/keyboard-min.webp',
             'title' => 'Touch Typing',
             'content' => <<<TEXT
             We are coders, and we like to type countless number of symbols on the screen.
