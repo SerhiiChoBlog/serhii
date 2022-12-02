@@ -18,7 +18,7 @@ use Parsedown;
 class FetchGithubProjects extends Command
 {
     protected $signature = 'projects:fetch';
-    protected $description = 'Fetches github projects and saves them into a database table';
+    protected $description = 'Fetches github projects and saves them into a database projects table';
 
     public function handle(): void
     {
