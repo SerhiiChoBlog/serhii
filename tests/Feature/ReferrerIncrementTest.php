@@ -32,15 +32,20 @@ class ReferrerIncrementTest extends TestCase
 
     public function test_referrer_increments_hits_after_correct_request(): void
     {
-        $this->get("/?welcome={$this->referrer->hash}")->assertOk();
+        $this->get("/?welcome={$this->referrer->hash}");
         $this->assertEquals(1, $this->referrer->fresh()->hits);
     }
 
     public function test_if_hash_is_not_in_database_doesnt_do_anything(): void
     {
-        $this->get("/?welcome=jiosafjosdifj")->assertOk();
+        $this->get("/?welcome=jiosafjosdifj");
 
         $this->assertSame(1, Referrer::query()->count());
         $this->assertEquals(0, $this->referrer->fresh()->hits);
+    }
+
+    public function test_referrer_redirects_to_same_page(): void
+    {
+        $this->get("/posts/?welcome={$this->referrer->hash}")->assertRedirect('/posts');
     }
 }
