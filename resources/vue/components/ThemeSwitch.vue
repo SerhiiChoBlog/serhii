@@ -68,7 +68,7 @@ function changeInterfaceTo(toTheme: 'light' | 'dark'): void {
                         fill="currentColor"
                     >
                         <!-- Sun -->
-                        <g class="origin-center transition-transform duration-500 rotate-[0turn] dark:rotate-[0.5turn]">
+                        <g class="origin-center transition-transform duration-500">
                             <path d="M181.1,75V31.1h-43.9L106.1,0L75,31.1H31.1V75L0,106.1l31.1,31.1v43.9H75l31.1,31.1l31.1-31.1h43.9v-43.9l31.1-31.1
                                 L181.1,75z M106.1,162.1c-30.9,0-56-25.1-56-56s25.1-56,56-56s56,25.1,56,56S137,162.1,106.1,162.1z"
                             />
