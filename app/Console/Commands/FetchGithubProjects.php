@@ -56,7 +56,7 @@ class FetchGithubProjects extends Command
         return $mit_projects->map(function ($project) use ($readme_url) {
             $readme_url = str_replace('{repo}', $project['name'], (string) $readme_url);
 
-            /** @var Project */
+            /** @var Project $result */
             $result = [
                 'name' => $project['name'],
                 'title' => Str::of($project['name'])->replace('-', ' ')->ucfirst(),
