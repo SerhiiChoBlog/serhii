@@ -50,7 +50,11 @@ function fetchReferrers(): void {
                         >
                             <td class="p-2">{{ referrer.id }}</td>
                             <td class="p-2">{{ referrer.name }}</td>
-                            <td class="p-2">{{ referrer.site }}</td>
+                            <td class="p-2">
+                                <a :href="referrer.site" target="_blank" class="underline">
+                                    {{ referrer.site }}
+                                </a>
+                            </td>
                             <td class="p-2 text-lg font-black text-main font-code">
                                 {{ referrer.hits }}
                             </td>
