@@ -16,9 +16,9 @@ class VisitorController extends Controller
     public function index(): Collection
     {
         return Visitor::query()
-            ->selectRaw('*, LOWER(code) as code')
+            ->selectRaw('*, (code) as code')
             ->withCount('postViews')
-            ->limit(100)
+            ->limit(30)
             ->orderByDesc('post_views_count')
             ->get();
     }

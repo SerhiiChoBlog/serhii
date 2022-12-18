@@ -12,6 +12,8 @@ const loading = ref(false)
 onMounted(() => fetchVisitors())
 
 function fetchVisitors(): void {
+    loading.value = true
+
     axios.get<Visitor[]>('/admin/ajax/visitors')
         .then(resp => visitors.value = resp.data)
         .catch(handleError)
