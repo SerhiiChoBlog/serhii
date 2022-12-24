@@ -15,13 +15,17 @@
     "file": "assets/fa-solid-900.0777ab6e.ttf",
     "src": "resources/fonts/fa-solid-900.ttf"
   },
-  "resources/fonts/fa-solid-900.svg": {
-    "file": "assets/fa-solid-900.f6bd8f51.svg",
-    "src": "resources/fonts/fa-solid-900.svg"
+  "resources/fonts/Lato-Regular.ttf": {
+    "file": "assets/Lato-Regular.e82542ae.ttf",
+    "src": "resources/fonts/Lato-Regular.ttf"
   },
   "resources/fonts/charter-400-normal.woff": {
     "file": "assets/charter-400-normal.ce74d314.woff",
     "src": "resources/fonts/charter-400-normal.woff"
+  },
+  "storage/app/public/heros/home-hero.jpeg": {
+    "file": "assets/home-hero.73b4380b.jpeg",
+    "src": "storage/app/public/heros/home-hero.jpeg"
   },
   "resources/fonts/JetBrainsMono-Regular.ttf": {
     "file": "assets/JetBrainsMono-Regular.3c5fb9d7.ttf",
@@ -31,13 +35,9 @@
     "file": "assets/home-hero-sm.c2b8b6d3.jpeg",
     "src": "storage/app/public/heros/home-hero-sm.jpeg"
   },
-  "resources/fonts/Lato-Regular.ttf": {
-    "file": "assets/Lato-Regular.e82542ae.ttf",
-    "src": "resources/fonts/Lato-Regular.ttf"
-  },
-  "storage/app/public/heros/home-hero.jpeg": {
-    "file": "assets/home-hero.73b4380b.jpeg",
-    "src": "storage/app/public/heros/home-hero.jpeg"
+  "resources/fonts/fa-solid-900.svg": {
+    "file": "assets/fa-solid-900.f6bd8f51.svg",
+    "src": "resources/fonts/fa-solid-900.svg"
   },
   "resources/vue/app.ts": {
     "file": "assets/app.b0082c73.js",
