@@ -15,21 +15,21 @@ return [
             TEXT,
         ],
         [
-            'image' => 'storage/tools/go.webp',
-            'image_xs' => 'storage/tools/go-min.webp',
-            'title' => 'Go',
-            'content' => <<<TEXT
-            I've been using Go since 2019 mostly for my personal projects.
-            One of them is the open-source package <a href="https://serhii.io/projects/timeago" target="_blank">Timeago</a> for converting date time into human-readable format. This is a very promising language that I'm gradually moving into.
-            TEXT,
-        ],
-        [
             'image' => 'storage/tools/ts.webp',
             'image_xs' => 'storage/tools/ts-min.webp',
             'title' => 'TypeScript',
             'content' => <<<TEXT
             TypeScript is my go-to when I'm working with Vue, React or native JavaScript.
             I've started applying it to all the new projects since 2019 because I needed a tool to reduce the number of bugs and typos in JavaScript apps.
+            TEXT,
+        ],
+        [
+            'image' => 'storage/tools/go.webp',
+            'image_xs' => 'storage/tools/go-min.webp',
+            'title' => 'Go',
+            'content' => <<<TEXT
+            I've been using Go since 2019 mostly for my personal projects.
+            One of them is the open-source package <a href="https://serhiicho.github.io/timeago-docs" target="_blank" class="underline" target="_blank">Timeago</a> for converting date time into human-readable format.
             TEXT,
         ],
         [
@@ -48,7 +48,7 @@ return [
             'image' => 'storage/tools/laravel.webp',
             'image_xs' => 'storage/tools/laravel-min.webp',
             'title' => 'Laravel',
-            'content' => "Laravel is my primary technology. I like to use all the features of the framework along with the repository pattern and TDD. It helps to organize and structure code in a very simple and readable way.",
+            'content' => "I like to use all the features of the framework along with the repository pattern and TDD. It helps to organize and structure code in a very simple and readable way.",
         ],
         [
             'image' => 'storage/tools/vue.webp',
