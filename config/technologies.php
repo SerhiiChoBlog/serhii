@@ -29,7 +29,7 @@ return [
             'title' => 'Go',
             'content' => <<<TEXT
             I've been using Go since 2019 mostly for my personal projects.
-            One of them is the open-source package <a href="https://serhiicho.github.io/timeago-docs" target="_blank" class="underline" target="_blank">Timeago</a> for converting date time into human-readable format.
+            One of them is the open-source package <a href="https://serhiicho.github.io/timeago-docs" class="underline" target="_blank">Timeago</a> for converting date time into human-readable format.
             TEXT,
         ],
         [
