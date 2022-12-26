@@ -115,7 +115,8 @@ return [
             'title' => 'Docker',
             'content' => <<<TEXT
             My first Docker experience started in 2018. I was fortunate to start using it so early in my career.
-            It helped me to abstract my workspace from the operating system, and made it easy to work with different technologies like Redis, MySQL, PostgreSQL, etc.
+            It helped me to abstract my workspace from the operating system, and made it easy to work with different
+            technologies like Redis, MySQL, PostgreSQL, etc.
             TEXT,
         ],
         [
@@ -135,7 +136,8 @@ return [
             'content' => <<<TEXT
             Tailwind CSS is on my radar since the beginning of 2021.
             That's when I've started applying it to almost all of my projects that needed CSS.
-            But almost all of my old projects I was either compiling CSS from SASS, either using frameworks like Bootstrap, Materialize CSS, Bulma or Tailwind.
+            But almost all of my old projects I was either compiling CSS from SASS, either using frameworks like
+            Bootstrap, Materialize CSS, Bulma or Tailwind.
             TEXT,
         ],
     ],
@@ -146,7 +148,8 @@ return [
             'image_xs' => 'storage/tools/communication-min.webp',
             'title' => 'Communication',
             'content' => <<<TEXT
-            I put communication skills on the first place because I think it's the most important personal skill for a person working in a team.
+            I put communication skills on the first place because I think it's the most important personal skill
+            for a person working in a team.
             I'm a very calm man, with my own principles and beliefs.
             I never judge anyone and I feel blessed to work in this field and exchange knowledge.
             TEXT,
@@ -156,9 +159,9 @@ return [
             'image_xs' => 'storage/tools/english-min.webp',
             'title' => 'English Mastery',
             'content' => <<<TEXT
-            At the end of 2014, I've decided to start learning English daily.
-            Since then, English became not just as my second language, it became a part of my existence.
-            I've never been in an English-speaking country, so speaking practice is something that I'm missing but looking forward to do in the near future.
+            In 2014, I've started learning English daily. Since then, English became not just as my second language,
+            it became a part of my existence. If not programming, I would probably choose a career as an English
+            teacher.
             TEXT,
         ],
         [

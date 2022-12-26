@@ -45,28 +45,26 @@
                                 <strong>WordPress</strong> and <strong>Laravel</strong>. Likewise, I've done tons of
                                 different work for companies in <strong>business</strong> and <strong>e-commerce</strong>
                                 segment. Building programs and interfaces for generating different types of documents,
-                                programs for stuff management, communication with clients, chat bots and tons of web API.
+                                programs for stuff management, communication with clients, chat bots and tons of web APIs.
                             </p>
 
-{{--                            <h2>Looking for job</h2>--}}
+                            <h2>Looking for job</h2>
 
-{{--                            <p>--}}
-{{--                                I'm looking forward to work in company from 🇪🇺 🇺🇸 🇨🇦 🇦🇺 🏴󠁧󠁢󠁥󠁮󠁧󠁿 by a contract.--}}
-{{--                                I'll be comfortable to work remotely <strong>120 hours per month</strong> in non--}}
-{{--                                outsource company. I'm also ready to relocate from Ukraine and work in the office in countries--}}
-{{--                                listed above.--}}
-{{--                            </p>--}}
+                            <p>
+                                I'm looking forward to work in product company from 🇪🇺 🇺🇸 🇨🇦 🇦🇺 🏴󠁧󠁢󠁥󠁮󠁧󠁿 by a contract.
+                                I'll be comfortable to work remotely <strong>7 hours a day</strong> or less.
+                                I'm also ready to potentially relocate from Ukraine and work in the office in the future.
+                            </p>
 
-{{--                            <p>--}}
-{{--                                I can work on a backend as a Laravel developer, as I have lots of experience with <strong>Laravel</strong>--}}
-{{--                                and <strong>PHP</strong>. Or, I can also work on the frontend with <strong>Vue.js</strong> or--}}
-{{--                                <strong>React.js</strong> on different variety of projects.--}}
-{{--                            </p>--}}
+                            <p>
+                                I'll be glad to work as a full-stack developer with <strong>Laravel, Vue and React</strong>.
+                                Alternatively, I can work as a backend developer, or a frontend developer as I have lots of experience in web page design.
+                            </p>
 
                             <h2>My way of working</h2>
 
                             <p>
-                                Like every other person, I hate slow web apps and sites. In web development, my priorities
+                                I hate slow web apps and sites. In web development, my priorities
                                 are <strong>code readability</strong> and <strong>performance</strong>. You can check my
                                 post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites" target="_blank">"5 techniques that
                                 I use for building fast websites"</a> where I'm talking about it in details.
@@ -75,7 +73,7 @@
                             <p>
                                 Websites that I'm working on are usually have the highest rate for the <strong>Lighthouse</strong>
                                 tests or <strong>PageSpeed Insights</strong>. I always try making a product as <strong>SEO</strong> friendly as
-                                possible.
+                                possible on developer side.
                             </p>
 
                             <p>
