@@ -33,7 +33,7 @@ onMounted(() => {
         <aside v-show="isOpen" class="fixed left-0 right-0 top-0 bottom-0 z-40 bg-[hsla(0,0%,4%,.8)]">
             <div
                 v-if="isOpen"
-                class="overflow-y-scroll absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto max-h-[calc(100vh-40px)]"
+                class="overflow-y-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto max-h-[calc(100vh-40px)]"
             >
                 <div class="bg-page text-font shadow-xl rounded-lg p-10 h-full relative">
                     <button

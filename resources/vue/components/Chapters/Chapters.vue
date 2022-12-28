@@ -173,7 +173,7 @@ function handleChapterClick(): void {
             v-if="showChapters"
             class="h-[98%] bg-page lg:bg-transparent print:hidden lg:h-full fixed lg:static w-full max-w-md left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 border border-border lg:border-none top-[3%] lg:top-0 bottom-[3%] p-4 lg:p-0 rounded-2xl shadow-xl lg:shadow-none lg:relative z-30"
         >
-            <nav class="sticky h-screen overflow-y-scroll scrollbar pr-2 top-3 lg:top-12 mt-7 text-center lg:text-left">
+            <nav class="sticky h-screen overflow-y-auto scrollbar pr-2 top-3 lg:top-12 mt-7 text-center lg:text-left">
                 <div class="mb-5">
                     <div class="flex items-center gap-x-5 text-font-second">
                         <span class="text-2xl font-bold font-bold">
