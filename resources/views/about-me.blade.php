@@ -21,7 +21,7 @@
                                     src="/storage/serhii-cho-min.jpg"
                                     data-src="/storage/serhii-cho.jpg"
                                     alt="Serhii Cho"
-                                    class="my-0 my-auto rounded-lg mx-auto transition-all duration-500 shadow-lg"
+                                    class="my-auto rounded-lg mx-auto transition-all duration-500 shadow-lg"
                                     width="250"
                                     height="250"
                                 />
@@ -104,25 +104,25 @@
 
         <x-about.section isDark="true" header="Languages">
             <x-section-detail />
-            <x-about.tech-section :techs="config('technologies.languages')"/>
+            <x-about.tech-section :techs="config('technologies.languages')" />
         </x-about.section>
 
         <x-about.section header="Frameworks / CMS">
-            <x-about.tech-section :techs="config('technologies.frameworks')"/>
+            <x-about.tech-section :techs="config('technologies.frameworks')" />
         </x-about.section>
 
         <x-about.section isDark="true" header="Other technologies">
             <x-section-detail />
-            <x-about.tech-section :techs="config('technologies.technologies')"/>
+            <x-about.tech-section :techs="config('technologies.technologies')" />
         </x-about.section>
 
         <x-about.section header="Personal skills">
-            <x-about.tech-section :techs="config('technologies.skills')"/>
+            <x-about.tech-section :techs="config('technologies.skills')" />
         </x-about.section>
 
         <x-about.section isDark="true" header="Latest projects" class="print:hidden">
             <x-section-detail />
-            <x-about.projects-section/>
+            <x-about.projects-section />
         </x-about.section>
     </div>
 
