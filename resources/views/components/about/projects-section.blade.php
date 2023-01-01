@@ -16,7 +16,7 @@
                         class="absolute top-[-8px] left-2"
                         width="18"
                         alt="mac buttons"
-                    >
+                    />
 
                     <img
                         src="{{ asset($site['image_xs']) }}"
