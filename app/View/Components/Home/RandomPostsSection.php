@@ -26,11 +26,16 @@ class RandomPostsSection extends Component
         return Cache::remember(CacheKey::HOME_RANDOM_POSTS, Ttl::HOUR, static function () {
             $last_posts = Cache::get(CacheKey::LAST_POSTS);
 
-            return Post::with('tags:name,color,title')
-                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time')
-                ->whereNotIn('id', array_column($last_posts, 'id'))
+            $query = Post::with('tags:name,color,title')
+                ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time');
+
+            if ($last_posts) {
+                $query = $query->whereNotIn('id', array_column($last_posts, 'id'));
+            }
+
+            return $query
                 ->where('is_published', true)
-                ->limit(5)
+                ->limit(3)
                 ->inRandomOrder()
                 ->get()
                 ->toArray();

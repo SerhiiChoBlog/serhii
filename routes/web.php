@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\AboutMeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SubscriptionController;
@@ -17,7 +18,7 @@ Route::redirect('blog', 'posts');
 Route::redirect('register', 'login');
 
 Route::middleware('hits')->group(function () {
-    Route::view('/', 'home')->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('about-me', [AboutMeController::class, 'index'])->name('about-me');
 
     Route::prefix('posts')->controller(PostController::class)->group(function () {

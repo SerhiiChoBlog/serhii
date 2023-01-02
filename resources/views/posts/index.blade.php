@@ -41,7 +41,7 @@
             </div>
 
             @if ($posts->isEmpty())
-                <x-posts.no-posts/>
+                <x-posts.no-posts />
             @else
                 <div class="flex flex-col gap-y-2">
 
