@@ -16,9 +16,11 @@ function scrollDown(): void {
         @click="scrollDown"
     >
         <img
-            src="/storage/icons/arrow-down.png"
+            src="/storage/icons/arrow-down.webp"
             alt="Arrow down"
             aria-hidden="true"
+            width="124"
+            height="124"
         />
     </button>
 </template>
