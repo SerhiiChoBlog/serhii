@@ -12,7 +12,6 @@ import Popper from "vue3-popper"
 import Tip from './components/Tip.vue'
 import Search from './components/Home/Search.vue'
 import Filters from './components/Filters/Filters.vue'
-import ScrollDown from './components/Home/ScrollDown.vue'
 import Subscription from './components/Subscription/Subscription.vue'
 
 const app = createApp({
@@ -27,7 +26,6 @@ const app = createApp({
         Search,
         Tip,
         Filters,
-        ScrollDown,
         Subscription,
     },
 
