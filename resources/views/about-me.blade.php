@@ -18,8 +18,8 @@
                         <div class="relative">
                             <div class="w-[250px] mx-auto rounded-lg sticky top-20 mb-6">
                                 <img
-                                    src="/storage/serhii-cho-min.jpg"
-                                    data-src="/storage/serhii-cho.jpg"
+                                    src="/storage/serhii-cho-min.webp"
+                                    data-src="/storage/serhii-cho.webp"
                                     alt="Serhii Cho"
                                     class="my-auto rounded-lg mx-auto transition-all duration-500 shadow-lg"
                                     width="250"

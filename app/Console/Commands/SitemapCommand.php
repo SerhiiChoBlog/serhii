@@ -116,7 +116,7 @@ class SitemapCommand extends Command
 
     private function aboutMe(): Url
     {
-        $image_url = url('/storage/serhii-cho.jpg');
+        $image_url = url('/storage/serhii-cho.webp');
 
         return Url::create(url('/about-me'))
             ->addImage($image_url, 'Serhii Cho photo');
