@@ -30,7 +30,6 @@ class SitemapCommand extends Command
         $path = public_path('sitemap.xml');
 
         $result = Sitemap::create()
-            ->add($this->homePage())
             ->add($this->aboutMe())
             ->add($this->posts())
             ->add($this->projects())
@@ -120,15 +119,5 @@ class SitemapCommand extends Command
 
         return Url::create(url('/about-me'))
             ->addImage($image_url, 'Serhii Cho photo');
-    }
-
-    private function homePage(): Url
-    {
-        $small_img = url('/storage/heros/home-hero-sm.webp');
-        $big_img = url('/storage/heros/home-hero.webp');
-
-        return Url::create(url('/'))
-            ->addImage($small_img, 'Serhii Cho small hero image')
-            ->addImage($big_img, 'Serhii Cho big hero image');
     }
 }

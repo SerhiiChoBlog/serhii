@@ -32,8 +32,6 @@ module.exports = {
             blink: 'blink 800ms linear infinite',
         },
         backgroundImage: {
-            'home-hero': "url(/public/storage/heros/home-hero.webp)",
-            'home-hero-sm': "url(/public/storage/heros/home-hero-sm.webp)",
             'mac-buttons': "url(/public/storage/tools/mac-buttons.webp)",
         },
         fontFamily: {
