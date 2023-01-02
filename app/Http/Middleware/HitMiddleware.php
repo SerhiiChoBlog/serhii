@@ -12,16 +12,12 @@ class HitMiddleware
 {
     public function handle(Request $request, Closure $next): mixed
     {
-        if (!$request->isMethod('get')) {
+        if (!$request->isMethod('get') || auth()->check()) {
             return $next($request);
         }
 
         /** @var Hit|null $today_hit */
         $today_hit = Hit::query()->whereDate('created_at', today())->first();
-
-        if (auth()->check()) {
-            return $next($request);
-        }
 
         if ($today_hit) {
             $today_hit->increment('amount');
