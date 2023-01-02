@@ -5,10 +5,10 @@
 
 @section('content')
     <x-hero
-        class="relative bg-home-hero-sm lg:bg-home-hero w-full h-screen bg-blend-overlay bg-cover md:bg-fixed bg-top bg-no-repeat"
+        class="relative w-full h-screen"
         navbar="text-white"
     >
-        <div class="flex items-center justify-center absolute top-0 left-0 w-full h-screen bg-gradient-to-r from-transparent to-black/70">
+        <div class="bg-gradient-to-b from-[#163249] via-[#657ca1] to-[#657ca1] flex items-center justify-center absolute top-0 left-0 w-full h-screen">
             <subscription :remove-bg="true"></subscription>
         </div>
     </x-hero>

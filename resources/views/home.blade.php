@@ -8,14 +8,12 @@
 
 @section('content')
     <x-hero
-        class="relative bg-home-hero-sm lg:bg-home-hero w-full h-[500px] lg:h-[700px] bg-blend-overlay bg-cover md:bg-fixed bg-top bg-no-repeat"
+        class="bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1] w-full"
         navbar="text-white"
     >
-        <div class="overflow-hidden h-full min-h-[280px] md:min-h-[380px]">
-            <div class="absolute left-0 right-0 top-0 bottom-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-gray-900/50 opacity-50"></div>
-
-            <div class="z-10 absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2 text-center w-full">
-                <h1 class="text-2xl lg:text-4xl relative" aria-label="Serhii Cho">
+        <div>
+            <div class="text-center pt-20 pb-32">
+                <h1 class="text-2xl lg:text-4xl" aria-label="Serhii Cho">
                     <span class="text-white drop-shadow-md">SERHII</span>
                     <span class="text-main drop-shadow-md">CHO</span>
                 </h1>
@@ -31,15 +29,6 @@
                 <x-home.tag-suggestions />
                 <x-home.read-blog-button />
             </div>
-        </div>
-
-        <div
-            class="absolute flex flex-col gap-y-2 items-center -bottom-4 left-1/2 -translate-x-1/2 z-[1]"
-            id="home-decoration-lines"
-        >
-            <div class="w-[300px] lg:w-[600px] h-1 bg-page-second"></div>
-            <div class="w-[250px] lg:w-[450px] h-1 bg-page-second"></div>
-            <div class="w-[200px] lg:w-[300px] h-1 bg-page-second"></div>
         </div>
     </x-hero>
 
