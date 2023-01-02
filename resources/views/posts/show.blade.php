@@ -25,6 +25,7 @@
     <meta property="article:published_time" content="{{ $post->created_at }}">
     <meta property="article:modified_time" content="{{ $post->updated_at }}">
     <meta property="article:publisher" content="https://www.facebook.com/serhii.cho.9/">
+    <link rel="canonical" href="{{ str_replace('www.', '', request()->url()) }}" />
 
     @foreach ($post->tags as $tag)
         <meta property="article:tag" content="{{ $tag->name }}">
