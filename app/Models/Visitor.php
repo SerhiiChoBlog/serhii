@@ -54,7 +54,7 @@ class Visitor extends Model
     /**
      * @throws QueryException
      */
-    public static function getOrCreateVisitor(string $ip): ?Visitor
+    public static function getOrCreateVisitor(string $ip): ?self
     {
         $position = null;
 
@@ -67,7 +67,12 @@ class Visitor extends Model
             Log::warning($e);
         }
 
+        if (!$position) {
+            return null;
+        }
+
         try {
+            /** @var Visitor */
             return self::query()->with('postViews')->firstOrCreate(compact('ip'), [
                 'country' => $position?->countryName,
                 'city' => $position?->cityName,

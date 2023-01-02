@@ -109,7 +109,6 @@ class Post extends Model
     public static function getPostsForSidebar(int $exclude_id): Collection
     {
         return self::query()
-            ->with('tags:id,name,color')
             ->select('id', 'slug', 'title', 'image_sm')
             ->where('is_published', true)
             ->where('id', '!=', $exclude_id)

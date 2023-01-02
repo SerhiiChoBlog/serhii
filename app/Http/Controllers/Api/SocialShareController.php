@@ -28,7 +28,6 @@ class SocialShareController extends Controller
             return;
         }
 
-
         if (!$visitor) {
             return;
         }
