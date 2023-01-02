@@ -9,7 +9,7 @@
      * @var Tag|null $tag
      */
 
-    $title = $tag ? sprintf("Articles on %s topic", $tag->title) : 'PHP Blog';
+    $title = $tag ? sprintf("Articles on %s topic", $tag->title) : 'Blog for web developers';
 @endphp
 
 @extends('layouts.app')

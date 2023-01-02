@@ -8,7 +8,7 @@
     <meta name="description" content="@stack('description', "Serhii Cho is a software developer and writer with lots of experience creating web applications and programs written in different languages")">
     <meta property="og:locale" content="en_US">
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png" sizes="50x50">
-    <title>@stack('title'){{ request()->is('/') ? 'Serhii Cho' : '' }}</title>
+    <title>@stack('title'){{ request()->is('/') ? 'Serhii Cho Blogs' : '' }}</title>
     @vite('resources/css/app.css')
     @stack('head')
 </head>
