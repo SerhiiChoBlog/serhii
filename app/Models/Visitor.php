@@ -74,9 +74,9 @@ class Visitor extends Model
         try {
             /** @var Visitor */
             return self::query()->with('postViews')->firstOrCreate(compact('ip'), [
-                'country' => $position?->countryName,
-                'city' => $position?->cityName,
-                'code' => $position?->countryCode,
+                'country' => $position->countryName,
+                'city' => $position->cityName,
+                'code' => $position->countryCode,
             ]);
         } catch (Throwable $e) {
             Log::warning($e);
