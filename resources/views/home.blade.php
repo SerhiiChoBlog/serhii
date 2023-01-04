@@ -32,17 +32,17 @@
         </div>
     </x-hero>
 
-    <x-home.section
-        title="Web development Articles"
-        intro="Few posts that you might be interested in"
-        class="-translate-y-8 bg-page rounded-xl container"
-    >
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 overflow-x-hidden">
+    <div class="container">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             @foreach ($random_posts as $post)
-                <x-posts.vertical-post :post="$post" />
+                <div
+                    class="bg-page p-3 rounded-xl p-2 {{ $loop->index === 1 ? '-translate-y-16' : '-translate-y-7' }}"
+                >
+                    <x-posts.vertical-post :post="$post" />
+                </div>
             @endforeach
         </div>
-    </x-home.section>
+    </div>
 
     <x-home.section
         title="Latest articles"
