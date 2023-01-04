@@ -48,7 +48,7 @@
                                 programs for stuff management, communication with clients, chat bots and tons of web APIs.
                             </p>
 
-                            <h2>Looking for job</h2>
+                            {{-- <h2>Looking for job</h2>
 
                             <p>
                                 I'm looking forward to work in product company from 🇪🇺 🇺🇸 🇨🇦 🇦🇺 🏴󠁧󠁢󠁥󠁮󠁧󠁿 by a contract.
@@ -59,7 +59,7 @@
                             <p>
                                 I'll be glad to work as a full-stack developer with <strong>Laravel, Vue and React</strong>.
                                 Alternatively, I can work as a backend developer, or a frontend developer as I have lots of experience in web page design.
-                            </p>
+                            </p> --}}
 
                             <h2>My way of working</h2>
 
