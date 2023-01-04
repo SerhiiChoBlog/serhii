@@ -19,28 +19,28 @@
     "file": "assets/fa-solid-900.f6bd8f51.svg",
     "src": "resources/fonts/fa-solid-900.svg"
   },
-  "storage/app/public/heros/home-hero-sm.webp": {
-    "file": "assets/home-hero-sm.3801a6da.webp",
-    "src": "storage/app/public/heros/home-hero-sm.webp"
-  },
   "resources/fonts/charter-400-normal.woff": {
     "file": "assets/charter-400-normal.ce74d314.woff",
     "src": "resources/fonts/charter-400-normal.woff"
   },
-  "resources/fonts/JetBrainsMono-Regular.ttf": {
-    "file": "assets/JetBrainsMono-Regular.3c5fb9d7.ttf",
-    "src": "resources/fonts/JetBrainsMono-Regular.ttf"
-  },
-  "storage/app/public/heros/home-hero.webp": {
-    "file": "assets/home-hero.97e833d7.webp",
-    "src": "storage/app/public/heros/home-hero.webp"
+  "storage/app/public/hero-sm.webp": {
+    "file": "assets/hero-sm.3cb40372.webp",
+    "src": "storage/app/public/hero-sm.webp"
   },
   "resources/fonts/Lato-Regular.ttf": {
     "file": "assets/Lato-Regular.e82542ae.ttf",
     "src": "resources/fonts/Lato-Regular.ttf"
   },
+  "resources/fonts/JetBrainsMono-Regular.ttf": {
+    "file": "assets/JetBrainsMono-Regular.3c5fb9d7.ttf",
+    "src": "resources/fonts/JetBrainsMono-Regular.ttf"
+  },
+  "storage/app/public/hero.webp": {
+    "file": "assets/hero.7cf745fe.webp",
+    "src": "storage/app/public/hero.webp"
+  },
   "resources/vue/app.ts": {
-    "file": "assets/app.e6ff7965.js",
+    "file": "assets/app.4decd78e.js",
     "src": "resources/vue/app.ts",
     "isEntry": true,
     "imports": [
@@ -64,12 +64,12 @@
     "isEntry": true
   },
   "resources/css/admin/admin.css": {
-    "file": "assets/admin.212b663b.css",
+    "file": "assets/admin.68cfcf47.css",
     "src": "resources/css/admin/admin.css",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.fa00e3f0.css",
+    "file": "assets/app.2b5458a2.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }
