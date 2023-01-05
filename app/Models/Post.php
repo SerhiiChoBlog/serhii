@@ -41,10 +41,13 @@ class Post extends Model
     use HasFactory;
 
     /**
-     * @var string[]
+     * @var array<int, string>
      */
     protected $guarded = ['id'];
 
+    /**
+     * @var array<int, string>
+     */
     protected $appends = ['pretty_created_at'];
 
     protected $casts = [
