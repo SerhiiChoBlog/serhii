@@ -58,6 +58,7 @@
 
                             <p>
                                 I'll be glad to work as a full-stack developer with <strong>Laravel, Golang and Vue</strong>.
+                                Alternatively, I can be a backend developer with Laravel or Golang.
                             </p>
 
                             <h2>My way of working</h2>
