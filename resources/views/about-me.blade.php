@@ -51,8 +51,8 @@
                             <h2>Looking for job</h2>
 
                             <p>
-                                I'm looking forward to work in product company from 🇪🇺 🇺🇸 🇨🇦 🇦🇺 🏴󠁧󠁢󠁥󠁮󠁧󠁿 by a contract.
-                                I'll be comfortable to work remotely <strong>7 hours a day</strong> or less.
+                                I'm looking forward to work in companies based in 🇪🇺 🇺🇸 🇨🇦 🇦🇺 🏴󠁧󠁢󠁥󠁮󠁧󠁿 by a contract.
+                                I'll be comfortable to work remotely <strong>7 hours a day</strong>.
                                 I'm also ready to potentially relocate from Ukraine and work in the office in the future.
                             </p>
 
