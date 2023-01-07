@@ -57,8 +57,7 @@
                             </p>
 
                             <p>
-                                I'll be glad to work as a full-stack developer with <strong>Laravel, Vue and React</strong>.
-                                Alternatively, I can work as a backend developer, or a frontend developer as I have lots of experience in web page design.
+                                I'll be glad to work as a full-stack developer with <strong>Laravel, Golang and Vue</strong>.
                             </p>
 
                             <h2>My way of working</h2>
