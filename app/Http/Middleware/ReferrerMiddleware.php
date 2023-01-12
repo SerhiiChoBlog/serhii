@@ -12,6 +12,10 @@ class ReferrerMiddleware
 {
     public function handle(Request $request, Closure $next): mixed
     {
+        $referer = request()->headers->get('referer');
+
+        logger()->info($referer);
+
         if (!$request->isMethod('get') || $request->missing('welcome')) {
             return $next($request);
         }
