@@ -73,7 +73,7 @@ class Visitor extends Model
 
         try {
             /** @var Visitor */
-            return self::query()->with('postViews')->firstOrCreate(compact('ip'), [
+            return self::query()->with('postViews')->firstOrNew(compact('ip'), [
                 'country' => $position->countryName,
                 'city' => $position->cityName,
                 'code' => $position->countryCode,
