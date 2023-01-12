@@ -23,6 +23,10 @@ export default defineConfig({
         }),
     ],
 
+    build: {
+        sourcemap: true,
+    },
+
     resolve: {
         alias: {
             '@': '/resources/vue',
