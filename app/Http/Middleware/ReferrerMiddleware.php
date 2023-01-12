@@ -12,20 +12,23 @@ class ReferrerMiddleware
 {
     public function handle(Request $request, Closure $next): mixed
     {
-        $referer = request()->headers->get('referer');
+        $referer_site = request()->headers->get('referer');
 
-        logger()->info($referer);
-
-        if (!$request->isMethod('get') || $request->missing('welcome')) {
+        if (!$referer_site || !$request->isMethod('get')) {
             return $next($request);
         }
 
-        $hash = $request->get('welcome');
+        $old = Referrer::query()->where('site', $referer_site)->first();
 
-        Referrer::query()->where('hash', $hash)->increment('hits');
+        if ($old) {
+            $old->increment('hits');
+        } else {
+            Referrer::query()->create([
+                'site' => $referer_site,
+                'hits' => 1,
+            ]);
+        }
 
-        $new_url = $request->fullUrlWithoutQuery('welcome');
-
-        return redirect()->to($new_url);
+        return $next($request);
     }
 }
