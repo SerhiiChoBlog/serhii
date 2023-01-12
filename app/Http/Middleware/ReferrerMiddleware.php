@@ -14,7 +14,7 @@ class ReferrerMiddleware
     {
         $referer_site = request()->headers->get('referer');
 
-        if (!$referer_site || !$request->isMethod('get')) {
+        if (!$referer_site || !$request->isMethod('get') || str_starts_with($referer_site, 'https://serhii.io')) {
             return $next($request);
         }
 
