@@ -9,7 +9,7 @@
     <meta property="og:locale" content="en_US">
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png" sizes="50x50">
     <link rel="canonical" href="{{ str_replace('www.', '', request()->url()) }}" />
-    <title>@stack('title'){{ request()->is('/') ? 'Serhii Cho Blogs' : '' }}</title>
+    <title>@stack('title'){{ request()->is('/') ? 'Serhii Cho Blog' : '' }}</title>
     @vite('resources/css/app.css')
     @stack('head')
 </head>
