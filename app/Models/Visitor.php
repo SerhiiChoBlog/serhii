@@ -58,6 +58,8 @@ class Visitor extends Model
     {
         $position = null;
 
+        $ip = trim($ip);
+
         try {
             $location = app(Location::class);
 
@@ -71,9 +73,17 @@ class Visitor extends Model
             return null;
         }
 
+        /** @var self|null $visitor */
+        $visitor = self::query()->where('ip', $ip)->first();
+
+        if ($visitor) {
+            return $visitor;
+        }
+
         try {
             /** @var Visitor */
-            return self::query()->firstOrCreate(compact('ip'), [
+            return self::query()->create([
+                'ip' => $ip,
                 'country' => $position->countryName,
                 'city' => $position->cityName,
                 'code' => $position->countryCode,
