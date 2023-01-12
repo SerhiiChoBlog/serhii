@@ -12,9 +12,7 @@ use Serhii\Ago\TimeAgo;
 
 /**
  * @property-read int $id
- * @property string $name
  * @property string $site
- * @property string $hash
  * @property int $hits
  * @property string $pretty_updated_at
  * @property Carbon $created_at

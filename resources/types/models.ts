@@ -94,9 +94,7 @@ export type Hit = {
 
 export type Referrer = {
     id: number
-    name: string
     site: string
-    hash: string
     hits: number
     pretty_updated_at: string
     created_at: string

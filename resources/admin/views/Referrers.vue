@@ -35,7 +35,7 @@ function fetchReferrers(): void {
                     <thead class="bg-gray-500 text-left">
                         <tr>
                             <th
-                                v-for="title in ['#', 'Name', 'Site', 'Hits', 'Hash', 'Last update']"
+                                v-for="title in ['#', 'Site', 'Hits', 'Last update']"
                                 class="text-white p-3 font-light"
                             >
                                 {{ title }}
@@ -49,7 +49,6 @@ function fetchReferrers(): void {
                             class="odd:bg-gray-50 border-b transition-colors hover:bg-gray-100"
                         >
                             <td class="p-2">{{ referrer.id }}</td>
-                            <td class="p-2">{{ referrer.name }}</td>
                             <td class="p-2">
                                 <a :href="referrer.site" target="_blank" class="underline">
                                     {{ referrer.site }}
@@ -57,11 +56,6 @@ function fetchReferrers(): void {
                             </td>
                             <td class="p-2 text-lg font-black text-main font-code">
                                 {{ referrer.hits }}
-                            </td>
-                            <td class="p-2">
-                                <code class="bg-gray-200 py-1 px-3 rounded-md font-code">
-                                    {{ referrer.hash }}
-                                </code>
                             </td>
                             <td class="p-2">{{ referrer.pretty_updated_at }}</td>
                         </tr>
