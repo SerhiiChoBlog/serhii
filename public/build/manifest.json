@@ -19,13 +19,13 @@
     "file": "assets/fa-solid-900.f6bd8f51.svg",
     "src": "resources/fonts/fa-solid-900.svg"
   },
-  "resources/fonts/charter-400-normal.woff": {
-    "file": "assets/charter-400-normal.ce74d314.woff",
-    "src": "resources/fonts/charter-400-normal.woff"
-  },
   "storage/app/public/hero-sm.webp": {
     "file": "assets/hero-sm.3cb40372.webp",
     "src": "storage/app/public/hero-sm.webp"
+  },
+  "resources/fonts/charter-400-normal.woff": {
+    "file": "assets/charter-400-normal.ce74d314.woff",
+    "src": "resources/fonts/charter-400-normal.woff"
   },
   "resources/fonts/Lato-Regular.ttf": {
     "file": "assets/Lato-Regular.e82542ae.ttf",
@@ -48,7 +48,7 @@
     ]
   },
   "resources/admin/app.ts": {
-    "file": "assets/app.360d2416.js",
+    "file": "assets/app.f24f49d2.js",
     "src": "resources/admin/app.ts",
     "isEntry": true,
     "imports": [
@@ -64,12 +64,12 @@
     "isEntry": true
   },
   "resources/css/admin/admin.css": {
-    "file": "assets/admin.68cfcf47.css",
+    "file": "assets/admin.5e5757d2.css",
     "src": "resources/css/admin/admin.css",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.2b5458a2.css",
+    "file": "assets/app.df444df3.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }
