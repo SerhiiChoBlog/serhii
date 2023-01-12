@@ -19,17 +19,17 @@
     "file": "assets/fa-solid-900.f6bd8f51.svg",
     "src": "resources/fonts/fa-solid-900.svg"
   },
-  "storage/app/public/hero-sm.webp": {
-    "file": "assets/hero-sm.3cb40372.webp",
-    "src": "storage/app/public/hero-sm.webp"
+  "resources/fonts/Lato-Regular.ttf": {
+    "file": "assets/Lato-Regular.e82542ae.ttf",
+    "src": "resources/fonts/Lato-Regular.ttf"
   },
   "resources/fonts/charter-400-normal.woff": {
     "file": "assets/charter-400-normal.ce74d314.woff",
     "src": "resources/fonts/charter-400-normal.woff"
   },
-  "resources/fonts/Lato-Regular.ttf": {
-    "file": "assets/Lato-Regular.e82542ae.ttf",
-    "src": "resources/fonts/Lato-Regular.ttf"
+  "storage/app/public/hero-sm.webp": {
+    "file": "assets/hero-sm.3cb40372.webp",
+    "src": "storage/app/public/hero-sm.webp"
   },
   "resources/fonts/JetBrainsMono-Regular.ttf": {
     "file": "assets/JetBrainsMono-Regular.3c5fb9d7.ttf",
@@ -40,7 +40,7 @@
     "src": "storage/app/public/hero.webp"
   },
   "resources/vue/app.ts": {
-    "file": "assets/app.4decd78e.js",
+    "file": "assets/app.778188f7.js",
     "src": "resources/vue/app.ts",
     "isEntry": true,
     "imports": [
@@ -59,17 +59,17 @@
     "file": "assets/hidden.cba946d8.js"
   },
   "resources/css/admin/font-awesome.css": {
-    "file": "assets/font-awesome.1f565be7.css",
+    "file": "assets/font-awesome.9574f15e.css",
     "src": "resources/css/admin/font-awesome.css",
     "isEntry": true
   },
   "resources/css/admin/admin.css": {
-    "file": "assets/admin.5e5757d2.css",
+    "file": "assets/admin.fabf14a1.css",
     "src": "resources/css/admin/admin.css",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.df444df3.css",
+    "file": "assets/app.34fc0511.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }
