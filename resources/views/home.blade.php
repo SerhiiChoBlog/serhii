@@ -2,6 +2,7 @@
     /**
      * @var array<int, array<int ,mixed>> $random_posts
      * @var array<int, array<int ,mixed>> $latest_posts
+     * @var array<int, array<int ,mixed>> $latest_videos
      */
 @endphp
 @extends('layouts.app')
@@ -55,7 +56,40 @@
         @endforeach
     </x-home.section>
 
-    <x-home.section title="Coming soon" intro="The articles which I'm currently working on">
+    <x-home.section
+        title="Latest videos"
+        intro="The latest YouTube videos"
+    >
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            @foreach ($latest_videos as $video)
+                <a href="{{ $video['url'] }}" target="_blank" class="relative">
+                    <div class="relative">
+                        <img
+                            src="{{ asset('/storage/icons/youtube.webp') }}"
+                            alt="YouTube logo"
+                            class="z-10 opacity-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60px]"
+                            width="100"
+                            height="100"
+                        />
+
+                        <img
+                            data-src="{{ $video['image'] }}"
+                            alt="{{ $video['title'] }}"
+                            width="320"
+                            height="180"
+                            class="rounded-lg shadow-md w-full"
+                        >
+                    </div>
+
+                    <h2 class="text-xl mt-2 mx-1 leading-7">
+                        {{ $video['title'] }}
+                    </h2>
+                </a>
+            @endforeach
+        </div>
+    </x-home.section>
+
+    <x-home.section title="Coming soon" intro="The articles which I'm currently working on" :isDark="true">
         <x-home.coming-soon-section />
     </x-home.section>
 
