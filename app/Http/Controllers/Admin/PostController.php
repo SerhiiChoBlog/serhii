@@ -89,7 +89,10 @@ class PostController extends Controller
         }
 
         $data['content'] = $this->addNotesToContent($request->content);
-        $data['content'] = LazyLoadingParser::makeImagesLazy($data['content']);
+
+        if ($data['content']) {
+            $data['content'] = LazyLoadingParser::makeImagesLazy($data['content']);
+        }
 
         $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
 
