@@ -9,6 +9,7 @@ use App\Exceptions\LazyLoadingConversionException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\StoreRequest;
 use App\Http\Requests\Admin\Post\UpdateRequest;
+use App\LazyLoadingParser;
 use App\Models\Post;
 use App\Utils\SaveImage;
 use Illuminate\Http\UploadedFile;
@@ -54,7 +55,7 @@ class PostController extends Controller
         $post->load('tags', 'images', 'video');
 
         if ($post->content) {
-            $post->content = $this->makeImagesNotLazy($post->content);
+            $post->content = LazyLoadingParser::makeImagesNotLazy($post->content);
         }
 
         return $post;
@@ -88,7 +89,7 @@ class PostController extends Controller
         }
 
         $data['content'] = $this->addNotesToContent($request->content);
-        $data['content'] = $this->makeImagesLazy($data['content']);
+        $data['content'] = LazyLoadingParser::makeImagesLazy($data['content']);
 
         $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
 
@@ -139,33 +140,5 @@ class PostController extends Controller
             ],
             $content,
         );
-    }
-
-    /**
-     * @throws LazyLoadingConversionException
-     */
-    private function makeImagesLazy(string $content): string
-    {
-        $result = preg_replace('/(<img.*)( src=")(.*?>)/', '$1 data-src="$3', $content);
-
-        if (!$result) {
-            throw new LazyLoadingConversionException("Cannot make images lazy");
-        }
-
-        return $result;
-    }
-
-    /**
-     * @throws LazyLoadingConversionException
-     */
-    private function makeImagesNotLazy(string $content): string
-    {
-        $result = preg_replace('/(<img.*)( data-src=")(.*?>)/', '$1 src="$3', $content);
-
-        if (!$result) {
-            throw new LazyLoadingConversionException("Cannot make images not lazy");
-        }
-
-        return $result;
     }
 }
