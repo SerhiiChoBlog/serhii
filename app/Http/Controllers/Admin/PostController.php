@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\CacheKey;
+use App\Exceptions\LazyLoadingConversionException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\StoreRequest;
 use App\Http\Requests\Admin\Post\UpdateRequest;
 use App\Models\Post;
 use App\Utils\SaveImage;
-use Exception;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -46,18 +46,23 @@ class PostController extends Controller
         return $post->id;
     }
 
+    /**
+     * @throws LazyLoadingConversionException
+     */
     public function edit(Post $post): Post
     {
         $post->load('tags', 'images', 'video');
 
-        $post->content = $this->makeImagesNotLazy($post->content);
+        if ($post->content) {
+            $post->content = $this->makeImagesNotLazy($post->content);
+        }
 
         return $post;
     }
 
     /**
      * @throws JsonException
-     * @throws Exception
+     * @throws LazyLoadingConversionException
      */
     public function update(UpdateRequest $request, Post $post): string
     {
@@ -137,28 +142,28 @@ class PostController extends Controller
     }
 
     /**
-     * @throws Exception
+     * @throws LazyLoadingConversionException
      */
     private function makeImagesLazy(string $content): string
     {
         $result = preg_replace('/(<img.*)( src=")(.*?>)/', '$1 data-src="$3', $content);
 
         if (!$result) {
-            throw new Exception("Cannot make images lazy");
+            throw new LazyLoadingConversionException("Cannot make images lazy");
         }
 
         return $result;
     }
 
     /**
-     * @throws Exception
+     * @throws LazyLoadingConversionException
      */
     private function makeImagesNotLazy(string $content): string
     {
         $result = preg_replace('/(<img.*)( data-src=")(.*?>)/', '$1 src="$3', $content);
 
         if (!$result) {
-            throw new Exception("Cannot make images not lazy");
+            throw new LazyLoadingConversionException("Cannot make images not lazy");
         }
 
         return $result;
