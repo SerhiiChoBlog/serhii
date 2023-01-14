@@ -15,7 +15,6 @@ class ReferrerMiddleware
         $referer_site = request()->headers->get('referer');
         $self_referrer = str_contains($referer_site ?? '', request()->getHttpHost());
 
-        logger()->info(request()->getHttpHost());
         if (!$referer_site || $self_referrer || !$request->isMethod('get')) {
             return $next($request);
         }
