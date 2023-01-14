@@ -62,7 +62,7 @@
     >
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             @foreach ($latest_videos as $video)
-                <a href="{{ $video['url'] }}" target="_blank" class="relative">
+                <a href="{{ $video['url'] }}" target="_blank" class="relative transition-opacity hover:opacity-90">
                     <div class="relative">
                         <img
                             src="{{ asset('/storage/icons/youtube.webp') }}"
