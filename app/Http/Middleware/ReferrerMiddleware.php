@@ -13,8 +13,10 @@ class ReferrerMiddleware
     public function handle(Request $request, Closure $next): mixed
     {
         $referer_site = request()->headers->get('referer');
+        $self_referrer = str_contains($referer_site ?? '', request()->getHttpHost());
 
-        if (!$referer_site || !$request->isMethod('get') || str_starts_with($referer_site, 'https://serhii.io')) {
+        logger()->info(request()->getHttpHost());
+        if (!$referer_site || $self_referrer || !$request->isMethod('get')) {
             return $next($request);
         }
 
