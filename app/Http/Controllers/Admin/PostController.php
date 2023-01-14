@@ -10,6 +10,7 @@ use App\Http\Requests\Admin\Post\StoreRequest;
 use App\Http\Requests\Admin\Post\UpdateRequest;
 use App\Models\Post;
 use App\Utils\SaveImage;
+use Exception;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -48,11 +49,15 @@ class PostController extends Controller
     public function edit(Post $post): Post
     {
         $post->load('tags', 'images', 'video');
+
+        $post->content = $this->makeImagesNotLazy($post->content);
+
         return $post;
     }
 
     /**
      * @throws JsonException
+     * @throws Exception
      */
     public function update(UpdateRequest $request, Post $post): string
     {
@@ -78,6 +83,8 @@ class PostController extends Controller
         }
 
         $data['content'] = $this->addNotesToContent($request->content);
+        $data['content'] = $this->makeImagesLazy($data['content']);
+
         $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
 
         if ($post->is_published || $request->is_published) {
@@ -127,5 +134,33 @@ class PostController extends Controller
             ],
             $content,
         );
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function makeImagesLazy(string $content): string
+    {
+        $result = preg_replace('/(<img.*)( src=")(.*?>)/', '$1 data-src="$3', $content);
+
+        if (!$result) {
+            throw new Exception("Cannot make images lazy");
+        }
+
+        return $result;
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function makeImagesNotLazy(string $content): string
+    {
+        $result = preg_replace('/(<img.*)( data-src=")(.*?>)/', '$1 src="$3', $content);
+
+        if (!$result) {
+            throw new Exception("Cannot make images not lazy");
+        }
+
+        return $result;
     }
 }
