@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\CacheKey;
 use App\Models\Post;
+use App\Models\Video;
 use App\Ttl;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
@@ -17,6 +18,7 @@ class HomeController extends Controller
         return view('home', [
             'latest_posts' => $this->getLatestPosts(),
             'random_posts' => $this->getRandomPosts(),
+            'latest_videos' => $this->getLatestVideos(),
         ]);
     }
 
@@ -51,6 +53,20 @@ class HomeController extends Controller
                 ->where('is_published', true)
                 ->orderByDesc('created_at')
                 ->limit(3)
+                ->get()
+                ->toArray();
+        });
+    }
+
+    /**
+     * @return array<int, array<int, mixed>>
+     */
+    private function getLatestVideos(): array
+    {
+        return Cache::rememberForever(CacheKey::LAST_VIDEOS, static function () {
+            return Video::query()
+                ->orderByDesc('created_at')
+                ->limit(4)
                 ->get()
                 ->toArray();
         });

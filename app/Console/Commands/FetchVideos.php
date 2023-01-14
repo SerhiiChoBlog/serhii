@@ -29,9 +29,9 @@ class FetchVideos extends Command
             $updated = $this->updateExistingVideos($yt_videos, $videos);
             $created = $this->createMissingVideos($yt_videos, $videos);
 
-            Cache::forget(CacheKey::HOME_POPULAR_VIDEOS);
+            Cache::forget(CacheKey::LAST_VIDEOS);
 
-            $this->info("Videos updated: $updated. Videos created: $created");
+            $this->info("Videos updated: {$updated}. Videos created: {$created}");
         } catch (FetchVideosHttpException $e) {
             $this->error($e->getMessage());
             Log::error($e);
@@ -84,7 +84,7 @@ class FetchVideos extends Command
 
             $this->updateVideoInDatabase($video, $yt_video);
 
-            ++$updated;
+            $updated++;
         }
 
         return $updated;
