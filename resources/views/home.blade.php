@@ -56,8 +56,7 @@
         @endforeach
     </x-home.section>
 
-    <x-home.section
-        title="Latest videos"
+    <x-home.section title="Latest videos"
         intro="The latest YouTube videos"
     >
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -89,9 +88,11 @@
         </div>
     </x-home.section>
 
-    <x-home.section title="Coming soon" intro="The articles which I'm currently working on" :isDark="true">
-        <x-home.coming-soon-section />
+    <x-home.section :isDark="true">
+        <subscription></subscription>
     </x-home.section>
 
-    <subscription></subscription>
+    <x-home.section title="Coming soon" intro="The articles which I'm currently working on">
+        <x-home.coming-soon-section />
+    </x-home.section>
 @endsection

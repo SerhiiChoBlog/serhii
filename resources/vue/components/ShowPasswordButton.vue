@@ -33,7 +33,7 @@ function changeInputType(): void {
             @click="changeInputType"
             type="button"
         >
-            <i class="lni lni-eye" aria-hidden="true"></i>
+            x
         </button>
     </tip>
 </template>

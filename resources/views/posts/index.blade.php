@@ -56,6 +56,4 @@
             @endif
         </div>
     </div>
-
-    <subscription></subscription>
 @endsection

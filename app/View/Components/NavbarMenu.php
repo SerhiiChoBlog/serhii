@@ -28,16 +28,6 @@ class NavbarMenu extends Component
                 'title' => 'Blog',
             ],
             [
-                'href' => route('projects.index'),
-                'class' => request()->is('projects') ? $active_class : '',
-                'title' => 'Open Source',
-            ],
-            [
-                'href' => route('about-me'),
-                'class' => request()->is('about-me') ? $active_class : '',
-                'title' => 'About',
-            ],
-            [
                 'href' => route('subscribe'),
                 'class' => request()->is('subscribe') ? $active_class : '',
                 'title' => 'Subscribe',

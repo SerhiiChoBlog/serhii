@@ -17,7 +17,9 @@
     <main id="app">
         @yield('content')
         <to-top></to-top>
+        <x-footer></x-footer>
     </main>
+
     @vite('resources/vue/app.ts')
 </body>
 </html>

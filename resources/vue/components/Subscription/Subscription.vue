@@ -15,11 +15,6 @@ import SubscriptionCache from '@/modules/Subscription/SubscriptionCache'
 import listenEvent from '@/modules/listenEvent'
 import appConfig from '@/appConfig'
 
-type Props = {
-    removeBg?: boolean
-}
-
-const { removeBg = false } = defineProps<Props>()
 const selectedTags = ref<Tag[]>([])
 
 const modalForm = reactive<SubscriptionForm>({
@@ -131,11 +126,8 @@ function allTagsSelected(): boolean {
 <template>
     <div>
         <appear-transition>
-            <footer
-                :class="{ 'bg-gradient-to-r from-gray-800 to-gray-700': !removeBg }"
-                class="print:hidden"
-            >
-                <div class="container grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-7 md:gap-20 text-white px-8 py-14 lg:py-24 relative z-10">
+            <footer class="print:hidden">
+                <div class="container grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-7 md:gap-20 relative z-10">
                     <form @submit.prevent="subscribe" class="w-full lg:w-[550px] mx-auto">
                         <label
                             for="subscription"
