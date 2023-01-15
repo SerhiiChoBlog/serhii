@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
-@push('title', trans('common.login_to_account') . ' | ')
-@push('description', trans('common.login_page_description'))
+@push('title', 'Login to your account')
+@push('description', 'Login to your account to stay in touch')
 
 @section('content')
+    <x-hero class="bg-gray-700" navbar="text-white" />
+
     <x-form.wrapper
         title="Login"
         intro="Login to your account to stay in touch"

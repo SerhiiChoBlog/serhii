@@ -3,7 +3,7 @@ import Popper from 'vue3-popper'
 
 interface Props {
     content: string
-    icon: boolean
+    icon?: boolean
 }
 
 const { content, icon = false } = defineProps<Props>()

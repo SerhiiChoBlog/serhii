@@ -4,7 +4,7 @@
      */
 @endphp
 
-<div class="navbar-menu z-40 pb-8 lg:pb-0 overflow-hidden" id="navbar-menu">
+<div class="navbar-menu z-40 pb-8 lg:pb-0" id="navbar-menu">
     @foreach ($menu_items as $item)
         <x-nav-link :href="$item['href']" :title="$item['title']" :class="$item['class']" />
     @endforeach
@@ -17,23 +17,28 @@
         @auth
             <a
                 href="{{ route('login') }}"
-                class="flex items-center justify-center gap-4"
+                class="flex items-center justify-center gap-4 bg-black/20 rounded-full pl-6 hover:bg-black/40 transition-colors group"
+                rel="noreferrer"
             >
+                <div class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[140px] text-lg">
+                    {{ auth()->user()->name }}
+                </div>
+
                 <img
                     src="https://s.gravatar.com/avatar/19fd901cd984f39cd970710568ec72e6?s=200"
                     alt="Profile picture"
                     width="200"
                     height="200"
-                    class="rounded-full w-10 border border-white"
+                    class="rounded-full w-10 h-10 border border-white shadow-md group-hover:shadow-lg"
                 />
-
-                <div class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[200px] text-lg">
-                    {{ auth()->user()->name }}
-                </div>
             </a>
         @else
-            <a href="{{ route('login') }}" class="main-btn">
-                Login
+            <a
+                href="{{ request()->is('login') ? route('register') : route('login') }}"
+                class="main-btn min-w-[140px]"
+                rel="noreferrer"
+            >
+                {{ request()->is('login') ? 'Register' : 'Login' }}
             </a>
         @endauth
     </div>

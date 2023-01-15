@@ -147,7 +147,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                     >YouTube video ID</form-input>
                                 </div>
 
-                                <a v-if="post.video" :href="post.video.url" target="_blank">
+                                <a v-if="post.video" :href="post.video.url" target="_blank" rel="noreferrer">
                                     <img
                                         :src="post.video.image"
                                         :alt="post.video.title"

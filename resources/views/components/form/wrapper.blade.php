@@ -10,7 +10,7 @@
      */
 @endphp
 
-<div class="py-10 lg:py-20 relative">
+<div class="py-10 lg:py-20 relative bg-gray-50">
     <div class="mx-4 lg:mx-10 text-center">
         <div class="inline-flex flex-col md:flex-row mx-auto text-left">
             @if(isset($img) || isset($infoTitle) || isset($infoIntro))

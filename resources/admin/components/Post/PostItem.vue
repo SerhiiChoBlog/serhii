@@ -16,7 +16,7 @@ const { post } = defineProps<Props>()
             <i v-else class="fas fa-times text-red-600"></i>
         </td>
         <td class="p-1">
-            <a :href="`/${post.image_lg}`" target="_blank">
+            <a :href="`/${post.image_lg}`" target="_blank" rel="noreferrer">
                 <img
                     :src="`/${post.image_sm}`"
                     width="300"

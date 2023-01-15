@@ -9,7 +9,7 @@
 
 @section('content')
     <x-hero
-        class="relative bg-home-hero-sm lg:bg-home-hero w-full bg-blend-overlay bg-cover md:bg-fixed bg-center bg-no-repeat"
+        class="relative bg-home-hero-sm lg:bg-home-hero bg-blend-overlay bg-cover md:bg-fixed bg-center bg-no-repeat"
         navbar="text-white"
     >
         <div>

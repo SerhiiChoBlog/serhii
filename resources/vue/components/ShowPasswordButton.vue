@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import Tip from '@/components/Tip.vue'
+import EyeIcon from '@/components/icons/EyeIcon.vue'
+import EyeSlashIcon from '@/components/Icons/EyeSlashIcon.vue'
 
 type Props = {
     inputId: string
@@ -8,6 +10,7 @@ type Props = {
 
 const { inputId } = defineProps<Props>()
 const input = ref<HTMLInputElement | null>(null)
+const showPassword = ref(false)
 
 onMounted(() => {
     const elem = document.getElementById(inputId) as HTMLInputElement | null
@@ -23,6 +26,7 @@ function changeInputType(): void {
     }
 
     input.value.type = input.value.type === 'text' ? 'password' : 'text'
+    showPassword.value = input.value.type === 'text'
 }
 </script>
 
@@ -33,7 +37,8 @@ function changeInputType(): void {
             @click="changeInputType"
             type="button"
         >
-            x
+            <eye-slash-icon v-if="showPassword" />
+            <eye-icon v-else />
         </button>
     </tip>
 </template>
