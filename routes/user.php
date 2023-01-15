@@ -6,5 +6,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('{any?}', 'layouts.user')
     ->middleware('user')
-    ->name('user.profile')
     ->where('any', '.*');
