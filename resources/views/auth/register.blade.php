@@ -8,7 +8,7 @@
 
     <x-form.wrapper
         title="Register"
-        intro="Create an account to unlock extra features"
+        intro="Create an account to unlock extra features only for registered users"
         infoTitle="Already have an account?"
         infoIntro="Login to your account to stay in touch"
         img="register.jpg"
@@ -34,6 +34,17 @@
             @csrf
 
             <div class="space-y-5">
+                <div>
+                    <x-form.label id="email">Name</x-form.label>
+                    <x-form.input
+                        id="name"
+                        :value="old('name')"
+                        placeholder="Enter your name"
+                        name="name"
+                        type="text"
+                    />
+                </div>
+
                 <div>
                     <x-form.label id="email">Email</x-form.label>
                     <x-form.input
