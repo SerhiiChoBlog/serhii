@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @push('title', 'Decline subscription')
 @push('description', "Your subscription has not been confirmed, therefore it was remove from the list")

@@ -6,7 +6,7 @@
     /** @var string $title_font_size */
 @endphp
 
-@extends('layouts.app')
+@extends('layouts.main')
 
 @push('head')
     <meta name="twitter:card" content="summary_large_image" />

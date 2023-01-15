@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @push('title', trans('common.reset_password') . ' | ')
 @push('description', trans('common.reset_password_page_description'))

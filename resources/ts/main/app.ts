@@ -38,6 +38,6 @@ const app = createApp({
     },
 })
 
-app.mount("#app")
+app.mount("#main")
 
 smoothLoader('[data-src]')

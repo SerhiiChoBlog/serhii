@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @push('title', 'Subscription error')
 @push('description', "There is an error occurred while trying to subscribe to a mail list")

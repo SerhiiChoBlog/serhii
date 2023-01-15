@@ -16,11 +16,11 @@
     <div class="mx-auto lg:m-0 text-center mt-5">
         @if (user())
             <a
-                href="{{ auth('user')->check() ? '/user/profile' : '/admin/dashboard' }}"
-                class="flex items-center justify-center gap-4 bg-black/20 rounded-full pl-6 hover:bg-black/40 transition-colors group"
+                href="{{ auth('user')->check() ? route('user.profile.show') : '/admin/dashboard' }}"
+                class="flex items-center justify-center gap-4 bg-black/20 rounded-full pl-5 hover:bg-black/40 transition-colors group"
                 rel="noreferrer"
             >
-                <div class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[140px] text-lg">
+                <div class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[150px] text-lg">
                     {{ user()->name }}
                 </div>
 

@@ -14,7 +14,7 @@
     @stack('head')
 </head>
 <body class="text-font font-main bg-page {{ request()->cookie('theme') }}">
-    <main id="app">
+    <main id="main">
         @yield('content')
         <to-top></to-top>
         <x-footer></x-footer>
