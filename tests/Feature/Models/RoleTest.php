@@ -20,7 +20,7 @@ class RoleTest extends TestCase
         $this->assertDatabaseHas('roles', ['name' => $role]);
     }
 
-    public function test_role_has_user_associated(): void
+    public function test_role_has_users_associated(): void
     {
         /** @var Role $role */
         $role = Role::factory()->create(['name' => 'admin']);
