@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('subscription_tag', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Subscription::class);
+            $table->foreignIdFor(Subscription::class)->constrained()->cascadeOnDelete();
             $table->unsignedSmallInteger('tag_id');
-            $table->foreign('tag_id')->references('id')->on('tags');
+            $table->foreign('tag_id')->references('id')->on('tags')->cascadeOnDelete();
         });
     }
 
