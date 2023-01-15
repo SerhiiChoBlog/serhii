@@ -15,12 +15,12 @@
 @extends('layouts.app')
 
 @push('title', "{$title} | Serhii Cho")
-@push('description', "Blog that helps you to become a better web developer and create beautiful, functional websites using the latest web technologies and best practices")
+@push('description', "You want to become a better web developer and create optimized, responsive and modern websites using the latest web technologies and best practices? Welcome!")
 
 @section('content')
     <x-hero
         :mainTitle="$title"
-        subtitle="Blog that helps you to become a better web developer and create beautiful,<br />functional websites using the latest web technologies and best practices"
+        subtitle="You want to become a better web developer and create optimized, responsive<br>and modern websites using the latest web technologies and best practices? Welcome!"
         class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white relative"
     >
         @if ($tag)
