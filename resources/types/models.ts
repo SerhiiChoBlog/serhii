@@ -119,3 +119,8 @@ export type Subscription = {
     updated_at: string
     tags?: Tag[]
 }
+
+export type Role = {
+    id: number
+    name: string
+}
