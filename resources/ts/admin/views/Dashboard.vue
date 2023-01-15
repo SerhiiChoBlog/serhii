@@ -1,0 +1,43 @@
+<script setup lang="ts">
+import type { Section } from '@shared/types'
+import { onMounted, ref } from 'vue'
+import PageTitle from '@admin/components/PageTitle.vue'
+import axios from 'axios'
+import Spinner from '@admin/components/Spinner.vue'
+
+const sections = ref<Section[]>([])
+const loading = ref(true)
+
+onMounted(() => fetchSections())
+
+function fetchSections(): void {
+    axios.get<Section[]>('/admin/ajax/dashboard/sections')
+        .then(resp => sections.value = resp.data)
+        .catch(err => console.error(err))
+        .finally(() => loading.value = false)
+}
+</script>
+
+<template>
+    <div class="container">
+        <page-title>Statistics</page-title>
+
+        <spinner v-if="loading" />
+
+        <nav v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 max-w-[1200px] mx-auto gap-9">
+            <div
+                v-for="section in sections"
+                :key="section.title"
+                class="flex flex-col justify-between"
+            >
+                <div class="text-font-second text-center uppercase text-sm text-font-second tracking-widest">
+                    {{ section.title }}
+                </div>
+
+                <div class="drop-shadow-md text-2xl text-center font-semibold text-main-dark drop-shadow-md">
+                    {{ section.value }}
+                </div>
+            </div>
+        </nav>
+    </div>
+</template>
