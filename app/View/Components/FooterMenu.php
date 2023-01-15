@@ -16,7 +16,7 @@ class FooterMenu extends Component
 
     private function getMenuItems(): array
     {
-        $active_class = 'navbar-link--active bg-black/30 lg:bg-transparent';
+        $active_class = 'border-b-2 border-white';
 
         return [
             [

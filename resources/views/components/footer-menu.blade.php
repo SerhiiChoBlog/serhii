@@ -6,14 +6,12 @@
 
 <div class="flex flex-col items-center xl:items-start gap-3 mt-10 xl:mt-0">
     @foreach($menu_items as $item)
-        <x-nav-link
-            :href="$item['href']"
-            :title="$item['title']"
-            :class="$item['class']"
-        />
+        <a href="{{ $item['href'] }}" class="{{ $item['class'] }} uppercase">
+            {{ $item['title'] }}
+        </a>
     @endforeach
 
-    <div class="xl:mt-2">
+    <div class="mt-2">
         <contact-modal></contact-modal>
     </div>
 </div>
