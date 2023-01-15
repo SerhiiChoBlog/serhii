@@ -20,8 +20,6 @@ class Role extends Model
 
     public $timestamps = false;
 
-    public const ADMIN = 'admin';
-
     /**
      * @var array<int, string>
      */

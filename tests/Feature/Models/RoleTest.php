@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Models;
 
+use App\Enums\UserRole;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
@@ -15,15 +16,14 @@ class RoleTest extends TestCase
 
     public function test_role_can_be_created(): void
     {
-        $role = 'writer';
-        Role::factory()->create(['name' => $role]);
-        $this->assertDatabaseHas('roles', ['name' => $role]);
+        Role::factory()->create(['name' => UserRole::ADMIN]);
+        $this->assertDatabaseHas('roles', ['name' => UserRole::ADMIN]);
     }
 
     public function test_role_has_users_associated(): void
     {
         /** @var Role $role */
-        $role = Role::factory()->create(['name' => 'admin']);
+        $role = Role::factory()->create(['name' => UserRole::ADMIN]);
 
         /** @var User $user */
         $user = User::factory()->create();
