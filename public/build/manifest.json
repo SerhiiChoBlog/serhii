@@ -19,17 +19,17 @@
     "file": "assets/fa-solid-900.f6bd8f51.svg",
     "src": "resources/fonts/fa-solid-900.svg"
   },
-  "resources/fonts/JetBrainsMono-Regular.ttf": {
-    "file": "assets/JetBrainsMono-Regular.3c5fb9d7.ttf",
-    "src": "resources/fonts/JetBrainsMono-Regular.ttf"
+  "storage/app/public/hero-sm.webp": {
+    "file": "assets/hero-sm.3cb40372.webp",
+    "src": "storage/app/public/hero-sm.webp"
   },
   "resources/fonts/charter-400-normal.woff": {
     "file": "assets/charter-400-normal.ce74d314.woff",
     "src": "resources/fonts/charter-400-normal.woff"
   },
-  "storage/app/public/hero-sm.webp": {
-    "file": "assets/hero-sm.3cb40372.webp",
-    "src": "storage/app/public/hero-sm.webp"
+  "resources/fonts/JetBrainsMono-Regular.ttf": {
+    "file": "assets/JetBrainsMono-Regular.3c5fb9d7.ttf",
+    "src": "resources/fonts/JetBrainsMono-Regular.ttf"
   },
   "resources/fonts/Lato-Regular.ttf": {
     "file": "assets/Lato-Regular.e82542ae.ttf",
