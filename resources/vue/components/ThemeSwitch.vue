@@ -49,7 +49,7 @@ function changeInterfaceTo(toTheme: 'light' | 'dark'): void {
 <template>
     <tip :content="title">
         <appear-transition>
-            <div class="flex items-center justify-center pb-6 lg:pb-0">
+            <div class="flex items-center justify-center">
                 <button
                     type="button"
                     class="drop-shadow-md relative text-yellow-300 dark:text-main flex py-2 px-4 lg:px-2 bg-transparent text-white hover:bg-gray-500 hover:bg-opacity-50 rounded-full transition-colors"
