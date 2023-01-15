@@ -10,7 +10,7 @@
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png" sizes="50x50">
     <link rel="canonical" href="{{ str_replace('www.', '', request()->url()) }}" />
     <title>@stack('title'){{ request()->is('/') ? "Serhii Blog" : '' }}</title>
-    @vite('resources/css/app.css')
+    @vite('resources/css/main/app.css')
     @stack('head')
 </head>
 <body class="text-font font-main bg-page {{ request()->cookie('theme') }}">
@@ -20,6 +20,6 @@
         <x-footer></x-footer>
     </main>
 
-    @vite('resources/vue/app.ts')
+    @vite('resources/ts/main/app.ts')
 </body>
 </html>
