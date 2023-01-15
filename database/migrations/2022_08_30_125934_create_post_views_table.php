@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Post;
 use App\Models\Visitor;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,8 +11,9 @@ return new class extends Migration
     {
         Schema::create('post_views', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Post::class);
-            $table->foreignIdFor(Visitor::class);
+            $table->unsignedSmallInteger('post_id');
+            $table->foreign('post_id')->references('id')->on('posts')->cascadeOnDelete();
+            $table->foreignIdFor(Visitor::class)->constrained()->cascadeOnDelete();
             $table->timestamp('created_at')->useCurrent();
         });
     }
