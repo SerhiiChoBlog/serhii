@@ -6,8 +6,10 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 
 /**
  * @property-read int $id
@@ -16,6 +18,7 @@ use Illuminate\Notifications\Notifiable;
  * @property Carbon $email_verified_at
  * @property string $password
  * @property string $remember_token
+ * @property Collection<int, Role> $roles
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -27,11 +30,7 @@ class User extends Authenticatable
     /**
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = ['id'];
 
     /**
      * @var array<int, string>
@@ -47,4 +46,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @return BelongsToMany<Role>
+     */
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }

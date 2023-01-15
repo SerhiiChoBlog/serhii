@@ -120,7 +120,18 @@ export type Subscription = {
     tags?: Tag[]
 }
 
+export type User = {
+    id: number
+    roles?: Role[]
+    name: string
+    email: string
+    email_verified_at: string
+    created_at: string
+    updated_at: string
+}
+
 export type Role = {
     id: number
     name: string
+    users?: User[]
 }
