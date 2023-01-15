@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Models;
 
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
@@ -17,5 +18,18 @@ class RoleTest extends TestCase
         $role = 'writer';
         Role::factory()->create(['name' => $role]);
         $this->assertDatabaseHas('roles', ['name' => $role]);
+    }
+
+    public function test_role_has_user_associated(): void
+    {
+        /** @var Role $role */
+        $role = Role::factory()->create(['name' => 'admin']);
+
+        /** @var User $user */
+        $user = User::factory()->create();
+
+        $role->users()->attach([$user->id]);
+
+        $this->assertCount(1, $role->users);
     }
 }
