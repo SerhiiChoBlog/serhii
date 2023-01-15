@@ -15,7 +15,6 @@ Auth::routes();
 
 Route::redirect('about', 'about-me');
 Route::redirect('blog', 'posts');
-Route::redirect('register', 'login');
 
 Route::middleware('hits')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
