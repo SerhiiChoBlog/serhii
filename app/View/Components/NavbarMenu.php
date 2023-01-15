@@ -9,10 +9,12 @@ class NavbarMenu extends Component
 {
     public function render(): View
     {
-        return view('components.navbar-menu');
+        return view('components.navbar-menu', [
+            'menu_items' => $this->getMenuItems(),
+        ]);
     }
 
-    public function getMenuItems(): array
+    private function getMenuItems(): array
     {
         $active_class = 'navbar-link--active bg-black/30 lg:bg-transparent';
 

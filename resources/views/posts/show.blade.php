@@ -156,6 +156,4 @@
             </div>
         </div>
     </article>
-
-    <subscription></subscription>
 @endsection

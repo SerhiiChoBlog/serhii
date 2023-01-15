@@ -14,7 +14,7 @@ class FooterMenu extends Component
         ]);
     }
 
-    public function getMenuItems(): array
+    private function getMenuItems(): array
     {
         $active_class = 'navbar-link--active bg-black/30 lg:bg-transparent';
 

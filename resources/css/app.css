@@ -27,6 +27,10 @@
         @apply bg-black/30 rounded-full;
     }
 
+    .main-btn {
+        @apply shadow-md bg-main max-w-[180px] font-semibold text-white py-2 px-6 rounded-full transition-colors hover:bg-main-hover uppercase text-sm tracking-widest;
+    }
+
     .post-content,
     .project-content,
     .about-me {
