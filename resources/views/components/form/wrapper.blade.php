@@ -10,7 +10,7 @@
      */
 @endphp
 
-<div class="py-10 lg:py-20 relative bg-gray-50">
+<div class="py-10 lg:py-20 relative bg-page-second dark:bg-page">
     <div class="mx-4 lg:mx-10 text-center">
         <div class="inline-flex flex-col md:flex-row mx-auto text-left">
             @if(isset($img) || isset($infoTitle) || isset($infoIntro))
@@ -40,14 +40,14 @@
                 </div>
             @endif
 
-            <div class="p-10 xl:p-20 w-auto bg-page rounded-xl shadow-lg lg:min-w-[520px]">
+            <div class="p-10 xl:p-20 w-auto bg-page dark:bg-page-second rounded-xl shadow-lg lg:min-w-[520px]">
                 <div class="mb-9">
                     @isset($title)
                         <h1 class="text-2xl text-main">{{ $title }}</h1>
                     @endisset
 
                     @isset($intro)
-                        <h2 class="text-font-second">{{ $intro }}</h2>
+                        <h2 class="text-font-second max-w-[430px]">{{ $intro }}</h2>
                     @endisset
                 </div>
 
