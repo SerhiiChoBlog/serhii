@@ -9,9 +9,13 @@
         </a>
     @endforeach
 
-    <contact-modal>
-        <div class="w-full mx-auto shadow-md bg-main lg:w-auto font-semibold text-white py-2 px-6 rounded-full transition-colors hover:bg-main-hover uppercase text-sm tracking-widest">Contacts</div>
-    </contact-modal>
+    <a
+        href="{{ route('login') }}"
+        class="relative first:rounded-t-lg border-b border-border lg:border-none text-sm before:content-none px-7 py-5 lg:p-0 lg:before:content-[''] navbar-link uppercase drop-shadow-md"
+        aria-label="Login"
+    >
+        Account
+    </a>
 
     <div class="min-w-[35px] mx-auto">
         <theme-switch theme="{{ request()->cookie('theme', 'system') }}" />
