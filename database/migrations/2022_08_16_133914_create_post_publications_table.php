@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Models\Post;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +12,10 @@ return new class extends Migration
     {
         Schema::create('post_publications', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Post::class)->unique();
+
+            $table->unsignedSmallInteger('post_id');
+            $table->foreign('post_id')->references('id')->on('posts')->cascadeOnDelete();
+
             $table->unsignedInteger('people_notified')->default(0);
             $table->timestamp('created_at')->useCurrent();
         });
