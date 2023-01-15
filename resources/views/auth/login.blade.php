@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @push('title', 'Login to your account')
 @push('description', 'Login to your account to stay in touch')

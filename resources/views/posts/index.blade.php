@@ -12,7 +12,7 @@
     $title = $tag ? sprintf("Articles on %s topic", $tag->title) : 'Blog for web developers';
 @endphp
 
-@extends('layouts.app')
+@extends('layouts.main')
 
 @push('title', "{$title} | Serhii Cho")
 @push('description', "You want to become a better web developer and create optimized, responsive and modern websites using the latest web technologies and best practices? Welcome!")

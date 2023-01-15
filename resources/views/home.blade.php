@@ -5,7 +5,7 @@
      * @var array<int, array<int ,mixed>> $latest_videos
      */
 @endphp
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <x-hero

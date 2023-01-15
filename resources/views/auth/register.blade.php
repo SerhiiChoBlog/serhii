@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @push('title', 'Create an account')
 @push('description', 'Create an account to unlock extra features only for registered users')
