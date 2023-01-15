@@ -4,16 +4,16 @@
      */
 @endphp
 
-<ul>
+<div class="flex flex-col items-center xl:items-start gap-3 mt-10 xl:mt-0">
     @foreach($menu_items as $item)
-        <li>
-            <a
-                href="{{ $item['href'] }}"
-                class="relative first:rounded-t-lg border-b border-border lg:border-none text-sm before:content-none px-7 py-5 lg:p-0 lg:before:content-[''] navbar-link {{ $item['class'] }} uppercase drop-shadow-md"
-                aria-label="{{ $item['title'] }}"
-            >
-                {{ $item['title'] }}
-            </a>
-        </li>
+        <x-nav-link
+            :href="$item['href']"
+            :title="$item['title']"
+            :class="$item['class']"
+        />
     @endforeach
-</ul>
+
+    <div class="xl:mt-2">
+        <contact-modal></contact-modal>
+    </div>
+</div>

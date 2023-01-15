@@ -7,16 +7,14 @@ const isOpen = ref(false)
 </script>
 
 <template>
-    <div class="p-7 lg:p-0 text-center">
-        <button
-            type="button"
-            class="w-full mx-auto shadow-md bg-main lg:w-auto font-semibold text-white py-2 px-6 rounded-full transition-colors hover:bg-main-hover uppercase text-sm tracking-widest"
-            @click="isOpen = true"
-            aria-label="Open contacts modal"
-        >
-            Contacts
-        </button>
-    </div>
+    <button
+        type="button"
+        class="main-btn"
+        @click="isOpen = true"
+        aria-label="Open contacts modal"
+    >
+        Contacts
+    </button>
 
     <modal :opened="isOpen" @close="isOpen = false">
         <div class="divide-y divide-border">

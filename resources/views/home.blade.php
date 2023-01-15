@@ -88,11 +88,7 @@
         </div>
     </x-home.section>
 
-    <x-home.section :isDark="true">
-        <subscription></subscription>
-    </x-home.section>
-
-    <x-home.section title="Coming soon" intro="The articles which I'm currently working on">
+    <x-home.section title="Coming soon" intro="The articles which I'm currently working on" :isDark="true">
         <x-home.coming-soon-section />
     </x-home.section>
 @endsection
