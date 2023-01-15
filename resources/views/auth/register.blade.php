@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
-@push('title', trans('common.register') . ' | ')
-@push('description', trans('common.register_page_description'))
+@push('title', 'Create an account')
+@push('description', 'Create an account to unlock extra features only for registered users')
 
 @section('content')
+    <x-hero class="bg-gray-700" navbar="text-white" />
+
     <x-form.wrapper
         title="Register"
         intro="Create an account to unlock extra features"
@@ -51,19 +53,6 @@
                         type="password"
                         placeholder="Enter password"
                         name="password"
-                    />
-                </div>
-
-                <div>
-                    <x-form.label id="password-confirm">
-                        Confirm password
-                    </x-form.label>
-
-                    <x-form.input
-                        id="password-confirm"
-                        type="password"
-                        placeholder="Repeat password"
-                        name="password_confirmation"
                     />
                 </div>
 
