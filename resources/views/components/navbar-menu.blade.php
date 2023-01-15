@@ -14,14 +14,14 @@
     </div>
 
     <div class="mx-auto lg:m-0 text-center mt-5">
-        @auth
+        @if (user())
             <a
-                href="{{ route('login') }}"
+                href="{{ auth('user')->check() ? '/user/profile' : '/admin/dashboard' }}"
                 class="flex items-center justify-center gap-4 bg-black/20 rounded-full pl-6 hover:bg-black/40 transition-colors group"
                 rel="noreferrer"
             >
                 <div class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[140px] text-lg">
-                    {{ auth()->user()->name }}
+                    {{ user()->name }}
                 </div>
 
                 <img
@@ -40,6 +40,6 @@
             >
                 {{ request()->is('login') ? 'Register' : 'Login' }}
             </a>
-        @endauth
+        @endif
     </div>
 </div>

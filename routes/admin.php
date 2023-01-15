@@ -30,5 +30,4 @@ Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
 
 Route::view('{any?}', 'layouts.admin')
     ->middleware('auth')
-    ->name('admin.dashboard')
     ->where('any', '.*');
