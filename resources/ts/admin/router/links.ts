@@ -1,6 +1,6 @@
 import { UserSidebarLink } from '@shared/types'
-import dispatchEvent from '@admin/modules/dispatchEvent'
-import appConfig from '@admin/appConfig'
+import dispatchEvent from '@shared/modules/dispatchEvent'
+import logout from '@shared/modules/logout'
 
 const links: UserSidebarLink[] = [
     {
@@ -59,7 +59,7 @@ const links: UserSidebarLink[] = [
         href: 'javascript:',
         title: 'Logout',
         icon: 'fa-sign-out-alt',
-        action: () => dispatchEvent(appConfig.events.logout),
+        action: logout,
     },
 ]
 
