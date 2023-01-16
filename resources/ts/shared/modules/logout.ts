@@ -1,12 +1,7 @@
-<script setup lang="ts">
 import axios from 'axios'
-import listenEvent from '@admin/modules/listenEvent'
-import appConfig from '@admin/appConfig'
 import showToast from '@admin/modules/showToast'
 
-listenEvent(appConfig.events.logout, logout)
-
-function logout(): void {
+export default (): void => {
     if (!confirm('Are you sure you want to logout?'))
         return
 
@@ -17,6 +12,3 @@ function logout(): void {
         })
         .catch(err => console.error(err))
 }
-</script>
-
-<template></template>
