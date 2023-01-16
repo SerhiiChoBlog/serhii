@@ -23,9 +23,9 @@
                     <div class="relative">
                         <div class="bg-black/70 p-5 rounded-lg">
                             @isset($infoTitle)
-                                <h1 class="text-white text-2xl lg:text-3xl">
+                                <h2 class="text-white text-2xl lg:text-3xl">
                                     {{ $infoTitle }}
-                                </h1>
+                                </h2>
                             @endisset
 
                             @isset($infoIntro)
@@ -45,7 +45,7 @@
             <div class="p-10 xl:p-20 w-auto bg-page dark:bg-page-second rounded-xl shadow-lg lg:min-w-[520px]">
                 <div class="mb-9">
                     @isset($title)
-                        <h1 class="text-2xl text-main">{{ $title }}</h1>
+                        <h1 class="text-2xl lg:text-4xl text-main">{{ $title }}</h1>
                     @endisset
 
                     @isset($intro)
