@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import useSearch from '@/composables/useSearch'
 import SearchIcon from '@shared/components/Icons/SearchIcon.vue'
-import Dropdown from './Dropdown.vue'
+import Dropdown from '@/components/Home/Dropdown.vue'
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 
 const { search, input, fetchSearchSuggestions } = useSearch()
@@ -23,9 +23,9 @@ const { search, input, fetchSearchSuggestions } = useSearch()
                         placeholder="Search blog posts"
                         v-model="search.query"
                         id="search-input"
-                        @input="e => {
-                            search.query = e!.target!.value
-                            fetchSearchSuggestions(e)
+                        @input="(e: Event) => {
+                            search.query = (e.target as HTMLInputElement).value
+                            fetchSearchSuggestions(e as KeyboardEvent)
                         }"
                         ref="input"
                         autocomplete="off"
