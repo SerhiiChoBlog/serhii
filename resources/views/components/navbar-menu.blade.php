@@ -25,7 +25,7 @@
                 </div>
 
                 <img
-                    src="https://s.gravatar.com/avatar/19fd901cd984f39cd970710568ec72e6?s=200"
+                    src="{{ asset(sprintf('storage/avatars/%s', user()->avatar)) }}"
                     alt="Profile picture"
                     width="200"
                     height="200"
