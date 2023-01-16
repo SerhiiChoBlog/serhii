@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import useSearch from '@/composables/useSearch'
-import SearchIcon from '@/components/Icons/SearchIcon.vue'
+import SearchIcon from '@shared/components/Icons/SearchIcon.vue'
 import Dropdown from './Dropdown.vue'
 import AppearTransition from '@/components/Transitions/AppearTransition.vue'
 

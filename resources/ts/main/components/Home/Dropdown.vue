@@ -2,7 +2,7 @@
 import { Search } from '@shared/types'
 import NotFound from './NotFound.vue'
 import DropdownItems from './DropdownItems.vue'
-import ReloadIcon from '../Icons/ReloadIcon.vue'
+import ReloadIcon from '@shared/components/Icons/ReloadIcon.vue'
 
 interface Props {
     search: Search

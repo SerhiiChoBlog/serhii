@@ -2,8 +2,8 @@
 import type { SubscriptionTagsModal } from '@shared/types'
 import type { Tag } from '@shared/types/models'
 import { computed, onMounted, ref } from 'vue'
-import CheckIcon from '@/components/Icons/CheckIcon.vue'
-import CloseIcon from '@/components/Icons/CloseIcon.vue'
+import CheckIcon from '@shared/components/Icons/CheckIcon.vue'
+import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
 import SubscriptionButton from '@/modules/Subscription/SubscriptionButton'
 import SubscriptionCache from '@/modules/Subscription/SubscriptionCache'
 
