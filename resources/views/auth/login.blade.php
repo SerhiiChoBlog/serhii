@@ -8,16 +8,16 @@
 
     <x-form.wrapper
         title="Login"
-        intro="Login to your account to stay in touch"
+        intro="Login to your account to unlock some extra features only for registered users"
         infoTitle="Don't have an account?"
-        infoIntro="Create an account to unlock extra features"
-        img="login.jpg"
+        infoIntro="If you don't have an account yet, you can register one in a few seconds"
+        img="login.webp"
     >
         <x-slot name="info">
             <div class="text-white">
                 <a
                     href="{{ route('register') }}"
-                    class="mt-5 inline-block bg-decor text-white py-4 px-10 rounded-full shadow-lg"
+                    class="mt-5 inline-block bg-black/70 hover:bg-black transition-colors text-white py-4 px-10 rounded-full shadow-lg"
                 >
                     Register an account
                 </a>
