@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import Tip from '@/components/Tip.vue'
-import EyeIcon from '@/components/Icons/EyeIcon.vue'
-import EyeSlashIcon from '@/components/Icons/EyeSlashIcon.vue'
+import EyeIcon from '@shared/components/Icons/EyeIcon.vue'
+import EyeSlashIcon from '@shared/components/Icons/EyeSlashIcon.vue'
 
 type Props = {
     inputId: string

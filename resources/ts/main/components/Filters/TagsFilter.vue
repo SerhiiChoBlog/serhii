@@ -8,7 +8,7 @@ import ListboxOptions from '@/components/Listbox/ListboxOptions.vue'
 import ListboxOption from '@/components/Listbox/ListboxOption.vue'
 import replaceQueryParam from '@/modules/replaceQueryParam'
 import showEverythingTag from '@/modules/showEverythingTag'
-import CloseIcon from '@/components/Icons/CloseIcon.vue'
+import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
 import TagImage from './TagImage.vue'
 
 type Props = {
