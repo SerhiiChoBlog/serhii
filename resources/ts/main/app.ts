@@ -14,6 +14,7 @@ import Search from '@/components/Home/Search.vue'
 import Filters from '@/components/Filters/Filters.vue'
 import Subscription from '@/components/Subscription/Subscription.vue'
 import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
+import UserDropdown from '@/components/UserDropdown.vue'
 
 const app = createApp({
     components: {
@@ -29,6 +30,7 @@ const app = createApp({
         Filters,
         Subscription,
         ShowPasswordButton,
+        UserDropdown,
     },
 
     setup() {
