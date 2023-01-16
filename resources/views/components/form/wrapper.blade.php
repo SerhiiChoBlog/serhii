@@ -15,23 +15,25 @@
         <div class="inline-flex flex-col md:flex-row mx-auto text-left">
             @if(isset($img) || isset($infoTitle) || isset($infoIntro))
                 <div
-                    class="relative p-10 xl:p-20 md:translate-x-4 translate-y-4 rounded-xl shadow-lg bg-no-repeat bg-cover max-w-[500px] bg-gray-600"
+                    class="relative p-10 xl:p-16 md:translate-x-4 translate-y-4 rounded-xl shadow-lg bg-no-repeat bg-cover max-w-[500px] bg-gray-600"
                     @isset ($img)
                         style="background-image: url({{ asset("storage/form-images/{$img}") }})"
                     @endisset
                 >
                     <div class="relative">
-                        @isset($infoTitle)
-                            <h1 class="text-white text-2xl lg:text-3xl">
-                                {{ $infoTitle }}
-                            </h1>
-                        @endisset
+                        <div class="bg-black/70 p-5 rounded-lg">
+                            @isset($infoTitle)
+                                <h1 class="text-white text-2xl lg:text-3xl">
+                                    {{ $infoTitle }}
+                                </h1>
+                            @endisset
 
-                        @isset($infoIntro)
-                            <h2 class="text-lg mt-2 text-white">
-                                {{ $infoIntro }}
-                            </h2>
-                        @endisset
+                            @isset($infoIntro)
+                                <h2 class="text-lg mt-2 text-white">
+                                    {{ $infoIntro }}
+                                </h2>
+                            @endisset
+                        </div>
 
                         @isset($info)
                             <div>{{ $info }}</div>

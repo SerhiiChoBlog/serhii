@@ -10,14 +10,14 @@
         title="Register"
         intro="Create an account to unlock extra features only for registered users"
         infoTitle="Already have an account?"
-        infoIntro="Login to your account to stay in touch"
-        img="register.jpg"
-    >
+        infoIntro="If you already have an account, you can login to your account in a few seconds"
+        img="register.webp"
+   >
         <x-slot name="info">
             <div class="text-white">
                 <a
                     href="{{ route('login') }}"
-                    class="mt-5 inline-block bg-decor text-white py-4 px-20 rounded-full shadow-lg"
+                    class="mt-5 inline-block bg-black/70 hover:bg-black transition-colors text-white py-4 px-10 rounded-full shadow-lg"
                 >
                     Login
                 </a>
