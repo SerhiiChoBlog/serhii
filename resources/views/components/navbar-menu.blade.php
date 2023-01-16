@@ -13,25 +13,26 @@
         <theme-switch theme="{{ request()->cookie('theme', 'system') }}" />
     </div>
 
-    <div class="mx-auto lg:m-0 text-center mt-5">
+    <div class="mx-auto lg:m-0 text-center mt-5 relative">
         @if (user())
-            <a
-                href="{{ auth('user')->check() ? route('user.profile.show') : '/admin/dashboard' }}"
-                class="flex items-center justify-center gap-4 bg-black/20 rounded-full pl-5 hover:bg-black/40 transition-colors group"
-                rel="noreferrer"
-            >
-                <div class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[150px] text-lg">
-                    {{ user()->name }}
-                </div>
+            <user-dropdown>
+                <button
+                    type="button"
+                    class="flex items-center justify-center gap-4 bg-black/20 rounded-full pl-5 hover:bg-black/40 transition-colors group"
+                >
+                    <div class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[150px] text-lg">
+                        {{ user()->name }}
+                    </div>
 
-                <img
-                    src="{{ asset(sprintf('storage/avatars/%s', user()->avatar)) }}"
-                    alt="Profile picture"
-                    width="200"
-                    height="200"
-                    class="rounded-full w-10 h-10 border border-white shadow-md group-hover:shadow-lg"
-                />
-            </a>
+                    <img
+                        src="{{ asset(sprintf('storage/avatars/%s', user()->avatar)) }}"
+                        alt="Profile picture"
+                        width="200"
+                        height="200"
+                        class="rounded-full w-10 h-10 border border-white shadow-md group-hover:shadow-lg"
+                    />
+                </a>
+            </user-dropdown>
         @else
             <a
                 href="{{ request()->is('login') ? route('register') : route('login') }}"
