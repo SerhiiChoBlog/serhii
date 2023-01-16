@@ -3,6 +3,10 @@ import MenuItems from '@shared/components/Dropdown/MenuItems.vue'
 import MenuItem from '@shared/components/Dropdown/MenuItem.vue'
 import { Menu, MenuButton } from '@headlessui/vue'
 import logout from '@shared/modules/logout'
+
+function redirectTo(url: string) {
+    window.location.href = url
+}
 </script>
 
 <template>
@@ -12,7 +16,7 @@ import logout from '@shared/modules/logout'
         </menu-button>
 
         <menu-items>
-            <menu-item><a href="/user/profile">Profile</a></menu-item>
+            <menu-item @click="redirectTo('/user/profile')">Profile</menu-item>
             <menu-item @click="logout">Logout</menu-item>
         </menu-items>
     </Menu>
