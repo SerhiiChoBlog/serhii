@@ -12,7 +12,7 @@ import ChooseTagsButton from './ChooseTagsButton.vue'
 import SubscriptionTagIcon from './SubscriptionTagIcon.vue'
 import SubscriptionButton from '@/modules/Subscription/SubscriptionButton'
 import SubscriptionCache from '@/modules/Subscription/SubscriptionCache'
-import listenEvent from '@/modules/listenEvent'
+import listenEvent from '@shared/modules/listenEvent'
 import appConfig from '@/appConfig'
 
 const selectedTags = ref<Tag[]>([])

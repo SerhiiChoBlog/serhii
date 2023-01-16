@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ChevronDown from '@/components/Icons/ChevronDownIcon.vue'
 import { ref } from 'vue'
-import listenEvent from '@/modules/listenEvent'
+import listenEvent from '@shared/modules/listenEvent'
 import appConfig from '@/appConfig'
 
 type Emits = {

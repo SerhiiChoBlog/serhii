@@ -1,6 +1,6 @@
 import Cache from '@/modules/Cache'
 import appConfig from '@/appConfig'
-import dispatchEvent from '@/modules/dispatchEvent'
+import dispatchEvent from '@shared/modules/dispatchEvent'
 
 export default class {
     public static rename(): void {
