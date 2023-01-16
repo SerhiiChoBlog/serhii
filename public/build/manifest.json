@@ -40,19 +40,19 @@
     "src": "resources/fonts/fa-solid-900.svg"
   },
   "resources/ts/main/app.ts": {
-    "file": "assets/app.665d9f36.js",
+    "file": "assets/app.6c408486.js",
     "src": "resources/ts/main/app.ts",
     "isEntry": true,
     "imports": [
-      "_hidden.cba946d8.js"
+      "_logout.85b98fcf.js"
     ]
   },
   "resources/ts/admin/app.ts": {
-    "file": "assets/app.9388267e.js",
+    "file": "assets/app.745e9b04.js",
     "src": "resources/ts/admin/app.ts",
     "isEntry": true,
     "imports": [
-      "_hidden.cba946d8.js"
+      "_logout.85b98fcf.js"
     ]
   },
   "resources/ts/user/app.ts": {
@@ -60,26 +60,26 @@
     "src": "resources/ts/user/app.ts",
     "isEntry": true
   },
-  "_hidden.cba946d8.js": {
-    "file": "assets/hidden.cba946d8.js"
+  "_logout.85b98fcf.js": {
+    "file": "assets/logout.85b98fcf.js"
   },
   "resources/css/admin/font-awesome.css": {
     "file": "assets/font-awesome.9574f15e.css",
     "src": "resources/css/admin/font-awesome.css",
     "isEntry": true
   },
-  "resources/css/user/app.css": {
-    "file": "assets/app.1df694e0.css",
-    "src": "resources/css/user/app.css",
-    "isEntry": true
-  },
   "resources/css/admin/app.css": {
-    "file": "assets/app.b3e19b56.css",
+    "file": "assets/app.ff2b7c4c.css",
     "src": "resources/css/admin/app.css",
     "isEntry": true
   },
+  "resources/css/user/app.css": {
+    "file": "assets/app.46592e02.css",
+    "src": "resources/css/user/app.css",
+    "isEntry": true
+  },
   "resources/css/main/app.css": {
-    "file": "assets/app.9e3102e2.css",
+    "file": "assets/app.58d38afb.css",
     "src": "resources/css/main/app.css",
     "isEntry": true
   }
