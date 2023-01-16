@@ -1,3 +1,3 @@
 <template>
-    <h3> 🧐 <span class="ml-2 text-lg">Не найдено</span></h3>
+    <h3> 🧐 <span class="ml-2 text-lg">Not found</span></h3>
 </template>

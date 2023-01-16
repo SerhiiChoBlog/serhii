@@ -52,7 +52,7 @@ function changeInterfaceTo(toTheme: 'light' | 'dark'): void {
             <div class="flex items-center justify-center">
                 <button
                     type="button"
-                    class="drop-shadow-md relative text-yellow-300 dark:text-main flex py-2 px-4 lg:px-2 bg-transparent text-white hover:bg-gray-500 hover:bg-opacity-50 rounded-full transition-colors"
+                    class="drop-shadow-md relative text-yellow-300 dark:text-main flex py-2 px-4 lg:px-2 bg-transparent hover:bg-gray-500 hover:bg-opacity-50 rounded-full transition-colors"
                     @click="() => switchTheme(currentTheme === 'light' ? 'dark' : 'light')"
                     aria-label="Toggle between light and dark themes"
                 >

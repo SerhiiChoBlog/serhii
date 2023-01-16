@@ -16,7 +16,7 @@
                 </a>
             @endunless
 
-            <hamburger :is-light="true"></hamburger>
+            <hamburger></hamburger>
         </div>
 
         <x-navbar-menu />
