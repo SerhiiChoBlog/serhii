@@ -3,7 +3,7 @@ import type { Section } from '@shared/types'
 import { onMounted, ref } from 'vue'
 import PageTitle from '@admin/components/PageTitle.vue'
 import axios from 'axios'
-import Spinner from '@admin/components/Spinner.vue'
+import Spinner from '@shared/components/Icons/Spinner.vue'
 
 const sections = ref<Section[]>([])
 const loading = ref(true)

@@ -9,7 +9,7 @@ import PageTitle from '@admin/components/PageTitle.vue'
 import FormInput from '@admin/components/Form/FormInput.vue'
 import FormTextarea from '@admin/components/Form/FormTextarea.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
-import Spinner from '@admin/components/Spinner.vue'
+import Spinner from '@shared/components/Icons/Spinner.vue'
 
 const loading = ref(true)
 const route = useRoute()

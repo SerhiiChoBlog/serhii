@@ -5,7 +5,7 @@ import handleError from '@admin/modules/handleError'
 import axios from 'axios'
 import PageTitle from '@admin/components/PageTitle.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
-import Spinner from '@admin/components/Spinner.vue'
+import Spinner from '@shared/components/Icons/Spinner.vue'
 
 const tags = ref<Tag[]>([])
 const loading = ref(true)

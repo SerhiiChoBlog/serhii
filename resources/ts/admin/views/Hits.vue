@@ -4,7 +4,7 @@ import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import handleError from '@admin/modules/handleError'
 import PageTitle from '@admin/components/PageTitle.vue'
-import Spinner from '@admin/components/Spinner.vue'
+import Spinner from '@shared/components/Icons/Spinner.vue'
 
 const hits = ref<Hit[]>([])
 const loading = ref(true)

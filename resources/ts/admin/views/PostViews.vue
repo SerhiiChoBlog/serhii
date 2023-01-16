@@ -6,7 +6,7 @@ import axios from 'axios'
 import echo from '@admin/modules/echo'
 import handleError from '@admin/modules/handleError'
 import PageTitle from '@admin/components/PageTitle.vue'
-import Spinner from '@admin/components/Spinner.vue'
+import Spinner from '@shared/components/Icons/Spinner.vue'
 
 type Views = {
     unique: { post_id: number, amount: number, post: Post }[] | null
