@@ -139,7 +139,7 @@ function allTagsSelected(): boolean {
                             </span>
                         </label>
 
-                        <div class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 inline-block rounded-full shadow-sm">
+                        <div class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 rounded-full shadow-sm">
                             <choose-tags-button
                                 class="hidden md:inline-flex"
                                 @clicked="showModalWithTags"

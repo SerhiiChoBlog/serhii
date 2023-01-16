@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-interface Props {
-    isLight: boolean
-}
-
-const { isLight } = defineProps<Props>()
 const isActive = ref(false)
 
 function toggleNavbar(): void {

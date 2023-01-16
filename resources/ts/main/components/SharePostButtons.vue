@@ -69,7 +69,7 @@ function saveShare(social: string): void {
             v-for="link in links"
             :key="link.title"
             :href="link.href ? link.href : 'javascript:'"
-            :target="link.href ? '_blank' : null"
+            :target="link.href ? '_blank' : ''"
             rel="nofollow noopener noreferrer"
             @mousedown="saveShare(link.title)"
             @click="link.action ? link.action() : null"

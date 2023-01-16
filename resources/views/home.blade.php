@@ -39,7 +39,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 -translate-y-16 lg:translate-y-0 bg-page p-2 rounded-xl">
             @foreach ($random_posts as $post)
                 <div
-                    class="bg-page p-3 rounded-xl p-2 {{ $loop->index === 1 ? 'lg:-translate-y-16' : 'lg:-translate-y-7' }}"
+                    class="bg-page p-3 rounded-xl {{ $loop->index === 1 ? 'lg:-translate-y-16' : 'lg:-translate-y-7' }}"
                 >
                     <x-posts.vertical-post :post="$post" />
                 </div>
