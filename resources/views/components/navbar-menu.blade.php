@@ -29,7 +29,7 @@
                         alt="Profile picture"
                         width="200"
                         height="200"
-                        class="rounded-full w-10 h-10 border border-white shadow-md group-hover:shadow-lg"
+                        class="rounded-full w-10 h-10 shadow-md group-hover:shadow-lg"
                     />
                 </a>
             </user-dropdown>
