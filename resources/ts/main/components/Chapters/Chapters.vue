@@ -11,7 +11,7 @@ import DeleteIcon from '@shared/components/Icons/DeleteIcon.vue'
 import LoadIcon from '@shared/components/Icons/LoadIcon.vue'
 import sweetAlert from 'sweetalert2'
 import ControlButton from './ControlButton.vue'
-import SlideUpTransition from '@/components/Transitions/SlideUpTransition.vue'
+import SlideUpTransition from '@shared/components/Transitions/SlideUpTransition.vue'
 import showToast from '@/modules/showToast'
 
 interface Props {

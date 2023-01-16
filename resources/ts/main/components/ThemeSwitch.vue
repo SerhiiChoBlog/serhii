@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import axios from 'axios'
-import AppearTransition from '@/components/Transitions/AppearTransition.vue'
+import AppearTransition from '@shared/components/Transitions/AppearTransition.vue.js'
 import Tip from '@/components/Tip.vue'
 
 type Theme = 'light' | 'dark' | 'system'

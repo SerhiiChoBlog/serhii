@@ -3,7 +3,7 @@ import type { Tag } from '@shared/types/models'
 import { ref } from 'vue'
 import showEverythingTag from '@/modules/showEverythingTag'
 import TagsFilter from './TagsFilter.vue'
-import AppearTransition from '@/components/Transitions/AppearTransition.vue'
+import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 
 type Props = {
     currentTag: Tag | null
