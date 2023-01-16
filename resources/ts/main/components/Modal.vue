@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
-import AppearTransition from '@/components/Transitions/AppearTransition.vue'
+import AppearTransition from '@shared/components/Transitions/AppearTransition.vue.js'
 import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
 
 type Props = {

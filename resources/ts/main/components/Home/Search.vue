@@ -2,7 +2,7 @@
 import useSearch from '@/composables/useSearch'
 import SearchIcon from '@shared/components/Icons/SearchIcon.vue'
 import Dropdown from './Dropdown.vue'
-import AppearTransition from '@/components/Transitions/AppearTransition.vue'
+import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 
 const { search, input, fetchSearchSuggestions } = useSearch()
 </script>
@@ -24,7 +24,7 @@ const { search, input, fetchSearchSuggestions } = useSearch()
                         v-model="search.query"
                         id="search-input"
                         @input="e => {
-                            search.query = e.target.value
+                            search.query = e!.target!.value
                             fetchSearchSuggestions(e)
                         }"
                         ref="input"

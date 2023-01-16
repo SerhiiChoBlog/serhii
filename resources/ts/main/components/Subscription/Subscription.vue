@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Tag } from '@shared/types/models'
 import type { SubscriptionDemandResponse, SubscriptionForm, SubscriptionTagsModal } from '@shared/types'
-import AppearTransition from '@/components/Transitions/AppearTransition.vue'
+import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 import { onMounted, reactive, ref } from 'vue'
 import axios from 'axios'
 import showToast from '@/modules/showToast'
