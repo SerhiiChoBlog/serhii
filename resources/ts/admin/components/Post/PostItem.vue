@@ -10,7 +10,7 @@ const { post } = defineProps<Props>()
 </script>
 
 <template>
-    <tr class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100">
+    <tr class="border-b border-border odd:bg-page-second">
         <td class="p-3 text-lg">
             <i v-if="post.is_published" class="fas fa-check text-green-600"></i>
             <i v-else class="fas fa-times text-red-600"></i>
