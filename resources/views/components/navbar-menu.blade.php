@@ -31,15 +31,15 @@
                         height="200"
                         class="rounded-full w-10 h-10 shadow-md group-hover:shadow-lg"
                     />
-                </a>
+                </button>
             </user-dropdown>
         @else
             <a
-                href="{{ request()->is('login') ? route('register') : route('login') }}"
+                href="{{ route('login') }}"
                 class="main-btn min-w-[140px]"
                 rel="noreferrer"
             >
-                {{ request()->is('login') ? 'Register' : 'Login' }}
+                Login
             </a>
         @endif
     </div>
