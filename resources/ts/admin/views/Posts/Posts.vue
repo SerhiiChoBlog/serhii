@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import type { Post } from '@shared/types/models'
 import { onMounted, ref } from 'vue'
+import handleError from '@admin/modules/handleError'
 import PageTitle from '@admin/components/PageTitle.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import PostItem from '@admin/components/Post/PostItem.vue'
 import axios from 'axios'
 import Spinner from '@shared/components/Icons/Spinner.vue'
-import handleError from '@admin/modules/handleError'
+import DataTable from '@admin/components/DataTable/DataTable.vue'
+import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 
 const posts = ref<Post[]>([])
 const loading = ref(true)
@@ -35,30 +37,24 @@ function fetchPosts(): void {
 
         <spinner v-if="loading" />
 
-        <div v-else-if="posts.length > 0" class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="table-auto">
-                <thead class="bg-gray-700 text-white text-left">
-                    <tr>
-                        <th></th>
-                        <th class="p-3 font-light">Image</th>
-                        <th class="p-3 font-light min-w-[300px]">Title</th>
-                        <th class="p-3 font-light">Intro</th>
-                        <th class="p-3 font-light">Shares</th>
-                        <th class="p-3 font-light">Views</th>
-                        <th class="p-3 font-light">View</th>
-                        <th class="p-3 font-light">Edit</th>
-                    </tr>
-                </thead>
+        <DataTable v-else-if="posts.length > 0">
+            <template v-slot:head>
+                <HeadDetail></HeadDetail>
+                <HeadDetail>Image</HeadDetail>
+                <HeadDetail class="min-w-[300px]">Title</HeadDetail>
+                <HeadDetail>Intro</HeadDetail>
+                <HeadDetail>Shares</HeadDetail>
+                <HeadDetail>Views</HeadDetail>
+                <HeadDetail>View</HeadDetail>
+                <HeadDetail>Edit</HeadDetail>
+            </template>
 
-                <tbody>
-                    <post-item
-                        v-for="post in posts"
-                        :key="post.id"
-                        :post="post"
-                    />
-                </tbody>
-            </table>
-        </div>
+            <post-item
+                v-for="post in posts"
+                :key="post.id"
+                :post="post"
+            />
+        </DataTable>
 
         <h2 v-else class="text-xl text-center pt-4">There are no posts</h2>
     </div>
