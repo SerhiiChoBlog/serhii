@@ -15,7 +15,7 @@ watch(props, () => {
 </script>
 
 <template>
-    <span class="_counter absolute bg-white rounded-full border p-1 top-1/2 -translate-y-1/2 -right-3 text-gray-400 text-sm">
+    <span class="_counter absolute bg-page rounded-full border border-border p-1 top-1/2 -translate-y-1/2 -right-3 text-text-sm">
         {{ length - currLength }}
     </span>
 </template>

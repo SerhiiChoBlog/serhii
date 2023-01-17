@@ -19,7 +19,7 @@ const emit = defineEmits<Emits>()
 const { post } = defineProps<Props>()
 const loading = ref(false)
 
-function submitImage(e: SubmitEvent): void {
+function submitImage(e: Event): void {
     loading.value = true
 
     const form = e.target! as HTMLFormElement
@@ -65,15 +65,11 @@ function deleteImage(id: number): void {
 
         <div class="overflow-x-auto shadow-md rounded-lg mx-auto mt-7">
             <table class="table-auto w-full">
-                <thead class="bg-gray-500 text-white text-left">
+                <thead class="bg-gray-700 text-white text-left">
                     <tr>
-                        <th
-                            v-for="title in ['Image', 'URI', 'Delete']"
-                            :key="title"
-                            class="p-3 font-light"
-                        >
-                            {{ title }}
-                        </th>
+                        <th class="p-3 font-light w-40">Image</th>
+                        <th class="p-3 font-light">URI</th>
+                        <th class="p-3 font-light w-40">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,7 +77,7 @@ function deleteImage(id: number): void {
                         v-if="post.images"
                         v-for="image in post.images"
                         :key="image.id"
-                        class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100"
+                        class="border-b border-border odd:bg-page-second"
                     >
                         <td class="px-3 py-1">
                             <a :href="image.uri" target="_blank">
@@ -98,7 +94,7 @@ function deleteImage(id: number): void {
                             <input
                                 type="text"
                                 :value="image.uri"
-                                class="bg-gray-200 rounded-md p-2 w-full"
+                                class="border border-border bg-transparent text-font rounded-md p-2 w-full"
                                 disabled
                             />
                         </td>
@@ -122,7 +118,7 @@ function deleteImage(id: number): void {
             class="mt-6"
         >
             <div class="inline-block mr-2">
-                <label class="border-4 text-gray-400 hover:text-gray-500 cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-300 transition-colors">
+                <label class="border-4 border-gray-500 text-font cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-700 transition-colors">
                     <input class="hidden" type="file" name="image" required>
                     <span>{{ loading ? 'Uploading image...' : 'Choose an image...' }}</span>
                 </label>

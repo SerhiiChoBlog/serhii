@@ -141,7 +141,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                         id="video"
                                         placeholder="Enter a YouTube video ID"
                                         classes=""
-                                        :value="post.video ? post.video.id : null"
+                                        :value="post.video ? post.video.id : undefined"
                                         :length="190"
                                         name="video"
                                     >YouTube video ID</form-input>
@@ -169,7 +169,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                             id="intro"
                             placeholder="Enter a short intro"
                             classes="min-h-[70px]"
-                            :value="post.intro"
+                            :value="post.intro || undefined"
                             :length="190"
                             name="intro"
                         >Short intro</form-textarea>

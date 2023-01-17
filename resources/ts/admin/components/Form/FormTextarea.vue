@@ -28,7 +28,7 @@ const inputValue = ref<string>(value || '')
 
         <div class="inline-block relative w-full">
             <textarea
-                class="border py-3 px-4 rounded-md w-full"
+                class="border border-border bg-page-second py-3 px-4 rounded-md w-full"
                 :class="classes"
                 :placeholder="placeholder"
                 v-model="inputValue"
