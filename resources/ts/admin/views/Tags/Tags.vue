@@ -6,6 +6,10 @@ import axios from 'axios'
 import PageTitle from '@admin/components/PageTitle.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
+import DataTable from '@admin/components/DataTable/DataTable.vue'
+import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
+import BodyRow from '@admin/components/DataTable/BodyRow.vue'
+import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 
 const tags = ref<Tag[]>([])
 const loading = ref(true)
@@ -41,69 +45,61 @@ function fetchTags(): void {
                 There are not tags
             </h2>
 
-            <div v-else class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full">
-                    <thead class="bg-gray-500 text-left">
-                    <tr>
-                        <th
-                            v-for="title in ['Img', 'Title', 'Slug', 'Posts', 'Color', 'Tag', 'Description', '']"
-                            :key="title"
-                            class="text-white p-3 font-light"
+            <DataTable v-else>
+                <template v-slot:head>
+                    <HeadDetail
+                        v-for="title in ['Img', 'Title', 'Slug', 'Posts', 'Color', 'Tag', 'Description', '']"
+                        :key="title"
+                    >
+                        {{ title }}
+                    </HeadDetail>
+                </template>
+
+                <BodyRow v-for="tag in tags" :key="tag.id">
+                    <BodyDetail>
+                        <div class="bg-white w-[28px] aspect-square flex items-center justify-center rounded-full">
+                            <img
+                                :src="`/storage/tags/${tag.name}.webp`"
+                                :alt="`Logo of ${tag.name}`"
+                                width="200"
+                                height="200"
+                                class="w-[18px]"
+                            />
+                        </div>
+                    </BodyDetail>
+                    <BodyDetail>{{ tag.title }}</BodyDetail>
+                    <BodyDetail class="min-w-[165px]">{{ tag.name }}</BodyDetail>
+                    <BodyDetail>{{ tag.posts_count }}</BodyDetail>
+                    <BodyDetail>
+                        <input
+                            type="text"
+                            :value="tag.color"
+                            class="w-[80px] border border-border bg-transparent text-center rounded-md"
                         >
-                            {{ title }}
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr
-                            v-for="tag in tags"
-                            :key="tag.id"
-                            class="odd:bg-gray-50 border-b transition-colors hover:bg-gray-100"
+                    </BodyDetail>
+                    <BodyDetail class="min-w-[140px]">
+                        <a
+                            :href="`/posts?tag=${tag.name}`"
+                            class="py-[3px] inline-block font-white px-2 rounded-md text-white text-xs"
+                            :style="{ backgroundColor: tag.color }"
                         >
-                            <td class="px-3 py-2">
-                                <img
-                                    :src="`/storage/tags/${tag.name}.webp`"
-                                    :alt="`Logo of ${tag.name}`"
-                                    width="200"
-                                    height="200"
-                                    class="w-[20px]"
-                                />
-                            </td>
-                            <td class="px-3 py-2">{{ tag.title }}</td>
-                            <td class="px-3 py-2 min-w-[165px]">{{ tag.name }}</td>
-                            <td class="px-3 py-2">{{ tag.posts_count }}</td>
-                            <td class="px-3 py-2">
-                                <input
-                                    type="text"
-                                    :value="tag.color"
-                                    class="w-[80px] text-center rounded-md bg-gray-200"
-                                >
-                            </td>
-                            <td class="px-3 py-2 min-w-[140px]">
-                                <a
-                                    :href="`/posts?tag=${tag.name}`"
-                                    class="py-[3px] inline-block font-white px-2 rounded-md text-white text-xs"
-                                    :style="{ backgroundColor: tag.color }"
-                                >
-                                    {{ tag.name }}
-                                </a>
-                            </td>
-                            <td class="px-3 py-2">
-                                {{ tag.description }}
-                            </td>
-                            <td class="px-3 py-2">
-                                <router-link
-                                    :to="{ name: 'tags-edit', params: { id: tag.id } }"
-                                    class="text-font-second inline-block text-xs transition-colors hover:text-main-dark p-1"
-                                    title="Edit tag"
-                                >
-                                    <i class="fas fa-pen"></i>
-                                </router-link>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                            {{ tag.name }}
+                        </a>
+                    </BodyDetail>
+                    <BodyDetail>
+                        {{ tag.description }}
+                    </BodyDetail>
+                    <BodyDetail>
+                        <router-link
+                            :to="{ name: 'tags-edit', params: { id: tag.id } }"
+                            class="text-font-second inline-block text-xs transition-colors hover:text-main p-1"
+                            title="Edit tag"
+                        >
+                            <i class="fas fa-pen"></i>
+                        </router-link>
+                    </BodyDetail>
+                </BodyRow>
+            </DataTable>
         </div>
     </div>
 </template>
