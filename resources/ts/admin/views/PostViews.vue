@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import type { Post } from '@shared/types/models'
 import { onMounted, reactive, ref } from 'vue'
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/vue'
 import axios from 'axios'
 import echo from '@admin/modules/echo'
 import handleError from '@admin/modules/handleError'
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/vue'
 import PageTitle from '@admin/components/PageTitle.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
+import DataTable from '@admin/components/DataTable/DataTable.vue'
+import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
+import BodyRow from '@admin/components/DataTable/BodyRow.vue'
+import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 
 type Views = {
     unique: { post_id: number, amount: number, post: Post }[] | null
@@ -62,7 +66,7 @@ function fetchViews(): void {
         <spinner v-if="loading" />
 
         <tab-group v-else>
-            <tab-list class="flex gap-2 rounded-xl bg-gray-500 p-1">
+            <tab-list class="flex gap-2 rounded-xl bg-gray-800 p-1 text-white">
                 <tab
                     v-for="title in ['Unique views', 'Daily views']"
                     :key="title"
@@ -73,7 +77,7 @@ function fetchViews(): void {
                         :class="[
                           'w-full rounded-lg py-3 text-md font-medium leading-5',
                           'ring-white ring-opacity-60 ring-offset-2 ring-offset-gray-400 focus:outline-none focus:ring-2',
-                          selected ? 'bg-white shadow' : 'hover:bg-white/30 text-white',
+                          selected ? 'bg-gray-600 shadow' : 'hover:bg-white/30 text-white',
                         ]"
                       >
                           {{ title }}
@@ -83,90 +87,74 @@ function fetchViews(): void {
 
             <tab-panels class="mt-5">
                 <tab-panel>
-                    <div>
-                        <div class="overflow-x-auto shadow-md rounded-lg mx-auto">
-                            <table class="table-auto w-full">
-                                <thead class="bg-gray-500 text-white text-left">
-                                    <tr>
-                                        <th
-                                            v-for="title in ['Image', 'Views', 'Post title']"
-                                            :key="title"
-                                            class="p-3 font-light"
+                    <DataTable>
+                        <template v-slot:head>
+                            <HeadDetail
+                                v-for="title in ['Image', 'Views', 'Post title']"
+                                :key="title"
+                            >
+                                {{ title }}
+                            </HeadDetail>
+                        </template>
+
+                        <BodyRow
+                            v-if="views.unique"
+                            v-for="view in views.unique"
+                            :key="view.post_id"
+                            class="transition-colors duration-500"
+                            :class="{ '!bg-yellow-200 animate-pulse': lastNewView.post_id === view.post_id }"
+                        >
+                            <BodyDetail>
+                                <img
+                                    :src="'/' + view.post.image_sm"
+                                    :alt="view.post.title"
+                                    class="w-[80px] rounded-sm shadow-sm"
+                                />
+                            </BodyDetail>
+                            <BodyDetail>{{ view.amount }}</BodyDetail>
+                            <BodyDetail class="px-3 py-1 flex items-center">
+                                <span class="first-letter:uppercase leading-5">
+                                    {{ view.post.title }}
+
+                                    <template v-if="lastNewView.country && lastNewView.post_id === view.post_id">
+                                        <img
+                                            :src="`/storage/admin/flags/${lastNewView.country.toLowerCase()}.png`"
+                                            :alt="lastNewView.country"
+                                            width="20"
+                                            class="inline-block ml-1 rounded-sm shadow-sm"
                                         >
-                                            {{ title }}
-                                        </th>
-                                    </tr>
-                                </thead>
 
-                                <tbody v-if="views.unique">
-                                    <tr
-                                        v-if="views.unique"
-                                        v-for="view in views.unique"
-                                        :key="view.post_id"
-                                        class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100 transition-colors duration-500"
-                                        :class="{ '!bg-yellow-200 animate-pulse': lastNewView.post_id === view.post_id }"
-                                    >
-                                        <td class="px-3 py-1">
-                                            <img
-                                                :src="'/' + view.post.image_sm"
-                                                :alt="view.post.title"
-                                                class="w-[80px] rounded-sm shadow-sm"
-                                            />
-                                        </td>
-                                        <td class="px-3 py-1">{{ view.amount }}</td>
-                                        <td class="px-3 py-1 flex items-center">
-                                            <span class="first-letter:uppercase leading-5">
-                                                {{ view.post.title }}
-
-                                                <template v-if="lastNewView.country && lastNewView.post_id === view.post_id">
-                                                    <img
-                                                        :src="`/storage/admin/flags/${lastNewView.country.toLowerCase()}.png`"
-                                                        :alt="lastNewView.country"
-                                                        width="20"
-                                                        class="inline-block ml-1 rounded-sm shadow-sm"
-                                                    >
-
-                                                    <span class="ml-1 text-xs font-bold">
-                                                        {{ lastNewView.country }}
-                                                    </span>
-                                                </template>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                                        <span class="ml-1 text-xs font-bold">
+                                            {{ lastNewView.country }}
+                                        </span>
+                                    </template>
+                                </span>
+                            </BodyDetail>
+                        </BodyRow>
+                    </DataTable>
                 </tab-panel>
 
                 <tab-panel>
-                    <div>
-                        <div class="overflow-x-auto shadow-md rounded-lg mx-auto">
-                            <table class="table-auto w-full">
-                                <thead class="bg-gray-500 text-white text-left">
-                                <tr>
-                                    <th
-                                        v-for="title in ['Date', 'Views']"
-                                        :key="title"
-                                        class="p-3 font-light"
-                                    >
-                                        {{ title }}
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody v-if="views.daily">
-                                    <tr
-                                        v-for="view in views.daily"
-                                        :key="view.amount"
-                                        class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100 first:!bg-yellow-200"
-                                    >
-                                        <td class="px-3 py-1">{{ view.date }}</td>
-                                        <td class="px-3 py-1">{{ view.amount }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <DataTable>
+                        <template v-slot:head>
+                            <HeadDetail
+                                v-for="title in ['Date', 'Views']"
+                                :key="title"
+                            >
+                                {{ title }}
+                            </HeadDetail>
+                        </template>
+
+                        <BodyRow
+                            v-if="views.daily"
+                            v-for="view in views.daily"
+                            :key="view.amount"
+                            class="first:!bg-yellow-200 first:text-black"
+                        >
+                            <BodyDetail>{{ view.date }}</BodyDetail>
+                            <BodyDetail>{{ view.amount }}</BodyDetail>
+                        </BodyRow>
+                    </DataTable>
                 </tab-panel>
             </tab-panels>
       </tab-group>
