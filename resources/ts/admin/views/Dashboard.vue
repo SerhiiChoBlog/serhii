@@ -30,11 +30,11 @@ function fetchSections(): void {
                 :key="section.title"
                 class="flex flex-col justify-between"
             >
-                <div class="text-font-second text-center uppercase text-sm text-font-second tracking-widest">
+                <div class="text-center uppercase text-sm text-font-second tracking-widest">
                     {{ section.title }}
                 </div>
 
-                <div class="drop-shadow-md text-2xl text-center font-semibold text-main-dark drop-shadow-md">
+                <div class="text-3xl text-center font-semibold text-font drop-shadow-md">
                     {{ section.value }}
                 </div>
             </div>
