@@ -186,7 +186,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                     </div>
 
                     <div>
-                        <div class="flex flex-col justify-center fixed right-[20px] top-8 z-[9999] space-y-2">
+                        <div class="flex flex-col justify-center fixed right-[20px] top-20 z-[9999] space-y-2">
                             <main-button class="bg-green-500 hover:bg-green-600">
                                 <i v-if="loading" class="fas fa-spinner animate-spin mr-2"></i>
                                 <i v-else class="fas fa-save mr-2"></i>

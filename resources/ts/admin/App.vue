@@ -5,7 +5,7 @@ import UserSidebar from './components/UserSidebar.vue'
 <template>
     <user-sidebar />
 
-    <div class="pl-9 lg:pl-14 py-10 text-font font-main bg-page">
+    <div class="pl-9 lg:pl-14 py-10">
         <router-view />
     </div>
 </template>

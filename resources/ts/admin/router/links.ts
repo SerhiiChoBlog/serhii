@@ -4,12 +4,6 @@ import logout from '@shared/modules/logout'
 
 const links: UserSidebarLink[] = [
     {
-        href: '/',
-        routeName: null,
-        title: 'Site',
-        icon: 'fa-home',
-    },
-    {
         routeName: 'dashboard',
         title: 'Dashboard',
         icon: 'fa-columns',
