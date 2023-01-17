@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { RouteLocationNormalized } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router'
 
 type Props = {
     icon: string
     title: string
     href?: string
-    route?: RouteLocationNormalized
+    route?: RouteLocationRaw
 }
 
 const { icon, href, title, route } = defineProps<Props>()
