@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import type { Post } from '@shared/types/models'
-import MainButton from '@admin/components/Buttons/MainButton.vue'
+import { ref } from 'vue'
 import axios from 'axios'
 import handleError from '@admin/modules/handleError'
 import showToast from '@admin/modules/showToast'
-import { ref } from 'vue'
+import MainButton from '@admin/components/Buttons/MainButton.vue'
+import DataTable from '@admin/components/DataTable/DataTable.vue'
+import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
+import BodyRow from '@admin/components/DataTable/BodyRow.vue'
+import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 
 type Props = {
     post: Post
@@ -63,54 +67,48 @@ function deleteImage(id: number): void {
             Attached images for this post
         </h3>
 
-        <div class="overflow-x-auto shadow-md rounded-lg mx-auto mt-7">
-            <table class="table-auto w-full">
-                <thead class="bg-gray-700 text-white text-left">
-                    <tr>
-                        <th class="p-3 font-light w-40">Image</th>
-                        <th class="p-3 font-light">URI</th>
-                        <th class="p-3 font-light w-40">Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        v-if="post.images"
-                        v-for="image in post.images"
-                        :key="image.id"
-                        class="border-b border-border odd:bg-page-second"
-                    >
-                        <td class="px-3 py-1">
-                            <a :href="image.uri" target="_blank">
-                                <img
-                                    :src="image.uri"
-                                    alt="Post image"
-                                    width="100"
-                                    class="rounded-md shadow-sm"
-                                />
-                            </a>
-                        </td>
+        <DataTable>
+            <template v-slot:head>
+                <HeadDetail class="w-40">Image</HeadDetail>
+                <HeadDetail>URI</HeadDetail>
+                <HeadDetail class="w-40">Delete</HeadDetail>
+            </template>
 
-                        <td class="px-3 py-1">
-                            <input
-                                type="text"
-                                :value="image.uri"
-                                class="border border-border bg-transparent text-font rounded-md p-2 w-full"
-                                disabled
-                            />
-                        </td>
+            <BodyRow
+                v-if="post.images"
+                v-for="image in post.images"
+                :key="image.id"
+            >
+                <BodyDetail>
+                    <a :href="image.uri" target="_blank">
+                        <img
+                            :src="image.uri"
+                            alt="Post image"
+                            width="100"
+                            class="rounded-md shadow-sm"
+                        />
+                    </a>
+                </BodyDetail>
 
-                        <td class="px-3 py-1 text-right">
-                            <form @submit.prevent="deleteImage(image.id)">
-                                <main-button class="bg-red-500 hover:bg-red-600">
-                                    <i class="fas fa-trash mr-2"></i>
-                                    Delete
-                                </main-button>
-                            </form>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                <BodyDetail>
+                    <input
+                        type="text"
+                        :value="image.uri"
+                        class="border border-border bg-transparent text-font rounded-md p-2 w-full"
+                        disabled
+                    />
+                </BodyDetail>
+
+                <BodyDetail>
+                    <form @submit.prevent="deleteImage(image.id)">
+                        <main-button class="bg-red-500 hover:bg-red-600">
+                            <i class="fas fa-trash mr-2"></i>
+                            Delete
+                        </main-button>
+                    </form>
+                </BodyDetail>
+            </BodyRow>
+        </DataTable>
 
         <form
             @submit.prevent="submitImage"
