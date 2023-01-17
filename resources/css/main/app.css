@@ -1,13 +1,12 @@
 @import 'toastify-js/src/toastify.css';
-@import 'sweetalert2/dist/sweetalert2.css';
 @import "../shared/_variables.css";
 @import '../shared/_fonts.css';
 @import "_navbar.css";
 @import "_material-theme.css";
 @import "_code.css";
 @import "_blockquote.css";
-@import "_sweet-alert.css";
 @import "_note.css";
+@import "../shared/_sweetalert.css";
 
 @tailwind base;
 @tailwind components;
