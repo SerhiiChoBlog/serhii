@@ -15,11 +15,9 @@
     @stack('head')
 </head>
 <body class="text-font font-main bg-page {{ request()->cookie('theme') }}">
-    <main id="user-main">
-        <x-hero class="bg-gray-700" navbar="text-white" id="main" />
-        @yield('content')
-        <to-top></to-top>
-    </main>
+    <x-hero class="bg-gray-700" navbar="text-white" id="main" />
+
+    <main id="user-main"></main>
 
     <script type="text/javascript">
         window.User = "{{ user() }}"
