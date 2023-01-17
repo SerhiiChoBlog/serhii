@@ -1,3 +1,5 @@
+@import 'sweetalert2/dist/sweetalert2.css';
+
 .swal2-popup {
     @apply !rounded-xl;
 }
@@ -7,7 +9,7 @@
 }
 
 .swal2-actions button {
-    @apply py-2 lg:!py-3 px-6 lg:!px-8 !rounded-full !bg-main transition-colors !min-w-[140px];
+    @apply py-2 lg:!py-3 px-6 lg:!px-8 !rounded-2xl !bg-main transition-colors !min-w-[140px] uppercase;
 }
 
 .swal2-actions button:hover {
