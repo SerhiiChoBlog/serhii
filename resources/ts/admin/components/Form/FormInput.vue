@@ -36,7 +36,7 @@ watch(() => props.value, (newValue) => {
         <div class="inline-block relative w-full">
             <input
                 :type="props.type"
-                class="border py-3 px-4 rounded-md w-full"
+                class="border border-border bg-page-second py-3 px-4 rounded-md w-full"
                 :class="props.classes"
                 :placeholder="props.placeholder"
                 v-model="inputValue"
