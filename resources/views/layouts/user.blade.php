@@ -15,11 +15,15 @@
     @stack('head')
 </head>
 <body class="text-font font-main bg-page {{ request()->cookie('theme') }}">
-    <main id="main">
-        <x-hero class="bg-gray-700" navbar="text-white" />
+    <main id="user-main">
+        <x-hero class="bg-gray-700" navbar="text-white" id="main" />
         @yield('content')
         <to-top></to-top>
     </main>
+
+    <script type="text/javascript">
+        window.User = "{{ user() }}"
+    </script>
 
     @vite('resources/ts/user/app.ts')
     @vite('resources/ts/main/app.ts')
