@@ -9,7 +9,7 @@ type Props = {
 }
 
 const { icon, href, title, route } = defineProps<Props>()
-const classes = 'text-sm border rounded-sm w-10 h-10 flex justify-center items-center transition-colors hover:bg-gray-100'
+const classes = 'text-sm border border-border rounded-sm w-10 h-10 flex justify-center items-center transition-colors hover:border-main hover:text-main'
 </script>
 
 <template>

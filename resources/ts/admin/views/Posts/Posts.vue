@@ -37,7 +37,7 @@ function fetchPosts(): void {
 
         <div v-else-if="posts.length > 0" class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="table-auto">
-                <thead class="bg-gray-500 text-white text-left">
+                <thead class="bg-gray-700 text-white text-left">
                     <tr>
                         <th></th>
                         <th class="p-3 font-light">Image</th>
