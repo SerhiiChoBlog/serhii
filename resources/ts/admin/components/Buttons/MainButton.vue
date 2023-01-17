@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { RouteLocationNormalized } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router'
 
 type Props = {
-    route?: RouteLocationNormalized
-    type?: string
+    route?: RouteLocationRaw
+    type?: 'button' | 'submit' | 'reset'
     href?: string
 }
 
