@@ -12,6 +12,11 @@
 </head>
 <body>
     <main id="admin-main"></main>
+
+    <script type="text/javascript">
+        window.User = {!! json_encode(user()) !!}
+    </script>
+
     @vite('resources/ts/admin/app.ts')
 </body>
 </html>

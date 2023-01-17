@@ -13,11 +13,13 @@ export default async (): Promise<void> => {
 
     const wantsToStay = response.isDenied
 
-    if (wantsToStay)
+    if (wantsToStay || !User)
         return
 
     try {
-        await axios.post('/logout')
+        await axios.post('/logout', {
+            email: User.email,
+        })
     } catch (err) {
         console.error(err)
     }
