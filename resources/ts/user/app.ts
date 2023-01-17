@@ -1,1 +1,7 @@
-console.log('This is a profile page')
+import { createApp } from "vue/dist/vue.esm-bundler"
+import App from './App.vue'
+import router from './router'
+
+createApp(App)
+    .use(router)
+    .mount('#user-main')

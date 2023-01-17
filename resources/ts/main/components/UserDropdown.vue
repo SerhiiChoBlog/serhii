@@ -16,7 +16,7 @@ function redirectTo(url: string) {
         </menu-button>
 
         <menu-items>
-            <menu-item @click="redirectTo('/user/profile')">Profile</menu-item>
+            <menu-item @click="redirectTo('/user')">Profile</menu-item>
             <menu-item @click="logout">Logout</menu-item>
         </menu-items>
     </Menu>
