@@ -6,12 +6,12 @@ namespace Tests\Feature\Views;
 
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
 class PostTest extends TestCase
 {
-    use RefreshDatabase;
+    use LazilyRefreshDatabase;
 
     /** @test */
     public function guest_can_visit_published_post_page(): void
