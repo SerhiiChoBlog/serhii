@@ -32,12 +32,14 @@ function fetchVisitors(): void {
         <Spinner v-if="loading" />
 
         <DataTable v-else>
-            <HeadDetail
-                v-for="title in ['Views', 'IP', 'Country', 'City', 'Flag']"
-                :key="title"
-            >
-                {{ title }}
-            </HeadDetail>
+            <template v-slot:head>
+                <HeadDetail
+                    v-for="title in ['Views', 'IP', 'Country', 'City', 'Flag']"
+                    :key="title"
+                >
+                    {{ title }}
+                </HeadDetail>
+            </template>
 
             <BodyRow v-for="visitor in visitors" :key="visitor.id">
                 <BodyDetail>{{ visitor.post_views_count }}</BodyDetail>
