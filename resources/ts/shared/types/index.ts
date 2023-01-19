@@ -27,11 +27,9 @@ export type Search = {
 }
 
 export type UserSidebarLink = {
-    routeName: string | null
+    routeName: string
     title: string
     icon: string
-    href?: string
-    action?: () => void
 }
 
 export type Section = {

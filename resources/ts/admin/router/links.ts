@@ -1,6 +1,4 @@
 import { UserSidebarLink } from '@shared/types'
-import dispatchEvent from '@shared/modules/dispatchEvent'
-import logout from '@shared/modules/logout'
 
 const links: UserSidebarLink[] = [
     {
@@ -47,13 +45,6 @@ const links: UserSidebarLink[] = [
         routeName: 'post-publications',
         title: 'Publications',
         icon: 'fa-envelope',
-    },
-    {
-        routeName: null,
-        href: 'javascript:',
-        title: 'Logout',
-        icon: 'fa-sign-out-alt',
-        action: logout,
     },
 ]
 

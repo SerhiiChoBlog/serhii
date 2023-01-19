@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import links from '@admin/router/links'
-
-const linkStyles = 'relative w-[180px] m-auto transition-colors flex items-center border-collapse text-white text-md leading-10 hover:bg-main-hover py-0.5'
-const iconStyles = 'fas w-[27px] text-2xl text-center ml-[7px] mr-3'
 </script>
 
 <template>
@@ -10,23 +7,16 @@ const iconStyles = 'fas w-[27px] text-2xl text-center ml-[7px] mr-3'
         <ul>
             <li v-for="link in links" :key="link.title">
                 <RouterLink
-                    v-if="link.routeName"
                     :to="{ name: link.routeName }"
-                    :class="linkStyles"
+                    class="relative w-[180px] m-auto transition-colors flex items-center border-collapse text-white text-md leading-10 hover:bg-main-hover py-0.5"
                 >
-                    <i :class="link.icon + ' ' + iconStyles"></i>
+                    <i
+                        class="fas w-[27px] text-2xl text-center ml-[7px] mr-3"
+                        :class="link.icon"
+                    ></i>
+
                     <span>{{ link.title }}</span>
                 </RouterLink>
-
-                <a
-                    v-if="link.href"
-                    :href="link.href"
-                    :class="linkStyles"
-                    @click="link.action ? link.action() : null"
-                >
-                    <i :class="link.icon + ' ' + iconStyles"></i>
-                    <span>{{ link.title }}</span>
-                </a>
             </li>
         </ul>
     </nav>
