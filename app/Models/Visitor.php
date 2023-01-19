@@ -66,7 +66,7 @@ class Visitor extends Model
             /** @var Position $position */
             $position = $location->get($ip);
         } catch (Throwable $e) {
-            Log::warning($e);
+            Log::warning($e->getMessage());
         }
 
         if (!$position) {
@@ -89,7 +89,7 @@ class Visitor extends Model
                 'code' => $position->countryCode,
             ]);
         } catch (Throwable $e) {
-            Log::warning($e);
+            Log::warning($e->getMessage());
             return null;
         }
     }
@@ -99,7 +99,7 @@ class Visitor extends Model
         try {
             $visitor = self::getOrCreateVisitor($ip);
         } catch (Throwable $e) {
-            Log::error($e);
+            Log::error($e->getMessage());
             return;
         }
 

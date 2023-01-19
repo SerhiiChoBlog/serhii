@@ -33,7 +33,7 @@ class FetchGithubProjects extends Command
             $this->info(sprintf('%d projects has been uploaded to a database', $projects->count()));
         } catch (RequestException $e) {
             $this->error($e->getMessage());
-            Log::error($e);
+            Log::error($e->getMessage());
         }
     }
 
@@ -79,7 +79,7 @@ class FetchGithubProjects extends Command
             $parser = new Parsedown();
             return $parser->text($content);
         } catch (RequestException $e) {
-            Log::error($e);
+            Log::error($e->getMessage());
             return '';
         }
     }
