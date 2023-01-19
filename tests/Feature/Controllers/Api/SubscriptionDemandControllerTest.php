@@ -11,7 +11,7 @@ use App\Notifications\ConfirmSubscription;
 use App\Services\SubscriptionDemandService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Collection;
-use Notification;
+use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class SubscriptionDemandControllerTest extends TestCase

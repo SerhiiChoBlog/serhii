@@ -13,8 +13,7 @@ class PostTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    /** @test */
-    public function guest_can_visit_published_post_page(): void
+    public function test_guest_can_visit_published_post_page(): void
     {
         $published_post = Post::factory()->published()->create();
 
@@ -23,8 +22,7 @@ class PostTest extends TestCase
             ->assertViewIs('posts.show');
     }
 
-    /** @test */
-    public function admin_can_visit_page(): void
+    public function test_admin_can_visit_page(): void
     {
         $published_post = Post::factory()->published()->create();
         $user = User::factory()->make();

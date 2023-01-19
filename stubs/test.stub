@@ -10,8 +10,7 @@ use Tests\TestCase;
 
 class {{ class }} extends TestCase
 {
-    /** @test */
-    public function example(): void
+    public function test_example(): void
     {
         $response = $this->get('/');
 

@@ -13,16 +13,14 @@ class LoginTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    /** @test */
-    public function guest_can_visit_page(): void
+    public function test_guest_can_visit_page(): void
     {
         $this->get(route('login'))
             ->assertOk()
             ->assertViewIs('auth.login');
     }
 
-    /** @test */
-    public function admin_cannot_visit_page_if_authenticated(): void
+    public function test_admin_cannot_visit_page_if_authenticated(): void
     {
         $user = User::factory()->create();
         $role = Role::factory()->create(['name' => 'admin']);
@@ -34,8 +32,7 @@ class LoginTest extends TestCase
             ->assertRedirect();
     }
 
-    /** @test */
-    public function user_cannot_visit_page_if_authenticated(): void
+    public function test_user_cannot_visit_page_if_authenticated(): void
     {
         $user = User::factory()->make();
 
