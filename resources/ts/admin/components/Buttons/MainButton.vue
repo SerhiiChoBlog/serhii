@@ -17,9 +17,9 @@ const classes = 'inline-block uppercase text-white text-sm px-6 py-2 rounded-ful
         <slot />
     </a>
 
-    <router-link v-else-if="route" :class="classes" :to="route">
+    <RouterLink v-else-if="route" :class="classes" :to="route">
         <slot />
-    </router-link>
+    </RouterLink>
 
     <button v-else :type="type" :class="classes">
         <slot />

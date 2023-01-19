@@ -21,9 +21,9 @@ function fetchReferrers(): void {
 
 <template>
     <div class="container">
-        <page-title>Referrers</page-title>
+        <PageTitle>Referrers</PageTitle>
 
-        <spinner v-if="loading" />
+        <Spinner v-if="loading" />
 
         <h2 v-else-if="referrers.length === 0" class="text-2xl text-center">
             There are not referrers
@@ -45,7 +45,7 @@ function fetchReferrers(): void {
                     <tbody>
                         <tr
                             v-for="referrer in referrers"
-                            :key="referrer"
+                            :key="referrer.id"
                             class="odd:bg-gray-50 border-b transition-colors hover:bg-gray-100"
                         >
                             <td class="p-2">{{ referrer.id }}</td>

@@ -34,22 +34,22 @@ function createPost(): void {
 
         <form @submit.prevent="createPost" class="mt-5">
             <div class="grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-5 max-w-3xl">
-                <form-input
+                <FormInput
                     type="text"
                     placeholder="Enter the title"
                     :length="190"
                     id="title"
                     @changed="(value: string) => (title = value)"
                 >
-                </form-input>
+                </FormInput>
 
-                <main-button>
+                <MainButton>
                     <i
                         class="fas mr-2"
                         :class="loading ? 'fa-spinner animate-spin' : 'fa-plus'"
                     ></i>
                     <span>Create post</span>
-                </main-button>
+                </MainButton>
             </div>
         </form>
     </div>

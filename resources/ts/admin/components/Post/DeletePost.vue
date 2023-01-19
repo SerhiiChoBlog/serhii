@@ -39,14 +39,14 @@ function deletePost(): void {
 
 <template>
     <div class="mt-7">
-        <main-button
+        <MainButton
             @click="deletePost"
             class="bg-red-500 hover:bg-red-600"
             type="button"
         >
             <i class="fas fa-trash mr-2"></i>
             Delete
-        </main-button>
+        </MainButton>
 
         <label class="checkbox">
             <input

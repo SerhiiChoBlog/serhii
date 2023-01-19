@@ -34,42 +34,42 @@ function createTag(): void {
 
 <template>
     <div class="container">
-        <page-title>Create a new tag</page-title>
+        <PageTitle>Create a new tag</PageTitle>
 
-        <spinner v-if="loading" />
+        <Spinner v-if="loading" />
 
         <form v-else @submit="createTag" class="max-w-[1000px] mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <form-input
+                <FormInput
                     @changed="title => form.title = title"
                     id="title"
                     type="text"
                     placeholder="Enter the title"
                 >
                     Full title
-                </form-input>
+                </FormInput>
 
-                <form-input
+                <FormInput
                     @changed="name => form.name = name"
                     id="name"
                     type="text"
                     placeholder="Enter the slug"
                 >
                     Short name (slug)
-                </form-input>
+                </FormInput>
 
-                <form-input
+                <FormInput
                     @changed="color => form.color = color"
                     id="color"
                     type="color"
                     classes="min-h-[50px]"
                 >
                     Choose the color
-                </form-input>
+                </FormInput>
             </div>
 
             <div class="mt-4">
-                <form-textarea
+                <FormTextarea
                     type="text"
                     placeholder="Enter the description"
                     :length="190"
@@ -77,14 +77,14 @@ function createTag(): void {
                     @changed="desc => form.description = desc"
                 >
                     Enter the description
-                </form-textarea>
+                </FormTextarea>
             </div>
 
             <div class="mt-7">
-                <main-button>
+                <MainButton>
                     <i class="fas fa-plus mr-2"></i>
                     Create tag
-                </main-button>
+                </MainButton>
             </div>
         </form>
     </div>
