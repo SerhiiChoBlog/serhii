@@ -5,6 +5,10 @@ import axios from 'axios'
 import handleError from '@admin/modules/handleError'
 import PageTitle from '@admin/components/PageTitle.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
+import DataTable from '@admin/components/DataTable/DataTable.vue'
+import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
+import BodyRow from '@admin/components/DataTable/BodyRow.vue'
+import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 
 const publications = ref<PostPublication[]>([])
 const loading = ref(false)
@@ -26,37 +30,28 @@ function fetchVisitors(): void {
         <Spinner v-if="loading" />
 
         <div v-else-if="publications.length === 0">
-            <h2 class="text-center text-xl">There are no post publications yet</h2>
+            <h2 class="text-center text-xl">
+                There are no post publications yet
+            </h2>
         </div>
 
-        <div v-else class="overflow-x-auto shadow-md rounded-lg mx-auto mt-7">
-            <table class="table-auto w-full">
-                <thead class="bg-gray-500 text-white text-left">
-                    <tr>
-                        <th
-                            v-for="title in ['#', 'Notified', 'Skipped', 'Post', 'Created']"
-                            :key="title"
-                            class="p-3"
-                        >
-                            {{ title }}
-                        </th>
-                    </tr>
-                </thead>
+        <DataTable v-else>
+            <template v-slot:head>
+                <HeadDetail
+                    v-for="title in ['#', 'Notified', 'Skipped', 'Post', 'Created']"
+                    :key="title"
+                >
+                    {{ title }}
+                </HeadDetail>
+            </template>
 
-                <tbody>
-                    <tr
-                        v-for="publication in publications"
-                        :key="publication.id"
-                        class="border-b odd:bg-gray-50 transition-colors hover:bg-gray-100"
-                    >
-                        <td class="px-3 py-1">{{ publication.id }}</td>
-                        <td class="px-3 py-1">{{ publication.people_notified }}</td>
-                        <td class="px-3 py-1">{{ publication.people_skipped }}</td>
-                        <td class="px-3 py-1">{{ publication.post ? publication.post.title : '-no-' }}</td>
-                        <td class="px-3 py-1 min-w-[160px]">{{ publication.created_at }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            <BodyRow v-for="publication in publications" :key="publication.id">
+                <BodyDetail>{{ publication.id }}</BodyDetail>
+                <BodyDetail>{{ publication.people_notified }}</BodyDetail>
+                <BodyDetail>{{ publication.people_skipped }}</BodyDetail>
+                <BodyDetail>{{ publication.post ? publication.post.title : '-no-' }}</BodyDetail>
+                <BodyDetail class="min-w-[160px]">{{ publication.created_at }}</BodyDetail>
+            </BodyRow>
+        </DataTable>
     </div>
 </template>

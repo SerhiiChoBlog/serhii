@@ -5,6 +5,10 @@ import axios from 'axios'
 import handleError from '@admin/modules/handleError'
 import PageTitle from '@admin/components/PageTitle.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
+import DataTable from '@admin/components/DataTable/DataTable.vue'
+import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
+import BodyRow from '@admin/components/DataTable/BodyRow.vue'
+import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 
 const hits = ref<Hit[]>([])
 const loading = ref(true)
@@ -25,30 +29,20 @@ function fetchHits(): void {
 
         <Spinner v-if="loading" />
 
-        <div v-else class="overflow-x-auto shadow-md rounded-lg mx-auto">
-            <table class="table-auto w-full">
-                <thead class="bg-gray-500 text-white text-left">
-                    <tr>
-                        <th
-                            v-for="title in ['Date', 'Hits']"
-                            :key="title"
-                            class="p-3 font-light"
-                        >
-                            {{ title }}
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        v-for="hit in hits"
-                        :key="hit.id"
-                        class="border-b odd:bg-gray-50 first:!bg-yellow-200 transition-colors hover:bg-gray-100"
-                    >
-                        <td class="px-3 py-1">{{ hit.created_at }}</td>
-                        <td class="px-3 py-1">{{ hit.amount }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <DataTable v-else>
+            <template v-slot:head>
+                <HeadDetail
+                    v-for="title in ['Date', 'Hits']"
+                    :key="title"
+                >
+                    {{ title }}
+                </HeadDetail>
+            </template>
+
+            <BodyRow v-for="hit in hits" :key="hit.id">
+                <BodyDetail>{{ hit.created_at }}</BodyDetail>
+                <BodyDetail>{{ hit.amount }}</BodyDetail>
+            </BodyRow>
+        </DataTable>
     </div>
 </template>
