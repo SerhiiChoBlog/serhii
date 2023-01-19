@@ -21,16 +21,14 @@ class ProjectTest extends TestCase
         $this->project = Project::factory()->create();
     }
 
-    /** @test */
-    public function guest_can_visit_page(): void
+    public function test_guest_can_visit_page(): void
     {
         $this->get(route('projects.show', $this->project))
             ->assertOk()
             ->assertViewIs('projects.show');
     }
 
-    /** @test */
-    public function admin_can_visit_page(): void
+    public function test_admin_can_visit_page(): void
     {
         $user = User::factory()->make();
 
