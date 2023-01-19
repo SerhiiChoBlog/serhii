@@ -61,4 +61,15 @@ class User extends Authenticatable
     {
         return $this->roles()->where('name', $role->value)->exists();
     }
+
+    public static function isAdmin(?string $email): bool
+    {
+        if (!$email) {
+            return false;
+        }
+
+        /** @var User|null $user */
+        $user = self::query()->where('email', $email)->first();
+        return $user?->hasRole(UserRole::ADMIN) ?? false;
+    }
 }
