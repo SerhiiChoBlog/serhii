@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 class RouteServiceProvider extends ServiceProvider
 {
     public const ADMIN_HOME = '/admin/dashboard';
-    public const USER_HOME = '/user/profile';
+    public const USER_HOME = '/user';
 
     public function boot(): void
     {
