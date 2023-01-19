@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Views;
 
+use App\Models\Role;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
-    use RefreshDatabase;
+    use LazilyRefreshDatabase;
 
     /** @test */
     public function guest_can_visit_page(): void
@@ -21,12 +22,25 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function admin_cant_visit_page_if_authenticated(): void
+    public function admin_cannot_visit_page_if_authenticated(): void
+    {
+        $user = User::factory()->create();
+        $role = Role::factory()->create(['name' => 'admin']);
+
+        $user->roles()->attach([$role->id]);
+
+        $this->actingAs($user, 'web')
+            ->get(route('login'))
+            ->assertRedirect();
+    }
+
+    /** @test */
+    public function user_cannot_visit_page_if_authenticated(): void
     {
         $user = User::factory()->make();
 
-        $this->actingAs($user)
-            ->get(route('login'))
-            ->assertRedirect();
+        $this->actingAs($user, 'user')
+             ->get(route('login'))
+             ->assertRedirect();
     }
 }
