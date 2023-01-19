@@ -5,6 +5,10 @@ import handleError from '@admin/modules/handleError'
 import axios from 'axios'
 import PageTitle from '@admin/components/PageTitle.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
+import DataTable from '@admin/components/DataTable/DataTable.vue'
+import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
+import BodyRow from '@admin/components/DataTable/BodyRow.vue'
+import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 
 const posts = ref<Post[]>([])
 const loading = ref(true)
@@ -27,63 +31,51 @@ function fetchPosts(): void {
 
         <h2 v-else-if="posts.length === 0" class="text-2xl text-center">There are no posts</h2>
 
-        <div v-else class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full">
-                <thead class="bg-gray-500 text-left">
-                    <tr>
-                        <th
-                            v-for="title in ['Image', 'Article', 'Social']"
-                            :key="title"
-                            class="text-white p-3 font-light"
+        <DataTable v-else>
+            <HeadDetail
+                v-for="title in ['Image', 'Article', 'Social']"
+                :key="title"
+            >
+                {{ title }}
+            </HeadDetail>
+
+            <BodyRow v-for="post in posts" :key="post.id">
+                <BodyDetail>
+                    <img
+                        :src="`/${post.image_sm}`"
+                        width="120"
+                        class="rounded-md shadow-md"
+                        :alt="post.title"
+                    />
+                </BodyDetail>
+
+                <BodyDetail>
+                    <a :href="`/posts/${post.slug}`" target="_blank" class="text-lg">
+                        {{ post.title }}
+                    </a>
+                </BodyDetail>
+
+                <BodyDetail>
+                    <div class="flex gap-3">
+                        <div
+                            class="flex flex-col lg:flex-row gap-x-1 items-center"
+                            v-if="post.social"
+                            v-for="(items, social) in post.social"
+                            :key="social"
                         >
-                            {{ title }}
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        v-for="post in posts"
-                        :key="post.id"
-                        class="odd:bg-gray-50 border-b transition-colors hover:bg-gray-100"
-                    >
-                        <td class="p-1">
                             <img
-                                :src="`/${post.image_sm}`"
-                                width="120"
-                                class="rounded-md shadow-md"
-                                :alt="post.title"
+                                :src="`/storage/icons/${social.toString()}.webp`"
+                                :alt="`social`"
+                                width="20"
                             />
-                        </td>
 
-                        <td class="p-2">
-                            <a :href="`/posts/${post.slug}`" target="_blank" class="text-lg">
-                                {{ post.title }}
-                            </a>
-                        </td>
-
-                        <td class="p-1">
-                            <div class="flex gap-3">
-                                <div
-                                    class="flex flex-col lg:flex-row gap-x-1 items-center"
-                                    v-if="post.social"
-                                    v-for="(items, social) in post.social"
-                                    :key="social"
-                                >
-                                    <img
-                                        :src="`/storage/icons/${social.toString()}.webp`"
-                                        :alt="social"
-                                        width="20"
-                                    />
-
-                                    <span class="text-md font-bold text-font-second">
-                                        {{ items.length }}
-                                    </span>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                            <span class="text-md font-bold text-font-second">
+                                {{ items.length }}
+                            </span>
+                        </div>
+                    </div>
+                </BodyDetail>
+            </BodyRow>
+        </DataTable>
     </div>
 </template>
