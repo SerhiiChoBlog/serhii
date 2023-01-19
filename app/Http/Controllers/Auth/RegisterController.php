@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Services\AvatarGeneratorService;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -61,5 +63,10 @@ class RegisterController extends Controller
     protected function redirectTo(): string
     {
         return RouteServiceProvider::USER_HOME;
+    }
+
+    protected function guard(): Guard
+    {
+        return Auth::guard('user');
     }
 }
