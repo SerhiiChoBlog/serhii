@@ -101,10 +101,10 @@ function deleteImage(id: number): void {
 
                 <BodyDetail>
                     <form @submit.prevent="deleteImage(image.id)">
-                        <main-button class="bg-red-500 hover:bg-red-600">
+                        <MainButton class="bg-red-500 hover:bg-red-600">
                             <i class="fas fa-trash mr-2"></i>
                             Delete
-                        </main-button>
+                        </MainButton>
                     </form>
                 </BodyDetail>
             </BodyRow>
@@ -122,13 +122,13 @@ function deleteImage(id: number): void {
                 </label>
             </div>
 
-            <main-button class="ml-3">
+            <MainButton class="ml-3">
                 <i
                     :class="loading ? 'fa-spinner animate-spin' : 'fa-upload'"
                     class="fas mr-2"
                 ></i>
                 Upload
-            </main-button>
+            </MainButton>
         </form>
     </div>
 </template>

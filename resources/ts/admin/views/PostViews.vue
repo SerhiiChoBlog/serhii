@@ -61,13 +61,13 @@ function fetchViews(): void {
 
 <template>
     <div class="container max-w-3xl">
-        <page-title>Post views</page-title>
+        <PageTitle>Post views</PageTitle>
 
-        <spinner v-if="loading" />
+        <Spinner v-if="loading" />
 
-        <tab-group v-else>
-            <tab-list class="flex gap-2 rounded-xl bg-gray-800 p-1 text-white">
-                <tab
+        <TabGroup v-else>
+            <TabList class="flex gap-2 rounded-xl bg-gray-800 p-1 text-white">
+                <Tab
                     v-for="title in ['Unique views', 'Daily views']"
                     :key="title"
                     as="template"
@@ -82,11 +82,11 @@ function fetchViews(): void {
                       >
                           {{ title }}
                     </button>
-                </tab>
-            </tab-list>
+                </Tab>
+            </TabList>
 
-            <tab-panels class="mt-5">
-                <tab-panel>
+            <TabPanels class="mt-5">
+                <TabPanel>
                     <DataTable>
                         <template v-slot:head>
                             <HeadDetail
@@ -132,9 +132,9 @@ function fetchViews(): void {
                             </BodyDetail>
                         </BodyRow>
                     </DataTable>
-                </tab-panel>
+                </TabPanel>
 
-                <tab-panel>
+                <TabPanel>
                     <DataTable>
                         <template v-slot:head>
                             <HeadDetail
@@ -155,8 +155,8 @@ function fetchViews(): void {
                             <BodyDetail>{{ view.amount }}</BodyDetail>
                         </BodyRow>
                     </DataTable>
-                </tab-panel>
-            </tab-panels>
-      </tab-group>
+                </TabPanel>
+            </TabPanels>
+        </TabGroup>
     </div>
 </template>

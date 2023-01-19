@@ -21,9 +21,9 @@ function fetchHits(): void {
 
 <template>
     <div class="container max-w-xs">
-        <page-title>Request hits</page-title>
+        <PageTitle>Request hits</PageTitle>
 
-        <spinner v-if="loading" />
+        <Spinner v-if="loading" />
 
         <div v-else class="overflow-x-auto shadow-md rounded-lg mx-auto">
             <table class="table-auto w-full">

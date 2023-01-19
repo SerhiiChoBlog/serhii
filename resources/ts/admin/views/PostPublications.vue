@@ -21,9 +21,9 @@ function fetchVisitors(): void {
 
 <template>
     <div class="container max-w-3xl">
-        <page-title>Post publications</page-title>
+        <PageTitle>Post publications</PageTitle>
 
-        <spinner v-if="loading" />
+        <Spinner v-if="loading" />
 
         <div v-else-if="publications.length === 0">
             <h2 class="text-center text-xl">There are no post publications yet</h2>

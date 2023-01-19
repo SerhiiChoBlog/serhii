@@ -23,12 +23,12 @@ const classes = 'text-sm border border-border rounded-sm w-10 h-10 flex justify-
         <i class="fas" :class="icon"></i>
     </a>
 
-    <router-link
+    <RouterLink
         v-if="route"
         :to="route"
         :class="classes"
         :title="title"
     >
         <i class="fas" :class="icon"></i>
-    </router-link>
+    </RouterLink>
 </template>

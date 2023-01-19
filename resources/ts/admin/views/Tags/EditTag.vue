@@ -66,17 +66,16 @@ function deleteTag(): void {
 }
 </script>
 
-
 <template>
     <div class="container">
-        <spinner v-if="loading" />
+        <Spinner v-if="loading" />
 
         <div v-else>
-            <page-title>{{ form.title }}</page-title>
+            <PageTitle>{{ form.title }}</PageTitle>
 
             <form @submit="updateTag" class="max-w-[1000px] mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    <form-input
+                    <FormInput
                         @changed="title => form.title = title"
                         id="title"
                         type="text"
@@ -84,9 +83,9 @@ function deleteTag(): void {
                         placeholder="Enter the title"
                     >
                         Full title
-                    </form-input>
+                    </FormInput>
 
-                    <form-input
+                    <FormInput
                         @changed="name => form.name = name"
                         id="name"
                         :value="form.name"
@@ -94,9 +93,9 @@ function deleteTag(): void {
                         placeholder="Enter the slug"
                     >
                         Short name (slug)
-                    </form-input>
+                    </FormInput>
 
-                    <form-input
+                    <FormInput
                         @changed="color => form.color = color"
                         :value="form.color"
                         id="color"
@@ -104,11 +103,11 @@ function deleteTag(): void {
                         classes="min-h-[50px]"
                     >
                         Choose the color
-                    </form-input>
+                    </FormInput>
                 </div>
 
                 <div class="mt-4">
-                    <form-textarea
+                    <FormTextarea
                         type="text"
                         placeholder="Enter the description"
                         :value="form.description"
@@ -117,32 +116,32 @@ function deleteTag(): void {
                         @changed="desc => form.description = desc"
                     >
                         Enter the description
-                    </form-textarea>
+                    </FormTextarea>
                 </div>
 
                 <div class="mt-7 flex gap-3">
-                    <main-button>
+                    <MainButton>
                         <i class="fas fa-save mr-2"></i>
                         Update
-                    </main-button>
+                    </MainButton>
 
-                    <main-button
+                    <MainButton
                         type="button"
                         class="bg-green-600 hover:bg-green-700"
                         :route="{ name: 'tags' }"
                     >
                         <i class="fas fa-tag mr-2"></i>
                         Go to tags
-                    </main-button>
+                    </MainButton>
 
-                    <main-button
+                    <MainButton
                         type="button"
                         class="bg-red-600 hover:bg-red-700"
                         @click="deleteTag"
                     >
                         <i class="fas fa-trash mr-2"></i>
                         Delete
-                    </main-button>
+                    </MainButton>
                 </div>
             </form>
         </div>

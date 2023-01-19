@@ -96,7 +96,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                     <div class="flex flex-col lg:flex-row gap-6 mt-10">
                         <div class="flex-1">
                             <div>
-                                <form-input
+                                <FormInput
                                     type="text"
                                     id="title"
                                     placeholder="Enter the title"
@@ -105,11 +105,11 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                     :value="post.title"
                                 >
                                     Title
-                                </form-input>
+                                </FormInput>
                             </div>
 
                             <div class="mt-5">
-                                <form-input
+                                <FormInput
                                     type="text"
                                     id="post-tags"
                                     name="post-tags"
@@ -121,7 +121,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
 
                                     <div class="ml-1 inline-block space-x-1">
                                         <template v-if="post && post.tags">
-                                            <tag-item
+                                            <TagItem
                                                 v-for="tag in post.tags"
                                                 :key="tag.id"
                                                 :tag="tag"
@@ -129,14 +129,14 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                             />
                                         </template>
                                     </div>
-                                </form-input>
+                                </FormInput>
 
                                 <tag-suggestions @addTag="addTag" :value="tagInputValue" />
                             </div>
 
                             <div class="flex items-center justify-between gap-8 mt-5">
                                 <div class="w-full">
-                                    <form-input
+                                    <FormInput
                                         type="text"
                                         id="video"
                                         placeholder="Enter a YouTube video ID"
@@ -144,7 +144,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                         :value="post.video ? post.video.id : undefined"
                                         :length="190"
                                         name="video"
-                                    >YouTube video ID</form-input>
+                                    >YouTube video ID</FormInput>
                                 </div>
 
                                 <a v-if="post.video" :href="post.video.url" target="_blank" rel="noreferrer">
@@ -160,23 +160,23 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                         </div>
 
                         <div class="flex-1">
-                            <post-image :post="post" />
+                            <PostImage :post="post" />
                         </div>
                     </div>
 
                     <div class="mt-5">
-                        <form-textarea
+                        <FormTextarea
                             id="intro"
                             placeholder="Enter a short intro"
                             classes="min-h-[70px]"
                             :value="post.intro || undefined"
                             :length="190"
                             name="intro"
-                        >Short intro</form-textarea>
+                        >Short intro</FormTextarea>
                     </div>
 
                     <div class="mt-5">
-                        <editor
+                        <Editor
                             :initialValue="post.content"
                             tinymce-script-src="/js/tinymce/tinymce.min.js"
                             :init="tinymceConfig"
@@ -187,24 +187,24 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
 
                     <div>
                         <div class="flex flex-col justify-center fixed right-[20px] top-20 z-[9999] space-y-2">
-                            <main-button class="bg-green-500 hover:bg-green-600">
+                            <MainButton class="bg-green-500 hover:bg-green-600">
                                 <i v-if="loading" class="fas fa-spinner animate-spin mr-2"></i>
                                 <i v-else class="fas fa-save mr-2"></i>
                                 Save
-                            </main-button>
+                            </MainButton>
 
-                            <main-button :href="`/posts/${post.slug}`" target="_blank">
+                            <MainButton :href="`/posts/${post.slug}`" target="_blank">
                                 <i class="fas fa-eye mr-2"></i>
                                 Preview
-                            </main-button>
+                            </MainButton>
                         </div>
 
-                        <delete-post :post="post" />
+                        <DeletePost :post="post" />
                     </div>
                 </form>
             </div>
 
-            <post-content-images
+            <PostContentImages
                 :post="post"
                 @uploaded="fetchPost"
                 @removed="fetchPost"

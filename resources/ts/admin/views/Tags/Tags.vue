@@ -28,18 +28,18 @@ function fetchTags(): void {
 
 <template>
     <div class="container">
-        <page-title>
+        <PageTitle>
             <div class="flex items-center justify-center gap-3">
                 <span>Tags</span>
 
-                <main-button type="button" :route="{ name: 'tags-create' }" title="Add new tag">
+                <MainButton type="button" :route="{ name: 'tags-create' }" title="Add new tag">
                     <i class="fas fa-plus"></i>
-                </main-button>
+                </MainButton>
             </div>
-        </page-title>
+        </PageTitle>
 
         <div class="mt-5">
-            <spinner v-if="loading" />
+            <Spinner v-if="loading" />
 
             <h2 v-else-if="tags.length === 0" class="text-center text-xl mt-6">
                 There are not tags
@@ -90,13 +90,13 @@ function fetchTags(): void {
                         {{ tag.description }}
                     </BodyDetail>
                     <BodyDetail>
-                        <router-link
+                        <RouterLink
                             :to="{ name: 'tags-edit', params: { id: tag.id } }"
                             class="text-font-second inline-block text-xs transition-colors hover:text-main p-1"
                             title="Edit tag"
                         >
                             <i class="fas fa-pen"></i>
-                        </router-link>
+                        </RouterLink>
                     </BodyDetail>
                 </BodyRow>
             </DataTable>

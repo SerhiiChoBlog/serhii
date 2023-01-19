@@ -21,9 +21,9 @@ function fetchPosts(): void {
 
 <template>
     <div class="container">
-        <page-title>Social shares</page-title>
+        <PageTitle>Social shares</PageTitle>
 
-        <spinner v-if="loading" />
+        <Spinner v-if="loading" />
 
         <h2 v-else-if="posts.length === 0" class="text-2xl text-center">There are no posts</h2>
 

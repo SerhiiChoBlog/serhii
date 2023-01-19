@@ -25,17 +25,17 @@ function fetchPosts(): void {
 
 <template>
     <div class="container">
-        <page-title>
+        <PageTitle>
             <div class="flex items-center justify-center gap-3">
                 <span>Posts</span>
 
-                <main-button :route="{ name: 'posts-create' }">
+                <MainButton :route="{ name: 'posts-create' }">
                     <i class="fas fa-plus"></i>
-                </main-button>
+                </MainButton>
             </div>
-        </page-title>
+        </PageTitle>
 
-        <spinner v-if="loading" />
+        <Spinner v-if="loading" />
 
         <DataTable v-else-if="posts.length > 0">
             <template v-slot:head>
@@ -49,7 +49,7 @@ function fetchPosts(): void {
                 <HeadDetail>Edit</HeadDetail>
             </template>
 
-            <post-item
+            <PostItem
                 v-for="post in posts"
                 :key="post.id"
                 :post="post"
