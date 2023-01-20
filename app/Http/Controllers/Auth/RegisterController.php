@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Services\AvatarGeneratorService;
+use App\Services\GenerateSlugService;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -55,9 +56,16 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'avatar' => $this->getAvatarFilename(),
+            'slug' => $this->generateSlug($data['name']),
         ]);
 
         return $user;
+    }
+
+    protected function generateSlug(string $name): string
+    {
+        $slug_service = new GenerateSlugService($name);
+        return $slug_service->handle();
     }
 
     protected function redirectTo(): string

@@ -122,6 +122,7 @@ export type Subscription = {
 
 export type User = {
     id: number
+    slug: string
     roles?: Role[]
     name: string
     email: string
