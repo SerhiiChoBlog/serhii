@@ -15,6 +15,8 @@ class MultiavatarAvatarGenerator implements AvatarGenerator
     public function generate(): ?string
     {
         $multiavatar = new Multiavatar();
-        return $multiavatar($this->email, null, null);
+        $id = "serhii{$this->email}cho";
+
+        return $multiavatar($id, null, null);
     }
 }
