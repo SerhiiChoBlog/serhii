@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function user()
+    public function updateGeneral()
     {
         #
     }
