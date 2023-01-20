@@ -21,7 +21,7 @@
     </main>
 
     <script type="text/javascript">
-        window.User = {!! json_encode(user()) !!}
+        window.Auth = {!! json_encode(user()) !!}
     </script>
 
     @vite('resources/ts/main/app.ts')
