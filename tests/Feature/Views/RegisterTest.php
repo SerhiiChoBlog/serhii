@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Views;
 
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
@@ -22,12 +21,9 @@ class RegisterTest extends TestCase
 
     public function test_admin_cannot_visit_page_if_authenticated(): void
     {
-        $user = User::factory()->create();
-        $role = Role::factory()->create(['name' => 'admin']);
+        $admin = $this->createAdmin();
 
-        $user->roles()->attach([$role->id]);
-
-        $this->actingAs($user, 'web')
+        $this->actingAs($admin, 'web')
             ->get(route('register'))
             ->assertRedirect();
     }
