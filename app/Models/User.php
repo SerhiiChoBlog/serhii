@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
 
 /**
  * @property-read int $id
+ * @property string $slug
  * @property string $name
  * @property string $email
  * @property Carbon $email_verified_at
