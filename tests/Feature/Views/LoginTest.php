@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Views;
 
-use App\Models\Role;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
@@ -22,12 +22,9 @@ class LoginTest extends TestCase
 
     public function test_admin_cannot_visit_page_if_authenticated(): void
     {
-        $user = User::factory()->create();
-        $role = Role::factory()->create(['name' => 'admin']);
+        $admin = $this->createAdmin();
 
-        $user->roles()->attach([$role->id]);
-
-        $this->actingAs($user, 'web')
+        $this->actingAs($admin, 'web')
             ->get(route('login'))
             ->assertRedirect();
     }
@@ -43,10 +40,27 @@ class LoginTest extends TestCase
 
     public function test_user_can_login_and_see_profile_page(): void
     {
-        $user = User::factory()->make();
+        $user = User::factory()->create();
 
-        $this->actingAs($user, 'user')
-             ->post(route('login'))
-             ->assertRedirect('/user/profile');
+        $form_data = [
+            'email' => $user->email,
+            'password' => 'password',
+        ];
+
+        $this->post(route('login'), $form_data)
+            ->assertRedirect(RouteServiceProvider::USER_HOME);
+    }
+
+    public function test_admin_can_login_and_see_dashboard_page(): void
+    {
+        $admin = $this->createAdmin();
+
+        $form_data = [
+            'email' => $admin->email,
+            'password' => 'password',
+        ];
+
+        $this->post(route('login'), $form_data)
+            ->assertRedirect(RouteServiceProvider::ADMIN_HOME);
     }
 }

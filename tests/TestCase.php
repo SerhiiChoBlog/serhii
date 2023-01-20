@@ -2,9 +2,22 @@
 
 namespace Tests;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
+
+    protected function createAdmin(): User
+    {
+        $admin = User::factory()->create();
+
+        $role = Role::factory()->create(['name' => 'admin']);
+
+        $admin->roles()->attach([$role->id]);
+
+        return $admin;
+    }
 }

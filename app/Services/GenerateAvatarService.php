@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Throwable;
 
-class AvatarGeneratorService
+class GenerateAvatarService
 {
     private const DEFAULT_IMAGE_NAME = 'default.svg';
 
-    public function __construct(private string $email)
+    public function __construct(private string $email, private string $slug)
     {
     }
 
@@ -59,8 +59,7 @@ class AvatarGeneratorService
      */
     private function saveImage(string $image, string $ext): string
     {
-        $hash = md5("serhii{$this->email}cho");
-        $name = "{$hash}.{$ext}";
+        $name = "{$this->slug}.{$ext}";
 
         Storage::disk('public')->put("avatars/{$name}", $image);
 

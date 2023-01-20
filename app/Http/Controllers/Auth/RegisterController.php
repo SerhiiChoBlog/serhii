@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
-use App\Services\AvatarGeneratorService;
+use App\Services\GenerateAvatarService;
 use App\Services\GenerateSlugService;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
@@ -24,9 +24,9 @@ class RegisterController extends Controller
         $this->middleware('guest:user');
     }
 
-    public function getAvatarFilename(): string
+    public function getAvatarFilename(string $slug): string
     {
-        $service = new AvatarGeneratorService(request('email'));
+        $service = new GenerateAvatarService(request('email'), $slug);
         return $service->handle();
     }
 
@@ -50,16 +50,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data): User
     {
-        /** @var User $user */
-        $user = User::query()->create([
+        $slug = $this->generateSlug($data['name']);
+
+        /** @var User */
+        return User::query()->create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'avatar' => $this->getAvatarFilename(),
-            'slug' => $this->generateSlug($data['name']),
+            'avatar' => $this->getAvatarFilename($slug),
+            'slug' => $slug,
         ]);
-
-        return $user;
     }
 
     protected function generateSlug(string $name): string
