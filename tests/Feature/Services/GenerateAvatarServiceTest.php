@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Services;
 
-use App\Services\AvatarGeneratorService;
+use App\Services\GenerateAvatarService;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
-class AvatarGeneratorServiceTest extends TestCase
+class GenerateAvatarServiceTest extends TestCase
 {
     public function setUp(): void
     {
@@ -18,21 +18,27 @@ class AvatarGeneratorServiceTest extends TestCase
 
     public function test_service_saves_glavatar_image_if_exist(): void
     {
-        $service = new AvatarGeneratorService('1990serzhil@gmail.com');
+        $user_slug = 'alexey-chopin';
+
+        $service = new GenerateAvatarService('1990serzhil@gmail.com', $user_slug);
         $image_name = $service->handle();
 
         Storage::disk('public')->assertExists("avatars/{$image_name}");
 
         $this->assertStringContainsString('.jpg', $image_name);
+        $this->assertStringContainsString($user_slug, $image_name);
     }
 
     public function test_service_saves_multiavatar_image(): void
     {
-        $service = new AvatarGeneratorService('ai1dsfj8lakfj9slkf0flk@ijsalkjdfkl.com');
+        $user_slug = 'anna-korotchaeva';
+
+        $service = new GenerateAvatarService('ai1dsfj8lakfj9slkf0flk@ijsalkjdfkl.com', $user_slug);
         $image_name = $service->handle();
 
         Storage::disk('public')->assertExists("avatars/{$image_name}");
 
         $this->assertStringContainsString('.svg', $image_name);
+        $this->assertStringContainsString($user_slug, $image_name);
     }
 }
