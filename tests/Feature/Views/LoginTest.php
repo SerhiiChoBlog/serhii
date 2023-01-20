@@ -40,4 +40,13 @@ class LoginTest extends TestCase
              ->get(route('login'))
              ->assertRedirect();
     }
+
+    public function test_user_can_login_and_see_profile_page(): void
+    {
+        $user = User::factory()->make();
+
+        $this->actingAs($user, 'user')
+             ->post(route('login'))
+             ->assertRedirect('/user/profile');
+    }
 }
