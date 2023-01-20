@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
-    public function updateGeneral()
+    public function show(User $user): User
     {
-        #
+        return $user;
     }
 }
