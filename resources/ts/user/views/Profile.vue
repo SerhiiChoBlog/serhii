@@ -12,7 +12,7 @@ function fetchUser(): void {
 </script>
 
 <template>
-    <div class="flex flex-col md:flex-row gap-14 justify-center">
+    <div class="flex flex-col items-center md:flex-row gap-14 justify-center">
         <div>
             <img
                 :src="`/storage/avatars/${user.avatar}`"
@@ -23,7 +23,7 @@ function fetchUser(): void {
             />
         </div>
 
-        <div>
+        <div class="w-full md:w-auto">
             <div class="space-y-2">
                 <TableRow title="Joined">
                     <span class="inline-block w-[160px]">

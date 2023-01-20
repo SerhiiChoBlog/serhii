@@ -7,7 +7,7 @@ const { title } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="flex justify-between items-center min-w-[500px] text-lg">
+    <div class="flex justify-between items-center w-full md:min-w-[600px] text-lg">
         <span>{{ title }}:</span>
 
         <div class="border-b border-dashed mx-3 w-full"></div>
