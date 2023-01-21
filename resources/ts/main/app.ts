@@ -40,6 +40,8 @@ const app = createApp({
     },
 })
 
+app.config.globalProperties.Auth = Auth
+
 app.mount("#main")
 
 smoothLoader('[data-src]')
