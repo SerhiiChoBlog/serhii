@@ -9,7 +9,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function show(User $user): User
+    public function show(?User $user = null): ?User
     {
         return $user;
     }
