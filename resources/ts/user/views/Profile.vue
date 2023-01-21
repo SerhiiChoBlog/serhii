@@ -25,10 +25,9 @@ function fetchUser(): void {
 
         <div class="w-full md:w-auto">
             <div class="space-y-2">
+                <TableRow title="Name"> {{ user.name }}</TableRow>
                 <TableRow title="Joined">
-                    <span class="inline-block w-[160px]">
-                        {{ moment(user.created_at).format('MMMM Do YYYY') }}
-                    </span>
+                    {{ moment(user.created_at).format('MMMM Do YYYY') }}
                 </TableRow>
             </div>
         </div>

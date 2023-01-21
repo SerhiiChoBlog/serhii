@@ -14,6 +14,6 @@ class ResetPasswordController extends Controller
 
     public function broker(): PasswordBroker
     {
-        return Password::broker('user');
+        return Password::broker('users');
     }
 }

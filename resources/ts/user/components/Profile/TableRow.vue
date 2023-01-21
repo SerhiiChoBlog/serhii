@@ -7,12 +7,14 @@ const { title } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="flex justify-between items-center w-full md:min-w-[600px] text-lg">
-        <span>{{ title }}:</span>
+    <div class="flex justify-between items-center w-full md:min-w-[600px] text-lg relative">
+        <span class="bg-page inline-block z-10 pr-4">
+            {{ title }}:
+        </span>
 
-        <div class="border-b border-dashed mx-3 w-full"></div>
+        <div class="border-b top-1/2 -translate-y-1/2 border-dashed w-full absolute"></div>
 
-        <div class="text-right">
+        <div class="text-right leading-6 bg-page pl-4 z-10">
             <slot />
         </div>
     </div>
