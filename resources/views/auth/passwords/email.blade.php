@@ -4,6 +4,8 @@
 @push('description', 'Enter your email address and we will send you a link to reset your password')
 
 @section('content')
+    <x-hero class="bg-gray-700" navbar="text-white" />
+
     <x-form.wrapper
         title="Reset password"
         intro="Enter your email address and we will send you a link to reset your password"
