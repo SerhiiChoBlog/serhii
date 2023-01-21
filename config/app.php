@@ -15,9 +15,6 @@ return [
 
     'name' => env('APP_NAME', 'Serhii Cho'),
 
-    'github_projects_url' => 'https://api.github.com/users/SerhiiCho/repos',
-    'github_readme_url' => 'https://raw.githubusercontent.com/SerhiiCho/{repo}/master/README.md',
-
     /*
     |--------------------------------------------------------------------------
     | Application Environment

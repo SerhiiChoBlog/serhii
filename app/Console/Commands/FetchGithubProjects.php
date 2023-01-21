@@ -43,8 +43,8 @@ class FetchGithubProjects extends Command
      */
     private function fetchProjects(): Collection
     {
-        $projects_url = config('app.github_projects_url');
-        $readme_url = Str::of(config('app.github_readme_url'));
+        $projects_url = config('services.github.projects_url');
+        $readme_url = Str::of(config('services.github.readme_url'));
 
         $projects = Http::get($projects_url)->throw()->collect();
 
