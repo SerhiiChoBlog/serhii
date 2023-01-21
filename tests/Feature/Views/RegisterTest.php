@@ -34,7 +34,7 @@ class RegisterTest extends TestCase
         $user = User::factory()->make();
 
         $this->actingAs($user, 'user')
-             ->get(route('register'))
-             ->assertRedirect(RouteServiceProvider::USER_HOME);
+            ->get(route('register'))
+            ->assertRedirect(RouteServiceProvider::USER_HOME);
     }
 }
