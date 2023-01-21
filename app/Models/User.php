@@ -70,7 +70,7 @@ class User extends Authenticatable
         }
 
         /** @var User|null $user */
-        $user = self::query()->where('email', $email)->first();
+        $user = self::query()->select('id', 'email')->where('email', $email)->first();
         return $user?->hasRole(UserRole::ADMIN) ?? false;
     }
 }

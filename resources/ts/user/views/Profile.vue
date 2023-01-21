@@ -30,12 +30,6 @@ function fetchUser(): void {
                         {{ moment(user.created_at).format('MMMM Do YYYY') }}
                     </span>
                 </TableRow>
-                <TableRow title="Comments">
-                    {{ 0 }}
-                </TableRow>
-                <TableRow title="Liked">
-                    {{ 0 }}
-                </TableRow>
             </div>
         </div>
     </div>
