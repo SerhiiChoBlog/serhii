@@ -17,10 +17,10 @@ onMounted(() => fetchUser())
 function fetchUser() {
     loading.value = true
 
-    axios.get(`/user/ajax/users/${route.params.slug}`)
-        .then(resp => {
-            user.value = resp.data
-        })
+    const userSlug = route.params.slug as string | undefined
+
+    axios.get<User | null>(`/user/ajax/users/${userSlug || Auth.slug}`)
+        .then(resp => user.value = resp.data)
         .catch(err => console.error(err))
         .finally(() => loading.value = false)
 }
@@ -36,7 +36,7 @@ function fetchUser() {
                 :alt="`${user.name}'s avatar`"
                 width="200"
                 height="200"
-                class="w-36 rounded-full shadow-lg"
+                class="w-40 rounded-full shadow-lg"
             />
         </div>
 
