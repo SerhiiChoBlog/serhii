@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
-@push('title', trans('common.reset_password') . ' | ')
-@push('description', trans('common.reset_password_page_description'))
+@push('title', 'Reset password')
+@push('description', 'Enter your email address and we will send you a link to reset your password')
 
 @section('content')
     <x-form.wrapper
-        :title="trans('common.reset_password')"
-        :intro="trans('common.reset_password_page_description')"
+        title="Reset password"
+        intro="Enter your email address and we will send you a link to reset your password"
     >
         <div>
             @if (session('status'))
@@ -18,18 +18,18 @@
                     @csrf
 
                     <div>
-                        <x-form.label id="email">@lang('common.email')</x-form.label>
+                        <x-form.label id="email">Email</x-form.label>
                         <x-form.input id="email"
                             type="email"
                             :value="old('email')"
                             name="email"
-                            :placeholder="trans('common.email')"
+                            placeholder="Enter your email"
                         />
                     </div>
 
                     <div class="text-center mt-5">
                         <x-form.button>
-                            @lang('common.send_message')
+                            Send reset password link
                         </x-form.button>
                     </div>
                 </form>

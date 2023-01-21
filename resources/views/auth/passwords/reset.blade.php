@@ -1,11 +1,14 @@
 @extends('layouts.main')
 
-@push('title', trans('common.reset_password') . ' | ')
-@push('description', trans('common.reset_password_page_description'))
+@push('title', 'Reset password')
+@push('description', 'Enter your new password')
 
 @section('content')
 
-<x-form.wrapper :title="trans('common.reset_password')">
+<x-form.wrapper
+    title="Reset password"
+    intro="Enter your new password"
+>
     <form method="POST" action="{{ route('password.update') }}">
         @csrf
 
@@ -13,36 +16,38 @@
 
         <div class="space-y-5 mt-5">
             <div>
-                <x-form.label id="email">@lang('common.email')</x-form.label>
+                <x-form.label id="email">Email</x-form.label>
                 <x-form.input id="email"
                     type="email"
                     name="email"
                     :value="$email ?? old('email')"
-                    :placeholder="trans('common.email')"
+                    placeholder="Enter email password"
                 />
             </div>
 
             <div>
-                <x-form.label id="password">@lang('common.password')</x-form.label>
+                <x-form.label id="password">Password</x-form.label>
                 <x-form.input id="password"
                     type="password"
                     name="password"
-                    :placeholder="trans('common.password')"
+                    placeholder="Enter password"
                 />
             </div>
 
             <div>
-                <x-form.label id="password-confirm">@lang('common.confirm_password')</x-form.label>
+                <x-form.label id="password-confirm">
+                    Confirm password
+                </x-form.label>
                 <x-form.input id="password-confirm"
                     type="password"
                     name="password_confirmation"
-                    :placeholder="trans('common.confirm_password')"
+                    placeholder="Enter password confirmation"
                 />
             </div>
 
             <div class="text-center !mt-7">
                 <x-form.button>
-                    @lang('common.reset_password')
+                    Save new password
                 </x-form.button>
             </div>
         </div>
