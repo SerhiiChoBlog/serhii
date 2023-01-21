@@ -12,6 +12,7 @@ import SocialShares from '@admin/views/SocialShares.vue'
 import Referrers from '@admin/views/Referrers.vue'
 import Hits from '@admin/views/Hits.vue'
 import PostPublications from '@admin/views/PostPublications.vue'
+import NotFound from '@shared/components/NotFound.vue'
 
 const routes: RouteRecordRaw[] = [
     { path: '/admin/dashboard', name: 'dashboard', component: Dashboard },
@@ -27,6 +28,7 @@ const routes: RouteRecordRaw[] = [
     { path: '/admin/referrers', name: 'referrers', component: Referrers },
     { path: '/admin/hits', name: 'hits', component: Hits },
     { path: '/admin/post-publications', name: 'post-publications', component: PostPublications },
+    { path: '/:pathMatch(.*)', name: 'not-found', component: NotFound },
 ]
 
 export default routes

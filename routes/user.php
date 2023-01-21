@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('ajax')->name('user.')->middleware('auth:user')->group(function () {
+Route::prefix('ajax')->name('user.')->middleware('auth')->group(function () {
     Route::get('users/{user:slug?}', [UserController::class, 'show']);
 });
 
