@@ -19,7 +19,10 @@ class ReferrerMiddleware
             return $next($request);
         }
 
-        $referer_site = str_replace('www.', '', $referer_site);
+        $referer_site = str($referer_site)
+            ->replace(['www.', 'http://', 'https://'], '')
+            ->explode('/')
+            ->first();
 
         $old = Referrer::query()->where('site', $referer_site)->first();
 
