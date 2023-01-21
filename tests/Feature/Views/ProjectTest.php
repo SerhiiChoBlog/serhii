@@ -32,7 +32,7 @@ class ProjectTest extends TestCase
     {
         $user = User::factory()->make();
 
-        $this->actingAs($user)
+        $this->actingAs($user, 'admin')
             ->get(route('projects.show', $this->project))
             ->assertOk()
             ->assertViewIs('projects.show');

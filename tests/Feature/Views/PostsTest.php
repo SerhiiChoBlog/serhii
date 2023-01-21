@@ -21,7 +21,7 @@ class PostsTest extends TestCase
     {
         $user = User::factory()->make();
 
-        $this->actingAs($user)
+        $this->actingAs($user, 'admin')
             ->get(route('posts.index'))
             ->assertOk()
             ->assertViewIs('posts.index');

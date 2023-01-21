@@ -24,7 +24,7 @@ class UpdatePostTest extends TestCase
             'content' => null,
         ];
 
-        $slug = $this->actingAs($user)
+        $slug = $this->actingAs($user, 'admin')
             ->put("/admin/ajax/posts/$post->id", $data)
             ->content();
 

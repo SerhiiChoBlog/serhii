@@ -24,7 +24,7 @@ class LoginTest extends TestCase
     {
         $admin = $this->createAdmin();
 
-        $this->actingAs($admin, 'web')
+        $this->actingAs($admin, 'admin')
             ->get(route('login'))
             ->assertRedirect();
     }

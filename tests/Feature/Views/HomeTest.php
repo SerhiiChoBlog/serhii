@@ -21,7 +21,7 @@ class HomeTest extends TestCase
     {
         $user = User::factory()->make();
 
-        $this->actingAs($user)
+        $this->actingAs($user, 'admin')
             ->get(route('home'))
             ->assertOk()
             ->assertViewIs('home');
