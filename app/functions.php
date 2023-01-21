@@ -8,7 +8,7 @@ function user(): ?User
 {
     /** @var User|null */
     return match (true) {
-        auth()->check() => auth()->user(),
+        auth('admin')->check() => auth('admin')->user(),
         auth('user')->check() => auth('user')->user(),
         default => null,
     };

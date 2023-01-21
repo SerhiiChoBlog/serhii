@@ -21,7 +21,7 @@ class AboutMeTest extends TestCase
     {
         $user = User::factory()->make();
 
-        $this->actingAs($user)
+        $this->actingAs($user, 'admin')
             ->get(route('about-me'))
             ->assertOk()
             ->assertViewIs('about-me');

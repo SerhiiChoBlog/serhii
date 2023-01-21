@@ -22,6 +22,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
         $this->middleware('guest:user');
+        $this->middleware('guest:admin');
     }
 
     public function getAvatarFilename(string $slug): string

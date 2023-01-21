@@ -27,7 +27,7 @@ class PostTest extends TestCase
         $published_post = Post::factory()->published()->create();
         $user = User::factory()->make();
 
-        $this->actingAs($user)
+        $this->actingAs($user, 'admin')
             ->get(route('posts.show', $published_post))
             ->assertOk()
             ->assertViewIs('posts.show');
@@ -44,7 +44,7 @@ class PostTest extends TestCase
         $user = User::factory()->make();
         $post = Post::factory()->create();
 
-        $this->actingAs($user)
+        $this->actingAs($user, 'admin')
             ->get(route('posts.show', $post))
             ->assertOk();
     }

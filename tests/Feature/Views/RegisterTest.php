@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Views;
 
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
@@ -23,9 +24,9 @@ class RegisterTest extends TestCase
     {
         $admin = $this->createAdmin();
 
-        $this->actingAs($admin, 'web')
+        $this->actingAs($admin, 'admin')
             ->get(route('register'))
-            ->assertRedirect();
+            ->assertRedirect(RouteServiceProvider::ADMIN_HOME);
     }
 
     public function test_user_cannot_visit_page_if_authenticated(): void
@@ -34,6 +35,6 @@ class RegisterTest extends TestCase
 
         $this->actingAs($user, 'user')
              ->get(route('register'))
-             ->assertRedirect();
+             ->assertRedirect(RouteServiceProvider::USER_HOME);
     }
 }
