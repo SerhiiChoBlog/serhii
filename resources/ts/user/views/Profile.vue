@@ -1,18 +1,35 @@
 <script setup lang="ts">
 import type { User } from '@shared/types/models'
-import { ref } from 'vue'
 import moment from 'moment'
+import { onMounted, ref } from 'vue'
+import axios from 'axios'
+import { useRoute } from 'vue-router'
+import ErrorMessage from '@shared/components/ErrorMessage.vue'
 import TableRow from '@user/components/Profile/TableRow.vue'
+import Spinner from '@shared/components/Icons/Spinner.vue'
 
-const user = ref<User>(Auth)
+const user = ref<User | null>()
+const loading = ref<boolean>(false)
+const route = useRoute()
 
-function fetchUser(): void {
-    console.log('nice')
+onMounted(() => fetchUser())
+
+function fetchUser() {
+    loading.value = true
+
+    axios.get(`/user/ajax/users/${route.params.slug}`)
+        .then(resp => {
+            user.value = resp.data
+        })
+        .catch(err => console.error(err))
+        .finally(() => loading.value = false)
 }
 </script>
 
 <template>
-    <div class="flex flex-col items-center md:flex-row gap-14 justify-center">
+    <Spinner v-if="loading" />
+
+    <div v-else-if="user" class="flex flex-col items-center md:flex-row gap-14 justify-center">
         <div>
             <img
                 :src="`/storage/avatars/${user.avatar}`"
@@ -32,4 +49,6 @@ function fetchUser(): void {
             </div>
         </div>
     </div>
+
+    <ErrorMessage v-else />
 </template>
