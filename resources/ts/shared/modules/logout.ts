@@ -11,7 +11,7 @@ export default async (): Promise<void> => {
         denyButtonText: 'No',
     })
 
-    const wantsToStay = response.isDenied
+    const wantsToStay = response.isDismissed || response.isDenied
 
     if (wantsToStay || !Auth)
         return
