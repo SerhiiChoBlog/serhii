@@ -19,7 +19,7 @@ class RegisterTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        Storage::fake();
+        Storage::fake('public');
         Http::fake();
     }
 
