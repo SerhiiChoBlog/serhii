@@ -31,6 +31,7 @@ class LoginTest extends TestCase
 
     public function test_user_cannot_visit_page_if_authenticated(): void
     {
+        /** @var User $user */
         $user = User::factory()->make();
 
         $this->actingAs($user, 'user')
@@ -62,5 +63,64 @@ class LoginTest extends TestCase
 
         $this->post(route('login'), $form_data)
             ->assertRedirect(RouteServiceProvider::ADMIN_HOME);
+    }
+
+    public function test_user_cannot_login_with_invalid_password(): void
+    {
+        /** @var User $user */
+        $user = User::factory()->create();
+
+        $form_data = [
+            'email' => $user->email,
+            'password' => 'invalid-password',
+        ];
+
+        $this->post(route('login'), $form_data)
+            ->assertSessionHasErrors();
+    }
+
+    public function test_user_cannot_login_with_invalid_email(): void
+    {
+        /** @var User $user */
+        $user = User::factory()->create();
+
+        $form_data = [
+            'email' => 'xx' . $user->email,
+            'password' => 'password',
+        ];
+
+        $this->post(route('login'), $form_data)
+             ->assertSessionHasErrors();
+    }
+
+    public function test_remember_me_token_is_set(): void
+    {
+        /** @var User $user */
+        $user = User::factory()->create();
+
+        $form_data = [
+            'email' => $user->email,
+            'password' => 'password',
+            'remember' => 'on',
+        ];
+
+        $this->post(route('login'), $form_data);
+
+        $this->assertNotNull($user->fresh()->remember_token);
+    }
+
+    public function test_remember_me_token_is_not_set(): void
+    {
+        /** @var User $user */
+        $user = User::factory()->create();
+
+        $form_data = [
+            'email' => $user->email,
+            'password' => 'password',
+        ];
+
+        $this->post(route('login'), $form_data);
+
+        $this->assertNull($user->fresh()->remember_token);
     }
 }
