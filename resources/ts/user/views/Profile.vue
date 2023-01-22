@@ -7,7 +7,7 @@ import { useRoute } from 'vue-router'
 import ErrorMessage from '@shared/components/ErrorMessage.vue'
 import TableRow from '@user/components/Profile/TableRow.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
-import AlertBlock from '@user/components/AlertBlock.vue'
+import Badge from '@shared/components/Badge.vue'
 
 const user = ref<User | null>()
 const loading = ref<boolean>(false)
@@ -28,26 +28,38 @@ function fetchUser() {
 </script>
 
 <template>
-    <AlertBlock class="mb-10">
-        Please, confirm your email <b>{{ Auth.email }}</b> to finish registration
-    </AlertBlock>
-
     <Spinner v-if="loading" />
 
-    <div v-else-if="user" class="flex flex-col items-center md:flex-row gap-14 justify-center">
+    <div v-else-if="user" class="grid grid-cols-1 md:grid-cols-[250px_auto] gap-24">
         <div>
             <img
                 :src="`/storage/avatars/${user.avatar}`"
                 :alt="`${user.name}'s avatar`"
                 width="200"
                 height="200"
-                class="w-40 rounded-full shadow-lg"
+                class="w-full rounded-full shadow-lg pointer-events-none"
             />
+
+            <div class="mt-7">
+                <h1 class="text-3xl font-black">{{ user.name }}</h1>
+                <h2 class="text-lg text-font-second">@{{ user.slug }}</h2>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-border">
+                <h2 class="text-xl font-bold">Achievements</h2>
+
+                <div class="mt-2">
+                    <Badge
+                        badge="verified"
+                        v-if="user.email_verified_at"
+                        class="w-14"
+                    />
+                </div>
+            </div>
         </div>
 
-        <div class="w-full md:w-auto">
+        <div>
             <div class="space-y-2">
-                <TableRow title="Name"> {{ user.name }}</TableRow>
                 <TableRow title="Joined">
                     {{ moment(user.created_at).format('MMMM Do YYYY') }}
                 </TableRow>
