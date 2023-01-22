@@ -1,0 +1,12 @@
+@import 'toastify-js/src/toastify.css';
+@import '../shared/_fonts.css';
+@import "../shared/_variables.css";
+@import "../shared/_sweetalert.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swal2-container {
+    z-index: 1700 !important;
+}

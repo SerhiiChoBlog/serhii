@@ -12,18 +12,16 @@ class HomeTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    /** @test */
-    public function guest_can_visit_page(): void
+    public function test_guest_can_visit_page(): void
     {
         $this->get(route('home'))->assertOk()->assertViewIs('home');
     }
 
-    /** @test */
-    public function admin_can_visit_page(): void
+    public function test_admin_can_visit_page(): void
     {
         $user = User::factory()->make();
 
-        $this->actingAs($user)
+        $this->actingAs($user, 'admin')
             ->get(route('home'))
             ->assertOk()
             ->assertViewIs('home');

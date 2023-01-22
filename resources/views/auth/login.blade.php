@@ -1,22 +1,76 @@
-@extends('layouts.app')
+@extends('layouts.main')
+
+@push('title', 'Login to your account')
+@push('description', 'Login to your account to stay in touch')
 
 @section('content')
+    <x-hero class="bg-gray-700" navbar="text-white" />
 
-<div class="flex justify-center py-10">
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+    <x-form.wrapper
+        title="Login"
+        intro="Login to your account to unlock some extra features only for registered users"
+        infoTitle="Don't have an account?"
+        infoIntro="If you don't have an account yet, you can register one in a few seconds"
+        img="login.webp"
+    >
+        <x-slot name="info">
+            <div class="text-white">
+                <a
+                    href="{{ route('register') }}"
+                    class="mt-5 inline-block bg-black/70 hover:bg-black transition-colors text-white py-4 px-10 rounded-full shadow-lg"
+                >
+                    Register an account
+                </a>
+            </div>
+        </x-slot>
 
-        <input type="hidden" name="email" value="admin@mail.com" required>
-        <input type="checkbox" name="remember" class="hidden" checked>
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
 
-        <input id="password"
-            type="password"
-            class="px-8 py-3 rounded-full text-center"
-            name="password"
-            placeholder="404 Page not found"
-            required
-        >
-    </form>
-</div>
+            <div class="space-y-5">
+                <div>
+                    <x-form.label id="email">Email</x-form.label>
+                    <x-form.input
+                        id="email"
+                        :value="old('email') ?? request('email')"
+                        placeholder="Enter email"
+                        name="email"
+                    />
+                </div>
 
+                <div>
+                    <x-form.label id="password">Password</x-form.label>
+                    <x-form.input
+                        id="password"
+                        type="password"
+                        placeholder="Enter your password" name="password"
+                    />
+                </div>
+
+                <div class="flex gap-2 px-1">
+                    <input
+                        id="remember"
+                        type="checkbox"
+                        name="remember"
+                    />
+
+                    <label for="remember" class="text-font-second">
+                        Remember me
+                    </label>
+                </div>
+
+                <div class="pt-4">
+                    <x-form.button>Login</x-form.button>
+
+                    <div class="pt-7">
+                        <x-question-link
+                            question="Forgot password?"
+                            :link="route('password.request')"
+                            title="Reset your password"
+                        />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </x-form.wrapper>
 @endsection

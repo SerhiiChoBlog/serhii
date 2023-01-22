@@ -5,11 +5,11 @@
      * @var array<int, array<int ,mixed>> $latest_videos
      */
 @endphp
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <x-hero
-        class="relative bg-home-hero-sm lg:bg-home-hero w-full bg-blend-overlay bg-cover md:bg-fixed bg-center bg-no-repeat"
+        class="relative bg-home-hero-sm lg:bg-home-hero bg-blend-overlay bg-cover md:bg-fixed bg-center bg-no-repeat"
         navbar="text-white"
     >
         <div>
@@ -39,7 +39,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 -translate-y-16 lg:translate-y-0 bg-page p-2 rounded-xl">
             @foreach ($random_posts as $post)
                 <div
-                    class="bg-page p-3 rounded-xl p-2 {{ $loop->index === 1 ? 'lg:-translate-y-16' : 'lg:-translate-y-7' }}"
+                    class="bg-page p-3 rounded-xl {{ $loop->index === 1 ? 'lg:-translate-y-16' : 'lg:-translate-y-7' }}"
                 >
                     <x-posts.vertical-post :post="$post" />
                 </div>
@@ -56,8 +56,7 @@
         @endforeach
     </x-home.section>
 
-    <x-home.section
-        title="Latest videos"
+    <x-home.section title="Latest videos"
         intro="The latest YouTube videos"
     >
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -92,6 +91,4 @@
     <x-home.section title="Coming soon" intro="The articles which I'm currently working on" :isDark="true">
         <x-home.coming-soon-section />
     </x-home.section>
-
-    <subscription></subscription>
 @endsection

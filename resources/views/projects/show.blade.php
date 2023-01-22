@@ -2,7 +2,7 @@
     /** @var App\Models\Project $project */
 @endphp
 
-@extends('layouts.app')
+@extends('layouts.main')
 
 @push('head')
     <script src="{{ asset('js/highlight.js') }}" defer></script>

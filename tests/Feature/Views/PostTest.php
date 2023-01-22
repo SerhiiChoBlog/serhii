@@ -6,15 +6,14 @@ namespace Tests\Feature\Views;
 
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
 class PostTest extends TestCase
 {
-    use RefreshDatabase;
+    use LazilyRefreshDatabase;
 
-    /** @test */
-    public function guest_can_visit_published_post_page(): void
+    public function test_guest_can_visit_published_post_page(): void
     {
         $published_post = Post::factory()->published()->create();
 
@@ -23,13 +22,12 @@ class PostTest extends TestCase
             ->assertViewIs('posts.show');
     }
 
-    /** @test */
-    public function admin_can_visit_page(): void
+    public function test_admin_can_visit_page(): void
     {
         $published_post = Post::factory()->published()->create();
         $user = User::factory()->make();
 
-        $this->actingAs($user)
+        $this->actingAs($user, 'admin')
             ->get(route('posts.show', $published_post))
             ->assertOk()
             ->assertViewIs('posts.show');
@@ -46,7 +44,7 @@ class PostTest extends TestCase
         $user = User::factory()->make();
         $post = Post::factory()->create();
 
-        $this->actingAs($user)
+        $this->actingAs($user, 'admin')
             ->get(route('posts.show', $post))
             ->assertOk();
     }

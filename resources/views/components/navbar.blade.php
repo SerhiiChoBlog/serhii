@@ -7,6 +7,7 @@
                     href="{{ route('home') }}"
                     class="print:hidden text-lg font-bold transition-opacity hover:opacity-80 text-lato drop-shadow-[1px_1px_0_rgba(0,0,0,.4)]"
                     aria-label="Visit main page"
+                    rel="noreferrer"
                 >
                     <div class="tracking-wide">
                         <span class="text-white">SERHII</span>
@@ -15,11 +16,7 @@
                 </a>
             @endunless
 
-            @auth
-                <a href="/admin/dashboard" aria-hidden="true" tabindex="-1">admin</a>
-            @endauth
-
-            <hamburger :is-light="true"></hamburger>
+            <hamburger></hamburger>
         </div>
 
         <x-navbar-menu />

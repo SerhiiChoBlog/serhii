@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\ReferrerController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
+Route::prefix('ajax')->name('admin.')->middleware('auth:admin')->group(function () {
     Route::get('dashboard/sections', [DashboardController::class, 'sections']);
     Route::resource('posts', PostController::class);
     Route::post('post-content-images/{post}', [PostContentImageController::class, 'store']);
@@ -29,6 +29,4 @@ Route::prefix('ajax')->name('admin.')->middleware('auth')->group(function () {
 });
 
 Route::view('{any?}', 'layouts.admin')
-    ->middleware('auth')
-    ->name('admin.dashboard')
     ->where('any', '.*');

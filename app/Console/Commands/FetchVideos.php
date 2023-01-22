@@ -34,7 +34,7 @@ class FetchVideos extends Command
             $this->info("Videos updated: {$updated}. Videos created: {$created}");
         } catch (FetchVideosHttpException $e) {
             $this->error($e->getMessage());
-            Log::error($e);
+            Log::error($e->getMessage());
         }
     }
 

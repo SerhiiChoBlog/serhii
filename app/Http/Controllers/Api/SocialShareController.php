@@ -24,7 +24,7 @@ class SocialShareController extends Controller
         try {
             $visitor = Visitor::getOrCreateVisitor($ip);
         } catch (Throwable $e) {
-            Log::error($e);
+            Log::error($e->getMessage());
             return;
         }
 

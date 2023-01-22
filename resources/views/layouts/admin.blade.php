@@ -6,12 +6,21 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
     <title>{{ config('app.name', 'Serhii API') }}</title>
-    @vite('resources/css/admin/admin.css')
+    @vite('resources/css/main/app.css')
+    @vite('resources/css/admin/app.css')
     @vite('resources/css/admin/font-awesome.css')
     @stack('head')
 </head>
-<body>
+<body class="text-font font-main bg-page {{ request()->cookie('theme') }}">
+    <x-hero class="bg-gray-700" navbar="text-white" id="main" />
+
     <main id="admin-main"></main>
-    @vite('resources/admin/app.ts')
+
+    <script type="text/javascript">
+        window.Auth = {!! json_encode(user()) !!}
+    </script>
+
+    @vite('resources/ts/main/app.ts')
+    @vite('resources/ts/admin/app.ts')
 </body>
 </html>

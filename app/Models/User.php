@@ -4,22 +4,29 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\UserRole;
 use Carbon\Carbon;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 
 /**
  * @property-read int $id
+ * @property string $slug
  * @property string $name
  * @property string $email
  * @property Carbon $email_verified_at
  * @property string $password
+ * @property string $avatar
  * @property string $remember_token
+ * @property Collection<int, Role> $roles
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory;
     use Notifiable;
@@ -27,11 +34,7 @@ class User extends Authenticatable
     /**
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = ['id'];
 
     /**
      * @var array<int, string>
@@ -47,4 +50,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @return BelongsToMany<Role>
+     */
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function hasRole(UserRole $role): bool
+    {
+        return $this->roles()->where('name', $role->value)->exists();
+    }
+
+    public static function isAdmin(?string $email): bool
+    {
+        if (!$email) {
+            return false;
+        }
+
+        /** @var User|null $user */
+        $user = self::query()->select('id', 'email')->where('email', $email)->first();
+        return $user?->hasRole(UserRole::ADMIN) ?? false;
+    }
 }

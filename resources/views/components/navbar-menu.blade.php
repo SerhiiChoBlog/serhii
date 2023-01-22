@@ -1,19 +1,46 @@
-<div class="navbar-menu z-40" id="navbar-menu">
-    @foreach ($getMenuItems() as $item)
-        <a
-            href="{{ $item['href'] }}"
-            class="relative first:rounded-t-lg border-b border-border lg:border-none text-sm before:content-none px-7 py-5 lg:p-0 lg:before:content-[''] navbar-link {{ $item['class'] }} uppercase drop-shadow-md"
-            aria-label="{{ $item['title'] }}"
-        >
-            {{ $item['title'] }}
-        </a>
+@php
+    /**
+     * @var array<int, array<string, string>> $menu_items
+     */
+@endphp
+
+<div class="navbar-menu z-40 pb-8 lg:pb-0" id="navbar-menu">
+    @foreach ($menu_items as $item)
+        <x-nav-link :href="$item['href']" :title="$item['title']" :class="$item['class']" />
     @endforeach
 
-    <contact-modal>
-        <div class="w-full mx-auto shadow-md bg-main lg:w-auto font-semibold text-white py-2 px-6 rounded-full transition-colors hover:bg-main-hover uppercase text-sm tracking-widest">Contacts</div>
-    </contact-modal>
-
-    <div class="min-w-[35px] mx-auto">
+    <div class="min-w-[35px] mx-auto mt-5 lg:mt-0">
         <theme-switch theme="{{ request()->cookie('theme', 'system') }}" />
+    </div>
+
+    <div class="mx-auto lg:m-0 text-center mt-5 relative">
+        @if (user())
+            <user-dropdown>
+                <button
+                    type="button"
+                    class="flex items-center justify-center gap-4 bg-black/20 rounded-full pl-5 hover:bg-black/40 transition-colors group"
+                >
+                    <div class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[150px] text-lg">
+                        {{ user()->name }}
+                    </div>
+
+                    <img
+                        src="{{ asset(sprintf('storage/avatars/%s', user()->avatar)) }}"
+                        alt="Profile picture"
+                        width="200"
+                        height="200"
+                        class="rounded-full w-10 h-10 shadow-md group-hover:shadow-lg"
+                    />
+                </button>
+            </user-dropdown>
+        @else
+            <a
+                href="{{ route('login') }}"
+                class="main-btn min-w-[140px]"
+                rel="noreferrer"
+            >
+                Login
+            </a>
+        @endif
     </div>
 </div>

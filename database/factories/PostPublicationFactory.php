@@ -8,6 +8,9 @@ use App\Models\Post;
 use App\Models\PostPublication;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends Factory<PostPublication>
+ */
 class PostPublicationFactory extends Factory
 {
     protected $model = PostPublication::class;
