@@ -27,6 +27,11 @@ const links: UserSidebarLink[] = [
         icon: 'fa-users',
     },
     {
+        routeName: 'users',
+        title: 'Users',
+        icon: 'fa-users',
+    },
+    {
         routeName: 'social-shares',
         title: 'Shares',
         icon: 'fa-share-alt',
