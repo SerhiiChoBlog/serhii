@@ -7,10 +7,7 @@
 /storage/app/public/posts/sm/*
 /storage/app/public/posts/xs/*
 /storage/app/public/posts/content/*
-!/storage/app/public/posts/content/.gitkeep
-!/storage/app/public/posts/lg/.gitkeep
-!/storage/app/public/posts/sm/.gitkeep
-!/storage/app/public/posts/xs/.gitkeep
+/storage/app/public/avatars/*
 /vendor
 .env
 .env.backup
@@ -25,3 +22,4 @@ yarn.lock
 package-lock.json
 composer.lock
 .DS_Store
+!.gitkeep

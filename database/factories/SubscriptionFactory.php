@@ -9,6 +9,9 @@ use Exception;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
+/**
+ * @extends Factory<Subscription>
+ */
 class SubscriptionFactory extends Factory
 {
     protected $model = Subscription::class;

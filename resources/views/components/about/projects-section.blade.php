@@ -10,7 +10,7 @@
             lg:ml-[-100px] lg:mb-0 before:left-0 before:absolute before:right-0 before:h-3 before:bg-[#282829]
             before:top-[-11px] before:rounded-t-lg
             ">
-                <a href="{{ $site['href'] }}" target="_blank" class="max-w-[350px] block">
+                <a href="{{ $site['href'] }}" target="_blank" class="max-w-[350px] block" rel="noreferrer">
                     <img
                         src="{{ asset('storage/tools/mac-buttons.webp') }}"
                         class="absolute top-[-8px] left-2"

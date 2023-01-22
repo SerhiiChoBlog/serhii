@@ -10,14 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * The path to the "home" route for your application.
-     *
-     * This is used by Laravel authentication to redirect users after login.
-     *
-     * @var string
-     */
-    public const DASHBOARD = '/admin/dashboard';
+    public const ADMIN_HOME = '/admin/dashboard';
+    public const USER_HOME = '/user';
 
     public function boot(): void
     {
@@ -34,9 +28,14 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             Route::prefix('admin')
-                ->middleware('web')
+                ->middleware(['web', 'auth:admin'])
                 ->namespace($this->namespace)
                 ->group(base_path('routes/admin.php'));
+
+            Route::prefix('user')
+                 ->middleware(['web', 'auth:user', 'verified'])
+                 ->namespace($this->namespace)
+                 ->group(base_path('routes/user.php'));
         });
     }
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @push('title', 'Information about Serhii Cho')
 @push('description', "Serhii Cho is a Ukrainian web developer and blogger who is writing about enhancing your knowledge in creating fast and robust web apps")
@@ -125,6 +125,4 @@
             <x-about.projects-section />
         </x-about.section>
     </div>
-
-    <subscription></subscription>
 @endsection

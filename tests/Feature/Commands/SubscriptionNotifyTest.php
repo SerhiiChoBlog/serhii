@@ -10,13 +10,13 @@ use App\Models\Subscription;
 use App\Models\Tag;
 use App\Notifications\PostPublished;
 use Exception;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class SubscriptionNotifyTest extends TestCase
 {
-    use RefreshDatabase;
+    use LazilyRefreshDatabase;
 
     public function setUp(): void
     {
@@ -27,8 +27,8 @@ class SubscriptionNotifyTest extends TestCase
     private function finalNotificationMessage(Post $post, int $notified, ?int $skipped = 0): string
     {
         return <<<TEXT
-        - Notified: $notified subscribers;
-        - Skipped: $skipped subscribers;
+        - Notified: {$notified} subscribers;
+        - Skipped: {$skipped} subscribers;
         Post published:
         "$post->title"
         TEXT;

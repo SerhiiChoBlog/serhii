@@ -35,4 +35,9 @@ return [
         'url' => 'https://youtube.googleapis.com/youtube/v3/search',
     ],
 
+    'github' => [
+        'projects_url' => 'https://api.github.com/users/SerhiiCho/repos',
+        'readme_url' => 'https://raw.githubusercontent.com/SerhiiCho/{repo}/master/README.md',
+    ],
+
 ];

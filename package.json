@@ -27,7 +27,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "@headlessui/vue": "^1.6.7",
+        "@headlessui/vue": "^1.7.7",
         "@tailwindcss/typography": "^0.5.2",
         "@tinymce/tinymce-vue": "^4",
         "@types/lodash": "^4.14.182",
@@ -36,6 +36,7 @@
         "copy-to-clipboard": "^3.3.1",
         "flatpickr": "^4.6.9",
         "laravel-echo": "^1.13.0",
+        "moment": "^2.29.4",
         "pusher-js": "^7.3.0",
         "smooth-loader": "^1.1.0",
         "sweetalert2": "^11.4.18",

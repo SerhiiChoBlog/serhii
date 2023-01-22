@@ -33,7 +33,7 @@ class FetchGithubProjects extends Command
             $this->info(sprintf('%d projects has been uploaded to a database', $projects->count()));
         } catch (RequestException $e) {
             $this->error($e->getMessage());
-            Log::error($e);
+            Log::error($e->getMessage());
         }
     }
 
@@ -43,8 +43,8 @@ class FetchGithubProjects extends Command
      */
     private function fetchProjects(): Collection
     {
-        $projects_url = config('app.github_projects_url');
-        $readme_url = Str::of(config('app.github_readme_url'));
+        $projects_url = config('services.github.projects_url');
+        $readme_url = Str::of(config('services.github.readme_url'));
 
         $projects = Http::get($projects_url)->throw()->collect();
 
@@ -79,7 +79,7 @@ class FetchGithubProjects extends Command
             $parser = new Parsedown();
             return $parser->text($content);
         } catch (RequestException $e) {
-            Log::error($e);
+            Log::error($e->getMessage());
             return '';
         }
     }

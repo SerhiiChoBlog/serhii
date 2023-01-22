@@ -9,10 +9,12 @@ class NavbarMenu extends Component
 {
     public function render(): View
     {
-        return view('components.navbar-menu');
+        return view('components.navbar-menu', [
+            'menu_items' => $this->getMenuItems(),
+        ]);
     }
 
-    public function getMenuItems(): array
+    private function getMenuItems(): array
     {
         $active_class = 'navbar-link--active bg-black/30 lg:bg-transparent';
 
@@ -28,19 +30,14 @@ class NavbarMenu extends Component
                 'title' => 'Blog',
             ],
             [
-                'href' => route('projects.index'),
-                'class' => request()->is('projects') ? $active_class : '',
-                'title' => 'Open Source',
+                'href' => route('subscribe'),
+                'class' => request()->is('subscribe') ? $active_class : '',
+                'title' => 'Subscribe',
             ],
             [
                 'href' => route('about-me'),
                 'class' => request()->is('about-me') ? $active_class : '',
                 'title' => 'About',
-            ],
-            [
-                'href' => route('subscribe'),
-                'class' => request()->is('subscribe') ? $active_class : '',
-                'title' => 'Subscribe',
             ],
         ];
     }

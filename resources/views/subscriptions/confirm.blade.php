@@ -4,7 +4,7 @@
      */
 @endphp
 
-@extends('layouts.app')
+@extends('layouts.main')
 
 @push('title', 'Subscribed to Serhii Cho')
 @push('description', "Your subscription has been confirmed and you've been added to the list")

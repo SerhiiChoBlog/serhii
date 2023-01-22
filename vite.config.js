@@ -5,13 +5,16 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
     plugins: [
         laravel([
-            // public
-            'resources/css/app.css',
-            'resources/vue/app.ts',
+            // main
+            'resources/css/main/app.css',
+            'resources/ts/main/app.ts',
             // admin
-            'resources/admin/app.ts',
-            'resources/css/admin/admin.css',
+            'resources/css/admin/app.css',
             'resources/css/admin/font-awesome.css',
+            'resources/ts/admin/app.ts',
+            // user
+            'resources/css/user/app.css',
+            'resources/ts/user/app.ts',
         ]),
         vue({
             template: {
@@ -29,8 +32,10 @@ export default defineConfig({
 
     resolve: {
         alias: {
-            '@': '/resources/vue',
-            '@@': '/resources/admin',
+            '@': '/resources/ts/main',
+            '@admin': '/resources/ts/admin',
+            '@user': '/resources/ts/user',
+            '@shared': '/resources/ts/shared',
         }
     },
 })

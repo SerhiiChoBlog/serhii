@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @push('title', 'Unsubscribed')
 @push('description', "Your subscription has been removed, I will be missing you so much. If you change your mind, you will be welcomed back")

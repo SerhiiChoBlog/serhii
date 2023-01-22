@@ -6,12 +6,12 @@ namespace Tests\Feature\Views;
 
 use App\Models\Project;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
 class ProjectTest extends TestCase
 {
-    use RefreshDatabase;
+    use LazilyRefreshDatabase;
 
     private Project $project;
 
@@ -21,20 +21,18 @@ class ProjectTest extends TestCase
         $this->project = Project::factory()->create();
     }
 
-    /** @test */
-    public function guest_can_visit_page(): void
+    public function test_guest_can_visit_page(): void
     {
         $this->get(route('projects.show', $this->project))
             ->assertOk()
             ->assertViewIs('projects.show');
     }
 
-    /** @test */
-    public function admin_can_visit_page(): void
+    public function test_admin_can_visit_page(): void
     {
         $user = User::factory()->make();
 
-        $this->actingAs($user)
+        $this->actingAs($user, 'admin')
             ->get(route('projects.show', $this->project))
             ->assertOk()
             ->assertViewIs('projects.show');
