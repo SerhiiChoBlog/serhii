@@ -4,8 +4,6 @@ export { }
 
 declare global {
     interface Window {
-        Auth: User | undefined
+        Auth: User | null
     }
 }
-
-

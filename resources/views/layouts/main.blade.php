@@ -20,11 +20,9 @@
         <x-footer></x-footer>
     </main>
 
-    @if (user())
-        <script type="text/javascript">
-            window.Auth = {!! json_encode(user()) !!}
-        </script>
-    @endif
+    <script type="text/javascript">
+        window.Auth = {!! json_encode(user()) !!}
+    </script>
 
     @vite('resources/ts/main/app.ts')
 </body>
