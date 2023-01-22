@@ -15,6 +15,7 @@
 
                 <div class="flex gap-4 mt-8 lg:mt-3 justify-center lg:justify-start">
                     <a
+                        v-if="Auth"
                         :href="`/user/${Auth.slug}`"
                         class="border border-amber-400 hover:border-amber-500 shadow-md shadow-transparent duration-500 hover:shadow-amber-300 transition-shadow px-5 py-1.5 rounded-full text-center uppercase font-main text-sm min-w-[130px]"
                     >

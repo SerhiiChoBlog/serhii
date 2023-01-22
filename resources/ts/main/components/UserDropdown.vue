@@ -10,13 +10,13 @@ function redirectTo(url: string) {
 </script>
 
 <template>
-    <Menu>
+    <Menu v-if="Auth">
         <menu-button>
             <slot />
         </menu-button>
 
         <menu-items>
-            <menu-item @click="redirectTo(`/user/${Auth.slug}`)">Profile</menu-item>
+            <menu-item @click="redirectTo(`/user/${Auth!.slug}`)">Profile</menu-item>
             <menu-item @click="logout">Logout</menu-item>
         </menu-items>
     </Menu>
