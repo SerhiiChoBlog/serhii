@@ -11,6 +11,7 @@ use App\Models\PostView;
 use App\Models\Referrer;
 use App\Models\SocialShare;
 use App\Models\Subscription;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -48,6 +49,10 @@ class DashboardController extends Controller
             [
                 'title' => 'Refers',
                 'value' => Referrer::query()->sum('hits'),
+            ],
+            [
+                'title' => 'Users',
+                'value' => User::query()->count(),
             ],
         ];
     }
