@@ -11,7 +11,7 @@ use App\Http\Controllers\ThemeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::redirect('about', 'about-me');
 Route::redirect('blog', 'posts');

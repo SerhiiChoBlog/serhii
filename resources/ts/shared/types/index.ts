@@ -1,4 +1,9 @@
 import type { Tag } from './models'
+import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue'
+
+export type Component = FunctionalComponent<HTMLAttributes & VNodeProps, {}>
+
+export type Badge = 'verified'
 
 export type Chapter = {
     title: string

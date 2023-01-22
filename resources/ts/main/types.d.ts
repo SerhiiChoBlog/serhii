@@ -7,3 +7,5 @@ declare global {
         Auth: User | undefined
     }
 }
+
+
