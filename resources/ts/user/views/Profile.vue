@@ -7,6 +7,7 @@ import { useRoute } from 'vue-router'
 import ErrorMessage from '@shared/components/ErrorMessage.vue'
 import TableRow from '@user/components/Profile/TableRow.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
+import AlertBlock from '@user/components/AlertBlock.vue'
 
 const user = ref<User | null>()
 const loading = ref<boolean>(false)
@@ -27,6 +28,10 @@ function fetchUser() {
 </script>
 
 <template>
+    <AlertBlock class="mb-10">
+        Please, confirm your email <b>{{ Auth.email }}</b> to finish registration
+    </AlertBlock>
+
     <Spinner v-if="loading" />
 
     <div v-else-if="user" class="flex flex-col items-center md:flex-row gap-14 justify-center">
