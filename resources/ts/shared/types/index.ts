@@ -5,6 +5,12 @@ export type Component = FunctionalComponent<HTMLAttributes & VNodeProps, {}>
 
 export type Badge = 'verified'
 
+export type BadgesSection = {
+    tip: string
+    badge: Badge
+    show: boolean
+}
+
 export type Chapter = {
     title: string
     isActive: boolean

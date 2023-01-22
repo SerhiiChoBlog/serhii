@@ -4,13 +4,14 @@ import Tip from '@/components/Tip.vue'
 
 type Props = {
     badge: Badge
+    tip: string
 }
 
-const { badge } = defineProps<Props>()
+const { badge, tip } = defineProps<Props>()
 </script>
 
 <template>
-    <Tip content="User verified achievement">
+    <Tip :content="tip">
         <img
             :src="`/storage/badges/${badge}.png`"
             :alt="`Badge for ${badge}`"
