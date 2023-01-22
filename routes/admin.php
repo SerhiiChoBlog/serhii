@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PostPublicationController;
 use App\Http\Controllers\Admin\PostViewController;
 use App\Http\Controllers\Admin\SocialShareController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\ReferrerController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,7 @@ Route::prefix('ajax')->name('admin.')->middleware('auth:admin')->group(function 
     Route::resource('referrers', ReferrerController::class)->only('index');
     Route::resource('hits', HitController::class)->only('index');
     Route::resource('post-publications', PostPublicationController::class)->only('index');
+    Route::resource('users', UserController::class)->only('index');
 });
 
 Route::view('{any?}', 'layouts.admin')

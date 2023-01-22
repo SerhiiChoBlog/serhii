@@ -33,12 +33,11 @@ function fetchVisitors(): void {
 
         <DataTable v-else>
             <template v-slot:head>
-                <HeadDetail
-                    v-for="title in ['Views', 'IP', 'Country', 'City', 'Flag']"
-                    :key="title"
-                >
-                    {{ title }}
-                </HeadDetail>
+                <HeadDetail>Views</HeadDetail>
+                <HeadDetail>IP</HeadDetail>
+                <HeadDetail>Country</HeadDetail>
+                <HeadDetail>City</HeadDetail>
+                <HeadDetail>Flag</HeadDetail>
             </template>
 
             <BodyRow v-for="visitor in visitors" :key="visitor.id">
