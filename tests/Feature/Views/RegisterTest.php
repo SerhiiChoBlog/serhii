@@ -72,4 +72,31 @@ class RegisterTest extends TestCase
 
         $this->assertTrue($password_matches);
     }
+
+    public function test_user_cannot_register_with_existing_email(): void
+    {
+        /** @var User $serhii */
+        $serhii = User::factory()->create();
+
+        $form_data = [
+            'name' => 'Anna Korotchaeva',
+            'email' => $serhii->email,
+            'password' => 'anna-korotchaeva-pwd',
+        ];
+
+        $this->post(route('register'), $form_data)
+            ->assertSessionHasErrors('email');
+    }
+
+    public function test_user_cannot_register_with_short_password(): void
+    {
+        $form_data = [
+            'name' => 'Anna Cho',
+            'email' => 'anna.cho@gmail.com',
+            'password' => '1234567',
+        ];
+
+        $this->post(route('register'), $form_data)
+            ->assertSessionHasErrors('password');
+    }
 }

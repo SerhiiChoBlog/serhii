@@ -70,7 +70,7 @@ class SetNewPasswordTest extends TestCase
 
         $this->actingAs($user)
             ->post(route('password.update'), $form_data)
-            ->assertRedirect();
+            ->assertSessionHasErrors('email');
 
         $this->assertTrue(Hash::check('password', $user->fresh()->password));
     }
@@ -95,7 +95,7 @@ class SetNewPasswordTest extends TestCase
 
         $this->actingAs($user)
             ->post(route('password.update'), $form_data)
-            ->assertRedirect();
+            ->assertSessionHasErrors('email');
 
         $this->assertTrue(Hash::check('password', $user->fresh()->password));
     }
