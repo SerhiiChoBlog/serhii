@@ -9,22 +9,27 @@ use Illuminate\Support\Facades\Http;
 
 class GlavatarAvatarGenerator implements AvatarGenerator
 {
+    public const URL = 'https://www.gravatar.com/avatar/';
+
     public function __construct(protected string $email)
     {
     }
 
     public function generate(): ?string
     {
-        $hash = md5(strtolower($this->email));
-        $url = "https://www.gravatar.com/avatar/{$hash}?s=200&d=404";
-
         /** @var Response $response */
-        $response = Http::get($url);
+        $response = Http::get($this->getUrl());
 
         if ($response->failed()) {
             return null;
         }
 
         return $response->body();
+    }
+
+    public function getUrl(): string
+    {
+        $hash = md5(strtolower($this->email));
+        return self::URL . "{$hash}?s=200&d=404";
     }
 }
