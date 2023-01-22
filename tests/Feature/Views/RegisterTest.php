@@ -9,6 +9,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
@@ -21,6 +22,7 @@ class RegisterTest extends TestCase
         parent::setUp();
         Storage::fake('public');
         Http::fake();
+        Notification::fake();
     }
 
     public function test_guest_can_visit_page(): void
