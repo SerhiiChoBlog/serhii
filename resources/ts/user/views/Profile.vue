@@ -10,7 +10,7 @@ import Spinner from '@shared/components/Icons/Spinner.vue'
 import Avatar from '@user/components/Profile/Avatar.vue'
 import BadgesSection from '@user/components/Profile/BadgesSection.vue'
 
-const user = ref<User | null>()
+const user = ref<User | null>(null)
 const loading = ref<boolean>(false)
 const route = useRoute()
 

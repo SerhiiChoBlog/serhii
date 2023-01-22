@@ -12,6 +12,7 @@ import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 
 const users = ref<User[]>([])
+const total = ref<number | null>(null)
 const loading = ref(false)
 
 onMounted(() => fetchUsers())
@@ -19,8 +20,11 @@ onMounted(() => fetchUsers())
 function fetchUsers(): void {
     loading.value = true
 
-    axios.get<User[]>('/admin/ajax/users')
-        .then(resp => users.value = resp.data)
+    axios.get<{ users: User[], total: number }>('/admin/ajax/users')
+        .then(resp => {
+            users.value = resp.data.users
+            total.value = resp.data.total
+        })
         .catch(handleError)
         .finally(() => loading.value = false)
 }
@@ -28,7 +32,7 @@ function fetchUsers(): void {
 
 <template>
     <div class="container max-w-5xl">
-        <PageTitle>Users</PageTitle>
+        <PageTitle>Users <b v-if="total">{{ total }}</b></PageTitle>
 
         <Spinner v-if="loading" />
 
