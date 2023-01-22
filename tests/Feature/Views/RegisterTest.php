@@ -73,6 +73,18 @@ class RegisterTest extends TestCase
         $this->assertTrue($password_matches);
     }
 
+    public function test_user_cannot_register_with_incorrect_email(): void
+    {
+        $form_data = [
+            'name' => 'Anna Korotchaeva',
+            'email' => 'anna.korotchaeva.com',
+            'password' => 'korotchaeva-password',
+        ];
+
+        $this->post(route('register'), $form_data)
+             ->assertSessionHasErrors('email');
+    }
+
     public function test_user_cannot_register_with_existing_email(): void
     {
         /** @var User $serhii */
