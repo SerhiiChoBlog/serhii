@@ -30,17 +30,17 @@ function fetchUser() {
 <template>
     <Spinner v-if="loading" />
 
-    <div v-else-if="user" class="grid grid-cols-1 md:grid-cols-[250px_auto] gap-24">
+    <div v-else-if="user" class="grid grid-cols-1 md:grid-cols-[300px_auto] gap-16 max-w-[900px] mx-auto">
         <div>
             <img
                 :src="`/storage/avatars/${user.avatar}`"
                 :alt="`${user.name}'s avatar`"
                 width="200"
                 height="200"
-                class="w-full rounded-full shadow-lg pointer-events-none"
+                class="w-full max-w-[250px] mx-auto lg:mx-0 rounded-full shadow-lg pointer-events-none"
             />
 
-            <div class="mt-7">
+            <div class="mt-7 text-center md:text-left">
                 <h1 class="text-3xl font-black">{{ user.name }}</h1>
                 <h2 class="text-lg text-font-second">@{{ user.slug }}</h2>
             </div>
