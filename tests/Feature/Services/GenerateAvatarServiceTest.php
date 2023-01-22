@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Services;
 
+use App\AvatarGenerators\GlavatarAvatarGenerator;
 use App\Services\GenerateAvatarService;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
@@ -18,6 +20,10 @@ class GenerateAvatarServiceTest extends TestCase
 
     public function test_service_saves_glavatar_image_if_exist(): void
     {
+        $url = GlavatarAvatarGenerator::URL . '*';
+
+        Http::fake([$url => Http::response('some-binary-here')]);
+
         $user_slug = 'alexey-chopin';
 
         $service = new GenerateAvatarService('1990serzhil@gmail.com', $user_slug);

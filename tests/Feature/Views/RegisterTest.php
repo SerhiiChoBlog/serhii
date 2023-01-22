@@ -8,11 +8,20 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {
     use LazilyRefreshDatabase;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        Storage::fake();
+        Http::fake();
+    }
 
     public function test_guest_can_visit_page(): void
     {
@@ -134,5 +143,45 @@ class RegisterTest extends TestCase
 
         $this->post(route('register'), $form_data)
              ->assertSessionHasErrors('name');
+    }
+
+    public function test_user_cannot_register_with_empty_name(): void
+    {
+        $form_data = [
+            'name' => '',
+            'email' => 'anna.cho@gmail.com',
+            'password' => '1234567891011',
+        ];
+
+        $this->post(route('register'), $form_data)
+             ->assertSessionHasErrors('name');
+    }
+
+    public function test_user_cannot_register_with_empty_email(): void
+    {
+        $form_data = [
+            'name' => 'Serhii Cho',
+            'email' => '',
+            'password' => 'some-password-is-here',
+        ];
+
+        $this->post(route('register'), $form_data)
+             ->assertSessionHasErrors('email');
+    }
+
+    public function test_user_has_slug_after_registration(): void
+    {
+        $form_data = [
+            'name' => 'Serhii Cho',
+            'email' => 'serhiicho@mail.com',
+            'password' => 'some-password-here',
+        ];
+
+        $this->post(route('register'), $form_data);
+
+        /** @var User $user */
+        $user = User::query()->first();
+
+        $this->assertNotNull($user->slug);
     }
 }
