@@ -99,4 +99,28 @@ class RegisterTest extends TestCase
         $this->post(route('register'), $form_data)
             ->assertSessionHasErrors('password');
     }
+
+    public function test_user_cannot_register_with_short_name(): void
+    {
+        $form_data = [
+            'name' => 'A',
+            'email' => 'anna.cho@gmail.com',
+            'password' => '1234567891011',
+        ];
+
+        $this->post(route('register'), $form_data)
+             ->assertSessionHasErrors('name');
+    }
+
+    public function test_user_cannot_register_with_long_name(): void
+    {
+        $form_data = [
+            'name' => 'Anna Korotchaeva is a beautiful and smart girl',
+            'email' => 'anna.cho@gmail.com',
+            'password' => '1234567891011',
+        ];
+
+        $this->post(route('register'), $form_data)
+             ->assertSessionHasErrors('name');
+    }
 }
