@@ -11,13 +11,22 @@ use Illuminate\Support\Collection;
 class UserController extends Controller
 {
     /**
-     * @return Collection<int, Visitor>
+     * @return array{
+     *   users: Collection<int, User>,
+     *   total: int,
+     * }
      */
-    public function index(): Collection
+    public function index(): array
     {
-        return User::query()
+        /** @var Collection<int, User> */
+        $users = User::query()
             ->limit(20)
             ->orderByDesc('created_at')
             ->get();
+
+        return [
+            'users' => $users,
+            'total' => User::query()->count(),
+        ];
     }
 }
