@@ -5,6 +5,7 @@
     "keywords": ["portfolio", "blog"],
     "require": {
         "php": "^8.0",
+        "ext-pdo": "*",
         "doctrine/dbal": "^2.12.1",
         "erusev/parsedown": "^1.7",
         "fruitcake/laravel-cors": "^2.0",
@@ -13,12 +14,12 @@
         "laravel/framework": "^9.0",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
+        "multiavatar/multiavatar-php": "^1.0",
         "pusher/pusher-php-server": "^7.0",
         "serhii/ago": "^2.0",
         "serhii/short-number": "^3.0",
-        "stevebauman/location": "^6.1",
         "spatie/laravel-sitemap": "^6.2",
-        "ext-pdo": "*"
+        "stevebauman/location": "^6.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
