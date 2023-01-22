@@ -76,7 +76,7 @@ class LoginTest extends TestCase
         ];
 
         $this->post(route('login'), $form_data)
-            ->assertSessionHasErrors();
+            ->assertSessionHasErrors('email');
     }
 
     public function test_user_cannot_login_with_invalid_email(): void
@@ -90,7 +90,7 @@ class LoginTest extends TestCase
         ];
 
         $this->post(route('login'), $form_data)
-             ->assertSessionHasErrors();
+             ->assertSessionHasErrors('email');
     }
 
     public function test_remember_me_token_is_set(): void
