@@ -10,7 +10,7 @@ const { search, input, fetchSearchSuggestions } = useSearch()
 <template>
     <appear-transition>
         <div class="max-w-[85%] md:max-w-[600px] mx-auto">
-            <label for="search-input" class="relative flex items-center justify-center mt-5 shadow-lg rounded-lg bg-page mx-auto dark:border dark:border-border">
+            <label for="search-input" class="relative flex items-center justify-center mt-5 shadow-lg rounded-lg bg-page mx-auto dark:border dark:border-gray-500">
                 <form @submit.prevent class="w-full m-0">
                     <search-icon
                         :class="{ 'animate-blink': search.loading }"
