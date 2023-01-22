@@ -7,7 +7,7 @@ const { title } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="flex justify-between items-center w-full md:min-w-[600px] text-md md:text-lg relative">
+    <div class="flex justify-between items-center w-full text-lg lg:text-xl relative">
         <span class="bg-page inline-block z-10 pr-4">
             {{ title }}:
         </span>
