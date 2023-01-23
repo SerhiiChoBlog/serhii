@@ -11,7 +11,10 @@
             This post is currently being in the process of writing
         </h2>
         <p class="text-2xl">
-            <a href="{{ route('subscribe') }}" class="text-main">subscribe</a> to get the latest posts or check suggested posts below!
+            <a
+                href="{{ route('subscribe') }}"
+                rel="noreferrer"
+                class="text-main">subscribe</a> to get the latest posts or check suggested posts below!
         </p>
     </div>
 </div>

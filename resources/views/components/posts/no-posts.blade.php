@@ -11,7 +11,11 @@
 
 <div class="flex gap-3 justify-center mt-5 mb-20">
     @foreach (['/' => 'Go home', '/posts' => 'All posts'] as $url => $title)
-        <a href="{{ $url }}" class="px-10 py-2 border border-border rounded-full uppercase">
+        <a
+            href="{{ $url }}"
+            rel="noreferrer"
+            class="px-10 py-2 border border-border rounded-full uppercase"
+        >
             {{ $title }}
         </a>
     @endforeach

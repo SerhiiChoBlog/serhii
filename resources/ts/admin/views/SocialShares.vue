@@ -52,7 +52,7 @@ function fetchPosts(): void {
                 </BodyDetail>
 
                 <BodyDetail>
-                    <a :href="`/posts/${post.slug}`" target="_blank" class="text-lg">
+                    <a :href="`/posts/${post.slug}`" target="_blank" class="text-lg" rel="noreferrer">
                         {{ post.title }}
                     </a>
                 </BodyDetail>

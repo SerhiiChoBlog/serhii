@@ -80,7 +80,7 @@ function deleteImage(id: number): void {
                 :key="image.id"
             >
                 <BodyDetail>
-                    <a :href="image.uri" target="_blank">
+                    <a :href="image.uri" target="_blank" rel="noreferrer">
                         <img
                             :src="image.uri"
                             alt="Post image"

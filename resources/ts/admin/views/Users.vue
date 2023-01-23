@@ -48,7 +48,11 @@ function fetchUsers(): void {
             <BodyRow v-for="user in users" :key="user.id">
                 <BodyDetail>{{ user.id }}</BodyDetail>
                 <BodyDetail>
-                    <a :href="`/storage/avatars/${user.avatar}`" target="_blank">
+                    <a
+                        :href="`/storage/avatars/${user.avatar}`"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         <img
                             :src="`/storage/avatars/${user.avatar}`"
                             width="200"

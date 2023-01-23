@@ -81,7 +81,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Clearer focus states for buttons while navigating with a keyboard. #TINY-8557
 - Support annotating certain block elements directly when using the editor's Annotation API. #TINY-8698
 - The `mceLink` command can now take the value `{ dialog: true }` to always open the link dialog. #TINY-8057
-- All help dialog links to `https://www.tiny.cloud` now include `rel="noopener"` to avoid potential security issues. #TINY-8834
+- All help dialog links to `https://www.tiny.cloud` now include `rel="noreferrer"` to avoid potential security issues. #TINY-8834
 
 ### Changed
 - The `end_container_on_empty_block` option can now take a string of blocks, allowing the exiting of a blockquote element by pressing Enter or Return twice. #TINY-6559
