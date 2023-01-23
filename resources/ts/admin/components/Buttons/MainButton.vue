@@ -13,7 +13,7 @@ const classes = 'inline-block uppercase text-white text-sm px-6 py-2 rounded-ful
 </script>
 
 <template>
-    <a v-if="href" :href="href" :class="classes">
+    <a v-if="href" :href="href" :class="classes" rel="noreferrer">
         <slot />
     </a>
 

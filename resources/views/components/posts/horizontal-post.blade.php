@@ -11,7 +11,11 @@
 <article class="{{ $attributes->getAttributes()['class'] ?? '' }}">
     <div
         class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl max-w-[550px] lg:max-w-full mx-auto transition-colors hover:bg-page-second">
-        <a href="/posts/{{ $post->slug ?? $post['slug'] }}" class="block w-full lg:max-w-[300px]">
+        <a
+            href="/posts/{{ $post->slug ?? $post['slug'] }}"
+            class="block w-full lg:max-w-[300px]"
+            rel="noreferrer"
+        >
             <img
                 src="{{ asset($post->image_xs ?? $post['image_xs']) }}"
                 data-src="{{ asset($post->image_sm ?? $post['image_sm']) }}"
@@ -23,7 +27,7 @@
         </a>
 
         <div>
-            <a href="/posts/{{ $post->slug ?? $post['slug'] }}">
+            <a href="/posts/{{ $post->slug ?? $post['slug'] }}" rel="noreferrer">
                 <h2 class="text-2xl text-font">{{ $post->title ?? $post['title'] }}</h2>
                 <p class="mt-2 text-lg font-light text-font-second font-post">{{ $post->intro ?? $post['intro'] }}</p>
             </a>

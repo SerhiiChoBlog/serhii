@@ -11,7 +11,7 @@ const { tag } = defineProps<Props>()
 
 <template>
     <tip :content="tag.title">
-        <a :href="`/posts?tag=${tag.name}`">
+        <a :href="`/posts?tag=${tag.name}`" rel="noreferrer">
             <img
                 :src="`/storage/tags/${tag.name}.webp`"
                 :alt="`The ${tag.name} logo`"

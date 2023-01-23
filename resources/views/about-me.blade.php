@@ -66,7 +66,7 @@
                             <p>
                                 I hate slow web apps and sites. In web development, my priorities
                                 are <strong>code readability</strong> and <strong>performance</strong>. You can check my
-                                post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites" target="_blank">"5 techniques that
+                                post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites" rel="noreferrer" target="_blank">"5 techniques that
                                 I use for building fast websites"</a> where I'm talking about it in details.
                             </p>
 
@@ -86,7 +86,7 @@
 
                             <p>
                                 In my free from coding time, I enjoy writing posts for my
-                                <a href="/posts" target="_blank" title="Link to a blog">blog</a>
+                                <a href="/posts" rel="noreferrer" target="_blank" title="Link to a blog">blog</a>
                                 on programming related subjects and learn new things. I mostly share what I've learned along
                                 the way and things that can help other developers strengthen their skills.
                             </p>
