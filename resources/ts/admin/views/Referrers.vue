@@ -46,7 +46,7 @@ function fetchReferrers(): void {
             <BodyRow v-for="referrer in referrers" :key="referrer.id">
                 <BodyDetail>{{ referrer.id }}</BodyDetail>
                 <BodyDetail>
-                    <a :href="`/${referrer.site}`" target="_blank" class="underline">
+                    <a :href="`https://${referrer.site}`" target="_blank" class="underline">
                         {{ referrer.site }}
                     </a>
                 </BodyDetail>
