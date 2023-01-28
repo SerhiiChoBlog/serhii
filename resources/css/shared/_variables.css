@@ -14,10 +14,10 @@
     --color-inline-code: #e3e8f4;
 }
 .dark {
-    --color-page: #22282e;
-    --color-page-second: #2e343e;
+    --color-page: #121923;
+    --color-page-second: #1c2430;
     --color-border: #ffffff1a;
-    --color-font: #c1c1c1;
+    --color-font: #afbaca;
     --color-font-second: #a9a9a9;
     --color-font-second-hover: #929292;
     --color-link: #93adde;

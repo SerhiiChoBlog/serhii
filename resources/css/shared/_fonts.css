@@ -10,10 +10,3 @@
     font-weight: normal;
     font-display: swap;
 }
-
-@font-face {
-    font-family: 'Post';
-    src: url('../../fonts/charter-400-normal.woff') format("woff");
-    font-weight: normal;
-    font-display: swap;
-}
