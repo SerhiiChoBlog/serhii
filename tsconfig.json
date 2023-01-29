@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-         "lib": ["es2021", "dom", "WebWorker"],
+        "lib": ["es2021", "dom", "WebWorker"],
         "sourceMap": true,
         "removeComments": true,
         "noEmitOnError": true,
