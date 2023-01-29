@@ -35,7 +35,7 @@
 
             <div class="space-y-5">
                 <div>
-                    <x-form.label id="email">Name</x-form.label>
+                    <x-form.label id="name">Name</x-form.label>
                     <x-form.input
                         id="name"
                         :value="old('name')"
