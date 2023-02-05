@@ -33,6 +33,13 @@ class Project extends Model
 
     public $timestamps = false;
 
+    /**
+     * @var array<int, string>
+     */
+    protected $dates = [
+        'created_at'
+    ];
+
     public static function getCachedProjects(): array
     {
         return Cache::rememberForever(CacheKey::PROJECTS, static function () {

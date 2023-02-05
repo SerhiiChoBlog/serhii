@@ -17,20 +17,13 @@ class SitemapCommand extends Command
 {
     protected $signature = 'make:sitemap';
     protected $description = 'Generate sitemap for the website';
-    private string $site_url;
-
-    public function __construct()
-    {
-        parent::__construct();
-        $this->site_url = config('app.url');
-    }
 
     public function handle(): void
     {
         $path = public_path('sitemap.xml');
 
         $result = Sitemap::create()
-            ->add($this->aboutMe())
+            ->add($this->pages())
             ->add($this->posts())
             ->add($this->projects())
             ->add($this->taggedPosts())
@@ -38,12 +31,12 @@ class SitemapCommand extends Command
 
         $tags_count = count($result->getTags());
 
-        $this->replaceSiteUrl($path);
+        $this->changeLastModValues($path);
 
-        $this->info("Sitemap is generated with <fg=yellow>$tags_count</> tags.");
+        $this->info("Sitemap is generated with <fg=yellow>{$tags_count}</> tags.");
     }
 
-    private function replaceSiteUrl(string $path): void
+    private function changeLastModValues(string $path): void
     {
         $content = file_get_contents($path);
 
@@ -51,7 +44,10 @@ class SitemapCommand extends Command
             return;
         }
 
-        $content = str_replace($this->site_url, 'https://serhii.io', $content);
+        $regex = '/<lastmod>((\d{4}-\d{2}-\d{2})(.*?))<\/lastmod>/';
+        $replace_to = '<lastmod>$2</lastmod>';
+
+        $content = preg_replace($regex, $replace_to, $content);
 
         file_put_contents($path, $content);
     }
@@ -63,19 +59,19 @@ class SitemapCommand extends Command
     {
         return Post::query()
             ->with('images')
-            ->select('id', 'title', 'image_lg', 'slug')
+            ->select('id', 'title', 'image_lg', 'slug', 'updated_at')
             ->where('is_published', true)
             ->get()
             ->map(function (Post $post) {
-                $main_image = "$this->site_url/$post->image_lg";
-
                 $url = Url::create(route('posts.show', $post->slug))
-                    ->addImage($main_image, $post->title);
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                    ->setLastModificationDate($post->updated_at)
+                    ->setPriority(.7)
+                    ->addImage(asset($post->image_lg), $post->title);
 
                 /** @var PostContentImage $image */
                 foreach ($post->images as $image) {
-                    $img_url = "$this->site_url$image->uri";
-                    $url = $url->addImage($img_url);
+                    $url = $url->addImage(asset($image->uri), $post->title);
                 }
 
                 return $url;
@@ -89,13 +85,16 @@ class SitemapCommand extends Command
     private function projects(): array
     {
         return Project::query()
-            ->select('name', 'language')
+            ->select('name', 'language', 'created_at')
             ->get()
             ->map(function (Project $project) {
                 $lang = strtolower($project->language);
-                $image_url = url("/storage/languages/$lang.webp");
+                $image_url = asset("storage/languages/{$lang}.webp");
 
                 return Url::create(route('projects.show', $project->name))
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                    ->setLastModificationDate($project->created_at)
+                    ->setPriority(.6)
                     ->addImage($image_url, $project->language);
             })
             ->toArray();
@@ -108,16 +107,71 @@ class SitemapCommand extends Command
     {
         return Tag::query()
             ->whereHas('posts', fn(Builder $q) => $q->where('is_published', true))
-            ->pluck('name')
-            ->map(fn(string $tag) => Url::create(route('posts.index', ['tag' => $tag])))
+            ->get()
+            ->map(function (Tag $tag) {
+                return Url::create(route('posts.index', compact('tag')))
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                    ->setPriority(.7)
+                    ->addImage(asset("/storage/tags/{$tag->name}.webp"), $tag->title);
+            })
             ->toArray();
     }
 
-    private function aboutMe(): Url
+    /**
+     * @return array<int, Url>
+     */
+    private function pages(): array
     {
-        $image_url = url('/storage/serhii-cho.webp');
+        $pages = [
+            [
+                'priority' => 1.0,
+                'change' => Url::CHANGE_FREQUENCY_MONTHLY,
+                'url' => route('home'),
+                'image' => null,
+            ],
+            [
+                'priority' => .5,
+                'change' => Url::CHANGE_FREQUENCY_MONTHLY,
+                'url' => route('projects.index'),
+                'image' => null,
+            ],
+            [
+                'priority' => .6,
+                'change' => Url::CHANGE_FREQUENCY_MONTHLY,
+                'url' => route('posts.index'),
+                'image' => null,
+            ],
+            [
+                'priority' => .6,
+                'change' => Url::CHANGE_FREQUENCY_DAILY,
+                'url' => route('about-me'),
+                'image' => [
+                    'url' => asset('storage/serhii-cho.webp'),
+                    'title' => 'About Serhii Cho',
+                ],
+            ],
+            [
+                'priority' => .3,
+                'change' => Url::CHANGE_FREQUENCY_YEARLY,
+                'url' => route('subscribe'),
+                'image' => null,
+            ],
+        ];
 
-        return Url::create(url('/about-me'))
-            ->addImage($image_url, 'Serhii Cho photo');
+        $result = [];
+
+        foreach ($pages as $page) {
+            $url = Url::create($page['url'])
+                ->setPriority($page['priority'])
+                ->setChangeFrequency($page['change']);
+
+            if ($page['image'] !== null) {
+                $url = $url->addImage($page['image']['url'], $page['image']['title']);
+            }
+
+             $result[] = $url;
+        }
+
+        return $result;
     }
 }
