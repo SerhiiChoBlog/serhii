@@ -33,7 +33,7 @@ function fetchReferrers(): void {
             There are not referrers
         </h2>
 
-        <DataTable v-else>
+        <DataTable v-else class="max-w-[700px] mx-auto">
             <template v-slot:head>
                 <HeadDetail
                     v-for="title in ['#', 'Site', 'Hits', 'Last update']"
