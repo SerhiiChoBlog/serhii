@@ -7,7 +7,7 @@ namespace App\Services;
 use App\Models\Comment;
 use App\Models\User;
 
-class StoreCommentService
+readonly class StoreCommentService
 {
     public function __construct(private User $user)
     {
@@ -15,7 +15,7 @@ class StoreCommentService
 
     public function handle(): Comment
     {
-        // ...
+        //
 
         return new Comment();
     }
