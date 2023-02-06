@@ -1,4 +1,4 @@
-import Cache from '@/modules/Cache'
+import Cache from '@shared/modules/Cache'
 import type { Tag } from '@shared/types/models'
 import { storage } from '@shared/appConfig'
 
