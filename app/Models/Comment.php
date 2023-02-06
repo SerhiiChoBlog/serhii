@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Serhii\Ago\Option;
 use Serhii\Ago\TimeAgo;
 
 /**
@@ -76,7 +77,7 @@ class Comment extends Model
                 return '';
             }
 
-            return TimeAgo::trans($this->created_at);
+            return TimeAgo::trans($this->created_at, Option::JUST_NOW);
         });
     }
 }
