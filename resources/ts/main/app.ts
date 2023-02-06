@@ -15,6 +15,7 @@ import Filters from '@/components/Filters/Filters.vue'
 import Subscription from '@/components/Subscription/Subscription.vue'
 import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import UserDropdown from '@/components/UserDropdown.vue'
+import Comments from '@/components/Comments/Comments.vue'
 
 const app = createApp({
     components: {
@@ -31,6 +32,7 @@ const app = createApp({
         Subscription,
         ShowPasswordButton,
         UserDropdown,
+        Comments,
     },
 
     setup() {

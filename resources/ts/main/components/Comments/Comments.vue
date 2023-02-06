@@ -2,9 +2,9 @@
 import type { Comment as CommentType } from '@shared/types/models'
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
-import Spinner from '@/components/Spinner.vue'
-import Comment from './Comment.vue'
-import CommentForm from './CommentForm.vue'
+import Spinner from '@shared/components/Icons/Spinner.vue'
+import Comment from '@/components/Comments/Comment.vue'
+import CommentForm from '@/components/Comments/CommentForm.vue'
 
 type Props = {
     postSlug: string

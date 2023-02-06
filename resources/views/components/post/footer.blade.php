@@ -27,3 +27,5 @@
         />
     </div>
 </div>
+
+<comments post-slug="{{ $post['slug'] }}"></comments>
