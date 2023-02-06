@@ -34,13 +34,15 @@ function postReply(): void {
         v-if="comment.user"
         class="border border-border p-2 lg:p-4 rounded-xl flex items-center gap-4 lg:gap-5"
     >
-        <img
-            :src="`/storage/avatars/${comment.user.avatar}`"
-            :alt="comment.user.name"
-            width="70"
-            height="70"
-            class="rounded-full drop-shadow-md w-[40px] lg:w-[70px] aspect-square"
-        />
+        <a :href="`/user/${comment.user.slug}`">
+            <img
+                :src="`/storage/avatars/${comment.user.avatar}`"
+                :alt="comment.user.name"
+                width="70"
+                height="70"
+                class="rounded-full drop-shadow-md w-[40px] lg:w-[70px] aspect-square"
+            />
+        </a>
 
         <div class="flex flex-col gap-1">
             <h2 class="text-lg font-bold">
@@ -84,6 +86,7 @@ function postReply(): void {
             :key="comment.id"
             :comment="comment"
             :post-id="postId"
+            @posted="postReply"
         />
     </comments-wrapper>
 </template>

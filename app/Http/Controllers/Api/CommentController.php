@@ -23,6 +23,7 @@ class CommentController extends Controller
             'comments' => function ($q) {
                 $q->where('comment_id', null)
                     ->where('is_approved', true)
+                    ->orderByDesc('created_at')
                     ->with('user')
                     ->with([
                         'comments' => function ($q) {
