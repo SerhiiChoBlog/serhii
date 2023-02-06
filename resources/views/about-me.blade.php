@@ -48,19 +48,6 @@
                                 programs for stuff management, communication with clients, chat bots and tons of web APIs.
                             </p>
 
-                            <h2>Looking for job</h2>
-
-                            <p>
-                                I'm looking forward to work in companies based in 🇪🇺 🇺🇸 🇨🇦 🇦🇺 🏴󠁧󠁢󠁥󠁮󠁧󠁿 by a contract.
-                                I'll be comfortable to work remotely <strong>7 hours a day</strong>.
-                                I'm also ready to potentially relocate from Ukraine and work in the office in the future.
-                            </p>
-
-                            <p>
-                                I'll be glad to work as a full-stack developer with <strong>Laravel, Golang and Vue</strong>.
-                                Alternatively, I can be a backend developer with Laravel or Golang.
-                            </p>
-
                             <h2>My way of working</h2>
 
                             <p>
