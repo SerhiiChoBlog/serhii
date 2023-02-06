@@ -13,11 +13,9 @@ use Illuminate\Support\Collection;
  * @property int $id
  * @property int $post_id
  * @property int $visitor_id
+ * @property int $user_id
  * @property int|null $comment_id
  * @property string|null $email
- * @property string $name
- * @property string $comment
- * @property string $avatar
  * @property Collection<int, self> $comments
  * @property bool $is_subscribed
  * @property bool $created_at
