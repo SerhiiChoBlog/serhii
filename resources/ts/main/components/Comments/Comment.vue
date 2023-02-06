@@ -50,7 +50,7 @@ function replyToComment(): void {
         </div>
     </article>
 
-    <div v-if="comment.comments" class="pl-12">
+    <div v-if="comment.comments && comment.comments.length > 0" class="pl-12">
         <comment
             v-for="comment in comment.comments"
             :key="comment.id"

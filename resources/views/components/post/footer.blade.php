@@ -28,4 +28,4 @@
     </div>
 </div>
 
-<comments post-slug="{{ $post['slug'] }}"></comments>
+<comments :post-id="{{ $post['id'] }}"></comments>

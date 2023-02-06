@@ -22,7 +22,8 @@ return new class extends Migration
             $table->foreignIdFor(Comment::class)->nullable();
             $table->text('comment');
             $table->boolean('is_subscribed')->default(false);
-            $table->timestamp('created_at');
+            $table->boolean('is_approved')->default(false);
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

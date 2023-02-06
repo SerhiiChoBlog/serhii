@@ -23,6 +23,7 @@ use Serhii\Ago\TimeAgo;
  * @property Collection<int, self> $comments
  * @property User|null $user
  * @property bool $is_subscribed
+ * @property bool $is_approved
  * @property string $pretty_created_at
  * @property Carbon $created_at
  */
@@ -31,6 +32,11 @@ class Comment extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    /**
+     * @var array<int, string>
+     */
+    protected $guarded = ['id'];
 
     /**
      * @var array<int, string>

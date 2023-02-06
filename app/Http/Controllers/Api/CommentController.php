@@ -22,19 +22,26 @@ class CommentController extends Controller
         $post->load([
             'comments' => function ($q) {
                 $q->where('comment_id', null)
-                  ->with('user', 'comments.user');
+                    ->where('is_approved', true)
+                    ->with('user')
+                    ->with([
+                        'comments' => function ($q) {
+                            $q->where('is_approved', true)
+                                ->with('user');
+                        },
+                    ]);
             },
         ]);
 
         return $post->comments;
     }
 
-    public function store(StoreRequest $request): Comment
+    public function store(StoreRequest $r): void
     {
-        $user = User::getBySlug($request->user_slug);
+        /** @var User $user */
+        $user = User::query()->findOrFail($r->user_id);
 
-        $service = new StoreCommentService($user);
-
-        return $service->handle();
+        $service = new StoreCommentService($user, $r->comment, $r->post_id, $r->comment_id);
+        $service->handle();
     }
 }

@@ -1,31 +1,42 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import usePostComment from '@/composables/usePostComment'
 
 type Emits = {
-    (e: 'posted', comment: string): void
+    (e: 'posted'): void
+}
+
+type Props = {
+    postId: number
 }
 
 const emit = defineEmits<Emits>()
-const comment = ref('')
+const { postId } = defineProps<Props>()
+const { comment, postComment, isLoading } = usePostComment(postId)
 
-function postComment(): void {
-    emit('posted', comment.value)
+async function submitForm(): Promise<void> {
+    await postComment()
+    emit('posted')
 }
 </script>
 
 <template>
-    <form @submit.prevent="postComment" class="mt-4 w-full mb-12">
+    <form @submit.prevent="submitForm" class="mt-4 w-full mb-8">
         <textarea
             v-model="comment"
             placeholder="Write a comment..."
             class="py-2 px-4 mb-4 bg-page focus:outline-none dark:bg-page-second rounded-lg border border-border w-full min-h-[135px]"
+            maxlength="1000"
+            minlength="4"
         ></textarea>
 
         <button
-            type="button"
+            type="submit"
             class="px-7 py-2.5 bg-main text-white rounded-md hover:bg-main-hover"
+            :disabled="isLoading"
+            :class="{ 'opacity-50': isLoading }"
         >
-            Post comment
+            <span v-if="isLoading">Processing ...</span>
+            <span v-else>Post comment</span>
         </button>
     </form>
 </template>
