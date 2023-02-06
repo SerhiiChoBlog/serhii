@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import usePostComment from '@/composables/usePostComment'
 import CommentButton from '@/components/Comments/CommentButton.vue'
+import useCachedComment from '@/composables/useCachedComment'
 
 type Emits = {
     (e: 'posted'): void
@@ -14,6 +16,11 @@ type Props = {
 const emit = defineEmits<Emits>()
 const { postId, commentId } = defineProps<Props>()
 const { comment, postComment, isLoading } = usePostComment(postId, commentId)
+const { getCommentFromCache, saveCommentToCache } = useCachedComment(postId, commentId)
+
+onMounted(() => {
+    comment.value = getCommentFromCache()
+})
 
 async function submitForm(): Promise<void> {
     await postComment()
@@ -29,6 +36,7 @@ async function submitForm(): Promise<void> {
                 :placeholder="`${Auth ? 'Write a' : 'Login to'} comment ...`"
                 class="py-2 px-4 bg-page focus:outline-none dark:bg-page-second rounded-lg border border-border w-full min-h-[135px]"
                 maxlength="1000"
+                @blur="saveCommentToCache(comment)"
                 minlength="4"
             ></textarea>
             <span class="absolute right-1 -bottom-6 opacity-60">
