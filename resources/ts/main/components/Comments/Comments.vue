@@ -28,19 +28,27 @@ function fetchComments(): void {
 </script>
 
 <template>
-    <div v-if="loading" class="flex gap-6 items-center justify-center">
-        <spinner class="mx-0" />
-        <h2 class="text-2xl">Loading comments...</h2>
+    <div class="mb-7 max-w-[650px] mx-auto">
+        <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
+            Discussion ({{ comments.length }})
+        </h2>
+
+        <comment-form />
+
+        <div v-if="loading" class="flex gap-6 items-center justify-center">
+            <spinner class="mx-0" />
+            <h2 class="text-2xl">Loading comments...</h2>
+        </div>
+
+        <div v-else-if="comments.length > 0" class="flex flex-col gap-4">
+            <comment
+                v-for="comment in comments"
+                :key="comment.id"
+            />
+        </div>
+
+        <h2 v-else class="text-xl text-center text-font-second mb-10">
+            🙏 Be the first to leave a comment
+        </h2>
     </div>
-
-    <div v-else-if="comments.length > 0" class="flex flex-col gap-4">
-        <comment
-            v-for="comment in comments"
-            :key="comment.id"
-        />
-    </div>
-
-    <h2 class="text-2xl" v-else>Be the first to leave a comment</h2>
-
-    <comment-form />
 </template>
