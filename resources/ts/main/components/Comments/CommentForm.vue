@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import usePostComment from '@/composables/usePostComment'
+import CommentButton from '@/components/Comments/CommentButton.vue'
 
 type Emits = {
     (e: 'posted'): void
@@ -24,20 +25,24 @@ async function submitForm(): Promise<void> {
     <form @submit.prevent="submitForm" class="w-full mb-8">
         <textarea
             v-model="comment"
-            placeholder="Write a comment..."
+            :placeholder="`${Auth ? 'Write a' : 'Login to'} comment ...`"
             class="py-2 px-4 mb-4 bg-page focus:outline-none dark:bg-page-second rounded-lg border border-border w-full min-h-[135px]"
             maxlength="1000"
             minlength="4"
         ></textarea>
 
-        <button
+        <comment-button
+            v-if="Auth"
             type="submit"
-            class="px-7 py-2.5 bg-main text-white rounded-md hover:bg-main-hover"
             :disabled="isLoading"
             :class="{ 'opacity-50': isLoading }"
         >
             <span v-if="isLoading">Processing ...</span>
             <span v-else>Post comment</span>
-        </button>
+        </comment-button>
+
+        <comment-button v-else href="/login">
+            Login to comment
+        </comment-button>
     </form>
 </template>
