@@ -23,13 +23,18 @@ async function submitForm(): Promise<void> {
 
 <template>
     <form @submit.prevent="submitForm" class="w-full mb-8">
-        <textarea
-            v-model="comment"
-            :placeholder="`${Auth ? 'Write a' : 'Login to'} comment ...`"
-            class="py-2 px-4 mb-4 bg-page focus:outline-none dark:bg-page-second rounded-lg border border-border w-full min-h-[135px]"
-            maxlength="1000"
-            minlength="4"
-        ></textarea>
+        <div class="relative mb-4">
+            <textarea
+                v-model="comment"
+                :placeholder="`${Auth ? 'Write a' : 'Login to'} comment ...`"
+                class="py-2 px-4 bg-page focus:outline-none dark:bg-page-second rounded-lg border border-border w-full min-h-[135px]"
+                maxlength="1000"
+                minlength="4"
+            ></textarea>
+            <span class="absolute right-1 -bottom-6 opacity-60">
+                Letters: {{ comment.length }}/1000
+            </span>
+        </div>
 
         <comment-button
             v-if="Auth"
