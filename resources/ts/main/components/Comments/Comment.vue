@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { Comment as CommentType } from '@shared/types/models'
 import Comment from '@/components/Comments/Comment.vue'
+import { events } from '@shared/appConfig'
+import dispatchEvent from '@shared/modules/dispatchEvent'
 
 type Props = {
     comment: CommentType
@@ -9,7 +11,7 @@ type Props = {
 const { comment } = defineProps<Props>()
 
 function replyToComment(): void {
-    console.log('reply to comment')
+    dispatchEvent(events.replayToComment)
 }
 </script>
 

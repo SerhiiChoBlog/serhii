@@ -13,7 +13,7 @@ import SubscriptionTagIcon from './SubscriptionTagIcon.vue'
 import SubscriptionButton from '@/modules/Subscription/SubscriptionButton'
 import SubscriptionCache from '@/modules/Subscription/SubscriptionCache'
 import listenEvent from '@shared/modules/listenEvent'
-import appConfig from '@/appConfig'
+import { events } from '@shared/appConfig'
 
 const selectedTags = ref<Tag[]>([])
 
@@ -45,7 +45,7 @@ onMounted(() => {
 
     updateChosenTags()
 
-    listenEvent(appConfig.events.subscribeTagsButtonTitle, () => {
+    listenEvent(events.subscribeTagsButtonTitle, () => {
         updateChosenTags()
     })
 })
