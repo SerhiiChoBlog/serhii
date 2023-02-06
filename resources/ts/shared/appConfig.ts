@@ -5,4 +5,5 @@ export const events = {
 
 export const storage = {
     selectedSubscriptionTags: 'selected-subscription-tags',
+    cachedComment: 'cached-comment',
 }
