@@ -90,6 +90,14 @@ class Post extends Model
     }
 
     /**
+     * @return HasMany<Comment>
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    /**
      * @return HasOne<PostPublication>
      */
     public function postPublication(): HasOne
@@ -104,6 +112,7 @@ class Post extends Model
     {
         return $this->hasOne(Video::class);
     }
+
 
     /**
      * @param int $exclude_id

@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\SocialShareController;
 use App\Http\Controllers\Api\SubscriptionDemandController;
 use App\Http\Controllers\Api\TagController;
+use App\Http\Controllers\Api\CommentController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(TagController::class)->prefix('tags')->group(function () {
@@ -19,3 +20,7 @@ Route::get('search/{query}', [SearchController::class, 'index']);
 Route::post('subscriptions', [SubscriptionDemandController::class, 'subscribe']);
 
 Route::get('posts', [PostController::class, 'index']);
+
+Route::controller(CommentController::class)->prefix('comments')->group(function () {
+    Route::get('{post:slug}', 'index');
+});
