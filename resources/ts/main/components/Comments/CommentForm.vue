@@ -47,8 +47,8 @@ async function submitForm(): Promise<void> {
         <comment-button
             v-if="Auth"
             type="submit"
-            :disabled="isLoading"
-            :class="{ 'opacity-50': isLoading }"
+            :disabled="isLoading || comment.length < 4"
+            :class="{ 'opacity-50': isLoading || comment.length < 4 }"
         >
             <span v-if="isLoading">Processing ...</span>
             <span v-else>Post comment</span>
