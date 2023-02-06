@@ -144,7 +144,7 @@ export type Comment = {
     user_id: number
     visitor_id: number
     comment_id: number | null
-    email: string | null
+    comment: string
     comments?: Comment[]
     user?: User
     is_subscribed: boolean
