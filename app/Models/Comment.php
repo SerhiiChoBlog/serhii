@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Serhii\Ago\TimeAgo;
 
 /**
  * @property int $id
@@ -17,8 +21,10 @@ use Illuminate\Support\Collection;
  * @property int|null $comment_id
  * @property string|null $email
  * @property Collection<int, self> $comments
+ * @property User|null $user
  * @property bool $is_subscribed
- * @property bool $created_at
+ * @property string $pretty_created_at
+ * @property Carbon $created_at
  */
 class Comment extends Model
 {
@@ -27,11 +33,24 @@ class Comment extends Model
     public $timestamps = false;
 
     /**
-     * @var array<string, string>
+     * @var array<int, string>
      */
-    protected $casts = [
-        'created_at' => 'datetime',
+    protected $dates = [
+        'created_at',
     ];
+
+    /**
+     * @var array<int, string>
+     */
+    protected $appends = ['pretty_created_at'];
+
+    /**
+     * @return BelongsTo<User, self>
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * @return HasMany<self>
@@ -39,5 +58,19 @@ class Comment extends Model
     public function comments(): HasMany
     {
         return $this->hasMany(self::class);
+    }
+
+    /**
+     * @return Attribute<string, mixed>
+     */
+    protected function prettyCreatedAt(): Attribute
+    {
+        return Attribute::get(function (): string {
+            if ($this->created_at === null) {
+                return '';
+            }
+
+            return TimeAgo::trans($this->created_at);
+        });
     }
 }

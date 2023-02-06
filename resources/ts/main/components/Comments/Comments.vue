@@ -44,6 +44,7 @@ function fetchComments(): void {
             <comment
                 v-for="comment in comments"
                 :key="comment.id"
+                :comment="comment"
             />
         </div>
 

@@ -146,6 +146,8 @@ export type Comment = {
     comment_id: number | null
     email: string | null
     comments?: Comment[]
+    user?: User
     is_subscribed: boolean
+    pretty_created_at: string
     created_at: string
 }

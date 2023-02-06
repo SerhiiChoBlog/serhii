@@ -16,7 +16,7 @@
         "laravel/ui": "^3.2",
         "multiavatar/multiavatar-php": "^1.0",
         "pusher/pusher-php-server": "^7.0",
-        "serhii/ago": "^2.0",
+        "serhii/ago": "^3.0",
         "serhii/short-number": "^3.0",
         "spatie/laravel-sitemap": "^6.2",
         "stevebauman/location": "^6.1"
