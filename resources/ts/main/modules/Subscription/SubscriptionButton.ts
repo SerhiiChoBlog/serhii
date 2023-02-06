@@ -1,4 +1,4 @@
-import Cache from '@/modules/Cache'
+import Cache from '@shared/modules/Cache'
 import { events, storage } from '@shared/appConfig'
 import dispatchEvent from '@shared/modules/dispatchEvent'
 
