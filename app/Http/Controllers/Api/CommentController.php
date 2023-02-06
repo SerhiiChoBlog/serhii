@@ -19,7 +19,12 @@ class CommentController extends Controller
      */
     public function index(Post $post): Collection
     {
-        $post->load('comments.user');
+        $post->load([
+            'comments' => function ($q) {
+                $q->where('comment_id', null)
+                  ->with('user', 'comments.user');
+            },
+        ]);
 
         return $post->comments;
     }
