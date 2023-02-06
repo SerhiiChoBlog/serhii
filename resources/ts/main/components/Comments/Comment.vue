@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Comment } from '@shared/types/models'
-import CommentIcon from '@shared/components/Icons/CommentIcon.vue'
+import type { Comment as CommentType } from '@shared/types/models'
+import Comment from '@/components/Comments/Comment.vue'
 
 type Props = {
-    comment: Comment
+    comment: CommentType
 }
 
 const { comment } = defineProps<Props>()
@@ -14,13 +14,13 @@ function replyToComment(): void {
 </script>
 
 <template>
-    <article v-if="comment.user" class="border border-border p-4 rounded-lg flex gap-5">
+    <article v-if="comment.user" class="border border-border py-3 px-4 rounded-xl flex items-center gap-5">
         <img
             :src="`/storage/avatars/${comment.user.avatar}`"
             :alt="comment.user.name"
             width="70"
             height="70"
-            class="rounded-full drop-shadow-md"
+            class="rounded-full drop-shadow-md w-[70px] h-[70px]"
         />
 
         <div class="flex flex-col gap-0.5">
@@ -37,7 +37,6 @@ function replyToComment(): void {
                     @click="replyToComment"
                     class="inline-flex gap-1 items-center text-sm text-main hover:underline"
                 >
-                    <comment-icon class="w-4 h-4" />
                     <span>Reply</span>
                 </button>
                 ·
@@ -47,4 +46,12 @@ function replyToComment(): void {
             </div>
         </div>
     </article>
+
+    <div v-if="comment.comments" class="pl-12">
+        <comment
+            v-for="comment in comment.comments"
+            :key="comment.id"
+            :comment="comment"
+        />
+    </div>
 </template>

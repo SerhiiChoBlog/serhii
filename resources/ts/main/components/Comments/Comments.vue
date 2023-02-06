@@ -5,7 +5,6 @@ import { onMounted, ref } from 'vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import Comment from '@/components/Comments/Comment.vue'
 import CommentForm from '@/components/Comments/CommentForm.vue'
-import CommentIcon from '@shared/components/Icons/CommentIcon.vue'
 
 type Props = {
     postSlug: string
@@ -31,7 +30,6 @@ function fetchComments(): void {
 <template>
     <div class="mb-7 max-w-[650px] mx-auto">
         <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
-            <comment-icon class="w-8 h-8 inline-block" />
             Discussion ({{ comments.length }})
         </h2>
 
@@ -42,7 +40,7 @@ function fetchComments(): void {
             <h2 class="text-2xl">Loading comments...</h2>
         </div>
 
-        <div v-else-if="comments.length > 0" class="flex flex-col gap-4">
+        <div v-else-if="comments.length > 0" class="flex flex-col gap-3">
             <comment
                 v-for="comment in comments"
                 :key="comment.id"
