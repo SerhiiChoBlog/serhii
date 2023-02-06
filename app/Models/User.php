@@ -21,6 +21,7 @@ use Illuminate\Support\Collection;
  * @property string $email
  * @property Carbon $email_verified_at
  * @property string $password
+ * @property int|null $comments_count
  * @property string $avatar
  * @property string $remember_token
  * @property Collection<int, Role> $roles

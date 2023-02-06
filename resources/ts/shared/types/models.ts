@@ -125,6 +125,7 @@ export type User = {
     slug: string
     roles?: Role[]
     name: string
+    comments_count?: number
     email: string
     avatar: string
     email_verified_at: string
