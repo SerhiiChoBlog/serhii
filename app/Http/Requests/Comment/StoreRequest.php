@@ -7,7 +7,10 @@ namespace App\Http\Requests\Comment;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @property string $user_slug
+ * @property int $post_id
+ * @property int $user_id
+ * @property string $comment
+ * @property int|null $comment_id
  */
 class StoreRequest extends FormRequest
 {
@@ -19,7 +22,10 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_slug' => ['required', 'string'],
+            'post_id' => ['required', 'integer'],
+            'user_id' => ['required', 'integer'],
+            'comment' => ['required', 'string', 'min:4', 'max:1000'],
+            'comment_id' => ['nullable', 'integer'],
         ];
     }
 }

@@ -148,6 +148,7 @@ export type Comment = {
     comments?: Comment[]
     user?: User
     is_subscribed: boolean
+    is_approved: boolean
     pretty_created_at: string
     created_at: string
 }
