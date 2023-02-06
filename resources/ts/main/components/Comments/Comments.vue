@@ -40,7 +40,7 @@ function fetchComments(): void {
             <h2 class="text-2xl">Loading comments...</h2>
         </div>
 
-        <div v-else-if="comments.length > 0" class="flex flex-col gap-3">
+        <div v-else-if="comments.length > 0" class="flex flex-col gap-4">
             <comment
                 v-for="comment in comments"
                 :key="comment.id"

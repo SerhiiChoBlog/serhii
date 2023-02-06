@@ -14,7 +14,10 @@ function replyToComment(): void {
 </script>
 
 <template>
-    <article v-if="comment.user" class="border border-border py-3 px-4 rounded-xl flex items-center gap-5">
+    <article
+        v-if="comment.user"
+        class="border border-border py-3 px-4 rounded-xl flex items-center gap-5"
+    >
         <img
             :src="`/storage/avatars/${comment.user.avatar}`"
             :alt="comment.user.name"
@@ -23,7 +26,7 @@ function replyToComment(): void {
             class="rounded-full drop-shadow-md w-[70px] h-[70px]"
         />
 
-        <div class="flex flex-col gap-0.5">
+        <div class="flex flex-col gap-1">
             <h2 class="text-lg font-bold">
                 {{ comment.user.name }}
             </h2>
