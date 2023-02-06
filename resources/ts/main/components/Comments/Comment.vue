@@ -1,17 +1,31 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { Comment as CommentType } from '@shared/types/models'
 import Comment from '@/components/Comments/Comment.vue'
-import { events } from '@shared/appConfig'
-import dispatchEvent from '@shared/modules/dispatchEvent'
+import CommentForm from '@/components/Comments/CommentForm.vue'
+import CommentsWrapper from '@/components/Comments/CommentsWrapper.vue'
 
 type Props = {
     comment: CommentType
+    postId: number
 }
 
-const { comment } = defineProps<Props>()
+type Emits = {
+    (e: 'posted'): void
+}
+
+const emit = defineEmits<Emits>()
+const { comment, postId } = defineProps<Props>()
+
+const reply = ref<boolean>(false)
 
 function replyToComment(): void {
-    dispatchEvent(events.replayToComment)
+    reply.value = !reply.value
+}
+
+function postReply(): void {
+    emit('posted')
+    reply.value = false
 }
 </script>
 
@@ -37,14 +51,16 @@ function replyToComment(): void {
                 {{ comment.comment }}
             </p>
 
-            <div class="flex gap-1.5 items-center">
+            <div class="flex gap-1 items-center">
                 <button
+                    v-if="comment.user_id !== Auth.id"
                     @click="replyToComment"
                     class="inline-flex gap-1 items-center text-sm text-main hover:underline"
                 >
-                    <span>Reply</span>
+                    <span v-if="reply">Cancel ·</span>
+                    <span v-else>Reply ·</span>
                 </button>
-                ·
+
                 <small class="text-gray-400">
                     {{ comment.pretty_created_at }}
                 </small>
@@ -52,11 +68,22 @@ function replyToComment(): void {
         </div>
     </article>
 
-    <div v-if="comment.comments && comment.comments.length > 0" class="pl-12">
+    <comment-form
+        v-if="reply"
+        :comment-id="comment.comment_id || comment.id"
+        @posted="postReply"
+        :post-id="postId"
+    />
+
+    <comments-wrapper
+        v-if="comment.comments && comment.comments.length > 0"
+        class="pl-8 lg:pl-14"
+    >
         <comment
             v-for="comment in comment.comments"
             :key="comment.id"
             :comment="comment"
+            :post-id="postId"
         />
-    </div>
+    </comments-wrapper>
 </template>

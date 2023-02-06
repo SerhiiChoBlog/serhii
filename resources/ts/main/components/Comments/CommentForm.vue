@@ -7,11 +7,12 @@ type Emits = {
 
 type Props = {
     postId: number
+    commentId?: number
 }
 
 const emit = defineEmits<Emits>()
-const { postId } = defineProps<Props>()
-const { comment, postComment, isLoading } = usePostComment(postId)
+const { postId, commentId } = defineProps<Props>()
+const { comment, postComment, isLoading } = usePostComment(postId, commentId)
 
 async function submitForm(): Promise<void> {
     await postComment()
@@ -20,7 +21,7 @@ async function submitForm(): Promise<void> {
 </script>
 
 <template>
-    <form @submit.prevent="submitForm" class="mt-4 w-full mb-8">
+    <form @submit.prevent="submitForm" class="w-full mb-8">
         <textarea
             v-model="comment"
             placeholder="Write a comment..."
