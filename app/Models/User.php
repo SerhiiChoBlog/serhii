@@ -74,4 +74,12 @@ class User extends Authenticatable implements MustVerifyEmail
         $user = self::query()->select('id', 'email')->where('email', $email)->first();
         return $user?->hasRole(UserRole::ADMIN) ?? false;
     }
+
+    public static function getBySlug(string $slug): self
+    {
+        /** @var self */
+        return self::query()
+            ->where('slug', $slug)
+            ->firstOrFail();
+    }
 }
