@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed,  ref } from 'vue'
 import axios from 'axios'
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 import Tip from '@/components/Tip.vue'
@@ -23,16 +23,6 @@ const title = computed(() => {
     return `Switch to ${switchTo} theme`
 })
 
-onMounted(() => {
-    if (theme === 'system') {
-        switchTheme(systemThemeIsDark() ? 'dark' : 'light')
-    }
-})
-
-function systemThemeIsDark(): boolean {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-}
-
 function switchTheme(toTheme: 'dark' | 'light'): void {
     axios.get(`/theme/${toTheme}`)
         .then(() => changeInterfaceTo(toTheme))
@@ -53,7 +43,7 @@ function changeInterfaceTo(toTheme: 'light' | 'dark'): void {
                 <button
                     type="button"
                     class="drop-shadow-md relative text-yellow-300 dark:text-main flex py-2 px-4 lg:px-2 bg-transparent hover:bg-gray-500 hover:bg-opacity-50 rounded-full transition-colors"
-                    @click="() => switchTheme(currentTheme === 'light' ? 'dark' : 'light')"
+                    @click="() => switchTheme(currentTheme === 'dark' ? 'light' : 'dark')"
                     aria-label="Toggle between light and dark themes"
                 >
                     <svg
