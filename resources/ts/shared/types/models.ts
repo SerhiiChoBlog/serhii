@@ -137,3 +137,17 @@ export type Role = {
     name: string
     users?: User[]
 }
+
+export type Comment = {
+    id: number
+    post_id: number
+    visitor_id: number
+    comment_id: number | null
+    email: string | null
+    name: string
+    comment: string
+    avatar: string
+    comments?: Comment[]
+    is_subscribed: boolean
+    created_at: string
+}
