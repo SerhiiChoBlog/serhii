@@ -2,7 +2,7 @@ import type { Comment as CommentType } from '@shared/types/models'
 import axios from 'axios'
 import { ref } from 'vue'
 
-export default (postId: number) => {
+export default (postId: number, commentId?: number) => {
     const isLoading = ref<boolean>(false)
     const comment = ref<string>('')
 
@@ -15,7 +15,7 @@ export default (postId: number) => {
 
         const params = {
             comment: comment.value,
-            comment_id: null,
+            comment_id: commentId || null,
             user_id: Auth.id,
             post_id: postId,
         }
