@@ -55,7 +55,7 @@ function postReply(): void {
 
             <div class="flex gap-1 items-center">
                 <button
-                    v-if="comment.user_id !== Auth.id"
+                    v-if="Auth && comment.user_id !== Auth.id"
                     @click="replyToComment"
                     class="inline-flex gap-1 items-center text-sm text-main hover:underline"
                 >
