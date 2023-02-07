@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import getAccessToken from '@/firebase/getAccessToken'
 import showToast from '@shared/modules/showToast'
 import axios from 'axios'
-import Spinner from '@shared/components/Spinner.vue'
+import Spinner from '@shared/components/Icons/Spinner.vue'
 import handleServerError from '@shared/modules/handleServerError'
 
 const isLoading = ref<boolean>(false)
@@ -24,13 +24,18 @@ function makeRequestToSignInUser(accessToken: string): void {
         register_from: 'website',
     }
 
-    axios.post<User | null>('/google-sign-in', params)
+    axios.post<User | string>('/google-sign-in', params)
         .then(resp => handleResponse(resp.data))
         .catch(handleServerError)
         .finally(() => isLoading.value = false)
 }
 
-function handleResponse(user: User | null): void {
+function handleResponse(user: User | string): void {
+    if (typeof user === 'string') {
+        showToast({ text: user })
+        return
+    }
+
     if (!user) {
         return
     }
