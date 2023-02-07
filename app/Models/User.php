@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
  * @property-read int $id
  * @property string $slug
  * @property string $name
+ * @property string $secret
  * @property string $email
  * @property Carbon $email_verified_at
  * @property string $password
