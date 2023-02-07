@@ -42,7 +42,7 @@ class CommentController extends Controller
     public function store(StoreRequest $r): void
     {
         /** @var User $user */
-        $user = User::query()->findOrFail($r->user_id);
+        $user = User::query()->where('secret', $r->secret)->firstOrFail();
 
         $service = new StoreCommentService($user, $r->comment, $r->post_id, $r->comment_id);
         $service->handle();
