@@ -20,6 +20,7 @@
     <div class="flex flex-col text-xl md:text-2xl font-light text-font-second">
         <span>Thanks for your time!</span>
         <span class="mb-4">Please, share this post to support me</span>
+
         <share-post-buttons
             :is-auth="{{ auth()->check() ? 'true' : 'false'  }}"
             post-title="{{ $post['title'] }}"
