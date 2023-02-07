@@ -1,14 +1,14 @@
-import Cache from '@/modules/Cache'
+import Cache from '@shared/modules/Cache'
 import type { Tag } from '@shared/types/models'
-import appConfig from '@/appConfig'
+import { storage } from '@shared/appConfig'
 
 export default class {
     public static set(tags: Tag[]): void {
-        Cache.set<Tag[]>(appConfig.storage.selectedSubscriptionTags, tags)
+        Cache.set<Tag[]>(storage.selectedSubscriptionTags, tags)
     }
 
     public static get(): Tag[] | null {
-        return Cache.get<Tag[]>(appConfig.storage.selectedSubscriptionTags)
+        return Cache.get<Tag[]>(storage.selectedSubscriptionTags)
     }
 
     public static wantsAllTags(): boolean {
@@ -21,6 +21,6 @@ export default class {
     }
 
     public static deleteAll(): void {
-        Cache.delete(appConfig.storage.selectedSubscriptionTags)
+        Cache.delete(storage.selectedSubscriptionTags)
     }
 }

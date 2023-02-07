@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import handleError from '@admin/modules/handleError'
-import showToast from '@admin/modules/showToast'
+import showToast from '@shared/modules/showToast'
 import axios from 'axios'
 import PageTitle from '@admin/components/PageTitle.vue'
 import FormInput from '@admin/components/Form/FormInput.vue'

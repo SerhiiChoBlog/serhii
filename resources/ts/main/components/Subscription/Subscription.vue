@@ -4,7 +4,7 @@ import type { SubscriptionDemandResponse, SubscriptionForm, SubscriptionTagsModa
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 import { onMounted, reactive, ref } from 'vue'
 import axios from 'axios'
-import showToast from '@/modules/showToast'
+import showToast from '@shared/modules/showToast'
 import CheckIcon from '@shared/components/Icons/CheckIcon.vue'
 import Modal from '@/components/Modal.vue'
 import SubscriptionModalContent from './SubscriptionModalContent.vue'
@@ -13,7 +13,7 @@ import SubscriptionTagIcon from './SubscriptionTagIcon.vue'
 import SubscriptionButton from '@/modules/Subscription/SubscriptionButton'
 import SubscriptionCache from '@/modules/Subscription/SubscriptionCache'
 import listenEvent from '@shared/modules/listenEvent'
-import appConfig from '@/appConfig'
+import { events } from '@shared/appConfig'
 
 const selectedTags = ref<Tag[]>([])
 
@@ -45,7 +45,7 @@ onMounted(() => {
 
     updateChosenTags()
 
-    listenEvent(appConfig.events.subscribeTagsButtonTitle, () => {
+    listenEvent(events.subscribeTagsButtonTitle, () => {
         updateChosenTags()
     })
 })

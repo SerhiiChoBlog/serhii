@@ -19,11 +19,14 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $random = random_int(100000, 999999);
+
         return [
             'name' => $this->faker->name(),
             'slug' => $this->faker->slug(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'secret' => 'HZcIFEU4sa554dcd7ad42129f3d69ed1849b50d5fgEg' . $random,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ];
     }

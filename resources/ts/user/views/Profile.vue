@@ -48,10 +48,10 @@ function fetchUser() {
                 <TableRow title="Joined">
                     {{ moment(user.created_at).format('MMMM Do YYYY') }}
                 </TableRow>
-                <TableRow title="Posts liked">
-                    <span class="text-yellow-600">coming soon</span>
-                </TableRow>
                 <TableRow title="Comments">
+                    {{ user.comments_count || 0 }}
+                </TableRow>
+                <TableRow title="Posts liked">
                     <span class="text-yellow-600">coming soon</span>
                 </TableRow>
             </div>

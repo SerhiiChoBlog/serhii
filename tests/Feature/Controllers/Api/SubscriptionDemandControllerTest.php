@@ -9,14 +9,14 @@ use App\Models\Subscription;
 use App\Models\Tag;
 use App\Notifications\ConfirmSubscription;
 use App\Services\SubscriptionDemandService;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class SubscriptionDemandControllerTest extends TestCase
 {
-    use DatabaseMigrations;
+    use LazilyRefreshDatabase;
 
     public function test_you_get_message_if_has_confirmed_subscription(): void
     {
@@ -24,7 +24,7 @@ class SubscriptionDemandControllerTest extends TestCase
 
         $sub = Subscription::factory()->confirmed()->create();
 
-        $response = $this->post('/api/subscriptions', [
+        $response = $this->json('post', '/api/subscriptions', [
             'email' => $sub->email,
             'tags' => '',
         ]);
@@ -42,7 +42,7 @@ class SubscriptionDemandControllerTest extends TestCase
 
         $sub = Subscription::factory()->create();
 
-        $response = $this->post('/api/subscriptions', [
+        $response = $this->json('post', '/api/subscriptions', [
             'email' => $sub->email,
             'tags' => '',
         ]);
@@ -60,7 +60,7 @@ class SubscriptionDemandControllerTest extends TestCase
 
         $sub = Subscription::factory()->create(['created_at' => now()->subDays(2)]);
 
-        $response = $this->post('/api/subscriptions', [
+        $response = $this->json('post', '/api/subscriptions', [
             'email' => $sub->email,
             'tags' => '',
         ]);
@@ -80,7 +80,7 @@ class SubscriptionDemandControllerTest extends TestCase
 
         $email = 'serhii@anna.com';
 
-        $response = $this->post('/api/subscriptions', [
+        $response = $this->json('post', '/api/subscriptions', [
             'email' => $email,
             'tags' => '',
         ]);
@@ -99,7 +99,7 @@ class SubscriptionDemandControllerTest extends TestCase
     {
         Notification::fake();
 
-        $this->post('/api/subscriptions', [
+        $this->json('post', '/api/subscriptions', [
             'email' => 'anna@serhii.com',
             'tags' => SubscriptionDemandService::ALL_TAGS,
         ]);
@@ -114,7 +114,7 @@ class SubscriptionDemandControllerTest extends TestCase
     {
         Notification::fake();
 
-        $response = $this->post('/api/subscriptions', [
+        $response = $this->json('post', '/api/subscriptions', [
             'email' => 'anna@serhii.com',
             'tags' => SubscriptionDemandService::NO_TAGS,
         ]);
@@ -131,7 +131,7 @@ class SubscriptionDemandControllerTest extends TestCase
         /** @var Collection<int, Tag> $tags */
         $tags = Tag::factory()->count(5)->create();
 
-        $this->post('/api/subscriptions', [
+        $this->json('post', '/api/subscriptions', [
             'email' => 'serhii@anna.com',
             'tags' => $tags->pluck('id')->join(','),
         ]);
@@ -149,7 +149,7 @@ class SubscriptionDemandControllerTest extends TestCase
         /** @var Tag $tag */
         $tag = Tag::factory()->create();
 
-        $this->post('/api/subscriptions', [
+        $this->json('post', '/api/subscriptions', [
             'email' => 'serhii@anna.com',
             'tags' => $tag->id,
         ]);

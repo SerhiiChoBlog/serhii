@@ -12,7 +12,7 @@ import LoadIcon from '@shared/components/Icons/LoadIcon.vue'
 import sweetAlert from 'sweetalert2'
 import ControlButton from './ControlButton.vue'
 import SlideUpTransition from '@shared/components/Transitions/SlideUpTransition.vue'
-import showToast from '@/modules/showToast'
+import showToast from '@shared/modules/showToast'
 
 interface Props {
     slug: string

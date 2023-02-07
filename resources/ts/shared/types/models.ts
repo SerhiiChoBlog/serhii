@@ -125,6 +125,9 @@ export type User = {
     slug: string
     roles?: Role[]
     name: string
+    secret: string
+    sign_in_method: 'email' | 'google' | 'apple'
+    comments_count?: number
     email: string
     avatar: string
     email_verified_at: string
@@ -136,4 +139,18 @@ export type Role = {
     id: number
     name: string
     users?: User[]
+}
+
+export type Comment = {
+    id: number
+    post_id: number
+    user_id: number
+    comment_id: number | null
+    comment: string
+    comments?: Comment[]
+    user?: User
+    is_subscribed: boolean
+    is_approved: boolean
+    pretty_created_at: string
+    created_at: string
 }
