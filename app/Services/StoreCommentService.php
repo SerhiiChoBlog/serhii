@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Enums\UserRole;
 use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Validation\ValidationException;
@@ -45,6 +46,10 @@ class StoreCommentService
 
     private function isSpam(): bool
     {
+        if ($this->user->hasRole(UserRole::ADMIN)) {
+            return false;
+        }
+
         return $this->user
             ->comments()
             ->where('created_at', '>=', now()->subMinutes(5))

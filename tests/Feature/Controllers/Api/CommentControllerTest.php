@@ -6,6 +6,7 @@ namespace Tests\Feature\Controllers\Api;
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Str;
@@ -273,5 +274,30 @@ class CommentControllerTest extends TestCase
         $resp->assertOk();
 
         $this->assertDatabaseCount('comments', 2);
+    }
+
+    public function test_admin_can_post_many_comments(): void
+    {
+        $user = User::factory()->create();
+
+        $role = Role::factory()->create(['name' => 'admin']);
+        $user->roles()->attach($role);
+
+        $post = Post::factory()->create();
+
+        $fields = [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => 'Thank you for your comment',
+        ];
+
+        $this->json('post', self::POST_COMMENT_URI, $fields);
+        $this->json('post', self::POST_COMMENT_URI, $fields);
+
+        $response = $this->json('post', self::POST_COMMENT_URI, $fields);
+
+        $response->assertOk();
+
+        $this->assertDatabaseCount('comments', 3);
     }
 }
