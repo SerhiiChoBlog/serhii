@@ -9,12 +9,15 @@ import insertTagsForHighlightJs from '@/modules/insertTagsForHighlightJs'
 import ThemeSwitch from '@/components/ThemeSwitch.vue'
 import ToTop from '@/components/ToTop.vue'
 import Popper from "vue3-popper"
-import Tip from '@/components/Tip.vue'
+import Tip from '@shared/components/Tip.vue'
 import Search from '@/components/Home/Search.vue'
 import Filters from '@/components/Filters/Filters.vue'
 import Subscription from '@/components/Subscription/Subscription.vue'
 import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import UserDropdown from '@/components/UserDropdown.vue'
+import Comments from '@/components/Comments/Comments.vue'
+import LazyLoading from '@shared/components/LazyLoading.vue'
+import GoogleSignInButton from '@/components/GoogleSignInButton.vue'
 
 const app = createApp({
     components: {
@@ -31,6 +34,9 @@ const app = createApp({
         Subscription,
         ShowPasswordButton,
         UserDropdown,
+        Comments,
+        LazyLoading,
+        GoogleSignInButton,
     },
 
     setup() {

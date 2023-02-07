@@ -1,10 +1,10 @@
-import Cache from '@/modules/Cache'
-import appConfig from '@/appConfig'
+import Cache from '@shared/modules/Cache'
+import { events, storage } from '@shared/appConfig'
 import dispatchEvent from '@shared/modules/dispatchEvent'
 
 export default class {
     public static rename(): void {
-        const ids = Cache.get<number[]>(appConfig.storage.selectedSubscriptionTags)
+        const ids = Cache.get<number[]>(storage.selectedSubscriptionTags)
 
         if (ids) {
             this.setTitle(`${ids.length} tags`)
@@ -24,6 +24,6 @@ export default class {
     }
 
     private static setTitle(title: string): void {
-        dispatchEvent(appConfig.events.subscribeTagsButtonTitle, title)
+        dispatchEvent(events.subscribeTagsButtonTitle, title)
     }
 }

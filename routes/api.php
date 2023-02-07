@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\SocialShareController;
@@ -19,3 +20,8 @@ Route::get('search/{query}', [SearchController::class, 'index']);
 Route::post('subscriptions', [SubscriptionDemandController::class, 'subscribe']);
 
 Route::get('posts', [PostController::class, 'index']);
+
+Route::controller(CommentController::class)->prefix('comments')->group(function () {
+    Route::get('{post}', 'index');
+    Route::post('/', 'store');
+});

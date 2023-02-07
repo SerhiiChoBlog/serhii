@@ -1,4 +1,4 @@
-import showToast from './showToast'
+import showToast from '@shared/modules/showToast'
 
 export default (err: any) => {
     showToast({

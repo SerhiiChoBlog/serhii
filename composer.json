@@ -4,7 +4,7 @@
     "description": "Serhii personal website",
     "keywords": ["portfolio", "blog"],
     "require": {
-        "php": "^8.0",
+        "php": "^8.2",
         "ext-pdo": "*",
         "doctrine/dbal": "^2.12.1",
         "erusev/parsedown": "^1.7",
@@ -16,7 +16,7 @@
         "laravel/ui": "^3.2",
         "multiavatar/multiavatar-php": "^1.0",
         "pusher/pusher-php-server": "^7.0",
-        "serhii/ago": "^2.0",
+        "serhii/ago": "^3.0",
         "serhii/short-number": "^3.0",
         "spatie/laravel-sitemap": "^6.2",
         "stevebauman/location": "^6.1"

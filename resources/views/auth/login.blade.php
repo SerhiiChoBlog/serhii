@@ -62,7 +62,9 @@
                 <div class="pt-4">
                     <x-form.button>Login</x-form.button>
 
-                    <div class="pt-7">
+                    <x-sign-with />
+
+                    <div class="mt-6">
                         <x-question-link
                             question="Forgot password?"
                             :link="route('password.request')"

@@ -2,7 +2,7 @@
 import ChevronDown from '@shared/components/Icons/ChevronDownIcon.vue'
 import { ref } from 'vue'
 import listenEvent from '@shared/modules/listenEvent'
-import appConfig from '@/appConfig'
+import { events } from '@shared/appConfig'
 
 type Emits = {
     (e: 'clicked'): void
@@ -11,7 +11,7 @@ type Emits = {
 const emit = defineEmits<Emits>()
 const heading = ref<string>('All tags')
 
-listenEvent<string>(appConfig.events.subscribeTagsButtonTitle, title => {
+listenEvent<string>(events.subscribeTagsButtonTitle, title => {
     heading.value = title
 })
 </script>

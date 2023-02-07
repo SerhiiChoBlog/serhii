@@ -1,0 +1,89 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
+use Serhii\Ago\Option;
+use Serhii\Ago\TimeAgo;
+
+/**
+ * @property int $id
+ * @property int $post_id
+ * @property int $user_id
+ * @property int|null $comment_id
+ * @property Collection<int, self> $comments
+ * @property User|null $user
+ * @property bool $is_subscribed
+ * @property bool $is_approved
+ * @property string $pretty_created_at
+ * @property Carbon $created_at
+ */
+class Comment extends Model
+{
+    use HasFactory;
+
+    public $timestamps = false;
+
+    /**
+     * @var array<int, string>
+     */
+    protected $guarded = ['id'];
+
+    /**
+     * @var array<int, string>
+     */
+    protected $dates = [
+        'created_at',
+    ];
+
+    /**
+     * @var array<int, string>
+     */
+    protected $appends = ['pretty_created_at'];
+
+    /**
+     * @return BelongsTo<User, self>
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @return BelongsTo<self, self>
+     */
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(self::class, 'comment_id');
+    }
+
+    /**
+     * @return HasMany<self>
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(self::class);
+    }
+
+    /**
+     * @return Attribute<string, mixed>
+     */
+    protected function prettyCreatedAt(): Attribute
+    {
+        return Attribute::get(function (): string {
+            if ($this->created_at === null) {
+                return '';
+            }
+
+            return TimeAgo::trans($this->created_at, Option::JUST_NOW);
+        });
+    }
+}
