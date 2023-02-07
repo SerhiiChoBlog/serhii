@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GoogleSignInRequest;
 use App\Models\User;
+use App\Services\GenerateSlugService;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -51,7 +52,8 @@ class AuthGoogleController extends Controller
             return $user;
         }
 
-        $avatar = $this->saveUserImage($user_info['picture'], $name);
+        $slug = $this->generateSlug($name);
+        $avatar = $this->saveUserImage($user_info['picture'], $slug);
 
         /** @var User $user */
         $user = User::query()->create([
@@ -59,6 +61,8 @@ class AuthGoogleController extends Controller
             'name' => $name,
             'password' => Hash::make(Str::random(20)),
             'secret' => User::generateSecret($email),
+            'email_verified_at' => now(),
+            'slug' => $slug,
             'avatar' => $avatar,
         ]);
 
@@ -67,10 +71,16 @@ class AuthGoogleController extends Controller
         return $user;
     }
 
+    protected function generateSlug(string $name): string
+    {
+        $slug_service = new GenerateSlugService($name);
+        return $slug_service->handle();
+    }
+
     /**
      * @return string|null
      */
-    private function saveUserImage(?string $image_url, string $user_name): ?string
+    private function saveUserImage(?string $image_url, string $slug): ?string
     {
         if (!$image_url) {
             return null;
@@ -78,7 +88,7 @@ class AuthGoogleController extends Controller
 
         $image_url = str_replace('s96-c', 's400-c', $image_url);
 
-        $name = sprintf("%s-%s.jpg", Str::slug($user_name), time());
+        $name = sprintf("%s-%s.jpg", $slug, time());
         $image_binary = file_get_contents($image_url);
 
         if (!$image_binary || !is_string($image_binary)) {
@@ -102,7 +112,7 @@ class AuthGoogleController extends Controller
             unlink($full_path);
         }
 
-        return $this->saveUserImage($new_image, $user->name) ?? $user->avatar;
+        return $this->saveUserImage($new_image, $user->slug) ?? $user->avatar;
     }
 
     /**
