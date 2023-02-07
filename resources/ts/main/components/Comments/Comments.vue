@@ -19,8 +19,8 @@ const commentsCount = computed(() => {
 </script>
 
 <template>
-    <div class="mb-12 max-w-[700px] mx-auto">
-        <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
+    <div class="mb-12 mx-auto">
+        <h2 class="text-lg mb-1 lg:text-2xl font-bold text-gray-900 dark:text-white">
             Discussion ({{ commentsCount }})
         </h2>
 
