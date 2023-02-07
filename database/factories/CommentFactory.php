@@ -25,7 +25,7 @@ class CommentFactory extends Factory
             'comment_id' => null,
             'comment' => $this->faker->text(100),
             'is_approved' => true,
-            'created_at' => $this->faker->dateTimeBetween('-1 year'),
+            'created_at' => now(),
         ];
     }
 }
