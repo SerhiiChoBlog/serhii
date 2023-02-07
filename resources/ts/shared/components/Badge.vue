@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Badge } from '@shared/types'
-import Tip from '@/components/Tip.vue'
+import Tip from '@shared/components/Tip.vue'
 
 type Props = {
     badge: Badge

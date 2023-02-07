@@ -9,7 +9,7 @@ import insertTagsForHighlightJs from '@/modules/insertTagsForHighlightJs'
 import ThemeSwitch from '@/components/ThemeSwitch.vue'
 import ToTop from '@/components/ToTop.vue'
 import Popper from "vue3-popper"
-import Tip from '@/components/Tip.vue'
+import Tip from '@shared/components/Tip.vue'
 import Search from '@/components/Home/Search.vue'
 import Filters from '@/components/Filters/Filters.vue'
 import Subscription from '@/components/Subscription/Subscription.vue'

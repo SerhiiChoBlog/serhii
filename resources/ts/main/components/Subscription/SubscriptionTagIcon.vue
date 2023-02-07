@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Tag } from '@shared/types/models'
-import Tip from '@/components/Tip.vue'
+import Tip from '@shared/components/Tip.vue'
 
 type Props = {
     tag: Tag

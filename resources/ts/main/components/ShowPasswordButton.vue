@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import Tip from '@/components/Tip.vue'
+import Tip from '@shared/components/Tip.vue'
 import EyeIcon from '@shared/components/Icons/EyeIcon.vue'
 import EyeSlashIcon from '@shared/components/Icons/EyeSlashIcon.vue'
 
