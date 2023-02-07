@@ -6,6 +6,7 @@ import showToast from '@shared/modules/showToast'
 import axios from 'axios'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import handleServerError from '@shared/modules/handleServerError'
+import Tip from '@shared/components/Tip.vue'
 
 const isLoading = ref<boolean>(false)
 
@@ -49,20 +50,21 @@ function handleResponse(user: User | string): void {
     <button
         @click="signIn"
         type="button"
-        class="rounded-full w-8 h-8 transition-transform transform hover:-translate-y-1"
+        class="rounded-full w-8 h-8 transition-transform transform hover:scale-110 flex items-center"
         :class="{ 'is-loading dark': isLoading }"
         :disabled="isLoading"
         title="Sign in with Google"
     >
         <spinner v-if="isLoading" class="w-8 h-8" />
 
-        <img
-            v-else
-            src="/storage/icons/google.webp"
-            alt="Google logo"
-            width="100"
-            height="100"
-            class="w-full"
-        />
+        <tip v-else content="Sign in with Google" class="inline-flex">
+            <img
+                src="/storage/icons/google.webp"
+                alt="Google logo"
+                width="100"
+                height="100"
+                class="w-full"
+            />
+        </tip>
     </button>
 </template>

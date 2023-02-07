@@ -3,6 +3,7 @@ import { onMounted } from 'vue'
 import usePostComment from '@/composables/usePostComment'
 import CommentButton from '@/components/Comments/CommentButton.vue'
 import useCachedComment from '@/composables/useCachedComment'
+import GoogleSignInButton from '@/components/GoogleSignInButton.vue'
 
 type Emits = {
     (e: 'posted'): void
@@ -52,15 +53,23 @@ async function submitForm(): Promise<void> {
                 </span>
             </div>
 
-            <comment-button
-                type="submit"
-                :disabled="isLoading"
-                :class="{ 'opacity-50': isLoading }"
-            >
-                <span v-if="isLoading">Processing...</span>
-                <span v-else-if="!Auth">Login with email</span>
-                <span v-else>Comment</span>
-            </comment-button>
+            <div class="flex gap-4 items-center">
+                <comment-button
+                    type="submit"
+                    :disabled="isLoading"
+                    :class="{ 'opacity-50': isLoading }"
+                >
+                    <span v-if="isLoading">Processing...</span>
+                    <span v-else-if="!Auth">Sign in with email</span>
+                    <span v-else>Comment</span>
+                </comment-button>
+
+                <span v-if="!Auth">or</span>
+
+                <div v-if="!Auth" class="inline-flex">
+                    <google-sign-in-button />
+                </div>
+            </div>
         </div>
     </form>
 </template>
