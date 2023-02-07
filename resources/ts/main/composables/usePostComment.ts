@@ -8,7 +8,12 @@ export default (postId: number, commentId?: number) => {
     const comment = ref<string>('')
 
     async function postComment(): Promise<void> {
-        if (isLoading.value || !Auth) {
+        if (isLoading.value) {
+            return
+        }
+
+        if (!Auth) {
+            window.location.href = '/login'
             return
         }
 
