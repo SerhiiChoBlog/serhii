@@ -34,7 +34,7 @@ async function submitForm(): Promise<void> {
             <textarea
                 v-model="comment"
                 :placeholder="`${Auth ? 'Write a' : 'Login to'} comment ...`"
-                class="py-2 px-4 bg-page focus:outline-none dark:bg-page-second rounded-lg border border-border w-full min-h-[135px]"
+                class="p-3 bg-page focus:outline-none dark:bg-page-second rounded-lg border border-border w-full min-h-[90px]"
                 maxlength="1000"
                 @blur="saveCommentToCache(comment)"
                 minlength="4"
@@ -47,15 +47,17 @@ async function submitForm(): Promise<void> {
         <comment-button
             v-if="Auth"
             type="submit"
-            :disabled="isLoading || comment.length < 4"
-            :class="{ 'opacity-50': isLoading || comment.length < 4 }"
+            :disabled="isLoading"
+            :class="{ 'opacity-50': isLoading }"
         >
-            <span v-if="isLoading">Processing ...</span>
-            <span v-else>Post comment</span>
+            <span v-if="isLoading">Processing...</span>
+            <span v-else>Comment</span>
         </comment-button>
 
         <comment-button v-else href="/login">
             Login to comment
         </comment-button>
+
+
     </form>
 </template>
