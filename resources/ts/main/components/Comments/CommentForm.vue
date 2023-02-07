@@ -16,7 +16,12 @@ type Props = {
 const emit = defineEmits<Emits>()
 const { postId, commentId } = defineProps<Props>()
 const { comment, postComment, isLoading } = usePostComment(postId, commentId)
-const { getCommentFromCache, saveCommentToCache } = useCachedComment(postId, commentId)
+
+const {
+    getCommentFromCache,
+    saveCommentToCache,
+    deleteCommentFromCache,
+} = useCachedComment(postId, commentId)
 
 onMounted(() => {
     comment.value = getCommentFromCache()
@@ -25,6 +30,7 @@ onMounted(() => {
 async function submitForm(): Promise<void> {
     await postComment()
     emit('posted')
+    deleteCommentFromCache()
 }
 </script>
 

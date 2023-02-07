@@ -25,8 +25,13 @@ export default (postId: number, commentId?: number) => {
         Cache.set<string>(cacheKey, comment)
     }
 
+    function deleteCommentFromCache(): void {
+        Cache.delete(cacheKey)
+    }
+
     return {
         getCommentFromCache,
         saveCommentToCache,
+        deleteCommentFromCache,
     }
 }
