@@ -53,7 +53,6 @@ function handleResponse(user: User | string): void {
         class="rounded-full w-8 h-8 transition-transform transform hover:scale-110 flex items-center"
         :class="{ 'is-loading dark': isLoading }"
         :disabled="isLoading"
-        title="Sign in with Google"
     >
         <spinner v-if="isLoading" class="w-8 h-8" />
 

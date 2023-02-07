@@ -60,11 +60,9 @@ async function submitForm(): Promise<void> {
                     :class="{ 'opacity-50': isLoading }"
                 >
                     <span v-if="isLoading">Processing...</span>
-                    <span v-else-if="!Auth">Sign in with email</span>
+                    <span v-else-if="!Auth">Sign in</span>
                     <span v-else>Comment</span>
                 </comment-button>
-
-                <span v-if="!Auth">or</span>
 
                 <div v-if="!Auth" class="inline-flex">
                     <google-sign-in-button />
