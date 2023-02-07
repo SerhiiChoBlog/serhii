@@ -5,7 +5,7 @@ import handleError from '@admin/modules/handleError'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
-import showToast from '@admin/modules/showToast'
+import showToast from '@shared/modules/showToast'
 
 type Props = {
     post: Post

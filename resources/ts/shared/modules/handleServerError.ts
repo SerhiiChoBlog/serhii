@@ -4,7 +4,7 @@ export default (err: any): void => {
     console.error(err)
 
     showToast({
-        text: err.response.data.message || 'Server errorj',
+        text: err.response.data.message || 'Server error',
         success: false,
     })
 }

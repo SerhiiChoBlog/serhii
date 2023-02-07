@@ -28,4 +28,6 @@
     </div>
 </div>
 
-<comments :post-id="{{ $post['id'] }}"></comments>
+<lazy-loading>
+    <comments :post-id="{{ $post['id'] }}"></comments>
+</lazy-loading>
