@@ -15,10 +15,6 @@
     "file": "assets/fa-solid-900.0777ab6e.ttf",
     "src": "resources/fonts/fa-solid-900.ttf"
   },
-  "storage/app/public/hero.webp": {
-    "file": "assets/hero.7cf745fe.webp",
-    "src": "storage/app/public/hero.webp"
-  },
   "storage/app/public/hero-sm.webp": {
     "file": "assets/hero-sm.3cb40372.webp",
     "src": "storage/app/public/hero-sm.webp"
@@ -30,6 +26,10 @@
   "resources/fonts/Lato-Regular.ttf": {
     "file": "assets/Lato-Regular.e82542ae.ttf",
     "src": "resources/fonts/Lato-Regular.ttf"
+  },
+  "storage/app/public/hero.webp": {
+    "file": "assets/hero.7cf745fe.webp",
+    "src": "storage/app/public/hero.webp"
   },
   "resources/fonts/fa-solid-900.svg": {
     "file": "assets/fa-solid-900.f6bd8f51.svg",
