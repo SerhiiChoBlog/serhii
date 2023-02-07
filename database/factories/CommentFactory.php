@@ -21,7 +21,6 @@ class CommentFactory extends Factory
     {
         return [
             'post_id' => null,
-            'visitor_id' => null,
             'user_id' => null,
             'comment_id' => null,
             'comment' => $this->faker->text(100),
