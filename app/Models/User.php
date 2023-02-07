@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 /**
  * @property-read int $id
@@ -83,5 +84,14 @@ class User extends Authenticatable implements MustVerifyEmail
         /** @var User|null $user */
         $user = self::query()->select('id', 'email')->where('email', $email)->first();
         return $user?->hasRole(UserRole::ADMIN) ?? false;
+    }
+
+    public static function generateSecret(string $email): string
+    {
+        $chunks = md5($email);
+        $str1 = Str::random(9);
+        $str2 = Str::random(9);
+
+        return $str1 . $chunks . $str2;
     }
 }
