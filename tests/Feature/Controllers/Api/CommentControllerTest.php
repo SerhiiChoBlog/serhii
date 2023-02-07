@@ -42,4 +42,37 @@ class CommentControllerTest extends TestCase
                 'visitor_id' => $visitor->id,
             ]);
     }
+
+    public function test_you_can_get_comments_with_nested_comments(): void
+    {
+        $user = User::factory()->create();
+        $visitor = Visitor::factory()->create();
+        $post = Post::factory()->create();
+
+        $comment = Comment::factory()->create([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+            'visitor_id' => $visitor->id,
+            'comment' => 'I like this post! Keep it up!',
+        ]);
+
+        $nested_comment = Comment::factory()->create([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+            'visitor_id' => $visitor->id,
+            'comment' => $reply = 'I agree!',
+            'comment_id' => $comment->id,
+        ]);
+
+        $this->get(self::GET_COMMENTS_URI)
+             ->assertOk()
+             ->assertJsonFragment([
+                 'id' => $nested_comment->id,
+                 'comment' => $reply,
+                 'user_id' => $user->id,
+                 'post_id' => $post->id,
+                 'comment_id' => $comment->id,
+                 'visitor_id' => $visitor->id,
+             ]);
+    }
 }
