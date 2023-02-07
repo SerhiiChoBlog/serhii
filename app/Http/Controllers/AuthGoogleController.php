@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Enums\SignInMethod;
 use App\Http\Requests\GoogleSignInRequest;
 use App\Models\User;
 use App\Services\GenerateSlugService;
@@ -64,6 +65,7 @@ class AuthGoogleController extends Controller
             'email_verified_at' => now(),
             'slug' => $slug,
             'avatar' => $avatar,
+            'sign_in_method' => SignInMethod::GOOGLE->value,
         ]);
 
         auth('user')->login($user);

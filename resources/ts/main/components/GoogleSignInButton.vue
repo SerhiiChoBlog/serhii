@@ -40,6 +40,8 @@ function handleResponse(user: User | string): void {
     }
 
     showToast({ text: `Signed in successfully as ${user.name}` })
+
+    window.location.reload()
 }
 </script>
 
