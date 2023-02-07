@@ -17,6 +17,7 @@ import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import UserDropdown from '@/components/UserDropdown.vue'
 import Comments from '@/components/Comments/Comments.vue'
 import LazyLoading from '@shared/components/LazyLoading.vue'
+import GoogleSignInButton from '@/components/GoogleSignInButton.vue'
 
 const app = createApp({
     components: {
@@ -35,6 +36,7 @@ const app = createApp({
         UserDropdown,
         Comments,
         LazyLoading,
+        GoogleSignInButton,
     },
 
     setup() {
