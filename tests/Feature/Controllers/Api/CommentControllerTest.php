@@ -88,4 +88,36 @@ class CommentControllerTest extends TestCase
             'comment' => $text,
         ]);
     }
+
+    public function test_you_can_replay_to_comment(): void
+    {
+        $user1 = User::factory()->create();
+        $user2 = User::factory()->create();
+        $post = Post::factory()->create();
+
+        // User 1 comments on a post
+        $comment = Comment::factory()->create([
+            'user_id' => $user1->id,
+            'post_id' => $post->id,
+            'comment' => 'Your posts are definitely worth reading! Thank you!',
+        ]);
+
+        // User 2 replies to User 1's comment
+        $text = 'I agree with you! He is a great writer!';
+
+        $this->post(self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user2->secret,
+            'comment' => $text,
+            'comment_id' => $comment->id,
+        ])
+            ->assertOk();
+
+        $this->assertDatabaseHas('comments', [
+            'user_id' => $user2->id,
+            'post_id' => $post->id,
+            'comment' => $text,
+            'comment_id' => $comment->id,
+        ]);
+    }
 }
