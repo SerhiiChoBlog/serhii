@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed,  ref } from 'vue'
+import { computed, ref } from 'vue'
 import axios from 'axios'
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
-import Tip from '@/components/Tip.vue'
+import Tip from '@shared/components/Tip.vue'
 
 type Theme = 'light' | 'dark' | 'system'
 

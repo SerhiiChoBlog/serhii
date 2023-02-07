@@ -2,7 +2,7 @@
 import axios from 'axios'
 import copy from 'copy-to-clipboard'
 import showToast from '@shared/modules/showToast'
-import Tip from '@/components/Tip.vue'
+import Tip from '@shared/components/Tip.vue'
 
 interface Props {
     isAuth: boolean
