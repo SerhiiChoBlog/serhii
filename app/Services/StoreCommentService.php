@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Models\Comment;
 use App\Models\User;
+use Illuminate\Validation\ValidationException;
 
 class StoreCommentService
 {
@@ -17,8 +18,16 @@ class StoreCommentService
     ) {
     }
 
+    /**
+     * @throws ValidationException
+     */
     public function handle(): void
     {
+        if ($this->isSpam()) {
+            $msg = 'You can only post one comment every 5 minutes.';
+            throw ValidationException::withMessages(['comment' => $msg]);
+        }
+
         $parent = $this->getParentComment();
 
         if ($parent && $parent->comment_id !== null) {
@@ -30,7 +39,16 @@ class StoreCommentService
             'comment_id' => $this->comment_id,
             'comment' => $this->comment,
             'is_approved' => $this->validateIfCommentIsApproved(),
+            'created_at' => now(),
         ]);
+    }
+
+    private function isSpam(): bool
+    {
+        return $this->user
+            ->comments()
+            ->where('created_at', '>=', now()->subMinutes(5))
+            ->exists();
     }
 
     private function getParentComment(): ?Comment

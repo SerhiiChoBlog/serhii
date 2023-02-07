@@ -204,6 +204,8 @@ class CommentControllerTest extends TestCase
         ]);
 
         $resp->assertOk();
+
+        $this->assertDatabaseCount('comments', 1);
     }
 
     public function test_user_can_create_comment_with_1000_characters(): void
@@ -218,5 +220,58 @@ class CommentControllerTest extends TestCase
         ]);
 
         $resp->assertOk();
+
+        $this->assertDatabaseCount('comments', 1);
+    }
+
+    public function test_you_can_only_submit_one_comment_in_5_minutes(): void
+    {
+        $user = User::factory()->create();
+        $post = Post::factory()->create();
+        $text = 'Awesome post! Thank you for sharing your knowledge!';
+
+        // Create comment
+        Comment::factory()->create([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+            'comment' => $text,
+        ]);
+
+        // Try to create the second comment
+        $resp = $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => $text,
+        ]);
+
+        $resp->assertJsonValidationErrors('comment');
+
+        $this->assertDatabaseCount('comments', 1);
+    }
+
+    public function test_you_can_submit_the_second_comment_after_5_minutes(): void
+    {
+        $user = User::factory()->create();
+        $post = Post::factory()->create();
+        $text = 'Awesome post! Thank you for sharing your knowledge!';
+
+        // Create comment
+        Comment::factory()->create([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+            'comment' => $text,
+            'created_at' => now()->subMinutes(6),
+        ]);
+
+        // Create the second comment
+        $resp = $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => $text,
+        ]);
+
+        $resp->assertOk();
+
+        $this->assertDatabaseCount('comments', 2);
     }
 }
