@@ -66,7 +66,7 @@ const commentsCount = computed(() => {
             />
         </comments-wrapper>
 
-        <h2 v-else class="text-xl text-center text-font-second mb-8">
+        <h2 v-else class="text-xl text-center text-font-second mb-8 mt-5">
             🙏 Be the first to leave a comment
         </h2>
     </div>
