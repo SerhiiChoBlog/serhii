@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Tests\Feature\Controllers;
 
 use App\Models\Subscription;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
 class SubscriptionControllerTest extends TestCase
 {
-    use DatabaseMigrations;
+    use LazilyRefreshDatabase;
 
     public function test_you_can_confirm_subscription(): void
     {
