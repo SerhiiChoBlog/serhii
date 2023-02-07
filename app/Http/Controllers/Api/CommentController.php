@@ -19,7 +19,7 @@ class CommentController extends Controller
      */
     public function index(Post $post): Collection
     {
-        $user_columns = 'id,name,slug,avatar';
+        $user_columns = 'id,name,slug,avatar,sign_in_method';
 
         $post->load([
             'comments' => function ($q) use ($user_columns) {

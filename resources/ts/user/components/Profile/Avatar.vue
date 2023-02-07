@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { User } from '@shared/types/models'
 import Tip from '@shared/components/Tip.vue'
+import SignedInMethodLogo from '@shared/components/SignedInMethodLogo.vue'
 
 type Props = {
     user: User
@@ -23,12 +24,10 @@ const { user } = defineProps<Props>()
             :content="`Signed in with ${user.sign_in_method}`"
             class="absolute bottom-0 right-5 md:right-14"
         >
-            <img
+            <signed-in-method-logo
                 :src="`/storage/icons/${user.sign_in_method}.webp`"
-                :alt="`${user.sign_in_method}'s logo`"
-                width="50"
-                height="50"
-                class="bg-white rounded-full p-0.5 shadow-md"
+                :method="user.sign_in_method"
+                class="w-14 h-14"
             />
         </tip>
     </div>
