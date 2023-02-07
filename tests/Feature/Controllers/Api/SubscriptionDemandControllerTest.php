@@ -9,14 +9,14 @@ use App\Models\Subscription;
 use App\Models\Tag;
 use App\Notifications\ConfirmSubscription;
 use App\Services\SubscriptionDemandService;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class SubscriptionDemandControllerTest extends TestCase
 {
-    use DatabaseMigrations;
+    use LazilyRefreshDatabase;
 
     public function test_you_get_message_if_has_confirmed_subscription(): void
     {
