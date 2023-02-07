@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\SignInMethod;
 use App\Enums\UserRole;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -24,6 +25,7 @@ use Illuminate\Support\Str;
  * @property Carbon $email_verified_at
  * @property string $password
  * @property int|null $comments_count
+ * @property SignInMethod $sign_in_method
  * @property string $avatar
  * @property string $remember_token
  * @property Collection<int, Role> $roles
@@ -53,6 +55,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'sign_in_method' => SignInMethod::class,
     ];
 
     /**
