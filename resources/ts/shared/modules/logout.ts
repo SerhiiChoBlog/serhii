@@ -1,5 +1,5 @@
 import axios from 'axios'
-import showToast from '@admin/modules/showToast'
+import showToast from '@shared/modules/showToast'
 import sweetAlert from 'sweetalert2'
 
 export default async (): Promise<void> => {

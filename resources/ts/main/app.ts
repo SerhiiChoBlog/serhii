@@ -16,6 +16,7 @@ import Subscription from '@/components/Subscription/Subscription.vue'
 import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import UserDropdown from '@/components/UserDropdown.vue'
 import Comments from '@/components/Comments/Comments.vue'
+import LazyLoading from '@shared/components/LazyLoading.vue'
 
 const app = createApp({
     components: {
@@ -33,6 +34,7 @@ const app = createApp({
         ShowPasswordButton,
         UserDropdown,
         Comments,
+        LazyLoading,
     },
 
     setup() {
