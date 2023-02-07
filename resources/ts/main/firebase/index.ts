@@ -2,13 +2,13 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 
 firebase.initializeApp({
-    apiKey: "AIzaSyBTwSVmUjCMRydibxELucOPcl0t_VZTCK0",
-    authDomain: "zoo-zoo-zoo.firebaseapp.com",
-    projectId: "zoo-zoo-zoo",
-    storageBucket: "zoo-zoo-zoo.appspot.com",
-    messagingSenderId: "357464640331",
-    appId: "1:357464640331:web:f128fcac14b14face2f6ce",
-    measurementId: "G-VNL68873NN"
+    apiKey: "AIzaSyACoEB8A2Wi999RUgqnLBYEmogK0np-8mo",
+    authDomain: "serhii-cc780.firebaseapp.com",
+    databaseURL: "https://serhii-cc780-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "serhii-cc780",
+    storageBucket: "serhii-cc780.appspot.com",
+    messagingSenderId: "929831572941",
+    appId: "1:929831572941:web:ba82e0779c8620fa5ba084",
 })
 
 export default firebase

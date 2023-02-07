@@ -69,6 +69,8 @@
 
                 <div class="pt-4">
                     <x-form.button>Register</x-form.button>
+
+                    <x-sign-with />
                 </div>
             </div>
         </form>
