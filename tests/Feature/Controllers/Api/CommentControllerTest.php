@@ -71,6 +71,21 @@ class CommentControllerTest extends TestCase
 
     public function test_you_can_create_comment(): void
     {
+        $user = User::factory()->create();
+        $post = Post::factory()->create();
+        $text = 'Awesome post! Thank you for sharing your knowledge!';
 
+        $this->post(self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => $text,
+        ])
+             ->assertOk();
+
+        $this->assertDatabaseHas('comments', [
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+            'comment' => $text,
+        ]);
     }
 }
