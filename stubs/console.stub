@@ -9,7 +9,7 @@ use Illuminate\Console\Command;
 class {{ class }} extends Command
 {
     protected $signature = '{{ command }}';
-    protected $description = 'Command description';
+    protected $description = '';
 
     public function __construct()
     {
@@ -18,6 +18,6 @@ class {{ class }} extends Command
 
     public function handle(): int
     {
-        return 0;
+        return Command::SUCCESS;
     }
 }

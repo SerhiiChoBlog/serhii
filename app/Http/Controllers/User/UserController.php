@@ -11,7 +11,10 @@ class UserController extends Controller
 {
     public function show(?User $user = null): ?User
     {
-        $user?->loadCount('comments');
+        if ($user) {
+            $user->loadCount('comments');
+            $user->makeHidden('secret');
+        }
 
         return $user;
     }
