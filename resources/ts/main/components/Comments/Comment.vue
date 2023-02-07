@@ -32,7 +32,7 @@ function postReply(): void {
 <template>
     <article
         v-if="comment.user"
-        class="border border-border p-2 lg:p-4 rounded-xl flex items-center gap-4 lg:gap-5"
+        class="border border-border p-4 rounded-xl flex gap-4 lg:gap-4"
     >
         <a :href="`/user/${comment.user.slug}`">
             <img
@@ -40,7 +40,7 @@ function postReply(): void {
                 :alt="comment.user.name"
                 width="70"
                 height="70"
-                class="rounded-full drop-shadow-md w-[40px] lg:w-[70px] aspect-square"
+                class="rounded-full drop-shadow-md w-[40px] aspect-square"
             />
         </a>
 
@@ -79,7 +79,7 @@ function postReply(): void {
 
     <comments-wrapper
         v-if="comment.comments && comment.comments.length > 0"
-        class="pl-8 lg:pl-14"
+        class="pl-6 lg:pl-12"
     >
         <comment
             v-for="comment in comment.comments"
