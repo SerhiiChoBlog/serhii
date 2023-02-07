@@ -41,9 +41,9 @@ async function submitForm(): Promise<void> {
                 v-model="comment"
                 :placeholder="`${Auth ? 'Write a' : 'Login to'} comment ...`"
                 class="p-3 bg-page focus:outline-none dark:bg-page-second rounded-lg border border-border w-full min-h-[90px]"
-                maxlength="1000"
                 @blur="saveCommentToCache(comment)"
                 minlength="4"
+                maxlength="1000"
             ></textarea>
             <span class="absolute right-1 -bottom-6 opacity-60">
                 Letters: {{ comment.length }}/1000

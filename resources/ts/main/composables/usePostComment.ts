@@ -1,4 +1,5 @@
 import type { Comment as CommentType } from '@shared/types/models'
+import handleServerError from '@shared/modules/handleServerError'
 import axios from 'axios'
 import { ref } from 'vue'
 
@@ -22,11 +23,11 @@ export default (postId: number, commentId?: number) => {
 
         try {
             await axios.post<CommentType[]>('/api/comments', params)
+            comment.value = ''
         } catch (err) {
-            console.error(err)
+            handleServerError(err)
         }
 
-        comment.value = ''
         isLoading.value = false
     }
 
