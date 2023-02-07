@@ -21,7 +21,6 @@ function signIn(): void {
 function makeRequestToSignInUser(accessToken: string): void {
     const params = {
         access_token: accessToken,
-        register_from: 'website',
     }
 
     axios.post<User | string>('/google-sign-in', params)
