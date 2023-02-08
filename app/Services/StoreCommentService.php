@@ -24,7 +24,7 @@ class StoreCommentService
     }
 
     /**
-     * @return array{date: Carbon}
+     * @return array{date: Carbon, message: string}
      *
      * @throws ValidationException
      */
@@ -43,17 +43,23 @@ class StoreCommentService
             $this->comment_id = $parent->comment_id;
         }
 
+        $is_approved = $this->validateIfCommentIsApproved();
+
         $this->user->comments()->create([
             'post_id' => $this->post_id,
             'comment_id' => $this->comment_id,
             'comment' => $this->comment,
-            'is_approved' => $this->validateIfCommentIsApproved(),
+            'is_approved' => $is_approved,
             'created_at' => now(),
         ]);
 
         $date = $this->is_admin ? now() : now()->addMinutes($timeout_minutes);
 
-        return compact('date');
+        $message = $is_approved
+            ? 'Thank you! Your comment has been posted'
+            : 'Thank you! Your comment has been posted and will be reviewed shortly';
+
+        return compact('date', 'message');
     }
 
     private function isSpam(int $timeout_minutes): bool
@@ -82,6 +88,15 @@ class StoreCommentService
 
     private function validateIfCommentIsApproved(): bool
     {
+        $spam_words = config('spam-words');
+
+        // Check if comment contains spam words
+        foreach ($spam_words as $word) {
+            if (str_contains($this->comment, $word)) {
+                return false;
+            }
+        }
+
         return true;
     }
 }

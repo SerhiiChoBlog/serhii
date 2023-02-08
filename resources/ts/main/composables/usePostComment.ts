@@ -5,6 +5,7 @@ import Cache from '@shared/modules/Cache'
 import { events, storage } from '@shared/appConfig'
 import dispatchEvent from '@shared/modules/dispatchEvent'
 import listenEvent from '@shared/modules/listenEvent'
+import showToast from '@shared/modules/showToast'
 
 export default (postId: number, commentId?: number) => {
     const isLoading = ref<boolean>(false)
@@ -35,14 +36,19 @@ export default (postId: number, commentId?: number) => {
         }
 
         try {
-            const response = await axios.post<{ date: string }>('/api/comments', params)
-            comment.value = ''
-            dispatchEvent(events.commentIsPosted, response.data.date)
+            const response = await axios.post<{ date: string, message: string }>('/api/comments', params)
+            handleResponse(response.data)
         } catch (err) {
             handleServerError(err)
         }
 
         isLoading.value = false
+    }
+
+    function handleResponse(data: { date: string, message: string }): void {
+        showToast({ text: data.message })
+        comment.value = ''
+        dispatchEvent(events.commentIsPosted, data.date)
     }
 
     function startTimer(dateStr: string): void {

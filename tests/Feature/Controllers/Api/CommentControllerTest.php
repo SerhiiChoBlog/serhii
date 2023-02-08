@@ -345,4 +345,38 @@ class CommentControllerTest extends TestCase
         $this->assertTrue($date->subSeconds(5)->isPast());
         $this->assertTrue($date->addSeconds(5)->isFuture());
     }
+
+    /**
+     * @dataProvider provider_for_test_posting_comment_with_swear_word_will_be_marked_as_not_approved
+     */
+    public function test_posting_comment_with_swear_word_will_be_marked_as_not_approved(string $text): void
+    {
+        $user = User::factory()->create();
+        $post = Post::factory()->create();
+
+        $resp = $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => $text,
+        ]);
+
+        $resp->assertOk();
+
+        $this->assertDatabaseHas('comments', [
+            'post_id' => $post->id,
+            'comment' => $text,
+            'is_approved' => false,
+        ]);
+    }
+
+    public function provider_for_test_posting_comment_with_swear_word_will_be_marked_as_not_approved(): array
+    {
+        return [
+            ['Thank you for sharing your knowledge, you fucking idiot!'],
+            ['This is my site: https://my-site.com'],
+            ['This is my site: http://my-site.com'],
+            ['I hate you moran!'],
+            ['This is stupid to think like that'],
+        ];
+    }
 }
