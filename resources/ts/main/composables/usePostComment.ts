@@ -35,10 +35,9 @@ export default (postId: number, commentId?: number) => {
         }
 
         try {
-            const response = await axios.post<string>('/api/comments', params)
+            const response = await axios.post<{ date: string }>('/api/comments', params)
             comment.value = ''
-
-            dispatchEvent(events.commentIsPosted, response.data)
+            dispatchEvent(events.commentIsPosted, response.data.date)
         } catch (err) {
             handleServerError(err)
         }
