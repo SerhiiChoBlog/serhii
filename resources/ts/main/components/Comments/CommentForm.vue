@@ -36,7 +36,7 @@ async function submitForm(): Promise<void> {
 </script>
 
 <template>
-    <form @submit.prevent="submitForm" class="w-full mb-8">
+    <form @submit.prevent="submitForm" class="w-full mb-8 relative">
         <div>
             <div class="mb-2">
                 <textarea
