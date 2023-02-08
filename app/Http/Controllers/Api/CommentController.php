@@ -10,7 +10,9 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 use App\Services\StoreCommentService;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Validation\ValidationException;
 
 class CommentController extends Controller
 {
@@ -39,12 +41,16 @@ class CommentController extends Controller
         return $post->comments;
     }
 
-    public function store(StoreRequest $r): void
+    /**
+     * @throws ValidationException
+     */
+    public function store(StoreRequest $r): Carbon
     {
         /** @var User $user */
         $user = User::query()->where('secret', $r->secret)->firstOrFail();
 
         $service = new StoreCommentService($user, $r->comment, $r->post_id, $r->comment_id);
-        $service->handle();
+
+        return $service->handle();
     }
 }
