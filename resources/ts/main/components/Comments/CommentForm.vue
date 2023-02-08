@@ -3,7 +3,7 @@ import { computed, onMounted } from 'vue'
 import usePostComment from '@/composables/usePostComment'
 import CommentButton from '@/components/Comments/CommentButton.vue'
 import useCachedComment from '@/composables/useCachedComment'
-import GoogleSignInButton from '@/components/GoogleSignInButton.vue'
+import GoogleSignInButton from '@/components/FirebaseSignInButton.vue'
 
 type Emits = {
     (e: 'posted'): void
