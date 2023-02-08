@@ -6,23 +6,22 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserController extends Controller
 {
     /**
      * @return array{
-     *   users: Collection<int, User>,
+     *   users: LengthAwarePaginator<User>,
      *   total: int,
      * }
      */
     public function index(): array
     {
-        /** @var Collection<int, User> */
         $users = User::query()
-            ->limit(20)
+            ->withCount('comments')
             ->orderByDesc('created_at')
-            ->get();
+            ->paginate(20);
 
         return [
             'users' => $users,
