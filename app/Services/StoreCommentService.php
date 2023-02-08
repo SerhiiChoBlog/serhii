@@ -12,18 +12,23 @@ use Illuminate\Validation\ValidationException;
 
 class StoreCommentService
 {
+    private bool $is_admin;
+
     public function __construct(
         private readonly User $user,
         private readonly string $comment,
         private readonly int $post_id,
         private ?int $comment_id,
     ) {
+        $this->is_admin = $this->user->hasRole(UserRole::ADMIN);
     }
 
     /**
+     * @return array{date: Carbon}
+     *
      * @throws ValidationException
      */
-    public function handle(): Carbon
+    public function handle(): array
     {
         $timeout_minutes = (int) config('app.comments_timeout_minutes');
 
@@ -46,12 +51,14 @@ class StoreCommentService
             'created_at' => now(),
         ]);
 
-        return now()->addMinutes($timeout_minutes);
+        $date = $this->is_admin ? now() : now()->addMinutes($timeout_minutes);
+
+        return compact('date');
     }
 
     private function isSpam(int $timeout_minutes): bool
     {
-        if ($this->user->hasRole(UserRole::ADMIN)) {
+        if ($this->is_admin) {
             return false;
         }
 

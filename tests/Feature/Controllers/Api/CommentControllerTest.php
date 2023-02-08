@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers\Api;
 
+use App\Enums\UserRole;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
+use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Str;
 use Tests\TestCase;
@@ -282,7 +284,7 @@ class CommentControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $role = Role::factory()->create(['name' => 'admin']);
+        $role = Role::factory()->create(['name' => UserRole::ADMIN]);
         $user->roles()->attach($role);
 
         $post = Post::factory()->create();
@@ -301,5 +303,46 @@ class CommentControllerTest extends TestCase
         $response->assertOk();
 
         $this->assertDatabaseCount('comments', 3);
+    }
+
+    public function test_posting_comment_returns_date_in_future(): void
+    {
+        $user = User::factory()->create();
+        $post = Post::factory()->create();
+        $text = 'Awesome post! Thank you for sharing your knowledge!';
+
+        $timeout_minutes = (int) config('app.comments_timeout_minutes');
+
+        $resp = $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => $text,
+        ]);
+
+        $date = CarbonImmutable::parse($resp->json('date'));
+
+        $this->assertTrue($date->isFuture());
+        $this->assertTrue($date->subMinutes($timeout_minutes)->subSeconds(2)->isPast());
+    }
+
+    public function test_posting_comment_returns_current_date_for_admin(): void
+    {
+        $user = User::factory()->create();
+
+        $role = Role::factory()->create(['name' => UserRole::ADMIN]);
+        $user->roles()->attach($role);
+
+        $post = Post::factory()->create();
+
+        $resp = $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => 'Awesome post! Thank you!',
+        ]);
+
+        $date = CarbonImmutable::parse($resp->json('date'));
+
+        $this->assertTrue($date->subSeconds(5)->isPast());
+        $this->assertTrue($date->addSeconds(5)->isFuture());
     }
 }

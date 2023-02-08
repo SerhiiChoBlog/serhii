@@ -42,9 +42,11 @@ class CommentController extends Controller
     }
 
     /**
+     * @return array{date: Carbon}
+     *
      * @throws ValidationException
      */
-    public function store(StoreRequest $r): Carbon
+    public function store(StoreRequest $r): array
     {
         /** @var User $user */
         $user = User::query()->where('secret', $r->secret)->firstOrFail();
