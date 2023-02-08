@@ -2,12 +2,11 @@ import type { FirebaseSignUpRequest } from '@shared/types'
 import firebase from '@/firebase'
 import showToast from '@shared/modules/showToast'
 
-export default (onSuccess: (params: FirebaseSignUpRequest) => void, onError: (err: any) => void) => {
-    const provider = new firebase.auth.GoogleAuthProvider()
-
-    provider.addScope('email')
-    provider.addScope('profile')
-
+export default (
+    onSuccess: (params: FirebaseSignUpRequest) => void,
+    onError: (err: any) => void,
+    provider: firebase.auth.AuthProvider,
+) => {
     firebase.auth()
         .signInWithPopup(provider)
         .then(resp => handleResponse(resp))
