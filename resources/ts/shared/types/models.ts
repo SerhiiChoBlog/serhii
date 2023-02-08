@@ -112,6 +112,7 @@ export type PostPublication = {
 
 export type Subscription = {
     id: number
+    user_id: number | null
     email: string
     slug: string
     confirmed_at: string | null

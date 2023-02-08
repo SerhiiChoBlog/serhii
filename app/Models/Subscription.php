@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Notification;
 
 /**
  * @property-read int $id
+ * @property int|null $user_id
  * @property string $email
  * @property string $slug
  * @property Carbon|null $confirmed_at
