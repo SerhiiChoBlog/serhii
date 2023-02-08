@@ -4,7 +4,7 @@ import type { Comment as CommentType } from '@shared/types/models'
 import Comment from '@/components/Comments/Comment.vue'
 import CommentForm from '@/components/Comments/CommentForm.vue'
 import CommentsWrapper from '@/components/Comments/CommentsWrapper.vue'
-import SignedInMethodLogo from '@shared/components/SignedInMethodLogo.vue'
+import CommentAvatar from '@/components/Comments/CommentAvatar.vue'
 
 type Props = {
     comment: CommentType
@@ -33,22 +33,10 @@ function postReply(): void {
 <template>
     <article
         v-if="comment.user"
-        class="py-2 flex gap-4 lg:gap-4"
+        class="py-2 flex gap-3 lg:gap-4"
     >
-        <a :href="`/user/${comment.user.slug}`" class="relative min-w-[43px]">
-            <img
-                :src="`/storage/avatars/${comment.user.avatar}`"
-                :alt="comment.user.name"
-                width="70"
-                height="70"
-                class="rounded-full drop-shadow-md w-[40px] h-[40px] mt-1"
-            />
-
-            <signed-in-method-logo
-                v-if="comment.user.sign_in_method !== 'email'"
-                :method="comment.user.sign_in_method"
-                class="absolute top-8 -right-1.5 w-5 h-5"
-            />
+        <a :href="`/user/${comment.user.slug}`" class="relative">
+            <comment-avatar :user="comment.user" />
         </a>
 
         <div class="flex flex-col gap-1">
