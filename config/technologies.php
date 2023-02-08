@@ -157,11 +157,10 @@ return [
         [
             'image' => 'storage/tools/english.webp',
             'image_xs' => 'storage/tools/english-min.webp',
-            'title' => 'English Mastery',
+            'title' => 'Multilingual',
             'content' => <<<TEXT
-            In 2014, I've started learning English daily. Since then, English became not just as my second language,
-            it became a part of my existence. If not programming, I would probably choose a career as an English
-            teacher.
+            In 2014, I've started learning English daily. Since then, English became my second language. In total,
+            I speak 3 languages, including Ukrainian and Russian, whereas Russian is my native language.
             TEXT,
         ],
         [
