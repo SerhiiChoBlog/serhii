@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Hit;
 use App\Models\Post;
 use App\Models\PostView;
@@ -19,6 +20,7 @@ class DashboardController extends Controller
     {
         $subs = Subscription::query()->select(['id', 'confirmed_at'])->get();
         $posts = Post::query()->select(['id', 'is_published'])->get();
+        $comments = Comment::query()->select(['id', 'is_approved'])->get();
 
         return [
             [
@@ -53,6 +55,10 @@ class DashboardController extends Controller
             [
                 'title' => 'Users',
                 'value' => User::query()->count(),
+            ],
+            [
+                'title' => 'Comments',
+                'value' => sprintf('%d/%d', $comments->where('is_approved', true)->count(), $comments->count())
             ],
         ];
     }
