@@ -2,7 +2,9 @@ import handleServerError from '@shared/modules/handleServerError'
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
 import Cache from '@shared/modules/Cache'
-import { storage } from '@shared/appConfig'
+import { events, storage } from '@shared/appConfig'
+import dispatchEvent from '@shared/modules/dispatchEvent'
+import listenEvent from '@shared/modules/listenEvent'
 
 export default (postId: number, commentId?: number) => {
     const isLoading = ref<boolean>(false)
@@ -10,6 +12,8 @@ export default (postId: number, commentId?: number) => {
     const canCommentIn = ref<number>(0)
 
     onMounted(() => restoreTimer())
+
+    listenEvent<string>(events.commentIsPosted, startTimer)
 
     async function postComment(): Promise<void> {
         if (isLoading.value) {
@@ -32,8 +36,9 @@ export default (postId: number, commentId?: number) => {
 
         try {
             const response = await axios.post<string>('/api/comments', params)
-            startTimer(response.data)
             comment.value = ''
+
+            dispatchEvent(events.commentIsPosted, response.data)
         } catch (err) {
             handleServerError(err)
         }

@@ -1,6 +1,7 @@
 export const events = {
     subscribeTagsButtonTitle: '6R8Woo0XiB',
     replayToComment: 'Fxq31RbHW1',
+    commentIsPosted: 'Opj19MiAC8',
 }
 
 export const storage = {
