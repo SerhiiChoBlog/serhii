@@ -15,10 +15,6 @@
     "file": "assets/fa-solid-900.0777ab6e.ttf",
     "src": "resources/fonts/fa-solid-900.ttf"
   },
-  "resources/fonts/Lato-Regular.ttf": {
-    "file": "assets/Lato-Regular.e82542ae.ttf",
-    "src": "resources/fonts/Lato-Regular.ttf"
-  },
   "storage/app/public/hero-sm.webp": {
     "file": "assets/hero-sm.3cb40372.webp",
     "src": "storage/app/public/hero-sm.webp"
@@ -31,12 +27,16 @@
     "file": "assets/JetBrainsMono-Regular.3c5fb9d7.ttf",
     "src": "resources/fonts/JetBrainsMono-Regular.ttf"
   },
+  "resources/fonts/Lato-Regular.ttf": {
+    "file": "assets/Lato-Regular.e82542ae.ttf",
+    "src": "resources/fonts/Lato-Regular.ttf"
+  },
   "resources/fonts/fa-solid-900.svg": {
     "file": "assets/fa-solid-900.f6bd8f51.svg",
     "src": "resources/fonts/fa-solid-900.svg"
   },
   "resources/ts/main/app.ts": {
-    "file": "assets/app.e1680fd4.js",
+    "file": "assets/app.ea7f1720.js",
     "src": "resources/ts/main/app.ts",
     "isEntry": true,
     "imports": [
@@ -92,17 +92,17 @@
     "isEntry": true
   },
   "resources/css/user/app.css": {
-    "file": "assets/app.e05f264d.css",
+    "file": "assets/app.9cc96f9b.css",
     "src": "resources/css/user/app.css",
     "isEntry": true
   },
   "resources/css/admin/app.css": {
-    "file": "assets/app.252c35f7.css",
+    "file": "assets/app.c30b189d.css",
     "src": "resources/css/admin/app.css",
     "isEntry": true
   },
   "resources/css/main/app.css": {
-    "file": "assets/app.8752e3ae.css",
+    "file": "assets/app.4c8c51e2.css",
     "src": "resources/css/main/app.css",
     "isEntry": true
   }
