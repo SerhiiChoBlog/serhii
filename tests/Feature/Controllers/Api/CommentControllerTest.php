@@ -225,7 +225,7 @@ class CommentControllerTest extends TestCase
         $this->assertDatabaseCount('comments', 1);
     }
 
-    public function test_you_can_only_submit_one_comment_in_5_minutes(): void
+    public function test_you_can_only_submit_one_comment_in_some_minutes(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -250,18 +250,20 @@ class CommentControllerTest extends TestCase
         $this->assertDatabaseCount('comments', 1);
     }
 
-    public function test_you_can_submit_the_second_comment_after_5_minutes(): void
+    public function test_you_can_submit_the_second_comment_after_some_minutes(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
         $text = 'Awesome post! Thank you for sharing your knowledge!';
+
+        $timeout_minutes = (int) config('app.comments_timeout_minutes');
 
         // Create comment
         Comment::factory()->create([
             'user_id' => $user->id,
             'post_id' => $post->id,
             'comment' => $text,
-            'created_at' => now()->subMinutes(6),
+            'created_at' => now()->subMinutes($timeout_minutes + 1),
         ]);
 
         // Create the second comment
