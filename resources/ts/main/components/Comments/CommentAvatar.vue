@@ -10,7 +10,7 @@ const { user } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="relative w-[43px] mt-2">
+    <div class="relative w-[38px] lg:w-[43px] mt-2">
         <img
             :src="`/storage/avatars/${user ? user.avatar : 'default.svg'}`"
             :alt="`${user ? user.name : 'Default'} avatar`"
@@ -22,7 +22,7 @@ const { user } = defineProps<Props>()
         <signed-in-method-logo
             v-if="user"
             :method="user.sign_in_method"
-            class="absolute w-4 lg:w-5 aspect-square left-5 lg:left-7 top-10 lg:top-7"
+            class="absolute w-4 lg:w-5 aspect-square left-6 lg:left-7 top-6 lg:top-7"
         />
     </div>
 </template>
