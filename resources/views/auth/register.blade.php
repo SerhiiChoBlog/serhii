@@ -35,7 +35,10 @@
 
             <div class="space-y-5">
                 <div>
-                    <x-form.label id="name">Name</x-form.label>
+                    <x-form.label id="name">
+                        Name
+                        <tip :icon="true" content="The name is public and will be visible on your comments"></tip>
+                    </x-form.label>
                     <x-form.input
                         id="name"
                         :value="old('name')"
@@ -46,7 +49,10 @@
                 </div>
 
                 <div>
-                    <x-form.label id="email">Email</x-form.label>
+                    <x-form.label id="email">
+                        Email
+                        <tip :icon="true" content="We'll never share your email with anyone else"></tip>
+                    </x-form.label>
                     <x-form.input
                         id="email"
                         :value="old('email')"
