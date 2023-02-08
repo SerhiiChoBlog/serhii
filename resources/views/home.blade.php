@@ -18,7 +18,7 @@
             <div class="relative z-10 text-center pt-20 pb-32">
                 <h1 class="text-2xl lg:text-4xl" aria-label="Serhii Cho">
                     <span class="text-white drop-shadow-md">SERHII</span>
-                    <span class="text-main drop-shadow-md">BLOG</span>
+                    <span class="text-main drop-shadow-md">CHO</span>
                 </h1>
 
                 <h2 class="text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md">

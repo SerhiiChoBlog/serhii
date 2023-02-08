@@ -39,7 +39,7 @@ function signIn(): void {
         return
     }
 
-    getFirebaseUser(makeRequestToSignInUser, handleError, provider)
+    getFirebaseUser(makeRequestToSignInUser, handleError, provider, serviceName)
 }
 
 function makeRequestToSignInUser(params: FirebaseSignUpRequest): void {
