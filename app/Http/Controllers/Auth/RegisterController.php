@@ -56,6 +56,7 @@ class RegisterController extends Controller
         /** @var User */
         return User::query()->create([
             'name' => $data['name'],
+            'secret' => User::generateSecret($data['email']),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'avatar' => $this->getAvatarFilename($slug),
