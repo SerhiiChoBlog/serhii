@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\AboutMeController;
-use App\Http\Controllers\AuthGoogleController;
+use App\Http\Controllers\AuthFirebaseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::post('google-sign-in', [AuthGoogleController::class, 'signIn']);
+Route::post('firebase-sign-in', [AuthFirebaseController::class, 'signIn']);
 
 Route::redirect('about', 'about-me');
 Route::redirect('blog', 'posts');

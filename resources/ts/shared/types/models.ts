@@ -127,7 +127,7 @@ export type User = {
     roles?: Role[]
     name: string
     secret: string
-    sign_in_method: 'email' | 'google' | 'apple'
+    sign_in_method: 'email' | 'google' | 'github'
     comments_count?: number
     email: string
     avatar: string

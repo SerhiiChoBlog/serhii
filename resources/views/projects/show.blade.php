@@ -27,7 +27,7 @@
             >
                 <div>
                     <img
-                        src="{{ asset('storage/icons/github-dark.webp') }}"
+                        src="{{ asset('storage/icons/github.webp') }}"
                         width="20"
                         height="20"
                         alt="Github logo"

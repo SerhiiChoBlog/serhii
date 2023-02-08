@@ -1,7 +1,8 @@
+import type { FirebaseSignUpRequest } from '@shared/types'
 import firebase from '@/firebase'
 import showToast from '@shared/modules/showToast'
 
-export default (onSuccess: (accessToken: string) => void, onError: (err: any) => void) => {
+export default (onSuccess: (params: FirebaseSignUpRequest) => void, onError: (err: any) => void) => {
     const provider = new firebase.auth.GoogleAuthProvider()
 
     provider.addScope('email')
@@ -15,7 +16,7 @@ export default (onSuccess: (accessToken: string) => void, onError: (err: any) =>
     async function handleResponse(resp: firebase.auth.UserCredential): Promise<void> {
         const user = resp.user || null
 
-        if (!user) {
+        if (!user || !user.email || !user.displayName) {
             showToast({
                 text: 'Google service error',
                 success: false,
@@ -23,20 +24,25 @@ export default (onSuccess: (accessToken: string) => void, onError: (err: any) =>
             return
         }
 
-        const providerData = user.providerData[0] || null
-        const credential = resp.credential || null
+        const tokenField = document.querySelector('meta[name="csrf-token"]')
+        const token = tokenField ? tokenField.getAttribute('content') : null
 
-        if (!providerData || !credential) {
+        if (!token) {
             showToast({
-                text: 'Google service error',
+                text: 'CSRF token not found',
                 success: false,
             })
             return
         }
 
-        // @ts-ignore
-        const accessToken = credential.accessToken
+        const params: FirebaseSignUpRequest = {
+            token,
+            sign_in_method: 'google',
+            email: user.email,
+            name: user.displayName,
+            photo_url: user.photoURL,
+        }
 
-        onSuccess(accessToken)
+        onSuccess(params)
     }
 }

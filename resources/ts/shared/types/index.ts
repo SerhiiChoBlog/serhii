@@ -1,4 +1,4 @@
-import type { Tag } from './models'
+import type { Tag, User } from './models'
 import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue'
 
 export type Component = FunctionalComponent<HTMLAttributes & VNodeProps, {}>
@@ -70,4 +70,12 @@ export type SubscriptionTagsModal = {
 export type SubscriptionDemandResponse = {
     message: string
     success: boolean
+}
+
+export type FirebaseSignUpRequest = {
+    token: string
+    email: string
+    name: string
+    photo_url: string | null
+    sign_in_method: User['sign_in_method']
 }

@@ -6,5 +6,5 @@ enum SignInMethod: string
 {
     case EMAIL = 'email';
     case GOOGLE = 'google';
-    case APPLE = 'apple';
+    case GITHUB = 'github';
 }

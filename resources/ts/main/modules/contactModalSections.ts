@@ -54,7 +54,7 @@ export default [
         content: "There are also libraries and packages that I've contributed to the open-source community.",
         links: [
             {
-                img: '/storage/icons/github-dark.webp',
+                img: '/storage/icons/github.webp',
                 href: 'https://github.com/SerhiiCho',
                 title: 'GitHub',
             },
