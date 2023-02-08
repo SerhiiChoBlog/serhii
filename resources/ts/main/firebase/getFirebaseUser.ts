@@ -1,4 +1,5 @@
 import type { FirebaseSignUpRequest } from '@shared/types'
+import type { User } from '@shared/types/models'
 import firebase from '@/firebase'
 import showToast from '@shared/modules/showToast'
 
@@ -6,6 +7,7 @@ export default (
     onSuccess: (params: FirebaseSignUpRequest) => void,
     onError: (err: any) => void,
     provider: firebase.auth.AuthProvider,
+    serviceName: User['sign_in_method']
 ) => {
     firebase.auth()
         .signInWithPopup(provider)
@@ -36,7 +38,7 @@ export default (
 
         const params: FirebaseSignUpRequest = {
             token,
-            sign_in_method: 'google',
+            sign_in_method: serviceName,
             email: user.email,
             name: user.displayName,
             photo_url: user.photoURL,

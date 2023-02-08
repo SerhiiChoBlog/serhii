@@ -11,7 +11,7 @@
                 >
                     <div class="tracking-wide">
                         <span class="text-white">SERHII</span>
-                        <span class="text-main-light">BLOG</span>
+                        <span class="text-main-light">CHO</span>
                     </div>
                 </a>
             @endunless
