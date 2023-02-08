@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import firebase from 'firebase/app'
 import type { User } from '@shared/types/models'
 import type { FirebaseSignUpRequest } from '@shared/types'
 import { ref } from 'vue'
-import getGoogleUser from '@/firebase/getGoogleUser'
-import getGithubUser from '@/firebase/getGithubUser'
+import getFirebaseUser from '@/firebase/getFirebaseUser'
+import getGoogleProvider from '@/firebase/getGoogleProvider'
+import getGithubProvider from '@/firebase/getGithubProvider'
 import showToast from '@shared/modules/showToast'
 import axios from 'axios'
 import Spinner from '@shared/components/Icons/Spinner.vue'
@@ -16,21 +18,28 @@ type Props = {
 
 const { serviceName } = defineProps<Props>()
 const isLoading = ref<boolean>(false)
-console.log(serviceName)
 
 function signIn(): void {
     isLoading.value = true
 
-    if (serviceName === 'github') {
-        getGithubUser(makeRequestToSignInUser, handleError)
-    } else {
-        getGoogleUser(makeRequestToSignInUser, handleError)
-    }
-}
+    let provider: firebase.auth.AuthProvider | null = null
 
-function handleError(err: any): void {
-    console.log(err)
-    isLoading.value = false
+    if (serviceName === 'github') {
+        provider = getGithubProvider()
+    } else if (serviceName === 'google') {
+        provider = getGoogleProvider()
+    }
+
+    if (!provider) {
+        showToast({
+            text: `Something went wrong with ${serviceName} service`,
+            success: false,
+        })
+
+        return
+    }
+
+    getFirebaseUser(makeRequestToSignInUser, handleError, provider)
 }
 
 function makeRequestToSignInUser(params: FirebaseSignUpRequest): void {
@@ -53,6 +62,11 @@ function handleResponse(user: User | string): void {
     showToast({ text: `Signed in successfully as ${user.name}` })
 
     window.location.reload()
+}
+
+function handleError(err: any): void {
+    console.log(err)
+    isLoading.value = false
 }
 </script>
 
