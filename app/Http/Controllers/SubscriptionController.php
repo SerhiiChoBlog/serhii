@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -18,7 +19,15 @@ class SubscriptionController extends Controller
             return to_route('subscriptions.error');
         }
 
-        $subscription->update(['confirmed_at' => now()]);
+        /** @var User|null $connected_user */
+        $connected_user = User::query()
+            ->where('email', $subscription->email)
+            ->first();
+
+        $subscription->update([
+            'user_id' => $connected_user?->id,
+            'confirmed_at' => now(),
+        ]);
 
         return view('subscriptions.confirm', compact('subscription'));
     }
