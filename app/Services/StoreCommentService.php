@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Enums\UserRole;
 use App\Models\Comment;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 
 class StoreCommentService
@@ -22,10 +23,12 @@ class StoreCommentService
     /**
      * @throws ValidationException
      */
-    public function handle(): void
+    public function handle(): Carbon
     {
-        if ($this->isSpam()) {
-            $msg = 'You can only post one comment every 5 minutes.';
+        $timeout_minutes = (int) config('app.comments_timeout_minutes');
+
+        if ($this->isSpam($timeout_minutes)) {
+            $msg = "You can only post one comment every {$timeout_minutes} minutes.";
             throw ValidationException::withMessages(['comment' => $msg]);
         }
 
@@ -42,9 +45,11 @@ class StoreCommentService
             'is_approved' => $this->validateIfCommentIsApproved(),
             'created_at' => now(),
         ]);
+
+        return now()->addMinutes($timeout_minutes);
     }
 
-    private function isSpam(): bool
+    private function isSpam(int $timeout_minutes): bool
     {
         if ($this->user->hasRole(UserRole::ADMIN)) {
             return false;
@@ -52,7 +57,7 @@ class StoreCommentService
 
         return $this->user
             ->comments()
-            ->where('created_at', '>=', now()->subMinutes(5))
+            ->where('created_at', '>=', now()->subMinutes($timeout_minutes))
             ->exists();
     }
 

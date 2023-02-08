@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import usePostComment from '@/composables/usePostComment'
 import CommentButton from '@/components/Comments/CommentButton.vue'
 import useCachedComment from '@/composables/useCachedComment'
@@ -16,7 +16,13 @@ type Props = {
 
 const emit = defineEmits<Emits>()
 const { postId, commentId } = defineProps<Props>()
-const { comment, postComment, isLoading } = usePostComment(postId, commentId)
+
+const {
+    comment,
+    postComment,
+    isLoading,
+    canCommentIn,
+} = usePostComment(postId, commentId)
 
 const {
     getCommentFromCache,
@@ -28,6 +34,14 @@ onMounted(() => {
     comment.value = getCommentFromCache()
 })
 
+const placeholder = computed(() => {
+    if (canCommentIn.value > 0) {
+        return `Next comment you can write in ${canCommentIn.value} seconds`
+    }
+
+    return Auth ? 'Write a comment ...' : 'Login to comment ...'
+})
+
 async function submitForm(): Promise<void> {
     await postComment()
     emit('posted')
@@ -36,14 +50,15 @@ async function submitForm(): Promise<void> {
 </script>
 
 <template>
-    <form @submit.prevent="submitForm" class="w-full mb-8">
+    <form @submit.prevent="submitForm" class="w-full mb-8 relative">
         <div>
             <div class="mb-2">
                 <textarea
                     v-model="comment"
-                    :placeholder="`${Auth ? 'Write a' : 'Login to'} comment ...`"
+                    :placeholder="placeholder"
                     class="p-3 bg-page focus:outline-none dark:bg-page-second rounded-lg border border-border w-full min-h-[90px]"
                     @blur="saveCommentToCache(comment)"
+                    :disabled="canCommentIn > 0"
                     minlength="4"
                     maxlength="1000"
                 ></textarea>
@@ -56,8 +71,8 @@ async function submitForm(): Promise<void> {
             <div class="flex gap-4 items-center">
                 <comment-button
                     type="submit"
-                    :disabled="isLoading"
-                    :class="{ 'opacity-50': isLoading }"
+                    :disabled="isLoading || canCommentIn > 0"
+                    :class="{ 'opacity-50': isLoading || canCommentIn > 0 }"
                 >
                     <span v-if="isLoading">Processing...</span>
                     <span v-else-if="!Auth">Sign in</span>

@@ -1,9 +1,10 @@
 export const events = {
-    subscribeTagsButtonTitle: 'subscribetagsbuttontitle',
-    replayToComment: 'replaytocommentevent',
+    subscribeTagsButtonTitle: '6R8Woo0XiB',
+    replayToComment: 'Fxq31RbHW1',
 }
 
 export const storage = {
-    selectedSubscriptionTags: 'selected-subscription-tags',
-    cachedComment: 'cached-comment',
+    selectedSubscriptionTags: 'AZ8tfW8ewE',
+    cachedComment: 'ymHG7wkb4E',
+    allowCommentAt: 'dRWEP3sYjO',
 }
