@@ -3,12 +3,14 @@ cache:
 	php artisan view:cache
 	php artisan route:cache
 	php artisan cache:clear
+	php artisan optimize
 
 cache-clear:
 	php artisan config:clear
 	php artisan view:clear
 	php artisan route:clear
 	php artisan cache:clear
+	php artisan optimize:clear
 
 stan:
 	php -d memory_limit=2G ./vendor/bin/phpstan analyse
