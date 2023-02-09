@@ -17,7 +17,7 @@ const { badge, tip } = defineProps<Props>()
             :alt="`Badge for ${badge}`"
             width="270"
             height="270"
-            class="drop-shadow-md"
+            class="drop-shadow-md pointer-events-none"
         />
     </Tip>
 </template>

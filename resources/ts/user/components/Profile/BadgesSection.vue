@@ -15,7 +15,12 @@ const badges = ref<BadgesSection[]>([
         tip: 'User verified achievement',
         badge: 'verified',
         show: !!user.email_verified_at,
-    }
+    },
+    {
+        tip: 'User submitted 5 comments',
+        badge: 'commentator',
+        show: user.comments_count! >= 5,
+    },
 ])
 </script>
 
@@ -25,9 +30,8 @@ const badges = ref<BadgesSection[]>([
 
         <div class="flex flex-wrap gap-0.5 mt-3">
             <Badge
-                v-for="badge in badges"
+                v-for="badge in badges.filter(b => b.show)"
                 :key="badge.badge"
-                v-if="user.email_verified_at"
                 :badge="badge.badge"
                 class="w-16"
                 :tip="badge.tip"
