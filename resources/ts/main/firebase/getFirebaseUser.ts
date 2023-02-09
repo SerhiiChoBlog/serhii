@@ -17,22 +17,28 @@ export default (
     async function handleResponse(resp: firebase.auth.UserCredential): Promise<void> {
         const user = resp.user || null
 
-        if (!user || !user.email || !user.displayName) {
-            showToast({
-                text: 'Google service error',
-                success: false,
-            })
+        if (!user || !user.email) {
+            const text = `${serviceName} service error`
+            showToast({ text, success: false })
             return
+        }
+
+        if (!user.emailVerified) {
+            const text = `Your ${serviceName} email is not verified. You cannot create an account with an unverified email.`
+            showToast({ text, success: false, duration: 10000 })
+            return
+        }
+
+        if (!user.displayName) {
+            user.displayName = user.email.split('@')[0]
         }
 
         const tokenField = document.querySelector('meta[name="csrf-token"]')
         const token = tokenField ? tokenField.getAttribute('content') : null
 
         if (!token) {
-            showToast({
-                text: 'CSRF token not found',
-                success: false,
-            })
+            const text = 'CSRF token error. You are probably doing something wrong.'
+            showToast({ text, success: false })
             return
         }
 
