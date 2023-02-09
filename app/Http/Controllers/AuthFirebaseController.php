@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FirebaseSignInRequest;
+use App\Models\Subscription;
 use App\Models\User;
 use App\Services\GenerateSlugService;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +17,9 @@ class AuthFirebaseController extends Controller
     public function signIn(FirebaseSignInRequest $request): User | string
     {
         /** @var User|null $user */
-        $user = User::query()->where('email', $request->email)->first();
+        $user = User::query()
+            ->where('email', $request->email)
+            ->first();
 
         if ($user) {
             $avatar = $this->updateUserImage($user, $request->photo_url);
@@ -25,17 +28,26 @@ class AuthFirebaseController extends Controller
                 'name' => $request->name,
                 'avatar' => $avatar,
             ]);
-
-            auth('user')->login($user);
-
-            return $user;
+        } else {
+            $user = $this->createUser($request);
         }
 
+        if ($this->userHasSubscription($request->email)) {
+            $this->updateSubscription($request->email, $user->id);
+        }
+
+        auth('user')->login($user);
+
+        return $user;
+    }
+
+    private function createUser(FirebaseSignInRequest $request): User
+    {
         $slug = $this->generateSlug($request->name);
         $avatar = $this->saveUserImage($request->photo_url, $slug);
 
-        /** @var User $user */
-        $user = User::query()->create([
+        /** @var User */
+        return User::query()->create([
             'email' => $request->email,
             'name' => $request->name,
             'password' => Hash::make(Str::random(20)),
@@ -45,13 +57,9 @@ class AuthFirebaseController extends Controller
             'avatar' => $avatar,
             'sign_in_method' => $request->sign_in_method,
         ]);
-
-        auth('user')->login($user);
-
-        return $user;
     }
 
-    protected function generateSlug(string $name): string
+    private function generateSlug(string $name): string
     {
         $slug_service = new GenerateSlugService($name);
         return $slug_service->handle();
@@ -93,5 +101,21 @@ class AuthFirebaseController extends Controller
         }
 
         return $this->saveUserImage($new_image, $user->slug) ?? $user->avatar;
+    }
+
+    private function userHasSubscription(string $email): bool
+    {
+        return Subscription::query()
+            ->select('id', 'email')
+            ->where('email', $email)
+            ->exists();
+    }
+
+    private function updateSubscription(string $email, int $user_id): void
+    {
+        Subscription::query()
+            ->select('id', 'email')
+            ->where('email', $email)
+            ->update(compact('user_id'));
     }
 }
