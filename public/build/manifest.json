@@ -15,13 +15,13 @@
     "file": "assets/fa-solid-900.0777ab6e.ttf",
     "src": "resources/fonts/fa-solid-900.ttf"
   },
-  "resources/fonts/Lato-Regular.ttf": {
-    "file": "assets/Lato-Regular.e82542ae.ttf",
-    "src": "resources/fonts/Lato-Regular.ttf"
-  },
   "storage/app/public/hero-sm.webp": {
     "file": "assets/hero-sm.3cb40372.webp",
     "src": "storage/app/public/hero-sm.webp"
+  },
+  "resources/fonts/Lato-Regular.ttf": {
+    "file": "assets/Lato-Regular.e82542ae.ttf",
+    "src": "resources/fonts/Lato-Regular.ttf"
   },
   "storage/app/public/hero.webp": {
     "file": "assets/hero.7cf745fe.webp",
@@ -36,7 +36,7 @@
     "src": "resources/fonts/fa-solid-900.svg"
   },
   "resources/ts/main/app.ts": {
-    "file": "assets/app.1450a0be.js",
+    "file": "assets/app.b57c52c5.js",
     "src": "resources/ts/main/app.ts",
     "isEntry": true,
     "imports": [
