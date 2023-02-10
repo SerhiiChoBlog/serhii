@@ -23,7 +23,8 @@ class AuthFirebaseController extends Controller
 
         if (!$user) {
             $user = $this->createUser($request);
-            dispatch(new Verified($user));
+
+            event(new Verified($user));
         }
 
         auth('user')->login($user);

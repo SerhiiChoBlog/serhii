@@ -161,6 +161,6 @@ export type Badge = {
     id: number
     name: 'verified' | 'commentator' | 'likable'
     description: string
-    image: string
+    icon: string
     users?: User[]
 }

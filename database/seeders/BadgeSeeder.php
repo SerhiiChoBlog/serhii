@@ -16,17 +16,17 @@ class BadgeSeeder extends Seeder
             [
                 'name' => BadgeName::VERIFIED->value,
                 'description' => 'Verified email address',
-                'icon' => 'verified.webp',
+                'icon' => 'verified.png',
             ],
             [
                 'name' => BadgeName::COMMENTATOR->value,
                 'description' => 'Posted 5 verified comments',
-                'icon' => 'commentator.webp',
+                'icon' => 'commentator.png',
             ],
             [
                 'name' => BadgeName::LIKEABLE->value,
                 'description' => 'Liked 5 articles',
-                'icon' => 'likeable.webp',
+                'icon' => 'likeable.png',
             ],
         ]);
     }
