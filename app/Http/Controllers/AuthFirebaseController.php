@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Services\GenerateSlugService;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -23,7 +24,6 @@ class AuthFirebaseController extends Controller
 
         if (!$user) {
             $user = $this->createUser($request);
-
             event(new Verified($user));
         }
 
@@ -68,7 +68,8 @@ class AuthFirebaseController extends Controller
         $image_url = str_replace('s96-c', 's400-c', $image_url);
 
         $name = sprintf("%s-%s.jpg", $slug, time());
-        $image_binary = file_get_contents($image_url);
+
+        $image_binary = Http::get($image_url)->body();
 
         if (!$image_binary || !is_string($image_binary)) {
             return null;
