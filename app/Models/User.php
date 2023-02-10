@@ -29,6 +29,7 @@ use Illuminate\Support\Str;
  * @property string $avatar
  * @property string $remember_token
  * @property Collection<int, Role> $roles
+ * @property Collection<int, Badge> $badges
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -64,6 +65,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    /**
+     * @return BelongsToMany<Badge>
+     */
+    public function badges(): BelongsToMany
+    {
+        return $this->belongsToMany(Badge::class);
     }
 
     /**
