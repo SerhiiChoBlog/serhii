@@ -14,7 +14,9 @@
     <div class="container">
         <div  class="grid grid-cols-1 md:grid-cols-[300px_auto] gap-8 md:gap-12 max-w-[900px] mx-auto">
             <div>
-                <avatar :user="{{ $user }}"></avatar>
+                <avatar :user="{{ $user }}">
+                    <div class="h-[250px]"></div>
+                </avatar>
 
                 <div class="mt-7 text-center md:text-left">
                     <h1 class="text-3xl font-black">{{ $user->name }}</h1>

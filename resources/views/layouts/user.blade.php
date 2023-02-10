@@ -17,7 +17,9 @@
 <body class="text-font font-main bg-page {{ request()->cookie('theme') }}">
     <x-hero class="bg-gray-700" navbar="text-white" id="main" />
 
-    <main id="user-main"></main>
+    <main id="user-main" class="mt-10">
+        @yield('content')
+    </main>
 
     <script type="text/javascript">
         window.Auth = {!! json_encode(user()) !!}
