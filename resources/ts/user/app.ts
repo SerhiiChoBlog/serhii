@@ -6,7 +6,7 @@ const app = createApp({
     components: {
         Avatar,
         Tip,
-    }
+    },
 })
 
 app.config.globalProperties.Auth = Auth
