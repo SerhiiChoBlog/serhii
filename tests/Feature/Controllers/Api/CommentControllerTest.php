@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Tests\Feature\Controllers\Api;
 
 use App\Enums\UserRole;
+use App\Events\CommentApproved;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
@@ -20,6 +22,12 @@ class CommentControllerTest extends TestCase
 
     private const GET_COMMENTS_URI = '/api/comments/1';
     private const POST_COMMENT_URI = '/api/comments';
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        Event::fake();
+    }
 
     public function test_you_can_get_comments(): void
     {
@@ -376,7 +384,50 @@ class CommentControllerTest extends TestCase
             ['This is my site: https://my-site.com'],
             ['This is my site: http://my-site.com'],
             ['I hate you moran!'],
+            ['I hate you MORAN!'],
             ['This is stupid to think like that'],
         ];
+    }
+
+    public function test_posting_comment_dispatches_comment_posted_event(): void
+    {
+        $user = User::factory()->create();
+        $post = Post::factory()->create();
+
+        $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => 'Thank you for your comment!',
+        ]);
+
+        Event::assertDispatchedTimes(CommentApproved::class, 1);
+    }
+
+    public function test_posting_comment_is_not_dispatching_event_if_comment_is_not_approved(): void
+    {
+        $user = User::factory()->create();
+        $post = Post::factory()->create();
+
+        $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => 'Thank you for your stupid blog post!',
+        ]);
+
+        Event::assertNotDispatched(CommentApproved::class);
+    }
+
+    public function test_comment_must_be_written_in_english(): void
+    {
+        $user = User::factory()->create();
+        $post = Post::factory()->create();
+
+        $resp = $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => 'Спасибо за ваш пост!',
+        ]);
+
+        $resp->assertJsonValidationErrors('comment');
     }
 }
