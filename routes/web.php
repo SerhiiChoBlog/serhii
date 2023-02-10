@@ -9,10 +9,13 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
+
+Route::get('@{user}', [UserController::class, 'show'])->name('users.show');
 
 Route::post('firebase-sign-in', [AuthFirebaseController::class, 'signIn']);
 

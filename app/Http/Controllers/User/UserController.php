@@ -6,17 +6,29 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 
 class UserController extends Controller
 {
-    public function show(?User $user = null): ?User
+    public function profile(): View
     {
-        if ($user) {
-            $user->loadCount('comments');
-            $user->load('badges');
-            $user->makeHidden('secret');
-        }
+        $user = user();
 
-        return $user;
+        abort_if(!$user, 404);
+
+        $user->loadCount('comments');
+        $user->load('badges');
+        $user->makeHidden('secret');
+
+        return view('users.show', compact('user'));
+    }
+
+    public function show(User $user): View
+    {
+        $user->loadCount('comments');
+        $user->load('badges');
+        $user->makeHidden('secret');
+
+        return view('users.show', compact('user'));
     }
 }
