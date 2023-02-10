@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Enums\BadgeName;
 use App\Models\Badge;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,8 +20,11 @@ class BadgeFactory extends Factory
      */
     public function definition(): array
     {
+        $names = BadgeName::all();
+        $random_name = $names[array_rand($names)];
+
         return [
-            'name' => $this->faker->word,
+            'name' => $random_name,
             'description' => $this->faker->sentence,
             'icon' => 'icon.webp',
         ];

@@ -10,7 +10,7 @@ class GiveUserCommentatorBadge
 {
     public function handle(CommentApproved $event): void
     {
-        if ($this->userHasComments($event->user, 5)) {
+        if ($this->userHasComments($event->user, 10)) {
             $event->user->giveBadge(BadgeName::COMMENTATOR);
         }
     }
