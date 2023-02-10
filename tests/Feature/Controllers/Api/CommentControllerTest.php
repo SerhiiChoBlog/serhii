@@ -111,7 +111,6 @@ class CommentControllerTest extends TestCase
         $comment = Comment::factory()->create([
             'user_id' => $user1->id,
             'post_id' => $post->id,
-            'comment' => 'Your posts are definitely worth reading! Thank you!',
         ]);
 
         // User 2 replies to User 1's comment
@@ -145,14 +144,12 @@ class CommentControllerTest extends TestCase
         $comment = Comment::factory()->create([
             'user_id' => $user1->id,
             'post_id' => $post->id,
-            'comment' => 'Your posts are definitely worth reading! Thank you!',
         ]);
 
         // User 2 replies to User 1's comment
         $reply = Comment::factory()->create([
             'user_id' => $user2->id,
             'post_id' => $post->id,
-            'comment' => 'I agree with you! He is a great writer!',
             'comment_id' => $comment->id,
         ]);
 
@@ -245,7 +242,6 @@ class CommentControllerTest extends TestCase
         Comment::factory()->create([
             'user_id' => $user->id,
             'post_id' => $post->id,
-            'comment' => $text,
         ]);
 
         // Try to create the second comment
@@ -272,7 +268,6 @@ class CommentControllerTest extends TestCase
         Comment::factory()->create([
             'user_id' => $user->id,
             'post_id' => $post->id,
-            'comment' => $text,
             'created_at' => now()->subMinutes($timeout_minutes + 1),
         ]);
 

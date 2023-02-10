@@ -60,7 +60,7 @@ class StoreCommentService
             ? 'Thank you! Your comment has been posted'
             : 'Thank you! Your comment has been posted and will be reviewed shortly';
 
-        CommentApproved::dispatchIf($is_approved);
+        CommentApproved::dispatchIf($is_approved, $this->user);
 
         return compact('date', 'message');
     }

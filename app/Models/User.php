@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\BadgeName;
 use App\Enums\SignInMethod;
 use App\Enums\UserRole;
 use Carbon\Carbon;
@@ -106,5 +107,17 @@ class User extends Authenticatable implements MustVerifyEmail
         $str2 = Str::random(9);
 
         return $str1 . $chunks . $str2;
+    }
+
+    public function giveBadge(BadgeName $type): void
+    {
+        $badges = Badge::query()->where('name', $type->value)->pluck('id');
+
+        /** @var int|null $badge_id */
+        $badge_id = $badges->first();
+
+        if ($badge_id) {
+            $this->badges()->attach([$badge_id]);
+        }
     }
 }

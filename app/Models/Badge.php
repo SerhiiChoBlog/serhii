@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\BadgeName;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -11,7 +12,7 @@ use Illuminate\Support\Collection;
 
 /**
  * @property int $id
- * @property string $name
+ * @property BadgeName $name
  * @property string $description
  * @property string $icon
  * @property Collection<int, User> $users
@@ -23,6 +24,10 @@ class Badge extends Model
     protected $guarded = ['id'];
 
     public $timestamps = false;
+
+    protected $casts = [
+        'name' => BadgeName::class,
+    ];
 
     /**
      * @return BelongsToMany<User>
