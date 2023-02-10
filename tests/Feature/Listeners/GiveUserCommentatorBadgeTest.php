@@ -6,7 +6,7 @@ namespace Tests\Feature\Listeners;
 
 use App\Enums\BadgeName;
 use App\Events\CommentApproved;
-use App\Listeners\GiveUserCommentatorBadge;
+use App\Listeners\Badges\GiveUserCommentatorBadge;
 use App\Models\Badge;
 use App\Models\Comment;
 use App\Models\Post;

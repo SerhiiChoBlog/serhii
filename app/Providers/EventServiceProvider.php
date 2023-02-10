@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Events\CommentApproved;
+use App\Listeners\Badges\GiveUserCommentatorBadge;
+use App\Listeners\Badges\GiveUserVerifiedBadge;
 use App\Listeners\ConnectSubscriptionToUser;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Events\Verified;
@@ -20,9 +22,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         Verified::class => [
             ConnectSubscriptionToUser::class,
+            GiveUserVerifiedBadge::class,
         ],
         CommentApproved::class => [
-            //
+            GiveUserCommentatorBadge::class,
         ],
     ];
 }

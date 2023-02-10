@@ -76,4 +76,10 @@ class UserTest extends TestCase
 
         $this->assertSame(BadgeName::LIKEABLE, $badge->name);
     }
+
+    public function test_giveBadge_method_skips_the_operation_if_no_badge_found(): void
+    {
+        $this->user->giveBadge(BadgeName::LIKEABLE);
+        $this->assertSame(0, $this->user->badges()->count());
+    }
 }
