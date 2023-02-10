@@ -1,10 +1,14 @@
 import { createApp } from "vue/dist/vue.esm-bundler"
-import App from './App.vue'
-import router from './router'
+import Avatar from '@user/components/Profile/Avatar.vue'
+import Tip from '@shared/components/Tip.vue'
 
-const app = createApp(App)
+const app = createApp({
+    components: {
+        Avatar,
+        Tip,
+    }
+})
 
 app.config.globalProperties.Auth = Auth
 
-app.use(router)
-    .mount('#user-main')
+app.mount('#user-main')

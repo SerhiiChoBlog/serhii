@@ -120,4 +120,9 @@ class User extends Authenticatable implements MustVerifyEmail
             $this->badges()->attach([$badge_id]);
         }
     }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 }

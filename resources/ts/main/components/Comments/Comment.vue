@@ -35,7 +35,7 @@ function postReply(): void {
         v-if="comment.user"
         class="py-2 flex gap-3 lg:gap-4"
     >
-        <a :href="`/user/${comment.user.slug}`" class="relative">
+        <a :href="`/@${comment.user.slug}`" class="relative">
             <comment-avatar :user="comment.user" />
         </a>
 

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 class RouteServiceProvider extends ServiceProvider
 {
     public const ADMIN_HOME = '/admin/dashboard';
-    public const USER_HOME = '/user';
+    public const USER_HOME = '/users/profile';
 
     public function boot(): void
     {
@@ -23,19 +23,20 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
-
             Route::prefix('admin')
                 ->middleware(['web', 'auth:admin'])
                 ->namespace($this->namespace)
                 ->group(base_path('routes/admin.php'));
 
-            Route::prefix('user')
-                 ->middleware(['web', 'auth:user', 'verified'])
+            Route::prefix('users')
+                ->name('.users')
+                ->middleware(['web', 'auth:user', 'verified'])
+                ->namespace($this->namespace)
+                ->group(base_path('routes/user.php'));
+
+            Route::middleware('web')
                  ->namespace($this->namespace)
-                 ->group(base_path('routes/user.php'));
+                 ->group(base_path('routes/web.php'));
         });
     }
 
