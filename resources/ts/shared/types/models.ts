@@ -155,3 +155,10 @@ export type Comment = {
     pretty_created_at: string
     created_at: string
 }
+
+export type Badge = {
+    id: number
+    name: string
+    description: string
+    image: string
+}

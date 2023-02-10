@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Models;
 
 use App\Enums\UserRole;
+use App\Models\Badge;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
@@ -53,5 +54,14 @@ class UserTest extends TestCase
     public function test_method_returns_false_if_user_doesnt_have_admin_role(): void
     {
         $this->assertFalse($this->user->hasRole(UserRole::ADMIN));
+    }
+
+    public function test_has_relation_with_badges(): void
+    {
+        $badge = Badge::factory()->create();
+
+        $this->user->badges()->attach([$badge->id]);
+
+        $this->assertCount(1, $this->user->badges);
     }
 }
