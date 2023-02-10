@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Enums\UserRole;
+use App\Events\CommentApproved;
 use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Support\Carbon;
@@ -59,6 +60,8 @@ class StoreCommentService
             ? 'Thank you! Your comment has been posted'
             : 'Thank you! Your comment has been posted and will be reviewed shortly';
 
+        CommentApproved::dispatchIf($is_approved);
+
         return compact('date', 'message');
     }
 
@@ -89,10 +92,11 @@ class StoreCommentService
     private function validateIfCommentIsApproved(): bool
     {
         $spam_words = config('spam-words');
+        $comment = mb_strtolower($this->comment);
 
         // Check if comment contains spam words
         foreach ($spam_words as $word) {
-            if (str_contains($this->comment, $word)) {
+            if (str_contains($comment, $word)) {
                 return false;
             }
         }
