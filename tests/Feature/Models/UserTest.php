@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Models;
 
+use App\Enums\BadgeName;
 use App\Enums\UserRole;
 use App\Models\Badge;
 use App\Models\Role;
@@ -63,5 +64,16 @@ class UserTest extends TestCase
         $this->user->badges()->attach([$badge->id]);
 
         $this->assertCount(1, $this->user->badges);
+    }
+
+    public function test_giveBadge_method_add_badge(): void
+    {
+        Badge::factory()->create(['name' => BadgeName::LIKEABLE]);
+
+        $this->user->giveBadge(BadgeName::LIKEABLE);
+
+        $badge = $this->user->badges()->first();
+
+        $this->assertSame(BadgeName::LIKEABLE, $badge->name);
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Enums\BadgeName;
 use App\Models\Badge;
 use Illuminate\Database\Seeder;
 
@@ -13,17 +14,17 @@ class BadgeSeeder extends Seeder
     {
         Badge::query()->insert([
             [
-                'name' => 'Verified',
+                'name' => BadgeName::VERIFIED->value,
                 'description' => 'Verified email address',
                 'icon' => 'verified.webp',
             ],
             [
-                'name' => 'Commentator',
+                'name' => BadgeName::COMMENTATOR->value,
                 'description' => 'Posted 5 verified comments',
                 'icon' => 'commentator.webp',
             ],
             [
-                'name' => 'Likeable',
+                'name' => BadgeName::LIKEABLE->value,
                 'description' => 'Liked 5 articles',
                 'icon' => 'likeable.webp',
             ],
