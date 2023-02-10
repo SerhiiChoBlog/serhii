@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Listeners\Badges;
 
 use App\Enums\BadgeName;
 use App\Events\CommentApproved;
