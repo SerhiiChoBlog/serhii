@@ -79,7 +79,7 @@ function handleError(err: any): void {
     >
         <spinner v-if="isLoading" class="w-8 h-8" />
 
-        <tip v-else content="Sign in with Google" class="inline-flex">
+        <tip v-else :content="`Sign in with ${serviceName}`" class="inline-flex">
             <img
                 :src="`/storage/icons/${serviceName}.webp`"
                 :alt="`${serviceName} logo`"
