@@ -12,6 +12,10 @@
 
     <div class="flex flex-wrap gap-0.5 mt-3">
         @if ($badges->isEmpty())
+            <span class="text-lg text-font-second">
+            😔 No badges yet
+            </span>
+        @else
             @foreach ($badges as $badge)
                 <tip content="{{ $badge->description }}" class="w-16">
                     <img
@@ -23,10 +27,6 @@
                     />
                 </tip>
             @endforeach
-        @else
-            <span class="text-lg text-font-second">
-                😔 No badges yet
-            </span>
         @endif
     </div>
 </div>
