@@ -13,6 +13,7 @@ class UserController extends Controller
     {
         if ($user) {
             $user->loadCount('comments');
+            $user->load('badges');
             $user->makeHidden('secret');
         }
 

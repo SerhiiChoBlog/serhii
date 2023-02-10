@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FirebaseSignInRequest;
-use App\Models\Subscription;
 use App\Models\User;
 use App\Services\GenerateSlugService;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -21,19 +21,9 @@ class AuthFirebaseController extends Controller
             ->where('email', $request->email)
             ->first();
 
-        if ($user) {
-            $avatar = $this->updateUserImage($user, $request->photo_url);
-
-            $user->update([
-                'name' => $request->name,
-                'avatar' => $avatar,
-            ]);
-        } else {
+        if (!$user) {
             $user = $this->createUser($request);
-        }
-
-        if ($this->userHasSubscription($request->email)) {
-            $this->updateSubscription($request->email, $user->id);
+            dispatch(new Verified($user));
         }
 
         auth('user')->login($user);
@@ -86,36 +76,5 @@ class AuthFirebaseController extends Controller
         Storage::disk('public')->put("avatars/{$name}", $image_binary);
 
         return $name;
-    }
-
-    private function updateUserImage(User $user, ?string $new_image): string
-    {
-        if (!$new_image) {
-            return $user->avatar;
-        }
-
-        $full_path = storage_path("app/public/avatars/{$user->avatar}");
-
-        if (file_exists($full_path)) {
-            unlink($full_path);
-        }
-
-        return $this->saveUserImage($new_image, $user->slug) ?? $user->avatar;
-    }
-
-    private function userHasSubscription(string $email): bool
-    {
-        return Subscription::query()
-            ->select('id', 'email')
-            ->where('email', $email)
-            ->exists();
-    }
-
-    private function updateSubscription(string $email, int $user_id): void
-    {
-        Subscription::query()
-            ->select('id', 'email')
-            ->where('email', $email)
-            ->update(compact('user_id'));
     }
 }

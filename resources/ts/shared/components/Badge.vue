@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import type { Badge } from '@shared/types'
+import type { Badge } from '@shared/types/models'
 import Tip from '@shared/components/Tip.vue'
 
 type Props = {
     badge: Badge
-    tip: string
 }
 
-const { badge, tip } = defineProps<Props>()
+const { badge } = defineProps<Props>()
 </script>
 
 <template>
-    <Tip :content="tip">
+    <Tip :content="badge.description">
         <img
-            :src="`/storage/badges/${badge}.png`"
-            :alt="`Badge for ${badge}`"
+            :src="`/storage/badges/${badge.image}`"
+            :alt="`Badge for ${badge.name}`"
             width="270"
             height="270"
             class="drop-shadow-md pointer-events-none"

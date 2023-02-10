@@ -3,14 +3,6 @@ import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue'
 
 export type Component = FunctionalComponent<HTMLAttributes & VNodeProps, {}>
 
-export type Badge = 'verified' | 'commentator'
-
-export type BadgesSection = {
-    tip: string
-    badge: Badge
-    show: boolean
-}
-
 export type Chapter = {
     title: string
     isActive: boolean

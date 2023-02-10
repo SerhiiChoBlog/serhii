@@ -134,6 +134,7 @@ export type User = {
     email_verified_at: string
     created_at: string
     updated_at: string
+    badges?: Badge[]
 }
 
 export type Role = {
@@ -158,7 +159,8 @@ export type Comment = {
 
 export type Badge = {
     id: number
-    name: string
+    name: 'verified' | 'commentator' | 'likable'
     description: string
     image: string
+    users?: User[]
 }
