@@ -20,6 +20,7 @@ class UserController extends Controller
     {
         $users = User::query()
             ->withCount('comments')
+            ->with('ban')
             ->orderByDesc('created_at')
             ->paginate(20);
 

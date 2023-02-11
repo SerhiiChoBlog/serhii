@@ -76,6 +76,7 @@ function loadMoreUsers(): void {
                             width="200"
                             height="200"
                             class="w-8 h-8 rounded-full"
+                            :class="user.ban ? 'outline outline-red-500' : ''"
                             :alt="user.name"
                         />
                     </a>

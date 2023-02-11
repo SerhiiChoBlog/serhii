@@ -26,7 +26,7 @@ class UserController extends Controller
     public function show(User $user): View
     {
         $user->loadCount('comments');
-        $user->load('badges');
+        $user->load('badges', 'ban');
         $user->makeHidden('secret');
 
         return view('users.show', compact('user'));
