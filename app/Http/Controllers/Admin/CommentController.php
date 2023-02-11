@@ -20,6 +20,7 @@ class CommentController extends Controller
     {
         $comments = Comment::query()
             ->with('user', 'post', 'parent')
+            ->orderBy('is_approved')
             ->orderByDesc('created_at')
             ->paginate(20);
 
