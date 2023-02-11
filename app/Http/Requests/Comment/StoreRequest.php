@@ -28,4 +28,11 @@ class StoreRequest extends FormRequest
             'comment_id' => ['nullable', 'integer'],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'comment.not_regex' => 'The comment must be in English without Cyrillic letters.',
+        ];
+    }
 }
