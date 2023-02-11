@@ -3,8 +3,19 @@ import useBanUser from '@admin/composables/useBanUser'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import PageTitle from '@admin/components/PageTitle.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
+import useDeleteUserComments from '@admin/composables/useDeleteUserComments'
+import { useRouter } from 'vue-router'
 
-const { user, loading, ban, comment } = useBanUser()
+const router = useRouter()
+const userSlug = router.currentRoute.value.params.slug as string
+
+const { user, loading, comment, ban, fetchUser } = useBanUser(userSlug)
+const { deleteComments } = useDeleteUserComments(userSlug)
+
+async function deleteAllComments(): Promise<void> {
+    await deleteComments()
+    fetchUser()
+}
 </script>
 
 <template>
@@ -33,14 +44,20 @@ const { user, loading, ban, comment } = useBanUser()
                 />
             </div>
 
-            <MainButton
-                type="submit"
-                class="mt-4"
-                :class="user.ban ? 'bg-green-600 hover:bg-green-700' : 'bg-red-600 hover:bg-red-700'"
-            >
-                <i class="fas fa-ban mr-2"></i>
-                {{ user.ban ? 'Unban' : 'Ban' }} {{ user.name }}
-            </MainButton>
+            <div class="flex gap-3 mt-4">
+                <MainButton
+                    type="submit"
+                    :class="user.ban ? 'bg-green-600 hover:bg-green-700' : 'bg-red-600 hover:bg-red-700'"
+                >
+                    <i class="fas fa-ban mr-2"></i>
+                    {{ user.ban ? 'Unban' : 'Ban' }} {{ user.name }}
+                </MainButton>
+
+                <MainButton v-if="user.comments_count > 0" @click="deleteComments" type="button">
+                    <i class="fas fa-comment mr-2"></i>
+                    Delete <b>{{ user.comments_count }}</b> comments
+                </MainButton>
+            </div>
         </form>
     </div>
 </template>

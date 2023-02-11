@@ -44,6 +44,7 @@ Route::prefix('ajax')->name('admin.')->group(function () {
         Route::get('/', 'index');
         Route::put('approve/{comment}', 'approve');
         Route::put('disapprove/{comment}', 'disapprove');
+        Route::delete('delete-all/{user}', 'destroyAll');
         Route::delete('{comment}', 'destroy');
     });
 });

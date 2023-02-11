@@ -1,17 +1,13 @@
 import type { User } from '@shared/types/models'
 import axios from 'axios'
 import handleError from '@admin/modules/handleError'
-import { useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import showToast from '@shared/modules/showToast'
 
-export default () => {
+export default (userSlug: string) => {
     const user = ref<User | null>(null)
     const loading = ref(false)
     const comment = ref('')
-
-    const router = useRouter()
-    const userSlug = router.currentRoute.value.params.slug as string
 
     onMounted(fetchUser)
 
@@ -67,5 +63,6 @@ export default () => {
         loading,
         comment,
         ban,
+        fetchUser,
     }
 }
