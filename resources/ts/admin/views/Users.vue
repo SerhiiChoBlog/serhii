@@ -54,7 +54,7 @@ function loadMoreUsers(): void {
 
         <DataTable v-else>
             <template v-slot:head>
-                <HeadDetail class="w-12">ID</HeadDetail>
+                <HeadDetail class="w-12">#</HeadDetail>
                 <HeadDetail class="w-12">Avatar</HeadDetail>
                 <HeadDetail class="w-12">Platform</HeadDetail>
                 <HeadDetail>Name</HeadDetail>
@@ -67,7 +67,14 @@ function loadMoreUsers(): void {
             </template>
 
             <BodyRow v-for="user in users" :key="user.id">
-                <BodyDetail>{{ user.id }}</BodyDetail>
+                <BodyDetail>
+                    <router-link
+                        :to="{ name: 'user', params: { slug: user.slug } }"
+                        class="bg-main py-1 px-2 rounded-md text-white hover:bg-main-hover"
+                    >
+                        {{ user.id }}
+                    </router-link>
+                </BodyDetail>
                 <BodyDetail>
                     <a
                         :href="`/storage/avatars/${user.avatar}`"

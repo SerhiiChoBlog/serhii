@@ -28,4 +28,11 @@ class UserController extends Controller
             'total' => User::query()->count(),
         ];
     }
+
+    public function show(User $user): User
+    {
+        $user->load('comments', 'badges');
+
+        return $user;
+    }
 }
