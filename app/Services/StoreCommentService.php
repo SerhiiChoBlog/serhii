@@ -38,6 +38,11 @@ class StoreCommentService
             throw ValidationException::withMessages(['comment' => $msg]);
         }
 
+        if ($this->user->email_verified_at === null) {
+            $msg = 'Only verified users can post comments. Please check your email for a verification link.';
+            throw ValidationException::withMessages(['secret' => $msg]);
+        }
+
         $parent = $this->getParentComment();
 
         if ($parent && $parent->comment_id !== null) {

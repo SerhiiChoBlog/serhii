@@ -101,7 +101,7 @@ class CommentControllerTest extends TestCase
         ]);
     }
 
-    public function test_you_can_replay_to_comment(): void
+    public function test_you_can_reply_to_comment(): void
     {
         $user1 = User::factory()->create();
         $user2 = User::factory()->create();
@@ -458,5 +458,19 @@ class CommentControllerTest extends TestCase
         ]);
 
         $resp->assertJsonValidationErrors('comment');
+    }
+
+    public function test_you_cannot_post_comment_as_not_verified_user(): void
+    {
+        $user = User::factory()->unverified()->create();
+        $post = Post::factory()->create();
+
+        $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => 'Hello! Thank you for your post!',
+        ]);
+
+        $this->assertDatabaseEmpty('comments');
     }
 }
