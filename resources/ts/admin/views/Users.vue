@@ -67,18 +67,10 @@ function loadMoreUsers(): void {
             </template>
 
             <BodyRow v-for="user in users" :key="user.id">
-                <BodyDetail>
-                    <router-link
-                        :to="{ name: 'user', params: { slug: user.slug } }"
-                        class="bg-main py-1 px-2 rounded-md text-white hover:bg-main-hover"
-                    >
-                        {{ user.id }}
-                    </router-link>
-                </BodyDetail>
+                <BodyDetail>{{ user.id }}</BodyDetail>
                 <BodyDetail>
                     <a
-                        :href="`/storage/avatars/${user.avatar}`"
-                        target="_blank"
+                        :href="`/@${user.slug}`"
                         rel="noreferrer"
                     >
                         <img
@@ -86,6 +78,7 @@ function loadMoreUsers(): void {
                             width="200"
                             height="200"
                             class="w-8 h-8 rounded-full"
+                            :alt="user.name"
                         />
                     </a>
                 </BodyDetail>
