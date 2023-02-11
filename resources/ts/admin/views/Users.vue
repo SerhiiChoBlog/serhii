@@ -64,6 +64,7 @@ function loadMoreUsers(): void {
                 <HeadDetail>Likes</HeadDetail>
                 <HeadDetail>Last update</HeadDetail>
                 <HeadDetail>Created</HeadDetail>
+                <HeadDetail></HeadDetail>
             </template>
 
             <BodyRow v-for="user in users" :key="user.id">
@@ -103,6 +104,14 @@ function loadMoreUsers(): void {
                 </BodyDetail>
                 <BodyDetail>
                     {{ moment(user.created_at).format('d MMM YYYY H:mm') }}
+                </BodyDetail>
+                <BodyDetail>
+                    <router-link
+                        :to="{ name: 'ban-user', params: { slug: user.slug } }"
+                        class="transition-transform text-red-600 hover:scale-125"
+                    >
+                        <i class="fas fa-ban"></i>
+                    </router-link>
                 </BodyDetail>
             </BodyRow>
         </DataTable>

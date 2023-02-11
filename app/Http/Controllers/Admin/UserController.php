@@ -31,8 +31,7 @@ class UserController extends Controller
 
     public function show(User $user): User
     {
-        $user->load('comments');
-
+        $user->loadCount('comments');
         return $user;
     }
 }
