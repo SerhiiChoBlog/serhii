@@ -40,6 +40,7 @@ function toggleApprovingComment(c: Comment): void {
                 <HeadDetail><i class="fas fa-check"></i></HeadDetail>
                 <HeadDetail class="w-64">Post name</HeadDetail>
                 <HeadDetail class="w-44">User</HeadDetail>
+                <HeadDetail>Visitor</HeadDetail>
                 <HeadDetail>Reply to</HeadDetail>
                 <HeadDetail>Comment</HeadDetail>
                 <HeadDetail class="w-44">Created</HeadDetail>
@@ -71,6 +72,9 @@ function toggleApprovingComment(c: Comment): void {
                         />
                         <span>{{ comment.user.name }}</span>
                     </a>
+                </BodyDetail>
+                <BodyDetail>
+                    {{ comment.visitor.id }}
                 </BodyDetail>
                 <BodyDetail>
                     <span v-if="comment.parent">{{ comment.parent.comment }}</span>
