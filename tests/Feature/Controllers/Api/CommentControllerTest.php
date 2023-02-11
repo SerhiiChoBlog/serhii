@@ -381,6 +381,40 @@ class CommentControllerTest extends TestCase
             ['I hate you moran!'],
             ['I hate you MORAN!'],
             ['This is stupid to think like that'],
+            ['I hate watching p0rn!'],
+        ];
+    }
+
+    /**
+     * @dataProvider provider_for_test_posting_comment_without_swear_word_will_be_marked_as_approved
+     */
+    public function test_posting_comment_without_swear_word_will_be_marked_as_approved(string $text): void
+    {
+        $user = User::factory()->create();
+        $post = Post::factory()->create();
+
+        $resp = $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => $text,
+        ]);
+
+        $resp->assertOk();
+
+        $this->assertDatabaseHas('comments', [
+            'post_id' => $post->id,
+            'comment' => $text,
+            'is_approved' => true,
+        ]);
+    }
+
+    public function provider_for_test_posting_comment_without_swear_word_will_be_marked_as_approved(): array
+    {
+        return [
+            ['This is the best article that I\'ve read so far!'],
+            ['Hello man! Thank you for your answer!'],
+            ['Do you know what is 5 minus 5 will be? I know it, it will be 0.'],
+            ['Look at this code sample: $x = 0; echo $x . "-result";'],
         ];
     }
 
