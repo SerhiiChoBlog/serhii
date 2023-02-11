@@ -120,7 +120,7 @@ function deleteTag(): void {
                 </div>
 
                 <div class="mt-7 flex gap-3">
-                    <MainButton>
+                    <MainButton type="submit">
                         <i class="fas fa-save mr-2"></i>
                         Update
                     </MainButton>

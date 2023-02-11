@@ -1,5 +1,6 @@
 @php
     use App\Models\User;
+    use Serhii\Ago\TimeAgo;
 
     /**
      * @var User $user
@@ -12,7 +13,7 @@
 
 @section('content')
     <div class="container">
-        <div  class="grid grid-cols-1 md:grid-cols-[300px_auto] gap-8 md:gap-12 max-w-[900px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-[300px_auto] gap-8 md:gap-12 max-w-[900px] mx-auto">
             <div>
                 <avatar :user="{{ $user }}">
                     <div class="h-[250px]"></div>
@@ -23,13 +24,20 @@
                     <h2 class="text-lg text-font-second">{{ '@' . $user->slug }}</h2>
                 </div>
 
-                <x-users.badges-section :badges="$user->badges" />
+                <x-users.badges-section :badges="$user->badges"/>
             </div>
 
             <div>
+                @if ($user->ban)
+                    <div class="bg-red-50 p-5 rounded-lg mb-6 border border-red-100">
+                        <h2 class="text-xl font-bold text-red-600">User is banned</h2>
+                        <h2 class="text-md text-red-600">{{ $user->ban->comment }}</h2>
+                    </div>
+                @endif
+
                 <div class="space-y-3">
                     <x-users.profile-row title="Joined">
-                        {{ $user->created_at->format('d-m-Y') }}
+                        {{ TimeAgo::trans($user->created_at) }}
                     </x-users.profile-row>
                     <x-users.profile-row title="Comments">
                         {{ $user->comments_count ?? 0 }}

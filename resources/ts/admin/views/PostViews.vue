@@ -88,7 +88,7 @@ function fetchViews(): void {
             <TabPanels class="mt-5">
                 <TabPanel>
                     <DataTable>
-                        <template v-slot:head>
+                        <template #head>
                             <HeadDetail
                                 v-for="title in ['Image', 'Views', 'Post title']"
                                 :key="title"
@@ -136,7 +136,7 @@ function fetchViews(): void {
 
                 <TabPanel>
                     <DataTable>
-                        <template v-slot:head>
+                        <template #head>
                             <HeadDetail
                                 v-for="title in ['Date', 'Views']"
                                 :key="title"

@@ -34,7 +34,7 @@ function fetchReferrers(): void {
         </h2>
 
         <DataTable v-else class="max-w-[700px] mx-auto">
-            <template v-slot:head>
+            <template #head>
                 <HeadDetail
                     v-for="title in ['#', 'Site', 'Hits', 'Last update']"
                     :key="title"

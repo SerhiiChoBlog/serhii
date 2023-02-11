@@ -32,7 +32,7 @@ function fetchPosts(): void {
         <h2 v-else-if="posts.length === 0" class="text-2xl text-center">There are no posts</h2>
 
         <DataTable v-else>
-            <template v-slot:head>
+            <template #head>
                 <HeadDetail
                     v-for="title in ['Image', 'Article', 'Social']"
                     :key="title"

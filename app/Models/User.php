@@ -12,6 +12,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
@@ -28,6 +29,7 @@ use Illuminate\Support\Str;
  * @property int|null $comments_count
  * @property SignInMethod $sign_in_method
  * @property string $avatar
+ * @property Ban|null $ban
  * @property string $remember_token
  * @property Collection<int, Role> $roles
  * @property Collection<int, Badge> $badges
@@ -87,6 +89,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function hasRole(UserRole $role): bool
     {
         return $this->roles()->where('name', $role->value)->exists();
+    }
+
+    /**
+     * @return HasOne<Ban>
+     */
+    public function ban(): HasOne
+    {
+        return $this->hasOne(Ban::class);
     }
 
     public static function isAdmin(?string $email): bool

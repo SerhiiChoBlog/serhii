@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\BanController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HitController;
 use App\Http\Controllers\Admin\PostContentImageController;
@@ -27,7 +29,24 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     Route::resource('referrers', ReferrerController::class)->only('index');
     Route::resource('hits', HitController::class)->only('index');
     Route::resource('post-publications', PostPublicationController::class)->only('index');
-    Route::resource('users', UserController::class)->only('index');
+
+    Route::prefix('users')->controller(UserController::class)->group(function () {
+        Route::get('/', 'index');
+        Route::get('{user}', 'show');
+    });
+
+    Route::prefix('bans')->controller(BanController::class)->group(function () {
+        Route::post('ban', 'ban');
+        Route::post('unban', 'unban');
+    });
+
+    Route::prefix('comments')->controller(CommentController::class)->group(function () {
+        Route::get('/', 'index');
+        Route::put('approve/{comment}', 'approve');
+        Route::put('disapprove/{comment}', 'disapprove');
+        Route::delete('delete-all/{user}', 'destroyAll');
+        Route::delete('{comment}', 'destroy');
+    });
 });
 
 Route::view('{any?}', 'layouts.admin')

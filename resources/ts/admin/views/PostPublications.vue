@@ -36,7 +36,7 @@ function fetchVisitors(): void {
         </div>
 
         <DataTable v-else>
-            <template v-slot:head>
+            <template #head>
                 <HeadDetail
                     v-for="title in ['#', 'Notified', 'Skipped', 'Post', 'Created']"
                     :key="title"

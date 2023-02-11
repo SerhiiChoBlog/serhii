@@ -38,7 +38,7 @@ function fetchPosts(): void {
         <Spinner v-if="loading" />
 
         <DataTable v-else-if="posts.length > 0">
-            <template v-slot:head>
+            <template #head>
                 <HeadDetail></HeadDetail>
                 <HeadDetail>Image</HeadDetail>
                 <HeadDetail class="min-w-[300px]">Title</HeadDetail>

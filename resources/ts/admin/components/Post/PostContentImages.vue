@@ -68,7 +68,7 @@ function deleteImage(id: number): void {
         </h3>
 
         <DataTable>
-            <template v-slot:head>
+            <template #head>
                 <HeadDetail class="w-40">Image</HeadDetail>
                 <HeadDetail>URI</HeadDetail>
                 <HeadDetail class="w-40">Delete</HeadDetail>
@@ -101,7 +101,7 @@ function deleteImage(id: number): void {
 
                 <BodyDetail>
                     <form @submit.prevent="deleteImage(image.id)">
-                        <MainButton class="bg-red-500 hover:bg-red-600">
+                        <MainButton type="button" class="bg-red-500 hover:bg-red-600">
                             <i class="fas fa-trash mr-2"></i>
                             Delete
                         </MainButton>

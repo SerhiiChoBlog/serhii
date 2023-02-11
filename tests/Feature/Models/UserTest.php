@@ -7,6 +7,7 @@ namespace Tests\Feature\Models;
 use App\Enums\BadgeName;
 use App\Enums\UserRole;
 use App\Models\Badge;
+use App\Models\Ban;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
@@ -81,5 +82,11 @@ class UserTest extends TestCase
     {
         $this->user->giveBadge(BadgeName::LIKEABLE);
         $this->assertSame(0, $this->user->badges()->count());
+    }
+
+    public function test_user_has_relationship_with_ban(): void
+    {
+        $ban = Ban::factory()->create(['user_id' => $this->user->id]);
+        $this->assertNotNull($this->user->ban);
     }
 }
