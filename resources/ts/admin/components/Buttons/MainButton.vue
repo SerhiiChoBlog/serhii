@@ -7,7 +7,7 @@ type Props = {
     href?: string
 }
 
-const { route, type = 'button', href } = defineProps<Props>()
+const { route, type, href } = defineProps<Props>()
 
 const classes = 'inline-block uppercase text-white text-sm px-8 py-3 rounded-full transition-all bg-main hover:bg-main-hover shadow-md hover:shadow-lg';
 </script>

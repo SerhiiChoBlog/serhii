@@ -101,7 +101,7 @@ function deleteImage(id: number): void {
 
                 <BodyDetail>
                     <form @submit.prevent="deleteImage(image.id)">
-                        <MainButton class="bg-red-500 hover:bg-red-600">
+                        <MainButton type="button" class="bg-red-500 hover:bg-red-600">
                             <i class="fas fa-trash mr-2"></i>
                             Delete
                         </MainButton>

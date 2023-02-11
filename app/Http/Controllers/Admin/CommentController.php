@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class CommentController extends Controller
@@ -38,6 +39,11 @@ class CommentController extends Controller
     public function disapprove(Comment $comment): void
     {
         $comment->update(['is_approved' => false]);
+    }
+
+    public function destroyAll(User $user): void
+    {
+        $user->comments()->delete();
     }
 
     public function destroy(Comment $comment): void
