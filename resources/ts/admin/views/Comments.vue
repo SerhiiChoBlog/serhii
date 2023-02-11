@@ -26,19 +26,26 @@ const {
 
         <DataTable v-else>
             <template v-slot:head>
-                <HeadDetail class="w-12">#</HeadDetail>
+                <HeadDetail>#</HeadDetail>
                 <HeadDetail><i class="fas fa-check"></i></HeadDetail>
-                <HeadDetail class="w-56">Post name</HeadDetail>
-                <HeadDetail>User</HeadDetail>
+                <HeadDetail class="w-64">Post name</HeadDetail>
+                <HeadDetail class="w-44">User</HeadDetail>
                 <HeadDetail>Reply to</HeadDetail>
                 <HeadDetail>Comment</HeadDetail>
                 <HeadDetail class="w-44">Created</HeadDetail>
             </template>
 
             <BodyRow v-for="comment in comments" :key="comment.id">
-                <BodyDetail>{{ comment.id }}</BodyDetail>
                 <BodyDetail>
-                    <button @click="toggleApproved">
+                    <router-link
+                        :to="{ name: 'comment', params: { id: comment.id } }"
+                        class="bg-main py-1 px-2 rounded-md text-white hover:bg-main-hover"
+                    >
+                        {{ comment.id }}
+                    </router-link>
+                </BodyDetail>
+                <BodyDetail>
+                    <button @click="toggleApproved(comment)">
                         <i
                             class="fas text-md lg:text-2xl"
                             :class="comment.is_approved ? 'fa-toggle-on text-green-600' : 'fa-toggle-off text-red-600'"
