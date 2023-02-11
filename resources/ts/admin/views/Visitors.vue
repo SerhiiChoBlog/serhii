@@ -32,7 +32,7 @@ function fetchVisitors(): void {
         <Spinner v-if="loading" />
 
         <DataTable v-else>
-            <template v-slot:head>
+            <template #head>
                 <HeadDetail>Views</HeadDetail>
                 <HeadDetail>IP</HeadDetail>
                 <HeadDetail>Country</HeadDetail>

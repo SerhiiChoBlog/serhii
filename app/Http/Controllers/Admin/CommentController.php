@@ -29,12 +29,6 @@ class CommentController extends Controller
         ];
     }
 
-    public function show(Comment $comment): Comment
-    {
-        $comment->load('user', 'post', 'parent');
-        return $comment;
-    }
-
     public function approve(Comment $comment): void
     {
         $comment->update(['is_approved' => true]);
