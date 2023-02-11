@@ -12,7 +12,7 @@ class CommentController extends Controller
 {
     /**
      * @return array{
-     *   users: LengthAwarePaginator<Comment>,
+     *   comments: LengthAwarePaginator<Comment>,
      *   total: int,
      * }
      */

@@ -1,49 +1,21 @@
 <script setup lang="ts">
-import type { Comment } from '@shared/types/models'
-import type { Pagination } from '@shared/types/response'
-import { onMounted, ref } from 'vue'
-import axios from 'axios'
 import moment from 'moment'
-import handleError from '@admin/modules/handleError'
 import PageTitle from '@admin/components/PageTitle.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import DataTable from '@admin/components/DataTable/DataTable.vue'
 import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
+import useComments from '@admin/composables/useComments'
 
-const comments = ref<Comment[]>([])
-const totalComments = ref<number | null>(null)
-const loading = ref(false)
-const nextPageUrl = ref<string | null>(null)
-
-onMounted(() => fetchComments('/admin/ajax/comments', true))
-
-function fetchComments(url: string, refresh = true): void {
-    if (refresh) {
-        loading.value = true
-    }
-
-    axios.get<{ comments: Pagination<Comment[]>, total: number }>(url)
-        .then(resp => {
-            const data = resp.data
-
-            nextPageUrl.value = data.comments.next_page_url
-            totalComments.value = data.total
-
-            refresh
-                ? comments.value = data.comments.data
-                : comments.value.push(...data.comments.data)
-        })
-        .catch(handleError)
-        .finally(() => loading.value = false)
-}
-
-function loadMoreComments(): void {
-    if (nextPageUrl.value) {
-        fetchComments(nextPageUrl.value, false)
-    }
-}
+const {
+    comments,
+    totalComments,
+    loading,
+    nextPageUrl,
+    loadMoreComments,
+    toggleApproved,
+} = useComments()
 </script>
 
 <template>
@@ -54,16 +26,25 @@ function loadMoreComments(): void {
 
         <DataTable v-else>
             <template v-slot:head>
-                <HeadDetail class="w-12">ID</HeadDetail>
+                <HeadDetail class="w-12">#</HeadDetail>
+                <HeadDetail><i class="fas fa-check"></i></HeadDetail>
                 <HeadDetail class="w-56">Post name</HeadDetail>
                 <HeadDetail>User</HeadDetail>
-                <HeadDetail>Comment</HeadDetail>
                 <HeadDetail>Reply to</HeadDetail>
+                <HeadDetail>Comment</HeadDetail>
                 <HeadDetail class="w-44">Created</HeadDetail>
             </template>
 
             <BodyRow v-for="comment in comments" :key="comment.id">
                 <BodyDetail>{{ comment.id }}</BodyDetail>
+                <BodyDetail>
+                    <button @click="toggleApproved">
+                        <i
+                            class="fas text-md lg:text-2xl"
+                            :class="comment.is_approved ? 'fa-toggle-on text-green-600' : 'fa-toggle-off text-red-600'"
+                        ></i>
+                    </button>
+                </BodyDetail>
                 <BodyDetail>
                     <a :href="`/posts/${comment.post.slug}`" target="_blank">
                         {{ comment.post.title }}
@@ -73,7 +54,7 @@ function loadMoreComments(): void {
                     <a
                         :href="`/@${comment.user.slug}`"
                         target="_blank"
-                        class="flex items-center gap-3 rounded-full hover:bg-main hover:text-white transition-colors"
+                        class="flex flex-col lg:flex-row items-center gap-3 rounded-full hover:bg-main hover:text-white transition-colors"
                     >
                         <img
                             class="inline-block w-10 h-10 rounded-full shadow-md"
@@ -84,11 +65,10 @@ function loadMoreComments(): void {
                     </a>
                 </BodyDetail>
                 <BodyDetail>
-                    {{ comment.comment }}
+                    <span v-if="comment.parent">{{ comment.parent.comment }}</span>
                 </BodyDetail>
                 <BodyDetail>
-                    <span v-if="comment.parent">{{ comment.parent.comment }}</span>
-                    <i v-else class="fas fa-times text-font-second opacity-50"></i>
+                    {{ comment.comment }}
                 </BodyDetail>
                 <BodyDetail>
                     {{ moment(comment.created_at).format('d MMM YYYY H:mm') }}
