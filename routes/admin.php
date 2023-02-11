@@ -31,7 +31,6 @@ Route::prefix('ajax')->name('admin.')->group(function () {
 
     Route::prefix('users')->controller(UserController::class)->group(function () {
         Route::get('/', 'index');
-        Route::get('{user}', 'show');
     });
 
     Route::prefix('comments')->controller(CommentController::class)->group(function () {
