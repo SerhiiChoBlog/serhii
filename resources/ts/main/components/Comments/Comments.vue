@@ -20,7 +20,7 @@ const commentsCount = computed(() => {
 </script>
 
 <template>
-    <div class="mb-12 mx-auto">
+    <div class="mb-5 lg:mb-12 mx-auto">
         <div class="flex gap-5">
             <div>
                 <comment-avatar :user="Auth" />

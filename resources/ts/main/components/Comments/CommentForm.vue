@@ -50,7 +50,7 @@ async function submitForm(): Promise<void> {
 </script>
 
 <template>
-    <form @submit.prevent="submitForm" class="w-full mb-8 relative">
+    <form @submit.prevent="submitForm" class="w-full mb-5 lg:mb-8 relative">
         <div>
             <div class="mb-2">
                 <textarea
@@ -63,7 +63,7 @@ async function submitForm(): Promise<void> {
                     maxlength="1000"
                 ></textarea>
 
-                <span class="absolute right-1 bottom-4 lg:bottom-6 opacity-60">
+                <span class="text-xs lg:text-lg absolute right-1 bottom-4 lg:bottom-6 opacity-60">
                     Letters: {{ comment.length }}/1000
                 </span>
             </div>

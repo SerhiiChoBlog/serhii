@@ -54,7 +54,7 @@
                         <x-post.tags :tags="$post->tags" class="text-sm mt-5 !gap-3" />
                         <x-post.details :post="$post->toArray()" class="mt-4" />
 
-                        @if (auth()->check())
+                        @if (auth('admin')->check())
                             <div class="mt-4" aria-hidden="true">
                                 <a
                                     href="/admin/posts/{{ $post->id }}/edit"
