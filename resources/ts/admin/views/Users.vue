@@ -69,10 +69,7 @@ function loadMoreUsers(): void {
             <BodyRow v-for="user in users" :key="user.id">
                 <BodyDetail>{{ user.id }}</BodyDetail>
                 <BodyDetail>
-                    <a
-                        :href="`/@${user.slug}`"
-                        rel="noreferrer"
-                    >
+                    <a :href="`/@${user.slug}`" rel="noreferrer">
                         <img
                             :src="`/storage/avatars/${user.avatar}`"
                             width="200"
