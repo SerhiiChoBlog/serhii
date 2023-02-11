@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Comment as CommentType } from '@shared/types/models'
-import Comment from '@/components/Comments/Comment.vue'
+import CommentComponent from '@/components/Comments/Comment.vue'
 import CommentForm from '@/components/Comments/CommentForm.vue'
 import CommentsWrapper from '@/components/Comments/CommentsWrapper.vue'
 import CommentAvatar from '@/components/Comments/CommentAvatar.vue'
@@ -76,7 +76,7 @@ function postReply(): void {
         v-if="comment.comments && comment.comments.length > 0"
         class="pl-7 ml-4 lg:ml-5 border-l-2 border-border border-dashed"
     >
-        <comment
+        <comment-component
             v-for="comment in comment.comments"
             :key="comment.id"
             :comment="comment"

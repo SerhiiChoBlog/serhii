@@ -35,16 +35,14 @@ class CommentController extends Controller
         return $comment;
     }
 
-    public function approve(Comment $comment): bool
+    public function approve(Comment $comment): void
     {
         $comment->update(['is_approved' => true]);
-        return true;
     }
 
-    public function disapprove(Comment $comment): bool
+    public function disapprove(Comment $comment): void
     {
         $comment->update(['is_approved' => false]);
-        return false;
     }
 
     public function destroy(Comment $comment): void
