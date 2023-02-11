@@ -62,17 +62,14 @@ function toggleApprovingComment(c: Comment): void {
                     </a>
                 </BodyDetail>
                 <BodyDetail>
-                    <router-link
-                        :to="{ name: 'user', params: { slug: comment.user.slug } }"
-                        class="flex flex-col lg:flex-row items-center gap-3 rounded-full hover:bg-main hover:text-white transition-colors"
-                    >
+                    <a :href="`/@${comment.user.slug}`" rel="noreferrer" class="flex items-center gap-3">
                         <img
                             class="inline-block w-10 h-10 rounded-full shadow-md"
                             :src="`/storage/avatars/${comment.user.avatar}`"
                             :alt="comment.user.name"
                         />
                         <span>{{ comment.user.name }}</span>
-                    </router-link>
+                    </a>
                 </BodyDetail>
                 <BodyDetail>
                     <span v-if="comment.parent">{{ comment.parent.comment }}</span>
