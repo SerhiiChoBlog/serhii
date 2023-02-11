@@ -18,7 +18,7 @@ use Serhii\Ago\TimeAgo;
  * @property int $id
  * @property int $post_id
  * @property int $user_id
- * @property int $visitor_id
+ * @property int|null $visitor_id
  * @property int|null $comment_id
  * @property Collection<int, self> $comments
  * @property User $user
