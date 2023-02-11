@@ -101,10 +101,10 @@ function loadMoreUsers(): void {
                     0
                 </BodyDetail>
                 <BodyDetail>
-                    {{ moment(user.updated_at).format('d MMM YYYY H:mm') }}
+                    {{ moment(user.updated_at).format('D MMM YYYY H:mm') }}
                 </BodyDetail>
                 <BodyDetail>
-                    {{ moment(user.created_at).format('d MMM YYYY H:mm') }}
+                    {{ moment(user.created_at).format('D MMM YYYY H:mm') }}
                 </BodyDetail>
                 <BodyDetail>
                     <router-link
