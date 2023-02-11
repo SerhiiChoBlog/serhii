@@ -82,7 +82,7 @@ function toggleApprovingComment(c: Comment): void {
                     {{ comment.comment }}
                 </BodyDetail>
                 <BodyDetail>
-                    {{ moment(comment.created_at).format('d MMM YYYY H:mm') }}
+                    {{ moment(comment.created_at).format('D MMM YYYY H:mm') }}
                 </BodyDetail>
                 <BodyDetail>
                     <router-link
