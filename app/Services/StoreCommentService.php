@@ -96,7 +96,7 @@ class StoreCommentService
 
         // Check if comment contains spam words
         foreach ($spam_words as $word) {
-            if (str_contains($comment, $word)) {
+            if (preg_match("/\b{$word}\b/", $comment)) {
                 return false;
             }
         }
