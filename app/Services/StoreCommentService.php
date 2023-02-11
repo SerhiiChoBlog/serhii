@@ -8,6 +8,7 @@ use App\Enums\UserRole;
 use App\Events\CommentApproved;
 use App\Models\Comment;
 use App\Models\User;
+use App\Models\Visitor;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 
@@ -53,6 +54,7 @@ class StoreCommentService
 
         $this->user->comments()->create([
             'post_id' => $this->post_id,
+            'visitor_id' => $this->getVisitorId(),
             'comment_id' => $this->comment_id,
             'comment' => $this->comment,
             'is_approved' => $is_approved,
@@ -107,5 +109,16 @@ class StoreCommentService
         }
 
         return true;
+    }
+
+    private function getVisitorId(): ?int
+    {
+        $ip = request()->ip();
+
+        if (!$ip) {
+            return null;
+        }
+
+        return Visitor::getOrCreateVisitor($ip)?->id;
     }
 }

@@ -18,10 +18,12 @@ use Serhii\Ago\TimeAgo;
  * @property int $id
  * @property int $post_id
  * @property int $user_id
+ * @property int $visitor_id
  * @property int|null $comment_id
  * @property Collection<int, self> $comments
  * @property User $user
  * @property Post $post
+ * @property Visitor $visitor
  * @property self|null $parent
  * @property bool $is_subscribed
  * @property bool $is_approved
@@ -57,6 +59,14 @@ class Comment extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @return BelongsTo<Visitor, self>
+     */
+    public function visitor(): BelongsTo
+    {
+        return $this->belongsTo(Visitor::class);
     }
 
     /**

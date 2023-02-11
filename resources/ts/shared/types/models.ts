@@ -147,11 +147,13 @@ export type Comment = {
     id: number
     post_id: number
     user_id: number
+    visitor_id: number
     comment_id: number | null
     comment: string
     comments?: Comment[]
     user?: User
     post?: Post
+    visitor?: Visitor
     is_subscribed: boolean
     is_approved: boolean
     pretty_created_at: string
