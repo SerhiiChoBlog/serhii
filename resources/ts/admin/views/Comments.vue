@@ -44,6 +44,7 @@ function toggleApprovingComment(c: Comment): void {
                 <HeadDetail>Comment</HeadDetail>
                 <HeadDetail class="w-44">Created</HeadDetail>
                 <HeadDetail></HeadDetail>
+                <HeadDetail></HeadDetail>
             </template>
 
             <BodyRow v-for="comment in comments" :key="comment.id">
@@ -81,10 +82,18 @@ function toggleApprovingComment(c: Comment): void {
                     {{ moment(comment.created_at).format('d MMM YYYY H:mm') }}
                 </BodyDetail>
                 <BodyDetail>
+                    <router-link
+                        :to="{ name: 'ban-user', params: { slug: comment.user.slug } }"
+                        class="transition-transform text-red-600 hover:scale-125"
+                    >
+                        <i class="fas fa-ban"></i>
+                    </router-link>
+                </BodyDetail>
+                <BodyDetail>
                     <button
                         @click="deleteComment(comment.id)"
                         type="button"
-                        class="transition-colors hover:text-red-600"
+                        class="transition-transform hover:scale-125"
                     >
                         <i class="fas fa-trash"></i>
                     </button>

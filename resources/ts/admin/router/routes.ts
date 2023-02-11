@@ -15,6 +15,7 @@ import PostPublications from '@admin/views/PostPublications.vue'
 import NotFound from '@shared/components/NotFound.vue'
 import Users from '@admin/views/Users.vue'
 import Comments from '@admin/views/Comments.vue'
+import BanUser from '@admin/views/BanUser.vue'
 
 const routes: RouteRecordRaw[] = [
     { path: '/admin/dashboard', name: 'dashboard', component: Dashboard },
@@ -31,6 +32,7 @@ const routes: RouteRecordRaw[] = [
     { path: '/admin/hits', name: 'hits', component: Hits },
     { path: '/admin/post-publications', name: 'post-publications', component: PostPublications },
     { path: '/admin/users', name: 'users', component: Users },
+    { path: '/admin/ban-user/:slug', name: 'ban-user', component: BanUser },
     { path: '/admin/comments', name: 'comments', component: Comments },
     { path: '/:pathMatch(.*)', name: 'not-found', component: NotFound },
 ]
