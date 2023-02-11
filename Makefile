@@ -51,4 +51,4 @@ deploy:
 	make sitemap
 	make cache
 
-.DEFAULT_GOAL := push
+.DEFAULT_GOAL := build
