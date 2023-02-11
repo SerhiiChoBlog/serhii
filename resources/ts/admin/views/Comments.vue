@@ -38,17 +38,16 @@ function toggleApprovingComment(c: Comment): void {
             <template #head>
                 <HeadDetail>#</HeadDetail>
                 <HeadDetail class="w-64">Post name</HeadDetail>
-                <HeadDetail class="w-44">User</HeadDetail>
+                <HeadDetail class="w-40">User</HeadDetail>
                 <HeadDetail>Reply to</HeadDetail>
                 <HeadDetail>Comment</HeadDetail>
-                <HeadDetail class="w-44">Created</HeadDetail>
-                <HeadDetail></HeadDetail>
+                <HeadDetail class="w-20">Created</HeadDetail>
+                <HeadDetail class="w-8"></HeadDetail>
             </template>
 
             <BodyRow v-for="comment in comments" :key="comment.id">
                 <BodyDetail class="text-center">
                     <h2>{{ comment.id }}</h2>
-                    <h3>{{ comment.visitor_id || 'no' }}</h3>
 
                     <button @click="toggleApprovingComment(comment)">
                         <i
@@ -69,7 +68,11 @@ function toggleApprovingComment(c: Comment): void {
                             :src="`/storage/avatars/${comment.user.avatar}`"
                             :alt="comment.user.name"
                         />
-                        <span>{{ comment.user.name }}</span>
+
+                        <div>
+                            <h2>{{ comment.user.name }}</h2>
+                            <h3>Visitor {{ comment.visitor_id || 'no' }}</h3>
+                        </div>
                     </a>
                 </BodyDetail>
                 <BodyDetail>
