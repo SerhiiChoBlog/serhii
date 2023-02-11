@@ -37,20 +37,19 @@ function toggleApprovingComment(c: Comment): void {
         <DataTable v-else>
             <template #head>
                 <HeadDetail>#</HeadDetail>
-                <HeadDetail><i class="fas fa-check"></i></HeadDetail>
                 <HeadDetail class="w-64">Post name</HeadDetail>
                 <HeadDetail class="w-44">User</HeadDetail>
-                <HeadDetail>Visitor</HeadDetail>
                 <HeadDetail>Reply to</HeadDetail>
                 <HeadDetail>Comment</HeadDetail>
                 <HeadDetail class="w-44">Created</HeadDetail>
                 <HeadDetail></HeadDetail>
-                <HeadDetail></HeadDetail>
             </template>
 
             <BodyRow v-for="comment in comments" :key="comment.id">
-                <BodyDetail>{{ comment.id }}</BodyDetail>
-                <BodyDetail>
+                <BodyDetail class="text-center">
+                    <h2>{{ comment.id }}</h2>
+                    <h3>{{ comment.visitor_id || 'no' }}</h3>
+
                     <button @click="toggleApprovingComment(comment)">
                         <i
                             class="fas text-md lg:text-2xl"
@@ -74,9 +73,6 @@ function toggleApprovingComment(c: Comment): void {
                     </a>
                 </BodyDetail>
                 <BodyDetail>
-                    {{ comment.visitor.id }}
-                </BodyDetail>
-                <BodyDetail>
                     <span v-if="comment.parent">{{ comment.parent.comment }}</span>
                 </BodyDetail>
                 <BodyDetail>
@@ -92,12 +88,11 @@ function toggleApprovingComment(c: Comment): void {
                     >
                         <i class="fas fa-ban"></i>
                     </router-link>
-                </BodyDetail>
-                <BodyDetail>
+
                     <button
                         @click="deleteComment(comment.id)"
                         type="button"
-                        class="transition-transform hover:scale-125"
+                        class="transition-transform hover:scale-125 mt-2"
                     >
                         <i class="fas fa-trash"></i>
                     </button>

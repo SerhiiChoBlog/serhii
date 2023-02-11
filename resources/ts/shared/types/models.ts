@@ -148,7 +148,7 @@ export type Comment = {
     id: number
     post_id: number
     user_id: number
-    visitor_id: number
+    visitor_id: number|null
     comment_id: number | null
     comment: string
     comments?: Comment[]
