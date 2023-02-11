@@ -16,7 +16,6 @@ import NotFound from '@shared/components/NotFound.vue'
 import Users from '@admin/views/Users.vue'
 import User from '@admin/views/User.vue'
 import Comments from '@admin/views/Comments.vue'
-import Comment from '@admin/views/Comment.vue'
 
 const routes: RouteRecordRaw[] = [
     { path: '/admin/dashboard', name: 'dashboard', component: Dashboard },
@@ -35,7 +34,6 @@ const routes: RouteRecordRaw[] = [
     { path: '/admin/users', name: 'users', component: Users },
     { path: '/admin/user/:slug', name: 'user', component: User },
     { path: '/admin/comments', name: 'comments', component: Comments },
-    { path: '/admin/comments/:id', name: 'comment', component: Comment },
     { path: '/:pathMatch(.*)', name: 'not-found', component: NotFound },
 ]
 

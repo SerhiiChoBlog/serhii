@@ -68,7 +68,7 @@ function deleteImage(id: number): void {
         </h3>
 
         <DataTable>
-            <template v-slot:head>
+            <template #head>
                 <HeadDetail class="w-40">Image</HeadDetail>
                 <HeadDetail>URI</HeadDetail>
                 <HeadDetail class="w-40">Delete</HeadDetail>

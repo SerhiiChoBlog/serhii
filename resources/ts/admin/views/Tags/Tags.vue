@@ -46,7 +46,7 @@ function fetchTags(): void {
             </h2>
 
             <DataTable v-else>
-                <template v-slot:head>
+                <template #head>
                     <HeadDetail
                         v-for="title in ['Img', 'Title', 'Slug', 'Posts', 'Color', 'Tag', 'Description', '']"
                         :key="title"

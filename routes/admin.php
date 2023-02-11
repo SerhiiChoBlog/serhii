@@ -36,7 +36,6 @@ Route::prefix('ajax')->name('admin.')->group(function () {
 
     Route::prefix('comments')->controller(CommentController::class)->group(function () {
         Route::get('/', 'index');
-        Route::get('{comment}', 'show');
         Route::put('approve/{comment}', 'approve');
         Route::put('disapprove/{comment}', 'disapprove');
         Route::delete('{comment}', 'destroy');

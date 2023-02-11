@@ -53,7 +53,7 @@ function loadMoreUsers(): void {
         <Spinner v-if="loading" />
 
         <DataTable v-else>
-            <template v-slot:head>
+            <template #head>
                 <HeadDetail class="w-12">#</HeadDetail>
                 <HeadDetail class="w-12">Avatar</HeadDetail>
                 <HeadDetail class="w-12">Platform</HeadDetail>

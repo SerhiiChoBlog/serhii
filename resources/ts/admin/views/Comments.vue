@@ -35,7 +35,7 @@ function toggleApprovingComment(c: Comment): void {
         <Spinner v-if="loading" />
 
         <DataTable v-else>
-            <template v-slot:head>
+            <template #head>
                 <HeadDetail>#</HeadDetail>
                 <HeadDetail><i class="fas fa-check"></i></HeadDetail>
                 <HeadDetail class="w-64">Post name</HeadDetail>
@@ -47,14 +47,7 @@ function toggleApprovingComment(c: Comment): void {
             </template>
 
             <BodyRow v-for="comment in comments" :key="comment.id">
-                <BodyDetail>
-                    <router-link
-                        :to="{ name: 'comment', params: { id: comment.id } }"
-                        class="bg-main py-1 px-2 rounded-md text-white hover:bg-main-hover"
-                    >
-                        {{ comment.id }}
-                    </router-link>
-                </BodyDetail>
+                <BodyDetail>{{ comment.id }}</BodyDetail>
                 <BodyDetail>
                     <button @click="toggleApprovingComment(comment)">
                         <i
