@@ -35,15 +35,20 @@ class CommentController extends Controller
         return $comment;
     }
 
-    public function approve(string $id): bool
+    public function approve(Comment $comment): bool
     {
-        Comment::query()->find($id)?->update(['is_approved' => true]);
+        $comment->update(['is_approved' => true]);
         return true;
     }
 
-    public function disapprove(string $id): bool
+    public function disapprove(Comment $comment): bool
     {
-        Comment::query()->find($id)?->update(['is_approved' => false]);
+        $comment->update(['is_approved' => false]);
         return false;
+    }
+
+    public function destroy(Comment $comment): void
+    {
+        $comment->delete();
     }
 }
