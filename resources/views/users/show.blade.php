@@ -28,6 +28,13 @@
             </div>
 
             <div>
+                @if ($user->ban)
+                    <div class="bg-red-50 p-5 rounded-lg mb-6 border border-red-100">
+                        <h2 class="text-xl font-bold text-red-600">User is banned</h2>
+                        <h2 class="text-md text-red-600">{{ $user->ban->comment }}</h2>
+                    </div>
+                @endif
+
                 <div class="space-y-3">
                     <x-users.profile-row title="Joined">
                         {{ TimeAgo::trans($user->created_at) }}
