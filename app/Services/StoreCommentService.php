@@ -8,6 +8,7 @@ use App\Enums\UserRole;
 use App\Events\CommentApproved;
 use App\Models\Comment;
 use App\Models\User;
+use App\Models\Visitor;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 
@@ -38,6 +39,11 @@ class StoreCommentService
             throw ValidationException::withMessages(['comment' => $msg]);
         }
 
+        if ($this->user->email_verified_at === null) {
+            $msg = 'Only verified users can post comments. Please check your email for a verification link.';
+            throw ValidationException::withMessages(['secret' => $msg]);
+        }
+
         $parent = $this->getParentComment();
 
         if ($parent && $parent->comment_id !== null) {
@@ -48,6 +54,7 @@ class StoreCommentService
 
         $this->user->comments()->create([
             'post_id' => $this->post_id,
+            'visitor_id' => $this->getVisitorId(),
             'comment_id' => $this->comment_id,
             'comment' => $this->comment,
             'is_approved' => $is_approved,
@@ -102,5 +109,16 @@ class StoreCommentService
         }
 
         return true;
+    }
+
+    private function getVisitorId(): ?int
+    {
+        $ip = request()->ip();
+
+        if (!$ip) {
+            return null;
+        }
+
+        return Visitor::getOrCreateVisitor($ip)?->id;
     }
 }

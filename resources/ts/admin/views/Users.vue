@@ -53,8 +53,8 @@ function loadMoreUsers(): void {
         <Spinner v-if="loading" />
 
         <DataTable v-else>
-            <template v-slot:head>
-                <HeadDetail class="w-12">ID</HeadDetail>
+            <template #head>
+                <HeadDetail class="w-12">#</HeadDetail>
                 <HeadDetail class="w-12">Avatar</HeadDetail>
                 <HeadDetail class="w-12">Platform</HeadDetail>
                 <HeadDetail>Name</HeadDetail>
@@ -64,21 +64,20 @@ function loadMoreUsers(): void {
                 <HeadDetail>Likes</HeadDetail>
                 <HeadDetail>Last update</HeadDetail>
                 <HeadDetail>Created</HeadDetail>
+                <HeadDetail></HeadDetail>
             </template>
 
             <BodyRow v-for="user in users" :key="user.id">
                 <BodyDetail>{{ user.id }}</BodyDetail>
                 <BodyDetail>
-                    <a
-                        :href="`/storage/avatars/${user.avatar}`"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
+                    <a :href="`/@${user.slug}`" rel="noreferrer">
                         <img
                             :src="`/storage/avatars/${user.avatar}`"
                             width="200"
                             height="200"
                             class="w-8 h-8 rounded-full"
+                            :class="user.ban ? 'outline outline-red-500' : ''"
+                            :alt="user.name"
                         />
                     </a>
                 </BodyDetail>
@@ -102,10 +101,18 @@ function loadMoreUsers(): void {
                     0
                 </BodyDetail>
                 <BodyDetail>
-                    {{ moment(user.updated_at).format('D MMM YYYY hh:mm') }}
+                    {{ moment(user.updated_at).format('d MMM YYYY H:mm') }}
                 </BodyDetail>
                 <BodyDetail>
-                    {{ moment(user.created_at).format('D MMM YYYY hh:mm') }}
+                    {{ moment(user.created_at).format('d MMM YYYY H:mm') }}
+                </BodyDetail>
+                <BodyDetail>
+                    <router-link
+                        :to="{ name: 'ban-user', params: { slug: user.slug } }"
+                        class="transition-transform text-red-600 hover:scale-125"
+                    >
+                        <i class="fas fa-ban"></i>
+                    </router-link>
                 </BodyDetail>
             </BodyRow>
         </DataTable>

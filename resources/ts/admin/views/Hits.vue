@@ -30,7 +30,7 @@ function fetchHits(): void {
         <Spinner v-if="loading" />
 
         <DataTable v-else>
-            <template v-slot:head>
+            <template #head>
                 <HeadDetail
                     v-for="title in ['Date', 'Hits']"
                     :key="title"

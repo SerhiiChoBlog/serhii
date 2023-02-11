@@ -20,6 +20,7 @@ class UserController extends Controller
     {
         $users = User::query()
             ->withCount('comments')
+            ->with('ban')
             ->orderByDesc('created_at')
             ->paginate(20);
 
@@ -27,5 +28,12 @@ class UserController extends Controller
             'users' => $users,
             'total' => User::query()->count(),
         ];
+    }
+
+    public function show(User $user): User
+    {
+        $user->loadCount('comments');
+        $user->load('ban');
+        return $user;
     }
 }

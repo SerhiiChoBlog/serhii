@@ -81,7 +81,7 @@ function createTag(): void {
             </div>
 
             <div class="mt-7">
-                <MainButton>
+                <MainButton type="button">
                     <i class="fas fa-plus mr-2"></i>
                     Create tag
                 </MainButton>
