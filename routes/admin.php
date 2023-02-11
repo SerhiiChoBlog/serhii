@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\BanController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HitController;
@@ -32,6 +33,11 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     Route::prefix('users')->controller(UserController::class)->group(function () {
         Route::get('/', 'index');
         Route::get('{user}', 'show');
+    });
+
+    Route::prefix('bans')->controller(BanController::class)->group(function () {
+        Route::post('ban', 'ban');
+        Route::post('unban', 'unban');
     });
 
     Route::prefix('comments')->controller(CommentController::class)->group(function () {
