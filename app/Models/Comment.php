@@ -20,7 +20,9 @@ use Serhii\Ago\TimeAgo;
  * @property int $user_id
  * @property int|null $comment_id
  * @property Collection<int, self> $comments
- * @property User|null $user
+ * @property User $user
+ * @property Post $post
+ * @property self|null $parent
  * @property bool $is_subscribed
  * @property bool $is_approved
  * @property string $pretty_created_at
@@ -55,6 +57,14 @@ class Comment extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @return BelongsTo<Post, self>
+     */
+    public function post(): BelongsTo
+    {
+        return $this->belongsTo(Post::class);
     }
 
     /**
