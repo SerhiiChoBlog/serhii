@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Comment } from '@shared/types/models'
 import moment from 'moment'
 import PageTitle from '@admin/components/PageTitle.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
@@ -7,6 +8,7 @@ import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 import useComments from '@admin/composables/useComments'
+import useToggleApprove from '@admin/composables/useToggleApprove'
 
 const {
     comments,
@@ -15,8 +17,15 @@ const {
     nextPageUrl,
     deleteComment,
     loadMoreComments,
-    toggleApproved,
+    fetchComments,
 } = useComments()
+
+const { toggleApproved } = useToggleApprove()
+
+function toggleApprovingComment(c: Comment): void {
+    toggleApproved(c)
+    fetchComments('/admin/ajax/comments', true)
+}
 </script>
 
 <template>
@@ -47,7 +56,7 @@ const {
                     </router-link>
                 </BodyDetail>
                 <BodyDetail>
-                    <button @click="toggleApproved(comment)">
+                    <button @click="toggleApprovingComment(comment)">
                         <i
                             class="fas text-md lg:text-2xl"
                             :class="comment.is_approved ? 'fa-toggle-on text-green-600' : 'fa-toggle-off text-red-600'"

@@ -45,17 +45,6 @@ export default () => {
             .finally(() => loading.value = false)
     }
 
-
-    function toggleApproved(comment: Comment): void {
-        const url = comment.is_approved
-            ? `/admin/ajax/comments/disapprove/${comment.id}`
-            : `/admin/ajax/comments/approve/${comment.id}`
-
-        axios.put<boolean>(url)
-            .then(resp => comment.is_approved = resp.data)
-            .catch(handleError)
-    }
-
     function loadMoreComments(): void {
         if (nextPageUrl.value) {
             fetchComments(nextPageUrl.value, false)
@@ -69,6 +58,6 @@ export default () => {
         nextPageUrl,
         deleteComment,
         loadMoreComments,
-        toggleApproved,
+        fetchComments,
     }
 }
