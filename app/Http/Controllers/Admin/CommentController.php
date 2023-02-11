@@ -19,7 +19,7 @@ class CommentController extends Controller
     public function index(): array
     {
         $comments = Comment::query()
-            ->with('user', 'post', 'parent')
+            ->with('user', 'post', 'parent', 'visitor')
             ->orderBy('is_approved')
             ->orderByDesc('created_at')
             ->paginate(20);
