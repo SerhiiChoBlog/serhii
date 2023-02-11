@@ -28,4 +28,22 @@ class CommentController extends Controller
             'total' => Comment::query()->count(),
         ];
     }
+
+    public function show(Comment $comment): Comment
+    {
+        $comment->load('user', 'post', 'parent');
+        return $comment;
+    }
+
+    public function approve(string $id): bool
+    {
+        Comment::query()->find($id)?->update(['is_approved' => true]);
+        return true;
+    }
+
+    public function disapprove(string $id): bool
+    {
+        Comment::query()->find($id)?->update(['is_approved' => false]);
+        return false;
+    }
 }

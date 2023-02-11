@@ -29,7 +29,11 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     Route::resource('hits', HitController::class)->only('index');
     Route::resource('post-publications', PostPublicationController::class)->only('index');
     Route::resource('users', UserController::class)->only('index');
-    Route::resource('comments', CommentController::class)->only('index');
+
+    Route::get('comments', [CommentController::class, 'index']);
+    Route::put('comments/approve/{id}', [CommentController::class, 'approve']);
+    Route::put('comments/disapprove/{id}', [CommentController::class, 'disapprove']);
+    Route::get('comments/{comment}', [CommentController::class, 'show']);
 });
 
 Route::view('{any?}', 'layouts.admin')
