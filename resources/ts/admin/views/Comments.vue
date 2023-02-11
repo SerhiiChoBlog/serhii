@@ -13,6 +13,7 @@ const {
     totalComments,
     loading,
     nextPageUrl,
+    deleteComment,
     loadMoreComments,
     toggleApproved,
 } = useComments()
@@ -33,6 +34,7 @@ const {
                 <HeadDetail>Reply to</HeadDetail>
                 <HeadDetail>Comment</HeadDetail>
                 <HeadDetail class="w-44">Created</HeadDetail>
+                <HeadDetail></HeadDetail>
             </template>
 
             <BodyRow v-for="comment in comments" :key="comment.id">
@@ -58,9 +60,8 @@ const {
                     </a>
                 </BodyDetail>
                 <BodyDetail>
-                    <a
-                        :href="`/@${comment.user.slug}`"
-                        target="_blank"
+                    <router-link
+                        :to="{ name: 'user', params: { slug: comment.user.slug } }"
                         class="flex flex-col lg:flex-row items-center gap-3 rounded-full hover:bg-main hover:text-white transition-colors"
                     >
                         <img
@@ -69,7 +70,7 @@ const {
                             :alt="comment.user.name"
                         />
                         <span>{{ comment.user.name }}</span>
-                    </a>
+                    </router-link>
                 </BodyDetail>
                 <BodyDetail>
                     <span v-if="comment.parent">{{ comment.parent.comment }}</span>
@@ -79,6 +80,15 @@ const {
                 </BodyDetail>
                 <BodyDetail>
                     {{ moment(comment.created_at).format('d MMM YYYY H:mm') }}
+                </BodyDetail>
+                <BodyDetail>
+                    <button
+                        @click="deleteComment(comment.id)"
+                        type="button"
+                        class="transition-colors hover:text-red-600"
+                    >
+                        <i class="fas fa-trash"></i>
+                    </button>
                 </BodyDetail>
             </BodyRow>
         </DataTable>
