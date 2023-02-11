@@ -75,10 +75,10 @@ function toggleApprovingComment(c: Comment): void {
                         </div>
                     </a>
                 </BodyDetail>
-                <BodyDetail>
+                <BodyDetail class="align-baseline">
                     <span v-if="comment.parent">{{ comment.parent.comment }}</span>
                 </BodyDetail>
-                <BodyDetail>
+                <BodyDetail class="align-baseline">
                     {{ comment.comment }}
                 </BodyDetail>
                 <BodyDetail>
