@@ -10,29 +10,36 @@ const { user, loading, ban, comment } = useBanUser()
 <template>
     <Spinner v-if="loading || !user" />
 
-    <div v-else class="container max-w-[700px] m-auto">
+    <div v-else class="container max-w-[700px] m-auto px-5">
         <PageTitle>{{ user.name }}</PageTitle>
 
         <form @submit.prevent="ban">
             <div>
-                <label for="comment">
-                    Explain why user is banner ({{ comment.length }}/190)
+                <label for="comment" class="text-lg">
+                    <span v-if="user.ban">
+                        <b class="text-main">{{ user.name }}</b> is already banned!
+                    </span>
+                    <span v-else>
+                        Explain why you want to ban <b class="text-main">{{ user.name }}</b> ({{ comment.length }}/190)
+                    </span>
                 </label>
                 <textarea
                     id="comment"
                     v-model="comment"
-                    class="border border-border rounded-lg w-full p-2"
+                    class="border border-border rounded-lg w-full p-2 bg-page"
                     minlength="5"
                     maxlength="190"
+                    :disabled="user.ban"
                 />
             </div>
 
             <MainButton
                 type="submit"
-                class="mt-5 bg-red-600 hover:bg-red-700"
+                class="mt-4"
+                :class="user.ban ? 'bg-green-600 hover:bg-green-700' : 'bg-red-600 hover:bg-red-700'"
             >
                 <i class="fas fa-ban mr-2"></i>
-                Ban {{ user.name }}
+                {{ user.ban ? 'Unban' : 'Ban' }} {{ user.name }}
             </MainButton>
         </form>
     </div>

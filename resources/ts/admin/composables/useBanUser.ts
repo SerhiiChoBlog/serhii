@@ -30,16 +30,35 @@ export default () => {
     }
 
     function ban(): void {
-        if (!confirm('Are you sure you want to ban this user?')) {
+        if (!user.value)
             return
-        }
 
-        if (comment.value === '') {
+        const msg = user.value.ban
+            ? 'Are you sure you want to BAN this user?'
+            : 'Are you sure you want to UNBAN this user?'
+
+        if (!user.value || !confirm(msg))
+            return
+
+        if (!user.value.ban && comment.value === '') {
             showToast({ text: 'Please enter a comment', success: false })
             return
         }
 
-        axios.post('')
+        const url = user.value.ban
+            ? `/admin/ajax/bans/unban`
+            : `/admin/ajax/bans/ban`
+
+        const params = {
+            user_id: user.value.id,
+            comment: comment.value,
+        }
+
+        axios.post(url, params)
+            .then(() => {
+                fetchUser()
+                comment.value = ''
+            })
             .catch(handleError)
     }
 

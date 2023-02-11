@@ -135,6 +135,7 @@ export type User = {
     created_at: string
     updated_at: string
     badges?: Badge[]
+    ban?: Ban | null
 }
 
 export type Role = {
@@ -166,4 +167,13 @@ export type Badge = {
     description: string
     icon: string
     users?: User[]
+}
+
+export type Ban = {
+    id: number
+    user_id: number
+    comment: string
+    created_at: string
+    updated_at: string
+    user?: User
 }
