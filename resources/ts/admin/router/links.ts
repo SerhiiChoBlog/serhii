@@ -29,7 +29,12 @@ const links: UserSidebarLink[] = [
     {
         routeName: 'users',
         title: 'Users',
-        icon: 'fa-users',
+        icon: 'fa-user-friends',
+    },
+    {
+        routeName: 'comments',
+        title: 'Comments',
+        icon: 'fa-comments',
     },
     {
         routeName: 'social-shares',

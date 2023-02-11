@@ -59,7 +59,7 @@
                     </label>
                 </div>
 
-                <div class="pt-4">
+                <div class="pt-1">
                     <x-form.button>Login</x-form.button>
 
                     <x-sign-with />
