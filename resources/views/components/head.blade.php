@@ -5,5 +5,4 @@
 <meta name="description" content="@stack('description', "Serhii Cho's blog is a great place to learn about web development. If you are eager to learn how to build optimized, responsive and modern web, this place is for you.")">
 <meta property="og:locale" content="en_US">
 <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png" sizes="50x50">
-<link rel="canonical" href="{{ str_replace('www.', '', request()->url()) }}" />
 <title>@stack('title'){{ request()->is('/') ? "Serhii Blog" : '' }}</title>
