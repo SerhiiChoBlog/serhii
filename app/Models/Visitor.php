@@ -113,7 +113,7 @@ class Visitor extends Model
             ->whereDate('created_at', today())
             ->first();
 
-        if ($today_post_view || auth()->check()) {
+        if ($today_post_view || auth('admin')->check()) {
             return;
         }
 
