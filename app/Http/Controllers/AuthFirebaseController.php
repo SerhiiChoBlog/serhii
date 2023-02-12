@@ -27,7 +27,7 @@ class AuthFirebaseController extends Controller
             event(new Verified($user));
         }
 
-        auth('user')->login($user);
+        auth('user')->login($user, true);
 
         return $user;
     }
