@@ -415,6 +415,7 @@ class CommentControllerTest extends TestCase
             ['Hello man! Thank you for your answer!'],
             ['Do you know what is 5 minus 5 will be? I know it, it will be 0.'],
             ['Look at this code sample: $x = 0; echo $x . "-result";'],
+            ['Thank you 👍'],
         ];
     }
 
