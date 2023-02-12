@@ -12,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         Blade::if('published', static function (Post $post) {
-            return $post->is_published || auth()->check();
+            return $post->is_published || auth('admin')->check();
         });
     }
 
