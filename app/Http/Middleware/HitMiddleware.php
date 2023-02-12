@@ -12,7 +12,7 @@ class HitMiddleware
 {
     public function handle(Request $request, Closure $next): mixed
     {
-        if (!$request->isMethod('get') || auth()->check()) {
+        if (!$request->isMethod('get') || auth('admin')->check()) {
             return $next($request);
         }
 
