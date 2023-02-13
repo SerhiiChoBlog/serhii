@@ -5,19 +5,20 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\SocialShare\StoreRequest;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Visitor;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
 class SocialShareController extends Controller
 {
-    public function store(Post $post, Request $request): void
+    public function store(Post $post, StoreRequest $request): void
     {
         $ip = $request->ip();
 
-        if (!$ip || auth('admin')->check()) {
+        if (!$ip) {
             return;
         }
 
@@ -34,7 +35,7 @@ class SocialShareController extends Controller
 
         $has_old_record = $post->socialShares()
             ->where('visitor_id', $visitor->id)
-            ->where('social', $request->get('social'))
+            ->where('social', $request->social)
             ->exists();
 
         if ($has_old_record) {
@@ -43,6 +44,7 @@ class SocialShareController extends Controller
 
         $post->socialShares()->create([
             'visitor_id' => $visitor->id,
+            'user_id' => User::getBySecret($request->secret)?->id,
             'social' => $request->get('social'),
         ]);
     }
