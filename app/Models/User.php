@@ -138,7 +138,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public static function getBySecret(?string $secret): ?self
     {
-        if ($secret) {
+        if (!$secret) {
             return null;
         }
 
