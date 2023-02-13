@@ -28,6 +28,11 @@ class Visitor extends Model
 {
     use HasFactory;
 
+    public const LOCAL_IP = '127.0.0.1';
+    public const LOCAL_COUNTRY = 'Ukraine';
+    public const LOCAL_CITY = 'Kharkiv';
+    public const LOCAL_CODE = 'UA';
+
     public $timestamps = false;
 
     /**
@@ -63,10 +68,14 @@ class Visitor extends Model
         try {
             $location = app(Location::class);
 
-            /** @var Position $position */
+            /** @var Position|false $position */
             $position = $location->get($ip);
         } catch (Throwable $e) {
             Log::warning($e->getMessage());
+        }
+
+        if ($ip === self::LOCAL_IP) {
+            $position = self::defaultPosition();
         }
 
         if (!$position) {
@@ -122,5 +131,16 @@ class Visitor extends Model
         }
 
         $visitor->postViews()->create(compact('post_id'));
+    }
+
+    private static function defaultPosition(): Position
+    {
+        $result = new Position();
+
+        $result->countryName = self::LOCAL_COUNTRY;
+        $result->cityName = self::LOCAL_CITY;
+        $result->countryCode = self::LOCAL_CODE;
+
+        return $result;
     }
 }

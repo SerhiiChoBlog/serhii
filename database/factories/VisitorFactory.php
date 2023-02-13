@@ -20,11 +20,10 @@ class VisitorFactory extends Factory
     public function definition(): array
     {
         return [
-            'ip' => $this->faker->ipv4,
-            'country' => $this->faker->country,
-            'city' => $this->faker->city,
-            'code' => $this->faker->countryCode,
+            'ip' => Visitor::LOCAL_IP,
+            'country' => Visitor::LOCAL_COUNTRY,
+            'city' => Visitor::LOCAL_CITY,
+            'code' => Visitor::LOCAL_CODE,
         ];
     }
-
 }
