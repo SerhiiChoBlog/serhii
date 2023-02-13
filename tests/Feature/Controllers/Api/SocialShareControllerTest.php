@@ -63,4 +63,19 @@ class SocialShareControllerTest extends TestCase
             'social' => $params['social']
         ]);
     }
+
+    public function test_we_cannot_create_the_same_social_share_twice(): void
+    {
+        $params = ['social' => SocialName::LINKEDIN];
+
+        $this->json('post', $this->uri, $params, [
+            'REMOTE_ADDR' => $this->visitor->ip
+        ]);
+
+        $this->json('post', $this->uri, $params, [
+            'REMOTE_ADDR' => $this->visitor->ip
+        ]);
+
+        $this->assertDatabaseCount('social_shares', 1);
+    }
 }
