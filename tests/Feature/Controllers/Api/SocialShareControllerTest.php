@@ -78,4 +78,15 @@ class SocialShareControllerTest extends TestCase
 
         $this->assertDatabaseCount('social_shares', 1);
     }
+
+    public function test_you_cannot_submit_unknown_social_name(): void
+    {
+        $params = ['social' => 'unknown'];
+
+        $this->json('post', $this->uri, $params, [
+            'REMOTE_ADDR' => $this->visitor->ip
+        ]);
+
+        $this->assertDatabaseEmpty('social_shares');
+    }
 }
