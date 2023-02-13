@@ -11,13 +11,9 @@
     "file": "assets/fa-solid-900.a188f8b8.woff",
     "src": "resources/fonts/fa-solid-900.woff"
   },
-  "resources/fonts/fa-solid-900.ttf": {
-    "file": "assets/fa-solid-900.0777ab6e.ttf",
-    "src": "resources/fonts/fa-solid-900.ttf"
-  },
-  "resources/fonts/JetBrainsMono-Regular.ttf": {
-    "file": "assets/JetBrainsMono-Regular.3c5fb9d7.ttf",
-    "src": "resources/fonts/JetBrainsMono-Regular.ttf"
+  "resources/fonts/Lato-Regular.ttf": {
+    "file": "assets/Lato-Regular.e82542ae.ttf",
+    "src": "resources/fonts/Lato-Regular.ttf"
   },
   "storage/app/public/hero-sm.webp": {
     "file": "assets/hero-sm.3cb40372.webp",
@@ -27,16 +23,20 @@
     "file": "assets/hero.7cf745fe.webp",
     "src": "storage/app/public/hero.webp"
   },
-  "resources/fonts/Lato-Regular.ttf": {
-    "file": "assets/Lato-Regular.e82542ae.ttf",
-    "src": "resources/fonts/Lato-Regular.ttf"
+  "resources/fonts/JetBrainsMono-Regular.ttf": {
+    "file": "assets/JetBrainsMono-Regular.3c5fb9d7.ttf",
+    "src": "resources/fonts/JetBrainsMono-Regular.ttf"
+  },
+  "resources/fonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900.0777ab6e.ttf",
+    "src": "resources/fonts/fa-solid-900.ttf"
   },
   "resources/fonts/fa-solid-900.svg": {
     "file": "assets/fa-solid-900.f6bd8f51.svg",
     "src": "resources/fonts/fa-solid-900.svg"
   },
   "resources/ts/main/app.ts": {
-    "file": "assets/app.20d9055c.js",
+    "file": "assets/app.505e98a9.js",
     "src": "resources/ts/main/app.ts",
     "isEntry": true,
     "imports": [
