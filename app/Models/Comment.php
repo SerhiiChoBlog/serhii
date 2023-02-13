@@ -27,6 +27,7 @@ use Serhii\Ago\TimeAgo;
  * @property self|null $parent
  * @property bool $is_subscribed
  * @property bool $is_approved
+ * @property string $comment
  * @property string $pretty_created_at
  * @property Carbon $created_at
  */

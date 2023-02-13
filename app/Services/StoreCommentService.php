@@ -6,7 +6,7 @@ namespace App\Services;
 
 use App\Enums\UserRole;
 use App\Events\CommentApproved;
-use App\Jobs\SendAdminEmail;
+use App\Jobs\NewCommentAdminEmail;
 use App\Models\Comment;
 use App\Models\User;
 use App\Models\Visitor;
@@ -53,7 +53,7 @@ class StoreCommentService
 
         $is_approved = $this->validateIfCommentIsApproved();
 
-        $this->user->comments()->create([
+        $comment = $this->user->comments()->create([
             'post_id' => $this->post_id,
             'visitor_id' => $this->getVisitorId(),
             'comment_id' => $this->comment_id,
@@ -62,7 +62,7 @@ class StoreCommentService
             'created_at' => now(),
         ]);
 
-        SendAdminEmail::dispatchIf(!$this->is_admin);
+        NewCommentAdminEmail::dispatchIf(!$this->is_admin, $comment);
 
         $date = $this->is_admin ? now() : now()->addMinutes($timeout_minutes);
 
