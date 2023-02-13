@@ -28,8 +28,10 @@ class NewComment extends Notification
 
     public function toMail(): SimpleMessage
     {
+        $status = $this->comment->is_approved ? 'approved' : 'pending';
+
         return (new MailMessage())
-            ->subject('New comment!')
+            ->subject("New {$status} comment!")
             ->markdown('mail.new-comment', [
                 'comment' => $this->comment,
             ]);

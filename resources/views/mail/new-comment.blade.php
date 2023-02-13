@@ -13,11 +13,11 @@ use App\Models\Comment;
 @endslot
 
 <h1>
-    There is a new comment {{ $comment->is_approved ? 'published' : 'pending' }} on post <b style="color: #5791c1;">{{ $comment->post->title }}</b>!
+    There is a new comment {{ $comment->is_approved ? 'published' : 'pending' }} for<br /> <b style="color: #5791c1;">{{ $comment->post->title }}</b>
 </h1>
 
-<div style="margin: 20px 0; display: flex; align-items: center; gap: 20px;">
-<a href="/{{ '@' . $comment->user->slug }}" target="_blank">
+<div style="margin: 20px 0; display: flex; align-items: center; gap: 15px;">
+<a href="{{ url('/@' . $comment->user->slug) }}" target="_blank">
 <img src="{{ asset("storage/avatars/{$comment->user->avatar}") }}" width="50" height="50" style="border-radius: 50px;" />
 </a>
 
@@ -44,5 +44,10 @@ use App\Models\Comment;
 @component('mail::button', ['url' => url('/admin/comments')])
 Admin panel
 @endcomponent
+
+@slot('footer')
+@component('mail::footer')
+@endcomponent
+@endslot
 
 @endcomponent
