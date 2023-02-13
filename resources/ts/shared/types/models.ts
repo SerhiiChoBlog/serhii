@@ -79,6 +79,7 @@ export type SocialShare = {
     id: number
     post_id: number
     visitor_id: number
+    user_id: number | null
     social: string
     post?: Post
     visitor?: Visitor

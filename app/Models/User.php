@@ -135,4 +135,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return 'slug';
     }
+
+    public static function getBySecret(?string $secret): ?self
+    {
+        if ($secret) {
+            return null;
+        }
+
+        /** @var self|null */
+        return self::query()->where('secret', $secret)->first();
+    }
 }

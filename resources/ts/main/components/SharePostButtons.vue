@@ -54,8 +54,12 @@ const links = [
 ]
 
 function saveShare(social: string): void {
-    // todo: if auth add user secret
-    axios.post(`/api/social-shares/${postId}`, { social })
+    const params = {
+        social,
+        secret: Auth ? Auth.secret : null,
+    }
+
+    axios.post(`/api/social-shares/${postId}`, params)
         .catch(err => console.error(err))
 }
 </script>
