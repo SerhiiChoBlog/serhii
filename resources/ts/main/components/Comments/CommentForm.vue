@@ -35,11 +35,9 @@ onMounted(() => {
 })
 
 const placeholder = computed(() => {
-    if (canCommentIn.value > 0) {
-        return `Next comment you can write in ${canCommentIn.value} seconds`
-    }
-
-    return Auth ? 'Write a comment ...' : 'Login to comment ...'
+    return canCommentIn.value > 0
+        ? `Next comment you can write in ${canCommentIn.value} seconds`
+        : 'Write a comment ...'
 })
 
 async function submitForm(): Promise<void> {
@@ -54,6 +52,7 @@ async function submitForm(): Promise<void> {
         <div>
             <div class="mb-2">
                 <textarea
+                    v-if="Auth"
                     v-model="comment"
                     :placeholder="placeholder"
                     class="p-3 bg-page focus:outline-none dark:bg-page-second rounded-lg border border-border w-full min-h-[90px]"
@@ -63,7 +62,11 @@ async function submitForm(): Promise<void> {
                     maxlength="1000"
                 ></textarea>
 
-                <span class="text-xs lg:text-lg absolute right-1 bottom-4 lg:bottom-6 opacity-60">
+                <p v-else class="text-xl py-3">
+                    Please, sign in to comment
+                </p>
+
+                <span v-if="Auth" class="text-xs lg:text-lg absolute right-1 bottom-4 lg:bottom-6 opacity-60">
                     Letters: {{ comment.length }}/1000
                 </span>
             </div>
@@ -75,7 +78,7 @@ async function submitForm(): Promise<void> {
                     :class="{ 'opacity-50': isLoading || canCommentIn > 0 }"
                 >
                     <span v-if="isLoading">Processing...</span>
-                    <span v-else-if="!Auth">Sign in</span>
+                    <span v-else-if="!Auth">Sign in with email</span>
                     <span v-else>Comment</span>
                 </comment-button>
 
