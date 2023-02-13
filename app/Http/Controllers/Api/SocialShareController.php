@@ -45,7 +45,7 @@ class SocialShareController extends Controller
         $post->socialShares()->create([
             'visitor_id' => $visitor->id,
             'user_id' => User::getBySecret($request->secret)?->id,
-            'social' => $request->get('social'),
+            'social' => $request->social,
         ]);
     }
 }

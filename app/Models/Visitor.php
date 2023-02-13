@@ -61,22 +61,11 @@ class Visitor extends Model
      */
     public static function getOrCreateVisitor(string $ip): ?self
     {
-        $position = null;
-
         $ip = trim($ip);
 
-        try {
-            $location = app(Location::class);
-
-            /** @var Position|false $position */
-            $position = $location->get($ip);
-        } catch (Throwable $e) {
-            Log::warning($e->getMessage());
-        }
-
-        if ($ip === self::LOCAL_IP) {
-            $position = self::defaultPosition();
-        }
+        $position = $ip === self::LOCAL_IP
+            ? self::defaultPosition()
+            : self::getRealPosition($ip);
 
         if (!$position) {
             return null;
@@ -105,12 +94,7 @@ class Visitor extends Model
 
     public static function incrementPostViews(int $post_id, string $ip): void
     {
-        try {
-            $visitor = self::getOrCreateVisitor($ip);
-        } catch (Throwable $e) {
-            Log::error($e->getMessage());
-            return;
-        }
+        $visitor = self::getOrCreateVisitor($ip);
 
         if (!$visitor) {
             return;
@@ -142,5 +126,15 @@ class Visitor extends Model
         $result->countryCode = self::LOCAL_CODE;
 
         return $result;
+    }
+
+    private static function getRealPosition(string $ip): ?Position
+    {
+        try {
+            return app(Location::class)->get($ip);
+        } catch (Throwable $e) {
+            Log::warning($e->getMessage());
+            return null;
+        }
     }
 }
