@@ -29,7 +29,7 @@ function toggleApprovingComment(c: Comment): void {
 </script>
 
 <template>
-    <div class="container max-w-7xl">
+    <div class="container">
         <PageTitle>Comments <b v-if="totalComments">{{ totalComments }}</b></PageTitle>
 
         <Spinner v-if="loading" />
