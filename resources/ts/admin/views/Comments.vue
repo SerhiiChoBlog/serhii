@@ -38,7 +38,7 @@ function toggleApprovingComment(c: Comment): void {
             <template #head>
                 <HeadDetail>#</HeadDetail>
                 <HeadDetail class="w-64">Post name</HeadDetail>
-                <HeadDetail class="w-40">User</HeadDetail>
+                <HeadDetail class="min-w-[170px]">User</HeadDetail>
                 <HeadDetail>Reply to</HeadDetail>
                 <HeadDetail>Comment</HeadDetail>
                 <HeadDetail class="w-20">Created</HeadDetail>
