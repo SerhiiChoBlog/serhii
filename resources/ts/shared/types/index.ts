@@ -2,6 +2,7 @@ import type { Tag, User } from './models'
 import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue'
 
 export type Component = FunctionalComponent<HTMLAttributes & VNodeProps, {}>
+export type SocialName = 'twitter' | 'linkedin' | 'reddit' | 'telegram' | 'facebook'| 'clipboard'
 
 export type Chapter = {
     title: string
@@ -11,6 +12,13 @@ export type Chapter = {
 export type SavedChapter = {
     chapter: Chapter
     top: number
+}
+
+export type SocialLink = {
+    href: string | null
+    title: SocialName
+    tip: string
+    action?: () => void
 }
 
 export type SearchSuggestion = {

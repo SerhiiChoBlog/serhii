@@ -1,3 +1,5 @@
+import type { SocialName } from '@shared/types/index'
+
 export type Tag = {
     id: number
     title: string
@@ -80,7 +82,7 @@ export type SocialShare = {
     post_id: number
     visitor_id: number
     user_id: number | null
-    social: string
+    social: SocialName
     post?: Post
     visitor?: Visitor
     created_at: string
