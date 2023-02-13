@@ -114,7 +114,7 @@ class StoreCommentService
     {
         $ip = request()->ip();
 
-        if (!$ip) {
+        if (!$ip || $ip === '127.0.0.1') {
             return null;
         }
 
