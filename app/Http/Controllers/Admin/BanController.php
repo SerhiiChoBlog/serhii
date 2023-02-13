@@ -19,6 +19,8 @@ class BanController extends Controller
             ->where('id', $request->user_id)
             ->firstOrFail();
 
+        $user->update(['remember_token' => null]);
+
         if ($user->ban) {
             return;
         }
