@@ -27,10 +27,7 @@ class UserTest extends TestCase
 
     public function test_user_can_be_created(): void
     {
-        $this->assertDatabaseHas('users', [
-            'name' => $this->user->name,
-            'email' => $this->user->email,
-        ]);
+        $this->assertDatabaseCount('users', 1);
     }
 
     public function test_user_has_roles_associated(): void

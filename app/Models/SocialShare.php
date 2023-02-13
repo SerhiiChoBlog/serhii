@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\SocialName;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $post_id
  * @property int $visitor_id
  * @property int|null $user_id
- * @property string $social
+ * @property SocialName $social
  * @property Post $post
  * @property Visitor $visitor
  * @property Carbon $created_at
@@ -27,6 +28,10 @@ class SocialShare extends Model
      * @var string[]
      */
     protected $guarded = ['id'];
+
+    protected $casts = [
+        'social' => SocialName::class,
+    ];
 
     public $timestamps = false;
 
