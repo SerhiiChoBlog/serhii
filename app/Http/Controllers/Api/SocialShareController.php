@@ -17,7 +17,7 @@ class SocialShareController extends Controller
     {
         $ip = $request->ip();
 
-        if (!$ip) {
+        if (!$ip || auth('admin')->check()) {
             return;
         }
 
