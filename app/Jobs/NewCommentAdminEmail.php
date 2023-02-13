@@ -30,7 +30,7 @@ class NewCommentAdminEmail implements ShouldQueue
 
         /** @var User $admin */
         $admin = User::query()
-            ->where('email', config('mail.from.address'))
+            ->where('id', 1)
             ->first();
 
         $admin->notify(new NewComment($this->comment));
