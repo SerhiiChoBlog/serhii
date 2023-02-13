@@ -10,4 +10,19 @@ enum SocialName: string
     case TELEGRAM = 'telegram';
     case FACEBOOK = 'facebook';
     case CLIPBOARD = 'clipboard';
+
+    /**
+     * @return SocialName[]
+     */
+    public static function all(): array
+    {
+        return [
+            self::TWITTER,
+            self::LINKEDIN,
+            self::REDDIT,
+            self::TELEGRAM,
+            self::FACEBOOK,
+            self::CLIPBOARD,
+        ];
+    }
 }
