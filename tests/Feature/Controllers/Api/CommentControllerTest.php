@@ -6,6 +6,7 @@ namespace Tests\Feature\Controllers\Api;
 
 use App\Enums\UserRole;
 use App\Events\CommentApproved;
+use App\Jobs\SendAdminEmail;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Role;
@@ -13,6 +14,7 @@ use App\Models\User;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
@@ -27,6 +29,7 @@ class CommentControllerTest extends TestCase
     {
         parent::setUp();
         Event::fake();
+        Queue::fake();
     }
 
     public function test_you_can_get_comments(): void
@@ -473,5 +476,37 @@ class CommentControllerTest extends TestCase
         ]);
 
         $this->assertDatabaseEmpty('comments');
+    }
+
+    public function test_posting_comment_queues_the_job_for_sending_admin_email(): void
+    {
+        $user = User::factory()->create();
+        $post = Post::factory()->create();
+
+        $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => 'Hello! Thank you for your post!',
+        ]);
+
+        Queue::assertPushed(SendAdminEmail::class);
+    }
+
+    public function test_posting_comment_as_admin_doesnt_queue_the_job_for_sending_admin_email(): void
+    {
+        $user = User::factory()->create();
+
+        $role = Role::factory()->create(['name' => UserRole::ADMIN]);
+        $user->roles()->attach($role->id);
+
+        $post = Post::factory()->create();
+
+        $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => 'Hello! Thank you for your post!',
+        ]);
+
+        Queue::assertNotPushed(SendAdminEmail::class);
     }
 }
