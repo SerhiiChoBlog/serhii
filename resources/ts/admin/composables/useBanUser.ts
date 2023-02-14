@@ -6,6 +6,7 @@ import showToast from '@shared/modules/showToast'
 
 export default (userSlug: string) => {
     const user = ref<User | null>(null)
+    const disapproveComments = ref(false)
     const loading = ref(false)
     const comment = ref('')
 
@@ -48,6 +49,7 @@ export default (userSlug: string) => {
         const params = {
             user_id: user.value.id,
             comment: comment.value,
+            disapprove_comments: disapproveComments.value,
         }
 
         axios.post(url, params)
@@ -62,6 +64,7 @@ export default (userSlug: string) => {
         user,
         loading,
         comment,
+        disapproveComments,
         ban,
         fetchUser,
     }
