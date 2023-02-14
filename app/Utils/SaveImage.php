@@ -23,15 +23,15 @@ trait SaveImage
 
 
         Image::make($photo)
-             ->fit(100, 50, fn($constraint) => $constraint->upsize())
-             ->save("{$path_xs}/{$image_name}");
+            ->fit(100, 50, fn ($constraint) => $constraint->upsize())
+            ->save("{$path_xs}/{$image_name}");
 
         Image::make($photo)
-            ->fit(550, 275, fn($constraint) => $constraint->upsize())
+            ->fit(550, 275, fn ($constraint) => $constraint->upsize())
             ->save("{$path_sm}/{$image_name}");
 
         Image::make($photo)
-            ->fit(1000, 500, fn($constraint) => $constraint->upsize())
+            ->fit(1000, 500, fn ($constraint) => $constraint->upsize())
             ->save("{$path_lg}/{$image_name}");
 
         return [

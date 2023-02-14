@@ -42,7 +42,7 @@ class PostFactory extends Factory
     public function title(string $title): static
     {
         return $this->state(
-            fn(array $attributes) => [
+            fn (array $attributes) => [
                 'title' => $title,
                 'slug' => str($title)->slug(),
             ],

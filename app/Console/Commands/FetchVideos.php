@@ -98,7 +98,7 @@ class FetchVideos extends Command
      */
     private function createMissingVideos(Collection $yt_videos, Collection $videos): int
     {
-        $new = $yt_videos->filter(fn(YTVideo $v) => !$videos->contains('id', $v->id->video_id));
+        $new = $yt_videos->filter(fn (YTVideo $v) => !$videos->contains('id', $v->id->video_id));
 
         $new->each(function (YTVideo $v) {
             $this->updateVideoInDatabase(new Video(), $v);
