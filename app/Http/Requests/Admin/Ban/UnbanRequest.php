@@ -13,7 +13,7 @@ class UnbanRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return auth()->check();
+        return auth('admin')->check();
     }
 
     /**
