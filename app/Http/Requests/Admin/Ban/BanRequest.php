@@ -9,6 +9,7 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * @property int $user_id
  * @property string $comment
+ * @property bool|null $disapprove_comments
  */
 class BanRequest extends FormRequest
 {
@@ -25,6 +26,7 @@ class BanRequest extends FormRequest
         return [
             'user_id' => ['required', 'integer'],
             'comment' => ['required', 'string', 'min:5', 'max:190'],
+            'disapprove_comments' => ['nullable', 'boolean'],
         ];
     }
 }

@@ -27,9 +27,11 @@ class BanController extends Controller
 
         $user->ban()->create(['comment' => $request->comment]);
 
-        $user->comments()->where('is_approved', true)->update([
-            'is_approved' => false,
-        ]);
+        if ($request->boolean('disapprove_comments')) {
+            $user->comments()
+                ->where('is_approved', true)
+                ->update(['is_approved' => false]);
+        }
     }
 
     public function unban(UnbanRequest $request): void
