@@ -9,7 +9,14 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const userSlug = router.currentRoute.value.params.slug as string
 
-const { user, loading, comment, ban, fetchUser } = useBanUser(userSlug)
+const {
+    user,
+    loading,
+    comment,
+    disapproveComments,
+    ban,
+    fetchUser,
+} = useBanUser(userSlug)
 const { deleteComments } = useDeleteUserComments(userSlug)
 
 async function deleteAllComments(): Promise<void> {
@@ -41,6 +48,19 @@ async function deleteAllComments(): Promise<void> {
                     minlength="5"
                     maxlength="190"
                     :disabled="user.ban"
+                />
+            </div>
+
+
+            <div class="mt-5">
+                <label for="disapprove-comments">
+                    Disapprove all comments
+                </label>
+                <input
+                    id="disapprove-comments"
+                    type="checkbox"
+                    v-model="disapproveComments"
+                    class="ml-2"
                 />
             </div>
 
