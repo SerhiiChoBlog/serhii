@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers\Api;
 
-use App\Enums\UserRole;
 use App\Events\CommentApproved;
 use App\Jobs\NewCommentAdminEmail;
 use App\Models\Comment;
 use App\Models\Post;
-use App\Models\Role;
 use App\Models\User;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
@@ -288,11 +286,7 @@ class CommentControllerTest extends TestCase
 
     public function test_admin_can_post_many_comments(): void
     {
-        $user = User::factory()->create();
-
-        $role = Role::factory()->create(['name' => UserRole::ADMIN]);
-        $user->roles()->attach($role);
-
+        $user = $this->createAdmin();
         $post = Post::factory()->create();
 
         $fields = [
@@ -333,11 +327,7 @@ class CommentControllerTest extends TestCase
 
     public function test_posting_comment_returns_current_date_for_admin(): void
     {
-        $user = User::factory()->create();
-
-        $role = Role::factory()->create(['name' => UserRole::ADMIN]);
-        $user->roles()->attach($role);
-
+        $user = $this->createAdmin();
         $post = Post::factory()->create();
 
         $resp = $this->json('post', self::POST_COMMENT_URI, [
@@ -494,11 +484,7 @@ class CommentControllerTest extends TestCase
 
     public function test_posting_comment_as_admin_doesnt_queue_the_job_for_sending_admin_email(): void
     {
-        $user = User::factory()->create();
-
-        $role = Role::factory()->create(['name' => UserRole::ADMIN]);
-        $user->roles()->attach($role->id);
-
+        $user = $this->createAdmin();
         $post = Post::factory()->create();
 
         $this->json('post', self::POST_COMMENT_URI, [
