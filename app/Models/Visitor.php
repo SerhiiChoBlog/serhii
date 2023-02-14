@@ -131,7 +131,8 @@ class Visitor extends Model
     private static function getRealPosition(string $ip): ?Position
     {
         try {
-            return app(Location::class)->get($ip);
+            $result = app(Location::class)->get($ip);
+            return is_bool($result) ? null : $result;
         } catch (Throwable $e) {
             Log::warning($e->getMessage());
             return null;
