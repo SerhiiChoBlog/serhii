@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers\Api;
 
+use App\Models\Ban;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
@@ -80,7 +81,7 @@ class BanControllerTest extends TestCase
             ->post(self::BAN_URI, $params)
             ->assertOk();
 
-        $this->assertNull($user->fresh()->remember_token);
+        $this->assertNull($user->fresh()?->remember_token);
         $this->assertDatabaseHas('bans', $params);
     }
 
@@ -169,5 +170,23 @@ class BanControllerTest extends TestCase
         $this->assertSame(3, $comments);
 
         $this->assertDatabaseCount('bans', 1);
+    }
+
+    public function test_admin_can_unban_user(): void
+    {
+        $user = User::factory()->create();
+        Ban::factory()->create(['user_id' => $user]);
+
+        $this->assertDatabaseCount('bans', 1);
+
+        $admin = $this->createAdmin();
+
+        $params = ['user_id' => $user->id];
+
+        $this->actingAs($admin, 'admin')
+             ->post(self::UNBAN_URI, $params)
+             ->assertOk();
+
+        $this->assertDatabaseEmpty('bans');
     }
 }
