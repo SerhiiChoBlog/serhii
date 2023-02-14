@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Controllers\Api;
 
-use App\Enums\UserRole;
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
@@ -20,10 +18,7 @@ class BanControllerTest extends TestCase
     public function test_admin_can_ban_user(): void
     {
         $user = User::factory()->create();
-        $admin = User::factory()->create();
-
-        $role = Role::factory()->create(['name' => UserRole::ADMIN]);
-        $admin->roles()->attach($role->id);
+        $admin = $this->createAdmin();
 
         $params = [
             'user_id' => $user->id,
@@ -53,7 +48,6 @@ class BanControllerTest extends TestCase
 
         $this->assertDatabaseEMpty('bans');
     }
-
 
     public function test_guest_cannot_ban_user(): void
     {
