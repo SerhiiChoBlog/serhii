@@ -25,6 +25,7 @@ test:
 	./vendor/bin/phpunit
 
 check:
+	./vendor/bin/pint --test
 	make stan
 	make cs
 	make test
