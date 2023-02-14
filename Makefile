@@ -16,9 +16,6 @@ cache-clear:
 stan:
 	php -d memory_limit=2G ./vendor/bin/phpstan analyse
 
-cs:
-	./vendor/bin/phpcs app --colors -p
-
 test:
 	rm -f database/database.sqlite
 	touch database/database.sqlite
@@ -27,7 +24,6 @@ test:
 check:
 	./vendor/bin/pint --test
 	make stan
-	make cs
 	make test
 
 sitemap:
