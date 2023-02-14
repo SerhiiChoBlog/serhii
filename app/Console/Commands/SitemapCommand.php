@@ -106,7 +106,7 @@ class SitemapCommand extends Command
     private function taggedPosts(): array
     {
         return Tag::query()
-            ->whereHas('posts', fn(Builder $q) => $q->where('is_published', true))
+            ->whereHas('posts', fn (Builder $q) => $q->where('is_published', true))
             ->get()
             ->map(function (Tag $tag) {
                 return Url::create(route('posts.index', compact('tag')))
@@ -169,7 +169,7 @@ class SitemapCommand extends Command
                 $url = $url->addImage($page['image']['url'], $page['image']['title']);
             }
 
-             $result[] = $url;
+            $result[] = $url;
         }
 
         return $result;

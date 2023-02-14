@@ -26,7 +26,7 @@ class PostController extends Controller
             ->latest();
 
         if ($request->tag) {
-            $query = $query->whereHas('tags', fn(Builder $q) => $q->where('name', $request->tag));
+            $query = $query->whereHas('tags', fn (Builder $q) => $q->where('name', $request->tag));
         }
 
         return $query->simplePaginate(10)->appends($request->input());

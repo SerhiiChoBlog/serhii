@@ -32,7 +32,6 @@ class SubscriptionNotifyTest extends TestCase
         Post published:
         "$post->title"
         TEXT;
-
     }
 
     public function test_cannot_notify_post_publication_when_it_is_already_notified(): void

@@ -22,6 +22,6 @@ class SocialShareController extends Controller
                 $post->social = $post->socialShares->groupBy('social')->toArray();
                 return $post;
             })
-            ->filter(fn(Post $post) => !empty($post->social));
+            ->filter(fn (Post $post) => !empty($post->social));
     }
 }

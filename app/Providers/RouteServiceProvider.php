@@ -42,6 +42,6 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function configureRateLimiting(): void
     {
-        RateLimiter::for('api', static fn(Request $request) => Limit::none());
+        RateLimiter::for('api', static fn (Request $request) => Limit::none());
     }
 }
