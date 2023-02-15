@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Video;
 use App\Ttl;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
@@ -33,6 +34,9 @@ class HomeController extends Controller
             return Post::with('tags:name,color,title')
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time')
                 ->whereNotIn('id', array_column($last_posts, 'id'))
+                ->whereDoesntHave('tags', function (Builder $q) {
+                    return $q->whereIn('name', ['philosophy', 'wordpress', 'story']);
+                })
                 ->where('is_published', true)
                 ->limit(3)
                 ->inRandomOrder()
