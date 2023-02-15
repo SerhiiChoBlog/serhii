@@ -93,7 +93,7 @@ class RegisterTest extends TestCase
         ];
 
         $this->post(route('register'), $form_data)
-             ->assertSessionHasErrors('email');
+            ->assertSessionHasErrors('email');
     }
 
     public function test_user_cannot_register_with_existing_email(): void
@@ -132,7 +132,7 @@ class RegisterTest extends TestCase
         ];
 
         $this->post(route('register'), $form_data)
-             ->assertSessionHasErrors('name');
+            ->assertSessionHasErrors('name');
     }
 
     public function test_user_cannot_register_with_long_name(): void
@@ -144,7 +144,7 @@ class RegisterTest extends TestCase
         ];
 
         $this->post(route('register'), $form_data)
-             ->assertSessionHasErrors('name');
+            ->assertSessionHasErrors('name');
     }
 
     public function test_user_cannot_register_with_empty_name(): void
@@ -156,7 +156,7 @@ class RegisterTest extends TestCase
         ];
 
         $this->post(route('register'), $form_data)
-             ->assertSessionHasErrors('name');
+            ->assertSessionHasErrors('name');
     }
 
     public function test_user_cannot_register_with_empty_email(): void
@@ -168,7 +168,7 @@ class RegisterTest extends TestCase
         ];
 
         $this->post(route('register'), $form_data)
-             ->assertSessionHasErrors('email');
+            ->assertSessionHasErrors('email');
     }
 
     public function test_user_has_slug_after_registration(): void

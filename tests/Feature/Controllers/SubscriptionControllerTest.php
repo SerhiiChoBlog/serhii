@@ -27,7 +27,7 @@ class SubscriptionControllerTest extends TestCase
     public function test_you_will_be_redirected_if_subscription_not_found(): void
     {
         $this->get(route('subscriptions.confirm', 'ilskfjas'))
-             ->assertRedirect(route('subscriptions.error'));
+            ->assertRedirect(route('subscriptions.error'));
     }
 
     public function test_you_can_decline_subscription(): void
@@ -35,7 +35,7 @@ class SubscriptionControllerTest extends TestCase
         $sub = Subscription::factory()->create();
 
         $this->get(route('subscriptions.decline', $sub->slug))
-             ->assertViewIs('subscriptions.decline');
+            ->assertViewIs('subscriptions.decline');
 
         $this->assertDatabaseMissing('subscriptions', [
             'id' => $sub->id,
@@ -45,6 +45,6 @@ class SubscriptionControllerTest extends TestCase
     public function test_if_subscription_not_found_it_will_still_show_decline_page(): void
     {
         $this->get(route('subscriptions.decline', 'sdfsdfaj'))
-             ->assertViewIs('subscriptions.decline');
+            ->assertViewIs('subscriptions.decline');
     }
 }

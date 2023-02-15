@@ -11,7 +11,7 @@ trait RedirectToProfile
 {
     protected function redirectTo(): string
     {
-        return User::isAdmin(request('email'))
+        return User::isAdmin('email', request('email'))
             ? RouteServiceProvider::ADMIN_HOME
             : RouteServiceProvider::USER_HOME;
     }

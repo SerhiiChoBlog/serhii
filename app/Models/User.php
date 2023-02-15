@@ -99,20 +99,22 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Ban::class);
     }
 
-    public static function isAdmin(?string $email): bool
+    public static function isAdmin(string $field, ?string $value): bool
     {
-        if (!$email) {
+        if (!$value) {
             return false;
         }
 
         /** @var User|null $user */
-        $user = self::query()->select('id', 'email')->where('email', $email)->first();
+        $user = self::query()->select('id', $field)->where($field, $value)->first();
+
         return $user?->hasRole(UserRole::ADMIN) ?? false;
     }
 
     public static function generateSecret(string $email): string
     {
         $chunks = md5($email);
+
         $str1 = Str::random(9);
         $str2 = Str::random(9);
 

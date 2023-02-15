@@ -72,14 +72,14 @@ class CommentControllerTest extends TestCase
         ]);
 
         $this->json('get', self::GET_COMMENTS_URI)
-             ->assertOk()
-             ->assertJsonFragment([
-                 'id' => $nested_comment->id,
-                 'comment' => $reply,
-                 'user_id' => $user->id,
-                 'post_id' => $post->id,
-                 'comment_id' => $comment->id,
-             ]);
+            ->assertOk()
+            ->assertJsonFragment([
+                'id' => $nested_comment->id,
+                'comment' => $reply,
+                'user_id' => $user->id,
+                'post_id' => $post->id,
+                'comment_id' => $comment->id,
+            ]);
     }
 
     public function test_you_can_create_comment(): void
@@ -93,7 +93,7 @@ class CommentControllerTest extends TestCase
             'secret' => $user->secret,
             'comment' => $text,
         ])
-             ->assertOk();
+            ->assertOk();
 
         $this->assertDatabaseHas('comments', [
             'user_id' => $user->id,
