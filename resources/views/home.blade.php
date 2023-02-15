@@ -1,6 +1,6 @@
 @php
     /**
-     * @var array<int, array<int ,mixed>> $random_posts
+     * @var array<int, array<int ,mixed>> $popular_posts
      * @var array<int, array<int ,mixed>> $latest_posts
      * @var array<int, array<int ,mixed>> $latest_videos
      */
@@ -9,11 +9,12 @@
 
 @section('content')
     <x-hero
-        class="relative bg-home-hero-sm lg:bg-home-hero bg-blend-overlay bg-cover md:bg-fixed bg-center bg-no-repeat"
+        class="relative bg-home-hero-sm lg:bg-home-hero bg-blend-overlay bg-cover md:bg-fixed bg-center bg-no-repeat shadow-lg"
         navbar="text-white"
     >
         <div>
-            <div class="absolute left-0 right-0 top-0 bottom-0 bg-gradient-to-r from-gray-900/80 via-gray-900/80 to-gray-900/50"></div>
+            <div
+                class="absolute left-0 right-0 top-0 bottom-0 bg-gradient-to-r from-gray-900/80 via-gray-900/80 to-gray-900/50"></div>
 
             <div class="relative z-10 text-center pt-20 pb-32">
                 <h1 class="text-2xl lg:text-4xl" aria-label="Serhii Cho">
@@ -29,35 +30,37 @@
                     <div class="min-h-[44px] lg:min-h-[60px]"></div>
                 </search>
 
-                <x-home.tag-suggestions />
-                <x-home.read-blog-button />
+                <x-home.tag-suggestions/>
+                <x-home.read-blog-button/>
             </div>
         </div>
     </x-hero>
 
-    <div class="container">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 -translate-y-16 lg:translate-y-0 bg-page p-2 rounded-xl">
-            @foreach ($random_posts as $post)
-                <div
-                    class="bg-page p-3 rounded-xl {{ $loop->index === 1 ? 'lg:-translate-y-16' : 'lg:-translate-y-7' }}"
-                >
-                    <x-posts.vertical-post :post="$post" />
-                </div>
-            @endforeach
-        </div>
-    </div>
-
     <x-home.section
         title="Latest articles"
-        intro="The latest published posts in the blog" isDark="true"
+        intro="The latest published posts in the blog"
     >
-        @foreach ($latest_posts as $post)
-            <x-posts.horizontal-post :post="$post" />
-        @endforeach
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-0 md:gap-5">
+            @foreach ($latest_posts as $post)
+                <x-posts.vertical-post :post="$post" />
+            @endforeach
+        </div>
+    </x-home.section>
+
+    <x-home.section
+        title="Popular articles"
+        intro="The most viewed and loved articles"
+        isDark="true"
+    >
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-0 md:gap-5">
+            @foreach ($popular_posts as $post)
+                <x-posts.vertical-post :post="$post" />
+            @endforeach
+        </div>
     </x-home.section>
 
     <x-home.section title="Latest videos"
-        intro="The latest YouTube videos"
+                    intro="The latest YouTube videos"
     >
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             @foreach ($latest_videos as $video)
@@ -94,6 +97,6 @@
     </x-home.section>
 
     <x-home.section title="Coming soon" intro="The articles which I'm currently working on" :isDark="true">
-        <x-home.coming-soon-section />
+        <x-home.coming-soon-section/>
     </x-home.section>
 @endsection

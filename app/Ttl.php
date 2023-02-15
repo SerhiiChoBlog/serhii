@@ -7,5 +7,6 @@ namespace App;
 abstract class Ttl
 {
     public const MINUTE = 60;
-    public const HOUR = self::MINUTE * 60;
+    public const HOUR = 3600;
+    public const DAY = 86_400;
 }

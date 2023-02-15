@@ -9,7 +9,6 @@ use App\Models\Post;
 use App\Models\Video;
 use App\Ttl;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
@@ -18,7 +17,7 @@ class HomeController extends Controller
     {
         return view('home', [
             'latest_posts' => $this->getLatestPosts(),
-            'random_posts' => $this->getRandomPosts(),
+            'popular_posts' => $this->getPopularPosts(),
             'latest_videos' => $this->getLatestVideos(),
         ]);
     }
@@ -26,20 +25,20 @@ class HomeController extends Controller
     /**
      * @return array<int, array<int, mixed>>
      */
-    private function getRandomPosts(): array
+    private function getPopularPosts(): array
     {
-        return Cache::remember(CacheKey::HOME_RANDOM_POSTS, Ttl::HOUR, static function () {
+        Cache::forget(CacheKey::HOME_POPULAR_POSTS);
+
+        return Cache::remember(CacheKey::HOME_POPULAR_POSTS, Ttl::DAY, static function () {
             $last_posts = Cache::get(CacheKey::LAST_POSTS);
 
             return Post::with('tags:name,color,title')
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time')
+                ->withCount('postViews')
+                ->orderByDesc('post_views_count')
                 ->whereNotIn('id', array_column($last_posts, 'id'))
-                ->whereDoesntHave('tags', function (Builder $q) {
-                    return $q->whereIn('name', ['philosophy', 'wordpress', 'story']);
-                })
                 ->where('is_published', true)
-                ->limit(3)
-                ->inRandomOrder()
+                ->limit(4)
                 ->get()
                 ->toArray();
         });
@@ -56,7 +55,7 @@ class HomeController extends Controller
                 ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time')
                 ->where('is_published', true)
                 ->orderByDesc('created_at')
-                ->limit(3)
+                ->limit(4)
                 ->get()
                 ->toArray();
         });

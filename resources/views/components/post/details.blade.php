@@ -15,6 +15,6 @@
     @endif
 
     @if (isset($post['read_time']) && $post['read_time'] > 0)
-        <span>{{ $post['read_time'] }} minutes read</span>
+        <span>{{ $post['read_time'] }} mins read</span>
     @endif
 </div>
