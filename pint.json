@@ -13,6 +13,10 @@
         "trim_array_spaces": true,
         "combine_consecutive_issets": true,
         "combine_consecutive_unsets": true,
+        "fully_qualified_strict_types": true,
+        "global_namespace_import": {
+            "import_classes": true
+        },
         "standardize_not_equals": true,
         "no_empty_phpdoc": true,
         "constant_case": {
