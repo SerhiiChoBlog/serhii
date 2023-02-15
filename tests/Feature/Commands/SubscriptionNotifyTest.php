@@ -30,7 +30,7 @@ class SubscriptionNotifyTest extends TestCase
         - Notified: {$notified} subscribers;
         - Skipped: {$skipped} subscribers;
         Post published:
-        "$post->title"
+        "{$post->title}"
         TEXT;
     }
 
@@ -42,7 +42,7 @@ class SubscriptionNotifyTest extends TestCase
         PostPublication::query()->create(['post_id' => $post->id]);
 
         $this->artisan('subscriptions:notify')
-            ->expectsOutput("Subscribers were already notified with post:\n\"$post->title\"")
+            ->expectsOutput("Subscribers were already notified with post:\n\"{$post->title}\"")
             ->assertFailed();
 
         Notification::assertNothingSent();

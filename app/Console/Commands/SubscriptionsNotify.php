@@ -35,7 +35,7 @@ class SubscriptionsNotify extends Command
         $errors = [];
 
         if ($this->hasPublicationWithThisPost($last_post->id)) {
-            $this->warn("<fg=red>Subscribers were already notified with post:\n</><fg=blue>\"$last_post->title\"</>");
+            $this->warn("<fg=red>Subscribers were already notified with post:\n</><fg=blue>\"{$last_post->title}\"</>");
             return 1;
         }
 
@@ -65,7 +65,7 @@ class SubscriptionsNotify extends Command
         - Notified: {$info['people_notified']} subscribers;
         - Skipped: {$info['people_skipped']} subscribers;
         Post published:
-        <fg=blue>"$last_post->title"</>
+        <fg=blue>"{$last_post->title}"</>
         TEXT;
 
         $this->info($msg);

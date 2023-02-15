@@ -25,7 +25,7 @@ class UpdatePostTest extends TestCase
         ];
 
         $slug = $this->actingAs($user, 'admin')
-            ->put("/admin/ajax/posts/$post->id", $data)
+            ->put("/admin/ajax/posts/{$post->id}", $data)
             ->content();
 
         $this->assertEquals(str($data['title'])->slug(), $slug);
