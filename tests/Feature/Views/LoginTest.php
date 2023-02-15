@@ -35,8 +35,8 @@ class LoginTest extends TestCase
         $user = User::factory()->make();
 
         $this->actingAs($user, 'user')
-             ->get(route('login'))
-             ->assertRedirect();
+            ->get(route('login'))
+            ->assertRedirect();
     }
 
     public function test_user_can_login_and_see_profile_page(): void
@@ -90,7 +90,7 @@ class LoginTest extends TestCase
         ];
 
         $this->post(route('login'), $form_data)
-             ->assertSessionHasErrors('email');
+            ->assertSessionHasErrors('email');
     }
 
     public function test_remember_me_token_is_set(): void

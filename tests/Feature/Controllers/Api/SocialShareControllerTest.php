@@ -22,8 +22,8 @@ class SocialShareControllerTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->post = Post::factory()->create();
-        $this->uri = "/api/social-shares/{$this->post->id}";
+        $this->post    = Post::factory()->create();
+        $this->uri     = "/api/social-shares/{$this->post->id}";
         $this->visitor = Visitor::factory()->create();
     }
 
@@ -32,14 +32,14 @@ class SocialShareControllerTest extends TestCase
         $params = ['social' => SocialName::TELEGRAM];
 
         $this->json('post', $this->uri, $params, [
-            'REMOTE_ADDR' => $this->visitor->ip
+            'REMOTE_ADDR' => $this->visitor->ip,
         ]);
 
         $this->assertDatabaseHas('social_shares', [
             'post_id' => $this->post->id,
             'user_id' => null,
             'visitor_id' => $this->visitor->id,
-            'social' => $params['social']
+            'social' => $params['social'],
         ]);
     }
 
@@ -53,14 +53,14 @@ class SocialShareControllerTest extends TestCase
         ];
 
         $this->json('post', $this->uri, $params, [
-            'REMOTE_ADDR' => $this->visitor->ip
+            'REMOTE_ADDR' => $this->visitor->ip,
         ]);
 
         $this->assertDatabaseHas('social_shares', [
             'post_id' => $this->post->id,
             'user_id' => $user->id,
             'visitor_id' => $this->visitor->id,
-            'social' => $params['social']
+            'social' => $params['social'],
         ]);
     }
 
@@ -69,11 +69,11 @@ class SocialShareControllerTest extends TestCase
         $params = ['social' => SocialName::LINKEDIN];
 
         $this->json('post', $this->uri, $params, [
-            'REMOTE_ADDR' => $this->visitor->ip
+            'REMOTE_ADDR' => $this->visitor->ip,
         ]);
 
         $this->json('post', $this->uri, $params, [
-            'REMOTE_ADDR' => $this->visitor->ip
+            'REMOTE_ADDR' => $this->visitor->ip,
         ]);
 
         $this->assertDatabaseCount('social_shares', 1);
@@ -84,7 +84,23 @@ class SocialShareControllerTest extends TestCase
         $params = ['social' => 'unknown'];
 
         $this->json('post', $this->uri, $params, [
-            'REMOTE_ADDR' => $this->visitor->ip
+            'REMOTE_ADDR' => $this->visitor->ip,
+        ]);
+
+        $this->assertDatabaseEmpty('social_shares');
+    }
+
+    public function test_admin_share_doesnt_count(): void
+    {
+        $admin = $this->createAdmin();
+
+        $params = [
+            'social' => SocialName::LINKEDIN,
+            'secret' => $admin->secret,
+        ];
+
+        $this->json('post', $this->uri, $params, [
+            'REMOTE_ADDR' => $this->visitor->ip,
         ]);
 
         $this->assertDatabaseEmpty('social_shares');

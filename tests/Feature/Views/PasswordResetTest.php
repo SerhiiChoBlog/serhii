@@ -28,8 +28,8 @@ class PasswordResetTest extends TestCase
 
         $this->actingAs($user)
             ->get(route('password.request'))
-             ->assertViewIs('auth.passwords.email')
-             ->assertOk();
+            ->assertViewIs('auth.passwords.email')
+            ->assertOk();
     }
 
     public function test_user_receives_email_after_requesting_password_reset(): void

@@ -55,6 +55,6 @@ class PostTest extends TestCase
         $post = Post::factory()->published()->title($post_title)->create();
 
         $this->get(route('posts.show', $post))
-             ->assertSeeText($post_title);
+            ->assertSeeText($post_title);
     }
 }

@@ -29,7 +29,9 @@ class SocialShareController extends Controller
             return;
         }
 
-        if (!$visitor) {
+        $is_admin = $request->secret && User::isAdmin('secret', $request->secret);
+
+        if (!$visitor || $is_admin) {
             return;
         }
 

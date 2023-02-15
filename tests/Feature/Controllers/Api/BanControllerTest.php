@@ -101,8 +101,8 @@ class BanControllerTest extends TestCase
             ->assertOk();
 
         $this->actingAs($admin, 'admin')
-             ->post(self::BAN_URI, $params)
-             ->assertOk();
+            ->post(self::BAN_URI, $params)
+            ->assertOk();
 
         $this->assertDatabaseCount('bans', 1);
     }
@@ -160,7 +160,7 @@ class BanControllerTest extends TestCase
         $admin = $this->createAdmin();
 
         $this->actingAs($admin, 'admin')
-             ->post(self::BAN_URI, $params);
+            ->post(self::BAN_URI, $params);
 
         $comments = $user
             ->comments()
@@ -184,8 +184,8 @@ class BanControllerTest extends TestCase
         $params = ['user_id' => $user->id];
 
         $this->actingAs($admin, 'admin')
-             ->post(self::UNBAN_URI, $params)
-             ->assertOk();
+            ->post(self::UNBAN_URI, $params)
+            ->assertOk();
 
         $this->assertDatabaseEmpty('bans');
     }
