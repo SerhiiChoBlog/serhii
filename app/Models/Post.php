@@ -141,7 +141,7 @@ class Post extends Model
                 return '';
             }
 
-            return $this->created_at->format('F j, Y');
+            return $this->created_at->format('M j, Y');
         });
     }
 
