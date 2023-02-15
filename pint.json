@@ -4,15 +4,20 @@
         "declare_strict_types": true,
         "strict_comparison": true,
         "no_unused_imports": true,
-        "constant_case": {
-            "case": "lower"
-        },
         "explicit_string_variable": true,
         "native_function_casing": true,
         "native_function_type_declaration_casing": true,
         "array_indentation": true,
+        "combine_consecutive_issets": true,
+        "combine_consecutive_unsets": true,
+        "constant_case": {
+            "case": "lower"
+        },
         "array_syntax": {
             "syntax": "short"
+        },
+        "concat_space": {
+            "spacing": "one"
         }
     }
 }
