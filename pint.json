@@ -14,6 +14,8 @@
         "combine_consecutive_issets": true,
         "combine_consecutive_unsets": true,
         "fully_qualified_strict_types": true,
+        "method_chaining_indentation": true,
+        "blank_line_before_statement": false,
         "global_namespace_import": {
             "import_classes": true
         },
