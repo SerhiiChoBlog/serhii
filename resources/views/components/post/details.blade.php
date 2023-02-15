@@ -9,11 +9,6 @@
 
     <span aria-hidden="true">&#8226;</span>
 
-    @if (isset($post['post_views_count']) && $post['post_views_count'] > 99)
-        <span>{{ $post['post_views_count'] }} views</span>
-        <span aria-hidden="true">&#8226;</span>
-    @endif
-
     @if (isset($post['read_time']) && $post['read_time'] > 0)
         <span>{{ $post['read_time'] }} mins read</span>
     @endif

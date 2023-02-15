@@ -52,7 +52,15 @@
                         </h1>
 
                         <x-post.tags :tags="$post->tags" class="text-sm mt-5 !gap-3" />
-                        <x-post.details :post="$post->toArray()" class="mt-4" />
+
+                        <div class="flex items-center gap-2 mt-4">
+                            <x-post.details :post="$post->toArray()" />
+
+                            @if (isset($post['post_views_count']) && $post['post_views_count'] > 99)
+                                <span aria-hidden="true" class="opacity-70">&#8226;</span>
+                                <span class="opacity-70">{{ $post['post_views_count'] }} views</span>
+                            @endif
+                        </div>
 
                         @if (auth('admin')->check())
                             <div class="mt-4" aria-hidden="true">
