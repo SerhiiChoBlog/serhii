@@ -46,7 +46,7 @@ class TagController extends Controller
     public function search(string $word): Collection
     {
         return Tag::query()
-            ->where('name', 'LIKE', "%$word%")
+            ->where('name', 'LIKE', "%{$word}%")
             ->get();
     }
 }

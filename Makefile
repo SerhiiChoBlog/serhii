@@ -21,11 +21,11 @@ test:
 	touch database/database.sqlite
 	./vendor/bin/phpunit
 
-bint:
+pint:
 	./vendor/bin/pint
 
 check:
-	make bint
+	make pint
 	make stan
 	make test
 

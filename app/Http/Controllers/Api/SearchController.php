@@ -22,9 +22,9 @@ class SearchController extends Controller
             ->select('id', 'title', 'slug', 'image_sm')
             ->with('tags')
             ->where(static function (Builder $q) use ($query) {
-                $q->where('title', 'LIKE', "%$query%")
+                $q->where('title', 'LIKE', "%{$query}%")
                     ->orWhereHas('tags', static function (Builder $q) use ($query) {
-                        $q->where('name', 'LIKE', "%$query%");
+                        $q->where('name', 'LIKE', "%{$query}%");
                     });
             })
             ->where('is_published', true)
