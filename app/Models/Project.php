@@ -34,10 +34,10 @@ class Project extends Model
     public $timestamps = false;
 
     /**
-     * @var array<int, string>
+     * @var array<string, string>
      */
-    protected $dates = [
-        'created_at'
+    protected $casts = [
+        'created_at' => 'datetime',
     ];
 
     public static function getCachedProjects(): array

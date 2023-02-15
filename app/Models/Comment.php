@@ -43,10 +43,10 @@ class Comment extends Model
     protected $guarded = ['id'];
 
     /**
-     * @var array<int, string>
+     * @var array<string, string>
      */
-    protected $dates = [
-        'created_at',
+    protected $casts = [
+        'created_at' => 'datetime',
     ];
 
     /**
