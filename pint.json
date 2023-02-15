@@ -8,9 +8,13 @@
         "explicit_string_variable": true,
         "native_function_casing": true,
         "native_function_type_declaration_casing": true,
+        "ternary_to_null_coalescing": true,
         "array_indentation": true,
+        "trim_array_spaces": true,
         "combine_consecutive_issets": true,
         "combine_consecutive_unsets": true,
+        "standardize_not_equals": true,
+        "no_empty_phpdoc": true,
         "constant_case": {
             "case": "lower"
         },
@@ -19,6 +23,9 @@
         },
         "concat_space": {
             "spacing": "one"
+        },
+        "list_syntax": {
+            "syntax": "short"
         }
     }
 }
