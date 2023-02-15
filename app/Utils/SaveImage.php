@@ -12,7 +12,7 @@ trait SaveImage
 {
     public function savePhotoIfExist(?UploadedFile $photo, string $post_name): ?array
     {
-        if (is_null($photo)) {
+        if ($photo === null) {
             return null;
         }
 
