@@ -33,10 +33,6 @@ class Video extends Model
      */
     protected $casts = [
         'id' => 'string',
+        'published_at' => 'datetime',
     ];
-
-    /**
-     * @var array<int, string>
-     */
-    protected $dates = ['published_at'];
 }

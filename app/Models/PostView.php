@@ -24,9 +24,11 @@ class PostView extends Model
     public $timestamps = false;
 
     /**
-     * @var string[]
+     * @var array<string, string>
      */
-    protected $dates = ['created_at'];
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
 
     /**
      * @var string[]
