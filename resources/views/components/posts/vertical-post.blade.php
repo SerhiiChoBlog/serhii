@@ -20,9 +20,9 @@
     </a>
 
     <div class="py-5 px-2">
-        <h3 class="text-2xl font-semibold">{{ $post['title'] }}</h3>
+        <h2 class="text-xl font-semibold">{{ $post['title'] }}</h2>
 
-        <p class="mt-3 text-lg font-post">{{ $post['intro'] }}</p>
+        <p class="mt-3 text-md text-font-second">{{ $post['intro'] }}</p>
 
         <x-post.tags :tags="$post['tags']" class="text-[.8em] mt-4" />
         <x-post.details :post="$post" class="mt-3" />
