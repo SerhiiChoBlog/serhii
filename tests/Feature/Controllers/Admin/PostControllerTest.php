@@ -99,10 +99,10 @@ class PostControllerTest extends TestCase
 
         $admin = $this->createAdmin();
 
-        $images=  [
-            'storage/posts/xs/some-image.jpg',
-            'storage/posts/sm/some-image.jpg',
-            'storage/posts/lg/some-image.jpg',
+        $images = [
+            'image_xs' => 'storage/posts/xs/some-image.jpg',
+            'image_sm' => 'storage/posts/sm/some-image.jpg',
+            'image_lg' => 'storage/posts/lg/some-image.jpg',
         ];
 
         $post = Post::factory()->create($images);
@@ -121,9 +121,9 @@ class PostControllerTest extends TestCase
 
         $this->assertDatabaseHas('posts', [
             'id' => $post->id,
-            'image_sm' => "storage/posts/sm/{$post->slug}.jpg",
-            'image_lg' => "storage/posts/lg/{$post->slug}.jpg",
-            'image_xs' => "storage/posts/xs/{$post->slug}.jpg",
+            'image_sm' => 'storage/posts/sm/some-image.jpg',
+            'image_lg' => 'storage/posts/lg/some-image.jpg',
+            'image_xs' => 'storage/posts/xs/some-image.jpg',
         ]);
     }
 
