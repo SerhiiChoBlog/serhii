@@ -20,11 +20,11 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
-        $title = $this->faker->title();
+        $title = $this->faker->sentence(6);
 
         return [
             'title' => $title,
-            'intro' => $this->faker->paragraph(),
+            'intro' => $this->faker->sentence(15),
             'slug' => Str::slug($title),
             'is_published' => false,
         ];
