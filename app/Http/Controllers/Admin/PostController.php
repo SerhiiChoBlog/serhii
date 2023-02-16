@@ -98,12 +98,14 @@ class PostController extends Controller
 
         $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
 
-        if ($post->is_published || $request->is_published) {
+        if ($request->is_published) {
             Cache::forget(CacheKey::LAST_POSTS);
             Cache::forget(CacheKey::HOME_POPULAR_POSTS);
         }
 
-        if (!$post->is_published && $request->is_published) {
+        $first_time_publish = !$post->is_published && $request->is_published;
+
+        if ($first_time_publish) {
             $data = $data->merge(['created_at' => now()]);
             Artisan::call(SitemapCommand::class);
         }
