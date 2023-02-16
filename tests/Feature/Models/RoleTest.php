@@ -14,13 +14,13 @@ class RoleTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_role_can_be_created(): void
+    public function testRoleCanBeCreated(): void
     {
         Role::factory()->create(['name' => UserRole::ADMIN]);
         $this->assertDatabaseHas('roles', ['name' => UserRole::ADMIN]);
     }
 
-    public function test_role_has_users_associated(): void
+    public function testRoleHasUsersAssociated(): void
     {
         /** @var Role $role */
         $role = Role::factory()->create(['name' => UserRole::ADMIN]);

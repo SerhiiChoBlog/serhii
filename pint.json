@@ -13,9 +13,15 @@
         "trim_array_spaces": true,
         "combine_consecutive_issets": true,
         "combine_consecutive_unsets": true,
+        "no_multiline_whitespace_around_double_arrow": true,
         "fully_qualified_strict_types": true,
         "method_chaining_indentation": true,
-        "blank_line_before_statement": false,
+        "php_unit_method_casing": {
+            "case": "camel_case"
+        },
+        "php_unit_test_annotation": {
+            "style": "prefix"
+        },
         "global_namespace_import": {
             "import_classes": true
         },

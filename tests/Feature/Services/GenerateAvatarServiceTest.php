@@ -18,7 +18,7 @@ class GenerateAvatarServiceTest extends TestCase
         Storage::fake('public');
     }
 
-    public function test_service_saves_glavatar_image_if_exist(): void
+    public function testServiceSavesGlavatarImageIfExist(): void
     {
         $url = GlavatarAvatarGenerator::URL . '*';
 
@@ -35,7 +35,7 @@ class GenerateAvatarServiceTest extends TestCase
         $this->assertStringContainsString($user_slug, $image_name);
     }
 
-    public function test_service_saves_multiavatar_image(): void
+    public function testServiceSavesMultiavatarImage(): void
     {
         $user_slug = 'anna-korotchaeva';
 

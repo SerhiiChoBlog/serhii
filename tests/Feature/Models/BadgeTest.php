@@ -14,13 +14,13 @@ class BadgeTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_badge_can_be_created(): void
+    public function testBadgeCanBeCreated(): void
     {
         Badge::factory()->create(['name' => BadgeName::VERIFIED]);
         $this->assertDatabaseHas('badges', ['name' => BadgeName::VERIFIED]);
     }
 
-    public function test_badge_has_users_associated(): void
+    public function testBadgeHasUsersAssociated(): void
     {
         /** @var Badge $badge */
         $badge = Badge::factory()->create();

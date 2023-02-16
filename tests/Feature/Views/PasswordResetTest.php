@@ -14,14 +14,14 @@ class PasswordResetTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_guest_can_visit_the_page(): void
+    public function testGuestCanVisitThePage(): void
     {
         $this->get(route('password.request'))
             ->assertViewIs('auth.passwords.email')
             ->assertOk();
     }
 
-    public function test_user_can_visit_the_page(): void
+    public function testUserCanVisitThePage(): void
     {
         /** @var User $user */
         $user = User::factory()->create();
@@ -32,7 +32,7 @@ class PasswordResetTest extends TestCase
             ->assertOk();
     }
 
-    public function test_user_receives_email_after_requesting_password_reset(): void
+    public function testUserReceivesEmailAfterRequestingPasswordReset(): void
     {
         /** @var User $user */
         $user = User::factory()->create();

@@ -18,7 +18,7 @@ class PostControllerTest extends TestCase
     private const CREATE_POST_URI = '/admin/ajax/posts';
     private const UPDATE_POST_URI = '/admin/ajax/posts/';
 
-    public function test_user_cannot_create_post(): void
+    public function testUserCannotCreatePost(): void
     {
         $user = User::factory()->create();
 
@@ -30,7 +30,7 @@ class PostControllerTest extends TestCase
         $this->assertDatabaseEmpty('posts');
     }
 
-    public function test_admin_can_create_post(): void
+    public function testAdminCanCreatePost(): void
     {
         $admin = $this->createAdmin();
 
@@ -43,7 +43,7 @@ class PostControllerTest extends TestCase
         $this->assertDatabaseHas('posts', $params);
     }
 
-    public function test_admin_can_update(): void
+    public function testAdminCanUpdate(): void
     {
         $admin = $this->createAdmin();
         $post = Post::factory()->create();
@@ -63,7 +63,7 @@ class PostControllerTest extends TestCase
         $this->assertDatabaseHas('posts', $params);
     }
 
-    public function test_providing_image_file_will_save_them_to_storage(): void
+    public function testProvidingImageFileWillSaveThemToStorage(): void
     {
         Image::shouldReceive('make', 'fit', 'save')
             ->times(3)
@@ -79,6 +79,40 @@ class PostControllerTest extends TestCase
             'content' => 'This is some new content',
             'slug' => $post->slug,
             'image' => UploadedFile::fake()->image($img_name = 'some-image.jpg'),
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('put', self::UPDATE_POST_URI . $post->id, $params)
+            ->assertOk();
+
+        $this->assertDatabaseHas('posts', [
+            'id' => $post->id,
+            'image_sm' => "storage/posts/sm/{$post->slug}.jpg",
+            'image_lg' => "storage/posts/lg/{$post->slug}.jpg",
+            'image_xs' => "storage/posts/xs/{$post->slug}.jpg",
+        ]);
+    }
+
+    public function testNotProvidingImageFileWillKeepPostImagesUntouched(): void
+    {
+        Image::shouldReceive('make', 'fit', 'save')->times(0);
+
+        $admin = $this->createAdmin();
+
+        $images=  [
+            'storage/posts/xs/some-image.jpg',
+            'storage/posts/sm/some-image.jpg',
+            'storage/posts/lg/some-image.jpg',
+        ];
+
+        $post = Post::factory()->create($images);
+
+        $params = [
+            'title' => $post->title,
+            'intro' => 'This is a new intro for a new post',
+            'is_published' => false,
+            'content' => 'This is some nice new content',
+            'slug' => $post->slug,
         ];
 
         $this->actingAs($admin, 'admin')

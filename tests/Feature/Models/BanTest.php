@@ -13,7 +13,7 @@ class BanTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_ban_can_be_created(): void
+    public function testBanCanBeCreated(): void
     {
         $user = User::factory()->create();
 
@@ -27,7 +27,7 @@ class BanTest extends TestCase
         $this->assertDatabaseHas('bans', $attributes);
     }
 
-    public function test_ban_has_user_associated(): void
+    public function testBanHasUserAssociated(): void
     {
         $user = User::factory()->create();
 

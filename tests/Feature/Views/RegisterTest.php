@@ -25,14 +25,14 @@ class RegisterTest extends TestCase
         Notification::fake();
     }
 
-    public function test_guest_can_visit_page(): void
+    public function testGuestCanVisitPage(): void
     {
         $this->get(route('register'))
             ->assertOk()
             ->assertViewIs('auth.register');
     }
 
-    public function test_admin_cannot_visit_page_if_authenticated(): void
+    public function testAdminCannotVisitPageIfAuthenticated(): void
     {
         $admin = $this->createAdmin();
 
@@ -41,7 +41,7 @@ class RegisterTest extends TestCase
             ->assertRedirect(RouteServiceProvider::ADMIN_HOME);
     }
 
-    public function test_user_cannot_visit_page_if_authenticated(): void
+    public function testUserCannotVisitPageIfAuthenticated(): void
     {
         $user = User::factory()->make();
 
@@ -50,7 +50,7 @@ class RegisterTest extends TestCase
             ->assertRedirect(RouteServiceProvider::USER_HOME);
     }
 
-    public function test_user_can_register_and_see_profile_page(): void
+    public function testUserCanRegisterAndSeeProfilePage(): void
     {
         $form_data = [
             'name' => 'Anna Korotchaeva',
@@ -67,7 +67,7 @@ class RegisterTest extends TestCase
         ]);
     }
 
-    public function test_password_is_hashed_correctly(): void
+    public function testPasswordIsHashedCorrectly(): void
     {
         $form_data = [
             'name' => 'Anna Beauty',
@@ -84,7 +84,7 @@ class RegisterTest extends TestCase
         $this->assertTrue($password_matches);
     }
 
-    public function test_user_cannot_register_with_incorrect_email(): void
+    public function testUserCannotRegisterWithIncorrectEmail(): void
     {
         $form_data = [
             'name' => 'Anna Korotchaeva',
@@ -96,7 +96,7 @@ class RegisterTest extends TestCase
             ->assertSessionHasErrors('email');
     }
 
-    public function test_user_cannot_register_with_existing_email(): void
+    public function testUserCannotRegisterWithExistingEmail(): void
     {
         /** @var User $serhii */
         $serhii = User::factory()->create();
@@ -111,7 +111,7 @@ class RegisterTest extends TestCase
             ->assertSessionHasErrors('email');
     }
 
-    public function test_user_cannot_register_with_short_password(): void
+    public function testUserCannotRegisterWithShortPassword(): void
     {
         $form_data = [
             'name' => 'Anna Cho',
@@ -123,7 +123,7 @@ class RegisterTest extends TestCase
             ->assertSessionHasErrors('password');
     }
 
-    public function test_user_cannot_register_with_short_name(): void
+    public function testUserCannotRegisterWithShortName(): void
     {
         $form_data = [
             'name' => 'A',
@@ -135,7 +135,7 @@ class RegisterTest extends TestCase
             ->assertSessionHasErrors('name');
     }
 
-    public function test_user_cannot_register_with_long_name(): void
+    public function testUserCannotRegisterWithLongName(): void
     {
         $form_data = [
             'name' => 'Anna Korotchaeva is a beautiful and smart girl',
@@ -147,7 +147,7 @@ class RegisterTest extends TestCase
             ->assertSessionHasErrors('name');
     }
 
-    public function test_user_cannot_register_with_empty_name(): void
+    public function testUserCannotRegisterWithEmptyName(): void
     {
         $form_data = [
             'name' => '',
@@ -159,7 +159,7 @@ class RegisterTest extends TestCase
             ->assertSessionHasErrors('name');
     }
 
-    public function test_user_cannot_register_with_empty_email(): void
+    public function testUserCannotRegisterWithEmptyEmail(): void
     {
         $form_data = [
             'name' => 'Serhii Cho',
@@ -171,7 +171,7 @@ class RegisterTest extends TestCase
             ->assertSessionHasErrors('email');
     }
 
-    public function test_user_has_slug_after_registration(): void
+    public function testUserHasSlugAfterRegistration(): void
     {
         $form_data = [
             'name' => 'Serhii Cho',

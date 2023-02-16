@@ -12,12 +12,12 @@ class PostsTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_guest_can_visit_page(): void
+    public function testGuestCanVisitPage(): void
     {
         $this->get(route('posts.index'))->assertOk()->assertViewIs('posts.index');
     }
 
-    public function test_admin_can_visit_page(): void
+    public function testAdminCanVisitPage(): void
     {
         $user = User::factory()->make();
 
@@ -27,7 +27,7 @@ class PostsTest extends TestCase
             ->assertViewIs('posts.index');
     }
 
-    public function test_blog_page_redirects_to_posts(): void
+    public function testBlogPageRedirectsToPosts(): void
     {
         $this->get('/blog')->assertRedirect(route('posts.index'));
     }

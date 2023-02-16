@@ -18,7 +18,7 @@ class GiveUserCommentatorBadgeTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_listener_doesnt_give_user_a_badge_if_have_not_enough_comments(): void
+    public function testListenerDoesntGiveUserABadgeIfHaveNotEnoughComments(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -39,7 +39,7 @@ class GiveUserCommentatorBadgeTest extends TestCase
         $this->assertTrue($user->badges()->doesntExist());
     }
 
-    public function test_listener_gives_user_a_badge_if_have_enough_comments(): void
+    public function testListenerGivesUserABadgeIfHaveEnoughComments(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();

@@ -13,7 +13,7 @@ class AdminTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_admin_can_visit_admin_dashboard(): void
+    public function testAdminCanVisitAdminDashboard(): void
     {
         $admin = $this->createAdmin();
 
@@ -22,7 +22,7 @@ class AdminTest extends TestCase
             ->assertOk();
     }
 
-    public function test_user_cannot_visit_admin_dashboard(): void
+    public function testUserCannotVisitAdminDashboard(): void
     {
         $user = User::factory()->create();
 
@@ -31,7 +31,7 @@ class AdminTest extends TestCase
             ->assertRedirectToRoute('login');
     }
 
-    public function test_guest_cannot_visit_admin_dashboard(): void
+    public function testGuestCannotVisitAdminDashboard(): void
     {
         $this->get(RouteServiceProvider::ADMIN_HOME)->assertRedirectToRoute('login');
     }

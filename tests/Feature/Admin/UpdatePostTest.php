@@ -13,7 +13,7 @@ class UpdatePostTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_post_can_be_updated(): void
+    public function testPostCanBeUpdated(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();

@@ -16,7 +16,7 @@ class GiveUserVerifiedBadgeTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_user_gets_verified_badge(): void
+    public function testUserGetsVerifiedBadge(): void
     {
         $user = User::factory()->create();
 

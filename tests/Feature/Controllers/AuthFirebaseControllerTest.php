@@ -24,7 +24,7 @@ class AuthFirebaseControllerTest extends TestCase
         Storage::fake('public');
     }
 
-    public function test_request_creates_user_if_email_is_not_found(): void
+    public function testRequestCreatesUserIfEmailIsNotFound(): void
     {
         $params = [
             'name' => 'John Doe',
@@ -48,7 +48,7 @@ class AuthFirebaseControllerTest extends TestCase
         ]);
     }
 
-    public function test_request_doesnt_create_user_if_email_found(): void
+    public function testRequestDoesntCreateUserIfEmailFound(): void
     {
         $user = User::factory()->create();
 

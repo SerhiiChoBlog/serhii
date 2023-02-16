@@ -12,12 +12,12 @@ class AboutMeTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_guest_can_visit_page(): void
+    public function testGuestCanVisitPage(): void
     {
         $this->get(route('about-me'))->assertOk()->assertViewIs('about-me');
     }
 
-    public function test_admin_can_visit_page(): void
+    public function testAdminCanVisitPage(): void
     {
         $user = User::factory()->make();
 
@@ -27,7 +27,7 @@ class AboutMeTest extends TestCase
             ->assertViewIs('about-me');
     }
 
-    public function test_about_page_redirects_to_about_me(): void
+    public function testAboutPageRedirectsToAboutMe(): void
     {
         $this->get('/about')->assertRedirect(route('about-me'));
     }

@@ -15,7 +15,7 @@ class SocialShareTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_user_can_be_created(): void
+    public function testUserCanBeCreated(): void
     {
         $post = Post::factory()->create();
         $visitor = Visitor::factory()->create();
@@ -35,7 +35,7 @@ class SocialShareTest extends TestCase
         ]);
     }
 
-    public function test_social_share_has_relationship_with_post_and_visitor(): void
+    public function testSocialShareHasRelationshipWithPostAndVisitor(): void
     {
         $post = Post::factory()->create();
         $visitor = Visitor::factory()->create();
@@ -50,7 +50,7 @@ class SocialShareTest extends TestCase
         $this->assertEquals($visitor->id, $share->visitor->id);
     }
 
-    public function test_social_name_is_enum(): void
+    public function testSocialNameIsEnum(): void
     {
         $post = Post::factory()->create();
         $visitor = Visitor::factory()->create();

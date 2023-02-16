@@ -13,7 +13,7 @@ class PostTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_guest_can_visit_published_post_page(): void
+    public function testGuestCanVisitPublishedPostPage(): void
     {
         $published_post = Post::factory()->published()->create();
 
@@ -22,7 +22,7 @@ class PostTest extends TestCase
             ->assertViewIs('posts.show');
     }
 
-    public function test_admin_can_visit_page(): void
+    public function testAdminCanVisitPage(): void
     {
         $published_post = Post::factory()->published()->create();
         $user = User::factory()->make();
@@ -33,13 +33,13 @@ class PostTest extends TestCase
             ->assertViewIs('posts.show');
     }
 
-    public function test_user_can_see_the_post_if_its_not_published(): void
+    public function testUserCanSeeThePostIfItsNotPublished(): void
     {
         $post = Post::factory()->create();
         $this->get(route('posts.show', $post))->assertSuccessful();
     }
 
-    public function test_admin_can_see_the_post_if_its_not_published(): void
+    public function testAdminCanSeeThePostIfItsNotPublished(): void
     {
         $user = User::factory()->make();
         $post = Post::factory()->create();
@@ -49,7 +49,7 @@ class PostTest extends TestCase
             ->assertOk();
     }
 
-    public function test_post_page_has_post_title(): void
+    public function testPostPageHasPostTitle(): void
     {
         $post_title = 'This is some nice title for the post';
         $post = Post::factory()->published()->title($post_title)->create();
