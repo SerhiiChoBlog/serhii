@@ -15,9 +15,11 @@ class PostControllerTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
+    private const GET_POSTS_URI = '/admin/ajax/posts';
     private const UPDATE_POST_URI = '/admin/ajax/posts/1';
     private const CREATE_POST_URI = '/admin/ajax/posts';
     private const EDIT_POST_URI = '/admin/ajax/posts/1/edit';
+    private const DELETE_POST_URI = '/admin/ajax/posts/1';
 
     public function testUserCannotCreatePost(): void
     {
@@ -294,5 +296,43 @@ class PostControllerTest extends TestCase
         $this->actingAs($user, 'user')
             ->json('put', self::UPDATE_POST_URI, $params)
             ->assertUnauthorized();
+    }
+
+    public function testAdminCanDeletePost(): void
+    {
+        $admin = $this->createAdmin();
+        $post = Post::factory()->published()->create();
+
+        $this->actingAs($admin, 'admin')
+            ->json('delete', self::DELETE_POST_URI)
+            ->assertOk();
+
+        $this->assertDatabaseEmpty('posts');
+    }
+
+    public function testUserCannotDeletePost(): void
+    {
+        $user = $this->createAdmin();
+        $post = Post::factory()->published()->create();
+
+        $this->actingAs($user, 'user')
+            ->json('delete', self::DELETE_POST_URI)
+            ->assertUnauthorized();
+
+        $this->assertDatabaseCount('posts', 1);
+    }
+
+    public function testAdminCanGetPosts(): void
+    {
+        $admin = $this->createAdmin();
+        Post::factory()->published()->count(2)->create();
+
+        $resp = $this->actingAs($admin, 'admin')
+            ->json('get', self::GET_POSTS_URI);
+
+        $json = $resp->json();
+
+        $this->assertIsArray($json);
+        $this->assertCount(2, $json);
     }
 }
