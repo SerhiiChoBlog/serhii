@@ -15,8 +15,9 @@ class PostControllerTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
+    private const UPDATE_POST_URI = '/admin/ajax/posts/1';
     private const CREATE_POST_URI = '/admin/ajax/posts';
-    private const UPDATE_POST_URI = '/admin/ajax/posts/';
+    private const EDIT_POST_URI = '/admin/ajax/posts/1/edit';
 
     public function testUserCannotCreatePost(): void
     {
@@ -25,7 +26,8 @@ class PostControllerTest extends TestCase
         $params = ['title' => 'This is the post title for post'];
 
         $this->actingAs($user, 'user')
-            ->json('post', self::CREATE_POST_URI, $params);
+            ->json('post', self::CREATE_POST_URI, $params)
+            ->assertUnauthorized();
 
         $this->assertDatabaseEmpty('posts');
     }
@@ -57,7 +59,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_POST_URI . $post->id, $params)
+            ->json('put', self::UPDATE_POST_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseHas('posts', $params);
@@ -82,7 +84,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_POST_URI . $post->id, $params)
+            ->json('put', self::UPDATE_POST_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseHas('posts', [
@@ -116,7 +118,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_POST_URI . $post->id, $params)
+            ->json('put', self::UPDATE_POST_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseHas('posts', [
@@ -144,7 +146,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_POST_URI . $post->id, $params)
+            ->json('put', self::UPDATE_POST_URI, $params)
             ->assertOk();
 
         $expect = <<<TEXT
@@ -172,7 +174,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_POST_URI . $post->id, $params)
+            ->json('put', self::UPDATE_POST_URI, $params)
             ->assertOk();
 
         $expect = <<<TEXT
@@ -200,7 +202,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_POST_URI . $post->id, $params)
+            ->json('put', self::UPDATE_POST_URI, $params)
             ->assertOk();
 
         $expect = <<<TEXT
@@ -229,7 +231,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_POST_URI . $post->id, $params)
+            ->json('put', self::UPDATE_POST_URI, $params)
             ->assertOk();
 
         $expect = <<<TEXT
@@ -239,5 +241,58 @@ class PostControllerTest extends TestCase
         TEXT;
 
         $this->assertSame($expect, $post->fresh()?->content);
+    }
+
+    public function testEditPostReturnsPostWithoutLazyImages(): void
+    {
+        $admin = $this->createAdmin();
+
+        Post::factory()->create([
+            'content' => <<<HTML
+            <h2>Successful people</h2>
+            <img alt="Andrew Tate" src="storage/people/andrew-tate.jpg" />
+            <img src="storage/people/tristan-tate.jpg" alt="Tristan Tate" />
+            HTML,
+        ]);
+
+        $resp = $this->actingAs($admin, 'admin')
+            ->json('get', self::EDIT_POST_URI);
+
+        $expect_content = <<<TEXT
+        <h2>Successful people</h2>
+        <img alt="Andrew Tate" src="storage/people/andrew-tate.jpg" />
+        <img src="storage/people/tristan-tate.jpg" alt="Tristan Tate" />
+        TEXT;
+
+        $this->assertSame($expect_content, $resp->json('content'));
+    }
+
+    public function testUserCannotEditPost(): void
+    {
+        $user = $this->createAdmin();
+
+        Post::factory()->create();
+
+        $this->actingAs($user, 'user')
+            ->json('get', self::EDIT_POST_URI)
+            ->assertUnauthorized();
+    }
+
+    public function testUserCannotUpdatePost(): void
+    {
+        $user = $this->createAdmin();
+        $post = Post::factory()->create();
+
+        $params = [
+            'title' => $post->title,
+            'intro' => $post->intro,
+            'is_published' => false,
+            'content' => 'This is some content here',
+            'slug' => $post->slug,
+        ];
+
+        $this->actingAs($user, 'user')
+            ->json('put', self::UPDATE_POST_URI, $params)
+            ->assertUnauthorized();
     }
 }
