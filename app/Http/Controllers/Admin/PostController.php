@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\CacheKey;
+use App\Console\Commands\SitemapCommand;
 use App\Exceptions\LazyLoadingConversionException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\StoreRequest;
@@ -14,6 +15,7 @@ use App\Models\Post;
 use App\Utils\SaveImage;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -103,6 +105,7 @@ class PostController extends Controller
 
         if (!$post->is_published && $request->is_published) {
             $data = $data->merge(['created_at' => now()]);
+            Artisan::call(SitemapCommand::class);
         }
 
         $post->update($data->toArray());
