@@ -126,4 +126,88 @@ class PostControllerTest extends TestCase
             'image_xs' => "storage/posts/xs/{$post->slug}.jpg",
         ]);
     }
+
+    public function testItAddsNotesToContent(): void
+    {
+        $admin = $this->createAdmin();
+        $post = Post::factory()->create();
+
+        $params = [
+            'title' => $post->title,
+            'intro' => $post->intro,
+            'is_published' => false,
+            'content' => <<<TEXT
+            <p>This is some text here</p>
+            <p>Note. Be careful mate!</p>
+            TEXT,
+            'slug' => $post->slug,
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('put', self::UPDATE_POST_URI . $post->id, $params)
+            ->assertOk();
+
+        $expect = <<<TEXT
+        <p>This is some text here</p>
+        <p class="note"><span class="hidden" aria-label="Note">Note. </span>Be careful mate!</p>
+        TEXT;
+
+        $this->assertSame($expect, $post->fresh()->content);
+    }
+
+    public function testItAddsTipsToContent(): void
+    {
+        $admin = $this->createAdmin();
+        $post = Post::factory()->create();
+
+        $params = [
+            'title' => $post->title,
+            'intro' => $post->intro,
+            'is_published' => false,
+            'content' => <<<TEXT
+            <p>This is some text here</p>
+            <p>Tip. Be careful mate!</p>
+            TEXT,
+            'slug' => $post->slug,
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('put', self::UPDATE_POST_URI . $post->id, $params)
+            ->assertOk();
+
+        $expect = <<<TEXT
+        <p>This is some text here</p>
+        <p class="tip"><span class="hidden" aria-label="Tip">Tip. </span>Be careful mate!</p>
+        TEXT;
+
+        $this->assertSame($expect, $post->fresh()->content);
+    }
+
+    public function testItAddsWarningsToContent(): void
+    {
+        $admin = $this->createAdmin();
+        $post = Post::factory()->create();
+
+        $params = [
+            'title' => $post->title,
+            'intro' => $post->intro,
+            'is_published' => false,
+            'content' => <<<TEXT
+            <p>This is some text here</p>
+            <p>Warning. Be careful man!</p>
+            TEXT,
+            'slug' => $post->slug,
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('put', self::UPDATE_POST_URI . $post->id, $params)
+            ->assertOk();
+
+        $expect = <<<TEXT
+        <p>This is some text here</p>
+        <p class="note"><span class="hidden" aria-label="Warning">Warning. </span>Be careful man!</p>
+        TEXT;
+
+        $this->assertSame($expect, $post->fresh()->content);
+    }
 }
