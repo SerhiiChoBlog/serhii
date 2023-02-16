@@ -152,7 +152,7 @@ class PostControllerTest extends TestCase
         <p class="note"><span class="hidden" aria-label="Note">Note. </span>Be careful mate!</p>
         TEXT;
 
-        $this->assertSame($expect, $post->fresh()->content);
+        $this->assertSame($expect, $post->fresh()?->content);
     }
 
     public function testItAddsTipsToContent(): void
@@ -180,7 +180,7 @@ class PostControllerTest extends TestCase
         <p class="tip"><span class="hidden" aria-label="Tip">Tip. </span>Be careful mate!</p>
         TEXT;
 
-        $this->assertSame($expect, $post->fresh()->content);
+        $this->assertSame($expect, $post->fresh()?->content);
     }
 
     public function testItAddsWarningsToContent(): void
@@ -208,6 +208,36 @@ class PostControllerTest extends TestCase
         <p class="note"><span class="hidden" aria-label="Warning">Warning. </span>Be careful man!</p>
         TEXT;
 
-        $this->assertSame($expect, $post->fresh()->content);
+        $this->assertSame($expect, $post->fresh()?->content);
+    }
+
+    public function testItChangesImageToLazyLoading(): void
+    {
+        $admin = $this->createAdmin();
+        $post = Post::factory()->create();
+
+        $params = [
+            'title' => $post->title,
+            'intro' => $post->intro,
+            'is_published' => false,
+            'content' => <<<TEXT
+            <h2>Successful people</h2>
+            <img alt="Andrew Tate" src="storage/people/andrew-tate.jpg" />
+            <img src="storage/people/tristan-tate.jpg" alt="Tristan Tate" />
+            TEXT,
+            'slug' => $post->slug,
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('put', self::UPDATE_POST_URI . $post->id, $params)
+            ->assertOk();
+
+        $expect = <<<TEXT
+        <h2>Successful people</h2>
+        <img alt="Andrew Tate" data-src="storage/people/andrew-tate.jpg" />
+        <img data-src="storage/people/tristan-tate.jpg" alt="Tristan Tate" />
+        TEXT;
+
+        $this->assertSame($expect, $post->fresh()?->content);
     }
 }
