@@ -30,7 +30,7 @@ class CommentControllerTest extends TestCase
         Queue::fake();
     }
 
-    public function test_you_can_get_comments(): void
+    public function testYouCanGetComments(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -53,7 +53,7 @@ class CommentControllerTest extends TestCase
             ]);
     }
 
-    public function test_you_can_get_comments_with_nested_comments(): void
+    public function testYouCanGetCommentsWithNestedComments(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -82,7 +82,7 @@ class CommentControllerTest extends TestCase
             ]);
     }
 
-    public function test_you_can_create_comment(): void
+    public function testYouCanCreateComment(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -102,7 +102,7 @@ class CommentControllerTest extends TestCase
         ]);
     }
 
-    public function test_you_can_reply_to_comment(): void
+    public function testYouCanReplyToComment(): void
     {
         $user1 = User::factory()->create();
         $user2 = User::factory()->create();
@@ -133,7 +133,7 @@ class CommentControllerTest extends TestCase
         ]);
     }
 
-    public function test_it_replies_to_parent_comment_after_replying_to_reply(): void
+    public function testItRepliesToParentCommentAfterReplyingToReply(): void
     {
         $user1 = User::factory()->create();
         $user2 = User::factory()->create();
@@ -173,7 +173,7 @@ class CommentControllerTest extends TestCase
         ]);
     }
 
-    public function test_user_cannot_create_comment_less_than_4_characters(): void
+    public function testUserCannotCreateCommentLessThan4Characters(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -187,7 +187,7 @@ class CommentControllerTest extends TestCase
         $resp->assertJsonValidationErrors('comment');
     }
 
-    public function test_user_cannot_create_comment_more_than_1000_characters(): void
+    public function testUserCannotCreateCommentMoreThan1000Characters(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -201,7 +201,7 @@ class CommentControllerTest extends TestCase
         $resp->assertJsonValidationErrors('comment');
     }
 
-    public function test_user_can_create_comment_with_4_characters(): void
+    public function testUserCanCreateCommentWith4Characters(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -217,7 +217,7 @@ class CommentControllerTest extends TestCase
         $this->assertDatabaseCount('comments', 1);
     }
 
-    public function test_user_can_create_comment_with_1000_characters(): void
+    public function testUserCanCreateCommentWith1000Characters(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -233,7 +233,7 @@ class CommentControllerTest extends TestCase
         $this->assertDatabaseCount('comments', 1);
     }
 
-    public function test_you_can_only_submit_one_comment_in_some_minutes(): void
+    public function testYouCanOnlySubmitOneCommentInSomeMinutes(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -257,7 +257,7 @@ class CommentControllerTest extends TestCase
         $this->assertDatabaseCount('comments', 1);
     }
 
-    public function test_you_can_submit_the_second_comment_after_some_minutes(): void
+    public function testYouCanSubmitTheSecondCommentAfterSomeMinutes(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -284,7 +284,7 @@ class CommentControllerTest extends TestCase
         $this->assertDatabaseCount('comments', 2);
     }
 
-    public function test_admin_can_post_many_comments(): void
+    public function testAdminCanPostManyComments(): void
     {
         $user = $this->createAdmin();
         $post = Post::factory()->create();
@@ -305,7 +305,7 @@ class CommentControllerTest extends TestCase
         $this->assertDatabaseCount('comments', 3);
     }
 
-    public function test_posting_comment_returns_date_in_future(): void
+    public function testPostingCommentReturnsDateInFuture(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -325,7 +325,7 @@ class CommentControllerTest extends TestCase
         $this->assertTrue($date->subMinutes($timeout_minutes)->subSeconds(2)->isPast());
     }
 
-    public function test_posting_comment_returns_current_date_for_admin(): void
+    public function testPostingCommentReturnsCurrentDateForAdmin(): void
     {
         $user = $this->createAdmin();
         $post = Post::factory()->create();
@@ -345,7 +345,7 @@ class CommentControllerTest extends TestCase
     /**
      * @dataProvider provider_for_test_posting_comment_with_swear_word_will_be_marked_as_not_approved
      */
-    public function test_posting_comment_with_swear_word_will_be_marked_as_not_approved(string $text): void
+    public function testPostingCommentWithSwearWordWillBeMarkedAsNotApproved(string $text): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -381,7 +381,7 @@ class CommentControllerTest extends TestCase
     /**
      * @dataProvider provider_for_test_posting_comment_without_swear_word_will_be_marked_as_approved
      */
-    public function test_posting_comment_without_swear_word_will_be_marked_as_approved(string $text): void
+    public function testPostingCommentWithoutSwearWordWillBeMarkedAsApproved(string $text): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -412,7 +412,7 @@ class CommentControllerTest extends TestCase
         ];
     }
 
-    public function test_posting_comment_dispatches_comment_posted_event(): void
+    public function testPostingCommentDispatchesCommentPostedEvent(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -426,7 +426,7 @@ class CommentControllerTest extends TestCase
         Event::assertDispatchedTimes(CommentApproved::class, 1);
     }
 
-    public function test_posting_comment_is_not_dispatching_event_if_comment_is_not_approved(): void
+    public function testPostingCommentIsNotDispatchingEventIfCommentIsNotApproved(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -440,7 +440,7 @@ class CommentControllerTest extends TestCase
         Event::assertNotDispatched(CommentApproved::class);
     }
 
-    public function test_comment_must_be_written_in_english(): void
+    public function testCommentMustBeWrittenInEnglish(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -454,7 +454,7 @@ class CommentControllerTest extends TestCase
         $resp->assertJsonValidationErrors('comment');
     }
 
-    public function test_you_cannot_post_comment_as_not_verified_user(): void
+    public function testYouCannotPostCommentAsNotVerifiedUser(): void
     {
         $user = User::factory()->unverified()->create();
         $post = Post::factory()->create();
@@ -468,7 +468,7 @@ class CommentControllerTest extends TestCase
         $this->assertDatabaseEmpty('comments');
     }
 
-    public function test_posting_comment_queues_the_job_for_sending_admin_email(): void
+    public function testPostingCommentQueuesTheJobForSendingAdminEmail(): void
     {
         $user = User::factory()->create();
         $post = Post::factory()->create();
@@ -482,7 +482,7 @@ class CommentControllerTest extends TestCase
         Queue::assertPushed(NewCommentAdminEmail::class);
     }
 
-    public function test_posting_comment_as_admin_doesnt_queue_the_job_for_sending_admin_email(): void
+    public function testPostingCommentAsAdminDoesntQueueTheJobForSendingAdminEmail(): void
     {
         $user = $this->createAdmin();
         $post = Post::factory()->create();

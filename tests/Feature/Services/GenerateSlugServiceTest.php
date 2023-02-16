@@ -13,7 +13,7 @@ class GenerateSlugServiceTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_it_converts_name_to_slug(): void
+    public function testItConvertsNameToSlug(): void
     {
         $name = 'Alex Johnson';
         $expect = 'alex-johnson';
@@ -24,7 +24,7 @@ class GenerateSlugServiceTest extends TestCase
         $this->assertEquals($expect, $actual);
     }
 
-    public function test_it_adds_suffix_number_1_if_slug_already_exist_in_database(): void
+    public function testItAddsSuffixNumber1IfSlugAlreadyExistInDatabase(): void
     {
         $name = 'Alex Johnson';
         $slug = 'alex-johnson';
@@ -38,7 +38,7 @@ class GenerateSlugServiceTest extends TestCase
         $this->assertEquals($expect, $actual);
     }
 
-    public function test_it_adds_suffix_number_3_if_slug_already_exist_in_database(): void
+    public function testItAddsSuffixNumber3IfSlugAlreadyExistInDatabase(): void
     {
         $name = 'Anna Korotchaeva';
         $slug = 'anna-korotchaeva';

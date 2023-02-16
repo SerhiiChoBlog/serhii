@@ -18,7 +18,7 @@ class SubscriptionDemandControllerTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_you_get_message_if_has_confirmed_subscription(): void
+    public function testYouGetMessageIfHasConfirmedSubscription(): void
     {
         Notification::fake();
 
@@ -36,7 +36,7 @@ class SubscriptionDemandControllerTest extends TestCase
         Notification::assertNothingSent();
     }
 
-    public function test_you_get_message_if_has_not_confirmed_subscription_created_today(): void
+    public function testYouGetMessageIfHasNotConfirmedSubscriptionCreatedToday(): void
     {
         Notification::fake();
 
@@ -54,7 +54,7 @@ class SubscriptionDemandControllerTest extends TestCase
         Notification::assertNothingSent();
     }
 
-    public function test_new_subscription_is_not_created_if_already_has_old_subscription(): void
+    public function testNewSubscriptionIsNotCreatedIfAlreadyHasOldSubscription(): void
     {
         Notification::fake();
 
@@ -74,7 +74,7 @@ class SubscriptionDemandControllerTest extends TestCase
         $this->assertSame(1, Subscription::query()->count());
     }
 
-    public function test_subscription_can_be_created(): void
+    public function testSubscriptionCanBeCreated(): void
     {
         Notification::fake();
 
@@ -95,7 +95,7 @@ class SubscriptionDemandControllerTest extends TestCase
         $this->assertDatabaseHas('subscriptions', compact('email'));
     }
 
-    public function test_it_is_not_attaching_tags_when_requesting_all_tags(): void
+    public function testItIsNotAttachingTagsWhenRequestingAllTags(): void
     {
         Notification::fake();
 
@@ -110,7 +110,7 @@ class SubscriptionDemandControllerTest extends TestCase
         $this->assertEmpty($sub->tags);
     }
 
-    public function test_it_returns_warning_when_tags_are_not_selected(): void
+    public function testItReturnsWarningWhenTagsAreNotSelected(): void
     {
         Notification::fake();
 
@@ -124,7 +124,7 @@ class SubscriptionDemandControllerTest extends TestCase
         $this->assertSame($expect->toArray(), $response->json());
     }
 
-    public function test_it_attaches_tags_when_requesting_5_tags(): void
+    public function testItAttachesTagsWhenRequesting5Tags(): void
     {
         Notification::fake();
 
@@ -142,7 +142,7 @@ class SubscriptionDemandControllerTest extends TestCase
         $this->assertCount(5, $sub->tags);
     }
 
-    public function test_it_attaches_tags_when_requesting_1_tag(): void
+    public function testItAttachesTagsWhenRequesting1Tag(): void
     {
         Notification::fake();
 

@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class UserModelTest extends TestCase
 {
-    public function test_generateSecret_method_returns_50_characters_string(): void
+    public function testGenerateSecretMethodReturns50CharactersString(): void
     {
         $result = User::generateSecret('my-email@gmail.com');
         $this->assertEquals(50, strlen($result));

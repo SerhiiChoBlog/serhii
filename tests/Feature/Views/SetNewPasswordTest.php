@@ -14,7 +14,7 @@ class SetNewPasswordTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_guest_can_set_new_password(): void
+    public function testGuestCanSetNewPassword(): void
     {
         /** @var User $user */
         $user = User::factory()->create();
@@ -34,7 +34,7 @@ class SetNewPasswordTest extends TestCase
         $this->assertTrue(Hash::check($new_password, $user->fresh()->password));
     }
 
-    public function test_user_can_set_new_password(): void
+    public function testUserCanSetNewPassword(): void
     {
         /** @var User $user */
         $user = User::factory()->create();
@@ -55,7 +55,7 @@ class SetNewPasswordTest extends TestCase
         $this->assertTrue(Hash::check($new_password, $user->fresh()->password));
     }
 
-    public function test_user_cannot_set_new_password_with_invalid_token(): void
+    public function testUserCannotSetNewPasswordWithInvalidToken(): void
     {
         /** @var User $user */
         $user = User::factory()->create();
@@ -75,7 +75,7 @@ class SetNewPasswordTest extends TestCase
         $this->assertTrue(Hash::check('password', $user->fresh()->password));
     }
 
-    public function test_user_cannot_set_new_password_with_email_of_the_other_user(): void
+    public function testUserCannotSetNewPasswordWithEmailOfTheOtherUser(): void
     {
         /** @var User $other_user */
         $other_user = User::factory()->create();

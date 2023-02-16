@@ -13,14 +13,14 @@ class LoginTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_guest_can_visit_page(): void
+    public function testGuestCanVisitPage(): void
     {
         $this->get(route('login'))
             ->assertOk()
             ->assertViewIs('auth.login');
     }
 
-    public function test_admin_cannot_visit_page_if_authenticated(): void
+    public function testAdminCannotVisitPageIfAuthenticated(): void
     {
         $admin = $this->createAdmin();
 
@@ -29,7 +29,7 @@ class LoginTest extends TestCase
             ->assertRedirect();
     }
 
-    public function test_user_cannot_visit_page_if_authenticated(): void
+    public function testUserCannotVisitPageIfAuthenticated(): void
     {
         /** @var User $user */
         $user = User::factory()->make();
@@ -39,7 +39,7 @@ class LoginTest extends TestCase
             ->assertRedirect();
     }
 
-    public function test_user_can_login_and_see_profile_page(): void
+    public function testUserCanLoginAndSeeProfilePage(): void
     {
         $user = User::factory()->create();
 
@@ -52,7 +52,7 @@ class LoginTest extends TestCase
             ->assertRedirect(RouteServiceProvider::USER_HOME);
     }
 
-    public function test_admin_can_login_and_see_dashboard_page(): void
+    public function testAdminCanLoginAndSeeDashboardPage(): void
     {
         $admin = $this->createAdmin();
 
@@ -65,7 +65,7 @@ class LoginTest extends TestCase
             ->assertRedirect(RouteServiceProvider::ADMIN_HOME);
     }
 
-    public function test_user_cannot_login_with_invalid_password(): void
+    public function testUserCannotLoginWithInvalidPassword(): void
     {
         /** @var User $user */
         $user = User::factory()->create();
@@ -79,7 +79,7 @@ class LoginTest extends TestCase
             ->assertSessionHasErrors('email');
     }
 
-    public function test_user_cannot_login_with_invalid_email(): void
+    public function testUserCannotLoginWithInvalidEmail(): void
     {
         /** @var User $user */
         $user = User::factory()->create();
@@ -93,7 +93,7 @@ class LoginTest extends TestCase
             ->assertSessionHasErrors('email');
     }
 
-    public function test_remember_me_token_is_set(): void
+    public function testRememberMeTokenIsSet(): void
     {
         /** @var User $user */
         $user = User::factory()->create();
@@ -109,7 +109,7 @@ class LoginTest extends TestCase
         $this->assertNotNull($user->fresh()->remember_token);
     }
 
-    public function test_remember_me_token_is_not_set(): void
+    public function testRememberMeTokenIsNotSet(): void
     {
         /** @var User $user */
         $user = User::factory()->create();

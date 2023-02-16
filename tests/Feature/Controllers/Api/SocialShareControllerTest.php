@@ -27,7 +27,7 @@ class SocialShareControllerTest extends TestCase
         $this->visitor = Visitor::factory()->create();
     }
 
-    public function test_we_can_save_social_share_in_database(): void
+    public function testWeCanSaveSocialShareInDatabase(): void
     {
         $params = ['social' => SocialName::TELEGRAM];
 
@@ -43,7 +43,7 @@ class SocialShareControllerTest extends TestCase
         ]);
     }
 
-    public function test_we_can_save_social_share_in_database_with_user_id(): void
+    public function testWeCanSaveSocialShareInDatabaseWithUserId(): void
     {
         $user = User::factory()->create();
 
@@ -64,7 +64,7 @@ class SocialShareControllerTest extends TestCase
         ]);
     }
 
-    public function test_we_cannot_create_the_same_social_share_twice(): void
+    public function testWeCannotCreateTheSameSocialShareTwice(): void
     {
         $params = ['social' => SocialName::LINKEDIN];
 
@@ -79,7 +79,7 @@ class SocialShareControllerTest extends TestCase
         $this->assertDatabaseCount('social_shares', 1);
     }
 
-    public function test_you_cannot_submit_unknown_social_name(): void
+    public function testYouCannotSubmitUnknownSocialName(): void
     {
         $params = ['social' => 'unknown'];
 
@@ -90,7 +90,7 @@ class SocialShareControllerTest extends TestCase
         $this->assertDatabaseEmpty('social_shares');
     }
 
-    public function test_admin_share_doesnt_count(): void
+    public function testAdminShareDoesntCount(): void
     {
         $admin = $this->createAdmin();
 

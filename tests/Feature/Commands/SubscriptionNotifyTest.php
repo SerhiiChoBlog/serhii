@@ -34,7 +34,7 @@ class SubscriptionNotifyTest extends TestCase
         TEXT;
     }
 
-    public function test_cannot_notify_post_publication_when_it_is_already_notified(): void
+    public function testCannotNotifyPostPublicationWhenItIsAlreadyNotified(): void
     {
         $post = Post::factory()->published()->create();
         Subscription::factory()->confirmed()->create();
@@ -48,7 +48,7 @@ class SubscriptionNotifyTest extends TestCase
         Notification::assertNothingSent();
     }
 
-    public function test_2_subscribers_are_notified_when_with_new_post(): void
+    public function test2SubscribersAreNotifiedWhenWithNewPost(): void
     {
         $post = Post::factory()->published()->create();
         Subscription::factory()->count(2)->confirmed()->create();
@@ -61,7 +61,7 @@ class SubscriptionNotifyTest extends TestCase
         $this->assertSame(1, PostPublication::query()->count());
     }
 
-    public function test_exception_is_thrown_when_there_are_no_posts(): void
+    public function testExceptionIsThrownWhenThereAreNoPosts(): void
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('There are no posts in database');
@@ -74,7 +74,7 @@ class SubscriptionNotifyTest extends TestCase
         $this->assertSame(1, PostPublication::query()->count());
     }
 
-    public function test_1_subscriber_is_notified_when_with_new_post(): void
+    public function test1SubscriberIsNotifiedWhenWithNewPost(): void
     {
         $post = Post::factory()->published()->create();
         $sub = Subscription::factory()->confirmed()->create();
@@ -87,7 +87,7 @@ class SubscriptionNotifyTest extends TestCase
         $this->assertSame(1, PostPublication::query()->count());
     }
 
-    public function test_each_person_is_notified_via_email(): void
+    public function testEachPersonIsNotifiedViaEmail(): void
     {
         $post = Post::factory()->published()->create();
         $subs = Subscription::factory()->count(3)->confirmed()->create();
@@ -99,7 +99,7 @@ class SubscriptionNotifyTest extends TestCase
         Notification::assertTimesSent(3, PostPublished::class);
     }
 
-    public function test_subs_are_notified_with_correct_post(): void
+    public function testSubsAreNotifiedWithCorrectPost(): void
     {
         Post::factory()->published()->title('First')->create(['created_at' => now()->subDay()]);
         Post::factory()->published()->title('Second')->create(['created_at' => now()->subDays(10)]);
@@ -115,7 +115,7 @@ class SubscriptionNotifyTest extends TestCase
         Notification::assertTimesSent(3, PostPublished::class);
     }
 
-    public function test_no_notifications_without_subscribers(): void
+    public function testNoNotificationsWithoutSubscribers(): void
     {
         Post::factory()->published()->create();
 
@@ -128,7 +128,7 @@ class SubscriptionNotifyTest extends TestCase
         Notification::assertNothingSent();
     }
 
-    public function test_not_confirmed_subscriptions_are_not_notified(): void
+    public function testNotConfirmedSubscriptionsAreNotNotified(): void
     {
         Post::factory()->published()->create();
 
@@ -142,7 +142,7 @@ class SubscriptionNotifyTest extends TestCase
         Notification::assertTimesSent(1, PostPublished::class);
     }
 
-    public function test_if_subscriber_is_not_subscribed_to_tag_they_are_not_notified(): void
+    public function testIfSubscriberIsNotSubscribedToTagTheyAreNotNotified(): void
     {
         $tag1 = Tag::factory()->create();
         $tag2 = Tag::factory()->create();
@@ -168,7 +168,7 @@ class SubscriptionNotifyTest extends TestCase
         Notification::assertTimesSent(0, PostPublished::class);
     }
 
-    public function test_if_subscriber_is_subscribed_to_tag_they_will_be_notified(): void
+    public function testIfSubscriberIsSubscribedToTagTheyWillBeNotified(): void
     {
         $tag1 = Tag::factory()->create();
         $tag2 = Tag::factory()->create();
@@ -191,7 +191,7 @@ class SubscriptionNotifyTest extends TestCase
         Notification::assertTimesSent(1, PostPublished::class);
     }
 
-    public function test_if_subscriber_is_subscribed_to_last_tag_in_the_post_they_will_receive_email(): void
+    public function testIfSubscriberIsSubscribedToLastTagInThePostTheyWillReceiveEmail(): void
     {
         $tag1 = Tag::factory()->create();
         $tag2 = Tag::factory()->create();
@@ -215,7 +215,7 @@ class SubscriptionNotifyTest extends TestCase
         Notification::assertTimesSent(1, PostPublished::class);
     }
 
-    public function test_if_subscriber_is_subscribed_to_the_first_tag_in_the_post_they_will_receive_email(): void
+    public function testIfSubscriberIsSubscribedToTheFirstTagInThePostTheyWillReceiveEmail(): void
     {
         $first_tag = Tag::factory()->create();
         $tag2 = Tag::factory()->create();

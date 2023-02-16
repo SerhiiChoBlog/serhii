@@ -12,7 +12,7 @@ class SubscriptionControllerTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function test_you_can_confirm_subscription(): void
+    public function testYouCanConfirmSubscription(): void
     {
         $sub = Subscription::factory()->create();
 
@@ -24,13 +24,13 @@ class SubscriptionControllerTest extends TestCase
         $this->assertNotNull($sub->fresh()->confirmed_at);
     }
 
-    public function test_you_will_be_redirected_if_subscription_not_found(): void
+    public function testYouWillBeRedirectedIfSubscriptionNotFound(): void
     {
         $this->get(route('subscriptions.confirm', 'ilskfjas'))
             ->assertRedirect(route('subscriptions.error'));
     }
 
-    public function test_you_can_decline_subscription(): void
+    public function testYouCanDeclineSubscription(): void
     {
         $sub = Subscription::factory()->create();
 
@@ -42,7 +42,7 @@ class SubscriptionControllerTest extends TestCase
         ]);
     }
 
-    public function test_if_subscription_not_found_it_will_still_show_decline_page(): void
+    public function testIfSubscriptionNotFoundItWillStillShowDeclinePage(): void
     {
         $this->get(route('subscriptions.decline', 'sdfsdfaj'))
             ->assertViewIs('subscriptions.decline');

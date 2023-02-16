@@ -25,12 +25,12 @@ class UserTest extends TestCase
         $this->user = User::factory()->create();
     }
 
-    public function test_user_can_be_created(): void
+    public function testUserCanBeCreated(): void
     {
         $this->assertDatabaseCount('users', 1);
     }
 
-    public function test_user_has_roles_associated(): void
+    public function testUserHasRolesAssociated(): void
     {
         /** @var Role $role */
         $role = Role::factory()->create(['name' => UserRole::ADMIN]);
@@ -40,7 +40,7 @@ class UserTest extends TestCase
         $this->assertCount(1, $this->user->roles);
     }
 
-    public function test_method_returns_true_if_user_has_admin_role(): void
+    public function testMethodReturnsTrueIfUserHasAdminRole(): void
     {
         /** @var Role $role */
         $role = Role::factory()->create(['name' => 'admin']);
@@ -50,12 +50,12 @@ class UserTest extends TestCase
         $this->assertTrue($this->user->hasRole(UserRole::ADMIN));
     }
 
-    public function test_method_returns_false_if_user_doesnt_have_admin_role(): void
+    public function testMethodReturnsFalseIfUserDoesntHaveAdminRole(): void
     {
         $this->assertFalse($this->user->hasRole(UserRole::ADMIN));
     }
 
-    public function test_has_relation_with_badges(): void
+    public function testHasRelationWithBadges(): void
     {
         $badge = Badge::factory()->create();
 
@@ -64,7 +64,7 @@ class UserTest extends TestCase
         $this->assertCount(1, $this->user->badges);
     }
 
-    public function test_giveBadge_method_add_badge(): void
+    public function testGiveBadgeMethodAddBadge(): void
     {
         Badge::factory()->create(['name' => BadgeName::LIKEABLE]);
 
@@ -75,13 +75,13 @@ class UserTest extends TestCase
         $this->assertSame(BadgeName::LIKEABLE, $badge->name);
     }
 
-    public function test_giveBadge_method_skips_the_operation_if_no_badge_found(): void
+    public function testGiveBadgeMethodSkipsTheOperationIfNoBadgeFound(): void
     {
         $this->user->giveBadge(BadgeName::LIKEABLE);
         $this->assertSame(0, $this->user->badges()->count());
     }
 
-    public function test_user_has_relationship_with_ban(): void
+    public function testUserHasRelationshipWithBan(): void
     {
         $ban = Ban::factory()->create(['user_id' => $this->user->id]);
         $this->assertNotNull($this->user->ban);

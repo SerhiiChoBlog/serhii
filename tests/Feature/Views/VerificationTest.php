@@ -21,7 +21,7 @@ class VerificationTest extends TestCase
         Event::fake();
     }
 
-    public function test_verification_page_is_accessible_by_unverified_user(): void
+    public function testVerificationPageIsAccessibleByUnverifiedUser(): void
     {
         $user = User::factory()->unverified()->create();
 

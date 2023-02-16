@@ -18,7 +18,7 @@ class BanControllerTest extends TestCase
     private const BAN_URI = '/admin/ajax/bans/ban';
     private const UNBAN_URI = '/admin/ajax/bans/unban';
 
-    public function test_admin_can_ban_user(): void
+    public function testAdminCanBanUser(): void
     {
         $user = User::factory()->create();
         $admin = $this->createAdmin();
@@ -35,7 +35,7 @@ class BanControllerTest extends TestCase
         $this->assertDatabaseHas('bans', $params);
     }
 
-    public function test_user_cannot_ban_user(): void
+    public function testUserCannotBanUser(): void
     {
         $user = User::factory()->create();
         $user2 = User::factory()->create();
@@ -52,7 +52,7 @@ class BanControllerTest extends TestCase
         $this->assertDatabaseEMpty('bans');
     }
 
-    public function test_guest_cannot_ban_user(): void
+    public function testGuestCannotBanUser(): void
     {
         $user = User::factory()->create();
 
@@ -67,7 +67,7 @@ class BanControllerTest extends TestCase
         $this->assertDatabaseEMpty('bans');
     }
 
-    public function test_banning_user_sets_remember_token_to_null(): void
+    public function testBanningUserSetsRememberTokenToNull(): void
     {
         $user = User::factory()->create(['remember_token' => 'token']);
         $admin = $this->createAdmin();
@@ -85,7 +85,7 @@ class BanControllerTest extends TestCase
         $this->assertDatabaseHas('bans', $params);
     }
 
-    public function test_it_doesnt_create_second_ban_if_user_is_already_banned(): void
+    public function testItDoesntCreateSecondBanIfUserIsAlreadyBanned(): void
     {
         $user = User::factory()->create(['remember_token' => 'token']);
 
@@ -107,7 +107,7 @@ class BanControllerTest extends TestCase
         $this->assertDatabaseCount('bans', 1);
     }
 
-    public function test_user_comments_become_not_approved_when_we_pass_a_flag(): void
+    public function testUserCommentsBecomeNotApprovedWhenWePassAFlag(): void
     {
         $user = User::factory()->create(['remember_token' => 'token']);
         $post = Post::factory()->create();
@@ -140,7 +140,7 @@ class BanControllerTest extends TestCase
     }
 
 
-    public function test_user_comments_doesnt_become_not_approved_when_we_dont_pass_a_flag(): void
+    public function testUserCommentsDoesntBecomeNotApprovedWhenWeDontPassAFlag(): void
     {
         $user = User::factory()->create(['remember_token' => 'token']);
         $post = Post::factory()->create();
@@ -172,7 +172,7 @@ class BanControllerTest extends TestCase
         $this->assertDatabaseCount('bans', 1);
     }
 
-    public function test_admin_can_unban_user(): void
+    public function testAdminCanUnbanUser(): void
     {
         $user = User::factory()->create();
         Ban::factory()->create(['user_id' => $user]);
