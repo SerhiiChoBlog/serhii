@@ -16,28 +16,32 @@ trait SaveImage
             return null;
         }
 
-        $path_xs = storage_path('app/public/posts/xs');
-        $path_sm = storage_path('app/public/posts/sm');
-        $path_lg = storage_path('app/public/posts/lg');
-        $image_name = Str::slug($post_name) . '.' . $photo->getClientOriginalExtension();
+        $path = storage_path('app/public/posts');
+        $ext = $photo->getClientOriginalExtension();
+        $name = Str::slug($post_name) . ".{$ext}";
 
-
-        Image::make($photo)
-            ->fit(100, 50, fn ($constraint) => $constraint->upsize())
-            ->save("{$path_xs}/{$image_name}");
-
-        Image::make($photo)
-            ->fit(550, 275, fn ($constraint) => $constraint->upsize())
-            ->save("{$path_sm}/{$image_name}");
-
-        Image::make($photo)
-            ->fit(1000, 500, fn ($constraint) => $constraint->upsize())
-            ->save("{$path_lg}/{$image_name}");
+        foreach ($this->getSizes() as $size => $d) {
+            Image::make($photo)
+                ->fit($d[0], $d[1], fn ($c) => $c->upsize())
+                ->save("{$path}/{$size}/{$name}");
+        }
 
         return [
-            'xs' => "storage/posts/xs/{$image_name}",
-            'sm' => "storage/posts/sm/{$image_name}",
-            'lg' => "storage/posts/lg/{$image_name}",
+            'xs' => "storage/posts/xs/{$name}",
+            'sm' => "storage/posts/sm/{$name}",
+            'lg' => "storage/posts/lg/{$name}",
+        ];
+    }
+
+    /**
+     * @return array<string, array<int, int>>
+     */
+    private function getSizes(): array
+    {
+        return [
+            'xs' => [100, 50],
+            'sm' => [550, 275],
+            'lg' => [1000, 500],
         ];
     }
 }
