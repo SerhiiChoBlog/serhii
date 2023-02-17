@@ -118,23 +118,6 @@ class Post extends Model
     }
 
     /**
-     * @param int $exclude_id
-     *
-     * @return Collection<int, Post>
-     */
-    public static function getPostsForSidebar(int $exclude_id): Collection
-    {
-        return self::query()
-            ->select('id', 'slug', 'title', 'image_sm')
-            ->where('is_published', true)
-            ->where('id', '!=', $exclude_id)
-            ->inRandomOrder()
-            ->limit(3)
-            ->get()
-            ->shuffle();
-    }
-
-    /**
      * @return Attribute<string, mixed>
      */
     protected function prettyCreatedAt(): Attribute

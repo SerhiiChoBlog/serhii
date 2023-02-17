@@ -8,6 +8,7 @@ use App\Http\Requests\Post\IndexRequest;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Visitor;
+use App\Services\RelatedPostsService;
 use HttpException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
@@ -40,7 +41,7 @@ class PostController extends Controller
     {
         /** @var Post|null $post */
         $post = Post::query()
-            ->with('tags:id,color,name,title', 'video:post_id,title,url,image')
+            ->with('tags', 'video:post_id,title,url,image')
             ->where('slug', $slug)
             ->withCount('postViews')
             ->first();
@@ -63,7 +64,6 @@ class PostController extends Controller
             default => '2em',
         };
 
-        $posts = Post::getPostsForSidebar($post->id);
         $segment = $request->segment(2);
         $ip = $request->ip();
 
@@ -72,6 +72,9 @@ class PostController extends Controller
         }
 
         Visitor::incrementPostViews($post->id, $ip);
+
+        $service = new RelatedPostsService($post);
+        $posts = $service->get();
 
         return view('posts.show', compact('post', 'title_font_size', 'posts'));
     }
