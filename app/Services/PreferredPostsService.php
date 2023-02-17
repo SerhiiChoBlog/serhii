@@ -1,0 +1,69 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Services;
+
+use App\Models\Post;
+use App\Models\Visitor;
+use Illuminate\Support\Collection;
+
+readonly class PreferredPostsService
+{
+    private const LIMIT = 8;
+    private const SELECT_FIELDS = [
+        'id',
+        'slug',
+        'title',
+        'intro',
+        'image_sm',
+        'image_xs',
+        'created_at',
+        'read_time',
+    ];
+
+    /**
+     * @return Collection<int, Post>
+     */
+    public function get(): Collection
+    {
+        $visitor = Visitor::getOrCreateVisitor(request()->ip() ?? '');
+
+        if (!$visitor) {
+            return $this->getRandomPosts([], self::LIMIT);
+        }
+
+        $exclude_ids = $visitor->postViews()->pluck('post_id')->toArray();
+
+        $posts = $this->getRandomPosts($exclude_ids, self::LIMIT);
+
+        if ($posts->count() === self::LIMIT) {
+            return $posts;
+        }
+
+        $posts_missing = self::LIMIT - $posts->count();
+
+        return $posts->push(...$this->getRandomPosts([], $posts_missing));
+    }
+
+    /**
+     * @param array<int> $exclude
+     *
+     * @return Collection<int, Post>
+     */
+    private function getRandomPosts(array $exclude, int $limit): Collection
+    {
+        $query = Post::query()
+            ->with('tags:name,color,title')
+            ->select(self::SELECT_FIELDS)
+            ->where('is_published', true)
+            ->inRandomOrder()
+            ->limit($limit);
+
+        if (count($exclude) > 0) {
+            $query = $query->whereNotIn('id', $exclude);
+        }
+
+        return $query->get();
+    }
+}

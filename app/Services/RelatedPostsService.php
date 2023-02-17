@@ -55,9 +55,7 @@ readonly class RelatedPostsService
 
         $random_posts = $this->getRandomPosts(self::POSTS_LIMIT - $posts->count());
 
-        $posts->push(...$random_posts);
-
-        return $posts;
+        return $posts->push(...$random_posts);
     }
 
     /**
