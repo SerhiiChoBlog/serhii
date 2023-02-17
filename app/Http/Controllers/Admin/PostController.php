@@ -99,7 +99,7 @@ class PostController extends Controller
         $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
 
         if ($request->is_published) {
-            Cache::forget(CacheKey::LAST_POSTS);
+            Cache::forget(CacheKey::RANDOM_POSTS);
             Cache::forget(CacheKey::HOME_POPULAR_POSTS);
         }
 
@@ -122,7 +122,7 @@ class PostController extends Controller
         });
 
         if ($post->is_published) {
-            Cache::forget(CacheKey::LAST_POSTS);
+            Cache::forget(CacheKey::RANDOM_POSTS);
             Cache::forget(CacheKey::HOME_POPULAR_POSTS);
         }
 
