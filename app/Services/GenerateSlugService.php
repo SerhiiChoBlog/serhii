@@ -7,7 +7,7 @@ namespace App\Services;
 use App\Models\User;
 use Illuminate\Support\Str;
 
-class GenerateSlugService
+readonly class GenerateSlugService
 {
     public function __construct(private string $name)
     {
