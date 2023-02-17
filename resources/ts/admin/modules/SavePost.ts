@@ -27,6 +27,7 @@ export default class {
         formData.append('title', this.elements.title.value)
         formData.append('intro', this.elements.intro.value)
         formData.append('content', content)
+        formData.append('tag_id', this.elements.tag_id.value)
         formData.append('image', imageFile)
         formData.append('tags', JSON.stringify(tags.map(tag => tag.value)))
         formData.append('is-published', this.elements['is-published'].checked ? 'on' : 'off')

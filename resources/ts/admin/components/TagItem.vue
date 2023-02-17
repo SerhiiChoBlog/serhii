@@ -1,29 +1,33 @@
 <script setup lang="ts">
-import { Tag } from '@shared/types/models'
+import type { Tag } from '@shared/types/models'
 
 type Props = {
     tag: Tag
+    tagIsActive: boolean
 }
 
 type Emits = {
     (e: 'deleteTag', id: number): void
+    (e: 'updateTagId', id: number): void
 }
 
-const { tag } = defineProps<Props>()
+const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
 </script>
 
 <template>
     <span
-        class="text-white py-1 px-2 rounded-md font-light shadow-md text-xs"
-        :style="{ backgroundColor: tag.color }"
+        @click="emit('updateTagId', props.tag.id)"
+        class="text-white py-1.5 px-3 rounded-md font-light shadow-md text-xs border border-transparent"
+        :class="{ '!border-white outline outline-black': props.tagIsActive }"
+        :style="{ backgroundColor: props.tag.color }"
     >
-        {{ tag.name }}
+        {{ props.tag.name }}
 
-        <button type="button" @click="emit('deleteTag', tag.id)">
+        <button @click="emit('deleteTag', props.tag.id)" type="button">
             <i class="fas fa-times ml-1 transition-transform hover:scale-125"></i>
         </button>
 
-        <input type="hidden" name="tags[]" :value="tag.id">
+        <input type="hidden" name="tags[]" :value="props.tag.id">
     </span>
 </template>
