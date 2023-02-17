@@ -22,7 +22,7 @@ class HitMiddleware
         if ($today_hit) {
             $today_hit->increment('amount');
         } else {
-            Hit::query()->create();
+            Hit::query()->create(['created_at' => today()]);
         }
 
         return $next($request);
