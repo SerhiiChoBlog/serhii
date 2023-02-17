@@ -1,9 +1,10 @@
 @php
     use App\Models\Post;
 
-    /** @var Post $post */
-    /** @var App\Models\Post[] $posts */
-    /** @var string $title_font_size */
+    /**
+     * @var Post $post
+     * @var string $title_font_size
+     */
 @endphp
 
 @extends('layouts.main')
@@ -109,7 +110,9 @@
 
                     <nav role="navigation" class="print:hidden">
                         <x-post.sidebar-title>You might be interested</x-post.sidebar-title>
-                        <related-posts :post-id="{{ $post->id }}"></related-posts>
+                        <lazy-loading>
+                            <related-posts :post-id="{{ $post->id }}"></related-posts>
+                        </lazy-loading>
                     </nav>
                 </div>
 
