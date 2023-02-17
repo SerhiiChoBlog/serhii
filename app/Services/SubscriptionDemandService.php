@@ -6,10 +6,10 @@ namespace App\Services;
 
 use App\Dto\Subscription\DemandResponse;
 use App\Models\Subscription;
+use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
-use Str;
 
-class SubscriptionDemandService
+readonly class SubscriptionDemandService
 {
     public const ALL_TAGS = 'all';
     public const NO_TAGS = 'none';

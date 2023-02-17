@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Throwable;
 
-class GenerateAvatarService
+readonly class GenerateAvatarService
 {
     private const DEFAULT_IMAGE_NAME = 'default.svg';
 
