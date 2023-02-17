@@ -18,6 +18,7 @@ use Illuminate\Support\Collection;
  * @property int|null $posts_count
  * @property Collection<int, Post> $posts
  * @property Collection<int, Subscription> $subscriptions
+ * @property PostTag|null $pivot
  */
 class Tag extends Model
 {

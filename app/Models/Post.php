@@ -8,7 +8,6 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -16,7 +15,6 @@ use Illuminate\Support\Collection;
 
 /**
  * @property-read int $id
- * @property int|null $tag_id
  * @property string $title
  * @property string $slug
  * @property string|null $intro
@@ -34,7 +32,6 @@ use Illuminate\Support\Collection;
  * @property int|null $social_shares_count
  * @property int $read_time
  * @property Video|null $video
- * @property Tag|null $tag
  * @property array<int, array<int, string>>|null $social
  * @property string $pretty_created_at
  * @property Carbon $created_at
@@ -66,7 +63,9 @@ class Post extends Model
      */
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class)
+            ->withPivot('is_main')
+            ->using(PostTag::class);
     }
 
     /**
@@ -107,14 +106,6 @@ class Post extends Model
     public function postPublication(): HasOne
     {
         return $this->hasOne(PostPublication::class);
-    }
-
-    /**
-     * @return BelongsTo<Tag, self>
-     */
-    public function tag(): BelongsTo
-    {
-        return $this->belongsTo(Tag::class);
     }
 
     /**

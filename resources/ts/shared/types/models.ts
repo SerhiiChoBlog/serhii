@@ -8,6 +8,11 @@ export type Tag = {
     color: string
     posts_count?: number
     subscriptions?: Subscription[]
+    pivot?: {
+        post_id: number
+        tag_id: number
+        is_main: boolean
+    }
 }
 
 export type PostContentImage = {
@@ -20,7 +25,6 @@ export type PostContentImage = {
 
 export type Post = {
     id: number
-    tag_id: number | null
     video_id: number | null
     title: string
     slug: string
@@ -32,7 +36,6 @@ export type Post = {
     images?: PostContentImage[]
     postViews?: PostView[]
     socialShares?: SocialShare[]
-    tag?: Tag | null
     tags?: Tag[]
     video?: Video | null
     social?: string[][]

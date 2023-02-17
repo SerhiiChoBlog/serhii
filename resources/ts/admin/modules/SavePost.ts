@@ -1,7 +1,8 @@
+import type { Post } from '@shared/types/models'
+import type { EditPostFormElements } from '@shared/types'
 import axios from 'axios'
-import { EditPostFormElements } from '@shared/types'
 import SweetAlert from 'sweetalert2'
-import handleError from './handleError'
+import handleError from '@admin/modules/handleError'
 
 export default class {
     public constructor(
@@ -9,7 +10,7 @@ export default class {
         private postId: number,
     ) { }
 
-    public async save(content: string): Promise<string | null> {
+    public async save(content: string): Promise<Post | null> {
         const formData = new FormData()
         const tagsElems = this.elements['tags[]'] as HTMLInputElement[] | HTMLInputElement
 
@@ -38,7 +39,7 @@ export default class {
         }
 
         try {
-            const response = await axios.post<string>(`/admin/ajax/posts/${this.postId}`, formData, params)
+            const response = await axios.post<Post>(`/admin/ajax/posts/${this.postId}`, formData, params)
             return response.data
         } catch (err) {
             handleError(err)

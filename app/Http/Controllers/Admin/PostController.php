@@ -67,15 +67,15 @@ class PostController extends Controller
      * @throws JsonException
      * @throws LazyLoadingConversionException
      */
-    public function update(UpdateRequest $request, Post $post): string
+    public function update(UpdateRequest $request, Post $post): Post
     {
         $post->tags()->detach();
 
         if ($request->tags) {
-            $post->tags()->attach($request->tags);
+            $this->attachTags($request->tags, $request->tag_id, $post);
         }
 
-        $data = $request->collect()->forget(['_method', 'is-published']);
+        $data = $request->collect()->forget(['_method', 'is-published', 'tag_id']);
 
         /** @var UploadedFile|null $image */
         $image = $request->file('image');
@@ -112,7 +112,7 @@ class PostController extends Controller
 
         $post->update($data->toArray());
 
-        return $request->slug;
+        return $this->edit($post);
     }
 
     public function destroy(Post $post): void
@@ -145,5 +145,19 @@ class PostController extends Controller
             ['<p class="note">', '<p class="tip">', '<p class="note">'],
             $content,
         );
+    }
+
+    /**
+     * @param array<int, int> $tags
+     */
+    public function attachTags(array $tags, ?int $tag_id, Post $post): void
+    {
+        $data = [];
+
+        foreach ($tags as $tag) {
+            $data[$tag] = ['is_main' => $tag === $tag_id];
+        }
+
+        $post->tags()->attach($data);
     }
 }

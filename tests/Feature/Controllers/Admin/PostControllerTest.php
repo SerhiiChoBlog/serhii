@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Collection;
 use Intervention\Image\Facades\Image;
 use Tests\TestCase;
 
@@ -336,7 +337,7 @@ class PostControllerTest extends TestCase
         $this->assertCount(2, $json);
     }
 
-    public function testYouCanAddTagIdToPost(): void
+    public function testYouCanAddTagsToPost(): void
     {
         /** @var Tag $tag */
         $tag = Tag::factory()->create();
@@ -352,15 +353,56 @@ class PostControllerTest extends TestCase
             'is_published' => false,
             'content' => $post->content,
             'slug' => $post->slug,
-            'tag_id' => 1,
+            'tags' => "[{$tag->id}]",
         ];
 
         $this->actingAs($admin, 'admin')
             ->json('put', self::UPDATE_POST_URI, $params);
 
-        $this->assertDatabaseHas('posts', [
-            'id' => $post->id,
+        $this->assertDatabaseHas('post_tag', [
             'tag_id' => $tag->id,
+            'post_id' => $post->id,
+            'is_main' => false,
+        ]);
+    }
+
+
+    public function testWhenYouPassTagIdThenThisTagBecomesMain(): void
+    {
+        /** @var Collection<int, Tag> $tags */
+        $tags = Tag::factory()->count(3)->create();
+
+        /** @var Post $post */
+        $post = Post::factory()->create();
+
+        $admin = $this->createAdmin();
+
+        $params = [
+            'title' => $post->title,
+            'intro' => $post->intro,
+            'is_published' => false,
+            'content' => $post->content,
+            'slug' => $post->slug,
+            'tags' => "[{$tags[0]->id}, {$tags[1]->id}, {$tags[2]->id}]",
+            'tag_id' => $tags[1]->id,
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('put', self::UPDATE_POST_URI, $params);
+
+        $this->assertDatabaseHas('post_tag', [
+            'tag_id' => $tags[0]->id,
+            'is_main' => false,
+        ]);
+
+        $this->assertDatabaseHas('post_tag', [
+            'tag_id' => $tags[1]->id,
+            'is_main' => true,
+        ]);
+
+        $this->assertDatabaseHas('post_tag', [
+            'tag_id' => $tags[2]->id,
+            'is_main' => false,
         ]);
     }
 }

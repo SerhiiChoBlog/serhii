@@ -45,19 +45,18 @@ function savePost(form: HTMLFormElement | null): void {
 
     const elements = form.elements as EditPostFormElements
 
-    console.log(elements.tag_id, elements.tag_id.value)
     new SavePost(elements, post.value.id)
         .save(post.value.content || '')
         .then(handleSavePostResponse)
         .finally(() => loading.value = false)
 }
 
-function handleSavePostResponse(postSlug: string | null): void {
-    if (!post.value || !postSlug) {
+function handleSavePostResponse(newPost: Post | null): void {
+    if (!post.value || !newPost) {
         return
     }
 
-    post.value.slug = postSlug
+    post.value = newPost
 }
 
 function updateTagId(id: number): void {
@@ -66,7 +65,6 @@ function updateTagId(id: number): void {
     }
 
     (<EditPostFormElements>form.value.elements).tag_id.value = id.toString()
-    post.value.tag_id = id
 
     savePost(form.value)
 }
@@ -105,7 +103,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                     enctype="multipart/form-data"
                     ref="form"
                 >
-                    <input type="hidden" name="tag_id" :value="post.tag_id">
+                    <input type="hidden" name="tag_id">
 
                     <div class="flex flex-col lg:flex-row gap-6 mt-10">
                         <div class="flex-1">
@@ -139,7 +137,6 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                                 v-for="tag in post.tags"
                                                 :key="tag.id"
                                                 :tag="tag"
-                                                :tagIsActive="post.tag_id === tag.id"
                                                 @deleteTag="deleteTag"
                                                 @updateTagId="updateTagId"
                                             />
