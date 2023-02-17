@@ -83,4 +83,19 @@ class PostTest extends TestCase
     {
         $this->assertNotNull($this->post->pretty_created_at);
     }
+
+    public function testPostHasTagAssociated(): void
+    {
+        /** @var Tag $tag */
+        $tag = Tag::factory()->create();
+        $this->post->update(['tag_id' => $tag->id]);
+
+        $this->assertNotNull($this->post->tag);
+        $this->assertSame($tag->name, $this->post->tag->name);
+    }
+
+    public function testPostHasTagAssociatedThatCanBeNull(): void
+    {
+        $this->assertNull($this->post->tag);
+    }
 }
