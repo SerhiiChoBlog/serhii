@@ -11,7 +11,6 @@
                     style="background-color: {{ $tag['color'] }}"
                 >
                     {{ $tag['name'] }}
-                    | {{ $tag['id'] }}
                 </span>
             </tip>
         </a>
