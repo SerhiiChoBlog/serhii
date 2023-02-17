@@ -1,10 +1,13 @@
 @php
+    use App\Models\Post;
+    use Illuminate\Support\Collection;
+
     /**
-     * @var array<int, array<int ,mixed>> $popular_posts
-     * @var array<int, array<int ,mixed>> $latest_posts
+     * @var Collection<int, Post> $posts
      * @var array<int, array<int ,mixed>> $latest_videos
      */
 @endphp
+
 @extends('layouts.main')
 
 @section('content')
@@ -37,30 +40,20 @@
     </x-hero>
 
     <x-home.section
-        title="Latest articles"
-        intro="The latest published posts in the blog"
+        title="You might like"
+        intro="Articles which I think you might want to read"
     >
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-0 md:gap-5">
-            @foreach ($latest_posts as $post)
-                <x-posts.vertical-post :post="$post" />
+            @foreach ($posts as $post)
+                <x-posts.vertical-post :post="$post"/>
             @endforeach
         </div>
     </x-home.section>
 
     <x-home.section
-        title="Popular articles"
-        intro="The most viewed and loved articles"
-        isDark="true"
-    >
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-0 md:gap-5">
-            @foreach ($popular_posts as $post)
-                <x-posts.vertical-post :post="$post" />
-            @endforeach
-        </div>
-    </x-home.section>
-
-    <x-home.section title="Latest videos"
-                    intro="The latest YouTube videos"
+        title="Latest videos"
+        intro="The latest YouTube videos"
+        :isDark="true"
     >
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             @foreach ($latest_videos as $video)
@@ -96,7 +89,10 @@
         </div>
     </x-home.section>
 
-    <x-home.section title="Coming soon" intro="The articles which I'm currently working on" :isDark="true">
+    <x-home.section
+        title="Coming soon"
+        intro="The articles which I'm currently working on"
+    >
         <x-home.coming-soon-section/>
     </x-home.section>
 @endsection
