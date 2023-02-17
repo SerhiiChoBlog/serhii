@@ -20,6 +20,7 @@ export type PostContentImage = {
 
 export type Post = {
     id: number
+    tag_id: number | null
     video_id: number | null
     title: string
     slug: string

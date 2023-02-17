@@ -15,6 +15,7 @@ use Illuminate\Support\Collection;
 
 /**
  * @property-read int $id
+ * @property int|null $tag_id
  * @property string $title
  * @property string $slug
  * @property string|null $intro
