@@ -28,7 +28,7 @@
 
         <div>
             <a href="/posts/{{ $post->slug ?? $post['slug'] }}" rel="noreferrer">
-                <h2 class="text-2xl text-font">{{ $post->title ?? $post['title'] }}</h2>
+                <h2 class="text-2xl text-font">{{ $post->id }} | {{ $post->title ?? $post['title'] }}</h2>
                 <p class="mt-2 text-lg font-light text-font-second font-post">{{ $post->intro ?? $post['intro'] }}</p>
             </a>
 

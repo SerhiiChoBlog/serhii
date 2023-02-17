@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Models\Tag;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -10,16 +9,15 @@ use Illuminate\Support\Facades\Schema;
 return new class () extends Migration {
     public function up(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->foreignIdFor(Tag::class)->after('id')->nullable();
+        Schema::table('post_tag', function (Blueprint $table) {
+            $table->boolean('is_main')->default(false);
         });
     }
 
     public function down(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropForeign(['tag_id']);
-            $table->dropColumn('tag_id');
+        Schema::table('post_tag', function (Blueprint $table) {
+            $table->dropColumn('is_main');
         });
     }
 };

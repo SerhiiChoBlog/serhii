@@ -65,7 +65,7 @@ function handleResponse(user: User | string): void {
 }
 
 function handleError(err: any): void {
-    console.log(err)
+    console.error(err)
     isLoading.value = false
 }
 </script>

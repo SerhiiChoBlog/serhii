@@ -3,7 +3,6 @@ import type { Tag } from '@shared/types/models'
 
 type Props = {
     tag: Tag
-    tagIsActive: boolean
 }
 
 type Emits = {
@@ -19,7 +18,7 @@ const emit = defineEmits<Emits>()
     <span
         @click="emit('updateTagId', props.tag.id)"
         class="text-white py-1.5 px-3 rounded-md font-light shadow-md text-xs border border-transparent"
-        :class="{ '!border-white outline outline-black': props.tagIsActive }"
+        :class="{ '!border-white outline outline-black': props.tag.pivot ? props.tag.pivot.is_main : false }"
         :style="{ backgroundColor: props.tag.color }"
     >
         {{ props.tag.name }}
