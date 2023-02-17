@@ -42,9 +42,6 @@
                     <x-users.profile-row title="Comments">
                         {{ $user->comments_count ?? 0 }}
                     </x-users.profile-row>
-                    <x-users.profile-row title="Posts liked">
-                        <span class="text-yellow-600">coming soon</span>
-                    </x-users.profile-row>
                 </div>
             </div>
         </div>
