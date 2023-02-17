@@ -45,6 +45,7 @@ function savePost(form: HTMLFormElement | null): void {
 
     const elements = form.elements as EditPostFormElements
 
+    console.log(elements.tag_id, elements.tag_id.value)
     new SavePost(elements, post.value.id)
         .save(post.value.content || '')
         .then(handleSavePostResponse)
@@ -57,6 +58,17 @@ function handleSavePostResponse(postSlug: string | null): void {
     }
 
     post.value.slug = postSlug
+}
+
+function updateTagId(id: number): void {
+    if (!post.value || !form.value) {
+        return
+    }
+
+    (<EditPostFormElements>form.value.elements).tag_id.value = id.toString()
+    post.value.tag_id = id
+
+    savePost(form.value)
 }
 
 function deleteTag(id: number): void {
@@ -93,6 +105,8 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                     enctype="multipart/form-data"
                     ref="form"
                 >
+                    <input type="hidden" name="tag_id" :value="post.tag_id">
+
                     <div class="flex flex-col lg:flex-row gap-6 mt-10">
                         <div class="flex-1">
                             <div>
@@ -119,13 +133,15 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                 >
                                     Tags
 
-                                    <div class="ml-1 inline-block space-x-1">
+                                    <div class="ml-1 my-2 inline-block space-x-2">
                                         <template v-if="post && post.tags">
                                             <TagItem
                                                 v-for="tag in post.tags"
                                                 :key="tag.id"
                                                 :tag="tag"
+                                                :tagIsActive="post.tag_id === tag.id"
                                                 @deleteTag="deleteTag"
+                                                @updateTagId="updateTagId"
                                             />
                                         </template>
                                     </div>

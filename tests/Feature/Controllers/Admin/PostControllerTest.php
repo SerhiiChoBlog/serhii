@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Controllers\Admin;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Facades\Image;
@@ -333,5 +334,33 @@ class PostControllerTest extends TestCase
 
         $this->assertIsArray($json);
         $this->assertCount(2, $json);
+    }
+
+    public function testYouCanAddTagIdToPost(): void
+    {
+        /** @var Tag $tag */
+        $tag = Tag::factory()->create();
+
+        /** @var Post $post */
+        $post = Post::factory()->create();
+
+        $admin = $this->createAdmin();
+
+        $params = [
+            'title' => $post->title,
+            'intro' => $post->intro,
+            'is_published' => false,
+            'content' => $post->content,
+            'slug' => $post->slug,
+            'tag_id' => 1,
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('put', self::UPDATE_POST_URI, $params);
+
+        $this->assertDatabaseHas('posts', [
+            'id' => $post->id,
+            'tag_id' => $tag->id,
+        ]);
     }
 }
