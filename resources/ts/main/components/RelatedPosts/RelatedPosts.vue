@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import PostItem from '@/components/RelatedPosts/PostItem.vue'
 import type { Post } from '@shared/types/models'
 import handleServerError from '@shared/modules/handleServerError'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
+import Spinner from '@shared/components/Icons/Spinner.vue'
+import PostItem from '@/components/RelatedPosts/PostItem.vue'
 
 type Props = {
     postId: number
@@ -11,18 +12,27 @@ type Props = {
 
 const { postId } = defineProps<Props>()
 const posts = ref<Post[]>([])
+const loading = ref(false)
 
-onMounted(() => fetchPost())
+onMounted(() => {
+    loading.value = true
+    fetchPost()
+})
 
 function fetchPost(): void {
     axios.get<Post[]>(`/api/related-posts/${postId}`)
         .then(resp => posts.value = resp.data)
         .catch(err => handleServerError(err))
+        .finally(() => loading.value = false)
 }
 </script>
 
 <template>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+    <div v-if="loading" class="text-center pt-5">
+        <spinner />
+    </div>
+
+    <div v-else class="grid grid-cols-1 sm:grid-cols-3 gap-2">
         <post-item
             v-for="post in posts"
             :key="post.id"
