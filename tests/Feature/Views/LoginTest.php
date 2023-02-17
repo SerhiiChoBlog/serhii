@@ -41,7 +41,7 @@ class LoginTest extends TestCase
 
     public function testUserCanLoginAndSeeProfilePage(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $form_data = [
             'email' => $user->email,
@@ -68,7 +68,7 @@ class LoginTest extends TestCase
     public function testUserCannotLoginWithInvalidPassword(): void
     {
         /** @var User $user */
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $form_data = [
             'email' => $user->email,
@@ -82,7 +82,7 @@ class LoginTest extends TestCase
     public function testUserCannotLoginWithInvalidEmail(): void
     {
         /** @var User $user */
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $form_data = [
             'email' => 'xx' . $user->email,
@@ -96,7 +96,7 @@ class LoginTest extends TestCase
     public function testRememberMeTokenIsSet(): void
     {
         /** @var User $user */
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $form_data = [
             'email' => $user->email,
@@ -112,7 +112,7 @@ class LoginTest extends TestCase
     public function testRememberMeTokenIsNotSet(): void
     {
         /** @var User $user */
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $form_data = [
             'email' => $user->email,

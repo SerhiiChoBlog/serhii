@@ -26,7 +26,7 @@ class RoleTest extends TestCase
         $role = Role::factory()->create(['name' => UserRole::ADMIN]);
 
         /** @var User $user */
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $role->users()->attach([$user->id]);
 

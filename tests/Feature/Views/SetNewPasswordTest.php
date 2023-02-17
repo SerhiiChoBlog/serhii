@@ -17,7 +17,7 @@ class SetNewPasswordTest extends TestCase
     public function testGuestCanSetNewPassword(): void
     {
         /** @var User $user */
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $token = $this->app->make('auth.password.broker')->createToken($user);
         $new_password = 'new_password';
 
@@ -37,7 +37,7 @@ class SetNewPasswordTest extends TestCase
     public function testUserCanSetNewPassword(): void
     {
         /** @var User $user */
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $token = $this->app->make('auth.password.broker')->createToken($user);
         $new_password = 'some_new_password';
 
@@ -58,7 +58,7 @@ class SetNewPasswordTest extends TestCase
     public function testUserCannotSetNewPasswordWithInvalidToken(): void
     {
         /** @var User $user */
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $new_password = 'some_new_password';
 
         $form_data = [
@@ -78,10 +78,10 @@ class SetNewPasswordTest extends TestCase
     public function testUserCannotSetNewPasswordWithEmailOfTheOtherUser(): void
     {
         /** @var User $other_user */
-        $other_user = User::factory()->create();
+        $other_user = $this->createUser();
 
         /** @var User $user */
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $token = $this->app->make('auth.password.broker')->createToken($user);
         $new_password = 'my_new_password';

@@ -50,7 +50,7 @@ class AuthFirebaseControllerTest extends TestCase
 
     public function testRequestDoesntCreateUserIfEmailFound(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $params = [
             'name' => $user->name,

@@ -99,7 +99,7 @@ class RegisterTest extends TestCase
     public function testUserCannotRegisterWithExistingEmail(): void
     {
         /** @var User $serhii */
-        $serhii = User::factory()->create();
+        $serhii = $this->createUser();
 
         $form_data = [
             'name' => 'Anna Korotchaeva',

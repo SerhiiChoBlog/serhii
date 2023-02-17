@@ -26,7 +26,7 @@ class BadgeTest extends TestCase
         $badge = Badge::factory()->create();
 
         /** @var User $user */
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $badge->users()->attach([$user->id]);
 

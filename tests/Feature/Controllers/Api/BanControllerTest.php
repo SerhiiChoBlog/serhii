@@ -20,7 +20,7 @@ class BanControllerTest extends TestCase
 
     public function testAdminCanBanUser(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $admin = $this->createAdmin();
 
         $params = [
@@ -37,8 +37,8 @@ class BanControllerTest extends TestCase
 
     public function testUserCannotBanUser(): void
     {
-        $user = User::factory()->create();
-        $user2 = User::factory()->create();
+        $user = $this->createUser();
+        $user2 = $this->createUser();
 
         $params = [
             'user_id' => $user->id,
@@ -54,7 +54,7 @@ class BanControllerTest extends TestCase
 
     public function testGuestCannotBanUser(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $params = [
             'user_id' => $user->id,
@@ -174,7 +174,7 @@ class BanControllerTest extends TestCase
 
     public function testAdminCanUnbanUser(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         Ban::factory()->create(['user_id' => $user]);
 
         $this->assertDatabaseCount('bans', 1);

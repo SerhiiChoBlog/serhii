@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Views;
 
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
@@ -24,7 +23,7 @@ class AdminTest extends TestCase
 
     public function testUserCannotVisitAdminDashboard(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $this->actingAs($user, 'user')
             ->get(RouteServiceProvider::ADMIN_HOME)

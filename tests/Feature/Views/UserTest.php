@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Views;
 
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
@@ -15,7 +14,7 @@ class UserTest extends TestCase
 
     public function testUserCanVisitUserProfile(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $this->actingAs($user, 'user')
             ->get(RouteServiceProvider::USER_HOME)
