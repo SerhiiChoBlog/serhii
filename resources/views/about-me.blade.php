@@ -10,13 +10,13 @@
         class="bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1] text-white print:bg-none print:text-black"
     />
 
-    <div class="mt-2 text-xl">
-        <section class="text-[1.2rem] px-2 lg:px-6 py-8 ">
+    <div class="print:mt-0 mt-2 text-xl">
+        <section class="text-[1.2rem] px-2 lg:px-6 py-8 print:p-0">
             <div class="container">
-                <div class="bg-page -translate-y-16 rounded-xl pt-8">
+                <div class="bg-page print:translate-y-0 -translate-y-16 rounded-xl pt-8">
                     <div class="grid grid-cols-1 gap-x-6 lg:grid-cols-[25%_1fr]">
                         <div class="relative">
-                            <div class="w-[250px] mx-auto rounded-lg sticky top-20 mb-6">
+                            <div class="print:w-full w-[250px] mx-auto rounded-lg print:initial sticky top-20 mb-6">
                                 <img
                                     src="/storage/serhii-cho-min.webp"
                                     data-src="/storage/serhii-cho.webp"
