@@ -65,7 +65,8 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class)
             ->withPivot('is_main')
-            ->using(PostTag::class);
+            ->using(PostTag::class)
+            ->orderByDesc('is_main');
     }
 
     /**
