@@ -109,27 +109,7 @@
 
                     <nav role="navigation" class="print:hidden">
                         <x-post.sidebar-title>You might be interested</x-post.sidebar-title>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                            @foreach ($posts as $other_post)
-                                <a
-                                    href="{{ route('posts.show', $other_post) }}"
-                                    class="p-2 transition-opacity hover:opacity-80 min-h-[160px]"
-                                    aria-label="Go to a post {{ $other_post->title }}"
-                                >
-                                    <img
-                                        src="{{ asset($other_post->image_xs) }}"
-                                        data-src="{{ asset($other_post->image_sm) }}"
-                                        alt="Photo of the post '{{ $other_post->title }}'"
-                                        class="rounded-lg shadow-lg mx-auto w-full"
-                                        width="260"
-                                        height="141"
-                                    />
-
-                                    <h2 class="text-lg leading-6 my-3">{{ $other_post->title }}</h2>
-                                </a>
-                            @endforeach
-                        </div>
+                        <related-posts :post-id="{{ $post->id }}"></related-posts>
                     </nav>
                 </div>
 

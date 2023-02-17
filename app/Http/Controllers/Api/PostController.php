@@ -7,8 +7,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\IndexRequest;
 use App\Models\Post;
+use App\Services\RelatedPostsService;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
 
 class PostController extends Controller
 {
@@ -30,5 +32,17 @@ class PostController extends Controller
         }
 
         return $query->simplePaginate(10)->appends($request->input());
+    }
+
+    /**
+     * @return Collection<int, Post>
+     */
+    public function related(Post $post): Collection
+    {
+        $post->load('tags');
+
+        $service = new RelatedPostsService($post);
+
+        return $service->get();
     }
 }

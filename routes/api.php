@@ -22,6 +22,7 @@ Route::get('search/{query}', [SearchController::class, 'index']);
 Route::post('subscriptions', [SubscriptionDemandController::class, 'subscribe']);
 
 Route::get('posts', [PostController::class, 'index']);
+Route::get('related-posts/{post}', [PostController::class, 'related']);
 
 Route::controller(CommentController::class)->prefix('comments')->group(function () {
     Route::get('{post}', 'index');
