@@ -7,7 +7,9 @@ namespace Tests\Feature\Models;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\PostContentImage;
+use App\Models\PostPublication;
 use App\Models\Tag;
+use App\Models\Video;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
@@ -57,5 +59,28 @@ class PostTest extends TestCase
         ]);
 
         $this->assertCount(1, $this->post->comments);
+    }
+
+    public function testPostHasPostPublicationAssociated(): void
+    {
+        PostPublication::factory()->create([
+            'post_id' => $this->post->id,
+        ]);
+
+        $this->assertNotNull($this->post->postPublication);
+    }
+
+    public function testPostHasVideoAssociated(): void
+    {
+        Video::factory()->create([
+            'post_id' => $this->post->id,
+        ]);
+
+        $this->assertNotNull($this->post->video);
+    }
+
+    public function testPostHasPrettyCreatedAtField(): void
+    {
+        $this->assertNotNull($this->post->pretty_created_at);
     }
 }

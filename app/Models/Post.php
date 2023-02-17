@@ -27,6 +27,7 @@ use Illuminate\Support\Collection;
  * @property Collection<int, SocialShare> $socialShares
  * @property Collection<int, PostView> $postViews
  * @property Collection<int, Tag> $tags
+ * @property PostPublication|null $postPublication
  * @property Collection<int, Comment> $comments
  * @property int|null $post_views_count
  * @property int|null $social_shares_count

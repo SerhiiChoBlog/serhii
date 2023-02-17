@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Models\Post;
 use App\Models\PostPublication;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,8 +19,6 @@ class PostPublicationFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'post_id' => Post::factory(),
-        ];
+        return [];
     }
 }
