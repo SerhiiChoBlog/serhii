@@ -8,7 +8,6 @@ use App\Http\Requests\Post\IndexRequest;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Visitor;
-use App\Services\RelatedPostsService;
 use HttpException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
@@ -73,9 +72,6 @@ class PostController extends Controller
 
         Visitor::incrementPostViews($post->id, $ip);
 
-        $service = new RelatedPostsService($post);
-        $posts = $service->get();
-
-        return view('posts.show', compact('post', 'title_font_size', 'posts'));
+        return view('posts.show', compact('post', 'title_font_size'));
     }
 }
