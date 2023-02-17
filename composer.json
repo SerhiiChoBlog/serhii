@@ -19,7 +19,8 @@
         "serhii/ago": "^3.0",
         "serhii/short-number": "^3.0",
         "spatie/laravel-sitemap": "^6.2",
-        "stevebauman/location": "^6.1"
+        "stevebauman/location": "^6.1",
+        "ext-http": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

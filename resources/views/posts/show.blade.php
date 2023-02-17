@@ -107,9 +107,8 @@
                         <x-post.post-is-in-process />
                     @endpublished
 
-                    {{-- Other posts --}}
                     <nav role="navigation" class="print:hidden">
-                        <x-post.sidebar-title>Other posts</x-post.sidebar-title>
+                        <x-post.sidebar-title>You might be interested</x-post.sidebar-title>
 
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                             @foreach ($posts as $other_post)
@@ -127,7 +126,7 @@
                                         height="141"
                                     />
 
-                                    <h2 class="text-xl leading-6 my-3">{{ $other_post->title }}</h2>
+                                    <h2 class="text-lg leading-6 my-3">{{ $other_post->title }}</h2>
                                 </a>
                             @endforeach
                         </div>
