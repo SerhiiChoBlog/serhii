@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Feature\Models;
 
 use App\Models\Ban;
-use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
@@ -15,7 +14,7 @@ class BanTest extends TestCase
 
     public function testBanCanBeCreated(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $attributes = [
             'user_id' => $user->id,
@@ -29,7 +28,7 @@ class BanTest extends TestCase
 
     public function testBanHasUserAssociated(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $attributes = [
             'user_id' => $user->id,

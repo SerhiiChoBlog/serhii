@@ -10,7 +10,6 @@ use App\Listeners\Badges\GiveUserCommentatorBadge;
 use App\Models\Badge;
 use App\Models\Comment;
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
@@ -20,7 +19,7 @@ class GiveUserCommentatorBadgeTest extends TestCase
 
     public function testListenerDoesntGiveUserABadgeIfHaveNotEnoughComments(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         // Create commentator badge
@@ -41,7 +40,7 @@ class GiveUserCommentatorBadgeTest extends TestCase
 
     public function testListenerGivesUserABadgeIfHaveEnoughComments(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         // Create commentator badge

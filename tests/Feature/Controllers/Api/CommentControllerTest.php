@@ -32,7 +32,7 @@ class CommentControllerTest extends TestCase
 
     public function testYouCanGetComments(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $text = 'I like this post! Keep it up!';
@@ -55,7 +55,7 @@ class CommentControllerTest extends TestCase
 
     public function testYouCanGetCommentsWithNestedComments(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $comment = Comment::factory()->create([
@@ -84,7 +84,7 @@ class CommentControllerTest extends TestCase
 
     public function testYouCanCreateComment(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
         $text = 'Awesome post! Thank you for sharing your knowledge!';
 
@@ -104,8 +104,8 @@ class CommentControllerTest extends TestCase
 
     public function testYouCanReplyToComment(): void
     {
-        $user1 = User::factory()->create();
-        $user2 = User::factory()->create();
+        $user1 = $this->createUser();
+        $user2 = $this->createUser();
         $post = Post::factory()->create();
 
         // User 1 comments on a post
@@ -135,9 +135,9 @@ class CommentControllerTest extends TestCase
 
     public function testItRepliesToParentCommentAfterReplyingToReply(): void
     {
-        $user1 = User::factory()->create();
-        $user2 = User::factory()->create();
-        $user3 = User::factory()->create();
+        $user1 = $this->createUser();
+        $user2 = $this->createUser();
+        $user3 = $this->createUser();
 
         $post = Post::factory()->create();
 
@@ -175,7 +175,7 @@ class CommentControllerTest extends TestCase
 
     public function testUserCannotCreateCommentLessThan4Characters(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->json('post', self::POST_COMMENT_URI, [
@@ -189,7 +189,7 @@ class CommentControllerTest extends TestCase
 
     public function testUserCannotCreateCommentMoreThan1000Characters(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->json('post', self::POST_COMMENT_URI, [
@@ -203,7 +203,7 @@ class CommentControllerTest extends TestCase
 
     public function testUserCanCreateCommentWith4Characters(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->json('post', self::POST_COMMENT_URI, [
@@ -219,7 +219,7 @@ class CommentControllerTest extends TestCase
 
     public function testUserCanCreateCommentWith1000Characters(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->json('post', self::POST_COMMENT_URI, [
@@ -235,7 +235,7 @@ class CommentControllerTest extends TestCase
 
     public function testYouCanOnlySubmitOneCommentInSomeMinutes(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
         $text = 'Awesome post! Thank you for sharing your knowledge!';
 
@@ -259,7 +259,7 @@ class CommentControllerTest extends TestCase
 
     public function testYouCanSubmitTheSecondCommentAfterSomeMinutes(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
         $text = 'Awesome post! Thank you for sharing your knowledge!';
 
@@ -307,7 +307,7 @@ class CommentControllerTest extends TestCase
 
     public function testPostingCommentReturnsDateInFuture(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
         $text = 'Awesome post! Thank you for sharing your knowledge!';
 
@@ -347,7 +347,7 @@ class CommentControllerTest extends TestCase
      */
     public function testPostingCommentWithSwearWordWillBeMarkedAsNotApproved(string $text): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->json('post', self::POST_COMMENT_URI, [
@@ -383,7 +383,7 @@ class CommentControllerTest extends TestCase
      */
     public function testPostingCommentWithoutSwearWordWillBeMarkedAsApproved(string $text): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->json('post', self::POST_COMMENT_URI, [
@@ -414,7 +414,7 @@ class CommentControllerTest extends TestCase
 
     public function testPostingCommentDispatchesCommentPostedEvent(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $this->json('post', self::POST_COMMENT_URI, [
@@ -428,7 +428,7 @@ class CommentControllerTest extends TestCase
 
     public function testPostingCommentIsNotDispatchingEventIfCommentIsNotApproved(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $this->json('post', self::POST_COMMENT_URI, [
@@ -442,7 +442,7 @@ class CommentControllerTest extends TestCase
 
     public function testCommentMustBeWrittenInEnglish(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->json('post', self::POST_COMMENT_URI, [
@@ -470,7 +470,7 @@ class CommentControllerTest extends TestCase
 
     public function testPostingCommentQueuesTheJobForSendingAdminEmail(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $this->json('post', self::POST_COMMENT_URI, [

@@ -6,7 +6,6 @@ namespace Tests\Feature\Controllers\Api;
 
 use App\Enums\SocialName;
 use App\Models\Post;
-use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
@@ -45,7 +44,7 @@ class SocialShareControllerTest extends TestCase
 
     public function testWeCanSaveSocialShareInDatabaseWithUserId(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $params = [
             'social' => SocialName::LINKEDIN,

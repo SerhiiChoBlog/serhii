@@ -7,7 +7,6 @@ namespace Tests\Feature\Listeners;
 use App\Enums\BadgeName;
 use App\Listeners\Badges\GiveUserVerifiedBadge;
 use App\Models\Badge;
-use App\Models\User;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
@@ -18,7 +17,7 @@ class GiveUserVerifiedBadgeTest extends TestCase
 
     public function testUserGetsVerifiedBadge(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         Badge::factory()->create(['name' => BadgeName::VERIFIED]);
 

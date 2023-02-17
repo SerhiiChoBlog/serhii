@@ -22,7 +22,7 @@ class UserTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->user = User::factory()->create();
+        $this->user = $this->createUser();
     }
 
     public function testUserCanBeCreated(): void

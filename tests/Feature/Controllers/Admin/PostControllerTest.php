@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Feature\Controllers\Admin;
 
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Facades\Image;
@@ -23,7 +22,7 @@ class PostControllerTest extends TestCase
 
     public function testUserCannotCreatePost(): void
     {
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $params = ['title' => 'This is the post title for post'];
 

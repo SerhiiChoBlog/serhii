@@ -24,7 +24,7 @@ class PasswordResetTest extends TestCase
     public function testUserCanVisitThePage(): void
     {
         /** @var User $user */
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         $this->actingAs($user)
             ->get(route('password.request'))
@@ -35,7 +35,7 @@ class PasswordResetTest extends TestCase
     public function testUserReceivesEmailAfterRequestingPasswordReset(): void
     {
         /** @var User $user */
-        $user = User::factory()->create();
+        $user = $this->createUser();
 
         Notification::fake();
 

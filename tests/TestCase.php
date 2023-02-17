@@ -14,12 +14,17 @@ abstract class TestCase extends BaseTestCase
 
     protected function createAdmin(): User
     {
-        $admin = User::factory()->create();
+        $admin = $this->createUser();
 
         $role = Role::factory()->create(['name' => 'admin']);
 
         $admin->roles()->attach([$role->id]);
 
         return $admin;
+    }
+
+    protected function createUser(): User
+    {
+        return User::factory()->create();
     }
 }
