@@ -32,6 +32,7 @@ export type Post = {
     images?: PostContentImage[]
     postViews?: PostView[]
     socialShares?: SocialShare[]
+    tag?: Tag | null
     tags?: Tag[]
     video?: Video | null
     social?: string[][]
