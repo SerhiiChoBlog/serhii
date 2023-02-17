@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\CacheKey;
 use App\Models\Post;
 use App\Models\Video;
+use App\Services\PreferredPostsService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -16,7 +17,7 @@ class HomeController extends Controller
     public function index(): View
     {
         return view('home', [
-            'posts' => $this->getRandomPosts(),
+            'posts' => $this->getPreferredPosts(),
             'latest_videos' => $this->getLatestVideos(),
         ]);
     }
@@ -24,15 +25,10 @@ class HomeController extends Controller
     /**
      * @return Collection<int, Post>
      */
-    private function getRandomPosts(): Collection
+    private function getPreferredPosts(): Collection
     {
-        return Post::query()
-            ->with('tags:name,color,title')
-            ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time')
-            ->where('is_published', true)
-            ->inRandomOrder()
-            ->limit(8)
-            ->get();
+        $service = new PreferredPostsService();
+        return $service->get();
     }
 
     /**

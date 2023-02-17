@@ -17,7 +17,8 @@
     >
         <div>
             <div
-                class="absolute left-0 right-0 top-0 bottom-0 bg-gradient-to-r from-gray-900/80 via-gray-900/80 to-gray-900/50"></div>
+                class="absolute left-0 right-0 top-0 bottom-0 bg-gradient-to-r from-gray-900/80 via-gray-900/80 to-gray-900/50"
+            ></div>
 
             <div class="relative z-10 text-center pt-20 pb-32">
                 <h1 class="text-2xl lg:text-4xl" aria-label="Serhii Cho">
