@@ -5,21 +5,26 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Visitor\IndexRequest;
 use App\Models\Visitor;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class VisitorController extends Controller
 {
-    /**
-     * @return Collection<int, Visitor>
-     */
-    public function index(): Collection
+    public function index(IndexRequest $request): LengthAwarePaginator
     {
-        return Visitor::query()
-            ->selectRaw('*, LOWER(code) as code')
+        $query = Visitor::query()
             ->withCount('postViews')
-            ->limit(20)
-            ->orderByDesc('post_views_count')
-            ->get();
+            ->orderByDesc('post_views_count');
+
+        if ($request->search) {
+            $query->where('ip', 'like', "%{$request->search}%")
+                ->orWhere('id', 'like', "%{$request->search}%")
+                ->orWhere('city', 'like', "%{$request->search}%")
+                ->orWhere('code', 'like', "%{$request->search}%")
+                ->orWhere('country', 'like', "%{$request->search}%");
+        }
+
+        return $query->paginate(20);
     }
 }
