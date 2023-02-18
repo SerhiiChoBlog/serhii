@@ -31,7 +31,7 @@ const { content, icon = false, classes } = defineProps<Props>()
             </div>
 
             <template #content>
-                <div class="bg-gray-800/90 px-4 py-2 text-white rounded-md text-sm lg:text-md shadow-md tracking-normal font-normal w-auto">
+                <div class="bg-gray-800/90 px-4 py-2 text-white rounded-md text-sm lg:text-md shadow-md tracking-normal font-normal w-auto min-w-[120px]">
                     {{ content }}
                 </div>
             </template>
