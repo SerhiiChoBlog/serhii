@@ -29,7 +29,7 @@ class BanControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->post(self::BAN_URI, $params)
+            ->json('post', self::BAN_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseHas('bans', $params);
@@ -46,8 +46,8 @@ class BanControllerTest extends TestCase
         ];
 
         $this->actingAs($user2, 'user')
-            ->post(self::BAN_URI, $params)
-            ->assertStatus(302);
+            ->json('post', self::BAN_URI, $params)
+            ->assertUnauthorized();
 
         $this->assertDatabaseEMpty('bans');
     }
@@ -61,8 +61,8 @@ class BanControllerTest extends TestCase
             'comment' => 'This is my comment',
         ];
 
-        $this->post(self::BAN_URI, $params)
-            ->assertStatus(302);
+        $this->json('post', self::BAN_URI, $params)
+            ->assertUnauthorized();
 
         $this->assertDatabaseEMpty('bans');
     }
@@ -78,7 +78,7 @@ class BanControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->post(self::BAN_URI, $params)
+            ->json('post', self::BAN_URI, $params)
             ->assertOk();
 
         $this->assertNull($user->fresh()?->remember_token);
@@ -97,11 +97,11 @@ class BanControllerTest extends TestCase
         $admin = $this->createAdmin();
 
         $this->actingAs($admin, 'admin')
-            ->post(self::BAN_URI, $params)
+            ->json('post', self::BAN_URI, $params)
             ->assertOk();
 
         $this->actingAs($admin, 'admin')
-            ->post(self::BAN_URI, $params)
+            ->json('post', self::BAN_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseCount('bans', 1);
@@ -127,7 +127,7 @@ class BanControllerTest extends TestCase
         $admin = $this->createAdmin();
 
         $this->actingAs($admin, 'admin')
-            ->post(self::BAN_URI, $params);
+            ->json('post', self::BAN_URI, $params);
 
         $comments = $user
             ->comments()
@@ -160,7 +160,7 @@ class BanControllerTest extends TestCase
         $admin = $this->createAdmin();
 
         $this->actingAs($admin, 'admin')
-            ->post(self::BAN_URI, $params);
+            ->json('post', self::BAN_URI, $params);
 
         $comments = $user
             ->comments()
@@ -184,7 +184,7 @@ class BanControllerTest extends TestCase
         $params = ['user_id' => $user->id];
 
         $this->actingAs($admin, 'admin')
-            ->post(self::UNBAN_URI, $params)
+            ->json('post', self::UNBAN_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseEmpty('bans');
