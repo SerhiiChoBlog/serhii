@@ -23,6 +23,7 @@ use Throwable;
  * @property string|null $code
  * @property Collection<SocialShare> $socialShares
  * @property Collection<PostView> $postViews
+ * @property boolean $is_blocked
  */
 class Visitor extends Model
 {

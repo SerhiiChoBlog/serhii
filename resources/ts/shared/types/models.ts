@@ -69,6 +69,7 @@ export type PostView = {
     created_at: string
     amount?: number
     date: string | null
+    is_blocked: boolean
 }
 
 export type Visitor = {
