@@ -495,4 +495,20 @@ class CommentControllerTest extends TestCase
 
         Queue::assertNotPushed(NewCommentAdminEmail::class);
     }
+
+    public function testUserCannotPostCommentWhenBanned(): void
+    {
+        $user = $this->createUser();
+        $post = Post::factory()->create();
+
+        $user->ban()->create(['comment' => 'You are banned!']);
+
+        $this->json('post', self::POST_COMMENT_URI, [
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+            'comment' => 'Hello! Thank you for your post!',
+        ]);
+
+        $this->assertDatabaseEmpty('comments');
+    }
 }
