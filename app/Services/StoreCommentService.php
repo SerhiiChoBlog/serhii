@@ -45,6 +45,11 @@ class StoreCommentService
             throw ValidationException::withMessages(['secret' => $msg]);
         }
 
+        if ($this->user->ban()->exists()) {
+            $msg = 'You have been banned from posting comments.';
+            throw ValidationException::withMessages(['comment' => $msg]);
+        }
+
         $parent = $this->getParentComment();
 
         if ($parent && $parent->comment_id !== null) {
