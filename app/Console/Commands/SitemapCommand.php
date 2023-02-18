@@ -66,7 +66,7 @@ class SitemapCommand extends Command
                 $url = Url::create(route('posts.show', $post->slug))
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                     ->setLastModificationDate($post->updated_at)
-                    ->setPriority(.7)
+                    ->setPriority(.8)
                     ->addImage(asset($post->image_lg), $post->title);
 
                 /** @var PostContentImage $image */
@@ -94,7 +94,7 @@ class SitemapCommand extends Command
                 return Url::create(route('projects.show', $project->name))
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                     ->setLastModificationDate($project->created_at)
-                    ->setPriority(.6)
+                    ->setPriority(.7)
                     ->addImage($image_url, $project->language);
             })
             ->toArray();
@@ -111,7 +111,7 @@ class SitemapCommand extends Command
             ->map(function (Tag $tag) {
                 return Url::create(route('posts.index', compact('tag')))
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
-                    ->setPriority(.7)
+                    ->setPriority(.8)
                     ->addImage(asset("/storage/tags/{$tag->name}.webp"), $tag->title);
             })
             ->toArray();
