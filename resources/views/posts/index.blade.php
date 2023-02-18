@@ -9,7 +9,7 @@
      * @var Tag|null $tag
      */
 
-    $title = $tag ? sprintf("Articles on %s topic", $tag->title) : 'Blog for web developers';
+    $title = $tag->title ?? 'Blog for web developers';
 @endphp
 
 @extends('layouts.main')
@@ -41,12 +41,12 @@
             </div>
 
             @if ($posts->isEmpty())
-                <x-posts.no-posts />
+                <x-posts.no-posts/>
             @else
                 <div class="flex flex-col gap-y-2">
 
                     @foreach ($posts as $post)
-                        <x-posts.horizontal-post :post="$post" />
+                        <x-posts.horizontal-post :post="$post"/>
                     @endforeach
 
                     <div class="my-6 mx-4">
