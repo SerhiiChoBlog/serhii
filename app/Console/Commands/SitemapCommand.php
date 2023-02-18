@@ -109,7 +109,7 @@ class SitemapCommand extends Command
             ->whereHas('posts', fn (Builder $q) => $q->where('is_published', true))
             ->get()
             ->map(function (Tag $tag) {
-                return Url::create(route('posts.index', compact('tag')))
+                return Url::create(route('posts.index', ['tag' => $tag->name]))
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                     ->setPriority(.8)
                     ->addImage(asset("/storage/tags/{$tag->name}.webp"), $tag->title);
