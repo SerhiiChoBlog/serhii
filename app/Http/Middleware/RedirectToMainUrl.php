@@ -11,7 +11,7 @@ class RedirectToMainUrl
 {
     public function handle(Request $request, Closure $next): mixed
     {
-        if (app()->environment('local')) {
+        if (app()->environment('production') === false) {
             return $next($request);
         }
 

@@ -32,10 +32,11 @@ class IndexRequest extends FormRequest
         ];
     }
 
-    protected function prepareForValidation()
+    protected function prepareForValidation(): void
     {
         $this->merge([
             'order' => request('order', 'id'),
+            'direction' => request('direction', 'desc'),
         ]);
     }
 }

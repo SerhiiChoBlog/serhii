@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Models\Visitor;
-use App\Utils\GlobalVisitor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,10 +20,10 @@ class VisitorFactory extends Factory
     public function definition(): array
     {
         return [
-            'ip' => GlobalVisitor::LOCAL_IP,
-            'country' => GlobalVisitor::LOCAL_COUNTRY,
-            'city' => GlobalVisitor::LOCAL_CITY,
-            'code' => GlobalVisitor::LOCAL_CODE,
+            'ip' => $this->faker->ipv4,
+            'country' => 'Ukraine',
+            'city' => 'Kharkiv',
+            'code' => 'UA',
         ];
     }
 }

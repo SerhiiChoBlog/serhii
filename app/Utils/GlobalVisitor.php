@@ -14,9 +14,7 @@ use Throwable;
 class GlobalVisitor
 {
     public const LOCAL_IP = '127.0.0.1';
-    public const LOCAL_COUNTRY = 'Ukraine';
-    public const LOCAL_CITY = 'Kharkiv';
-    public const LOCAL_CODE = 'UA';
+
     public const BLOCKED_MESSAGE = <<<TEXT
     <h1>⛔️ You are blocked due to some website rules violation</h1>
     <h2>⚠️ If you think that this is a mistake, please contact the website administrator</h2>
@@ -63,9 +61,11 @@ class GlobalVisitor
     {
         $ip = trim(request()->ip() ?? '');
 
-        $position = $ip === self::LOCAL_IP
-            ? self::defaultPosition()
-            : self::getRealPosition($ip);
+        if ($ip === self::LOCAL_IP) {
+            return null;
+        }
+
+        $position = self::getVisitorPosition($ip);
 
         if (!$position) {
             return null;
@@ -97,18 +97,7 @@ class GlobalVisitor
         }
     }
 
-    private static function defaultPosition(): Position
-    {
-        $result = new Position();
-
-        $result->countryName = self::LOCAL_COUNTRY;
-        $result->cityName = self::LOCAL_CITY;
-        $result->countryCode = self::LOCAL_CODE;
-
-        return $result;
-    }
-
-    private static function getRealPosition(string $ip): ?Position
+    private static function getVisitorPosition(string $ip): ?Position
     {
         try {
             $result = app(Location::class)->get($ip);
