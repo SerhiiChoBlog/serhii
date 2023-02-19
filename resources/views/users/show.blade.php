@@ -29,7 +29,7 @@
 
             <div>
                 @if ($user->ban)
-                    <div class="bg-red-50 p-5 rounded-lg mb-6 border border-red-100 flex gap-3 items-center">
+                    <div class="bg-red-50 dark:bg-red-900 p-5 rounded-lg mb-6 flex gap-3 items-center">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"

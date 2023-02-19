@@ -2,7 +2,7 @@
 import links from '@admin/router/links'</script>
 
 <template>
-    <nav class="bg-gray-800 opacity-75 fixed top-0 pt-[64px] bottom-0 w-[44px] overflow-hidden transition-all translate-z-0 scale-x-1 scale-y-1 z-10 hover:overflow-visible hover:w-[180px] hover:h-full hover:overflow-y-auto hover:opacity-95">
+    <nav class="bg-gray-800 opacity-75 fixed top-0 pt-[64px] bottom-0 w-[44px] overflow-hidden transition-all translate-z-0 scale-x-1 scale-y-1 z-30 hover:overflow-visible hover:w-[180px] hover:h-full hover:overflow-y-auto hover:opacity-95">
         <ul>
             <li v-for="link in links" :key="link.title">
                 <RouterLink

@@ -40,7 +40,9 @@
 @section('content')
     <article>
         <div class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white print:bg-none print:text-black">
-            <navbar theme="{{ request()->cookie('theme', 'system') }}"></navbar>
+            <div class="min-h-[64px]">
+                <navbar theme="{{ request()->cookie('theme', 'system') }}"></navbar>
+            </div>
 
             <div class="py-[2rem] px-[1.5rem] lg:py-[6rem] lg:px-[1.5rem] container">
                 <div class="grid grid-cols-1 lg:grid-cols-2 relative">

@@ -3,17 +3,25 @@ import Hamburger from '@/components/Navbar/Hamburger.vue'
 import NavbarMenu from '@/components/Navbar/NavbarMenu.vue'
 import { Theme } from '@shared/types'
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
+import useScroll from '@/composables/useScroll'
 
 type Props = {
     theme: Theme
 }
 
 const { theme } = defineProps<Props>()
+const { isScrolledDown } = useScroll()
 </script>
 
 <template>
     <appear-transition>
-        <nav class="relative z-20 print:hidden">
+        <nav
+            class="fixed top-0 left-0 right-0 z-20 transition-colors duration-300 print:hidden"
+            :class="{
+                'bg-gray-800/95 shadow-md': isScrolledDown,
+                'bg-transparent': !isScrolledDown,
+            }"
+        >
             <div class="container flex justify-between items-center min-h-[4rem]">
                 <div class="flex items-center gap-x-1 w-full lg:w-auto">
                     <a
