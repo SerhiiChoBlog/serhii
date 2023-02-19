@@ -17,6 +17,13 @@ const props = defineProps<Props>()
 const { blockVisitor } = useBlockVisitor()
 
 function blockVisitorHandler(): void {
+    const message = props.visitor.is_blocked
+        ? 'Are you sure you want to unblock this visitor?'
+        : 'Are you sure you want to block this visitor?'
+
+    if (!confirm(message))
+        return
+
     blockVisitor(props.visitor.id, !props.visitor.is_blocked)
     emit('refreshVisitors')
 }

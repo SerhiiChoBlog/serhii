@@ -9,7 +9,7 @@ use App\Events\CommentApproved;
 use App\Jobs\NewCommentAdminEmail;
 use App\Models\Comment;
 use App\Models\User;
-use App\Models\Visitor;
+use App\Utils\GlobalVisitor;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 
@@ -127,6 +127,6 @@ class StoreCommentService
             return null;
         }
 
-        return Visitor::getOrCreateVisitor($ip)?->id;
+        return GlobalVisitor::getInstance()->get()?->id;
     }
 }
