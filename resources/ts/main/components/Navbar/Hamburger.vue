@@ -1,20 +1,24 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import dispatchEvent from '@shared/modules/dispatchEvent'
 import { events } from '@shared/appConfig'
+import dispatchEvent from '@shared/modules/dispatchEvent'
+import listenEvent from '@shared/modules/listenEvent'
 
 const isActive = ref(false)
 
+listenEvent<boolean>(events.openMobileNavbar, isOpened => {
+    isActive.value = isOpened
+})
+
 function toggleNavbar(): void {
-    isActive.value = !isActive.value
-    dispatchEvent(events.openMobileNavbar, isActive.value)
+    dispatchEvent(events.openMobileNavbar, !isActive.value)
 }
 </script>
 
 <template>
     <a
         role="button"
-        class="block lg:hidden ml-auto relative w-[3.25rem] h-[3.25rem] transition-transform duration-300 delay-300 print:hidden"
+        class="block lg:hidden ml-auto relative w-[3.25rem] h-[3.25rem] transition-transform duration-300 delay-300 print:hidden relative z-20"
         :class="isActive ? 'rotate-45' : ''"
         @click="toggleNavbar"
         aria-label="Show mobile menu"
