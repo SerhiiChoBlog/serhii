@@ -13,6 +13,7 @@ import sweetAlert from 'sweetalert2'
 import ControlButton from './ControlButton.vue'
 import SlideUpTransition from '@shared/components/Transitions/SlideUpTransition.vue'
 import showToast from '@shared/modules/showToast'
+import useScroll from '@/composables/useScroll'
 
 interface Props {
     slug: string
@@ -24,6 +25,7 @@ const chapters = ref<ChapterType[]>([])
 const savedChapter = ref<SavedChapter | null>(null)
 const currentChapter = ref<ChapterType | null>(null)
 const showChapters = ref(false)
+const { isScrolledDown } = useScroll()
 
 onMounted(() => {
     if (!screenSizeIs('lg')) {
@@ -160,7 +162,7 @@ function handleChapterClick(): void {
 <template>
     <button
         v-if="currentChapter"
-        class="flex print:hidden lg:hidden items-center shadow-md gap-x-1 justify-center fixed border border-border top-0 bg-page w-full py-1 px-4 z-40 left-1/2 -translate-x-1/2"
+        class="flex print:hidden lg:hidden items-center shadow-md gap-x-1 justify-center fixed border border-border top-16 bg-page w-full py-1 px-4 z-40 left-1/2 -translate-x-1/2"
         @click="showChapters = !showChapters"
     >
         <chevron-up-icon v-if="showChapters" class="w-6 h-6 inline-block" />
@@ -171,9 +173,9 @@ function handleChapterClick(): void {
     <slide-up-transition>
         <div
             v-if="showChapters"
-            class="bg-page lg:bg-transparent print:hidden lg:h-[calc(100%-200px)] fixed lg:static w-full max-w-md left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 border border-border lg:border-none top-[3%] lg:top-0 bottom-[3%] p-4 lg:p-0 rounded-2xl shadow-xl lg:shadow-none lg:relative z-30"
+            class="bg-page lg:bg-transparent print:hidden lg:h-[calc(100%-200px)] fixed lg:static w-full max-w-md left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 border border-border lg:border-none top-24 lg:top-0 bottom-[3%] p-4 lg:p-0 shadow-xl lg:shadow-none lg:relative z-30"
         >
-            <nav class="sticky h-screen overflow-y-auto scrollbar pr-2 top-3 lg:top-12 mt-7 text-center lg:text-left">
+            <nav class="sticky h-screen overflow-y-auto scrollbar pr-2 top-3 lg:top-32 mt-7 text-center lg:text-left">
                 <div class="mb-5">
                     <div class="flex items-center gap-x-5 text-font-second">
                         <span class="text-2xl font-bold font-bold">

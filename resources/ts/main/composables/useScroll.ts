@@ -1,10 +1,10 @@
 import { ref } from 'vue'
 
 export default () => {
-    const isScrolledDown = ref<boolean>(window.scrollY > 50)
+    const isScrolledDown = ref<boolean>(window.scrollY > 100)
 
     document.addEventListener('scroll', () => {
-        isScrolledDown.value = window.scrollY > 50
+        isScrolledDown.value = window.scrollY > 100
     })
 
     return {
