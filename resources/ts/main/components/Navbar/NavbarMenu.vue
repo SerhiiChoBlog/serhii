@@ -9,23 +9,35 @@ import NavLink from '@/components/Navbar/NavLink.vue'
 import ThemeSwitch from '@/components/Navbar/ThemeSwitch.vue'
 import UserDropdown from '@/components/Navbar/UserDropdown.vue'
 import SlideUpTransition from '@shared/components/Transitions/SlideUpTransition.vue'
+import dispatchEvent from '@shared/modules/dispatchEvent'
 
 type Props = {
     theme: Theme
 }
 
 const { theme } = defineProps<Props>()
-const isOpen = ref(!screenSizeIs(['sm', 'md', 'lg']))
+const isActive = ref(!screenSizeIs(['sm', 'md', 'lg']))
 
 listenEvent<boolean>(events.openMobileNavbar, isOpened => {
-    isOpen.value = isOpened
+    isActive.value = isOpened
 })
+
+function closeMenu(): void {
+    isActive.value = false
+    dispatchEvent(events.openMobileNavbar, false)
+}
 </script>
 
 <template>
+    <div
+        v-if="false"
+        class="fixed inset-0 bg-black/70 z-10"
+        @click="closeMenu"
+    ></div>
+
     <slide-up-transition>
         <div
-            v-if="isOpen"
+            v-if="isActive"
             class="flex flex-col lg:flex-row items-center gap-x-6 shadow-lg lg:shadow-none pb-7 lg:p-0 bg-[#363636] lg:bg-transparent absolute lg:static right-[20px] left-[20px] md:right-[120px] md:left-[120px] top-[77px] z-10 rounded-lg overflow-hidden lg:overflow-visible"
         >
             <nav-link
