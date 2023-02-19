@@ -8,6 +8,8 @@
         class="w-6 h-6 m-0 mr-3"
         aria-hidden="true"
         alt="Download icon"
+        width="24"
+        height="24"
     />
 
     <span class="tracking-wide">Download PDF</span>
