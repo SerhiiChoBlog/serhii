@@ -1,6 +1,6 @@
 <header {{ $attributes->merge([]) }}>
-    <div class="{{ $navbar ?? '' }}">
-        <x-navbar />
+    <div class="{{ $navbar ?? '' }} min-h-[64px]">
+        <navbar theme="{{ request()->cookie('theme', 'system') }}"></navbar>
     </div>
 
     <div class="{{ isset($mainTitle, $subtitle) ? 'px-5 pt-5 pb-16 lg:pt-10 lg:pb-20' : '' }}">
