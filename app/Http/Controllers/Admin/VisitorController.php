@@ -17,7 +17,8 @@ class VisitorController extends Controller
     public function index(IndexRequest $request): LengthAwarePaginator
     {
         $query = Visitor::query()
-            ->withCount('postViews');
+            ->withCount('postViews')
+            ->orderByDesc('id');
 
         if ($request->search) {
             $query->where('ip', 'like', "%{$request->search}%")

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Models\Post;
-use App\Models\Visitor;
+use App\Utils\GlobalVisitor;
 use Illuminate\Support\Collection;
 
 readonly class PreferredPostsService
@@ -27,7 +27,7 @@ readonly class PreferredPostsService
      */
     public function get(): Collection
     {
-        $visitor = Visitor::getOrCreateVisitor(request()->ip() ?? '');
+        $visitor = GlobalVisitor::getInstance()->get();
 
         if (!$visitor) {
             return $this->getRandomPosts([], self::LIMIT);
