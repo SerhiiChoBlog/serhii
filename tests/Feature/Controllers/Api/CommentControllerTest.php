@@ -343,7 +343,7 @@ class CommentControllerTest extends TestCase
     }
 
     /**
-     * @dataProvider provider_for_test_posting_comment_with_swear_word_will_be_marked_as_not_approved
+     * @dataProvider providerForTestPostingCommentWithSwearWordWillBeMarkedAsNotApproved
      */
     public function testPostingCommentWithSwearWordWillBeMarkedAsNotApproved(string $text): void
     {
@@ -365,7 +365,7 @@ class CommentControllerTest extends TestCase
         ]);
     }
 
-    public function provider_for_test_posting_comment_with_swear_word_will_be_marked_as_not_approved(): array
+    public static function providerForTestPostingCommentWithSwearWordWillBeMarkedAsNotApproved(): array
     {
         return [
             ['Thank you for sharing your knowledge, you fucking idiot!'],
@@ -379,7 +379,7 @@ class CommentControllerTest extends TestCase
     }
 
     /**
-     * @dataProvider provider_for_test_posting_comment_without_swear_word_will_be_marked_as_approved
+     * @dataProvider providerForTestPostingCommentWithoutSwearWordWillBeMarkedAsApproved
      */
     public function testPostingCommentWithoutSwearWordWillBeMarkedAsApproved(string $text): void
     {
@@ -401,7 +401,7 @@ class CommentControllerTest extends TestCase
         ]);
     }
 
-    public function provider_for_test_posting_comment_without_swear_word_will_be_marked_as_approved(): array
+    public static function providerForTestPostingCommentWithoutSwearWordWillBeMarkedAsApproved(): array
     {
         return [
             ['This is the best article that I\'ve read so far!'],
