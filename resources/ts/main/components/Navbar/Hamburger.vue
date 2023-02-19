@@ -1,23 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import dispatchEvent from '@shared/modules/dispatchEvent'
+import { events } from '@shared/appConfig'
 
 const isActive = ref(false)
 
 function toggleNavbar(): void {
-    const navbar = document.getElementById('navbar-menu')
-
-    if (!navbar)
-        return
-
-    if (navbar.classList.contains('navbar-menu--active')) {
-        navbar.classList.remove('navbar-menu--active')
-        navbar.classList.add('navbar-menu')
-        isActive.value = false
-    } else {
-        navbar.classList.remove('navbar-menu')
-        navbar.classList.add('navbar-menu--active')
-        isActive.value = true
-    }
+    isActive.value = !isActive.value
+    dispatchEvent(events.openMobileNavbar, isActive.value)
 }
 </script>
 
