@@ -8,6 +8,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property string|null $search
+ * @property string $order
+ * @property bool $desc
  */
 class IndexRequest extends FormRequest
 {
@@ -24,7 +26,17 @@ class IndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'search' => ['nullable', 'max:190']
+            'search' => ['nullable', 'max:190'],
+            'order' => ['nullable', 'in:id,post_views_count,is_blocked,city,country,code,ip'],
+            'desc' => ['nullable', 'boolean'],
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'order' => request('order', 'id'),
+            'desc' => (bool) request('desc', true),
+        ]);
     }
 }

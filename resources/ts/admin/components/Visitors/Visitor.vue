@@ -32,31 +32,25 @@ function blockVisitorHandler(): void {
 <template>
     <BodyRow>
         <BodyDetail>{{ props.visitor.id }}</BodyDetail>
-        <BodyDetail>{{ props.visitor.post_views_count }}</BodyDetail>
         <BodyDetail>{{ props.visitor.ip }}</BodyDetail>
         <BodyDetail>
-            <div class="flex gap-2 items-center">
-                <img
-                    v-if="props.visitor.code"
-                    :src="`/storage/admin/flags/${props.visitor.code}.png`"
-                    width="80"
-                    height="42"
-                    class="w-9 h-5 rounded-sm shadow-sm border border-border"
-                />
-                <img
-                    v-else
-                    src="/storage/admin/flags/unknown.png"
-                    width="80"
-                    height="56"
-                />
-
-                <div>
-                    <span class="font-bold">{{ props.visitor.country || '-' }}</span>,
-                    <span class="text-font-second">{{ props.visitor.city || '-' }}</span>,
-                    <small>{{ props.visitor.code || '-' }}</small>
-                </div>
-            </div>
+            <img
+                v-if="props.visitor.code"
+                :src="`/storage/admin/flags/${props.visitor.code}.png`"
+                width="80"
+                height="42"
+                class="w-9 h-5 rounded-sm shadow-sm border border-border"
+            />
+            <img
+                v-else
+                src="/storage/admin/flags/unknown.png"
+                width="80"
+                height="56"
+            />
         </BodyDetail>
+        <BodyDetail>{{ props.visitor.country || '-' }}</BodyDetail>
+        <BodyDetail>{{ props.visitor.city || '-' }}</BodyDetail>
+        <BodyDetail>{{ props.visitor.post_views_count }}</BodyDetail>
         <BodyDetail>
             <button @click="blockVisitorHandler" type="button">
                 <span v-if="props.visitor.is_blocked"><i class="fas fa-check text-green-700"></i></span>
