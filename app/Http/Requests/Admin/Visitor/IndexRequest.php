@@ -9,7 +9,7 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * @property string|null $search
  * @property string $order
- * @property bool $desc
+ * @property string $direction
  */
 class IndexRequest extends FormRequest
 {
@@ -28,7 +28,7 @@ class IndexRequest extends FormRequest
         return [
             'search' => ['nullable', 'max:190'],
             'order' => ['nullable', 'in:id,post_views_count,is_blocked,city,country,code,ip'],
-            'desc' => ['nullable', 'boolean'],
+            'direction' => ['nullable', 'in:asc,desc'],
         ];
     }
 
@@ -36,7 +36,6 @@ class IndexRequest extends FormRequest
     {
         $this->merge([
             'order' => request('order', 'id'),
-            'desc' => (bool) request('desc', true),
         ]);
     }
 }

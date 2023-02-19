@@ -15,6 +15,7 @@ import SortBtn from '@admin/components/Visitors/SortBtn.vue'
 type RequestParams = {
     search: string|null
     order: keyof Visitor
+    direction: 'asc' | 'desc'
 }
 
 const visitors = ref<Visitor[]>([])
@@ -24,6 +25,7 @@ const defaultUri = '/admin/ajax/visitors'
 const requestParams = ref<RequestParams>({
     search: null,
     order: 'id',
+    direction: 'desc',
 })
 
 onMounted(() => {
@@ -62,6 +64,14 @@ function sortVisitors(orderBy: keyof Visitor): void {
     requestParams.value.order = orderBy
     fetchVisitors(defaultUri, true)
 }
+
+function changeDescendingOrder(): void {
+    requestParams.value.direction = requestParams.value.direction === 'asc'
+        ? 'desc'
+        : 'asc'
+
+    fetchVisitors(defaultUri, true)
+}
 </script>
 
 <template>
@@ -83,25 +93,60 @@ function sortVisitors(orderBy: keyof Visitor): void {
         <DataTable v-else>
             <template #head>
                 <HeadDetail class="w-20">
-                    <SortBtn @click="sortVisitors('id')">ID</SortBtn>
+                    <SortBtn
+                        @order="sortVisitors('id')"
+                        @direction="changeDescendingOrder"
+                    >
+                        ID
+                    </SortBtn>
                 </HeadDetail>
                 <HeadDetail class="w-36">
-                    <SortBtn @click="sortVisitors('ip')">IP</SortBtn>
+                    <SortBtn
+                        @order="sortVisitors('ip')"
+                        @direction="changeDescendingOrder"
+                    >
+                        IP
+                    </SortBtn>
                 </HeadDetail>
                 <HeadDetail class="w-14">
-                    <SortBtn @click="sortVisitors('code')">Flag</SortBtn>
+                    <SortBtn
+                        @order="sortVisitors('code')"
+                        @direction="changeDescendingOrder"
+                    >
+                        Flag
+                    </SortBtn>
                 </HeadDetail>
                 <HeadDetail>
-                    <SortBtn @click="sortVisitors('country')">Country</SortBtn>
+                    <SortBtn
+                        @order="sortVisitors('country')"
+                        @direction="changeDescendingOrder"
+                    >
+                        Country
+                    </SortBtn>
                 </HeadDetail>
                 <HeadDetail>
-                    <SortBtn @click="sortVisitors('city')">City</SortBtn>
+                    <SortBtn
+                        @order="sortVisitors('city')"
+                        @direction="changeDescendingOrder"
+                    >
+                        City
+                    </SortBtn>
                 </HeadDetail>
                 <HeadDetail class="w-16">
-                    <SortBtn @click="sortVisitors('post_views_count')">Views</SortBtn>
+                    <SortBtn
+                        @order="sortVisitors('post_views_count')"
+                        @direction="changeDescendingOrder"
+                    >
+                        Views
+                    </SortBtn>
                 </HeadDetail>
                 <HeadDetail>
-                    <SortBtn @click="sortVisitors('is_blocked')">Ban</SortBtn>
+                    <SortBtn
+                        @order="sortVisitors('is_blocked')"
+                        @direction="changeDescendingOrder"
+                    >
+                        Ban
+                    </SortBtn>
                 </HeadDetail>
             </template>
 
