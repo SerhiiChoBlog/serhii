@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { User } from '@shared/types/models'
-import SignedInMethodLogo from '@shared/components/SignedInMethodLogo.vue'
+import SignedInMethodLogo from '@/components/SignedInMethodLogo.vue'
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 
 type Props = {
