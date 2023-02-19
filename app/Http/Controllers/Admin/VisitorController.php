@@ -29,4 +29,14 @@ class VisitorController extends Controller
 
         return $query->paginate(30);
     }
+
+    public function block(Visitor $visitor): void
+    {
+        $visitor->update(['is_blocked' => true]);
+    }
+
+    public function unblock(Visitor $visitor): void
+    {
+        $visitor->update(['is_blocked' => false]);
+    }
 }

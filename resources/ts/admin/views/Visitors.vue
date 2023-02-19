@@ -54,7 +54,7 @@ function loadMoreVisitors(): void {
 
 <template>
     <div class="container max-w-3xl">
-        <PageTitle>Unique visitors</PageTitle>
+        <PageTitle>Visitors</PageTitle>
 
         <div class="text-center mb-4">
             <input
@@ -81,6 +81,7 @@ function loadMoreVisitors(): void {
                 v-for="visitor in visitors"
                 :key="visitor.id"
                 :visitor="visitor"
+                @refreshVisitors="fetchVisitors(defaultUri, true)"
             />
         </DataTable>
 
