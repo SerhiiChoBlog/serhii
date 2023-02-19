@@ -10,13 +10,20 @@ import DataTable from '@admin/components/DataTable/DataTable.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 import LoadMoreButton from '@shared/components/LoadMoreButton.vue'
 import VisitorComponent from '@admin/components/Visitors/Visitor.vue'
+import SortBtn from '@admin/components/Visitors/SortBtn.vue'
+
+type RequestParams = {
+    search: string|null
+    order: keyof Visitor
+}
 
 const visitors = ref<Visitor[]>([])
 const nextPageUrl = ref<string | null>(null)
 const loading = ref(false)
 const defaultUri = '/admin/ajax/visitors'
-const requestParams = ref<{ search: string|null }>({
+const requestParams = ref<RequestParams>({
     search: null,
+    order: 'id',
 })
 
 onMounted(() => {
@@ -50,6 +57,11 @@ function loadMoreVisitors(): void {
         fetchVisitors(nextPageUrl.value, false)
     }
 }
+
+function sortVisitors(orderBy: keyof Visitor): void {
+    requestParams.value.order = orderBy
+    fetchVisitors(defaultUri, true)
+}
 </script>
 
 <template>
@@ -70,11 +82,27 @@ function loadMoreVisitors(): void {
 
         <DataTable v-else>
             <template #head>
-                <HeadDetail class="w-20">ID</HeadDetail>
-                <HeadDetail class="w-16">Views</HeadDetail>
-                <HeadDetail class="w-36">IP</HeadDetail>
-                <HeadDetail>Country, City, Code</HeadDetail>
-                <HeadDetail>Ban</HeadDetail>
+                <HeadDetail class="w-20">
+                    <SortBtn @click="sortVisitors('id')">ID</SortBtn>
+                </HeadDetail>
+                <HeadDetail class="w-36">
+                    <SortBtn @click="sortVisitors('ip')">IP</SortBtn>
+                </HeadDetail>
+                <HeadDetail class="w-14">
+                    <SortBtn @click="sortVisitors('code')">Flag</SortBtn>
+                </HeadDetail>
+                <HeadDetail>
+                    <SortBtn @click="sortVisitors('country')">Country</SortBtn>
+                </HeadDetail>
+                <HeadDetail>
+                    <SortBtn @click="sortVisitors('city')">City</SortBtn>
+                </HeadDetail>
+                <HeadDetail class="w-16">
+                    <SortBtn @click="sortVisitors('post_views_count')">Views</SortBtn>
+                </HeadDetail>
+                <HeadDetail>
+                    <SortBtn @click="sortVisitors('is_blocked')">Ban</SortBtn>
+                </HeadDetail>
             </template>
 
             <VisitorComponent
