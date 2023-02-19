@@ -30,15 +30,15 @@ function closeMenu(): void {
 
 <template>
     <div
-        v-if="false"
-        class="fixed inset-0 bg-black/70 z-10"
+        v-if="isActive && screenSizeIs(['sm', 'md', 'lg'])"
+        class="fixed inset-0 bg-black/80 z-10"
         @click="closeMenu"
     ></div>
 
     <slide-up-transition>
         <div
             v-if="isActive"
-            class="flex flex-col lg:flex-row items-center gap-x-6 shadow-lg lg:shadow-none pb-7 lg:p-0 bg-[#363636] lg:bg-transparent absolute lg:static right-[20px] left-[20px] md:right-[120px] md:left-[120px] top-[77px] z-10 rounded-lg overflow-hidden lg:overflow-visible"
+            class="flex flex-col lg:flex-row items-center gap-x-6 shadow-lg lg:shadow-none pb-7 lg:p-0 bg-gray-800 lg:bg-transparent absolute lg:static right-[20px] left-[20px] md:right-[120px] md:left-[120px] top-[77px] z-10 rounded-lg"
         >
             <nav-link
                 v-for="item in navLinks"
