@@ -11,11 +11,13 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class VisitorController extends Controller
 {
+    /**
+     * @return LengthAwarePaginator<Visitor>
+     */
     public function index(IndexRequest $request): LengthAwarePaginator
     {
         $query = Visitor::query()
-            ->withCount('postViews')
-            ->orderByDesc('post_views_count');
+            ->withCount('postViews');
 
         if ($request->search) {
             $query->where('ip', 'like', "%{$request->search}%")
@@ -25,6 +27,6 @@ class VisitorController extends Controller
                 ->orWhere('country', 'like', "%{$request->search}%");
         }
 
-        return $query->paginate(20);
+        return $query->paginate(30);
     }
 }

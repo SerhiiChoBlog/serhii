@@ -11,19 +11,19 @@ import DataTable from '@admin/components/DataTable/DataTable.vue'
 import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
+import LoadMoreButton from '@shared/components/LoadMoreButton.vue'
 
 const users = ref<User[]>([])
 const totalUsers = ref<number | null>(null)
 const loading = ref(false)
 const nextPageUrl = ref<string | null>(null)
 
-onMounted(() => fetchUsers('/admin/ajax/users', true))
+onMounted(() => {
+    loading.value = true
+    fetchUsers('/admin/ajax/users', true)
+})
 
 function fetchUsers(url: string, refresh = true): void {
-    if (refresh) {
-        loading.value = true
-    }
-
     axios.get<{ users: Pagination<User[]>, total: number }>(url)
         .then(resp => {
             const data = resp.data
@@ -117,15 +117,10 @@ function loadMoreUsers(): void {
             </BodyRow>
         </DataTable>
 
-        <!-- Load more button -->
-        <div class="text-center mt-7">
-            <button
-                v-if="nextPageUrl"
-                class="border border-border px-7 py-2 rounded-full uppercase"
-                @click="loadMoreUsers"
-            >
-                Load more
-            </button>
-        </div>
+        <LoadMoreButton
+            v-if="nextPageUrl"
+            :nextPageUrl="nextPageUrl"
+            @clicked="loadMoreUsers"
+        />
     </div>
 </template>
