@@ -36,7 +36,7 @@ function blockVisitorHandler(): void {
         <BodyDetail>
             <img
                 v-if="props.visitor.code"
-                :src="`/storage/admin/flags/${props.visitor.code}.png`"
+                :src="`/storage/admin/flags/${props.visitor.code.toLowerCase()}.png`"
                 width="80"
                 height="42"
                 class="w-9 h-5 rounded-sm shadow-sm border border-border"
