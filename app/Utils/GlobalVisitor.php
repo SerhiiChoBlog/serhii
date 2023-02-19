@@ -75,7 +75,8 @@ class GlobalVisitor
         $visitor = Visitor::query()->where('ip', $ip)->first();
 
         if ($visitor && $visitor->is_blocked) {
-            exit(self::BLOCKED_MESSAGE);
+            Log::info("Blocked visitor with IP: {$ip}");
+            die(self::BLOCKED_MESSAGE);
         }
 
         if ($visitor) {
