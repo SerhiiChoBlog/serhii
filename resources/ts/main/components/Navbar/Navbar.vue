@@ -16,7 +16,7 @@ const { isScrolledDown } = useScroll()
 <template>
     <appear-transition>
         <nav
-            class="fixed top-0 left-0 right-0 z-20 transition-colors duration-300 print:hidden"
+            class="fixed top-0 left-0 right-0 z-50 transition-colors duration-300 print:hidden"
             :class="{
                 'bg-gray-800/95 shadow-md': isScrolledDown,
                 'bg-transparent': !isScrolledDown,

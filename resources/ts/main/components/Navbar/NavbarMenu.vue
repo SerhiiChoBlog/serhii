@@ -13,7 +13,7 @@ const { theme } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="navbar-menu z-40 pb-8 lg:pb-0" id="navbar-menu">
+    <div class="navbar-menu pb-8 lg:pb-0" id="navbar-menu">
         <nav-link
             v-for="item in navLinks"
             :key="item.href"
