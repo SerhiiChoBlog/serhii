@@ -1,4 +1,14 @@
-export default (screen: 'sm' | 'md' | 'lg' | 'xl' | '2xl'): boolean => {
+type Size = 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+
+export default (screen: Size | Size[]): boolean => {
+    if (Array.isArray(screen)) {
+        return screen.some(size => screenSize(size))
+    }
+
+    return screenSize(screen)
+}
+
+function screenSize(screen: Size): boolean {
     switch (screen) {
         case 'sm':
             return window.innerWidth <= 640
