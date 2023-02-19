@@ -1,0 +1,25 @@
+const activeClass = 'navbar-link--active bg-black/30 lg:bg-transparent'
+const currPath = window.location.pathname
+
+export default [
+    {
+        href: '/',
+        class: currPath === '/' ? activeClass : '',
+        title: 'Home',
+    },
+    {
+        href: '/posts',
+        class: currPath === '/posts' ? activeClass : '',
+        title: 'Blog',
+    },
+    {
+        href: '/subscribe',
+        class: currPath === '/subscribe' ? activeClass : '',
+        title: 'Subscribe',
+    },
+    {
+        href: '/about-me',
+        class: currPath === '/about-me' ? activeClass : '',
+        title: 'About',
+    },
+]
