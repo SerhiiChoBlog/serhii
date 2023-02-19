@@ -6,12 +6,15 @@ namespace Tests\Feature\Services;
 
 use App\AvatarGenerators\GlavatarAvatarGenerator;
 use App\Services\GenerateAvatarService;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class GenerateAvatarServiceTest extends TestCase
 {
+    use LazilyRefreshDatabase;
+
     public function setUp(): void
     {
         parent::setUp();

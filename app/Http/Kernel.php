@@ -7,6 +7,7 @@ namespace App\Http;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\HitMiddleware;
+use App\Http\Middleware\PreventBlockedVisitor;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\RedirectToMainUrl;
@@ -40,6 +41,7 @@ class Kernel extends HttpKernel
      * @var array<int, string>
      */
     protected $middleware = [
+        PreventBlockedVisitor::class,
         RedirectToMainUrl::class,
         TrustProxies::class,
         HandleCors::class,

@@ -77,6 +77,7 @@ export type Visitor = {
     country: string
     city: string
     code: string
+    is_blocked: boolean
     post_views_count: number | null
     postViews?: PostView[]
     socialShares?: SocialShare[]

@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\SocialShare\StoreRequest;
 use App\Models\Post;
 use App\Models\User;
-use App\Models\Visitor;
+use App\Utils\GlobalVisitor;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
@@ -23,7 +23,7 @@ class SocialShareController extends Controller
         }
 
         try {
-            $visitor = Visitor::getOrCreateVisitor($ip);
+            $visitor = GlobalVisitor::getInstance()->get();
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             return;
