@@ -49,6 +49,10 @@ class PostController extends Controller
             abort(404, 'Post not found');
         }
 
+        if (!$post->is_published && !auth('admin')->check()) {
+            abort(404, 'Post not found');
+        }
+
         /** @var int<0, 190> $title_len */
         $title_len = strlen($post->title);
 

@@ -91,22 +91,18 @@
         <div class="container pb-6">
             <div class="grid w-full grid-cols-1 lg:grid-cols-[repeat(auto-fit,minmax(320px,auto))] gap-x-7 pt-10 print:pt-0 mx-auto max-w-[1230px] bg-page lg:-translate-y-8 lg:px-8 rounded-xl">
                 <div>
-                    @published ($post)
-                        <div class="text-center mb-8 lg:hidden">
-                            <x-download-pdf-button />
-                        </div>
+                    <div class="text-center mb-8 lg:hidden">
+                        <x-download-pdf-button />
+                    </div>
 
-                        <div class="post-content lg:prose-xl pr-2 lg:px-6"
-                            id="post-content"
-                            v-pre
-                        >
-                            {!! $post->content !!}
-                        </div>
+                    <div class="post-content lg:prose-xl pr-2 lg:px-6"
+                        id="post-content"
+                        v-pre
+                    >
+                        {!! $post->content !!}
+                    </div>
 
-                        <x-post.footer :post="$post" />
-                    @else
-                        <x-post.post-is-in-process />
-                    @endpublished
+                    <x-post.footer :post="$post" />
 
                     <nav role="navigation" class="print:hidden">
                         <x-post.sidebar-title>You might be interested</x-post.sidebar-title>
@@ -116,33 +112,31 @@
                     </nav>
                 </div>
 
-                @published ($post)
-                    <div class="spacey-y-0 lg:space-y-10 px-3 h-full max-w-[500px] mx-auto lg:max-w-[320px] pt-0 2xl:pt-20">
-                        <div class="hidden lg:block">
-                            <nav class="min-h-[83px]">
-                                <x-post.sidebar-title>Share this post</x-post.sidebar-title>
-                                <share-post-buttons
-                                    :is-auth="{{ auth()->check() ? 'true' : 'false' }}"
-                                    post-title="{{ $post->title }}"
-                                    :post-id="{{ $post->id }}"
-                                />
-                            </nav>
-                        </div>
-
-                        <div class="hidden lg:block">
-                            <x-download-pdf-button />
-                        </div>
-
-                        @if ($post->video)
-                            <div class="mt-4">
-                                <x-post.sidebar-title>Related video</x-post.sidebar-title>
-                                <x-post.video :video="$post->video" />
-                            </div>
-                        @endif
-
-                        <chapters slug="{{ $post->slug }}" />
+                <div class="spacey-y-0 lg:space-y-10 px-3 h-full max-w-[500px] mx-auto lg:max-w-[320px] pt-0 2xl:pt-20">
+                    <div class="hidden lg:block">
+                        <nav class="min-h-[83px]">
+                            <x-post.sidebar-title>Share this post</x-post.sidebar-title>
+                            <share-post-buttons
+                                :is-auth="{{ auth()->check() ? 'true' : 'false' }}"
+                                post-title="{{ $post->title }}"
+                                :post-id="{{ $post->id }}"
+                            />
+                        </nav>
                     </div>
-                @endpublished
+
+                    <div class="hidden lg:block">
+                        <x-download-pdf-button />
+                    </div>
+
+                    @if ($post->video)
+                        <div class="mt-4">
+                            <x-post.sidebar-title>Related video</x-post.sidebar-title>
+                            <x-post.video :video="$post->video" />
+                        </div>
+                    @endif
+
+                    <chapters slug="{{ $post->slug }}" />
+                </div>
             </div>
         </div>
     </article>

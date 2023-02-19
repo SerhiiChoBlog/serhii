@@ -5,11 +5,14 @@ declare(strict_types=1);
 namespace Tests\Feature\AvatarGenerators;
 
 use App\AvatarGenerators\GlavatarAvatarGenerator;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class GlavatarAvatarGeneratorTest extends TestCase
 {
+    use LazilyRefreshDatabase;
+
     public function testItReturnsNullIfImageDoesntExist(): void
     {
         $service = new GlavatarAvatarGenerator('kqunyqopl1soqpmnbchu3owerkdhswf@nice.com');
