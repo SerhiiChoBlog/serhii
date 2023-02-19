@@ -18,7 +18,7 @@ class VisitorController extends Controller
     {
         $query = Visitor::query()
             ->withCount('postViews')
-            ->orderBy($request->order, $request->desc ? 'desc' : 'asc');
+            ->orderBy($request->order, $request->direction);
 
         if ($request->search) {
             $query->where('ip', 'like', "%{$request->search}%")
