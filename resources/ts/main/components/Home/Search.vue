@@ -10,7 +10,7 @@ const { search, input, fetchSearchSuggestions } = useSearch()
 <template>
     <appear-transition>
         <div class="max-w-[85%] md:max-w-[600px] mx-auto">
-            <label for="search-input" class="relative flex items-center justify-center mt-5 shadow-lg rounded-lg bg-page mx-auto dark:border dark:border-gray-500">
+            <label for="search-input" class="relative flex items-center justify-center mt-5 shadow-lg rounded-full bg-page mx-auto dark:border dark:border-gray-500">
                 <form @submit.prevent class="w-full m-0">
                     <search-icon
                         :class="{ 'animate-blink': search.loading }"
@@ -19,7 +19,7 @@ const { search, input, fetchSearchSuggestions } = useSearch()
 
                     <input
                         type="search"
-                        class="pl-10 pr-7 md:pl-14 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 rounded-lg outline-none bg-page dark:bg-page-second"
+                        class="pl-10 pr-7 md:pl-14 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 rounded-full outline-none bg-page dark:bg-page-second"
                         placeholder="Search blog posts"
                         v-model="search.query"
                         id="search-input"
