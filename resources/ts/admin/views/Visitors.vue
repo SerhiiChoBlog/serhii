@@ -65,12 +65,12 @@ function sortVisitors(orderBy: keyof Visitor): void {
     fetchVisitors(defaultUri, true)
 }
 
-function changeDescendingOrder(): void {
+function changeDescendingOrder(orderBy: keyof Visitor): void {
     requestParams.value.direction = requestParams.value.direction === 'asc'
         ? 'desc'
         : 'asc'
 
-    fetchVisitors(defaultUri, true)
+    sortVisitors(orderBy)
 }
 </script>
 
@@ -95,7 +95,8 @@ function changeDescendingOrder(): void {
                 <HeadDetail class="w-20">
                     <SortBtn
                         @order="sortVisitors('id')"
-                        @direction="changeDescendingOrder"
+                        @direction="changeDescendingOrder('id')"
+                        :class="{ 'text-yellow-200': requestParams.order === 'id' }"
                     >
                         ID
                     </SortBtn>
@@ -103,7 +104,8 @@ function changeDescendingOrder(): void {
                 <HeadDetail class="w-36">
                     <SortBtn
                         @order="sortVisitors('ip')"
-                        @direction="changeDescendingOrder"
+                        @direction="changeDescendingOrder('ip')"
+                        :class="{ 'text-yellow-200': requestParams.order === 'ip' }"
                     >
                         IP
                     </SortBtn>
@@ -111,7 +113,8 @@ function changeDescendingOrder(): void {
                 <HeadDetail class="w-14">
                     <SortBtn
                         @order="sortVisitors('code')"
-                        @direction="changeDescendingOrder"
+                        @direction="changeDescendingOrder('code')"
+                        :class="{ 'text-yellow-200': requestParams.order === 'code' }"
                     >
                         Flag
                     </SortBtn>
@@ -119,7 +122,8 @@ function changeDescendingOrder(): void {
                 <HeadDetail>
                     <SortBtn
                         @order="sortVisitors('country')"
-                        @direction="changeDescendingOrder"
+                        @direction="changeDescendingOrder('country')"
+                        :class="{ 'text-yellow-200': requestParams.order === 'country' }"
                     >
                         Country
                     </SortBtn>
@@ -127,7 +131,8 @@ function changeDescendingOrder(): void {
                 <HeadDetail>
                     <SortBtn
                         @order="sortVisitors('city')"
-                        @direction="changeDescendingOrder"
+                        @direction="changeDescendingOrder('city')"
+                        :class="{ 'text-yellow-200': requestParams.order === 'city' }"
                     >
                         City
                     </SortBtn>
@@ -135,7 +140,8 @@ function changeDescendingOrder(): void {
                 <HeadDetail class="w-16">
                     <SortBtn
                         @order="sortVisitors('post_views_count')"
-                        @direction="changeDescendingOrder"
+                        @direction="changeDescendingOrder('post_views_count')"
+                        :class="{ 'text-yellow-200': requestParams.order === 'post_views_count' }"
                     >
                         Views
                     </SortBtn>
@@ -143,7 +149,8 @@ function changeDescendingOrder(): void {
                 <HeadDetail>
                     <SortBtn
                         @order="sortVisitors('is_blocked')"
-                        @direction="changeDescendingOrder"
+                        @direction="changeDescendingOrder('is_blocked')"
+                        :class="{ 'text-yellow-200': requestParams.order === 'is_blocked' }"
                     >
                         Ban
                     </SortBtn>

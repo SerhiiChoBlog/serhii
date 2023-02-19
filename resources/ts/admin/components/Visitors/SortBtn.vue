@@ -8,20 +8,20 @@ const emit = defineEmits<Emits>()
 </script>
 
 <template>
-    <div class="flex gap-1">
+    <div class="flex gap-2 items-center">
         <button
             @click="emit('direction')"
             type="button"
             aria-label="Set order direction"
-            class="hover:text-gray-200"
+            class="hover:text-yellow-200"
         >
-            x
+            <i class="fas fa-sort" />
         </button>
 
         <button
             @click="emit('order')"
             type="button"
-            class="hover:text-gray-200"
+            class="hover:text-yellow-200"
             aria-label="Sort visitors"
         >
             <slot />
