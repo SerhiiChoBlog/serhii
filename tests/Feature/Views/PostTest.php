@@ -6,6 +6,7 @@ namespace Tests\Feature\Views;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Visitor;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
@@ -16,6 +17,7 @@ class PostTest extends TestCase
     public function testGuestCanVisitPublishedPostPage(): void
     {
         $published_post = Post::factory()->published()->create();
+        Visitor::factory()->create();
 
         $this->get(route('posts.show', $published_post))
             ->assertOk()
@@ -33,10 +35,11 @@ class PostTest extends TestCase
             ->assertViewIs('posts.show');
     }
 
-    public function testUserCanSeeThePostIfItsNotPublished(): void
+    public function testUserCannotSeeThePostIfItsNotPublished(): void
     {
+        Visitor::factory()->create();
         $post = Post::factory()->create();
-        $this->get(route('posts.show', $post))->assertSuccessful();
+        $this->get(route('posts.show', $post))->assertNotFound();
     }
 
     public function testAdminCanSeeThePostIfItsNotPublished(): void
@@ -51,6 +54,7 @@ class PostTest extends TestCase
 
     public function testPostPageHasPostTitle(): void
     {
+        Visitor::factory()->create();
         $post_title = 'This is some nice title for the post';
         $post = Post::factory()->published()->title($post_title)->create();
 

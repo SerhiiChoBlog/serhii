@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class PostTag extends Pivot
 {
     /**
-     * @var string[]
+     * @var array<string, string>
      */
     protected $casts = [
         'is_main' => 'bool',

@@ -24,11 +24,16 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     Route::delete('post-content-images/{image}', [PostContentImageController::class, 'destroy']);
     Route::resource('tags', TagController::class)->except('show', 'create');
     Route::resource('post-views', PostViewController::class)->only('index');
-    Route::resource('visitors', VisitorController::class)->only('index');
     Route::resource('social-shares', SocialShareController::class)->only('index');
     Route::resource('referrers', ReferrerController::class)->only('index');
     Route::resource('hits', HitController::class)->only('index');
     Route::resource('post-publications', PostPublicationController::class)->only('index');
+
+    Route::prefix('visitors')->controller(VisitorController::class)->group(function () {
+        Route::get('/', [VisitorController::class, 'index']);
+        Route::post('{visitor}/block', 'block');
+        Route::post('{visitor}/unblock', 'unblock');
+    });
 
     Route::prefix('users')->controller(UserController::class)->group(function () {
         Route::get('/', 'index');
