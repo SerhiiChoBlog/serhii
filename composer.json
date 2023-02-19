@@ -16,10 +16,10 @@
         "spatie/laravel-sitemap": "^6.2",
         "stevebauman/location": "^6.1",
         "serhii/ago": "^3.0.3",
+        "laravel/ui": "^4.0",
         "serhii/short-number": "^3.0.2"
     },
     "require-dev": {
-        "laravel/ui": "^4.0",
         "laravel/tinker": "^2.8",
         "laravel/pint": "^1.5",
         "barryvdh/laravel-debugbar": "^3.7",
