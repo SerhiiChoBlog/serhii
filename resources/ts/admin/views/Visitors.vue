@@ -7,36 +7,48 @@ import handleError from '@admin/modules/handleError'
 import PageTitle from '@admin/components/PageTitle.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import DataTable from '@admin/components/DataTable/DataTable.vue'
-import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
-import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
+import LoadMoreButton from '@shared/components/LoadMoreButton.vue'
+import VisitorComponent from '@admin/components/Visitors/Visitor.vue'
 
 const visitors = ref<Visitor[]>([])
+const nextPageUrl = ref<string | null>(null)
 const loading = ref(false)
+const defaultUri = '/admin/ajax/visitors'
 const requestParams = ref<{ search: string|null }>({
     search: null,
 })
 
 onMounted(() => {
     loading.value = true
-    fetchVisitors()
+    fetchVisitors(defaultUri, true)
 })
 
-function fetchVisitors(): void {
-    axios.get<Pagination<Visitor[]>>('/admin/ajax/visitors', {
+function fetchVisitors(url: string, refresh = true): void {
+    axios.get<Pagination<Visitor[]>>(url, {
         params: requestParams.value,
     })
         .then(resp => {
             const data = resp.data
 
-            visitors.value = data.data
+            nextPageUrl.value = data.next_page_url
+
+            refresh
+                ? visitors.value = data.data
+                : visitors.value.push(...data.data)
         })
         .catch(handleError)
         .finally(() => loading.value = false)
 }
 
 function searchVisitors(): void {
-    fetchVisitors()
+    fetchVisitors(defaultUri, true)
+}
+
+function loadMoreVisitors(): void {
+    if (nextPageUrl.value) {
+        fetchVisitors(nextPageUrl.value, false)
+    }
 }
 </script>
 
@@ -58,47 +70,24 @@ function searchVisitors(): void {
 
         <DataTable v-else>
             <template #head>
-                <HeadDetail class="w-16">Views</HeadDetail>
                 <HeadDetail class="w-20">ID</HeadDetail>
+                <HeadDetail class="w-16">Views</HeadDetail>
                 <HeadDetail class="w-36">IP</HeadDetail>
                 <HeadDetail>Country, City, Code</HeadDetail>
+                <HeadDetail>Ban</HeadDetail>
             </template>
 
-            <BodyRow v-for="visitor in visitors" :key="visitor.id">
-                <BodyDetail>{{ visitor.post_views_count }}</BodyDetail>
-                <BodyDetail>{{ visitor.id }}</BodyDetail>
-                <BodyDetail>{{ visitor.ip }}</BodyDetail>
-                <BodyDetail>
-                    <div class="flex gap-2 items-center">
-                        <img
-                            v-if="visitor.code"
-                            :src="`/storage/admin/flags/${visitor.code}.png`"
-                            width="80"
-                            height="42"
-                            class="w-9 h-5 rounded-sm shadow-sm border border-border"
-                        />
-                        <img
-                            v-else
-                            src="/storage/admin/flags/unknown.png"
-                            width="80"
-                            height="56"
-                        />
-
-                        <div>
-                            <span class="font-bold">{{ visitor.country || '-' }}</span>,
-                            <span class="text-font-second">{{ visitor.city || '-' }}</span>,
-                            <small>{{ visitor.code || '-' }}</small>
-                        </div>
-                    </div>
-                </BodyDetail>
-            </BodyRow>
+            <VisitorComponent
+                v-for="visitor in visitors"
+                :key="visitor.id"
+                :visitor="visitor"
+            />
         </DataTable>
 
-        <button
-            type="button"
-            class="block mx-auto mt-4 px-7 py-2 border border-border rounded-md hover:bg-page-second"
-        >
-            Load more
-        </button>
+        <LoadMoreButton
+            v-if="nextPageUrl"
+            :nextPageUrl="nextPageUrl"
+            @clicked="loadMoreVisitors"
+        />
     </div>
 </template>

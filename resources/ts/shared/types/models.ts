@@ -69,7 +69,6 @@ export type PostView = {
     created_at: string
     amount?: number
     date: string | null
-    is_blocked: boolean
 }
 
 export type Visitor = {
@@ -78,6 +77,7 @@ export type Visitor = {
     country: string
     city: string
     code: string
+    is_blocked: boolean
     post_views_count: number | null
     postViews?: PostView[]
     socialShares?: SocialShare[]
