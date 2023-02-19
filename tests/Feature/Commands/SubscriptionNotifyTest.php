@@ -96,7 +96,7 @@ class SubscriptionNotifyTest extends TestCase
             ->expectsOutput($this->finalNotificationMessage($post, 3))
             ->assertSuccessful();
 
-        Notification::assertTimesSent(3, PostPublished::class);
+        Notification::assertSentTimes(PostPublished::class, 3);
     }
 
     public function testSubsAreNotifiedWithCorrectPost(): void
@@ -112,7 +112,7 @@ class SubscriptionNotifyTest extends TestCase
             ->expectsOutput($this->finalNotificationMessage($post, 3))
             ->assertSuccessful();
 
-        Notification::assertTimesSent(3, PostPublished::class);
+        Notification::assertSentTimes(PostPublished::class, 3);
     }
 
     public function testNoNotificationsWithoutSubscribers(): void
@@ -139,7 +139,7 @@ class SubscriptionNotifyTest extends TestCase
 
         $this->assertSame(1, PostPublication::query()->count());
 
-        Notification::assertTimesSent(1, PostPublished::class);
+        Notification::assertSentTimes(PostPublished::class, 1);
     }
 
     public function testIfSubscriberIsNotSubscribedToTagTheyAreNotNotified(): void
@@ -165,7 +165,7 @@ class SubscriptionNotifyTest extends TestCase
 
         $this->assertSame(0, $publication->people_notified);
 
-        Notification::assertTimesSent(0, PostPublished::class);
+        Notification::assertSentTimes(PostPublished::class, 0);
     }
 
     public function testIfSubscriberIsSubscribedToTagTheyWillBeNotified(): void
@@ -188,7 +188,7 @@ class SubscriptionNotifyTest extends TestCase
 
         $this->assertSame(1, $publication->people_notified);
 
-        Notification::assertTimesSent(1, PostPublished::class);
+        Notification::assertSentTimes(PostPublished::class, 1);
     }
 
     public function testIfSubscriberIsSubscribedToLastTagInThePostTheyWillReceiveEmail(): void
@@ -212,7 +212,7 @@ class SubscriptionNotifyTest extends TestCase
 
         $this->assertSame(1, $publication->people_notified);
 
-        Notification::assertTimesSent(1, PostPublished::class);
+        Notification::assertSentTimes(PostPublished::class, 1);
     }
 
     public function testIfSubscriberIsSubscribedToTheFirstTagInThePostTheyWillReceiveEmail(): void
@@ -236,6 +236,6 @@ class SubscriptionNotifyTest extends TestCase
 
         $this->assertSame(1, $publication->people_notified);
 
-        Notification::assertTimesSent(1, PostPublished::class);
+        Notification::assertSentTimes(PostPublished::class, 1);
     }
 }

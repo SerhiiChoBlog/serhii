@@ -69,7 +69,7 @@ class SubscriptionDemandControllerTest extends TestCase
 
         $this->assertSame($expect->toArray(), $response->json());
 
-        Notification::assertTimesSent(1, ConfirmSubscription::class);
+        Notification::assertSentTimes(ConfirmSubscription::class, 1);
 
         $this->assertSame(1, Subscription::query()->count());
     }
@@ -89,7 +89,7 @@ class SubscriptionDemandControllerTest extends TestCase
 
         $this->assertSame($expect->toArray(), $response->json());
 
-        Notification::assertTimesSent(1, ConfirmSubscription::class);
+        Notification::assertSentTimes(ConfirmSubscription::class, 1);
 
         $this->assertSame(1, Subscription::query()->count());
         $this->assertDatabaseHas('subscriptions', compact('email'));
