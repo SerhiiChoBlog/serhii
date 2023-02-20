@@ -84,7 +84,10 @@ function deleteKeyword(keyword: Keyword): void {
         </FormInput>
 
         <!-- Suggestions dropdown -->
-        <ul class="bg-white shadow-md mt-2 rounded-md overflow-hidden absolute inset-x-0">
+        <ul
+            v-if="suggestions.length > 0"
+            class="bg-white shadow-md mt-2 rounded-md overflow-hidden absolute inset-x-0 z-10 border border-border"
+        >
             <li
                 v-for="keyword in suggestions"
                 :key="keyword.name"
