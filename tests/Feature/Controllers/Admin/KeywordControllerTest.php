@@ -16,6 +16,7 @@ class KeywordControllerTest extends TestCase
 
     private const SEARCH_URI = '/admin/ajax/keywords/search/';
     private const STORE_URI = '/admin/ajax/keywords';
+    private const DELETE_URI = '/admin/ajax/keywords/';
 
     private User $admin;
 
@@ -123,5 +124,42 @@ class KeywordControllerTest extends TestCase
             ->assertOk();
 
         $this->assertDatabaseCount('keyword_post', 1);
+    }
+
+    public function testDeletingKeywordDeletesPostConnection(): void
+    {
+        /** @var Post $post */
+        $post = Post::factory()->create();
+        $keyword = Keyword::factory()->create(['name' => 'anna']);
+
+        $post->keywords()->attach($keyword);
+
+        $this->actingAs($this->admin, 'admin')
+            ->json('delete', self::DELETE_URI, [
+                'keyword_id' => $keyword->id,
+                'post_id' => $post->id,
+            ])
+            ->assertOk();
+
+        $this->assertDatabaseEmpty('keyword_post');
+    }
+
+    public function testAfterDeletingKeywordConnectionKeywordIsNotDeleted(): void
+    {
+        /** @var Post $post */
+        $post = Post::factory()->create();
+        $keyword = Keyword::factory()->create(['name' => 'anna']);
+
+        $this->actingAs($this->admin, 'admin')
+            ->json('delete', self::DELETE_URI, [
+                'keyword_id' => $keyword->id,
+                'post_id' => $post->id,
+            ])
+            ->assertOk();
+
+        $this->assertDatabaseHas('keywords', [
+            'id' => $keyword->id,
+            'name' => $keyword->name,
+        ]);
     }
 }
