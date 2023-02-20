@@ -10,7 +10,7 @@ type Props = {
 }
 
 type Emits = {
-    (e: 'suggestionAdded'): void
+    (e: 'changed'): void
 }
 
 const emit = defineEmits<Emits>()
@@ -43,7 +43,7 @@ function addKeyword(): void {
         .then(resp => {
             suggestions.value = []
             searchQuery.value = ''
-            emit('suggestionAdded')
+            emit('changed')
         })
         .catch(handleError)
 }
@@ -51,6 +51,21 @@ function addKeyword(): void {
 function inputChanged(val: string): void {
     searchQuery.value = val
     fetchSuggestions()
+}
+
+function deleteKeyword(keyword: Keyword): void {
+    if (!confirm(`Are you sure you want to delete the keyword "${keyword.name}"?`)) {
+        return
+    }
+
+    axios.delete('/admin/ajax/keywords', {
+        data: {
+            keyword_id: keyword.id,
+            post_id: props.post.id
+        }
+    })
+        .then(resp => emit('changed'))
+        .catch(handleError)
 }
 </script>
 
@@ -83,9 +98,17 @@ function inputChanged(val: string): void {
             <div
                 v-for="keyword in props.post.keywords"
                 :key="keyword.name"
-                class="inline-block bg-main text-white px-1.5 py-0.5 rounded-md"
+                class="inline-block bg-main text-white px-2 py-0.5 rounded-md"
             >
-                {{ keyword.name }}
+                <span>{{ keyword.name }}</span>
+
+                <button
+                    @click="deleteKeyword(keyword)"
+                    type="button"
+                    class="ml-2 hover:scale-110 hover:text-green-200"
+                >
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
         </div>
     </div>
