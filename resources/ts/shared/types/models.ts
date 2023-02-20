@@ -31,6 +31,7 @@ export type Post = {
     intro: string | null
     content: string | null
     is_published: boolean
+    image_xs: string
     image_sm: string
     image_lg: string
     images?: PostContentImage[]

@@ -20,6 +20,7 @@ use Illuminate\Support\Collection;
  * @property string|null $intro
  * @property string|null $content
  * @property bool $is_published
+ * @property string $image_xs
  * @property string $image_sm
  * @property string $image_lg
  * @property Collection<int, PostContentImage> $images

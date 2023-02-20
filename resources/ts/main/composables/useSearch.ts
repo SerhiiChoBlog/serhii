@@ -47,7 +47,7 @@ export default () => {
             })
             .catch(err => console.error(err))
             .finally(() => search.loading = false)
-    }, 300)
+    }, 200)
 
     function fetchSearchSuggestions(e: KeyboardEvent): void {
         if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
