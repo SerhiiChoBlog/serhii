@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Keyword\StoreRequest;
 use App\Models\Keyword;
+use App\Models\Post;
 use Illuminate\Support\Collection;
 
 class KeywordController extends Controller
@@ -30,6 +31,16 @@ class KeywordController extends Controller
 
         if (!$keyword) {
             $keyword = Keyword::query()->create(['name' => $request->name]);
+        }
+
+
+        $keyword_exists = Post::query()
+            ->where('id', $request->post_id)
+            ->whereHas('keywords', fn ($q) => $q->where('keywords.id', $keyword->id))
+            ->exists();
+
+        if ($keyword_exists) {
+            return;
         }
 
         $keyword->posts()->attach($request->post_id);

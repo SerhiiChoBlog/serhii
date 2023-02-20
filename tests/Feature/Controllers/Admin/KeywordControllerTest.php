@@ -107,4 +107,21 @@ class KeywordControllerTest extends TestCase
         $this->assertInstanceOf(Keyword::class, $post_keywords->first());
         $this->assertInstanceOf(Post::class, $keyword_posts->first());
     }
+
+    public function testAddingTheSameKeywordConnectsPostOnlyTheFirstTime(): void
+    {
+        /** @var Post $post */
+        $post = Post::factory()->create();
+        Keyword::factory()->create(['name' => 'anna']);
+
+        $this->actingAs($this->admin, 'admin')
+            ->json('post', self::STORE_URI, ['name' => 'anna', 'post_id' => $post->id])
+            ->assertOk();
+
+        $this->actingAs($this->admin, 'admin')
+            ->json('post', self::STORE_URI, ['name' => 'anna', 'post_id' => $post->id])
+            ->assertOk();
+
+        $this->assertDatabaseCount('keyword_post', 1);
+    }
 }
