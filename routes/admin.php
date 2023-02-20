@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BanController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HitController;
+use App\Http\Controllers\Admin\KeywordController;
 use App\Http\Controllers\Admin\PostContentImageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\PostPublicationController;
@@ -43,6 +44,10 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     Route::prefix('bans')->controller(BanController::class)->group(function () {
         Route::post('ban', 'ban');
         Route::post('unban', 'unban');
+    });
+
+    Route::prefix('keywords')->controller(KeywordController::class)->group(function () {
+        Route::get('search/{keyword}', 'search');
     });
 
     Route::prefix('comments')->controller(CommentController::class)->group(function () {
