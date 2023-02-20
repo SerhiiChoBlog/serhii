@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Keyword\StoreRequest;
 use App\Models\Keyword;
 use Illuminate\Support\Collection;
 
@@ -20,16 +21,17 @@ class KeywordController extends Controller
             ->get();
     }
 
-    public function store($request): void
+    public function store(StoreRequest $request): void
     {
-        $keyword_exist = Keyword::query()
-            ->where('name', $request->get('name'))
-            ->exists();
+        /** @var Keyword|null $keyword */
+        $keyword = Keyword::query()
+            ->where('name', $request->name)
+            ->first();
 
-        if ($keyword_exist) {
-            return;
+        if (!$keyword) {
+            $keyword = Keyword::query()->create(['name' => $request->name]);
         }
 
-        Keyword::query()->create($request->only('name'));
+        $keyword->posts()->attach($request->post_id);
     }
 }
