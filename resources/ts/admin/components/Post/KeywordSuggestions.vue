@@ -9,6 +9,12 @@ type Props = {
     post: Post
 }
 
+type Emits = {
+    (e: 'suggestionAdded'): void
+}
+
+const emit = defineEmits<Emits>()
+
 const props = defineProps<Props>()
 const suggestions = ref<Keyword[]>([])
 const searchQuery = ref('')
@@ -37,6 +43,7 @@ function addKeyword(): void {
         .then(resp => {
             suggestions.value = []
             searchQuery.value = ''
+            emit('suggestionAdded')
         })
         .catch(handleError)
 }

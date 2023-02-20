@@ -175,7 +175,10 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                             </div>
 
                             <div class="mt-5">
-                                <KeywordSuggestions :post="post" />
+                                <KeywordSuggestions
+                                    @suggestionAdded="fetchPost"
+                                    :post="post"
+                                />
                             </div>
                         </div>
 
