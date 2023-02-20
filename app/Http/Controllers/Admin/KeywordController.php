@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Keyword;
-use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
 class KeywordController extends Controller
@@ -21,7 +20,7 @@ class KeywordController extends Controller
             ->get();
     }
 
-    public function store(Request $request): void
+    public function store($request): void
     {
         $keyword_exist = Keyword::query()
             ->where('name', $request->get('name'))

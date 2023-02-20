@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Visitor\IndexRequest;
+use App\Http\Requests\Admin\Visitor\StoreRequest;
 use App\Models\Visitor;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -14,7 +14,7 @@ class VisitorController extends Controller
     /**
      * @return LengthAwarePaginator<Visitor>
      */
-    public function index(IndexRequest $request): LengthAwarePaginator
+    public function index(StoreRequest $request): LengthAwarePaginator
     {
         $query = Visitor::query()
             ->withCount('postViews')
