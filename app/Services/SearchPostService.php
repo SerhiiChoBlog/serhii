@@ -19,17 +19,10 @@ readonly class SearchPostService
      */
     public function search(): array
     {
-        /** @var array<int, CachablePost>|null $posts */
-        $posts = Cache::get(CacheKey::POSTS_SEARCH);
-
-        if (!$posts) {
-            $service = new CachePostsService();
-            $posts = $service->get();
-
-            Cache::forever(CacheKey::POSTS_SEARCH, $posts);
-
-            return $this->findInArray($posts);
-        }
+        $posts = Cache::rememberForever(
+            CacheKey::POSTS_SEARCH,
+            fn () => (new CachePostsService())->get()
+        );
 
         return $this->findInArray($posts);
     }
