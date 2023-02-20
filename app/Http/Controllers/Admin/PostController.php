@@ -54,7 +54,7 @@ class PostController extends Controller
      */
     public function edit(Post $post): Post
     {
-        $post->load('tags', 'images', 'video');
+        $post->load('tags', 'images', 'video', 'keywords');
 
         if ($post->content) {
             $post->content = LazyLoadingParser::makeImagesNotLazy($post->content);

@@ -40,7 +40,7 @@ function chooseTag(tag: Tag): void {
 <template>
     <ul
         v-if="suggestions.length > 0"
-        class="bg-white shadow-md mt-2 rounded-lg overflow-hidden"
+        class="bg-white shadow-md mt-2 rounded-md overflow-hidden divide-y divide-border"
     >
         <li
             v-for="tag in suggestions"

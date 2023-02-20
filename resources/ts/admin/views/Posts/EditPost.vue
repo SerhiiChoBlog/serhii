@@ -5,6 +5,7 @@ import axios from 'axios'
 import handleError from '@admin/modules/handleError'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { tinymceConfig } from '@admin/modules/tinymce'
 import SavePost from '@admin/modules/SavePost'
 import PostContentImages from '@admin/components/Post/PostContentImages.vue'
 import FormTextarea from '@admin/components/Form/FormTextarea.vue'
@@ -15,7 +16,7 @@ import TagSuggestions from '@admin/components/Post/TagSuggestions.vue'
 import PostImage from '@admin/components/Post/PostImage.vue'
 import DeletePost from '@admin/components/Post/DeletePost.vue'
 import Editor from '@tinymce/tinymce-vue'
-import { tinymceConfig } from '@admin/modules/tinymce'
+import KeywordSuggestions from '@admin/components/Post/KeywordSuggestions.vue'
 
 onMounted(() => {
     fetchPost()
@@ -171,6 +172,10 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                         class="max-w-[140px] rounded-md shadow-md"
                                     />
                                 </a>
+                            </div>
+
+                            <div class="mt-5">
+                                <KeywordSuggestions :post="post" />
                             </div>
                         </div>
 
