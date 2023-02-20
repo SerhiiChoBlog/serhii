@@ -144,7 +144,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                     </div>
                                 </FormInput>
 
-                                <tag-suggestions @addTag="addTag" :value="tagInputValue" />
+                                <TagSuggestions @addTag="addTag" :value="tagInputValue" />
                             </div>
 
                             <div class="flex items-center justify-between gap-8 mt-5">
@@ -157,7 +157,9 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                         :value="post.video ? post.video.id : undefined"
                                         :length="190"
                                         name="video"
-                                    >YouTube video ID</FormInput>
+                                    >
+                                        YouTube video ID
+                                    </FormInput>
                                 </div>
 
                                 <a v-if="post.video" :href="post.video.url" target="_blank" rel="noreferrer">
@@ -185,7 +187,9 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                             :value="post.intro || undefined"
                             :length="190"
                             name="intro"
-                        >Short intro</FormTextarea>
+                        >
+                            Short intro
+                        </FormTextarea>
                     </div>
 
                     <div class="mt-5">

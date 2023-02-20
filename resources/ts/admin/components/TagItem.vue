@@ -17,7 +17,7 @@ const emit = defineEmits<Emits>()
 <template>
     <span
         @click="emit('updateTagId', props.tag.id)"
-        class="text-white py-1.5 px-3 rounded-md font-light shadow-md text-xs border border-transparent"
+        class="text-white py-1.5 px-3 rounded-lg font-light shadow-md text-xs border-2 border-transparent"
         :class="{ '!border-page outline outline-black dark:outline-white': props.tag.pivot ? props.tag.pivot.is_main : false }"
         :style="{ backgroundColor: props.tag.color }"
     >

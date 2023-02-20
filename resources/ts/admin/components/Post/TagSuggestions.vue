@@ -21,8 +21,10 @@ watch(props, () => {
 })
 
 function fetchTags(input: string): void {
-    if (input === '')
+    if (input === '') {
+        suggestions.value = []
         return
+    }
 
     axios.post<Tag[]>(`/api/tags/search/${input}`)
         .then(resp => suggestions.value = resp.data)
