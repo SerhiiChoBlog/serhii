@@ -22,7 +22,7 @@ readonly class CachePostsService
         $cachable_posts = $posts->map(function (Post $post) {
             return new CachablePost([
                 'id' => $post->id,
-                'title' => strtolower($post->title),
+                'title' => $post->title,
                 'slug' => $post->slug,
                 'image_xs' => $post->image_xs,
                 'tags' => $post->tags->map(fn (Tag $t) => strtolower($t->name))->toArray(),
