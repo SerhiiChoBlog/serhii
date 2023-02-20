@@ -99,13 +99,16 @@ class PostController extends Controller
 
         $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
 
-        event(new PostChanged($post));
+        $first_publish = !$post->is_published && $request->is_published;
+        $first_unpublish = $post->is_published && !$request->is_published;
 
-        $first_time_publish = !$post->is_published && $request->is_published;
-
-        if ($first_time_publish) {
+        if ($first_publish) {
             $data = $data->merge(['created_at' => now()]);
             Artisan::call(SitemapCommand::class);
+        }
+
+        if ($first_publish || $first_unpublish) {
+            event(new PostChanged($post));
         }
 
         $post->update($data->toArray());
