@@ -56,7 +56,7 @@ readonly class SearchPostService
 
     private function matchingPost(CachablePost $post): ?CachablePost
     {
-        $matches = str_contains($post->title, $this->query)
+        $matches = str_contains(strtolower($post->title), $this->query)
             || $this->containsMatch($post->tags)
             || $this->containsMatch($post->keywords);
 

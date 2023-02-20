@@ -1,31 +1,44 @@
 <script setup lang="ts">
 import type { SearchSuggestion } from '@shared/types'
 
+
 interface Props {
     items: SearchSuggestion[]
 }
 
 const { items } = defineProps<Props>()
+
+function getAllKeywords(item: SearchSuggestion): string[] {
+    return [...item.tags, ...item.keywords]
+}
 </script>
 
 <template>
     <div class="flex-1">
-        <ul class="text-md leading-5 divide-y divide-border">
+        <ul class="text-md leading-5">
             <li v-for="item in items" :key="item.slug" class="text-left">
                 <a
                     :href="`/posts/${item.slug}`"
-                    class="rounded-lg my-1 py-1 px-3 flex items-center gap-4 hover:bg-page-second dark:hover:bg-border transition-colors"
-                    :class="{ '!bg-main-light text-black': item.selected }"
+                    class="py-1.5 px-3 flex items-center gap-4 hover:bg-page-second dark:hover:bg-border transition-colors"
+                    :class="{ '!bg-page-second dark:!bg-black/80': item.selected }"
                 >
                     <img
                         :src="item.image_xs"
                         :alt="item.title"
                         width="90"
                         height="49"
-                        class="rounded-md w-16"
+                        class="rounded-md w-16 lg:w-24"
                     />
 
-                    <span class="font-bold">{{ item.title }}</span>
+                    <div>
+                        <span class="font-bold">{{ item.title }}</span>
+
+                        <div class="flex flex-wrap gap-x-1 text-font-second opacity-70">
+                            <div v-for="(tag, i) in getAllKeywords(item)" :key="tag">
+                                {{ tag }}<span v-if="i !== getAllKeywords(item).length - 1">,</span>
+                            </div>
+                        </div>
+                    </div>
                 </a>
             </li>
         </ul>

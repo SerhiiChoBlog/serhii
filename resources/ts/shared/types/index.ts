@@ -26,6 +26,8 @@ export type SearchSuggestion = {
     selected: boolean
     slug: string
     image_xs: string
+    tags: string[]
+    keywords: string[]
 }
 
 export type Search = {

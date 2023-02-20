@@ -19,7 +19,7 @@ const { search, input, fetchSearchSuggestions } = useSearch()
 
                     <input
                         type="search"
-                        class="pl-10 pr-7 md:pl-14 py-3 md:py-4 text-sm md:text-xl w-full text-gray-500 rounded-full outline-none bg-page dark:bg-page-second"
+                        class="pl-12 pr-7 md:pl-14 py-3 text-sm md:text-xl w-full text-gray-500 rounded-full outline-none bg-page dark:bg-page-second"
                         placeholder="Search blog posts"
                         v-model="search.query"
                         id="search-input"
