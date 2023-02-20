@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Events\CommentApproved;
+use App\Events\PostChanged;
 use App\Listeners\Badges\GiveUserCommentatorBadge;
 use App\Listeners\Badges\GiveUserVerifiedBadge;
+use App\Listeners\ClearPostsCache;
 use App\Listeners\ConnectSubscriptionToUser;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Events\Verified;
@@ -28,6 +30,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         CommentApproved::class => [
             GiveUserCommentatorBadge::class,
+        ],
+        PostChanged::class => [
+            ClearPostsCache::class,
         ],
     ];
 }

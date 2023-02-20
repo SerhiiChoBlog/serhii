@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\CacheKey;
 use App\Console\Commands\SitemapCommand;
+use App\Events\PostChanged;
 use App\Exceptions\LazyLoadingConversionException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\StoreRequest;
@@ -98,10 +99,7 @@ class PostController extends Controller
 
         $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
 
-        if ($request->is_published) {
-            Cache::forget(CacheKey::RANDOM_POSTS);
-            Cache::forget(CacheKey::HOME_POPULAR_POSTS);
-        }
+        event(new PostChanged($post));
 
         $first_time_publish = !$post->is_published && $request->is_published;
 
@@ -132,6 +130,8 @@ class PostController extends Controller
         $post->socialShares();
         $post->postPublication()->delete();
         $post->delete();
+
+        event(new PostChanged(null));
     }
 
     private function addNotesToContent(?string $content): ?string
@@ -150,7 +150,7 @@ class PostController extends Controller
     /**
      * @param array<int, int> $tags
      */
-    public function attachTags(array $tags, ?int $tag_id, Post $post): void
+    private function attachTags(array $tags, ?int $tag_id, Post $post): void
     {
         $data = [];
 

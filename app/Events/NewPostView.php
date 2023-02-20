@@ -26,6 +26,9 @@ class NewPostView implements ShouldBroadcast, ShouldBroadcastNow
         return new Channel('notification');
     }
 
+    /**
+     * @return array<string, int|string>
+     */
     public function broadcastWith(): array
     {
         return [
