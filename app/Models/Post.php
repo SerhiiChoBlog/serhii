@@ -26,6 +26,7 @@ use Illuminate\Support\Collection;
  * @property Collection<int, SocialShare> $socialShares
  * @property Collection<int, PostView> $postViews
  * @property Collection<int, Tag> $tags
+ * @property Collection<int, Keyword> $keywords
  * @property PostPublication|null $postPublication
  * @property Collection<int, Comment> $comments
  * @property int|null $post_views_count
@@ -115,6 +116,14 @@ class Post extends Model
     public function video(): HasOne
     {
         return $this->hasOne(Video::class);
+    }
+
+    /**
+     * @return BelongsToMany<Keyword>
+     */
+    public function keywords(): BelongsToMany
+    {
+        return $this->belongsToMany(Keyword::class);
     }
 
     /**

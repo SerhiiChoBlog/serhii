@@ -21,8 +21,10 @@ watch(props, () => {
 })
 
 function fetchTags(input: string): void {
-    if (input === '')
+    if (input === '') {
+        suggestions.value = []
         return
+    }
 
     axios.post<Tag[]>(`/api/tags/search/${input}`)
         .then(resp => suggestions.value = resp.data)
@@ -38,7 +40,7 @@ function chooseTag(tag: Tag): void {
 <template>
     <ul
         v-if="suggestions.length > 0"
-        class="bg-white shadow-md mt-2 rounded-lg overflow-hidden"
+        class="bg-white shadow-md mt-2 rounded-md overflow-hidden divide-y divide-border"
     >
         <li
             v-for="tag in suggestions"

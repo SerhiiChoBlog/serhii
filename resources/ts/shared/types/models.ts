@@ -36,6 +36,7 @@ export type Post = {
     images?: PostContentImage[]
     postViews?: PostView[]
     socialShares?: SocialShare[]
+    keywords?: Keyword[]
     tags?: Tag[]
     video?: Video | null
     social?: string[][]
@@ -185,4 +186,10 @@ export type Ban = {
     created_at: string
     updated_at: string
     user?: User
+}
+
+export type Keyword = {
+    id: number
+    name: string
+    posts?: Post[]
 }

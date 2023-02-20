@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Models;
 
 use App\Models\Comment;
+use App\Models\Keyword;
 use App\Models\Post;
 use App\Models\PostContentImage;
 use App\Models\PostPublication;
@@ -30,17 +31,17 @@ class PostTest extends TestCase
         $this->assertDatabaseCount('posts', 1);
     }
 
-    public function testPostHasTagsAssociated(): void
+    public function testPostHasTagsRelated(): void
     {
         /** @var Tag $tag */
         $tag = Tag::factory()->create();
 
-        $this->post->tags()->attach([$tag->id]);
+        $this->post->tags()->attach($tag);
 
         $this->assertCount(1, $this->post->tags);
     }
 
-    public function testPostHasImagesAssociated(): void
+    public function testPostHasImagesRelated(): void
     {
         PostContentImage::factory()->create([
             'post_id' => $this->post->id,
@@ -49,7 +50,7 @@ class PostTest extends TestCase
         $this->assertCount(1, $this->post->images);
     }
 
-    public function testPostHasCommentsAssociated(): void
+    public function testPostHasCommentsRelated(): void
     {
         $user = $this->createUser();
 
@@ -61,7 +62,19 @@ class PostTest extends TestCase
         $this->assertCount(1, $this->post->comments);
     }
 
-    public function testPostHasPostPublicationAssociated(): void
+    public function testPostHasKeywordsRelated(): void
+    {
+        $keyword = Keyword::factory()->create();
+
+        $this->post->keywords()->attach($keyword);
+
+        $keywords = $this->post->keywords;
+
+        $this->assertCount(1, $keywords);
+        $this->assertInstanceOf(Keyword::class, $this->post->keywords->first());
+    }
+
+    public function testPostHasPostPublicationRelated(): void
     {
         PostPublication::factory()->create([
             'post_id' => $this->post->id,
@@ -70,7 +83,7 @@ class PostTest extends TestCase
         $this->assertNotNull($this->post->postPublication);
     }
 
-    public function testPostHasVideoAssociated(): void
+    public function testPostHasVideoRelated(): void
     {
         Video::factory()->create([
             'post_id' => $this->post->id,
