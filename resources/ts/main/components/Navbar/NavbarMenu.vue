@@ -59,7 +59,7 @@ function closeMenu(): void {
                         type="button"
                         class="flex items-center justify-center gap-4 bg-black/20 rounded-full pl-5 hover:bg-black/40 transition-colors group"
                     >
-                        <div class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[150px] text-lg">
+                        <div class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[150px] text-lg py-1">
                             {{ Auth.name }}
                         </div>
 
@@ -68,7 +68,7 @@ function closeMenu(): void {
                             alt="Profile picture"
                             width="200"
                             height="200"
-                            class="rounded-full w-10 h-10 shadow-md group-hover:shadow-lg"
+                            class="rounded-full w-8 h-8 shadow-md group-hover:shadow-lg"
                         />
                     </button>
                 </user-dropdown>
