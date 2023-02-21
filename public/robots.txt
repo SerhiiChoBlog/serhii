@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 Sitemap: https://serhii.io/sitemap.xml
 Disallow: /subscriptions/*
+Disallow: /fo-verify.html
