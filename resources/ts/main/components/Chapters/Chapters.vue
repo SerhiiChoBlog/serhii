@@ -108,8 +108,11 @@ function detectCurrentChapter(): void {
         return
     }
 
-    showChapters.value = false
     currentChapter.value = null
+
+    if (screenSizeIs(['sm', 'md', 'lg'])) {
+        showChapters.value = false
+    }
 }
 
 function markVisibleChapters(elem: HTMLElement): void {
