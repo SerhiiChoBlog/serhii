@@ -13,7 +13,6 @@ import sweetAlert from 'sweetalert2'
 import ControlButton from './ControlButton.vue'
 import SlideUpTransition from '@shared/components/Transitions/SlideUpTransition.vue'
 import showToast from '@shared/modules/showToast'
-import useScroll from '@/composables/useScroll'
 
 interface Props {
     slug: string
@@ -25,7 +24,6 @@ const chapters = ref<ChapterType[]>([])
 const savedChapter = ref<SavedChapter | null>(null)
 const currentChapter = ref<ChapterType | null>(null)
 const showChapters = ref(false)
-const { isScrolledDown } = useScroll()
 
 onMounted(() => {
     if (!screenSizeIs('lg')) {
@@ -99,12 +97,19 @@ function goToSavedChapter(): void {
         showChapters.value = false
     }
 
-    window.scrollTo({top: savedChapter.value!.top, behavior: 'smooth'})
+    window.scrollTo({ top: savedChapter.value!.top, behavior: 'smooth' })
 }
 
 function detectCurrentChapter(): void {
     const activeChapter = chapters.value.find(chapter => chapter.isActive)
-    currentChapter.value = activeChapter || null
+
+    if (activeChapter) {
+        currentChapter.value = activeChapter
+        return
+    }
+
+    showChapters.value = false
+    currentChapter.value = null
 }
 
 function markVisibleChapters(elem: HTMLElement): void {
@@ -135,7 +140,7 @@ function saveCurrentChapter(): void {
     localStorage.setItem(`chapter:${slug}`, JSON.stringify(savedChapter.value))
 
     showToast({
-        text: `You've saved current position in the post. You'll be able to go back to it at any time`,
+        text: "You've saved current position in the post. You'll be able to go back to it at any time",
         success: true,
         duration: 6000,
     })
@@ -162,7 +167,7 @@ function handleChapterClick(): void {
 <template>
     <button
         v-if="currentChapter"
-        class="flex print:hidden lg:hidden items-center shadow-md gap-x-1 justify-center fixed border border-border top-16 bg-page w-full py-1 px-4 z-40 left-1/2 -translate-x-1/2"
+        class="flex print:hidden lg:hidden items-center shadow-md gap-x-1 justify-center fixed border border-border top-[54px] bg-page w-full py-1 px-4 z-40 left-1/2 -translate-x-1/2"
         @click="showChapters = !showChapters"
     >
         <chevron-up-icon v-if="showChapters" class="w-6 h-6 inline-block" />
@@ -173,10 +178,10 @@ function handleChapterClick(): void {
     <slide-up-transition>
         <div
             v-if="showChapters"
-            class="bg-page lg:bg-transparent print:hidden lg:h-[calc(100%-200px)] fixed lg:static w-full max-w-md left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 border border-border lg:border-none top-24 lg:top-0 bottom-[3%] p-4 lg:p-0 shadow-xl lg:shadow-none lg:relative z-30"
+            class="bg-page lg:bg-transparent print:hidden lg:h-[calc(100%-200px)] fixed lg:static w-full max-w-md left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 border border-border lg:border-none top-16 lg:top-0 bottom-[3%] p-4 lg:p-0 shadow-xl lg:shadow-none lg:relative z-30"
         >
-            <nav class="sticky h-screen overflow-y-auto scrollbar pr-2 top-3 lg:top-32 mt-7 text-center lg:text-left">
-                <div class="mb-5">
+            <nav class="sticky h-screen overflow-y-auto scrollbar pr-2 top-3 lg:top-24 mt-7 text-center lg:text-left">
+                <div class="mb-4">
                     <div class="flex items-center gap-x-5 text-font-second">
                         <span class="text-2xl font-bold font-bold">
                             Chapters
@@ -214,7 +219,7 @@ function handleChapterClick(): void {
                 </div>
 
                 <div class="space-y-2">
-                    <Chapter v-for="chapter in chapters"
+                    <chapter v-for="chapter in chapters"
                         :key="chapter"
                         :chapter="chapter"
                         :headers="headers"
