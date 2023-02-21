@@ -25,7 +25,7 @@ const { isScrolledDown } = useScroll()
             <div class="container flex justify-between items-center min-h-[3.4rem]">
                 <div class="flex items-center gap-x-1 w-full lg:w-auto">
                     <a
-                        tabindex="1"
+                        tabindex="0"
                         href="/"
                         class="print:hidden text-lg font-bold transition-opacity hover:opacity-80 text-lato drop-shadow-[1px_1px_0_rgba(0,0,0,.4)]"
                         aria-label="Visit main page"
