@@ -10,7 +10,7 @@
 
 <article class="{{ $attributes->getAttributes()['class'] ?? '' }}">
     <div
-        class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl max-w-[550px] lg:max-w-full mx-auto transition-colors hover:bg-page-second">
+        class="flex flex-col lg:flex-row items-center gap-6 border-md p-3 rounded-xl max-w-[550px] lg:max-w-full mx-auto transition-colors hover:bg-page-second relative">
         <a
             href="/posts/{{ $post->slug ?? $post['slug'] }}"
             class="block w-full lg:max-w-[300px]"
@@ -37,5 +37,10 @@
                 <x-post.details :post="is_array($post) ? $post : $post->toArray()" class="mt-3"/>
             </div>
         </div>
+
+        <x-posts.comments-amount
+            class="absolute bottom-4 right-4 text-font-second opacity-60"
+            :amount="$post->comments_count ?? $post['comments_count']"
+        />
     </div>
 </article>
