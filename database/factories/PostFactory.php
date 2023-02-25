@@ -6,7 +6,6 @@ namespace Database\Factories;
 
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
  * @extends Factory<Post>
@@ -20,12 +19,12 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
-        $title = $this->faker->sentence(6);
+        $num = random_int(1, 99999);
 
         return [
-            'title' => $title,
-            'intro' => $this->faker->sentence(15),
-            'slug' => Str::slug($title),
+            'title' => "Some random title for the post {$num}",
+            'intro' => 'This is a random intro for the post with not much meaning and pretty short. I can write a longer one but that is find',
+            'slug' => "some-random-title-for-the-post-{$num}",
             'is_published' => false,
         ];
     }
