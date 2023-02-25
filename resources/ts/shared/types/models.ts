@@ -43,6 +43,7 @@ export type Post = {
     social?: string[][]
     social_shares_count?: number
     post_views_count?: number
+    comments_count?: number
     read_time: number
     pretty_created_at: string
     created_at: string

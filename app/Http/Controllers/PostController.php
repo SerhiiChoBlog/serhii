@@ -17,9 +17,9 @@ class PostController extends Controller
 {
     public function index(IndexRequest $request): View
     {
-        $query = Post::query()
-            ->with('tags:id,name,color,title')
+        $query = Post::with('tags:id,name,color,title')
             ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time')
+            ->withCount('comments')
             ->where('is_published', true)
             ->latest();
 
@@ -39,8 +39,8 @@ class PostController extends Controller
     public function show(string $slug, Request $request): View
     {
         /** @var Post|null $post */
-        $post = Post::query()
-            ->with('tags', 'video:post_id,title,url,image')
+        $post = Post::with('tags', 'video:post_id,title,url,image')
+            ->withCount('comments')
             ->where('slug', $slug)
             ->withCount('postViews')
             ->first();

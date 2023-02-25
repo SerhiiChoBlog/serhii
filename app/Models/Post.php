@@ -32,6 +32,7 @@ use Illuminate\Support\Collection;
  * @property Collection<int, Comment> $comments
  * @property int|null $post_views_count
  * @property int|null $social_shares_count
+ * @property int|null $comments_shares_count
  * @property int $read_time
  * @property Video|null $video
  * @property array<int, array<int, string>>|null $social

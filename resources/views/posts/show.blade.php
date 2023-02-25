@@ -59,10 +59,19 @@
                         <div class="flex items-center gap-2 mt-4">
                             <x-post.details :post="$post->toArray()" />
 
-                            @if (isset($post['post_views_count']) && $post['post_views_count'] > 99)
+                            @if (isset($post->post_views_count) && $post->post_views_count > 99)
                                 <span aria-hidden="true" class="opacity-70">&#8226;</span>
-                                <span class="opacity-70">{{ $post['post_views_count'] }} views</span>
+                                <span class="opacity-70" aria-label="Post views">
+                                    {{ $post->post_views_count }} views
+                                </span>
                             @endif
+
+                            <span aria-hidden="true" class="opacity-70">&#8226;</span>
+
+                            <x-posts.comments-amount
+                                class="opacity-70"
+                                :amount="$post->comments_count"
+                            />
                         </div>
 
                         @if (auth('admin')->check())
