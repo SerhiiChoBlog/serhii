@@ -7,7 +7,6 @@ import Chapters from '@/components/Chapters/Chapters.vue'
 import smoothLoader from 'smooth-loader'
 import insertTagsForHighlightJs from '@/modules/insertTagsForHighlightJs'
 import ToTop from '@/components/ToTop.vue'
-import Popper from "vue3-popper"
 import Tip from '@shared/components/Tip.vue'
 import Search from '@/components/Home/Search.vue'
 import Filters from '@/components/Filters/Filters.vue'
@@ -25,7 +24,6 @@ const app = createApp({
         SharePostButtons,
         Chapters,
         ToTop,
-        Popper,
         Search,
         Tip,
         Filters,
