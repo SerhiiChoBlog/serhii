@@ -13,9 +13,9 @@ export default [
         title: 'Blog',
     },
     {
-        href: '/subscribe',
-        class: currPath === '/subscribe' ? activeClass : '',
-        title: 'Subscribe',
+        href: '/projects',
+        class: currPath === '/projects' ? activeClass : '',
+        title: 'Open source',
     },
     {
         href: '/about-me',

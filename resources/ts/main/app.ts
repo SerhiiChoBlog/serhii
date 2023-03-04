@@ -6,7 +6,6 @@ import SharePostButtons from '@/components/SharePostButtons.vue'
 import Chapters from '@/components/Chapters/Chapters.vue'
 import smoothLoader from 'smooth-loader'
 import insertTagsForHighlightJs from '@/modules/insertTagsForHighlightJs'
-import ToTop from '@/components/ToTop.vue'
 import Tip from '@shared/components/Tip.vue'
 import Search from '@/components/Home/Search.vue'
 import Filters from '@/components/Filters/Filters.vue'
@@ -23,7 +22,6 @@ const app = createApp({
         Navbar,
         SharePostButtons,
         Chapters,
-        ToTop,
         Search,
         Tip,
         Filters,

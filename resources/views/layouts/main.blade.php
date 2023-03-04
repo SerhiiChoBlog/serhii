@@ -8,7 +8,6 @@
 <body class="text-font font-main bg-page {{ request()->cookie('theme') }}">
     <main id="main">
         @yield('content')
-        <to-top></to-top>
         <x-footer></x-footer>
     </main>
 
@@ -17,6 +16,6 @@
     </script>
 
     @vite('resources/ts/main/app.ts')
-    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="serhiicho" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="serhiicho" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FF813F" data-position="Right" data-x_margin="10" data-y_margin="10"></script>
 </body>
 </html>
