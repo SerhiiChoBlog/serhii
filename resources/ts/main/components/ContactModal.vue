@@ -44,6 +44,7 @@ const isOpen = ref(false)
                             :alt="link.title"
                             width="30"
                             height="30"
+                            class="rounded-md"
                         />
                     </a>
                 </div>
