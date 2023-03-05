@@ -10,6 +10,6 @@
     <span aria-hidden="true">&#8226;</span>
 
     @if (isset($post['read_time']) && $post['read_time'] > 0)
-        <span aria-label="Minutes to read">{{ $post['read_time'] }} mins read</span>
+        <span aria-label="Minutes to read">{{ $post['read_time'] }} min read</span>
     @endif
 </div>
