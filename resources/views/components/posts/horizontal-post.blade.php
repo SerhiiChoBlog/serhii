@@ -37,10 +37,5 @@
                 <x-post.details :post="is_array($post) ? $post : $post->toArray()" class="mt-3"/>
             </div>
         </div>
-
-        <x-posts.comments-amount
-            class="absolute bottom-4 right-4 text-font-second opacity-60"
-            :amount="$post->comments_count ?? $post['comments_count']"
-        />
     </div>
 </article>
