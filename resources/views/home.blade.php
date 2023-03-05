@@ -44,7 +44,7 @@
         title="You might like"
         intro="Articles which I think you might want to read"
     >
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-0 md:gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-0 md:gap-5">
             @foreach ($posts as $post)
                 <x-posts.vertical-post :post="$post"/>
             @endforeach

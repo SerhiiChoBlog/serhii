@@ -20,6 +20,7 @@ class PostController extends Controller
         $query = Post::with('tags:id,name,color,title')
             ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time')
             ->withCount('comments')
+            ->withCount('postViews')
             ->where('is_published', true)
             ->latest();
 

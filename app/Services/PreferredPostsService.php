@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 
 readonly class PreferredPostsService
 {
-    private const LIMIT = 8;
+    private const LIMIT = 9;
     private const SELECT_FIELDS = [
         'id',
         'slug',
@@ -53,9 +53,9 @@ readonly class PreferredPostsService
      */
     private function getRandomPosts(array $exclude, int $limit): Collection
     {
-        $query = Post::query()
-            ->with('tags:name,color,title')
+        $query = Post::with('tags:name,color,title')
             ->select(self::SELECT_FIELDS)
+            ->withCount('postViews')
             ->where('is_published', true)
             ->inRandomOrder()
             ->limit($limit);
