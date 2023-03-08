@@ -31,12 +31,9 @@ const { isScrolledDown } = useScroll()
                         aria-label="Visit main page"
                         rel="noreferrer"
                     >
-                        <img
-                            src="/storage/logo.svg"
-                            width="90"
-                            height="17"
-                            alt="Serhii logo"
-                        />
+                        <div class="">
+                            <span class="tracking-wider text-white">{S} SERHII</span>
+                        </div>
                     </a>
 
                     <hamburger />

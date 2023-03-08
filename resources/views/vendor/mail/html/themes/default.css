@@ -10,9 +10,8 @@ body *:not(html):not(style):not(br):not(tr):not(code) {
 
 body {
     -webkit-text-size-adjust: none;
-    background: rgb(208,116,162);
-    background: linear-gradient(90deg, rgba(208,116,162,1) 0%, rgba(42,75,103,1) 100%);
-    color: #718096;
+    background: #292929;
+    color: #bccadf;
     height: 100%;
     line-height: 1.4;
     margin: 0;
@@ -21,7 +20,7 @@ body {
 }
 
 body a {
-    color: rgb(186, 98, 142);
+    color: rgb(206, 122, 164);
     word-break: break-all;
 }
 
@@ -44,8 +43,8 @@ a img {
 /* Typography */
 
 h1 {
-    color: #3d4852;
-    font-size: 18px;
+    color: #a3bdd3;
+    font-size: 19px;
     font-weight: bold;
     margin-top: 0;
     text-align: left;
@@ -110,10 +109,10 @@ img {
 /* Logo */
 
 .logo {
-    font-size: 1.4rem !important;
-    font-weight: bold;
+    font-size: 1.6rem !important;
+    font-weight: 600;
     text-decoration: none;
-
+    letter-spacing: 1px;
 }
 
 /* Body */
@@ -131,7 +130,7 @@ img {
     /*-premailer-cellpadding: 0;*/
     /*-premailer-cellspacing: 0;*/
     /*-premailer-width: 570px;*/
-    background-color: #ffffff;
+    background-color: #353535;
     border-width: 1px;
     margin: 0 auto;
     padding: 0;
@@ -234,8 +233,8 @@ img {
 
 .button-decline {
     background: transparent;
-    color: brown;
-    border: 1px solid brown;
+    color: #c36262;
+    border: 1px solid #cc6b6b;
 }
 
 /* Panels */
