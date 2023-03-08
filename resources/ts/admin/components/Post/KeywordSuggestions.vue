@@ -18,6 +18,7 @@ const emit = defineEmits<Emits>()
 const props = defineProps<Props>()
 const suggestions = ref<Keyword[]>([])
 const searchQuery = ref('')
+const loading = ref<boolean>(false)
 
 function fetchSuggestions(): void {
     if (searchQuery.value === '') {
@@ -36,6 +37,8 @@ function addKeyword(): void {
         return
     }
 
+    loading.value = true
+
     axios.post(`/admin/ajax/keywords`, {
         name: searchQuery.value,
         post_id: props.post.id
@@ -46,6 +49,7 @@ function addKeyword(): void {
             emit('changed')
         })
         .catch(handleError)
+        .finally(() => loading.value = false)
 }
 
 function inputChanged(val: string): void {
@@ -58,12 +62,14 @@ function deleteKeyword(keyword: Keyword): void {
         return
     }
 
-    axios.delete('/admin/ajax/keywords', {
+    const params = {
         data: {
             keyword_id: keyword.id,
             post_id: props.post.id
         }
-    })
+    }
+
+    axios.delete('/admin/ajax/keywords', params)
         .then(resp => emit('changed'))
         .catch(handleError)
 }
@@ -81,6 +87,12 @@ function deleteKeyword(keyword: Keyword): void {
             :value="searchQuery"
         >
             Keywords:
+
+            <template #input>
+                <div v-if="loading" class="absolute bg-white inset-1 flex items-center pl-5 rounded-sm">
+                    <span>Loading... Please wait...</span>
+                </div>
+            </template>
         </FormInput>
 
         <!-- Suggestions dropdown -->
