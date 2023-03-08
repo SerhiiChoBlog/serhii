@@ -85,7 +85,7 @@ class GlobalVisitor
 
         try {
             /** @var Visitor */
-            return Visitor::query()->create([
+            return Visitor::query()->firstOrCreate(compact('ip'), [
                 'ip' => $ip,
                 'country' => $position->countryName,
                 'city' => $position->cityName,
