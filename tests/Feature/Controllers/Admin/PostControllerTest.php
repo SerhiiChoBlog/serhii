@@ -154,7 +154,7 @@ class PostControllerTest extends TestCase
 
         $expect = <<<TEXT
         <p>This is some text here</p>
-        <p class="note">Be careful mate!</p>
+        <p class="note">Note. Be careful mate!</p>
         TEXT;
 
         $this->assertSame($expect, $post->fresh()?->content);
@@ -182,7 +182,7 @@ class PostControllerTest extends TestCase
 
         $expect = <<<TEXT
         <p>This is some text here</p>
-        <p class="tip">Be careful mate!</p>
+        <p class="tip">Tip. Be careful mate!</p>
         TEXT;
 
         $this->assertSame($expect, $post->fresh()?->content);
@@ -210,7 +210,7 @@ class PostControllerTest extends TestCase
 
         $expect = <<<TEXT
         <p>This is some text here</p>
-        <p class="note">Be careful man!</p>
+        <p class="note">Warning. Be careful man!</p>
         TEXT;
 
         $this->assertSame($expect, $post->fresh()?->content);
