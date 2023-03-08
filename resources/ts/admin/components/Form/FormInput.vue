@@ -51,6 +51,8 @@ watch(() => props.value, (newValue) => {
                 :length="props.length"
                 :inputValue="inputValue"
             />
+
+            <slot name="input" />
         </div>
     </div>
 </template>
