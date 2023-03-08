@@ -46,15 +46,41 @@
         }
     },
     "scripts": {
+        "post-root-package-install": "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+        "post-create-project-cmd": "@php artisan key:generate --ansi",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        "pint": "./vendor/bin/pint",
+        "stan": "php -d memory_limit=2G ./vendor/bin/phpstan analyse",
+        "test": [
+            "rm -f database/database.sqlite",
+            "touch database/database.sqlite",
+            "./vendor/bin/phpunit"
         ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+        "check": ["@pint", "@stan", "@test"],
+        "build": [
+            "yarn build",
+            "git add .",
+            "git commit -m \"Compiled assets for production\"",
+            "git push origin HEAD"
+        ],
+        "sitemap": "php artisan make:generate",
+        "cache": [
+            "php artisan optimize:clear",
+            "php artisan config:cache",
+            "php artisan view:cache",
+            "php artisan route:cache",
+            "php artisan cache:clear",
+            "php artisan optimize"
+        ],
+        "cache-clear": [
+            "php artisan config:clear",
+            "php artisan view:clear",
+            "php artisan route:clear",
+            "php artisan cache:clear",
+            "php artisan optimize:clear"
         ]
     },
     "extra": {
