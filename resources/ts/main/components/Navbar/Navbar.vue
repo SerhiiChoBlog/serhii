@@ -27,14 +27,16 @@ const { isScrolledDown } = useScroll()
                     <a
                         tabindex="0"
                         href="/"
-                        class="print:hidden text-lg font-bold transition-opacity hover:opacity-80 text-lato drop-shadow-[1px_1px_0_rgba(0,0,0,.4)]"
+                        class="print:hidden text-lg transition-opacity hover:opacity-80 text-lato drop-shadow-[1px_1px_0_rgba(0,0,0,.4)]"
                         aria-label="Visit main page"
                         rel="noreferrer"
                     >
-                        <div class="tracking-wide">
-                            <span class="text-white">serhii</span>
-                            <span class="text-main-light">cho</span>
-                        </div>
+                        <img
+                            src="/storage/logo.svg"
+                            width="90"
+                            height="17"
+                            alt="Serhii logo"
+                        />
                     </a>
 
                     <hamburger />
