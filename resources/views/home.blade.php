@@ -21,14 +21,17 @@
             ></div>
 
             <div class="relative z-10 text-center pt-20 pb-32">
-                <h1 class="text-2xl lg:text-4xl" aria-label="Serhii Cho">
-                    <span class="text-white drop-shadow-md">serhii</span>
-                    <span class="text-main-light drop-shadow-md">cho</span>
-                </h1>
+                <img
+                    src="{{ asset('storage/logo.svg') }}"
+                    width="180"
+                    height="34"
+                    class="mx-auto"
+                    alt="Serhii logo"
+                />
 
-                <h2 class="text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md">
+                <h1 class="text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md">
                     Blog about web development
-                </h2>
+                </h1>
 
                 <search>
                     <div class="min-h-[44px] lg:min-h-[60px]"></div>
