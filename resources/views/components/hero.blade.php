@@ -1,5 +1,5 @@
 <header {{ $attributes->merge([]) }}>
-    <div class="{{ $navbar ?? '' }} min-h-[64px]">
+    <div class="{{ $navbar ?? '' }} min-h-[55px]">
         <navbar theme="{{ request()->cookie('theme', 'system') }}"></navbar>
     </div>
 
