@@ -13,11 +13,20 @@ const hideInput = computed<boolean>(() => {
     return isSmall.value && search.query === ''
 })
 
-function handleBlur(): void {
+function closeSearch(): void {
     setTimeout(() => {
         search.query = ''
         isSmall.value = true
-        console.log('test')
+    }, 200)
+}
+
+function openSearch(): void {
+    isSmall.value = false
+
+    setTimeout(() => {
+        if (input.value) {
+            input.value.focus()
+        }
     }, 200)
 }
 </script>
@@ -25,8 +34,7 @@ function handleBlur(): void {
 <template>
     <appear-transition>
         <div
-            @click="isSmall = false"
-            :class="hideInput ? 'w-[40px] overflow-hidden' : 'w-[280px] md:w-[380px]'"
+            :class="hideInput ? 'w-[40px] overflow-hidden' : 'w-[320px] md:w-[380px]'"
             class="absolute right-0 top-0 -translate-y-1/2 transition-all duration-300 ease-in-out z-50"
         >
             <label
@@ -37,11 +45,12 @@ function handleBlur(): void {
                 <form @submit.prevent class="w-full m-0">
                     <input
                         ref="input"
+                        @click="openSearch"
                         :type="hideInput ? 'button' : 'search'"
-                        placeholder="Search blog posts"
+                        placeholder="Search..."
                         v-model="search.query"
                         @input="changedInput"
-                        @blur="handleBlur"
+                        @blur="closeSearch"
                         autocomplete="off"
                         class="pl-7 pr-12 w-full text-gray-400 rounded-full outline-none py-1 text-lg bg-transparent"
                         id="navbar-search-input"
