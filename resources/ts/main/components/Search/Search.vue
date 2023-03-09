@@ -3,6 +3,7 @@ import useSearch from '@/composables/useSearch'
 import SearchIcon from '@shared/components/Icons/SearchIcon.vue'
 import Dropdown from '@/components/Search/Dropdown.vue'
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
+import DropdownTransition from '@shared/components/Transitions/DropdownTransition.vue'
 
 const { search, input, changedInput } = useSearch()
 </script>
@@ -22,13 +23,17 @@ const { search, input, changedInput } = useSearch()
                         type="search"
                         placeholder="Search blog posts"
                         @input="changedInput"
+                        v-model="search.query"
+                        @blur="search.query = ''"
                         autocomplete="off"
                         class="pl-12 pr-7 md:pl-14 py-3 text-sm md:text-xl w-full text-gray-500 rounded-full outline-none bg-page dark:bg-page-second"
                         id="search-input"
                     />
                 </form>
 
-                <dropdown v-if="search.query !== ''" :search="search" />
+                <dropdown-transition>
+                    <dropdown v-if="search.query !== ''" :search="search" />
+                </dropdown-transition>
             </label>
         </div>
     </appear-transition>
