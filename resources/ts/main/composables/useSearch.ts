@@ -60,9 +60,14 @@ export default () => {
         makeRequestToFetchItems(search.query)
     }
 
+    function changedInput(e: Event): void {
+        search.query = (e.target as HTMLInputElement).value
+        fetchSearchSuggestions(e as KeyboardEvent)
+    }
+
     return {
         input,
         search,
-        fetchSearchSuggestions,
+        changedInput,
     }
 }
