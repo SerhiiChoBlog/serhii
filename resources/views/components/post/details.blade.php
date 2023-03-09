@@ -10,7 +10,7 @@
     @if (isset($post['read_time']) && $post['read_time'] > 0)
         <x-post.detail ariaLabel="Minutes to read">
             <x-icons.book class="w-4 h-4" />
-            {{ $post['read_time'] }} min read
+            {{ $post['read_time'] }} min
         </x-post.detail>
     @endif
 

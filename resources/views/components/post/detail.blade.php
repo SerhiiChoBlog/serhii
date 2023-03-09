@@ -5,6 +5,6 @@
      */
 @endphp
 
-<span aria-label="{{ $ariaLabel }}" class="flex items-center gap-0.5 text-sm">
+<span aria-label="{{ $ariaLabel }}" class="flex items-center gap-1 text-sm">
     {{ $slot }}
 </span>
