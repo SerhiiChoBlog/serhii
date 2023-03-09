@@ -33,15 +33,13 @@ const isHomePage = window.location.pathname === '/'
                         aria-label="Visit main page"
                         rel="noreferrer"
                     >
-                        <div class="">
-                            <span class="tracking-wider text-white">{S} SERHII</span>
-                        </div>
+                        <span class="tracking-wider text-white">{S} SERHII</span>
                     </a>
 
                     <hamburger />
                 </div>
 
-                <div class="flex items-center gap-8">
+                <div class="flex items-center gap-5">
                     <navbar-search />
                     <navbar-menu :theme="theme" />
                 </div>
