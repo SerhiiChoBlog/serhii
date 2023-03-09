@@ -10,7 +10,7 @@ const { href, classes } = defineProps<Props>()
 <template>
     <a
         :href="href"
-        class="relative tracking-wider w-full lg:w-max border-b border-border lg:border-none text-sm before:content-none px-7 py-5 lg:p-0 lg:before:content-[''] navbar-link uppercase lg:drop-shadow-md"
+        class="relative tracking-wider w-full min-w-fit lg:w-max border-b border-border lg:border-none text-sm before:content-none px-7 py-5 lg:p-0 lg:before:content-[''] navbar-link uppercase lg:drop-shadow-md"
         :class="classes"
         rel="noreferrer"
     >
