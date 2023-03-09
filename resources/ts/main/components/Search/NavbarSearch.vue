@@ -52,6 +52,7 @@ function openSearch(): void {
                         @input="changedInput"
                         @blur="closeSearch"
                         autocomplete="off"
+                        tabindex="0"
                         class="pl-7 pr-12 w-full text-gray-400 rounded-full outline-none py-1 text-lg bg-transparent"
                         id="navbar-search-input"
                     />
