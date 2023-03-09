@@ -4,6 +4,7 @@ import NavbarMenu from '@/components/Navbar/NavbarMenu.vue'
 import { Theme } from '@shared/types'
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 import useScroll from '@/composables/useScroll'
+import NavbarSearch from '@/components/Search/NavbarSearch.vue'
 
 type Props = {
     theme: Theme
@@ -11,6 +12,7 @@ type Props = {
 
 const { theme } = defineProps<Props>()
 const { isScrolledDown } = useScroll()
+const isHomePage = window.location.pathname === '/'
 </script>
 
 <template>
@@ -18,7 +20,7 @@ const { isScrolledDown } = useScroll()
         <nav
             class="fixed top-0 left-0 right-0 z-50 transition-colors duration-300 print:hidden"
             :class="{
-                'bg-gray-800/95 shadow-md': isScrolledDown,
+                'bg-gray-800 shadow-md': isScrolledDown,
                 'bg-transparent': !isScrolledDown,
             }"
         >
@@ -39,7 +41,10 @@ const { isScrolledDown } = useScroll()
                     <hamburger />
                 </div>
 
-                <navbar-menu :theme="theme" />
+                <div class="flex items-center gap-8">
+                    <navbar-search />
+                    <navbar-menu :theme="theme" />
+                </div>
             </div>
         </nav>
     </appear-transition>

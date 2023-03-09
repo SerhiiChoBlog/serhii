@@ -25,7 +25,7 @@
                     <span class="text-white drop-shadow-md">{S} SERHII</span>
                 </h1>
 
-                <h2 class="text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md">
+                <h2 class="text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md mb-3">
                     Blog about web development
                 </h2>
 

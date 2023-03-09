@@ -19,11 +19,11 @@ function getAllKeywords(item: SearchSuggestion): string[] {
             <li v-for="item in items" :key="item.slug" class="text-left">
                 <a
                     :href="`/posts/${item.slug}`"
-                    class="py-1.5 px-3 flex items-center gap-4 hover:bg-page-second dark:hover:bg-border transition-colors"
+                    class="py-1.5 text-font px-3 flex items-center gap-4 hover:bg-page-second dark:hover:bg-border transition-colors"
                     :class="{ '!bg-page-second dark:!bg-black/80': item.selected }"
                 >
                     <img
-                        :src="item.image_xs"
+                        :src="`/${item.image_xs}`"
                         :alt="item.title"
                         width="90"
                         height="49"

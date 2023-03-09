@@ -4,7 +4,7 @@ import SearchIcon from '@shared/components/Icons/SearchIcon.vue'
 import Dropdown from '@/components/Search/Dropdown.vue'
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 
-const { search, input, fetchSearchSuggestions } = useSearch()
+const { search, input, changedInput } = useSearch()
 </script>
 
 <template>
@@ -18,17 +18,13 @@ const { search, input, fetchSearchSuggestions } = useSearch()
                     />
 
                     <input
-                        type="search"
-                        class="pl-12 pr-7 md:pl-14 py-3 text-sm md:text-xl w-full text-gray-500 rounded-full outline-none bg-page dark:bg-page-second"
-                        placeholder="Search blog posts"
-                        v-model="search.query"
-                        id="search-input"
-                        @input="(e: Event) => {
-                            search.query = (e.target as HTMLInputElement).value
-                            fetchSearchSuggestions(e as KeyboardEvent)
-                        }"
                         ref="input"
+                        type="search"
+                        placeholder="Search blog posts"
+                        @input="changedInput"
                         autocomplete="off"
+                        class="pl-12 pr-7 md:pl-14 py-3 text-sm md:text-xl w-full text-gray-500 rounded-full outline-none bg-page dark:bg-page-second"
+                        id="search-input"
                     />
                 </form>
 
