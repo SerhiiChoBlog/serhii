@@ -27,14 +27,14 @@ function openSearch(): void {
         if (input.value) {
             input.value.focus()
         }
-    }, 200)
+    }, 500)
 }
 </script>
 
 <template>
     <appear-transition>
         <div
-            :class="hideInput ? 'w-[40px] overflow-hidden' : 'w-[320px] md:w-[380px]'"
+            :class="hideInput ? 'w-[40px] overflow-hidden' : 'w-[300px] md:w-[380px]'"
             class="absolute right-0 top-0 -translate-y-1/2 transition-all duration-300 ease-in-out z-50"
         >
             <label
