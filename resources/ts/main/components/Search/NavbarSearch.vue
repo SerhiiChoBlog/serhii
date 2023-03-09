@@ -14,8 +14,11 @@ const hideInput = computed<boolean>(() => {
 })
 
 function handleBlur(): void {
-    search.query = ''
-    isSmall.value = true
+    setTimeout(() => {
+        search.query = ''
+        isSmall.value = true
+        console.log('test')
+    }, 200)
 }
 </script>
 
@@ -23,13 +26,13 @@ function handleBlur(): void {
     <appear-transition>
         <div
             @click="isSmall = false"
-            :class="hideInput ? 'w-[40px]' : 'w-[280px] md:w-[380px]'"
-            class="absolute right-0 top-0 -translate-y-1/2 transition-all duration-300 ease-in-out z-50 overflow-hidden"
+            :class="hideInput ? 'w-[40px] overflow-hidden' : 'w-[280px] md:w-[380px]'"
+            class="absolute right-0 top-0 -translate-y-1/2 transition-all duration-300 ease-in-out z-50"
         >
             <label
                 for="navbar-search-input"
                 class="relative flex items-center justify-center rounded-full mx-auto"
-                :class="hideInput ? '' : 'bg-black/90'"
+                :class="hideInput ? '' : 'bg-gray-900'"
             >
                 <form @submit.prevent class="w-full m-0">
                     <input
@@ -55,7 +58,11 @@ function handleBlur(): void {
                 </form>
 
                 <dropdown-transition>
-                    <dropdown v-if="search.query !== ''" :search="search" />
+                    <dropdown
+                        v-if="search.query !== ''"
+                        :search="search"
+                        class="dark"
+                    />
                 </dropdown-transition>
             </label>
         </div>
