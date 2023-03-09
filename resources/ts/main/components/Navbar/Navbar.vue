@@ -18,14 +18,14 @@ const isHomePage = window.location.pathname === '/'
 <template>
     <appear-transition>
         <nav
-            class="fixed top-0 left-0 right-0 z-50 transition-colors duration-300 print:hidden"
+            class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
             :class="{
                 'bg-gray-800 shadow-md': isScrolledDown,
                 'bg-transparent': !isScrolledDown,
             }"
         >
-            <div class="container flex justify-between items-center min-h-[3.4rem]">
-                <div class="flex items-center gap-x-1 w-full lg:w-auto">
+            <div class="container flex justify-between items-center min-h-[3.4rem] gap-4">
+                <div class="flex items-center justify-between gap-x-1 w-full">
                     <a
                         tabindex="0"
                         href="/"
@@ -36,13 +36,18 @@ const isHomePage = window.location.pathname === '/'
                         <span class="tracking-wider text-white">{S} SERHII</span>
                     </a>
 
-                    <hamburger />
+                    <div class="flex items-center">
+                        <div class="relative">
+                            <navbar-search />
+                        </div>
+
+                        <div class="relative">
+                            <hamburger />
+                        </div>
+                    </div>
                 </div>
 
-                <div class="flex items-center gap-5">
-                    <navbar-search />
-                    <navbar-menu :theme="theme" />
-                </div>
+                <navbar-menu :theme="theme" />
             </div>
         </nav>
     </appear-transition>
