@@ -53,7 +53,7 @@ function closeMenu(): void {
                 <theme-switch :theme="theme" />
             </div>
 
-            <div class="mx-auto lg:m-0 text-center mt-5 relative">
+            <div class="min-w-fit mx-auto lg:m-0 text-center mt-5 relative">
                 <user-dropdown v-if="Auth">
                     <button
                         type="button"
