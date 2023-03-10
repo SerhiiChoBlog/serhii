@@ -32,6 +32,14 @@ function openSearch(): void {
 </script>
 
 <template>
+    <teleport to="body">
+        <div
+            v-if="!hideInput"
+            @click="closeSearch"
+            class="overlay bg-black/60 inset-0 absolute z-40"
+        ></div>
+    </teleport>
+
     <appear-transition>
         <div
             :class="hideInput ? 'w-[40px] overflow-hidden' : 'w-[300px] md:w-[380px]'"
@@ -39,18 +47,17 @@ function openSearch(): void {
         >
             <label
                 for="navbar-search-input"
-                class="relative flex items-center justify-center rounded-full mx-auto"
+                class="relative flex items-center justify-center rounded-full mx-auto transition-colors duration-500"
                 :class="hideInput ? '' : 'bg-gray-900'"
             >
                 <form @submit.prevent class="w-full m-0">
                     <input
                         ref="input"
                         @click="openSearch"
-                        :type="hideInput ? 'button' : 'search'"
+                        type="search"
                         placeholder="Search..."
                         v-model="search.query"
                         @input="changedInput"
-                        @blur="closeSearch"
                         autocomplete="off"
                         class="pl-7 pr-12 w-full text-gray-400 rounded-full outline-none py-1 text-lg bg-transparent"
                         id="navbar-search-input"
