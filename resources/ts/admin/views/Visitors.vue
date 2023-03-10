@@ -3,6 +3,7 @@ import type { Visitor } from '@shared/types/models'
 import type { Pagination } from '@shared/types/response'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
+import { debounce } from 'lodash'
 import handleError from '@admin/modules/handleError'
 import PageTitle from '@admin/components/PageTitle.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
@@ -19,7 +20,7 @@ type RequestParams = {
 
 const visitors = ref<Visitor[]>([])
 const nextPageUrl = ref<string | null>(null)
-const loading = ref(false)
+const loading = ref(true)
 const defaultUri = '/admin/ajax/visitors'
 const requestParams = ref<RequestParams>({
     search: null,
@@ -30,10 +31,12 @@ const requestParams = ref<RequestParams>({
 onMounted(() => {
     loading.value = true
 
-    fetchVisitors(defaultUri, true)
+    fetchVisitors(defaultUri)
 
     window.addEventListener('scroll', () => {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        const currPageHeight = window.innerHeight + window.scrollY + 100
+
+        if (currPageHeight >= document.body.offsetHeight) {
             loadMoreVisitors()
         }
     })
@@ -60,15 +63,15 @@ function searchVisitors(): void {
     fetchVisitors(defaultUri, true)
 }
 
-function loadMoreVisitors(): void {
+const loadMoreVisitors = debounce((): void => {
     if (nextPageUrl.value) {
         fetchVisitors(nextPageUrl.value, false)
     }
-}
+}, 200)
 
 function sortVisitors(orderBy: keyof Visitor): void {
     requestParams.value.order = orderBy
-    fetchVisitors(defaultUri, true)
+    fetchVisitors(defaultUri)
 }
 
 function changeDescendingOrder(orderBy: keyof Visitor): void {

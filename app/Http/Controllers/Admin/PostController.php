@@ -14,8 +14,8 @@ use App\Http\Requests\Admin\Post\UpdateRequest;
 use App\LazyLoadingParser;
 use App\Models\Post;
 use App\Utils\SaveImage;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
@@ -26,17 +26,14 @@ class PostController extends Controller
 {
     use SaveImage;
 
-    /**
-     * @return Collection<int, Post>
-     */
-    public function index(): Collection
+    public function index(): LengthAwarePaginator
     {
         return Post::query()
             ->select('id', 'title', 'intro', 'slug', 'image_sm', 'image_lg', 'is_published')
             ->withCount('postViews')
             ->withCount('socialShares')
             ->latest()
-            ->get();
+            ->paginate(15);
     }
 
     public function store(StoreRequest $request): int
