@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console;
 
+use App\Console\Commands\DetectRobotsVisitors;
 use App\Console\Commands\FetchGithubProjects;
 use App\Console\Commands\FetchVideos;
 use App\Console\Commands\SubscriptionsNotify;
@@ -21,13 +22,15 @@ class Kernel extends ConsoleKernel
         FetchGithubProjects::class,
         SubscriptionsNotify::class,
         FetchVideos::class,
+        DetectRobotsVisitors::class,
     ];
 
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command(FetchGithubProjects::class)->dailyAt('18:00');
-        $schedule->command(FetchVideos::class)->dailyAt('18:01');
         $schedule->command(SubscriptionsNotify::class)->hourly();
+        $schedule->command(FetchGithubProjects::class)->dailyAt('00:01');
+        $schedule->command(FetchVideos::class)->dailyAt('00:02');
+        $schedule->command(DetectRobotsVisitors::class)->dailyAt('00:03');
     }
 
     protected function commands(): void
