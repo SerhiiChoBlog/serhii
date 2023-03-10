@@ -8,7 +8,6 @@ import PageTitle from '@admin/components/PageTitle.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import DataTable from '@admin/components/DataTable/DataTable.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
-import LoadMoreButton from '@shared/components/LoadMoreButton.vue'
 import VisitorComponent from '@admin/components/Visitors/Visitor.vue'
 import SortBtn from '@admin/components/Visitors/SortBtn.vue'
 
@@ -30,7 +29,14 @@ const requestParams = ref<RequestParams>({
 
 onMounted(() => {
     loading.value = true
+
     fetchVisitors(defaultUri, true)
+
+    window.addEventListener('scroll', () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            loadMoreVisitors()
+        }
+    })
 })
 
 function fetchVisitors(url: string, refresh = true): void {
@@ -174,11 +180,5 @@ function changeDescendingOrder(orderBy: keyof Visitor): void {
                 @refreshVisitors="fetchVisitors(defaultUri, true)"
             />
         </DataTable>
-
-        <LoadMoreButton
-            v-if="nextPageUrl"
-            :nextPageUrl="nextPageUrl"
-            @clicked="loadMoreVisitors"
-        />
     </div>
 </template>

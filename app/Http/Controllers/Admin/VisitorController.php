@@ -28,7 +28,7 @@ class VisitorController extends Controller
                 ->orWhere('country', 'like', "%{$request->search}%");
         }
 
-        return $query->paginate(50);
+        return $query->paginate(30);
     }
 
     public function block(Visitor $visitor): void
