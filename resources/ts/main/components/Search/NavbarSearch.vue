@@ -57,12 +57,12 @@ function openSearch(): void {
                     />
 
                     <search-icon
+                        class="w-5 h-5 absolute top-1/2 -translate-y-1/2 cursor-pointer"
                         :class="{
                             'animate-blink': search.loading,
                             'text-white right-3': hideInput,
                             'text-gray-400 right-4': !hideInput,
                         }"
-                        class="w-5 h-5 absolute top-1/2 -translate-y-1/2 cursor-pointer"
                     />
                 </form>
 
