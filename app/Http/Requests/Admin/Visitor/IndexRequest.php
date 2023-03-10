@@ -27,7 +27,7 @@ class IndexRequest extends FormRequest
     {
         return [
             'search' => ['nullable', 'max:190'],
-            'order' => ['nullable', 'in:id,post_views_count,is_blocked,city,country,code,ip'],
+            'order' => ['nullable', 'in:id,post_views_count,is_blocked,is_robot,city,country,code,ip'],
             'direction' => ['nullable', 'in:asc,desc'],
         ];
     }
