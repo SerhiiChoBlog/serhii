@@ -101,6 +101,7 @@ function changeDescendingOrder(orderBy: keyof Visitor): void {
                         ID
                     </SortBtn>
                 </HeadDetail>
+                <HeadDetail>🤖</HeadDetail>
                 <HeadDetail class="w-36">
                     <SortBtn
                         @order="sortVisitors('ip')"
