@@ -5,8 +5,8 @@
       "__plugin-vue_export-helper-4b67befe.js"
     ]
   },
-  "_Spinner-57738989.js": {
-    "file": "assets/Spinner-57738989.js",
+  "_Spinner-52e52ea3.js": {
+    "file": "assets/Spinner-52e52ea3.js",
     "imports": [
       "__plugin-vue_export-helper-4b67befe.js"
     ]
@@ -63,20 +63,20 @@
     "src": "resources/fonts/fa-solid-900.woff2"
   },
   "resources/ts/admin/app.ts": {
-    "file": "assets/app-dbaffd41.js",
+    "file": "assets/app-aea358c7.js",
     "imports": [
       "__plugin-vue_export-helper-4b67befe.js",
-      "_Spinner-57738989.js"
+      "_Spinner-52e52ea3.js"
     ],
     "isEntry": true,
     "src": "resources/ts/admin/app.ts"
   },
   "resources/ts/main/app.ts": {
-    "file": "assets/app-cb76a64f.js",
+    "file": "assets/app-76a16924.js",
     "imports": [
       "__plugin-vue_export-helper-4b67befe.js",
       "_SignedInMethodLogo.vue_vue_type_script_setup_true_lang-3749ec48.js",
-      "_Spinner-57738989.js"
+      "_Spinner-52e52ea3.js"
     ],
     "isEntry": true,
     "src": "resources/ts/main/app.ts"
