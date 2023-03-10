@@ -101,7 +101,16 @@ function changeDescendingOrder(orderBy: keyof Visitor): void {
                         ID
                     </SortBtn>
                 </HeadDetail>
-                <HeadDetail>🤖</HeadDetail>
+
+                <HeadDetail>
+                    <SortBtn
+                        @order="sortVisitors('is_robot')"
+                        @direction="changeDescendingOrder('is_robot')"
+                        :class="{ 'text-yellow-200': requestParams.order === 'is_robot' }"
+                    >
+                        🤖
+                    </SortBtn>
+                </HeadDetail>
                 <HeadDetail class="w-36">
                     <SortBtn
                         @order="sortVisitors('ip')"
