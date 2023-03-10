@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console;
 
+use App\Console\Commands\DeleteRobotViews;
 use App\Console\Commands\DetectRobotsVisitors;
 use App\Console\Commands\FetchGithubProjects;
 use App\Console\Commands\FetchVideos;
@@ -23,6 +24,7 @@ class Kernel extends ConsoleKernel
         SubscriptionsNotify::class,
         FetchVideos::class,
         DetectRobotsVisitors::class,
+        DeleteRobotViews::class,
     ];
 
     protected function schedule(Schedule $schedule): void
@@ -31,6 +33,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(FetchGithubProjects::class)->dailyAt('00:01');
         $schedule->command(FetchVideos::class)->dailyAt('00:02');
         $schedule->command(DetectRobotsVisitors::class)->dailyAt('00:03');
+        $schedule->command(DeleteRobotViews::class)->dailyAt('00:04');
     }
 
     protected function commands(): void
