@@ -32,6 +32,10 @@ function blockVisitorHandler(): void {
 <template>
     <BodyRow>
         <BodyDetail>{{ props.visitor.id }}</BodyDetail>
+        <BodyDetail class="text-center">
+            <span v-if="props.visitor.is_robot">🤖</span>
+            <span v-else>👦🏻</span>
+        </BodyDetail>
         <BodyDetail>{{ props.visitor.ip }}</BodyDetail>
         <BodyDetail>
             <img
