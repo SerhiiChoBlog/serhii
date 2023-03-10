@@ -26,6 +26,7 @@ class DetectRobotsVisitors extends Command
         });
 
         $this->info("Robots: {$bots->count()}");
+        $this->newLine();
 
         return Command::SUCCESS;
     }
