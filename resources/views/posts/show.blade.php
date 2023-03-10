@@ -31,6 +31,10 @@
         <meta property="article:tag" content="{{ $tag->name }}">
     @endforeach
 
+    @foreach ($post->keywords as $keyword)
+        <meta property="article:tag" content="{{ $keyword->name }}">
+    @endforeach
+
     <script src="{{ asset('js/highlight.js') }}" defer></script>
 @endpush
 
@@ -97,6 +101,10 @@
                         v-pre
                     >
                         {!! $post->content !!}
+
+                        <small class="text-font-second opacity-90">
+                            Keywords: {{ $post->keywords->implode('name', ', ') }}
+                        </small>
                     </div>
 
                     <x-post.footer :post="$post" />

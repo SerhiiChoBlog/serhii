@@ -133,7 +133,7 @@ class SubscriptionDemandControllerTest extends TestCase
 
         $this->json('post', '/api/subscriptions', [
             'email' => 'serhii@anna.com',
-            'tags' => $tags->pluck('id')->join(','),
+            'tags' => $tags->implode('id', ',')
         ]);
 
         /** @var Subscription $sub */
