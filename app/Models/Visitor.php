@@ -57,11 +57,11 @@ class Visitor extends Model
         return $this->hasMany(SocialShare::class);
     }
 
-    public static function incrementPostViews(int $post_id, string $ip): void
+    public static function incrementPostViews(int $post_id): void
     {
         $visitor = GlobalVisitor::getInstance()->get();
 
-        if (!$visitor) {
+        if (!$visitor || $visitor->is_robot) {
             return;
         }
 

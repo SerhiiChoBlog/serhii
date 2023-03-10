@@ -68,14 +68,7 @@ class PostController extends Controller
             default => '2em',
         };
 
-        $segment = $request->segment(2);
-        $ip = $request->ip();
-
-        if (!$segment || !$ip) {
-            throw new HttpException('Incorrect url path or IP address of the client');
-        }
-
-        Visitor::incrementPostViews($post->id, $ip);
+        Visitor::incrementPostViews($post->id);
 
         return view('posts.show', compact('post', 'title_font_size'));
     }
