@@ -13,6 +13,12 @@ const hideInput = computed<boolean>(() => {
     return isSmall.value && search.query === ''
 })
 
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        closeSearch()
+    }
+})
+
 function closeSearch(): void {
     setTimeout(() => {
         search.query = ''
@@ -20,14 +26,12 @@ function closeSearch(): void {
     }, 200)
 }
 
-function openSearch(): void {
-    isSmall.value = false
+function toggleSearch(): void {
+    isSmall.value = !isSmall.value
 
-    setTimeout(() => {
-        if (input.value) {
-            input.value.focus()
-        }
-    }, 500)
+    if (input.value) {
+        input.value.focus()
+    }
 }
 </script>
 
@@ -36,7 +40,7 @@ function openSearch(): void {
         <div
             v-if="!hideInput"
             @click="closeSearch"
-            class="overlay bg-black/60 inset-0 absolute z-40"
+            class="overlay bg-black/60 inset-0 fixed z-40"
         ></div>
     </teleport>
 
@@ -53,8 +57,8 @@ function openSearch(): void {
                 <form @submit.prevent class="w-full m-0">
                     <input
                         ref="input"
-                        @click="openSearch"
-                        type="search"
+                        @click="toggleSearch"
+                        :type="hideInput ? 'button' : 'search'"
                         placeholder="Search..."
                         v-model="search.query"
                         @input="changedInput"
