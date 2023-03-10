@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $post_id
  * @property int $visitor_id
  * @property int|null $amount
+ * @property Visitor|null $visitor
+ * @property Post|null $post
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -41,5 +43,13 @@ class PostView extends Model
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
+    }
+
+    /**
+     * @return BelongsTo<Visitor, self>
+     */
+    public function visitor(): BelongsTo
+    {
+        return $this->belongsTo(Visitor::class);
     }
 }

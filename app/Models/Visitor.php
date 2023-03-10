@@ -20,6 +20,7 @@ use Illuminate\Support\Collection;
  * @property Collection<SocialShare> $socialShares
  * @property Collection<PostView> $postViews
  * @property boolean $is_blocked
+ * @property boolean $is_robot
  */
 class Visitor extends Model
 {

@@ -81,6 +81,7 @@ export type Visitor = {
     city: string
     code: string
     is_blocked: boolean
+    is_robot: boolean
     post_views_count: number | null
     postViews?: PostView[]
     socialShares?: SocialShare[]
