@@ -26,6 +26,9 @@ class PostController extends Controller
 {
     use SaveImage;
 
+    /**
+     * @return LengthAwarePaginator<Post>
+     */
     public function index(): LengthAwarePaginator
     {
         return Post::query()
