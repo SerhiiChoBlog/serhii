@@ -13,9 +13,14 @@ const hideInput = computed<boolean>(() => {
     return isSmall.value && search.query === ''
 })
 
-document.addEventListener('keydown', e => {
+document.addEventListener('keydown', (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
         closeSearch()
+    }
+
+    if (e.key === '/') {
+        e.preventDefault()
+        toggleSearch()
     }
 })
 
