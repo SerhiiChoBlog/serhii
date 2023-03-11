@@ -22,13 +22,12 @@ readonly class RelatedPostsService
     public function get(): Collection
     {
         if ($this->post->tags->isEmpty()) {
-            return $this->getRandomPosts(self::POSTS_LIMIT);
+            return $this->getRandomPosts(self::POSTS_LIMIT, [$this->post->id]);
         }
 
         /** @var Tag|null $main_tag */
         $main_tag = $this->post->tags->firstWhere('pivot.is_main', true);
 
-        /** @var Collection<int, Tag> $other_tags */
         $other_tags = $this->post->tags->where('pivot.is_main', false);
 
         if ($main_tag === null) {
@@ -37,7 +36,7 @@ readonly class RelatedPostsService
         }
 
         if ($main_tag === null) {
-            return $this->getRandomPosts(self::POSTS_LIMIT);
+            return $this->getRandomPosts(self::POSTS_LIMIT, [$this->post->id]);
         }
 
         $posts = $this->getTagPosts($main_tag, self::POSTS_LIMIT);
@@ -53,20 +52,25 @@ readonly class RelatedPostsService
             $posts->push(...$other_posts);
         }
 
-        $random_posts = $this->getRandomPosts(self::POSTS_LIMIT - $posts->count());
+        $random_posts = $this->getRandomPosts(
+            self::POSTS_LIMIT - $posts->count(),
+            [$this->post->id, ...$posts->pluck('id')->toArray()],
+        );
 
         return $posts->push(...$random_posts);
     }
 
     /**
+     * @params array<int, int> $exclude
+     *
      * @return Collection<int, Post>
      */
-    private function getRandomPosts(int $limit): Collection
+    private function getRandomPosts(int $limit, array $exclude): Collection
     {
         return Post::query()
             ->select('id', 'slug', 'title', 'image_sm')
             ->where('is_published', true)
-            ->where('id', '!=', $this->post->id)
+            ->whereNotIn('id', $exclude)
             ->inRandomOrder()
             ->limit($limit)
             ->get()
