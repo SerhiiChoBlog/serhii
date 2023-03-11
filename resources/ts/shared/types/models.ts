@@ -204,6 +204,7 @@ export type Project = {
     url: string
     description: string
     content: string
+    has_homepage: boolean
     language: string
     stars: number
     created_at: string

@@ -55,14 +55,16 @@ class FetchGithubProjects extends Command
 
         return $mit_projects->map(function ($project) use ($readme_url) {
             $readme_url = str_replace('{repo}', $project['name'], (string) $readme_url);
+            $has_homepage = $project['homepage'] !== '';
 
             /** @var Project $result */
             $result = [
                 'name' => $project['name'],
                 'title' => Str::of($project['name'])->replace('-', ' ')->ucfirst(),
-                'url' => $project['html_url'],
+                'url' => $has_homepage ? $project['homepage'] : $project['html_url'],
                 'description' => $project['description'],
                 'language' => $project['language'],
+                'has_homepage' => $has_homepage,
                 'content' => $this->getContent($readme_url),
                 'stars' => (int) $project['stargazers_count'],
                 'created_at' => date('Y-m-d H:i:s', strtotime($project['created_at']))

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Cache;
  * @property string $description
  * @property string $content
  * @property string $language
+ * @property boolean $has_homepage
  * @property int $stars
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -38,13 +39,15 @@ class Project extends Model
      */
     protected $casts = [
         'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'has_homepage' => 'boolean',
     ];
 
     public static function getCachedProjects(): array
     {
         return Cache::rememberForever(CacheKey::PROJECTS, static function () {
             return self::query()
-                ->select('title', 'language', 'description', 'name', 'stars')
+                ->select('title', 'language', 'description', 'name', 'stars', 'has_homepage', 'url')
                 ->latest()
                 ->get()
                 ->toArray();
