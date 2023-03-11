@@ -15,11 +15,6 @@ export default () => {
 
     onMounted(() => {
         window.addEventListener('keydown', (e: KeyboardEvent) => {
-            if (e.key === '/') {
-                e.preventDefault()
-                input.value ? input.value.focus() : null
-            }
-
             if (e.key === 'Escape') {
                 search.posts = []
                 search.query = ''
@@ -42,8 +37,14 @@ export default () => {
 
         axios.get<SearchSuggestion[]>(`/api/search/${q}`)
             .then(resp => {
-                search.posts = resp.data
-                search.suggestionsIndex = -1
+                const posts = resp.data
+
+                if (posts[0]) {
+                    posts[0].selected = true
+                }
+
+                search.posts = posts
+                search.suggestionsIndex = 0
             })
             .catch(err => console.error(err))
             .finally(() => search.loading = false)
