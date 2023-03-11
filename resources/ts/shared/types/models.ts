@@ -196,3 +196,16 @@ export type Keyword = {
     name: string
     posts?: Post[]
 }
+
+export type Project = {
+    id: number
+    name: string
+    title: string
+    url: string
+    description: string
+    content: string
+    language: string
+    stars: number
+    created_at: string
+    updated_at: string
+}
