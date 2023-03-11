@@ -74,6 +74,7 @@ function toggleSearch(): void {
 
                     <search-icon
                         class="w-5 h-5 absolute top-1/2 -translate-y-1/2 cursor-pointer"
+                        title="Search (Press /)"
                         :class="{
                             'animate-blink': search.loading,
                             'text-white right-3': hideInput,
