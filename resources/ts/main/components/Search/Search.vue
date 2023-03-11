@@ -12,7 +12,7 @@ const { search, input, changedInput } = useSearch()
     <appear-transition>
         <div class="max-w-[85%] md:max-w-[600px] mx-auto">
             <label for="search-input" class="relative flex items-center justify-center mt-5 shadow-lg rounded-full bg-page mx-auto dark:border dark:border-gray-500">
-                <form @submit.prevent class="w-full m-0">
+                <form @submit.prevent="goToResult" class="w-full m-0">
                     <search-icon
                         :class="{ 'animate-blink': search.loading }"
                         class="w-4 md:w-5 h-4 md:h-6 text-gray-400 absolute top-1/2 -translate-y-1/2 left-4 lg:left-5"

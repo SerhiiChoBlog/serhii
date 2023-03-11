@@ -31,14 +31,17 @@ export default class {
     }
 
     private handleEnterKeyPress(): void {
-        const post = this.search.posts.find(post => post.selected)
+        let post = this.search.posts.find(post => post.selected)
 
-        if (post) {
-            window.location.href = `/posts/${post.slug}`
+        if (!post) {
+            post = this.search.posts[0]
+        }
+
+        if (!post) {
             return
         }
 
-        console.error(`Cannot find any selected suggestions`)
+        window.location.href = `/posts/${post.slug}`
     }
 
     private notNeededEvent(key: string): boolean {
