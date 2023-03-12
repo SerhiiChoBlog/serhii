@@ -9,7 +9,7 @@ use App\Http\Requests\Comment\StoreRequest;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
-use App\Services\StoreCommentService;
+use App\Services\Comment\StoreCommentService;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
