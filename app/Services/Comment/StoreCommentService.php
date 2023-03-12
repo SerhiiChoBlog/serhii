@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\Services\Comment;
 
 use App\Enums\UserRole;
 use App\Events\CommentApproved;
@@ -120,20 +120,29 @@ class StoreCommentService
         return GlobalVisitor::getInstance()->get()?->id;
     }
 
-    public function createComment(bool $is_approved): Comment
+    private function createComment(bool $is_approved): Comment
     {
         /** @var Comment */
         return $this->user->comments()->create([
-            'post_id'     => $this->post_id,
-            'visitor_id'  => $this->getVisitorId(),
-            'comment_id'  => $this->comment_id,
-            'comment'     => $this->comment,
+            'post_id' => $this->post_id,
+            'visitor_id' => $this->getVisitorId(),
+            'comment_id' => $this->comment_id,
+            'comment' => $this->getModifiedComment(),
             'is_approved' => $is_approved,
-            'created_at'  => now(),
+            'created_at' => now(),
         ]);
     }
 
-    public function getResponseMessage(bool $is_approved): string
+    private function getModifiedComment(): string
+    {
+        $result = $this->comment;
+
+        //
+
+        return $result;
+    }
+
+    private function getResponseMessage(bool $is_approved): string
     {
         return $is_approved
             ? 'Thank you! Your comment has been posted'
