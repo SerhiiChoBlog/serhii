@@ -10,8 +10,9 @@ body *:not(html):not(style):not(br):not(tr):not(code) {
 
 body {
     -webkit-text-size-adjust: none;
-    background: #292929;
-    color: #bccadf;
+    background: rgb(208,116,162);
+    background: linear-gradient(90deg, rgba(208,116,162,1) 0%, rgba(42,75,103,1) 100%);
+    color: #718096;
     height: 100%;
     line-height: 1.4;
     margin: 0;
@@ -20,7 +21,7 @@ body {
 }
 
 body a {
-    color: rgb(206, 122, 164);
+    color: rgb(186, 98, 142);
     word-break: break-all;
 }
 
@@ -43,8 +44,8 @@ a img {
 /* Typography */
 
 h1 {
-    color: #a3bdd3;
-    font-size: 19px;
+    color: #3d4852;
+    font-size: 18px;
     font-weight: bold;
     margin-top: 0;
     text-align: left;
@@ -109,10 +110,12 @@ img {
 /* Logo */
 
 .logo {
-    font-size: 1.6rem !important;
-    font-weight: 600;
+    font-size: 1.4rem !important;
+    font-weight: bold;
     text-decoration: none;
-    letter-spacing: 1px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px 30px;
+    border-radius: 50px;
 }
 
 /* Body */
@@ -130,7 +133,7 @@ img {
     /*-premailer-cellpadding: 0;*/
     /*-premailer-cellspacing: 0;*/
     /*-premailer-width: 570px;*/
-    background-color: #353535;
+    background-color: #ffffff;
     border-width: 1px;
     margin: 0 auto;
     padding: 0;
@@ -220,7 +223,7 @@ img {
     color: #fff;
     display: inline-block;
     text-decoration: none;
-    padding: 17px 40px;
+    padding: 10px 30px;
     text-align: center;
     font-size: 1.1rem;
 }
@@ -233,8 +236,8 @@ img {
 
 .button-decline {
     background: transparent;
-    color: #c36262;
-    border: 1px solid #cc6b6b;
+    color: brown;
+    border: 1px solid brown;
 }
 
 /* Panels */
