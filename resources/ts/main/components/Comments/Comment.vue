@@ -44,9 +44,10 @@ function postReply(): void {
                 {{ comment.user.name }}
             </h2>
 
-            <p class="text-font-second dark:text-gray-300">
-                {{ comment.comment }}
-            </p>
+            <p
+                v-html="comment.comment"
+                class="text-font-second dark:text-gray-300 prose-a:text-link prose-a:underline"
+            ></p>
 
             <div class="flex gap-1 items-center">
                 <button

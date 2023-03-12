@@ -15,6 +15,12 @@ readonly class ReplaceLinksModifier implements CommentModifier
 
     public function modify(): string
     {
+        $app_url = config('app.url');
+
+        if (!str_contains($this->comment, $app_url)) {
+            return $this->comment;
+        }
+
         /** @var Collection<int, Post> $posts */
         $posts = Post::query()->select('title', 'slug')->get('slug');
 
