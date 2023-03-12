@@ -333,8 +333,8 @@ class PostControllerTest extends TestCase
 
         $json = $resp->json();
 
-        $this->assertIsArray($json);
-        $this->assertCount(2, $json);
+        $this->assertIsArray($json['data']);
+        $this->assertCount(2, $json['data']);
     }
 
     public function testYouCanAddTagsToPost(): void
