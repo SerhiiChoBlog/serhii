@@ -6,7 +6,7 @@ namespace App\CommentModifiers;
 
 readonly class StripTagsModifier implements CommentModifier
 {
-    private const EXCLUDE_TAGS_FROM_STRIPING = [
+    public const EXCLUDE_TAGS_FROM_STRIPING = [
         'a',
     ];
 
