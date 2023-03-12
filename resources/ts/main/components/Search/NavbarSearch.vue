@@ -18,7 +18,8 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
         closeSearch()
     }
 
-    if (e.key === '/') {
+    // Toggle search when pressing cmd + k or ctrl + k
+    if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         toggleSearch()
     }
@@ -51,8 +52,9 @@ function toggleSearch(): void {
 
     <appear-transition>
         <div
-            :class="hideInput ? 'w-[40px] overflow-hidden' : 'w-[300px] md:w-[380px]'"
+            :class="hideInput ? 'w-[40px]' : 'w-[300px] md:w-[380px]'"
             class="absolute right-0 top-0 -translate-y-1/2 transition-all duration-300 ease-in-out z-50"
+            title="Press cmd + k or ctrl + k to toggle search"
         >
             <label
                 for="navbar-search-input"
@@ -64,7 +66,7 @@ function toggleSearch(): void {
                         ref="input"
                         @click="toggleSearch"
                         :type="hideInput ? 'button' : 'search'"
-                        placeholder="Search..."
+                        placeholder="Search article..."
                         v-model="search.query"
                         @input="changedInput"
                         autocomplete="off"
@@ -74,7 +76,6 @@ function toggleSearch(): void {
 
                     <search-icon
                         class="w-5 h-5 absolute top-1/2 -translate-y-1/2 cursor-pointer"
-                        title="Search (Press /)"
                         :class="{
                             'animate-blink': search.loading,
                             'text-white right-3': hideInput,
