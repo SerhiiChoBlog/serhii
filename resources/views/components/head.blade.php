@@ -6,7 +6,10 @@
     gtag('config', 'G-PDEVGVHPVM');
 
     @if (user())
-        gtag('set', {'user_id': '{{ user()->slug }}'});
+        window.dataLayer.push({
+            'event': 'userData',
+            'user_id': '{{ user()->slug }}',
+        })
     @endif
 </script>
 
