@@ -47,11 +47,6 @@ const links: UserSidebarLink[] = [
         icon: 'fa-link',
     },
     {
-        routeName: 'hits',
-        title: 'Hits',
-        icon: 'fa-shoe-prints',
-    },
-    {
         routeName: 'post-publications',
         title: 'Publications',
         icon: 'fa-envelope',
