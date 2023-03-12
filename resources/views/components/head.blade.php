@@ -4,13 +4,6 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-PDEVGVHPVM');
-
-    @if (user())
-        window.dataLayer.push({
-            'event': 'userData',
-            'user_id': '{{ user()->slug }}',
-        })
-    @endif
 </script>
 
 <meta charset="utf-8">
