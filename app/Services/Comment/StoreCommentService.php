@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Comment;
 
+use App\CommentModifiers\ReplaceLinksModifier;
 use App\Enums\UserRole;
 use App\Events\CommentApproved;
 use App\Jobs\NewCommentAdminEmail;
@@ -16,6 +17,10 @@ use Illuminate\Validation\ValidationException;
 class StoreCommentService
 {
     private bool $is_admin;
+
+    private const COMMENT_MODIFIERS = [
+        ReplaceLinksModifier::class,
+    ];
 
     public function __construct(
         private readonly User $user,
@@ -137,7 +142,10 @@ class StoreCommentService
     {
         $result = $this->comment;
 
-        //
+        foreach (self::COMMENT_MODIFIERS as $modifier) {
+            $instance = new $modifier($this->comment);
+            $result = $instance->modify();
+        }
 
         return $result;
     }
