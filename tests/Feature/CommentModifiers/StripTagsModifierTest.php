@@ -15,7 +15,7 @@ class StripTagsModifierTest extends TestCase
     public function testModifierEscapesAllHtmlTagsExceptAnchorTag(): void
     {
         $comment = 'You <b>need</b> to read <script>alert("Hello!");</script> article! This is <a href="https://google.com">link</a> to google!';
-        $expect = strip_tags($comment, '<a>');
+        $expect = 'You need to read alert("Hello!"); article! This is <a href="https://google.com">link</a> to google!';
 
         $modifier = new StripTagsModifier($comment);
 
