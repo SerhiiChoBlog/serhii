@@ -68,4 +68,13 @@ class ReplaceLinksModifierTest extends TestCase
 
         $this->assertSame($expect, $modifier->modify());
     }
+
+    public function testModifierDoesntDoAnythingWhenNoLinksInComment(): void
+    {
+        $comment = 'You need to read article!';
+
+        $modifier = new ReplaceLinksModifier($comment);
+
+        $this->assertSame($comment, $modifier->modify());
+    }
 }

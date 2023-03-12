@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Comment;
 
 use App\CommentModifiers\ReplaceLinksModifier;
+use App\CommentModifiers\StripTagsModifier;
 use App\Enums\UserRole;
 use App\Events\CommentApproved;
 use App\Jobs\NewCommentAdminEmail;
@@ -16,18 +17,21 @@ use Illuminate\Validation\ValidationException;
 
 class StoreCommentService
 {
-    private bool $is_admin;
+    private readonly bool $is_admin;
+    private readonly string $comment;
 
     private const COMMENT_MODIFIERS = [
         ReplaceLinksModifier::class,
+        StripTagsModifier::class,
     ];
 
     public function __construct(
         private readonly User $user,
-        private readonly string $comment,
+        string $comment,
         private readonly int $post_id,
         private ?int $comment_id,
     ) {
+        $this->comment = $this->modifyComment($comment);
         $this->is_admin = $this->user->hasRole(UserRole::ADMIN);
     }
 
@@ -132,22 +136,20 @@ class StoreCommentService
             'post_id' => $this->post_id,
             'visitor_id' => $this->getVisitorId(),
             'comment_id' => $this->comment_id,
-            'comment' => $this->getModifiedComment(),
+            'comment' => $this->comment,
             'is_approved' => $is_approved,
             'created_at' => now(),
         ]);
     }
 
-    private function getModifiedComment(): string
+    private function modifyComment(string $comment): string
     {
-        $result = $this->comment;
-
         foreach (self::COMMENT_MODIFIERS as $modifier) {
-            $instance = new $modifier($this->comment);
-            $result = $instance->modify();
+            $instance = new $modifier($comment);
+            $comment = $instance->modify();
         }
 
-        return $result;
+        return $comment;
     }
 
     private function getResponseMessage(bool $is_approved): string
