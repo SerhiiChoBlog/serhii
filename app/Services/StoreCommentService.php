@@ -58,26 +58,16 @@ class StoreCommentService
 
         $is_approved = $this->validateIfCommentIsApproved();
 
-        $comment = $this->user->comments()->create([
-            'post_id' => $this->post_id,
-            'visitor_id' => $this->getVisitorId(),
-            'comment_id' => $this->comment_id,
-            'comment' => $this->comment,
-            'is_approved' => $is_approved,
-            'created_at' => now(),
-        ]);
+        $comment = $this->createComment($is_approved);
 
         NewCommentAdminEmail::dispatchIf(!$this->is_admin, $comment);
 
-        $date = $this->is_admin ? now() : now()->addMinutes($timeout_minutes);
-
-        $message = $is_approved
-            ? 'Thank you! Your comment has been posted'
-            : 'Thank you! Your comment has been posted and will be reviewed shortly';
-
         CommentApproved::dispatchIf($is_approved, $this->user);
 
-        return compact('date', 'message');
+        return [
+            'date' => $this->is_admin ? now() : now()->addMinutes($timeout_minutes),
+            'message' => $this->getResponseMessage($is_approved),
+        ];
     }
 
     private function isSpam(int $timeout_minutes): bool
@@ -128,5 +118,25 @@ class StoreCommentService
         }
 
         return GlobalVisitor::getInstance()->get()?->id;
+    }
+
+    public function createComment(bool $is_approved): Comment
+    {
+        /** @var Comment */
+        return $this->user->comments()->create([
+            'post_id'     => $this->post_id,
+            'visitor_id'  => $this->getVisitorId(),
+            'comment_id'  => $this->comment_id,
+            'comment'     => $this->comment,
+            'is_approved' => $is_approved,
+            'created_at'  => now(),
+        ]);
+    }
+
+    public function getResponseMessage(bool $is_approved): string
+    {
+        return $is_approved
+            ? 'Thank you! Your comment has been posted'
+            : 'Thank you! Your comment has been posted and will be reviewed shortly';
     }
 }
