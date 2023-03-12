@@ -10,7 +10,6 @@ import PostViews from '@admin/views/PostViews.vue'
 import Visitors from '@admin/views/Visitors.vue'
 import SocialShares from '@admin/views/SocialShares.vue'
 import Referrers from '@admin/views/Referrers.vue'
-import Hits from '@admin/views/Hits.vue'
 import PostPublications from '@admin/views/PostPublications.vue'
 import NotFound from '@shared/components/NotFound.vue'
 import Users from '@admin/views/Users.vue'
@@ -29,7 +28,6 @@ const routes: RouteRecordRaw[] = [
     { path: '/admin/visitors', name: 'visitors', component: Visitors },
     { path: '/admin/social-shares', name: 'social-shares', component: SocialShares },
     { path: '/admin/referrers', name: 'referrers', component: Referrers },
-    { path: '/admin/hits', name: 'hits', component: Hits },
     { path: '/admin/post-publications', name: 'post-publications', component: PostPublications },
     { path: '/admin/users', name: 'users', component: Users },
     { path: '/admin/ban-user/:slug', name: 'ban-user', component: BanUser },

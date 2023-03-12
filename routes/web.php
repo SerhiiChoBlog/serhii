@@ -22,28 +22,26 @@ Route::post('firebase-sign-in', [AuthFirebaseController::class, 'signIn']);
 Route::redirect('about', 'about-me');
 Route::redirect('blog', 'posts');
 
-Route::middleware('hits')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('about-me', [AboutMeController::class, 'index'])->name('about-me');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('about-me', [AboutMeController::class, 'index'])->name('about-me');
 
-    Route::prefix('posts')->controller(PostController::class)->group(function () {
-        Route::get('/', 'index')->name('posts.index');
-        Route::get('{post:slug}', 'show')->name('posts.show');
-    });
+Route::prefix('posts')->controller(PostController::class)->group(function () {
+    Route::get('/', 'index')->name('posts.index');
+    Route::get('{post:slug}', 'show')->name('posts.show');
+});
 
-    Route::prefix('projects')->controller(ProjectController::class)->group(function () {
-        Route::get('/', 'index')->name('projects.index');
-        Route::get('{project:name}', 'show')->name('projects.show');
-    });
+Route::prefix('projects')->controller(ProjectController::class)->group(function () {
+    Route::get('/', 'index')->name('projects.index');
+    Route::get('{project:name}', 'show')->name('projects.show');
+});
 
-    Route::view('subscribe', 'subscribe')->name('subscribe');
+Route::view('subscribe', 'subscribe')->name('subscribe');
 
-    Route::prefix('subscriptions')->controller(SubscriptionController::class)->group(function () {
-        Route::get('confirm/{slug}', 'confirm')->name('subscriptions.confirm');
-        Route::get('decline/{slug}', 'decline')->name('subscriptions.decline');
-        Route::get('unsubscribe/{slug}', 'unsubscribe')->name('subscriptions.unsubscribe');
-        Route::view('error', 'subscriptions.error')->name('subscriptions.error');
-    });
+Route::prefix('subscriptions')->controller(SubscriptionController::class)->group(function () {
+    Route::get('confirm/{slug}', 'confirm')->name('subscriptions.confirm');
+    Route::get('decline/{slug}', 'decline')->name('subscriptions.decline');
+    Route::get('unsubscribe/{slug}', 'unsubscribe')->name('subscriptions.unsubscribe');
+    Route::view('error', 'subscriptions.error')->name('subscriptions.error');
 });
 
 Route::get('theme/{to}', ThemeController::class);

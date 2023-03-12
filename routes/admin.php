@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Http\Controllers\Admin\BanController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\HitController;
 use App\Http\Controllers\Admin\KeywordController;
 use App\Http\Controllers\Admin\PostContentImageController;
 use App\Http\Controllers\Admin\PostController;
@@ -27,7 +26,6 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     Route::resource('post-views', PostViewController::class)->only('index');
     Route::resource('social-shares', SocialShareController::class)->only('index');
     Route::resource('referrers', ReferrerController::class)->only('index');
-    Route::resource('hits', HitController::class)->only('index');
     Route::resource('post-publications', PostPublicationController::class)->only('index');
 
     Route::prefix('visitors')->controller(VisitorController::class)->group(function () {

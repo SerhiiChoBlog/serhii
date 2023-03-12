@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
-use App\Models\Hit;
 use App\Models\Post;
 use App\Models\PostView;
 use App\Models\Referrer;
@@ -31,10 +30,6 @@ class DashboardController extends Controller
                     ->orderByDesc('date')
                     ->first()
                     ?->amount,
-            ],
-            [
-                'title' => 'Hits today',
-                'value' => Hit::query()->whereDate('updated_at', today())->value('amount') ?? 0,
             ],
             [
                 'title' => 'Subscribers',

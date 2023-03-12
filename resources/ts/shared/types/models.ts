@@ -98,13 +98,6 @@ export type SocialShare = {
     created_at: string
 }
 
-export type Hit = {
-    id: number
-    amount: number
-    updated_at: number
-    created_at: number
-}
-
 export type Referrer = {
     id: number
     site: string
