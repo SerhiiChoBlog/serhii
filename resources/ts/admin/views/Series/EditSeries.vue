@@ -7,12 +7,13 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { tinymceConfig } from '@admin/modules/tinymce'
 import SaveSeries from '@admin/modules/SaveSeries'
+import Editor from '@tinymce/tinymce-vue'
 import FormTextarea from '@admin/components/Form/FormTextarea.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import FormInput from '@admin/components/Form/FormInput.vue'
 import FormImage from '@admin/components/FormImage.vue'
 import DeleteSeries from '@admin/components/Series/DeleteSeries.vue'
-import Editor from '@tinymce/tinymce-vue'
+import SeriesPosts from '@admin/views/Series/SeriesPosts.vue'
 
 onMounted(() => {
     fetchSeries()
@@ -162,6 +163,10 @@ function saveSeriesWithCorrectKeyBinds(e: KeyboardEvent): void {
                         </div>
 
                         <DeleteSeries :series="series" />
+                    </div>
+
+                    <div class="mt-6">
+                        <SeriesPosts :posts="series.posts" />
                     </div>
                 </form>
             </div>
