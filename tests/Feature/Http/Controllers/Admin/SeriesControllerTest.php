@@ -264,4 +264,51 @@ class SeriesControllerTest extends TestCase
             'image_xs' => 'storage/series/xs/some-image.jpg',
         ]);
     }
+
+    public function testUpdatingSeriesPostsPutThemInCorrectOrder(): void
+    {
+        /** @var Collection<int, Post> $posts */
+        $posts = Post::factory()->count(3)->create();
+
+        /** @var Series $series */
+        $series = Series::factory()->create();
+
+        $admin = $this->createAdmin();
+
+        $form_data = [
+            'title' => $series->title,
+            'intro' => $series->intro,
+            'description' => $series->description,
+            'posts' => [
+                $posts[2]?->id,
+                $posts[1]?->id,
+                $posts[0]?->id,
+            ],
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('put', self::UPDATE_URI, $form_data)
+            ->assertOk();
+
+        /** @var Series $series */
+        $series = Series::with('posts')->first();
+
+        $this->assertDatabaseHas('post_series', [
+            'series_id' => $series->id,
+            'post_id' => $posts[2]?->id,
+            'part' => 1,
+        ]);
+
+        $this->assertDatabaseHas('post_series', [
+            'series_id' => $series->id,
+            'post_id' => $posts[1]?->id,
+            'part' => 2,
+        ]);
+
+        $this->assertDatabaseHas('post_series', [
+            'series_id' => $series->id,
+            'post_id' => $posts[0]?->id,
+            'part' => 3,
+        ]);
+    }
 }

@@ -62,12 +62,28 @@ class SeriesController extends Controller
         $series->update($data->toArray());
 
         if (!empty($request->posts)) {
-            $series->posts()->sync($request->posts);
+            $series->posts()->sync($this->addPartsToPosts($request->posts));
         }
     }
 
     public function destroy(Series $series): void
     {
         $series->delete();
+    }
+
+    /**
+     * @param array<int, int> $posts
+     *
+     * @return array<int, array{part: int}>
+     */
+    private function addPartsToPosts(array $posts): array
+    {
+        $result = [];
+
+        foreach ($posts as $key => $post_id) {
+            $result[$post_id] = ['part' => $key + 1];
+        }
+
+        return $result;
     }
 }

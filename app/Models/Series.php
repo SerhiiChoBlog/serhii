@@ -39,6 +39,8 @@ class Series extends Model
      */
     public function posts(): BelongsToMany
     {
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Post::class)
+            ->withPivot('part')
+            ->orderBy('part');
     }
 }
