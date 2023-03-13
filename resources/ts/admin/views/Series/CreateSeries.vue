@@ -12,13 +12,12 @@ const router = useRouter()
 const formData = ref({
     title: '',
     intro: '',
-    description: '',
 })
 
 function createSeries(): void {
     loading.value = true
 
-    axios.post<Series>('/admin/ajax/series', formData)
+    axios.post<Series>('/admin/ajax/series', formData.value)
         .then(resp => {
             router.push({
                 name: 'series-edit',
@@ -39,10 +38,19 @@ function createSeries(): void {
             <div class="max-w-[700px] space-y-5">
                 <FormInput
                     type="text"
-                    placeholder="Enter the title"
+                    placeholder="Enter a title"
                     :length="190"
                     id="title"
-                    @changed="(value: string) => (formData.title = value)"
+                    @changed="(v: string) => (formData.title = v)"
+                >
+                </FormInput>
+
+                <FormInput
+                    type="text"
+                    placeholder="Enter a short introduction"
+                    :length="190"
+                    id="intro"
+                    @changed="(v: string) => (formData.intro = v)"
                 >
                 </FormInput>
 

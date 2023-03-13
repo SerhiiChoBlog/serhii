@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\SeriesController;
 use App\Models\Post;
 use App\Models\Series;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
@@ -32,9 +33,9 @@ class SeriesControllerTest extends TestCase
             ->json('get', self::INDEX_URI)
             ->assertOk();
 
-        $response->assertJsonCount(1, 'data');
+        $response->assertJsonCount(1, 'series.data');
 
-        $fetched_series = $response->json('data')[0];
+        $fetched_series = $response->json('series.data')[0];
 
         $this->assertEquals($series->id, $fetched_series['id']);
     }
@@ -68,9 +69,10 @@ class SeriesControllerTest extends TestCase
             ->json('get', self::INDEX_URI)
             ->assertOk();
 
-        $response->assertJsonCount(1, 'data');
+        $response->assertJsonCount(1, 'series.data');
+        $response->assertJsonFragment(['total' => 1]);
 
-        $fetched_series = $response->json('data')[0];
+        $fetched_series = $response->json('series.data')[0];
         $posts = $fetched_series['posts'];
 
         $this->assertSame($series->id, $fetched_series['id']);
@@ -134,7 +136,6 @@ class SeriesControllerTest extends TestCase
         $form_data = [
             'title' => 'Learn JS',
             'intro' => 'Learn JavaScript from scratch',
-            'description' => 'Learn JavaScript from scratch and become a JavaScript developer in 2023',
         ];
 
         $this->actingAs($admin, 'admin')
@@ -146,7 +147,7 @@ class SeriesControllerTest extends TestCase
         $this->assertDatabaseHas('series', [
             'title' => $form_data['title'],
             'intro' => $form_data['intro'],
-            'description' => $form_data['description'],
+            'description' => SeriesController::TEMPORARY_DESCRIPTION,
             'slug' => 'learn-js',
         ]);
     }
