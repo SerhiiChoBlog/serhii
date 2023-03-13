@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import type { Post } from '@shared/types/models'
 import { ref } from 'vue'
 
 type Props = {
-    post: Post
+    uri: string
+    defaultUri: string
 }
 
-const { post } = defineProps<Props>()
-const defaultImagePath = '/storage/posts/placeholder.jpg'
-const imageSrc = ref<string>(post.image_lg ? `/${post.image_lg}` : defaultImagePath)
+const { uri, defaultUri } = defineProps<Props>()
+const imageSrc = ref<string>(uri ? `/${uri}` : defaultUri)
 
 function updateImagePreview(e: InputEvent): void {
     const fileReader = new FileReader()
@@ -24,7 +23,7 @@ function updateImagePreview(e: InputEvent): void {
         return
     }
 
-    imageSrc.value = defaultImagePath
+    imageSrc.value = defaultUri
 }
 </script>
 

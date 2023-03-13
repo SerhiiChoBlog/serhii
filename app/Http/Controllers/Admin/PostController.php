@@ -13,7 +13,7 @@ use App\Http\Requests\Admin\Post\StoreRequest;
 use App\Http\Requests\Admin\Post\UpdateRequest;
 use App\LazyLoadingParser;
 use App\Models\Post;
-use App\Utils\SaveImage;
+use App\Utils\ImageProcessor;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Artisan;
@@ -24,8 +24,6 @@ use JsonException;
 
 class PostController extends Controller
 {
-    use SaveImage;
-
     /**
      * @return LengthAwarePaginator<Post>
      */
@@ -81,7 +79,13 @@ class PostController extends Controller
         /** @var UploadedFile|null $image */
         $image = $request->file('image');
 
-        $images = $this->savePhotoIfExist($image, $post->title, 'posts');
+        $image_processor = new ImageProcessor($image, [
+            'xs' => [100, 50],
+            'sm' => [550, 275],
+            'lg' => [1000, 500],
+        ]);
+
+        $images = $image_processor->save($post->title, 'posts');
 
         if ($images) {
             $data->put('image_xs', $images['xs']);
