@@ -57,6 +57,13 @@ export interface EditPostFormElements extends HTMLFormControlsCollection {
     'is-published': HTMLInputElement
 }
 
+export interface EditSeriesFormElements extends HTMLFormControlsCollection {
+    title: HTMLInputElement
+    intro: HTMLInputElement
+    description: HTMLTextAreaElement
+    image: HTMLInputElement
+}
+
 export type SubscriptionForm = {
     loading: boolean
     email: string

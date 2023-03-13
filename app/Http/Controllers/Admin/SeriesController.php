@@ -52,7 +52,7 @@ class SeriesController extends Controller
 
     public function update(UpdateRequest $request, Series $series): void
     {
-        $data = $request->collect()->forget('image');
+        $data = $request->collect()->forget(['image', '_method']);
 
         /** @var UploadedFile|null $image */
         $image = $request->file('image');
