@@ -1,13 +1,39 @@
 <script setup lang="ts">
-import MainButton from '@admin/components/Buttons/MainButton.vue'
+import type { Post } from '@shared/types/models'
 import { ref } from 'vue'
-import { Post } from '@shared/types/models'
+import handleError from '@admin/modules/handleError'
+import axios from 'axios'
+import MainButton from '@admin/components/Buttons/MainButton.vue'
+
+type Emits = {
+    (e: 'postAdded', post: Post): void
+}
+
+const emit = defineEmits<Emits>()
 
 const postSlug = ref<string>('')
 const post = ref<Post | null>(null)
+const loading = ref<boolean>(false)
 
 function fetchPost(): void {
-    console.log(postSlug.value)
+    if (postSlug.value === '') {
+        return
+    }
+
+    loading.value = true
+
+    axios.get<Post | null>(`/admin/ajax/posts/${postSlug.value}`)
+        .then(resp => {
+            if (!resp.data) {
+                return
+            }
+
+            post.value = resp.data
+            emit('postAdded', resp.data)
+            postSlug.value = ''
+        })
+        .catch(handleError)
+        .finally(() => loading.value = false)
 }
 </script>
 
@@ -26,10 +52,12 @@ function fetchPost(): void {
             @blur="fetchPost"
         />
 
-        <i v-if="post" class="fas fa-check text-green-500 text-2xl"></i>
+        <i v-if="loading" class="fas fa-spinner animate-spin text-gray-400 text-2xl"></i>
+        <i v-else-if="post" class="fas fa-check text-green-500 text-2xl"></i>
         <i v-else class="fas fa-times text-red-500 text-2xl"></i>
 
-        <span v-if="post">{{ post.title }}</span>
+        <span v-if="loading">Loading...</span>
+        <span v-else-if="post">{{ post.title }}</span>
         <span v-else>No post</span>
     </div>
 </template>
