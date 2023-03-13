@@ -16,6 +16,8 @@ export default class {
 
         formData.append('title', this.elements.title.value)
         formData.append('intro', this.elements.intro.value)
+        formData.append('color_from', this.elements.color_from.value)
+        formData.append('color_to', this.elements.color_to.value)
         formData.append('description', description)
         formData.append('image', imageFile)
         formData.append('_method', 'put')

@@ -60,6 +60,8 @@ export interface EditPostFormElements extends HTMLFormControlsCollection {
 export interface EditSeriesFormElements extends HTMLFormControlsCollection {
     title: HTMLInputElement
     intro: HTMLInputElement
+    color_from: HTMLInputElement
+    color_to: HTMLInputElement
     description: HTMLTextAreaElement
     image: HTMLInputElement
 }

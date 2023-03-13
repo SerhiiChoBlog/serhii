@@ -104,6 +104,29 @@ function saveSeriesWithCorrectKeyBinds(e: KeyboardEvent): void {
                                     Intro
                                 </FormTextarea>
                             </div>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-3">
+                                <div>
+                                    <FormInput
+                                        type="color"
+                                        id="color_from"
+                                        name="color_from"
+                                        :value="series.color_from"
+                                    >
+                                        Color from
+                                    </FormInput>
+                                </div>
+                                <div>
+                                    <FormInput
+                                        type="color"
+                                        id="color_to"
+                                        name="color_to"
+                                        :value="series.color_to"
+                                    >
+                                        Color to
+                                    </FormInput>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="flex-1">

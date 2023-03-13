@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Series } from '@shared/types/models'
+import type { Series as SeriesType } from '@shared/types/models'
 import type { Pagination } from '@shared/types/response'
 import { onMounted, ref } from 'vue'
 import { debounce } from 'lodash'
@@ -15,7 +15,7 @@ import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 
-const series = ref<Series[]>([])
+const series = ref<SeriesType[]>([])
 const totalSeries = ref<number | null>(null)
 const loading = ref(false)
 const nextPageUrl = ref<string | null>(null)
@@ -34,7 +34,7 @@ onMounted(() => {
 })
 
 function fetchSeries(url: string, refresh = true): void {
-    axios.get<{ series: Pagination<Series[]>, total: number }>(url)
+    axios.get<{ series: Pagination<SeriesType[]>, total: number }>(url)
         .then(resp => {
             const data = resp.data
 
@@ -69,6 +69,10 @@ const loadMoreSeries = debounce((): void => {
         </PageTitle>
 
         <Spinner v-if="loading" />
+
+        <h2 v-else-if="series.length === 0" class="text-center text-xl">
+            There are no series yet
+        </h2>
 
         <DataTable v-else>
             <template #head>
