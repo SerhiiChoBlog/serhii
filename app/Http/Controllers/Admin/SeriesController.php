@@ -31,6 +31,10 @@ class SeriesController extends Controller
             'slug' => Str::slug($request->title),
         ]);
 
+        if (!empty($request->posts)) {
+            $series->posts()->sync($request->posts);
+        }
+
         return $series;
     }
 

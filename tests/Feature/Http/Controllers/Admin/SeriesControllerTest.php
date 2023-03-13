@@ -7,6 +7,7 @@ namespace Tests\Feature\Http\Controllers\Admin;
 use App\Models\Post;
 use App\Models\Series;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Illuminate\Support\Collection;
 use Tests\TestCase;
 
 class SeriesControllerTest extends TestCase
@@ -91,6 +92,7 @@ class SeriesControllerTest extends TestCase
             'title' => 'Learn JS',
             'intro' => 'Learn JavaScript from scratch',
             'description' => 'Learn JavaScript from scratch and become a JavaScript developer in 2023',
+            'posts' => [],
         ];
 
         $this->actingAs($admin, 'admin')
@@ -104,5 +106,29 @@ class SeriesControllerTest extends TestCase
             'intro' => $form_data['intro'],
             'description' => $form_data['description'],
         ]);
+    }
+
+    public function testSeriesCanBeCreatedWithPosts(): void
+    {
+        /** @var Collection<int, Post> $posts */
+        $posts = Post::factory()->count(2)->create();
+
+        $admin = $this->createAdmin();
+
+        $form_data = [
+            'title' => 'Learn PHP',
+            'intro' => 'Learn PHP from scratch',
+            'description' => 'Learn PHP from scratch and become a PHP developer in 2024',
+            'posts' => $posts->pluck('id')->toArray(),
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('post', self::STORE_URI, $form_data)
+            ->assertCreated();
+
+        /** @var Series $series */
+        $series = Series::with('posts')->first();
+
+        $this->assertCount(2, $series->posts);
     }
 }
