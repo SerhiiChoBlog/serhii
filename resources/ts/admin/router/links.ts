@@ -12,6 +12,11 @@ const links: UserSidebarLink[] = [
         icon: 'fa-newspaper',
     },
     {
+        routeName: 'series',
+        title: 'Series',
+        icon: 'fa-images',
+    },
+    {
         routeName: 'tags',
         title: 'Tags',
         icon: 'fa-tags',

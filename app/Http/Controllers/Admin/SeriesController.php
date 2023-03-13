@@ -18,11 +18,17 @@ class SeriesController extends Controller
     use SaveImage;
 
     /**
-     * @return LengthAwarePaginator<Series>
+     * @return array{
+     *     series: LengthAwarePaginator<Series>,
+     *     total: int,
+     * }
      */
-    public function index(): LengthAwarePaginator
+    public function index(): array
     {
-        return Series::with('posts')->paginate(10);
+        return [
+            'total' => Series::query()->count(),
+            'series' => Series::with('posts')->paginate(10),
+        ];
     }
 
     public function store(StoreRequest $request): Series
