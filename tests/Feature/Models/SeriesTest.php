@@ -20,8 +20,8 @@ class SeriesTest extends TestCase
         $this->series = Series::factory()->create();
     }
 
-    public function test(): void
+    public function testSeriesCanHaveNoPosts(): void
     {
-        $this->markTestIncomplete();
+        $this->assertCount(0, $this->series->posts);
     }
 }

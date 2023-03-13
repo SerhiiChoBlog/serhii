@@ -9,6 +9,7 @@ use App\Models\Keyword;
 use App\Models\Post;
 use App\Models\PostContentImage;
 use App\Models\PostPublication;
+use App\Models\Series;
 use App\Models\Tag;
 use App\Models\Video;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
@@ -29,6 +30,20 @@ class PostTest extends TestCase
     public function testPostCanBeCreated(): void
     {
         $this->assertDatabaseCount('posts', 1);
+    }
+
+    public function testPostCanHaveSingleSeries(): void
+    {
+        /** @var Post $post */
+        $post = Post::factory()->create();
+        $series = Series::factory()->create();
+
+        $post->series()->associate($series);
+
+        $result = $post->series;
+
+        $this->assertNotNull($result);
+        $this->assertSame($series->id, $result->id);
     }
 
     public function testPostHasTagsRelated(): void
