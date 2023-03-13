@@ -9,7 +9,6 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * @property string $title
  * @property string $intro
- * @property string $description
  */
 class StoreRequest extends FormRequest
 {
@@ -28,7 +27,6 @@ class StoreRequest extends FormRequest
         return [
             'title' => ['required', 'min:2', 'max:190'],
             'intro' => ['required', 'min:2', 'max:190'],
-            'description' => ['required', 'min:2'],
         ];
     }
 }

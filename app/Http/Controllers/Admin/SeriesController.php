@@ -17,6 +17,8 @@ class SeriesController extends Controller
 {
     use SaveImage;
 
+    public const TEMPORARY_DESCRIPTION = 'To be continued...';
+
     /**
      * @return array{
      *     series: LengthAwarePaginator<Series>,
@@ -37,7 +39,7 @@ class SeriesController extends Controller
         return Series::query()->create([
             'title' => $request->title,
             'intro' => $request->intro,
-            'description' => $request->description,
+            'description' => self::TEMPORARY_DESCRIPTION,
             'slug' => Str::slug($request->title),
         ]);
     }
