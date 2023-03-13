@@ -19,6 +19,8 @@ use Illuminate\Support\Collection;
  * @property string $image_xs
  * @property string $image_sm
  * @property string $image_lg
+ * @property string $color_from
+ * @property string $color_to
  * @property Collection<int, Post> $posts
  * @property Carbon $created_at
  * @property Carbon $updated_at

@@ -210,6 +210,8 @@ export type Series = {
     slug: string
     title: string
     intro: string
+    color_from: string
+    color_to: string
     description: string
     image_xs: string
     image_sm: string
