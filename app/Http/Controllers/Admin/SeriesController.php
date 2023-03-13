@@ -37,6 +37,6 @@ class SeriesController extends Controller
 
     public function destroy(Series $series): void
     {
-        //
+        $series->delete();
     }
 }
