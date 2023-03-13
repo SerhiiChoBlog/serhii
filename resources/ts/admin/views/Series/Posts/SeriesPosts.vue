@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Post } from '@shared/types/models'
 import AddPostToSeries from '@admin/views/Series/Posts/AddPostToSeries.vue'
+import PostSeriesButton from '@admin/views/Series/Posts/PostSeriesButton.vue'
 
 type Props = {
     seriesTitle: string
@@ -42,12 +43,22 @@ function addPostToSeries(post: Post): void {
                 <p class="text-md">{{ post.intro }}</p>
             </div>
 
-            <button
-                type="button"
-                class="text-xl text-red-500 mx-2"
-            >
-                <i class="fas fa-times" />
-            </button>
+            <div class="mx-2 flex flex-col justify-center gap-2">
+                <PostSeriesButton
+                    icon="fa-arrow-up"
+                    class="text-gray-500"
+                />
+
+                <PostSeriesButton
+                    icon="fa-times"
+                    class="text-red-500"
+                />
+
+                <PostSeriesButton
+                    icon="fa-arrow-down"
+                    class="text-gray-500"
+                />
+            </div>
         </article>
     </div>
 
