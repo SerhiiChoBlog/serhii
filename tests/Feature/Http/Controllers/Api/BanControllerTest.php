@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Controllers\Api;
+namespace Tests\Feature\Http\Controllers\Api;
 
 use App\Models\Ban;
 use App\Models\Comment;

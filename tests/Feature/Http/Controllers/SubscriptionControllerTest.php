@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Controllers;
+namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Subscription;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Controllers\Admin;
+namespace Tests\Feature\Http\Controllers\Admin;
 
 use App\Models\Post;
 use App\Models\Tag;
