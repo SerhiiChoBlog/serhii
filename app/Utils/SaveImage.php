@@ -10,13 +10,20 @@ use Intervention\Image\Facades\Image;
 
 trait SaveImage
 {
-    public function savePhotoIfExist(?UploadedFile $photo, string $post_name): ?array
+    /**
+     * @return null|array{
+     *     xs: string,
+     *     sm: string,
+     *     lg: string,
+     * }
+     */
+    public function savePhotoIfExist(?UploadedFile $photo, string $post_name, string $dir_name): ?array
     {
         if ($photo === null) {
             return null;
         }
 
-        $path = storage_path('app/public/posts');
+        $path = storage_path("app/public/{$dir_name}");
         $ext = $photo->getClientOriginalExtension();
         $name = Str::slug($post_name) . ".{$ext}";
 
@@ -27,9 +34,9 @@ trait SaveImage
         }
 
         return [
-            'xs' => "storage/posts/xs/{$name}",
-            'sm' => "storage/posts/sm/{$name}",
-            'lg' => "storage/posts/lg/{$name}",
+            'xs' => "storage/{$dir_name}/xs/{$name}",
+            'sm' => "storage/{$dir_name}/sm/{$name}",
+            'lg' => "storage/{$dir_name}/lg/{$name}",
         ];
     }
 

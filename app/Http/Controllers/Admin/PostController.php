@@ -81,29 +81,28 @@ class PostController extends Controller
         /** @var UploadedFile|null $image */
         $image = $request->file('image');
 
-        $images = $this->savePhotoIfExist($image, $post->title);
+        $images = $this->savePhotoIfExist($image, $post->title, 'posts');
 
         if ($images) {
-            $data = $data->merge([
-                'image_xs' => $images['xs'],
-                'image_sm' => $images['sm'],
-                'image_lg' => $images['lg'],
-            ]);
+            $data->put('image_xs', $images['xs']);
+            $data->put('image_sm', $images['sm']);
+            $data->put('image_lg', $images['lg']);
         }
 
-        $data['content'] = $this->addNotesToContent($request->content);
+        $content = $this->addNotesToContent($request->content);
 
-        if ($data['content']) {
-            $data['content'] = LazyLoadingParser::makeImagesLazy($data['content']);
+        if ($content) {
+            $content = LazyLoadingParser::makeImagesLazy($content);
         }
 
-        $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
+        $data->put('read_time', Post::calculateEstimatedReadingTime($content ?? ''));
+        $data->put('content', $content);
 
         $first_publish = !$post->is_published && $request->is_published;
         $first_unpublish = $post->is_published && !$request->is_published;
 
         if ($first_publish) {
-            $data = $data->merge(['created_at' => now()]);
+            $data->put('created_at', now());
             Artisan::call(SitemapCommand::class);
         }
 
