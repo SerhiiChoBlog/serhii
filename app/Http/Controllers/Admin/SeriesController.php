@@ -22,7 +22,7 @@ class SeriesController extends Controller
      */
     public function index(): LengthAwarePaginator
     {
-        return Series::query()->paginate(10);
+        return Series::with('posts')->paginate(10);
     }
 
     public function store(StoreRequest $request): Series

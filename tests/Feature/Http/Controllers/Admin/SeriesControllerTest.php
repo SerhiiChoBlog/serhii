@@ -39,6 +39,46 @@ class SeriesControllerTest extends TestCase
         $this->assertEquals($series->id, $fetched_series['id']);
     }
 
+    public function testSeriesAreFetchWithPostsInCorrectOrder(): void
+    {
+        $admin = $this->createAdmin();
+
+        $first_post = Post::factory()->create([
+            'created_at' => now()->subDays(2),
+        ]);
+
+        $second_post = Post::factory()->create([
+            'created_at' => now()->subDay(),
+        ]);
+
+        $last_post = Post::factory()->create([
+            'created_at' => now(),
+        ]);
+
+        /** @var Series $series */
+        $series = Series::factory()->create();
+
+        $series->posts()->attach([
+            $last_post->id => ['part' => 3],
+            $first_post->id => ['part' => 1],
+            $second_post->id => ['part' => 2],
+        ]);
+
+        $response = $this->actingAs($admin, 'admin')
+            ->json('get', self::INDEX_URI)
+            ->assertOk();
+
+        $response->assertJsonCount(1, 'data');
+
+        $fetched_series = $response->json('data')[0];
+        $posts = $fetched_series['posts'];
+
+        $this->assertSame($series->id, $fetched_series['id']);
+        $this->assertSame($first_post->id, $posts[0]['id']);
+        $this->assertSame($second_post->id, $posts[1]['id']);
+        $this->assertSame($last_post->id, $posts[2]['id']);
+    }
+
     public function testGuestCannotFetchSeries(): void
     {
         $this->json('get', self::INDEX_URI)
