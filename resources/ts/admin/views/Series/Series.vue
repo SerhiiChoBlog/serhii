@@ -7,6 +7,7 @@ import axios from 'axios'
 import moment from 'moment'
 import handleError from '@admin/modules/handleError'
 import PageTitle from '@admin/components/PageTitle.vue'
+import MainButton from '@admin/components/Buttons/MainButton.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import DataTable from '@admin/components/DataTable/DataTable.vue'
 import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
@@ -56,7 +57,15 @@ const loadMoreSeries = debounce((): void => {
 
 <template>
     <div class="container max-w-7xl">
-        <PageTitle>Series <b v-if="totalSeries">{{ totalSeries }}</b></PageTitle>
+        <PageTitle>
+            <div class="flex items-center justify-center gap-3">
+                <span>Series <b v-if="totalSeries">{{ totalSeries }}</b></span>
+
+                <MainButton :route="{ name: 'series-create' }">
+                    <i class="fas fa-plus"></i>
+                </MainButton>
+            </div>
+        </PageTitle>
 
         <Spinner v-if="loading" />
 
