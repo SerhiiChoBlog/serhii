@@ -14,6 +14,7 @@ return new class () extends Migration {
             $table->unsignedSmallInteger('post_id');
             $table->foreign('post_id')->references('id')->on('posts')->cascadeOnDelete();
             $table->foreignIdFor(Series::class)->constrained()->cascadeOnDelete();
+            $table->unsignedTinyInteger('part')->default(1);
         });
     }
 
