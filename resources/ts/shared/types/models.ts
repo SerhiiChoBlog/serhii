@@ -203,3 +203,15 @@ export type Project = {
     created_at: string
     updated_at: string
 }
+
+export type Series = {
+    id: number
+    title: string
+    slug: string
+    description: string
+    image_xs: string
+    image_sm: string
+    image_lg: string
+    created_at: string
+    updated_at: string
+}

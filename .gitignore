@@ -8,6 +8,9 @@
 /storage/app/public/posts/xs/*
 /storage/app/public/posts/content/*
 /storage/app/public/avatars/*
+/storage/app/public/series/lg/*
+/storage/app/public/series/sm/*
+/storage/app/public/series/xs/*
 !/storage/app/public/avatars/default.svg
 !/storage/app/public/avatars/serhiicho.jpg
 /vendor
