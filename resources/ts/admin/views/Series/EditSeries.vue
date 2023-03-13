@@ -13,7 +13,7 @@ import MainButton from '@admin/components/Buttons/MainButton.vue'
 import FormInput from '@admin/components/Form/FormInput.vue'
 import FormImage from '@admin/components/FormImage.vue'
 import DeleteSeries from '@admin/components/Series/DeleteSeries.vue'
-import SeriesPosts from '@admin/views/Series/SeriesPosts.vue'
+import SeriesPosts from '@admin/views/Series/Posts/SeriesPosts.vue'
 
 onMounted(() => {
     fetchSeries()
@@ -23,7 +23,6 @@ onMounted(() => {
 const route = useRoute()
 const loading = ref(true)
 const series = ref<Series | null>(null)
-const tagInputValue = ref<string>('')
 const form = ref<HTMLFormElement | null>(null)
 
 function fetchSeries(): void {
@@ -166,7 +165,10 @@ function saveSeriesWithCorrectKeyBinds(e: KeyboardEvent): void {
                     </div>
 
                     <div class="mt-6">
-                        <SeriesPosts :posts="series.posts" />
+                        <SeriesPosts
+                            :posts="series.posts"
+                            :seriesTitle="series.title"
+                        />
                     </div>
                 </form>
             </div>
