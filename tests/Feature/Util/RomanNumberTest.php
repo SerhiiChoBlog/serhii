@@ -20,7 +20,7 @@ class RomanNumberTest extends TestCase
         $this->assertEquals($expect, RomanNumber::convert($num));
     }
 
-    public function dataProviderForTestRomanNumberUtilityConvertsToRomanNumber(): array
+    public static function dataProviderForTestRomanNumberUtilityConvertsToRomanNumber(): array
     {
         return [
             [1, 'I'],
