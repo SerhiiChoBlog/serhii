@@ -207,8 +207,9 @@ export type Project = {
 
 export type Series = {
     id: number
-    title: string
     slug: string
+    title: string
+    intro: string
     description: string
     image_xs: string
     image_sm: string

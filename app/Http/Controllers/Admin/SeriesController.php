@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Series\StoreRequest;
 use App\Models\Series;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Str;
 
 class SeriesController extends Controller
 {
@@ -20,13 +21,22 @@ class SeriesController extends Controller
         return Series::query()->paginate(10);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreRequest $request): Series
     {
-        return back();
+        /** @var Series $series */
+        $series = Series::query()->create([
+            'title' => $request->title,
+            'intro' => $request->intro,
+            'description' => $request->description,
+            'slug' => Str::slug($request->title),
+        ]);
+
+        return $series;
     }
 
     public function edit(Series $series): Series
     {
+        $series->load('posts');
         return $series;
     }
 

@@ -11,8 +11,9 @@ return new class () extends Migration {
     {
         Schema::create('series', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->string('slug');
+            $table->string('title');
+            $table->string('intro');
             $table->text('description');
             $table->string('image_xs')->default('storage/series/placeholder.jpg');
             $table->string('image_sm')->default('storage/series/placeholder.jpg');
