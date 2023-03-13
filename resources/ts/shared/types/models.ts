@@ -38,6 +38,7 @@ export type Post = {
     postViews?: PostView[]
     socialShares?: SocialShare[]
     keywords?: Keyword[]
+    series?: Series | null
     tags?: Tag[]
     video?: Video | null
     social?: string[][]
@@ -214,4 +215,5 @@ export type Series = {
     image_lg: string
     created_at: string
     updated_at: string
+    posts?: Post[]
 }
