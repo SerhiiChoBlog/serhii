@@ -15,6 +15,8 @@ return new class () extends Migration {
             $table->string('title');
             $table->string('intro');
             $table->text('description');
+            $table->string('color_from', 10)->default('#0f0f0f');
+            $table->string('color_to', 10)->default('#383838');
             $table->string('image_xs')->default('storage/series/placeholder.jpg');
             $table->string('image_sm')->default('storage/series/placeholder.jpg');
             $table->string('image_lg')->default('storage/series/placeholder.jpg');
