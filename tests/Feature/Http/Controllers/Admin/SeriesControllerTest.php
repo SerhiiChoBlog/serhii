@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Http\Controllers\Admin;
 
+use App\Models\Post;
 use App\Models\Series;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
@@ -15,6 +16,7 @@ class SeriesControllerTest extends TestCase
     private const INDEX_URI = '/admin/ajax/series';
     private const EDIT_URI = '/admin/ajax/series/1/edit';
     private const DESTROY_URI = '/admin/ajax/series/1';
+    private const STORE_URI = '/admin/ajax/series';
 
     public function testSeriesCanBeFetchedByAdmin(): void
     {
@@ -53,6 +55,9 @@ class SeriesControllerTest extends TestCase
         $admin = $this->createAdmin();
 
         $series = Series::factory()->create();
+        $post = Post::factory()->create();
+
+        $series->posts()->attach($post);
 
         $response = $this->actingAs($admin, 'admin')
             ->json('get', self::EDIT_URI)
@@ -61,6 +66,8 @@ class SeriesControllerTest extends TestCase
         $fetched_series = $response->json();
 
         $this->assertEquals($series->id, $fetched_series['id']);
+        $this->assertNotEmpty($fetched_series['posts']);
+        $this->assertEquals($post->id, $fetched_series['posts'][0]['id']);
     }
 
     public function testSeriesCanBeDeleted(): void
@@ -74,5 +81,28 @@ class SeriesControllerTest extends TestCase
             ->assertOk();
 
         $this->assertDatabaseEmpty('series');
+    }
+
+    public function testSeriesCanBeCreated(): void
+    {
+        $admin = $this->createAdmin();
+
+        $form_data = [
+            'title' => 'Learn JS',
+            'intro' => 'Learn JavaScript from scratch',
+            'description' => 'Learn JavaScript from scratch and become a JavaScript developer in 2023',
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('post', self::STORE_URI, $form_data)
+            ->assertCreated();
+
+        $this->assertDatabaseCount('series', 1);
+
+        $this->assertDatabaseHas('series', [
+            'title' => $form_data['title'],
+            'intro' => $form_data['intro'],
+            'description' => $form_data['description'],
+        ]);
     }
 }

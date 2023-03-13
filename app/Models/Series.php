@@ -12,8 +12,9 @@ use Illuminate\Support\Collection;
 
 /**
  * @property-read int $id
- * @property string $title
  * @property string $slug
+ * @property string $title
+ * @property string $intro
  * @property string $description
  * @property string $image_xs
  * @property string $image_sm
