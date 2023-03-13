@@ -8,15 +8,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Series\StoreRequest;
 use App\Http\Requests\Admin\Series\UpdateRequest;
 use App\Models\Series;
-use App\Utils\SaveImage;
+use App\Utils\ImageProcessor;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 
 class SeriesController extends Controller
 {
-    use SaveImage;
-
     public const TEMPORARY_DESCRIPTION = 'To be continued...';
 
     /**
@@ -57,7 +55,13 @@ class SeriesController extends Controller
         /** @var UploadedFile|null $image */
         $image = $request->file('image');
 
-        $images = $this->savePhotoIfExist($image, $request->title, 'series');
+        $image_processor = new ImageProcessor($image, [
+            'xs' => [120, 40],
+            'sm' => [750, 250],
+            'lg' => [1500, 500],
+        ]);
+
+        $images = $image_processor->save($request->title, 'series');
 
         if ($images) {
             $data->put('image_xs', $images['xs']);

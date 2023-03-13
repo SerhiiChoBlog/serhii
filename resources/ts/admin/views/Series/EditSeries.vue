@@ -10,7 +10,7 @@ import SaveSeries from '@admin/modules/SaveSeries'
 import FormTextarea from '@admin/components/Form/FormTextarea.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import FormInput from '@admin/components/Form/FormInput.vue'
-import PostImage from '@admin/components/Post/PostImage.vue'
+import FormImage from '@admin/components/FormImage.vue'
 import DeleteSeries from '@admin/components/Series/DeleteSeries.vue'
 import Editor from '@tinymce/tinymce-vue'
 
@@ -107,7 +107,10 @@ function saveSeriesWithCorrectKeyBinds(e: KeyboardEvent): void {
                         </div>
 
                         <div class="flex-1">
-                            <PostImage :post="series" />
+                            <FormImage
+                                :uri="series.image_lg"
+                                defaultUri="/storage/series/placeholder.jpg"
+                            />
                         </div>
                     </div>
 
