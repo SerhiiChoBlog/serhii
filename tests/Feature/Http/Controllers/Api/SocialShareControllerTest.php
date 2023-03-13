@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Controllers\Api;
+namespace Tests\Feature\Http\Controllers\Api;
 
 use App\Enums\SocialName;
 use App\Models\Post;
