@@ -6,6 +6,7 @@ import { debounce } from 'lodash'
 import axios from 'axios'
 import moment from 'moment'
 import handleError from '@admin/modules/handleError'
+import IconButton from '@admin/components/Buttons/IconButton.vue'
 import PageTitle from '@admin/components/PageTitle.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
@@ -75,8 +76,10 @@ const loadMoreSeries = debounce((): void => {
                 <HeadDetail>Title</HeadDetail>
                 <HeadDetail>Intro</HeadDetail>
                 <HeadDetail>Description</HeadDetail>
+                <HeadDetail>Posts</HeadDetail>
                 <HeadDetail>Updated at</HeadDetail>
                 <HeadDetail>Created at</HeadDetail>
+                <HeadDetail>Edit</HeadDetail>
             </template>
 
             <BodyRow v-for="singleSeries in series" :key="singleSeries.id">
@@ -85,10 +88,25 @@ const loadMoreSeries = debounce((): void => {
                 <BodyDetail>{{ singleSeries.intro }}</BodyDetail>
                 <BodyDetail>{{ singleSeries.description }}</BodyDetail>
                 <BodyDetail>
+                    <span v-if="singleSeries.posts.length === 0">No posts</span>
+                    <ul v-else>
+                        <li v-for="post in singleSeries.posts" :key="post.id">
+                            {{ post.title }}
+                        </li>
+                    </ul>
+                </BodyDetail>
+                <BodyDetail>
                     {{ moment(singleSeries.updated_at).format('D MMM YYYY H:mm') }}
                 </BodyDetail>
                 <BodyDetail>
                     {{ moment(singleSeries.created_at).format('D MMM YYYY H:mm') }}
+                </BodyDetail>
+                <BodyDetail class="text-center">
+                    <icon-button
+                        icon="fa-pen"
+                        :route="{ name: 'series-edit', params: { id: singleSeries.id.toString() } }"
+                        title="Edit series"
+                    />
                 </BodyDetail>
             </BodyRow>
         </DataTable>
