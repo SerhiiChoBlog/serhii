@@ -48,6 +48,14 @@ class PostController extends Controller
         return $post->id;
     }
 
+    public function show(string $post_slug): ?Post
+    {
+        /** @var Post|null */
+        return Post::query()
+            ->where('slug', $post_slug)
+            ->first();
+    }
+
     /**
      * @throws LazyLoadingConversionException
      */
