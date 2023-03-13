@@ -11,6 +11,14 @@ export default class {
 
     public async save(description: string): Promise<Series | null> {
         const formData = new FormData()
+        const postsElems = this.elements['posts[]'] as HTMLInputElement[] | HTMLInputElement
+        let posts: HTMLInputElement[] = []
+
+        if (postsElems) {
+            posts = postsElems instanceof HTMLInputElement
+                ? [postsElems]
+                : Array.from(postsElems)
+        }
 
         const imageFile = this.elements.image.files![0] as File
 
@@ -21,6 +29,10 @@ export default class {
         formData.append('description', description)
         formData.append('image', imageFile)
         formData.append('_method', 'put')
+
+        if (posts.length > 0) {
+            formData.append('posts', JSON.stringify(posts.map(tag => tag.value)))
+        }
 
         const params = {
             headers: { 'content-type': 'multipart/form-data' },

@@ -53,8 +53,8 @@ export interface EditPostFormElements extends HTMLFormControlsCollection {
     intro: HTMLInputElement
     image: HTMLInputElement
     tag_id: HTMLInputElement
-    'tags[]': HTMLInputElement[]
     'is-published': HTMLInputElement
+    'tags[]': HTMLInputElement[]
 }
 
 export interface EditSeriesFormElements extends HTMLFormControlsCollection {
@@ -64,6 +64,7 @@ export interface EditSeriesFormElements extends HTMLFormControlsCollection {
     color_to: HTMLInputElement
     description: HTMLTextAreaElement
     image: HTMLInputElement
+    'posts[]': HTMLInputElement[]
 }
 
 export type SubscriptionForm = {

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests\Admin\Series;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JsonException;
 
 /**
  * @property string $title
@@ -33,5 +34,17 @@ class UpdateRequest extends FormRequest
             'posts' => ['array'],
             'posts.*' => ['integer'],
         ];
+    }
+
+    /**
+     * @throws JsonException
+     */
+    protected function prepareForValidation(): void
+    {
+        if (request()->has('posts')) {
+            $this->merge([
+                'posts' => json_decode(request('posts'), true, 512, JSON_THROW_ON_ERROR),
+            ]);
+        }
     }
 }

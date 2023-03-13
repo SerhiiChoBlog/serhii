@@ -7,6 +7,10 @@ type Props = {
 }
 
 const { posts } = defineProps<Props>()
+
+function addPostToSeries(post: Post): void {
+    posts.push(post)
+}
 </script>
 
 <template>
@@ -18,9 +22,11 @@ const { posts } = defineProps<Props>()
 
     <ul v-else>
         <li v-for="post in posts" :key="post.id">
+            <input type="hidden" name="posts[]" :value="post.id" />
+
             {{ post.title }}
         </li>
     </ul>
 
-    <AddPostToSeries />
+    <AddPostToSeries @postAdded="addPostToSeries" />
 </template>
