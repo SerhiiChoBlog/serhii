@@ -83,7 +83,7 @@ class PostControllerTest extends TestCase
             'is_published' => false,
             'content' => 'This is some new content',
             'slug' => $post->slug,
-            'image' => UploadedFile::fake()->image($img_name = 'some-image.jpg'),
+            'image' => UploadedFile::fake()->image('some-image.jpg'),
         ];
 
         $this->actingAs($admin, 'admin')

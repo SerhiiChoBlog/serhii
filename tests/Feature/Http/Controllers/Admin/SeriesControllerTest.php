@@ -7,7 +7,9 @@ namespace Tests\Feature\Http\Controllers\Admin;
 use App\Models\Post;
 use App\Models\Series;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
+use Intervention\Image\Facades\Image;
 use Tests\TestCase;
 
 class SeriesControllerTest extends TestCase
@@ -18,6 +20,7 @@ class SeriesControllerTest extends TestCase
     private const EDIT_URI = '/admin/ajax/series/1/edit';
     private const DESTROY_URI = '/admin/ajax/series/1';
     private const STORE_URI = '/admin/ajax/series';
+    private const UPDATE_URI = '/admin/ajax/series/1';
 
     public function testSeriesCanBeFetchedByAdmin(): void
     {
@@ -75,7 +78,7 @@ class SeriesControllerTest extends TestCase
     {
         $admin = $this->createAdmin();
 
-        $series = Series::factory()->create();
+        Series::factory()->create();
 
         $this->actingAs($admin, 'admin')
             ->json('delete', self::DESTROY_URI)
@@ -92,7 +95,6 @@ class SeriesControllerTest extends TestCase
             'title' => 'Learn JS',
             'intro' => 'Learn JavaScript from scratch',
             'description' => 'Learn JavaScript from scratch and become a JavaScript developer in 2023',
-            'posts' => [],
         ];
 
         $this->actingAs($admin, 'admin')
@@ -105,30 +107,121 @@ class SeriesControllerTest extends TestCase
             'title' => $form_data['title'],
             'intro' => $form_data['intro'],
             'description' => $form_data['description'],
+            'slug' => 'learn-js',
         ]);
     }
 
-    public function testSeriesCanBeCreatedWithPosts(): void
+    public function testSeriesCanBeUpdatedWithoutPosts(): void
     {
-        /** @var Collection<int, Post> $posts */
-        $posts = Post::factory()->count(2)->create();
+        Series::factory()->create([
+            'title' => 'Learn PHP',
+            'intro' => 'Learn PHP from scratch',
+            'description' => 'Learn PHP from scratch and become a PHP developer in 2024',
+        ]);
 
         $admin = $this->createAdmin();
 
         $form_data = [
-            'title' => 'Learn PHP',
-            'intro' => 'Learn PHP from scratch',
-            'description' => 'Learn PHP from scratch and become a PHP developer in 2024',
-            'posts' => $posts->pluck('id')->toArray(),
+            'title' => 'Learn PHP New',
+            'intro' => 'Learn PHP New from scratch',
+            'description' => 'Learn PHP New from scratch and become a PHP developer in 2024',
+            'posts' => [],
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('post', self::STORE_URI, $form_data)
-            ->assertCreated();
+            ->json('put', self::UPDATE_URI, $form_data)
+            ->assertOk();
+
+        $this->assertDatabaseHas('series', [
+            'title' => $form_data['title'],
+            'intro' => $form_data['intro'],
+            'description' => $form_data['description'],
+            'slug' => 'learn-php-new',
+        ]);
+    }
+
+    public function testSeriesCanBeUpdatedWithPosts(): void
+    {
+        /** @var Collection<int, Post> $posts */
+        $posts = Post::factory()->count(2)->create();
+
+        /** @var Series $series */
+        $series = Series::factory()->create();
+
+        $admin = $this->createAdmin();
+
+        $form_data = [
+            'title' => $series->title,
+            'intro' => $series->intro,
+            'description' => $series->description,
+            'posts' => $posts->pluck('id')->toArray()
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('put', self::UPDATE_URI, $form_data)
+            ->assertOk();
 
         /** @var Series $series */
         $series = Series::with('posts')->first();
 
         $this->assertCount(2, $series->posts);
+    }
+
+    public function testSeriesCanBeUpdatedWithImage(): void
+    {
+        Image::shouldReceive('make', 'fit', 'save')
+            ->times(3)
+            ->andReturnSelf();
+
+        /** @var Series $series */
+        $series = Series::factory()->create();
+
+        $admin = $this->createAdmin();
+
+        $form_data = [
+            'title' => $series->title,
+            'intro' => $series->intro,
+            'description' => $series->description,
+            'posts' => [],
+            'image' => UploadedFile::fake()->image('js.jpg'),
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('put', self::UPDATE_URI, $form_data)
+            ->assertOk();
+    }
+
+    public function testNotProvidingImageFileWillKeepSeriesImagesUntouched(): void
+    {
+        Image::shouldReceive('make', 'fit', 'save')->times(0);
+
+        $admin = $this->createAdmin();
+
+        $images = [
+            'image_xs' => 'storage/series/xs/some-image.jpg',
+            'image_sm' => 'storage/series/sm/some-image.jpg',
+            'image_lg' => 'storage/series/lg/some-image.jpg',
+        ];
+
+        /** @var Series $series */
+        $series = Series::factory()->create($images);
+
+        $params = [
+            'title' => $series->title,
+            'intro' => $series->intro,
+            'description' => $series->description,
+            'posts' => [],
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('put', self::UPDATE_URI, $params)
+            ->assertOk();
+
+        $this->assertDatabaseHas('series', [
+            'id' => $series->id,
+            'image_sm' => 'storage/series/sm/some-image.jpg',
+            'image_lg' => 'storage/series/lg/some-image.jpg',
+            'image_xs' => 'storage/series/xs/some-image.jpg',
+        ]);
     }
 }
