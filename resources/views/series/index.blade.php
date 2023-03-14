@@ -28,7 +28,7 @@
                     There are no series yet
                 </h2>
             @else
-                <div class="flex flex-col gap-y-8 mt-4">
+                <div class="flex flex-col gap-y-4 mt-4">
                     @foreach($series as $s)
                         <x-series.card :series="$s" />
                     @endforeach
