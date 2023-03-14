@@ -62,8 +62,11 @@ class PostController extends Controller
             abort(404, 'Post not found');
         }
 
-        /** @var int<0, 190> $title_len */
         $title_len = strlen($post->title);
+
+        if ($post->series->isNotEmpty()) {
+            $title_len += strlen($post->series->first()->title ?? '') + 2;
+        }
 
         $title_font_size = match (true) {
             $title_len <= 10 => '5em',
