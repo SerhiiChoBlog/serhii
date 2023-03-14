@@ -11,13 +11,14 @@
 @extends('layouts.main')
 
 @push('title', 'Series of articles | Serhii Cho')
-@push('description', 'Collection of articles on various topics related to web development')
+@push('description', 'Collection of articles groped by specific topics. Each series contains a number of articles on a specific topic.')
 
 @section('content')
     <x-hero
         mainTitle="Series of articles"
-        subtitle="Collection of articles on various topics related to web development"
-        class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white relative"
+        subtitle="Collection of articles groped by specific topics.<br />Each series contains a number of articles on a specific topic."
+        class="bg-gradient-to-r from-[#1a1b1b] to-[#2f4343] text-white relative"
+        style="background: linear-gradient(90deg, {{ $series->first()->color_from }} 0%, {{ $series->first()->color_to }} 100%)"
     />
 
     <div class="container">
