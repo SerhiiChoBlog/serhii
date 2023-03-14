@@ -7,10 +7,26 @@
 @endphp
 
 <article
-    class="grid grid-cols-1 lg:grid-cols-[3fr_1fr] rounded-xl shadow-md"
+    class="grid grid-cols-1 lg:grid-cols-[5fr_2fr] rounded-xl shadow-lg"
     style="background: linear-gradient(90deg, {{ $series->color_from }} 0%, {{ $series->color_to }} 100%)"
 >
     <div class="p-4 lg:p-8 lg:pr-0">
+        <div class="mb-4">
+            <div class="flex justify-between items-center">
+                <h2 class="text-2xl lg:text-3xl font-bold text-gray-100">
+                    {{ $series->title }}
+                </h2>
+
+                <span class="text-md lg:text-lg text-gray-300">
+                    {{ $series->posts_count }} {{ str('article')->plural($series->posts_count) }}
+                </span>
+            </div>
+
+            <h3 class="text-lg lg:text-xl text-main-light">
+                {{ $series->intro }}
+            </h3>
+        </div>
+
         <img
             src="{{ asset($series->image_xs) }}"
             data-src="{{ asset($series->image_sm) }}"
@@ -21,16 +37,6 @@
         >
 
         <div class="mt-4">
-            <h2 class="text-2xl lg:text-3xl font-bold text-gray-100">
-                {{ $series->title }}
-            </h2>
-
-            <h3 class="text-lg lg:text-xl text-main-light">
-                {{ $series->intro }}
-            </h3>
-
-            <h4 class="text-md lg:text-lg text-gray-400">Contains {{ $series->posts_count }} {{ str('article')->plural($series->posts_count) }}</h4>
-
             <p class="text-md lg:text-lg text-gray-300 mt-3">
                 {!! nl2br($series->description) !!}
             </p>
@@ -38,7 +44,7 @@
     </div>
 
     <div class="border-t-4 lg:border-l-4 lg:border-t-0 border-dashed border-page p-4 lg:p-8 pl-4 ml-4 lg:pl-4">
-        <ul class="grid grid-cols-3 lg:grid-cols-1 gap-2">
+        <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-2">
             @foreach($series->posts as $post)
                 <li>
                     <a
@@ -55,32 +61,32 @@
                         />
                     </a>
                 </li>
+            @endforeach
 
-                @for($part = $post->pivot->part + 1; $part <= $series->posts_count; $part++)
-                    <li>
-                        <div class="w-full relative">
-                            <img
-                                src="{{ asset('storage/posts/placeholder-xs.jpg') }}"
-                                class="opacity-0"
-                                width="550"
-                                height="275"
-                                alt="Placeholder image"
-                                aria-hidden="true"
-                            />
+            @for($part = $series->posts->count() + 1; $part <= $series->posts_count; $part++)
+                <li>
+                    <div class="w-full relative">
+                        <img
+                            src="{{ asset('storage/posts/placeholder-xs.jpg') }}"
+                            class="opacity-0"
+                            width="550"
+                            height="275"
+                            alt="Placeholder image"
+                            aria-hidden="true"
+                        />
 
-                            <div
-                                class="absolute inset-0 flex items-center justify-center bg-zinc-600 rounded-lg"
-                                style="background-color: {{ $series->color_from }}"
-                            >
-                                <div class="text-center text-gray-300">
-                                    <h2 class="text-xl">Part {{ $part }}</h2>
-                                    <h3 class="text-lg">In progress...</h3>
-                                </div>
+                        <div
+                            class="absolute inset-0 flex items-center justify-center bg-zinc-600 rounded-lg"
+                            style="background-color: {{ $series->color_from }}"
+                        >
+                            <div class="text-center text-gray-300">
+                                <h2 class="text-lg lg:text-2xl">Part {{ $part }}</h2>
+                                <h3 class="text-sm lg:text-lg -mt-1">In progress...</h3>
                             </div>
                         </div>
-                    </li>
-                @endfor
-            @endforeach
+                    </div>
+                </li>
+            @endfor
         </ul>
     </div>
 </article>

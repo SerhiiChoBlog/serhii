@@ -128,7 +128,7 @@ function saveSeriesWithCorrectKeyBinds(e: KeyboardEvent): void {
                         </div>
 
                         <div
-                            class="flex-1 rounded-lg flex items-center"
+                            class="flex-1 px-4 rounded-lg flex items-center"
                             :style="{ 'background': `linear-gradient(90deg, ${series.color_from} 0%, ${series.color_to} 100%)` }"
                         >
                             <FormImage
