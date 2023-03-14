@@ -39,7 +39,9 @@ function updateImagePreview(e: InputEvent): void {
             for="post-image-input"
             class="opacity-0 flex items-center hover:opacity-100 transition-opacity border-4 lg:border-4 border-dashed text-center rounded-lg cursor-pointer border-gray-300 absolute inset-2 lg:inset-6"
         >
-            <b class="text-gray-600 px-4 py-2 rounded-xl bg-gray-300 text-xl lg:text-3xl drop-shadow-sm mx-auto shadow-lg opacity-90">Choose image</b>
+            <b class="text-gray-600 px-4 py-2 rounded-xl bg-gray-300 text-xl lg:text-2xl drop-shadow-sm mx-auto shadow-lg opacity-95">
+                Choose image
+            </b>
         </label>
 
         <input

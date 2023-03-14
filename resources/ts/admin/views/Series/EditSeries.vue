@@ -129,7 +129,10 @@ function saveSeriesWithCorrectKeyBinds(e: KeyboardEvent): void {
                             </div>
                         </div>
 
-                        <div class="flex-1">
+                        <div
+                            class="flex-1 rounded-lg flex items-center"
+                            :style="{ 'background': `linear-gradient(90deg, ${series.color_from} 0%, ${series.color_to} 100%)` }"
+                        >
                             <FormImage
                                 :uri="series.image_lg"
                                 defaultUri="/storage/series/placeholder.jpg"
