@@ -48,24 +48,24 @@ function movePostDownInOrder(post: Post): void {
         <article
             v-for="(post, index) in posts"
             :key="post.id"
-            class="bg-page-second p-3 rounded-lg flex gap-6"
+            class="bg-page-second p-3 rounded-lg flex flex-col lg:flex-row gap-6"
         >
             <input type="hidden" name="posts[]" :value="post.id" />
 
             <img
                 :src="`/${post.image_sm}`"
-                class="w-56 rounded-md shadow-md"
+                class="w-full lg:w-48 rounded-md shadow-md"
                 width="550"
                 height="275"
             />
 
             <div class="flex flex-col justify-center">
-                <h2 class="text-2xl">{{ seriesTitle }}: {{ post.title }}</h2>
-                <h3 class="text-lg opacity-80">Part {{ ++index }}</h3>
-                <p class="text-md">{{ post.intro }}</p>
+                <h2 class="text-xl lg:text-2xl">{{ seriesTitle }}: {{ post.title }}</h2>
+                <h3 class="text-md lg:text-lg opacity-80">Part {{ ++index }}</h3>
+                <p class="text-sm lg:text-md">{{ post.intro }}</p>
             </div>
 
-            <div class="mx-2 flex flex-col justify-center gap-2">
+            <div class="mx-2 flex flex-row lg:flex-col justify-center gap-6 lg:gap-2">
                 <PostSeriesButton
                     v-if="index !== 1"
                     @click="movePostUpInOrder(post)"

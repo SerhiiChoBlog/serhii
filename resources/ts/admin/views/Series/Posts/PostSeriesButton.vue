@@ -9,7 +9,7 @@ const { icon } = defineProps<Props>()
 <template>
     <button
         type="button"
-        class="text-xl hover:scale-125 transition-transform"
+        class="text-xl hover:scale-150 transition-transform"
     >
         <i class="fas" :class="icon" />
     </button>
