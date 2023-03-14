@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthFirebaseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\User\UserController;
@@ -28,6 +29,11 @@ Route::get('about-me', [AboutMeController::class, 'index'])->name('about-me');
 Route::prefix('posts')->controller(PostController::class)->group(function () {
     Route::get('/', 'index')->name('posts.index');
     Route::get('{post:slug}', 'show')->name('posts.show');
+});
+
+Route::prefix('series')->controller(SeriesController::class)->group(function () {
+    Route::get('/', 'index')->name('series.index');
+    Route::get('{series:slug}', 'show')->name('series.show');
 });
 
 Route::prefix('projects')->controller(ProjectController::class)->group(function () {
