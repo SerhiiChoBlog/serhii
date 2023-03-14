@@ -33,9 +33,6 @@ class Visitor extends Model
      */
     protected $guarded = ['id'];
 
-    /**
-     * @var string[]
-     */
     protected $casts = [
         'is_blocked' => 'boolean',
         'is_robot' => 'boolean',
