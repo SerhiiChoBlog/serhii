@@ -11,6 +11,7 @@ use App\Models\Series;
 use App\Utils\ImageProcessor;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 class SeriesController extends Controller
@@ -29,6 +30,19 @@ class SeriesController extends Controller
             'total' => Series::query()->count(),
             'series' => Series::with('posts')->paginate(10),
         ];
+    }
+
+    /**
+     * @return Collection<int, Series>
+     */
+    public function names(): Collection
+    {
+        /** @var Collection<int, Series> */
+        return Series::query()
+            ->select('id', 'title')
+            ->latest()
+            ->limit(50)
+            ->get();
     }
 
     public function store(StoreRequest $request): Series
