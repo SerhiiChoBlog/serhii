@@ -76,21 +76,29 @@ const loadMoreSeries = debounce((): void => {
 
         <DataTable v-else>
             <template #head>
-                <HeadDetail class="w-12">#</HeadDetail>
+                <HeadDetail class="w-12">ID</HeadDetail>
+                <HeadDetail>Image</HeadDetail>
                 <HeadDetail>Title</HeadDetail>
                 <HeadDetail>Intro</HeadDetail>
-                <HeadDetail>Description</HeadDetail>
                 <HeadDetail>Posts</HeadDetail>
-                <HeadDetail>Updated at</HeadDetail>
                 <HeadDetail>Created at</HeadDetail>
                 <HeadDetail>Edit</HeadDetail>
             </template>
 
             <BodyRow v-for="singleSeries in series" :key="singleSeries.id">
                 <BodyDetail>{{ singleSeries.id }}</BodyDetail>
+                <BodyDetail>
+                    <a :href="`/${singleSeries.image_lg}`" target="_blank" rel="noreferrer">
+                        <img
+                            :src="`/${singleSeries.image_sm}`"
+                            width="200"
+                            class="rounded-md shadow-md"
+                            :alt="singleSeries.title"
+                        />
+                    </a>
+                </BodyDetail>
                 <BodyDetail>{{ singleSeries.title }}</BodyDetail>
                 <BodyDetail>{{ singleSeries.intro }}</BodyDetail>
-                <BodyDetail>{{ singleSeries.description }}</BodyDetail>
                 <BodyDetail>
                     <span v-if="singleSeries.posts.length === 0">No posts</span>
                     <ul v-else>
@@ -98,9 +106,6 @@ const loadMoreSeries = debounce((): void => {
                             {{ post.title }}
                         </li>
                     </ul>
-                </BodyDetail>
-                <BodyDetail>
-                    {{ moment(singleSeries.updated_at).format('D MMM YYYY H:mm') }}
                 </BodyDetail>
                 <BodyDetail>
                     {{ moment(singleSeries.created_at).format('D MMM YYYY H:mm') }}
