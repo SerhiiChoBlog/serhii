@@ -35,6 +35,11 @@ function movePostDownInOrder(post: Post): void {
     posts.splice(index, 1)
     posts.splice(index + 1, 0, post)
 }
+
+function deletePost(post: Post): void {
+    const index = posts.indexOf(post)
+    posts.splice(index, 1)
+}
 </script>
 
 <template>
@@ -74,6 +79,7 @@ function movePostDownInOrder(post: Post): void {
                 />
 
                 <PostSeriesButton
+                    @click="deletePost(post)"
                     icon="fa-times"
                     class="text-red-500"
                 />
