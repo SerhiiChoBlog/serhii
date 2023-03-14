@@ -13,6 +13,28 @@ const { posts, seriesTitle } = defineProps<Props>()
 function addPostToSeries(post: Post): void {
     posts.push(post)
 }
+
+function movePostUpInOrder(post: Post): void {
+    const index = posts.indexOf(post)
+
+    if (index === 0) {
+        return
+    }
+
+    posts.splice(index, 1)
+    posts.splice(index - 1, 0, post)
+}
+
+function movePostDownInOrder(post: Post): void {
+    const index = posts.indexOf(post)
+
+    if (index === posts.length - 1) {
+        return
+    }
+
+    posts.splice(index, 1)
+    posts.splice(index + 1, 0, post)
+}
 </script>
 
 <template>
@@ -45,6 +67,8 @@ function addPostToSeries(post: Post): void {
 
             <div class="mx-2 flex flex-col justify-center gap-2">
                 <PostSeriesButton
+                    v-if="index !== 1"
+                    @click="movePostUpInOrder(post)"
                     icon="fa-arrow-up"
                     class="text-gray-500"
                 />
@@ -55,6 +79,8 @@ function addPostToSeries(post: Post): void {
                 />
 
                 <PostSeriesButton
+                    v-if="index !== posts.length"
+                    @click="movePostDownInOrder(post)"
                     icon="fa-arrow-down"
                     class="text-gray-500"
                 />
