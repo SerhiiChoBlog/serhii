@@ -22,6 +22,10 @@ function fetchPost(): void {
 
     loading.value = true
 
+    if (postSlug.value.includes('/')) {
+        postSlug.value = postSlug.value.split('/').pop() || ''
+    }
+
     axios.get<Post | null>(`/admin/ajax/posts/${postSlug.value}`)
         .then(resp => {
             if (!resp.data) {
@@ -38,7 +42,7 @@ function fetchPost(): void {
 </script>
 
 <template>
-    <div class="flex gap-4 items-center mt-7">
+    <div class="flex flex-col lg:flex-row gap-4 items-center mt-7">
         <MainButton>
             <i class="fas fa-plus mr-2"></i>
             Add post
@@ -46,8 +50,8 @@ function fetchPost(): void {
 
         <input
             type="text"
-            placeholder="Post slug"
-            class="px-5 py-2 rounded-md bg-page-second w-full max-w-[250px]"
+            placeholder="Paste post slug or URL"
+            class="px-5 py-2 rounded-md bg-page-second w-full max-w-[500px]"
             v-model="postSlug"
             @blur="fetchPost"
         />
@@ -57,7 +61,7 @@ function fetchPost(): void {
         <i v-else class="fas fa-times text-red-500 text-2xl"></i>
 
         <span v-if="loading">Loading...</span>
-        <span v-else-if="post">{{ post.title }}</span>
+        <span v-else-if="post">Added: "{{ post.title }}"</span>
         <span v-else>No post</span>
     </div>
 </template>
