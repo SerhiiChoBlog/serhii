@@ -5,9 +5,7 @@ import axios from 'axios'
 import handleError from '@admin/modules/handleError'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { tinymceConfig } from '@admin/modules/tinymce'
 import SaveSeries from '@admin/modules/SaveSeries'
-import Editor from '@tinymce/tinymce-vue'
 import FormTextarea from '@admin/components/Form/FormTextarea.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import FormInput from '@admin/components/Form/FormInput.vue'
@@ -43,7 +41,7 @@ function saveSeries(form: HTMLFormElement | null): void {
     const elements = form.elements as EditSeriesFormElements
 
     new SaveSeries(elements, series.value.id)
-        .save(series.value.description || '')
+        .save()
         .then(handleSavePostResponse)
         .finally(() => loading.value = false)
 }
@@ -141,13 +139,15 @@ function saveSeriesWithCorrectKeyBinds(e: KeyboardEvent): void {
                     </div>
 
                     <div class="mt-5">
-                        <Editor
-                            :initialValue="series.description"
-                            tinymce-script-src="/js/tinymce/tinymce.min.js"
-                            :init="tinymceConfig"
-                            v-model="series!.description"
-                            @keydown="saveSeriesWithCorrectKeyBinds"
-                        />
+                        <FormTextarea
+                            id="description"
+                            placeholder="Write a full series description"
+                            classes="min-h-[200px]"
+                            :value="series.description"
+                            name="description"
+                        >
+                            Description
+                        </FormTextarea>
                     </div>
 
                     <div>
