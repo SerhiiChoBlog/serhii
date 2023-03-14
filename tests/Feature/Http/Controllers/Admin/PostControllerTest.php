@@ -71,6 +71,35 @@ class PostControllerTest extends TestCase
         ]);
     }
 
+    public function testCanCreatePostWithSeriesAttachedWithCorrectPart(): void
+    {
+        /** @var Collection<int, Post> $posts */
+        $posts = Post::factory()->count(2)->create();
+
+        $admin = $this->createAdmin();
+        $series = Series::factory()->create();
+
+        $series->posts()->attach([
+            $posts->first()?->id => ['part' => 1],
+            $posts->last()?->id => ['part' => 2],
+        ]);
+
+        $params = [
+            'title' => 'This is the post title for post',
+            'series' => $series->id,
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('post', self::STORE_URI, $params)
+            ->assertOk();
+
+        $this->assertDatabaseHas('post_series', [
+            'post_id' => 3,
+            'series_id' => $series->id,
+            'part' => 3,
+        ]);
+    }
+
     public function testAdminCanUpdate(): void
     {
         $admin = $this->createAdmin();

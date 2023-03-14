@@ -47,8 +47,12 @@ class PostController extends Controller
         ]);
 
         if ($request->series) {
-            $series = Series::query()->findOrFail($request->series);
-            $series->posts()->attach($post);
+            $series = Series::query()->withCount('posts')->findOrFail($request->series);
+            $posts_count = $series->posts_count ?? 0;
+
+            $series->posts()->attach([$post->id => [
+                'part' => $posts_count + 1,
+            ]]);
         }
 
         return $post->id;
