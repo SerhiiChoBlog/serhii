@@ -86,25 +86,25 @@ const loadMoreSeries = debounce((): void => {
                 <HeadDetail>Edit</HeadDetail>
             </template>
 
-            <BodyRow v-for="singleSeries in series" :key="singleSeries.id">
-                <BodyDetail>{{ singleSeries.id }}</BodyDetail>
-                <BodyDetail>
-                    <a :href="`/${singleSeries.image_lg}`" target="_blank" rel="noreferrer">
+            <BodyRow v-for="s in series" :key="s.id">
+                <BodyDetail>{{ s.id }}</BodyDetail>
+                <BodyDetail :style="{ 'background': `linear-gradient(90deg, ${s.color_from} 0%, ${s.color_to} 100%)` }">
+                    <router-link :to="{ name: 'series-edit', params: { id: s.id.toString() } }">
                         <img
-                            :src="`/${singleSeries.image_sm}`"
+                            :src="`/${s.image_sm}`"
                             width="200"
                             class="rounded-md shadow-md"
-                            :alt="singleSeries.title"
+                            :alt="s.title"
                         />
-                    </a>
+                    </router-link>
                 </BodyDetail>
-                <BodyDetail>{{ singleSeries.title }}</BodyDetail>
-                <BodyDetail>{{ singleSeries.intro }}</BodyDetail>
+                <BodyDetail>{{ s.title }}</BodyDetail>
+                <BodyDetail>{{ s.intro }}</BodyDetail>
                 <BodyDetail>
-                    <span v-if="singleSeries.posts.length === 0">No posts</span>
+                    <span v-if="s.posts.length === 0">No posts</span>
 
                     <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-1 max-w-[200px]">
-                        <div v-for="post in singleSeries.posts" :key="post.id">
+                        <div v-for="post in s.posts" :key="post.id">
                             <a
                                 :href="`/admin/posts/${post.id}/edit`"
                                 target="_blank"
@@ -123,12 +123,12 @@ const loadMoreSeries = debounce((): void => {
                     </div>
                 </BodyDetail>
                 <BodyDetail>
-                    {{ moment(singleSeries.created_at).format('D MMM YYYY H:mm') }}
+                    {{ moment(s.created_at).format('D MMM YYYY H:mm') }}
                 </BodyDetail>
                 <BodyDetail class="text-center">
                     <icon-button
                         icon="fa-pen"
-                        :route="{ name: 'series-edit', params: { id: singleSeries.id.toString() } }"
+                        :route="{ name: 'series-edit', params: { id: s.id.toString() } }"
                         title="Edit series"
                     />
                 </BodyDetail>
