@@ -6,16 +6,18 @@
      */
 @endphp
 
-<article>
-    <a href="{{ route('series.show', $series) }}" class="block">
+<article class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5 p-3 hover:bg-page-second rounded-lg transition-colors">
+    <div>
         <img
-            src="{{ $series->image_url }}"
+            src="{{ asset($series->image_sm) }}"
             alt="{{ $series->title }}"
-            class="w-full"
+            class="w-full rounded-lg shadow-md"
+            width="750"
+            height="250"
         >
 
-        <div class="flex flex-col gap-y-2">
-            <h2 class="text-xl font-bold">
+        <div class="flex flex-col gap-y-2 mt-2">
+            <h2 class="text-xl lg:text-2xl font-bold">
                 {{ $series->title }}
             </h2>
 
@@ -23,5 +25,9 @@
                 {!! $series->description !!}
             </p>
         </div>
-    </a>
+    </div>
+
+    <div>
+        posts here
+    </div>
 </article>
