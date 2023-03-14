@@ -14,6 +14,7 @@ import DataTable from '@admin/components/DataTable/DataTable.vue'
 import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
+import Tip from '@shared/components/Tip.vue'
 
 const series = ref<SeriesType[]>([])
 const totalSeries = ref<number | null>(null)
@@ -77,7 +78,7 @@ const loadMoreSeries = debounce((): void => {
         <DataTable v-else>
             <template #head>
                 <HeadDetail class="w-12">ID</HeadDetail>
-                <HeadDetail>Image</HeadDetail>
+                <HeadDetail class="w-56">Image</HeadDetail>
                 <HeadDetail>Title</HeadDetail>
                 <HeadDetail>Intro</HeadDetail>
                 <HeadDetail>Posts</HeadDetail>
@@ -101,11 +102,25 @@ const loadMoreSeries = debounce((): void => {
                 <BodyDetail>{{ singleSeries.intro }}</BodyDetail>
                 <BodyDetail>
                     <span v-if="singleSeries.posts.length === 0">No posts</span>
-                    <ul v-else>
-                        <li v-for="post in singleSeries.posts" :key="post.id">
-                            {{ post.title }}
-                        </li>
-                    </ul>
+
+                    <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-1 max-w-[200px]">
+                        <div v-for="post in singleSeries.posts" :key="post.id">
+                            <a
+                                :href="`/admin/posts/${post.id}/edit`"
+                                target="_blank"
+                                rel="noreferrer"
+                                class="inline-block"
+                            >
+                                <Tip :content="post.title">
+                                    <img
+                                        :src="`/${post.image_sm}`"
+                                        class="rounded-md shadow-md w-full"
+                                        :alt="post.title"
+                                    />
+                                </Tip>
+                            </a>
+                        </div>
+                    </div>
                 </BodyDetail>
                 <BodyDetail>
                     {{ moment(singleSeries.created_at).format('D MMM YYYY H:mm') }}
