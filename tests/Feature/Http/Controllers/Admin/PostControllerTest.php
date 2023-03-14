@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Http\Controllers\Admin;
 
 use App\Models\Post;
+use App\Models\Series;
 use App\Models\Tag;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -46,6 +47,28 @@ class PostControllerTest extends TestCase
             ->assertOk();
 
         $this->assertDatabaseHas('posts', $params);
+    }
+
+    public function testCanCreatePostWithSeriesAttached(): void
+    {
+        $admin = $this->createAdmin();
+        $series = Series::factory()->create();
+
+        $this->withoutExceptionHandling();
+        $params = [
+            'title' => 'This is the post title for post',
+            'series' => $series->id,
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->json('post', self::STORE_URI, $params)
+            ->assertOk();
+
+        $this->assertDatabaseHas('post_series', [
+            'post_id' => 1,
+            'series_id' => $series->id,
+            'part' => 1,
+        ]);
     }
 
     public function testAdminCanUpdate(): void

@@ -13,6 +13,7 @@ use App\Http\Requests\Admin\Post\StoreRequest;
 use App\Http\Requests\Admin\Post\UpdateRequest;
 use App\LazyLoadingParser;
 use App\Models\Post;
+use App\Models\Series;
 use App\Utils\ImageProcessor;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\UploadedFile;
@@ -44,6 +45,11 @@ class PostController extends Controller
             'title' => $request->title,
             'slug' => Str::slug($request->title),
         ]);
+
+        if ($request->series) {
+            $series = Series::query()->findOrFail($request->series);
+            $series->posts()->attach($post);
+        }
 
         return $post->id;
     }
