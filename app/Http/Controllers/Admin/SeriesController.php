@@ -72,10 +72,7 @@ class SeriesController extends Controller
         $data->put('slug', Str::slug($request->title));
 
         $series->update($data->toArray());
-
-        if (!empty($request->posts)) {
-            $series->posts()->sync($this->addPartsToPosts($request->posts));
-        }
+        $series->posts()->sync($this->addPartsToPosts($request->posts ?? []));
     }
 
     public function destroy(Series $series): void

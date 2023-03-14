@@ -166,7 +166,7 @@ class SeriesControllerTest extends TestCase
             'title' => 'Learn PHP New',
             'intro' => 'Learn PHP New from scratch',
             'description' => 'Learn PHP New from scratch and become a PHP developer in 2024',
-            'posts' => [],
+            'posts' => '[]',
         ];
 
         $this->actingAs($admin, 'admin')
@@ -195,7 +195,7 @@ class SeriesControllerTest extends TestCase
             'title' => $series->title,
             'intro' => $series->intro,
             'description' => $series->description,
-            'posts' => $posts->pluck('id')->toArray()
+            'posts' => $posts->pluck('id')->toJson(),
         ];
 
         $this->actingAs($admin, 'admin')
@@ -223,7 +223,7 @@ class SeriesControllerTest extends TestCase
             'title' => $series->title,
             'intro' => $series->intro,
             'description' => $series->description,
-            'posts' => [],
+            'posts' => '[]',
             'image' => UploadedFile::fake()->image('js.jpg'),
         ];
 
@@ -251,7 +251,7 @@ class SeriesControllerTest extends TestCase
             'title' => $series->title,
             'intro' => $series->intro,
             'description' => $series->description,
-            'posts' => [],
+            'posts' => '[]',
         ];
 
         $this->actingAs($admin, 'admin')
@@ -280,11 +280,11 @@ class SeriesControllerTest extends TestCase
             'title' => $series->title,
             'intro' => $series->intro,
             'description' => $series->description,
-            'posts' => [
+            'posts' => json_encode([
                 $posts[2]?->id,
                 $posts[1]?->id,
                 $posts[0]?->id,
-            ],
+            ], JSON_THROW_ON_ERROR),
         ];
 
         $this->actingAs($admin, 'admin')
