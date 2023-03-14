@@ -43,7 +43,12 @@
 
 @section('content')
     <article>
-        <div class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white print:bg-none print:text-black">
+        <div
+            class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white print:bg-none print:text-black"
+            @if ($post->series->isNotEmpty())
+                style="background: linear-gradient(90deg, {{ $post->series->first()->color_from }} 0%, {{ $post->series->first()->color_to }} 100%)"
+            @endif
+        >
             <div class="min-h-[64px]">
                 <navbar theme="{{ request()->cookie('theme', 'system') }}"></navbar>
             </div>
@@ -55,6 +60,10 @@
                             style="font-size: {{ $title_font_size }}"
                             class="leading-[1] font-light text-center lg:text-left"
                         >
+                            @if ($post->series->isNotEmpty())
+                                {{ $post->series->first()->title }}:
+                            @endif
+
                             {{ $post->title }}
                         </h1>
 

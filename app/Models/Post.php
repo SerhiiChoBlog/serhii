@@ -8,7 +8,6 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -35,7 +34,7 @@ use Illuminate\Support\Collection;
  * @property int|null $social_shares_count
  * @property int|null $comments_shares_count
  * @property int $read_time
- * @property Series|null $series Single series
+ * @property Collection<int, Series> $series
  * @property Video|null $video
  * @property array<int, array<int, string>>|null $social
  * @property string $pretty_created_at
@@ -75,11 +74,14 @@ class Post extends Model
     }
 
     /**
-     * @return BelongsTo<Series, self>
+     * @return BelongsToMany<Series>
      */
-    public function series(): BelongsTo
+    public function series(): BelongsToMany
     {
-        return $this->belongsTo(Series::class);
+        return $this->belongsToMany(Series::class)
+            ->withPivot('part')
+            ->orderBy('part')
+            ->limit(1);
     }
 
     /**
@@ -138,6 +140,17 @@ class Post extends Model
         return $this->belongsToMany(Keyword::class);
     }
 
+    public static function calculateEstimatedReadingTime(string $content): int
+    {
+        $content = strip_tags($content);
+        $word_count = str_word_count($content);
+        $wpm = 180;
+
+        $time = round($word_count / $wpm);
+
+        return (int) $time;
+    }
+
     /**
      * @return Attribute<string, mixed>
      */
@@ -150,16 +163,5 @@ class Post extends Model
 
             return $this->created_at->format('M j, Y');
         });
-    }
-
-    public static function calculateEstimatedReadingTime(string $content): int
-    {
-        $content = strip_tags($content);
-        $word_count = str_word_count($content);
-        $wpm = 180;
-
-        $time = round($word_count / $wpm);
-
-        return (int) $time;
     }
 }

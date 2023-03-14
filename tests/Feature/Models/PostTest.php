@@ -38,12 +38,12 @@ class PostTest extends TestCase
         $post = Post::factory()->create();
         $series = Series::factory()->create();
 
-        $post->series()->associate($series);
+        $post->series()->attach($series);
 
         $result = $post->series;
 
         $this->assertNotNull($result);
-        $this->assertSame($series->id, $result->id);
+        $this->assertSame($series->id, $result[0]->id);
     }
 
     public function testPostHasTagsRelated(): void

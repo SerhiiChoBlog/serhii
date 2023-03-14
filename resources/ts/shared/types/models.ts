@@ -38,7 +38,7 @@ export type Post = {
     postViews?: PostView[]
     socialShares?: SocialShare[]
     keywords?: Keyword[]
-    series?: Series | null
+    series?: Series[]
     tags?: Tag[]
     video?: Video | null
     social?: string[][]
