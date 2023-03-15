@@ -8,7 +8,7 @@
 
 <a
     href="{{ route('posts.show', $post->slug) }}"
-    class="block"
+    class="block transition-[outline] outline outline-transparent hover:outline-main rounded-md"
 >
     <img
         src="{{ asset($post->image_xs) }}"
