@@ -38,6 +38,7 @@ export type Post = {
     postViews?: PostView[]
     socialShares?: SocialShare[]
     keywords?: Keyword[]
+    series?: Series[]
     tags?: Tag[]
     video?: Video | null
     social?: string[][]
@@ -202,4 +203,20 @@ export type Project = {
     stars: number
     created_at: string
     updated_at: string
+}
+
+export type Series = {
+    id: number
+    slug: string
+    title: string
+    intro: string
+    color_from: string
+    color_to: string
+    description: string
+    image_xs: string
+    image_sm: string
+    image_lg: string
+    created_at: string
+    updated_at: string
+    posts?: Post[]
 }

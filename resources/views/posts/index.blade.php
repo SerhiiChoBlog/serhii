@@ -43,7 +43,7 @@
             @if ($posts->isEmpty())
                 <x-posts.no-posts/>
             @else
-                <div class="flex flex-col gap-y-2">
+                <div class="flex flex-col gap-y-8 mt-4">
 
                     @foreach ($posts as $post)
                         <x-posts.horizontal-post :post="$post"/>

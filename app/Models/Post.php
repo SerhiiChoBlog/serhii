@@ -34,6 +34,7 @@ use Illuminate\Support\Collection;
  * @property int|null $social_shares_count
  * @property int|null $comments_shares_count
  * @property int $read_time
+ * @property Collection<int, Series> $series
  * @property Video|null $video
  * @property array<int, array<int, string>>|null $social
  * @property string $pretty_created_at
@@ -70,6 +71,17 @@ class Post extends Model
             ->withPivot('is_main')
             ->using(PostTag::class)
             ->orderByDesc('is_main');
+    }
+
+    /**
+     * @return BelongsToMany<Series>
+     */
+    public function series(): BelongsToMany
+    {
+        return $this->belongsToMany(Series::class)
+            ->withPivot('part')
+            ->orderBy('part')
+            ->limit(1);
     }
 
     /**
@@ -128,6 +140,17 @@ class Post extends Model
         return $this->belongsToMany(Keyword::class);
     }
 
+    public static function calculateEstimatedReadingTime(string $content): int
+    {
+        $content = strip_tags($content);
+        $word_count = str_word_count($content);
+        $wpm = 180;
+
+        $time = round($word_count / $wpm);
+
+        return (int) $time;
+    }
+
     /**
      * @return Attribute<string, mixed>
      */
@@ -140,16 +163,5 @@ class Post extends Model
 
             return $this->created_at->format('M j, Y');
         });
-    }
-
-    public static function calculateEstimatedReadingTime(string $content): int
-    {
-        $content = strip_tags($content);
-        $word_count = str_word_count($content);
-        $wpm = 180;
-
-        $time = round($word_count / $wpm);
-
-        return (int) $time;
     }
 }

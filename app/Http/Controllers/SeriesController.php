@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+use App\Models\Series;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+class SeriesController extends Controller
+{
+    public function index(): View
+    {
+        $series = Series::query()
+            ->withCount('posts')
+            ->with(['posts' => function (BelongsToMany $q) {
+                $q->select('id', 'image_xs', 'image_sm', 'slug')
+                    ->where('is_published', true);
+            }])
+            ->whereHas('posts', fn (Builder $q) => $q->where('is_published', true))
+            ->paginate(5);
+
+        return view('series.index', compact('series'));
+    }
+
+    public function show(Series $series): View
+    {
+        $series->load('posts')->loadCount('posts');
+
+        return view('series.show', compact('series'));
+    }
+}

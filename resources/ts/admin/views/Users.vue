@@ -54,7 +54,7 @@ function loadMoreUsers(): void {
 
         <DataTable v-else>
             <template #head>
-                <HeadDetail class="w-12">#</HeadDetail>
+                <HeadDetail class="w-12">ID</HeadDetail>
                 <HeadDetail class="w-12">Avatar</HeadDetail>
                 <HeadDetail class="w-12">Platform</HeadDetail>
                 <HeadDetail>Name</HeadDetail>

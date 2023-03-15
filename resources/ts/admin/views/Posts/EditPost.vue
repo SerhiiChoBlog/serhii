@@ -13,7 +13,7 @@ import MainButton from '@admin/components/Buttons/MainButton.vue'
 import FormInput from '@admin/components/Form/FormInput.vue'
 import TagItem from '@admin/components/TagItem.vue'
 import TagSuggestions from '@admin/components/Post/TagSuggestions.vue'
-import PostImage from '@admin/components/Post/PostImage.vue'
+import FormImage from '@admin/components/FormImage.vue'
 import DeletePost from '@admin/components/Post/DeletePost.vue'
 import Editor from '@tinymce/tinymce-vue'
 import KeywordSuggestions from '@admin/components/Post/KeywordSuggestions.vue'
@@ -180,7 +180,10 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                         </div>
 
                         <div class="flex-1">
-                            <PostImage :post="post" />
+                            <FormImage
+                                :uri="post.image_lg"
+                                defaultUri="/storage/posts/placeholder.jpg"
+                            />
                         </div>
                     </div>
 

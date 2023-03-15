@@ -13,9 +13,9 @@ export default [
         title: 'Blog',
     },
     {
-        href: '/projects',
-        class: currPath === '/projects' ? activeClass : '',
-        title: 'Open source',
+        href: '/series',
+        class: currPath === '/series' ? activeClass : '',
+        title: 'Series',
     },
     {
         href: '/about-me',

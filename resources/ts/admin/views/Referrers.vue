@@ -36,14 +36,15 @@ function fetchReferrers(): void {
         <DataTable v-else class="max-w-[700px] mx-auto">
             <template #head>
                 <HeadDetail
-                    v-for="title in ['#', 'Site', 'Hits', 'Last update']"
+                    v-for="title in ['#', 'ID   ', 'Site', 'Hits', 'Last update']"
                     :key="title"
                 >
                     {{ title }}
                 </HeadDetail>
             </template>
 
-            <BodyRow v-for="referrer in referrers" :key="referrer.id">
+            <BodyRow v-for="(referrer, index) in referrers" :key="referrer.id">
+                <BodyDetail>{{ ++index }}</BodyDetail>
                 <BodyDetail>{{ referrer.id }}</BodyDetail>
                 <BodyDetail>
                     <a :href="`https://${referrer.site}`" target="_blank" class="underline">

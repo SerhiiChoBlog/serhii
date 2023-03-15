@@ -43,7 +43,12 @@
 
 @section('content')
     <article>
-        <div class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white print:bg-none print:text-black">
+        <div
+            class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white print:bg-none print:text-black"
+            @if ($post->series->isNotEmpty())
+                style="background: linear-gradient(90deg, {{ $post->series->first()->color_from }} 0%, {{ $post->series->first()->color_to }} 100%)"
+            @endif
+        >
             <div class="min-h-[64px]">
                 <navbar theme="{{ request()->cookie('theme', 'system') }}"></navbar>
             </div>
@@ -55,6 +60,10 @@
                             style="font-size: {{ $title_font_size }}"
                             class="leading-[1] font-light text-center lg:text-left"
                         >
+                            @if ($post->series->isNotEmpty())
+                                {{ $post->series->first()->title }}:
+                            @endif
+
                             {{ $post->title }}
                         </h1>
 
@@ -65,7 +74,18 @@
                         </div>
 
                         @if (auth('admin')->check())
-                            <div class="mt-4" aria-hidden="true">
+                            <div class="mt-4 flex items-center gap-4" aria-hidden="true">
+                                @if ($post->series->isNotEmpty())
+                                    <a
+                                        href="/admin/series/{{ $post->series->first()->id }}/edit"
+                                        class="px-4 py-1 rounded-md shadow-md text-md"
+                                        style="background-color: {{ $post->series->first()->color_to }}"
+                                    >
+                                        {{ $post->series->first()->title }}:
+                                        Part {{ $post->series->first()->pivot->part }} of {{ $post->series->first()->posts_count }}
+                                    </a>
+                                @endif
+
                                 <a
                                     href="/admin/posts/{{ $post->id }}/edit"
                                     class="px-5 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100 py-1 uppercase text-xs"
