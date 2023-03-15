@@ -10,6 +10,9 @@
 /storage/app/public/avatars/*
 !/storage/app/public/avatars/default.svg
 !/storage/app/public/avatars/serhiicho.jpg
+/storage/app/public/series/lg/*
+/storage/app/public/series/sm/*
+/storage/app/public/series/xs/*
 /vendor
 .env
 .env.backup
