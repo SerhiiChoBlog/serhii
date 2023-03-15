@@ -77,7 +77,7 @@
                             <div class="mt-4 flex items-center gap-4" aria-hidden="true">
                                 @if ($post->series->isNotEmpty())
                                     <a
-                                        href="/admin/series/{{ $post->series->first()->id }}/edit"
+                                        href="{{ route('series.show', $post->series->first()->slug) }}"
                                         class="px-4 py-1 rounded-md shadow-md text-md"
                                         style="background-color: {{ $post->series->first()->color_to }}"
                                     >
