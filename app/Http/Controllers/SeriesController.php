@@ -25,8 +25,10 @@ class SeriesController extends Controller
         return view('series.index', compact('series'));
     }
 
-    public function show(): View
+    public function show(Series $series): View
     {
-        return view('series.show');
+        $series->load('posts')->loadCount('posts');
+
+        return view('series.show', compact('series'));
     }
 }

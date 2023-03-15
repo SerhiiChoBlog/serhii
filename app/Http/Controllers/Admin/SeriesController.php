@@ -70,9 +70,9 @@ class SeriesController extends Controller
         $image = $request->file('image');
 
         $image_processor = new ImageProcessor($image, [
-            'xs' => [120, 40],
-            'sm' => [750, 250],
-            'lg' => [1500, 500],
+            'xs' => [100, 25],
+            'sm' => [800, 200],
+            'lg' => [1600, 400],
         ]);
 
         $images = $image_processor->save($request->title, 'series');
