@@ -32,6 +32,11 @@ class FooterMenu extends Component
                 'title' => 'Blog',
             ],
             [
+                'href' => route('series.index'),
+                'class' => request()->is('series') ? $active_class : '',
+                'title' => 'Series',
+            ],
+            [
                 'href' => route('projects.index'),
                 'class' => request()->is('projects') ? $active_class : '',
                 'title' => 'Open Source',
