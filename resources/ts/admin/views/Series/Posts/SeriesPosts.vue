@@ -53,21 +53,25 @@ function deletePost(post: Post): void {
         <article
             v-for="(post, index) in posts"
             :key="post.id"
-            class="bg-page-second p-3 rounded-lg flex flex-col lg:flex-row gap-6"
+            class="bg-page-second p-3 rounded-lg flex flex-col justify-between lg:flex-row gap-6"
         >
-            <input type="hidden" name="posts[]" :value="post.id" />
+            <div class="flex flex-col lg:flex-row items-center gap-4">
+                <input type="hidden" name="posts[]" :value="post.id" />
 
-            <img
-                :src="`/${post.image_sm}`"
-                class="w-full lg:w-48 rounded-md shadow-md"
-                width="550"
-                height="275"
-            />
+                <img
+                    :src="`/${post.image_sm}`"
+                    class="w-full lg:w-48 rounded-md shadow-md"
+                    width="550"
+                    height="275"
+                />
 
-            <div class="flex flex-col justify-center">
-                <h2 class="text-xl lg:text-2xl">{{ seriesTitle }}: {{ post.title }}</h2>
-                <h3 class="text-md lg:text-lg opacity-80">Part {{ ++index }}</h3>
-                <p class="text-sm lg:text-md">{{ post.intro }}</p>
+                <div class="flex flex-col justify-center">
+                    <a :href="`/posts/${post.slug}`" class="hover:underline">
+                        <h2 class="text-xl lg:text-2xl">{{ seriesTitle }}: {{ post.title }}</h2>
+                    </a>
+                    <h3 class="text-md lg:text-lg opacity-80">Part {{ ++index }}</h3>
+                    <p class="text-sm lg:text-md">{{ post.intro }}</p>
+                </div>
             </div>
 
             <div class="mx-2 flex flex-row lg:flex-col justify-center gap-6 lg:gap-2">
