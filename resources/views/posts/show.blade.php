@@ -54,7 +54,7 @@
             </div>
 
             <div class="py-[2rem] px-[1.5rem] lg:py-[6rem] lg:px-[1.5rem] container">
-                <div class="grid grid-cols-1 lg:grid-cols-2 relative">
+                <div class="grid grid-cols-1 lg:grid-cols-2 relative gap-5">
                     <div class="flex items-left justify-center flex-col text-[.7rem] lg:text-[1rem]">
                         <h1
                             style="font-size: {{ $title_font_size }}"
