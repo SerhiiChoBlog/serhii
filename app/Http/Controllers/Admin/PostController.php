@@ -13,7 +13,8 @@ use App\Http\Requests\Admin\Post\StoreRequest;
 use App\Http\Requests\Admin\Post\UpdateRequest;
 use App\LazyLoadingParser;
 use App\Models\Post;
-use App\Utils\SaveImage;
+use App\Models\Series;
+use App\Utils\ImageProcessor;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Artisan;
@@ -24,8 +25,6 @@ use JsonException;
 
 class PostController extends Controller
 {
-    use SaveImage;
-
     /**
      * @return LengthAwarePaginator<Post>
      */
@@ -47,7 +46,22 @@ class PostController extends Controller
             'slug' => Str::slug($request->title),
         ]);
 
+        if ($request->series) {
+            $series = Series::query()->withCount('posts')->findOrFail($request->series);
+            $posts_count = $series->posts_count ?? 0;
+
+            $post->series()->attach([$series->id => ['part' => $posts_count + 1]]);
+        }
+
         return $post->id;
+    }
+
+    public function show(string $post_slug): ?Post
+    {
+        /** @var Post|null */
+        return Post::query()
+            ->where('slug', $post_slug)
+            ->first();
     }
 
     /**
@@ -81,29 +95,34 @@ class PostController extends Controller
         /** @var UploadedFile|null $image */
         $image = $request->file('image');
 
-        $images = $this->savePhotoIfExist($image, $post->title);
+        $image_processor = new ImageProcessor($image, [
+            'xs' => [100, 50],
+            'sm' => [550, 275],
+            'lg' => [1000, 500],
+        ]);
+
+        $images = $image_processor->save($post->title, 'posts');
 
         if ($images) {
-            $data = $data->merge([
-                'image_xs' => $images['xs'],
-                'image_sm' => $images['sm'],
-                'image_lg' => $images['lg'],
-            ]);
+            $data->put('image_xs', $images['xs']);
+            $data->put('image_sm', $images['sm']);
+            $data->put('image_lg', $images['lg']);
         }
 
-        $data['content'] = $this->addNotesToContent($request->content);
+        $content = $this->addNotesToContent($request->content);
 
-        if ($data['content']) {
-            $data['content'] = LazyLoadingParser::makeImagesLazy($data['content']);
+        if ($content) {
+            $content = LazyLoadingParser::makeImagesLazy($content);
         }
 
-        $data['read_time'] = Post::calculateEstimatedReadingTime($data['content'] ?? '');
+        $data->put('read_time', Post::calculateEstimatedReadingTime($content ?? ''));
+        $data->put('content', $content);
 
         $first_publish = !$post->is_published && $request->is_published;
         $first_unpublish = $post->is_published && !$request->is_published;
 
         if ($first_publish) {
-            $data = $data->merge(['created_at' => now()]);
+            $data->put('created_at', now());
             Artisan::call(SitemapCommand::class);
         }
 

@@ -11,6 +11,7 @@ use App\Models\Visitor;
 use HttpException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -18,6 +19,11 @@ class PostController extends Controller
     public function index(IndexRequest $request): View
     {
         $query = Post::with('tags:id,name,color,title')
+            ->with([
+                'series' => function (BelongsToMany $q) {
+                    return $q->select('id', 'title', 'slug')->withCount('posts');
+                },
+            ])
             ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time')
             ->withCount('comments')
             ->withCount('postViews')
@@ -40,7 +46,13 @@ class PostController extends Controller
     public function show(string $slug, Request $request): View
     {
         /** @var Post|null $post */
-        $post = Post::with('tags', 'video:post_id,title,url,image')
+        $post = Post::with('tags')
+            ->with('video:post_id,title,url,image')
+            ->with([
+                'series' => function (BelongsToMany $q) {
+                    return $q->select('id', 'title', 'slug', 'color_from', 'color_to')->withCount('posts');
+                },
+            ])
             ->withCount('comments')
             ->where('slug', $slug)
             ->withCount('postViews')
@@ -54,8 +66,11 @@ class PostController extends Controller
             abort(404, 'Post not found');
         }
 
-        /** @var int<0, 190> $title_len */
         $title_len = strlen($post->title);
+
+        if ($post->series->isNotEmpty()) {
+            $title_len += strlen($post->series->first()->title ?? '') + 2;
+        }
 
         $title_font_size = match (true) {
             $title_len <= 10 => '5em',

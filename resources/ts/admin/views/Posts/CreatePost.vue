@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import type { Series as SeriesType } from '@shared/types/models'
+import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import FormInput from '@admin/components/Form/FormInput.vue'
@@ -9,12 +10,17 @@ import { useRouter } from 'vue-router'
 const loading = ref(false)
 const router = useRouter()
 const title = ref<string>('')
+const seriesId = ref<number | null>(null)
+const series = ref<SeriesType[]>([])
+
+onMounted(() => fetchSeries())
 
 function createPost(): void {
     loading.value = true
 
     axios.post<number>('/admin/ajax/posts', {
         title: title.value,
+        series: seriesId.value,
     })
         .then(resp => {
             router.push({
@@ -24,6 +30,12 @@ function createPost(): void {
         })
         .catch(handleError)
         .finally(() => loading.value = false)
+}
+
+function fetchSeries(): void {
+    axios.get<SeriesType[]>('/admin/ajax/series/names')
+        .then(resp => series.value = resp.data)
+        .catch(handleError)
 }
 </script>
 
@@ -50,6 +62,20 @@ function createPost(): void {
                     ></i>
                     <span>Create post</span>
                 </MainButton>
+            </div>
+
+            <div class="mt-5">
+                <label for="series">Select series</label>
+                <select
+                    name="series"
+                    class="block px-4 py-1 w-full max-w-[200px] border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-md"
+                    v-model="seriesId"
+                >
+                    <option :value="null">No series</option>
+                    <option v-for="series in series" :value="series.id">
+                        {{ series.title }}
+                    </option>
+                </select>
             </div>
         </form>
     </div>

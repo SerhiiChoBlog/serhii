@@ -15,6 +15,9 @@ import NotFound from '@shared/components/NotFound.vue'
 import Users from '@admin/views/Users.vue'
 import Comments from '@admin/views/Comments.vue'
 import BanUser from '@admin/views/BanUser.vue'
+import Series from '@admin/views/Series/Series.vue'
+import CreateSeries from '@admin/views/Series/CreateSeries.vue'
+import EditSeries from '@admin/views/Series/EditSeries.vue'
 
 const routes: RouteRecordRaw[] = [
     { path: '/admin/dashboard', name: 'dashboard', component: Dashboard },
@@ -32,6 +35,9 @@ const routes: RouteRecordRaw[] = [
     { path: '/admin/users', name: 'users', component: Users },
     { path: '/admin/ban-user/:slug', name: 'ban-user', component: BanUser },
     { path: '/admin/comments', name: 'comments', component: Comments },
+    { path: '/admin/series', name: 'series', component: Series },
+    { path: '/admin/series/create', name: 'series-create', component: CreateSeries },
+    { path: '/admin/series/:id/edit', name: 'series-edit', component: EditSeries },
     { path: '/:pathMatch(.*)', name: 'not-found', component: NotFound },
 ]
 

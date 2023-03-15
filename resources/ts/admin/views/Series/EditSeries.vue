@@ -1,106 +1,75 @@
 <script setup lang="ts">
-import type { Post, Tag } from '@shared/types/models'
-import type { EditPostFormElements } from '@shared/types'
+import type { Series } from '@shared/types/models'
+import type { EditSeriesFormElements } from '@shared/types'
 import axios from 'axios'
 import handleError from '@admin/modules/handleError'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { tinymceConfig } from '@admin/modules/tinymce'
-import SavePost from '@admin/modules/SavePost'
-import PostContentImages from '@admin/components/Post/PostContentImages.vue'
+import SaveSeries from '@admin/modules/SaveSeries'
 import FormTextarea from '@admin/components/Form/FormTextarea.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import FormInput from '@admin/components/Form/FormInput.vue'
-import TagItem from '@admin/components/TagItem.vue'
-import TagSuggestions from '@admin/components/Post/TagSuggestions.vue'
-import PostImage from '@admin/components/Post/PostImage.vue'
-import DeletePost from '@admin/components/Post/DeletePost.vue'
-import Editor from '@tinymce/tinymce-vue'
-import KeywordSuggestions from '@admin/components/Post/KeywordSuggestions.vue'
+import FormImage from '@admin/components/FormImage.vue'
+import DeleteSeries from '@admin/components/Series/DeleteSeries.vue'
+import SeriesPosts from '@admin/views/Series/Posts/SeriesPosts.vue'
 
 onMounted(() => {
-    fetchPost()
-    document.addEventListener('keydown', savePostWithCorrectKeyBinds)
+    fetchSeries()
+    document.addEventListener('keydown', saveSeriesWithCorrectKeyBinds)
 })
 
 const route = useRoute()
 const loading = ref(true)
-const post = ref<Post | null>(null)
-const tagInputValue = ref<string>('')
+const series = ref<Series | null>(null)
 const form = ref<HTMLFormElement | null>(null)
 
-function fetchPost(): void {
+function fetchSeries(): void {
     loading.value = true
 
-    axios.get<Post>(`/admin/ajax/posts/${route.params.id}/edit`)
-        .then(resp => post.value = resp.data)
+    axios.get<Series>(`/admin/ajax/series/${route.params.id}/edit`)
+        .then(resp => series.value = resp.data)
         .catch(handleError)
         .finally(() => loading.value = false)
 }
 
-function savePost(form: HTMLFormElement | null): void {
-    if (!post.value || !form)
+function saveSeries(form: HTMLFormElement | null): void {
+    if (!series.value || !form)
         return
 
     loading.value = true
 
-    const elements = form.elements as EditPostFormElements
+    const elements = form.elements as EditSeriesFormElements
 
-    new SavePost(elements, post.value.id)
-        .save(post.value.content || '')
+    new SaveSeries(elements, series.value.id)
+        .save()
         .then(handleSavePostResponse)
         .finally(() => loading.value = false)
 }
 
-function handleSavePostResponse(newPost: Post | null): void {
-    if (!post.value || !newPost) {
+function handleSavePostResponse(newSeries: Series | null): void {
+    if (!series.value || !newSeries) {
         return
     }
 
-    post.value = newPost
+    series.value = newSeries
 }
 
-function updateTagId(id: number): void {
-    if (!post.value || !form.value) {
-        return
-    }
-
-    (<EditPostFormElements>form.value.elements).tag_id.value = id.toString()
-
-    savePost(form.value)
-}
-
-function deleteTag(id: number): void {
-    if (!post.value || !post.value.tags)
-        return
-
-    post.value.tags = post.value.tags.filter(tag => tag.id !== id)
-}
-
-function addTag(tag: Tag): void {
-    if (!post.value || !post.value.tags)
-        return
-
-    post.value.tags.push(tag)
-    tagInputValue.value = ''
-}
-
-function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
+function saveSeriesWithCorrectKeyBinds(e: KeyboardEvent): void {
     if ((e.ctrlKey || e.metaKey) && e.code === 'KeyS') {
         e.preventDefault()
-        savePost(form.value)
+        saveSeries(form.value)
     }
 }
 </script>
 
 <template>
     <div class="container pb-6">
-        <div v-if="post">
-            <h1 class="text-4xl text-font-second">{{ post.title }}</h1>
+        <div v-if="series">
+            <h1 class="text-4xl text-font-second">{{ series.title }}</h1>
 
             <div class="container">
                 <form
-                    @submit.prevent="savePost(form)"
+                    @submit.prevent="saveSeries(form)"
                     enctype="multipart/form-data"
                     ref="form"
                 >
@@ -115,96 +84,70 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                     placeholder="Enter the title"
                                     name="title"
                                     :length="190"
-                                    :value="post.title"
+                                    :value="series.title"
                                 >
                                     Title
                                 </FormInput>
                             </div>
 
                             <div class="mt-5">
-                                <FormInput
-                                    type="text"
-                                    id="post-tags"
-                                    name="post-tags"
-                                    placeholder="Choose tags"
-                                    @changed="(val: string) => tagInputValue = val"
-                                    :value="tagInputValue"
+                                <FormTextarea
+                                    id="intro"
+                                    placeholder="Enter a short intro"
+                                    classes="min-h-[70px]"
+                                    :value="series.intro"
+                                    :length="190"
+                                    name="intro"
                                 >
-                                    Tags
-
-                                    <div class="ml-1 my-2 inline-block space-x-2">
-                                        <template v-if="post && post.tags">
-                                            <TagItem
-                                                v-for="tag in post.tags"
-                                                :key="tag.id"
-                                                :tag="tag"
-                                                @deleteTag="deleteTag"
-                                                @updateTagId="updateTagId"
-                                            />
-                                        </template>
-                                    </div>
-                                </FormInput>
-
-                                <TagSuggestions @addTag="addTag" :value="tagInputValue" />
+                                    Intro
+                                </FormTextarea>
                             </div>
 
-                            <div class="flex items-center justify-between gap-8 mt-5">
-                                <div class="w-full">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-3">
+                                <div>
                                     <FormInput
-                                        type="text"
-                                        id="video"
-                                        placeholder="Enter a YouTube video ID"
-                                        classes=""
-                                        :value="post.video ? post.video.id : undefined"
-                                        :length="190"
-                                        name="video"
+                                        type="color"
+                                        id="color_from"
+                                        name="color_from"
+                                        :value="series.color_from"
                                     >
-                                        YouTube video ID
+                                        Color from
                                     </FormInput>
                                 </div>
-
-                                <a v-if="post.video" :href="post.video.url" target="_blank" rel="noreferrer">
-                                    <img
-                                        :src="post.video.image"
-                                        :alt="post.video.title"
-                                        width="480"
-                                        height="360"
-                                        class="max-w-[140px] rounded-md shadow-md"
-                                    />
-                                </a>
-                            </div>
-
-                            <div class="mt-5">
-                                <KeywordSuggestions @changed="fetchPost" :post="post" />
+                                <div>
+                                    <FormInput
+                                        type="color"
+                                        id="color_to"
+                                        name="color_to"
+                                        :value="series.color_to"
+                                    >
+                                        Color to
+                                    </FormInput>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="flex-1">
-                            <PostImage :post="post" />
+                        <div
+                            class="flex-1 px-4 rounded-lg flex items-center"
+                            :style="{ 'background': `linear-gradient(90deg, ${series.color_from} 0%, ${series.color_to} 100%)` }"
+                        >
+                            <FormImage
+                                :uri="series.image_lg"
+                                defaultUri="/storage/series/placeholder.jpg"
+                            />
                         </div>
                     </div>
 
                     <div class="mt-5">
                         <FormTextarea
-                            id="intro"
-                            placeholder="Enter a short intro"
-                            classes="min-h-[70px]"
-                            :value="post.intro || undefined"
-                            :length="190"
-                            name="intro"
+                            id="description"
+                            placeholder="Write a full series description"
+                            classes="min-h-[200px]"
+                            :value="series.description"
+                            name="description"
                         >
-                            Short intro
+                            Description
                         </FormTextarea>
-                    </div>
-
-                    <div class="mt-5">
-                        <Editor
-                            :initialValue="post.content"
-                            tinymce-script-src="/js/tinymce/tinymce.min.js"
-                            :init="tinymceConfig"
-                            v-model="post!.content"
-                            @keydown="savePostWithCorrectKeyBinds"
-                        />
                     </div>
 
                     <div>
@@ -215,22 +158,23 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                 Save
                             </MainButton>
 
-                            <MainButton :href="`/posts/${post.slug}`" target="_blank">
+                            <MainButton :href="`/series/${series.slug}`" target="_blank">
                                 <i class="fas fa-eye mr-2"></i>
                                 Preview
                             </MainButton>
                         </div>
 
-                        <DeletePost :post="post" />
+                        <DeleteSeries :series="series" />
+                    </div>
+
+                    <div class="mt-6">
+                        <SeriesPosts
+                            :posts="series.posts"
+                            :seriesTitle="series.title"
+                        />
                     </div>
                 </form>
             </div>
-
-            <PostContentImages
-                :post="post"
-                @uploaded="fetchPost"
-                @removed="fetchPost"
-            />
         </div>
     </div>
 </template>
