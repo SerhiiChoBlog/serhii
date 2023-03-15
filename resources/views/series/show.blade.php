@@ -19,7 +19,7 @@
         />
 
         <div class="container text-white">
-            <div class="grid grid-cols-1 lg:grid-cols-[7fr_2fr] gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-[5fr_2fr] xl:grid-cols-[7fr_2fr] lg:gap-6">
                 <div>
                     <img
                         src="{{ asset($series->image_lg) }}"
@@ -43,7 +43,7 @@
                         {!! nl2br($series->description) !!}
                     </p>
 
-                    <div class="text-gray-300 text-md mt-5 pb-10">
+                    <div class="text-gray-300 text-md mt-5 pb-5 lg:pb-10">
                         <span>Last updated:</span>
                         <time datetime="{{ $series->updated_at }}">
                             {{ $series->updated_at->format('F j, Y') }}
