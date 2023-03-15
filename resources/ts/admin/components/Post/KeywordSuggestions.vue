@@ -16,24 +16,11 @@ type Emits = {
 const emit = defineEmits<Emits>()
 
 const props = defineProps<Props>()
-const suggestions = ref<Keyword[]>([])
 const searchQuery = ref('')
 const loading = ref<boolean>(false)
 
-function fetchSuggestions(): void {
-    if (searchQuery.value === '') {
-        suggestions.value = []
-        return
-    }
-
-    axios.get<Keyword[]>(`/admin/ajax/keywords/search/${searchQuery.value}`)
-        .then(resp => suggestions.value = resp.data)
-        .catch(handleError)
-}
-
 function addKeyword(): void {
     if (searchQuery.value === '') {
-        suggestions.value = []
         return
     }
 
@@ -44,7 +31,6 @@ function addKeyword(): void {
         post_id: props.post.id
     })
         .then(resp => {
-            suggestions.value = []
             searchQuery.value = ''
             emit('changed')
         })
@@ -54,7 +40,6 @@ function addKeyword(): void {
 
 function inputChanged(val: string): void {
     searchQuery.value = val
-    fetchSuggestions()
 }
 
 function deleteKeyword(keyword: Keyword): void {
@@ -94,20 +79,6 @@ function deleteKeyword(keyword: Keyword): void {
                 </div>
             </template>
         </FormInput>
-
-        <!-- Suggestions dropdown -->
-        <ul
-            v-if="suggestions.length > 0"
-            class="bg-white shadow-md mt-2 rounded-md overflow-hidden absolute inset-x-0 z-10 border border-border"
-        >
-            <li
-                v-for="keyword in suggestions"
-                :key="keyword.name"
-                class="border-b border-border px-3 py-1 hover:bg-page-second"
-            >
-                {{ keyword.name }}
-            </li>
-        </ul>
 
         <div class="mt-2 flex flex-wrap gap-1">
             <div
