@@ -57,4 +57,43 @@ class DashboardController extends Controller
             ],
         ];
     }
+
+    public function goals(): array
+    {
+        $posts_this_week = Post::query()
+            ->where('is_published', true)
+            ->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])
+            ->count();
+
+        $posts_this_month = Post::query()
+            ->where('is_published', true)
+            ->whereBetween('created_at', [now()->startOfMonth(), now()->endOfMonth()])
+            ->count();
+
+        $posts_this_year = Post::query()
+            ->where('is_published', true)
+            ->whereBetween('created_at', [now()->startOfYear(), now()->endOfYear()])
+            ->count();
+
+        return [
+            [
+                'title' => 'Weekly goal',
+                'goal' => 'Publish 2 posts',
+                'min' => $posts_this_week,
+                'max' => 2,
+            ],
+            [
+                'title' => 'Monthly goal',
+                'goal' => 'Publish 8 posts',
+                'min' => $posts_this_month,
+                'max' => 8,
+            ],
+            [
+                'title' => 'Yearly goal',
+                'goal' => 'Publish 96 posts',
+                'min' => $posts_this_year,
+                'max' => 96,
+            ],
+        ];
+    }
 }

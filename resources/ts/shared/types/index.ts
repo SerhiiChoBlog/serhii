@@ -48,6 +48,13 @@ export type Section = {
     value: string
 }
 
+export type Goal = {
+    title: string
+    goal: string
+    min: number
+    max: number
+}
+
 export interface EditPostFormElements extends HTMLFormControlsCollection {
     title: HTMLInputElement
     intro: HTMLInputElement
