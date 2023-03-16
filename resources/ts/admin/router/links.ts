@@ -4,7 +4,7 @@ const links: UserSidebarLink[] = [
     {
         routeName: 'dashboard',
         title: 'Dashboard',
-        icon: 'fa-columns',
+        icon: 'fa-chart-pie',
     },
     {
         routeName: 'posts',
