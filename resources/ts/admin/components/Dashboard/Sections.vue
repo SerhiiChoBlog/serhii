@@ -3,9 +3,10 @@ import type { Section } from '@shared/types'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import Spinner from '@shared/components/Icons/Spinner.vue'
+import PageTitle from '@admin/components/PageTitle.vue'
 
 const sections = ref<Section[]>([])
-const loading = ref(true)
+const loading = ref<boolean>(true)
 
 onMounted(() => fetchSections())
 
@@ -18,6 +19,8 @@ function fetchSections(): void {
 </script>
 
 <template>
+    <PageTitle>Statistics</pageTitle>
+
     <Spinner v-if="loading" />
 
     <nav v-else class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 max-w-[1200px] mx-auto gap-3 lg:gap-6">

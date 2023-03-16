@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('ajax')->name('admin.')->group(function () {
     Route::get('dashboard/sections', [DashboardController::class, 'sections']);
+    Route::get('dashboard/goals', [DashboardController::class, 'goals']);
     Route::resource('posts', PostController::class);
     Route::post('post-content-images/{post}', [PostContentImageController::class, 'store']);
     Route::delete('post-content-images/{image}', [PostContentImageController::class, 'destroy']);
