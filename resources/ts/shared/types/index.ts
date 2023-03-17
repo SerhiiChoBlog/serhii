@@ -53,6 +53,7 @@ export type Goal = {
     goal: string
     min: number
     max: number
+    daysLeft: number
 }
 
 export interface EditPostFormElements extends HTMLFormControlsCollection {
