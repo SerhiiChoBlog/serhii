@@ -92,8 +92,7 @@ class DashboardController extends Controller
                 'title' => 'Yearly goal',
                 'goal' => 'Publish 96 posts',
                 'min' => $posts_this_year,
-                //'max' => 96,
-                'max' => 80,
+                'max' => now()->year === 2023 ? 80 : 96,
             ],
         ];
     }
