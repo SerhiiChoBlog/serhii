@@ -5,6 +5,12 @@
      * @var Post $post
      * @var string $title_font_size
      */
+
+    if ($post->series->isNotEmpty()) {
+        $post_title = $post->series->first()->title . ': ' . $post->title;
+    } else {
+        $post_title = $post->title;
+    }
 @endphp
 
 @extends('layouts.main')
@@ -12,11 +18,11 @@
 @push('head')
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@SerhiiCho">
-    <meta name="twitter:title" content="{{ $post->title }}">
+    <meta name="twitter:title" content="{{ $post_title }}">
     <meta name="twitter:description" content="{{ $post->intro }}">
     <meta name="twitter:image" content="{{ asset($post->image_lg) }}">
     <meta property="og:site_name" content="{{ config('app.name') }}">
-    <meta property="og:title" content="{{ $post->title }}">
+    <meta property="og:title" content="{{ $post_title }}">
     <meta property="og:description" content="{{ $post->intro }}" />
     <meta property="og:type" content="article">
     <meta property="og:url" content="{{ route('posts.show', $post->slug) }}">
@@ -38,7 +44,7 @@
     <script src="{{ asset('js/highlight.js') }}" defer></script>
 @endpush
 
-@push('title', $post->title)
+@push('title', $post_title)
 @push('description', str($post->intro)->limit(147))
 
 @section('content')
@@ -60,11 +66,7 @@
                             style="font-size: {{ $title_font_size }}"
                             class="leading-[1] font-light text-center lg:text-left"
                         >
-                            @if ($post->series->isNotEmpty())
-                                {{ $post->series->first()->title }}:
-                            @endif
-
-                            {{ $post->title }}
+                            {{ $post_title }}
                         </h1>
 
                         <x-post.tags :tags="$post->tags" class="text-sm mt-5 !gap-3" />
@@ -99,7 +101,7 @@
                     <div>
                         <img
                             src="{{ asset($post->image_lg) }}"
-                            alt="Post {{ $post->title }}"
+                            alt="Post {{ $post_title }}"
                             width="1000"
                             height="500"
                             class="static mx-auto 2xl:absolute right-4 bottom-[-130px] w-[600px] xl:w-[700px] rounded-lg shadow-lg mt-7 lg:mt-0 z-10"
@@ -143,7 +145,7 @@
                             <x-post.sidebar-title>Share this post</x-post.sidebar-title>
                             <share-post-buttons
                                 :is-auth="{{ auth()->check() ? 'true' : 'false' }}"
-                                post-title="{{ $post->title }}"
+                                post-title="{{ $post_title }}"
                                 :post-id="{{ $post->id }}"
                             />
                         </nav>
