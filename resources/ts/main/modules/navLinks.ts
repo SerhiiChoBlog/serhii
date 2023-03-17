@@ -13,6 +13,11 @@ export default [
         title: 'Blog',
     },
     {
+        href: '/series',
+        class: currPath === '/series' ? activeClass : '',
+        title: 'Series',
+    },
+    {
         href: '/about-me',
         class: currPath === '/about-me' ? activeClass : '',
         title: 'About',

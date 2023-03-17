@@ -80,8 +80,7 @@ class Post extends Model
     {
         return $this->belongsToMany(Series::class)
             ->withPivot('part')
-            ->orderBy('part')
-            ->limit(1);
+            ->orderBy('part');
     }
 
     /**
