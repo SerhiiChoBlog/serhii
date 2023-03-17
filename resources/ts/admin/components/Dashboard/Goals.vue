@@ -34,6 +34,7 @@ function fetchGoals(): void {
                 <h2 class="text-xl">{{ goal.title }}</h2>
                 <h3 class="text-sm">{{ goal.goal }}</h3>
                 <p class="text-4xl">{{ goal.min }} / {{ goal.max }}</p>
+                <small>{{ goal.daysLeft }} days left</small>
             </div>
         </div>
     </div>

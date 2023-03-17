@@ -75,24 +75,29 @@ class DashboardController extends Controller
             ->whereBetween('created_at', [now()->startOfYear(), now()->endOfYear()])
             ->count();
 
+        $yearly_goal = now()->year === 2023 ? 80 : 96;
+
         return [
             [
                 'title' => 'Weekly goal',
                 'goal' => 'Publish 2 posts',
                 'min' => $posts_this_week,
                 'max' => 2,
+                'daysLeft' => now()->diffInDays(now()->endOfWeek()),
             ],
             [
                 'title' => 'Monthly goal',
                 'goal' => 'Publish 8 posts',
                 'min' => $posts_this_month,
                 'max' => 8,
+                'daysLeft' => now()->diffInDays(now()->endOfMonth()),
             ],
             [
                 'title' => 'Yearly goal',
-                'goal' => 'Publish 96 posts',
+                'goal' => "Publish {$yearly_goal} posts",
                 'min' => $posts_this_year,
-                'max' => now()->year === 2023 ? 80 : 96,
+                'max' => $yearly_goal,
+                'daysLeft' => now()->diffInDays(now()->endOfYear()),
             ],
         ];
     }
