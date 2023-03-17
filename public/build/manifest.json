@@ -72,7 +72,7 @@
     "src": "resources/ts/admin/app.ts"
   },
   "resources/ts/main/app.ts": {
-    "file": "assets/app-45f0cc19.js",
+    "file": "assets/app-8644a3eb.js",
     "imports": [
       "_Tip.vue_vue_type_script_setup_true_lang-f4cbd93c.js",
       "_SignedInMethodLogo.vue_vue_type_script_setup_true_lang-442c84e3.js",
