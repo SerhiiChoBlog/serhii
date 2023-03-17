@@ -81,18 +81,18 @@ return [
             'technologies' => ['wordpress', 'php', 'typescript'],
         ],
         [
-            'image' => 'storage/tools/site-zoo.webp',
-            'image_xs' => 'storage/tools/site-zoo-min.webp',
-            'title' => 'ZooZooZoo',
-            'href' => 'https://zoo-zoo-zoo.com.ua/',
-            'technologies' => ['vue', 'typescript', 'php', 'laravel'],
-        ],
-        [
             'image' => 'storage/tools/client-cabinet.webp',
             'image_xs' => 'storage/tools/client-cabinet-min.webp',
             'title' => 'Client cabinet',
             'href' => 'https://mijn.nalog.nl/',
             'technologies' => ['vue', 'typescript', 'php', 'laravel', 'tailwind'],
+        ],
+        [
+            'image' => 'storage/tools/site-zoo.webp',
+            'image_xs' => 'storage/tools/site-zoo-min.webp',
+            'title' => 'ZooZooZoo',
+            'href' => 'https://zoo-zoo-zoo.com.ua/',
+            'technologies' => ['vue', 'typescript', 'php', 'laravel'],
         ],
         [
             'image' => 'storage/tools/blitz.webp',
