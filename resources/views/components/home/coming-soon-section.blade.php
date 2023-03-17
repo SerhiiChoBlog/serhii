@@ -6,7 +6,7 @@
 
 @empty($posts)
     <h2 class="text-center text-2xl">
-        🤔 There is no posts yet, I'm thinking what to write next
+        🤔 There are no posts yet, I'm planning what to write next
     </h2>
 @else
     <div class="divide-y divide-border">
