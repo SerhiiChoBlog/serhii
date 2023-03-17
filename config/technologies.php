@@ -95,18 +95,18 @@ return [
             'technologies' => ['vue', 'typescript', 'php', 'laravel', 'tailwind'],
         ],
         [
-            'image' => 'storage/tools/site-olexiy.webp',
-            'image_xs' => 'storage/tools/site-olexiy-min.webp',
-            'title' => 'Jiskelo',
-            'href' => 'https://jiskelo.dev/',
-            'technologies' => ['react', 'typescript', 'tailwind'],
-        ],
-        [
             'image' => 'storage/tools/blitz.webp',
             'image_xs' => 'storage/tools/blitz-min.webp',
             'title' => 'Blitz',
             'href' => 'https://blitz.nalog.nl/',
             'technologies' => ['vue', 'typescript', 'php', 'laravel', 'tailwind'],
+        ],
+        [
+            'image' => 'storage/tools/site-olexiy.webp',
+            'image_xs' => 'storage/tools/site-olexiy-min.webp',
+            'title' => 'Jiskelo',
+            'href' => 'https://jiskelo.dev/',
+            'technologies' => ['react', 'typescript', 'tailwind'],
         ],
     ],
 
