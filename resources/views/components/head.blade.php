@@ -9,8 +9,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<meta name="author" content="Serhii Cho">
-<meta name="description" content="@stack('description', "Serhii Cho's blog is a great place to learn about web development. If you are eager to learn how to build optimized, responsive and modern web")">
+<meta name="author" content="Serhii Chornenkyi">
+<meta name="description" content="@stack('description', "Serhii's blog is a great place to learn about web development. If you are eager to learn how to build optimized, responsive and modern web")">
 <meta property="og:locale" content="en_US">
 <link rel="canonical" href="{{ str_replace('https://www.', 'https://', request()->fullUrl()) }}" />
 
