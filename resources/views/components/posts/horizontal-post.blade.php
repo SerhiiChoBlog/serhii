@@ -47,7 +47,7 @@
 
             <div>
                 <x-post.tags :tags="$post->tags" class="text-[.8em] mt-3" />
-                <x-post.details :post="$post->toArray()" class="mt-3" />
+                <x-post.details :post="$post" class="mt-3" />
             </div>
         </div>
     </div>
