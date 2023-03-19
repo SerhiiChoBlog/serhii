@@ -18,7 +18,7 @@ const isHomePage = window.location.pathname === '/'
 <template>
     <appear-transition>
         <nav
-            class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+            class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 print:hidden"
             :class="{
                 'bg-gray-800 shadow-md': isScrolledDown,
                 'bg-transparent': !isScrolledDown,
