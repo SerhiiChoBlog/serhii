@@ -48,7 +48,7 @@
 @push('description', str($post->intro)->limit(147))
 
 @section('content')
-    <article class="overflow-y-hidden">
+    <article>
         <div
             class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white print:!bg-none print:text-black"
             @if ($post->series->isNotEmpty())
