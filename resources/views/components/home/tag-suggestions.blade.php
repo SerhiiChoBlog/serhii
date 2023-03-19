@@ -6,14 +6,18 @@
 @endphp
 
 <div>
-    <div class="min-h-[36px] mt-4 lg:mt-6 text-white flex justify-center items-center flex-wrap gap-1 lg:gap-3">
+    <div class="min-h-[36px] mt-4 lg:mt-6 flex justify-center items-center flex-wrap gap-3 lg:gap-5">
         @foreach ($getTags() as $tag)
             <a
                 href="/posts?tag={{ $tag['name'] }}"
-                class="text-[.8em] lg:text-lg inline-flex items-center p-1 transition-transform hover:scale-110"
+                class="text-[.9em] lg:text-lg inline-flex items-center group px-1 relative text-white"
             >
-                <b aria-hidden="true" style="color: {{ $tag['color'] }}">&#x25C9;</b>
-                <span class="ml-1 lg:ml-2">{{ $tag['name'] }}</span>
+                {{ $tag['name'] }}
+
+                <div
+                    style="background-color: {{ $tag['color'] }};"
+                    class="w-full h-1 absolute inset-x-0 -bottom-1.5 rounded-full group-hover:bottom-0 transition-all"
+                ></div>
             </a>
         @endforeach
     </div>
