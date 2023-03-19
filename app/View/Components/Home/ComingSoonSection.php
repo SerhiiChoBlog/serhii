@@ -6,26 +6,32 @@ namespace App\View\Components\Home;
 
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
 class ComingSoonSection extends Component
 {
-    public array $posts;
+    /**
+     * @var Collection<int, Post>
+     */
+    public Collection $posts;
 
     public function __construct()
     {
         $this->posts = $this->getPosts();
     }
 
-    public function getPosts(): array
+    /**
+     * @return Collection<int, Post>
+     */
+    public function getPosts(): Collection
     {
         return Post::query()
-            ->with('tags:name,color,title')
+            ->with('tags:name,color,title', 'series')
             ->select('id', 'title', 'intro', 'image_sm', 'slug', 'updated_at')
             ->where('is_published', false)
             ->latest('updated_at')
-            ->get()
-            ->toArray();
+            ->get();
     }
 
     public function render(): View
