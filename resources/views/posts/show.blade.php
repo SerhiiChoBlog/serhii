@@ -48,9 +48,9 @@
 @push('description', str($post->intro)->limit(147))
 
 @section('content')
-    <article>
+    <article class="overflow-y-hidden">
         <div
-            class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white print:bg-none print:text-black"
+            class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white print:!bg-none print:text-black"
             @if ($post->series->isNotEmpty())
                 style="background: linear-gradient(90deg, {{ $post->series->first()->color_from }} 0%, {{ $post->series->first()->color_to }} 100%)"
             @endif
@@ -80,7 +80,7 @@
                                 @if ($post->series->isNotEmpty())
                                     <a
                                         href="{{ route('series.show', $post->series->first()->slug) }}"
-                                        class="px-4 py-1 rounded-md shadow-md text-md"
+                                        class="px-4 py-1 rounded-md shadow-md text-md text-white"
                                         style="background-color: {{ $post->series->first()->color_to }}"
                                     >
                                         {{ $post->series->first()->title }}:
