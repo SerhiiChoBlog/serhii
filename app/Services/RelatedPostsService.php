@@ -21,43 +21,52 @@ readonly class RelatedPostsService
      */
     public function get(): Collection
     {
-        if ($this->post->tags->isEmpty()) {
-            return $this->getRandomPosts(self::POSTS_LIMIT, [$this->post->id]);
+        $result = collect();
+
+        if ($this->post->series->isNotEmpty()) {
+            $result->push(...$this->getSeriesPosts());
+        }
+
+        if ($result->count() === self::POSTS_LIMIT) {
+            return $result;
         }
 
         /** @var Tag|null $main_tag */
         $main_tag = $this->post->tags->firstWhere('pivot.is_main', true);
-
         $other_tags = $this->post->tags->where('pivot.is_main', false);
 
         if ($main_tag === null) {
-            /** @var Tag|null $main_tag */
             $main_tag = $other_tags->first();
         }
 
+        $new_limit = self::POSTS_LIMIT - $result->count();
+
         if ($main_tag === null) {
-            return $this->getRandomPosts(self::POSTS_LIMIT, [$this->post->id]);
+            $result->push(...$this->getRandomPosts($new_limit, [$this->post->id]));
+            return $result;
         }
 
-        $posts = $this->getTagPosts($main_tag, self::POSTS_LIMIT);
+        $result->push(...$this->getTagPosts($main_tag, $new_limit));
 
-        if ($posts->count() === self::POSTS_LIMIT) {
-            return $posts;
+        if ($result->count() === self::POSTS_LIMIT) {
+            return $result;
         }
 
-        $add_posts_diff = self::POSTS_LIMIT - $posts->count();
-        $other_posts = $this->getOtherPosts($other_tags, $add_posts_diff);
+        $new_limit = self::POSTS_LIMIT - $result->count();
+        $result->push(...$this->getOtherPosts($other_tags, $new_limit));
 
-        if ($other_posts->count() > 0) {
-            $posts->push(...$other_posts);
+        if ($result->count() === self::POSTS_LIMIT) {
+            return $result;
         }
+
+        $new_limit = self::POSTS_LIMIT - $result->count();
 
         $random_posts = $this->getRandomPosts(
-            self::POSTS_LIMIT - $posts->count(),
-            [$this->post->id, ...$posts->pluck('id')->toArray()],
+            $new_limit,
+            [$this->post->id, ...$result->pluck('id')->toArray()],
         );
 
-        return $posts->push(...$random_posts);
+        return $result->push(...$random_posts);
     }
 
     /**
@@ -112,5 +121,19 @@ readonly class RelatedPostsService
         }
 
         return $result;
+    }
+
+    /**
+     * @return Collection<int, Post>
+     */
+    private function getSeriesPosts(): Collection
+    {
+        $series = $this->post->series->first();
+
+        if (!$series) {
+            return collect();
+        }
+
+        return $series->posts->slice(0, self::POSTS_LIMIT);
     }
 }
