@@ -140,6 +140,8 @@ readonly class RelatedPostsService
 
         return $series
             ->posts()
+            ->where('is_published', true)
+            ->whereNot('id', $this->post->id)
             ->with('series:' . self::SERIES_FIELDS)
             ->select(self::POST_FIELDS)
             ->limit(self::POSTS_LIMIT)
