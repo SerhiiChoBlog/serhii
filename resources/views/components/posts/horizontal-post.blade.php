@@ -38,14 +38,7 @@
                     </h2>
                 </a>
 
-                @if ($post->series->isNotEmpty())
-                    <a
-                        href="{{ route('series.show', $post->series->first()->slug) }}"
-                        class="opacity-60 font-bold"
-                    >
-                        Part {{ $post->series->first()->pivot->part }} of {{ $post->series->first()->posts_count }}
-                    </a>
-                @endif
+                <x-posts.series-number :post="$post" />
 
                 <p class="mt-1 text-lg font-light text-font-second font-post">
                     {{ $post->intro }}

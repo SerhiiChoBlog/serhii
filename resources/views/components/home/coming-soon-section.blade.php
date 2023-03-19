@@ -42,7 +42,7 @@
                             </p>
                         </div>
 
-                        <x-post.tags :tags="$post->tags->toArray()" class="text-sm md:text-md mt-2 !gap-2">
+                        <x-post.tags :tags="$post->tags" class="text-sm md:text-md mt-2 !gap-2">
                             @if (auth()->check())
                                 <a
                                     href="/admin/posts/{{ $post->id }}/edit"
