@@ -11,6 +11,8 @@ use Illuminate\Support\Collection;
 readonly class RelatedPostsService
 {
     private const POSTS_LIMIT = 3;
+    private const POST_FIELDS = ['id', 'title', 'slug', 'image_sm'];
+    private const SERIES_FIELDS = 'id,title';
 
     public function __construct(private Post $post)
     {
@@ -77,7 +79,8 @@ readonly class RelatedPostsService
     private function getRandomPosts(int $limit, array $exclude): Collection
     {
         return Post::query()
-            ->select('id', 'slug', 'title', 'image_sm')
+            ->with('series:' . self::SERIES_FIELDS)
+            ->select(self::POST_FIELDS)
             ->where('is_published', true)
             ->whereNotIn('id', $exclude)
             ->inRandomOrder()
@@ -92,6 +95,7 @@ readonly class RelatedPostsService
     private function getTagPosts(Tag $main_tag, int $limit): Collection
     {
         return $main_tag->posts()
+            ->with('series:' . self::SERIES_FIELDS)
             ->select('id', 'slug', 'title', 'image_sm')
             ->where('is_published', true)
             ->where('id', '!=', $this->post->id)
@@ -107,13 +111,13 @@ readonly class RelatedPostsService
      */
     private function getOtherPosts(Collection $tags, int $limit): Collection
     {
-        $result = collect([]);
+        $result = collect();
 
         foreach ($tags as $tag) {
             $result->push(...$this->getTagPosts($tag, $limit));
             $posts_found = $result->count();
 
-            if ($posts_found === $limit) {
+            if ($posts_found >= $limit) {
                 return $result;
             }
 
@@ -134,6 +138,11 @@ readonly class RelatedPostsService
             return collect();
         }
 
-        return $series->posts->slice(0, self::POSTS_LIMIT);
+        return $series
+            ->posts()
+            ->with('series:' . self::SERIES_FIELDS)
+            ->select(self::POST_FIELDS)
+            ->limit(self::POSTS_LIMIT)
+            ->get();
     }
 }

@@ -219,4 +219,9 @@ export type Series = {
     created_at: string
     updated_at: string
     posts?: Post[]
+    pivot?: {
+        post_id: number
+        series_id: number
+        part: number
+    }
 }

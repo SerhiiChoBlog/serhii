@@ -22,6 +22,12 @@ const { post } = defineProps<Props>()
             height="141"
         />
 
-        <h2 class="text-lg leading-6 my-3">{{ post.title }}</h2>
+        <h2 class="text-lg leading-6 my-3">
+            <span v-if="post.series && post.series.length > 0">
+                {{ post.series[0].title }}:
+            </span>
+
+            {{ post.title }}
+        </h2>
     </a>
 </template>
