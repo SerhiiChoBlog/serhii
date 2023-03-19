@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Models\Post;
 use App\Utils\GlobalVisitor;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 
 readonly class PreferredPostsService
@@ -54,6 +55,11 @@ readonly class PreferredPostsService
     private function getRandomPosts(array $exclude, int $limit): Collection
     {
         $query = Post::with('tags:name,color,title')
+            ->with([
+                'series' => function (BelongsToMany $q) {
+                    return $q->select('id', 'title', 'slug')->withCount('posts');
+                },
+            ])
             ->select(self::SELECT_FIELDS)
             ->withCount('postViews')
             ->where('is_published', true)

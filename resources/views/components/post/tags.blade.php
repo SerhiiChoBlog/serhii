@@ -1,16 +1,26 @@
+@php
+    use App\Models\Tag;
+    use Illuminate\Support\Collection;
+
+    /**
+     * @var Collection<int, Tag> $tags
+     * @var Tag $tag
+     */
+@endphp
+
 <div class="flex print:justify-center gap-1 flex-wrap {{ $attributes->get('class') }}">
     @foreach ($tags as $tag)
         <a
-            href="/posts?tag={{ $tag['name'] }}"
-            aria-label="Filter posts by tag: {{ $tag['title'] }}"
+            href="/posts?tag={{ $tag->name }}"
+            aria-label="Filter posts by tag: {{ $tag->title }}"
             class="print:border print:rounded-md"
         >
-            <tip content="{{ $tag['title'] }}">
+            <tip content="{{ $tag->title }}">
                 <span
                     class="inline-flex items-center px-3 py-0.5 rounded-md text-xs font-bold leading-5 text-white bg-brand-500 transition-transform hover:scale-105 duration-300"
-                    style="background-color: {{ $tag['color'] }}"
+                    style="background-color: {{ $tag->color }}"
                 >
-                    {{ $tag['name'] }}
+                    {{ $tag->name }}
                 </span>
             </tip>
         </a>

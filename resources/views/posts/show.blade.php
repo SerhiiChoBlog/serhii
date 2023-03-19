@@ -72,7 +72,7 @@
                         <x-post.tags :tags="$post->tags" class="text-sm mt-5 !gap-3" />
 
                         <div class="mt-4">
-                            <x-post.details :post="$post->toArray()" />
+                            <x-post.details :post="$post" />
                         </div>
 
                         @if (auth('admin')->check())
