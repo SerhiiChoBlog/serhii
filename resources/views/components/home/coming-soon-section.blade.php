@@ -12,7 +12,7 @@
     <div class="divide-y divide-border">
         @foreach($posts as $post)
             <article>
-                <div class="flex flex-col md:flex-row gap-7 justify-between items-center">
+                <div class="flex flex-col md:flex-row gap-7 items-center">
                     <div class="relative">
                         <x-image-label>In progress</x-image-label>
 
