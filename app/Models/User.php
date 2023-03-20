@@ -33,6 +33,7 @@ use Illuminate\Support\Str;
  * @property string $remember_token
  * @property Collection<int, Role> $roles
  * @property Collection<int, Badge> $badges
+ * @property Collection<int, PostLike> $likes
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -99,6 +100,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Ban::class);
     }
 
+    /**
+     * @return HasMany<PostLike>
+     */
+    public function likes(): HasMany
+    {
+        return $this->hasMany(PostLike::class);
+    }
+
     public static function isAdmin(string $field, ?string $value): bool
     {
         if (!$value) {
@@ -146,5 +155,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
         /** @var self|null */
         return self::query()->where('secret', $secret)->first();
+    }
+
+    public function likePost(int $post_id): void
+    {
+        $this->likes()->create(['post_id' => $post_id]);
     }
 }

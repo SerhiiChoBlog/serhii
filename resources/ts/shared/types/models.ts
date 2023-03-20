@@ -225,3 +225,12 @@ export type Series = {
         part: number
     }
 }
+
+export type PostLike = {
+    id: number
+    post_id: number
+    user_id: number
+    created_at: string
+    post?: Post
+    user?: User
+}

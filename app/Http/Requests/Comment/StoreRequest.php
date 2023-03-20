@@ -22,7 +22,7 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'post_id' => ['required', 'integer'],
+            'post_id' => ['required', 'integer', 'exists:posts,id'],
             'secret' => ['required', 'string'],
             'comment' => ['required', 'string', 'min:4', 'max:1000', 'not_regex:/[А-ЯЁа-яё]+/iu'],
             'comment_id' => ['nullable', 'integer'],
