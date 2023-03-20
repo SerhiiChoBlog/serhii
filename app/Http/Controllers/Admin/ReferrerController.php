@@ -6,15 +6,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Referrer;
-use Illuminate\Support\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class ReferrerController extends Controller
 {
     /**
-     * @return Collection<int, Referrer>
+     * @return LengthAwarePaginator<Referrer>
      */
-    public function index(): Collection
+    public function index(): LengthAwarePaginator
     {
-        return Referrer::query()->orderByDesc('hits')->get();
+        return Referrer::query()
+            ->orderByDesc('hits')
+            ->paginate(30);
     }
 }
