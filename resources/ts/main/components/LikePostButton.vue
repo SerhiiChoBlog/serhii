@@ -64,8 +64,8 @@ function fetchIsLiked(): void {
         :aria-label="`${isLiked ? 'Unlike' : 'Like'} this post`"
         class="print:hidden shadow-md fixed bottom-2 right-2 md:bottom-6 md:right-6 z-30 p-2 rounded-full bg-page border-2 transition-all duration-300"
         :class="{
-            'opacity-40 pointer-events-none': loading,
-            'opacity-90 pointer-events-auto': !loading,
+            'opacity-30 pointer-events-none': loading,
+            'opacity-90': !loading,
             'border-blue-500 dark:border-blue-400': isLiked,
             'border-gray-700 dark:border-gray-400 border-gray-700 dark:border-gray-200': !isLiked,
         }"
