@@ -33,7 +33,7 @@ use Illuminate\Support\Str;
  * @property string $remember_token
  * @property Collection<int, Role> $roles
  * @property Collection<int, Badge> $badges
- * @property Collection<int, PostLike> $likes
+ * @property Collection<int, PostLike> $postLikes
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -103,7 +103,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * @return HasMany<PostLike>
      */
-    public function likes(): HasMany
+    public function postLikes(): HasMany
     {
         return $this->hasMany(PostLike::class);
     }
@@ -159,16 +159,16 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function likePost(int $post_id): void
     {
-        $this->likes()->create(['post_id' => $post_id]);
+        $this->postLikes()->create(['post_id' => $post_id]);
     }
 
     public function unlikePost(int $post_id): void
     {
-        $this->likes()->where('post_id', $post_id)->delete();
+        $this->postLikes()->where('post_id', $post_id)->delete();
     }
 
     public function hasLikedPost(int $post_id): bool
     {
-        return $this->likes()->where('post_id', $post_id)->exists();
+        return $this->postLikes()->where('post_id', $post_id)->exists();
     }
 }
