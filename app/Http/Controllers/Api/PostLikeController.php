@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\PostLike\StoreRequest;
 use App\Models\User;
+use Symfony\Component\HttpFoundation\Response as ResponseStatus;
 
 class PostLikeController extends Controller
 {
@@ -17,7 +18,7 @@ class PostLikeController extends Controller
     {
         $user = User::getBySecret($request->secret);
 
-        abort_if(!$user, 401);
+        abort_if(!$user, ResponseStatus::HTTP_UNAUTHORIZED);
 
         if ($user->hasLikedPost($request->post_id)) {
             $user->unlikePost($request->post_id);

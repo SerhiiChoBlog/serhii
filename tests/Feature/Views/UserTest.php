@@ -49,7 +49,7 @@ class UserTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        $this->assertCount(1, $user->likes);
+        $this->assertCount(1, $user->postLikes);
     }
 
     public function testUserHasLikePostMethod(): void
@@ -64,7 +64,7 @@ class UserTest extends TestCase
 
         $user->likePost($post_one->id);
 
-        $this->assertCount(1, $user->likes);
+        $this->assertCount(1, $user->postLikes);
     }
 
     public function testUserHasUnlikePostMethod(): void
@@ -76,7 +76,7 @@ class UserTest extends TestCase
 
         $user->unlikePost($post->id);
 
-        $this->assertEmpty($user->likes);
+        $this->assertEmpty($user->postLikes);
     }
 
     public function method_hasLikedPost_returnsTrueIfUserHasLikedPost(): void
