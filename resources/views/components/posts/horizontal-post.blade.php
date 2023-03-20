@@ -3,7 +3,7 @@
     use Illuminate\View\ComponentAttributeBag;
 
     /**
-     * @var Post $post
+     * @var Post|array<string, mixed> $post
      * @var ComponentAttributeBag $attributes
      */
 @endphp
