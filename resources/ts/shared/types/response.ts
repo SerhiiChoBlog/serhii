@@ -9,3 +9,8 @@ export type Pagination<T> = {
     prev_page_url: string | null
     to: number
 }
+
+export type GetPostLikesResponse = {
+    likes: number
+    liked: boolean
+}

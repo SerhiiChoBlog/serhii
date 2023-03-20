@@ -13,7 +13,8 @@ class PostLikeControllerTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    private const STORE_COMMENT_URI = '/api/post-likes';
+    private const STORE_LIKE_URI = '/api/post-likes';
+    private const IS_LIKED_URI = '/api/post-likes/is-liked';
 
     public function testUserCanLikePost(): void
     {
@@ -23,12 +24,12 @@ class PostLikeControllerTest extends TestCase
         $post = Post::factory()->create();
 
         $this->actingAs($user, 'user')
-            ->postJson(self::STORE_COMMENT_URI, [
+            ->postJson(self::STORE_LIKE_URI, [
                 'post_id' => $post->id,
                 'secret' => $user->secret,
             ])
             ->assertOk()
-            ->assertJson(['liked' => true]);
+            ->assertJson(['liked' => true, 'likes' => 1]);
 
         $this->assertDatabaseHas('post_likes', [
             'post_id' => $post->id,
@@ -49,12 +50,12 @@ class PostLikeControllerTest extends TestCase
         ]);
 
         $this->actingAs($user, 'user')
-            ->postJson(self::STORE_COMMENT_URI, [
+            ->postJson(self::STORE_LIKE_URI, [
                 'post_id' => $post->id,
                 'secret' => $user->secret,
             ])
             ->assertOk()
-            ->assertJson(['liked' => false]);
+            ->assertJson(['liked' => false, 'likes' => 0]);
 
         $this->assertDatabaseMissing('post_likes', [
             'post_id' => $post->id,
@@ -67,11 +68,52 @@ class PostLikeControllerTest extends TestCase
         $user = $this->createUser();
 
         $this->actingAs($user, 'user')
-            ->postJson(self::STORE_COMMENT_URI, [
+            ->postJson(self::STORE_LIKE_URI, [
                 'post_id' => 999,
                 'secret' => $user->secret,
             ])
             ->assertStatus(422)
             ->assertJsonValidationErrors(['post_id']);
+    }
+
+    public function testReturnsTrueIfPostIsLiked(): void
+    {
+        $user = $this->createUser();
+
+        /** @var Post $post */
+        $post = Post::factory()->create();
+
+        PostLike::factory()->create([
+            'post_id' => $post->id,
+            'user_id' => $user->id,
+        ]);
+
+        $query = http_build_query([
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+        ]);
+
+        $this->actingAs($user, 'user')
+            ->getJson(self::IS_LIKED_URI . '?' . $query)
+            ->assertOk()
+            ->assertJson(['liked' => true, 'likes' => 1]);
+    }
+
+    public function testReturnsFalseIfPostIsNotLiked(): void
+    {
+        $user = $this->createUser();
+
+        /** @var Post $post */
+        $post = Post::factory()->create();
+
+        $query = http_build_query([
+            'post_id' => $post->id,
+            'secret' => $user->secret,
+        ]);
+
+        $this->actingAs($user, 'user')
+            ->getJson(self::IS_LIKED_URI . '?' . $query)
+            ->assertOk()
+            ->assertJson(['liked' => false, 'likes' => 0]);
     }
 }

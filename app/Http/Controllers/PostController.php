@@ -48,7 +48,6 @@ class PostController extends Controller
         /** @var Post|null $post */
         $post = Post::with('tags')
             ->with('video:post_id,title,url,image')
-            ->withCount('postLikes')
             ->with([
                 'series' => function (BelongsToMany $q) {
                     return $q->select('id', 'title', 'slug', 'color_from', 'color_to')->withCount('posts');

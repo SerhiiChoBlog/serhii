@@ -32,4 +32,5 @@ Route::controller(CommentController::class)->prefix('comments')->group(function 
 
 Route::controller(PostLikeController::class)->prefix('post-likes')->group(function () {
     Route::post('/', 'store');
+    Route::get('is-liked', 'isLiked');
 });
