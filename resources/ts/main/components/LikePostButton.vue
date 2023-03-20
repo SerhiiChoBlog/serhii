@@ -66,7 +66,7 @@ function fetchIsLiked(): void {
         @click="toggleLike"
         ref="btn"
         :aria-label="`${isLiked ? 'Unlike' : 'Like'} this post`"
-        class="print:hidden fixed bottom-2 right-2 md:bottom-6 md:right-6 z-30 p-2 rounded-full bg-page border-2 transition-all duration-300"
+        class="print:hidden shadow-md fixed bottom-2 right-2 md:bottom-6 md:right-6 z-30 p-2 rounded-full bg-page border-2 transition-all duration-300"
         :class="{
             'opacity-40 pointer-events-none': loading,
             'opacity-90 pointer-events-auto': !loading,
