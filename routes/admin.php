@@ -10,12 +10,12 @@ use App\Http\Controllers\Admin\PostContentImageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\PostPublicationController;
 use App\Http\Controllers\Admin\PostViewController;
+use App\Http\Controllers\Admin\ReferrerController;
 use App\Http\Controllers\Admin\SeriesController;
 use App\Http\Controllers\Admin\SocialShareController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VisitorController;
-use App\Http\Controllers\ReferrerController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('ajax')->name('admin.')->group(function () {
