@@ -35,7 +35,7 @@ class AuthFirebaseControllerTest extends TestCase
 
         Http::fake([$params['photo_url'] => Http::response('xxxxxxxxx')]);
 
-        $this->json('post', '/firebase-sign-in', $params);
+        $this->postJson('/firebase-sign-in', $params);
 
         Event::assertDispatched(Verified::class);
 
@@ -63,7 +63,7 @@ class AuthFirebaseControllerTest extends TestCase
 
         Auth::shouldReceive('login')->withArgs([$user]);
 
-        $this->json('post', '/firebase-sign-in', $params);
+        $this->postJson('/firebase-sign-in', $params);
 
         Event::assertNotDispatched(Verified::class);
     }
