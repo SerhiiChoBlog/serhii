@@ -15,6 +15,7 @@ import Comments from '@/components/Comments/Comments.vue'
 import LazyLoading from '@shared/components/LazyLoading.vue'
 import FirebaseSignInButton from '@/components/FirebaseSignInButton.vue'
 import RelatedPosts from '@/components/RelatedPosts/RelatedPosts.vue'
+import LikePostButton from '@/components/LikePostButton.vue'
 
 const app = createApp({
     components: {
@@ -31,6 +32,7 @@ const app = createApp({
         LazyLoading,
         FirebaseSignInButton,
         RelatedPosts,
+        LikePostButton,
     },
 
     setup() {
