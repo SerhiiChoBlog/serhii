@@ -1,13 +1,13 @@
 @php
     /**
-     * @var callable $getTags
+     * @var array{name:string, id:int, color:string}[] $tags
      * @var array{name:string, id:int, color:string} $tag
      */
 @endphp
 
 <div>
     <div class="min-h-[36px] mt-4 lg:mt-6 flex justify-center items-center flex-wrap gap-3 lg:gap-5">
-        @foreach ($getTags() as $tag)
+        @foreach ($tags as $tag)
             <a
                 href="/posts?tag={{ $tag['name'] }}"
                 class="text-[.9em] lg:text-lg inline-flex items-center group px-1 relative text-white"

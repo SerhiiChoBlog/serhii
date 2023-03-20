@@ -62,9 +62,9 @@
                         </div>
                     </div>
 
-                    @if ($posts->isNotEmpty())
+                    @if (count($posts) > 1)
                         <div class="hidden xl:flex border-4 border-dotted border-border w-24 aspect-square rounded-full flex items-center justify-center">
-                            <span class="text-4xl font-post text-font-second">{{ $loop->iteration }}</span>
+                            <span class="text-2xl font-post text-font-second">{{ $loop->iteration }}</span>
                         </div>
                     @endif
                 </div>

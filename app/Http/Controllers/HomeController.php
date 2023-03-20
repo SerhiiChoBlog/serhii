@@ -6,25 +6,16 @@ namespace App\Http\Controllers;
 
 use App\CacheKey;
 use App\Models\Post;
-use App\Models\PostView;
 use App\Models\Video;
+use App\Services\MonthlyTopCalculatorService;
 use App\Services\PreferredPostsService;
+use App\Ttl;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
-    private const SELECT_FIELDS = [
-        'id',
-        'slug',
-        'title',
-        'intro',
-        'image_sm',
-        'image_xs',
-        'created_at',
-        'read_time',
-    ];
-
     /**
      * @var array<int, int>
      */
@@ -32,8 +23,8 @@ class HomeController extends Controller
 
     public function index(): View
     {
-        $latest = Cache::rememberForever(CacheKey::LATEST_POSTS, fn () => $this->getLatest());
-        $monthly_top = Cache::rememberForever(CacheKey::TOP_LAST_MONTH, fn () => $this->getMonthlyTop());
+        $latest = $this->getLatest();
+        $monthly_top = $this->getMonthlyTop();
 
         $this->exclude_ids = [
             ...array_column($latest, 'id'),
@@ -53,13 +44,21 @@ class HomeController extends Controller
      */
     private function getLatest(): array
     {
-        return Post::query()
-            ->select(self::SELECT_FIELDS)
-            ->latest()
-            ->where('is_published', true)
-            ->limit(2)
-            ->get()
-            ->all();
+        return Cache::rememberForever(CacheKey::LATEST_POSTS, function () {
+            return Post::query()
+                ->with([
+                    'series' => function (BelongsToMany $q) {
+                        return $q->select('id', 'title', 'slug')->withCount('posts');
+                    }
+                ])
+                ->with('tags:id,name,color,title')
+                ->select(Post::COMMON_FIELDS)
+                ->latest()
+                ->where('is_published', true)
+                ->limit(2)
+                ->get()
+                ->all();
+        });
     }
 
     /**
@@ -67,31 +66,10 @@ class HomeController extends Controller
      */
     private function getMonthlyTop(): array
     {
-        $monthly = PostView::query()
-            ->selectRaw('post_id, COUNT(*) as amount')
-            ->whereMonth('created_at', now()->subMonth())
-            ->groupBy('post_id')
-            ->orderByDesc('amount')
-            ->limit(2)
-            ->get();
-
-        $result = Post::query()
-            ->whereIn('id', $monthly->pluck('post_id'))
-            ->select(self::SELECT_FIELDS)
-            ->where('is_published', true)
-            ->get();
-
-        $result->map(function (Post $post) use ($monthly) {
-            $match = $monthly->where('post_id', $post->id)->first();
-
-            if ($match) {
-                $post->post_views_count = $match->amount;
-            }
-
-            return $post;
+        return Cache::remember(CacheKey::TOP_LAST_MONTH, Ttl::DAY, function () {
+            $service = new MonthlyTopCalculatorService();
+            return $service->calculate(2);
         });
-
-        return $result->all();
     }
 
     /**

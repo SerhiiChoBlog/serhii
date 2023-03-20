@@ -18,7 +18,7 @@ class SitemapCommand extends Command
     protected $signature = 'make:sitemap';
     protected $description = 'Generate sitemap for the website';
 
-    public function handle(): void
+    public function handle(): int
     {
         $path = public_path('sitemap.xml');
 
@@ -34,6 +34,8 @@ class SitemapCommand extends Command
         $this->changeLastModValues($path);
 
         $this->info("Sitemap is generated with <fg=yellow>{$tags_count}</> tags.");
+
+        return Command::SUCCESS;
     }
 
     private function changeLastModValues(string $path): void

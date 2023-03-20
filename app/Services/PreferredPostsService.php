@@ -12,16 +12,6 @@ use Illuminate\Support\Collection;
 readonly class PreferredPostsService
 {
     private const LIMIT = 6;
-    private const SELECT_FIELDS = [
-        'id',
-        'slug',
-        'title',
-        'intro',
-        'image_sm',
-        'image_xs',
-        'created_at',
-        'read_time',
-    ];
 
     /**
      * @param array<int, int> $exclude
@@ -63,8 +53,7 @@ readonly class PreferredPostsService
                     return $q->select('id', 'title', 'slug')->withCount('posts');
                 },
             ])
-            ->select(self::SELECT_FIELDS)
-            ->withCount('postViews')
+            ->select(Post::COMMON_FIELDS)
             ->where('is_published', true)
             ->inRandomOrder()
             ->limit($limit);
