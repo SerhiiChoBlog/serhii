@@ -12,10 +12,10 @@ use Illuminate\Support\Carbon;
 /**
  * @property-read int $id
  * @property int $post_id
- * @property int $visitor_id
+ * @property int $user_id
  * @property Carbon $created_at
- * @property-read Visitor $visitor
- * @property-read Post $post
+ * @property User $user
+ * @property Post $post
  */
 class PostLike extends Model
 {
@@ -36,11 +36,11 @@ class PostLike extends Model
     ];
 
     /**
-     * @return BelongsTo<Visitor, self>
+     * @return BelongsTo<User, self>
      */
-    public function visitor(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Visitor::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
