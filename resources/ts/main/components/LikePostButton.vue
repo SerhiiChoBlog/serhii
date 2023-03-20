@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Post } from '@shared/types/models'
+import type { GetPostLikesResponse } from '@shared/types/response'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 
@@ -10,6 +11,8 @@ type Props = {
 const { post } = defineProps<Props>()
 
 onMounted(() => {
+    fetchIsLiked()
+
     if (btn) {
         showHideButton()
 
@@ -19,6 +22,7 @@ onMounted(() => {
 
 const btn = ref<HTMLButtonElement | null>(null)
 const isLiked = ref<boolean>(false)
+const likes = ref<number>(0)
 const loading = ref<boolean>(false)
 
 function toggleLike(): void {
@@ -33,9 +37,31 @@ function toggleLike(): void {
         secret: Auth.secret
     }
 
-    axios.post<{ liked: boolean }>(`/api/post-likes`, params)
+    axios.post<GetPostLikesResponse>(`/api/post-likes`, params)
         .then(res => {
             isLiked.value = res.data.liked
+            likes.value = res.data.likes
+        })
+        .catch(err => console.error(err))
+        .finally(() => loading.value = false)
+}
+
+function fetchIsLiked(): void {
+    if (!Auth) {
+        return
+    }
+
+    loading.value = true
+
+    const params = {
+        post_id: post.id,
+        secret: Auth.secret
+    }
+
+    axios.get<GetPostLikesResponse>('/api/post-likes/is-liked', { params })
+        .then(res => {
+            isLiked.value = res.data.liked
+            likes.value = res.data.likes
         })
         .catch(err => console.error(err))
         .finally(() => loading.value = false)
@@ -50,11 +76,11 @@ function showHideButton(): void {
     if (window.scrollY > 100) {
         btn.value.classList.remove('opacity-0')
         btn.value.classList.remove('pointer-events-none')
-        btn.value.classList.add('opacity-70')
+        btn.value.classList.add('opacity-90')
     } else {
         btn.value.classList.add('opacity-0')
         btn.value.classList.add('pointer-events-none')
-        btn.value.classList.remove('opacity-70')
+        btn.value.classList.remove('opacity-90')
     }
 }
 </script>
@@ -72,10 +98,10 @@ function showHideButton(): void {
         </svg>
 
         <span
-            v-if="post.post_likes_count"
+            v-if="likes > 0"
             class="absolute -top-2 right-1/2 mr-0.5 text-xs border border-gray-700 dark:border-gray-200 bg-page rounded-full px-1.5 py-0.5"
         >
-            {{ post.post_likes_count }}
+            {{ likes }}
         </span>
     </button>
 </template>
