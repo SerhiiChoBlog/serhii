@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Referrer } from '@shared/types/models'
+import type { Pagination } from '@shared/types/response'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import handleError from '@admin/modules/handleError'
@@ -12,15 +13,34 @@ import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 
 const referrers = ref<Referrer[]>([])
 const loading = ref(true)
+const nextPageUrl = ref<string | null>(null)
 
-onMounted(() => fetchReferrers())
+onMounted(() => fetchReferrers('/admin/ajax/referrers'))
 
-function fetchReferrers(): void {
-    axios.get<Referrer[]>('/admin/ajax/referrers')
-        .then(resp => referrers.value = resp.data)
+function fetchReferrers(url: string, refresh = true): void {
+    axios.get<Pagination<Referrer[]>>(url)
+        .then(resp => {
+            nextPageUrl.value = resp.data.next_page_url
+
+            refresh
+                ? referrers.value = resp.data.data
+                : referrers.value.push(...resp.data.data)
+        })
         .catch(handleError)
         .finally(() => loading.value = false)
 }
+
+function loadMore(): void {
+    if (nextPageUrl.value) {
+        fetchReferrers(nextPageUrl.value, false)
+    }
+}
+
+window.addEventListener('scroll', () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        loadMore()
+    }
+})
 </script>
 
 <template>
