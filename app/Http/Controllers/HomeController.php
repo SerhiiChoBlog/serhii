@@ -10,7 +10,6 @@ use App\Models\PostView;
 use App\Models\Video;
 use App\Services\PreferredPostsService;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
@@ -33,39 +32,44 @@ class HomeController extends Controller
 
     public function index(): View
     {
+        $latest = Cache::rememberForever(CacheKey::LATEST_POSTS, fn () => $this->getLatest());
+        $monthly_top = Cache::rememberForever(CacheKey::TOP_LAST_MONTH, fn () => $this->getMonthlyTop());
+
+        $this->exclude_ids = [
+            ...array_column($latest, 'id'),
+            ...array_column($monthly_top, 'id'),
+        ];
+
         return view('home', [
             'latest_videos' => $this->getLatestVideos(),
-            'latest' => $this->getLatest(),
-            'monthly_top' => $this->getMonthlyTop(),
+            'latest' => $latest,
+            'monthly_top' => $monthly_top,
             'posts' => $this->getPreferredPosts(),
         ]);
     }
 
     /**
-     * @return Collection<int, Post>
+     * @return array<int, Post>
      */
-    private function getLatest(): Collection
+    private function getLatest(): array
     {
-        $result = Post::query()
+        return Post::query()
             ->select(self::SELECT_FIELDS)
             ->latest()
             ->where('is_published', true)
             ->limit(2)
-            ->get();
-
-        $this->exclude_ids = array_merge($this->exclude_ids, $result->pluck('id')->toArray());
-
-        return $result;
+            ->get()
+            ->all();
     }
 
     /**
-     * @return Collection<int, Post>
+     * @return array<int, Post>
      */
-    private function getMonthlyTop(): Collection
+    private function getMonthlyTop(): array
     {
         $monthly = PostView::query()
             ->selectRaw('post_id, COUNT(*) as amount')
-            ->whereMonth('created_at', (string) now()->month)
+            ->whereMonth('created_at', now()->subMonth())
             ->groupBy('post_id')
             ->orderByDesc('amount')
             ->limit(2)
@@ -78,22 +82,25 @@ class HomeController extends Controller
             ->get();
 
         $result->map(function (Post $post) use ($monthly) {
-            $post->post_views_count = $monthly->where('post_id', $post->id)->first()->amount;
+            $match = $monthly->where('post_id', $post->id)->first();
+
+            if ($match) {
+                $post->post_views_count = $match->amount;
+            }
+
             return $post;
         });
 
-        $this->exclude_ids = array_merge($this->exclude_ids, $result->pluck('id')->toArray());
-
-        return $result;
+        return $result->all();
     }
 
     /**
-     * @return Collection<int, Post>
+     * @return array<int, Post>
      */
-    private function getPreferredPosts(): Collection
+    private function getPreferredPosts(): array
     {
         $service = new PreferredPostsService();
-        return $service->get($this->exclude_ids);
+        return $service->get($this->exclude_ids)->all();
     }
 
     /**

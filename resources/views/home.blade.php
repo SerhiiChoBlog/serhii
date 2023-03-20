@@ -3,9 +3,9 @@
     use Illuminate\Support\Collection;
 
     /**
-     * @var Collection<int, Post> $latest
-     * @var Collection<int, Post> $monthly_top
-     * @var Collection<int, Post> $posts
+     * @var array<int, Post> $latest
+     * @var array<int, Post> $monthly_top
+     * @var array<int, Post> $posts
      * @var array<int, array<int ,mixed>> $latest_videos
      */
 @endphp
@@ -67,7 +67,7 @@
 
     <x-home.section
         title="Monthly top"
-        intro="The most viewed articles in the current month"
+        intro="The most viewed articles in the previous month"
         :isDark="false"
     >
         <div class="space-y-6">

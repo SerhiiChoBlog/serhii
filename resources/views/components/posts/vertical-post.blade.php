@@ -2,7 +2,7 @@
     use App\Models\Post;
 
     /**
-     * @var Post $post
+     * @var Post|array<string, mixed> $post
      */
 @endphp
 
