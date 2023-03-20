@@ -46,6 +46,17 @@ class Post extends Model
 {
     use HasFactory;
 
+    public const COMMON_FIELDS = [
+        'id',
+        'slug',
+        'title',
+        'intro',
+        'image_sm',
+        'image_xs',
+        'created_at',
+        'read_time',
+    ];
+
     /**
      * @var array<int, string>
      */

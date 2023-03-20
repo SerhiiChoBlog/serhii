@@ -14,4 +14,6 @@ abstract class CacheKey
     public const POSTS_SEARCH = 'post-search';
     public const TOP_LAST_MONTH = 'top-last-month';
     public const LATEST_POSTS = 'latest-posts';
+    public const HOME_SEARCH_TAGS = 'home-search-tags';
+    public const UPCOMING = 'upcoming-posts';
 }
