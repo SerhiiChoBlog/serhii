@@ -46,10 +46,8 @@ class PostLikeController extends Controller
     {
         $user = User::getBySecret($request->secret);
 
-        abort_if(!$user, ResponseStatus::HTTP_UNAUTHORIZED);
-
         return [
-            'liked' => $user->hasLikedPost((int) $request->post_id),
+            'liked' => $user && $user->hasLikedPost((int)$request->post_id),
             'likes' => $this->getPostLikes((int) $request->post_id),
         ];
     }

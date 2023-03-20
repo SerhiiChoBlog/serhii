@@ -39,15 +39,11 @@ function toggleLike(): void {
 }
 
 function fetchIsLiked(): void {
-    if (!Auth) {
-        return
-    }
-
     loading.value = true
 
     const params = {
         post_id: post.id,
-        secret: Auth.secret
+        secret: Auth ? Auth.secret : null
     }
 
     axios.get<GetPostLikesResponse>('/api/post-likes/is-liked', { params })
