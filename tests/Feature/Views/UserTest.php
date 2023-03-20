@@ -66,4 +66,41 @@ class UserTest extends TestCase
 
         $this->assertCount(1, $user->likes);
     }
+
+    public function testUserHasUnlikePostMethod(): void
+    {
+        $user = $this->createUser();
+
+        /** @var Post $post */
+        $post = Post::factory()->create();
+
+        $user->unlikePost($post->id);
+
+        $this->assertEmpty($user->likes);
+    }
+
+    public function method_hasLikedPost_returnsTrueIfUserHasLikedPost(): void
+    {
+        $user = $this->createUser();
+
+        /** @var Post $post */
+        $post = Post::factory()->create();
+
+        PostLike::factory()->create([
+            'post_id' => $post->id,
+            'user_id' => $user->id,
+        ]);
+
+        $this->assertTrue($user->hasLikedPost($post->id));
+    }
+
+    public function method_hasLikedPost_returnsFalseIfUserHasNotLikedPost(): void
+    {
+        $user = $this->createUser();
+
+        /** @var Post $post */
+        $post = Post::factory()->create();
+
+        $this->assertFalse($user->hasLikedPost($post->id));
+    }
 }
