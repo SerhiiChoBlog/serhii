@@ -21,7 +21,7 @@ class IsLikedRequest extends FormRequest
     {
         return [
             'post_id' => ['required', 'numeric', 'exists:posts,id'],
-            'secret' => ['required', 'string'],
+            'secret' => ['nullable', 'string'],
         ];
     }
 }
