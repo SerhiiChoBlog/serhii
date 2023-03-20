@@ -1,0 +1,53 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
+
+/**
+ * @property-read int $id
+ * @property int $post_id
+ * @property int $visitor_id
+ * @property Carbon $created_at
+ * @property-read Visitor $visitor
+ * @property-read Post $post
+ */
+class PostLike extends Model
+{
+    use HasFactory;
+
+    public $timestamps = false;
+
+    /**
+     * @var array<int, string>
+     */
+    protected $guarded = ['id'];
+
+    /**
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
+
+    /**
+     * @return BelongsTo<Visitor, self>
+     */
+    public function visitor(): BelongsTo
+    {
+        return $this->belongsTo(Visitor::class);
+    }
+
+    /**
+     * @return BelongsTo<Post, self>
+     */
+    public function post(): BelongsTo
+    {
+        return $this->belongsTo(Post::class);
+    }
+}
