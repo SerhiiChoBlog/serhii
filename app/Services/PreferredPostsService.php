@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 
 readonly class PreferredPostsService
 {
-    private const LIMIT = 9;
+    private const LIMIT = 6;
     private const SELECT_FIELDS = [
         'id',
         'slug',
@@ -24,17 +24,20 @@ readonly class PreferredPostsService
     ];
 
     /**
+     * @param array<int, int> $exclude
+     *
      * @return Collection<int, Post>
      */
-    public function get(): Collection
+    public function get(array $exclude): Collection
     {
         $visitor = GlobalVisitor::getInstance()->get();
 
         if (!$visitor) {
-            return $this->getRandomPosts([], self::LIMIT);
+            return $this->getRandomPosts($exclude, self::LIMIT);
         }
 
         $exclude_ids = $visitor->postViews()->pluck('post_id')->toArray();
+        $exclude_ids = array_merge($exclude_ids, $exclude);
 
         $posts = $this->getRandomPosts($exclude_ids, self::LIMIT);
 

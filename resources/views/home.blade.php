@@ -3,6 +3,8 @@
     use Illuminate\Support\Collection;
 
     /**
+     * @var Collection<int, Post> $latest
+     * @var Collection<int, Post> $monthly_top
      * @var Collection<int, Post> $posts
      * @var array<int, array<int ,mixed>> $latest_videos
      */
@@ -40,8 +42,21 @@
     </x-hero>
 
     <x-home.section
+        title="The latest articles"
+        intro="The most recent articles"
+        :isDark="false"
+    >
+        <div class="space-y-6">
+            @foreach ($latest as $post)
+                <x-posts.horizontal-post :post="$post"/>
+            @endforeach
+        </div>
+    </x-home.section>
+
+    <x-home.section
         title="You might like"
         intro="Articles which I think you might want to read"
+        :isDark="true"
     >
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-0 md:gap-5">
             @foreach ($posts as $post)
@@ -51,7 +66,19 @@
     </x-home.section>
 
     <x-home.section
-        title="Latest videos"
+        title="Monthly top"
+        intro="The most viewed articles in the current month"
+        :isDark="false"
+    >
+        <div class="space-y-6">
+            @foreach ($monthly_top as $post)
+                <x-posts.horizontal-post :post="$post"/>
+            @endforeach
+        </div>
+    </x-home.section>
+
+    <x-home.section
+        title="The latest videos"
         intro="The latest YouTube videos"
         :isDark="true"
     >
@@ -92,6 +119,7 @@
     <x-home.section
         title="Coming soon"
         intro="The articles which I'm currently working on"
+        :isDark="false"
     >
         <x-home.coming-soon-section/>
     </x-home.section>
