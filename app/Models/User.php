@@ -161,4 +161,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->likes()->create(['post_id' => $post_id]);
     }
+
+    public function unlikePost(int $post_id): void
+    {
+        $this->likes()->where('post_id', $post_id)->delete();
+    }
+
+    public function hasLikedPost(int $post_id): bool
+    {
+        return $this->likes()->where('post_id', $post_id)->exists();
+    }
 }

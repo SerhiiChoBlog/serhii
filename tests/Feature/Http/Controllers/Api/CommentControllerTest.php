@@ -511,4 +511,18 @@ class CommentControllerTest extends TestCase
 
         $this->assertDatabaseEmpty('comments');
     }
+
+    public function testServerReturnsValidationErrorIfPostIdDoesntExist(): void
+    {
+        $user = $this->createUser();
+
+        $this->actingAs($user, 'user')
+            ->postJson(self::POST_COMMENT_URI, [
+                'post_id' => 999,
+                'secret' => $user->secret,
+                'comment' => 'Hello! Thank you for your post!',
+            ])
+            ->assertStatus(422)
+            ->assertJsonValidationErrors(['post_id']);
+    }
 }
