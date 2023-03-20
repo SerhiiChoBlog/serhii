@@ -54,6 +54,7 @@ readonly class PreferredPostsService
                 },
             ])
             ->select(Post::COMMON_FIELDS)
+            ->withCount('postViews')
             ->where('is_published', true)
             ->inRandomOrder()
             ->limit($limit);
