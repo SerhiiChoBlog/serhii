@@ -1,15 +1,17 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import ValidationMessage from '@/components/Form/ValidationMessage.vue'
 
 type Emits = {
-    (e: 'changed', value: string): void
+    (e: 'update:modelValue', value: string): void
 }
 
 const emit = defineEmits<Emits>()
 
 type Props = {
     name: string
+    modelValue: string
     errorMessage?: string
     value?: string
     id?: string
@@ -22,6 +24,11 @@ const props = withDefaults(defineProps<Props>(), {
     placeholder: '',
     value: '',
     id: '',
+})
+
+const inpValue = computed({
+    get: () => props.modelValue,
+    set: (v: string) => emit('update:modelValue', v),
 })
 </script>
 
@@ -36,10 +43,9 @@ const props = withDefaults(defineProps<Props>(), {
                 'border-border': !props.errorMessage,
             }"
             :name="props.name"
-            :value="props.value"
+            v-model="inpValue"
             :id="props.id"
             :ref="`ref-${props.name}`"
-            @input="emit('changed', $event.target.value)"
         >
 
         <show-password-button

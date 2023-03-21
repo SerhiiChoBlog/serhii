@@ -33,7 +33,7 @@ const { loading, formData, errors, login, redirectToReset } = useLogin()
                 id="login-email"
                 type="email"
                 placeholder="Enter your email"
-                @changed="v => formData.email = v"
+                v-model="formData.email"
                 :error-message="errors && errors.email ? errors.email[0] : null"
             />
         </div>
@@ -45,7 +45,7 @@ const { loading, formData, errors, login, redirectToReset } = useLogin()
                 id="login-password"
                 type="password"
                 placeholder="Enter your password"
-                @changed="v => formData.password = v"
+                v-model="formData.password"
             />
         </div>
 

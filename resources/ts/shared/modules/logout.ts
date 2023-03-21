@@ -26,5 +26,5 @@ export default async (): Promise<void> => {
 
     showToast({ text: `You've been logged out` })
 
-    window.location.href = '/login'
+    window.location.reload()
 }
