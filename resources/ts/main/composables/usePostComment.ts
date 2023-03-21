@@ -22,7 +22,7 @@ export default (postId: number, commentId?: number) => {
         }
 
         if (!Auth) {
-            window.location.href = '/login'
+            dispatchEvent(events.openLoginModal)
             return
         }
 

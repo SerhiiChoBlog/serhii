@@ -33,7 +33,7 @@ const { loading, formData, errors, register } = useRegister()
                 id="name"
                 type="text"
                 placeholder="Enter your name"
-                @changed="v => formData.name = v"
+                v-model="formData.name"
                 :error-message="errors && errors.name ? errors.name[0] : null"
             />
         </div>
@@ -48,7 +48,7 @@ const { loading, formData, errors, register } = useRegister()
                 id="login-email"
                 type="email"
                 placeholder="Enter your email"
-                @changed="v => formData.email = v"
+                v-model="formData.email"
                 :error-message="errors && errors.email ? errors.email[0] : null"
             />
         </div>
@@ -60,7 +60,7 @@ const { loading, formData, errors, register } = useRegister()
                 id="register-password"
                 type="password"
                 placeholder="Enter your password"
-                @changed="v => formData.password = v"
+                v-model="formData.password"
                 :error-message="errors && errors.password ? errors.password[0] : null"
             />
         </div>

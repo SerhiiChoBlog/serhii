@@ -27,6 +27,7 @@ export default () => {
             .catch(async e => {
                 const err = await handleServerError(e)
                 errors.value = err ? err.errors : null
+                formData.value.password = ''
             })
             .finally(() => loading.value = false)
     }
