@@ -27,6 +27,7 @@ use Illuminate\Support\Str;
  * @property Carbon $email_verified_at
  * @property string $password
  * @property int|null $comments_count
+ * @property int|null $post_likes_count
  * @property SignInMethod $sign_in_method
  * @property string $avatar
  * @property Ban|null $ban
