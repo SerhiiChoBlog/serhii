@@ -30,7 +30,7 @@ class SeriesControllerTest extends TestCase
         $series = Series::factory()->create();
 
         $response = $this->actingAs($admin, 'admin')
-            ->json('get', self::INDEX_URI)
+            ->getJson(self::INDEX_URI)
             ->assertOk();
 
         $response->assertJsonCount(1, 'series.data');
@@ -66,7 +66,7 @@ class SeriesControllerTest extends TestCase
         ]);
 
         $response = $this->actingAs($admin, 'admin')
-            ->json('get', self::INDEX_URI)
+            ->getJson(self::INDEX_URI)
             ->assertOk();
 
         $response->assertJsonCount(1, 'series.data');
@@ -83,7 +83,7 @@ class SeriesControllerTest extends TestCase
 
     public function testGuestCannotFetchSeries(): void
     {
-        $this->json('get', self::INDEX_URI)
+        $this->getJson(self::INDEX_URI)
             ->assertUnauthorized();
     }
 
@@ -92,7 +92,7 @@ class SeriesControllerTest extends TestCase
         $user = $this->createUser();
 
         $this->actingAs($user, 'user')
-            ->json('get', self::INDEX_URI)
+            ->getJson(self::INDEX_URI)
             ->assertUnauthorized();
     }
 
@@ -106,7 +106,7 @@ class SeriesControllerTest extends TestCase
         $series->posts()->attach($post);
 
         $response = $this->actingAs($admin, 'admin')
-            ->json('get', self::EDIT_URI)
+            ->getJson(self::EDIT_URI)
             ->assertOk();
 
         $fetched_series = $response->json();
@@ -123,7 +123,7 @@ class SeriesControllerTest extends TestCase
         Series::factory()->create();
 
         $this->actingAs($admin, 'admin')
-            ->json('delete', self::DESTROY_URI)
+            ->deleteJson(self::DESTROY_URI)
             ->assertOk();
 
         $this->assertDatabaseEmpty('series');
@@ -139,7 +139,7 @@ class SeriesControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('post', self::STORE_URI, $form_data)
+            ->postJson(self::STORE_URI, $form_data)
             ->assertCreated();
 
         $this->assertDatabaseCount('series', 1);
@@ -170,7 +170,7 @@ class SeriesControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $form_data)
+            ->putJson(self::UPDATE_URI, $form_data)
             ->assertOk();
 
         $this->assertDatabaseHas('series', [
@@ -199,7 +199,7 @@ class SeriesControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $form_data)
+            ->putJson(self::UPDATE_URI, $form_data)
             ->assertOk();
 
         /** @var Series $series */
@@ -228,7 +228,7 @@ class SeriesControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $form_data)
+            ->putJson(self::UPDATE_URI, $form_data)
             ->assertOk();
     }
 
@@ -255,7 +255,7 @@ class SeriesControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $params)
+            ->putJson(self::UPDATE_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseHas('series', [
@@ -288,7 +288,7 @@ class SeriesControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $form_data)
+            ->putJson(self::UPDATE_URI, $form_data)
             ->assertOk();
 
         /** @var Series $series */

@@ -34,12 +34,14 @@ export type Post = {
     image_xs: string
     image_sm: string
     image_lg: string
+    post_likes_count?: number
     images?: PostContentImage[]
     postViews?: PostView[]
     socialShares?: SocialShare[]
     keywords?: Keyword[]
     series?: Series[]
     tags?: Tag[]
+    postLikes?: PostLike[]
     video?: Video | null
     social?: string[][]
     social_shares_count?: number
@@ -143,6 +145,7 @@ export type User = {
     updated_at: string
     badges?: Badge[]
     ban?: Ban | null
+    postLikes?: PostLike[]
 }
 
 export type Role = {
@@ -224,4 +227,13 @@ export type Series = {
         series_id: number
         part: number
     }
+}
+
+export type PostLike = {
+    id: number
+    post_id: number
+    user_id: number
+    created_at: string
+    post?: Post
+    user?: User
 }

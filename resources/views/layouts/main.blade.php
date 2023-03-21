@@ -9,6 +9,7 @@
     <main id="main">
         @yield('content')
         <x-footer></x-footer>
+        <sign-in-modal></sign-in-modal>
     </main>
 
     <script type="text/javascript">

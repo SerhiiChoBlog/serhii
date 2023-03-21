@@ -16,7 +16,7 @@ class UserController extends Controller
 
         abort_if(!$user, 404);
 
-        $user->loadCount('comments');
+        $user->loadCount('comments', 'postLikes');
         $user->load('badges');
         $user->makeHidden('secret');
 

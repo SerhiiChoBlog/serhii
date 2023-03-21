@@ -30,7 +30,7 @@ class PostControllerTest extends TestCase
         $params = ['title' => 'This is the post title for post'];
 
         $this->actingAs($user, 'user')
-            ->json('post', self::STORE_URI, $params)
+            ->postJson(self::STORE_URI, $params)
             ->assertUnauthorized();
 
         $this->assertDatabaseEmpty('posts');
@@ -43,7 +43,7 @@ class PostControllerTest extends TestCase
         $params = ['title' => 'This is the post title for post'];
 
         $this->actingAs($admin, 'admin')
-            ->json('post', self::STORE_URI, $params)
+            ->postJson(self::STORE_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseHas('posts', $params);
@@ -61,7 +61,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('post', self::STORE_URI, $params)
+            ->postJson(self::STORE_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseHas('post_series', [
@@ -90,7 +90,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('post', self::STORE_URI, $params)
+            ->postJson(self::STORE_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseHas('post_series', [
@@ -114,7 +114,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $params)
+            ->putJson(self::UPDATE_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseHas('posts', $params);
@@ -139,7 +139,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $params)
+            ->putJson(self::UPDATE_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseHas('posts', [
@@ -173,7 +173,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $params)
+            ->putJson(self::UPDATE_URI, $params)
             ->assertOk();
 
         $this->assertDatabaseHas('posts', [
@@ -201,7 +201,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $params)
+            ->putJson(self::UPDATE_URI, $params)
             ->assertOk();
 
         $expect = <<<TEXT
@@ -229,7 +229,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $params)
+            ->putJson(self::UPDATE_URI, $params)
             ->assertOk();
 
         $expect = <<<TEXT
@@ -257,7 +257,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $params)
+            ->putJson(self::UPDATE_URI, $params)
             ->assertOk();
 
         $expect = <<<TEXT
@@ -286,7 +286,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $params)
+            ->putJson(self::UPDATE_URI, $params)
             ->assertOk();
 
         $expect = <<<TEXT
@@ -311,7 +311,7 @@ class PostControllerTest extends TestCase
         ]);
 
         $resp = $this->actingAs($admin, 'admin')
-            ->json('get', self::EDIT_URI);
+            ->getJson(self::EDIT_URI);
 
         $expect_content = <<<TEXT
         <h2>Successful people</h2>
@@ -329,7 +329,7 @@ class PostControllerTest extends TestCase
         Post::factory()->create();
 
         $this->actingAs($user, 'user')
-            ->json('get', self::EDIT_URI)
+            ->getJson(self::EDIT_URI)
             ->assertUnauthorized();
     }
 
@@ -347,7 +347,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($user, 'user')
-            ->json('put', self::UPDATE_URI, $params)
+            ->putJson(self::UPDATE_URI, $params)
             ->assertUnauthorized();
     }
 
@@ -357,7 +357,7 @@ class PostControllerTest extends TestCase
         $post = Post::factory()->published()->create();
 
         $this->actingAs($admin, 'admin')
-            ->json('delete', self::DELETE_URI)
+            ->deleteJson(self::DELETE_URI)
             ->assertOk();
 
         $this->assertDatabaseEmpty('posts');
@@ -369,7 +369,7 @@ class PostControllerTest extends TestCase
         $post = Post::factory()->published()->create();
 
         $this->actingAs($user, 'user')
-            ->json('delete', self::DELETE_URI)
+            ->deleteJson(self::DELETE_URI)
             ->assertUnauthorized();
 
         $this->assertDatabaseCount('posts', 1);
@@ -381,7 +381,7 @@ class PostControllerTest extends TestCase
         Post::factory()->published()->count(2)->create();
 
         $resp = $this->actingAs($admin, 'admin')
-            ->json('get', self::INDEX_URI);
+            ->getJson(self::INDEX_URI);
 
         $json = $resp->json();
 
@@ -409,7 +409,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $params);
+            ->putJson(self::UPDATE_URI, $params);
 
         $this->assertDatabaseHas('post_tag', [
             'tag_id' => $tag->id,
@@ -440,7 +440,7 @@ class PostControllerTest extends TestCase
         ];
 
         $this->actingAs($admin, 'admin')
-            ->json('put', self::UPDATE_URI, $params);
+            ->putJson(self::UPDATE_URI, $params);
 
         $this->assertDatabaseHas('post_tag', [
             'tag_id' => $tags[0]->id,

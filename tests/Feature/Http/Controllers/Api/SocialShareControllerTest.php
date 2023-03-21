@@ -30,7 +30,7 @@ class SocialShareControllerTest extends TestCase
     {
         $params = ['social' => SocialName::TELEGRAM];
 
-        $this->json('post', $this->uri, $params, [
+        $this->postJson($this->uri, $params, [
             'REMOTE_ADDR' => $this->visitor->ip,
         ]);
 
@@ -51,7 +51,7 @@ class SocialShareControllerTest extends TestCase
             'secret' => $user->secret,
         ];
 
-        $this->json('post', $this->uri, $params, [
+        $this->postJson($this->uri, $params, [
             'REMOTE_ADDR' => $this->visitor->ip,
         ]);
 
@@ -67,11 +67,11 @@ class SocialShareControllerTest extends TestCase
     {
         $params = ['social' => SocialName::LINKEDIN];
 
-        $this->json('post', $this->uri, $params, [
+        $this->postJson($this->uri, $params, [
             'REMOTE_ADDR' => $this->visitor->ip,
         ]);
 
-        $this->json('post', $this->uri, $params, [
+        $this->postJson($this->uri, $params, [
             'REMOTE_ADDR' => $this->visitor->ip,
         ]);
 
@@ -82,7 +82,7 @@ class SocialShareControllerTest extends TestCase
     {
         $params = ['social' => 'unknown'];
 
-        $this->json('post', $this->uri, $params, [
+        $this->postJson($this->uri, $params, [
             'REMOTE_ADDR' => $this->visitor->ip,
         ]);
 
@@ -98,7 +98,7 @@ class SocialShareControllerTest extends TestCase
             'secret' => $admin->secret,
         ];
 
-        $this->json('post', $this->uri, $params, [
+        $this->postJson($this->uri, $params, [
             'REMOTE_ADDR' => $this->visitor->ip,
         ]);
 

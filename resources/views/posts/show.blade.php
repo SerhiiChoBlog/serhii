@@ -48,6 +48,8 @@
 @push('description', str($post->intro)->limit(147))
 
 @section('content')
+    <like-post-button :post="{{ $post }}"></like-post-button>
+
     <article>
         <div
             class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white print:!bg-none print:text-black"

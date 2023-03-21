@@ -6,8 +6,12 @@ namespace App\Providers;
 
 use App\Events\CommentApproved;
 use App\Events\PostChanged;
+use App\Events\UserLikesPost;
+use App\Events\UserUnlikesPost;
 use App\Listeners\Badges\GiveUserCommentatorBadge;
+use App\Listeners\Badges\GiveUserLovelyBadge;
 use App\Listeners\Badges\GiveUserVerifiedBadge;
+use App\Listeners\Badges\RemoveLovelyBadgeFromUser;
 use App\Listeners\ClearPostsCache;
 use App\Listeners\ConnectSubscriptionToUser;
 use Illuminate\Auth\Events\Registered;
@@ -33,6 +37,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         PostChanged::class => [
             ClearPostsCache::class,
+        ],
+        UserLikesPost::class => [
+            GiveUserLovelyBadge::class,
+        ],
+        UserUnlikesPost::class => [
+            RemoveLovelyBadgeFromUser::class,
         ],
     ];
 }

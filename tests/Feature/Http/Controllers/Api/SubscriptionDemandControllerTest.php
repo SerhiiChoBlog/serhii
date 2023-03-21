@@ -24,7 +24,7 @@ class SubscriptionDemandControllerTest extends TestCase
 
         $sub = Subscription::factory()->confirmed()->create();
 
-        $response = $this->json('post', '/api/subscriptions', [
+        $response = $this->postJson('/api/subscriptions', [
             'email' => $sub->email,
             'tags' => '',
         ]);
@@ -42,7 +42,7 @@ class SubscriptionDemandControllerTest extends TestCase
 
         $sub = Subscription::factory()->create();
 
-        $response = $this->json('post', '/api/subscriptions', [
+        $response = $this->postJson('/api/subscriptions', [
             'email' => $sub->email,
             'tags' => '',
         ]);
@@ -60,7 +60,7 @@ class SubscriptionDemandControllerTest extends TestCase
 
         $sub = Subscription::factory()->create(['created_at' => now()->subDays(2)]);
 
-        $response = $this->json('post', '/api/subscriptions', [
+        $response = $this->postJson('/api/subscriptions', [
             'email' => $sub->email,
             'tags' => '',
         ]);
@@ -80,7 +80,7 @@ class SubscriptionDemandControllerTest extends TestCase
 
         $email = 'serhii@anna.com';
 
-        $response = $this->json('post', '/api/subscriptions', [
+        $response = $this->postJson('/api/subscriptions', [
             'email' => $email,
             'tags' => '',
         ]);
@@ -99,7 +99,7 @@ class SubscriptionDemandControllerTest extends TestCase
     {
         Notification::fake();
 
-        $this->json('post', '/api/subscriptions', [
+        $this->postJson('/api/subscriptions', [
             'email' => 'anna@serhii.com',
             'tags' => SubscriptionDemandService::ALL_TAGS,
         ]);
@@ -114,7 +114,7 @@ class SubscriptionDemandControllerTest extends TestCase
     {
         Notification::fake();
 
-        $response = $this->json('post', '/api/subscriptions', [
+        $response = $this->postJson('/api/subscriptions', [
             'email' => 'anna@serhii.com',
             'tags' => SubscriptionDemandService::NO_TAGS,
         ]);
@@ -131,7 +131,7 @@ class SubscriptionDemandControllerTest extends TestCase
         /** @var Collection<int, Tag> $tags */
         $tags = Tag::factory()->count(5)->create();
 
-        $this->json('post', '/api/subscriptions', [
+        $this->postJson('/api/subscriptions', [
             'email' => 'serhii@anna.com',
             'tags' => $tags->implode('id', ',')
         ]);
@@ -149,7 +149,7 @@ class SubscriptionDemandControllerTest extends TestCase
         /** @var Tag $tag */
         $tag = Tag::factory()->create();
 
-        $this->json('post', '/api/subscriptions', [
+        $this->postJson('/api/subscriptions', [
             'email' => 'serhii@anna.com',
             'tags' => $tag->id,
         ]);

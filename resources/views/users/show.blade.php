@@ -53,7 +53,10 @@
                         {{ TimeAgo::trans($user->created_at) }}
                     </x-users.profile-row>
                     <x-users.profile-row title="Comments">
-                        {{ $user->comments_count ?? 0 }}
+                        💬 {{ $user->comments_count ?? 0 }}
+                    </x-users.profile-row>
+                    <x-users.profile-row title="Post likes">
+                        ❤️ {{ $user->post_likes_count ?? 0 }}
                     </x-users.profile-row>
                 </div>
             </div>
