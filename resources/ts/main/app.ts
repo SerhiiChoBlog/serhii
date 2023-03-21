@@ -1,11 +1,12 @@
 import { onMounted } from 'vue'
 import { createApp } from "vue/dist/vue.esm-bundler"
+import smoothLoader from 'smooth-loader'
+import insertTagsForHighlightJs from '@/modules/insertTagsForHighlightJs'
+import PageRefresher from '@/modules/PageRefresher'
 import ContactModal from '@/components/ContactModal.vue'
 import Navbar from '@/components/Navbar/Navbar.vue'
 import SharePostButtons from '@/components/SharePostButtons.vue'
 import Chapters from '@/components/Chapters/Chapters.vue'
-import smoothLoader from 'smooth-loader'
-import insertTagsForHighlightJs from '@/modules/insertTagsForHighlightJs'
 import Tip from '@shared/components/Tip.vue'
 import Search from '@/components/Search/Search.vue'
 import Filters from '@/components/Filters/Filters.vue'
@@ -15,6 +16,8 @@ import Comments from '@/components/Comments/Comments.vue'
 import LazyLoading from '@shared/components/LazyLoading.vue'
 import FirebaseSignInButton from '@/components/FirebaseSignInButton.vue'
 import RelatedPosts from '@/components/RelatedPosts/RelatedPosts.vue'
+import LikePostButton from '@/components/LikePostButton.vue'
+import SignInModal from '@/components/SignIn/SignInModal.vue'
 
 const app = createApp({
     components: {
@@ -31,11 +34,14 @@ const app = createApp({
         LazyLoading,
         FirebaseSignInButton,
         RelatedPosts,
+        LikePostButton,
+        SignInModal,
     },
 
     setup() {
         onMounted(() => {
             insertTagsForHighlightJs()
+            PageRefresher.scrollToTheLastPosition()
         })
     },
 })

@@ -9,3 +9,15 @@ export type Pagination<T> = {
     prev_page_url: string | null
     to: number
 }
+
+export type ServerError = {
+    message: string
+    errors: {
+        [key: string]: string[]
+    }
+}
+
+export type GetPostLikesResponse = {
+    likes: number
+    liked: boolean
+}

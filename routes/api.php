@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\PostLikeController;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\SocialShareController;
 use App\Http\Controllers\Api\SubscriptionDemandController;
@@ -27,4 +28,9 @@ Route::get('related-posts/{post}', [PostController::class, 'related']);
 Route::controller(CommentController::class)->prefix('comments')->group(function () {
     Route::get('{post}', 'index');
     Route::post('/', 'store');
+});
+
+Route::controller(PostLikeController::class)->prefix('post-likes')->group(function () {
+    Route::post('/', 'store');
+    Route::get('is-liked', 'isLiked');
 });

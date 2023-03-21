@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import contactModalSections from '@/modules/contactModalSections'
 import Modal from '@/components/Modal.vue'
 
-const isOpen = ref(false)
+const isOpen = ref<boolean>(false)
 </script>
 
 <template>

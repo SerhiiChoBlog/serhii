@@ -32,7 +32,7 @@ class KeywordControllerTest extends TestCase
         $tate_keyword = Keyword::factory()->create(['name' => 'tate']);
 
         $resp = $this->actingAs($this->admin, 'admin')
-            ->json('get', self::SEARCH_URI . 'andrew')
+            ->getJson(self::SEARCH_URI . 'andrew')
             ->assertOk();
 
         $resp->assertJson([[
@@ -47,7 +47,7 @@ class KeywordControllerTest extends TestCase
         $tristan_keyword = Keyword::factory()->create(['name' => 'tristantate']);
 
         $resp = $this->actingAs($this->admin, 'admin')
-            ->json('get', self::SEARCH_URI . 'tate')
+            ->getJson(self::SEARCH_URI . 'tate')
             ->assertOk();
 
         $resp->assertJson([
@@ -68,7 +68,7 @@ class KeywordControllerTest extends TestCase
         $post = Post::factory()->create();
 
         $this->actingAs($this->admin, 'admin')
-            ->json('post', self::STORE_URI, ['name' => 'andrew', 'post_id' => $post->id])
+            ->postJson(self::STORE_URI, ['name' => 'andrew', 'post_id' => $post->id])
             ->assertOk();
 
         $this->assertDatabaseHas('keywords', ['name' => 'andrew']);
@@ -82,7 +82,7 @@ class KeywordControllerTest extends TestCase
         $post = Post::factory()->create();
 
         $this->actingAs($this->admin, 'admin')
-            ->json('post', self::STORE_URI, ['name' => 'anna', 'post_id' => $post->id])
+            ->postJson(self::STORE_URI, ['name' => 'anna', 'post_id' => $post->id])
             ->assertOk();
 
         $this->assertDatabaseCount('keywords', 1);
@@ -96,7 +96,7 @@ class KeywordControllerTest extends TestCase
         $keyword = Keyword::factory()->create(['name' => 'anna']);
 
         $this->actingAs($this->admin, 'admin')
-            ->json('post', self::STORE_URI, ['name' => 'anna', 'post_id' => $post->id])
+            ->postJson(self::STORE_URI, ['name' => 'anna', 'post_id' => $post->id])
             ->assertOk();
 
         $post_keywords = $post->keywords;
@@ -116,11 +116,11 @@ class KeywordControllerTest extends TestCase
         Keyword::factory()->create(['name' => 'anna']);
 
         $this->actingAs($this->admin, 'admin')
-            ->json('post', self::STORE_URI, ['name' => 'anna', 'post_id' => $post->id])
+            ->postJson(self::STORE_URI, ['name' => 'anna', 'post_id' => $post->id])
             ->assertOk();
 
         $this->actingAs($this->admin, 'admin')
-            ->json('post', self::STORE_URI, ['name' => 'anna', 'post_id' => $post->id])
+            ->postJson(self::STORE_URI, ['name' => 'anna', 'post_id' => $post->id])
             ->assertOk();
 
         $this->assertDatabaseCount('keyword_post', 1);
@@ -135,7 +135,7 @@ class KeywordControllerTest extends TestCase
         $post->keywords()->attach($keyword);
 
         $this->actingAs($this->admin, 'admin')
-            ->json('delete', self::DELETE_URI, [
+            ->deleteJson(self::DELETE_URI, [
                 'keyword_id' => $keyword->id,
                 'post_id' => $post->id,
             ])
@@ -151,7 +151,7 @@ class KeywordControllerTest extends TestCase
         $keyword = Keyword::factory()->create(['name' => 'anna']);
 
         $this->actingAs($this->admin, 'admin')
-            ->json('delete', self::DELETE_URI, [
+            ->deleteJson(self::DELETE_URI, [
                 'keyword_id' => $keyword->id,
                 'post_id' => $post->id,
             ])

@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\Keyword;
 use App\Models\Post;
 use App\Models\PostContentImage;
+use App\Models\PostLike;
 use App\Models\PostPublication;
 use App\Models\Series;
 use App\Models\Tag;
@@ -110,5 +111,17 @@ class PostTest extends TestCase
     public function testPostHasPrettyCreatedAtField(): void
     {
         $this->assertNotNull($this->post->pretty_created_at);
+    }
+
+    public function testPostCanHaveLikes(): void
+    {
+        $user = $this->createUser();
+
+        PostLike::factory()->create([
+            'user_id' => $user->id,
+            'post_id' => $this->post->id,
+        ]);
+
+        $this->assertCount(1, $this->post->postLikes);
     }
 }
