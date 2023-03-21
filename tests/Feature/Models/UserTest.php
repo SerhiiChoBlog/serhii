@@ -86,4 +86,19 @@ class UserTest extends TestCase
         $ban = Ban::factory()->create(['user_id' => $this->user->id]);
         $this->assertNotNull($this->user->ban);
     }
+
+    public function testMethodHasBadgeReturnFalseIfThereIsNoBadge(): void
+    {
+        Badge::factory()->create(['name' => BadgeName::LOVELY]);
+        $this->assertFalse($this->user->hasBadge(BadgeName::LOVELY));
+    }
+
+    public function testMethodHasBadgeReturnTrueIfThereIsBadge(): void
+    {
+        Badge::factory()->create(['name' => BadgeName::LOVELY]);
+
+        $this->user->giveBadge(BadgeName::LOVELY);
+
+        $this->assertTrue($this->user->hasBadge(BadgeName::LOVELY));
+    }
 }
