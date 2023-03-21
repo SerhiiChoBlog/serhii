@@ -13,7 +13,7 @@ type Emits = {
 }
 
 const emit = defineEmits<Emits>()
-const { loading, redirectToReset } = useLogin()
+const { loading, formData, errors, login, redirectToReset } = useLogin()
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const { loading, redirectToReset } = useLogin()
         sub-headline="Welcome back! Please sign in to continue"
     />
 
-    <form class="space-y-5 my-6">
+    <form @submit.prevent="login" class="space-y-5 my-6">
         <div>
             <form-label for="email" id="email">
                 Email
@@ -30,9 +30,11 @@ const { loading, redirectToReset } = useLogin()
             </form-label>
             <input-field
                 name="email"
-                id="email"
+                id="login-email"
                 type="email"
                 placeholder="Enter your email"
+                @changed="v => formData.email = v"
+                :error-message="errors && errors.email ? errors.email[0] : null"
             />
         </div>
 
@@ -40,9 +42,10 @@ const { loading, redirectToReset } = useLogin()
             <form-label for="password" id="password">Password</form-label>
             <input-field
                 name="password"
-                id="password"
+                id="login-password"
                 type="password"
                 placeholder="Enter your password"
+                @changed="v => formData.password = v"
             />
         </div>
 

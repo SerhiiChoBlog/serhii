@@ -4,7 +4,7 @@ import Modal from '@/components/Modal.vue'
 import RegisterForm from '@/components/SignIn/RegisterForm.vue'
 import LoginForm from '@/components/SignIn/LoginForm.vue'
 
-const isOpen = ref<boolean>(true)
+const isOpen = ref<boolean>(false)
 const showRegisterForm = ref<boolean>(false)
 </script>
 

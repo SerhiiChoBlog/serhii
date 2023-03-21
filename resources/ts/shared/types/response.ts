@@ -10,6 +10,13 @@ export type Pagination<T> = {
     to: number
 }
 
+export type ServerError = {
+    message: string
+    errors: {
+        [key: string]: string[]
+    }
+}
+
 export type GetPostLikesResponse = {
     likes: number
     liked: boolean
