@@ -4,6 +4,8 @@ import InputField from '@/components/Form/InputField.vue'
 import FormLabel from '@/components/Form/FormLabel.vue'
 import FormButton from '@/components/Form/FormButton.vue'
 import Tip from '@shared/components/Tip.vue'
+import SignInWith from '@/components/SignIn/SignInWith.vue'
+import QuestionLink from '@/components/SignIn/QuestionLink.vue'
 
 type Emits = {
     (e: 'changed'): void
@@ -18,7 +20,7 @@ const emit = defineEmits<Emits>()
         sub-headline="Create an account to unlock extra features only for registered users"
     />
 
-    <form class="space-y-7 my-6">
+    <form class="space-y-5 my-6">
         <!-- Name -->
         <div>
             <form-label for="name" id="name">
@@ -56,17 +58,15 @@ const emit = defineEmits<Emits>()
             />
         </div>
 
-        <form-button type="submit">
-            Register
-        </form-button>
-
-        <div>
-            here
+        <div class="pt-4">
+            <form-button type="submit">Register</form-button>
+            <sign-in-with />
         </div>
     </form>
 
-    <span>
-        Have an account?
-        <button type="button" @click="emit('changed')">Login here</button>
-    </span>
+    <question-link
+        question="Already have an account?"
+        title="Sign in here"
+        @clicked="emit('changed')"
+    />
 </template>
