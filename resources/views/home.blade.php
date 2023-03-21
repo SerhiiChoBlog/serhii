@@ -1,6 +1,5 @@
 @php
     use App\Models\Post;
-    use Illuminate\Support\Collection;
 
     /**
      * @var array<int, Post> $latest
@@ -8,6 +7,8 @@
      * @var array<int, Post> $posts
      * @var array<int, array<int ,mixed>> $latest_videos
      */
+
+    $last_month = now()->subMonth()->format('F Y');
 @endphp
 
 @extends('layouts.main')
@@ -66,8 +67,8 @@
     </x-home.section>
 
     <x-home.section
-        title="Monthly top"
-        intro="The most viewed articles in the previous month"
+        title="Best of the month"
+        :intro="'The most viewed articles in ' . $last_month"
         :isDark="false"
     >
         <div class="space-y-6">
