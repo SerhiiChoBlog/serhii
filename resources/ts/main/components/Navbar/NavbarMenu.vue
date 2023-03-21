@@ -26,6 +26,10 @@ function closeMenu(): void {
     isActive.value = false
     dispatchEvent(events.openMobileNavbar, false)
 }
+
+function showLoginModal(): void {
+    dispatchEvent(events.openLoginModal)
+}
 </script>
 
 <template>
@@ -73,14 +77,14 @@ function closeMenu(): void {
                     </button>
                 </user-dropdown>
 
-                <a
+                <button
                     v-else
-                    href="/login"
+                    @click="showLoginModal"
+                    type="button"
                     class="main-btn min-w-[140px]"
-                    rel="noreferrer"
                 >
-                    Login
-                </a>
+                    Sign in
+                </button>
             </div>
         </div>
     </slide-up-transition>
