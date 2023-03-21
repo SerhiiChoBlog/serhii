@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { Post } from '@shared/types/models'
 import type { GetPostLikesResponse } from '@shared/types/response'
+import dispatchEvent from '@shared/modules/dispatchEvent'
+import { events } from '@shared/appConfig'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 
@@ -19,6 +21,7 @@ const loading = ref<boolean>(false)
 
 function toggleLike(): void {
     if (!Auth) {
+        dispatchEvent(events.openLoginModal)
         return
     }
 
