@@ -2,6 +2,12 @@
 import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import ValidationMessage from '@/components/Form/ValidationMessage.vue'
 
+type Emits = {
+    (e: 'changed', value: string): void
+}
+
+const emit = defineEmits<Emits>()
+
 type Props = {
     name: string
     errorMessage?: string
@@ -33,6 +39,7 @@ const props = withDefaults(defineProps<Props>(), {
             :value="props.value"
             :id="props.id"
             :ref="`ref-${props.name}`"
+            @input="emit('changed', $event.target.value)"
         >
 
         <show-password-button

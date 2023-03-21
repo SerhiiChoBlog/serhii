@@ -6,12 +6,14 @@ import FormButton from '@/components/Form/FormButton.vue'
 import Tip from '@shared/components/Tip.vue'
 import SignInWith from '@/components/SignIn/SignInWith.vue'
 import QuestionLink from '@/components/SignIn/QuestionLink.vue'
+import useRegister from '@/composables/useRegister'
 
 type Emits = {
     (e: 'changed'): void
 }
 
 const emit = defineEmits<Emits>()
+const { loading, formData, errors, register } = useRegister()
 </script>
 
 <template>
@@ -20,7 +22,7 @@ const emit = defineEmits<Emits>()
         sub-headline="Create an account to unlock extra features only for registered users"
     />
 
-    <form class="space-y-5 my-6">
+    <form @submit.prevent="register" class="space-y-5 my-6">
         <div>
             <form-label for="name" id="name">
                 Name
@@ -31,6 +33,8 @@ const emit = defineEmits<Emits>()
                 id="name"
                 type="text"
                 placeholder="Enter your name"
+                @changed="v => formData.name = v"
+                :error-message="errors && errors.name ? errors.name[0] : null"
             />
         </div>
 
@@ -41,9 +45,11 @@ const emit = defineEmits<Emits>()
             </form-label>
             <input-field
                 name="email"
-                id="email"
+                id="login-email"
                 type="email"
                 placeholder="Enter your email"
+                @changed="v => formData.email = v"
+                :error-message="errors && errors.email ? errors.email[0] : null"
             />
         </div>
 
@@ -51,14 +57,16 @@ const emit = defineEmits<Emits>()
             <form-label for="password" id="password">Password</form-label>
             <input-field
                 name="password"
-                id="password"
+                id="register-password"
                 type="password"
                 placeholder="Enter your password"
+                @changed="v => formData.password = v"
+                :error-message="errors && errors.password ? errors.password[0] : null"
             />
         </div>
 
         <div class="pt-4">
-            <form-button type="submit">Register</form-button>
+            <form-button :loading="loading" type="submit">Register</form-button>
             <sign-in-with />
         </div>
     </form>

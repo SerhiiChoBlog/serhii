@@ -45,7 +45,7 @@ function signIn(): void {
 function makeRequestToSignInUser(params: FirebaseSignUpRequest): void {
     axios.post<User | string>('/firebase-sign-in', params)
         .then(resp => handleResponse(resp.data))
-        .catch(handleServerError)
+        .catch(e => handleServerError(e))
         .finally(() => isLoading.value = false)
 }
 
