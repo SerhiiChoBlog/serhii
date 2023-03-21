@@ -10,20 +10,37 @@ use Illuminate\Http\Request;
 
 class ReferrerMiddleware
 {
+    private const IGNORED_SITES = [
+        'serhii.io',
+        'localhost',
+    ];
+
+    private const REMOVE_FROM_URL = [
+        'www.',
+        'http://',
+        'https://',
+    ];
+
     public function handle(Request $request, Closure $next): mixed
     {
         $referer_site = request()->headers->get('referer');
-        $self_referrer = str_contains($referer_site ?? '', 'serhii.io');
 
-        if (!$referer_site || $self_referrer || !$request->isMethod('get')) {
+        if (!$referer_site || !$request->isMethod('get')) {
             return $next($request);
         }
 
         $referer_site = str($referer_site)
-            ->replace(['www.', 'http://', 'https://'], '')
+            ->replace(self::REMOVE_FROM_URL, '')
             ->explode('/')
             ->first();
 
+        foreach (self::IGNORED_SITES as $site) {
+            if (str_starts_with($referer_site, $site)) {
+                return $next($request);
+            }
+        }
+
+        /** @var Referrer|null $old */
         $old = Referrer::query()->where('site', $referer_site)->first();
 
         if ($old) {

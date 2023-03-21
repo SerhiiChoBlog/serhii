@@ -9,7 +9,7 @@ const showRegisterForm = ref<boolean>(true)
 </script>
 
 <template>
-    <modal :opened="isOpen" @close="isOpen = false">
+    <modal :opened="isOpen" @close="isOpen = false" max-width="600">
         <register-form v-if="showRegisterForm" @changed="showRegisterForm = false" />
         <login-form v-else @changed="showRegisterForm = true" />
     </modal>

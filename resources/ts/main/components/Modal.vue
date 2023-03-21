@@ -5,6 +5,7 @@ import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
 
 type Props = {
     opened: boolean
+    maxWidth?: string
 }
 
 type Emits = {
@@ -34,6 +35,7 @@ onMounted(() => {
             <div
                 v-if="isOpen"
                 class="overflow-y-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto max-h-[calc(100vh-40px)]"
+                :style="{ maxWidth: props.maxWidth + 'px' }"
             >
                 <div class="bg-page text-font shadow-xl rounded-lg p-10 h-full relative">
                     <button
