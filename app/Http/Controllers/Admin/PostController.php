@@ -126,6 +126,8 @@ class PostController extends Controller
             Artisan::call(SitemapCommand::class);
         }
 
+        Cache::forget(CacheKey::UPCOMING);
+
         if ($first_publish || $first_unpublish) {
             event(new PostChanged($post));
         }
