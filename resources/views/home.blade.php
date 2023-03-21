@@ -54,26 +54,27 @@
         </div>
     </x-home.section>
 
+
     <x-home.section
-        title="You might like"
-        intro="Articles which I think you might want to read"
+        title="Best of the month"
+        :intro="'The most viewed articles in ' . $last_month"
         :isDark="true"
     >
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-0 md:gap-5">
-            @foreach ($posts as $post)
-                <x-posts.vertical-post :post="$post"/>
+        <div class="space-y-6">
+            @foreach ($monthly_top as $post)
+                <x-posts.horizontal-post :post="$post"/>
             @endforeach
         </div>
     </x-home.section>
 
     <x-home.section
-        title="Best of the month"
-        :intro="'The most viewed articles in ' . $last_month"
+        title="You might like"
+        intro="Articles which I think you might want to read"
         :isDark="false"
     >
-        <div class="space-y-6">
-            @foreach ($monthly_top as $post)
-                <x-posts.horizontal-post :post="$post"/>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-0 md:gap-5">
+            @foreach ($posts as $post)
+                <x-posts.vertical-post :post="$post"/>
             @endforeach
         </div>
     </x-home.section>
