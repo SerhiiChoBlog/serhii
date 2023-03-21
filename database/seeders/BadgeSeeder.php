@@ -24,9 +24,9 @@ class BadgeSeeder extends Seeder
                 'icon' => 'commentator.png',
             ],
             [
-                'name' => BadgeName::LIKEABLE->value,
+                'name' => BadgeName::LOVELY->value,
                 'description' => 'Liked 5 articles',
-                'icon' => 'likeable.png',
+                'icon' => 'lovely.png',
             ],
         ]);
     }

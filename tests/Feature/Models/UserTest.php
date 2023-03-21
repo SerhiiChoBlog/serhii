@@ -66,18 +66,18 @@ class UserTest extends TestCase
 
     public function testGiveBadgeMethodAddBadge(): void
     {
-        Badge::factory()->create(['name' => BadgeName::LIKEABLE]);
+        Badge::factory()->create(['name' => BadgeName::LOVELY]);
 
-        $this->user->giveBadge(BadgeName::LIKEABLE);
+        $this->user->giveBadge(BadgeName::LOVELY);
 
         $badge = $this->user->badges()->first();
 
-        $this->assertSame(BadgeName::LIKEABLE, $badge->name);
+        $this->assertSame(BadgeName::LOVELY, $badge->name);
     }
 
     public function testGiveBadgeMethodSkipsTheOperationIfNoBadgeFound(): void
     {
-        $this->user->giveBadge(BadgeName::LIKEABLE);
+        $this->user->giveBadge(BadgeName::LOVELY);
         $this->assertSame(0, $this->user->badges()->count());
     }
 
