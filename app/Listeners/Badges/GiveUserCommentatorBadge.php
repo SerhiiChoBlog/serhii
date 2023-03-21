@@ -19,6 +19,6 @@ class GiveUserCommentatorBadge
 
     public function userHasComments(User $user, int $amount): bool
     {
-        return $user->comments()->count() >= $amount;
+        return $user->comments()->count() === $amount;
     }
 }

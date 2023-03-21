@@ -13,7 +13,8 @@ class RemoveLovelyBadgeFromUser
     public function handle(UserUnlikesPost $event): void
     {
         if ($this->userHasLikesBelow($event->user, 10)) {
-            $event->user->badges()->detach(BadgeName::LOVELY->value);
+            $id = $event->user->badges()->where('name', BadgeName::LOVELY)->value('id');
+            $event->user->badges()->detach($id);
         }
     }
 

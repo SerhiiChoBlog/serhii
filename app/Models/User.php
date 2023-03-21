@@ -90,7 +90,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hasRole(UserRole $role): bool
     {
-        return $this->roles()->where('name', $role->value)->exists();
+        return $this->roles()->where('name', $role)->exists();
     }
 
     /**
@@ -133,7 +133,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function giveBadge(BadgeName $type): void
     {
-        $badges = Badge::query()->where('name', $type->value)->pluck('id');
+        $badges = Badge::query()->where('name', $type)->pluck('id');
 
         /** @var int|null $badge_id */
         $badge_id = $badges->first();
@@ -145,7 +145,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hasBadge(BadgeName $type): bool
     {
-        return $this->badges()->where('name', $type->value)->exists();
+        return $this->badges()->where('name', $type)->exists();
     }
 
     public function getRouteKeyName(): string
