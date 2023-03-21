@@ -11,7 +11,7 @@ const emit = defineEmits<Emits>()
 <template>
     <sign-in-header
         headline="Sign in"
-        subHeadline="Sign in to your account to unlock some extra features only for registered users"
+        sub-headline="Sign in to your account to unlock some extra features only for registered users"
     />
 
     <span>
