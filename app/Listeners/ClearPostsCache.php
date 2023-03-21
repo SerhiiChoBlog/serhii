@@ -17,6 +17,5 @@ class ClearPostsCache
         Cache::forget(CacheKey::POSTS_SEARCH);
         Cache::forget(CacheKey::HOME_SEARCH_TAGS);
         Cache::forget(CacheKey::LATEST_POSTS);
-        Cache::forget(CacheKey::UPCOMING);
     }
 }
