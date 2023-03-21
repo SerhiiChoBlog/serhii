@@ -19,7 +19,6 @@ const props = defineProps<Props>()
         <button
             @click="emit('clicked')"
             class="text-sm text-main hover:underline uppercase"
-            rel="noreferrer"
         >
             {{ props.title }}
         </button>
