@@ -21,7 +21,6 @@ const emit = defineEmits<Emits>()
     />
 
     <form class="space-y-5 my-6">
-        <!-- Name -->
         <div>
             <form-label for="name" id="name">
                 Name

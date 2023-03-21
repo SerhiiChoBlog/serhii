@@ -5,7 +5,7 @@ import RegisterForm from '@/components/SignIn/RegisterForm.vue'
 import LoginForm from '@/components/SignIn/LoginForm.vue'
 
 const isOpen = ref<boolean>(true)
-const showRegisterForm = ref<boolean>(true)
+const showRegisterForm = ref<boolean>(false)
 </script>
 
 <template>
