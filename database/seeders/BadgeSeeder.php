@@ -20,12 +20,12 @@ class BadgeSeeder extends Seeder
             ],
             [
                 'name' => BadgeName::COMMENTATOR->value,
-                'description' => 'Posted 5 verified comments',
+                'description' => 'Posted 10 verified comments',
                 'icon' => 'commentator.png',
             ],
             [
                 'name' => BadgeName::LOVELY->value,
-                'description' => 'Liked 5 articles',
+                'description' => 'Likes 10 articles',
                 'icon' => 'lovely.png',
             ],
         ]);
