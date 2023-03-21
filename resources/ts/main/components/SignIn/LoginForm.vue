@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import useLogin from '@/composables/useLogin'
 import SignInHeader from '@/components/SignIn/SignInHeader.vue'
 import InputField from '@/components/Form/InputField.vue'
 import FormLabel from '@/components/Form/FormLabel.vue'
@@ -12,8 +13,7 @@ type Emits = {
 }
 
 const emit = defineEmits<Emits>()
-
-const redirectToReset = () => window.location.href = '/password/reset'
+const { loading, redirectToReset } = useLogin()
 </script>
 
 <template>
@@ -47,7 +47,7 @@ const redirectToReset = () => window.location.href = '/password/reset'
         </div>
 
         <div class="pt-4">
-            <form-button type="submit">Sign in</form-button>
+            <form-button :loading="loading" type="submit">Sign in</form-button>
             <sign-in-with />
         </div>
     </form>
