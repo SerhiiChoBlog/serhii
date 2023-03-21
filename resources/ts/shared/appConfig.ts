@@ -10,4 +10,6 @@ export const storage = {
     selectedSubscriptionTags: 'AZ8tfW8ewE',
     cachedComment: 'ymHG7wkb4E',
     allowCommentAt: 'dRWEP3sYjO',
+    scrollPosition: 'mm20dfjal5n',
+    toastMessageAfterRefresh: 'b10fpqc6d01'
 }

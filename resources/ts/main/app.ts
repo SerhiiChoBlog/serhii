@@ -1,11 +1,12 @@
 import { onMounted } from 'vue'
 import { createApp } from "vue/dist/vue.esm-bundler"
+import smoothLoader from 'smooth-loader'
+import insertTagsForHighlightJs from '@/modules/insertTagsForHighlightJs'
+import PageRefresher from '@/modules/PageRefresher'
 import ContactModal from '@/components/ContactModal.vue'
 import Navbar from '@/components/Navbar/Navbar.vue'
 import SharePostButtons from '@/components/SharePostButtons.vue'
 import Chapters from '@/components/Chapters/Chapters.vue'
-import smoothLoader from 'smooth-loader'
-import insertTagsForHighlightJs from '@/modules/insertTagsForHighlightJs'
 import Tip from '@shared/components/Tip.vue'
 import Search from '@/components/Search/Search.vue'
 import Filters from '@/components/Filters/Filters.vue'
@@ -40,6 +41,7 @@ const app = createApp({
     setup() {
         onMounted(() => {
             insertTagsForHighlightJs()
+            PageRefresher.scrollToTheLastPosition()
         })
     },
 })
