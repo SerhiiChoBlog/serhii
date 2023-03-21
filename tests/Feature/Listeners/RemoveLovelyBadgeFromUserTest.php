@@ -90,9 +90,33 @@ class RemoveLovelyBadgeFromUserTest extends TestCase
         $badges = $user->badges()->get();
 
         $this->assertCount(2, $badges);
+    }
 
-        $this->assertTrue(Badge::query()->where('name', BadgeName::LOVELY)->exists());
-        $this->assertTrue(Badge::query()->where('name', BadgeName::VERIFIED)->exists());
-        $this->assertTrue(Badge::query()->where('name', BadgeName::COMMENTATOR)->exists());
+    public function testListenerDoesntRemoveBadgeFromUserIfHasOtherBadgesAndEnoughLikes(): void
+    {
+        $user = $this->createUser();
+        $post = Post::factory()->create();
+
+        Badge::factory()->create(['name' => BadgeName::LOVELY]);
+        Badge::factory()->create(['name' => BadgeName::VERIFIED]);
+        Badge::factory()->create(['name' => BadgeName::COMMENTATOR]);
+
+        PostLike::factory()->count(10)->create([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+        ]);
+
+        $user->giveBadge(BadgeName::LOVELY);
+        $user->giveBadge(BadgeName::VERIFIED);
+        $user->giveBadge(BadgeName::COMMENTATOR);
+
+        $event = new UserUnlikesPost($user);
+        $listener = new RemoveLovelyBadgeFromUser();
+
+        $listener->handle($event);
+
+        $badges = $user->badges()->get();
+
+        $this->assertCount(3, $badges);
     }
 }
