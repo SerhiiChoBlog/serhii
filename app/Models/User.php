@@ -138,9 +138,14 @@ class User extends Authenticatable implements MustVerifyEmail
         /** @var int|null $badge_id */
         $badge_id = $badges->first();
 
-        if ($badge_id) {
+        if ($badge_id && !$this->hasBadge($type)) {
             $this->badges()->attach([$badge_id]);
         }
+    }
+
+    public function hasBadge(BadgeName $type): bool
+    {
+        return $this->badges()->where('name', $type->value)->exists();
     }
 
     public function getRouteKeyName(): string

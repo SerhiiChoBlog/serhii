@@ -59,4 +59,29 @@ class GiveUserLovelyBadgeTest extends TestCase
         $this->assertCount(1, $badges);
         $this->assertSame(BadgeName::LOVELY, $badges->first()?->name);
     }
+
+    public function testListenerDoesntGiveUserABadgeIfHaveEnoughLikesButAlreadyHasBadge(): void
+    {
+        $user = $this->createUser();
+        $post = Post::factory()->create();
+
+        Badge::factory()->create(['name' => BadgeName::LOVELY]);
+
+        PostLike::factory()->count(10)->create([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+        ]);
+
+        $user->giveBadge(BadgeName::LOVELY);
+
+        $event = new UserLikesPost($user);
+        $listener = new GiveUserLovelyBadge();
+
+        $listener->handle($event);
+
+        $badges = $user->badges()->get();
+
+        $this->assertCount(1, $badges);
+        $this->assertSame(BadgeName::LOVELY, $badges->first()?->name);
+    }
 }
