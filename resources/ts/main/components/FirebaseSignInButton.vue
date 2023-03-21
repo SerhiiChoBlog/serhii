@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import firebase from 'firebase/app'
 import type { User } from '@shared/types/models'
 import type { FirebaseSignUpRequest } from '@shared/types'
+import firebase from 'firebase/app'
 import { ref } from 'vue'
 import getFirebaseUser from '@/firebase/getFirebaseUser'
 import getGoogleProvider from '@/firebase/getGoogleProvider'
 import getGithubProvider from '@/firebase/getGithubProvider'
 import showToast from '@shared/modules/showToast'
-import axios from 'axios'
-import Spinner from '@shared/components/Icons/Spinner.vue'
 import handleServerError from '@shared/modules/handleServerError'
+import axios from 'axios'
+import PageRefresher from '@/modules/PageRefresher'
+import Spinner from '@shared/components/Icons/Spinner.vue'
 import Tip from '@shared/components/Tip.vue'
 
 type Props = {
@@ -59,9 +60,7 @@ function handleResponse(user: User | string): void {
         return
     }
 
-    showToast({ text: `Signed in successfully as ${user.name}` })
-
-    window.location.reload()
+    PageRefresher.refresh(`Signed in successfully as ${user.name}`)
 }
 
 function handleError(err: any): void {

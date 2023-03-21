@@ -1,6 +1,6 @@
 import axios from 'axios'
-import showToast from '@shared/modules/showToast'
 import sweetAlert from 'sweetalert2'
+import PageRefresher from '@/modules/PageRefresher'
 
 export default async (): Promise<void> => {
     const response = await sweetAlert.fire({
@@ -24,7 +24,5 @@ export default async (): Promise<void> => {
         console.error(err)
     }
 
-    showToast({ text: `You've been logged out` })
-
-    window.location.reload()
+    PageRefresher.refresh("You've been logged out")
 }
