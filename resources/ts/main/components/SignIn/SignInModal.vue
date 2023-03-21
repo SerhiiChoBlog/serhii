@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import listenEvent from '@shared/modules/listenEvent'
+import { events } from '@shared/appConfig'
 import Modal from '@/components/Modal.vue'
 import RegisterForm from '@/components/SignIn/RegisterForm.vue'
 import LoginForm from '@/components/SignIn/LoginForm.vue'
 
 const isOpen = ref<boolean>(false)
 const showRegisterForm = ref<boolean>(false)
+
+listenEvent(events.openLoginModal, () => isOpen.value = true)
 </script>
 
 <template>
