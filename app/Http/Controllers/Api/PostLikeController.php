@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\UserLikesPost;
+use App\Events\UserUnlikesPost;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\PostLike\IsLikedRequest;
 use App\Http\Requests\Api\PostLike\StoreRequest;
@@ -25,6 +27,8 @@ class PostLikeController extends Controller
         if ($user->hasLikedPost($request->post_id)) {
             $user->unlikePost($request->post_id);
 
+            UserUnlikesPost::dispatch($user);
+
             return [
                 'liked' => false,
                 'likes' => $this->getPostLikes($request->post_id),
@@ -32,6 +36,8 @@ class PostLikeController extends Controller
         }
 
         $user->likePost($request->post_id);
+
+        UserLikesPost::dispatch($user);
 
         return [
             'liked' => true,

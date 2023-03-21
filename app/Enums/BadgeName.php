@@ -8,7 +8,7 @@ enum BadgeName: string
 {
     case VERIFIED = 'verified';
     case COMMENTATOR = 'commentator';
-    case LIKEABLE = 'likeable';
+    case LOVELY = 'lovely';
 
     /**
      * @return array<int, self>
@@ -18,7 +18,7 @@ enum BadgeName: string
         return [
             self::VERIFIED,
             self::COMMENTATOR,
-            self::LIKEABLE,
+            self::LOVELY,
         ];
     }
 }
