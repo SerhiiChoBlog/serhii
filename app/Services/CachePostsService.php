@@ -22,8 +22,8 @@ readonly class CachePostsService
         $cachable_posts = $posts->map(function (Post $post) {
             $title = $post->title;
 
-            if ($post->series && $post->series->isNotEmpty()) {
-                $title = $post->series->first()->title . ': ' . $title;
+            if ($post->series->isNotEmpty()) {
+                $title = $post->series->first()?->title . ': ' . $title;
             }
 
             return new CachablePost([
