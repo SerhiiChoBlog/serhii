@@ -32,6 +32,6 @@ class AdminTest extends TestCase
 
     public function testGuestCannotVisitAdminDashboard(): void
     {
-        $this->get(RouteServiceProvider::ADMIN_HOME)->assertRedirectToRoute('home');
+        $this->get(RouteServiceProvider::ADMIN_HOME)->assertRedirectToRoute('login');
     }
 }
