@@ -10,6 +10,7 @@ export default () => {
     const formData = ref({
         email: '',
         password: '',
+        remember: true,
     })
 
     const redirectToReset = () => window.location.href = '/password/reset'
@@ -21,7 +22,7 @@ export default () => {
 
         loading.value = true
 
-        axios.post<ServerError|null>('/login', formData.value, {
+        axios.post<ServerError | null>('/login', formData.value, {
             headers: { 'Content-Type': 'application/json' }
         })
             .then(resp => PageRefresher.refresh('Thank you for signing in!'))

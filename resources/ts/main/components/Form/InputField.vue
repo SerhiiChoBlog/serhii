@@ -4,18 +4,18 @@ import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import ValidationMessage from '@/components/Form/ValidationMessage.vue'
 
 type Emits = {
-    (e: 'update:modelValue', value: string): void
+    (e: 'update:modelValue', value: string | boolean): void
 }
 
 const emit = defineEmits<Emits>()
 
 type Props = {
     name: string
-    modelValue: string
+    modelValue: string | boolean
     errorMessage?: string | null
     value?: string
     id?: string
-    type?: 'text' | 'email' | 'password'
+    type?: 'text' | 'email' | 'password' | 'checkbox'
     placeholder?: string
 }
 
@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const inpValue = computed({
     get: () => props.modelValue,
-    set: (v: string) => emit('update:modelValue', v),
+    set: (v: string | boolean) => emit('update:modelValue', v),
 })
 </script>
 

@@ -63,6 +63,17 @@ function switchToSignUp() {
             />
         </div>
 
+        <div class="flex gap-2 items-center">
+            <input
+                type="checkbox"
+                v-model="formData.remember"
+                id="remember-me"
+            />
+            <label for="remember-me" id="remember">
+                Keep me signed in
+            </label>
+        </div>
+
         <div class="pt-4">
             <form-button :loading="loading" type="submit">Sign in</form-button>
             <sign-in-with />
