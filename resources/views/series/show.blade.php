@@ -30,7 +30,7 @@
 
                 <div class="py-5 md:my-10 mx-0 md:mx-5">
                     <div class="space-y-1">
-                        <h1 class="text-2xl lg:text-5xl">{{ $series->title }} series</h1>
+                        <h1 class="text-2xl lg:text-5xl">{{ $series->title }}</h1>
 
                         <h2 class="text-xl lg:text-2xl text-main">
                             {{ $series->intro }}
