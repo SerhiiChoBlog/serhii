@@ -13,7 +13,7 @@ listenEvent(events.openLoginModal, () => isOpen.value = true)
 </script>
 
 <template>
-    <modal :opened="isOpen" @close="isOpen = false" max-width="580">
+    <modal :opened="isOpen" @close="isOpen = false" max-width="550">
         <register-form v-if="showRegisterForm" @changed="showRegisterForm = false" />
         <login-form v-else @changed="showRegisterForm = true" />
     </modal>

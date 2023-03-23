@@ -18,6 +18,8 @@ import FirebaseSignInButton from '@/components/FirebaseSignInButton.vue'
 import RelatedPosts from '@/components/RelatedPosts/RelatedPosts.vue'
 import LikePostButton from '@/components/LikePostButton.vue'
 import SignInModal from '@/components/SignIn/SignInModal.vue'
+import LoginForm from '@/components/SignIn/LoginForm.vue'
+import RegisterForm from '@/components/SignIn/RegisterForm.vue'
 
 const app = createApp({
     components: {
@@ -36,6 +38,8 @@ const app = createApp({
         RelatedPosts,
         LikePostButton,
         SignInModal,
+        LoginForm,
+        RegisterForm,
     },
 
     setup() {

@@ -12,8 +12,22 @@ type Emits = {
     (e: 'changed'): void
 }
 
+type Props = {
+    useAsSeparatePage?: boolean
+}
+
 const emit = defineEmits<Emits>()
+const { useAsSeparatePage = false } = defineProps<Props>()
 const { loading, formData, errors, register } = useRegister()
+
+function switchToSignUp() {
+    if (useAsSeparatePage) {
+        window.location.href = '/login'
+        return
+    }
+
+    emit('changed')
+}
 </script>
 
 <template>
@@ -73,7 +87,7 @@ const { loading, formData, errors, register } = useRegister()
 
     <question-link
         question="Already have an account?"
-        title="Sign in here"
-        @clicked="emit('changed')"
+        title="Sign in"
+        @clicked="switchToSignUp"
     />
 </template>
