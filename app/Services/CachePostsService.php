@@ -20,9 +20,15 @@ readonly class CachePostsService
         $posts = $this->getPosts();
 
         $cachable_posts = $posts->map(function (Post $post) {
+            $title = $post->title;
+
+            if ($post->series && $post->series->isNotEmpty()) {
+                $title = $post->series->first()->title . ': ' . $title;
+            }
+
             return new CachablePost([
                 'id' => $post->id,
-                'title' => $post->title,
+                'title' => $title,
                 'slug' => $post->slug,
                 'image_xs' => $post->image_xs,
                 'tags' => $post->tags->map(fn (Tag $t) => strtolower($t->name))->toArray(),
@@ -38,7 +44,7 @@ readonly class CachePostsService
      */
     private function getPosts(): Collection
     {
-        return Post::with('tags', 'keywords')
+        return Post::with('tags', 'keywords', 'series')
             ->select('id', 'title', 'slug', 'image_xs')
             ->where('is_published', true)
             ->get();
