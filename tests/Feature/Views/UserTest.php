@@ -29,12 +29,12 @@ class UserTest extends TestCase
 
         $this->actingAs($admin, 'admin')
             ->get(RouteServiceProvider::USER_HOME)
-            ->assertRedirectToRoute('home');
+            ->assertRedirectToRoute('login');
     }
 
     public function testGuestCannotVisitUserProfile(): void
     {
-        $this->get(RouteServiceProvider::USER_HOME)->assertRedirectToRoute('home');
+        $this->get(RouteServiceProvider::USER_HOME)->assertRedirectToRoute('login');
     }
 
     public function testCanHaveLikes(): void
