@@ -7,6 +7,7 @@ namespace App\Console\Commands;
 use App\Models\Post;
 use App\Models\PostContentImage;
 use App\Models\Project;
+use App\Models\Series;
 use App\Models\Tag;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Builder;
@@ -25,6 +26,7 @@ class SitemapCommand extends Command
         $result = Sitemap::create()
             ->add($this->pages())
             ->add($this->posts())
+            ->add($this->series())
             ->add($this->projects())
             ->add($this->taggedPosts())
             ->writeToFile($path);
@@ -84,6 +86,25 @@ class SitemapCommand extends Command
     /**
      * @return array<int, Url>
      */
+    private function series(): array
+    {
+        return Series::query()
+            ->select('id', 'title', 'image_lg', 'slug', 'updated_at')
+            ->whereHas('posts', fn (Builder $q) => $q->where('is_published', true))
+            ->get()
+            ->map(function (Series $series) {
+                return Url::create(route('series.show', $series->slug))
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                    ->setLastModificationDate($series->updated_at)
+                    ->setPriority(.8)
+                    ->addImage(asset($series->image_lg), $series->title);
+            })
+            ->toArray();
+    }
+
+    /**
+     * @return array<int, Url>
+     */
     private function projects(): array
     {
         return Project::query()
@@ -127,7 +148,7 @@ class SitemapCommand extends Command
         $pages = [
             [
                 'priority' => 1.0,
-                'change' => Url::CHANGE_FREQUENCY_MONTHLY,
+                'change' => Url::CHANGE_FREQUENCY_WEEKLY,
                 'url' => route('home'),
                 'image' => null,
             ],
@@ -139,13 +160,19 @@ class SitemapCommand extends Command
             ],
             [
                 'priority' => .6,
-                'change' => Url::CHANGE_FREQUENCY_MONTHLY,
+                'change' => Url::CHANGE_FREQUENCY_WEEKLY,
                 'url' => route('posts.index'),
                 'image' => null,
             ],
             [
                 'priority' => .6,
-                'change' => Url::CHANGE_FREQUENCY_DAILY,
+                'change' => Url::CHANGE_FREQUENCY_WEEKLY,
+                'url' => route('series.index'),
+                'image' => null,
+            ],
+            [
+                'priority' => .6,
+                'change' => Url::CHANGE_FREQUENCY_MONTHLY,
                 'url' => route('about-me'),
                 'image' => [
                     'url' => asset('storage/serhii-cho.webp'),
