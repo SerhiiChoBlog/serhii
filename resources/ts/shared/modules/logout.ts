@@ -17,8 +17,8 @@ export default async (): Promise<void> => {
         return
 
     try {
-        await axios.post('/logout', {
-            email: Auth.email,
+        await axios.post('/logout', { email: Auth.email }, {
+            headers: { 'Content-Type': 'application/json' },
         })
     } catch (err) {
         console.error(err)

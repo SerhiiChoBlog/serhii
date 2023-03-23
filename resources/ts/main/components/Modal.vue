@@ -37,7 +37,7 @@ onMounted(() => {
                 class="overflow-y-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto max-h-[calc(100vh-40px)]"
                 :style="{ maxWidth: props.maxWidth + 'px' }"
             >
-                <div class="bg-page text-font shadow-xl rounded-lg p-10 h-full relative">
+                <div class="bg-page text-font shadow-xl rounded-lg p-5 md:p-10 h-full relative">
                     <button
                         @click="emit('close')"
                         type="button"

@@ -12,7 +12,7 @@ const emit = defineEmits<Emits>()
 type Props = {
     name: string
     modelValue: string
-    errorMessage?: string
+    errorMessage?: string | null
     value?: string
     id?: string
     type?: 'text' | 'email' | 'password'
