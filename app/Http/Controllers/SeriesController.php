@@ -20,6 +20,7 @@ class SeriesController extends Controller
                     ->where('is_published', true);
             }])
             ->whereHas('posts', fn (Builder $q) => $q->where('is_published', true))
+            ->orderByDesc('created_at')
             ->paginate(5);
 
         return view('series.index', compact('series'));
