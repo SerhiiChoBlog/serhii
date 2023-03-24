@@ -28,7 +28,7 @@ class TagSuggestions extends Component
             return Tag::query()
                 ->withCount('posts')
                 ->orderByDesc('posts_count')
-                ->whereNotIn('name', ['php', 'agnostic', 'web'])
+                ->whereNotIn('name', ['php'])
                 ->limit(5)
                 ->get()
                 ->toArray();
