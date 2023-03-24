@@ -62,20 +62,26 @@ class SitemapCommand extends Command
     private function posts(): array
     {
         return Post::query()
-            ->with('images')
+            ->with('images', 'series')
             ->select('id', 'title', 'image_lg', 'slug', 'updated_at')
             ->where('is_published', true)
             ->get()
             ->map(function (Post $post) {
+                $title = $post->title;
+
+                if ($post->series->isNotEmpty()) {
+                    $title = "{$post->series->first()?->title}: {$title}";
+                }
+
                 $url = Url::create(route('posts.show', $post->slug))
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                     ->setLastModificationDate($post->updated_at)
                     ->setPriority(.8)
-                    ->addImage(asset($post->image_lg), $post->title);
+                    ->addImage(asset($post->image_lg), $title);
 
                 /** @var PostContentImage $image */
                 foreach ($post->images as $image) {
-                    $url = $url->addImage(asset($image->uri), $post->title);
+                    $url = $url->addImage(asset($image->uri), $title);
                 }
 
                 return $url;
