@@ -4,12 +4,15 @@
     /**
      * @var Post $post
      */
+
+    $series_item = $post->series->first();
 @endphp
-@if ($post->series->isNotEmpty())
+
+@if ($series_item && $series_item->posts_count > 1)
     <a
-        href="{{ route('series.show', $post->series->first()->slug) }}"
+        href="{{ route('series.show', $series_item->slug) }}"
         class="opacity-60 font-bold"
     >
-        Part {{ $post->series->first()->pivot->part }} of {{ $post->series->first()->posts_count }}
+        Part {{ $series_item->pivot->part }} of {{ $series_item->posts_count }}
     </a>
 @endif
