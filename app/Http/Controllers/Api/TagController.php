@@ -30,7 +30,6 @@ class TagController extends Controller
             ->withCount('posts')
             ->whereNotIn('name', [
                 'react',
-                'seo',
                 'html',
                 'story',
             ])
