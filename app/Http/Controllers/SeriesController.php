@@ -8,6 +8,7 @@ use App\Models\Series;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
 
 class SeriesController extends Controller
 {
@@ -22,6 +23,10 @@ class SeriesController extends Controller
             ->whereHas('posts', fn (Builder $q) => $q->where('is_published', true))
             ->orderByDesc('created_at')
             ->paginate(5);
+
+        $series->each(function (Series $series) {
+            $series->description = Str::limit($series->description, 400);
+        });
 
         return view('series.index', compact('series'));
     }
