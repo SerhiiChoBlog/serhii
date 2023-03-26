@@ -65,7 +65,7 @@ class FetchGithubProjects extends Command
                 'description' => $project['description'],
                 'language' => $project['language'],
                 'has_homepage' => $has_homepage,
-                'content' => $this->getContent($readme_url),
+                'content' => $has_homepage ? '' : $this->getContent($readme_url),
                 'stars' => (int) $project['stargazers_count'],
                 'created_at' => date('Y-m-d H:i:s', strtotime($project['created_at']))
             ];
