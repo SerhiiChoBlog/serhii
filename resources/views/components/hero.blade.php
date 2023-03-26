@@ -1,3 +1,11 @@
+@php
+    /**
+     * @var string|null $mainTitle
+     * @var string|null $subtitle
+     * @var string|null $slot
+     */
+@endphp
+
 <header {{ $attributes->merge([]) }}>
     <div class="{{ $navbar ?? '' }} min-h-[55px]">
         <navbar theme="{{ request()->cookie('theme', 'system') }}"></navbar>
