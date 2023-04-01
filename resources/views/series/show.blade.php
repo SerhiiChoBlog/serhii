@@ -8,8 +8,8 @@
 
 @extends('layouts.main')
 
-@push('title', " | Serhii Cho")
-@push('description', '')
+@push('title', "{$series->title} | Serhii Cho")
+@push('description', $series->intro)
 
 @section('content')
     <x-hero
