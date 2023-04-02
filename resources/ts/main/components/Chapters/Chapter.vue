@@ -36,16 +36,20 @@ const number = computed<string>(() => {
 
 <template>
     <a
-        class="leading-5 border border-border rounded-xl cursor-pointer relative flex justify-start text-font-second px-4 py-1 hover:bg-page-second select-none gap-3 items-center"
-        :class="{'bg-main !text-white !border-main hover:!bg-main-hover': chapter.isActive}"
+        class="leading-5 border border-border rounded-lg cursor-pointer relative flex justify-start text-font-second px-3 hover:bg-page-second select-none gap-2 items-center"
+        :class="{
+            'bg-main !text-white !border-main hover:!bg-main-hover': chapter.isActive,
+            'py-2': chapter.tag === 'H2',
+            'ml-5 py-1': chapter.tag === 'H3',
+        }"
         @click="scrollToChapter(chapter.title)"
     >
         <span
-            class="font-bold text-lg"
             :class="chapter.isActive ? 'text-white' : 'text-main'"
             aria-hidden="true"
         >
-            {{ number || '&#xb7;' }}
+            <span v-if="number">{{ number }}</span>
+            <span v-else>{{ '&#xb7;' }}</span>
         </span>
 
 

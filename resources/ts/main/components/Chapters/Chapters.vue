@@ -1,18 +1,19 @@
 <script setup lang="ts">
+import type { Chapter as ChapterType, SavedChapter } from '@shared/types'
 import { onMounted, ref } from 'vue'
 import isElementInViewport from '@/modules/isElementInViewport'
-import type { Chapter as ChapterType, SavedChapter } from '@shared/types'
 import screenSizeIs from '@/modules/screenSizeIs'
+import sweetAlert from 'sweetalert2'
+import showToast from '@shared/modules/showToast'
+import toSlug from '@shared/modules/toSlug'
 import Chapter from './Chapter.vue'
 import ChevronDownIcon from '@shared/components/Icons/ChevronDownIcon.vue'
 import ChevronUpIcon from '@shared/components/Icons/ChevronUpIcon.vue'
 import SaveIcon from '@shared/components/Icons/SaveIcon.vue'
 import DeleteIcon from '@shared/components/Icons/DeleteIcon.vue'
 import LoadIcon from '@shared/components/Icons/LoadIcon.vue'
-import sweetAlert from 'sweetalert2'
 import ControlButton from './ControlButton.vue'
 import SlideUpTransition from '@shared/components/Transitions/SlideUpTransition.vue'
-import showToast from '@shared/modules/showToast'
 
 interface Props {
     slug: string
@@ -30,7 +31,7 @@ onMounted(() => {
         showChapters.value = true
     }
 
-    headers.value = document.querySelectorAll<HTMLElement>('#post-content h2')
+    headers.value = document.querySelectorAll<HTMLElement>('#post-content h2, #post-content h3')
 
     headers.value.forEach(elem => {
         handleChapters(elem)
@@ -154,9 +155,13 @@ function saveCurrentChapter(): void {
 }
 
 function handleChapters(elem: HTMLElement): void {
+    const title = elem.innerText
+
     chapters.value.push({
-        title: elem.innerText,
+        title,
         isActive: false,
+        tag: elem.tagName as 'H2' | 'H3',
+        slug: toSlug(title),
     })
 }
 
