@@ -74,27 +74,27 @@
                             <x-post.details :post="$post" />
                         </div>
 
-                        @if (auth('admin')->check())
-                            <div class="mt-4 flex items-center gap-4" aria-hidden="true">
-                                @if ($series)
-                                    <a
-                                        href="{{ route('series.show', $series->slug) }}"
-                                        class="px-4 py-1 rounded-md shadow-md text-md text-white"
-                                        style="background-color: {{ $series->color_to }}"
-                                    >
-                                        {{ $series->title }}:
-                                        Part {{ $series->pivot->part }} of {{ $series->posts_count }}
-                                    </a>
-                                @endif
+                        <div class="mt-4 flex items-center gap-4" aria-hidden="true">
+                            @if ($series)
+                                <a
+                                    href="{{ route('series.show', $series->slug) }}"
+                                    class="px-4 py-1 rounded-md shadow-md text-md text-white"
+                                    style="background-color: {{ $series->color_to }}"
+                                >
+                                    {{ $series->title }}:
+                                    Part {{ $series->pivot->part }} of {{ $series->posts_count }}
+                                </a>
+                            @endif
 
+                            @if (auth('admin')->check())
                                 <a
                                     href="/admin/posts/{{ $post->id }}/edit"
                                     class="px-5 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100 py-1 uppercase text-xs"
                                 >
                                     Edit
                                 </a>
-                            </div>
-                        @endif
+                            @endif
+                        </div>
                     </div>
 
                     <div>
