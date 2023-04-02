@@ -41,7 +41,23 @@ onMounted(() => {
     setSavedChapter()
     detectCurrentChapter()
     showAlertIfHasSavedChapter()
+    scrollToChapterWhenHasHashInUrl()
 })
+
+function scrollToChapterWhenHasHashInUrl(): void {
+    const currHash = window.location.hash
+
+    if (!currHash) {
+        return
+    }
+
+    const hashName = currHash.replace('#', '')
+    const chapter = chapters.value.find(chap => chap.slug === hashName)
+
+    if (chapter) {
+        scrollToChapter(chapter.title)
+    }
+}
 
 function setSavedChapter(): void {
     const saved = localStorage.getItem(`chapter:${slug}`) as string | null
@@ -99,6 +115,21 @@ function goToSavedChapter(): void {
     }
 
     window.scrollTo({ top: savedChapter.value!.top, behavior: 'smooth' })
+}
+
+function scrollToChapter(title: string): void {
+    if (!headers.value) {
+        return
+    }
+
+    const neededElement = Array.from(headers.value).find(header => {
+        return title === header.innerText
+    })!
+
+    const yOffset = -90
+    const y = neededElement.getBoundingClientRect().top + window.scrollY + yOffset
+
+    window.scrollTo({top: y, behavior: 'smooth'})
 }
 
 function detectCurrentChapter(): void {
@@ -165,7 +196,9 @@ function handleChapters(elem: HTMLElement): void {
     })
 }
 
-function handleChapterClick(): void {
+function handleChapterClick(title: string): void {
+    scrollToChapter(title)
+
     if (screenSizeIs('lg')) {
         showChapters.value = false
     }
