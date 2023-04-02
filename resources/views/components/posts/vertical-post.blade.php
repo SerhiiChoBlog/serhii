@@ -35,6 +35,10 @@
         <p class="mt-2 text-md text-font-second">{{ $post->intro }}</p>
 
         <x-post.tags :tags="$post->tags" class="text-[.8em] mt-4" />
-        <x-post.details :post="$post" class="mt-3" />
+        <x-post.details :post="$post" class="mt-3">
+            @if (auth('admin')->check())
+                <x-edit-button url="/admin/posts/{{ $post->id }}/edit" />
+            @endif
+        </x-post.details>
     </div>
 </article>

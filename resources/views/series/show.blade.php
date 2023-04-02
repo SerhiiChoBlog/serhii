@@ -30,14 +30,21 @@
 
                 <div class="py-5 md:my-10 mx-0 md:mx-5">
                     <div class="space-y-1">
-                        <h1 class="text-2xl lg:text-5xl">{{ $series->title }}</h1>
+                        <h1 class="text-2xl lg:text-4xl">{{ $series->title }}</h1>
 
-                        <h2 class="text-xl lg:text-2xl text-main">
+                        <h2 class="text-lg lg:text-2xl text-main">
                             {{ $series->intro }}
                         </h2>
 
                         <h3 class="text-lg lg:text-xl">
                             {{ $series->posts_count }} {{ str('article')->plural($series->posts_count) }}
+
+                            @if (auth('admin')->check())
+                                <x-edit-button
+                                    url="/admin/series/{{ $series->id }}/edit"
+                                    class="ml-2"
+                                />
+                            @endif
                         </h3>
                     </div>
 

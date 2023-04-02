@@ -17,5 +17,12 @@
 
     <h4 class="text-md lg:text-lg text-gray-300">
         {{ $series->posts_count }} {{ str('article')->plural($series->posts_count) }}
+
+        @if (auth('admin')->check())
+            <x-edit-button
+                url="/admin/series/{{ $series->id }}/edit"
+                class="ml-2"
+            />
+        @endif
     </h4>
 </div>

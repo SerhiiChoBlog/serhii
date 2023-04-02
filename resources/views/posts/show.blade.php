@@ -74,11 +74,11 @@
                             <x-post.details :post="$post" />
                         </div>
 
-                        <div class="mt-4 flex items-center gap-4" aria-hidden="true">
+                        <div class="mt-4">
                             @if ($series)
                                 <a
                                     href="{{ route('series.show', $series->slug) }}"
-                                    class="px-4 py-1 rounded-md shadow-md text-md text-white"
+                                    class="px-3 py-1 rounded-md shadow-md text-md text-white"
                                     style="background-color: {{ $series->color_to }}"
                                 >
                                     {{ $series->title }}:
@@ -87,12 +87,10 @@
                             @endif
 
                             @if (auth('admin')->check())
-                                <a
-                                    href="/admin/posts/{{ $post->id }}/edit"
-                                    class="px-5 border rounded-full border-dashed transition-opacity opacity-70 hover:opacity-100 py-1 uppercase text-xs"
-                                >
-                                    Edit
-                                </a>
+                                <x-edit-button
+                                    url="/admin/posts/{{ $post->id }}/edit"
+                                    class="ml-3"
+                                />
                             @endif
                         </div>
                     </div>
