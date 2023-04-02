@@ -6,6 +6,8 @@ export type Theme = 'light' | 'dark' | 'system'
 export type Chapter = {
     title: string
     isActive: boolean
+    tag: 'H2' | 'H3'
+    slug: string
 }
 
 export type SavedChapter = {
