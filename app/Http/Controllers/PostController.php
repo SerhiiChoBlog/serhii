@@ -50,7 +50,8 @@ class PostController extends Controller
             ->with('video:post_id,title,url,image')
             ->with([
                 'series' => function (BelongsToMany $q) {
-                    return $q->select('id', 'title', 'slug', 'color_from', 'color_to')->withCount('posts');
+                    return $q->select('id', 'title', 'slug', 'color_from', 'color_to')
+                        ->withCount('posts');
                 },
             ])
             ->withCount('comments')

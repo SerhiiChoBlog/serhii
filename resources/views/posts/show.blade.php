@@ -6,11 +6,8 @@
      * @var string $title_font_size
      */
 
-    if ($post->series->isNotEmpty()) {
-        $post_title = $post->series->first()->title . ': ' . $post->title;
-    } else {
-        $post_title = $post->title;
-    }
+    $series = $post->series->first();
+    $post_title = $series ? "{$series->title}: {$post->title}" : $post->title;
 @endphp
 
 @extends('layouts.main')
@@ -53,8 +50,8 @@
     <article>
         <div
             class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white print:!bg-none print:text-black"
-            @if ($post->series->isNotEmpty())
-                style="background: linear-gradient(90deg, {{ $post->series->first()->color_from }} 0%, {{ $post->series->first()->color_to }} 100%)"
+            @if ($series)
+                style="background: linear-gradient(90deg, {{ $series->color_from }} 0%, {{ $series->color_to }} 100%)"
             @endif
         >
             <div class="min-h-[64px]">
@@ -79,14 +76,14 @@
 
                         @if (auth('admin')->check())
                             <div class="mt-4 flex items-center gap-4" aria-hidden="true">
-                                @if ($post->series->isNotEmpty())
+                                @if ($series)
                                     <a
-                                        href="{{ route('series.show', $post->series->first()->slug) }}"
+                                        href="{{ route('series.show', $series->slug) }}"
                                         class="px-4 py-1 rounded-md shadow-md text-md text-white"
-                                        style="background-color: {{ $post->series->first()->color_to }}"
+                                        style="background-color: {{ $series->color_to }}"
                                     >
-                                        {{ $post->series->first()->title }}:
-                                        Part {{ $post->series->first()->pivot->part }} of {{ $post->series->first()->posts_count }}
+                                        {{ $series->title }}:
+                                        Part {{ $series->pivot->part }} of {{ $series->posts_count }}
                                     </a>
                                 @endif
 
