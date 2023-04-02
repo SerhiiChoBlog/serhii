@@ -259,7 +259,7 @@ function handleChapterClick(title: string): void {
                     </div>
                 </div>
 
-                <div class="space-y-2">
+                <div>
                     <chapter v-for="chapter in chapters"
                         :key="chapter"
                         :chapter="chapter"
