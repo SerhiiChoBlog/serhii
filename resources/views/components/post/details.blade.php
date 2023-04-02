@@ -31,4 +31,6 @@
             {{ $post->comments_count }}
         </x-post.detail>
     @endif
+
+    {{ $slot }}
 </div>

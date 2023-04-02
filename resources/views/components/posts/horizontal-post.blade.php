@@ -47,7 +47,11 @@
 
             <div>
                 <x-post.tags :tags="$post->tags" class="text-[.8em] mt-3" />
-                <x-post.details :post="$post" class="mt-3" />
+                <x-post.details :post="$post" class="mt-3">
+                    @if (auth('admin')->check())
+                        <x-edit-button url="/admin/posts/{{ $post->id }}/edit" />
+                    @endif
+                </x-post.details>
             </div>
         </div>
     </div>
