@@ -39,12 +39,10 @@
                         <h3 class="text-lg lg:text-xl">
                             {{ $series->posts_count }} {{ str('article')->plural($series->posts_count) }}
 
-                            @if (auth('admin')->check())
-                                <x-edit-button
-                                    url="/admin/series/{{ $series->id }}/edit"
-                                    class="ml-2"
-                                />
-                            @endif
+                            <x-edit-button
+                                url="/admin/series/{{ $series->id }}/edit"
+                                class="ml-2"
+                            />
                         </h3>
 
                         <h4>{{ $series->read_time }} min total read time</h4>

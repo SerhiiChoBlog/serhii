@@ -86,12 +86,10 @@
                                 </a>
                             @endif
 
-                            @if (auth('admin')->check())
-                                <x-edit-button
-                                    url="/admin/posts/{{ $post->id }}/edit"
-                                    class="ml-3"
-                                />
-                            @endif
+                            <x-edit-button
+                                url="/admin/posts/{{ $post->id }}/edit"
+                                class="ml-3"
+                            />
                         </div>
                     </div>
 

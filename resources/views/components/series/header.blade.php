@@ -18,12 +18,10 @@
     <h4 class="text-md lg:text-lg text-gray-300">
         {{ $series->posts_count }} {{ str('article')->plural($series->posts_count) }}
 
-        @if (auth('admin')->check())
-            <x-edit-button
-                url="/admin/series/{{ $series->id }}/edit"
-                class="ml-2"
-            />
-        @endif
+        <x-edit-button
+            url="/admin/series/{{ $series->id }}/edit"
+            class="ml-2"
+        />
     </h4>
 
     <h5 class="text-gray-300">{{ $series->read_time }} min total read time</h5>
