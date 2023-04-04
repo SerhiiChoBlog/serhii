@@ -121,7 +121,7 @@
                     >
                         {!! $post->content !!}
 
-                        <small class="text-font-second opacity-90">
+                        <small class="text-font-second opacity-90 inline-block leading-[1.5]">
                             Keywords: {{ $post->keywords->implode('name', ', ') }}
                         </small>
                     </div>
