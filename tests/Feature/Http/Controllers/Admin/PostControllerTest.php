@@ -240,6 +240,36 @@ class PostControllerTest extends TestCase
         $this->assertSame($expect, $post->fresh()?->content);
     }
 
+    public function testItDoesntAddTipToTheNextElement(): void
+    {
+        $admin = $this->createAdmin();
+        $post = Post::factory()->create();
+
+        $params = [
+            'title' => $post->title,
+            'intro' => $post->intro,
+            'is_published' => false,
+            'content' => <<<TEXT
+            <p>This is some text here</p>
+            <p>Tip. Be careful mate!</p>
+            <p>This is some next paragraph</p>
+            TEXT,
+            'slug' => $post->slug,
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->putJson(self::UPDATE_URI, $params)
+            ->assertOk();
+
+        $expect = <<<TEXT
+        <p>This is some text here</p>
+        <p class="tip"><span class="hidden" aria-label="Tip">Tip. </span>Be careful mate!</p>
+        <p>This is some next paragraph</p>
+        TEXT;
+
+        $this->assertSame($expect, $post->fresh()?->content);
+    }
+
     public function testItAddsWarningsToContent(): void
     {
         $admin = $this->createAdmin();
