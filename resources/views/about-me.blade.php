@@ -27,7 +27,7 @@
                                 />
 
                                 <div>
-                                    <x-download-pdf-button class="h-16 mt-10 shadow-lg !px-0 w-full" />
+                                    <x-download-pdf-button class="h-14 mt-8 shadow-lg !px-0 w-full" />
                                 </div>
                             </div>
                         </div>
