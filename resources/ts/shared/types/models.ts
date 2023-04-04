@@ -219,6 +219,7 @@ export type Series = {
     image_xs: string
     image_sm: string
     image_lg: string
+    read_time: number
     created_at: string
     updated_at: string
     posts?: Post[]

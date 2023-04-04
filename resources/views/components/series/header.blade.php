@@ -25,4 +25,6 @@
             />
         @endif
     </h4>
+
+    <h5 class="text-gray-300">{{ $series->read_time }} min total read time</h5>
 </div>
