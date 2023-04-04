@@ -30,7 +30,7 @@ const number = computed<string>(() => {
         :href="`#${chapter.slug}`"
         class="leading-5 py-2 border-b last:border-none border-border cursor-pointer relative flex justify-start text-font-second px-3 hover:bg-page-second select-none gap-2 items-center"
         :class="{
-            'bg-page-second  hover:!bg-page-second-hover': chapter.isActive,
+            'bg-page-second hover:!bg-page-second-hover': chapter.isActive,
             'ml-4': chapter.tag === 'H3',
         }"
         @click="emit('clicked', chapter.title)"
