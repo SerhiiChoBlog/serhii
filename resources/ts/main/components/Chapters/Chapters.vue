@@ -31,7 +31,7 @@ onMounted(() => {
         showChapters.value = true
     }
 
-    headers.value = document.querySelectorAll<HTMLElement>('#post-content h2, #post-content h3, #post-content h4')
+    headers.value = document.querySelectorAll<HTMLElement>('#post-content h2, #post-content h3')
 
     headers.value.forEach(elem => {
         createChapterFromElement(elem)
