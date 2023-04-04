@@ -12,13 +12,4 @@
             <x-series.post :post="$post"/>
         </li>
     @endforeach
-
-    @for($part = $series->posts->count() + 1; $part <= $series->posts_count; $part++)
-        <li>
-            <x-series.post-progress
-                :series="$series"
-                :part="$part"
-            />
-        </li>
-    @endfor
 </ul>
