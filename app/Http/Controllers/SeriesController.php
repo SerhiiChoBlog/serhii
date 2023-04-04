@@ -17,8 +17,7 @@ class SeriesController extends Controller
         $series = Series::query()
             ->withCount('posts')
             ->with(['posts' => function (BelongsToMany $q) {
-                $q->select('id', 'image_xs', 'image_sm', 'slug')
-                    ->where('is_published', true);
+                $q->select('id', 'image_xs', 'image_sm', 'slug', 'is_published');
             }])
             ->whereHas('posts', fn (Builder $q) => $q->where('is_published', true))
             ->orderByDesc('created_at')
@@ -36,8 +35,7 @@ class SeriesController extends Controller
         $series->loadCount('posts');
 
         $series->load(['posts' => function (BelongsToMany $q) {
-            $q->select('id', 'image_xs', 'image_sm', 'slug')
-                ->where('is_published', true);
+            $q->select('id', 'image_xs', 'image_sm', 'slug', 'is_published');
         }]);
 
         return view('series.show', compact('series'));
