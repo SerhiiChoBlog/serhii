@@ -5,6 +5,7 @@ import axios from 'axios'
 import handleError from '@admin/modules/handleError'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { tinymceConfig } from '@admin/modules/tinymce'
 import SaveSeries from '@admin/modules/SaveSeries'
 import FormTextarea from '@admin/components/Form/FormTextarea.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
@@ -12,6 +13,7 @@ import FormInput from '@admin/components/Form/FormInput.vue'
 import FormImage from '@admin/components/FormImage.vue'
 import DeleteSeries from '@admin/components/Series/DeleteSeries.vue'
 import SeriesPosts from '@admin/views/Series/Posts/SeriesPosts.vue'
+import Editor from '@tinymce/tinymce-vue'
 
 onMounted(() => {
     fetchSeries()
@@ -41,7 +43,7 @@ function saveSeries(form: HTMLFormElement | null): void {
     const elements = form.elements as EditSeriesFormElements
 
     new SaveSeries(elements, series.value.id)
-        .save()
+        .save(series.value.description)
         .then(handleSavePostResponse)
         .finally(() => loading.value = false)
 }
@@ -138,16 +140,14 @@ function saveSeriesWithCorrectKeyBinds(e: KeyboardEvent): void {
                         </div>
                     </div>
 
-                    <div class="mt-5">
-                        <FormTextarea
-                            id="description"
-                            placeholder="Write a full series description"
-                            classes="min-h-[200px]"
-                            :value="series.description"
-                            name="description"
-                        >
-                            Description
-                        </FormTextarea>
+                    <div class="mt-8">
+                        <Editor
+                            :initialValue="series.description"
+                            tinymce-script-src="/js/tinymce/tinymce.min.js"
+                            :init="tinymceConfig"
+                            v-model="series.description"
+                            @keydown="saveSeriesWithCorrectKeyBinds"
+                        />
                     </div>
 
                     <div>

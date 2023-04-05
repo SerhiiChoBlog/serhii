@@ -48,9 +48,9 @@
                         <h4>{{ $series->read_time }} min total read time</h4>
                     </div>
 
-                    <p class="text-md lg:text-[1.2rem] border-t border-border py-4 md:pt-6 mt-4 md:mt-6">
-                        {!! nl2br($series->description) !!}
-                    </p>
+                    <div class="post-content border-t border-border mt-4 md:mt-6">
+                        {!! $series->description !!}
+                    </div>
 
                     <div class="text-md mt-5">
                         <span>Last updated:</span>
