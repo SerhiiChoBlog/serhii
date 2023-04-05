@@ -23,10 +23,8 @@
                 height="250"
             >
 
-            <div class="mt-4">
-                <p class="text-md lg:text-lg text-gray-300 mt-3">
-                    {!! $series->description !!}
-                </p>
+            <div class="mt-4 lg:text-lg text-gray-300 prose-p:mb-5 prose-a:underline">
+                {!! $series->description !!}
             </div>
         </div>
 
