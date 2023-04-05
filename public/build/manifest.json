@@ -15,7 +15,7 @@
     "file": "assets/Tip.vue_vue_type_script_setup_true_lang-5578be6c.js"
   },
   "resources/css/admin/app.css": {
-    "file": "assets/app-0687507b.css",
+    "file": "assets/app-57f25c0b.css",
     "isEntry": true,
     "src": "resources/css/admin/app.css"
   },
@@ -25,12 +25,12 @@
     "src": "resources/css/admin/font-awesome.css"
   },
   "resources/css/main/app.css": {
-    "file": "assets/app-fbec608a.css",
+    "file": "assets/app-3eccf023.css",
     "isEntry": true,
     "src": "resources/css/main/app.css"
   },
   "resources/css/user/app.css": {
-    "file": "assets/app-7b9a1bf3.css",
+    "file": "assets/app-72c47cce.css",
     "isEntry": true,
     "src": "resources/css/user/app.css"
   },
@@ -63,7 +63,7 @@
     "src": "resources/fonts/fa-solid-900.woff2"
   },
   "resources/ts/admin/app.ts": {
-    "file": "assets/app-ceeb6007.js",
+    "file": "assets/app-6a297834.js",
     "imports": [
       "_Tip.vue_vue_type_script_setup_true_lang-5578be6c.js",
       "_Spinner-913ddbb0.js"
