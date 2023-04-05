@@ -28,7 +28,7 @@ class SeriesController extends Controller
     {
         return [
             'total' => Series::query()->count(),
-            'series' => Series::with('posts')->paginate(10),
+            'series' => Series::with('posts')->orderByDesc('created_at')->paginate(10),
         ];
     }
 
