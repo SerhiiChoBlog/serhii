@@ -12,7 +12,6 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property int|null $tag_id
  * @property int[]|null $tags
  * @property bool $is_published
- * @property string $slug
  * @property string|null $content
  */
 class UpdateRequest extends FormRequest
@@ -36,7 +35,6 @@ class UpdateRequest extends FormRequest
             'tag_id' => ['nullable', 'integer'],
             'is_published' => ['required', 'boolean'],
             'content' => ['nullable'],
-            'slug' => ['required', 'string'],
         ];
     }
 
@@ -54,7 +52,6 @@ class UpdateRequest extends FormRequest
             'intro' => request()->str('intro')->trim()->toString(),
             'tag_id' => request('tag_id') ? request()->integer('tag_id') : null,
             'tags' => $tags,
-            'slug' => request()->str('title')->trim()->slug()->toString(),
             'is_published' => request()->boolean('is-published'),
         ]);
     }

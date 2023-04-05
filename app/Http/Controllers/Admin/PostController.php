@@ -40,16 +40,16 @@ class PostController extends Controller
 
     public function store(StoreRequest $request): int
     {
+        $series = $request->series ? Series::query()->withCount('posts')->find($request->series) : null;
+
         /** @var Post $post */
         $post = Post::query()->create([
             'title' => $request->title,
-            'slug' => Str::slug($request->title),
+            'slug' => $this->getPostSlug($request->title, $series),
         ]);
 
-        if ($request->series) {
-            $series = Series::query()->withCount('posts')->findOrFail($request->series);
+        if ($series) {
             $posts_count = $series->posts_count ?? 0;
-
             $post->series()->attach([$series->id => ['part' => $posts_count + 1]]);
         }
 
@@ -85,6 +85,7 @@ class PostController extends Controller
     public function update(UpdateRequest $request, Post $post): Post
     {
         $post->tags()->detach();
+        $post->load('series');
 
         if ($request->tags) {
             $this->attachTags($request->tags, $request->tag_id, $post);
@@ -115,6 +116,7 @@ class PostController extends Controller
             $content = LazyLoadingParser::makeImagesLazy($content);
         }
 
+        $data->put('slug', $this->getPostSlug($request->title, $post->series->first()));
         $data->put('read_time', Post::calculateEstimatedReadingTime($content ?? ''));
         $data->put('content', $content);
 
@@ -188,5 +190,11 @@ class PostController extends Controller
         }
 
         $post->tags()->attach($data);
+    }
+
+    private function getPostSlug(string $title, ?Series $series): string
+    {
+        $slug = Str::slug($title);
+        return $series ? "{$series->slug}-{$slug}" : $slug;
     }
 }
