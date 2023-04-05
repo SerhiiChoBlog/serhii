@@ -9,7 +9,7 @@ export default class {
         private postId: number,
     ) { }
 
-    public async save(): Promise<Series | null> {
+    public async save(description: string): Promise<Series | null> {
         const formData = new FormData()
         const postsElems = this.elements['posts[]'] as HTMLInputElement[] | HTMLInputElement
         let posts: HTMLInputElement[] = []
@@ -26,7 +26,7 @@ export default class {
         formData.append('intro', this.elements.intro.value)
         formData.append('color_from', this.elements.color_from.value)
         formData.append('color_to', this.elements.color_to.value)
-        formData.append('description', this.elements.description.value)
+        formData.append('description', description)
         formData.append('image', imageFile)
         formData.append('_method', 'put')
 

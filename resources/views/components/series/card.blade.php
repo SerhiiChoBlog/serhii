@@ -25,7 +25,7 @@
 
             <div class="mt-4">
                 <p class="text-md lg:text-lg text-gray-300 mt-3">
-                    {!! nl2br($series->description) !!}
+                    {!! $series->description !!}
                 </p>
             </div>
         </div>
