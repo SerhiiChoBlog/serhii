@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import ValidationMessage from '@/components/Form/ValidationMessage.vue'
 
@@ -23,6 +23,8 @@ const props = withDefaults(defineProps<Props>(), {
     placeholder: '',
     value: '',
 })
+
+onMounted(() => emit('changed', props.value))
 
 const inputValue = ref<string>(props.value)
 
