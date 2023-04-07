@@ -7,7 +7,7 @@ export const tinymceConfig: EditorOptions = {
     // skin: "oxide-dark",
     selector: '#content',
     plugins: ['codesample', 'fullscreen', 'code', 'image', 'link', 'table', 'lists'], // todo: paste plugin not available
-    height: 800,
+    height: 600,
     toolbar: [
         { name: '', items: ['undo', 'redo'] },
         { name: '', items: ['styles', 'bold', 'italic', 'forecolor', 'removeformat'] },
