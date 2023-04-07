@@ -11,9 +11,9 @@ const emit = defineEmits<Emits>()
 
 type Props = {
     name: string
-    errorMessage?: string | null
-    value?: string
     id: string
+    value: string
+    errorMessage?: string | null
     type?: 'text' | 'email' | 'password' | 'checkbox'
     placeholder?: string
 }
@@ -21,14 +21,17 @@ type Props = {
 const props = withDefaults(defineProps<Props>(), {
     type: 'text',
     placeholder: '',
-    value: '',
 })
 
 const inputValue = ref<string>(props.value)
 
 watchEffect(() => {
-    emit('changed', inputValue.value)
+    inputValue.value = props.value
 })
+
+function inputHandler() {
+    emit('changed', inputValue.value)
+}
 </script>
 
 <template>
@@ -37,6 +40,7 @@ watchEffect(() => {
             :type="props.type"
             :placeholder="props.placeholder"
             class="w-full px-4 py-3 border bg-page-second rounded-md focus:outline-none focus:ring-1 focus:ring-main"
+            @input="inputHandler"
             :class="{
                 'border-red-600/50': props.errorMessage,
                 'border-border': !props.errorMessage,
