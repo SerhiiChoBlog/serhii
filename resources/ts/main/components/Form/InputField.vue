@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref } from 'vue'
 import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import ValidationMessage from '@/components/Form/ValidationMessage.vue'
 
 type Emits = {
-    (e: 'update:modelValue', value: string | boolean): void
+    (e: 'changed', value: string): void
 }
 
 const emit = defineEmits<Emits>()
 
 type Props = {
     name: string
-    modelValue: string | boolean
     errorMessage?: string | null
     value?: string
-    id?: string
+    id: string
     type?: 'text' | 'email' | 'password' | 'checkbox'
     placeholder?: string
 }
@@ -23,13 +22,13 @@ const props = withDefaults(defineProps<Props>(), {
     type: 'text',
     placeholder: '',
     value: '',
-    id: '',
 })
 
-const inpValue = computed({
-    get: () => props.modelValue,
-    set: (v: string | boolean) => emit('update:modelValue', v),
-})
+const inputValue = ref<string>(props.value)
+
+function handleChange() {
+    emit('changed', inputValue.value)
+}
 </script>
 
 <template>
@@ -43,7 +42,8 @@ const inpValue = computed({
                 'border-border': !props.errorMessage,
             }"
             :name="props.name"
-            v-model="inpValue"
+            @input="handleChange"
+            v-model="inputValue"
             :id="props.id"
             :ref="`ref-${props.name}`"
         >

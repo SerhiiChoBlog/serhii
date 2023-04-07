@@ -47,7 +47,7 @@ function switchToSignUp() {
                 id="login-email"
                 type="email"
                 placeholder="Enter your email"
-                v-model="formData.email"
+                @changed="v => formData.email = v"
                 :error-message="errors && errors.email ? errors.email[0] : null"
             />
         </div>
@@ -59,7 +59,7 @@ function switchToSignUp() {
                 id="login-password"
                 type="password"
                 placeholder="Enter your password"
-                v-model="formData.password"
+                @changed="v => formData.password = v"
             />
         </div>
 
