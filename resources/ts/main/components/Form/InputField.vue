@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import ValidationMessage from '@/components/Form/ValidationMessage.vue'
 
@@ -24,13 +24,11 @@ const props = withDefaults(defineProps<Props>(), {
     value: '',
 })
 
-onMounted(() => emit('changed', props.value))
-
 const inputValue = ref<string>(props.value)
 
-function handleChange() {
+watchEffect(() => {
     emit('changed', inputValue.value)
-}
+})
 </script>
 
 <template>
@@ -44,7 +42,6 @@ function handleChange() {
                 'border-border': !props.errorMessage,
             }"
             :name="props.name"
-            @input="handleChange"
             v-model="inputValue"
             :id="props.id"
             :ref="`ref-${props.name}`"
