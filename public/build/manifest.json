@@ -15,7 +15,7 @@
     "file": "assets/Tip.vue_vue_type_script_setup_true_lang-5578be6c.js"
   },
   "resources/css/admin/app.css": {
-    "file": "assets/app-2e44ddb2.css",
+    "file": "assets/app-0aa215da.css",
     "isEntry": true,
     "src": "resources/css/admin/app.css"
   },
@@ -25,12 +25,12 @@
     "src": "resources/css/admin/font-awesome.css"
   },
   "resources/css/main/app.css": {
-    "file": "assets/app-d67f17d4.css",
+    "file": "assets/app-6e9cc23b.css",
     "isEntry": true,
     "src": "resources/css/main/app.css"
   },
   "resources/css/user/app.css": {
-    "file": "assets/app-fa74e4dc.css",
+    "file": "assets/app-889401d7.css",
     "isEntry": true,
     "src": "resources/css/user/app.css"
   },
@@ -72,7 +72,7 @@
     "src": "resources/ts/admin/app.ts"
   },
   "resources/ts/main/app.ts": {
-    "file": "assets/app-36377303.js",
+    "file": "assets/app-051cd04c.js",
     "imports": [
       "_Tip.vue_vue_type_script_setup_true_lang-5578be6c.js",
       "_Spinner-913ddbb0.js",
@@ -90,12 +90,8 @@
     "isEntry": true,
     "src": "resources/ts/user/app.ts"
   },
-  "storage/app/public/hero-sm.webp": {
-    "file": "assets/hero-sm-3cb40372.webp",
-    "src": "storage/app/public/hero-sm.webp"
-  },
-  "storage/app/public/hero.webp": {
-    "file": "assets/hero-7cf745fe.webp",
-    "src": "storage/app/public/hero.webp"
+  "storage/app/public/hero.svg": {
+    "file": "assets/hero-c0cbd499.svg",
+    "src": "storage/app/public/hero.svg"
   }
 }
