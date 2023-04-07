@@ -10,6 +10,8 @@
      */
 
     $title = $tag->title ?? 'Blog for web developers';
+    $series = $posts->isEmpty() ? null : $posts->first()->series->first();
+    $header_style = $series ? "background: linear-gradient(90deg, {$series->color_from} 0%, {$series->color_to} 100%)" : '';
 @endphp
 
 @extends('layouts.main')
@@ -21,7 +23,8 @@
     <x-hero
         :mainTitle="$title"
         subtitle="You want to become a better web developer and create optimized, responsive<br>and modern websites using the latest web technologies and best practices? Welcome!"
-        class="bg-gradient-to-r from-[#d074a2] to-[#2a4b67] text-white relative"
+        class="{{ $series ? '' : 'bg-home-hero' }} bg-cover text-white relative"
+        :style="$header_style"
     >
         @if ($tag)
             <img
