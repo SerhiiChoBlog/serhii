@@ -69,6 +69,7 @@ const loadMorePosts = debounce((): void => {
 
         <DataTable v-else-if="posts.length > 0">
             <template #head>
+                <HeadDetail>ID</HeadDetail>
                 <HeadDetail></HeadDetail>
                 <HeadDetail>Image</HeadDetail>
                 <HeadDetail class="min-w-[300px]">Title</HeadDetail>

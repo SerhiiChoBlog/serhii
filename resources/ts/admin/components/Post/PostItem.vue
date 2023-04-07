@@ -13,6 +13,7 @@ const { post } = defineProps<Props>()
 
 <template>
     <BodyRow>
+        <BodyDetail>{{ post.id }}</BodyDetail>
         <BodyDetail>
             <i v-if="post.is_published" class="fas fa-check text-green-600"></i>
             <i v-else class="fas fa-times text-red-600"></i>
