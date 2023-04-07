@@ -25,18 +25,17 @@
 
             <div class="relative z-10 text-center pt-20 pb-32">
                 <h1 class="text-2xl lg:text-4xl" aria-label="Serhii Cho">
-                    <span class="text-white drop-shadow-md">{S} SERHII</span>
+                    <span class="text-white drop-shadow-md uppercase">{{ config('app.name') }}</span>
                 </h1>
 
                 <h2 class="text-white text-md lg:text-2xl mt-2 mx-4 leading-5 md:tracking-wide drop-shadow-md mb-3">
-                    Blog about web development
+                    Blog about web development and coding
                 </h2>
 
                 <search>
                     <div class="min-h-[44px] lg:min-h-[60px]"></div>
                 </search>
 
-                <x-home.tag-suggestions/>
                 <x-home.read-blog-button/>
             </div>
         </div>
