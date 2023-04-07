@@ -18,6 +18,11 @@ export default [
         title: 'Series',
     },
     {
+        href: '/projects',
+        class: currPath === '/projects' ? activeClass : '',
+        title: 'Open source',
+    },
+    {
         href: '/about-me',
         class: currPath === '/about-me' ? activeClass : '',
         title: 'About',

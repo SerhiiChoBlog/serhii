@@ -1,12 +1,15 @@
 @php
+    use Illuminate\View\ComponentAttributeBag;
+
     /**
      * @var string|null $mainTitle
      * @var string|null $subtitle
      * @var string|null $slot
+     * @var ComponentAttributeBag $attributes
      */
 @endphp
 
-<header {{ $attributes->merge([]) }}>
+<header {{ $attributes }}>
     <div class="{{ $navbar ?? '' }} min-h-[55px]">
         <navbar theme="{{ request()->cookie('theme', 'system') }}"></navbar>
     </div>
