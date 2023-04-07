@@ -63,7 +63,7 @@
     "src": "resources/fonts/fa-solid-900.woff2"
   },
   "resources/ts/admin/app.ts": {
-    "file": "assets/app-b12fa3b2.js",
+    "file": "assets/app-97a6da13.js",
     "imports": [
       "_Tip.vue_vue_type_script_setup_true_lang-5578be6c.js",
       "_Spinner-913ddbb0.js"
