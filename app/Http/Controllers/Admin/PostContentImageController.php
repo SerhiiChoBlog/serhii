@@ -16,6 +16,8 @@ class PostContentImageController extends Controller
 {
     public function store(Post $post, Request $request): void
     {
+        $post->load('series:id,slug');
+
         /** @var UploadedFile|null $image */
         $image = $request->file('image');
 
@@ -23,7 +25,7 @@ class PostContentImageController extends Controller
             return;
         }
 
-        $slug = Str::slug($post->title);
+        $slug = $this->getImageSlug($post);
         $path = storage_path('app/public/posts/content');
         $original_name = $image->getClientOriginalName();
 
@@ -45,5 +47,13 @@ class PostContentImageController extends Controller
     {
         Storage::delete($image->path);
         $image->delete();
+    }
+
+    private function getImageSlug(Post $post): string
+    {
+        $series = $post->series->first();
+        $post_slug = Str::slug($post->title);
+
+        return $series ? "{$series->slug}-{$post_slug}" : $post_slug;
     }
 }
