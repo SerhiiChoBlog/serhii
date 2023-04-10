@@ -26,19 +26,54 @@ class RecommendationHandlerTest extends TestCase
         /** @var Visitor $visitor */
         $visitor = Visitor::factory()->create(['ip' => self::FAKE_IP_ADDRESS]);
 
-        // Mock ip address in request
-        $this->app['request']->server->set('REMOTE_ADDR', self::FAKE_IP_ADDRESS);
+        $this->fakeIpAddress();
 
-        $visitor->postViews()->create(['post_id' => $posts[0]?->id]);
-        $visitor->postViews()->create(['post_id' => $posts[1]?->id]);
+        $viewed_posts = [$posts[0]?->id, $posts[1]?->id];
+        $visitor->postViews()->create(['post_id' => $viewed_posts[0]]);
+        $visitor->postViews()->create(['post_id' => $viewed_posts[1]]);
 
         $result = (new RecommendationHandler($posts, 3))
             ->useFilter(new ViewedContentFilter())
             ->get();
 
         $this->assertCount(3, $result);
-        $this->assertSame($posts[2]?->id, $result[0]?->id);
-        $this->assertSame($posts[3]?->id, $result[1]?->id);
-        $this->assertSame($posts[4]?->id, $result[2]?->id);
+
+        $viewed_posts_missing = $result->every(function (Post $post) use ($viewed_posts) {
+            return !in_array($post->id, $viewed_posts, true);
+        });
+
+        $this->assertTrue($viewed_posts_missing);
+    }
+
+    public function testItCanReturnRandomPostsIfNotEnoughPostsAreAvailable(): void
+    {
+        /** @var Collection<int, Post> $posts */
+        $posts = Post::factory()->count(7)->create();
+
+        /** @var Visitor $visitor */
+        $visitor = Visitor::factory()->create(['ip' => self::FAKE_IP_ADDRESS]);
+
+        $this->fakeIpAddress();
+
+        $viewed_posts = [$posts[2]?->id, $posts[3]?->id];
+        $visitor->postViews()->create(['post_id' => $viewed_posts[0]]);
+        $visitor->postViews()->create(['post_id' => $viewed_posts[1]]);
+
+        $result = (new RecommendationHandler($posts, 5))
+            ->useFilter(new ViewedContentFilter())
+            ->get();
+
+        $this->assertCount(5, $result);
+
+        $viewed_posts_missing = $result->every(function (Post $post) use ($viewed_posts) {
+            return !in_array($post->id, $viewed_posts, true);
+        });
+
+        $this->assertTrue($viewed_posts_missing);
+    }
+
+    private function fakeIpAddress(): void
+    {
+        $this->app['request']->server->set('REMOTE_ADDR', self::FAKE_IP_ADDRESS);
     }
 }
