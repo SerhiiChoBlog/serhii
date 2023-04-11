@@ -72,6 +72,35 @@ class RecommendationHandlerTest extends TestCase
         $this->assertTrue($viewed_posts_missing);
     }
 
+    public function testItReturnsRandomPostsIfUserViewedEverySingleOne(): void
+    {
+        /** @var Collection<int, Post> $posts */
+        $posts = Post::factory()->count(3)->create();
+
+        /** @var Visitor $visitor */
+        $visitor = Visitor::factory()->create(['ip' => self::FAKE_IP_ADDRESS]);
+
+        $this->fakeIpAddress();
+
+        $viewed_posts = [$posts[0]?->id, $posts[1]?->id, $posts[2]?->id];
+        $visitor->postViews()->create(['post_id' => $viewed_posts[0]]);
+        $visitor->postViews()->create(['post_id' => $viewed_posts[1]]);
+        $visitor->postViews()->create(['post_id' => $viewed_posts[2]]);
+
+        $result = (new RecommendationHandler($posts, 3))
+            ->useFilter(new ViewedContentFilter())
+            ->get();
+
+        $this->assertCount(3, $result);
+
+        $viewed_posts_present = $result->every(function (Post $post) use ($viewed_posts) {
+            return in_array($post->id, $viewed_posts, true);
+        });
+
+        $this->assertTrue($viewed_posts_present);
+    }
+
+
     private function fakeIpAddress(): void
     {
         $this->app['request']->server->set('REMOTE_ADDR', self::FAKE_IP_ADDRESS);
