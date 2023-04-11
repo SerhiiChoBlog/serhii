@@ -6,7 +6,7 @@ namespace Tests\Feature\Recommendations;
 
 use App\Models\Post;
 use App\Models\Visitor;
-use App\Recommendations\Filters\ViewedContentFilter;
+use App\Recommendations\Filters\UnreadPostsFilter;
 use App\Recommendations\RecommendationHandler;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Collection;
@@ -21,7 +21,7 @@ class RecommendationHandlerTest extends TestCase
     public function testItCanFilterPostsByRemovingViewedPosts(): void
     {
         /** @var Collection<int, Post> $posts */
-        $posts = Post::factory()->count(5)->create();
+        $posts = Post::factory()->published()->count(5)->create();
 
         /** @var Visitor $visitor */
         $visitor = Visitor::factory()->create(['ip' => self::FAKE_IP_ADDRESS]);
@@ -32,8 +32,8 @@ class RecommendationHandlerTest extends TestCase
         $visitor->postViews()->create(['post_id' => $viewed_posts[0]]);
         $visitor->postViews()->create(['post_id' => $viewed_posts[1]]);
 
-        $result = (new RecommendationHandler($posts, 3))
-            ->useFilter(new ViewedContentFilter())
+        $result = (new RecommendationHandler(3))
+            ->useFilter(new UnreadPostsFilter())
             ->get();
 
         $this->assertCount(3, $result);
@@ -48,7 +48,7 @@ class RecommendationHandlerTest extends TestCase
     public function testItCanReturnRandomPostsIfNotEnoughPostsAreAvailable(): void
     {
         /** @var Collection<int, Post> $posts */
-        $posts = Post::factory()->count(7)->create();
+        $posts = Post::factory()->published()->count(7)->create();
 
         /** @var Visitor $visitor */
         $visitor = Visitor::factory()->create(['ip' => self::FAKE_IP_ADDRESS]);
@@ -59,8 +59,8 @@ class RecommendationHandlerTest extends TestCase
         $visitor->postViews()->create(['post_id' => $viewed_posts[0]]);
         $visitor->postViews()->create(['post_id' => $viewed_posts[1]]);
 
-        $result = (new RecommendationHandler($posts, 5))
-            ->useFilter(new ViewedContentFilter())
+        $result = (new RecommendationHandler(5))
+            ->useFilter(new UnreadPostsFilter())
             ->get();
 
         $this->assertCount(5, $result);
@@ -75,7 +75,7 @@ class RecommendationHandlerTest extends TestCase
     public function testItReturnsRandomPostsIfUserViewedEverySingleOne(): void
     {
         /** @var Collection<int, Post> $posts */
-        $posts = Post::factory()->count(3)->create();
+        $posts = Post::factory()->published()->count(3)->create();
 
         /** @var Visitor $visitor */
         $visitor = Visitor::factory()->create(['ip' => self::FAKE_IP_ADDRESS]);
@@ -87,8 +87,8 @@ class RecommendationHandlerTest extends TestCase
         $visitor->postViews()->create(['post_id' => $viewed_posts[1]]);
         $visitor->postViews()->create(['post_id' => $viewed_posts[2]]);
 
-        $result = (new RecommendationHandler($posts, 3))
-            ->useFilter(new ViewedContentFilter())
+        $result = (new RecommendationHandler(3))
+            ->useFilter(new UnreadPostsFilter())
             ->get();
 
         $this->assertCount(3, $result);
@@ -98,27 +98,6 @@ class RecommendationHandlerTest extends TestCase
         });
 
         $this->assertTrue($viewed_posts_present);
-    }
-
-    public function testItCanExcludeAnyPost(): void
-    {
-        /** @var Collection<int, Post> $posts */
-        $posts = Post::factory()->count(4)->create();
-
-        $excluded_posts = [$posts[0]->id, $posts[1]->id];
-
-        $result = (new RecommendationHandler($posts, 4))
-            ->exclude($excluded_posts[0])
-            ->exclude($excluded_posts[1])
-            ->get();
-
-        $this->assertCount(2, $result);
-
-        $viewed_posts_missing = $result->every(function (Post $post) use ($excluded_posts) {
-            return !in_array($post->id, $excluded_posts, true);
-        });
-
-        $this->assertTrue($viewed_posts_missing);
     }
 
     private function fakeIpAddress(): void
