@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Tests\Feature\Recommendations;
 
 use App\Models\Post;
+use App\Models\Series;
 use App\Models\Visitor;
+use App\Recommendations\Filters\PostSeriesFilter;
 use App\Recommendations\Filters\UnreadPostsFilter;
 use App\Recommendations\RecommendationHandler;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
@@ -98,6 +100,31 @@ class RecommendationHandlerTest extends TestCase
         });
 
         $this->assertTrue($viewed_posts_present);
+    }
+
+    public function testItReturnsPostsFromSeriesWithCorrectFilter(): void
+    {
+        /** @var Series $series */
+        $series = Series::factory()->create();
+
+        /** @var Collection<int, Post> $posts */
+        $posts = Post::factory()->published()->count(3)->create();
+
+        $posts_with_series = [$posts[0], $posts[2]];
+        $post_without_series = $posts[1];
+
+        $series->posts()->attach([
+            $posts_with_series[0]?->id => ['part' => 1],
+            $posts_with_series[1]?->id => ['part' => 2],
+        ]);
+
+        $result = (new RecommendationHandler(2))
+            ->useFilter(new PostSeriesFilter($posts_with_series[0]))
+            ->get();
+
+        $this->assertCount(2, $result);
+        $this->assertTrue($result->contains($posts_with_series[1]));
+        $this->assertTrue($result->contains($post_without_series));
     }
 
     private function fakeIpAddress(): void
