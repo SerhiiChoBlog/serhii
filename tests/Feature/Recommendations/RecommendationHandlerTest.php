@@ -100,6 +100,26 @@ class RecommendationHandlerTest extends TestCase
         $this->assertTrue($viewed_posts_present);
     }
 
+    public function testItCanExcludeAnyPost(): void
+    {
+        /** @var Collection<int, Post> $posts */
+        $posts = Post::factory()->count(4)->create();
+
+        $excluded_posts = [$posts[0]->id, $posts[1]->id];
+
+        $result = (new RecommendationHandler($posts, 4))
+            ->exclude($excluded_posts[0])
+            ->exclude($excluded_posts[1])
+            ->get();
+
+        $this->assertCount(2, $result);
+
+        $viewed_posts_missing = $result->every(function (Post $post) use ($excluded_posts) {
+            return !in_array($post->id, $excluded_posts, true);
+        });
+
+        $this->assertTrue($viewed_posts_missing);
+    }
 
     private function fakeIpAddress(): void
     {
