@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\IndexRequest;
 use App\Models\Post;
-use App\Services\RelatedPostsService;
+use App\Services\RecommendPostsService;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -41,7 +41,7 @@ class PostController extends Controller
     {
         $post->load('tags');
 
-        $service = new RelatedPostsService($post);
+        $service = new RecommendPostsService($post);
 
         return $service->get();
     }

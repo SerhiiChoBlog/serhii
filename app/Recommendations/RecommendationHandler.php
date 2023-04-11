@@ -10,39 +10,26 @@ use Illuminate\Support\Collection;
 
 class RecommendationHandler
 {
-    /**
-     * @var Collection<int, Post>
-     */
-    private readonly Collection $posts;
+    public const POST_FIELDS = ['id', 'title', 'slug', 'image_sm'];
 
     /**
      * @var Collection<int, Post>
      */
-    private Collection $filtered_posts;
+    private Collection $posts;
 
-    /**
-     * @var array<int, int>
-     */
-    private array $exclude = [];
-
-    /**
-     * @param Collection<int, Post> $posts
-     */
-    public function __construct(Collection $posts, private readonly int $limit)
+    public function __construct(private readonly int $limit)
     {
-        $this->posts = $posts;
-        $this->filtered_posts = $posts;
+        $this->posts = collect();
     }
 
     public function useFilter(Filter $filter): self
     {
-        $this->filtered_posts = $filter->process($this->filtered_posts);
-        return $this;
-    }
+        if ($this->posts->count() >= $this->limit) {
+            return $this;
+        }
 
-    public function exclude(int $post_id): self
-    {
-        $this->exclude[] = $post_id;
+        $this->posts = $filter->process($this->posts, $this->limit);
+
         return $this;
     }
 
@@ -51,41 +38,50 @@ class RecommendationHandler
      */
     public function get(): Collection
     {
-        $this->filtered_posts = $this->filtered_posts
-            ->reject(fn (Post $post) => in_array($post->id, $this->exclude, true));
+        $results_count = $this->posts->count();
+        $lacking_posts_count = $this->limit - $results_count;
 
-
-        $results_count = $this->filtered_posts->count();
-
-        if ($results_count < $this->limit) {
-            $random_posts = $this->getRandomPosts($this->limit - $results_count);
-            return $this->filtered_posts->push(...$random_posts);
+        if ($lacking_posts_count > 0) {
+            $exclude_ids = $this->posts->pluck('id');
+            $random_posts = $this->getRandomPosts($lacking_posts_count, $exclude_ids);
+            return $this->posts->merge($random_posts);
         }
 
-        return $this->filtered_posts->take($this->limit);
+        if ($this->posts->count() > $this->limit) {
+            return $this->posts->take($this->limit);
+        }
+
+        return $this->posts;
     }
 
     /**
-     * @return array<int, Post>
+     * @param Collection<int, int> $exclude_ids
+     *
+     * @return Collection<int, Post>
      */
-    private function getRandomPosts(int $amount): array
+    private function getRandomPosts(int $amount, Collection $exclude_ids): Collection
     {
-        $excluded_ids = $this->filtered_posts->pluck('id')->merge($this->exclude);
+        $result = Post::query()
+            ->select(self::POST_FIELDS)
+            ->where('is_published', true)
+            ->whereNotIn('id', $exclude_ids->toArray())
+            ->inRandomOrder()
+            ->limit($amount)
+            ->get();
 
-        $result = [];
+        $missing_posts = $amount - $result->count();
 
-        foreach ($this->posts->shuffle() as $post) {
-            if ($excluded_ids->contains($post->id)) {
-                continue;
-            }
-
-            $result[] = $post;
-
-            if (count($result) >= $amount) {
-                break;
-            }
+        if ($missing_posts === 0) {
+            return $result;
         }
 
-        return $result;
+        $additional_posts = Post::query()
+            ->select(self::POST_FIELDS)
+            ->where('is_published', true)
+            ->inRandomOrder()
+            ->limit($missing_posts)
+            ->get();
+
+        return $result->merge($additional_posts);
     }
 }
