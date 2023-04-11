@@ -21,6 +21,11 @@ class RecommendationHandler
     private Collection $filtered_posts;
 
     /**
+     * @var array<int, int>
+     */
+    private array $exclude = [];
+
+    /**
      * @param Collection<int, Post> $posts
      */
     public function __construct(Collection $posts, private readonly int $limit)
@@ -35,11 +40,21 @@ class RecommendationHandler
         return $this;
     }
 
+    public function exclude(int $post_id): self
+    {
+        $this->exclude[] = $post_id;
+        return $this;
+    }
+
     /**
      * @return Collection<int, Post>
      */
     public function get(): Collection
     {
+        $this->filtered_posts = $this->filtered_posts
+            ->reject(fn (Post $post) => in_array($post->id, $this->exclude, true));
+
+
         $results_count = $this->filtered_posts->count();
 
         if ($results_count < $this->limit) {
@@ -55,7 +70,7 @@ class RecommendationHandler
      */
     private function getRandomPosts(int $amount): array
     {
-        $excluded_ids = $this->filtered_posts->pluck('id');
+        $excluded_ids = $this->filtered_posts->pluck('id')->merge($this->exclude);
 
         $result = [];
 
