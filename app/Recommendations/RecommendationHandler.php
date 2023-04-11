@@ -17,9 +17,15 @@ class RecommendationHandler
      */
     private Collection $posts;
 
+    /**
+     * @var Collection<int, Post>
+     */
+    private Collection $exclude;
+
     public function __construct(private readonly int $limit)
     {
         $this->posts = collect();
+        $this->exclude = collect();
     }
 
     public function useFilter(Filter $filter): self
@@ -28,7 +34,15 @@ class RecommendationHandler
             return $this;
         }
 
-        $this->posts = $filter->process($this->posts, $this->limit);
+        $filter_result = $filter->process($this->posts, $this->limit);
+
+        if ($filter_result->posts) {
+            $this->posts = $filter_result->posts;
+        }
+
+        if ($filter_result->exclude) {
+            $this->exclude = $this->exclude->merge($filter_result->exclude);
+        }
 
         return $this;
     }
@@ -42,8 +56,9 @@ class RecommendationHandler
         $lacking_posts_count = $this->limit - $results_count;
 
         if ($lacking_posts_count > 0) {
-            $exclude_ids = $this->posts->pluck('id');
+            $exclude_ids = $this->posts->pluck('id')->merge($this->exclude->pluck('id'));
             $random_posts = $this->getRandomPosts($lacking_posts_count, $exclude_ids);
+
             return $this->posts->merge($random_posts);
         }
 

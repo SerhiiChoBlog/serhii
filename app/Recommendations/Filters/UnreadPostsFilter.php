@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Recommendations\Filters;
 
+use App\Dto\RecommendationFilterResult;
 use App\Models\Post;
 use App\Utils\GlobalVisitor;
 use Illuminate\Support\Collection;
@@ -13,12 +14,12 @@ final readonly class UnreadPostsFilter implements Filter
     /**
      * @inheritDoc
      */
-    public function process(Collection $posts, int $limit): Collection
+    public function process(Collection $posts, int $limit): RecommendationFilterResult
     {
         $visitor = GlobalVisitor::getInstance()->get();
 
         if (!$visitor) {
-            return collect();
+            return new RecommendationFilterResult();
         }
 
         $viewed_posts = $visitor->postViews()->pluck('post_id');
@@ -29,7 +30,9 @@ final readonly class UnreadPostsFilter implements Filter
             $posts = $posts->merge($lacking_posts);
         }
 
-        return $posts->filter(fn (Post $post) => !$viewed_posts->contains($post->id));
+        $posts = $posts->filter(fn (Post $post) => !$viewed_posts->contains($post->id));
+
+        return new RecommendationFilterResult($posts);
     }
 
     /**
