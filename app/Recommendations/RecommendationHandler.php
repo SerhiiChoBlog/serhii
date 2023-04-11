@@ -30,11 +30,13 @@ class RecommendationHandler
 
     public function useFilter(Filter $filter): self
     {
-        if ($this->posts->count() >= $this->limit) {
+        $missing_posts = $this->limit - $this->posts->count();
+
+        if ($missing_posts <= 0) {
             return $this;
         }
 
-        $filter_result = $filter->process($this->posts, $this->limit);
+        $filter_result = $filter->process($this->posts, $missing_posts);
 
         if ($filter_result->posts) {
             $this->posts = $filter_result->posts;

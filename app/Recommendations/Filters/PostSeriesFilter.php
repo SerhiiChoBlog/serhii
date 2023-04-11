@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 
 final readonly class PostSeriesFilter implements Filter
 {
-    public function __construct(private Post $related_post)
+    public function __construct(private Post $post)
     {
     }
 
@@ -20,8 +20,10 @@ final readonly class PostSeriesFilter implements Filter
      */
     public function process(Collection $posts, int $limit): RecommendationFilterResult
     {
-        $series = $this->related_post->series->first();
-        $exclude = collect([$this->related_post]);
+        $this->post->loadMissing('series');
+
+        $series = $this->post->series->first();
+        $exclude = collect([$this->post]);
 
         if (!$series) {
             return new RecommendationFilterResult($posts, $exclude);
@@ -40,7 +42,7 @@ final readonly class PostSeriesFilter implements Filter
         return $series->posts()
             ->select(self::POST_FIELDS)
             ->where('is_published', true)
-            ->whereNot('id', $this->related_post->id)
+            ->whereNot('id', $this->post->id)
             ->get();
     }
 }

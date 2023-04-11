@@ -124,4 +124,19 @@ class PostTest extends TestCase
 
         $this->assertCount(1, $this->post->postLikes);
     }
+
+    public function testMainTagIsAlwaysFirst(): void
+    {
+        $tag1 = Tag::factory()->create();
+        $main_tag = Tag::factory()->create();
+        $tag2 = Tag::factory()->create();
+
+        $this->post->tags()->attach([
+            $tag1->id => ['is_main' => false],
+            $main_tag->id => ['is_main' => true],
+            $tag2->id => ['is_main' => false],
+        ]);
+
+        $this->assertSame($main_tag->id, $this->post->tags->first()->id);
+    }
 }

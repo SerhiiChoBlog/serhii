@@ -6,8 +6,10 @@ namespace Tests\Feature\Recommendations;
 
 use App\Models\Post;
 use App\Models\Series;
+use App\Models\Tag;
 use App\Models\Visitor;
 use App\Recommendations\Filters\PostSeriesFilter;
+use App\Recommendations\Filters\PostTagsFilter;
 use App\Recommendations\Filters\UnreadPostsFilter;
 use App\Recommendations\RecommendationHandler;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
@@ -125,6 +127,35 @@ class RecommendationHandlerTest extends TestCase
         $this->assertCount(2, $result);
         $this->assertTrue($result->contains($posts_with_series[1]));
         $this->assertTrue($result->contains($post_without_series));
+    }
+
+    public function testItCanFilterPostsByMainTag(): void
+    {
+        $post1 = Post::factory()->published()->create();
+        $post2 = Post::factory()->published()->create();
+        $post3 = Post::factory()->published()->create();
+        $post4 = Post::factory()->published()->create();
+        $post5 = Post::factory()->published()->create();
+
+        $tag1 = Tag::factory()->create();
+        $tag2 = Tag::factory()->create();
+        $tag3 = Tag::factory()->create();
+
+        $post1->tags()->attach([$tag1->id => ['is_main' => true], $tag2->id]);
+        $post2->tags()->attach([$tag1->id, $tag2->id]);
+        $post3->tags()->attach([$tag1->id]);
+        $post4->tags()->attach([$tag3->id]);
+        $post5->tags()->attach([$tag3->id]);
+
+        $result = (new RecommendationHandler(3))
+            ->useFilter(new PostTagsFilter($post1))
+            ->get();
+
+        $result_contains_posts = $result->every(function (Post $post) use ($post2, $post3) {
+            return $post->is($post2) || $post->is($post3);
+        });
+
+        $this->assertTrue($result_contains_posts);
     }
 
     private function fakeIpAddress(): void
