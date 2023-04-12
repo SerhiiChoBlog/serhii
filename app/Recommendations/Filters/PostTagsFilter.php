@@ -9,10 +9,16 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Support\Collection;
 
-final readonly class PostTagsFilter implements Filter
+final class PostTagsFilter implements Filter
 {
-    public function __construct(private Post $post)
+    /**
+     * @var Collection<int, int>
+     */
+    private Collection $exclude_ids;
+
+    public function __construct(private readonly Post $post)
     {
+        $this->exclude_ids = collect([$post->id]);
     }
 
     /**
@@ -26,7 +32,11 @@ final readonly class PostTagsFilter implements Filter
         $new_posts = collect();
 
         foreach ($this->post->tags as $tag) {
-            $new_posts = $new_posts->merge($this->getTagPosts($tag, $missing_posts));
+            $similar_posts = $this->getTagPosts($tag, $missing_posts);
+
+            $this->exclude_ids = $this->exclude_ids->merge($similar_posts->pluck('id'));
+
+            $new_posts = $new_posts->merge($similar_posts);
 
             if ($new_posts->count() >= $missing_posts) {
                 break;
@@ -49,7 +59,7 @@ final readonly class PostTagsFilter implements Filter
             ->with('series:' . self::SERIES_FIELDS)
             ->select(self::POST_FIELDS)
             ->where('is_published', true)
-            ->whereNot('id', $this->post->id)
+            ->whereNotIn('id', $this->exclude_ids->toArray())
             ->limit($limit)
             ->get()
             ->shuffle();

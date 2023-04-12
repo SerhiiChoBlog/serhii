@@ -9,7 +9,7 @@ use App\Http\Requests\Post\IndexRequest;
 use App\Models\Post;
 use App\Recommendations\Filters\PostSeriesFilter;
 use App\Recommendations\Filters\PostTagsFilter;
-use App\Recommendations\Filters\UnreadPostsFilter;
+use App\Recommendations\Filters\ViewedPostsFilter;
 use App\Recommendations\RecommendationHandler;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
@@ -45,7 +45,7 @@ class PostController extends Controller
         return (new RecommendationHandler(3))
             ->useFilter(new PostSeriesFilter($post))
             ->useFilter(new PostTagsFilter($post))
-            ->useFilter(new UnreadPostsFilter())
+            ->useFilter(new ViewedPostsFilter())
             ->get();
     }
 }
