@@ -22,15 +22,20 @@ final readonly class PostTagsFilter implements Filter
     {
         $this->post->loadMissing('tags');
 
-        $exclude = collect([$this->post]);
+        $missing_posts = $limit - $posts->count();
+        $new_posts = collect();
 
         foreach ($this->post->tags as $tag) {
-            $posts = $posts->merge($this->getTagPosts($tag, $limit));
+            $new_posts = $new_posts->merge($this->getTagPosts($tag, $missing_posts));
 
-            if ($posts->count() >= $limit) {
+            if ($new_posts->count() >= $missing_posts) {
                 break;
             }
         }
+
+        $posts = $posts->merge($new_posts);
+
+        $exclude = collect([$this->post->id]);
 
         return new RecommendationFilterResult($posts, $exclude);
     }

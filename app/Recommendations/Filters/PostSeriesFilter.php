@@ -23,7 +23,7 @@ final readonly class PostSeriesFilter implements Filter
         $this->post->loadMissing('series');
 
         $series = $this->post->series->first();
-        $exclude = collect([$this->post]);
+        $exclude = collect([$this->post->id]);
 
         if (!$series) {
             return new RecommendationFilterResult($posts, $exclude);

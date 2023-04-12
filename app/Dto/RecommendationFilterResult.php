@@ -11,7 +11,7 @@ readonly class RecommendationFilterResult
 {
     /**
      * @param Collection<int, Post>|null $posts
-     * @param Collection<int, Post>|null $exclude
+     * @param Collection<int, int>|null $exclude
      */
     public function __construct(
         public ?Collection $posts = null,

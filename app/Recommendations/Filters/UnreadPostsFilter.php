@@ -22,17 +22,18 @@ final readonly class UnreadPostsFilter implements Filter
             return new RecommendationFilterResult();
         }
 
-        $viewed_posts = $visitor->postViews()->pluck('post_id');
+        $viewed_post_ids = $visitor->postViews()->pluck('post_id');
+
         $lacking_posts_count = $limit - $posts->count();
 
         if ($lacking_posts_count > 0) {
-            $lacking_posts = $this->getPosts($lacking_posts_count, $viewed_posts);
+            $lacking_posts = $this->getPosts($lacking_posts_count, $viewed_post_ids);
             $posts = $posts->merge($lacking_posts);
         }
 
-        $posts = $posts->filter(fn (Post $post) => !$viewed_posts->contains($post->id));
+        $posts = $posts->filter(fn (Post $post) => !$viewed_post_ids->contains($post->id));
 
-        return new RecommendationFilterResult($posts);
+        return new RecommendationFilterResult($posts, $viewed_post_ids);
     }
 
     /**

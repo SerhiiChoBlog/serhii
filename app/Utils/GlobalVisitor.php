@@ -38,7 +38,9 @@ class GlobalVisitor
 
     public function get(): ?Visitor
     {
-        if (self::$visitor) {
+        $ip = self::getIp();
+
+        if (self::$visitor && self::$visitor->ip === $ip) {
             return self::$visitor;
         }
 
@@ -54,12 +56,17 @@ class GlobalVisitor
         }
     }
 
+    private static function getIp(): string
+    {
+        return trim(request()->ip() ?? '');
+    }
+
     /**
      * @throws QueryException
      */
     private static function getOrCreateVisitor(): ?Visitor
     {
-        $ip = trim(request()->ip() ?? '');
+        $ip = self::getIp();
 
         if ($ip === self::LOCAL_IP) {
             return null;
