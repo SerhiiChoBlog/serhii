@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Recommendations\Filters;
 
-use App\Dto\RecommendationFilterResult;
 use App\Models\Post;
 use App\Models\Series;
+use App\Recommendations\DataStream;
 use Illuminate\Support\Collection;
 
 final readonly class PostSeriesFilter implements Filter
@@ -15,34 +15,31 @@ final readonly class PostSeriesFilter implements Filter
     {
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function process(Collection $posts, int $limit): RecommendationFilterResult
+    public function process(DataStream $stream): DataStream
     {
-        $this->post->loadMissing('series:id');
+        $series = $this->post->series()->select('id')->first();
 
-        $series = $this->post->series->first();
-        $exclude = collect([$this->post->id]);
+        $stream->exclude->push($this->post->id);
 
-        if (!$series) {
-            return new RecommendationFilterResult($posts, $exclude);
+        if ($series) {
+            $posts = $this->getPostsFromSeries($series, $stream);
+
+            $stream->exclude->push(...$posts->pluck('id'));
+            $stream->posts->push(...$posts);
         }
 
-        $posts = $this->getPostsFromSeries($series);
-
-        return new RecommendationFilterResult($posts, $exclude);
+        return $stream;
     }
 
     /**
      * @return Collection<int, Post>
      */
-    private function getPostsFromSeries(Series $series): Collection
+    private function getPostsFromSeries(Series $series, DataStream $stream): Collection
     {
         return $series->posts()
             ->select(self::POST_FIELDS)
             ->where('is_published', true)
-            ->whereNot('id', $this->post->id)
+            ->whereNotIn('id', $stream->exclude->toArray())
             ->get();
     }
 }

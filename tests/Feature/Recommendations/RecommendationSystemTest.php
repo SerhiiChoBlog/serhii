@@ -7,36 +7,34 @@ namespace Tests\Feature\Recommendations;
 use App\Models\Post;
 use App\Models\Series;
 use App\Models\Tag;
-use App\Models\Visitor;
 use App\Recommendations\Filters\ExclusionFilter;
+use App\Recommendations\Filters\LikedPostsFilter;
 use App\Recommendations\Filters\PostSeriesFilter;
 use App\Recommendations\Filters\PostTagsFilter;
-use App\Recommendations\Filters\ViewedPostsFilter;
-use App\Recommendations\RecommendationHandler;
+use App\Recommendations\RecommendationSystem;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
-class RecommendationHandlerTest extends TestCase
+class RecommendationSystemTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function testItCanFilterPostsByRemovingViewedPosts(): void
+    public function testItCanFilterPostsByRemovingLikedPosts(): void
     {
         $post1 = Post::factory()->published()->create();
         $post2 = Post::factory()->published()->create();
 
         Post::factory()->published()->count(3)->create();
 
-        /** @var Visitor $visitor */
-        $visitor = Visitor::factory()->create();
+        $user = $this->createUser();
 
-        $this->fakeIpAddress($visitor->ip);
+        $user->likePost($post1->id);
+        $user->likePost($post2->id);
 
-        $visitor->postViews()->create(['post_id' => $post1->id]);
-        $visitor->postViews()->create(['post_id' => $post2->id]);
+        $this->actingAs($user);
 
-        $result = (new RecommendationHandler(3))
-            ->useFilter(new ViewedPostsFilter())
+        $result = (new RecommendationSystem(3))
+            ->pipe(new LikedPostsFilter())
             ->get();
 
         $this->assertCount(3, $result);
@@ -51,16 +49,15 @@ class RecommendationHandlerTest extends TestCase
 
         Post::factory()->published()->count(5)->create();
 
-        /** @var Visitor $visitor */
-        $visitor = Visitor::factory()->create();
+        $user = $this->createUser();
 
-        $this->fakeIpAddress($visitor->ip);
+        $user->likePost($post1->id);
+        $user->likePost($post2->id);
 
-        $visitor->postViews()->create(['post_id' => $post1->id]);
-        $visitor->postViews()->create(['post_id' => $post2->id]);
+        $this->actingAs($user);
 
-        $result = (new RecommendationHandler(5))
-            ->useFilter(new ViewedPostsFilter())
+        $result = (new RecommendationSystem(5))
+            ->pipe(new LikedPostsFilter())
             ->get();
 
         $this->assertCount(5, $result);
@@ -69,23 +66,22 @@ class RecommendationHandlerTest extends TestCase
         $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post2->id), 'Viewed post 2 is not missing');
     }
 
-    public function testItReturnsRandomPostsIfUserViewedEverySingleOne(): void
+    public function testItReturnsRandomPostsIfUserLikedEverySingleOne(): void
     {
         $post1 = Post::factory()->published()->create();
         $post2 = Post::factory()->published()->create();
         $post3 = Post::factory()->published()->create();
 
-        /** @var Visitor $visitor */
-        $visitor = Visitor::factory()->create();
+        $user = $this->createUser();
 
-        $this->fakeIpAddress($visitor->ip);
+        $user->likePost($post1->id);
+        $user->likePost($post2->id);
+        $user->likePost($post3->id);
 
-        $visitor->postViews()->create(['post_id' => $post1->id]);
-        $visitor->postViews()->create(['post_id' => $post2->id]);
-        $visitor->postViews()->create(['post_id' => $post3->id]);
+        $this->actingAs($user);
 
-        $result = (new RecommendationHandler(3))
-            ->useFilter(new ViewedPostsFilter())
+        $result = (new RecommendationSystem(3))
+            ->pipe(new LikedPostsFilter())
             ->get();
 
         $this->assertCount(3, $result);
@@ -101,22 +97,24 @@ class RecommendationHandlerTest extends TestCase
 
         $post1 = Post::factory()->published()->create();
         $post2 = Post::factory()->published()->create();
-        $post3 = Post::factory()->published()->create();
+
+        Post::factory()->count(2)->published()->create();
 
         $series->posts()->attach([
             $post1->id => ['part' => 1],
             $post2->id => ['part' => 2],
         ]);
 
-        $result = (new RecommendationHandler(2))
-            ->useFilter(new PostSeriesFilter($post1))
+        $result = (new RecommendationSystem(2))
+            ->pipe(new PostSeriesFilter($post1))
             ->get();
 
         $this->assertCount(2, $result);
-        $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post3->id));
+        $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post1->id), 'Main series post 1 is not excluded');
+        $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post2->id), 'Post 2 from series is missing');
     }
 
-    public function testItCanFilterPostsByMainTag(): void
+    public function testItCanFilterPostsByTags(): void
     {
         $post1 = Post::factory()->published()->create();
         $post2 = Post::factory()->published()->create();
@@ -134,8 +132,8 @@ class RecommendationHandlerTest extends TestCase
         $post4->tags()->attach([$tag3->id]);
         $post5->tags()->attach([$tag3->id]);
 
-        $result = (new RecommendationHandler(3))
-            ->useFilter(new PostTagsFilter($post1))
+        $result = (new RecommendationSystem(3))
+            ->pipe(new PostTagsFilter($post1))
             ->get();
 
         $this->assertCount(3, $result);
@@ -164,8 +162,8 @@ class RecommendationHandlerTest extends TestCase
         $post5->tags()->attach([$tag4->id]);
         $post6->tags()->attach([$tag4->id]);
 
-        $result = (new RecommendationHandler(3))
-            ->useFilter(new PostTagsFilter($post1))
+        $result = (new RecommendationSystem(3))
+            ->pipe(new PostTagsFilter($post1))
             ->get();
 
         $this->assertCount(3, $result);
@@ -175,15 +173,14 @@ class RecommendationHandlerTest extends TestCase
         $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post4->id), 'Post 4 is missing');
     }
 
-    public function testSeriesFilterWorksTogetherWithTagsAndViewedPostsFilter(): void
+    public function testSeriesFilterWorksTogetherWithTagsAndLikedPostsFilter(): void
     {
         /** @var Series $series */
         $series = Series::factory()->create();
 
-        /** @var Visitor $visitor */
-        $visitor = Visitor::factory()->create();
+        $user = $this->createUser();
 
-        $this->fakeIpAddress($visitor->ip);
+        $this->actingAs($user);
 
         $post1 = Post::factory()->published()->create();
         $post2 = Post::factory()->published()->create();
@@ -193,7 +190,7 @@ class RecommendationHandlerTest extends TestCase
         $post6 = Post::factory()->published()->create();
         $post7 = Post::factory()->published()->create();
 
-        $visitor->postViews()->create(['post_id' => $post7->id]);
+        $user->likePost($post7->id);
 
         $tag = Tag::factory()->create();
 
@@ -206,10 +203,10 @@ class RecommendationHandlerTest extends TestCase
             $post2->id => ['part' => 2],
         ]);
 
-        $result = (new RecommendationHandler(3))
-            ->useFilter(new PostSeriesFilter($post1))
-            ->useFilter(new PostTagsFilter($post1))
-            ->useFilter(new ViewedPostsFilter())
+        $result = (new RecommendationSystem(3))
+            ->pipe(new PostSeriesFilter($post1))
+            ->pipe(new PostTagsFilter($post1))
+            ->pipe(new LikedPostsFilter())
             ->get();
 
         $this->assertCount(3, $result);
@@ -227,17 +224,12 @@ class RecommendationHandlerTest extends TestCase
 
         $exclude_ids = collect([$post1->id, $post2->id]);
 
-        $result = (new RecommendationHandler(2))
-            ->useFilter(new ExclusionFilter($exclude_ids))
+        $result = (new RecommendationSystem(2))
+            ->pipe(new ExclusionFilter($exclude_ids))
             ->get();
 
         $this->assertCount(2, $result);
         $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post1->id), 'Result contains post 1, but it was excluded');
         $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post2->id), 'Result contains post 2, but it was excluded');
-    }
-
-    private function fakeIpAddress(string $ip): void
-    {
-        $this->app['request']->server->set('REMOTE_ADDR', $ip);
     }
 }
