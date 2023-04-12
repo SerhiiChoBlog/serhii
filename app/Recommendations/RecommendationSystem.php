@@ -58,7 +58,7 @@ class RecommendationSystem
         $result = Post::query()
             ->select(self::POST_FIELDS)
             ->where('is_published', true)
-            ->whereNotIn('id', $this->stream->posts->pluck('id')->toArray())
+            ->whereNotIn('id', $this->stream->exclude->toArray())
             ->inRandomOrder()
             ->limit($this->stream->remaining)
             ->get();
