@@ -20,7 +20,7 @@ final readonly class PostTagsFilter implements Filter
      */
     public function process(Collection $posts, int $limit): RecommendationFilterResult
     {
-        $this->post->loadMissing('tags');
+        $this->post->loadMissing('tags:id');
 
         $missing_posts = $limit - $posts->count();
         $new_posts = collect();
