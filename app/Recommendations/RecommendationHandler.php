@@ -18,7 +18,7 @@ class RecommendationHandler
     private Collection $posts;
 
     /**
-     * @var Collection<int, Post>
+     * @var Collection<int, int>
      */
     private Collection $exclude;
 
@@ -58,7 +58,7 @@ class RecommendationHandler
         $lacking_posts_count = $this->limit - $results_count;
 
         if ($lacking_posts_count > 0) {
-            $exclude_ids = $this->posts->pluck('id')->merge($this->exclude->pluck('id'));
+            $exclude_ids = $this->posts->pluck('id')->merge($this->exclude);
             $random_posts = $this->getRandomPosts($lacking_posts_count, $exclude_ids);
 
             return $this->posts->merge($random_posts);
