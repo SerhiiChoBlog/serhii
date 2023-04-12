@@ -7,29 +7,35 @@ namespace App\Http\Controllers;
 use App\CacheKey;
 use App\Models\Post;
 use App\Models\Video;
+use App\Recommendations\Filters\ExclusionFilter;
+use App\Recommendations\Filters\ViewedPostsFilter;
+use App\Recommendations\RecommendationHandler;
 use App\Services\MonthlyTopCalculatorService;
-use App\Services\PreferredPostsService;
 use App\Ttl;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
     /**
-     * @var array<int, int>
+     * @var Collection<int, int>
      */
-    private array $exclude_ids = [];
+    private Collection $exclude_ids;
+
+    public function __construct()
+    {
+        $this->exclude_ids = collect();
+    }
 
     public function index(): View
     {
         $latest = $this->getLatest();
         $monthly_top = $this->getMonthlyTop();
 
-        $this->exclude_ids = [
-            ...array_column($latest, 'id'),
-            ...array_column($monthly_top, 'id'),
-        ];
+        $this->exclude_ids->push(...array_column($latest, 'id'));
+        $this->exclude_ids->push(...array_column($monthly_top, 'id'));
 
         return view('home', [
             'latest_videos' => $this->getLatestVideos(),
@@ -73,12 +79,14 @@ class HomeController extends Controller
     }
 
     /**
-     * @return array<int, Post>
+     * @return Collection<int, Post>
      */
-    private function getPreferredPosts(): array
+    private function getPreferredPosts(): Collection
     {
-        $service = new PreferredPostsService();
-        return $service->get($this->exclude_ids)->all();
+        return (new RecommendationHandler(6))
+            ->useFilter(new ExclusionFilter($this->exclude_ids))
+            ->useFilter(new ViewedPostsFilter())
+            ->get();
     }
 
     /**

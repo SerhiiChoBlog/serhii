@@ -1,10 +1,11 @@
 @php
     use App\Models\Post;
+    use Illuminate\Support\Collection;
 
     /**
      * @var array<int, Post> $latest
      * @var array<int, Post> $monthly_top
-     * @var array<int, Post> $posts
+     * @var Collection<int, Post> $posts
      * @var array<int, array<int ,mixed>> $latest_videos
      */
 

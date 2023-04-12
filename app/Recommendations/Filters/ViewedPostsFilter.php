@@ -9,7 +9,7 @@ use App\Models\Post;
 use App\Utils\GlobalVisitor;
 use Illuminate\Support\Collection;
 
-final readonly class UnreadPostsFilter implements Filter
+final readonly class ViewedPostsFilter implements Filter
 {
     /**
      * @inheritDoc
@@ -47,6 +47,7 @@ final readonly class UnreadPostsFilter implements Filter
             ->select(self::POST_FIELDS)
             ->whereNotIn('id', $viewed_posts->toArray())
             ->where('is_published', true)
+            ->inRandomOrder()
             ->limit($limit)
             ->get();
     }
