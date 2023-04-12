@@ -8,8 +8,8 @@ use App\CacheKey;
 use App\Models\Post;
 use App\Models\Video;
 use App\Recommendations\Filters\ExclusionFilter;
-use App\Recommendations\Filters\ViewedPostsFilter;
-use App\Recommendations\RecommendationHandler;
+use App\Recommendations\Filters\LikedPostsFilter;
+use App\Recommendations\RecommendationSystem;
 use App\Services\MonthlyTopCalculatorService;
 use App\Ttl;
 use Illuminate\Contracts\View\View;
@@ -83,9 +83,9 @@ class HomeController extends Controller
      */
     private function getPreferredPosts(): Collection
     {
-        return (new RecommendationHandler(6))
-            ->useFilter(new ExclusionFilter($this->exclude_ids))
-            ->useFilter(new ViewedPostsFilter())
+        return (new RecommendationSystem(6))
+            ->pipe(new ExclusionFilter($this->exclude_ids))
+            ->pipe(new LikedPostsFilter())
             ->get();
     }
 

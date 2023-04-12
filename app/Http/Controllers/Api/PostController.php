@@ -7,10 +7,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\IndexRequest;
 use App\Models\Post;
+use App\Recommendations\Filters\LikedPostsFilter;
 use App\Recommendations\Filters\PostSeriesFilter;
 use App\Recommendations\Filters\PostTagsFilter;
-use App\Recommendations\Filters\ViewedPostsFilter;
-use App\Recommendations\RecommendationHandler;
+use App\Recommendations\RecommendationSystem;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -42,10 +42,10 @@ class PostController extends Controller
      */
     public function related(Post $post): Collection
     {
-        return (new RecommendationHandler(3))
-            ->useFilter(new PostSeriesFilter($post))
-            ->useFilter(new PostTagsFilter($post))
-            ->useFilter(new ViewedPostsFilter())
+        return (new RecommendationSystem(3))
+            ->pipe(new LikedPostsFilter())
+            ->pipe(new PostSeriesFilter($post))
+            ->pipe(new PostTagsFilter($post))
             ->get();
     }
 }
