@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Recommendations\Filters;
 
-use App\Dto\RecommendationFilterResult;
+use App\Recommendations\DataStream;
 use Illuminate\Support\Collection;
 
 final readonly class ExclusionFilter implements Filter
@@ -16,11 +16,9 @@ final readonly class ExclusionFilter implements Filter
     {
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function process(Collection $posts, int $limit): RecommendationFilterResult
+    public function process(DataStream $stream): DataStream
     {
-        return new RecommendationFilterResult($posts, $this->exclude_ids);
+        $stream->exclude->push(...$this->exclude_ids);
+        return $stream;
     }
 }

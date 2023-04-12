@@ -204,15 +204,15 @@ class RecommendationSystemTest extends TestCase
         ]);
 
         $result = (new RecommendationSystem(3))
+            ->pipe(new LikedPostsFilter())
             ->pipe(new PostSeriesFilter($post1))
             ->pipe(new PostTagsFilter($post1))
-            ->pipe(new LikedPostsFilter())
             ->get();
 
         $this->assertCount(3, $result);
-        $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post2->id), 'Does not contain post 2 from series');
-        $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post6->id), 'Does not contain post 6 with same tag');
-        $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post7->id), 'Result contains post 7, but it was already viewed');
+        $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post2->id), 'Does not contain post 2 from the same series');
+        $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post6->id), 'Does not contain post 6 with the same tag');
+        $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post7->id), 'Result contains post 7, but it was liked by user and should be excluded');
     }
 
     public function testExclusionFilterExcludesGivenPostsFromResult(): void
