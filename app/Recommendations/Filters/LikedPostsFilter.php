@@ -22,10 +22,10 @@ final readonly class LikedPostsFilter implements Filter
 
         if ($stream->needsMoreContent()) {
             $lacking_posts = $this->getPosts($stream->remaining, $liked_posts_ids);
-            $stream->posts = $stream->posts->merge($lacking_posts);
+            $stream->posts->push(...$lacking_posts);
         }
 
-        $stream->exclude = $stream->exclude->merge($liked_posts_ids);
+        $stream->exclude->push(...$liked_posts_ids);
 
         return $stream;
     }
