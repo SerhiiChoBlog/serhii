@@ -8,6 +8,7 @@ use App\Enums\BadgeName;
 use App\Enums\UserRole;
 use App\Models\Badge;
 use App\Models\Ban;
+use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
@@ -100,5 +101,18 @@ class UserTest extends TestCase
         $this->user->giveBadge(BadgeName::LOVELY);
 
         $this->assertTrue($this->user->hasBadge(BadgeName::LOVELY));
+    }
+
+    public function testWeCanGetPostsThatUserLiked(): void
+    {
+        /** @var Post $post */
+        $post = Post::factory()->published()->create();
+
+        Post::factory()->published()->create();
+
+        $this->user->postLikes()->create(['post_id' => $post->id]);
+
+        $this->assertCount(1, $this->user->likedPosts);
+        $this->assertSame($post->id, $this->user->likedPosts->first()->id);
     }
 }
