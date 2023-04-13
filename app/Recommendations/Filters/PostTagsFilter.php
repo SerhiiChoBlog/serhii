@@ -9,9 +9,9 @@ use App\Models\Tag;
 use App\Recommendations\DataStream;
 use Illuminate\Support\Collection;
 
-final class PostTagsFilter implements Filter
+final readonly class PostTagsFilter implements Filter
 {
-    public function __construct(private readonly Post $post)
+    public function __construct(private Post $post)
     {
     }
 
@@ -46,7 +46,7 @@ final class PostTagsFilter implements Filter
             ->with('series:' . self::SERIES_FIELDS)
             ->select(self::POST_FIELDS)
             ->where('is_published', true)
-            ->whereNotIn('id', $stream->exclude->toArray())
+            ->whereNotIn('id', $stream->exclude)
             ->limit($stream->remaining)
             ->get()
             ->shuffle();
