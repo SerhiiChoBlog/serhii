@@ -76,6 +76,6 @@ class RecommendationSystem
             ->limit($remaining_posts)
             ->get();
 
-        return $result->merge($additional_posts);
+        return $result->push(...$additional_posts);
     }
 }

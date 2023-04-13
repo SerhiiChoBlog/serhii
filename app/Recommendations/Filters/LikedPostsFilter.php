@@ -10,7 +10,7 @@ final readonly class LikedPostsFilter implements Filter
 {
     public function process(DataStream $stream): DataStream
     {
-        $user = auth()->user();
+        $user = user();
 
         if (!$user) {
             return $stream;
