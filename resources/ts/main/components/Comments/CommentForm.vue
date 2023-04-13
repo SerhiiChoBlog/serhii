@@ -36,7 +36,7 @@ onMounted(() => {
 
 const placeholder = computed(() => {
     return canCommentIn.value > 0
-        ? `Next comment you can write in ${canCommentIn.value} seconds`
+        ? `To prevent spam, next comment you can write in ${canCommentIn.value} seconds`
         : 'Write a comment ...'
 })
 
