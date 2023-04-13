@@ -37,9 +37,29 @@ class RecommendationSystemTest extends TestCase
             ->pipe(new LikedPostsFilter())
             ->get();
 
-        $this->assertCount(3, $result);
+        $this->assertCount(3, $result, 'There must be 3 posts in total');
         $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post1->id), 'Viewed post 1 is not missing');
         $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post2->id), 'Viewed post 2 is not missing');
+    }
+
+    public function testItReturnsPostsLessThanNeededWhenThereIsNotEnoughPosts(): void
+    {
+        $post1 = Post::factory()->published()->create();
+        $post2 = Post::factory()->published()->create();
+        Post::factory()->published()->create();
+
+        $user = $this->createUser();
+
+        $user->likePost($post1->id);
+        $user->likePost($post2->id);
+
+        $this->actingAs($user);
+
+        $result = (new RecommendationSystem(5))
+            ->pipe(new LikedPostsFilter())
+            ->get();
+
+        $this->assertCount(3, $result, 'There must be 3 posts in total');
     }
 
     public function testItCanReturnRandomPostsIfNotEnoughPostsAreAvailable(): void
@@ -60,8 +80,7 @@ class RecommendationSystemTest extends TestCase
             ->pipe(new LikedPostsFilter())
             ->get();
 
-        $this->assertCount(5, $result);
-
+        $this->assertCount(5, $result, 'There must be 5 posts in total');
         $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post1->id), 'Viewed post 1 is not missing');
         $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post2->id), 'Viewed post 2 is not missing');
     }
@@ -84,7 +103,7 @@ class RecommendationSystemTest extends TestCase
             ->pipe(new LikedPostsFilter())
             ->get();
 
-        $this->assertCount(3, $result);
+        $this->assertCount(3, $result, 'There must be 3 posts in total');
         $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post1->id), 'Viewed post 1 is missing');
         $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post2->id), 'Viewed post 2 is missing');
         $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post3->id), 'Viewed post 3 is missing');
@@ -109,7 +128,7 @@ class RecommendationSystemTest extends TestCase
             ->pipe(new PostSeriesFilter($post1))
             ->get();
 
-        $this->assertCount(2, $result);
+        $this->assertCount(2, $result, 'There must be 2 posts in total');
         $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post1->id), 'Main series post 1 is not excluded');
         $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post2->id), 'Post 2 from series is missing');
     }
@@ -136,7 +155,7 @@ class RecommendationSystemTest extends TestCase
             ->pipe(new PostTagsFilter($post1))
             ->get();
 
-        $this->assertCount(3, $result);
+        $this->assertCount(3, $result, 'There must be 3 posts in total');
         $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post2->id), 'Post 2 is missing');
         $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post3->id), 'Post 3 is missing');
     }
@@ -166,7 +185,7 @@ class RecommendationSystemTest extends TestCase
             ->pipe(new PostTagsFilter($post1))
             ->get();
 
-        $this->assertCount(3, $result);
+        $this->assertCount(3, $result, 'There must be 3 posts in total');
         $this->assertTrue($result->duplicates()->isEmpty(), 'There are duplicates in the result');
         $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post2->id), 'Post 2 is missing');
         $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post3->id), 'Post 3 is missing');
@@ -209,7 +228,7 @@ class RecommendationSystemTest extends TestCase
             ->pipe(new PostTagsFilter($post1))
             ->get();
 
-        $this->assertCount(3, $result);
+        $this->assertCount(3, $result, 'There must be 3 posts in total');
         $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post2->id), 'Does not contain post 2 from the same series');
         $this->assertTrue($result->contains(fn (Post $p) => $p->id === $post6->id), 'Does not contain post 6 with the same tag');
         $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post7->id), 'Result contains post 7, but it was liked by user and should be excluded');
@@ -228,7 +247,7 @@ class RecommendationSystemTest extends TestCase
             ->pipe(new ExclusionFilter($exclude_ids))
             ->get();
 
-        $this->assertCount(2, $result);
+        $this->assertCount(2, $result, 'There must be 2 posts in total');
         $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post1->id), 'Result contains post 1, but it was excluded');
         $this->assertFalse($result->contains(fn (Post $p) => $p->id === $post2->id), 'Result contains post 2, but it was excluded');
     }

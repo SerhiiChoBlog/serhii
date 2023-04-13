@@ -39,7 +39,7 @@ final readonly class PostSeriesFilter implements Filter
         return $series->posts()
             ->select(self::POST_FIELDS)
             ->where('is_published', true)
-            ->whereNotIn('id', $stream->exclude->toArray())
+            ->whereNotIn('id', $stream->exclude)
             ->get();
     }
 }
