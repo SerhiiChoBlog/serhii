@@ -16,7 +16,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Serhii Cho'),
-    'comments_timeout_minutes' => 5,
+    'comments_timeout_minutes' => 2,
 
     /*
     |--------------------------------------------------------------------------
