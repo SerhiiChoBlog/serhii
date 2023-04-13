@@ -9,7 +9,6 @@ use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\SocialShareController;
 use App\Http\Controllers\Api\SubscriptionDemandController;
 use App\Http\Controllers\Api\TagController;
-use App\Http\Controllers\Api\WpPagerUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(TagController::class)->prefix('tags')->group(function () {
@@ -34,8 +33,4 @@ Route::controller(CommentController::class)->prefix('comments')->group(function 
 Route::controller(PostLikeController::class)->prefix('post-likes')->group(function () {
     Route::post('/', 'store');
     Route::get('is-liked', 'isLiked');
-});
-
-Route::controller(WpPagerUserController::class)->prefix('wp-pager-user')->group(function () {
-    Route::post('/', 'store');
 });
