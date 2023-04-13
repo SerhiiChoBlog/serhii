@@ -25,7 +25,7 @@ final readonly class PostSeriesFilter implements Filter
             $posts = $this->getPostsFromSeries($series, $stream);
 
             $stream->exclude->push(...$posts->pluck('id'));
-            $stream->posts->push(...$posts);
+            $stream->items->push(...$posts);
         }
 
         return $stream;

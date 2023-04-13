@@ -25,7 +25,7 @@ final readonly class PostTagsFilter implements Filter
             $posts = $this->getTagPosts($tag, $stream);
 
             $stream->exclude->push(...$posts->pluck('id'));
-            $stream->posts->push(...$posts);
+            $stream->items->push(...$posts);
 
             $stream->updateRemaining();
 
