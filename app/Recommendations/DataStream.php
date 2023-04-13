@@ -10,11 +10,11 @@ use Illuminate\Support\Collection;
 class DataStream
 {
     /**
-     * @param Collection<int, Post> $posts
+     * @param Collection<int, Post> $items
      * @param Collection<int, int> $exclude
      */
     public function __construct(
-        public Collection $posts,
+        public Collection $items,
         public Collection $exclude,
         public int $remaining,
         public readonly int $limit,
@@ -23,7 +23,7 @@ class DataStream
 
     public function updateRemaining(): void
     {
-        $this->remaining = $this->limit - $this->posts->count();
+        $this->remaining = $this->limit - $this->items->count();
     }
 
     public function needsMoreContent(): bool

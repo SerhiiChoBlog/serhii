@@ -17,7 +17,7 @@ class RecommendationSystem
     public function __construct(int $limit)
     {
         $this->stream = new DataStream(
-            posts: new Collection(),
+            items: new Collection(),
             exclude: new Collection(),
             remaining: $limit,
             limit: $limit,
@@ -44,10 +44,10 @@ class RecommendationSystem
 
         if ($this->stream->needsMoreContent()) {
             $random_posts = $this->getRandomPosts();
-            return $this->stream->posts->merge($random_posts);
+            return $this->stream->items->merge($random_posts);
         }
 
-        return $this->stream->posts->take($this->stream->limit);
+        return $this->stream->items->take($this->stream->limit);
     }
 
     /**
