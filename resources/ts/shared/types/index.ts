@@ -62,7 +62,6 @@ export interface EditPostFormElements extends HTMLFormControlsCollection {
     title: HTMLInputElement
     intro: HTMLInputElement
     image: HTMLInputElement
-    tag_id: HTMLInputElement
     'is-published': HTMLInputElement
     'tags[]': HTMLInputElement[]
 }

@@ -28,25 +28,49 @@ const loading = ref(true)
 const post = ref<Post | null>(null)
 const tagInputValue = ref<string>('')
 const form = ref<HTMLFormElement | null>(null)
+const mainTagId = ref<number | null>(null)
 
 function fetchPost(): void {
     loading.value = true
 
     axios.get<Post>(`/admin/ajax/posts/${route.params.id}/edit`)
-        .then(resp => post.value = resp.data)
+        .then(resp => {
+            post.value = resp.data
+            setMainTagId()
+        })
         .catch(handleError)
         .finally(() => loading.value = false)
 }
 
-function savePost(form: HTMLFormElement | null): void {
-    if (!post.value || !form)
+function setMainTagId(): void {
+    if (!post.value || !post.value.tags || post.value.tags.length === 0) {
         return
+    }
+
+    const mainTag = post.value.tags.find(tag => tag.pivot && tag.pivot.is_main)
+
+    if (mainTag) {
+        mainTagId.value = mainTag.id
+        return
+    }
+
+    mainTagId.value = post.value.tags[0].id
+}
+
+function savePost(form: HTMLFormElement | null): void {
+    if (!post.value || !form) {
+        return
+    }
 
     loading.value = true
 
+    if (!mainTagId.value) {
+        setMainTagId()
+    }
+
     const elements = form.elements as EditPostFormElements
 
-    new SavePost(elements, post.value.id)
+    new SavePost(elements, post.value.id, mainTagId.value!)
         .save(post.value.content || '')
         .then(handleSavePostResponse)
         .finally(() => loading.value = false)
@@ -65,7 +89,7 @@ function updateTagId(id: number): void {
         return
     }
 
-    (<EditPostFormElements>form.value.elements).tag_id.value = id.toString()
+    mainTagId.value = id
 
     savePost(form.value)
 }
@@ -104,8 +128,6 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                     enctype="multipart/form-data"
                     ref="form"
                 >
-                    <input type="hidden" name="tag_id">
-
                     <div class="flex flex-col lg:flex-row gap-6 mt-10">
                         <div class="flex-1">
                             <div>
