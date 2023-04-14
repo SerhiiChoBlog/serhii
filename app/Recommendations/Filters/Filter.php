@@ -8,7 +8,7 @@ use App\Recommendations\DataStream;
 
 interface Filter
 {
-    public const POST_FIELDS = ['id', 'title', 'slug', 'image_sm'];
+    public const POST_FIELDS = ['id', 'title', 'intro', 'slug', 'image_sm'];
     public const SERIES_FIELDS = 'id,title';
 
     public function process(DataStream $stream): DataStream;

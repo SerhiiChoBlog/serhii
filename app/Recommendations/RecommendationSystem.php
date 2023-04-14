@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 
 class RecommendationSystem
 {
-    public const POST_FIELDS = ['id', 'title', 'slug', 'image_sm'];
+    public const POST_FIELDS = ['id', 'title', 'intro', 'slug', 'image_sm'];
 
     private DataStream $stream;
 
