@@ -112,6 +112,7 @@ function addTag(tag: Tag): void {
 function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
     if ((e.ctrlKey || e.metaKey) && e.code === 'KeyS') {
         e.preventDefault()
+
         savePost(form.value)
     }
 }
