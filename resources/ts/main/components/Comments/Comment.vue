@@ -5,6 +5,7 @@ import CommentComponent from '@/components/Comments/Comment.vue'
 import CommentForm from '@/components/Comments/CommentForm.vue'
 import CommentsWrapper from '@/components/Comments/CommentsWrapper.vue'
 import CommentAvatar from '@/components/Comments/CommentAvatar.vue'
+import LikeCommentButton from '@/components/Comments/LikeCommentButton.vue'
 
 type Props = {
     comment: CommentType
@@ -35,9 +36,13 @@ function postReply(): void {
         v-if="comment.user"
         class="py-2 flex gap-3 lg:gap-4"
     >
-        <a :href="`/@${comment.user.slug}`" class="relative">
-            <comment-avatar :user="comment.user" />
-        </a>
+        <div class="text-center">
+            <a :href="`/@${comment.user.slug}`" class="relative">
+                <comment-avatar :user="comment.user" />
+            </a>
+
+            <like-comment-button />
+        </div>
 
         <div class="flex flex-col gap-1">
             <h2 class="text-lg font-bold">
