@@ -6,7 +6,7 @@ const images = ref<HTMLImageElement[]>([])
 const selectedImage = ref<HTMLImageElement | null>(null)
 
 onMounted(() => {
-    const elems = document.querySelectorAll<HTMLImageElement>('#post-content p > img')
+    const elems = document.querySelectorAll<HTMLImageElement>('#post-content p > img. #post-content figure > img')
     images.value = Array.from(elems)
     addClickEventsToImages()
 })
