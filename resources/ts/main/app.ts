@@ -20,6 +20,7 @@ import LikePostButton from '@/components/LikePostButton.vue'
 import SignInModal from '@/components/SignIn/SignInModal.vue'
 import LoginForm from '@/components/SignIn/LoginForm.vue'
 import RegisterForm from '@/components/SignIn/RegisterForm.vue'
+import ZoomedImage from '@/components/ZoomedImage/ZoomedImage.vue'
 
 const app = createApp({
     components: {
@@ -40,6 +41,7 @@ const app = createApp({
         SignInModal,
         LoginForm,
         RegisterForm,
+        ZoomedImage,
     },
 
     setup() {
