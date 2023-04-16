@@ -46,6 +46,7 @@
 
 @section('content')
     <like-post-button :post="{{ $post }}"></like-post-button>
+    <zoomed-image></zoomed-image>
 
     <article>
         <div
