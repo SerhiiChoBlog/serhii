@@ -51,6 +51,9 @@ class Series extends Model
             ->orderBy('part');
     }
 
+    /**
+     * @return Attribute<int, int>
+     */
     public function readTime(): Attribute
     {
         return Attribute::get(fn () => $this->posts()->sum('read_time'));
