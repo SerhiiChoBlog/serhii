@@ -21,8 +21,8 @@ class SocialShareControllerTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->post    = Post::factory()->create();
-        $this->uri     = "/api/social-shares/{$this->post->id}";
+        $this->post = Post::factory()->create();
+        $this->uri = "/api/social-shares/{$this->post->id}";
         $this->visitor = Visitor::factory()->create();
     }
 
@@ -65,7 +65,7 @@ class SocialShareControllerTest extends TestCase
 
     public function testWeCannotCreateTheSameSocialShareTwice(): void
     {
-        $params = ['social' => SocialName::LINKEDIN];
+        $params = ['social' => SocialName::LINKEDIN->value];
 
         $this->postJson($this->uri, $params, [
             'REMOTE_ADDR' => $this->visitor->ip,
