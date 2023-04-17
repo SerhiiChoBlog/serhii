@@ -165,10 +165,21 @@ export type Comment = {
     user?: User
     post?: Post
     visitor?: Visitor
+    likes?: CommentLike[]
+    likes_count?: number
     is_subscribed: boolean
     is_approved: boolean
     pretty_created_at: string
     created_at: string
+}
+
+export type CommentLike = {
+    id: number
+    comment_id: number
+    user_id: number
+    created_at: string
+    comment?: Comment
+    user?: User
 }
 
 export type Badge = {
