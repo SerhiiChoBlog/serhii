@@ -11,6 +11,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Services\Comment\StoreCommentService;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
 
@@ -21,16 +22,23 @@ class CommentController extends Controller
      */
     public function index(Post $post): Collection
     {
+        $with = [
+            'user:' . User::POST_COMMENT_FIELDS,
+            'likes' => fn (HasMany $q) => $q->where('user_id', user()?->id),
+        ];
+
         $post->load([
-            'comments' => function ($q) {
+            'comments' => function (HasMany $q) use ($with) {
                 $q->where('comment_id', null)
                     ->where('is_approved', true)
                     ->orderByDesc('created_at')
-                    ->with('user:' . User::POST_COMMENT_FIELDS)
+                    ->withCount('likes')
                     ->with([
-                        'comments' => function ($q) {
+                        ...$with,
+                        'comments' => function (HasMany $q) use ($with) {
                             $q->where('is_approved', true)
-                                ->with('user:' . User::POST_COMMENT_FIELDS);
+                                ->with($with)
+                                ->withCount('likes');
                         },
                     ]);
             },

@@ -7,6 +7,7 @@ namespace Tests\Feature\Http\Controllers\Api;
 use App\Events\CommentApproved;
 use App\Jobs\NewCommentAdminEmail;
 use App\Models\Comment;
+use App\Models\CommentLike;
 use App\Models\Post;
 use App\Models\User;
 use Carbon\CarbonImmutable;
@@ -62,6 +63,7 @@ class CommentControllerTest extends TestCase
                 'comment' => $text,
                 'user_id' => $user->id,
                 'post_id' => $post->id,
+                'likes_count' => 0,
             ]);
     }
 
@@ -83,6 +85,35 @@ class CommentControllerTest extends TestCase
         ];
 
         $this->assertEquals($expect_user, $fetched_user);
+    }
+
+    public function testFetchedCommentsHaveAuthUserLike(): void
+    {
+        $user = $this->createUser();
+        $some_other_user = $this->createUser();
+        $post = Post::factory()->create();
+
+        $comment = Comment::factory()->create([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+        ]);
+
+        CommentLike::factory()->create([
+            'user_id' => $user->id,
+            'comment_id' => $comment->id,
+        ]);
+
+        // This like should not be in likes because it's not by the auth user
+        CommentLike::factory()->create([
+            'user_id' => $some_other_user->id,
+            'comment_id' => $comment->id,
+        ]);
+
+        $likes = $this->actingAs($user, 'user')
+            ->getJson(self::GET_COMMENTS_URI)
+            ->json('0.likes');
+
+        $this->assertCount(1, $likes);
     }
 
     public function testYouCanGetCommentsWithNestedComments(): void
