@@ -75,17 +75,14 @@ class CommentControllerTest extends TestCase
             'post_id' => $post->id,
         ]);
 
-        $json = $this->getJson(self::GET_COMMENTS_URI)->json('0.user');
+        $fetched_user = $this->getJson(self::GET_COMMENTS_URI)->json('0.user');
 
         $expect_user = [
-            'id' => $user->id,
-            'name' => $user->name,
-            'slug' => $user->slug,
-            'avatar' => $user->avatar,
+            ...$user->only(explode(',', User::POST_COMMENT_FIELDS)),
             'sign_in_method' => $user->sign_in_method->value,
         ];
 
-        $this->assertEquals($expect_user, $json);
+        $this->assertEquals($expect_user, $fetched_user);
     }
 
     public function testYouCanGetCommentsWithNestedComments(): void
