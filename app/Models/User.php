@@ -46,6 +46,8 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasFactory;
     use Notifiable;
 
+    public const POST_COMMENT_FIELDS = 'id,name,slug,avatar,sign_in_method';
+
     /**
      * @var string[]
      */

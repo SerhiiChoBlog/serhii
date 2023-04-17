@@ -21,18 +21,16 @@ class CommentController extends Controller
      */
     public function index(Post $post): Collection
     {
-        $user_columns = 'id,name,slug,avatar,sign_in_method';
-
         $post->load([
-            'comments' => function ($q) use ($user_columns) {
+            'comments' => function ($q) {
                 $q->where('comment_id', null)
                     ->where('is_approved', true)
                     ->orderByDesc('created_at')
-                    ->with("user:{$user_columns}")
+                    ->with('user:' . User::POST_COMMENT_FIELDS)
                     ->with([
-                        'comments' => function ($q) use ($user_columns) {
+                        'comments' => function ($q) {
                             $q->where('is_approved', true)
-                                ->with("user:{$user_columns}");
+                                ->with('user:' . User::POST_COMMENT_FIELDS);
                         },
                     ]);
             },
