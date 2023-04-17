@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { Comment } from '@shared/types/models'
-import { computed } from 'vue'
+import axios from 'axios'
+import { computed, ref } from 'vue'
+import { events } from '@shared/appConfig'
+import dispatchEvent from '@shared/modules/dispatchEvent'
 import LikeIcon from '@shared/components/Icons/LikeIcon.vue'
 import Control from '@/components/Comments/Controls/Control.vue'
 
@@ -9,20 +12,46 @@ type Props = {
 }
 
 const props = defineProps<Props>()
-const isLiked = computed(() => props.comment.likes!.length > 0)
+const isLiked = computed(() => props.comment.likes ? (props.comment.likes.length > 0) : false)
+const loading = ref<boolean>(false)
+
+function toggleLike(): void {
+    if (!Auth) {
+        dispatchEvent(events.openLoginModal)
+        return
+    }
+
+    if (loading.value) {
+        return
+    }
+
+    loading.value = true
+
+    const params = {
+        comment_id: props.comment.id,
+        secret: Auth.secret
+    }
+
+    axios.post(`/api/comments/like`, params)
+        .then(res => {
+            console.log('yes')
+        })
+        .catch(err => console.error(err))
+        .finally(() => loading.value = false)
+}
 </script>
 
 <template>
-    <control>
+    <control @click="toggleLike" class="group">
         <like-icon
             :fill="isLiked ? 'currentColor' : 'none'"
             :class="{
                 'text-red-500 dark:text-red-400': isLiked,
                 'text-gray-700 dark:text-gray-400': !isLiked,
             }"
-            class="w-5 h-5 translate-y-[1px]"
+            class="w-5 h-5 translate-y-[1px] transition-colors group-hover:text-red-500"
         />
 
-        <span>{{ props.comment.likes_count }} likes</span>
+        <span>{{ props.comment.likes_count }} {{ props.comment.likes_count === 1 ? 'like' : 'likes' }}</span>
     </control>
 </template>
