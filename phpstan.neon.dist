@@ -10,4 +10,3 @@ parameters:
 		- ./*/*/FileToBeExcluded.php
 	ignoreErrors:
 		- '/Parameter #\d \$.* of method Illuminate\\Database\\Eloquent\\Relations\\.*<App\\Models\\.*>::whereDate\(\) expects string, Illuminate\\Support\\Carbon given\./'
-		- '/Strict comparison using === between int<min, 2>\|int<4, max> and 3 will always evaluate to false\./'
