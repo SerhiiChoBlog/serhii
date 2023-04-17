@@ -28,7 +28,7 @@ class SocialShareControllerTest extends TestCase
 
     public function testWeCanSaveSocialShareInDatabase(): void
     {
-        $params = ['social' => SocialName::TELEGRAM];
+        $params = ['social' => SocialName::TELEGRAM->value];
 
         $this->postJson($this->uri, $params, [
             'REMOTE_ADDR' => $this->visitor->ip,
@@ -47,7 +47,7 @@ class SocialShareControllerTest extends TestCase
         $user = $this->createUser();
 
         $params = [
-            'social' => SocialName::LINKEDIN,
+            'social' => SocialName::LINKEDIN->value,
             'secret' => $user->secret,
         ];
 
