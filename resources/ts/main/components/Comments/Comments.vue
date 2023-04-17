@@ -22,9 +22,7 @@ const commentsCount = computed(() => {
 <template>
     <div class="mb-5 lg:mb-12 mx-auto">
         <div class="flex gap-5">
-            <div>
-                <comment-avatar :user="Auth" />
-            </div>
+            <comment-avatar :user="Auth" />
 
             <div class="w-full">
                 <h2 class="text-lg mb-1 lg:text-2xl font-bold text-gray-900 dark:text-white">
@@ -50,6 +48,7 @@ const commentsCount = computed(() => {
                 :comment="comment"
                 :post-id="postId"
                 @posted="fetchComments(false)"
+                @likedComment="fetchComments(false)"
             />
         </comments-wrapper>
 

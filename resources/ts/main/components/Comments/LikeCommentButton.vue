@@ -11,6 +11,12 @@ type Props = {
     comment: Comment
 }
 
+type Emits = {
+    (e: 'likedComment'): void
+}
+
+const emit = defineEmits<Emits>()
+
 const props = defineProps<Props>()
 const isLiked = computed(() => props.comment.likes ? (props.comment.likes.length > 0) : false)
 const loading = ref<boolean>(false)
@@ -33,9 +39,7 @@ function toggleLike(): void {
     }
 
     axios.post(`/api/comments/like`, params)
-        .then(res => {
-            console.log('yes')
-        })
+        .then(res => emit('likedComment'))
         .catch(err => console.error(err))
         .finally(() => loading.value = false)
 }
@@ -52,6 +56,6 @@ function toggleLike(): void {
             class="w-5 h-5 translate-y-[1px] transition-colors group-hover:text-red-500"
         />
 
-        <span>{{ props.comment.likes_count }} {{ props.comment.likes_count === 1 ? 'like' : 'likes' }}</span>
+        <span>{{ props.comment.likes_count }} like{{ props.comment.likes_count === 1 ? '' : 's' }}</span>
     </control>
 </template>

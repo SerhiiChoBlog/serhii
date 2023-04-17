@@ -14,6 +14,7 @@ type Props = {
 
 type Emits = {
     (e: 'posted'): void
+    (e: 'likedComment'): void
 }
 
 const emit = defineEmits<Emits>()
@@ -48,6 +49,7 @@ function postReply(): void {
 
             <controls
                 @reply="reply = !reply"
+                @likedComment="emit('likedComment')"
                 :reply="reply"
                 :comment="comment"
             />
@@ -71,6 +73,7 @@ function postReply(): void {
             :comment="c"
             :post-id="postId"
             @posted="postReply"
+            @likedComment="emit('likedComment')"
         />
     </comments-wrapper>
 </template>
