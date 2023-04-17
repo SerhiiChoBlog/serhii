@@ -8,6 +8,7 @@ use App\Enums\BadgeName;
 use App\Enums\UserRole;
 use App\Models\Badge;
 use App\Models\Ban;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
@@ -73,7 +74,7 @@ class UserTest extends TestCase
 
         $badge = $this->user->badges()->first();
 
-        $this->assertSame(BadgeName::LOVELY, $badge->name);
+        $this->assertSame(BadgeName::LOVELY, $badge?->name);
     }
 
     public function testGiveBadgeMethodSkipsTheOperationIfNoBadgeFound(): void
@@ -113,6 +114,23 @@ class UserTest extends TestCase
         $this->user->postLikes()->create(['post_id' => $post->id]);
 
         $this->assertCount(1, $this->user->likedPosts);
-        $this->assertSame($post->id, $this->user->likedPosts->first()->id);
+        $this->assertSame($post->id, $this->user->likedPosts->first()?->id);
+    }
+
+    public function testWeCanGetCommentsThatUserLiked(): void
+    {
+        /** @var Post $post */
+        $post = Post::factory()->published()->create();
+
+        /** @var Comment $comment */
+        $comment = Comment::factory()->create([
+            'post_id' => $post->id,
+            'user_id' => $this->user->id,
+        ]);
+
+        $this->user->commentLikes()->create(['comment_id' => $comment->id]);
+
+        $this->assertCount(1, $this->user->likedComments);
+        $this->assertSame($post->id, $this->user->likedComments->first()?->id);
     }
 }
