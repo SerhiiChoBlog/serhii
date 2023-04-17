@@ -13,7 +13,12 @@ export default (postId: number) => {
             commentsLoading.value = true
         }
 
-        axios.get<CommentType[]>(`/api/comments/${postId}`)
+        axios.get<CommentType[]>(`/api/comments`, {
+            params: {
+                post_id: postId,
+                secret: Auth ? Auth.secret : null,
+            }
+        })
             .then(resp => comments.value = resp.data)
             .catch(err => console.error(err))
             .finally(() => commentsLoading.value = false)

@@ -21,8 +21,9 @@ class CommentControllerTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    private const GET_COMMENTS_URI = '/api/comments/1';
+    private const GET_COMMENTS_URI = '/api/comments';
     private const POST_COMMENT_URI = '/api/comments';
+    private const LIKE_COMMENT_URI = '/api/comments/like';
 
     public function setUp(): void
     {
@@ -41,7 +42,9 @@ class CommentControllerTest extends TestCase
             'post_id' => $post->id,
         ]);
 
-        $this->getJson(self::GET_COMMENTS_URI)->assertOk();
+        $url = self::GET_COMMENTS_URI . "?post_id={$post->id}";
+
+        $this->getJson($url)->assertOk();
     }
 
     public function testYouCanGetComments(): void
@@ -57,7 +60,9 @@ class CommentControllerTest extends TestCase
             'comment' => $text,
         ]);
 
-        $this->getJson(self::GET_COMMENTS_URI)
+        $url = self::GET_COMMENTS_URI . "?post_id={$post->id}";
+
+        $this->getJson($url)
             ->assertJsonFragment([
                 'id' => $comment->id,
                 'comment' => $text,
@@ -77,7 +82,9 @@ class CommentControllerTest extends TestCase
             'post_id' => $post->id,
         ]);
 
-        $fetched_user = $this->getJson(self::GET_COMMENTS_URI)->json('0.user');
+        $url = self::GET_COMMENTS_URI . "?post_id={$post->id}";
+
+        $fetched_user = $this->getJson($url)->json('0.user');
 
         $expect_user = [
             ...$user->only(explode(',', User::POST_COMMENT_FIELDS)),
@@ -109,8 +116,9 @@ class CommentControllerTest extends TestCase
             'comment_id' => $comment->id,
         ]);
 
-        $likes = $this->actingAs($user, 'user')
-            ->getJson(self::GET_COMMENTS_URI)
+        $url = self::GET_COMMENTS_URI . "?post_id={$post->id}&secret={$user->secret}";
+
+        $likes = $this->getJson($url)
             ->json('0.likes');
 
         $this->assertCount(1, $likes);
@@ -134,7 +142,9 @@ class CommentControllerTest extends TestCase
             'comment_id' => $comment->id,
         ]);
 
-        $this->getJson(self::GET_COMMENTS_URI)
+        $url = self::GET_COMMENTS_URI . "?post_id={$post->id}";
+
+        $this->getJson($url)
             ->assertOk()
             ->assertJsonFragment([
                 'id' => $nested_comment->id,
@@ -587,5 +597,56 @@ class CommentControllerTest extends TestCase
             ])
             ->assertStatus(422)
             ->assertJsonValidationErrors(['post_id']);
+    }
+
+    public function testAuthUserCanLikeTheComment(): void
+    {
+        $user = $this->createUser();
+
+        /** @var Post $post */
+        $post = Post::factory()->create();
+
+        /** @var Comment $comment */
+        $comment = Comment::factory()->create([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+        ]);
+
+        $this->actingAs($user, 'user')
+            ->postJson(self::LIKE_COMMENT_URI, [
+                'comment_id' => $comment->id,
+                'secret' => $user->secret,
+            ])
+            ->assertOk();
+
+        $this->assertDatabaseHas('comment_likes', [
+            'user_id' => $user->id,
+            'comment_id' => $comment->id,
+        ]);
+    }
+
+    public function testAuthUserCanUnlikeTheComment(): void
+    {
+        $user = $this->createUser();
+
+        /** @var Post $post */
+        $post = Post::factory()->create();
+
+        /** @var Comment $comment */
+        $comment = Comment::factory()->create([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+        ]);
+
+        $comment->likes()->create(['user_id' => $user->id]);
+
+        $this->actingAs($user, 'user')
+            ->postJson(self::LIKE_COMMENT_URI, [
+                'comment_id' => $comment->id,
+                'secret' => $user->secret,
+            ])
+            ->assertOk();
+
+        $this->assertDatabaseEmpty('comment_likes');
     }
 }

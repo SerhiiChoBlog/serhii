@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Comment\IndexRequest;
+use App\Http\Requests\Comment\LikeRequest;
 use App\Http\Requests\Comment\StoreRequest;
 use App\Models\Comment;
 use App\Models\Post;
@@ -20,12 +22,17 @@ class CommentController extends Controller
     /**
      * @return Collection<int, Comment>
      */
-    public function index(Post $post): Collection
+    public function index(IndexRequest $request): Collection
     {
-        $with = [
-            'user:' . User::POST_COMMENT_FIELDS,
-            'likes' => fn (HasMany $q) => $q->where('user_id', user()?->id),
-        ];
+        /** @var Post $post */
+        $post = Post::query()->findOrFail($request->post_id);
+        $user = User::getBySecret($request->secret);
+
+        $with = ['user:' . User::POST_COMMENT_FIELDS];
+
+        if ($user) {
+            $with['likes'] = fn (HasMany $q) => $q->where('user_id', $user->id);
+        }
 
         $post->load([
             'comments' => function (HasMany $q) use ($with) {
@@ -61,5 +68,24 @@ class CommentController extends Controller
         $service = new StoreCommentService($user, $r->comment, $r->post_id, $r->comment_id);
 
         return $service->handle();
+    }
+
+    public function like(LikeRequest $r): void
+    {
+        $user = User::getBySecret($r->secret);
+
+        abort_if(!$user, 403, 'Invalid secret');
+
+        /** @var Comment $comment */
+        $comment = Comment::query()->findOrFail($r->comment_id);
+
+        $comment_exists = $comment->likes()->where('user_id', $user->id)->exists();
+
+        if ($comment_exists) {
+            $comment->likes()->where('user_id', $user->id)->delete();
+            return;
+        }
+
+        $comment->likes()->create(['user_id' => $user->id]);
     }
 }
