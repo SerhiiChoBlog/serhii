@@ -35,7 +35,9 @@ use Illuminate\Support\Str;
  * @property Collection<int, Role> $roles
  * @property Collection<int, Badge> $badges
  * @property Collection<int, PostLike> $postLikes
+ * @property Collection<int, CommentLike> $commentLikes
  * @property Collection<int, Post> $likedPosts
+ * @property Collection<int, Comment> $likedComments
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -110,9 +112,28 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(PostLike::class);
     }
 
+    /**
+     * @return hasMany<CommentLike>
+     */
+    public function commentLikes(): HasMany
+    {
+        return $this->hasMany(CommentLike::class);
+    }
+
+    /**
+     * @return BelongsToMany<Post>
+     */
     public function likedPosts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class, 'post_likes');
+    }
+
+    /**
+     * @return BelongsToMany<Comment>
+     */
+    public function likedComments(): BelongsToMany
+    {
+        return $this->belongsToMany(Comment::class, 'comment_likes');
     }
 
     public static function isAdmin(string $field, ?string $value): bool

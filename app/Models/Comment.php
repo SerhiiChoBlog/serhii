@@ -21,6 +21,7 @@ use Serhii\Ago\TimeAgo;
  * @property int|null $visitor_id
  * @property int|null $comment_id
  * @property Collection<int, self> $comments
+ * @property Collection<int, CommentLike> $likes
  * @property User $user
  * @property Post $post
  * @property Visitor $visitor
@@ -68,6 +69,14 @@ class Comment extends Model
     public function visitor(): BelongsTo
     {
         return $this->belongsTo(Visitor::class);
+    }
+
+    /**
+     * @return HasMany<CommentLike>
+     */
+    public function likes(): HasMany
+    {
+        return $this->hasMany(CommentLike::class);
     }
 
     /**
