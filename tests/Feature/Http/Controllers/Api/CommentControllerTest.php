@@ -30,6 +30,19 @@ class CommentControllerTest extends TestCase
         Queue::fake();
     }
 
+    public function testGettingCommentsResponseHasSuccessfulStatus(): void
+    {
+        $user = $this->createUser();
+        $post = Post::factory()->create();
+
+        Comment::factory()->create([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+        ]);
+
+        $this->getJson(self::GET_COMMENTS_URI)->assertOk();
+    }
+
     public function testYouCanGetComments(): void
     {
         $user = $this->createUser();
@@ -44,13 +57,35 @@ class CommentControllerTest extends TestCase
         ]);
 
         $this->getJson(self::GET_COMMENTS_URI)
-            ->assertOk()
             ->assertJsonFragment([
                 'id' => $comment->id,
                 'comment' => $text,
                 'user_id' => $user->id,
                 'post_id' => $post->id,
             ]);
+    }
+
+    public function testFetchedCommentsHaveUserObject(): void
+    {
+        $user = $this->createUser();
+        $post = Post::factory()->create();
+
+        Comment::factory()->create([
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+        ]);
+
+        $json = $this->getJson(self::GET_COMMENTS_URI)->json('0.user');
+
+        $expect_user = [
+            'id' => $user->id,
+            'name' => $user->name,
+            'slug' => $user->slug,
+            'avatar' => $user->avatar,
+            'sign_in_method' => $user->sign_in_method->value,
+        ];
+
+        $this->assertEquals($expect_user, $json);
     }
 
     public function testYouCanGetCommentsWithNestedComments(): void

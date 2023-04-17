@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Enums\SignInMethod;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -28,6 +29,8 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'secret' => 'HZcIFEU4sa554dcd7ad42129f3d69ed1849b50d5fgEg' . $random,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'sign_in_method' => SignInMethod::EMAIL,
+            'avatar' => 'default.svg',
         ];
     }
 
