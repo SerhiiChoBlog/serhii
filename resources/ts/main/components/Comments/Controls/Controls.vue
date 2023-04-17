@@ -10,6 +10,7 @@ type Props = {
 
 type Emits = {
     (e: 'reply'): void
+    (e: 'likedComment'): void
 }
 
 const emit = defineEmits<Emits>()
@@ -18,7 +19,10 @@ const props = defineProps<Props>()
 
 <template>
     <div class="flex gap-2 items-center">
-        <like-comment-button :comment="props.comment" />
+        <like-comment-button
+            :comment="props.comment"
+            @likedComment="emit('likedComment')"
+        />
 
         <span v-if="Auth && props.comment.user_id !== Auth.id">·</span>
 
