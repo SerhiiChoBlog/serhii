@@ -55,7 +55,7 @@
                     <x-users.profile-row title="Comments">
                         💬 {{ $user->comments_count ?? 0 }}
                     </x-users.profile-row>
-                    <x-users.profile-row title="Post likes">
+                    <x-users.profile-row title="Likes articles">
                         ❤️ {{ $user->post_likes_count ?? 0 }}
                     </x-users.profile-row>
                 </div>
