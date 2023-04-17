@@ -74,10 +74,6 @@ class GlobalVisitor
 
         $position = self::getVisitorPosition($ip);
 
-        if (!$position) {
-            return null;
-        }
-
         /** @var Visitor|null $visitor */
         $visitor = Visitor::query()->where('ip', $ip)->first();
 
@@ -94,9 +90,9 @@ class GlobalVisitor
             /** @var Visitor */
             return Visitor::query()->firstOrCreate(compact('ip'), [
                 'ip' => $ip,
-                'country' => $position->countryName,
-                'city' => $position->cityName,
-                'code' => $position->countryCode,
+                'country' => $position->countryName ?? 'Unknown',
+                'city' => $position->cityName ?? 'Unknown',
+                'code' => $position->countryCode ?? 'Unknown',
             ]);
         } catch (Throwable $e) {
             Log::warning($e->getMessage());
