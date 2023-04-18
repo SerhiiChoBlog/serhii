@@ -41,6 +41,7 @@ function toggleApprovingComment(c: Comment): void {
                 <HeadDetail class="min-w-[170px]">User</HeadDetail>
                 <HeadDetail>Reply to</HeadDetail>
                 <HeadDetail>Comment</HeadDetail>
+                <HeadDetail class="w-20">Likes</HeadDetail>
                 <HeadDetail class="w-20">Created</HeadDetail>
                 <HeadDetail class="w-8"></HeadDetail>
             </template>
@@ -80,6 +81,9 @@ function toggleApprovingComment(c: Comment): void {
                 </BodyDetail>
                 <BodyDetail class="align-baseline">
                     {{ comment.comment }}
+                </BodyDetail>
+                <BodyDetail>
+                    {{ comment.likes_count }}
                 </BodyDetail>
                 <BodyDetail>
                     {{ moment(comment.created_at).format('D MMM YYYY H:mm') }}
