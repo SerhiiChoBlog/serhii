@@ -47,6 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
 
     public const POST_COMMENT_FIELDS = 'id,name,slug,avatar,sign_in_method';
+    public const DEFAULT_IMAGE_NAME = 'default.svg';
 
     /**
      * @var string[]
