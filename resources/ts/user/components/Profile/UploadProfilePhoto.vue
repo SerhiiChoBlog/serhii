@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import handleServerError from '@shared/modules/handleServerError'
 import showToast from '@shared/modules/showToast'
 import axios from 'axios'
+import PageRefresher from '@/modules/PageRefresher'
 
 const loading = ref<boolean>(false)
 
@@ -23,22 +24,20 @@ function setPhoto(event: Event) {
 }
 
 function uploadPhoto(photo: File) {
+    if (loading.value) {
+        return
+    }
+
     loading.value = true
 
     const formData = new FormData()
     formData.append('photo', photo)
+    formData.append('secret', Auth.secret)
 
-    axios.post<{ newImageUrl: string }>('/user/profile/photo', formData)
-        .then(resp => handleServerResponse(resp.data.newImageUrl))
+    axios.post('/api/users/upload-photo', formData)
+        .then(() => PageRefresher.refresh('Photo uploaded successfully'))
         .catch(e => handleServerError(e))
         .finally(() => loading.value = false)
-}
-
-function handleServerResponse(newImageUrl: string): void {
-    showToast({
-        text: 'Photo uploaded successfully.',
-        success: true,
-    })
 }
 </script>
 

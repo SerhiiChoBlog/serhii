@@ -7,14 +7,13 @@ namespace App\Services;
 use App\AvatarGenerators\AvatarGenerator;
 use App\AvatarGenerators\GlavatarAvatarGenerator;
 use App\AvatarGenerators\MultiavatarAvatarGenerator;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Throwable;
 
 readonly class GenerateAvatarService
 {
-    private const DEFAULT_IMAGE_NAME = 'default.svg';
-
     public function __construct(private string $email, private string $slug)
     {
     }
@@ -25,7 +24,7 @@ readonly class GenerateAvatarService
             return $this->generateAndSaveAvatar();
         } catch (Throwable $e) {
             Log::error($e->getMessage());
-            return self::DEFAULT_IMAGE_NAME;
+            return User::DEFAULT_IMAGE_NAME;
         }
     }
 
@@ -43,7 +42,7 @@ readonly class GenerateAvatarService
             return $this->saveImage($multiavatar, 'svg');
         }
 
-        return self::DEFAULT_IMAGE_NAME;
+        return User::DEFAULT_IMAGE_NAME;
     }
 
     private function getImage(AvatarGenerator $generator): ?string
