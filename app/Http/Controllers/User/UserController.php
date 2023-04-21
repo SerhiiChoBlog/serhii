@@ -14,11 +14,10 @@ class UserController extends Controller
     {
         $user = user();
 
-        abort_if(!$user, 404);
+        abort_if(!$user, 401);
 
         $user->loadCount('comments', 'postLikes');
         $user->load('badges');
-        $user->makeHidden('secret');
 
         return view('users.show', compact('user'));
     }
