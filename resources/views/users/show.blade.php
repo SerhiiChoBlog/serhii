@@ -20,7 +20,13 @@
                 </avatar>
 
                 <div class="mt-7 text-center md:text-left">
-                    <h1 class="text-3xl font-black">{{ $user->name }}</h1>
+                    <h1>
+                        <span class="font-black text-3xl">{{ $user->name }}</span>
+
+                        @if ($user->id === 1)
+                            <small class="text-lg tracking-wider ml-1.5  opacity-80">(admin)</small>
+                        @endif
+                    </h1>
                     <h2 class="text-lg text-font-second">{{ '@' . $user->slug }}</h2>
                 </div>
 
