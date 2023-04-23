@@ -38,9 +38,9 @@ function postReply(): void {
         </a>
 
         <div class="flex flex-col gap-1">
-            <h2 class="text-lg font-bold">
+            <a :href="`/@${comment.user.slug}`" class="text-lg font-bold">
                 {{ comment.user.name }}
-            </h2>
+            </a>
 
             <p
                 v-html="comment.comment"
