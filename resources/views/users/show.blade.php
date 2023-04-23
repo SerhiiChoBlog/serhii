@@ -65,6 +65,14 @@
                         ❤️ {{ $user->post_likes_count ?? 0 }}
                     </x-users.profile-row>
                 </div>
+
+                <div class="mt-8">
+                    <h2 class="text-3xl">Activity</h2>
+
+                    <div class="mt-2">
+                        <feed slug="{{ $user->slug }}"></feed>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
