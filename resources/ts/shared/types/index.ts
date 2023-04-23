@@ -98,3 +98,11 @@ export type FirebaseSignUpRequest = {
     photo_url: string | null
     sign_in_method: User['sign_in_method']
 }
+
+export type FeedItem = {
+    id: number
+    title: string
+    content: string
+    type: 'comment' | 'like'
+    date: string
+}

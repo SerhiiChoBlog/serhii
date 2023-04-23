@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\SocialShareController;
 use App\Http\Controllers\Api\SubscriptionDemandController;
 use App\Http\Controllers\Api\TagController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\User\FeedController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(TagController::class)->prefix('tags')->group(function () {
@@ -40,3 +41,5 @@ Route::controller(PostLikeController::class)->prefix('post-likes')->group(functi
 Route::controller(UserController::class)->prefix('users')->group(function () {
     Route::post('upload-photo', 'uploadPhoto');
 });
+
+Route::get('users/feed/{user:slug}', FeedController::class);
