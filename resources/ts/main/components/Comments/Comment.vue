@@ -38,8 +38,12 @@ function postReply(): void {
         </a>
 
         <div class="flex flex-col gap-1">
-            <a :href="`/@${comment.user.slug}`" class="text-lg font-bold">
-                {{ comment.user.name }}
+            <a :href="`/@${comment.user.slug}`" class="text-lg">
+                <span class="font-bold">{{ comment.user.name }}</span>
+
+                <small v-if="comment.user.id === 1" class="opacity-80 tracking-wider">
+                    (admin)
+                </small>
             </a>
 
             <p
