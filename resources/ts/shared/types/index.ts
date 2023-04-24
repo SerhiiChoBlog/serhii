@@ -101,6 +101,7 @@ export type FirebaseSignUpRequest = {
 
 export type FeedItem = {
     id: number
+    user_id: number
     title: string
     content: string
     type: 'comment' | 'like'
