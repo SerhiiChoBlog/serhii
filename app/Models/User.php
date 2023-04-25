@@ -38,6 +38,7 @@ use Illuminate\Support\Str;
  * @property Collection<int, CommentLike> $commentLikes
  * @property Collection<int, Post> $likedPosts
  * @property Collection<int, Comment> $likedComments
+ * @property Collection<int, Feed> $feed
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -92,6 +93,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * @return HasMany<Feed>
+     */
+    public function feed(): HasMany
+    {
+        return $this->hasMany(Feed::class);
     }
 
     public function hasRole(UserRole $role): bool

@@ -9,6 +9,7 @@ use App\Enums\UserRole;
 use App\Models\Badge;
 use App\Models\Ban;
 use App\Models\Comment;
+use App\Models\Feed;
 use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
@@ -132,5 +133,13 @@ class UserTest extends TestCase
 
         $this->assertCount(1, $this->user->likedComments);
         $this->assertSame($post->id, $this->user->likedComments->first()?->id);
+    }
+
+    public function testUserHasRelationshipWithFeed(): void
+    {
+        $feed = Feed::factory()->create(['user_id' => $this->user]);
+
+        $this->assertInstanceOf(Feed::class, $this->user->feed->first());
+        $this->assertSame($feed->id, $this->user->feed->first()->id);
     }
 }

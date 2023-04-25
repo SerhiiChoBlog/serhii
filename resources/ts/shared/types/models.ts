@@ -145,6 +145,7 @@ export type User = {
     updated_at: string
     badges?: Badge[]
     ban?: Ban | null
+    feed?: Feed[]
     postLikes?: PostLike[]
 }
 
