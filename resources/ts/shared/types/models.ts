@@ -1,4 +1,4 @@
-import type { SocialName } from '@shared/types/index'
+import type { FeedType, SocialName } from '@shared/types'
 
 export type Tag = {
     id: number
@@ -247,5 +247,14 @@ export type PostLike = {
     user_id: number
     created_at: string
     post?: Post
+    user?: User
+}
+
+export type Feed = {
+    id: number
+    title: string
+    content: string
+    type: FeedType
+    date: string
     user?: User
 }

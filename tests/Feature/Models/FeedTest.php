@@ -6,6 +6,7 @@ namespace Tests\Feature\Models;
 
 use App\Enums\FeedType;
 use App\Models\Feed;
+use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
@@ -23,6 +24,9 @@ class FeedTest extends TestCase
 
     public function testFeedHasRelationshipWithUser(): void
     {
+        $user = $this->createUser();
+        $feed = Feed::factory()->create(['user_id' => $user]);
 
+        $this->assertInstanceOf(User::class, $feed->user);
     }
 }
