@@ -8,6 +8,7 @@ enum FeedType: string
 {
     case COMMENT = 'comment';
     case LIKE = 'like';
+    case BADGE = 'badge';
 
     /**
      * @return array<int, FeedType>
@@ -17,6 +18,7 @@ enum FeedType: string
         return [
             self::COMMENT,
             self::LIKE,
+            self::BADGE,
         ];
     }
 }

@@ -2,7 +2,7 @@ import type { Tag, User } from './models'
 
 export type SocialName = 'twitter' | 'linkedin' | 'reddit' | 'telegram' | 'facebook' | 'clipboard'
 export type Theme = 'light' | 'dark' | 'system'
-export type FeedType = 'comment' | 'like'
+export type FeedType = 'comment' | 'like' | 'badge'
 
 export type Chapter = {
     title: string
@@ -98,13 +98,4 @@ export type FirebaseSignUpRequest = {
     name: string
     photo_url: string | null
     sign_in_method: User['sign_in_method']
-}
-
-export type FeedItem = {
-    id: number
-    user_id: number
-    title: string
-    content: string
-    type: 'comment' | 'like'
-    date: string
 }
