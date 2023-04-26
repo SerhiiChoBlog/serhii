@@ -7,15 +7,15 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Feed;
 use App\Models\User;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class FeedController extends Controller
 {
     /**
-     * @return LengthAwarePaginator<Feed>
+     * @return Collection<int, Feed>
      */
-    public function __invoke(User $user): LengthAwarePaginator
+    public function __invoke(User $user): Collection
     {
-        return $user->feed()->paginate(10);
+        return $user->feed()->limit(10)->get();
     }
 }
