@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { FeedItem } from '@shared/types'
+import type { Feed } from '@shared/types/models'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import handleServerError from '@shared/modules/handleServerError'
-import FeedItemComponent from '@user/components/Profile/FeedItem.vue'
+import FeedItem from '@user/components/Profile/FeedItem.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 
 const { slug } = defineProps<Props>()
 
-const feed = ref<FeedItem[]>([])
+const feed = ref<Feed[]>([])
 const loading = ref<boolean>(false)
 
 onMounted(() => fetchFeed())
@@ -24,8 +24,8 @@ function fetchFeed(): void {
 
     loading.value = true
 
-    axios.get(`/api/users/feed/${slug}`)
-        .then(resp => console.log(resp.data))
+    axios.get<Feed[]>(`/api/users/feed/${slug}`)
+        .then(resp => feed.value = resp.data)
         .catch(handleServerError)
         .finally(() => loading.value = false)
 }
@@ -38,11 +38,11 @@ function fetchFeed(): void {
         This person hasn't done anything yet 🙁
     </p>
 
-    <ul v-else>
-        <feed-item-component
+    <ul v-else class="space-y-3">
+        <feed-item
             v-for="item in feed"
             :key="item.id"
-            :item="item"
+            :feed="item"
         />
     </ul>
 </template>
