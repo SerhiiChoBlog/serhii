@@ -38,6 +38,7 @@ class PostLikeController extends Controller
 
         $post_like = $user->likePost($request->post_id);
 
+        /** @var PostLike $post_like */
         $post_like = PostLike::query()
             ->where('id', $post_like->id)
             ->with('post:id,slug,title,image_xs')

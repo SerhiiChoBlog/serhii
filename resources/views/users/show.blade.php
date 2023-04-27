@@ -13,7 +13,7 @@
 
 @section('content')
     <div class="container">
-        <div class="grid grid-cols-1 md:grid-cols-[300px_auto] gap-8 md:gap-12 max-w-[900px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-[300px_auto] gap-8 md:gap-12 mx-auto">
             <div>
                 <avatar :user="{{ $user }}">
                     <div class="h-[250px]"></div>

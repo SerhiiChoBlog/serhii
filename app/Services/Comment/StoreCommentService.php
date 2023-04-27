@@ -72,7 +72,6 @@ class StoreCommentService
 
         NewCommentAdminEmail::dispatchIf(!$this->is_admin, $comment);
         CommentApproved::dispatchIf($is_approved, $this->user);
-
         Feed::giveCommentFeedItem($this->user, $comment);
 
         return [
