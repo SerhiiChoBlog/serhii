@@ -11,6 +11,7 @@
 
     <main id="user-main" class="mt-10">
         @yield('content')
+        <sign-in-modal></sign-in-modal>
     </main>
 
     <script type="text/javascript">

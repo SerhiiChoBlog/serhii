@@ -38,7 +38,7 @@ class GiveUserVerifiedBadge
     {
         /** @var User|null */
         return User::query()
-            ->select('id', 'email')
+            ->select('id', 'email', 'name')
             ->where('email', $email)
             ->first();
     }
