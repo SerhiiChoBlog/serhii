@@ -27,7 +27,7 @@ function toggleLike(): void {
         return
     }
 
-    if (loading.value) {
+    if (loading.value || Auth.id === props.comment.user_id) {
         return
     }
 
@@ -46,7 +46,10 @@ function toggleLike(): void {
 </script>
 
 <template>
-    <control @click="toggleLike" class="group">
+    <control
+        @click="toggleLike"
+        :class="Auth.id === props.comment.user_id ? 'cursor-default' : 'group'"
+    >
         <like-icon
             :fill="isLiked ? 'currentColor' : 'none'"
             :class="{
