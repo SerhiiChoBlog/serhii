@@ -6,6 +6,7 @@ namespace App\Listeners\Badges;
 
 use App\Enums\BadgeName;
 use App\Events\UserLikesPost;
+use App\Models\Feed;
 use App\Models\User;
 
 class GiveUserLovelyBadge
@@ -14,6 +15,7 @@ class GiveUserLovelyBadge
     {
         if ($this->userHasLikes($event->user, 10)) {
             $event->user->giveBadge(BadgeName::LOVELY);
+            Feed::giveBadgeFeedItem($event->user, BadgeName::LOVELY);
         }
     }
 

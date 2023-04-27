@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\BadgeName;
 use App\Enums\FeedType;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -52,8 +53,9 @@ class Feed extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function giveBadgeFeedItem(User $user, Badge $badge): void
+    public static function giveBadgeFeedItem(User $user, BadgeName $badge_name): void
     {
+        $badge = Badge::query()->where('name', $badge_name)->firstOrFail();
         $name = Str::title($badge->name->value);
         $description = Str::lower($badge->description);
 
@@ -62,7 +64,6 @@ class Feed extends Model
             'title' => 'New badge received',
             'content' => "Received a “{$name}” badge because {$user->name} {$description}",
             'image' => "storage/badges/{$badge->icon}",
-            'date' => $user->email_verified_at,
         ]);
     }
 

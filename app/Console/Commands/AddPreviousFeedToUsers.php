@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Enums\BadgeName;
-use App\Models\Badge;
 use App\Models\Comment;
 use App\Models\CommentLike;
 use App\Models\Feed;
@@ -24,11 +23,8 @@ class AddPreviousFeedToUsers extends Command
 
         $users = User::query()->whereNotNull('email_verified_at')->get();
 
-        /** @var Badge $badge */
-        $badge = Badge::query()->where('name', BadgeName::VERIFIED)->firstOrFail();
-
         foreach ($users as $user) {
-            Feed::giveBadgeFeedItem($user, $badge);
+            Feed::giveBadgeFeedItem($user, BadgeName::VERIFIED);
 
             $comments = $user->comments()->with('post')->get();
 
@@ -47,6 +43,14 @@ class AddPreviousFeedToUsers extends Command
             $comment_likes->each(function (CommentLike $like) use ($user) {
                 Feed::giveCommentLikeFeedItem($user, $like);
             });
+
+            if ($user->comments->count() >= 10) {
+                Feed::giveBadgeFeedItem($user, BadgeName::COMMENTATOR);
+            }
+
+            if ($user->postLikes->count() >= 10) {
+                Feed::giveBadgeFeedItem($user, BadgeName::LOVELY);
+            }
 
             $processed++;
         }

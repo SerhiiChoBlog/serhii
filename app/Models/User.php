@@ -202,9 +202,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return self::query()->where('secret', $secret)->first();
     }
 
-    public function likePost(int $post_id): void
+    public function likePost(int $post_id): PostLike
     {
-        $this->postLikes()->create(['post_id' => $post_id]);
+        /** @var PostLike */
+        return $this->postLikes()->create(['post_id' => $post_id]);
     }
 
     public function unlikePost(int $post_id): void
