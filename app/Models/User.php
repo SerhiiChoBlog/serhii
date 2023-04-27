@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\BadgeName;
-use App\Enums\FeedType;
 use App\Enums\SignInMethod;
 use App\Enums\UserRole;
 use Carbon\Carbon;
@@ -101,7 +100,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function feed(): HasMany
     {
-        return $this->hasMany(Feed::class);
+        return $this->hasMany(Feed::class)->orderByDesc('date');
     }
 
     public function hasRole(UserRole $role): bool
@@ -216,18 +215,5 @@ class User extends Authenticatable implements MustVerifyEmail
     public function hasLikedPost(int $post_id): bool
     {
         return $this->postLikes()->where('post_id', $post_id)->exists();
-    }
-
-    public function giveBadgeFeedItem(Badge $badge): void
-    {
-        $name = Str::title($badge->name->value);
-        $description = Str::lower($badge->description);
-
-        $this->feed()->create([
-            'type' => FeedType::BADGE,
-            'title' => 'New badge received',
-            'content' => "{$this->name} received a “{$name}” badge because {$this->name} {$description}",
-            'date' => now(),
-        ]);
     }
 }

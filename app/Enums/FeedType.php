@@ -7,8 +7,9 @@ namespace App\Enums;
 enum FeedType: string
 {
     case COMMENT = 'comment';
-    case LIKE = 'like';
+    case POST_LIKE = 'post-like';
     case BADGE = 'badge';
+    case COMMENT_LIKE = 'comment-like';
 
     /**
      * @return array<int, FeedType>
@@ -17,8 +18,9 @@ enum FeedType: string
     {
         return [
             self::COMMENT,
-            self::LIKE,
+            self::POST_LIKE,
             self::BADGE,
+            self::COMMENT_LIKE,
         ];
     }
 }

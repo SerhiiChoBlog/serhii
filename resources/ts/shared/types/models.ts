@@ -257,5 +257,8 @@ export type Feed = {
     content: string
     type: FeedType
     date: string
+    image: string | null
+    url: string | null
+    pretty_date: string
     user?: User
 }

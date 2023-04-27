@@ -16,6 +16,8 @@ return new class () extends Migration {
             $table->string('title');
             $table->text('content');
             $table->string('type', 10);
+            $table->string('image')->nullable();
+            $table->string('url')->nullable();
             $table->timestamp('date');
         });
     }
