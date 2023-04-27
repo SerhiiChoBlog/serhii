@@ -23,7 +23,7 @@ const { user } = defineProps<Props>()
                     class="w-full lg:mx-0 rounded-full shadow-lg pointer-events-none"
                 />
 
-                <upload-profile-photo v-if="Auth.id === user.id" />
+                <upload-profile-photo v-if="Auth && Auth.id === user.id" />
             </div>
 
             <signed-in-method-logo
