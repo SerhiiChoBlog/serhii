@@ -18,7 +18,7 @@ return new class () extends Migration {
             $table->string('type', 10);
             $table->string('image')->nullable();
             $table->string('url')->nullable();
-            $table->timestamp('date');
+            $table->timestamp('date')->useCurrent();
         });
     }
 
