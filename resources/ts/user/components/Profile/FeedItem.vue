@@ -1,13 +1,15 @@
 <script setup lang="ts">
+import type { Feed } from '@shared/types/models'
+
 type Props = {
     title: string
     content: string
     image: string
-    userName: string
     url?: string
+    feed: Feed
 }
 
-const { title, content, userName, image, url } = defineProps<Props>()
+const { title, content, image, url, feed } = defineProps<Props>()
 </script>
 
 <template>
@@ -25,7 +27,7 @@ const { title, content, userName, image, url } = defineProps<Props>()
         </div>
 
         <div>
-            <span class="opacity-70">{{ userName }} {{ title }}</span>
+            <span class="opacity-70">{{ feed.user.name }} {{ title }} {{ feed.pretty_date }}</span>
             <h2 class="text-lg opacity-80">{{ content }}</h2>
         </div>
     </div>
