@@ -21,6 +21,9 @@ class Badge extends Model
 {
     use HasFactory;
 
+    public const POST_LIKES = 10;
+    public const POST_COMMENTS = 10;
+
     protected $guarded = ['id'];
 
     public $timestamps = false;

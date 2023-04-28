@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\FeedType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Comment\IndexRequest;
 use App\Http\Requests\Comment\LikeRequest;
 use App\Http\Requests\Comment\StoreRequest;
 use App\Models\Comment;
+use App\Models\CommentLike;
+use App\Models\Feed;
 use App\Models\Post;
 use App\Models\User;
 use App\Services\Comment\StoreCommentService;
@@ -83,9 +86,13 @@ class CommentController extends Controller
 
         if ($comment_exists) {
             $comment->likes()->where('user_id', $user->id)->delete();
+            $comment->deleteFeedItem(FeedType::COMMENT_LIKE, $user->id);
             return;
         }
 
-        $comment->likes()->create(['user_id' => $user->id]);
+        /** @var CommentLike $like */
+        $like = $comment->likes()->create(['user_id' => $user->id])->refresh();
+
+        Feed::giveCommentLikeFeedItem($user, $like);
     }
 }

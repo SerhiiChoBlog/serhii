@@ -17,10 +17,10 @@ import LazyLoading from '@shared/components/LazyLoading.vue'
 import FirebaseSignInButton from '@/components/FirebaseSignInButton.vue'
 import RelatedPosts from '@/components/RelatedPosts/RelatedPosts.vue'
 import LikePostButton from '@/components/LikePostButton.vue'
-import SignInModal from '@/components/SignIn/SignInModal.vue'
-import LoginForm from '@/components/SignIn/LoginForm.vue'
-import RegisterForm from '@/components/SignIn/RegisterForm.vue'
+import LoginForm from '@shared/components/SignIn/LoginForm.vue'
+import RegisterForm from '@shared/components/SignIn/RegisterForm.vue'
 import ZoomedImage from '@/components/ZoomedImage/ZoomedImage.vue'
+import SignInModal from '@shared/components/SignIn/SignInModal.vue'
 
 const app = createApp({
     components: {

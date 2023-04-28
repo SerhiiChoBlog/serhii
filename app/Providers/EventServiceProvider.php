@@ -8,9 +8,11 @@ use App\Events\CommentApproved;
 use App\Events\PostChanged;
 use App\Events\UserLikesPost;
 use App\Events\UserUnlikesPost;
+use App\Listeners\Badges\CreateFeedForPostLike;
 use App\Listeners\Badges\GiveUserCommentatorBadge;
 use App\Listeners\Badges\GiveUserLovelyBadge;
 use App\Listeners\Badges\GiveUserVerifiedBadge;
+use App\Listeners\Badges\RemoveFeedForPostLike;
 use App\Listeners\Badges\RemoveLovelyBadgeFromUser;
 use App\Listeners\ClearPostsCache;
 use App\Listeners\ConnectSubscriptionToUser;
@@ -40,9 +42,11 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserLikesPost::class => [
             GiveUserLovelyBadge::class,
+            CreateFeedForPostLike::class,
         ],
         UserUnlikesPost::class => [
             RemoveLovelyBadgeFromUser::class,
+            RemoveFeedForPostLike::class,
         ],
     ];
 }

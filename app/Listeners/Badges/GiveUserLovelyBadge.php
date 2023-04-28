@@ -6,19 +6,22 @@ namespace App\Listeners\Badges;
 
 use App\Enums\BadgeName;
 use App\Events\UserLikesPost;
-use App\Models\User;
+use App\Models\Badge;
+use TypeError;
 
 class GiveUserLovelyBadge
 {
     public function handle(UserLikesPost $event): void
     {
-        if ($this->userHasLikes($event->user, 10)) {
+        $likes_count = $event->user->post_likes_count;
+        $likes_count_type = gettype($likes_count);
+
+        if ($likes_count_type !== 'integer') {
+            throw new TypeError("likes_count must be an integer, got {$likes_count_type}");
+        }
+
+        if ($likes_count >= Badge::POST_LIKES) {
             $event->user->giveBadge(BadgeName::LOVELY);
         }
-    }
-
-    public function userHasLikes(User $user, int $amount): bool
-    {
-        return $user->postLikes()->count() >= $amount;
     }
 }

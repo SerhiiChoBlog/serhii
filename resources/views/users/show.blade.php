@@ -13,7 +13,7 @@
 
 @section('content')
     <div class="container">
-        <div class="grid grid-cols-1 md:grid-cols-[300px_auto] gap-8 md:gap-12 max-w-[900px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-[300px_auto] gap-8 md:gap-12 mx-auto">
             <div>
                 <avatar :user="{{ $user }}">
                     <div class="h-[250px]"></div>
@@ -64,6 +64,14 @@
                     <x-users.profile-row title="Likes articles">
                         ❤️ {{ $user->post_likes_count ?? 0 }}
                     </x-users.profile-row>
+                </div>
+
+                <div class="mt-8">
+                    <h2 class="text-3xl">Last activity</h2>
+
+                    <div class="my-4">
+                        <feed slug="{{ $user->slug }}"></feed>
+                    </div>
                 </div>
             </div>
         </div>

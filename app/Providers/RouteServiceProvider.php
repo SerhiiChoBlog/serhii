@@ -31,7 +31,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/admin.php'));
 
             Route::prefix('users')
-                ->name('.users')
+                ->name('users.')
                 ->middleware(['web', 'auth:user', 'verified'])
                 ->namespace($this->namespace)
                 ->group(base_path('routes/user.php'));

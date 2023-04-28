@@ -6,6 +6,7 @@ namespace App\Listeners\Badges;
 
 use App\Enums\BadgeName;
 use App\Events\CommentApproved;
+use App\Models\Feed;
 use App\Models\User;
 
 class GiveUserCommentatorBadge
@@ -14,6 +15,7 @@ class GiveUserCommentatorBadge
     {
         if ($this->userHasComments($event->user, 10)) {
             $event->user->giveBadge(BadgeName::COMMENTATOR);
+            Feed::giveBadgeFeedItem($event->user, BadgeName::COMMENTATOR);
         }
     }
 

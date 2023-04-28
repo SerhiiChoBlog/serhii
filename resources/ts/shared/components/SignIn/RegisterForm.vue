@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import SignInHeader from '@/components/SignIn/SignInHeader.vue'
+import SignInHeader from '@shared/components/SignIn/SignInHeader.vue'
 import InputField from '@/components/Form/InputField.vue'
 import FormLabel from '@/components/Form/FormLabel.vue'
 import FormButton from '@/components/Form/FormButton.vue'
 import Tip from '@shared/components/Tip.vue'
-import SignInWith from '@/components/SignIn/SignInWith.vue'
-import QuestionLink from '@/components/SignIn/QuestionLink.vue'
+import SignInWith from '@shared/components/SignIn/SignInWith.vue'
+import QuestionLink from '@shared/components/SignIn/QuestionLink.vue'
 import useRegister from '@/composables/useRegister'
 
 type Emits = {

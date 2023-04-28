@@ -10,6 +10,7 @@ use App\Enums\UserRole;
 use App\Events\CommentApproved;
 use App\Jobs\NewCommentAdminEmail;
 use App\Models\Comment;
+use App\Models\Feed;
 use App\Models\User;
 use App\Utils\GlobalVisitor;
 use Illuminate\Support\Carbon;
@@ -68,10 +69,14 @@ class StoreCommentService
         $is_approved = $this->validateIfCommentIsApproved();
 
         $comment = $this->createComment($is_approved);
+        $comment->setRelation('user', $this->user);
 
         NewCommentAdminEmail::dispatchIf(!$this->is_admin, $comment);
 
-        CommentApproved::dispatchIf($is_approved, $this->user);
+        if ($is_approved) {
+            CommentApproved::dispatch($this->user);
+            Feed::giveCommentFeedItem($comment);
+        }
 
         return [
             'date' => $this->is_admin ? now() : now()->addMinutes($timeout_minutes),

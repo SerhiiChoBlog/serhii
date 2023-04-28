@@ -6,6 +6,7 @@ namespace Tests\Feature\Models;
 
 use App\Models\Comment;
 use App\Models\CommentLike;
+use App\Models\Feed;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
@@ -52,5 +53,35 @@ class CommentTest extends TestCase
         ]);
 
         $this->assertCount(1, $this->comment->likes);
+    }
+
+    public function testCommentHasRelationshipWithFeed(): void
+    {
+        $user = $this->createUser();
+
+        $feed = Feed::factory()->create([
+            'user_id' => $user,
+            'comment_id' => $this->comment->id,
+        ]);
+
+        $this->assertSame($feed->id, $this->comment->feed->first()?->id);
+    }
+
+    public function testCommentCanHaveMultipleFeedItemsAttached(): void
+    {
+        $user = $this->createUser();
+        $user2 = $this->createUser();
+
+        Feed::factory()->create([
+            'user_id' => $user,
+            'comment_id' => $this->comment->id,
+        ]);
+
+        Feed::factory()->create([
+            'user_id' => $user2,
+            'comment_id' => $this->comment->id,
+        ]);
+
+        $this->assertCount(2, $this->comment->feed);
     }
 }
