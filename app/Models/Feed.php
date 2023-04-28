@@ -86,10 +86,16 @@ class Feed extends Model
     {
         $badge = Badge::query()->where('name', $badge_name)->firstOrFail();
 
-        $user->feed()->create([
+        $attributes = [
             'badge_id' => $badge->id,
             'type' => FeedType::BADGE,
-        ]);
+        ];
+
+        if ($badge_name === BadgeName::VERIFIED) {
+            $attributes['date'] = $user->email_verified_at;
+        }
+
+        $user->feed()->create($attributes);
     }
 
     public static function giveCommentFeedItem(Comment $comment): void

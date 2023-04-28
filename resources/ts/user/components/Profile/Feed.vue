@@ -42,38 +42,38 @@ function fetchFeed(): void {
         <div v-for="item in feed" :key="item.id">
             <feed-item
                 v-if="item.type === 'post-like'"
+                :feed="item"
                 :title="`likes the article “${item.post!.title}”`"
                 :content="item.post!.intro"
                 :image="`/${item.post!.image_xs}`"
                 :url="`/posts/${item.post!.slug}`"
-                :user-name="item.user.name"
             />
 
             <feed-item
                 v-else-if="item.type === 'comment-like'"
+                :feed="item"
                 :title="`likes the comment of ${item.comment!.user!.name}`"
                 :content="item.comment!.comment"
                 :image="`/storage/avatars/${item.comment!.user!.avatar}`"
                 :url="`/@${item.comment!.user!.slug}`"
-                :user-name="item.user.name"
             />
 
             <feed-item
                 v-else-if="item.type === 'comment'"
+                :feed="item"
                 :title="`wrote a comment for “${item.post!.title}” article`"
                 :content="item.comment!.comment"
                 :image="`/${item.post!.image_xs}`"
                 :url="`/posts/${item.post!.slug}`"
-                :user-name="item.user.name"
             />
 
             <feed-item
                 v-else-if="item.type === 'badge'"
+                :feed="item"
                 :title="`received the “${item.badge!.name}” badge`"
                 :content="item.badge!.description"
                 :image="`/storage/badges/${item.badge!.icon}`"
                 :url="`User receives a badge: ${item.badge!.name} because ${item.badge!.description}`"
-                :user-name="item.user.name"
             />
         </div>
     </div>
