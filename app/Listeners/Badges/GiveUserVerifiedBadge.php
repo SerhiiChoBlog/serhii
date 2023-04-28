@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Listeners\Badges;
 
 use App\Enums\BadgeName;
-use App\Models\Badge;
 use App\Models\Feed;
 use App\Models\User;
 use Illuminate\Auth\Events\Verified;
@@ -24,15 +23,7 @@ class GiveUserVerifiedBadge
 
         $user->giveBadge(BadgeName::VERIFIED);
 
-        $this->createFeedItem($user);
-    }
-
-    private function createFeedItem(User $user): void
-    {
-        /** @var Badge $badge */
-        $badge = $user->badges()->where('name', BadgeName::VERIFIED)->firstOrFail();
-
-        Feed::giveBadgeFeedItem($user, $badge);
+        Feed::giveBadgeFeedItem($user, BadgeName::VERIFIED);
     }
 
     private function getUser(string $email): ?User
