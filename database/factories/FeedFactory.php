@@ -22,7 +22,7 @@ class FeedFactory extends Factory
     {
         return [
             'type' => $this->faker->randomElement(FeedType::all()),
-            'date' => $this->faker->dateTime,
+            'date' => $this->faker->dateTimeBetween('-1 year'),
         ];
     }
 }
