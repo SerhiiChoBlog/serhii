@@ -5,6 +5,8 @@ import axios from 'axios'
 import handleServerError from '@shared/modules/handleServerError'
 import FeedItem from '@user/components/Profile/FeedItem.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
+import CommentIcon from '@shared/components/Icons/CommentIcon.vue'
+import LikeIcon from '@shared/components/Icons/LikeIcon.vue'
 
 type Props = {
     slug: string
@@ -47,6 +49,7 @@ function fetchFeed(): void {
                 :content="item.post!.intro"
                 :image="`/${item.post!.image_xs}`"
                 :url="`/posts/${item.post!.slug}`"
+                :icon="LikeIcon"
             />
 
             <feed-item
@@ -56,6 +59,7 @@ function fetchFeed(): void {
                 :content="item.comment!.comment"
                 :image="`/storage/avatars/${item.comment!.user!.avatar}`"
                 :url="`/@${item.comment!.user!.slug}`"
+                :icon="LikeIcon"
             />
 
             <feed-item
@@ -65,15 +69,15 @@ function fetchFeed(): void {
                 :content="item.comment!.comment"
                 :image="`/${item.post!.image_xs}`"
                 :url="`/posts/${item.post!.slug}`"
+                :icon="CommentIcon"
             />
 
             <feed-item
                 v-else-if="item.type === 'badge'"
                 :feed="item"
                 :title="`received the “${item.badge!.name}” badge`"
-                :content="item.badge!.description"
+                :content="`Received the “${item.badge!.name}” badge because ${item.badge!.description}`"
                 :image="`/storage/badges/${item.badge!.icon}`"
-                :url="`User receives a badge: ${item.badge!.name} because ${item.badge!.description}`"
             />
         </div>
     </div>
