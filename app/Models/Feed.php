@@ -17,15 +17,19 @@ use Serhii\Ago\TimeAgo;
 /**
  * @property-read int $id
  * @property int $user_id
+ * @property int|null $badge_id
  * @property int|null $comment_id
  * @property int|null $post_id
  * @property string $title
  * @property string $content
  * @property FeedType $type
+ * @property string|null $url
  * @property string|null $image
- * @property string|null $comment
  * @property Carbon $date
  * @property User $user
+ * @property Comment|null $comment
+ * @property Post|null $post
+ * @property Badge|null $badge
  */
 class Feed extends Model
 {
@@ -33,7 +37,9 @@ class Feed extends Model
 
     protected $table = 'feed';
 
-    protected $appends = ['pretty_date'];
+    protected $appends = [
+        'pretty_date',
+    ];
 
     /**
      * @var array<int, string>
@@ -55,6 +61,14 @@ class Feed extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return BelongsTo<Comment, self>
+     */
+    public function comment(): BelongsTo
+    {
+        return $this->belongsTo(Comment::class);
+    }
+
     public static function giveBadgeFeedItem(User $user, BadgeName $badge_name): void
     {
         $badge = Badge::query()->where('name', $badge_name)->firstOrFail();
@@ -63,9 +77,8 @@ class Feed extends Model
 
         $user->feed()->create([
             'type' => FeedType::BADGE,
-            'title' => 'New badge received',
-            'content' => "Received a “{$name}” badge because {$user->name} {$description}",
             'image' => "storage/badges/{$badge->icon}",
+            'badge_id' => $badge->id,
         ]);
     }
 
@@ -75,9 +88,8 @@ class Feed extends Model
 
         $user->feed()->create([
             'type' => FeedType::COMMENT,
-            'title' => 'Commented on the article',
-            'content' => "Commented on the article “{$title}” with this message: “{$comment->comment}”",
             'image' => $comment->post->image_xs,
+            'url' => route('posts.show', $comment->post),
             'comment_id' => $comment->id,
             'date' => $comment->created_at,
         ]);
@@ -87,9 +99,8 @@ class Feed extends Model
     {
         $user->feed()->create([
             'type' => FeedType::POST_LIKE,
-            'title' => 'Liked the article',
-            'content' => "Likes the article “{$post_like->post->title}”",
             'image' => $post_like->post->image_xs,
+            'url' => route('posts.show', $post_like->post),
             'post_id' => $post_like->post->id,
             'date' => $post_like->created_at,
         ]);
@@ -103,9 +114,8 @@ class Feed extends Model
 
         $user->feed()->create([
             'type' => FeedType::COMMENT_LIKE,
-            'title' => 'Liked the article',
-            'content' => "Likes the comment “{$comment}” from {$name} on article “{$title}”",
             'image' => "storage/avatars/{$comment_like->comment->user->avatar}",
+            'url' => route('users.profile', $comment_like->comment->user),
             'date' => $comment_like->created_at,
             'comment_id' => $comment_like->id,
         ]);

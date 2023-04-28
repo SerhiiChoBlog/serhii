@@ -38,11 +38,11 @@ function fetchFeed(): void {
         This person hasn't done anything yet 🙁
     </p>
 
-    <ul v-else class="space-y-3">
+    <div v-else class="space-y-3">
         <feed-item
             v-for="item in feed"
             :key="item.id"
             :feed="item"
         />
-    </ul>
+    </div>
 </template>
