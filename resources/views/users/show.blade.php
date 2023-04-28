@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="mt-8">
-                    <h2 class="text-3xl">Activity</h2>
+                    <h2 class="text-3xl">Last activity</h2>
 
                     <div class="my-4">
                         <feed slug="{{ $user->slug }}"></feed>

@@ -22,7 +22,7 @@ class FeedController extends Controller
             ->with('user:id,name')
             ->with('badge')
             ->with('post:id,title,intro,slug,image_xs')
-            ->limit(10)
+            ->limit(7)
             ->get();
     }
 }
