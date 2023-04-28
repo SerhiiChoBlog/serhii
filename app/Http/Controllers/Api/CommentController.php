@@ -86,12 +86,7 @@ class CommentController extends Controller
 
         if ($comment_exists) {
             $comment->likes()->where('user_id', $user->id)->delete();
-
-            $comment->feed()
-                ->where('user_id', $user->id)
-                ->where('type', FeedType::COMMENT_LIKE)
-                ->delete();
-
+            $comment->deleteFeedItem(FeedType::COMMENT_LIKE, $user->id);
             return;
         }
 

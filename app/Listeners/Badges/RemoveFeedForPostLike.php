@@ -16,11 +16,6 @@ class RemoveFeedForPostLike
             return;
         }
 
-        $this->removeFeedItem($event);
-    }
-
-    private function removeFeedItem(UserUnlikesPost $event): void
-    {
         $event->user
             ->feed()
             ->where('post_id', $event->post_id)

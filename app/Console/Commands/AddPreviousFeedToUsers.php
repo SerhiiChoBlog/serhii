@@ -27,10 +27,10 @@ class AddPreviousFeedToUsers extends Command
         foreach ($users as $user) {
             Feed::giveBadgeFeedItem($user, BadgeName::VERIFIED);
 
-            $comments = $user->comments()->with('post')->get();
+            $comments = $user->comments()->with('post', 'user')->get();
 
-            $comments->each(function (Comment $comment) use ($user) {
-                Feed::giveCommentFeedItem($user, $comment);
+            $comments->each(function (Comment $comment) {
+                Feed::giveCommentFeedItem($comment);
             });
 
             $post_likes = $user->postLikes()->with('post')->get();

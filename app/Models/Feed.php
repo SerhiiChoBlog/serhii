@@ -92,9 +92,9 @@ class Feed extends Model
         ]);
     }
 
-    public static function giveCommentFeedItem(User $user, Comment $comment): void
+    public static function giveCommentFeedItem(Comment $comment): void
     {
-        $user->feed()->create([
+        $comment->user->feed()->create([
             'comment_id' => $comment->id,
             'post_id' => $comment->post->id,
             'type' => FeedType::COMMENT,
