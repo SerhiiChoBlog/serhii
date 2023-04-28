@@ -61,7 +61,7 @@ function fetchFeed(): void {
             <feed-item
                 v-else-if="item.type === 'comment'"
                 :feed="item"
-                :title="`wrote a comment for “${item.post!.title}” article`"
+                :title="`commented on “${item.post!.title}” article`"
                 :content="item.comment!.comment"
                 :image="`/${item.post!.image_xs}`"
                 :url="`/posts/${item.post!.slug}`"
