@@ -17,6 +17,8 @@ use Serhii\Ago\TimeAgo;
 /**
  * @property-read int $id
  * @property int $user_id
+ * @property int|null $comment_id
+ * @property int|null $post_id
  * @property string $title
  * @property string $content
  * @property FeedType $type
