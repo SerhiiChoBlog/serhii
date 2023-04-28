@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Http\Controllers\Api;
 
+use App\Enums\FeedType;
 use App\Events\CommentApproved;
 use App\Jobs\NewCommentAdminEmail;
 use App\Models\Comment;
@@ -571,13 +572,12 @@ class CommentControllerTest extends TestCase
             ->postJson(self::LIKE_COMMENT_URI, [
                 'comment_id' => $comment->id,
                 'secret' => $this->user->secret,
-            ])
-            ->assertOk();
+            ]);
 
         $this->assertDatabaseEmpty('comment_likes');
     }
 
-    public function testCreatingCommentAddFeedItem(): void
+    public function testLikingCommentAddsFeedItem(): void
     {
         /** @var Comment $comment */
         $comment = Comment::factory()->create([
@@ -585,13 +585,33 @@ class CommentControllerTest extends TestCase
             'post_id' => $this->post->id,
         ]);
 
-        $comment->likes()->create(['user_id' => $this->user->id]);
-
         $this->actingAs($this->user, 'user')
             ->postJson(self::LIKE_COMMENT_URI, [
                 'comment_id' => $comment->id,
                 'secret' => $this->user->secret,
-            ])
-            ->assertOk();
+            ]);
+
+        $this->assertDatabaseHas('feed', [
+            'user_id' => $this->user->id,
+            'comment_id' => $comment->id,
+            'post_id' => $this->post->id,
+            'type' => FeedType::COMMENT_LIKE,
+        ]);
+    }
+
+    public function testCreatingCommentAddsFeedItem(): void
+    {
+        $this->postJson(self::POST_COMMENT_URI, [
+            'post_id' => $this->post->id,
+            'secret' => $this->user->secret,
+            'comment' => 'This is some comment here in this field',
+        ]);
+
+        $this->assertDatabaseHas('feed', [
+            'user_id' => $this->user->id,
+            'post_id' => $this->post->id,
+            'comment_id' => 1,
+            'type' => FeedType::COMMENT,
+        ]);
     }
 }
