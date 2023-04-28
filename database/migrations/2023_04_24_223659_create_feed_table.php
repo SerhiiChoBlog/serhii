@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,11 +14,15 @@ return new class () extends Migration {
         Schema::create('feed', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+
+            $table->unsignedSmallInteger('post_id')->nullable();
+            $table->foreign('post_id')->references('id')->on('posts')->cascadeOnDelete();
+
+            $table->foreignIdFor(Comment::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->text('content');
             $table->string('type', 10);
             $table->string('image')->nullable();
-            $table->string('url')->nullable();
             $table->timestamp('date')->useCurrent();
         });
     }

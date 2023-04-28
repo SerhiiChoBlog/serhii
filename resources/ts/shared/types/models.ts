@@ -253,12 +253,13 @@ export type PostLike = {
 
 export type Feed = {
     id: number
+    comment_id: number | null
+    post_id: number | null
     title: string
     content: string
     type: FeedType
     date: string
     image: string | null
-    url: string | null
     pretty_date: string
     user?: User
 }
