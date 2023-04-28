@@ -9,6 +9,7 @@ use App\Events\CommentApproved;
 use App\Jobs\NewCommentAdminEmail;
 use App\Models\Comment;
 use App\Models\CommentLike;
+use App\Models\Feed;
 use App\Models\Post;
 use App\Models\User;
 use Carbon\CarbonImmutable;
@@ -597,6 +598,32 @@ class CommentControllerTest extends TestCase
             'post_id' => $this->post->id,
             'type' => FeedType::COMMENT_LIKE,
         ]);
+    }
+
+    public function testUnlikingCommentRemovesFeedItem(): void
+    {
+        /** @var Comment $comment */
+        $comment = Comment::factory()->create([
+            'user_id' => $this->user->id,
+            'post_id' => $this->post->id,
+        ]);
+
+        Feed::factory()->create([
+            'user_id' => $this->user->id,
+            'post_id' => $this->post->id,
+            'comment_id' => $comment->id,
+            'type' => FeedType::COMMENT_LIKE,
+        ]);
+
+        $comment->likes()->create(['user_id' => $this->user->id]);
+
+        $this->actingAs($this->user, 'user')
+            ->postJson(self::LIKE_COMMENT_URI, [
+                'comment_id' => $comment->id,
+                'secret' => $this->user->secret,
+            ]);
+
+        $this->assertDatabaseEmpty('feed');
     }
 
     public function testCreatingCommentAddsFeedItem(): void
