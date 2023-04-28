@@ -9,7 +9,6 @@ use App\Events\UserUnlikesPost;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\PostLike\IsLikedRequest;
 use App\Http\Requests\Api\PostLike\StoreRequest;
-use App\Models\Feed;
 use App\Models\PostLike;
 use App\Models\User;
 use Symfony\Component\HttpFoundation\Response as ResponseStatus;
@@ -28,7 +27,7 @@ class PostLikeController extends Controller
         if ($user->hasLikedPost($request->post_id)) {
             $user->unlikePost($request->post_id);
 
-            UserUnlikesPost::dispatch($user);
+            UserUnlikesPost::dispatch($user, $request->post_id);
 
             return [
                 'liked' => false,
@@ -44,9 +43,7 @@ class PostLikeController extends Controller
             ->with('post:id,slug,title,image_xs')
             ->firstOrFail();
 
-        Feed::givePostLikeFeedItem($user, $post_like);
-
-        UserLikesPost::dispatch($user);
+        UserLikesPost::dispatch($user, $post_like);
 
         return [
             'liked' => true,

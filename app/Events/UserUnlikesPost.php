@@ -15,7 +15,7 @@ class UserUnlikesPost
     use InteractsWithSockets;
     use SerializesModels;
 
-    public function __construct(public User $user)
+    public function __construct(public User $user, public int $post_id)
     {
     }
 }
