@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
 use Serhii\Ago\TimeAgo;
 
 /**
@@ -23,8 +22,6 @@ use Serhii\Ago\TimeAgo;
  * @property string $title
  * @property string $content
  * @property FeedType $type
- * @property string|null $url
- * @property string|null $image
  * @property Carbon $date
  * @property User $user
  * @property Comment|null $comment
@@ -69,55 +66,58 @@ class Feed extends Model
         return $this->belongsTo(Comment::class);
     }
 
+    /**
+     * @return BelongsTo<Badge, self>
+     */
+    public function badge(): BelongsTo
+    {
+        return $this->belongsTo(Badge::class);
+    }
+
+    /**
+     * @return BelongsTo<Post, self>
+     */
+    public function post(): BelongsTo
+    {
+        return $this->belongsTo(Post::class);
+    }
+
     public static function giveBadgeFeedItem(User $user, BadgeName $badge_name): void
     {
         $badge = Badge::query()->where('name', $badge_name)->firstOrFail();
-        $name = Str::title($badge->name->value);
-        $description = Str::lower($badge->description);
 
         $user->feed()->create([
-            'type' => FeedType::BADGE,
-            'image' => "storage/badges/{$badge->icon}",
             'badge_id' => $badge->id,
+            'type' => FeedType::BADGE,
         ]);
     }
 
     public static function giveCommentFeedItem(User $user, Comment $comment): void
     {
-        $title = $comment->post->title;
-
         $user->feed()->create([
-            'type' => FeedType::COMMENT,
-            'image' => $comment->post->image_xs,
-            'url' => route('posts.show', $comment->post),
             'comment_id' => $comment->id,
+            'post_id' => $comment->post->id,
+            'type' => FeedType::COMMENT,
             'date' => $comment->created_at,
         ]);
     }
 
-    public static function givePostLikeFeedItem(User $user, PostLike $post_like): void
+    public static function givePostLikeFeedItem(User $user, PostLike $like): void
     {
         $user->feed()->create([
+            'post_id' => $like->post->id,
             'type' => FeedType::POST_LIKE,
-            'image' => $post_like->post->image_xs,
-            'url' => route('posts.show', $post_like->post),
-            'post_id' => $post_like->post->id,
-            'date' => $post_like->created_at,
+            'date' => $like->created_at,
         ]);
     }
 
-    public static function giveCommentLikeFeedItem(User $user, CommentLike $comment_like): void
+    public static function giveCommentLikeFeedItem(User $user, CommentLike $like): void
     {
-        $title = $comment_like->comment->post->title;
-        $comment = $comment_like->comment->comment;
-        $name = $comment_like->comment->user->name;
-
         $user->feed()->create([
+            'comment_id' => $like->comment->id,
+            'post_id' => $like->comment->post->id,
             'type' => FeedType::COMMENT_LIKE,
-            'image' => "storage/avatars/{$comment_like->comment->user->avatar}",
-            'url' => route('users.profile', $comment_like->comment->user),
-            'date' => $comment_like->created_at,
-            'comment_id' => $comment_like->id,
+            'date' => $like->created_at,
         ]);
     }
 

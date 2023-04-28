@@ -21,8 +21,7 @@ return new class () extends Migration {
 
             $table->foreignIdFor(Comment::class)->nullable()->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Badge::class)->nullable()->constrained()->cascadeOnDelete();
-            $table->string('type', 10);
-            $table->string('image')->nullable();
+            $table->string('type', 20);
             $table->timestamp('date')->useCurrent();
         });
     }

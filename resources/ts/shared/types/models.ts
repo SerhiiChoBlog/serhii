@@ -256,11 +256,10 @@ export type Feed = {
     comment_id: number | null
     post_id: number | null
     type: FeedType
-    url: string | null
     date: string
-    image: string | null
     pretty_date: string
     user?: User
     comment?: Comment
     post?: Post
+    badge?: Badge
 }
