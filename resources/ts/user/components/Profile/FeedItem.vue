@@ -27,7 +27,12 @@ const { title, content, image, url, feed } = defineProps<Props>()
         </div>
 
         <div>
-            <span class="opacity-70">{{ feed.user.name }} {{ title }} {{ feed.pretty_date }}</span>
+            <span class="opacity-70">
+                <strong>{{ feed.user.name }}</strong>
+                {{ title }}
+                <strong>{{ feed.pretty_date }}</strong>
+            </span>
+
             <h2 class="text-lg opacity-80">{{ content }}</h2>
         </div>
     </div>
