@@ -69,10 +69,14 @@ class StoreCommentService
         $is_approved = $this->validateIfCommentIsApproved();
 
         $comment = $this->createComment($is_approved);
+        $comment->setRelation('user', $this->user);
 
         NewCommentAdminEmail::dispatchIf(!$this->is_admin, $comment);
-        CommentApproved::dispatchIf($is_approved, $this->user);
-        Feed::giveCommentFeedItem($this->user, $comment);
+
+        if ($is_approved) {
+            CommentApproved::dispatch($this->user);
+            Feed::giveCommentFeedItem($comment);
+        }
 
         return [
             'date' => $this->is_admin ? now() : now()->addMinutes($timeout_minutes),

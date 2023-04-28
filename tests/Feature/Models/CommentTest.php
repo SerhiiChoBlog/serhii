@@ -59,11 +59,29 @@ class CommentTest extends TestCase
     {
         $user = $this->createUser();
 
+        $feed = Feed::factory()->create([
+            'user_id' => $user,
+            'comment_id' => $this->comment->id,
+        ]);
+
+        $this->assertSame($feed->id, $this->comment->feed->first()?->id);
+    }
+
+    public function testCommentCanHaveMultipleFeedItemsAttached(): void
+    {
+        $user = $this->createUser();
+        $user2 = $this->createUser();
+
         Feed::factory()->create([
             'user_id' => $user,
             'comment_id' => $this->comment->id,
         ]);
 
-        $this->assertInstanceOf(Feed::class, $this->comment->feed);
+        Feed::factory()->create([
+            'user_id' => $user2,
+            'comment_id' => $this->comment->id,
+        ]);
+
+        $this->assertCount(2, $this->comment->feed);
     }
 }

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\FeedType;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Serhii\Ago\Option;
@@ -105,11 +105,16 @@ class Comment extends Model
     }
 
     /**
-     * @return HasOne<Feed>
+     * @return HasMany<Feed>
      */
-    public function feed(): HasOne
+    public function feed(): HasMany
     {
-        return $this->hasOne(Feed::class);
+        return $this->hasMany(Feed::class);
+    }
+
+    public function deleteFeedItem(FeedType $type, int $user_id): void
+    {
+        $this->feed()->where('type', $type)->where('user_id', $user_id)->delete();
     }
 
     /**

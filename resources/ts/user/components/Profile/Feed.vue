@@ -70,8 +70,8 @@ function fetchFeed(): void {
             <feed-item
                 v-else-if="item.type === 'badge'"
                 :title="`received the “${item.badge!.name}” badge`"
-                :content="item.comment!.comment"
-                :image="`/storage/badges/${item.badge!.name}`"
+                :content="item.badge!.description"
+                :image="`/storage/badges/${item.badge!.icon}`"
                 :url="`User receives a badge: ${item.badge!.name} because ${item.badge!.description}`"
                 :user-name="item.user.name"
             />
