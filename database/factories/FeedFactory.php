@@ -21,8 +21,6 @@ class FeedFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence,
-            'content' => $this->faker->paragraph,
             'type' => $this->faker->randomElement(FeedType::all()),
             'date' => $this->faker->dateTime,
         ];

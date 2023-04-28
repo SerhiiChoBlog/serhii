@@ -24,6 +24,8 @@ class PostLikeController extends Controller
 
         abort_if(!$user, ResponseStatus::HTTP_UNAUTHORIZED);
 
+        $user->loadCount('postLikes');
+
         if ($user->hasLikedPost($request->post_id)) {
             $user->unlikePost($request->post_id);
 

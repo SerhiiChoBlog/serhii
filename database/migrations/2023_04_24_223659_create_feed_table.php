@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\Badge;
 use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -19,8 +20,7 @@ return new class () extends Migration {
             $table->foreign('post_id')->references('id')->on('posts')->cascadeOnDelete();
 
             $table->foreignIdFor(Comment::class)->nullable()->constrained()->cascadeOnDelete();
-            $table->string('title');
-            $table->text('content');
+            $table->foreignIdFor(Badge::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('type', 10);
             $table->string('image')->nullable();
             $table->timestamp('date')->useCurrent();

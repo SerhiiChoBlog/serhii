@@ -255,11 +255,12 @@ export type Feed = {
     id: number
     comment_id: number | null
     post_id: number | null
-    title: string
-    content: string
     type: FeedType
+    url: string | null
     date: string
     image: string | null
     pretty_date: string
     user?: User
+    comment?: Comment
+    post?: Post
 }

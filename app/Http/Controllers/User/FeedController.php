@@ -16,6 +16,9 @@ class FeedController extends Controller
      */
     public function __invoke(User $user): Collection
     {
-        return $user->feed()->limit(10)->get();
+        return $user->feed()
+            ->with('comment:id,comment', 'user:id,name', 'badge:id,name')
+            ->limit(10)
+            ->get();
     }
 }
