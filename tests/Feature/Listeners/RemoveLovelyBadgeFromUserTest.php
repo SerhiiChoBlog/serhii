@@ -30,8 +30,9 @@ class RemoveLovelyBadgeFromUserTest extends TestCase
         ]);
 
         $user->giveBadge(BadgeName::LOVELY);
+        $user->loadCount('postLikes');
 
-        $event = new UserUnlikesPost($user);
+        $event = new UserUnlikesPost($user, $post->id);
         $listener = new RemoveLovelyBadgeFromUser();
 
         $listener->handle($event);
@@ -51,9 +52,10 @@ class RemoveLovelyBadgeFromUserTest extends TestCase
             'post_id' => $post->id,
         ]);
 
+        $user->loadCount('postLikes');
         $user->giveBadge(BadgeName::LOVELY);
 
-        $event = new UserUnlikesPost($user);
+        $event = new UserUnlikesPost($user, $post->id);
         $listener = new RemoveLovelyBadgeFromUser();
 
         $listener->handle($event);
@@ -78,11 +80,12 @@ class RemoveLovelyBadgeFromUserTest extends TestCase
             'post_id' => $post->id,
         ]);
 
+        $user->loadCount('postLikes');
         $user->giveBadge(BadgeName::LOVELY);
         $user->giveBadge(BadgeName::VERIFIED);
         $user->giveBadge(BadgeName::COMMENTATOR);
 
-        $event = new UserUnlikesPost($user);
+        $event = new UserUnlikesPost($user, $post->id);
         $listener = new RemoveLovelyBadgeFromUser();
 
         $listener->handle($event);
@@ -106,11 +109,12 @@ class RemoveLovelyBadgeFromUserTest extends TestCase
             'post_id' => $post->id,
         ]);
 
+        $user->loadCount('postLikes');
         $user->giveBadge(BadgeName::LOVELY);
         $user->giveBadge(BadgeName::VERIFIED);
         $user->giveBadge(BadgeName::COMMENTATOR);
 
-        $event = new UserUnlikesPost($user);
+        $event = new UserUnlikesPost($user, $post->id);
         $listener = new RemoveLovelyBadgeFromUser();
 
         $listener->handle($event);
