@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Serhii\Ago\Option;
@@ -101,6 +102,14 @@ class Comment extends Model
     public function comments(): HasMany
     {
         return $this->hasMany(self::class);
+    }
+
+    /**
+     * @return HasOne<Feed>
+     */
+    public function feed(): HasOne
+    {
+        return $this->hasOne(Feed::class);
     }
 
     /**

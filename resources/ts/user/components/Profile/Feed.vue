@@ -35,14 +35,46 @@ function fetchFeed(): void {
     <spinner v-if="loading" />
 
     <p v-else-if="feed.length === 0" class="text-xl">
-        This person hasn't done anything yet 🙁
+        This person hasn't done any activity yet
     </p>
 
     <div v-else class="space-y-3">
-        <feed-item
-            v-for="item in feed"
-            :key="item.id"
-            :feed="item"
-        />
+        <div v-for="item in feed" :key="item.id">
+            <feed-item
+                v-if="item.type === 'post-like'"
+                :title="`likes the article “${item.post!.title}”`"
+                :content="item.post!.intro"
+                :image="`/${item.post!.image_xs}`"
+                :url="`/posts/${item.post!.slug}`"
+                :user-name="item.user.name"
+            />
+
+            <feed-item
+                v-else-if="item.type === 'comment-like'"
+                :title="`likes the comment of ${item.comment!.user!.name}`"
+                :content="item.comment!.comment"
+                :image="`/storage/avatars/${item.comment!.user!.avatar}`"
+                :url="`/@${item.comment!.user!.slug}`"
+                :user-name="item.user.name"
+            />
+
+            <feed-item
+                v-else-if="item.type === 'comment'"
+                :title="`wrote a comment for “${item.post!.title}” article`"
+                :content="item.comment!.comment"
+                :image="`/${item.post!.image_xs}`"
+                :url="`/posts/${item.post!.slug}`"
+                :user-name="item.user.name"
+            />
+
+            <feed-item
+                v-else-if="item.type === 'badge'"
+                :title="`received the “${item.badge!.name}” badge`"
+                :content="item.comment!.comment"
+                :image="`/storage/badges/${item.badge!.name}`"
+                :url="`User receives a badge: ${item.badge!.name} because ${item.badge!.description}`"
+                :user-name="item.user.name"
+            />
+        </div>
     </div>
 </template>

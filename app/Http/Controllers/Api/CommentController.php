@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\FeedType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Comment\IndexRequest;
 use App\Http\Requests\Comment\LikeRequest;
@@ -85,6 +86,12 @@ class CommentController extends Controller
 
         if ($comment_exists) {
             $comment->likes()->where('user_id', $user->id)->delete();
+
+            $comment->feed()
+                ->where('user_id', $user->id)
+                ->where('type', FeedType::COMMENT_LIKE)
+                ->delete();
+
             return;
         }
 
