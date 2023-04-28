@@ -25,15 +25,15 @@ class AddPreviousFeedToUsers extends Command
         $users = User::query()->whereNotNull('email_verified_at')->get();
 
         foreach ($users as $user) {
+            $this->giveCommentatorBadge($user);
+            $this->giveLovelyBadge($user);
+
             /** @phpstan-ignore-next-line */
             Feed::giveBadgeFeedItem($user, BadgeName::VERIFIED, $user->email_verified_at);
 
             $this->giveCommentsFeed($user);
             $this->givePostLikes($user);
             $this->giveCommentLikes($user);
-
-            $this->giveCommentatorBadge($user);
-            $this->giveLovelyBadge($user);
 
             $processed++;
         }
@@ -76,7 +76,10 @@ class AddPreviousFeedToUsers extends Command
             return;
         }
 
-        Feed::giveBadgeFeedItem($user, BadgeName::COMMENTATOR);
+        // get created_at field from the 10th comment
+        $date = $user->comments->sortBy('created_at')->values()->get(9)->created_at;
+
+        Feed::giveBadgeFeedItem($user, BadgeName::COMMENTATOR, $date);
     }
 
     public function giveLovelyBadge(mixed $user): void
@@ -85,6 +88,9 @@ class AddPreviousFeedToUsers extends Command
             return;
         }
 
-        Feed::giveBadgeFeedItem($user, BadgeName::LOVELY);
+        // get created_at field from the 10th post like
+        $date = $user->postLikes->sortBy('created_at')->values()->get(9)->created_at;
+
+        Feed::giveBadgeFeedItem($user, BadgeName::LOVELY, $date);
     }
 }
