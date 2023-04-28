@@ -1,4 +1,4 @@
-import type { SocialName } from '@shared/types/index'
+import type { FeedType, SocialName } from '@shared/types'
 
 export type Tag = {
     id: number
@@ -145,6 +145,7 @@ export type User = {
     updated_at: string
     badges?: Badge[]
     ban?: Ban | null
+    feed?: Feed[]
     postLikes?: PostLike[]
 }
 
@@ -248,4 +249,17 @@ export type PostLike = {
     created_at: string
     post?: Post
     user?: User
+}
+
+export type Feed = {
+    id: number
+    comment_id: number | null
+    post_id: number | null
+    type: FeedType
+    date: string
+    pretty_date: string
+    user?: User
+    comment?: Comment
+    post?: Post
+    badge?: Badge
 }

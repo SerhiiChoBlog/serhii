@@ -38,6 +38,7 @@ use Illuminate\Support\Str;
  * @property Collection<int, CommentLike> $commentLikes
  * @property Collection<int, Post> $likedPosts
  * @property Collection<int, Comment> $likedComments
+ * @property Collection<int, Feed> $feed
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -92,6 +93,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * @return HasMany<Feed>
+     */
+    public function feed(): HasMany
+    {
+        return $this->hasMany(Feed::class)->orderByDesc('date');
     }
 
     public function hasRole(UserRole $role): bool
@@ -193,9 +202,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return self::query()->where('secret', $secret)->first();
     }
 
-    public function likePost(int $post_id): void
+    public function likePost(int $post_id): PostLike
     {
-        $this->postLikes()->create(['post_id' => $post_id]);
+        /** @var PostLike */
+        return $this->postLikes()->create(['post_id' => $post_id]);
     }
 
     public function unlikePost(int $post_id): void

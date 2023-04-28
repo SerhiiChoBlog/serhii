@@ -24,12 +24,14 @@ class GiveUserLovelyBadgeTest extends TestCase
 
         Badge::factory()->create(['name' => BadgeName::LOVELY]);
 
-        PostLike::factory()->count(9)->create([
+        $like = PostLike::factory()->count(9)->create([
             'user_id' => $user->id,
             'post_id' => $post->id,
         ]);
 
-        $event = new UserLikesPost($user);
+        $user->loadCount('postLikes');
+
+        $event = new UserLikesPost($user, $like->first());
         $listener = new GiveUserLovelyBadge();
 
         $listener->handle($event);
@@ -37,19 +39,21 @@ class GiveUserLovelyBadgeTest extends TestCase
         $this->assertTrue($user->badges()->doesntExist());
     }
 
-    public function testListenerGivesUserABadgeIfHaveEnoughLikes(): void
+    public function testListenerGivesUserABadgeIfHasEnoughLikes(): void
     {
         $user = $this->createUser();
         $post = Post::factory()->create();
 
         Badge::factory()->create(['name' => BadgeName::LOVELY]);
 
-        PostLike::factory()->count(10)->create([
+        $like = PostLike::factory()->count(10)->create([
             'user_id' => $user->id,
             'post_id' => $post->id,
         ]);
 
-        $event = new UserLikesPost($user);
+        $user->loadCount('postLikes');
+
+        $event = new UserLikesPost($user, $like->first());
         $listener = new GiveUserLovelyBadge();
 
         $listener->handle($event);
@@ -60,21 +64,22 @@ class GiveUserLovelyBadgeTest extends TestCase
         $this->assertSame(BadgeName::LOVELY, $badges->first()?->name);
     }
 
-    public function testListenerDoesntGiveUserABadgeIfHaveEnoughLikesButAlreadyHasBadge(): void
+    public function testListenerDoesntGiveUserABadgeIfHasEnoughLikesButAlreadyHasBadge(): void
     {
         $user = $this->createUser();
         $post = Post::factory()->create();
 
         Badge::factory()->create(['name' => BadgeName::LOVELY]);
 
-        PostLike::factory()->count(10)->create([
+        $like = PostLike::factory()->count(10)->create([
             'user_id' => $user->id,
             'post_id' => $post->id,
         ]);
 
         $user->giveBadge(BadgeName::LOVELY);
+        $user->loadCount('postLikes');
 
-        $event = new UserLikesPost($user);
+        $event = new UserLikesPost($user, $like->first());
         $listener = new GiveUserLovelyBadge();
 
         $listener->handle($event);

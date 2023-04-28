@@ -23,7 +23,7 @@ Route::redirect('/posts/the-basics-of-computers', '/posts/understanding-computer
 
 Auth::routes(['verify' => true]);
 
-Route::get('@{user}', [UserController::class, 'show'])->name('users.show');
+Route::get('@{user:slug}', [UserController::class, 'show'])->name('users.show');
 
 Route::post('firebase-sign-in', [AuthFirebaseController::class, 'signIn']);
 

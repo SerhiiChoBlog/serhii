@@ -6,20 +6,29 @@ namespace App\Listeners\Badges;
 
 use App\Enums\BadgeName;
 use App\Events\UserUnlikesPost;
-use App\Models\User;
+use App\Models\Badge;
+use TypeError;
 
 class RemoveLovelyBadgeFromUser
 {
+    /**
+     * @throws TypeError
+     */
     public function handle(UserUnlikesPost $event): void
     {
-        if ($this->userHasLikesBelow($event->user, 10)) {
-            $id = $event->user->badges()->where('name', BadgeName::LOVELY)->value('id');
-            $event->user->badges()->detach($id);
-        }
-    }
+        $likes_count = $event->user->post_likes_count;
+        $likes_count_type = gettype($likes_count);
 
-    public function userHasLikesBelow(User $user, int $amount): bool
-    {
-        return $user->postLikes()->count() < $amount;
+        if ($likes_count_type !== 'integer') {
+            throw new TypeError("likes_count must be an integer, got {$likes_count_type}");
+        }
+
+        if ($likes_count >= Badge::POST_LIKES) {
+            return;
+        }
+
+        $badge_id = $event->user->badges()->where('name', BadgeName::LOVELY)->value('id');
+
+        $event->user->badges()->detach($badge_id);
     }
 }

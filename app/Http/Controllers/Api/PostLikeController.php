@@ -24,10 +24,12 @@ class PostLikeController extends Controller
 
         abort_if(!$user, ResponseStatus::HTTP_UNAUTHORIZED);
 
+        $user->loadCount('postLikes');
+
         if ($user->hasLikedPost($request->post_id)) {
             $user->unlikePost($request->post_id);
 
-            UserUnlikesPost::dispatch($user);
+            UserUnlikesPost::dispatch($user, $request->post_id);
 
             return [
                 'liked' => false,
@@ -35,9 +37,15 @@ class PostLikeController extends Controller
             ];
         }
 
-        $user->likePost($request->post_id);
+        $post_like = $user->likePost($request->post_id);
 
-        UserLikesPost::dispatch($user);
+        /** @var PostLike $post_like */
+        $post_like = PostLike::query()
+            ->where('id', $post_like->id)
+            ->with('post:id,slug,title,image_xs')
+            ->firstOrFail();
+
+        UserLikesPost::dispatch($user, $post_like);
 
         return [
             'liked' => true,
