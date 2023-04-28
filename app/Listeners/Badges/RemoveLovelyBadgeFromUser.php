@@ -16,13 +16,14 @@ class RemoveLovelyBadgeFromUser
      */
     public function handle(UserUnlikesPost $event): void
     {
-        $post_likes_count_type = gettype($event->user->post_likes_count);
+        $likes_count = $event->user->post_likes_count;
+        $likes_count_type = gettype($likes_count);
 
-        if ($post_likes_count_type !== 'integer') {
-            throw new TypeError("post_likes_count must be an integer, got {$post_likes_count_type}");
+        if ($likes_count_type !== 'integer') {
+            throw new TypeError("likes_count must be an integer, got {$likes_count_type}");
         }
 
-        if ($event->user->post_likes_count >= Badge::POST_LIKES) {
+        if ($likes_count >= Badge::POST_LIKES) {
             return;
         }
 
