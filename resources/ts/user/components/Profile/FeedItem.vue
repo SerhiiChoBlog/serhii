@@ -14,7 +14,7 @@ const { title, content, image, url, feed, icon } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="flex items-center gap-5 bg-page-second rounded-lg px-6 py-4 space-y-1.5">
+    <div class="flex items-center gap-5 bg-page-second rounded-lg px-6 py-2 md:py-4 space-y-1.5">
         <div v-if="image" class="flex items-center relative min-w-[60px]">
             <a :href="url ? url : 'javascript:'">
                 <img
@@ -32,12 +32,12 @@ const { title, content, image, url, feed, icon } = defineProps<Props>()
         </div>
 
         <div>
-            <span class="opacity-70">
+            <span class="text-md opacity-70">
                 <strong>{{ feed.user.name }}</strong>
                 {{ title }} · {{ feed.pretty_date }}
             </span>
 
-            <h2 class="text-lg opacity-80">{{ content }}</h2>
+            <h2 class="text-md md:text-lg opacity-80 mt-1">{{ content }}</h2>
         </div>
     </div>
 </template>
