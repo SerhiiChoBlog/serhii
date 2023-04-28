@@ -82,7 +82,7 @@ class Feed extends Model
         return $this->belongsTo(Post::class);
     }
 
-    public static function giveBadgeFeedItem(User $user, BadgeName $badge_name): void
+    public static function giveBadgeFeedItem(User $user, BadgeName $badge_name, ?Carbon $date = null): void
     {
         $badge = Badge::query()->where('name', $badge_name)->firstOrFail();
 
@@ -91,8 +91,8 @@ class Feed extends Model
             'type' => FeedType::BADGE,
         ];
 
-        if ($badge_name === BadgeName::VERIFIED) {
-            $attributes['date'] = $user->email_verified_at;
+        if ($date) {
+            $attributes['date'] = $date;
         }
 
         $user->feed()->create($attributes);
