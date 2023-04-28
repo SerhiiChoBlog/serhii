@@ -5,21 +5,35 @@ declare(strict_types=1);
 namespace App\Listeners\Badges;
 
 use App\Enums\BadgeName;
+use App\Enums\FeedType;
 use App\Events\UserUnlikesPost;
+use App\Models\Badge;
 use App\Models\User;
 
 class RemoveLovelyBadgeFromUser
 {
     public function handle(UserUnlikesPost $event): void
     {
-        if ($this->userHasLikesBelow($event->user, 10)) {
-            $id = $event->user->badges()->where('name', BadgeName::LOVELY)->value('id');
-            $event->user->badges()->detach($id);
+        if ($event->user->postLikes()->count() >= Badge::POST_LIKES) {
+            return;
         }
+
+        $this->removeUserBadge($event->user);
+        $this->removeFeedItem($event);
     }
 
-    public function userHasLikesBelow(User $user, int $amount): bool
+    private function removeUserBadge(User $user): void
     {
-        return $user->postLikes()->count() < $amount;
+        $badge_id = $user->badges()->where('name', BadgeName::LOVELY)->value('id');
+        $user->badges()->detach($badge_id);
+    }
+
+    private function removeFeedItem(UserUnlikesPost $event): void
+    {
+        $event->user
+            ->feed()
+            ->where('post_id', $event->post_id)
+            ->where('type', FeedType::POST_LIKE)
+            ->delete();
     }
 }

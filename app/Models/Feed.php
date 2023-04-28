@@ -78,7 +78,7 @@ class Feed extends Model
             'title' => 'Commented on the article',
             'content' => "Commented on the article “{$title}” with this message: “{$comment->comment}”",
             'image' => $comment->post->image_xs,
-            'url' => route('posts.show', $comment->post),
+            'comment_id' => $comment->id,
             'date' => $comment->created_at,
         ]);
     }
@@ -90,7 +90,7 @@ class Feed extends Model
             'title' => 'Liked the article',
             'content' => "Likes the article “{$post_like->post->title}”",
             'image' => $post_like->post->image_xs,
-            'url' => route('posts.show', $post_like->post),
+            'post_id' => $post_like->post->id,
             'date' => $post_like->created_at,
         ]);
     }
@@ -102,12 +102,12 @@ class Feed extends Model
         $name = $comment_like->comment->user->name;
 
         $user->feed()->create([
-            'type' => FeedType::POST_LIKE,
+            'type' => FeedType::COMMENT_LIKE,
             'title' => 'Liked the article',
             'content' => "Likes the comment “{$comment}” from {$name} on article “{$title}”",
             'image' => "storage/avatars/{$comment_like->comment->user->avatar}",
-            'url' => route('users.show', $comment_like->comment->user),
             'date' => $comment_like->created_at,
+            'comment_id' => $comment_like->id,
         ]);
     }
 

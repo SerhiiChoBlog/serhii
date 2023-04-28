@@ -13,6 +13,8 @@ class GiveUserLovelyBadge
 {
     public function handle(UserLikesPost $event): void
     {
+        Feed::givePostLikeFeedItem($event->user, $event->post_like);
+
         if ($this->userHasLikes($event->user, 10)) {
             $event->user->giveBadge(BadgeName::LOVELY);
             Feed::giveBadgeFeedItem($event->user, BadgeName::LOVELY);
