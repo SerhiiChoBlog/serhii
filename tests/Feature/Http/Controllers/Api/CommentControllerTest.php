@@ -25,20 +25,22 @@ class CommentControllerTest extends TestCase
     private const POST_COMMENT_URI = '/api/comments';
     private const LIKE_COMMENT_URI = '/api/comments/like';
 
+    private User $user;
+
     public function setUp(): void
     {
         parent::setUp();
         Event::fake();
         Queue::fake();
+        $this->user = $this->createUser();
     }
 
     public function testGettingCommentsResponseHasSuccessfulStatus(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         Comment::factory()->create([
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
         ]);
 
@@ -49,13 +51,12 @@ class CommentControllerTest extends TestCase
 
     public function testYouCanGetComments(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $text = 'I like this post! Keep it up!';
 
         $comment = Comment::factory()->create([
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
             'comment' => $text,
         ]);
@@ -66,7 +67,7 @@ class CommentControllerTest extends TestCase
             ->assertJsonFragment([
                 'id' => $comment->id,
                 'comment' => $text,
-                'user_id' => $user->id,
+                'user_id' => $this->user->id,
                 'post_id' => $post->id,
                 'likes_count' => 0,
             ]);
@@ -74,11 +75,10 @@ class CommentControllerTest extends TestCase
 
     public function testFetchedCommentsHaveUserObject(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         Comment::factory()->create([
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
         ]);
 
@@ -87,8 +87,8 @@ class CommentControllerTest extends TestCase
         $fetched_user = $this->getJson($url)->json('0.user');
 
         $expect_user = [
-            ...$user->only(explode(',', User::POST_COMMENT_FIELDS)),
-            'sign_in_method' => $user->sign_in_method->value,
+            ...$this->user->only(explode(',', User::POST_COMMENT_FIELDS)),
+            'sign_in_method' => $this->user->sign_in_method->value,
         ];
 
         $this->assertEquals($expect_user, $fetched_user);
@@ -96,17 +96,16 @@ class CommentControllerTest extends TestCase
 
     public function testFetchedCommentsHaveAuthUserLike(): void
     {
-        $user = $this->createUser();
         $some_other_user = $this->createUser();
         $post = Post::factory()->create();
 
         $comment = Comment::factory()->create([
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
         ]);
 
         CommentLike::factory()->create([
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'comment_id' => $comment->id,
         ]);
 
@@ -116,7 +115,7 @@ class CommentControllerTest extends TestCase
             'comment_id' => $comment->id,
         ]);
 
-        $url = self::GET_COMMENTS_URI . "?post_id={$post->id}&secret={$user->secret}";
+        $url = self::GET_COMMENTS_URI . "?post_id={$post->id}&secret={$this->user->secret}";
 
         $likes = $this->getJson($url)
             ->json('0.likes');
@@ -126,17 +125,16 @@ class CommentControllerTest extends TestCase
 
     public function testYouCanGetCommentsWithNestedComments(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $comment = Comment::factory()->create([
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
             'comment' => 'I like this post! Keep it up!',
         ]);
 
         $nested_comment = Comment::factory()->create([
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
             'comment' => $reply = 'I agree!',
             'comment_id' => $comment->id,
@@ -149,7 +147,7 @@ class CommentControllerTest extends TestCase
             ->assertJsonFragment([
                 'id' => $nested_comment->id,
                 'comment' => $reply,
-                'user_id' => $user->id,
+                'user_id' => $this->user->id,
                 'post_id' => $post->id,
                 'comment_id' => $comment->id,
             ]);
@@ -157,19 +155,18 @@ class CommentControllerTest extends TestCase
 
     public function testYouCanCreateComment(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
         $text = 'Awesome post! Thank you for sharing your knowledge!';
 
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => $text,
         ])
             ->assertOk();
 
         $this->assertDatabaseHas('comments', [
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
             'comment' => $text,
         ]);
@@ -177,13 +174,12 @@ class CommentControllerTest extends TestCase
 
     public function testYouCanReplyToComment(): void
     {
-        $user1 = $this->createUser();
         $user2 = $this->createUser();
         $post = Post::factory()->create();
 
         // User 1 comments on a post
         $comment = Comment::factory()->create([
-            'user_id' => $user1->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
         ]);
 
@@ -208,7 +204,6 @@ class CommentControllerTest extends TestCase
 
     public function testItRepliesToParentCommentAfterReplyingToReply(): void
     {
-        $user1 = $this->createUser();
         $user2 = $this->createUser();
         $user3 = $this->createUser();
 
@@ -216,7 +211,7 @@ class CommentControllerTest extends TestCase
 
         // User 1 comments on a post
         $comment = Comment::factory()->create([
-            'user_id' => $user1->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
         ]);
 
@@ -248,12 +243,11 @@ class CommentControllerTest extends TestCase
 
     public function testUserCannotCreateCommentLessThan4Characters(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => 'Hi!',
         ]);
 
@@ -262,12 +256,11 @@ class CommentControllerTest extends TestCase
 
     public function testUserCannotCreateCommentMoreThan1000Characters(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => Str::random(1001),
         ]);
 
@@ -276,12 +269,11 @@ class CommentControllerTest extends TestCase
 
     public function testUserCanCreateCommentWith4Characters(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => 'dude',
         ]);
 
@@ -292,12 +284,11 @@ class CommentControllerTest extends TestCase
 
     public function testUserCanCreateCommentWith1000Characters(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => Str::random(1000),
         ]);
 
@@ -308,20 +299,19 @@ class CommentControllerTest extends TestCase
 
     public function testYouCanOnlySubmitOneCommentInSomeMinutes(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
         $text = 'Awesome post! Thank you for sharing your knowledge!';
 
         // Create comment
         Comment::factory()->create([
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
         ]);
 
         // Try to create the second comment
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => $text,
         ]);
 
@@ -332,7 +322,6 @@ class CommentControllerTest extends TestCase
 
     public function testYouCanSubmitTheSecondCommentAfterSomeMinutes(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
         $text = 'Awesome post! Thank you for sharing your knowledge!';
 
@@ -340,7 +329,7 @@ class CommentControllerTest extends TestCase
 
         // Create comment
         Comment::factory()->create([
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
             'created_at' => now()->subMinutes($timeout_minutes + 1),
         ]);
@@ -348,7 +337,7 @@ class CommentControllerTest extends TestCase
         // Create the second comment
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => $text,
         ]);
 
@@ -359,12 +348,12 @@ class CommentControllerTest extends TestCase
 
     public function testAdminCanPostManyComments(): void
     {
-        $user = $this->createAdmin();
         $post = Post::factory()->create();
+        $admin = $this->createAdmin();
 
         $fields = [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $admin->secret,
             'comment' => 'Thank you for your comment',
         ];
 
@@ -380,7 +369,6 @@ class CommentControllerTest extends TestCase
 
     public function testPostingCommentReturnsDateInFuture(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
         $text = 'Awesome post! Thank you for sharing your knowledge!';
 
@@ -388,7 +376,7 @@ class CommentControllerTest extends TestCase
 
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => $text,
         ]);
 
@@ -400,12 +388,12 @@ class CommentControllerTest extends TestCase
 
     public function testPostingCommentReturnsCurrentDateForAdmin(): void
     {
-        $user = $this->createAdmin();
         $post = Post::factory()->create();
+        $admin = $this->createAdmin();
 
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $admin->secret,
             'comment' => 'Awesome post! Thank you!',
         ]);
 
@@ -420,12 +408,11 @@ class CommentControllerTest extends TestCase
      */
     public function testPostingCommentWithSwearWordWillBeMarkedAsNotApproved(string $text): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => $text,
         ]);
 
@@ -456,12 +443,11 @@ class CommentControllerTest extends TestCase
      */
     public function testPostingCommentWithoutSwearWordWillBeMarkedAsApproved(string $text): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => $text,
         ]);
 
@@ -487,12 +473,11 @@ class CommentControllerTest extends TestCase
 
     public function testPostingCommentDispatchesCommentPostedEvent(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => 'Thank you for your comment!',
         ]);
 
@@ -501,12 +486,11 @@ class CommentControllerTest extends TestCase
 
     public function testPostingCommentIsNotDispatchingEventIfCommentIsNotApproved(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => 'Thank you for your stupid blog post!',
         ]);
 
@@ -515,12 +499,11 @@ class CommentControllerTest extends TestCase
 
     public function testCommentMustBeWrittenInEnglish(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => 'Спасибо за ваш пост!',
         ]);
 
@@ -543,12 +526,11 @@ class CommentControllerTest extends TestCase
 
     public function testPostingCommentQueuesTheJobForSendingAdminEmail(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => 'Hello! Thank you for your post!',
         ]);
 
@@ -557,12 +539,12 @@ class CommentControllerTest extends TestCase
 
     public function testPostingCommentAsAdminDoesntQueueTheJobForSendingAdminEmail(): void
     {
-        $user = $this->createAdmin();
         $post = Post::factory()->create();
+        $admin = $this->createAdmin();
 
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $admin->secret,
             'comment' => 'Hello! Thank you for your post!',
         ]);
 
@@ -571,14 +553,13 @@ class CommentControllerTest extends TestCase
 
     public function testUserCannotPostCommentWhenBanned(): void
     {
-        $user = $this->createUser();
         $post = Post::factory()->create();
 
-        $user->ban()->create(['comment' => 'You are banned!']);
+        $this->user->ban()->create(['comment' => 'You are banned!']);
 
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $post->id,
-            'secret' => $user->secret,
+            'secret' => $this->user->secret,
             'comment' => 'Hello! Thank you for your post!',
         ]);
 
@@ -587,12 +568,10 @@ class CommentControllerTest extends TestCase
 
     public function testServerReturnsValidationErrorIfPostIdDoesntExist(): void
     {
-        $user = $this->createUser();
-
-        $this->actingAs($user, 'user')
+        $this->actingAs($this->user, 'user')
             ->postJson(self::POST_COMMENT_URI, [
                 'post_id' => 999,
-                'secret' => $user->secret,
+                'secret' => $this->user->secret,
                 'comment' => 'Hello! Thank you for your post!',
             ])
             ->assertStatus(422)
@@ -601,49 +580,45 @@ class CommentControllerTest extends TestCase
 
     public function testAuthUserCanLikeTheComment(): void
     {
-        $user = $this->createUser();
-
         /** @var Post $post */
         $post = Post::factory()->create();
 
         /** @var Comment $comment */
         $comment = Comment::factory()->create([
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
         ]);
 
-        $this->actingAs($user, 'user')
+        $this->actingAs($this->user, 'user')
             ->postJson(self::LIKE_COMMENT_URI, [
                 'comment_id' => $comment->id,
-                'secret' => $user->secret,
+                'secret' => $this->user->secret,
             ])
             ->assertOk();
 
         $this->assertDatabaseHas('comment_likes', [
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'comment_id' => $comment->id,
         ]);
     }
 
     public function testAuthUserCanUnlikeTheComment(): void
     {
-        $user = $this->createUser();
-
         /** @var Post $post */
         $post = Post::factory()->create();
 
         /** @var Comment $comment */
         $comment = Comment::factory()->create([
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'post_id' => $post->id,
         ]);
 
-        $comment->likes()->create(['user_id' => $user->id]);
+        $comment->likes()->create(['user_id' => $this->user->id]);
 
-        $this->actingAs($user, 'user')
+        $this->actingAs($this->user, 'user')
             ->postJson(self::LIKE_COMMENT_URI, [
                 'comment_id' => $comment->id,
-                'secret' => $user->secret,
+                'secret' => $this->user->secret,
             ])
             ->assertOk();
 
