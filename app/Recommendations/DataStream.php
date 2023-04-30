@@ -21,13 +21,9 @@ class DataStream
     ) {
     }
 
-    public function updateRemaining(): void
-    {
-        $this->remaining = $this->limit - $this->items->count();
-    }
-
     public function needsMoreContent(): bool
     {
+        $this->remaining = $this->limit - $this->items->count();
         return $this->remaining > 0;
     }
 }

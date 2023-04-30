@@ -27,8 +27,6 @@ final readonly class PostTagsFilter implements Filter
             $stream->exclude->push(...$posts->pluck('id'));
             $stream->items->push(...$posts);
 
-            $stream->updateRemaining();
-
             if (!$stream->needsMoreContent()) {
                 break;
             }

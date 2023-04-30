@@ -26,8 +26,6 @@ class RecommendationSystem
 
     public function pipe(Filter $filter): self
     {
-        $this->stream->updateRemaining();
-
         if ($this->stream->needsMoreContent()) {
             $this->stream = $filter->process($this->stream);
         }
@@ -40,8 +38,6 @@ class RecommendationSystem
      */
     public function get(): Collection
     {
-        $this->stream->updateRemaining();
-
         if ($this->stream->needsMoreContent()) {
             $random_posts = $this->getRandomPosts();
             return $this->stream->items->merge($random_posts);
