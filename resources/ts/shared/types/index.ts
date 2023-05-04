@@ -99,3 +99,12 @@ export type FirebaseSignUpRequest = {
     photo_url: string | null
     sign_in_method: User['sign_in_method']
 }
+
+export type Testimonial = {
+    image_uri: string
+    name: string
+    role: string
+    content: string
+    short?: string | null
+    link?: string | null
+}

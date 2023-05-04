@@ -21,6 +21,7 @@ import LoginForm from '@shared/components/SignIn/LoginForm.vue'
 import RegisterForm from '@shared/components/SignIn/RegisterForm.vue'
 import ZoomedImage from '@/components/ZoomedImage/ZoomedImage.vue'
 import SignInModal from '@shared/components/SignIn/SignInModal.vue'
+import Testimonials from '@/components/Testimonials/Testimonials.vue'
 
 const app = createApp({
     components: {
@@ -42,6 +43,7 @@ const app = createApp({
         LoginForm,
         RegisterForm,
         ZoomedImage,
+        Testimonials,
     },
 
     setup() {
