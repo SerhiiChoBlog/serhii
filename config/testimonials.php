@@ -16,6 +16,7 @@ return [
         <p>Your proficiency in PHP and JS, including all popular libraries, is impressive and has been instrumental in our success. Your skills have enabled us to deliver high-quality products that meet the needs of our customers.</p>
         <p>Overall, I am grateful to have you on our team. Your dedication and expertise have had a significant impact on company business. Thank you for your hard work and commitment.</p>
         HTML,
+        link: 'https://www.linkedin.com/in/ihor-n-0a6383144/',
         short: 'Dear Serhii, I wanted to take a moment to commend you on your outstanding performance as a developer. Your ability to solve complex problems using modern technologies ...',
     ),
     new Testimonial(
@@ -26,6 +27,7 @@ return [
         <p>I have been working with Sergey for 4 years now and I feel very comfortable working with him. Sergey is very responsible and completes tasks on time. Sergey and I work in different departments, but at any request he is ready to help. Thanks to Sergey, we now have a very convenient website and customers can quickly find information.</p>
         <p>I wish Sergei interesting projects.</p>
         HTML,
+        link: 'https://www.linkedin.com/in/julia-jurik-2b93a1194/',
         short: 'I have been working with Sergey for 4 years now and I feel very comfortable working with him. Sergey is very responsible and completes tasks on time. Sergey and ...',
     ),
     new Testimonial(
@@ -35,6 +37,7 @@ return [
         content: <<<HTML
         <p>A very cool developer, writes very clean and structured code, covers the code with tests and writes documentation for it, in my opinion Serhiy is a very skilled developer!</p>
         HTML,
+        link: 'https://www.linkedin.com/in/oleksandr-kazakov-428a79208/',
     ),
     new Testimonial(
         image_uri: '/storage/testimonials/olexiy-chornenkiy.jpg',
@@ -47,6 +50,7 @@ return [
         <p>I had the pleasure of working with Serhii on several projects where he provided back-end APIs and web applications and I was responsible for Android application development and project management. He also developed a personal website for me (I think this is his best work for me). His work is impressive and always delights me as a developer and user.</p>
         <p>To sum up, I highly recommend Serhii as a software developer. His skills, dedication and personality make him an indispensable member of any team and I am proud to have worked with him. I am sure he will make a valuable contribution to any organization he works with.</p>
         HTML,
+        link: 'https://www.linkedin.com/in/olexiy-chornenkiy-53b939242/',
         short: 'I am writing to recommend Serhii as an experienced software developer. Having worked closely with Serhii on several projects, I have always been impressed by his ...',
     ),
     new Testimonial(
@@ -57,6 +61,7 @@ return [
         <p>Sergey has been working in my company for more than 4 years, and he has shown himself to be a responsible employee. All tasks were completed on time. Sergey knows how to independently prioritize work and he does not need control over tasks.</p>
         <p>We and our team are very grateful to Sergey for his work and wish him success in his career.</p>
         HTML,
+        link: 'https://www.linkedin.com/in/svetlana-koshek-aa887325/',
         short: 'Sergey has been working in my company for more than 4 years, and he has shown himself to be a responsible employee. All tasks were completed on time. Sergey knows ...',
     ),
 ];

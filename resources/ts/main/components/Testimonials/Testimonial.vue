@@ -15,7 +15,7 @@ const { testimonial, showFull } = defineProps<Props>()
 </script>
 
 <template>
-    <figure class="relative flex flex-col rounded-lg p-6 shadow-lg bg-page">
+    <figure class="relative flex flex-col rounded-lg p-4 md:p-6 shadow-lg bg-page">
         <figcaption class="flex items-center space-x-4">
             <img
                 :src="testimonial.image_uri"
@@ -24,19 +24,31 @@ const { testimonial, showFull } = defineProps<Props>()
             />
 
             <div>
-                <h3 class="font-bold text-xl text-gray-600">{{ testimonial.name }}</h3>
-                <h3 class="text-gray-400">{{ testimonial.role }}</h3>
+                <h3 class="font-bold text-xl text-gray-600">
+                    <a
+                        :href="testimonial.link ? testimonial.link : 'javascript:'"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {{ testimonial.name }}
+                    </a>
+                </h3>
+
+                <h3 class="text-[.8em] leading-6 text-gray-500">{{ testimonial.role }}</h3>
             </div>
         </figcaption>
 
-        <blockquote class="mt-5 text-[.9em] text-gray-500 leading-6 [&>p]:mb-5 [&>p:last-child]:mb-0">
-            {{ !showFull && testimonial.short ? testimonial.short : testimonial.content }}
+        <blockquote class="mt-3">
+            <p
+                v-html="!showFull && testimonial.short ? testimonial.short : testimonial.content"
+                class="[&>p]:mb-5 [&>p:last-child]:mb-0 text-gray-500 leading-6 text-[.9em]"
+            ></p>
 
             <button
                 v-if="!showFull && testimonial.short"
                 type="button"
                 @click="emit('showFullContent')"
-                class="text-[.9em] font-bold text-main hover:text-main-dark transition-colors block mt-4"
+                class="text-sm font-bold text-main hover:text-main-dark transition-colors block mt-4 uppercase"
             >
                 Show full
             </button>

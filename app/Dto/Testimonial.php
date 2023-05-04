@@ -13,6 +13,7 @@ class Testimonial
         public string $name,
         public string $role,
         public string $content,
+        public string|null $link = null,
         public string|null $short = null,
     ) {
         $this->validateImageUri();
@@ -20,7 +21,7 @@ class Testimonial
 
     private function validateImageUri(): void
     {
-        if (!filter_var($this->image_uri, FILTER_VALIDATE_URL)) {
+        if (!str_starts_with($this->image_uri, '/storage/testimonials/')) {
             throw new InvalidArgumentException('Invalid image URI');
         }
     }
