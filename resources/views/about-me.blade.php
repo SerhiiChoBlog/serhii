@@ -7,7 +7,7 @@
     <x-hero
         mainTitle="Serhii Chornenkyi"
         subtitle="Serhii Cho is a web developer and blogger who is writing about<br />creating fast, robust, premium websites and applications"
-        class="bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1] text-white print:bg-none print:text-black"
+        class="bg-gradient-to-r from-[#657ca1] via-[#445a7e] to-[#163249] text-white print:bg-none print:text-black"
     />
 
     <div class="print:mt-0 mt-2 text-xl">
@@ -98,17 +98,24 @@
             <x-about.tech-section :techs="config('technologies.frameworks')" />
         </x-about.section>
 
-        <x-about.section isDark="true" header="Other technologies">
+        <x-about.section isDark="true" header="Testimonials" class="min-h-[500px]">
             <x-section-detail />
+
+            <lazy-loading>
+                <testimonials></testimonials>
+            </lazy-loading>
+        </x-about.section>
+
+        <x-about.section header="Other technologies">
             <x-about.tech-section :techs="config('technologies.technologies')" />
         </x-about.section>
 
-        <x-about.section header="Personal skills">
+        <x-about.section isDark="true" header="Personal skills">
+            <x-section-detail />
             <x-about.tech-section :techs="config('technologies.skills')" />
         </x-about.section>
 
-        <x-about.section isDark="true" header="Latest projects" class="print:hidden">
-            <x-section-detail />
+        <x-about.section header="Latest projects" class="print:hidden">
             <x-about.projects-section />
         </x-about.section>
     </div>
