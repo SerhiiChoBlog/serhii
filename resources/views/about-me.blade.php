@@ -94,21 +94,25 @@
             <x-about.tech-section :techs="config('technologies.languages')" />
         </x-about.section>
 
-        <x-about.section header="Frameworks / CMS">
+        <x-about.section header="Testimonials">
+            <testimonials></testimonials>
+        </x-about.section>
+
+        <x-about.section isDark="true" header="Frameworks / CMS">
+            <x-section-detail />
             <x-about.tech-section :techs="config('technologies.frameworks')" />
         </x-about.section>
 
-        <x-about.section isDark="true" header="Other technologies">
-            <x-section-detail />
+        <x-about.section header="Other technologies">
             <x-about.tech-section :techs="config('technologies.technologies')" />
         </x-about.section>
 
-        <x-about.section header="Personal skills">
+        <x-about.section isDark="true" header="Personal skills">
+            <x-section-detail />
             <x-about.tech-section :techs="config('technologies.skills')" />
         </x-about.section>
 
-        <x-about.section isDark="true" header="Latest projects" class="print:hidden">
-            <x-section-detail />
+        <x-about.section header="Latest projects" class="print:hidden">
             <x-about.projects-section />
         </x-about.section>
     </div>
