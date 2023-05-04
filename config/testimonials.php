@@ -6,7 +6,7 @@ use App\Dto\Testimonial;
 
 return [
     new Testimonial(
-        image_uri: 'https://via.placeholder.com/150',
+        image_uri: 'https://via.placeholder.com/100',
         name: 'John Doe',
         role: 'CEO',
         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.',
