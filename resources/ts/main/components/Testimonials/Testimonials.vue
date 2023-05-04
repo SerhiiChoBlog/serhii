@@ -5,9 +5,11 @@ import axios from 'axios'
 import handleError from '@admin/modules/handleError'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import Testimonial from '@/components/Testimonials/Testimonial.vue'
+import Modal from '@shared/components/Modal.vue'
 
 const loading = ref<boolean>(false)
 const testimonials = ref<TestimonialType[]>([])
+const fullContent = ref<TestimonialType | null>(null)
 
 onMounted(() => fetchTestimonials())
 
@@ -41,6 +43,19 @@ const groupedTestimonials = computed<TestimonialType[][]>(() => {
 </script>
 
 <template>
+    <modal
+        v-if="fullContent"
+        :empty="true"
+        :opened="fullContent !== null"
+        @close="() => fullContent = null"
+        max-width="700"
+    >
+        <testimonial
+            :testimonial="fullContent"
+            :show-full="true"
+        />
+    </modal>
+
     <spinner v-if="loading" />
 
     <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-7">
@@ -50,10 +65,11 @@ const groupedTestimonials = computed<TestimonialType[][]>(() => {
             class="space-y-4 lg:space-y-7"
         >
             <testimonial
-                :testimonial="testimonial"
                 v-for="testimonial in groupedTestimonial"
                 :key="testimonial.name"
+                :testimonial="testimonial"
                 :show-full="false"
+                @showFullContent="() => fullContent = testimonial"
             />
         </div>
     </div>
