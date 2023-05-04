@@ -7,7 +7,7 @@
     <x-hero
         mainTitle="Serhii Chornenkyi"
         subtitle="Serhii Cho is a web developer and blogger who is writing about<br />creating fast, robust, premium websites and applications"
-        class="bg-gradient-to-r from-[#163249] via-[#657ca1] to-[#657ca1] text-white print:bg-none print:text-black"
+        class="bg-gradient-to-r from-[#657ca1] via-[#445a7e] to-[#163249] text-white print:bg-none print:text-black"
     />
 
     <div class="print:mt-0 mt-2 text-xl">
