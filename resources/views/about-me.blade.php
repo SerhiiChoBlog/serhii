@@ -94,13 +94,13 @@
             <x-about.tech-section :techs="config('technologies.languages')" />
         </x-about.section>
 
-        <x-about.section header="Testimonials" class="min-h-[500px]">
-            <testimonials></testimonials>
+        <x-about.section header="Frameworks / CMS">
+            <x-about.tech-section :techs="config('technologies.frameworks')" />
         </x-about.section>
 
-        <x-about.section isDark="true" header="Frameworks / CMS">
+        <x-about.section isDark="true" header="Testimonials" class="min-h-[500px]">
             <x-section-detail />
-            <x-about.tech-section :techs="config('technologies.frameworks')" />
+            <testimonials></testimonials>
         </x-about.section>
 
         <x-about.section header="Other technologies">
