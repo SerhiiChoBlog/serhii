@@ -94,7 +94,7 @@
             <x-about.tech-section :techs="config('technologies.languages')" />
         </x-about.section>
 
-        <x-about.section header="Testimonials">
+        <x-about.section header="Testimonials" class="min-h-[500px]">
             <testimonials></testimonials>
         </x-about.section>
 
