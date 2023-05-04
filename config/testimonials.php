@@ -9,7 +9,7 @@ return [
         image_uri: 'https://via.placeholder.com/100',
         name: 'John Doe',
         role: 'CEO',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.',
         short: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.',
     ),
     new Testimonial(
@@ -23,7 +23,6 @@ return [
         image_uri: 'https://via.placeholder.com/100',
         name: 'John Doe 3',
         role: 'CEO',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.',
-        short: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.',
     ),
 ];

@@ -29,14 +29,14 @@ const { testimonial, showFull } = defineProps<Props>()
             </div>
         </figcaption>
 
-        <blockquote class="mt-5 text-gray-500 leading-6 [&>p]:mb-5 [&>p:last-child]:mb-0">
+        <blockquote class="mt-5 text-[.9em] text-gray-500 leading-6 [&>p]:mb-5 [&>p:last-child]:mb-0">
             {{ !showFull && testimonial.short ? testimonial.short : testimonial.content }}
 
             <button
-                v-if="showFull || !testimonial.short"
+                v-if="!showFull && testimonial.short"
                 type="button"
                 @click="emit('showFullContent')"
-                class="text-gray-500 hover:text-gray-600"
+                class="text-[.9em] font-bold text-main hover:text-main-dark transition-colors block mt-4"
             >
                 Show full
             </button>
