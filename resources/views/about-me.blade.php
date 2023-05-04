@@ -100,7 +100,10 @@
 
         <x-about.section isDark="true" header="Testimonials" class="min-h-[500px]">
             <x-section-detail />
-            <testimonials></testimonials>
+
+            <lazy-loading>
+                <testimonials></testimonials>
+            </lazy-loading>
         </x-about.section>
 
         <x-about.section header="Other technologies">
