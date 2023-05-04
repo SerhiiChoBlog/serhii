@@ -106,4 +106,5 @@ export type Testimonial = {
     role: string
     content: string
     short?: string | null
+    link?: string | null
 }
