@@ -4,6 +4,7 @@ import { ref, onMounted } from 'vue'
 import handleServerError from '@shared/modules/handleServerError'
 import axios from 'axios'
 import WorkProject from '@/components/WorkProjects/WorkProject.vue'
+import Spinner from '@shared/components/Icons/Spinner.vue'
 
 const workProjects = ref<WorkProjectType[]>([])
 const loading = ref<boolean>(false)
@@ -26,7 +27,9 @@ function fetchWorkProjects(): void {
 </script>
 
 <template>
-    <div class="flex flex-col lg:flex-row items-center justify-center py-7">
+    <spinner v-if="loading" />
+
+    <div v-else class="flex flex-col lg:flex-row items-center justify-center py-7">
         <work-project
             v-for="project in workProjects"
             :key="project.title"
