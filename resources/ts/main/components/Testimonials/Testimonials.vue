@@ -20,7 +20,7 @@ function fetchTestimonials(): void {
 
     loading.value = true
 
-    axios.get<TestimonialType[]>('/api/testimonials')
+    axios.get<TestimonialType[]>('/api/about-me/testimonials')
         .then(rep => testimonials.value = rep.data)
         .catch(handleError)
         .finally(() => loading.value = false)
