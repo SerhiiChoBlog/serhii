@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\AboutMe;
 
 use App\Dto\Testimonial;
 use Illuminate\Http\JsonResponse;
