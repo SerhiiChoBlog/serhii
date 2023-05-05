@@ -98,7 +98,7 @@
             <x-about.tech-section :techs="config('technologies.frameworks')" />
         </x-about.section>
 
-        <x-about.section isDark="true" header="Testimonials" class="min-h-[500px]">
+        <x-about.section isDark="true" header="Testimonials" class="min-h-[500px] print:hidden">
             <x-section-detail />
 
             <lazy-loading>
@@ -115,8 +115,10 @@
             <x-about.tech-section :techs="config('technologies.skills')" />
         </x-about.section>
 
-        <x-about.section header="Latest projects" class="print:hidden">
-            <x-about.projects-section />
+        <x-about.section header="Latest projects" class="min-h-[400px] print:hidden">
+            <lazy-loading>
+                <work-projects></work-projects>
+            </lazy-loading>
         </x-about.section>
     </div>
 @endsection

@@ -12,7 +12,15 @@ class TestimonialController extends Controller
 {
     public function __invoke(): JsonResponse
     {
-        return response()->json([
+        return response()->json($this->getTestimonials());
+    }
+
+    /**
+     * @return array<int, Testimonial>
+     */
+    private function getTestimonials(): array
+    {
+        return [
             new Testimonial(
                 image_uri: '/storage/testimonials/ihor-niezhynskiy.jpg',
                 name: 'Ihor Niezhynskiy',
@@ -72,6 +80,6 @@ class TestimonialController extends Controller
                 link: 'https://www.linkedin.com/in/svetlana-koshek-aa887325/',
                 short: 'Sergey has been working in my company for more than 4 years, and he has shown himself to be a responsible employee. All tasks were completed on time. Sergey knows ...',
             ),
-        ]);
+        ];
     }
 }
