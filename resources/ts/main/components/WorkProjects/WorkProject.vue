@@ -9,12 +9,8 @@ const { project } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="
-        lg:skew-y-[-3deg] mb-12 first:ml-0 hover:translate-y-[-20px] duration-300 relative lg:transition-transform
-        lg:ml-[-100px] lg:mb-0 before:left-0 before:absolute before:right-0 before:h-3 before:bg-[#282829]
-        before:top-[-11px] before:rounded-t-lg
-    ">
-        <a :href="project" target="_blank" class="max-w-[350px] block" rel="noreferrer">
+    <div class="first:ml-0 relative before:left-0 before:absolute before:right-0 before:h-3 before:bg-[#282829] before:top-[-11px] before:rounded-t-lg">
+        <div class="max-w-[350px] block">
             <img
                 src="/storage/tools/mac-buttons.webp"
                 class="absolute top-[-8px] left-2"
@@ -47,6 +43,6 @@ const { project } = defineProps<Props>()
                     />
                 </div>
             </div>
-        </a>
+        </div>
     </div>
 </template>
