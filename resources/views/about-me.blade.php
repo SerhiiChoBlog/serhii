@@ -116,9 +116,7 @@
         </x-about.section>
 
         <x-about.section header="Latest projects" class="min-h-[400px] print:hidden">
-            <lazy-loading>
-                <work-projects></work-projects>
-            </lazy-loading>
+            <work-projects></work-projects>
         </x-about.section>
     </div>
 @endsection
