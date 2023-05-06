@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api\AboutMe;
 
+use App\Dto\WorkProject;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use App\Dto\WorkProject;
 
 class WorkProjectController extends Controller
 {
@@ -41,7 +41,7 @@ class WorkProjectController extends Controller
             new WorkProject(
                 image_uri: '/storage/tools/client-cabinet.webp',
                 title: 'Client cabinet',
-                subtitle: 'Client cabinet for Dutch tax office',
+                subtitle: 'Client cabinet for a Dutch tax company',
                 content: 'todo',
                 link: 'https://mijn.nalog.nl/',
                 technologies: [self::VUE, self::TS, self::PHP, self::LARAVEL, self::TAILWIND],
@@ -49,7 +49,7 @@ class WorkProjectController extends Controller
             new WorkProject(
                 image_uri: '/storage/tools/site-zoo.webp',
                 title: 'ZooZooZoo',
-                subtitle: 'WordPress website with custom theme and plugins',
+                subtitle: 'E-commerce project for a pet shop',
                 content: 'todo',
                 link: 'https://zoo-zoo-zoo.com.ua/',
                 technologies: [self::VUE, self::TS, self::PHP, self::LARAVEL],
@@ -57,7 +57,7 @@ class WorkProjectController extends Controller
             new WorkProject(
                 image_uri: '/storage/tools/blitz.webp',
                 title: 'Blitz',
-                subtitle: 'Client cabinet for Dutch tax office',
+                subtitle: 'Client cabinet for a Dutch tax company',
                 content: 'todo',
                 link: 'https://blitz.nalog.nl/',
                 technologies: [self::VUE, self::TS, self::PHP, self::LARAVEL, self::TAILWIND],
@@ -65,7 +65,7 @@ class WorkProjectController extends Controller
             new WorkProject(
                 image_uri: '/storage/tools/site-olexiy.webp',
                 title: 'Jiskelo',
-                subtitle: 'Personal website',
+                subtitle: 'Personal website for Android Developer',
                 content: 'todo',
                 link: 'https://jiskelo.dev/',
                 technologies: [self::REACT, self::TS, self::TAILWIND],
