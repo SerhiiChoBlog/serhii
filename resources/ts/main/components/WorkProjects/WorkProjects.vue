@@ -3,7 +3,7 @@ import type { WorkProject as WorkProjectType } from '@shared/types'
 import { onMounted, ref } from 'vue'
 import handleServerError from '@shared/modules/handleServerError'
 import axios from 'axios'
-import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
+import { Carousel, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import WorkProject from '@/components/WorkProjects/WorkProject.vue'
 import WorkProjectFull from '@/components/WorkProjects/WorkProjectFull.vue'
@@ -44,8 +44,8 @@ function fetchWorkProjects(): void {
           </carousel>
 
           <carousel
-              :items-to-show="4"
-              :wrap-around="true"
+              :items-to-show="5"
+              :wrap-around="false"
               v-model="currSlide"
               ref="carousel"
               class="mt-8"
@@ -61,11 +61,6 @@ function fetchWorkProjects(): void {
                     <work-project :project="project" />
                 </div>
             </slide>
-
-              <template #addons>
-                  <navigation />
-                  <pagination class="!mt-8" />
-              </template>
         </carousel>
     </div>
 </template>
