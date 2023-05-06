@@ -6,6 +6,7 @@ import axios from 'axios'
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import WorkProject from '@/components/WorkProjects/WorkProject.vue'
+import WorkProjectFull from '@/components/WorkProjects/WorkProjectFull.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 
 const workProjects = ref<WorkProjectType[]>([])
@@ -37,9 +38,8 @@ function fetchWorkProjects(): void {
               <slide
                   v-for="project in workProjects"
                   :key="project.title"
-                  class="min-h-[380px]"
               >
-                  <work-project :project="project" />
+                  <work-project-full :project="project" />
               </slide>
           </carousel>
 
@@ -53,7 +53,6 @@ function fetchWorkProjects(): void {
             <slide
                 v-for="(project, i) in workProjects"
                 :key="project.title"
-                class="min-h-[300px]"
             >
                 <div
                     class="mx-2"
