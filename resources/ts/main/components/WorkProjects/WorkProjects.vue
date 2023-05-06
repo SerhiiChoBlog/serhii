@@ -3,7 +3,7 @@ import type { WorkProject as WorkProjectType } from '@shared/types'
 import { onMounted, ref } from 'vue'
 import handleServerError from '@shared/modules/handleServerError'
 import axios from 'axios'
-import { Carousel, Slide } from 'vue3-carousel'
+import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import WorkProject from '@/components/WorkProjects/WorkProject.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
@@ -34,7 +34,11 @@ function fetchWorkProjects(): void {
 
     <div v-else class="py-7">
         <carousel :items-to-show="1" :wrap-around="false" v-model="currSlide">
-              <slide v-for="project in workProjects" :key="project.title">
+              <slide
+                  v-for="project in workProjects"
+                  :key="project.title"
+                  class="min-h-[380px]"
+              >
                   <work-project :project="project" />
               </slide>
           </carousel>
@@ -46,7 +50,11 @@ function fetchWorkProjects(): void {
               ref="carousel"
               class="mt-5"
           >
-            <slide v-for="(project, i) in workProjects" :key="project.title" class="min-h-[300px]">
+            <slide
+                v-for="(project, i) in workProjects"
+                :key="project.title"
+                class="min-h-[300px]"
+            >
                 <div
                     class="mx-2"
                     @click="currSlide = i"
@@ -54,6 +62,11 @@ function fetchWorkProjects(): void {
                     <work-project :project="project" />
                 </div>
             </slide>
+
+              <template #addons>
+                  <navigation />
+                  <pagination />
+              </template>
         </carousel>
     </div>
 </template>
