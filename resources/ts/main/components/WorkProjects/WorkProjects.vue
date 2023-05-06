@@ -33,14 +33,13 @@ function fetchWorkProjects(): void {
     <spinner v-if="loading" />
 
     <div v-else class="py-7">
-        <carousel id="gallery" :items-to-show="1" :wrap-around="false" v-model="currSlide">
+        <carousel :items-to-show="1" :wrap-around="false" v-model="currSlide">
               <slide v-for="project in workProjects" :key="project.title">
                   <work-project :project="project" />
               </slide>
           </carousel>
 
           <carousel
-              id="thumbnails"
               :items-to-show="4"
               :wrap-around="true"
               v-model="currSlide"
