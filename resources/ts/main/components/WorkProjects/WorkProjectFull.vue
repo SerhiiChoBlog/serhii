@@ -13,7 +13,7 @@ const { project } = defineProps<Props>()
         <img
             :src="project.image_uri"
             :alt="project.title"
-            class="rounded-lg shadow-lg"
+            class="rounded-2xl shadow-lg max-w-xl"
             width="800"
             height="476"
         />
@@ -27,7 +27,7 @@ const { project } = defineProps<Props>()
                 {{ project.content }}
             </h3>
 
-            <div class="flex gap-3 justify-center mt-3">
+            <div class="flex gap-3 justify-center mt-5">
                 <img
                     v-for="tech in project.technologies"
                     :key="tech"
@@ -38,6 +38,15 @@ const { project } = defineProps<Props>()
                     class="w-8 h-8 filter"
                 />
             </div>
+
+            <a
+                v-if="project.link"
+                :href="project.link"
+                target="_blank"
+                class="border border-border px-6 py-2 rounded-lg mt-6 block"
+            >
+                Visit website
+            </a>
         </div>
     </div>
 </template>

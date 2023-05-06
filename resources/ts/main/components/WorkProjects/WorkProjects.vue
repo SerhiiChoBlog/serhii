@@ -33,7 +33,7 @@ function fetchWorkProjects(): void {
 <template>
     <spinner v-if="loading" />
 
-    <div v-else class="py-7">
+    <div v-else>
         <carousel :items-to-show="1" :wrap-around="false" v-model="currSlide">
               <slide
                   v-for="project in workProjects"
@@ -48,7 +48,7 @@ function fetchWorkProjects(): void {
               :wrap-around="true"
               v-model="currSlide"
               ref="carousel"
-              class="mt-5"
+              class="mt-8"
           >
             <slide
                 v-for="(project, i) in workProjects"
@@ -64,7 +64,7 @@ function fetchWorkProjects(): void {
 
               <template #addons>
                   <navigation />
-                  <pagination />
+                  <pagination class="!mt-8" />
               </template>
         </carousel>
     </div>
