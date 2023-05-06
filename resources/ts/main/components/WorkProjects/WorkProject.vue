@@ -9,18 +9,11 @@ const { project } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="first:ml-0 relative before:left-0 before:absolute before:right-0 before:h-3 before:bg-[#282829] before:top-[-11px] before:rounded-t-lg">
-        <img
-            src="/storage/tools/mac-buttons.webp"
-            class="absolute top-[-8px] left-2"
-            width="18"
-            alt="mac buttons"
-        />
-
+    <div>
         <img
             :src="project.image_uri"
             :alt="project.title"
-            class="rounded-b-lg shadow-[-10px_10px_5px_rgba(0,0,0,.05)]"
+            class="rounded-lg shadow-[0_0_10px_rgba(0,0,0,.2)]"
             width="350"
             height="251"
         />
