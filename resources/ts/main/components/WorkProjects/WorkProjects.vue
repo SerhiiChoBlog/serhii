@@ -48,7 +48,7 @@ function fetchWorkProjects(): void {
               :wrap-around="false"
               v-model="currSlide"
               ref="carousel"
-              class="mt-8"
+              class="mt-8 hidden lg:block"
           >
             <slide
                 v-for="(project, i) in workProjects"
