@@ -3,7 +3,7 @@ import type { WorkProject as WorkProjectType } from '@shared/types'
 import { onMounted, ref } from 'vue'
 import handleServerError from '@shared/modules/handleServerError'
 import axios from 'axios'
-import { Carousel, Slide } from 'vue3-carousel'
+import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import WorkProject from '@/components/WorkProjects/WorkProject.vue'
 import WorkProjectFull from '@/components/WorkProjects/WorkProjectFull.vue'
@@ -41,6 +41,12 @@ function fetchWorkProjects(): void {
               >
                   <work-project-full :project="project" />
               </slide>
+
+            <template #addons>
+                <navigation
+                    class="[&>svg]:bg-white [&>svg]:rounded-lg [&>svg]:border [&>svg]:border-gray-400 [&>svg]:opacity-80 [&>svg]:scale-125"
+                />
+            </template>
           </carousel>
 
           <carousel
