@@ -10,11 +10,11 @@ const { project } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="flex items-center justify-center gap-8">
+    <div class="flex flex-col lg:flex-row items-center justify-center gap-8">
         <img
             :src="project.image_uri"
             :alt="project.title"
-            class="rounded-2xl border-2 border-border max-w-lg mt-2"
+            class="rounded-2xl border-2 border-border w-full max-w-lg mt-2"
             width="800"
             height="476"
         />
@@ -33,7 +33,7 @@ const { project } = defineProps<Props>()
 
                 <p v-html="project.content" class="text-font-second text-[.9em] [&>p]:mb-3 [&>p:last-child]:mb-0"></p>
 
-                <div class="flex gap-4 pt-4">
+                <div class="flex flex-wrap gap-4 pt-4">
                     <tip
                         v-for="tech in project.technologies"
                         :key="tech"
