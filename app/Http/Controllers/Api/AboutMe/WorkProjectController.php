@@ -19,6 +19,7 @@ class WorkProjectController extends Controller
     public const VUE = 'vue';
     public const TAILWIND = 'tailwind';
     public const SASS = 'sass';
+    public const PHPUNIT = 'phpunit';
 
     public function __invoke(): JsonResponse
     {
@@ -51,7 +52,7 @@ class WorkProjectController extends Controller
                 <p>It's an SPA application with Laravel on the backend and Vue with TailwindCSS on the frontend. The best part of this project for me was working with VuePrime UI library and Authorization system with Laravel Sanctum.</p>
                 HTML,
                 link: 'https://mijn.nalog.nl/',
-                technologies: [self::VUE, self::TS, self::PHP, self::LARAVEL, self::TAILWIND],
+                technologies: [self::VUE, self::TS, self::PHP, self::LARAVEL, self::TAILWIND, self::PHPUNIT],
             ),
             new WorkProject(
                 image_uri: '/storage/tools/site-zoo.webp',
@@ -62,18 +63,18 @@ class WorkProjectController extends Controller
                 <p>I am responsible for the website and backend API, while 2 of my colleagues are responsible for the mobile applications. The best part of this project for me was working with other developers. I learned a lot about teamwork, communication and how it is important to always keep up to date in the API documentation.</p>
                 HTML,
                 link: 'https://zoo-zoo-zoo.com.ua/',
-                technologies: [self::VUE, self::TS, self::PHP, self::LARAVEL, self::TAILWIND],
+                technologies: [self::VUE, self::TS, self::PHP, self::LARAVEL, self::TAILWIND, self::PHPUNIT],
             ),
             new WorkProject(
                 image_uri: '/storage/tools/blitz.webp',
                 title: 'Blitz',
-                subtitle: 'Client cabinet for a Dutch tax company',
+                subtitle: 'Web application for offering legal consultations',
                 content: <<<HTML
-                <p></p>
+                <p>Amazing project</p>
                 <p></p>
                 HTML,
                 link: 'https://blitz.nalog.nl/',
-                technologies: [self::VUE, self::TS, self::PHP, self::LARAVEL, self::TAILWIND],
+                technologies: [self::VUE, self::TS, self::PHP, self::LARAVEL, self::TAILWIND, self::PHPUNIT],
             ),
             new WorkProject(
                 image_uri: '/storage/tools/site-olexiy.webp',
