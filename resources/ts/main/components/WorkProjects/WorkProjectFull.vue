@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { WorkProject } from '@shared/types'
+import Tip from '@shared/components/Tip.vue'
 
 type Props = {
     project: WorkProject
@@ -32,16 +33,20 @@ const { project } = defineProps<Props>()
 
                 <p v-html="project.content" class="text-font-second text-[.9em] [&>p]:mb-3 [&>p:last-child]:mb-0"></p>
 
-                <div class="flex gap-5 pt-4">
-                    <img
+                <div class="flex gap-4 pt-4">
+                    <tip
                         v-for="tech in project.technologies"
                         :key="tech"
-                        :src="`/storage/languages/${tech}.webp`"
-                        :alt="tech"
-                        width="80"
-                        height="80"
-                        class="w-8 h-8 filter"
-                    />
+                        :content="tech"
+                    >
+                        <img
+                            :src="`/storage/languages/${tech}.webp`"
+                            :alt="tech"
+                            width="80"
+                            height="80"
+                            class="w-8 h-8 filter"
+                        />
+                    </tip>
 
                     <a
                         v-if="project.link"
