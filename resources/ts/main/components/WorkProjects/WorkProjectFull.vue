@@ -10,11 +10,11 @@ const { project } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="flex flex-col lg:flex-row items-center justify-center gap-8">
+    <div class="flex flex-col lg:flex-row items-center justify-center gap-8 px-2 md:px-20">
         <img
             :src="project.image_uri"
             :alt="project.title"
-            class="rounded-2xl border-2 border-border w-full max-w-lg mt-2"
+            class="rounded-2xl border-2 border-border w-full max-w-lg"
             width="800"
             height="476"
         />
