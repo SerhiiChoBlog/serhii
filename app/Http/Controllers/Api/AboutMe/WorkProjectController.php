@@ -70,8 +70,8 @@ class WorkProjectController extends Controller
                 title: 'Blitz',
                 subtitle: 'Web application for offering legal consultations',
                 content: <<<HTML
-                <p>Amazing project</p>
-                <p></p>
+                <p>Amazing project for the Nalog.NL company that I was working for many years. It's a Laravel/Vue application that allows the company to offer legal consultations to their clients. Clients have a quick and easy way to book a consultation with a lawyer or any other specialist of the company.</p>
+                <p>The best part of this project for me was working with our small IT team that consisted of 4 developers at that time. It's been a big honor for me to work on such a wonderful project with Ihor and Oleksandr, who were a part of the Blitz project and were helping me a lot</p>
                 HTML,
                 link: 'https://blitz.nalog.nl/',
                 technologies: [self::VUE, self::TS, self::PHP, self::LARAVEL, self::TAILWIND, self::PHPUNIT],
