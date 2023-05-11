@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Chapter as ChapterType } from '@shared/types'
 import { computed } from 'vue'
-import ChevronRight from '@shared/components/Icons/ChevronRight.vue'
+import ChevronRightIcon from '@shared/components/Icons/ChevronRightIcon.vue'
 
 interface Props {
     headers: NodeListOf<HTMLElement>
@@ -37,7 +37,7 @@ const number = computed<string>(() => {
     >
         <span class="text-black dark:text-white" aria-hidden="true">
             <span v-if="number" class="mr-1">{{ number }}</span>
-            <span v-else><chevron-right class="w-4 h-4" /></span>
+            <span v-else><chevron-right-icon class="w-4 h-4" /></span>
         </span>
 
         <span>{{ title }}</span>
