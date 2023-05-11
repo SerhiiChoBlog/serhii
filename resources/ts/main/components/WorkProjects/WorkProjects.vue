@@ -38,6 +38,7 @@ function fetchWorkProjects(): void {
               <slide
                   v-for="project in workProjects"
                   :key="project.title"
+                  class="!items-start"
               >
                   <work-project-full :project="project" />
               </slide>
