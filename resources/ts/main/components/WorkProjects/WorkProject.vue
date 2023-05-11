@@ -9,11 +9,11 @@ const { project } = defineProps<Props>()
 </script>
 
 <template>
-    <div>
+    <div class="relative">
         <img
             :src="project.image_uri"
             :alt="project.title"
-            class="rounded-lg border-2 border-border"
+            class="rounded-lg border-[5px] border-gray-300 group-only:border-yellow-400"
             width="350"
             height="251"
         />
