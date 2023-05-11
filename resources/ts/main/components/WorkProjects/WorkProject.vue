@@ -27,7 +27,7 @@ const { project } = defineProps<Props>()
             <div class="w-20 h-1 bg-gray-300 group-only:bg-gray-800 mx-auto"></div>
         </div>
 
-        <h2 class="text-xl text-font-second text-center mt-3">
+        <h2 class="text-xl text-font-second text-center mt-2">
             {{ project.title }}
         </h2>
     </div>
