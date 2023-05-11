@@ -61,10 +61,12 @@ function fetchWorkProjects(): void {
                 :key="project.title"
             >
                 <div
-                    class="mx-2"
+                    class="md:mx-1 outline-2 outline-offset-2 cursor-pointer"
+                    :class="{ 'group': currSlide === i }"
                     @click="currSlide = i"
                 >
                     <work-project :project="project" />
+
                 </div>
             </slide>
         </carousel>
