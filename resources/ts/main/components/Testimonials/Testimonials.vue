@@ -2,7 +2,7 @@
 import type { Testimonial as TestimonialType } from '@shared/types'
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
-import handleError from '@admin/modules/handleError'
+import handleServerError from '@shared/modules/handleServerError'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import Testimonial from '@/components/Testimonials/Testimonial.vue'
 import Modal from '@shared/components/Modal.vue'
@@ -20,9 +20,9 @@ function fetchTestimonials(): void {
 
     loading.value = true
 
-    axios.get<TestimonialType[]>('/api/testimonials')
+    axios.get<TestimonialType[]>('/api/about-me/testimonials')
         .then(rep => testimonials.value = rep.data)
-        .catch(handleError)
+        .catch(handleServerError)
         .finally(() => loading.value = false)
 }
 

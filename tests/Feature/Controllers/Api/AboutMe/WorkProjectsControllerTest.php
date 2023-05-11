@@ -2,26 +2,27 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Controllers\Api;
+namespace Tests\Feature\Controllers\Api\AboutMe;
 
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
-class TestimonialControllerTest extends TestCase
+class WorkProjectsControllerTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    public function testItReturnsTestimonials(): void
+    public function testItReturnsWorkProjects(): void
     {
-        $this->getJson('/api/testimonials')
+        $this->getJson('/api/about-me/work-projects')
             ->assertOk()
             ->assertJsonStructure([
                 '*' => [
                     'image_uri',
-                    'name',
-                    'role',
+                    'title',
+                    'subtitle',
                     'content',
-                    'short',
+                    'link',
+                    'technologies',
                 ],
             ]);
     }
