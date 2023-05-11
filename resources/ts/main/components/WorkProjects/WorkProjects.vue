@@ -44,7 +44,7 @@ function fetchWorkProjects(): void {
 
             <template #addons>
                 <navigation
-                    class="[&>svg]:bg-white [&>svg]:rounded-lg [&>svg]:border [&>svg]:border-gray-400 [&>svg]:opacity-80 [&>svg]:scale-125"
+                    class="!hidden md:!block [&>svg]:bg-white [&>svg]:rounded-lg [&>svg]:border [&>svg]:border-gray-400 [&>svg]:opacity-80 [&>svg]:scale-125"
                 />
             </template>
           </carousel>
@@ -61,10 +61,10 @@ function fetchWorkProjects(): void {
                 :key="project.title"
             >
                 <div
-                    class="md:mx-1 outline-2 outline-offset-2 cursor-pointer transition-opacity"
+                    class="md:mx-1 outline-2 outline-offset-2 cursor-pointer transition-all duration-500"
                     :class="{
                         'group': currSlide === i,
-                        'opacity-70': currSlide !== i,
+                        'opacity-70 hover:opacity-100': currSlide !== i,
                     }"
                     @click="currSlide = i"
                 >

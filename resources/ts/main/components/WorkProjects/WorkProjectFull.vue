@@ -10,28 +10,35 @@ const { project } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="flex flex-col lg:flex-row items-center justify-center gap-8 px-2 md:px-20">
+    <div class="flex flex-col lg:flex-row items-center justify-center gap-4 px-2 md:px-20">
         <img
             :src="project.image_uri"
             :alt="project.title"
-            class="rounded-2xl border-2 border-border w-full max-w-lg"
+            class="rounded-2xl border-2 border-border w-full lg:max-w-[400px]"
             width="800"
             height="476"
         />
 
+        <h3 class="md:hidden text-center text-font-second opacity-80 uppercase text-sm">
+            Swipe to see more
+        </h3>
+
         <div class="text-left">
             <div class="space-y-1">
-                <h2 class="text-4xl">
+                <h2 class="text-2xl md:text-4xl">
                     {{ project.title }}
                 </h2>
 
-                <h3 class="text-font-second text-xl">
+                <h3 class="text-font-second text-lg md:text-xl">
                     {{ project.subtitle }}
                 </h3>
 
                 <hr class="border-border" />
 
-                <p v-html="project.content" class="text-font-second text-[.9em] [&>p]:mb-3 [&>p:last-child]:mb-0"></p>
+                <p
+                    v-html="project.content"
+                    class="text-font-second text-[.9em] [&>p]:mb-3 [&>p:last-child]:mb-0"
+                ></p>
 
                 <div class="flex flex-wrap gap-4 pt-4">
                     <tip

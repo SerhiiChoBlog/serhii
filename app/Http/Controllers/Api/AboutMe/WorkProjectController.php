@@ -81,8 +81,8 @@ class WorkProjectController extends Controller
                 title: 'Olexiy Chornenkyi',
                 subtitle: 'Personal website for Android Developer',
                 content: <<<HTML
-                <p>Personal portfolio website for a skilled Android Developer and a brother of mine. The website is a React application with TailwindCSS and TypeScript. It contains multiple sections, including a portfolio and testimonials sections.</p>
-                <p>🏆 The best part of this project is that I was able to work with my brother and help him to create an SPA that he wanted to have to represent himself as a professional Android Developer. I'm glad he loves it.</p>
+                <p>Personal portfolio website for a skilled Android Developer and a brother of mine. The website is a React application with TailwindCSS and TypeScript. It contains multiple sections, including a portfolio, testimonials and personal skills. It uses many parallax effects and animations that come with the <strong>react-scroll-parallax</strong> library.</p>
+                <p>🏆 The best part of this project is that I was able to work with my brother and help him to create an SPA that he wanted to have to represent himself as a professional Android Developer. We work with Olexiy together on several projects where I'm mostly responsible for WEB apps.</p>
                 HTML,
                 link: 'https://jiskelo.dev/',
                 technologies: [self::REACT, self::TS, self::TAILWIND],
