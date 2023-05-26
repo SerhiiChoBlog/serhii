@@ -1,4 +1,5 @@
-<svg role="status"
+<svg
+    role="status"
     class="hidden w-4 h-4 mr-3 mt-[-1px] text-gray-300 animate-spin"
     viewBox="0 0 100 101"
     fill="none"
