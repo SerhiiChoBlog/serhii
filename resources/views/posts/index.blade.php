@@ -2,15 +2,16 @@
     use App\Models\Tag;
     use Illuminate\Pagination\LengthAwarePaginator;
     use App\Models\Post;
+    use App\Models\Series;
 
     /**
      * @var LengthAwarePaginator<Post> $posts
      * @var Post $post
      * @var Tag|null $tag
+     * @var Series|null $series
      */
 
     $title = $tag->title ?? 'Blog for web developers';
-    $series = $posts->isEmpty() ? null : $posts->first()->series->first();
     $header_style = $series ? "background: linear-gradient(90deg, {$series->color_from} 0%, {$series->color_to} 100%)" : '';
 @endphp
 

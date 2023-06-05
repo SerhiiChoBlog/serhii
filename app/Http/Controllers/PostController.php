@@ -34,9 +34,12 @@ class PostController extends Controller
             $query = $query->whereHas('tags', fn (Builder $q) => $q->where('name', $request->tag));
         }
 
+        $posts = $query->paginate(15);
+
         return view('posts.index', [
-            'posts' => $query->paginate(15),
+            'posts' => $posts,
             'tag' => $request->tag ? Tag::query()->where('name', $request->tag)->first() : null,
+            'series' => $posts->isEmpty() ? null : $posts->first()->series->first(),
         ]);
     }
 
