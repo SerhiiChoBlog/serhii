@@ -24,7 +24,7 @@
                         <span class="font-black text-3xl">{{ $user->name }}</span>
 
                         @if ($user->id === 1)
-                            <small class="text-lg tracking-wider ml-1.5  opacity-80">(admin)</small>
+                            <small class="text-lg tracking-wider ml-1.5 opacity-80">(admin)</small>
                         @endif
                     </h1>
                     <h2 class="text-lg text-font-second">{{ '@' . $user->slug }}</h2>
@@ -58,9 +58,11 @@
                     <x-users.profile-row title="Joined">
                         {{ TimeAgo::trans($user->created_at) }}
                     </x-users.profile-row>
+
                     <x-users.profile-row title="Comments">
                         💬 {{ $user->comments_count ?? 0 }}
                     </x-users.profile-row>
+
                     <x-users.profile-row title="Likes articles">
                         ❤️ {{ $user->post_likes_count ?? 0 }}
                     </x-users.profile-row>
