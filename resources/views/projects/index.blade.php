@@ -42,7 +42,7 @@
                                 {{ $project['description'] }}
                             </p>
 
-                            <div class="absolute bottom-3 inset-x-6 flex justify-between items-center text-md flex items-center text-gray-500">
+                            <div class="absolute bottom-3 inset-x-6 flex justify-between items-center text-md text-gray-500">
                                 <div class="flex items-center gap-1">
                                     @if ($project['has_homepage'])
                                         <x-icons.external class="w-4 h-4"/>
