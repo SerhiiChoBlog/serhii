@@ -72,7 +72,7 @@
                     <h2 class="text-3xl">Last activity</h2>
 
                     <div class="my-4">
-                        <feed slug="{{ $user->slug }}"></feed>
+                    <feed slug="{{ $user->slug }}"></feed>
                     </div>
                 </div>
             </div>
