@@ -39,7 +39,7 @@ class PostController extends Controller
         return view('posts.index', [
             'posts' => $posts,
             'tag' => $request->tag ? Tag::query()->where('name', $request->tag)->first() : null,
-            'series' => $posts->isEmpty() ? null : $posts->first()->series->first(),
+            'series' => $posts->isEmpty() ? null : $posts->first()?->series?->first(),
         ]);
     }
 
