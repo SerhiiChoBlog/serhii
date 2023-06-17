@@ -21,7 +21,8 @@ class PostController extends Controller
         $query = Post::with('tags:id,name,color,title')
             ->with([
                 'series' => function (BelongsToMany $q) {
-                    return $q->select('id', 'title', 'slug', 'color_from', 'color_to')->withCount('posts');
+                    return $q->select('id', 'title', 'slug', 'color_from', 'color_to')
+                        ->withCount('posts');
                 },
             ])
             ->select('id', 'slug', 'title', 'intro', 'image_sm', 'image_xs', 'created_at', 'read_time')
