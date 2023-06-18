@@ -33,11 +33,11 @@ use Illuminate\Support\Collection;
  * @property int|null $post_views_count
  * @property int|null $social_shares_count
  * @property int|null $comments_shares_count
+ * @property int|null $post_likes_count
  * @property int $read_time
  * @property Collection<int, Series> $series
  * @property Collection<int, PostLike> $postLikes
  * @property Video|null $video
- * @property int|null $post_likes_count
  * @property array<int, array<int, string>>|null $social
  * @property string $pretty_created_at
  * @property Carbon $created_at
