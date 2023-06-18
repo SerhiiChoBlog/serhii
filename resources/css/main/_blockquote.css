@@ -18,6 +18,10 @@
     @apply content-['—'] mr-1 text-gray-500;
 }
 
+.post-content blockquote li {
+    @apply not-italic text-lg;
+}
+
 .post-content blockquote p:first-child::before {
     @apply content-['“'] mr-1.5;
 }
