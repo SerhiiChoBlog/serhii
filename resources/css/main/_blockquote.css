@@ -6,24 +6,24 @@
     @apply leading-7 mb-5 font-post mt-0 text-font text-lg not-italic relative;
 }
 .post-content blockquote p:first-child::before,
-.post-content blockquote p:first-child::after {
+.post-content blockquote p:last-of-type::after {
     @apply text-4xl text-gray-500 dark:text-gray-300 leading-[0] inline-block translate-y-2;
 }
 
-.post-content blockquote strong:first-child::before {
-    @apply content-['—'] mr-2 text-gray-500;
+.post-content blockquote h6 {
+    @apply not-italic opacity-80 leading-5 text-[.8em];
+}
+
+.post-content blockquote h6::before {
+    @apply content-['—'] mr-1 text-gray-500;
 }
 
 .post-content blockquote p:first-child::before {
     @apply content-['“'] mr-1.5;
 }
 
-.post-content blockquote p:first-child::after {
+.post-content blockquote p:last-of-type::after {
     @apply content-['”'] ml-1.5;
-}
-
-.post-content blockquote p:last-of-type {
-    @apply mb-0;
 }
 
 .post-content blockquote img,
