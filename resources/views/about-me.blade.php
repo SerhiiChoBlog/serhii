@@ -69,6 +69,13 @@
                                 understand it.
                             </p>
 
+                            <p>
+                                When I am working on a product, my life becomes this product. If the client who hires me wants me
+                                in his team, his product becomes the main focus of my life. This is why it's important to work on
+                                something miningful, something that you can be proud of. I'm always trying to do my best and make
+                                the product as good as possible. I'm always trying to find the best solution for the problem.
+                            </p>
+
                             <h2>Blog</h2>
 
                             <p>
