@@ -61,7 +61,6 @@
                                 Websites that I'm working on are usually have the highest rate for the <strong>Lighthouse</strong>
                                 tests or <strong>PageSpeed Insights</strong>. I always try making a product as <strong>SEO</strong> friendly as
                                 possible on developer side.
-
                             </p>
 
                             <p>
