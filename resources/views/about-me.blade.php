@@ -79,7 +79,7 @@
                             <h2>Blog</h2>
 
                             <p>
-                                In my free from coding time, I enjoy writing posts for my
+                                In my spare time, I enjoy writing articles for my
                                 <a href="/posts" rel="noreferrer" target="_blank" title="Link to a blog">blog</a>
                                 on programming related subjects and learn new things. I mostly share what I've learned along
                                 the way and things that can help other developers strengthen their skills.
