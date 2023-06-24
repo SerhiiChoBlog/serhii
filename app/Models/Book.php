@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Illuminate\Support\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * @property-read int $id
  * @property string $title
  * @property int $rate
  * @property string $image
+ * @property bool $is_reading
  * @property Carbon $read_at
  */
 class Book extends Model
