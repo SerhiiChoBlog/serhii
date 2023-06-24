@@ -19,6 +19,7 @@ import Series from '@admin/views/Series/Series.vue'
 import CreateSeries from '@admin/views/Series/CreateSeries.vue'
 import EditSeries from '@admin/views/Series/EditSeries.vue'
 import Books from '@admin/views/Books/Books.vue'
+import EditBook from '@admin/views/Books/EditBook.vue'
 
 const routes: RouteRecordRaw[] = [
     { path: '/admin/dashboard', name: 'dashboard', component: Dashboard },
@@ -40,6 +41,7 @@ const routes: RouteRecordRaw[] = [
     { path: '/admin/series/create', name: 'series-create', component: CreateSeries },
     { path: '/admin/series/:id/edit', name: 'series-edit', component: EditSeries },
     { path: '/admin/books', name: 'books', component: Books },
+    { path: '/admin/books/:slug/edit', name: 'books-edit', component: EditBook },
     { path: '/:pathMatch(.*)', name: 'not-found', component: NotFound },
 ]
 
