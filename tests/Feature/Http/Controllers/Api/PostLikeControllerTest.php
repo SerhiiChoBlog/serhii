@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Controllers\Api;
+namespace Tests\Feature\Http\Controllers\Api;
 
 use App\Enums\FeedType;
 use App\Models\Feed;
