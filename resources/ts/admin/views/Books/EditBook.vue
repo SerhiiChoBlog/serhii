@@ -29,7 +29,24 @@ function saveBook(): void {
 
     loading.value = true
 
-    // todo: save here
+    const data = new FormData()
+
+    data.append('title', book.value.title)
+    data.append('_method', 'put')
+
+    const image = document.querySelector<HTMLInputElement>('#post-image-input')
+
+    if (image && image.files && image.files.length > 0) {
+        data.append('image', image.files[0])
+    }
+
+    const params = {
+        headers: { 'Content-Type': 'multipart/form-data' },
+    }
+
+    axios.post(`/admin/ajax/books/${route.params.slug}`, data, params)
+        .catch(handleError)
+        .finally(() => loading.value = false)
 }
 </script>
 
@@ -55,6 +72,7 @@ function saveBook(): void {
                                     name="title"
                                     :length="190"
                                     :value="book.title"
+                                    @changed="book.title = $event"
                                 >
                                     Title
                                 </FormInput>
@@ -85,10 +103,12 @@ function saveBook(): void {
                             </div>
                         </div>
 
-                        <FormImage
-                            :uri="`storage/books/${book.image}`"
-                            defaultUri="/storage/books/default.jpg"
-                        />
+                        <div class="w-[376px]">
+                            <FormImage
+                                :uri="`storage/books/${book.image}`"
+                                defaultUri="/storage/books/default.jpg"
+                            />
+                        </div>
                     </div>
                 </form>
             </div>
