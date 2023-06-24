@@ -13,6 +13,9 @@ class BookControllerTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
+    private const BOOKS_URI = '/admin/ajax/books';
+    private const BOOK_UPDATE_TITLE_URI = '/admin/ajax/books/%s/update';
+
     private User $admin;
 
     public function setUp(): void
@@ -24,7 +27,7 @@ class BookControllerTest extends TestCase
     public function testWeCanGetCorrectResponseFromBooks(): void
     {
         $this->actingAs($this->admin, 'admin')
-            ->get(route('admin.books.index'))
+            ->get(self::BOOKS_URI)
             ->assertOk();
     }
 
@@ -33,8 +36,40 @@ class BookControllerTest extends TestCase
         Book::factory()->count(2)->create();
 
         $response = $this->actingAs($this->admin, 'admin')
-            ->get(route('admin.books.index'));
+            ->get(self::BOOKS_URI);
 
         $response->assertJsonCount(2, 'data');
+    }
+
+    public function testWeCanUpdateBookTitle(): void
+    {
+        $book = Book::factory()->create();
+
+        $uri = sprintf(self::BOOK_UPDATE_TITLE_URI, $book->slug);
+
+        $this->actingAs($this->admin, 'admin')
+            ->put($uri, [
+                'title' => 'New Title',
+                'slug' => $book->slug,
+            ])
+            ->assertOk();
+
+        $this->assertDatabaseHas('books', [
+            'title' => 'New Title',
+        ]);
+    }
+
+    public function testCannotUpdateBookWithShortTitle(): void
+    {
+        $book = Book::factory()->create();
+
+        $uri = sprintf(self::BOOK_UPDATE_TITLE_URI, $book->slug);
+
+        $this->actingAs($this->admin, 'admin')
+            ->put($uri, [
+                'title' => 'New',
+                'slug' => $book->slug,
+            ])
+            ->assertSessionHasErrors('title');
     }
 }

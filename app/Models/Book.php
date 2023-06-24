@@ -14,6 +14,7 @@ use Illuminate\Support\Carbon;
  * @property int $rate
  * @property string $image
  * @property bool $is_reading
+ * @property string $slug
  * @property Carbon $read_at
  */
 class Book extends Model
@@ -28,4 +29,9 @@ class Book extends Model
     protected $guarded = ['id'];
 
     public $timestamps = false;
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 }

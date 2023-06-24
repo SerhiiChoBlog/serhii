@@ -15,6 +15,16 @@ export type Tag = {
     }
 }
 
+export type Book = {
+    id: number
+    title: string
+    rate: number
+    image: string
+    is_reading: boolean
+    slug: string
+    read_at: string
+}
+
 export type PostContentImage = {
     id: number
     post_id: number
