@@ -24,4 +24,9 @@ class BookController extends Controller
     {
         $book->update($request->validated());
     }
+
+    public function edit(Book $book): Book
+    {
+        return $book;
+    }
 }

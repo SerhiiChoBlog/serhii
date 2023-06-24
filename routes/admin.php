@@ -33,6 +33,7 @@ Route::prefix('ajax')->name('admin.')->group(function () {
 
     Route::get('books', [BookController::class, 'index']);
     Route::put('books/{book}/update', [BookController::class, 'update']);
+    Route::get('books/{book}/edit', [BookController::class, 'edit']);
 
     Route::get('series/names', [SeriesController::class, 'names']);
     Route::resource('series', SeriesController::class)->except('show', 'create');
