@@ -5,6 +5,7 @@ import { onMounted, ref } from 'vue'
 import handleError from '@admin/modules/handleError'
 import axios from 'axios'
 import PageTitle from '@admin/components/PageTitle.vue'
+import IconButton from '@admin/components/Buttons/IconButton.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import DataTable from '@admin/components/DataTable/DataTable.vue'
@@ -49,7 +50,7 @@ function fetchBooks(): void {
             <DataTable v-else>
                 <template #head>
                     <HeadDetail
-                        v-for="title in ['Image', 'Title', 'Reading']"
+                        v-for="title in ['Image', 'Title', 'Reading', 'Edit']"
                         :key="title"
                     >
                         {{ title }}
@@ -61,8 +62,8 @@ function fetchBooks(): void {
                         <img
                             :src="`/storage/books/${book.image}`"
                             :alt="`Logo of ${book.name}`"
-                            width="200"
-                            height="200"
+                            width="378"
+                            height="300"
                             class="h-20 w-auto rounded-sm"
                         />
                     </BodyDetail>
@@ -76,6 +77,13 @@ function fetchBooks(): void {
                     <BodyDetail>
                         <span v-if="book.is_reading" class="text-green-600">Yes</span>
                         <span v-else class="text-orange-500">No</span>
+                    </BodyDetail>
+                    <BodyDetail class="max-w-[50px]">
+                        <icon-button
+                            icon="fa-pen"
+                            :route="{ name: 'books-edit', params: { slug: book.slug } }"
+                            title="Edit books"
+                        />
                     </BodyDetail>
                 </BodyRow>
             </DataTable>
