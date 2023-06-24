@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Series\StoreRequest;
-use App\Http\Requests\Admin\Series\UpdateTitleRequest;
+use App\Http\Requests\Admin\Series\UpdateRequest;
 use App\Models\Series;
 use App\Utils\ImageProcessor;
 use Illuminate\Http\UploadedFile;
@@ -62,7 +62,7 @@ class SeriesController extends Controller
         return $series;
     }
 
-    public function update(UpdateTitleRequest $request, Series $series): void
+    public function update(UpdateRequest $request, Series $series): void
     {
         $data = $request->collect()->forget(['image', '_method']);
 

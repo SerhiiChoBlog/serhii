@@ -7,7 +7,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Books\UpdateRequest;
 use App\Models\Book;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class BookController extends Controller
 {
@@ -20,9 +23,25 @@ class BookController extends Controller
         return Book::query()->orderByDesc('is_reading')->paginate(20);
     }
 
-    public function update(Book $book, UpdateRequest $request): void
+    public function update(UpdateRequest $request, Book $book): void
     {
-        $book->update($request->validated());
+        /** @var UploadedFile|null $file */
+        $file = $request->file('image');
+        $data = collect($request->validated());
+
+        if ($file) {
+            $path = storage_path('app/public/books');
+            $ext = $file->getClientOriginalExtension();
+            $name = Str::slug($request->title) . ".{$ext}";
+
+            $data->put('image', $name);
+
+            Image::make($file)
+                ->resize(null, 500, fn ($c) => $c->aspectRatio())
+                ->save("{$path}/{$name}");
+        }
+
+        $book->update($data->toArray());
     }
 
     public function edit(Book $book): Book
