@@ -30,7 +30,9 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     Route::resource('social-shares', SocialShareController::class)->only('index');
     Route::resource('referrers', ReferrerController::class)->only('index');
     Route::resource('post-publications', PostPublicationController::class)->only('index');
-    Route::resource('books', BookController::class)->except('show', 'edit', 'create');
+
+    Route::get('books', [BookController::class, 'index']);
+    Route::put('books/{book}/update', [BookController::class, 'update']);
 
     Route::get('series/names', [SeriesController::class, 'names']);
     Route::resource('series', SeriesController::class)->except('show', 'create');

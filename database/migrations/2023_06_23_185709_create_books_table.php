@@ -14,6 +14,7 @@ return new class () extends Migration {
             $table->id();
             $table->string('title');
             $table->string('image')->default(Book::DEFAULT_IMAGE);
+            $table->string('slug');
             $table->unsignedTinyInteger('rate')->default(5);
             $table->boolean('is_reading')->default(false);
             $table->timestamp('read_at')->useCurrent();

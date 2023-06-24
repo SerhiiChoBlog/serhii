@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Books\UpdateRequest;
 use App\Models\Book;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -16,6 +17,11 @@ class BookController extends Controller
     public function index(): LengthAwarePaginator
     {
         /** @var LengthAwarePaginator<Book> */
-        return Book::query()->paginate(20);
+        return Book::query()->orderByDesc('is_reading')->paginate(20);
+    }
+
+    public function update(Book $book, UpdateRequest $request): void
+    {
+        $book->update($request->validated());
     }
 }

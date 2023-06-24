@@ -6,6 +6,7 @@ namespace Database\Factories;
 
 use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends Factory<Book>
@@ -19,8 +20,11 @@ class BookFactory extends Factory
      */
     public function definition(): array
     {
+        $title = $this->faker->sentence;
+
         return [
-            'title' => $this->faker->sentence,
+            'title' => $title,
+            'slug' => Str::slug($title),
         ];
     }
 }
