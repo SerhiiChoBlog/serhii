@@ -48,10 +48,7 @@ class BookControllerTest extends TestCase
         $uri = sprintf(self::BOOK_UPDATE_TITLE_URI, $book->slug);
 
         $this->actingAs($this->admin, 'admin')
-            ->put($uri, [
-                'title' => 'New Title',
-                'slug' => $book->slug,
-            ])
+            ->put($uri, ['title' => 'New Title'])
             ->assertOk();
 
         $this->assertDatabaseHas('books', [
@@ -66,10 +63,7 @@ class BookControllerTest extends TestCase
         $uri = sprintf(self::BOOK_UPDATE_TITLE_URI, $book->slug);
 
         $this->actingAs($this->admin, 'admin')
-            ->put($uri, [
-                'title' => 'New',
-                'slug' => $book->slug,
-            ])
+            ->put($uri, ['title' => 'New'])
             ->assertSessionHasErrors('title');
     }
 }
