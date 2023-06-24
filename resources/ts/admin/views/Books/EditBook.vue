@@ -46,7 +46,7 @@ function saveBook(): void {
                     <input type="hidden" name="tag_id">
 
                     <div class="flex flex-col lg:flex-row gap-10 mt-10">
-                        <div class="flex-1">
+                        <div class="flex-1 space-y-5">
                             <div>
                                 <FormInput
                                     type="text"
@@ -59,22 +59,36 @@ function saveBook(): void {
                                     Title
                                 </FormInput>
                             </div>
+
+                            <div class="flex gap-3">
+                                <MainButton>
+                                    <i v-if="loading" class="fas fa-spinner animate-spin mr-2"></i>
+                                    <i v-else class="fas fa-save mr-2"></i>
+                                    Save
+                                </MainButton>
+
+                                <MainButton
+                                    type="button"
+                                    class="bg-red-500 hover:bg-red-600"
+                                >
+                                    <i class="fas fa-trash mr-2"></i>
+                                    Delete
+                                </MainButton>
+
+                                <MainButton
+                                    href="/admin/books"
+                                    class="!bg-gray-600 hover:!bg-gray-700"
+                                >
+                                    <i class="fas fa-arrow-left mr-2"></i>
+                                    Back
+                                </MainButton>
+                            </div>
                         </div>
 
                         <FormImage
                             :uri="`storage/books/${book.image}`"
                             defaultUri="/storage/books/default.jpg"
                         />
-                    </div>
-
-                    <div>
-                        <div class="flex gap-2 fixed right-[20px] top-14 z-[9999] opacity-90">
-                            <MainButton class="bg-green-500 hover:bg-green-600">
-                                <i v-if="loading" class="fas fa-spinner animate-spin mr-2"></i>
-                                <i v-else class="fas fa-save mr-2"></i>
-                                Save
-                            </MainButton>
-                        </div>
                     </div>
                 </form>
             </div>
