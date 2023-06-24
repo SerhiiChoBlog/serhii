@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Controllers\Api\AboutMe;
+namespace Tests\Feature\Http\Controllers\Api\AboutMe;
 
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
