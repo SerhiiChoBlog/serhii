@@ -14,7 +14,8 @@ class BookControllerTest extends TestCase
     use LazilyRefreshDatabase;
 
     private const BOOKS_URI = '/admin/ajax/books';
-    private const BOOK_UPDATE_TITLE_URI = '/admin/ajax/books/%s/update';
+    private const BOOK_UPDATE_URI = '/admin/ajax/books/%s/update';
+    private const BOOK_EDIT_URI = '/admin/ajax/books/%s/edit';
 
     private User $admin;
 
@@ -45,7 +46,7 @@ class BookControllerTest extends TestCase
     {
         $book = Book::factory()->create();
 
-        $uri = sprintf(self::BOOK_UPDATE_TITLE_URI, $book->slug);
+        $uri = sprintf(self::BOOK_UPDATE_URI, $book->slug);
 
         $this->actingAs($this->admin, 'admin')
             ->put($uri, ['title' => 'New Title'])
@@ -60,10 +61,37 @@ class BookControllerTest extends TestCase
     {
         $book = Book::factory()->create();
 
-        $uri = sprintf(self::BOOK_UPDATE_TITLE_URI, $book->slug);
+        $uri = sprintf(self::BOOK_UPDATE_URI, $book->slug);
 
         $this->actingAs($this->admin, 'admin')
             ->put($uri, ['title' => 'New'])
             ->assertSessionHasErrors('title');
+    }
+
+    public function testCannotUpdateBookWithLongTitle(): void
+    {
+        $book = Book::factory()->create();
+
+        $uri = sprintf(self::BOOK_UPDATE_URI, $book->slug);
+
+        $this->actingAs($this->admin, 'admin')
+            ->put($uri, ['title' => str_repeat('a', 256)])
+            ->assertSessionHasErrors('title');
+    }
+
+    public function testWeCanGetSingleBookForEditing(): void
+    {
+        $book = Book::factory()->create();
+
+        $uri = sprintf(self::BOOK_EDIT_URI, $book->slug);
+
+        $response = $this->actingAs($this->admin, 'admin')->get($uri);
+
+        $response->assertOk();
+
+        $response->assertJsonFragment([
+            'title' => $book->title,
+            'slug' => $book->slug,
+        ]);
     }
 }
