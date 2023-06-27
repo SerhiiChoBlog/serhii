@@ -54,7 +54,6 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     });
 
     Route::prefix('keywords')->controller(KeywordController::class)->group(function () {
-        Route::get('search/{keyword}', 'search');
         Route::post('/', 'store');
         Route::delete('/', 'destroy');
     });

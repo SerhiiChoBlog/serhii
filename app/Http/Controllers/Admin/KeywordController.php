@@ -9,20 +9,9 @@ use App\Http\Requests\Admin\Keyword\DestroyRequest;
 use App\Http\Requests\Admin\Keyword\StoreRequest;
 use App\Models\Keyword;
 use App\Models\Post;
-use Illuminate\Support\Collection;
 
 class KeywordController extends Controller
 {
-    /**
-     * @return Collection<int, Keyword>
-     */
-    public function search(string $keyword): Collection
-    {
-        return Keyword::query()
-            ->where('name', 'like', "%{$keyword}%")
-            ->get();
-    }
-
     public function store(StoreRequest $request): void
     {
         /** @var Keyword|null $keyword */

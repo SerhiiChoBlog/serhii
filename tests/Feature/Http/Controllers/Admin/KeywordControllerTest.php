@@ -14,7 +14,6 @@ class KeywordControllerTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
-    private const SEARCH_URI = '/admin/ajax/keywords/search/';
     private const STORE_URI = '/admin/ajax/keywords';
     private const DELETE_URI = '/admin/ajax/keywords/';
 
@@ -24,42 +23,6 @@ class KeywordControllerTest extends TestCase
     {
         parent::setUp();
         $this->admin = $this->createAdmin();
-    }
-
-    public function testCanSearchKeyword(): void
-    {
-        $andrew_keyword = Keyword::factory()->create(['name' => 'andrew']);
-        Keyword::factory()->create(['name' => 'tate']);
-
-        $resp = $this->actingAs($this->admin, 'admin')
-            ->getJson(self::SEARCH_URI . 'andrew')
-            ->assertOk();
-
-        $resp->assertJson([[
-            'id' => $andrew_keyword->id,
-            'name' => $andrew_keyword->name,
-        ]]);
-    }
-
-    public function testSearchingKeywordReturnsMultipleKeywords(): void
-    {
-        $andrew_keyword = Keyword::factory()->create(['name' => 'andrewtate']);
-        $tristan_keyword = Keyword::factory()->create(['name' => 'tristantate']);
-
-        $resp = $this->actingAs($this->admin, 'admin')
-            ->getJson(self::SEARCH_URI . 'tate')
-            ->assertOk();
-
-        $resp->assertJson([
-            [
-                'id' => $andrew_keyword->id,
-                'name' => $andrew_keyword->name,
-            ],
-            [
-                'id' => $tristan_keyword->id,
-                'name' => $tristan_keyword->name,
-            ],
-        ]);
     }
 
     public function testCreatesKeywordWhenItDoesntAlreadyExist(): void
