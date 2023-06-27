@@ -6,6 +6,7 @@ import { ref } from 'vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import FormInput from '@admin/components/Form/FormInput.vue'
 import FormImage from '@admin/components/FormImage.vue'
+import BookAuthorSuggestions from '@admin/components/Books/BookAuthorSuggestions.vue'
 
 const loading = ref<boolean>(false)
 const form = ref<CreateBookFormElements | null>(null)
@@ -20,6 +21,7 @@ function saveBook(): void {
     const data = new FormData()
 
     data.append('title', form.value.title.value)
+    data.append('book_author_id', form.value.book_author_id.value)
 
     if (form.value.image.value) {
         data.append('image', form.value.image.value)
@@ -48,7 +50,7 @@ function saveBook(): void {
                     @submit.prevent="saveBook"
                     enctype="multipart/form-data"
                 >
-                    <input type="hidden" name="tag_id">
+                    <input type="hidden" name="book_author_id">
 
                     <div class="flex flex-col lg:flex-row gap-10 mt-10">
                         <div class="flex-1 space-y-7">
@@ -63,14 +65,9 @@ function saveBook(): void {
                                     Title
                                 </FormInput>
 
-                                <FormInput
-                                    type="text"
-                                    id="author"
-                                    placeholder="Enter the author"
-                                    name="author"
-                                >
-                                    Author
-                                </FormInput>
+                                <BookAuthorSuggestions
+                                    @changed=""
+                                />
                             </div>
 
                             <div class="flex gap-3">

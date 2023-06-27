@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Admin\Series;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Admin\Request;
 use JsonException;
 
 /**
@@ -13,13 +13,8 @@ use JsonException;
  * @property string $description
  * @property array<int, int> $posts
  */
-class UpdateRequest extends FormRequest
+class UpdateRequest extends Request
 {
-    public function authorize(): bool
-    {
-        return auth('admin')->check();
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
