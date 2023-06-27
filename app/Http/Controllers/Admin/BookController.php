@@ -23,11 +23,15 @@ class BookController extends Controller
         return Book::query()->orderByDesc('is_reading')->paginate(20);
     }
 
-    public function update(UpdateRequest $request, Book $book): void
+    public function store(UpdateRequest $request): void
     {
         /** @var UploadedFile|null $file */
         $file = $request->file('image');
-        $data = collect($request->validated());
+
+        /** @var array<string, mixed> $valid */
+        $valid = $request->validated();
+
+        $data = collect($valid);
 
         if ($file) {
             $path = storage_path('app/public/books');
@@ -41,11 +45,6 @@ class BookController extends Controller
                 ->save("{$path}/{$name}");
         }
 
-        $book->update($data->toArray());
-    }
-
-    public function edit(Book $book): Book
-    {
-        return $book;
+        Book::query()->create($data->toArray());
     }
 }

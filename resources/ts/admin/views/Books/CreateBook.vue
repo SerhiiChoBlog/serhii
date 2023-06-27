@@ -1,50 +1,35 @@
 <script setup lang="ts">
-import type { Book } from '@shared/types/models'
+import type { CreateBookFormElements } from '@shared/types'
 import axios from 'axios'
 import handleError from '@admin/modules/handleError'
-import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref } from 'vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import FormInput from '@admin/components/Form/FormInput.vue'
 import FormImage from '@admin/components/FormImage.vue'
 
-onMounted(() => fetchBook())
-
-const route = useRoute()
-const loading = ref<boolean>(true)
-const book = ref<Book | null>(null)
-
-function fetchBook(): void {
-    loading.value = true
-
-    axios.get<Book>(`/admin/ajax/books/${route.params.slug}/edit`)
-        .then(resp => book.value = resp.data)
-        .catch(handleError)
-        .finally(() => loading.value = false)
-}
+const loading = ref<boolean>(false)
+const form = ref<CreateBookFormElements | null>(null)
 
 function saveBook(): void {
-    if (!book.value)
+    if (!form.value) {
         return
+    }
 
     loading.value = true
 
     const data = new FormData()
 
-    data.append('title', book.value.title)
-    data.append('_method', 'put')
+    data.append('title', form.value.title.value)
 
-    const image = document.querySelector<HTMLInputElement>('#post-image-input')
-
-    if (image && image.files && image.files.length > 0) {
-        data.append('image', image.files[0])
+    if (form.value.image.value) {
+        data.append('image', form.value.image.value)
     }
 
     const params = {
         headers: { 'Content-Type': 'multipart/form-data' },
     }
 
-    axios.post(`/admin/ajax/books/${route.params.slug}`, data, params)
+    axios.post(`/admin/ajax/books`, data, params)
         .catch(handleError)
         .finally(() => loading.value = false)
 }
@@ -52,29 +37,39 @@ function saveBook(): void {
 
 <template>
     <div class="container pb-6">
-        <div v-if="book">
-            <h1 class="text-4xl text-font-second">{{ book.title }}</h1>
+        <div>
+            <h1 class="text-4xl text-font-second">
+                Create a new book
+            </h1>
 
             <div class="container">
                 <form
+                    ref="form"
                     @submit.prevent="saveBook"
                     enctype="multipart/form-data"
                 >
                     <input type="hidden" name="tag_id">
 
                     <div class="flex flex-col lg:flex-row gap-10 mt-10">
-                        <div class="flex-1 space-y-5">
-                            <div>
+                        <div class="flex-1 space-y-7">
+                            <div class="flex flex-col xl:flex-row gap-4 xl:gap-8">
                                 <FormInput
                                     type="text"
                                     id="title"
                                     placeholder="Enter the title"
                                     name="title"
                                     :length="190"
-                                    :value="book.title"
-                                    @changed="book.title = $event"
                                 >
                                     Title
+                                </FormInput>
+
+                                <FormInput
+                                    type="text"
+                                    id="author"
+                                    placeholder="Enter the author"
+                                    name="author"
+                                >
+                                    Author
                                 </FormInput>
                             </div>
 
@@ -105,7 +100,7 @@ function saveBook(): void {
 
                         <div class="w-[376px]">
                             <FormImage
-                                :uri="`storage/books/${book.image}`"
+                                uri="storage/books/default.jpg"
                                 defaultUri="/storage/books/default.jpg"
                             />
                         </div>

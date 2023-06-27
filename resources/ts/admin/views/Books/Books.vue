@@ -34,7 +34,7 @@ function fetchBooks(): void {
             <div class="flex items-center justify-center gap-3">
                 <span>Books</span>
 
-                <MainButton type="button" :route="{ name: 'tags-create' }" title="Add new tag">
+                <MainButton type="button" :route="{ name: 'books-create' }" title="Create a new book">
                     <i class="fas fa-plus"></i>
                 </MainButton>
             </div>
@@ -50,7 +50,7 @@ function fetchBooks(): void {
             <DataTable v-else>
                 <template #head>
                     <HeadDetail
-                        v-for="title in ['Image', 'Title', 'Reading', 'Edit']"
+                        v-for="title in ['Image', 'Title', 'Reading', 'Delete']"
                         :key="title"
                     >
                         {{ title }}
@@ -81,8 +81,7 @@ function fetchBooks(): void {
                     <BodyDetail class="max-w-[50px]">
                         <icon-button
                             icon="fa-pen"
-                            :route="{ name: 'books-edit', params: { slug: book.slug } }"
-                            title="Edit books"
+                            title="Delete"
                         />
                     </BodyDetail>
                 </BodyRow>
