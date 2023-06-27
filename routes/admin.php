@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Admin\BanController;
+use App\Http\Controllers\Admin\BookAuthorController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -56,6 +57,11 @@ Route::prefix('ajax')->name('admin.')->group(function () {
         Route::get('search/{keyword}', 'search');
         Route::post('/', 'store');
         Route::delete('/', 'destroy');
+    });
+
+    Route::prefix('book-authors')->controller(BookAuthorController::class)->group(function () {
+        Route::get('search/{keyword}', 'search');
+        Route::post('/', 'store');
     });
 
     Route::prefix('comments')->controller(CommentController::class)->group(function () {

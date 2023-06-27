@@ -4,23 +4,16 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Admin\Visitor;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Admin\Request;
 
 /**
  * @property string|null $search
  * @property string $order
  * @property string $direction
  */
-class IndexRequest extends FormRequest
+class IndexRequest extends Request
 {
-    public function authorize(): bool
-    {
-        return auth('admin')->check();
-    }
-
     /**
-     * Get the validation rules that apply to the request.
-     *
      * @return array<string, array<int, string>>
      */
     public function rules(): array

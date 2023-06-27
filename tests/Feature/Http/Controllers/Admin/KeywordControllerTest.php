@@ -29,7 +29,7 @@ class KeywordControllerTest extends TestCase
     public function testCanSearchKeyword(): void
     {
         $andrew_keyword = Keyword::factory()->create(['name' => 'andrew']);
-        $tate_keyword = Keyword::factory()->create(['name' => 'tate']);
+        Keyword::factory()->create(['name' => 'tate']);
 
         $resp = $this->actingAs($this->admin, 'admin')
             ->getJson(self::SEARCH_URI . 'andrew')
