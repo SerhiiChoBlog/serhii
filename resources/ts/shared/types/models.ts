@@ -17,12 +17,21 @@ export type Tag = {
 
 export type Book = {
     id: number
+    book_author_id: number
     title: string
     rate: number
     image: string
     is_reading: boolean
     slug: string
     read_at: string
+    author?: BookAuthor
+}
+
+export type BookAuthor = {
+    id: number
+    name: string
+    slug: string
+    books?: Book[]
 }
 
 export type PostContentImage = {
