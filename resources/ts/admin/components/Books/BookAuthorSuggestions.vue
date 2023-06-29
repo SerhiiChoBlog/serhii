@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import type { Keyword, Post } from '@shared/types/models'
+import type { BookAuthor } from '@shared/types/models'
 import { ref } from 'vue'
 import axios from 'axios'
+import { debounce } from 'lodash'
 import handleError from '@admin/modules/handleError'
 import FormInput from '@admin/components/Form/FormInput.vue'
-
-type Props = {
-    post: Post
-}
 
 type Emits = {
     (e: 'changed'): void
@@ -15,9 +12,10 @@ type Emits = {
 
 const emit = defineEmits<Emits>()
 
-const props = defineProps<Props>()
 const searchQuery = ref('')
 const loading = ref<boolean>(false)
+const accepted = ref<string | null>(null)
+const suggestions = ref<BookAuthor[]>([])
 
 function addAuthor(): void {
     if (searchQuery.value === '') {
@@ -26,9 +24,8 @@ function addAuthor(): void {
 
     loading.value = true
 
-    axios.post(`/admin/ajax/book-authors`, {
+    axios.post<BookAuthor[]>(`/admin/ajax/book-authors`, {
         name: searchQuery.value,
-        post_id: props.post.id
     })
         .then(resp => {
             searchQuery.value = ''
@@ -38,25 +35,25 @@ function addAuthor(): void {
         .finally(() => loading.value = false)
 }
 
-function inputChanged(val: string): void {
-    searchQuery.value = val
-}
-
-function deleteKeyword(keyword: Keyword): void {
-    if (!confirm(`Are you sure you want to delete the keyword "${keyword.name}"?`)) {
+const fetchSuggestions = debounce(() => {
+    if (searchQuery.value === '') {
+        suggestions.value = []
         return
     }
 
-    const params = {
-        data: {
-            keyword_id: keyword.id,
-            post_id: props.post.id
-        }
-    }
+    loading.value = true
 
-    axios.delete('/admin/ajax/keywords', params)
-        .then(resp => emit('changed'))
+    axios.get<BookAuthor[]>(`/admin/ajax/book-authors/search/${searchQuery.value}`)
+        .then(resp => {
+            suggestions.value = resp.data || []
+        })
         .catch(handleError)
+        .finally(() => loading.value = false)
+}, 200)
+
+function inputChanged(val: string): void {
+    searchQuery.value = val
+    fetchSuggestions()
 }
 </script>
 
@@ -64,37 +61,38 @@ function deleteKeyword(keyword: Keyword): void {
     <div class="relative">
         <FormInput
             type="text"
-            id="post-keywords"
-            name="post-keywords"
-            placeholder="Start typing to add a keyword..."
+            id="book-authors"
+            name="book-authors"
+            placeholder="Start typing to add an author..."
             @changed="inputChanged"
             @keydown.enter.prevent="addAuthor"
             :value="searchQuery"
         >
-            Keywords:
+            <span v-if="accepted">Book author is {{ accepted }}</span>
+            <span v-else>Enter a book's author</span>
 
-            <template #input>
-                <div v-if="loading" class="absolute bg-white inset-1 flex items-center pl-5 rounded-sm">
-                    <span>Loading... Please wait...</span>
-                </div>
-            </template>
+            <i v-if="loading" class="fas fa-spinner fa-spin text-orange-600 ml-2"></i>
+            <i v-else-if="accepted" class="fas fa-check text-green-600 ml-2"></i>
+            <i v-else class="fas fa-arrow-left text-green-600 ml-2"></i>
         </FormInput>
 
-        <div class="mt-2 flex flex-wrap gap-1">
-            <div
-                v-for="keyword in props.post.keywords"
-                :key="keyword.name"
-                class="inline-block bg-main text-white px-2 py-0.5 rounded-md"
-            >
-                <span>{{ keyword.name }}</span>
+        <div class="mt-2">
+            <div v-if="suggestions.length === 0">
+                <span>No suggestions yet</span>
+            </div>
+            <div v-else>
+                <span>Suggestions:</span>
 
-                <button
-                    @click="deleteKeyword(keyword)"
-                    type="button"
-                    class="ml-2 hover:scale-110 hover:text-green-200"
-                >
-                    <i class="fas fa-times"></i>
-                </button>
+                <div class="inline-flex gap-1.5 ml-2">
+                    <button
+                        v-for="suggestion in suggestions"
+                        :key="suggestion.id"
+                        class="text-main hover:underline"
+                        type="button"
+                    >
+                        {{ suggestion.name }}
+                    </button>
+                </div>
             </div>
         </div>
     </div>

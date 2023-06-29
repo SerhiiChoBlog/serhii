@@ -15,10 +15,10 @@ class BookAuthorController extends Controller
     /**
      * @return Collection<int, BookAuthor>
      */
-    public function search(string $keyword): Collection
+    public function search(string $author): Collection
     {
         return BookAuthor::query()
-            ->where('name', 'like', "%{$keyword}%")
+            ->where('name', 'like', "%{$author}%")
             ->get();
     }
 
