@@ -66,7 +66,7 @@ function saveBook(): void {
 
                             <div>
                                 <BookAuthorSuggestions
-                                    @changed=""
+                                    @changed="form.book_author_id.value = $event"
                                 />
                             </div>
 

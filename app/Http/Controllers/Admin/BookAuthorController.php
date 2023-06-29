@@ -22,7 +22,7 @@ class BookAuthorController extends Controller
             ->get();
     }
 
-    public function store(StoreRequest $request): void
+    public function store(StoreRequest $request): BookAuthor
     {
         /** @var BookAuthor|null $author */
         $author = BookAuthor::query()
@@ -30,10 +30,11 @@ class BookAuthorController extends Controller
             ->first();
 
         if ($author) {
-            return;
+            return $author;
         }
 
-        BookAuthor::query()
+        /** @var BookAuthor */
+        return BookAuthor::query()
             ->where('name', $request->name)
             ->create([
                 'slug' => Str::slug($request->name),
