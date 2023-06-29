@@ -1,3 +1,3 @@
 export type BookAuthorSuggestionsEmits = {
-    (e: 'changed'): void
+    (e: 'changed', bookAuthorId: number): void
 }

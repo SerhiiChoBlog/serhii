@@ -18,13 +18,10 @@ export default (emit: BookAuthorSuggestionsEmits) => {
 
         loading.value = true
 
-        axios.post<BookAuthor[]>(`/admin/ajax/book-authors`, {
+        axios.post<BookAuthor>(`/admin/ajax/book-authors`, {
             name: searchQuery.value,
         })
-            .then(resp => {
-                searchQuery.value = ''
-                emit('changed')
-            })
+            .then(resp => chooseSuggestion(resp.data))
             .catch(handleError)
             .finally(() => loading.value = false)
     }
@@ -53,7 +50,7 @@ export default (emit: BookAuthorSuggestionsEmits) => {
     function chooseSuggestion(suggestion: BookAuthor): void {
         accepted.value = suggestion.name
         searchQuery.value = suggestion.name
-        emit('changed')
+        emit('changed', suggestion.id)
     }
 
     return {
