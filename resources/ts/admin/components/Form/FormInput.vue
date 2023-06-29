@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import LetterCounter from './LetterCounter.vue'
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 type Props = {
     id: string
@@ -18,7 +18,11 @@ type Emits = {
 
 const emit = defineEmits<Emits>()
 const props = defineProps<Props>()
-const inputValue = ref<string>(props.value || '')
+const inputValue = ref<string>('')
+
+watchEffect(() => {
+    inputValue.value = props.value || ''
+})
 </script>
 
 <template>

@@ -35,9 +35,7 @@ export default (emit: BookAuthorSuggestionsEmits) => {
         loading.value = true
 
         axios.get<BookAuthor[]>(`/admin/ajax/book-authors/search/${searchQuery.value}`)
-            .then(resp => {
-                suggestions.value = resp.data || []
-            })
+            .then(resp => suggestions.value = resp.data || [])
             .catch(handleError)
             .finally(() => loading.value = false)
     }, 200)
@@ -50,6 +48,7 @@ export default (emit: BookAuthorSuggestionsEmits) => {
     function chooseSuggestion(suggestion: BookAuthor): void {
         accepted.value = suggestion.name
         searchQuery.value = suggestion.name
+        suggestions.value = []
         emit('changed', suggestion.id)
     }
 
