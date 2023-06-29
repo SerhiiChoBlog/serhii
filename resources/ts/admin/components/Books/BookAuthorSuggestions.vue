@@ -1,11 +1,19 @@
 <script setup lang="ts">
-import type { BookAuthorSuggestionsEmits } from '@shared/types'
+import type { BookAuthorSuggestionsEmits } from '@shared/types/emits'
 import FormInput from '@admin/components/Form/FormInput.vue'
 import useBookAuthorSuggestions from '@admin/composables/books/useBookAuthorSuggestions'
 
 const emit = defineEmits<BookAuthorSuggestionsEmits>()
 
-const { searchQuery, loading, inputChanged, addAuthor, accepted, suggestions } = useBookAuthorSuggestions(emit)
+const {
+    searchQuery,
+    loading,
+    inputChanged,
+    addAuthor,
+    accepted,
+    suggestions,
+    chooseSuggestion,
+} = useBookAuthorSuggestions(emit)
 </script>
 
 <template>
@@ -38,6 +46,7 @@ const { searchQuery, loading, inputChanged, addAuthor, accepted, suggestions } =
                     <button
                         v-for="suggestion in suggestions"
                         :key="suggestion.id"
+                        @click="chooseSuggestion(suggestion)"
                         class="text-main hover:underline"
                         type="button"
                     >

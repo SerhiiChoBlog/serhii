@@ -1,5 +1,5 @@
 import type { BookAuthor } from '@shared/types/models'
-import type { BookAuthorSuggestionsEmits } from '@shared/types'
+import type { BookAuthorSuggestionsEmits } from '@shared/types/emits'
 import { ref } from 'vue'
 import axios from 'axios'
 import { debounce } from 'lodash'
@@ -50,6 +50,12 @@ export default (emit: BookAuthorSuggestionsEmits) => {
         fetchSuggestions()
     }
 
+    function chooseSuggestion(suggestion: BookAuthor): void {
+        accepted.value = suggestion.name
+        searchQuery.value = suggestion.name
+        emit('changed')
+    }
+
     return {
         searchQuery,
         loading,
@@ -57,5 +63,6 @@ export default (emit: BookAuthorSuggestionsEmits) => {
         addAuthor,
         accepted,
         suggestions,
+        chooseSuggestion,
     }
 }
