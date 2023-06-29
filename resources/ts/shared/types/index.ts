@@ -123,3 +123,7 @@ export type WorkProject = {
     link: string
     technologies: string[]
 }
+
+export type BookAuthorSuggestionsEmits = {
+    (e: 'changed'): void
+}

@@ -1,60 +1,11 @@
 <script setup lang="ts">
-import type { BookAuthor } from '@shared/types/models'
-import { ref } from 'vue'
-import axios from 'axios'
-import { debounce } from 'lodash'
-import handleError from '@admin/modules/handleError'
+import type { BookAuthorSuggestionsEmits } from '@shared/types'
 import FormInput from '@admin/components/Form/FormInput.vue'
+import useBookAuthorSuggestions from '@admin/composables/books/useBookAuthorSuggestions'
 
-type Emits = {
-    (e: 'changed'): void
-}
+const emit = defineEmits<BookAuthorSuggestionsEmits>()
 
-const emit = defineEmits<Emits>()
-
-const searchQuery = ref('')
-const loading = ref<boolean>(false)
-const accepted = ref<string | null>(null)
-const suggestions = ref<BookAuthor[]>([])
-
-function addAuthor(): void {
-    if (searchQuery.value === '') {
-        return
-    }
-
-    loading.value = true
-
-    axios.post<BookAuthor[]>(`/admin/ajax/book-authors`, {
-        name: searchQuery.value,
-    })
-        .then(resp => {
-            searchQuery.value = ''
-            emit('changed')
-        })
-        .catch(handleError)
-        .finally(() => loading.value = false)
-}
-
-const fetchSuggestions = debounce(() => {
-    if (searchQuery.value === '') {
-        suggestions.value = []
-        return
-    }
-
-    loading.value = true
-
-    axios.get<BookAuthor[]>(`/admin/ajax/book-authors/search/${searchQuery.value}`)
-        .then(resp => {
-            suggestions.value = resp.data || []
-        })
-        .catch(handleError)
-        .finally(() => loading.value = false)
-}, 200)
-
-function inputChanged(val: string): void {
-    searchQuery.value = val
-    fetchSuggestions()
-}
+const { searchQuery, loading, inputChanged, addAuthor, accepted, suggestions } = useBookAuthorSuggestions(emit)
 </script>
 
 <template>
