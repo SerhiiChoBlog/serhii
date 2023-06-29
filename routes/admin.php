@@ -59,7 +59,7 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     });
 
     Route::prefix('book-authors')->controller(BookAuthorController::class)->group(function () {
-        Route::get('search/{keyword}', 'search');
+        Route::get('search/{author}', 'search');
         Route::post('/', 'store');
     });
 

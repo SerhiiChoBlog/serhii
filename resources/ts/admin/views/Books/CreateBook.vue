@@ -54,17 +54,17 @@ function saveBook(): void {
 
                     <div class="flex flex-col lg:flex-row gap-10 mt-10">
                         <div class="flex-1 space-y-7">
-                            <div class="flex flex-col xl:flex-row gap-4 xl:gap-8">
-                                <FormInput
-                                    type="text"
-                                    id="title"
-                                    placeholder="Enter the title"
-                                    name="title"
-                                    :length="190"
-                                >
-                                    Title
-                                </FormInput>
+                            <FormInput
+                                type="text"
+                                id="title"
+                                placeholder="Enter the title"
+                                name="title"
+                                :length="190"
+                            >
+                                Title
+                            </FormInput>
 
+                            <div>
                                 <BookAuthorSuggestions
                                     @changed=""
                                 />
