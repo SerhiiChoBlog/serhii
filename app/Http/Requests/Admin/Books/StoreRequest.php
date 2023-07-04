@@ -8,8 +8,9 @@ use App\Http\Requests\Admin\Request;
 
 /**
  * @property string $title
+ * @property string $book_author_id
  */
-class UpdateRequest extends Request
+class StoreRequest extends Request
 {
     /**
      * @return array<string, array<int, string>>
@@ -18,6 +19,7 @@ class UpdateRequest extends Request
     {
         return [
             'title' => ['required', 'min:5', 'max:190'],
+            'book_author_id' => ['required', 'numeric', 'exists:book_authors,id'],
         ];
     }
 }
