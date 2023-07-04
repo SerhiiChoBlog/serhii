@@ -36,7 +36,7 @@ function fetchBooks() {
         <div
             v-for="book in books"
             :key="book.id"
-            class="flex flex-col bg-white/50 rounded-md p-4"
+            class="flex flex-col bg-white/50 dark:bg-black/20 rounded-md p-4"
         >
             <img
                 :src="`/storage/books/${book.image}`"
