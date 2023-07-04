@@ -64,7 +64,7 @@ class BookAuthorControllerTest extends TestCase
     {
         $this->actingAs($this->admin, 'admin')
             ->postJson(self::STORE_URI, ['name' => 'Anna Serhii'])
-            ->assertOk();
+            ->assertCreated();
 
         $this->assertDatabaseHas('book_authors', ['name' => 'Anna Serhii']);
     }
