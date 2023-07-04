@@ -18,6 +18,8 @@ import BanUser from '@admin/views/BanUser.vue'
 import Series from '@admin/views/Series/Series.vue'
 import CreateSeries from '@admin/views/Series/CreateSeries.vue'
 import EditSeries from '@admin/views/Series/EditSeries.vue'
+import Books from '@admin/views/Books/Books.vue'
+import CreateBook from '@admin/views/Books/CreateBook.vue'
 
 const routes: RouteRecordRaw[] = [
     { path: '/admin/dashboard', name: 'dashboard', component: Dashboard },
@@ -38,6 +40,8 @@ const routes: RouteRecordRaw[] = [
     { path: '/admin/series', name: 'series', component: Series },
     { path: '/admin/series/create', name: 'series-create', component: CreateSeries },
     { path: '/admin/series/:id/edit', name: 'series-edit', component: EditSeries },
+    { path: '/admin/books', name: 'books', component: Books },
+    { path: '/admin/books/create', name: 'books-create', component: CreateBook },
     { path: '/:pathMatch(.*)', name: 'not-found', component: NotFound },
 ]
 

@@ -4,18 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Admin\Ban;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Admin\Request;
 
 /**
  * @property int $user_id
  */
-class UnbanRequest extends FormRequest
+class UnbanRequest extends Request
 {
-    public function authorize(): bool
-    {
-        return auth('admin')->check();
-    }
-
     /**
      * @return array<string, array<int, string>>
      */

@@ -56,6 +56,11 @@ const links: UserSidebarLink[] = [
         title: 'Publications',
         icon: 'fa-envelope',
     },
+    {
+        routeName: 'books',
+        title: 'Books',
+        icon: 'fa-book',
+    },
 ]
 
 export default links

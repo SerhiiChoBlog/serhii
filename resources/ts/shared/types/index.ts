@@ -76,6 +76,14 @@ export interface EditSeriesFormElements extends HTMLFormControlsCollection {
     'posts[]': HTMLInputElement[]
 }
 
+export interface CreateBookFormElements extends HTMLFormControlsCollection {
+    title: HTMLInputElement
+    image: HTMLInputElement
+    book_author_id: HTMLInputElement
+    rate: HTMLInputElement
+    read_at: HTMLInputElement
+}
+
 export type SubscriptionForm = {
     loading: boolean
     email: string

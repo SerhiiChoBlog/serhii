@@ -113,17 +113,25 @@
             </lazy-loading>
         </x-about.section>
 
-        <x-about.section header="Other technologies">
+        <x-about.section header="Other Technologies">
             <x-about.tech-section :techs="config('technologies.technologies')" />
         </x-about.section>
 
-        <x-about.section isDark="true" header="Personal skills">
+        <x-about.section isDark="true" header="Personal Skills">
             <x-section-detail />
             <x-about.tech-section :techs="config('technologies.skills')" />
         </x-about.section>
 
-        <x-about.section header="Latest projects" class="min-h-[400px] print:hidden">
+        <x-about.section header="Latest Projects" class="min-h-[400px] print:hidden">
             <work-projects></work-projects>
+        </x-about.section>
+
+        <x-about.section isDark="true" header="Latest Books I've Read">
+            <x-section-detail />
+
+            <lazy-loading>
+                <books-read></books-read>
+            </lazy-loading>
         </x-about.section>
     </div>
 @endsection

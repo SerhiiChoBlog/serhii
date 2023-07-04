@@ -16,6 +16,8 @@
 /storage/app/public/series/lg/*
 /storage/app/public/series/sm/*
 /storage/app/public/series/xs/*
+/storage/app/public/books/*
+!/storage/app/public/books/default.jpg
 /vendor
 .env
 .env.backup

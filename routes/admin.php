@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Admin\BanController;
+use App\Http\Controllers\Admin\BookAuthorController;
+use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KeywordController;
@@ -30,6 +32,8 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     Route::resource('referrers', ReferrerController::class)->only('index');
     Route::resource('post-publications', PostPublicationController::class)->only('index');
 
+    Route::resource('books', BookController::class)->only('index', 'store');
+
     Route::get('series/names', [SeriesController::class, 'names']);
     Route::resource('series', SeriesController::class)->except('show', 'create');
 
@@ -50,9 +54,13 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     });
 
     Route::prefix('keywords')->controller(KeywordController::class)->group(function () {
-        Route::get('search/{keyword}', 'search');
         Route::post('/', 'store');
         Route::delete('/', 'destroy');
+    });
+
+    Route::prefix('book-authors')->controller(BookAuthorController::class)->group(function () {
+        Route::get('search/{author}', 'search');
+        Route::post('/', 'store');
     });
 
     Route::prefix('comments')->controller(CommentController::class)->group(function () {
