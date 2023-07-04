@@ -21,7 +21,7 @@ class BookController extends Controller
     public function index(): LengthAwarePaginator
     {
         /** @var LengthAwarePaginator<Book> */
-        return Book::query()->orderByDesc('is_reading')->paginate(20);
+        return Book::with('author')->orderByDesc('read_at')->paginate(20);
     }
 
     public function store(StoreRequest $request): void
@@ -29,24 +29,22 @@ class BookController extends Controller
         /** @var UploadedFile|null $file */
         $file = $request->file('image');
 
-        /** @var array<string, mixed> $valid */
-        $valid = $request->validated();
-
-        $data = collect($valid)->merge([
-            'slug' => Str::slug($request->title),
+        Book::query()->create([
+            'title' => $request->title,
             'book_author_id' => $request->book_author_id,
+            'slug' => Str::slug($request->title),
             'rate' => $request->rate,
+            'read_at' => $request->read_at,
+            'image' => $this->storeFile($file, $request),
         ]);
-
-        if ($file) {
-            $data->push($this->storeFile($file, $request));
-        }
-
-        Book::query()->create($data->toArray());
     }
 
-    public function storeFile(UploadedFile $file, StoreRequest $request): string
+    public function storeFile(?UploadedFile $file, StoreRequest $request): ?string
     {
+        if (!$file) {
+            return null;
+        }
+
         $ext = $file->getClientOriginalExtension();
         $name = Str::slug($request->title) . ".{$ext}";
 

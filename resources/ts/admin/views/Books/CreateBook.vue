@@ -26,7 +26,7 @@ function saveBook(): void {
     data.append('read_at', form.value.read_at.value)
 
     if (form.value.image.value) {
-        data.append('image', form.value.image.value)
+        data.append('image', form.value.image.files![0] as File)
     }
 
     const params = {
@@ -67,11 +67,10 @@ function saveBook(): void {
                                 Title
                             </FormInput>
 
-                            <div class="flex gap-3">
+                            <div class="grid grid-cols-2 gap-3">
                                 <FormInput
                                     type="number"
                                     id="rate"
-                                    class="max-w-[120px]"
                                     placeholder="Rate the book"
                                     name="rate"
                                     :min="1"
@@ -84,7 +83,6 @@ function saveBook(): void {
                                 <FormInput
                                     type="date"
                                     id="read_at"
-                                    class="max-w-[175px]"
                                     placeholder="Read at"
                                     name="read_at"
                                 >
@@ -98,7 +96,7 @@ function saveBook(): void {
                                 />
                             </div>
 
-                            <div class="flex gap-3">
+                            <div class="flex flex-col md:flex-row gap-3">
                                 <MainButton>
                                     <i v-if="loading" class="fas fa-spinner animate-spin mr-2"></i>
                                     <i v-else class="fas fa-save mr-2"></i>
@@ -123,7 +121,7 @@ function saveBook(): void {
                             </div>
                         </div>
 
-                        <div class="w-[376px]">
+                        <div class="w-auto md:w-[376px]">
                             <FormImage
                                 uri="storage/books/default.jpg"
                                 defaultUri="/storage/books/default.jpg"
