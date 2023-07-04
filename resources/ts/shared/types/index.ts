@@ -81,6 +81,7 @@ export interface CreateBookFormElements extends HTMLFormControlsCollection {
     image: HTMLInputElement
     book_author_id: HTMLInputElement
     rate: HTMLInputElement
+    read_at: HTMLInputElement
 }
 
 export type SubscriptionForm = {
