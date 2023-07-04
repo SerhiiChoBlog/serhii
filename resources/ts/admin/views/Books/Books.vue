@@ -73,7 +73,7 @@ function fetchBooks(): void {
                     <BodyDetail>
                         {{ book.author.name }}
                     </BodyDetail>
-                    <BodyDetail :style="{ color: book.rate_color }">
+                    <BodyDetail>
                         {{ book.rate }}
                     </BodyDetail>
                     <BodyDetail>
