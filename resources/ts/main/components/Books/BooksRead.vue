@@ -4,6 +4,7 @@ import type { Pagination } from '@shared/types/response'
 import handleServerError from '@shared/modules/handleServerError'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
+import Spinner from '@shared/components/Icons/Spinner.vue'
 
 onMounted(() => fetchBooks())
 
@@ -25,5 +26,35 @@ function fetchBooks() {
 </script>
 
 <template>
-    here
+    <spinner v-if="loading" />
+
+    <div v-else-if="books.length === 0" class="text-center">
+        <h2 class="text-2xl">Sorry, I haven't added any books yet</h2>
+    </div>
+
+    <div v-else class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
+        <div
+            v-for="book in books"
+            :key="book.id"
+            class="flex flex-col bg-white/50 rounded-md p-4"
+        >
+            <img
+                :src="`/storage/books/${book.image}`"
+                :alt="book.title"
+                class="rounded-md shadow-lg"
+            />
+
+            <h3 class="text-lg leading-6 mt-4">
+                {{ book.title }}
+            </h3>
+
+            <p class="flex justify-between text-sm mt-2 text-font-second">
+                Author: {{ book.author.name }}
+            </p>
+
+            <span class="text-sm">
+                Finish date {{ book.read_at }}
+            </span>
+        </div>
+    </div>
 </template>

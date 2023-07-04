@@ -128,7 +128,10 @@
 
         <x-about.section isDark="true" header="Latest Books I've Read">
             <x-section-detail />
-            <books-read></books-read>
+
+            <lazy-loading>
+                <books-read></books-read>
+            </lazy-loading>
         </x-about.section>
     </div>
 @endsection
