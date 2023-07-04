@@ -8,7 +8,7 @@ import showToast from '@shared/modules/showToast'
 export default () => {
     const comments = ref<Comment[]>([])
     const totalComments = ref<number | null>(null)
-    const loading = ref(false)
+    const loading = ref<boolean>(false)
     const nextPageUrl = ref<string | null>(null)
 
     onMounted(() => {

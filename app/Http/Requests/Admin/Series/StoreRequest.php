@@ -4,19 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Admin\Series;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Admin\Request;
 
 /**
  * @property string $title
  * @property string $intro
  */
-class StoreRequest extends FormRequest
+class StoreRequest extends Request
 {
-    public function authorize(): bool
-    {
-        return auth('admin')->check();
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *

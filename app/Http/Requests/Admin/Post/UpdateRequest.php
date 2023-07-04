@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Admin\Post;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Admin\Request;
 
 /**
  * @property string $title
@@ -14,13 +14,8 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property bool $is_published
  * @property string|null $content
  */
-class UpdateRequest extends FormRequest
+class UpdateRequest extends Request
 {
-    public function authorize(): bool
-    {
-        return auth('admin')->check();
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *

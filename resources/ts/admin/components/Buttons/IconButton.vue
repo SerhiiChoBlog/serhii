@@ -17,7 +17,6 @@ const classes = 'text-sm border border-border rounded-sm w-10 h-10 flex justify-
         v-if="href"
         :href="href"
         :class="classes"
-        target="_blank"
         :title="title"
     >
         <i class="fas" :class="icon"></i>

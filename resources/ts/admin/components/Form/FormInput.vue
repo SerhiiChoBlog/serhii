@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import LetterCounter from './LetterCounter.vue'
-import { ref, watch } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 type Props = {
     id: string
@@ -10,6 +10,8 @@ type Props = {
     length?: number
     classes?: string
     name?: string
+    min?: number
+    max?: number
 }
 
 type Emits = {
@@ -18,12 +20,10 @@ type Emits = {
 
 const emit = defineEmits<Emits>()
 const props = defineProps<Props>()
-const inputValue = ref<string>(props.value || '')
+const inputValue = ref<string>('')
 
-watch(() => props.value, (newValue) => {
-    if (typeof newValue !== 'undefined') {
-        inputValue.value = newValue
-    }
+watchEffect(() => {
+    inputValue.value = props.value || ''
 })
 </script>
 
@@ -44,6 +44,8 @@ watch(() => props.value, (newValue) => {
                 :id="props.id"
                 autocomplete="off"
                 @input="emit('changed', inputValue)"
+                :min="props.min"
+                :max="props.max"
             />
 
             <letter-counter

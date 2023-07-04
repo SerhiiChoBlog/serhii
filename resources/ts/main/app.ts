@@ -23,6 +23,7 @@ import ZoomedImage from '@/components/ZoomedImage/ZoomedImage.vue'
 import SignInModal from '@shared/components/SignIn/SignInModal.vue'
 import Testimonials from '@/components/Testimonials/Testimonials.vue'
 import WorkProjects from '@/components/WorkProjects/WorkProjects.vue'
+import BooksRead from '@/components/Books/BooksRead.vue'
 
 const app = createApp({
     components: {
@@ -46,6 +47,7 @@ const app = createApp({
         ZoomedImage,
         Testimonials,
         WorkProjects,
+        BooksRead,
     },
 
     setup() {

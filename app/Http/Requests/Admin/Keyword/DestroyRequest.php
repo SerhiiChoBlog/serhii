@@ -4,21 +4,15 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Admin\Keyword;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Admin\Request;
 
 /**
  * @property int $keyword_id
  * @property int $post_id
  */
-class DestroyRequest extends FormRequest
+class DestroyRequest extends Request
 {
-    public function authorize(): bool
-    {
-        return auth('admin')->check();
-    }
-
     /**
-     * Get the validation rules that apply to the request.
      *
      * @return array<string, array<int, string>>
      */
