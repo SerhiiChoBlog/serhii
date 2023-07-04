@@ -105,4 +105,21 @@ class BookControllerTest extends TestCase
 
         Storage::disk('public')->assertExists('books/new-title.jpg');
     }
+
+    public function testYouCanRateBookWhileCreating(): void
+    {
+        $author = BookAuthor::factory()->create();
+
+        $attrs = [
+            'title' => 'New Title',
+            'book_author_id' => $author->id,
+            'rate' => 5,
+        ];
+
+        $this->actingAs($this->admin, 'admin')
+            ->post(self::BOOK_STORE_URI, $attrs)
+            ->assertOk();
+
+        $this->assertDatabaseHas('books', $attrs);
+    }
 }

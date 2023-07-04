@@ -22,6 +22,7 @@ function saveBook(): void {
 
     data.append('title', form.value.title.value)
     data.append('book_author_id', form.value.book_author_id.value)
+    data.append('rate', form.value.rate.value)
 
     if (form.value.image.value) {
         data.append('image', form.value.image.value)
@@ -32,6 +33,7 @@ function saveBook(): void {
     }
 
     axios.post(`/admin/ajax/books`, data, params)
+        .then(() => window.location.href = '/admin/books')
         .catch(handleError)
         .finally(() => loading.value = false)
 }
@@ -64,6 +66,21 @@ function saveBook(): void {
                                 Title
                             </FormInput>
 
+                            <div class="flex">
+                                <FormInput
+                                    type="number"
+                                    id="rate"
+                                    class="max-w-[120px]"
+                                    placeholder="Rate the book"
+                                    name="rate"
+                                    :min="1"
+                                    :max="5"
+                                    value="5"
+                                >
+                                    Rate the book
+                                </FormInput>
+                            </div>
+
                             <div>
                                 <BookAuthorSuggestions
                                     @changed="form.book_author_id.value = $event"
@@ -74,7 +91,7 @@ function saveBook(): void {
                                 <MainButton>
                                     <i v-if="loading" class="fas fa-spinner animate-spin mr-2"></i>
                                     <i v-else class="fas fa-save mr-2"></i>
-                                    Save
+                                    Create
                                 </MainButton>
 
                                 <MainButton
