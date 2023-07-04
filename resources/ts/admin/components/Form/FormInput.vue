@@ -10,6 +10,8 @@ type Props = {
     length?: number
     classes?: string
     name?: string
+    min?: number
+    max?: number
 }
 
 type Emits = {
@@ -42,6 +44,8 @@ watchEffect(() => {
                 :id="props.id"
                 autocomplete="off"
                 @input="emit('changed', inputValue)"
+                :min="props.min"
+                :max="props.max"
             />
 
             <letter-counter

@@ -50,7 +50,7 @@ function fetchBooks(): void {
             <DataTable v-else>
                 <template #head>
                     <HeadDetail
-                        v-for="title in ['Image', 'Title', 'Reading', 'Delete']"
+                        v-for="title in ['Image', 'Title', 'Rate', 'Reading', 'Delete']"
                         :key="title"
                     >
                         {{ title }}
@@ -68,11 +68,10 @@ function fetchBooks(): void {
                         />
                     </BodyDetail>
                     <BodyDetail class="text-lg">
-                        <input
-                            type="text"
-                            class="bg-transparent text-lg"
-                            :value="book.title"
-                        />
+                        {{ book.title }}
+                    </BodyDetail>
+                    <BodyDetail class="text-lg">
+                        {{ book.rate }}
                     </BodyDetail>
                     <BodyDetail>
                         <span v-if="book.is_reading" class="text-green-600">Yes</span>
@@ -80,8 +79,9 @@ function fetchBooks(): void {
                     </BodyDetail>
                     <BodyDetail class="max-w-[50px]">
                         <icon-button
-                            icon="fa-pen"
+                            icon="fa-trash"
                             title="Delete"
+                            href="javascript:"
                         />
                     </BodyDetail>
                 </BodyRow>

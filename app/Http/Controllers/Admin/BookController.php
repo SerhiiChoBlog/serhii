@@ -35,6 +35,7 @@ class BookController extends Controller
         $data = collect($valid)->merge([
             'slug' => Str::slug($request->title),
             'book_author_id' => $request->book_author_id,
+            'rate' => $request->rate,
         ]);
 
         if ($file) {
