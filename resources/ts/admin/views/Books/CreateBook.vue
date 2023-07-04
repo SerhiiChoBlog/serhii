@@ -23,6 +23,7 @@ function saveBook(): void {
     data.append('title', form.value.title.value)
     data.append('book_author_id', form.value.book_author_id.value)
     data.append('rate', form.value.rate.value)
+    data.append('read_at', form.value.read_at.value)
 
     if (form.value.image.value) {
         data.append('image', form.value.image.value)
@@ -66,7 +67,7 @@ function saveBook(): void {
                                 Title
                             </FormInput>
 
-                            <div class="flex">
+                            <div class="flex gap-3">
                                 <FormInput
                                     type="number"
                                     id="rate"
@@ -78,6 +79,16 @@ function saveBook(): void {
                                     value="5"
                                 >
                                     Rate the book
+                                </FormInput>
+
+                                <FormInput
+                                    type="date"
+                                    id="read_at"
+                                    class="max-w-[175px]"
+                                    placeholder="Read at"
+                                    name="read_at"
+                                >
+                                    Read at
                                 </FormInput>
                             </div>
 
