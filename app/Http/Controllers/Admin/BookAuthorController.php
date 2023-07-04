@@ -24,21 +24,16 @@ class BookAuthorController extends Controller
 
     public function store(StoreRequest $request): BookAuthor
     {
-        /** @var BookAuthor|null $author */
-        $author = BookAuthor::query()
-            ->where('name', $request->name)
-            ->first();
-
-        if ($author) {
-            return $author;
-        }
-
         /** @var BookAuthor */
         return BookAuthor::query()
-            ->where('name', $request->name)
-            ->create([
-                'slug' => Str::slug($request->name),
-                'name' => $request->name,
-            ]);
+            ->firstOrCreate(
+                [
+                    'name' => $request->name
+                ],
+                [
+                    'slug' => Str::slug($request->name),
+                    'name' => $request->name,
+                ],
+            );
     }
 }
