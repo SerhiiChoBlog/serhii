@@ -34,7 +34,8 @@ class BookControllerTest extends TestCase
 
     public function testWeGetCorrectPaginatedBooks(): void
     {
-        Book::factory()->count(2)->create();
+        $author = BookAuthor::factory()->create();
+        Book::factory()->count(2)->create(['book_author_id' => $author->id]);
 
         $response = $this->actingAs($this->admin, 'admin')
             ->get(self::BOOKS_URI);
