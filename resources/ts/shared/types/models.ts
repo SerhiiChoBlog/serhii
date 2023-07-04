@@ -20,8 +20,8 @@ export type Book = {
     book_author_id: number
     title: string
     rate: number
+    rate_color: string
     image: string
-    is_reading: boolean
     slug: string
     read_at: string
     author?: BookAuthor

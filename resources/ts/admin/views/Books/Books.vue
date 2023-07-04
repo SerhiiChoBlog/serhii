@@ -50,7 +50,7 @@ function fetchBooks(): void {
             <DataTable v-else>
                 <template #head>
                     <HeadDetail
-                        v-for="title in ['Image', 'Title', 'Rate', 'Reading', 'Delete']"
+                        v-for="title in ['Image', 'Title', 'Author', 'Rate', 'Read at', 'Delete']"
                         :key="title"
                     >
                         {{ title }}
@@ -70,12 +70,14 @@ function fetchBooks(): void {
                     <BodyDetail class="text-lg">
                         {{ book.title }}
                     </BodyDetail>
-                    <BodyDetail class="text-lg">
+                    <BodyDetail>
+                        {{ book.author.name }}
+                    </BodyDetail>
+                    <BodyDetail :style="{ color: book.rate_color }">
                         {{ book.rate }}
                     </BodyDetail>
                     <BodyDetail>
-                        <span v-if="book.is_reading" class="text-green-600">Yes</span>
-                        <span v-else class="text-orange-500">No</span>
+                        {{ book.read_at }}
                     </BodyDetail>
                     <BodyDetail class="max-w-[50px]">
                         <icon-button

@@ -25,7 +25,7 @@ class StoreRequest extends Request
             'title' => ['required', 'min:5', 'max:190'],
             'book_author_id' => ['required', 'numeric', 'exists:book_authors,id'],
             'rate' => ['nullable', 'numeric', 'min:1', 'max:5'],
-            'image' => ['nullable', 'image', 'max:4096', 'dimensions:min_width=100,min_height=200,max_width=5000,max_height=7000'],
+            'image' => ['nullable', 'max:4096'],
             'read_at' => ['nullable', 'date'],
         ];
     }
