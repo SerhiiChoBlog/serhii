@@ -37,6 +37,7 @@ class BookControllerTest extends TestCase
     public function testWeGetCorrectPaginatedBooks(): void
     {
         $author = BookAuthor::factory()->create();
+
         Book::factory()->count(2)->create(['book_author_id' => $author->id]);
 
         $response = $this->actingAs($this->admin, 'admin')
@@ -52,6 +53,7 @@ class BookControllerTest extends TestCase
         $attrs = [
             'title' => 'New Title',
             'book_author_id' => $author->id,
+            'read_at' => '2021-01-01',
         ];
 
         $this->actingAs($this->admin, 'admin')
@@ -65,6 +67,7 @@ class BookControllerTest extends TestCase
     {
         $attrs = [
             'title' => 'New Title',
+            'read_at' => '2021-01-01',
         ];
 
         $this->actingAs($this->admin, 'admin')
@@ -78,6 +81,7 @@ class BookControllerTest extends TestCase
     {
         $attrs = [
             'book_author_id' => BookAuthor::factory()->create()->id,
+            'read_at' => '2021-01-01',
         ];
 
         $this->actingAs($this->admin, 'admin')
@@ -97,6 +101,7 @@ class BookControllerTest extends TestCase
             'title' => 'New Title',
             'book_author_id' => BookAuthor::factory()->create()->id,
             'image' => $file,
+            'read_at' => '2021-01-01',
         ];
 
         $this->actingAs($this->admin, 'admin')
@@ -114,6 +119,7 @@ class BookControllerTest extends TestCase
             'title' => 'New Title',
             'book_author_id' => $author->id,
             'rate' => 5,
+            'read_at' => '2021-01-01',
         ];
 
         $this->actingAs($this->admin, 'admin')
@@ -138,5 +144,21 @@ class BookControllerTest extends TestCase
             ->assertOk();
 
         $this->assertDatabaseHas('books', $attrs);
+    }
+
+    public function testBookCannotBeAddedWithoutReadAtValue(): void
+    {
+        $author = BookAuthor::factory()->create();
+
+        $attrs = [
+            'title' => 'New Title',
+            'book_author_id' => $author->id,
+        ];
+
+        $this->actingAs($this->admin, 'admin')
+            ->post(self::BOOK_STORE_URI, $attrs)
+            ->assertSessionHasErrors('read_at');
+
+        $this->assertDatabaseMissing('books', $attrs);
     }
 }

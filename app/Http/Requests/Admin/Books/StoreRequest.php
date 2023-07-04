@@ -24,9 +24,9 @@ class StoreRequest extends Request
         return [
             'title' => ['required', 'min:5', 'max:190'],
             'book_author_id' => ['required', 'numeric', 'exists:book_authors,id'],
+            'read_at' => ['required', 'date'],
             'rate' => ['nullable', 'numeric', 'min:1', 'max:5'],
             'image' => ['nullable', 'max:4096'],
-            'read_at' => ['nullable', 'date'],
         ];
     }
 
@@ -34,7 +34,6 @@ class StoreRequest extends Request
     {
         $this->merge([
             'rate' => request('rate', 5),
-            'read_at' => request('read_at', now()->toDateString()),
         ]);
     }
 }

@@ -5,7 +5,6 @@ import { onMounted, ref } from 'vue'
 import handleError from '@admin/modules/handleError'
 import axios from 'axios'
 import PageTitle from '@admin/components/PageTitle.vue'
-import IconButton from '@admin/components/Buttons/IconButton.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import DataTable from '@admin/components/DataTable/DataTable.vue'
@@ -50,7 +49,7 @@ function fetchBooks(): void {
             <DataTable v-else>
                 <template #head>
                     <HeadDetail
-                        v-for="title in ['Image', 'Title', 'Author', 'Rate', 'Read at', 'Delete']"
+                        v-for="title in ['Image', 'Title', 'Author', 'Rate', 'Read at']"
                         :key="title"
                     >
                         {{ title }}
@@ -78,13 +77,6 @@ function fetchBooks(): void {
                     </BodyDetail>
                     <BodyDetail>
                         {{ book.read_at }}
-                    </BodyDetail>
-                    <BodyDetail class="max-w-[50px]">
-                        <icon-button
-                            icon="fa-trash"
-                            title="Delete"
-                            href="javascript:"
-                        />
                     </BodyDetail>
                 </BodyRow>
             </DataTable>

@@ -39,10 +39,10 @@ class BookController extends Controller
         ]);
     }
 
-    public function storeFile(?UploadedFile $file, StoreRequest $request): ?string
+    public function storeFile(?UploadedFile $file, StoreRequest $request): string
     {
         if (!$file) {
-            return null;
+            return Book::DEFAULT_IMAGE;
         }
 
         $ext = $file->getClientOriginalExtension();

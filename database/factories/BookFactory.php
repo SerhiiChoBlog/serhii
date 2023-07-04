@@ -25,6 +25,7 @@ class BookFactory extends Factory
         return [
             'title' => $title,
             'slug' => Str::slug($title),
+            'read_at' => $this->faker->date(),
         ];
     }
 }
