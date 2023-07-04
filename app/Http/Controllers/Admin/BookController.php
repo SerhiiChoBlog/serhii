@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\Books\StoreRequest;
 use App\Models\Book;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
@@ -37,15 +38,17 @@ class BookController extends Controller
         ]);
 
         if ($file) {
-            $path = storage_path('app/public/books');
             $ext = $file->getClientOriginalExtension();
             $name = Str::slug($request->title) . ".{$ext}";
 
             $data->put('image', $name);
 
-            Image::make($file)
+            /** @var UploadedFile $image */
+            $image = Image::make($file)
                 ->resize(null, 500, fn ($c) => $c->aspectRatio())
-                ->save("{$path}/{$name}");
+                ->encode($ext);
+
+            Storage::disk('public')->put("books/{$name}", $image);
         }
 
         Book::query()->create($data->toArray());

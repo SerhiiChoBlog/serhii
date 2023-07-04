@@ -8,6 +8,8 @@ use App\Models\Book;
 use App\Models\BookAuthor;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class BookControllerTest extends TestCase
@@ -57,5 +59,50 @@ class BookControllerTest extends TestCase
             ->assertOk();
 
         $this->assertDatabaseHas('books', $attrs);
+    }
+
+    public function testBookAuthorIdIsRequiredWhenCreatingBook(): void
+    {
+        $attrs = [
+            'title' => 'New Title',
+        ];
+
+        $this->actingAs($this->admin, 'admin')
+            ->post(self::BOOK_STORE_URI, $attrs)
+            ->assertSessionHasErrors('book_author_id');
+
+        $this->assertDatabaseMissing('books', $attrs);
+    }
+
+    public function testTitleIsRequiredWhenCreatingBook(): void
+    {
+        $attrs = [
+            'book_author_id' => BookAuthor::factory()->create()->id,
+        ];
+
+        $this->actingAs($this->admin, 'admin')
+            ->post(self::BOOK_STORE_URI, $attrs)
+            ->assertSessionHasErrors('title');
+
+        $this->assertDatabaseMissing('books', $attrs);
+    }
+
+    public function testWeCanAttachImageWhenCreatingBook(): void
+    {
+        Storage::fake('public');
+
+        $file = UploadedFile::fake()->image('image.jpg', 100, 200);
+
+        $attrs = [
+            'title' => 'New Title',
+            'book_author_id' => BookAuthor::factory()->create()->id,
+            'image' => $file,
+        ];
+
+        $this->actingAs($this->admin, 'admin')
+            ->post(self::BOOK_STORE_URI, $attrs)
+            ->assertOk();
+
+        Storage::disk('public')->assertExists('books/new-title.jpg');
     }
 }

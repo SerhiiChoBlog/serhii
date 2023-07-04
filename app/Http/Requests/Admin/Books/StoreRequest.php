@@ -20,6 +20,7 @@ class StoreRequest extends Request
         return [
             'title' => ['required', 'min:5', 'max:190'],
             'book_author_id' => ['required', 'numeric', 'exists:book_authors,id'],
+            'image' => ['nullable', 'image', 'max:4096', 'dimensions:min_width=100,min_height=200,max_width=5000,max_height=7000'],
         ];
     }
 }
