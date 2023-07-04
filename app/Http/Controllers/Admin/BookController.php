@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Books\UpdateRequest;
+use App\Http\Requests\Admin\Books\StoreRequest;
 use App\Models\Book;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -23,7 +23,7 @@ class BookController extends Controller
         return Book::query()->orderByDesc('is_reading')->paginate(20);
     }
 
-    public function store(UpdateRequest $request): void
+    public function store(StoreRequest $request): void
     {
         /** @var UploadedFile|null $file */
         $file = $request->file('image');
@@ -31,7 +31,9 @@ class BookController extends Controller
         /** @var array<string, mixed> $valid */
         $valid = $request->validated();
 
-        $data = collect($valid);
+        $data = collect($valid)->merge([
+            'slug' => Str::slug($request->title),
+        ]);
 
         if ($file) {
             $path = storage_path('app/public/books');
