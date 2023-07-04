@@ -38,19 +38,22 @@ class BookController extends Controller
         ]);
 
         if ($file) {
-            $ext = $file->getClientOriginalExtension();
-            $name = Str::slug($request->title) . ".{$ext}";
-
-            $data->put('image', $name);
-
-            /** @var UploadedFile $image */
-            $image = Image::make($file)
-                ->resize(null, 500, fn ($c) => $c->aspectRatio())
-                ->encode($ext);
-
-            Storage::disk('public')->put("books/{$name}", $image);
+            $data->push($this->storeFile($file, $request));
         }
 
         Book::query()->create($data->toArray());
+    }
+
+    public function storeFile(UploadedFile $file, StoreRequest $request): string
+    {
+        $ext = $file->getClientOriginalExtension();
+        $name = Str::slug($request->title) . ".{$ext}";
+
+        /** @var UploadedFile $image */
+        $image = Image::make($file)->resize(null, 500, fn ($c) => $c->aspectRatio())->encode($ext);
+
+        Storage::disk('public')->put("books/{$name}", $image);
+
+        return $name;
     }
 }
