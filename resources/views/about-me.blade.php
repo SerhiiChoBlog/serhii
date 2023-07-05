@@ -96,16 +96,28 @@
             </div>
         </section>
 
-        <x-about.section isDark="true" header="Languages">
+        <x-about.section
+            isDark="true"
+            header="Languages"
+            subheader="Programming languages that I've used in my work and projects."
+        >
             <x-section-detail />
             <x-about.tech-section :techs="config('technologies.languages')" />
         </x-about.section>
 
-        <x-about.section header="Frameworks / CMS">
+        <x-about.section
+            header="Frameworks / CMS"
+            subheader="Frameworks and CMS that I've used in my work and projects."
+        >
             <x-about.tech-section :techs="config('technologies.frameworks')" />
         </x-about.section>
 
-        <x-about.section isDark="true" header="Testimonials" class="min-h-[500px] print:hidden">
+        <x-about.section
+            isDark="true"
+            header="Testimonials"
+            subheader="What some of my best clients and colleagues have to say about me."
+            class="min-h-[500px] print:hidden"
+        >
             <x-section-detail />
 
             <lazy-loading>
@@ -113,20 +125,35 @@
             </lazy-loading>
         </x-about.section>
 
-        <x-about.section header="Other Technologies">
+        <x-about.section
+            header="Other Technologies"
+            subheader="Other technologies that I've used in my work and projects."
+        >
             <x-about.tech-section :techs="config('technologies.technologies')" />
         </x-about.section>
 
-        <x-about.section isDark="true" header="Personal Skills">
+        <x-about.section
+            isDark="true"
+            header="Personal Skills"
+            subheader="Skills that I've developed over the years that help me in my work."
+        >
             <x-section-detail />
             <x-about.tech-section :techs="config('technologies.skills')" />
         </x-about.section>
 
-        <x-about.section header="Latest Projects" class="min-h-[400px] print:hidden">
+        <x-about.section
+            header="Latest Projects"
+            subheader="Latest projects that I've worked on. Some of them are not included due to NDA."
+            class="min-h-[400px] print:hidden"
+        >
             <work-projects></work-projects>
         </x-about.section>
 
-        <x-about.section isDark="true" header="Latest Books I've Read">
+        <x-about.section
+            isDark="true"
+            header="Latest Books I've Read"
+            subheader="Latest self-development books that I've read. Novels and other books are not included."
+        >
             <x-section-detail />
 
             <lazy-loading>
