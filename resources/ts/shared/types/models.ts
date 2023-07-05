@@ -24,6 +24,7 @@ export type Book = {
     image: string
     slug: string
     read_at: string
+    pretty_read_at: string
     author?: BookAuthor
 }
 
