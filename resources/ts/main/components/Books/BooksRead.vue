@@ -36,7 +36,7 @@ function fetchBooks() {
         <div
             v-for="book in books"
             :key="book.id"
-            class="flex flex-col bg-white/50 dark:bg-black/20 rounded-md p-4"
+            class="flex justify-between flex-col bg-white/50 dark:bg-black/20 rounded-md p-4"
         >
             <img
                 :src="`/storage/books/${book.image}`"
@@ -48,12 +48,12 @@ function fetchBooks() {
                 {{ book.title }}
             </h3>
 
-            <p class="flex justify-between text-sm mt-2 text-font-second">
-                Author: {{ book.author.name }}
+            <p class="flex justify-between text-sm mt-1 text-font-second">
+                {{ book.author.name }}
             </p>
 
-            <span class="text-sm">
-                Finish date {{ book.read_at }}
+            <span class="text-sm opacity-60">
+                Finished {{ book.pretty_read_at }}
             </span>
         </div>
     </div>
