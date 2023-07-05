@@ -38,19 +38,21 @@ function fetchBooks() {
             :key="book.id"
             class="flex justify-between flex-col bg-white/50 dark:bg-black/20 rounded-md p-4"
         >
-            <img
-                :src="`/storage/books/${book.image}`"
-                :alt="book.title"
-                class="rounded-md shadow-lg"
-            />
+            <div>
+                <img
+                    :src="`/storage/books/${book.image}`"
+                    :alt="book.title"
+                    class="rounded-md shadow-lg"
+                />
 
-            <h3 class="text-lg leading-6 mt-4">
-                {{ book.title }}
-            </h3>
+                <h3 class="text-lg leading-6 mt-4">
+                    {{ book.title }}
+                </h3>
 
-            <p class="flex justify-between text-sm mt-1 text-font-second">
-                {{ book.author.name }}
-            </p>
+                <p class="flex justify-between text-sm mt-1 text-font-second">
+                    {{ book.author.name }}
+                </p>
+            </div>
 
             <span class="text-sm opacity-60">
                 Finished {{ book.pretty_read_at }}
