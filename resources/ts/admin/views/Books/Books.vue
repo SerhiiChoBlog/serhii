@@ -2,8 +2,8 @@
 import type { Book } from '@shared/types/models'
 import type { Pagination } from '@shared/types/response'
 import { onMounted, ref } from 'vue'
-import handleError from '@admin/modules/handleError'
 import axios from 'axios'
+import handleError from '@admin/modules/handleError'
 import PageTitle from '@admin/components/PageTitle.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
@@ -32,7 +32,11 @@ function fetchBooks(): void {
             <div class="flex items-center justify-center gap-3">
                 <span>Books</span>
 
-                <MainButton type="button" :route="{ name: 'books-create' }" title="Create a new book">
+                <MainButton
+                    type="button"
+                    :route="{ name: 'books-create' }"
+                    title="Create a new book"
+                >
                     <i class="fas fa-plus"></i>
                 </MainButton>
             </div>
@@ -41,7 +45,10 @@ function fetchBooks(): void {
         <div class="mt-5">
             <Spinner v-if="loading" />
 
-            <h2 v-else-if="books.length === 0" class="text-center text-xl mt-6">
+            <h2
+                v-else-if="books.length === 0"
+                class="text-center text-xl mt-6"
+            >
                 There are not books yet
             </h2>
 
