@@ -8,9 +8,8 @@ import PageTitle from '@admin/components/PageTitle.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import DataTable from '@admin/components/DataTable/DataTable.vue'
-import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
-import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
+import BookItem from '@admin/components/Books/Book.vue'
 
 const books = ref<Book[]>([])
 const loading = ref<boolean>(true)
@@ -56,29 +55,11 @@ function fetchBooks(): void {
                     </HeadDetail>
                 </template>
 
-                <BodyRow v-for="book in books" :key="book.id">
-                    <BodyDetail class="w-28">
-                        <img
-                            :src="`/storage/books/${book.image}`"
-                            :alt="`Logo of ${book.name}`"
-                            width="378"
-                            height="300"
-                            class="h-20 w-auto rounded-sm"
-                        />
-                    </BodyDetail>
-                    <BodyDetail class="text-lg">
-                        {{ book.title }}
-                    </BodyDetail>
-                    <BodyDetail>
-                        {{ book.author.name }}
-                    </BodyDetail>
-                    <BodyDetail>
-                        {{ book.rate }}
-                    </BodyDetail>
-                    <BodyDetail>
-                        {{ book.read_at }}
-                    </BodyDetail>
-                </BodyRow>
+                <BookItem
+                    v-for="book in books"
+                    :key="book.id"
+                    :book="book"
+                />
             </DataTable>
         </div>
     </div>
