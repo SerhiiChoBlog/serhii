@@ -5,6 +5,7 @@ import handleServerError from '@shared/modules/handleServerError'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import Spinner from '@shared/components/Icons/Spinner.vue'
+import BookRead from '@/components/Books/BookRead.vue'
 
 onMounted(() => fetchBooks())
 
@@ -33,30 +34,10 @@ function fetchBooks() {
     </div>
 
     <div v-else class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
-        <div
+        <book-read
             v-for="book in books"
             :key="book.id"
-            class="flex justify-between flex-col bg-white/50 dark:bg-black/20 rounded-md p-4"
-        >
-            <div>
-                <img
-                    :src="`/storage/books/${book.image}`"
-                    :alt="book.title"
-                    class="rounded-md shadow-lg"
-                />
-
-                <h3 class="text-lg leading-6 mt-4">
-                    {{ book.title }}
-                </h3>
-
-                <p class="flex justify-between text-sm mt-1 text-font-second">
-                    {{ book.author.name }}
-                </p>
-            </div>
-
-            <span class="text-sm opacity-60">
-                Finished {{ book.pretty_read_at }}
-            </span>
-        </div>
+            :book="book"
+        />
     </div>
 </template>
