@@ -30,9 +30,9 @@ const { book } = defineProps<Props>()
         <div>
             <book-rate :rate="book.rate" />
 
-            <span class="text-sm opacity-60">
+            <p class="text-sm opacity-60">
                 Finished {{ book.pretty_read_at }}
-            </span>
+            </p>
         </div>
     </div>
 </template>
