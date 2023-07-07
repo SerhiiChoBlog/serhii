@@ -4,6 +4,7 @@ import type { Pagination } from '@shared/types/response'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import handleError from '@admin/modules/handleError'
+import useUpdateBookField from '@admin/composables/books/useUpdateBookField'
 import PageTitle from '@admin/components/PageTitle.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
@@ -15,6 +16,8 @@ const books = ref<Book[]>([])
 const loading = ref<boolean>(true)
 
 onMounted(() => fetchBooks())
+
+const { updateBookField } = useUpdateBookField()
 
 function fetchBooks(): void {
     loading.value = true
