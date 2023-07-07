@@ -21,14 +21,24 @@ const { book } = defineProps<Props>()
                 class="h-20 w-auto rounded-sm"
             />
         </BodyDetail>
-        <BodyDetail class="text-lg">
-            {{ book.title }}
+        <BodyDetail>
+            <input
+                type="text"
+                :value="book.title"
+                class="w-full bg-transparent border-none py-1 px-2 text-lg"
+            />
         </BodyDetail>
         <BodyDetail>
             {{ book.author.name }}
         </BodyDetail>
         <BodyDetail>
-            {{ book.rate }}
+            <input
+                type="number"
+                min="1"
+                max="5"
+                :value="book.rate"
+                class="w-14 bg-transparent border-none text-center p-1"
+            />
         </BodyDetail>
         <BodyDetail>
             {{ book.read_at }}
