@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Book } from '@shared/types/models'
-import StarIcon from '@shared/components/Icons/StarIcon.vue'
+import BookRate from '@/components/Books/BookRate.vue'
 
 type Props = {
     book: Book
@@ -10,7 +10,7 @@ const { book } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="flex justify-between flex-col bg-white/50 dark:bg-black/20 rounded-md p-4 gap-2">
+    <div class="flex justify-between flex-col bg-white/50 dark:bg-black/20 rounded-md p-4 gap-1.5">
         <div>
             <img
                 :src="`/storage/books/${book.image}`"
@@ -28,23 +28,7 @@ const { book } = defineProps<Props>()
         </div>
 
         <div>
-            <div class="flex">
-                <star-icon
-                    v-for="rate in book.rate"
-                    :key="rate"
-                    class="w-5 h-5"
-                    style="color: darkorange"
-                    fill="darkorange"
-                />
-
-                <star-icon
-                    v-for="rate in 5 - book.rate"
-                    :key="rate"
-                    class="w-5 h-5 opacity-60"
-                    style="color: gray"
-                    fill="gray"
-                />
-            </div>
+            <book-rate :rate="book.rate" />
 
             <span class="text-sm opacity-60">
                 Finished {{ book.pretty_read_at }}
