@@ -2,6 +2,7 @@ import type { UpdateBookField } from '@admin/types'
 import { ref } from 'vue'
 import axios from 'axios'
 import handleError from '@admin/modules/handleError'
+import showToast from '@shared/modules/showToast'
 
 export default () => {
     const loading = ref<boolean>(false)
@@ -19,6 +20,7 @@ export default () => {
         }
 
         axios.put(`/admin/ajax/books/${bookSlug}/update-field`, params)
+            .then(() => showToast({ text: 'Book field updated successfully' }))
             .catch(handleError)
             .finally(() => loading.value = false)
     }
