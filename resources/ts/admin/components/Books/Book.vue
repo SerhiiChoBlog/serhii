@@ -9,14 +9,14 @@ type Props = {
 }
 
 type Emits = {
-    (e: 'field-updated', fieldName: UpdateBookField, slug: string, v: string): void
+    (e: 'field-updated', slug: string, field: UpdateBookField, value: string): void
 }
 
 const emit = defineEmits<Emits>()
 const { book } = defineProps<Props>()
 
 function fieldUpdated(e: Event, fieldName: UpdateBookField): void {
-    emit('field-updated', fieldName, book.slug, (e.target as HTMLInputElement).value)
+    emit('field-updated', book.slug, fieldName, (e.target as HTMLInputElement).value)
 }
 </script>
 
@@ -49,7 +49,7 @@ function fieldUpdated(e: Event, fieldName: UpdateBookField): void {
                 max="5"
                 :value="book.rate"
                 class="w-14 bg-transparent border-none text-center p-1"
-                @blur="e => fieldUpdated(e, 'rate')"
+                @input="e => fieldUpdated(e, 'rate')"
             />
         </BodyDetail>
         <BodyDetail>
