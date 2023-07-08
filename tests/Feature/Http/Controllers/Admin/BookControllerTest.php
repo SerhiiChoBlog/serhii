@@ -18,6 +18,7 @@ class BookControllerTest extends TestCase
 
     private const BOOKS_URI = '/admin/ajax/books';
     private const BOOK_STORE_URI = '/admin/ajax/books';
+    private const BOOK_UPDATE_FIELD = '/admin/ajax/books/%s/update-field';
 
     private User $admin;
 
@@ -36,9 +37,9 @@ class BookControllerTest extends TestCase
 
     public function testWeGetCorrectPaginatedBooks(): void
     {
-        $author = BookAuthor::factory()->create();
-
-        Book::factory()->count(2)->create(['book_author_id' => $author->id]);
+        Book::factory()
+            ->count(2)
+            ->create(['book_author_id' => BookAuthor::factory()]);
 
         $response = $this->actingAs($this->admin, 'admin')
             ->get(self::BOOKS_URI);
@@ -160,5 +161,36 @@ class BookControllerTest extends TestCase
             ->assertSessionHasErrors('read_at');
 
         $this->assertDatabaseMissing('books', $attrs);
+    }
+
+    /**
+     * @dataProvider providerForWeCanUpdateBookFields
+     */
+    public function testWeCanUpdateBookFields(string $field_name, string $field_value): void
+    {
+        /** @var Book $book */
+        $book = Book::factory()->create([
+            'book_author_id' => BookAuthor::factory(),
+        ]);
+
+        $attrs = compact('field_name', 'field_value');
+
+        $this->actingAs($this->admin, 'admin')
+            ->putJson(sprintf(self::BOOK_UPDATE_FIELD, $book->slug), $attrs)
+            ->assertOk();
+
+        $this->assertDatabaseHas('books', [
+            'id' => $book->id,
+            $field_name => $attrs['field_value'],
+        ]);
+    }
+
+    public static function providerForWeCanUpdateBookFields(): array
+    {
+        return [
+            ['title', 'New Title is here'],
+            ['rate', '2'],
+            ['read_at', '2021-01-01'],
+        ];
     }
 }
