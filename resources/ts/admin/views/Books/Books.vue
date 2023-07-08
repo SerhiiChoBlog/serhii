@@ -69,6 +69,7 @@ function fetchBooks(): void {
                     v-for="book in books"
                     :key="book.id"
                     :book="book"
+                    @field-updated="updateBookField"
                 />
             </DataTable>
         </div>
