@@ -15,7 +15,7 @@
     ]
   },
   "resources/css/admin/app.css": {
-    "file": "assets/app-882712b6.css",
+    "file": "assets/app-ea8cfc48.css",
     "isEntry": true,
     "src": "resources/css/admin/app.css"
   },
@@ -25,12 +25,12 @@
     "src": "resources/css/admin/font-awesome.css"
   },
   "resources/css/main/app.css": {
-    "file": "assets/app-17f501b2.css",
+    "file": "assets/app-81a392f3.css",
     "isEntry": true,
     "src": "resources/css/main/app.css"
   },
   "resources/css/user/app.css": {
-    "file": "assets/app-1fd5962f.css",
+    "file": "assets/app-75a364a8.css",
     "isEntry": true,
     "src": "resources/css/user/app.css"
   },
@@ -63,7 +63,7 @@
     "src": "resources/fonts/fa-solid-900.woff2"
   },
   "resources/ts/admin/app.ts": {
-    "file": "assets/app-2126f61f.js",
+    "file": "assets/app-c743508c.js",
     "imports": [
       "_Spinner-86fd9442.js",
       "_lodash-0cd75543.js"
