@@ -32,6 +32,7 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     Route::resource('referrers', ReferrerController::class)->only('index');
     Route::resource('post-publications', PostPublicationController::class)->only('index');
 
+    Route::put('books/{book}/update-field', [BookController::class, 'updateField']);
     Route::resource('books', BookController::class)->only('index', 'store');
 
     Route::get('series/names', [SeriesController::class, 'names']);

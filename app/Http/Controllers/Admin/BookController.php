@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Books\StoreRequest;
+use App\Http\Requests\Admin\Books\UpdateFieldRequest;
 use App\Models\Book;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -39,7 +40,14 @@ class BookController extends Controller
         ]);
     }
 
-    public function storeFile(?UploadedFile $file, StoreRequest $request): string
+    public function updateField(Book $book, UpdateFieldRequest $request): void
+    {
+        $book->update([
+            $request->field_name => $request->field_value,
+        ]);
+    }
+
+    private function storeFile(?UploadedFile $file, StoreRequest $request): string
     {
         if (!$file) {
             return Book::DEFAULT_IMAGE;
