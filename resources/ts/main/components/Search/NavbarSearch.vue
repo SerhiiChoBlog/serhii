@@ -13,6 +13,8 @@ const hideInput = computed<boolean>(() => {
     return isSmall.value && search.query === ''
 })
 
+const openSearchShortcutLabel = navigator.userAgent.indexOf('Mac OS X') != -1 ? '⌘+k' : 'ctrl+k'
+
 document.addEventListener('keydown', (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
         closeSearch()
@@ -79,7 +81,9 @@ function toggleSearch(): void {
                         <div
                             v-if="!hideInput"
                             class="bg-gray-700 px-2 rounded-lg"
-                        >⌘+k</div>
+                        >
+                            {{ openSearchShortcutLabel }}
+                        </div>
 
                         <search-icon
                             class="w-5 h-5"
