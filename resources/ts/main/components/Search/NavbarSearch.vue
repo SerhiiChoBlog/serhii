@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import useSearch from '@/composables/useSearch'
+import isTouchDevice from '@shared/modules/isTouchDevice'
 import SearchIcon from '@shared/components/Icons/SearchIcon.vue'
 import Dropdown from '@/components/Search/Dropdown.vue'
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
@@ -79,7 +80,7 @@ function toggleSearch(): void {
 
                     <div class="inline-flex items-center gap-3 absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer">
                         <div
-                            v-if="!hideInput"
+                            v-if="!hideInput && !isTouchDevice()"
                             class="bg-gray-700 px-2 rounded-lg"
                         >
                             {{ openSearchShortcutLabel }}
