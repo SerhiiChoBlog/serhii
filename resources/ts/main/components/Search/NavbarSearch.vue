@@ -75,14 +75,21 @@ function toggleSearch(): void {
                         id="navbar-search-input"
                     />
 
-                    <search-icon
-                        class="w-5 h-5 absolute top-1/2 -translate-y-1/2 cursor-pointer"
-                        :class="{
-                            'animate-blink': search.loading,
-                            'text-white right-3': hideInput,
-                            'text-gray-400 right-4': !hideInput,
-                        }"
-                    />
+                    <div class="inline-flex items-center gap-3 absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer">
+                        <div
+                            v-if="!hideInput"
+                            class="bg-gray-700 px-2 rounded-lg"
+                        >⌘+k</div>
+
+                        <search-icon
+                            class="w-5 h-5"
+                            :class="{
+                                'animate-blink': search.loading,
+                                'text-white right-3': hideInput,
+                                'text-gray-400 right-4': !hideInput,
+                            }"
+                        />
+                    </div>
                 </form>
 
                 <dropdown-transition>
