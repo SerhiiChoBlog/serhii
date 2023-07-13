@@ -19,7 +19,7 @@
 }
 
 .post-content blockquote li {
-    @apply not-italic text-lg;
+    @apply not-italic text-lg text-font;
 }
 
 .post-content blockquote p:first-child::before {
