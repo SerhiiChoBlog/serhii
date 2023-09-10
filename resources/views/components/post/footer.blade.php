@@ -22,7 +22,6 @@
         <span class="mb-4">Please, share this post to support me</span>
 
         <share-post-buttons
-            :is-auth="{{ auth()->check() ? 'true' : 'false'  }}"
             post-title="{{ $post['title'] }}"
             :post-id="{{ $post['id'] }}"
         />
