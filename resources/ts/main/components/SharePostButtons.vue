@@ -4,12 +4,11 @@ import Tip from '@shared/components/Tip.vue'
 import getSocialLinks from '@/modules/getSocialLinks'
 
 interface Props {
-    isAuth: boolean
     postTitle: string
     postId: number
 }
 
-const { postTitle, postId, isAuth } = defineProps<Props>()
+const { postTitle, postId } = defineProps<Props>()
 const links = getSocialLinks(postTitle)
 
 function saveShare(social: string): void {

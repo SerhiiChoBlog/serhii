@@ -140,7 +140,6 @@
                         <nav class="min-h-[83px]">
                             <x-post.sidebar-title>Share this post</x-post.sidebar-title>
                             <share-post-buttons
-                                :is-auth="{{ auth()->check() ? 'true' : 'false' }}"
                                 post-title="{{ $post_title }}"
                                 :post-id="{{ $post->id }}"
                             />
