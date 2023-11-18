@@ -47,15 +47,14 @@
             @if ($posts->isEmpty())
                 <x-posts.no-posts/>
             @else
-                <div class="flex flex-col gap-y-8 mt-4">
-
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 mt-4">
                     @foreach ($posts as $post)
                         <x-posts.horizontal-post :post="$post"/>
                     @endforeach
+                </div>
 
-                    <div class="my-6 mx-4">
-                        {{ $posts->appends(request()->input())->links('vendor.pagination.default') }}
-                    </div>
+                <div class="my-6 mx-4">
+                    {{ $posts->appends(request()->input())->links('vendor.pagination.default') }}
                 </div>
             @endif
         </div>
