@@ -68,7 +68,7 @@
         intro="Articles which I think you might want to read"
         :isDark="false"
     >
-        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-0 md:gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
             @foreach ($posts as $post)
                 <x-posts.vertical-post :post="$post"/>
             @endforeach
@@ -80,7 +80,7 @@
         intro="The latest YouTube videos"
         :isDark="true"
     >
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             @foreach ($latest_videos as $video)
                 <a
                     href="{{ $video['url'] }}"
