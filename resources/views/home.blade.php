@@ -43,7 +43,7 @@
         intro="The most recent articles"
         :isDark="false"
     >
-        <div class="space-y-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 max-w-6xl mx-auto">
             @foreach ($latest as $post)
                 <x-posts.horizontal-post :post="$post"/>
             @endforeach
@@ -56,7 +56,7 @@
         :intro="'The most viewed articles in ' . $last_month"
         :isDark="true"
     >
-        <div class="space-y-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 max-w-6xl mx-auto">
             @foreach ($monthly_top as $post)
                 <x-posts.horizontal-post :post="$post"/>
             @endforeach
@@ -68,7 +68,7 @@
         intro="Articles which I think you might want to read"
         :isDark="false"
     >
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-0 md:gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-0 md:gap-5">
             @foreach ($posts as $post)
                 <x-posts.vertical-post :post="$post"/>
             @endforeach
