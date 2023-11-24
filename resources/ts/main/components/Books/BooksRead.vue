@@ -33,7 +33,7 @@ function fetchBooks() {
         <h2 class="text-2xl">Sorry, I haven't added any books yet</h2>
     </div>
 
-    <div v-else class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
+    <div v-else class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
         <book-read
             v-for="book in books"
             :key="book.id"
