@@ -63,7 +63,7 @@
     "src": "resources/fonts/fa-solid-900.woff2"
   },
   "resources/ts/admin/app.ts": {
-    "file": "assets/app-c743508c.js",
+    "file": "assets/app-86bcfb43.js",
     "imports": [
       "_Spinner-86fd9442.js",
       "_lodash-0cd75543.js"
