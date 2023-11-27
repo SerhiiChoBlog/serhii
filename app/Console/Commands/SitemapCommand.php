@@ -6,7 +6,6 @@ namespace App\Console\Commands;
 
 use App\Models\Post;
 use App\Models\PostContentImage;
-use App\Models\Project;
 use App\Models\Series;
 use App\Models\Tag;
 use Illuminate\Console\Command;
@@ -27,7 +26,6 @@ class SitemapCommand extends Command
             ->add($this->pages())
             ->add($this->posts())
             ->add($this->series())
-            ->add($this->projects())
             ->add($this->taggedPosts())
             ->writeToFile($path);
 
@@ -104,27 +102,6 @@ class SitemapCommand extends Command
                     ->setLastModificationDate($series->updated_at)
                     ->setPriority(.8)
                     ->addImage(asset($series->image_lg), $series->title);
-            })
-            ->toArray();
-    }
-
-    /**
-     * @return array<int, Url>
-     */
-    private function projects(): array
-    {
-        return Project::query()
-            ->select('name', 'language', 'created_at')
-            ->get()
-            ->map(function (Project $project) {
-                $lang = strtolower($project->language);
-                $image_url = asset("storage/languages/{$lang}.webp");
-
-                return Url::create(route('projects.show', $project->name))
-                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
-                    ->setLastModificationDate($project->created_at)
-                    ->setPriority(.7)
-                    ->addImage($image_url, $project->language);
             })
             ->toArray();
     }
