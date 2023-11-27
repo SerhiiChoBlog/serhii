@@ -18,12 +18,12 @@
 @extends('layouts.main')
 
 @push('title', "{$title} | Serhii Cho")
-@push('description', "You want to become a better web developer and create optimized, responsive and modern websites using the latest web technologies and best practices? Welcome!")
+@push('description', "You want to become a better web developer and create optimized, responsive and modern websites using the latest web technologies and best practices?")
 
 @section('content')
     <x-hero
         :mainTitle="$title"
-        subtitle="You want to become a better web developer and create optimized, responsive<br>and modern websites using the latest web technologies and best practices? Welcome!"
+        subtitle="You want to become a better web developer and create optimized, responsive<br>and modern websites using the latest web technologies and best practices?"
         class="{{ $series ? '' : 'bg-home-hero' }} bg-cover text-white relative"
         :style="$header_style"
     >
