@@ -11,7 +11,7 @@
      * @var Series|null $series
      */
 
-    $title = $tag->title ?? 'Blog for web developers';
+    $title = $tag ? "Read about {$tag->title}" : 'Blog for web developers';
     $header_style = $series ? "background: linear-gradient(90deg, {$series->color_from} 0%, {$series->color_to} 100%)" : '';
 @endphp
 
