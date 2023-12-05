@@ -49,4 +49,10 @@
     .about-me > figure > img {
         @apply mb-3;
     }
+
+    .post-content kbd,
+    .project-content kbd,
+    .about-me kbd {
+        @apply border border-border rounded-sm px-1.5 py-0.5 bg-page-second text-sm font-mono border-r-2 border-b-2;
+    }
 }
