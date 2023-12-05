@@ -52,6 +52,9 @@ class Book extends Model
         return $this->belongsTo(BookAuthor::class, 'book_author_id');
     }
 
+    /**
+     * @return Attribute<string, mixed>
+     */
     public function prettyReadAt(): Attribute
     {
         return Attribute::get(fn () => TimeAgo::trans($this->read_at));
