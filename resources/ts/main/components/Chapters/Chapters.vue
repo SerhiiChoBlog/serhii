@@ -41,7 +41,9 @@ onMounted(() => {
     setSavedChapter()
     detectCurrentChapter()
     showAlertIfHasSavedChapter()
+
     scrollToChapterWhenHasHashInUrl()
+    window.addEventListener('hashchange', () => scrollToChapterWhenHasHashInUrl())
 })
 
 function scrollToChapterWhenHasHashInUrl(): void {
