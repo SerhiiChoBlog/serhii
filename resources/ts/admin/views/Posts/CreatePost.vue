@@ -68,12 +68,12 @@ function fetchSeries(): void {
                 <label for="series">Select series</label>
                 <select
                     name="series"
-                    class="block px-4 py-1 w-full max-w-[200px] border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-md"
+                    class="block px-4 py-1 w-full max-w-[200px] border border-border rounded-md shadow-sm focus:outline-none sm:text-md dark:bg-page-second"
                     v-model="seriesId"
                 >
                     <option :value="null">No series</option>
-                    <option v-for="series in series" :value="series.id">
-                        {{ series.title }}
+                    <option v-for="s in series" :value="s.id">
+                        {{ s.title }}
                     </option>
                 </select>
             </div>
