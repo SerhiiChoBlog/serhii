@@ -13,7 +13,7 @@
 @else
     <div class="divide-y divide-border">
         @foreach($posts as $post)
-            <article class="py-5">
+            <article class="py-5 px-2">
                 <div class="flex flex-col md:flex-row gap-7 items-center">
                     <div class="relative">
                         <x-image-label>In progress</x-image-label>
