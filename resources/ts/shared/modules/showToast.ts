@@ -17,7 +17,7 @@ export default (params: ShowToastParams) => {
         gravity: 'top',
         position: 'right',
         close: true,
-        duration: params.duration || 4000,
+        duration: params.duration || 4500,
         className: 'flex shadow-md fixed p-5 justify-between z-[10000] gap-2 rounded-md right-0 md:right-10 max-w-full rounded-none sm:rounded-lg',
         style: {
             background: params.success ? '#3E8FD1' : '#c44d45',
