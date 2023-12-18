@@ -8,8 +8,9 @@ type ShowToastParams = {
 }
 
 export default (params: ShowToastParams) => {
-    if (typeof params.success === 'undefined')
+    if (typeof params.success === 'undefined') {
         params.success = true
+    }
 
     const config: toast.Options = {
         text: params.text,
@@ -24,8 +25,9 @@ export default (params: ShowToastParams) => {
         },
     }
 
-    if (window.screen.availWidth < 992)
+    if (window.screen.availWidth < 992) {
         config.gravity = 'bottom'
+    }
 
     toast(config).showToast()
 }
