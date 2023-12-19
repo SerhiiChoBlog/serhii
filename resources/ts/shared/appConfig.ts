@@ -11,5 +11,6 @@ export const storage = {
     cachedComment: 'ymHG7wkb4E',
     allowCommentAt: 'dRWEP3sYjO',
     scrollPosition: 'mm20dfjal5n',
-    toastMessageAfterRefresh: 'b10fpqc6d01'
+    toastMessageAfterRefresh: 'b10fpqc6d01',
+    toastRedirectAfterRefresh: 'd03jslwh26dh9',
 }

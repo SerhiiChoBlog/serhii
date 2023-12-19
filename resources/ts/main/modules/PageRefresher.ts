@@ -2,12 +2,16 @@ import { storage } from '@shared/appConfig'
 import showToast from '@shared/modules/showToast'
 
 export default class {
-    public static refresh(toastMessage?: string): void {
+    public static refresh(toastMessage?: string, redirectTo?: string): void {
         const scrollPosition = window.scrollY.toString()
         localStorage.setItem(storage.scrollPosition, scrollPosition)
 
         if (toastMessage) {
             localStorage.setItem(storage.toastMessageAfterRefresh, toastMessage)
+        }
+
+        if (redirectTo) {
+            localStorage.setItem(storage.toastRedirectAfterRefresh, redirectTo)
         }
 
         window.location.reload()
@@ -29,8 +33,11 @@ export default class {
             return
         }
 
-        localStorage.removeItem(storage.toastMessageAfterRefresh)
+        const toastRedirect = localStorage.getItem(storage.toastRedirectAfterRefresh) || undefined
 
-        showToast({ text: toastMessage })
+        localStorage.removeItem(storage.toastMessageAfterRefresh)
+        localStorage.removeItem(storage.toastRedirectAfterRefresh)
+
+        showToast({ text: toastMessage, url: toastRedirect })
     }
 }
