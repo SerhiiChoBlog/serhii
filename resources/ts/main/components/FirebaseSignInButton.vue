@@ -21,6 +21,10 @@ const { serviceName } = defineProps<Props>()
 const isLoading = ref<boolean>(false)
 
 function signIn(): void {
+    if (isLoading.value) {
+        return
+    }
+
     isLoading.value = true
 
     let provider: firebase.auth.AuthProvider | null = null
