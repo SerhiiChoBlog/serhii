@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRole;
 use App\Http\Requests\FirebaseSignInRequest;
 use App\Models\User;
 use App\Services\GenerateSlugService;
@@ -27,7 +28,10 @@ class AuthFirebaseController extends Controller
             event(new Verified($user));
         }
 
-        auth('user')->login($user, true);
+
+        $is_admin = $user->hasRole(UserRole::ADMIN);
+
+        auth($is_admin ? 'admin' : 'user')->login($user, true);
 
         return $user;
     }
