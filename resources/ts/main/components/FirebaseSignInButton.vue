@@ -60,7 +60,8 @@ function handleResponse(user: User | string): void {
         return
     }
 
-    PageRefresher.refresh(`Signed in successfully as ${user.name}`)
+    const msg = `Signed in successfully as ${user.name}. Click here to go to your profile`
+    PageRefresher.refresh(msg, '/users/profile')
 }
 
 function handleError(err: any): void {

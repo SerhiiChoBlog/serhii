@@ -25,7 +25,10 @@ export default () => {
         axios.post<ServerError | null>('/login', formData.value, {
             headers: { 'Content-Type': 'application/json' }
         })
-            .then(resp => PageRefresher.refresh('Thank you for signing in!'))
+            .then(resp => {
+                const msg = `You've signed in! Click here to go to a profile`
+                PageRefresher.refresh(msg, '/users/profile')
+            })
             .catch(async e => {
                 const err = await handleServerError(e)
                 errors.value = err ? err.errors : null
