@@ -28,7 +28,6 @@ class AuthFirebaseController extends Controller
             event(new Verified($user));
         }
 
-
         $is_admin = $user->hasRole(UserRole::ADMIN);
 
         auth($is_admin ? 'admin' : 'user')->login($user, true);
