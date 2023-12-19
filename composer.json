@@ -1,6 +1,7 @@
 {
     "name": "serhii/serhii",
     "type": "project",
+    "license": "proprietary",
     "description": "Serhii personal website",
     "keywords": ["portfolio", "blog"],
     "require": {
