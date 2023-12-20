@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { Theme } from '@shared/types'
-import { computed, ref } from 'vue'
-import axios from 'axios'
+import { computed, ref, onMounted } from 'vue'
 import Tip from '@shared/components/Tip.vue'
+import cookie from 'cookiejs'
 
 interface Props {
     theme: Theme
@@ -11,7 +11,19 @@ interface Props {
 const { theme } = defineProps<Props>()
 const currentTheme = ref<Theme>(theme)
 
-const title = computed(() => {
+onMounted(() => {
+    if (!hasDarkSystemTheme()) {
+        return
+    }
+
+    const savedTheme = cookie.get('theme')
+
+    if (savedTheme !== 'light') {
+        switchTheme('dark')
+    }
+})
+
+const title = computed<string>(() => {
     let switchTo = 'light'
 
     if (currentTheme.value === 'light') {
@@ -21,16 +33,15 @@ const title = computed(() => {
     return `Switch to ${switchTo} theme`
 })
 
-function switchTheme(toTheme: 'dark' | 'light'): void {
-    axios.get(`/theme/${toTheme}`)
-        .then(() => changeInterfaceTo(toTheme))
-        .catch((err) => console.error(err))
+function hasDarkSystemTheme(): boolean {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
 }
 
-function changeInterfaceTo(toTheme: 'light' | 'dark'): void {
+function switchTheme(toTheme: 'dark' | 'light'): void {
     currentTheme.value = toTheme
     document.body.classList.add(toTheme)
     document.body.classList.remove(toTheme === 'dark' ? 'light' : 'dark')
+    cookie.set('theme', toTheme, { expires: 365 })
 }
 </script>
 
