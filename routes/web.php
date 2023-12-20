@@ -9,7 +9,6 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\SubscriptionController;
-use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -56,5 +55,3 @@ Route::prefix('subscriptions')->controller(SubscriptionController::class)->group
     Route::get('unsubscribe/{slug}', 'unsubscribe')->name('subscriptions.unsubscribe');
     Route::view('error', 'subscriptions.error')->name('subscriptions.error');
 });
-
-Route::get('theme/{to}', ThemeController::class);
