@@ -17,6 +17,7 @@ return [
 
     'name' => env('APP_NAME', 'Serhii Cho'),
     'comments_timeout_minutes' => 2,
+    'deploy_key' => env('DEPLOY_KEY'),
 
     /*
     |--------------------------------------------------------------------------

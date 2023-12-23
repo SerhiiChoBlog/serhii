@@ -21,7 +21,7 @@ Route::redirect('/posts/the-basics-of-programming', '/posts/understanding-comput
 Route::redirect('/posts/computer-software', '/posts/understanding-computer-fundamentals-computer-software');
 Route::redirect('/posts/the-basics-of-computers', '/posts/understanding-computer-fundamentals-the-basics-of-computers');
 
-Route::get('deploy', DeploymentController::class);
+Route::get('deploy/{key}', DeploymentController::class);
 
 Auth::routes(['verify' => true]);
 
