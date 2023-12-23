@@ -8,10 +8,12 @@ class DeployRules
 {
     public bool $migrate;
     public bool $composer;
+    public bool $cache;
 
     public function __construct(array $attributes)
     {
         $this->migrate = $attributes['migrate'];
         $this->composer = $attributes['composer'];
+        $this->cache = $attributes['cache'];
     }
 }
