@@ -40,7 +40,7 @@
 
     <x-home.section
         title="The latest articles"
-        intro="The most recent articles"
+        intro="The most recent posts"
         :isDark="false"
     >
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 max-w-6xl mx-auto">
