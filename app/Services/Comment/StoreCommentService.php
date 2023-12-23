@@ -14,7 +14,7 @@ use App\Events\CommentApproved;
 use App\Jobs\NewCommentAdminEmail;
 use App\CommentModifiers\StripTagsModifier;
 use App\CommentModifiers\ReplaceUrlsModifier;
-use App\CommentModifiers\ReplaceLinksModifier;
+use App\CommentModifiers\ReplacePostUrlsModifier;
 use Illuminate\Validation\ValidationException;
 
 class StoreCommentService
@@ -23,7 +23,7 @@ class StoreCommentService
     private readonly string $comment;
 
     private const COMMENT_MODIFIERS = [
-        ReplaceLinksModifier::class,
+        ReplacePostUrlsModifier::class,
         StripTagsModifier::class,
         ReplaceUrlsModifier::class,
     ];

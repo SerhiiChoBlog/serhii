@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\CommentModifiers;
 
-use App\CommentModifiers\ReplaceLinksModifier;
+use App\CommentModifiers\ReplacePostUrlsModifier;
 use App\Models\Post;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
@@ -22,7 +22,7 @@ class ReplaceLinksModifierTest extends TestCase
         $comment = "You need to read {$post_url} article!";
         $expect = "You need to read <a href=\"/posts/{$post->slug}\">{$post->title}</a> article!";
 
-        $modifier = new ReplaceLinksModifier($comment);
+        $modifier = new ReplacePostUrlsModifier($comment);
 
         $this->assertSame($expect, $modifier->modify());
     }
@@ -40,7 +40,7 @@ class ReplaceLinksModifierTest extends TestCase
         $comment = "You need to read {$post_url} and {$post2_url} articles!";
         $expect = "You need to read <a href=\"/posts/{$post->slug}\">{$post->title}</a> and <a href=\"/posts/{$post2->slug}\">{$post2->title}</a> articles!";
 
-        $modifier = new ReplaceLinksModifier($comment);
+        $modifier = new ReplacePostUrlsModifier($comment);
 
         $this->assertSame($expect, $modifier->modify());
     }
@@ -50,7 +50,7 @@ class ReplaceLinksModifierTest extends TestCase
         $comment = 'You need to read https://google.com article!';
         $expect = 'You need to read https://google.com article!';
 
-        $modifier = new ReplaceLinksModifier($comment);
+        $modifier = new ReplacePostUrlsModifier($comment);
 
         $this->assertSame($expect, $modifier->modify());
     }
@@ -64,7 +64,7 @@ class ReplaceLinksModifierTest extends TestCase
         $comment = "You need to read {$post_url}article!";
         $expect = "You need to read <a href=\"/posts/{$post->slug}\">{$post->title}</a>article!";
 
-        $modifier = new ReplaceLinksModifier($comment);
+        $modifier = new ReplacePostUrlsModifier($comment);
 
         $this->assertSame($expect, $modifier->modify());
     }
@@ -73,7 +73,7 @@ class ReplaceLinksModifierTest extends TestCase
     {
         $comment = 'You need to read article!';
 
-        $modifier = new ReplaceLinksModifier($comment);
+        $modifier = new ReplacePostUrlsModifier($comment);
 
         $this->assertSame($comment, $modifier->modify());
     }
