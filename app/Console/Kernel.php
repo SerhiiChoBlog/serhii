@@ -8,6 +8,7 @@ use App\Console\Commands\DeleteRobotViews;
 use App\Console\Commands\DetectRobotsVisitors;
 use App\Console\Commands\FetchGithubProjects;
 use App\Console\Commands\FetchVideos;
+use App\Console\Commands\SitemapCommand;
 use App\Console\Commands\SubscriptionsNotify;
 use App\Console\Commands\TopPostLastMonth;
 use Illuminate\Console\Scheduling\Schedule;
@@ -38,6 +39,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(DetectRobotsVisitors::class)->dailyAt('00:03');
         $schedule->command(DeleteRobotViews::class)->dailyAt('00:04');
         $schedule->command(TopPostLastMonth::class)->dailyAt('00:05');
+        $schedule->command(SitemapCommand::class)->dailyAt('00:06');
     }
 
     protected function commands(): void
