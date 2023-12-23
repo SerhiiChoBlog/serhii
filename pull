@@ -1,10 +1,10 @@
 #! /bin/bash
 
 # Start ssh-agent
-eval $(ssh-agent)
+# eval $(ssh-agent)
 
 # Add your SSH key
-ssh-add ~/.ssh/id_serhii_github
+# ssh-add ~/.ssh/id_serhii_github
 
 # Perform the Git pull
 git pull

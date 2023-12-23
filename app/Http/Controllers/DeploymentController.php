@@ -9,7 +9,12 @@ class DeploymentController extends Controller
     public function __invoke(): string
     {
         $project_root = base_path();
+        $output = shell_exec("cd {$project_root} && ./pull 2>&1");
 
-        return shell_exec("cd {$project_root} && ./pull 2>&1") ?? 'No output';
+        if ($output === null || $output === false) {
+            return 'Could not execute command';
+        }
+
+        return $output;
     }
 }
