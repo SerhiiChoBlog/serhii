@@ -12,6 +12,7 @@ use App\Utils\GlobalVisitor;
 use Illuminate\Support\Carbon;
 use App\Events\CommentApproved;
 use App\Jobs\NewCommentAdminEmail;
+use App\CommentModifiers\NewLineModifier;
 use App\CommentModifiers\StripTagsModifier;
 use App\CommentModifiers\ReplaceUrlsModifier;
 use App\CommentModifiers\ReplacePostUrlsModifier;
@@ -26,6 +27,7 @@ class StoreCommentService
         ReplacePostUrlsModifier::class,
         StripTagsModifier::class,
         ReplaceUrlsModifier::class,
+        NewLineModifier::class,
     ];
 
     public function __construct(
