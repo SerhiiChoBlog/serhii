@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Dto\DeployRules;
+
 class DeploymentController extends Controller
 {
     public function __invoke(): string
@@ -13,6 +15,24 @@ class DeploymentController extends Controller
 
         if ($output === null || $output === false) {
             return 'Could not execute command';
+        }
+
+        $content = file_get_contents($project_root . '/deploy.json');
+
+        if ($content === false) {
+            return 'Could not read deploy.json file';
+        }
+
+        $json = json_decode($content, true, flags: JSON_THROW_ON_ERROR);
+
+        $rules = new DeployRules($json);
+
+        if ($rules->migrate) {
+            $output .= shell_exec("cd {$project_root} && php artisan migrate 2>&1");
+        }
+
+        if ($rules->composer) {
+            $output .= shell_exec("cd {$project_root} && composer install 2>&1");
         }
 
         return $output;
