@@ -1,4 +1,5 @@
 {
     "migrate": false,
-    "composer": false
+    "composer": false,
+    "cache": false
 }
