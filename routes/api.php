@@ -2,19 +2,22 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Api\AboutMe\BookController;
-use App\Http\Controllers\Api\AboutMe\TestimonialController;
-use App\Http\Controllers\Api\AboutMe\WorkProjectController;
-use App\Http\Controllers\Api\CommentController;
-use App\Http\Controllers\Api\PostController;
-use App\Http\Controllers\Api\PostLikeController;
-use App\Http\Controllers\Api\SearchController;
-use App\Http\Controllers\Api\SocialShareController;
-use App\Http\Controllers\Api\SubscriptionDemandController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\TagController;
+use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\User\FeedController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\SearchController;
+use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\PostLikeController;
+use App\Http\Controllers\Api\DeploymentController;
+use App\Http\Controllers\Api\SocialShareController;
+use App\Http\Controllers\Api\AboutMe\BookController;
+use App\Http\Controllers\Api\SubscriptionDemandController;
+use App\Http\Controllers\Api\AboutMe\TestimonialController;
+use App\Http\Controllers\Api\AboutMe\WorkProjectController;
+
+Route::get('deploy/{key}', DeploymentController::class);
 
 Route::controller(TagController::class)->prefix('tags')->group(function () {
     Route::get('/', 'index');
