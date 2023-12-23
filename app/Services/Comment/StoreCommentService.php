@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace App\Services\Comment;
 
-use App\CommentModifiers\ReplaceLinksModifier;
-use App\CommentModifiers\StripTagsModifier;
-use App\Enums\UserRole;
-use App\Events\CommentApproved;
-use App\Jobs\NewCommentAdminEmail;
-use App\Models\Comment;
 use App\Models\Feed;
 use App\Models\User;
+use App\Enums\UserRole;
+use App\Models\Comment;
 use App\Utils\GlobalVisitor;
 use Illuminate\Support\Carbon;
+use App\Events\CommentApproved;
+use App\Jobs\NewCommentAdminEmail;
+use App\CommentModifiers\StripTagsModifier;
+use App\CommentModifiers\ReplaceUrlsModifier;
+use App\CommentModifiers\ReplaceLinksModifier;
 use Illuminate\Validation\ValidationException;
 
 class StoreCommentService
@@ -24,6 +25,7 @@ class StoreCommentService
     private const COMMENT_MODIFIERS = [
         ReplaceLinksModifier::class,
         StripTagsModifier::class,
+        ReplaceUrlsModifier::class,
     ];
 
     public function __construct(
