@@ -13,20 +13,20 @@ class DeploymentController extends Controller
     public function __invoke(string $key): JsonResponse
     {
         if ($key !== config('app.deploy_key')) {
-            return response()->json(['error' => 'Invalid deployment key!']);
+            return response()->json(['error' => 'Invalid deployment key!', 403]);
         }
 
         $project_root = base_path();
         $output = shell_exec("cd {$project_root} && ./pull 2>&1");
 
         if ($output === null || $output === false) {
-            return response()->json(['error' => 'Could not execute command']);
+            return response()->json(['error' => 'Could not execute command'], 403);
         }
 
         $content = file_get_contents($project_root . '/deploy.json');
 
         if ($content === false) {
-            return response()->json(['error' => 'Could not read deploy.json file']);
+            return response()->json(['error' => 'Could not read deploy.json file'], 403);
         }
 
         $json = json_decode($content, true, flags: JSON_THROW_ON_ERROR);
