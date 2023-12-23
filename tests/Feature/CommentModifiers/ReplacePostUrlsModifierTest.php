@@ -9,7 +9,7 @@ use App\Models\Post;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
-class ReplaceLinksModifierTest extends TestCase
+class ReplacePostUrlsModifierTest extends TestCase
 {
     use LazilyRefreshDatabase;
 
