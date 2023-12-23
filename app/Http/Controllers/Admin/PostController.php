@@ -40,7 +40,9 @@ class PostController extends Controller
 
     public function store(StoreRequest $request): int
     {
-        $series = $request->series ? Series::query()->withCount('posts')->find($request->series) : null;
+        $series = $request->series
+            ? Series::query()->withCount('posts')->find($request->series)
+            : null;
 
         /** @var Post $post */
         $post = Post::query()->create([
