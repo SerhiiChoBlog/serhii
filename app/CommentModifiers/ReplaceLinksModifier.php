@@ -7,6 +7,9 @@ namespace App\CommentModifiers;
 use App\Models\Post;
 use Illuminate\Support\Collection;
 
+/**
+ * Replaces text URLs to my posts with HTML links.
+ */
 readonly class ReplaceLinksModifier implements CommentModifier
 {
     public function __construct(private string $comment)

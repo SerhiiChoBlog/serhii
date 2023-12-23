@@ -58,7 +58,7 @@ class CommentController extends Controller
     }
 
     /**
-     * @return array{date: Carbon}
+     * @return array{date: Carbon, message: string}
      *
      * @throws ValidationException
      */
