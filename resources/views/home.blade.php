@@ -50,7 +50,6 @@
         </div>
     </x-home.section>
 
-
     <x-home.section
         title="Best of the month"
         :intro="'The most viewed articles in ' . $last_month"
