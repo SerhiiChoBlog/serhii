@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use App\Http\Controllers\AboutMeController;
 use App\Http\Controllers\AuthFirebaseController;
-use App\Http\Controllers\DeploymentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
@@ -20,8 +19,6 @@ Route::redirect('/posts/intersection-observer-is-a-hidden-feature-of-javascript'
 Route::redirect('/posts/the-basics-of-programming', '/posts/understanding-computer-fundamentals-the-basics-of-programming');
 Route::redirect('/posts/computer-software', '/posts/understanding-computer-fundamentals-computer-software');
 Route::redirect('/posts/the-basics-of-computers', '/posts/understanding-computer-fundamentals-the-basics-of-computers');
-
-Route::get('deploy/{key}', DeploymentController::class);
 
 Auth::routes(['verify' => true]);
 
