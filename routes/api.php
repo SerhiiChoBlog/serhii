@@ -17,7 +17,7 @@ use App\Http\Controllers\Api\SubscriptionDemandController;
 use App\Http\Controllers\Api\AboutMe\TestimonialController;
 use App\Http\Controllers\Api\AboutMe\WorkProjectController;
 
-Route::get('deploy/{key}', DeploymentController::class);
+Route::post('deploy/{key}', DeploymentController::class);
 
 Route::controller(TagController::class)->prefix('tags')->group(function () {
     Route::get('/', 'index');
