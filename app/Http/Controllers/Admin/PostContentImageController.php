@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 
 class PostContentImageController extends Controller
 {
-    public function store(Post $post, Request $request): void
+    public function store(Post $post, Request $request): string
     {
         $post->load('series:id,slug');
 
@@ -22,7 +22,7 @@ class PostContentImageController extends Controller
         $image = $request->file('image');
 
         if (!$image) {
-            return;
+            return '';
         }
 
         $slug = $this->getImageSlug($post);
@@ -41,6 +41,8 @@ class PostContentImageController extends Controller
             'uri' => "/storage/posts/content/{$image_name}",
             'path' => "/public/posts/content/{$image_name}",
         ]);
+
+        return url("/storage/posts/content/{$image_name}");
     }
 
     public function destroy(PostContentImage $image): void
