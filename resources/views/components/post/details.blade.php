@@ -6,7 +6,7 @@
      */
 @endphp
 
-<div class="flex opacity-70 print:justify-center items-center gap-2.5 {{ $attributes->get('class') }}">
+<div class="flex flex-wrap opacity-70 print:justify-center items-center gap-2.5 {{ $attributes->get('class') }}">
     <time aria-label="Post published date" datetime="{{ $post->created_at }}" class="text-sm">
         {{ $post->pretty_created_at }}
     </time>
