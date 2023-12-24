@@ -168,7 +168,7 @@ function allTagsSelected(): boolean {
 
                         <div class="md:hidden text-center">
                             <choose-tags-button
-                                class="!bg-white !text-font w-full h-10 py-2.5 mt-2 text-center mx-auto"
+                                class="w-full h-10 py-2.5 mt-2 text-center mx-auto"
                                 @clicked="showModalWithTags"
                             />
                         </div>
