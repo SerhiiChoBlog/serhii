@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Events\UserLikesPost;
-use App\Events\UserUnlikesPost;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\PostLike\IsLikedRequest;
 use App\Http\Requests\Api\PostLike\StoreRequest;
@@ -16,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response as ResponseStatus;
 class PostLikeController extends Controller
 {
     /**
-     * @return array{liked: bool}
+     * @return array{likes: int}
      */
     public function store(StoreRequest $request): array
     {
@@ -25,18 +24,6 @@ class PostLikeController extends Controller
         abort_if(!$user, ResponseStatus::HTTP_UNAUTHORIZED);
 
         $user->loadCount('postLikes');
-
-        if ($user->hasLikedPost($request->post_id)) {
-            $user->unlikePost($request->post_id);
-
-            UserUnlikesPost::dispatch($user, $request->post_id);
-
-            return [
-                'liked' => false,
-                'likes' => $this->getPostLikes($request->post_id),
-            ];
-        }
-
         $post_like = $user->likePost($request->post_id);
 
         /** @var PostLike $post_like */
@@ -48,8 +35,8 @@ class PostLikeController extends Controller
         UserLikesPost::dispatch($user, $post_like);
 
         return [
-            'liked' => true,
             'likes' => $this->getPostLikes($request->post_id),
+            'liked' => true,
         ];
     }
 
