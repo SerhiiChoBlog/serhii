@@ -42,6 +42,8 @@ class PostContentImageController extends Controller
             'path' => "/public/posts/content/{$image_name}",
         ]);
 
+        $post->touch();
+
         return url("/storage/posts/content/{$image_name}");
     }
 
