@@ -85,6 +85,7 @@ function saveBook(): void {
                                     id="read_at"
                                     placeholder="Read at"
                                     name="read_at"
+                                    :value="new Date().toISOString().slice(0, 10)"
                                 >
                                     Read at
                                 </FormInput>
