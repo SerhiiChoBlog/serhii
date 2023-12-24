@@ -91,9 +91,9 @@ function saveBook(): void {
                                 </FormInput>
                             </div>
 
-                            <div>
+                            <div v-if="form">
                                 <BookAuthorSuggestions
-                                    @changed="form.book_author_id.value = $event"
+                                    @changed="form.book_author_id.value = String($event)"
                                 />
                             </div>
 
