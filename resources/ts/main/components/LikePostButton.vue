@@ -20,9 +20,13 @@ const isLiked = ref<boolean>(false)
 const likes = ref<number>(0)
 const loading = ref<boolean>(false)
 
-function toggleLike(): void {
+function likePost(): void {
     if (!Auth) {
         dispatchEvent(events.openLoginModal)
+        return
+    }
+
+    if (isLiked.value) {
         return
     }
 
@@ -35,7 +39,7 @@ function toggleLike(): void {
 
     axios.post<GetPostLikesResponse>(`/api/post-likes`, params)
         .then(res => {
-            isLiked.value = res.data.liked
+            isLiked.value = true
             likes.value = res.data.likes
         })
         .catch(err => console.error(err))
@@ -62,16 +66,15 @@ function fetchIsLiked(): void {
 
 <template>
     <button
+        v-if="!loading"
         type="button"
-        @click="toggleLike"
+        @click="likePost"
         ref="btn"
         :aria-label="`${isLiked ? 'Unlike' : 'Like'} this post`"
-        class="print:hidden fixed bottom-2 right-2 md:bottom-6 md:right-6 z-30 p-2 rounded-full bg-page border-2 transition-all duration-300 hover:shadow-[0_0_20px_red,inset_0_0_10px_red] hover:text-red-400 hover:animate-pulse"
+        class="print:hidden fixed bottom-2 right-2 md:bottom-6 md:right-6 z-30 p-2 rounded-full bg-page border-2 transition-all duration-300"
         :class="{
-            'opacity-30 pointer-events-none': loading,
-            'opacity-90': !loading,
-            'border-red-500 dark:border-red-400 shadow-red-400': isLiked,
-            'border-gray-700 dark:border-gray-400 border-gray-700 dark:border-gray-200': !isLiked,
+            'border-transparent shadow-red-400 cursor-default': isLiked,
+            'border-gray-700 dark:border-gray-200 hover:shadow-[0_0_20px_red,inset_0_0_10px_red] hover:text-red-400 hover:animate-pulse': !isLiked,
         }"
     >
         <like-icon
@@ -85,10 +88,10 @@ function fetchIsLiked(): void {
 
         <span
             v-if="likes > 0"
-            class="absolute -top-2 right-[34px] text-[.9rem] font-bold bg-page px-1.5 rounded-full border"
+            class="absolute text-[.9rem] font-bold bg-page px-1.5 rounded-full transition-all"
             :class="{
-                'text-red-500 dark:text-red-500 border-red-500': isLiked,
-                'text-gray-700 dark:text-gray-400 border-gray-700 dark:border-gray-400': !isLiked,
+                'text-red-500 dark:text-red-400 right-1/2 translate-x-1/2': isLiked,
+                'text-gray-700 dark:text-gray-400 border-gray-700 dark:border-gray-400 border -top-2 right-[34px]': !isLiked,
             }"
         >
             {{ likes }}
