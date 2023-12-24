@@ -3,6 +3,7 @@ import type { Post } from '@shared/types/models'
 import { ref } from 'vue'
 import axios from 'axios'
 import handleError from '@admin/modules/handleError'
+import copy from 'copy-to-clipboard'
 import showToast from '@shared/modules/showToast'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import DataTable from '@admin/components/DataTable/DataTable.vue'
@@ -36,9 +37,10 @@ function submitImage(e: Event): void {
 
     formData.append('image', files[0])
 
-    axios.post(`/admin/ajax/post-content-images/${post.id}`, formData, params)
+    axios.post<string>(`/admin/ajax/post-content-images/${post.id}`, formData, params)
         .then(resp => {
-            showToast({ text: 'Image has been uploaded' })
+            showToast({ text: 'Image has been uploaded and copied into a buffer' })
+            copy(resp.data)
             emit('uploaded')
         })
         .catch(handleError)
