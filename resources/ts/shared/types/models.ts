@@ -68,7 +68,7 @@ export type Post = {
     post_views_count?: number
     comments_count?: number
     read_time: number
-    pretty_created_at: string
+    pretty_updated_at: string
     created_at: string
     updated_at: string
     published_at: string
@@ -179,7 +179,7 @@ export type Comment = {
     id: number
     post_id: number
     user_id: number
-    visitor_id: number|null
+    visitor_id: number | null
     comment_id: number | null
     comment: string
     comments?: Comment[]

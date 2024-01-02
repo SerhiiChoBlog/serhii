@@ -7,8 +7,8 @@
 @endphp
 
 <div class="flex flex-wrap opacity-70 print:justify-center items-center gap-2.5 {{ $attributes->get('class') }}">
-    <time aria-label="Post published date" datetime="{{ $post->created_at }}" class="text-sm">
-        {{ $post->pretty_created_at }}
+    <time aria-label="Post published date" datetime="{{ $post->updated_at }}" class="text-sm">
+        {{ $post->pretty_updated_at }}
     </time>
 
     @if (isset($post->read_time) && $post->read_time > 0)
