@@ -15,13 +15,19 @@ use Symfony\Component\HttpFoundation\Response as ResponseStatus;
 class PostLikeController extends Controller
 {
     /**
-     * @return array{likes: int}
+     * @return array{likes: int, liked: bool}
      */
     public function store(StoreRequest $request): array
     {
         $user = User::getBySecret($request->secret);
 
         abort_if(!$user, ResponseStatus::HTTP_UNAUTHORIZED);
+
+        $already_liked = $user->hasLikedPost($request->post_id);
+
+        if ($already_liked) {
+            return ['likes' => $this->getPostLikes($request->post_id), 'liked' => true];
+        }
 
         $user->loadCount('postLikes');
         $post_like = $user->likePost($request->post_id);
@@ -34,10 +40,7 @@ class PostLikeController extends Controller
 
         UserLikesPost::dispatch($user, $post_like);
 
-        return [
-            'likes' => $this->getPostLikes($request->post_id),
-            'liked' => true,
-        ];
+        return ['likes' => $this->getPostLikes($request->post_id), 'liked' => true];
     }
 
     /**
