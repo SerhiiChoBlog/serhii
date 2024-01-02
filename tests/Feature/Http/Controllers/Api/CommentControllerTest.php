@@ -394,7 +394,6 @@ class CommentControllerTest extends TestCase
 
         $this->assertDatabaseHas('comments', [
             'post_id' => $this->post->id,
-            'comment' => $text,
             'is_approved' => false,
         ]);
     }

@@ -34,6 +34,10 @@ class ReferrerMiddleware
             ->explode('/')
             ->first();
 
+        if (!$referer_site) {
+            return $next($request);
+        }
+
         foreach (self::IGNORED_SITES as $site) {
             if (str_starts_with($referer_site, $site)) {
                 return $next($request);
