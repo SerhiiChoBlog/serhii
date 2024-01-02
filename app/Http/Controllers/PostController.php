@@ -29,7 +29,7 @@ class PostController extends Controller
             ->withCount('comments')
             ->withCount('postViews')
             ->where('is_published', true)
-            ->latest();
+            ->latest('updated_at');
 
         if ($request->tag) {
             $query = $query->whereHas('tags', fn (Builder $q) => $q->where('name', $request->tag));
