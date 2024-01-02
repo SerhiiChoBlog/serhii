@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Feature\Http\Controllers\Api;
 
 use App\Enums\FeedType;
-use App\Models\Feed;
 use App\Models\Post;
 use App\Models\PostLike;
 use App\Models\User;
@@ -45,7 +44,7 @@ class PostLikeControllerTest extends TestCase
         ]);
     }
 
-    public function testUserCanUnlikePost(): void
+    public function testUserCantUnlikePost(): void
     {
         PostLike::factory()->create([
             'post_id' => $this->post->id,
@@ -58,9 +57,9 @@ class PostLikeControllerTest extends TestCase
                 'secret' => $this->user->secret,
             ])
             ->assertOk()
-            ->assertJson(['liked' => false, 'likes' => 0]);
+            ->assertJson(['liked' => true, 'likes' => 1]);
 
-        $this->assertDatabaseMissing('post_likes', [
+        $this->assertDatabaseHas('post_likes', [
             'post_id' => $this->post->id,
             'user_id' => $this->user->id,
         ]);
@@ -126,29 +125,5 @@ class PostLikeControllerTest extends TestCase
             'user_id' => $this->user->id,
             'type' => FeedType::POST_LIKE,
         ]);
-    }
-
-    public function testUnlikingPostRemovesFeedItem(): void
-    {
-        Feed::factory()->create([
-            'user_id' => $this->user->id,
-            'post_id' => $this->post->id,
-            'type' => FeedType::POST_LIKE,
-        ]);
-
-        PostLike::factory()->create([
-            'post_id' => $this->post->id,
-            'user_id' => $this->user->id,
-        ]);
-
-        $this->user->loadCount('postLikes');
-
-        $this->actingAs($this->user, 'user')
-            ->postJson(self::STORE_LIKE_URI, [
-                'post_id' => $this->post->id,
-                'secret' => $this->user->secret,
-            ]);
-
-        $this->assertDatabaseEmpty('feed');
     }
 }
