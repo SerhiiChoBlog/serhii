@@ -28,4 +28,11 @@ class CommentFactory extends Factory
             'created_at' => now(),
         ];
     }
+
+    public function withPost(): self
+    {
+        return $this->state(function (array $attributes) {
+            return ['post_id' => PostFactory::new()];
+        });
+    }
 }

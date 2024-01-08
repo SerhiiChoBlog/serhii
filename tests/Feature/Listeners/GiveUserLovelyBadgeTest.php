@@ -20,13 +20,11 @@ class GiveUserLovelyBadgeTest extends TestCase
     public function testListenerDoesntGiveUserABadgeIfHaveNotEnoughLikes(): void
     {
         $user = $this->createUser();
-        $post = Post::factory()->create();
 
         Badge::factory()->create(['name' => BadgeName::LOVELY]);
 
-        $like = PostLike::factory()->count(9)->create([
+        $like = PostLike::factory(9)->withPost()->create([
             'user_id' => $user->id,
-            'post_id' => $post->id,
         ]);
 
         $user->loadCount('postLikes');
@@ -42,13 +40,11 @@ class GiveUserLovelyBadgeTest extends TestCase
     public function testListenerGivesUserABadgeIfHasEnoughLikes(): void
     {
         $user = $this->createUser();
-        $post = Post::factory()->create();
 
         Badge::factory()->create(['name' => BadgeName::LOVELY]);
 
-        $like = PostLike::factory()->count(10)->create([
+        $like = PostLike::factory(10)->withPost()->create([
             'user_id' => $user->id,
-            'post_id' => $post->id,
         ]);
 
         $user->loadCount('postLikes');
@@ -67,13 +63,11 @@ class GiveUserLovelyBadgeTest extends TestCase
     public function testListenerDoesntGiveUserABadgeIfHasEnoughLikesButAlreadyHasBadge(): void
     {
         $user = $this->createUser();
-        $post = Post::factory()->create();
 
         Badge::factory()->create(['name' => BadgeName::LOVELY]);
 
-        $like = PostLike::factory()->count(10)->create([
+        $like = PostLike::factory(10)->withPost()->create([
             'user_id' => $user->id,
-            'post_id' => $post->id,
         ]);
 
         $user->giveBadge(BadgeName::LOVELY);
