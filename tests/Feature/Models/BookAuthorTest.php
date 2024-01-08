@@ -17,7 +17,7 @@ class BookAuthorTest extends TestCase
     {
         $author = BookAuthor::factory()->create();
 
-        Book::factory()->count(2)->create(['book_author_id' => $author->id]);
+        Book::factory(2)->create(['book_author_id' => $author->id]);
 
         $this->assertCount(2, $author->books);
     }

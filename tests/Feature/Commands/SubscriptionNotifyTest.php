@@ -51,7 +51,7 @@ class SubscriptionNotifyTest extends TestCase
     public function test2SubscribersAreNotifiedWhenWithNewPost(): void
     {
         $post = Post::factory()->published()->create();
-        Subscription::factory()->count(2)->confirmed()->create();
+        Subscription::factory(2)->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
             ->expectsOutput($this->finalNotificationMessage($post, 2))
@@ -90,7 +90,7 @@ class SubscriptionNotifyTest extends TestCase
     public function testEachPersonIsNotifiedViaEmail(): void
     {
         $post = Post::factory()->published()->create();
-        $subs = Subscription::factory()->count(3)->confirmed()->create();
+        $subs = Subscription::factory(3)->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
             ->expectsOutput($this->finalNotificationMessage($post, 3))
@@ -106,7 +106,7 @@ class SubscriptionNotifyTest extends TestCase
         Post::factory()->published()->title('Third')->create(['created_at' => now()->subMonth()]);
         $post = Post::factory()->published()->title('Last one')->create(['created_at' => now()->subHour()]);
 
-        Subscription::factory()->count(3)->confirmed()->create();
+        Subscription::factory(3)->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
             ->expectsOutput($this->finalNotificationMessage($post, 3))
@@ -132,7 +132,7 @@ class SubscriptionNotifyTest extends TestCase
     {
         Post::factory()->published()->create();
 
-        Subscription::factory()->count(3)->create();
+        Subscription::factory(3)->create();
         Subscription::factory()->confirmed()->create();
 
         $this->artisan('subscriptions:notify')->assertSuccessful();

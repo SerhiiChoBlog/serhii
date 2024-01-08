@@ -28,7 +28,7 @@ class SeriesTest extends TestCase
 
     public function testSeriesCanHavePosts(): void
     {
-        $posts = Post::factory()->count(2)->create();
+        $posts = Post::factory(2)->create();
 
         $this->series->posts()->attach($posts);
 

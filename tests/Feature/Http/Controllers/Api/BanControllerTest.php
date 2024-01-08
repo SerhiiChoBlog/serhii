@@ -112,7 +112,7 @@ class BanControllerTest extends TestCase
         $user = User::factory()->create(['remember_token' => 'token']);
         $post = Post::factory()->create();
 
-        Comment::factory()->count(3)->create([
+        Comment::factory(3)->create([
             'user_id' => $user->id,
             'post_id' => $post->id,
             'is_approved' => true,
@@ -145,7 +145,7 @@ class BanControllerTest extends TestCase
         $user = User::factory()->create(['remember_token' => 'token']);
         $post = Post::factory()->create();
 
-        Comment::factory()->count(3)->create([
+        Comment::factory(3)->create([
             'user_id' => $user->id,
             'post_id' => $post->id,
             'is_approved' => true,

@@ -184,7 +184,7 @@ class SeriesControllerTest extends TestCase
     public function testSeriesCanBeUpdatedWithPosts(): void
     {
         /** @var Collection<int, Post> $posts */
-        $posts = Post::factory()->count(2)->create();
+        $posts = Post::factory(2)->create();
 
         /** @var Series $series */
         $series = Series::factory()->create();
@@ -269,7 +269,7 @@ class SeriesControllerTest extends TestCase
     public function testUpdatingSeriesPostsPutThemInCorrectOrder(): void
     {
         /** @var Collection<int, Post> $posts */
-        $posts = Post::factory()->count(3)->create();
+        $posts = Post::factory(3)->create();
 
         /** @var Series $series */
         $series = Series::factory()->create();
