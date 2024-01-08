@@ -74,7 +74,7 @@ class PostControllerTest extends TestCase
     public function testCanCreatePostWithSeriesAttachedWithCorrectPart(): void
     {
         /** @var Collection<int, Post> $posts */
-        $posts = Post::factory()->count(2)->create();
+        $posts = Post::factory(2)->create();
 
         $admin = $this->createAdmin();
         $series = Series::factory()->create();
@@ -408,7 +408,7 @@ class PostControllerTest extends TestCase
     public function testAdminCanGetPosts(): void
     {
         $admin = $this->createAdmin();
-        Post::factory()->published()->count(2)->create();
+        Post::factory(2)->published()->create();
 
         $resp = $this->actingAs($admin, 'admin')
             ->getJson(self::INDEX_URI);
@@ -452,7 +452,7 @@ class PostControllerTest extends TestCase
     public function testWhenYouPassTagIdThenThisTagBecomesMain(): void
     {
         /** @var Collection<int, Tag> $tags */
-        $tags = Tag::factory()->count(3)->create();
+        $tags = Tag::factory(3)->create();
 
         /** @var Post $post */
         $post = Post::factory()->create();

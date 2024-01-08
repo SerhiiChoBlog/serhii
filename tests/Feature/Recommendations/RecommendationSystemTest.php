@@ -24,7 +24,7 @@ class RecommendationSystemTest extends TestCase
         $post1 = Post::factory()->published()->create();
         $post2 = Post::factory()->published()->create();
 
-        Post::factory()->published()->count(3)->create();
+        Post::factory(3)->published()->create();
 
         $user = $this->createUser();
 
@@ -67,7 +67,7 @@ class RecommendationSystemTest extends TestCase
         $post1 = Post::factory()->published()->create();
         $post2 = Post::factory()->published()->create();
 
-        Post::factory()->published()->count(5)->create();
+        Post::factory(5)->published()->create();
 
         $user = $this->createUser();
 
@@ -117,7 +117,7 @@ class RecommendationSystemTest extends TestCase
         $post1 = Post::factory()->published()->create();
         $post2 = Post::factory()->published()->create();
 
-        Post::factory()->count(2)->published()->create();
+        Post::factory(2)->published()->create();
 
         $series->posts()->attach([
             $post1->id => ['part' => 1],
@@ -204,7 +204,7 @@ class RecommendationSystemTest extends TestCase
         $post1 = Post::factory()->published()->create();
         $post2 = Post::factory()->published()->create();
 
-        Post::factory()->published()->count(3)->create();
+        Post::factory(3)->published()->create();
 
         $post6 = Post::factory()->published()->create();
         $post7 = Post::factory()->published()->create();
@@ -239,7 +239,7 @@ class RecommendationSystemTest extends TestCase
         $post1 = Post::factory()->published()->create();
         $post2 = Post::factory()->published()->create();
 
-        Post::factory()->published()->count(2)->create();
+        Post::factory(2)->published()->create();
 
         $exclude_ids = collect([$post1->id, $post2->id]);
 

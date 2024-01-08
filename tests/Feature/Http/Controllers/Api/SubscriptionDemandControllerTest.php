@@ -129,7 +129,7 @@ class SubscriptionDemandControllerTest extends TestCase
         Notification::fake();
 
         /** @var Collection<int, Tag> $tags */
-        $tags = Tag::factory()->count(5)->create();
+        $tags = Tag::factory(5)->create();
 
         $this->postJson('/api/subscriptions', [
             'email' => 'serhii@anna.com',
