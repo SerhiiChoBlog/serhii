@@ -9,7 +9,6 @@ use App\Events\CommentApproved;
 use App\Listeners\Badges\GiveUserCommentatorBadge;
 use App\Models\Badge;
 use App\Models\Comment;
-use App\Models\Post;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 
@@ -20,14 +19,12 @@ class GiveUserCommentatorBadgeTest extends TestCase
     public function testListenerDoesntGiveUserABadgeIfHaveNotEnoughComments(): void
     {
         $user = $this->createUser();
-        $post = Post::factory()->create();
 
         // Create commentator badge
         Badge::factory()->create(['name' => BadgeName::COMMENTATOR]);
 
-        Comment::factory()->count(9)->create([
+        Comment::factory(9)->withPost()->create([
             'user_id' => $user->id,
-            'post_id' => $post->id,
         ]);
 
         $event = new CommentApproved($user);
@@ -41,14 +38,12 @@ class GiveUserCommentatorBadgeTest extends TestCase
     public function testListenerGivesUserABadgeIfHaveEnoughComments(): void
     {
         $user = $this->createUser();
-        $post = Post::factory()->create();
 
         // Create commentator badge
         Badge::factory()->create(['name' => BadgeName::COMMENTATOR]);
 
-        Comment::factory()->count(10)->create([
+        Comment::factory(10)->withPost()->create([
             'user_id' => $user->id,
-            'post_id' => $post->id,
         ]);
 
         $event = new CommentApproved($user);
@@ -65,7 +60,6 @@ class GiveUserCommentatorBadgeTest extends TestCase
     public function testListenerDoesntGiveUserABadgeIfHaveEnoughCommentsButAlreadyHasBadge(): void
     {
         $user = $this->createUser();
-        $post = Post::factory()->create();
 
         // Create commentator badge
         Badge::factory()->create(['name' => BadgeName::COMMENTATOR]);
@@ -73,9 +67,8 @@ class GiveUserCommentatorBadgeTest extends TestCase
         // Give user commentator badge
         $user->giveBadge(BadgeName::COMMENTATOR);
 
-        Comment::factory()->count(10)->create([
+        Comment::factory(10)->withPost()->create([
             'user_id' => $user->id,
-            'post_id' => $post->id,
         ]);
 
         $event = new CommentApproved($user);
