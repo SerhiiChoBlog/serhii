@@ -1,5 +1,5 @@
 {
     "migrate": false,
-    "composer": false,
-    "cache": false
+    "composer": true,
+    "cache": true
 }
