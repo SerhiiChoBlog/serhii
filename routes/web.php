@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\AboutMeController;
-use App\Http\Controllers\AuthFirebaseController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\SeriesController;
-use App\Http\Controllers\SubscriptionController;
-use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\AboutMeController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\AuthFirebaseController;
+use App\Http\Controllers\SubscriptionController;
 
 Route::redirect('/posts/boost-your-svelte-apps-performance', '/posts/lazy-loading-boost-your-svelte-apps-performance');
 Route::redirect('/posts/vue-component-wrapper-for-lazy-loading', '/posts/lazy-loading-vue-component-wrapper-for-lazy-loading');
@@ -55,3 +56,5 @@ Route::prefix('subscriptions')->controller(SubscriptionController::class)->group
     Route::get('unsubscribe/{slug}', 'unsubscribe')->name('subscriptions.unsubscribe');
     Route::view('error', 'subscriptions.error')->name('subscriptions.error');
 });
+
+Route::get('theme/{to}', ThemeController::class);
