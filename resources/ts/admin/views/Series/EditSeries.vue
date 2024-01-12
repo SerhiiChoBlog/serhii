@@ -169,6 +169,7 @@ function saveSeriesWithCorrectKeyBinds(e: KeyboardEvent): void {
 
                     <div class="mt-6">
                         <SeriesPosts
+                            v-if="series.posts"
                             :posts="series.posts"
                             :seriesTitle="series.title"
                         />
