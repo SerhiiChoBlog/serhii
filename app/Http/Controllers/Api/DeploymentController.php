@@ -33,18 +33,16 @@ class DeploymentController extends Controller
 
         $rules = new DeployRules($json);
 
-        shell_exec("cd {$project_root}");
-
         if ($rules->migrate) {
-            $output .= shell_exec("php artisan migrate 2>&1");
+            $output .= shell_exec("cd {$project_root} && php artisan migrate 2>&1");
         }
 
         if ($rules->composer) {
-            $output .= shell_exec("composer install 2>&1");
+            $output .= shell_exec("cd {$project_root} && composer install 2>&1");
         }
 
         if ($rules->cache) {
-            $output .= shell_exec("composer cache 2>&1");
+            $output .= shell_exec("cd {$project_root} && composer cache 2>&1");
         }
 
         $output = rtrim($output, "\n");
