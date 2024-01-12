@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 /**
  * @property-read int $id
@@ -181,7 +182,7 @@ class Post extends Model
                 return '';
             }
 
-            return $this->created_at->format('M j, Y');
+            return Str::apa($this->attributes['title']);
         });
     }
 
@@ -196,6 +197,20 @@ class Post extends Model
             }
 
             return $this->updated_at->format('M j, Y');
+        });
+    }
+
+    /**
+     * @return Attribute<string, mixed>
+     */
+    protected function title(): Attribute
+    {
+        return Attribute::get(function () {
+            if (!isset($this->attributes['title'])) {
+                return '';
+            }
+
+            return Str::apa($this->attributes['title']);
         });
     }
 }
