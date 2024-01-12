@@ -38,7 +38,7 @@ class DeploymentController extends Controller
         }
 
         if ($rules->composer) {
-            $output .= shell_exec("cd {$project_root} && composer install 2>&1");
+            $output .= shell_exec("cd {$project_root} && composer update --no-dev 2>&1");
         }
 
         if ($rules->cache) {
