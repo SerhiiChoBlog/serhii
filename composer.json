@@ -54,7 +54,7 @@
             "@php artisan package:discover --ansi"
         ],
         "pint": "./vendor/bin/pint",
-        "stan": "php -d memory_limit=2G ./vendor/bin/phpstan analyse",
+        "stan": "@php -d memory_limit=2G ./vendor/bin/phpstan analyse",
         "test": [
             "rm -f database/database.sqlite",
             "touch database/database.sqlite",
@@ -65,21 +65,21 @@
             "yarn build",
             "git add ."
         ],
-        "sitemap": "php artisan make:generate",
+        "sitemap": "@php artisan make:generate",
         "cache": [
-            "php artisan optimize:clear",
-            "php artisan config:cache",
-            "php artisan view:cache",
-            "php artisan route:cache",
-            "php artisan cache:clear",
-            "php artisan optimize"
+            "@php artisan optimize:clear",
+            "@php artisan config:cache",
+            "@php artisan view:cache",
+            "@php artisan route:cache",
+            "@php artisan cache:clear",
+            "@php artisan optimize"
         ],
         "cache-clear": [
-            "php artisan config:clear",
-            "php artisan view:clear",
-            "php artisan route:clear",
-            "php artisan cache:clear",
-            "php artisan optimize:clear"
+            "@php artisan config:clear",
+            "@php artisan view:clear",
+            "@php artisan route:clear",
+            "@php artisan cache:clear",
+            "@php artisan optimize:clear"
         ]
     },
     "extra": {
