@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Theme } from '@shared/types'
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import axios from 'axios'
 import Tip from '@shared/components/Tip.vue'
 
@@ -21,10 +21,26 @@ const title = computed<string>(() => {
     return `Switch to ${switchTo} theme`
 })
 
+onMounted(() => setInitialTheme())
+
+function setInitialTheme(): void {
+    if (currentTheme.value !== 'system') {
+        return
+    }
+
+    hasDarkSystemTheme()
+        ? switchTheme('dark')
+        : switchTheme('light')
+}
+
 function switchTheme(toTheme: 'dark' | 'light'): void {
     axios.get(`/theme/${toTheme}`)
         .then(() => changeInterfaceTo(toTheme))
         .catch((err) => console.error(err))
+}
+
+function hasDarkSystemTheme(): boolean {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
 }
 
 function changeInterfaceTo(toTheme: 'light' | 'dark'): void {
