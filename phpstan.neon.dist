@@ -1,5 +1,5 @@
 includes:
-	- ./vendor/nunomaduro/larastan/extension.neon
+	- ./vendor/larastan/larastan/extension.neon
 
 parameters:
 	paths:
@@ -9,4 +9,3 @@ parameters:
 	excludePaths:
 		- ./*/*/FileToBeExcluded.php
 	ignoreErrors:
-		- '/Parameter #\d \$.* of method Illuminate\\Database\\Eloquent\\Relations\\.*<App\\Models\\.*>::whereDate\(\) expects string, Illuminate\\Support\\Carbon given\./'

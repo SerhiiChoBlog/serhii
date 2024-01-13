@@ -6,7 +6,6 @@ namespace Tests\Feature\Models;
 
 use App\Enums\BadgeName;
 use App\Models\Badge;
-use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
 

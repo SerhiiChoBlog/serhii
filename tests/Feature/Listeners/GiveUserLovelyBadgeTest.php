@@ -8,7 +8,6 @@ use App\Enums\BadgeName;
 use App\Events\UserLikesPost;
 use App\Listeners\Badges\GiveUserLovelyBadge;
 use App\Models\Badge;
-use App\Models\Post;
 use App\Models\PostLike;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
