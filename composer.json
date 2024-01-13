@@ -26,7 +26,7 @@
         "fakerphp/faker": "^1.21.0",
         "mockery/mockery": "^1.5.1",
         "nunomaduro/collision": "^7.0.5",
-        "nunomaduro/larastan": "^2.4.1",
+        "larastan/larastan": "^2.8.1",
         "phpunit/phpunit": "^10.0.10",
         "spatie/laravel-ignition": "^2.0"
     },
@@ -61,8 +61,8 @@
         ],
         "check": ["@pint", "@stan", "@test"],
         "build": [
-            "yarn build",
-            "git add ."
+            "@yarn build",
+            "@git add ."
         ],
         "sitemap": "@php artisan make:generate",
         "cache": [

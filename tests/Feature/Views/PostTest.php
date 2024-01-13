@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Support\Str;
 
 class PostTest extends TestCase
 {
@@ -17,6 +18,7 @@ class PostTest extends TestCase
     public function testGuestCanVisitPublishedPostPage(): void
     {
         $published_post = Post::factory()->published()->create();
+
         Visitor::factory()->create();
 
         $this->get(route('posts.show', $published_post))
@@ -38,6 +40,7 @@ class PostTest extends TestCase
     public function testUserCannotSeeThePostIfItsNotPublished(): void
     {
         Visitor::factory()->create();
+
         $post = Post::factory()->create();
         $this->get(route('posts.show', $post))->assertNotFound();
     }
@@ -55,7 +58,8 @@ class PostTest extends TestCase
     public function testPostPageHasPostTitle(): void
     {
         Visitor::factory()->create();
-        $post_title = 'This is some nice title for the post';
+
+        $post_title = Str::apa('This is some nice title for the post');
         $post = Post::factory()->published()->title($post_title)->create();
 
         $this->get(route('posts.show', $post))
