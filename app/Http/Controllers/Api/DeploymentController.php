@@ -17,7 +17,7 @@ class DeploymentController extends Controller
         }
 
         $project_root = base_path();
-        $output = shell_exec("cd {$project_root} && ./pull");
+        $output = shell_exec("cd {$project_root} && ./pull 2>&1");
 
         if ($output === null || $output === false) {
             return 'Could not execute command';
@@ -34,15 +34,16 @@ class DeploymentController extends Controller
         $rules = new DeployRules($json);
 
         if ($rules->migrate) {
-            $output .= shell_exec("cd {$project_root} && php artisan migrate");
+            $output .= shell_exec("cd {$project_root} && php artisan migrate 2>&1");
         }
 
         if ($rules->composer) {
-            $output .= shell_exec("cd {$project_root} && /opt/cpanel/composer/bin/composer update --no-dev");
+            $output .= shell_exec("pwd");
+            $output .= shell_exec("cd {$project_root} && composer update --no-dev 2>&1");
         }
 
         if ($rules->cache) {
-            $output .= shell_exec("cd {$project_root} && /opt/cpanel/composer/bin/composer cache");
+            $output .= shell_exec("cd {$project_root} && composer cache 2>&1");
         }
 
         $output = rtrim($output, "\n");
