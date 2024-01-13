@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Dto\DeployRules;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\JsonResponse;
 
 class DeploymentController extends Controller
 {
@@ -31,22 +30,27 @@ class DeploymentController extends Controller
 
         $json = json_decode($content, true, flags: JSON_THROW_ON_ERROR);
 
+        $output .= "(({$content}))";
+
         $rules = new DeployRules($json);
 
+        $composer = 'HOME=/home2/shobarco/.composer /opt/cpanel/composer/bin/composer';
+        $php = '/usr/local/bin/php';
+
         if ($rules->migrate) {
-            $output .= shell_exec("cd {$project_root} && php artisan migrate 2>&1");
+            $output .= shell_exec("cd {$project_root} && {$php} artisan migrate 2>&1");
         }
 
         if ($rules->composer) {
-            $output .= shell_exec("cd {$project_root} && pwd && HOME=/home2/shobarco/.composer /opt/cpanel/composer/bin/composer update --no-dev 2>&1");
+            $output .= shell_exec("cd {$project_root} && {$composer} update --no-dev 2>&1");
         }
 
         if ($rules->cache) {
-            $output .= shell_exec("cd {$project_root} && composer cache 2>&1");
+            $output .= shell_exec("cd {$project_root} && {$composer} cache 2>&1");
         }
 
         $output = rtrim($output, "\n");
 
-        return $output;
+        return strip_tags($output);
     }
 }
