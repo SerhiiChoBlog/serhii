@@ -30,8 +30,6 @@ class DeploymentController extends Controller
 
         $json = json_decode($content, true, flags: JSON_THROW_ON_ERROR);
 
-        $output .= "(({$content}))";
-
         $rules = new DeployRules($json);
 
         $composer = 'HOME=/home2/shobarco/.composer /opt/cpanel/composer/bin/composer';
