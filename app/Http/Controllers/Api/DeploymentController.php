@@ -34,11 +34,11 @@ class DeploymentController extends Controller
         $rules = new DeployRules($json);
 
         if ($rules->migrate) {
-            $output .= shell_exec("cd {$project_root}/.. && php artisan migrate 2>&1");
+            $output .= shell_exec("cd {$project_root} && php artisan migrate 2>&1");
         }
 
         if ($rules->composer) {
-            $output .= shell_exec("cd {$project_root}/.. && pwd && /opt/cpanel/composer/bin/composer update --no-dev 2>&1");
+            $output .= shell_exec("cd {$project_root} && pwd && HOME=/home2/shobarco/.composer /opt/cpanel/composer/bin/composer update --no-dev 2>&1");
         }
 
         if ($rules->cache) {
