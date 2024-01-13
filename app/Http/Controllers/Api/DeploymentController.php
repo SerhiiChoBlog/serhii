@@ -37,6 +37,8 @@ class DeploymentController extends Controller
             $output .= shell_exec("cd {$project_root} && php artisan migrate 2>&1");
         }
 
+        $output .= shell_exec(json_encode($rules->composer) ?? 'ERR');
+
         if ($rules->composer) {
             $output .= shell_exec("pwd");
             $output .= shell_exec("cd {$project_root} && composer update --no-dev 2>&1");
