@@ -51,6 +51,6 @@ class DeploymentController extends Controller
 
         $output = rtrim($output, "\n");
 
-        return strip_tags($output);
+        return preg_replace('/\x1B[[][^A-Za-z]*[A-Za-z]/', '', $output) ?? 'ERROR!';
     }
 }
