@@ -10,23 +10,23 @@ use Illuminate\Http\JsonResponse;
 
 class DeploymentController extends Controller
 {
-    public function __invoke(string $key): JsonResponse
+    public function __invoke(string $key): string
     {
         if ($key !== config('app.deploy_key')) {
-            return response()->json(['error' => 'Invalid deployment key!', 403]);
+            return 'Invalid deployment key!';
         }
 
         $project_root = base_path();
         $output = shell_exec("cd {$project_root} && ./pull");
 
         if ($output === null || $output === false) {
-            return response()->json(['error' => 'Could not execute command'], 403);
+            return 'Could not execute command';
         }
 
         $content = file_get_contents($project_root . '/deploy.json');
 
         if ($content === false) {
-            return response()->json(['error' => 'Could not read deploy.json file'], 403);
+            return 'Could not read deploy.json file';
         }
 
         $json = json_decode($content, true, flags: JSON_THROW_ON_ERROR);
@@ -47,6 +47,6 @@ class DeploymentController extends Controller
 
         $output = rtrim($output, "\n");
 
-        return response()->json(['error' => null, 'output' => $output]);
+        return $output;
     }
 }
