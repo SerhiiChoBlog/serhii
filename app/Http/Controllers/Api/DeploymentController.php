@@ -38,12 +38,11 @@ class DeploymentController extends Controller
         }
 
         if ($rules->composer) {
-            $output .= " :HERE ({$project_root}): ";
-            $output .= shell_exec("cd {$project_root} && composer update --no-dev");
+            $output .= shell_exec("cd {$project_root} && /opt/cpanel/composer/bin/composer update --no-dev");
         }
 
         if ($rules->cache) {
-            $output .= shell_exec("cd {$project_root} && composer cache");
+            $output .= shell_exec("cd {$project_root} && /opt/cpanel/composer/bin/composer cache");
         }
 
         $output = rtrim($output, "\n");
