@@ -25,10 +25,6 @@
                                     width="250"
                                     height="250"
                                 />
-
-                                <div>
-                                    <x-download-pdf-button class="h-14 mt-8 shadow-lg !px-0 w-full" />
-                                </div>
                             </div>
                         </div>
 
@@ -157,6 +153,7 @@
             isDark="true"
             header="Latest Books I've Read"
             subheader="Latest self-development books that I've read. Novels and other books are not included."
+            class="print:hidden"
         >
             <x-section-detail />
 
@@ -164,5 +161,10 @@
                 <books-read></books-read>
             </lazy-loading>
         </x-about.section>
+
+
+        <div class="text-center">
+            <x-download-pdf-button class="h-14 my-10 mx-auto shadow-lg" />
+        </div>
     </div>
 @endsection

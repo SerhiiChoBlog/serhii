@@ -11,7 +11,7 @@
         <img
             data-src="{{ asset('storage/posts/thanks.webp') }}"
             alt="Serhii Cho's photo"
-            class="rounded-full shadow-md print:shadow-none w-28"
+            class="rounded-full shadow-md print:shadow-none w-36"
             width="300"
             height="300"
         />
@@ -20,6 +20,10 @@
     <div class="flex flex-col text-xl md:text-2xl font-light text-font-second">
         <span>Thanks for your time!</span>
         <span class="mb-4">Please, share this post to support me</span>
+
+        <div class="mb-5 text-sm w-full">
+            <x-download-pdf-button />
+        </div>
 
         <share-post-buttons
             post-title="{{ $post['title'] }}"
