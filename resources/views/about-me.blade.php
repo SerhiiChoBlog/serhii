@@ -97,7 +97,7 @@
         </section>
 
         <x-about.section
-            isDark="true"
+            :isDark="true"
             header="Languages"
             subheader="Programming languages that I've used in my work and projects."
         >
@@ -113,7 +113,7 @@
         </x-about.section>
 
         <x-about.section
-            isDark="true"
+            :isDark="true"
             header="Testimonials"
             subheader="What some of my best clients and colleagues have to say about me."
             class="min-h-[500px] print:hidden"
@@ -133,7 +133,7 @@
         </x-about.section>
 
         <x-about.section
-            isDark="true"
+            :isDark="true"
             header="Personal Skills"
             subheader="Skills that I've developed over the years that help me in my work."
         >
@@ -150,7 +150,7 @@
         </x-about.section>
 
         <x-about.section
-            isDark="true"
+            :isDark="true"
             header="Latest Books I've Read"
             subheader="Latest self-development books that I've read. Novels and other books are not included."
             class="print:hidden"
@@ -162,9 +162,15 @@
             </lazy-loading>
         </x-about.section>
 
-
-        <div class="text-center">
-            <x-download-pdf-button class="h-14 my-10 mx-auto shadow-lg" />
-        </div>
+        <x-about.section
+            :isDark="false"
+            header="Print this page"
+            subheader="You can download this page as PDF file."
+            class="print:hidden"
+        >
+            <div class="text-center">
+                <x-download-pdf-button class="h-14 my-10 mx-auto shadow-lg" />
+            </div>
+        </x-about.section>
     </div>
 @endsection
