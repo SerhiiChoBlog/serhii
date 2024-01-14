@@ -10,7 +10,7 @@
      * @var ComponentAttributeBag $attributes
      */
 
-    $classes = ($isDark ?? '') ? 'bg-page-second' : '';
+    $classes = ($isDark ?? '') ? 'bg-page-second print:bg-page' : '';
 @endphp
 
 <section {{ $attributes->merge(['class' => "relative py-20 px-5 $classes"]) }}>

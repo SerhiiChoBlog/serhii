@@ -1,4 +1,4 @@
-<div class="w-[50px] aspect-square absolute left-1/2 -translate-x-1/2 top-[-25px]">
+<div class="w-[50px] aspect-square absolute left-1/2 -translate-x-1/2 top-[-25px] print:hidden">
     <!-- white square -->
     <div class="w-[50px] aspect-square bg-page absolute top-[0px] rotate-45"></div>
     <!-- outer diamond -->
