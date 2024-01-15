@@ -12,6 +12,7 @@ class ReferrerMiddleware
 {
     private const IGNORED_SITES = [
         'serhii.io',
+        'serhii.shobar.com.ua',
         'localhost',
     ];
 
