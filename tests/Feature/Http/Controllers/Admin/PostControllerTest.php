@@ -309,8 +309,8 @@ class PostControllerTest extends TestCase
             'is_published' => false,
             'content' => <<<TEXT
             <h2>Successful people</h2>
-            <img alt="Andrew Tate" src="storage/people/andrew-tate.jpg" />
-            <img src="storage/people/tristan-tate.jpg" alt="Tristan Tate" />
+            <img alt="Anna Cho" src="storage/people/anna-cho.jpg" />
+            <img src="storage/people/serhii-cho.jpg" alt="Serhii Cho" />
             TEXT,
             'slug' => $post->slug,
         ];
@@ -321,8 +321,8 @@ class PostControllerTest extends TestCase
 
         $expect = <<<TEXT
         <h2>Successful people</h2>
-        <img alt="Andrew Tate" data-src="storage/people/andrew-tate.jpg" />
-        <img data-src="storage/people/tristan-tate.jpg" alt="Tristan Tate" />
+        <img alt="Anna Cho" data-src="storage/people/anna-cho.jpg" />
+        <img data-src="storage/people/serhii-cho.jpg" alt="Serhii Cho" />
         TEXT;
 
         $this->assertSame($expect, $post->fresh()?->content);
@@ -333,10 +333,10 @@ class PostControllerTest extends TestCase
         $admin = $this->createAdmin();
 
         Post::factory()->create([
-            'content' => <<<HTML
+            'content' => <<<'HTML'
             <h2>Successful people</h2>
-            <img alt="Andrew Tate" src="storage/people/andrew-tate.jpg" />
-            <img src="storage/people/tristan-tate.jpg" alt="Tristan Tate" />
+            <img alt="Anna Cho" src="storage/people/anna-cho.jpg" />
+            <img src="storage/people/serhii-cho.jpg" alt="Serhii Cho" />
             HTML,
         ]);
 
@@ -345,8 +345,8 @@ class PostControllerTest extends TestCase
 
         $expect_content = <<<TEXT
         <h2>Successful people</h2>
-        <img alt="Andrew Tate" src="storage/people/andrew-tate.jpg" />
-        <img src="storage/people/tristan-tate.jpg" alt="Tristan Tate" />
+        <img alt="Anna Cho" src="storage/people/anna-cho.jpg" />
+        <img src="storage/people/serhii-cho.jpg" alt="Serhii Cho" />
         TEXT;
 
         $this->assertSame($expect_content, $resp->json('content'));
