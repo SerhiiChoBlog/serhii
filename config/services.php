@@ -38,7 +38,13 @@ return [
     ],
 
     'github' => [
-        'projects_url' => 'https://api.github.com/users/SerhiiCho/repos',
+        'projects_urls' => [
+            'https://api.github.com/users/SerhiiCho/repos',
+            'https://api.github.com/users/php-revival/repos',
+            'https://api.github.com/users/smooth-loader/repos',
+            'https://api.github.com/users/textwire/repos',
+            'https://api.github.com/users/wp-pager/repos',
+        ],
         'readme_url' => 'https://raw.githubusercontent.com/SerhiiCho/{repo}/master/README.md',
     ],
 

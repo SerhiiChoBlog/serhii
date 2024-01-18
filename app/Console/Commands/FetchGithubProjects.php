@@ -7,6 +7,7 @@ namespace App\Console\Commands;
 use App\CacheKey;
 use App\Models\Project;
 use Illuminate\Console\Command;
+use Illuminate\Http\Client\Pool;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -43,10 +44,28 @@ class FetchGithubProjects extends Command
      */
     private function fetchProjects(): Collection
     {
-        $projects_url = config('services.github.projects_url');
+        $urls = config('services.github.projects_urls');
         $readme_url = Str::of(config('services.github.readme_url'));
 
-        $projects = Http::get($projects_url)->throw()->collect();
+        $responses = Http::pool(function (Pool $pool) use ($urls) {
+            $result = [];
+
+            foreach ($urls as $url) {
+                $result[] = $pool->get($url);
+            }
+
+            return $result;
+        });
+
+        $projects = array_reduce($responses, function ($carry, $response) {
+            $projects = $response->json();
+
+            if (is_array($projects)) {
+                return $carry->merge($projects);
+            }
+
+            return $carry;
+        }, new Collection());
 
         $mit_projects = $projects->filter(function ($project) {
             $license = $project['license']['key'] ?? null;
