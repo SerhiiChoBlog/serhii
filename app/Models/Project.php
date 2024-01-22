@@ -54,7 +54,7 @@ class Project extends Model
 
     public static function getCachedProjects(): array
     {
-        return Cache::remember(CacheKey::PROJECTS, Ttl::DAY, static function () {
+        return Cache::remember(CacheKey::PROJECTS, Ttl::HOUR, static function () {
             return self::query()
                 ->select('title', 'language', 'description', 'name', 'stars', 'has_homepage', 'url', 'updated_at')
                 ->orderByDesc('updated_at')
