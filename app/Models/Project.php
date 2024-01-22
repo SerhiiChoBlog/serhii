@@ -7,9 +7,12 @@ namespace App\Models;
 use App\CacheKey;
 use App\Ttl;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Serhii\Ago\Option;
+use Serhii\Ago\TimeAgo;
 
 /**
  * @property-read int $id
@@ -35,6 +38,11 @@ class Project extends Model
 
     public $timestamps = false;
 
+    protected $appends = [
+        'pretty_updated_at',
+    ];
+
+
     /**
      * @var array<string, string>
      */
@@ -52,6 +60,20 @@ class Project extends Model
                 ->orderByDesc('updated_at')
                 ->get()
                 ->toArray();
+        });
+    }
+
+    /**
+     * @return Attribute<string, mixed>
+     */
+    protected function prettyUpdatedAt(): Attribute
+    {
+        return Attribute::get(function (): string {
+            if ($this->updated_at === null) {
+                return '';
+            }
+
+            return TimeAgo::trans($this->updated_at, Option::JUST_NOW);
         });
     }
 }

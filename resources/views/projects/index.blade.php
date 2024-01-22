@@ -38,8 +38,12 @@
                                 {{ $project['title'] }}
                             </h2>
 
-                            <p class="text-lg mt-3 text-font-second border-t border-t-border pt-3">
+                            <p class="text-lg mt-3 text-font-second border-t border-t-border pt-3 pb-6">
                                 {{ $project['description'] }}
+
+                                <small class="text-font-second opacity-70 block mt-1">
+                                    Last commit {{ $project['pretty_updated_at'] }}
+                                </small>
                             </p>
 
                             <div class="absolute bottom-3 inset-x-6 flex justify-between items-center text-md text-gray-500">
