@@ -4,7 +4,7 @@
 
 @extends('layouts.main')
 
-@push('title', 'Open-source projects | Serhii Cho')
+@push('title', 'Open-source projects | {S} Serhii')
 @push('description', "Serhii Cho is a maintainer of several open-source libraries which you can contribute to any of them on GitHub")
 
 @section('content')
