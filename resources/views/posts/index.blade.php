@@ -11,13 +11,13 @@
      * @var Series|null $series
      */
 
-    $title = $tag ? "Read about {$tag->title}" : 'Blog for web developers';
+    $title = $tag ? "Read about {$tag->title}" : 'Articles for developers';
     $header_style = $series ? "background: linear-gradient(90deg, {$series->color_from} 0%, {$series->color_to} 100%)" : '';
 @endphp
 
 @extends('layouts.main')
 
-@push('title', "{$title} | Serhii Cho")
+@push('title', "{$title} | {S} Serhii")
 @push('description', "You want to become a better web developer and create optimized, responsive and modern websites using the latest web technologies and best practices?")
 
 @section('content')
