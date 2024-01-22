@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\CacheKey;
+use App\Ttl;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -45,10 +46,10 @@ class Project extends Model
 
     public static function getCachedProjects(): array
     {
-        return Cache::rememberForever(CacheKey::PROJECTS, static function () {
+        return Cache::remember(CacheKey::PROJECTS, Ttl::DAY, static function () {
             return self::query()
-                ->select('title', 'language', 'description', 'name', 'stars', 'has_homepage', 'url')
-                ->orderByDesc('stars')
+                ->select('title', 'language', 'description', 'name', 'stars', 'has_homepage', 'url', 'updated_at')
+                ->orderByDesc('updated_at')
                 ->get()
                 ->toArray();
         });
