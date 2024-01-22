@@ -9,7 +9,7 @@ type Props = {
 const { uri, defaultUri } = defineProps<Props>()
 const imageSrc = ref<string>(uri ? `/${uri}` : defaultUri)
 
-function updateImagePreview(e: InputEvent): void {
+function updateImagePreview(e: Event): void {
     const fileReader = new FileReader()
     const src = e.target as HTMLInputElement
 
