@@ -36,7 +36,7 @@ class DeploymentController extends Controller
         $php = '/usr/local/bin/php';
 
         if ($rules->migrate) {
-            $output .= shell_exec("cd {$project_root} && {$php} artisan migrate 2>&1");
+            $output .= shell_exec("cd {$project_root} && {$php} artisan migrate --force --no-interaction 2>&1");
         }
 
         if ($rules->composer) {
