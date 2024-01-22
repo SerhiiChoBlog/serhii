@@ -62,7 +62,8 @@
         "check": ["@pint", "@stan", "@test"],
         "build": [
             "yarn build",
-            "git add ."
+            "git add .",
+            "git commit -m 'Compiled for production'"
         ],
         "sitemap": "@php artisan make:generate",
         "cache": [
