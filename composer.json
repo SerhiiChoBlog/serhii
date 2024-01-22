@@ -61,8 +61,8 @@
         ],
         "check": ["@pint", "@stan", "@test"],
         "build": [
-            "@yarn build",
-            "@git add ."
+            "yarn build",
+            "git add ."
         ],
         "sitemap": "@php artisan make:generate",
         "cache": [
