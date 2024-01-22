@@ -29,7 +29,7 @@ function saveShare(social: string): void {
             :key="link.title"
             :href="link.href ? link.href : 'javascript:'"
             :target="link.href ? '_blank' : ''"
-            rel="nofollow noopener noreferrer"
+            rel="noopener noreferrer"
             @mousedown="saveShare(link.title)"
             @click="link.action ? link.action() : null"
             :aria-label="link.tip"
