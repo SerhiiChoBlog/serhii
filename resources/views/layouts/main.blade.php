@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <x-analytics />
     <x-head />
     @vite('resources/css/main/app.css')
     @stack('head')
