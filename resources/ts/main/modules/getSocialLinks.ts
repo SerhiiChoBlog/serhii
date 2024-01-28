@@ -3,7 +3,7 @@ import type { SocialLink } from '@shared/types'
 import copy from 'copy-to-clipboard'
 
 export default (postTitle: string): SocialLink[] => {
-    const url = window.location.href
+    const url = encodeURIComponent(window.location.href)
 
     return [
         {
