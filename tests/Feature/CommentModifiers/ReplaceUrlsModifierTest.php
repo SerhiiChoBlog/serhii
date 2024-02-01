@@ -51,6 +51,22 @@ class ReplaceUrlsModifierTest extends TestCase
                 'https://serhii.io/about-me',
                 '<a href="https://serhii.io/about-me" target="_blank">https://serhii.io/about-me</a>',
             ],
+            [
+                'https://serhii.io/about-me.',
+                '<a href="https://serhii.io/about-me" target="_blank">https://serhii.io/about-me</a>.',
+            ],
+            [
+                'Link: https://serhii.io/about-me. Thanks!',
+                'Link: <a href="https://serhii.io/about-me" target="_blank">https://serhii.io/about-me</a>. Thanks!',
+            ],
+            [
+                'Link: https://serhii.io.',
+                'Link: <a href="https://serhii.io" target="_blank">https://serhii.io</a>.',
+            ],
+            [
+                'Link: https://serhii.io',
+                'Link: <a href="https://serhii.io" target="_blank">https://serhii.io</a>',
+            ],
         ];
     }
 }
