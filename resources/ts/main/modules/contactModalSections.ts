@@ -17,9 +17,9 @@ export default [
                 title: 'Instagram',
             },
             {
-                img: '/storage/icons/twitter.webp',
-                href: 'https://twitter.com/SerhiiCho',
-                title: 'Twitter',
+                img: '/storage/icons/x.webp',
+                href: 'https://x.com/SerhiiCho',
+                title: 'X (Twitter)',
             },
         ],
     },

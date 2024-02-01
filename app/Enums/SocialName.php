@@ -6,7 +6,7 @@ namespace App\Enums;
 
 enum SocialName: string
 {
-    case TWITTER = 'twitter';
+    case X = 'x';
     case LINKEDIN = 'linkedin';
     case REDDIT = 'reddit';
     case TELEGRAM = 'telegram';
@@ -19,7 +19,7 @@ enum SocialName: string
     public static function all(): array
     {
         return [
-            self::TWITTER,
+            self::X,
             self::LINKEDIN,
             self::REDDIT,
             self::TELEGRAM,
