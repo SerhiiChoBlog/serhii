@@ -24,7 +24,7 @@ const { post } = defineProps<Props>()
 
         <h2 class="text-lg leading-6 my-3">
             <b v-if="post.series && post.series.length > 0">
-                Part {{ post.series[0]!.pivot.part }} {{ post.series[0].title }}:
+                Part {{ post.series[0]!.pivot!.part }} {{ post.series[0].title }}:
                 <br />
             </b>
 
