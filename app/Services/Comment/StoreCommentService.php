@@ -47,23 +47,9 @@ class StoreCommentService
      */
     public function handle(): array
     {
+        $this->validateUser();
+
         $timeout_minutes = (int) config('app.comments_timeout_minutes');
-
-        if ($this->isSpam($timeout_minutes)) {
-            $msg = "You can only post one comment every {$timeout_minutes} minutes.";
-            throw ValidationException::withMessages(['comment' => $msg]);
-        }
-
-        if ($this->user->email_verified_at === null) {
-            $msg = 'Only verified users can post comments. Please check your email for a verification link.';
-            throw ValidationException::withMessages(['secret' => $msg]);
-        }
-
-        if ($this->user->ban()->exists()) {
-            $msg = 'You have been banned from posting comments.';
-            throw ValidationException::withMessages(['comment' => $msg]);
-        }
-
         $parent = $this->getParentComment();
 
         if ($parent && $parent->comment_id !== null) {
@@ -166,5 +152,25 @@ class StoreCommentService
         return $is_approved
             ? 'Thank you! Your comment has been posted'
             : 'Thank you! Your comment has been posted and will be reviewed shortly';
+    }
+
+    private function validateUser(): void
+    {
+        $timeout_minutes = (int) config('app.comments_timeout_minutes');
+
+        if ($this->isSpam($timeout_minutes)) {
+            $msg = "You can only post one comment every {$timeout_minutes} minutes.";
+            throw ValidationException::withMessages(['comment' => $msg]);
+        }
+
+        if ($this->user->email_verified_at === null) {
+            $msg = 'Only verified users can post comments. Please check your email for a verification link.';
+            throw ValidationException::withMessages(['secret' => $msg]);
+        }
+
+        if ($this->user->ban()->exists()) {
+            $msg = 'You have been banned from posting comments.';
+            throw ValidationException::withMessages(['comment' => $msg]);
+        }
     }
 }
