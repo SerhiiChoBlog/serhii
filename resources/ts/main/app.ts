@@ -58,7 +58,7 @@ const app = createApp({
     },
 })
 
-app.config.globalProperties.Auth = Auth
+app.config.globalProperties.Auth = window.Auth
 
 app.mount("#main")
 

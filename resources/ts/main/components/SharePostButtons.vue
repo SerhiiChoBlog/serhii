@@ -14,7 +14,7 @@ const links = getSocialLinks(postTitle)
 function saveShare(social: string): void {
     const params = {
         social,
-        secret: Auth ? Auth.secret : null,
+        secret: window.Auth ? window.Auth.secret : null,
     }
 
     axios.post(`/api/social-shares/${postId}`, params)
