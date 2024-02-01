@@ -76,10 +76,6 @@ class StoreCommentService
 
     private function isSpam(int $timeout_minutes): bool
     {
-        if ($this->is_admin) {
-            return false;
-        }
-
         return $this->user
             ->comments()
             ->where('created_at', '>=', now()->subMinutes($timeout_minutes))
@@ -100,6 +96,10 @@ class StoreCommentService
 
     private function validateIfCommentIsApproved(): bool
     {
+        if ($this->is_admin) {
+            return true;
+        }
+
         $spam_words = config('spam-words');
         $comment = mb_strtolower($this->comment);
 
@@ -156,6 +156,10 @@ class StoreCommentService
 
     private function validateUser(): void
     {
+        if ($this->is_admin) {
+            return;
+        }
+
         $timeout_minutes = (int) config('app.comments_timeout_minutes');
 
         if ($this->isSpam($timeout_minutes)) {
