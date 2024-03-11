@@ -18,7 +18,7 @@
         "laravel/framework": "^10.0.3",
         "laravel/ui": "^4.2.1",
         "serhii/ago": "^3.0.3",
-        "serhii/short-number": "^3.0.2"
+        "serhii/short-number": "^3.0.6"
     },
     "require-dev": {
         "laravel/tinker": "^2.8",
