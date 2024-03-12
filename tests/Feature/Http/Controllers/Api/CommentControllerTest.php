@@ -17,6 +17,7 @@ use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Str;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class CommentControllerTest extends TestCase
@@ -379,9 +380,7 @@ class CommentControllerTest extends TestCase
         $this->assertTrue($date->addSeconds(5)->isFuture());
     }
 
-    /**
-     * @dataProvider providerForTestPostingCommentWithSwearWordWillBeMarkedAsNotApproved
-     */
+    #[DataProvider('providerForTestPostingCommentWithSwearWordWillBeMarkedAsNotApproved')]
     public function testPostingCommentWithSwearWordWillBeMarkedAsNotApproved(string $text): void
     {
         $resp = $this->postJson(self::POST_COMMENT_URI, [
@@ -411,9 +410,7 @@ class CommentControllerTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerForTestPostingCommentWithoutSwearWordWillBeMarkedAsApproved
-     */
+    #[DataProvider('providerForTestPostingCommentWithoutSwearWordWillBeMarkedAsApproved')]
     public function testPostingCommentWithoutSwearWordWillBeMarkedAsApproved(string $text): void
     {
         $resp = $this->postJson(self::POST_COMMENT_URI, [
