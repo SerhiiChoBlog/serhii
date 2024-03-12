@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class BookControllerTest extends TestCase
@@ -161,9 +162,7 @@ class BookControllerTest extends TestCase
         $this->assertDatabaseMissing('books', $attrs);
     }
 
-    /**
-     * @dataProvider providerForWeCanUpdateBookFields
-     */
+    #[DataProvider('providerForWeCanUpdateBookFields')]
     public function testWeCanUpdateBookFields(string $field_name, string $field_value): void
     {
         /** @var Book $book */
