@@ -51,7 +51,7 @@ class FetchGithubProjects extends Command
             $result = [];
 
             foreach ($urls as $url) {
-                $result[] = $pool->get($url);
+                $result[] = $pool->retry(3)->get($url);
             }
 
             return $result;
