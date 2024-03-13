@@ -27,11 +27,7 @@ export default () => {
         })
             .then(resp => {
                 const msg = `You've signed in! Click here to go to a profile`
-                const url = window.Auth && window.Auth.slug === 'serhii-cho'
-                    ? '/admin/dashboard'
-                    : '/users/profile'
-
-                PageRefresher.refresh(msg, url)
+                PageRefresher.refresh(msg, '/users/profile')
             })
             .catch(async e => {
                 const err = await handleServerError(e)
