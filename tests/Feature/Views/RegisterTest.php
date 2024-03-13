@@ -38,7 +38,7 @@ class RegisterTest extends TestCase
 
         $this->actingAs($admin, 'admin')
             ->get(route('register'))
-            ->assertRedirect(RouteServiceProvider::ADMIN_HOME);
+            ->assertRedirect('/');
     }
 
     public function testUserCannotVisitPageIfAuthenticated(): void
@@ -47,7 +47,7 @@ class RegisterTest extends TestCase
 
         $this->actingAs($user, 'user')
             ->get(route('register'))
-            ->assertRedirect(RouteServiceProvider::USER_HOME);
+            ->assertRedirect('/');
     }
 
     public function testUserCanRegisterAndSeeProfilePage(): void
