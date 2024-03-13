@@ -83,21 +83,21 @@ class DashboardController extends Controller
                 'goal' => 'Publish 1 posts',
                 'min' => $posts_this_week,
                 'max' => 1,
-                'daysLeft' => now()->diffInDays(now()->endOfWeek()),
+                'daysLeft' => round(now()->diffInDays(now()->endOfWeek())),
             ],
             [
                 'title' => 'Monthly goal',
                 'goal' => 'Publish 4 posts',
                 'min' => $posts_this_month,
                 'max' => 4,
-                'daysLeft' => now()->diffInDays(now()->endOfMonth()),
+                'daysLeft' => round(now()->diffInDays(now()->endOfMonth())),
             ],
             [
                 'title' => 'Yearly goal',
                 'goal' => "Publish {$yearly_goal} posts",
                 'min' => $posts_this_year,
                 'max' => $yearly_goal,
-                'daysLeft' => now()->diffInDays(now()->endOfYear()),
+                'daysLeft' => round(now()->diffInDays(now()->endOfYear())),
             ],
         ];
     }
