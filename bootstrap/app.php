@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\RedirectToMainUrl;
+use App\Http\Middleware\ReferrerMiddleware;
+use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -20,6 +24,12 @@ return Application::configure(basePath: dirname(__DIR__))
             '/admin/ajax/post-content-images/*',
             '/admin/ajax/posts/*',
         ]);
+
+        EncryptCookies::except(['theme']);
+
+        $middleware->web(RedirectIfAuthenticated::class);
+        $middleware->web(RedirectToMainUrl::class);
+        $middleware->web(ReferrerMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
