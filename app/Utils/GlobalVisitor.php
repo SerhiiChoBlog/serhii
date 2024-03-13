@@ -7,7 +7,7 @@ namespace App\Utils;
 use App\Models\Visitor;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Log;
-use Stevebauman\Location\Location;
+use Stevebauman\Location\Facades\Location;
 use Stevebauman\Location\Position;
 use Throwable;
 
@@ -103,7 +103,7 @@ class GlobalVisitor
     private static function getVisitorPosition(string $ip): ?Position
     {
         try {
-            $result = app(Location::class)->get($ip);
+            $result = Location::get($ip);
             return is_bool($result) ? null : $result;
         } catch (Throwable $e) {
             Log::warning($e->getMessage());
