@@ -26,7 +26,7 @@ class LoginTest extends TestCase
 
         $this->actingAs($admin, 'admin')
             ->get(route('login'))
-            ->assertRedirect();
+            ->assertRedirect('/');
     }
 
     public function testUserCannotVisitPageIfAuthenticated(): void
@@ -36,7 +36,7 @@ class LoginTest extends TestCase
 
         $this->actingAs($user, 'user')
             ->get(route('login'))
-            ->assertRedirect();
+            ->assertRedirect('/');
     }
 
     public function testUserCanLoginAndSeeProfilePage(): void
