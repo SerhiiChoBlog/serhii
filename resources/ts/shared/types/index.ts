@@ -1,6 +1,6 @@
 import type { Tag, User } from './models'
 
-export type SocialName = 'x' | 'linkedin' | 'reddit' | 'telegram' | 'facebook' | 'clipboard'
+export type SocialName = 'twitter' | 'linkedin' | 'reddit' | 'telegram' | 'facebook' | 'clipboard'
 export type Theme = 'light' | 'dark' | 'system'
 export type FeedType = 'comment' | 'post-like' | 'badge' | 'comment-like'
 
