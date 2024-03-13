@@ -6,7 +6,7 @@ namespace App\Enums;
 
 enum SocialName: string
 {
-    case X = 'x';
+    case X = 'twitter';
     case LINKEDIN = 'linkedin';
     case REDDIT = 'reddit';
     case TELEGRAM = 'telegram';
