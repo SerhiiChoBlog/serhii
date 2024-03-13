@@ -26,6 +26,8 @@ return Application::configure(basePath: dirname(__DIR__))
             '/admin/ajax/posts/*',
         ]);
 
+        $middleware->api('throttle:api');
+
         $middleware->web(
             append: [
                 RedirectToMainUrl::class,
