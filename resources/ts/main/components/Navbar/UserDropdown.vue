@@ -7,6 +7,10 @@ import logout from '@shared/modules/logout'
 function redirectTo(url: string) {
     window.location.href = url
 }
+
+const profileUrl = Auth.slug === 'serhii-cho'
+    ? '/admin/dashboard'
+    : '/users/profile'
 </script>
 
 <template>
@@ -16,7 +20,7 @@ function redirectTo(url: string) {
         </menu-button>
 
         <menu-items>
-            <menu-item @click="redirectTo('/users/profile')">Profile</menu-item>
+            <menu-item @click="redirectTo(profileUrl)">Profile</menu-item>
             <menu-item @click="logout">Logout</menu-item>
         </menu-items>
     </Menu>
