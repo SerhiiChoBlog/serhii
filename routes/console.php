@@ -2,20 +2,19 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
+use App\Console\Commands\FetchVideos;
+use App\Console\Commands\SitemapCommand;
+use App\Console\Commands\DeleteRobotViews;
+use App\Console\Commands\TopPostLastMonth;
+use App\Console\Commands\FetchGithubProjects;
+use App\Console\Commands\SubscriptionsNotify;
+use App\Console\Commands\DetectRobotsVisitors;
+use Illuminate\Support\Facades\Schedule;
 
-/*
-|--------------------------------------------------------------------------
-| Console Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of your Closure based console
-| commands. Each Closure is bound to a command instance allowing a
-| simple approach to interacting with each command's IO methods.
-|
-*/
-
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+Schedule::command(SubscriptionsNotify::class)->hourly();
+Schedule::command(FetchGithubProjects::class)->dailyAt('00:01');
+Schedule::command(FetchVideos::class)->dailyAt('00:02');
+Schedule::command(DetectRobotsVisitors::class)->dailyAt('00:03');
+Schedule::command(DeleteRobotViews::class)->dailyAt('00:04');
+Schedule::command(TopPostLastMonth::class)->dailyAt('00:05');
+Schedule::command(SitemapCommand::class)->dailyAt('00:06');
