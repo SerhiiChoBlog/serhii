@@ -86,7 +86,10 @@ class SubscriptionsNotify extends Command
      */
     private function getLastPost(): Post
     {
-        $post = Post::with('tags')->where('is_published', true)->latest()->first();
+        $post = Post::with('tags')
+            ->where('is_published', true)
+            ->latest()
+            ->first();
 
         if (!$post) {
             throw new Exception('There are no posts in database');
