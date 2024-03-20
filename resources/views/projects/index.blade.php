@@ -25,13 +25,15 @@
                         title="Go to a project"
                         {{ $project['has_homepage'] ? 'target="_blank"' : '' }}
                     >
-                        <img
-                            src="{{ asset(sprintf('/storage/languages/%s.webp', strtolower($project['language']))) }}"
-                            alt="{{ $project['title'] }}"
-                            class="absolute right-4 top-4 w-12 aspect-square"
-                            width="80"
-                            height="80"
-                        />
+                        @isset($project['language'])
+                            <img
+                                src="{{ asset(sprintf('/storage/languages/%s.webp', strtolower($project['language']))) }}"
+                                alt="{{ $project['title'] }}"
+                                class="absolute right-4 top-4 w-12 aspect-square"
+                                width="80"
+                                height="80"
+                            />
+                        @endisset
 
                         <div>
                             <h2 class="first-letter:text-main font-bold text-2xl text-font uppercase">

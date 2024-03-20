@@ -234,7 +234,7 @@ export type Project = {
     description: string
     content: string
     has_homepage: boolean
-    language: string
+    language: string | null
     stars: number
     created_at: string
     updated_at: string
