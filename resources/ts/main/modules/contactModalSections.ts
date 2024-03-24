@@ -12,11 +12,6 @@ export default [
                 title: 'LinkedIn',
             },
             {
-                img: '/storage/icons/instagram.webp',
-                href: 'https://www.instagram.com/serhiicho',
-                title: 'Instagram',
-            },
-            {
                 img: '/storage/icons/x.webp',
                 href: 'https://x.com/SerhiiCho',
                 title: 'X (Twitter)',
