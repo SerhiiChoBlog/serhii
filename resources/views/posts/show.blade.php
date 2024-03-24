@@ -28,7 +28,6 @@
     <meta property="og:image:height" content="500">
     <meta property="article:published_time" content="{{ $post->created_at }}">
     <meta property="article:modified_time" content="{{ $post->updated_at }}">
-    <meta property="article:publisher" content="https://www.facebook.com/serhii.cho.9/">
 
     @foreach ($post->tags as $tag)
         <meta property="article:tag" content="{{ $tag->name }}">

@@ -22,11 +22,6 @@ export default (postTitle: string): SocialLink[] => {
             tip: 'Share to X (Twitter)',
         },
         {
-            href: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
-            title: 'facebook',
-            tip: 'Share to Facebook',
-        },
-        {
             href: `https://t.me/share/url?url=${url}&text=${postTitle}`,
             title: 'telegram',
             tip: 'Share to Telegram',
