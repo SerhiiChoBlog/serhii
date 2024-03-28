@@ -1,16 +1,28 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 type Props = {
     url: string | null
 }
 
 const { url } = defineProps<Props>()
+const commonStyles = computed(() => {
+    let res = "px-7 py-4 w-full text-center rounded-xl text-lg text-white"
+
+    if (url) {
+        return res + " bg-main"
+    }
+
+    return res + " bg-main-light cursor-not-allowed"
+})
 </script>
 
 <template>
     <a
         href="#"
-        class="bg-main text-white px-12 py-5 w-full text-center rounded-lg text-lg"
+        :class="commonStyles"
     >
         <slot />
     </a>
+
 </template>
