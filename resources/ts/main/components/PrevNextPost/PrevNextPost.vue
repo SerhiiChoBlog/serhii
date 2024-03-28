@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import type { Post } from '@shared/types/models'
 import { onMounted, ref } from 'vue'
+import handleServerError from '@shared/modules/handleServerError'
+import axios from 'axios'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import Btn from '@/components/PrevNextPost/Btn.vue'
 
@@ -14,12 +17,18 @@ onMounted(() => {
 
 const { postId } = defineProps<Props>()
 const loading = ref(false)
-const prevURL = ref<string | null>(null)
-const nextURL = ref<string | null>(null)
+const prevPost = ref<Post | null>(null)
+const nextPost = ref<Post | null>(null)
 
 function fetchPrevNextPosts() {
-    // Fetch prev and next post ids
     loading.value = false
+
+    axios.get(`/api/posts/prev-next/${postId}`)
+        .then(res => {
+            prevPost.value = res.data.prev
+            nextPost.value = res.data.next
+        })
+        .catch(handleServerError)
 }
 </script>
 
@@ -28,8 +37,8 @@ function fetchPrevNextPosts() {
         <spinner />
     </div>
 
-    <div v-else class="flex items-center justify-center gap-2 mt-4">
-        <btn :url="prevURL">Previous article</btn>
-        <btn :url="nextURL">Next article</btn>
+    <div v-else class="flex items-start justify-center gap-3 mt-5">
+        <btn :post="prevPost">Previous article</btn>
+        <btn :post="nextPost">Next article</btn>
     </div>
 </template>
