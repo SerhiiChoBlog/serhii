@@ -20,7 +20,7 @@ onMounted(() => {
 })
 
 function fetchPost(): void {
-    axios.get<Post[]>(`/api/related-posts/${postId}`)
+    axios.get<Post[]>(`/api/posts/related/${postId}`)
         .then(resp => posts.value = resp.data)
         .catch(err => handleServerError(err))
         .finally(() => loading.value = false)

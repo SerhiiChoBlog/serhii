@@ -30,8 +30,10 @@ Route::get('search/{query}', [SearchController::class, 'index']);
 
 Route::post('subscriptions', [SubscriptionDemandController::class, 'subscribe']);
 
-Route::get('posts', [PostController::class, 'index']);
-Route::get('related-posts/{post}', [PostController::class, 'related']);
+Route::controller(PostController::class)->prefix('posts')->group(function () {
+    Route::get('posts', 'index');
+    Route::get('related/{post}', 'related');
+});
 
 Route::controller(CommentController::class)->prefix('comments')->group(function () {
     Route::get('/', 'index');
