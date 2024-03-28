@@ -120,10 +120,15 @@
                         </small>
                     </div>
 
+                    <lazy-loading>
+                        <prev-next-post :post-id="{{ $post->id }}" />
+                    </lazy-loading>
+
                     <x-post.footer :post="$post" />
 
                     <nav role="navigation" class="print:hidden">
                         <x-post.sidebar-title>You might be interested</x-post.sidebar-title>
+
                         <lazy-loading>
                             <related-posts :post-id="{{ $post->id }}"></related-posts>
                         </lazy-loading>
