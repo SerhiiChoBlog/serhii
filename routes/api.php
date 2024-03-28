@@ -33,6 +33,7 @@ Route::post('subscriptions', [SubscriptionDemandController::class, 'subscribe'])
 Route::controller(PostController::class)->prefix('posts')->group(function () {
     Route::get('posts', 'index');
     Route::get('related/{post}', 'related');
+    Route::get('prev-next/{post}', 'prevNextPost');
 });
 
 Route::controller(CommentController::class)->prefix('comments')->group(function () {
