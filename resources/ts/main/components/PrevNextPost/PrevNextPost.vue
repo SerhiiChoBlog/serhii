@@ -37,8 +37,8 @@ function fetchPrevNextPosts() {
         <spinner />
     </div>
 
-    <div v-else class="flex items-start justify-center gap-3 mt-5">
-        <btn :post="prevPost">Previous article</btn>
-        <btn :post="nextPost">Next article</btn>
+    <div v-else class="grid grid-cols-1 md:grid-cols-2 mt-4">
+        <btn :post="prevPost" class="text-left">Previous article</btn>
+        <btn :post="nextPost" class="text-right">Next article</btn>
     </div>
 </template>
