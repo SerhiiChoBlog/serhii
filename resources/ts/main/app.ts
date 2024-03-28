@@ -24,6 +24,7 @@ import SignInModal from '@shared/components/SignIn/SignInModal.vue'
 import Testimonials from '@/components/Testimonials/Testimonials.vue'
 import WorkProjects from '@/components/WorkProjects/WorkProjects.vue'
 import BooksRead from '@/components/Books/BooksRead.vue'
+import PrevNextPost from '@/components/PrevNextPost/PrevNextPost.vue'
 
 const app = createApp({
     components: {
@@ -48,6 +49,7 @@ const app = createApp({
         Testimonials,
         WorkProjects,
         BooksRead,
+        PrevNextPost,
     },
 
     setup() {

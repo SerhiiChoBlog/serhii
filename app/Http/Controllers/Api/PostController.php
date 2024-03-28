@@ -48,4 +48,25 @@ class PostController extends Controller
             ->pipe(new PostTagsFilter($post))
             ->get();
     }
+
+    /**
+     * @return array{prev: Post|null, next: Post|null}
+     */
+    public function prevNextPost(Post $post): array
+    {
+        return [
+            'prev' => Post::query()
+                ->select('id', 'slug', 'title')
+                ->where('is_published', true)
+                ->where('id', '<', $post->id)
+                ->latest()
+                ->first(),
+            'next' => Post::query()
+                ->select('id', 'slug', 'title')
+                ->where('is_published', true)
+                ->where('id', '>', $post->id)
+                ->oldest()
+                ->first(),
+        ];
+    }
 }
