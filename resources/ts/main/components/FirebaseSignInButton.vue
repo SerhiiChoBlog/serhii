@@ -40,7 +40,6 @@ function signIn(): void {
             text: `Something went wrong with ${serviceName} service`,
             success: false,
         })
-
         return
     }
 
