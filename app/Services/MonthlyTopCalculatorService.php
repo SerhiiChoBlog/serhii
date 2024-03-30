@@ -16,7 +16,7 @@ readonly class MonthlyTopCalculatorService
     {
         $monthly = PostView::query()
             ->selectRaw('post_id, COUNT(*) as amount')
-            ->whereMonth('created_at', (string) now()->subMonth()->month)
+            ->whereMonth('created_at', (string) now()->startOfMonth()->subMonth()->month)
             ->groupBy('post_id')
             ->orderByDesc('amount')
             ->limit($amount)
