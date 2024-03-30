@@ -4,7 +4,7 @@
 .post-content p code,
 .post-content ul li code,
 .post-content ol li code {
-    @apply bg-inline-code rounded-md px-1 mx-1 font-light text-sm text-font before:content-none after:content-none inline-block break-all;
+    @apply bg-inline-code rounded-md px-1 mx-1 my-0 font-light text-sm text-font before:content-none after:content-none inline-block break-all;
 }
 
 .project-content ul li,
