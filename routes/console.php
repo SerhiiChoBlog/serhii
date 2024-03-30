@@ -19,4 +19,4 @@ Schedule::command(DeleteRobotViews::class)->dailyAt('00:04');
 Schedule::command(TopPostLastMonth::class)->dailyAt('00:05');
 Schedule::command(SitemapCommand::class)->dailyAt('00:06');
 
-Schedule::command('cache:clear')->monthlyOn(1, '00:00');
+Schedule::command('cache:clear')->monthlyOn(1, '00:07');
