@@ -72,7 +72,7 @@ class HomeController extends Controller
      */
     private function getMonthlyTop(): array
     {
-        return Cache::remember(CacheKey::TOP_LAST_MONTH, Ttl::DAY, function () {
+        return Cache::remember(CacheKey::TOP_LAST_MONTH, Ttl::MONTH, function () {
             $service = new MonthlyTopCalculatorService();
             return $service->calculate(2);
         });
