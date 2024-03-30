@@ -9,7 +9,7 @@
      * @var array<int, array<int ,mixed>> $latest_videos
      */
 
-    $last_month = now()->subMonth()->format('F Y');
+    $last_month = now()->startOfMonth()->subMonth()->format('F Y');
 @endphp
 
 @extends('layouts.main')
