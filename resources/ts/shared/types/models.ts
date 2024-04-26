@@ -68,7 +68,7 @@ export type Post = {
     post_views_count?: number
     comments_count?: number
     read_time: number
-    pretty_updated_at: string
+    pretty_created_at: string
     created_at: string
     updated_at: string
     published_at: string

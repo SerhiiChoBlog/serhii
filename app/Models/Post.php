@@ -40,7 +40,6 @@ use Illuminate\Support\Str;
  * @property Collection<int, PostLike> $postLikes
  * @property Video|null $video
  * @property array<int, array<int, string>>|null $social
- * @property string $pretty_updated_at
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon $published_at
@@ -68,7 +67,9 @@ class Post extends Model
     /**
      * @var array<int, string>
      */
-    protected $appends = ['pretty_updated_at'];
+    protected $appends = [
+        'pretty_created_at',
+    ];
 
     protected $casts = [
         'slug' => 'string',
@@ -182,21 +183,7 @@ class Post extends Model
                 return '';
             }
 
-            return Str::apa($this->attributes['title']);
-        });
-    }
-
-    /**
-     * @return Attribute<string, mixed>
-     */
-    protected function prettyUpdatedAt(): Attribute
-    {
-        return Attribute::get(function (): string {
-            if ($this->updated_at === null) {
-                return '';
-            }
-
-            return $this->updated_at->format('M j, Y');
+            return $this->created_at->format('M j, Y');
         });
     }
 
