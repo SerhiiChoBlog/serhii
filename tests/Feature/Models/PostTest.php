@@ -108,9 +108,9 @@ class PostTest extends TestCase
         $this->assertNotNull($this->post->video);
     }
 
-    public function testPostHasPrettyUpdatedAtField(): void
+    public function testPostHasPrettyCreateAtField(): void
     {
-        $this->assertNotNull($this->post->pretty_updated_at);
+        $this->assertNotNull($this->post->pretty_created_at);
     }
 
     public function testPostCanHaveLikes(): void

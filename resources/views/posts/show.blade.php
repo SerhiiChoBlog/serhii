@@ -72,6 +72,16 @@
 
                         <div class="mt-4">
                             <x-post.details :post="$post" />
+
+                            @if ($post->updated_at !== $post->created_at)
+                                <time
+                                    aria-label="Post updated date"
+                                    datetime="{{ $post->updated_at }}"
+                                    class="text-sm opacity-70"
+                                >
+                                    Updated {{ $post->updated_at->diffForHumans() }}
+                                </time>
+                            @endif
                         </div>
 
                         <div class="mt-4">
