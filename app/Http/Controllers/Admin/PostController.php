@@ -31,7 +31,7 @@ class PostController extends Controller
     public function index(): LengthAwarePaginator
     {
         return Post::query()
-            ->select('id', 'title', 'intro', 'slug', 'image_sm', 'image_lg', 'is_published')
+            ->select('id', 'title', 'intro', 'slug', 'image_sm', 'image_lg', 'is_published', 'created_at')
             ->withCount('postViews')
             ->withCount('socialShares')
             ->latest()

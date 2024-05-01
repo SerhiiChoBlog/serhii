@@ -6,11 +6,20 @@ namespace App\Recommendations;
 
 use App\Models\Post;
 use App\Recommendations\Filters\Filter;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 
 class RecommendationSystem
 {
-    public const POST_FIELDS = ['id', 'title', 'intro', 'slug', 'image_sm'];
+    public const POST_FIELDS = [
+        'id',
+        'title',
+        'intro',
+        'slug',
+        'image_sm',
+        'image_xs',
+        'created_at',
+    ];
 
     private DataStream $stream;
 
@@ -52,6 +61,12 @@ class RecommendationSystem
     private function getRandomPosts(): Collection
     {
         $result = Post::query()
+            ->with([
+                'series' => function (BelongsToMany $q) {
+                    return $q->select('id', 'title', 'slug')->withCount('posts');
+                },
+                'tags',
+            ])
             ->select(self::POST_FIELDS)
             ->where('is_published', true)
             ->whereNotIn('id', $this->stream->exclude)
@@ -66,6 +81,12 @@ class RecommendationSystem
         }
 
         $additional_posts = Post::query()
+            ->with([
+                'series' => function (BelongsToMany $q) {
+                    return $q->select('id', 'title', 'slug')->withCount('posts');
+                },
+                'tags',
+            ])
             ->select(self::POST_FIELDS)
             ->where('is_published', true)
             ->inRandomOrder()

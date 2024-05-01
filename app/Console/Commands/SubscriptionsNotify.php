@@ -78,7 +78,10 @@ class SubscriptionsNotify extends Command
      */
     private function getSubs(): Collection
     {
-        return Subscription::query()->whereNotNull('confirmed_at')->get();
+        return Subscription::query()
+            ->with('tags')
+            ->whereNotNull('confirmed_at')
+            ->get();
     }
 
     /**

@@ -33,7 +33,7 @@ class PostViewController extends Controller
                 'amount' => $unique_item->amount,
                 'post_id' => $unique_item->post_id,
                 'post' => Post::query()
-                    ->select('id', 'title', 'image_sm')
+                    ->select('id', 'title', 'image_sm', 'created_at')
                     ->where('id', $unique_item->post_id)
                     ->first(),
             ];
