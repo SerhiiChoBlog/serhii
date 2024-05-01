@@ -179,7 +179,7 @@ class Post extends Model
     protected function prettyCreatedAt(): Attribute
     {
         return Attribute::get(function (): string {
-            if ($this->created_at === null) {
+            if (!isset($this->attributes['created_at'])) {
                 return '';
             }
 
