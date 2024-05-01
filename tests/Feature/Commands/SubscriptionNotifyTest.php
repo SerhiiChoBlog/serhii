@@ -77,7 +77,8 @@ class SubscriptionNotifyTest extends TestCase
     public function test1SubscriberIsNotifiedWhenWithNewPost(): void
     {
         $post = Post::factory()->published()->create();
-        $sub = Subscription::factory()->confirmed()->create();
+
+        Subscription::factory()->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
             ->expectsOutput($this->finalNotificationMessage($post, 1))
@@ -90,7 +91,8 @@ class SubscriptionNotifyTest extends TestCase
     public function testEachPersonIsNotifiedViaEmail(): void
     {
         $post = Post::factory()->published()->create();
-        $subs = Subscription::factory(3)->confirmed()->create();
+
+        Subscription::factory(3)->confirmed()->create();
 
         $this->artisan('subscriptions:notify')
             ->expectsOutput($this->finalNotificationMessage($post, 3))
