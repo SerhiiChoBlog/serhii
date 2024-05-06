@@ -10,14 +10,11 @@ use App\Http\Controllers\User\FeedController;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\PostLikeController;
-use App\Http\Controllers\Api\DeploymentController;
 use App\Http\Controllers\Api\SocialShareController;
 use App\Http\Controllers\Api\AboutMe\BookController;
 use App\Http\Controllers\Api\SubscriptionDemandController;
 use App\Http\Controllers\Api\AboutMe\TestimonialController;
 use App\Http\Controllers\Api\AboutMe\WorkProjectController;
-
-Route::post('deploy/{key}', DeploymentController::class);
 
 Route::controller(TagController::class)->prefix('tags')->group(function () {
     Route::get('/', 'index');
