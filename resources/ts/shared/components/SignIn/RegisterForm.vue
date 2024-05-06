@@ -47,7 +47,7 @@ function switchToSignUp() {
                 id="name"
                 type="text"
                 placeholder="Enter your name"
-                :value="formData.name"
+                v-model="formData.name"
                 @changed="v => formData.name = v"
                 :error-message="errors && errors.name ? errors.name[0] : null"
             />
@@ -62,7 +62,7 @@ function switchToSignUp() {
                 name="email"
                 id="login-email"
                 type="email"
-                :value="formData.email"
+                v-model="formData.email"
                 placeholder="Enter your email"
                 @changed="v => formData.email = v"
                 :error-message="errors && errors.email ? errors.email[0] : null"
@@ -76,7 +76,7 @@ function switchToSignUp() {
                 id="register-password"
                 type="password"
                 placeholder="Enter your password"
-                :value="formData.password"
+                v-model="formData.password"
                 @changed="v => formData.password = v"
                 :error-message="errors && errors.password ? errors.password[0] : null"
             />

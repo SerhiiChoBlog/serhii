@@ -3,16 +3,11 @@ import { ref, watchEffect } from 'vue'
 import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import ValidationMessage from '@/components/Form/ValidationMessage.vue'
 
-type Emits = {
-    (e: 'changed', value: string): void
-}
-
-const emit = defineEmits<Emits>()
+const modelValue = defineModel<string>()
 
 type Props = {
     name: string
     id: string
-    value: string
     errorMessage?: string | null
     type?: 'text' | 'email' | 'password' | 'checkbox'
     placeholder?: string
@@ -22,16 +17,6 @@ const props = withDefaults(defineProps<Props>(), {
     type: 'text',
     placeholder: '',
 })
-
-const inputValue = ref<string>(props.value)
-
-watchEffect(() => {
-    inputValue.value = props.value
-})
-
-function inputHandler() {
-    emit('changed', inputValue.value)
-}
 </script>
 
 <template>
@@ -46,7 +31,7 @@ function inputHandler() {
                 'border-border': !props.errorMessage,
             }"
             :name="props.name"
-            v-model="inputValue"
+            v-model="modelValue"
             :id="props.id"
             :ref="`ref-${props.name}`"
         >
