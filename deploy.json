@@ -1,6 +1,5 @@
 {
     "migrate": false,
     "composer": false,
-    "cache": false,
-    "test": "test"
+    "cache": false
 }
