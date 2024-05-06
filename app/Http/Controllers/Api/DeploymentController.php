@@ -16,7 +16,7 @@ class DeploymentController extends Controller
         }
 
         $project_root = base_path();
-        $output = shell_exec("cd {$project_root} && git pull 2>&1");
+        $output = shell_exec("cd {$project_root} && ./pull 2>&1");
 
         if ($output === null || $output === false) {
             return 'Could not execute command';
