@@ -8,7 +8,7 @@
 
 @extends('layouts.main')
 
-@push('title', "{$series->title} | Serhii Cho")
+@push('title', $series->title)
 @push('description', $series->intro)
 
 @section('content')

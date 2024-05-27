@@ -10,7 +10,7 @@
 
 @extends('layouts.main')
 
-@push('title', 'Series of articles | Serhii Cho')
+@push('title', 'Series of articles')
 @push('description', 'Collection of articles groped by specific topics. Each series contains a number of articles on a specific topic.')
 
 @section('content')

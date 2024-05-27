@@ -8,7 +8,7 @@
     <script src="{{ asset('js/highlight.js') }}" defer></script>
 @endpush
 
-@push('title', "$project->title | Serhii Cho")
+@push('title', $project->title)
 @push('description', str($project->description)->limit(147))
 
 @section('content')
