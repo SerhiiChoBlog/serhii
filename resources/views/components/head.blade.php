@@ -13,4 +13,4 @@
     sizes="50x50"
 />
 
-<title>@stack('title'){{ request()->is('/') ? "Blog for developers | {S} Serhii" : '' }}</title>
+<title>@stack('title'){{ request()->is('/') ? "Blog for developers" : '' }}</title>
