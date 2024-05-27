@@ -8,8 +8,8 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
-use Tests\TestCase;
 use Illuminate\Support\Str;
+use Tests\TestCase;
 
 class PostTest extends TestCase
 {

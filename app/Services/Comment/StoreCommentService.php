@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Services\Comment;
 
-use App\Models\Feed;
-use App\Models\User;
+use App\CommentModifiers\NewLineModifier;
+use App\CommentModifiers\ReplacePostUrlsModifier;
+use App\CommentModifiers\ReplaceUrlsModifier;
+use App\CommentModifiers\StripTagsModifier;
 use App\Enums\UserRole;
-use App\Models\Comment;
-use App\Utils\GlobalVisitor;
-use Illuminate\Support\Carbon;
 use App\Events\CommentApproved;
 use App\Jobs\NewCommentAdminEmail;
-use App\CommentModifiers\NewLineModifier;
-use App\CommentModifiers\StripTagsModifier;
-use App\CommentModifiers\ReplaceUrlsModifier;
-use App\CommentModifiers\ReplacePostUrlsModifier;
+use App\Models\Comment;
+use App\Models\Feed;
+use App\Models\User;
+use App\Utils\GlobalVisitor;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 
 class StoreCommentService
