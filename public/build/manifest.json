@@ -63,7 +63,7 @@
     "src": "resources/fonts/fa-solid-900.woff2"
   },
   "resources/ts/admin/app.ts": {
-    "file": "assets/app-be0c65b7.js",
+    "file": "assets/app-a7c730e9.js",
     "imports": [
       "_Spinner-890daec7.js",
       "_index-da6baf7a.js"
@@ -79,7 +79,7 @@
     "css": [
       "assets/app-bea71dee.css"
     ],
-    "file": "assets/app-504d3db8.js",
+    "file": "assets/app-7b2c115a.js",
     "imports": [
       "_Spinner-890daec7.js",
       "_SignInModal.vue_vue_type_script_setup_true_lang-329f8db6.js",
