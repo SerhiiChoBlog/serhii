@@ -7,11 +7,6 @@ export default [
         `,
         links: [
             {
-                img: '/storage/icons/linkedin.webp',
-                href: 'https://www.linkedin.com/in/serhiicho',
-                title: 'LinkedIn',
-            },
-            {
                 img: '/storage/icons/x.webp',
                 href: 'https://x.com/SerhiiCho',
                 title: 'X (Twitter)',
@@ -20,7 +15,8 @@ export default [
     },
     {
         title: 'Follow me',
-        content: "There are some places where I'm usually hanging out. I spend a lot of time on websites that are linked below.",
+        content:
+            "There are some places where I'm usually hanging out. I spend a lot of time on websites that are linked below.",
         links: [
             {
                 img: '/storage/icons/youtube.webp',
@@ -51,7 +47,8 @@ export default [
     },
     {
         title: 'Open source',
-        content: "There are also libraries and packages that I've contributed to the open-source community.",
+        content:
+            "There are also libraries and packages that I've contributed to the open-source community.",
         links: [
             {
                 img: '/storage/icons/github.webp',
