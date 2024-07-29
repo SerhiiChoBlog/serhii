@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Sections from '@admin/components/Dashboard/Sections.vue'
-import Goals from '@admin/components/Dashboard/Goals.vue'</script>
+import Goals from '@admin/components/Dashboard/Goals.vue'
+</script>
 
 <template>
     <div class="container space-y-6">

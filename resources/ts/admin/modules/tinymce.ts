@@ -10,7 +10,10 @@ export const tinymceConfig: EditorOptions = {
     height: 600,
     toolbar: [
         { name: '', items: ['undo', 'redo'] },
-        { name: '', items: ['styles', 'bold', 'italic', 'forecolor', 'removeformat'] },
+        {
+            name: '',
+            items: ['styles', 'bold', 'italic', 'forecolor', 'removeformat'],
+        },
         { name: '', items: ['link', 'image'] },
         { name: '', items: ['alignleft', 'aligncenter', 'alignright'] },
         { name: '', items: ['numlist', 'bullist'] },

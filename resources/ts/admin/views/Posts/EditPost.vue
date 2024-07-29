@@ -33,13 +33,14 @@ const mainTagId = ref<number | null>(null)
 function fetchPost(): void {
     loading.value = true
 
-    axios.get<Post>(`/admin/ajax/posts/${route.params.id}/edit`)
+    axios
+        .get<Post>(`/admin/ajax/posts/${route.params.id}/edit`)
         .then(resp => {
             post.value = resp.data
             setMainTagId()
         })
         .catch(handleError)
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 
 function setMainTagId(): void {
@@ -73,7 +74,7 @@ function savePost(form: HTMLFormElement | null): void {
     new SavePost(elements, post.value.id, mainTagId.value!)
         .save(post.value.content || '')
         .then(handleSavePostResponse)
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 
 function handleSavePostResponse(newPost: Post | null): void {
@@ -95,15 +96,13 @@ function updateTagId(id: number): void {
 }
 
 function deleteTag(id: number): void {
-    if (!post.value || !post.value.tags)
-        return
+    if (!post.value || !post.value.tags) return
 
     post.value.tags = post.value.tags.filter(tag => tag.id !== id)
 }
 
 function addTag(tag: Tag): void {
-    if (!post.value || !post.value.tags)
-        return
+    if (!post.value || !post.value.tags) return
 
     post.value.tags.push(tag)
     tagInputValue.value = ''
@@ -167,17 +166,24 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                     </div>
                                 </FormInput>
 
-                                <TagSuggestions @addTag="addTag" :value="tagInputValue" />
+                                <TagSuggestions
+                                    @addTag="addTag"
+                                    :value="tagInputValue"
+                                />
                             </div>
 
-                            <div class="flex items-center justify-between gap-8 mt-5">
+                            <div
+                                class="flex items-center justify-between gap-8 mt-5"
+                            >
                                 <div class="w-full">
                                     <FormInput
                                         type="text"
                                         id="video"
                                         placeholder="Enter a YouTube video ID"
                                         classes=""
-                                        :value="post.video ? post.video.id : undefined"
+                                        :value="
+                                            post.video ? post.video.id : undefined
+                                        "
                                         :length="190"
                                         name="video"
                                     >
@@ -185,7 +191,12 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                                     </FormInput>
                                 </div>
 
-                                <a v-if="post.video" :href="post.video.url" target="_blank" rel="noreferrer">
+                                <a
+                                    v-if="post.video"
+                                    :href="post.video.url"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
                                     <img
                                         :src="post.video.image"
                                         :alt="post.video.title"
@@ -197,7 +208,10 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                             </div>
 
                             <div class="mt-5">
-                                <KeywordSuggestions @changed="fetchPost" :post="post" />
+                                <KeywordSuggestions
+                                    @changed="fetchPost"
+                                    :post="post"
+                                />
                             </div>
                         </div>
 
@@ -233,14 +247,22 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                     </div>
 
                     <div>
-                        <div class="flex flex-col justify-center fixed right-[20px] top-20 z-[9999] space-y-2">
+                        <div
+                            class="flex flex-col justify-center fixed right-[20px] top-20 z-[9999] space-y-2"
+                        >
                             <MainButton class="bg-green-500 hover:bg-green-600">
-                                <i v-if="loading" class="fas fa-spinner animate-spin mr-2"></i>
+                                <i
+                                    v-if="loading"
+                                    class="fas fa-spinner animate-spin mr-2"
+                                ></i>
                                 <i v-else class="fas fa-save mr-2"></i>
                                 Save
                             </MainButton>
 
-                            <MainButton :href="`/posts/${post.slug}`" target="_blank">
+                            <MainButton
+                                :href="`/posts/${post.slug}`"
+                                target="_blank"
+                            >
                                 <i class="fas fa-eye mr-2"></i>
                                 Preview
                             </MainButton>
