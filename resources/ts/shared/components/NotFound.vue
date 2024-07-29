@@ -1,10 +1,8 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
     <div class="container py-8">
-        <div class="flex flex-col lg:flex-row gap-4 lg:gap-10 items-center justify-center">
+        <div
+            class="flex flex-col lg:flex-row gap-4 lg:gap-10 items-center justify-center"
+        >
             <h1 class="text-8xl md:text-[10rem] font-main font-black leading-[120%]">
                 404
             </h1>
