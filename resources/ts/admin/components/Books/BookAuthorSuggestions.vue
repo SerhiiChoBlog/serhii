@@ -30,7 +30,10 @@ const {
             <span v-if="accepted">Book author is {{ accepted }}</span>
             <span v-else>Enter a book's author</span>
 
-            <i v-if="loading" class="fas fa-spinner fa-spin text-orange-600 ml-2"></i>
+            <i
+                v-if="loading"
+                class="fas fa-spinner fa-spin text-orange-600 ml-2"
+            ></i>
             <i v-else-if="accepted" class="fas fa-check text-green-600 ml-2"></i>
             <i v-else class="fas fa-arrow-left text-green-600 ml-2"></i>
         </FormInput>
