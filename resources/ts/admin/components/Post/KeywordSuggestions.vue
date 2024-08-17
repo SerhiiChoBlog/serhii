@@ -26,16 +26,17 @@ function addKeyword(): void {
 
     loading.value = true
 
-    axios.post(`/admin/ajax/keywords`, {
-        name: searchQuery.value,
-        post_id: props.post.id
-    })
+    axios
+        .post(`/admin/ajax/keywords`, {
+            name: searchQuery.value,
+            post_id: props.post.id,
+        })
         .then(resp => {
             searchQuery.value = ''
             emit('changed')
         })
         .catch(handleError)
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 
 function inputChanged(val: string): void {
@@ -50,11 +51,12 @@ function deleteKeyword(keyword: Keyword): void {
     const params = {
         data: {
             keyword_id: keyword.id,
-            post_id: props.post.id
-        }
+            post_id: props.post.id,
+        },
     }
 
-    axios.delete('/admin/ajax/keywords', params)
+    axios
+        .delete('/admin/ajax/keywords', params)
         .then(resp => emit('changed'))
         .catch(handleError)
 }
@@ -74,7 +76,10 @@ function deleteKeyword(keyword: Keyword): void {
             Keywords:
 
             <template #input>
-                <div v-if="loading" class="absolute bg-white inset-1 flex items-center pl-5 rounded-sm">
+                <div
+                    v-if="loading"
+                    class="absolute bg-white inset-1 flex items-center pl-5 rounded-sm"
+                >
                     <span>Loading... Please wait...</span>
                 </div>
             </template>

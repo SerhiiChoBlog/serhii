@@ -58,4 +58,3 @@ watchEffect(() => {
         </div>
     </div>
 </template>
-

@@ -29,17 +29,15 @@ function updateImagePreview(e: Event): void {
 
 <template>
     <div class="relative">
-        <img
-            :src="imageSrc"
-            alt="image"
-            class="rounded-md shadow-lg w-full"
-        />
+        <img :src="imageSrc" alt="image" class="rounded-md shadow-lg w-full" />
 
         <label
             for="post-image-input"
             class="opacity-0 flex items-center hover:opacity-100 transition-opacity border-4 lg:border-4 border-dashed text-center rounded-lg cursor-pointer border-gray-300 absolute inset-2 lg:inset-6"
         >
-            <b class="text-gray-600 px-4 py-2 rounded-xl bg-gray-300 text-xl lg:text-2xl drop-shadow-sm mx-auto shadow-lg opacity-95">
+            <b
+                class="text-gray-600 px-4 py-2 rounded-xl bg-gray-300 text-xl lg:text-2xl drop-shadow-sm mx-auto shadow-lg opacity-95"
+            >
                 Choose image
             </b>
         </label>

@@ -45,4 +45,3 @@ const inputValue = ref<string>(value || '')
         </div>
     </div>
 </template>
-

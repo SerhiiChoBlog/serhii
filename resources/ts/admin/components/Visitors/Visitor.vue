@@ -21,8 +21,7 @@ function blockVisitorHandler(): void {
         ? 'Are you sure you want to unblock this visitor?'
         : 'Are you sure you want to block this visitor?'
 
-    if (!confirm(message))
-        return
+    if (!confirm(message)) return
 
     blockVisitor(props.visitor.id, !props.visitor.is_blocked)
     emit('refreshVisitors')
@@ -57,7 +56,9 @@ function blockVisitorHandler(): void {
         <BodyDetail>{{ props.visitor.post_views_count }}</BodyDetail>
         <BodyDetail>
             <button @click="blockVisitorHandler" type="button">
-                <span v-if="props.visitor.is_blocked"><i class="fas fa-check text-green-700"></i></span>
+                <span v-if="props.visitor.is_blocked"
+                    ><i class="fas fa-check text-green-700"></i
+                ></span>
                 <span v-else><i class="fas fa-ban text-red-700"></i></span>
             </button>
         </BodyDetail>

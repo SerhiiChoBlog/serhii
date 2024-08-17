@@ -26,8 +26,9 @@ function fetchTags(input: string): void {
         return
     }
 
-    axios.post<Tag[]>(`/api/tags/search/${input}`)
-        .then(resp => suggestions.value = resp.data)
+    axios
+        .post<Tag[]>(`/api/tags/search/${input}`)
+        .then(resp => (suggestions.value = resp.data))
         .catch(handleError)
 }
 

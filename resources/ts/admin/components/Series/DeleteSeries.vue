@@ -16,21 +16,25 @@ const router = useRouter()
 const loading = ref(false)
 
 function deleteSeries(): void {
-    if (!confirm(`STEP 1/2. Are you sure you want to delete series "${series.title}"`))
+    if (
+        !confirm(
+            `STEP 1/2. Are you sure you want to delete series "${series.title}"`,
+        )
+    )
         return
 
-    if (!confirm(`STEP 2/2. Last confirmation. Are you sure?`))
-        return
+    if (!confirm(`STEP 2/2. Last confirmation. Are you sure?`)) return
 
     loading.value = true
 
-    axios.delete(`/admin/ajax/series/${series.id}`)
+    axios
+        .delete(`/admin/ajax/series/${series.id}`)
         .then(resp => {
             router.push({ name: 'series' })
             showToast({ text: `The series "${series.title}" has been removed` })
         })
         .catch(handleError)
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 </script>
 
