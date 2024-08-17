@@ -16,8 +16,8 @@ type Props = {
 }
 
 type Emits = {
-    (e: 'uploaded'): void,
-    (e: 'removed'): void,
+    (e: 'uploaded'): void
+    (e: 'removed'): void
 }
 
 const emit = defineEmits<Emits>()
@@ -32,42 +32,40 @@ function submitImage(e: Event): void {
     const files = form.elements['image']!.files as FileList
     const params = { headers: { 'content-type': 'multipart/form-data' } }
 
-    if (files.length === 0)
-        return
+    if (files.length === 0) return
 
     formData.append('image', files[0])
 
-    axios.post<string>(`/admin/ajax/post-content-images/${post.id}`, formData, params)
+    axios
+        .post<string>(`/admin/ajax/post-content-images/${post.id}`, formData, params)
         .then(resp => {
             showToast({ text: 'Image has been uploaded and copied into a buffer' })
             copy(resp.data)
             emit('uploaded')
         })
         .catch(handleError)
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 
 function deleteImage(id: number): void {
-    if (!confirm('Sure you want to delete this content image?'))
-        return
+    if (!confirm('Sure you want to delete this content image?')) return
 
     loading.value = true
 
-    axios.delete(`/admin/ajax/post-content-images/${id}`)
+    axios
+        .delete(`/admin/ajax/post-content-images/${id}`)
         .then(resp => {
             showToast({ text: 'Image has been removed' })
             emit('removed')
         })
         .catch(handleError)
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 </script>
 
 <template>
     <div class="mt-6 pt-4">
-        <h3 class="text-center text-2xl mb-10">
-            Attached images for this post
-        </h3>
+        <h3 class="text-center text-2xl mb-10">Attached images for this post</h3>
 
         <DataTable>
             <template #head>
@@ -76,11 +74,7 @@ function deleteImage(id: number): void {
                 <HeadDetail class="w-40">Delete</HeadDetail>
             </template>
 
-            <BodyRow
-                v-if="post.images"
-                v-for="image in post.images"
-                :key="image.id"
-            >
+            <BodyRow v-if="post.images" v-for="image in post.images" :key="image.id">
                 <BodyDetail>
                     <a :href="image.uri" target="_blank" rel="noreferrer">
                         <img
@@ -103,7 +97,10 @@ function deleteImage(id: number): void {
 
                 <BodyDetail>
                     <form @submit.prevent="deleteImage(image.id)">
-                        <MainButton type="submit" class="bg-red-500 hover:bg-red-600">
+                        <MainButton
+                            type="submit"
+                            class="bg-red-500 hover:bg-red-600"
+                        >
                             <i class="fas fa-trash mr-2"></i>
                             Delete
                         </MainButton>
@@ -118,9 +115,13 @@ function deleteImage(id: number): void {
             class="mt-6"
         >
             <div class="inline-block mr-2">
-                <label class="border-4 border-gray-500 text-font cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-700 transition-colors">
-                    <input class="hidden" type="file" name="image" required>
-                    <span>{{ loading ? 'Uploading image...' : 'Choose an image...' }}</span>
+                <label
+                    class="border-4 border-gray-500 text-font cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-700 transition-colors"
+                >
+                    <input class="hidden" type="file" name="image" required />
+                    <span>{{
+                        loading ? 'Uploading image...' : 'Choose an image...'
+                    }}</span>
                 </label>
             </div>
 

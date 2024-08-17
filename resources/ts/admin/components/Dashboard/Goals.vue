@@ -11,15 +11,16 @@ const loading = ref<boolean>(true)
 onMounted(() => fetchGoals())
 
 function fetchGoals(): void {
-    axios.get<Goal[]>('/admin/ajax/dashboard/goals')
-        .then(resp => goals.value = resp.data)
+    axios
+        .get<Goal[]>('/admin/ajax/dashboard/goals')
+        .then(resp => (goals.value = resp.data))
         .catch(err => console.error(err))
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 </script>
 
 <template>
-    <PageTitle>Goals</pageTitle>
+    <PageTitle>Goals</PageTitle>
 
     <Spinner v-if="loading" />
 
