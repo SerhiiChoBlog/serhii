@@ -10,11 +10,19 @@ const { book } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="flex group items-center justify-between bg-white/50 dark:bg-black/20 rounded-md p-2 relative">
-        <div class="absolute inset-2 opacity-0 group-hover:opacity-100 bg-white dark:bg-black flex flex-col items-center justify-center gap-2 p-2 rounded-md transition-opacity">
-            <h2 class="text-sm md:text-lg text-center leading-4 md:leading-6">{{ book.title }}</h2>
+    <div
+        class="flex group items-center justify-between bg-white/50 dark:bg-black/20 rounded-md p-2 relative"
+    >
+        <div
+            class="absolute inset-2 opacity-0 group-hover:opacity-100 bg-white dark:bg-black flex flex-col items-center justify-center gap-2 p-2 rounded-md transition-opacity"
+        >
+            <h2 class="text-sm md:text-lg text-center leading-4 md:leading-6">
+                {{ book.title }}
+            </h2>
 
-            <p class="flex justify-between text-xs md:text-sm text-font-second opacity-80">
+            <p
+                class="flex justify-between text-xs md:text-sm text-font-second opacity-80"
+            >
                 {{ book.author!.name }}
             </p>
 
