@@ -34,7 +34,7 @@ const props = withDefaults(defineProps<Props>(), {
             v-model="modelValue"
             :id="props.id"
             :ref="`ref-${props.name}`"
-        >
+        />
 
         <show-password-button
             v-if="props.type === 'password'"

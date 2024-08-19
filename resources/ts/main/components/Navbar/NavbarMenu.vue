@@ -63,7 +63,9 @@ function showLoginModal(): void {
                         type="button"
                         class="flex items-center justify-center gap-4 bg-black/20 rounded-full pl-5 hover:bg-black/40 transition-colors group"
                     >
-                        <div class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[150px] text-lg py-1">
+                        <div
+                            class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[150px] text-lg py-1"
+                        >
                             {{ Auth.name }}
                         </div>
 

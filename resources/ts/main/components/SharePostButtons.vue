@@ -17,7 +17,8 @@ function saveShare(social: string): void {
         secret: window.Auth ? window.Auth.secret : null,
     }
 
-    axios.post(`/api/social-shares/${postId}`, params)
+    axios
+        .post(`/api/social-shares/${postId}`, params)
         .catch(err => console.error(err))
 }
 </script>
@@ -34,16 +35,13 @@ function saveShare(social: string): void {
             @click="link.action ? link.action() : null"
             :aria-label="link.tip"
         >
-            <tip
-                :content="link.tip"
-                class="transition-opacity hover:opacity-80"
-            >
+            <tip :content="link.tip" class="transition-opacity hover:opacity-80">
                 <img
                     :src="`/storage/icons/${link.title}.webp`"
                     :alt="`Logo of the ${link.title}`"
                     width="27"
                     height="27"
-                >
+                />
             </tip>
         </a>
     </div>

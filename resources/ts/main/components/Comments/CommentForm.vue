@@ -17,18 +17,13 @@ type Props = {
 const emit = defineEmits<Emits>()
 const { postId, commentId } = defineProps<Props>()
 
-const {
-    comment,
-    postComment,
-    isLoading,
-    canCommentIn,
-} = usePostComment(postId, commentId)
+const { comment, postComment, isLoading, canCommentIn } = usePostComment(
+    postId,
+    commentId,
+)
 
-const {
-    getCommentFromCache,
-    saveCommentToCache,
-    deleteCommentFromCache,
-} = useCachedComment(postId, commentId)
+const { getCommentFromCache, saveCommentToCache, deleteCommentFromCache } =
+    useCachedComment(postId, commentId)
 
 onMounted(() => {
     comment.value = getCommentFromCache()
@@ -62,11 +57,12 @@ async function submitForm(): Promise<void> {
                     maxlength="1000"
                 ></textarea>
 
-                <p v-else class="text-xl py-3">
-                    Please, sign in to comment
-                </p>
+                <p v-else class="text-xl py-3">Please, sign in to comment</p>
 
-                <span v-if="Auth" class="text-xs lg:text-lg absolute right-1 bottom-4 lg:bottom-6 opacity-60">
+                <span
+                    v-if="Auth"
+                    class="text-xs lg:text-lg absolute right-1 bottom-4 lg:bottom-6 opacity-60"
+                >
                     Letters: {{ comment.length }}/1000
                 </span>
             </div>

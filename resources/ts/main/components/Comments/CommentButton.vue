@@ -5,7 +5,8 @@ type Props = {
 
 const { href } = defineProps<Props>()
 
-const styles = 'px-7 py-1.5 lg:py-2.5 bg-main text-white rounded-md hover:bg-main-hover'
+const styles =
+    'px-7 py-1.5 lg:py-2.5 bg-main text-white rounded-md hover:bg-main-hover'
 </script>
 
 <template>

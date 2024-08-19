@@ -28,15 +28,14 @@ function setInitialTheme(): void {
         return
     }
 
-    hasDarkSystemTheme()
-        ? switchTheme('dark')
-        : switchTheme('light')
+    hasDarkSystemTheme() ? switchTheme('dark') : switchTheme('light')
 }
 
 function switchTheme(toTheme: 'dark' | 'light'): void {
-    axios.get(`/theme/${toTheme}`)
+    axios
+        .get(`/theme/${toTheme}`)
         .then(() => changeInterfaceTo(toTheme))
-        .catch((err) => console.error(err))
+        .catch(err => console.error(err))
 }
 
 function hasDarkSystemTheme(): boolean {
@@ -56,7 +55,9 @@ function changeInterfaceTo(toTheme: 'light' | 'dark'): void {
             <button
                 type="button"
                 class="drop-shadow-md relative text-yellow-300 dark:text-main flex py-2 px-4 lg:px-2 bg-transparent hover:bg-gray-500 hover:bg-opacity-50 rounded-full transition-colors"
-                @click="() => switchTheme(currentTheme === 'dark' ? 'light' : 'dark')"
+                @click="
+                    () => switchTheme(currentTheme === 'dark' ? 'light' : 'dark')
+                "
                 aria-label="Toggle between light and dark themes"
             >
                 <svg
@@ -72,13 +73,16 @@ function changeInterfaceTo(toTheme: 'light' | 'dark'): void {
                 >
                     <!-- Sun -->
                     <g class="origin-center transition-transform duration-500">
-                        <path d="M181.1,75V31.1h-43.9L106.1,0L75,31.1H31.1V75L0,106.1l31.1,31.1v43.9H75l31.1,31.1l31.1-31.1h43.9v-43.9l31.1-31.1
+                        <path
+                            d="M181.1,75V31.1h-43.9L106.1,0L75,31.1H31.1V75L0,106.1l31.1,31.1v43.9H75l31.1,31.1l31.1-31.1h43.9v-43.9l31.1-31.1
                             L181.1,75z M106.1,162.1c-30.9,0-56-25.1-56-56s25.1-56,56-56s56,25.1,56,56S137,162.1,106.1,162.1z"
                         />
                     </g>
 
                     <!-- Circle -->
-                    <g class="origin-center transition-transform translate-x-0 dark:-translate-x-[15%]">
+                    <g
+                        class="origin-center transition-transform translate-x-0 dark:-translate-x-[15%]"
+                    >
                         <circle cx="106.1" cy="106.1" r="41" />
                     </g>
                 </svg>

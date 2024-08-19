@@ -18,7 +18,9 @@ type Emits = {
 const emit = defineEmits<Emits>()
 
 const props = defineProps<Props>()
-const isLiked = computed(() => props.comment.likes ? (props.comment.likes.length > 0) : false)
+const isLiked = computed(() =>
+    props.comment.likes ? props.comment.likes.length > 0 : false,
+)
 const loading = ref<boolean>(false)
 
 function toggleLike(): void {
@@ -35,20 +37,23 @@ function toggleLike(): void {
 
     const params = {
         comment_id: props.comment.id,
-        secret: window.Auth.secret
+        secret: window.Auth.secret,
     }
 
-    axios.post(`/api/comments/like`, params)
+    axios
+        .post(`/api/comments/like`, params)
         .then(res => emit('likedComment'))
         .catch(err => console.error(err))
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 </script>
 
 <template>
     <control
         @click="toggleLike"
-        :class="(Auth && Auth.id === props.comment.user_id) ? 'cursor-default' : 'group'"
+        :class="
+            Auth && Auth.id === props.comment.user_id ? 'cursor-default' : 'group'
+        "
     >
         <like-icon
             :fill="isLiked ? 'currentColor' : 'none'"
@@ -59,6 +64,10 @@ function toggleLike(): void {
             class="w-5 h-5 translate-y-[1px] transition-colors group-hover:text-red-500"
         />
 
-        <span>{{ props.comment.likes_count }} like{{ props.comment.likes_count === 1 ? '' : 's' }}</span>
+        <span
+            >{{ props.comment.likes_count }} like{{
+                props.comment.likes_count === 1 ? '' : 's'
+            }}</span
+        >
     </control>
 </template>

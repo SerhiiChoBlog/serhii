@@ -20,10 +20,11 @@ function fetchTestimonials(): void {
 
     loading.value = true
 
-    axios.get<TestimonialType[]>('/api/about-me/testimonials')
-        .then(rep => testimonials.value = rep.data)
+    axios
+        .get<TestimonialType[]>('/api/about-me/testimonials')
+        .then(rep => (testimonials.value = rep.data))
         .catch(handleServerError)
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 
 const groupedTestimonials = computed<TestimonialType[][]>(() => {
@@ -47,18 +48,18 @@ const groupedTestimonials = computed<TestimonialType[][]>(() => {
         v-if="fullContent"
         :empty="true"
         :opened="fullContent !== null"
-        @close="() => fullContent = null"
+        @close="() => (fullContent = null)"
         max-width="700"
     >
-        <testimonial
-            :testimonial="fullContent"
-            :show-full="true"
-        />
+        <testimonial :testimonial="fullContent" :show-full="true" />
     </modal>
 
     <spinner v-if="loading" />
 
-    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-7">
+    <div
+        v-else
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-7"
+    >
         <div
             v-for="(groupedTestimonial, i) in groupedTestimonials"
             :key="i"
@@ -69,7 +70,7 @@ const groupedTestimonials = computed<TestimonialType[][]>(() => {
                 :key="testimonial.name"
                 :testimonial="testimonial"
                 :show-full="false"
-                @showFullContent="() => fullContent = testimonial"
+                @showFullContent="() => (fullContent = testimonial)"
             />
         </div>
     </div>

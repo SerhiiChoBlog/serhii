@@ -31,7 +31,9 @@ onMounted(() => {
         showChapters.value = true
     }
 
-    headers.value = document.querySelectorAll<HTMLElement>('#post-content h2, #post-content h3')
+    headers.value = document.querySelectorAll<HTMLElement>(
+        '#post-content h2, #post-content h3',
+    )
 
     headers.value.forEach(elem => {
         createChapterFromElement(elem)
@@ -157,7 +159,8 @@ function markVisibleChapters(elem: HTMLElement): void {
     }
 
     chapters.value.map(chapter => {
-        chapter.isActive = window.scrollY > 100 ? (chapter.title === elem.innerText) : false
+        chapter.isActive =
+            window.scrollY > 100 ? chapter.title === elem.innerText : false
         return chapter
     })
 
@@ -225,12 +228,12 @@ function handleChapterClick(title: string): void {
             v-if="showChapters"
             class="bg-page lg:bg-transparent print:hidden lg:h-[calc(100%-200px)] fixed w-full max-w-md left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 border border-border lg:border-none top-16 lg:top-0 bottom-[3%] p-4 lg:p-0 shadow-xl lg:shadow-none lg:relative z-30"
         >
-            <nav class="sticky h-screen overflow-y-auto scrollbar pr-2 top-3 lg:top-24 mt-7 text-center lg:text-left pb-[70px]">
+            <nav
+                class="sticky h-screen overflow-y-auto scrollbar pr-2 top-3 lg:top-24 mt-7 text-center lg:text-left pb-[70px]"
+            >
                 <div class="mb-4">
                     <div class="flex items-center gap-x-5 text-font-second">
-                        <span class="text-2xl font-bold">
-                            Chapters
-                        </span>
+                        <span class="text-2xl font-bold"> Chapters </span>
 
                         <div class="flex items-center gap-x-4 text-font-second">
                             <control-button
@@ -264,7 +267,8 @@ function handleChapterClick(title: string): void {
                 </div>
 
                 <div v-if="headers">
-                    <chapter v-for="chapter in chapters"
+                    <chapter
+                        v-for="chapter in chapters"
                         :key="chapter.slug"
                         :chapter="chapter"
                         :headers="headers"

@@ -20,10 +20,11 @@ onMounted(() => {
 })
 
 function fetchPost(): void {
-    axios.get<Post[]>(`/api/posts/related/${postId}`)
-        .then(resp => posts.value = resp.data)
+    axios
+        .get<Post[]>(`/api/posts/related/${postId}`)
+        .then(resp => (posts.value = resp.data))
         .catch(err => handleServerError(err))
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 </script>
 
@@ -33,10 +34,6 @@ function fetchPost(): void {
     </div>
 
     <div v-else class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-        <post-item
-            v-for="post in posts"
-            :key="post.id"
-            :post="post"
-        />
+        <post-item v-for="post in posts" :key="post.id" :post="post" />
     </div>
 </template>
