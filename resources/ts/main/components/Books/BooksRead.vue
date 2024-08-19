@@ -16,13 +16,14 @@ const nextPageUrl = ref<string | null>(null)
 function fetchBooks() {
     loading.value = true
 
-    axios.get<Pagination<Book[]>>('/api/about-me/books')
+    axios
+        .get<Pagination<Book[]>>('/api/about-me/books')
         .then(resp => {
             books.value = resp.data.data
             nextPageUrl.value = resp.data.next_page_url
         })
         .catch(handleServerError)
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 </script>
 
@@ -34,10 +35,6 @@ function fetchBooks() {
     </div>
 
     <div v-else class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
-        <book-read
-            v-for="book in books"
-            :key="book.id"
-            :book="book"
-        />
+        <book-read v-for="book in books" :key="book.id" :book="book" />
     </div>
 </template>
