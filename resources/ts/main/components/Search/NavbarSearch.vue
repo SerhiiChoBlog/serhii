@@ -14,7 +14,8 @@ const hideInput = computed<boolean>(() => {
     return isSmall.value && search.query === ''
 })
 
-const openSearchShortcutLabel = navigator.userAgent.indexOf('Mac OS X') != -1 ? '⌘+k' : 'ctrl+k'
+const openSearchShortcutLabel =
+    navigator.userAgent.indexOf('Mac OS X') != -1 ? '⌘+k' : 'ctrl+k'
 
 document.addEventListener('keydown', (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
@@ -78,7 +79,9 @@ function toggleSearch(): void {
                         id="navbar-search-input"
                     />
 
-                    <div class="inline-flex items-center gap-3 absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer">
+                    <div
+                        class="inline-flex items-center gap-3 absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"
+                    >
                         <div
                             v-if="!hideInput && !isTouchDevice()"
                             class="bg-gray-700 px-2 rounded-lg"

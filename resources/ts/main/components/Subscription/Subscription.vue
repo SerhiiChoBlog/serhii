@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { Tag } from '@shared/types/models'
-import type { SubscriptionDemandResponse, SubscriptionForm, SubscriptionTagsModal } from '@shared/types'
+import type {
+    SubscriptionDemandResponse,
+    SubscriptionForm,
+    SubscriptionTagsModal,
+} from '@shared/types'
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 import { onMounted, reactive, ref } from 'vue'
 import axios from 'axios'
@@ -69,10 +73,11 @@ function showModalWithTags(): void {
 
     tags.loading = true
 
-    axios.get<Tag[]>('/api/tags/subscription')
+    axios
+        .get<Tag[]>('/api/tags/subscription')
         .then(resp => tags.items.push(...resp.data))
         .catch(err => console.error(err))
-        .finally(() => tags.loading = false)
+        .finally(() => (tags.loading = false))
 }
 
 function subscribe(): void {
@@ -82,12 +87,15 @@ function subscribe(): void {
 
     modalForm.loading = true
 
-    const uri = `/api/subscriptions?email=${modalForm.email}&tags=${generateTagsUrlParam()}`
+    const uri = `/api/subscriptions?email=${
+        modalForm.email
+    }&tags=${generateTagsUrlParam()}`
 
-    axios.post<SubscriptionDemandResponse>(uri)
+    axios
+        .post<SubscriptionDemandResponse>(uri)
         .then(resp => handleSubscribeResponse(resp.data))
         .catch(err => console.error(err))
-        .finally(() => modalForm.loading = false)
+        .finally(() => (modalForm.loading = false))
 }
 
 function handleSubscribeResponse(data: SubscriptionDemandResponse): void {
@@ -127,19 +135,29 @@ function allTagsSelected(): boolean {
     <div>
         <appear-transition>
             <footer class="print:hidden">
-                <div class="container grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-7 md:gap-20 relative z-10">
-                    <form @submit.prevent="subscribe" class="w-full lg:w-[550px] mx-auto">
+                <div
+                    class="container grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-7 md:gap-20 relative z-10"
+                >
+                    <form
+                        @submit.prevent="subscribe"
+                        class="w-full lg:w-[550px] mx-auto"
+                    >
                         <label
                             for="subscription"
                             class="flex flex-col mb-4 drop-shadow-md pl-4"
                         >
-                            <span class="text-lg lg:text-2xl">Don't miss the Next article</span>
+                            <span class="text-lg lg:text-2xl"
+                                >Don't miss the Next article</span
+                            >
                             <span class="text-sm lg:text-lg">
-                                You can subscribe to specific tags and be notified when it's out
+                                You can subscribe to specific tags and be notified
+                                when it's out
                             </span>
                         </label>
 
-                        <div class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 rounded-full shadow-sm">
+                        <div
+                            class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 rounded-full shadow-sm"
+                        >
                             <choose-tags-button
                                 class="hidden md:inline-flex"
                                 @clicked="showModalWithTags"
@@ -151,12 +169,16 @@ function allTagsSelected(): boolean {
                                 class="px-6 h-full bg-transparent rounded-full w-full focus:outline-none text-white placeholder-gray-300"
                                 placeholder="Your email address"
                                 v-model="modalForm.email"
-                            >
+                            />
 
                             <button
                                 type="submit"
                                 class="transition-all hover:px-10 h-full px-4 lg:px-7 rounded-full shadow-md"
-                                :class="modalForm.loading ? 'bg-main text-white' : 'bg-white text-gray-700'"
+                                :class="
+                                    modalForm.loading
+                                        ? 'bg-main text-white'
+                                        : 'bg-white text-gray-700'
+                                "
                             >
                                 <span v-if="modalForm.loading" class="flex gap-4">
                                     <b class="animate-spin inline-block">/</b>
@@ -174,8 +196,14 @@ function allTagsSelected(): boolean {
                         </div>
 
                         <div class="text-center">
-                            <div class="inline-flex gap-2 flex-wrap mt-4 justify-center">
-                                <subscription-tag-icon v-for="tag in selectedTags" :key="tag.id" :tag="tag" />
+                            <div
+                                class="inline-flex gap-2 flex-wrap mt-4 justify-center"
+                            >
+                                <subscription-tag-icon
+                                    v-for="tag in selectedTags"
+                                    :key="tag.id"
+                                    :tag="tag"
+                                />
                             </div>
                         </div>
                     </form>
@@ -187,8 +215,13 @@ function allTagsSelected(): boolean {
                                 :key="item"
                                 class="flex gap-2 items-center"
                             >
-                                <span v-if="index === 0" class="mx-1 text-xl">❤️</span>
-                                <check-icon v-else class="w-5 lg:w-7 h-5 lg:h-7 text-green-500" />
+                                <span v-if="index === 0" class="mx-1 text-xl"
+                                    >❤️</span
+                                >
+                                <check-icon
+                                    v-else
+                                    class="w-5 lg:w-7 h-5 lg:h-7 text-green-500"
+                                />
                                 <span>{{ item }}</span>
                             </li>
                         </ul>

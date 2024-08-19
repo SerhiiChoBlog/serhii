@@ -43,7 +43,8 @@ function clearFilters(): void {
 }
 
 function fetchTags(): void {
-    axios.get<Tag[]>('/api/tags')
+    axios
+        .get<Tag[]>('/api/tags')
         .then(resp => {
             tags.value.push(...resp.data)
         })
@@ -54,7 +55,11 @@ function fetchTags(): void {
 <template>
     <div
         class="grid"
-        :class="tag.name === showEverythingTag.name ? 'grid-cols-1 mr-3' : 'grid-cols-[280px_35px] gap-1'"
+        :class="
+            tag.name === showEverythingTag.name
+                ? 'grid-cols-1 mr-3'
+                : 'grid-cols-[280px_35px] gap-1'
+        "
     >
         <listbox v-model="selectedTag">
             <div class="relative">
@@ -66,11 +71,7 @@ function fetchTags(): void {
                 </listbox-button>
 
                 <listbox-options>
-                    <listbox-option
-                        v-for="tag in tags"
-                        :key="tag.name"
-                        :value="tag"
-                    >
+                    <listbox-option v-for="tag in tags" :key="tag.name" :value="tag">
                         <div class="flex items-center gap-2">
                             <tag-image :tagName="tag.name" />
                             {{ tag.title }}

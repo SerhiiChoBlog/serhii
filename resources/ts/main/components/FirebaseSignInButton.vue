@@ -47,10 +47,11 @@ function signIn(): void {
 }
 
 function makeRequestToSignInUser(params: FirebaseSignUpRequest): void {
-    axios.post<User | string>('/firebase-sign-in', params)
+    axios
+        .post<User | string>('/firebase-sign-in', params)
         .then(resp => handleResponse(resp.data))
         .catch(e => handleServerError(e))
-        .finally(() => isLoading.value = false)
+        .finally(() => (isLoading.value = false))
 }
 
 function handleResponse(user: User | string): void {

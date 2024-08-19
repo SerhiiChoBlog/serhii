@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue"
+import { onMounted, ref } from 'vue'
 import ScaleTransition from '@shared/components/Transitions/ScaleTransition.vue'
 
 const images = ref<HTMLImageElement[]>([])

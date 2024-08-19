@@ -25,14 +25,13 @@ const commentsCount = computed(() => {
             <comment-avatar :user="Auth" />
 
             <div class="w-full">
-                <h2 class="text-lg mb-1 lg:text-2xl font-bold text-gray-900 dark:text-white">
+                <h2
+                    class="text-lg mb-1 lg:text-2xl font-bold text-gray-900 dark:text-white"
+                >
                     Discussion ({{ commentsCount }})
                 </h2>
 
-                <comment-form
-                    @posted="fetchComments(false)"
-                    :post-id="postId"
-                />
+                <comment-form @posted="fetchComments(false)" :post-id="postId" />
             </div>
         </div>
 

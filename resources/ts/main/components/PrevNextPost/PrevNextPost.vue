@@ -23,7 +23,8 @@ const nextPost = ref<Post | null>(null)
 function fetchPrevNextPosts() {
     loading.value = false
 
-    axios.get(`/api/posts/prev-next/${postId}`)
+    axios
+        .get(`/api/posts/prev-next/${postId}`)
         .then(res => {
             prevPost.value = res.data.prev
             nextPost.value = res.data.next

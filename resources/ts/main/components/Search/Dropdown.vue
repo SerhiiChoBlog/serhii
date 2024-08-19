@@ -12,7 +12,9 @@ const { search } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="bg-page dark:bg-page-second shadow-xl top-[calc(100%+9px)] absolute left-0 right-0 z-50 rounded-lg dark:border-2 dark:border-border min-h-[50px] max-h-[600px] overflow-y-auto">
+    <div
+        class="bg-page dark:bg-page-second shadow-xl top-[calc(100%+9px)] absolute left-0 right-0 z-50 rounded-lg dark:border-2 dark:border-border min-h-[50px] max-h-[600px] overflow-y-auto"
+    >
         <div>
             <div v-if="search.loading" class="py-8 flex items-center justify-center">
                 <reload-icon class="animate-spin w-6 h-6" />

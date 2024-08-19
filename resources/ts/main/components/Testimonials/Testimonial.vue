@@ -34,13 +34,19 @@ const { testimonial, showFull } = defineProps<Props>()
                     </a>
                 </h3>
 
-                <h3 class="text-[.8em] leading-6 text-gray-500">{{ testimonial.role }}</h3>
+                <h3 class="text-[.8em] leading-6 text-gray-500">
+                    {{ testimonial.role }}
+                </h3>
             </div>
         </figcaption>
 
         <blockquote class="mt-3">
             <p
-                v-html="!showFull && testimonial.short ? testimonial.short : testimonial.content"
+                v-html="
+                    !showFull && testimonial.short
+                        ? testimonial.short
+                        : testimonial.content
+                "
                 class="[&>p]:mb-5 [&>p:last-child]:mb-0 text-gray-500 leading-6 text-[.9em]"
             ></p>
 

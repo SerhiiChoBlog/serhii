@@ -29,10 +29,7 @@ function postReply(): void {
 </script>
 
 <template>
-    <article
-        v-if="comment.user"
-        class="py-2 flex gap-3 lg:gap-4"
-    >
+    <article v-if="comment.user" class="py-2 flex gap-3 lg:gap-4">
         <a :href="`/@${comment.user.slug}`" class="relative">
             <comment-avatar :user="comment.user" />
         </a>
@@ -41,7 +38,10 @@ function postReply(): void {
             <a :href="`/@${comment.user.slug}`" class="text-lg">
                 <span class="font-bold">{{ comment.user.name }}</span>
 
-                <small v-if="comment.user.id === 1" class="opacity-80 tracking-wider">
+                <small
+                    v-if="comment.user.id === 1"
+                    class="opacity-80 tracking-wider"
+                >
                     (admin)
                 </small>
             </a>

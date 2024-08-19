@@ -22,11 +22,11 @@ function fetchWorkProjects(): void {
 
     loading.value = true
 
-    axios.get<WorkProjectType[]>('/api/about-me/work-projects')
-        .then(resp => workProjects.value = resp.data)
+    axios
+        .get<WorkProjectType[]>('/api/about-me/work-projects')
+        .then(resp => (workProjects.value = resp.data))
         .catch(handleServerError)
-        .finally(() => loading.value = false)
-
+        .finally(() => (loading.value = false))
 }
 </script>
 
@@ -35,42 +35,38 @@ function fetchWorkProjects(): void {
 
     <div v-else>
         <carousel :items-to-show="1" :wrap-around="false" v-model="currSlide">
-              <slide
-                  v-for="project in workProjects"
-                  :key="project.title"
-                  class="!items-start"
-              >
-                  <work-project-full :project="project" />
-              </slide>
+            <slide
+                v-for="project in workProjects"
+                :key="project.title"
+                class="!items-start"
+            >
+                <work-project-full :project="project" />
+            </slide>
 
             <template #addons>
                 <navigation
                     class="!hidden md:!block [&>svg]:bg-white [&>svg]:rounded-lg [&>svg]:border [&>svg]:border-gray-400 [&>svg]:opacity-80 [&>svg]:scale-125"
                 />
             </template>
-          </carousel>
+        </carousel>
 
-          <carousel
-              :items-to-show="5"
-              :wrap-around="false"
-              v-model="currSlide"
-              ref="carousel"
-              class="mt-8 hidden lg:block"
-          >
-            <slide
-                v-for="(project, i) in workProjects"
-                :key="project.title"
-            >
+        <carousel
+            :items-to-show="5"
+            :wrap-around="false"
+            v-model="currSlide"
+            ref="carousel"
+            class="mt-8 hidden lg:block"
+        >
+            <slide v-for="(project, i) in workProjects" :key="project.title">
                 <div
                     class="md:mx-1 outline-2 outline-offset-2 cursor-pointer transition-all duration-500"
                     :class="{
-                        'group': currSlide === i,
+                        group: currSlide === i,
                         'opacity-70 hover:opacity-100': currSlide !== i,
                     }"
                     @click="currSlide = i"
                 >
                     <work-project :project="project" />
-
                 </div>
             </slide>
         </carousel>

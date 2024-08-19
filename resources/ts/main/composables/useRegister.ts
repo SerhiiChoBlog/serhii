@@ -20,18 +20,20 @@ export default () => {
 
         loading.value = true
 
-        axios.post('/register', formData.value, {
-            headers: { 'Content-Type': 'application/json' }
-        })
+        axios
+            .post('/register', formData.value, {
+                headers: { 'Content-Type': 'application/json' },
+            })
             .then(resp => {
-                const msg = 'Thank you for signing up! Verify your email address to get all the benefits.'
+                const msg =
+                    'Thank you for signing up! Verify your email address to get all the benefits.'
                 PageRefresher.refresh(msg)
             })
             .catch(async e => {
                 const err = await handleServerError(e)
                 errors.value = err ? err.errors : null
             })
-            .finally(() => loading.value = false)
+            .finally(() => (loading.value = false))
     }
 
     return {

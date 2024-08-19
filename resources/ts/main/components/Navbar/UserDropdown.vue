@@ -8,9 +8,10 @@ function redirectTo(url: string) {
     window.location.href = url
 }
 
-const profileUrl = window.Auth && window.Auth.slug === 'serhii-cho'
-    ? '/admin/dashboard'
-    : '/users/profile'
+const profileUrl =
+    window.Auth && window.Auth.slug === 'serhii-cho'
+        ? '/admin/dashboard'
+        : '/users/profile'
 </script>
 
 <template>

@@ -36,7 +36,10 @@ export default (postId: number, commentId?: number) => {
         }
 
         try {
-            const response = await axios.post<{ date: string, message: string }>('/api/comments', params)
+            const response = await axios.post<{ date: string; message: string }>(
+                '/api/comments',
+                params,
+            )
             handleResponse(response.data)
         } catch (err) {
             handleServerError(err)
@@ -45,7 +48,7 @@ export default (postId: number, commentId?: number) => {
         isLoading.value = false
     }
 
-    function handleResponse(data: { date: string, message: string }): void {
+    function handleResponse(data: { date: string; message: string }): void {
         showToast({ text: data.message })
         comment.value = ''
         dispatchEvent(events.commentIsPosted, data.date)

@@ -24,7 +24,7 @@ onMounted(() => {
 })
 
 function toggleAll(): void {
-    allTagsAreChosen.value ? removeAll() : selectAll();
+    allTagsAreChosen.value ? removeAll() : selectAll()
 }
 
 function selectAll(): void {
@@ -67,12 +67,19 @@ function selectedTagsHaveTag(tag: Tag): boolean {
             <p class="text-xl">
                 Tags chosen:
                 <b class="text-green-700 font-sans">
-                    {{ allTagsAreChosen ? 'everything' : `${selectedTags.length} out of ${props.tags.items.length}` }}
+                    {{
+                        allTagsAreChosen
+                            ? 'everything'
+                            : `${selectedTags.length} out of ${props.tags.items.length}`
+                    }}
                 </b>
             </p>
 
             <div>
-                <small>You can choose only tags that I'm passionate to write about</small>
+                <small
+                    >You can choose only tags that I'm passionate to write
+                    about</small
+                >
             </div>
 
             <button
@@ -97,7 +104,11 @@ function selectedTagsHaveTag(tag: Tag): boolean {
                 v-for="tag in props.tags.items"
                 :key="tag.id"
                 class="flex items-center gap-7 border rounded-lg py-2 px-3 relative pointer outline outline-2 outline-transparent transition-all hover:outline-gray-400 dark:hover:outline-gray-600"
-                :class="selectedTagsHaveTag(tag) ? 'border-green-500 dark:border-green-900 bg-green-50 dark:bg-page-second' : 'border-border'"
+                :class="
+                    selectedTagsHaveTag(tag)
+                        ? 'border-green-500 dark:border-green-900 bg-green-50 dark:bg-page-second'
+                        : 'border-border'
+                "
                 aria-label="Subscription subject"
                 @click="chooseSubject(tag)"
             >

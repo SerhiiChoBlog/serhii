@@ -10,7 +10,9 @@ const { project } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="flex flex-col lg:flex-row items-center justify-center gap-4 px-2 md:px-20">
+    <div
+        class="flex flex-col lg:flex-row items-center justify-center gap-4 px-2 md:px-20"
+    >
         <img
             :src="project.image_uri"
             :alt="project.title"
@@ -19,7 +21,9 @@ const { project } = defineProps<Props>()
             height="476"
         />
 
-        <h3 class="md:hidden text-center text-font-second opacity-80 uppercase text-sm">
+        <h3
+            class="md:hidden text-center text-font-second opacity-80 uppercase text-sm"
+        >
             Swipe to see more
         </h3>
 

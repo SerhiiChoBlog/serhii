@@ -23,7 +23,9 @@ const { isScrolledDown } = useScroll()
                 'bg-transparent': !isScrolledDown,
             }"
         >
-            <div class="container flex justify-between items-center min-h-[3.4rem] gap-4">
+            <div
+                class="container flex justify-between items-center min-h-[3.4rem] gap-4"
+            >
                 <div class="flex items-center justify-between gap-x-1 w-full">
                     <a
                         tabindex="0"

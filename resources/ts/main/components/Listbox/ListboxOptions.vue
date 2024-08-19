@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ListboxOptions } from '@headlessui/vue'</script>
+import { ListboxOptions } from '@headlessui/vue'
+</script>
 
 <template>
     <transition

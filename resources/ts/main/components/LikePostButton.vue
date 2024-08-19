@@ -34,16 +34,17 @@ function likePost(): void {
 
     const params = {
         post_id: post.id,
-        secret: window.Auth.secret
+        secret: window.Auth.secret,
     }
 
-    axios.post<GetPostLikesResponse>(`/api/post-likes`, params)
+    axios
+        .post<GetPostLikesResponse>(`/api/post-likes`, params)
         .then(res => {
             isLiked.value = true
             likes.value = res.data.likes
         })
         .catch(err => console.error(err))
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 
 function fetchIsLiked(): void {
@@ -51,16 +52,17 @@ function fetchIsLiked(): void {
 
     const params = {
         post_id: post.id,
-        secret: window.Auth ? window.Auth.secret : null
+        secret: window.Auth ? window.Auth.secret : null,
     }
 
-    axios.get<GetPostLikesResponse>('/api/post-likes/is-liked', { params })
+    axios
+        .get<GetPostLikesResponse>('/api/post-likes/is-liked', { params })
         .then(res => {
             isLiked.value = res.data.liked
             likes.value = res.data.likes
         })
         .catch(err => console.error(err))
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 </script>
 
@@ -74,7 +76,8 @@ function fetchIsLiked(): void {
         class="print:hidden fixed bottom-2 right-2 md:bottom-6 md:right-6 z-30 p-2 rounded-full bg-page border-2 transition-all duration-300"
         :class="{
             'border-transparent shadow-red-400 cursor-default': isLiked,
-            'border-gray-700 dark:border-gray-200 hover:shadow-[0_0_20px_red,inset_0_0_10px_red] hover:text-red-400 hover:animate-pulse': !isLiked,
+            'border-gray-700 dark:border-gray-200 hover:shadow-[0_0_20px_red,inset_0_0_10px_red] hover:text-red-400 hover:animate-pulse':
+                !isLiked,
         }"
     >
         <like-icon
@@ -91,7 +94,8 @@ function fetchIsLiked(): void {
             class="absolute text-[.9rem] font-bold bg-page px-1.5 rounded-full transition-all"
             :class="{
                 'text-red-500 dark:text-red-400 right-1/2 translate-x-1/2': isLiked,
-                'text-gray-700 dark:text-gray-400 border-gray-700 dark:border-gray-400 border -top-2 right-[34px]': !isLiked,
+                'text-gray-700 dark:text-gray-400 border-gray-700 dark:border-gray-400 border -top-2 right-[34px]':
+                    !isLiked,
             }"
         >
             {{ likes }}

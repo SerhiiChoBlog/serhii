@@ -35,7 +35,8 @@ export default () => {
             return
         }
 
-        axios.get<SearchSuggestion[]>(`/api/search/${q}`)
+        axios
+            .get<SearchSuggestion[]>(`/api/search/${q}`)
             .then(resp => {
                 const posts = resp.data
 
@@ -47,7 +48,7 @@ export default () => {
                 search.suggestionsIndex = 0
             })
             .catch(err => console.error(err))
-            .finally(() => search.loading = false)
+            .finally(() => (search.loading = false))
     }, 100)
 
     function fetchSearchSuggestions(e: KeyboardEvent): void {

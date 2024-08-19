@@ -11,7 +11,10 @@ const { search, input, changedInput } = useSearch()
 <template>
     <appear-transition>
         <div class="max-w-[85%] md:max-w-[600px] mx-auto">
-            <label for="search-input" class="relative flex items-center justify-center mt-5 shadow-lg rounded-full bg-page mx-auto dark:border dark:border-gray-500">
+            <label
+                for="search-input"
+                class="relative flex items-center justify-center mt-5 shadow-lg rounded-full bg-page mx-auto dark:border dark:border-gray-500"
+            >
                 <form @submit.prevent class="w-full m-0">
                     <search-icon
                         :class="{ 'animate-blink': search.loading }"

@@ -13,7 +13,7 @@ export default () => {
         remember: true,
     })
 
-    const redirectToReset = () => window.location.href = '/password/reset'
+    const redirectToReset = () => (window.location.href = '/password/reset')
 
     function login(): void {
         if (loading.value) {
@@ -22,9 +22,10 @@ export default () => {
 
         loading.value = true
 
-        axios.post<ServerError | null>('/login', formData.value, {
-            headers: { 'Content-Type': 'application/json' }
-        })
+        axios
+            .post<ServerError | null>('/login', formData.value, {
+                headers: { 'Content-Type': 'application/json' },
+            })
             .then(resp => {
                 const msg = `You've signed in! Click here to go to a profile`
                 PageRefresher.refresh(msg, '/users/profile')
@@ -34,7 +35,7 @@ export default () => {
                 errors.value = err ? err.errors : null
                 formData.value.password = ''
             })
-            .finally(() => loading.value = false)
+            .finally(() => (loading.value = false))
     }
 
     return {

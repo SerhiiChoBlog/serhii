@@ -26,7 +26,11 @@ function toggleNavbar(): void {
         <span
             aria-hidden="true"
             class="w-[19px] h-[2px] block bg-white rounded-full absolute left-[calc(50%-8px)] transition-all duration-500"
-            :class="isActive ? 'rotate-[-90deg] top-[calc(50%-1.5px)]' : 'top-[calc(50%-6px)]'"
+            :class="
+                isActive
+                    ? 'rotate-[-90deg] top-[calc(50%-1.5px)]'
+                    : 'top-[calc(50%-6px)]'
+            "
         ></span>
 
         <span

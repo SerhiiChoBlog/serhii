@@ -11,7 +11,9 @@ const { project } = defineProps<Props>()
 <template>
     <div>
         <div class="relative">
-            <div class="absolute top-1 left-1/2 -translate-x-1/2 w-8 h-[6px] bg-gray-300 group-only:bg-gray-600 rounded-b-[2px]"></div>
+            <div
+                class="absolute top-1 left-1/2 -translate-x-1/2 w-8 h-[6px] bg-gray-300 group-only:bg-gray-600 rounded-b-[2px]"
+            ></div>
 
             <img
                 :src="project.image_uri"
