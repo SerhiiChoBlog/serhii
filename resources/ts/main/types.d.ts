@@ -1,6 +1,6 @@
 import type { User } from '@shared/types/models'
 
-export { }
+export {}
 
 declare global {
     interface Window {

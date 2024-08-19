@@ -1,5 +1,5 @@
 import { onMounted } from 'vue'
-import { createApp } from "vue/dist/vue.esm-bundler"
+import { createApp } from 'vue/dist/vue.esm-bundler'
 import smoothLoader from 'smooth-loader'
 import insertTagsForHighlightJs from '@/modules/insertTagsForHighlightJs'
 import PageRefresher from '@/modules/PageRefresher'
@@ -62,6 +62,6 @@ const app = createApp({
 
 app.config.globalProperties.Auth = window.Auth
 
-app.mount("#main")
+app.mount('#main')
 
 smoothLoader('[data-src]')
