@@ -33,7 +33,8 @@ export default class {
             return
         }
 
-        const toastRedirect = localStorage.getItem(storage.toastRedirectAfterRefresh) || undefined
+        const toastRedirect =
+            localStorage.getItem(storage.toastRedirectAfterRefresh) || undefined
 
         localStorage.removeItem(storage.toastMessageAfterRefresh)
         localStorage.removeItem(storage.toastRedirectAfterRefresh)

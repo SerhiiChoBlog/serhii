@@ -6,10 +6,9 @@ export default class {
         down: 'ArrowDown',
         up: 'ArrowUp',
         enter: 'Enter',
-    };
-
-    constructor(private search: UnwrapNestedRefs<Search>) {
     }
+
+    constructor(private search: UnwrapNestedRefs<Search>) {}
 
     public handle(key: string): void {
         if (this.notNeededEvent(key) || this.suggestionsAreEmpty()) {

@@ -17,7 +17,7 @@ export default (el: HTMLElement | null): boolean => {
     return (
         top >= window.scrollY &&
         left >= window.scrollX &&
-        (top + height) <= (window.scrollY + window.innerHeight) &&
-        (left + width) <= (window.scrollX + window.innerWidth)
+        top + height <= window.scrollY + window.innerHeight &&
+        left + width <= window.scrollX + window.innerWidth
     )
 }

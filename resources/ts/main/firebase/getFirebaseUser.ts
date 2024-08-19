@@ -7,14 +7,17 @@ export default (
     onSuccess: (params: FirebaseSignUpRequest) => void,
     onError: (err: any) => void,
     provider: firebase.auth.AuthProvider,
-    serviceName: User['sign_in_method']
+    serviceName: User['sign_in_method'],
 ) => {
-    firebase.auth()
+    firebase
+        .auth()
         .signInWithPopup(provider)
         .then(resp => handleResponse(resp))
         .catch(err => onError(err))
 
-    async function handleResponse(resp: firebase.auth.UserCredential): Promise<void> {
+    async function handleResponse(
+        resp: firebase.auth.UserCredential,
+    ): Promise<void> {
         const user = resp.user || null
 
         if (!user || !user.email) {
