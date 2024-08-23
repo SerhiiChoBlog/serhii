@@ -20,12 +20,13 @@
         "serhii/short-number": "^3.0.6"
     },
     "require-dev": {
-        "laravel/tinker": "^2.8",
-        "laravel/pint": "^1.5",
         "fakerphp/faker": "^1.21.0",
+        "larastan/larastan": "^2.8.1",
+        "laravel/pint": "^1.5",
+        "laravel/sail": "^1.31",
+        "laravel/tinker": "^2.8",
         "mockery/mockery": "^1.5.1",
         "nunomaduro/collision": "^8.1",
-        "larastan/larastan": "^2.8.1",
         "phpunit/phpunit": "^11.0.6",
         "spatie/laravel-ignition": "^2.0"
     },
