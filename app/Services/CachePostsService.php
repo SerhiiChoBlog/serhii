@@ -23,7 +23,7 @@ readonly class CachePostsService
             $title = $post->title;
 
             if ($post->series->isNotEmpty()) {
-                $title = $post->series->first()?->title . ': ' . $title;
+                $title = $post->series->first()->title . ': ' . $title;
             }
 
             return new CachablePost([

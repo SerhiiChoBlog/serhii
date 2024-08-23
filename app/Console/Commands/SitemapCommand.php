@@ -68,7 +68,7 @@ class SitemapCommand extends Command
                 $title = $post->title;
 
                 if ($post->series->isNotEmpty()) {
-                    $title = "{$post->series->first()?->title}: {$title}";
+                    $title = "{$post->series->first()->title}: {$title}";
                 }
 
                 $url = Url::create(route('posts.show', $post->slug))

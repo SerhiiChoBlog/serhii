@@ -52,7 +52,7 @@ class Series extends Model
     }
 
     /**
-     * @return Attribute<int, int>
+     * @return Attribute<float|int|string, never>
      */
     public function readTime(): Attribute
     {
