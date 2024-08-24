@@ -34,10 +34,11 @@ function uploadPhoto(photo: File) {
     formData.append('photo', photo)
     formData.append('secret', Auth.secret)
 
-    axios.post('/api/users/upload-photo', formData)
+    axios
+        .post('/api/users/upload-photo', formData)
         .then(() => PageRefresher.refresh('Photo uploaded successfully'))
         .catch(e => handleServerError(e))
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 </script>
 

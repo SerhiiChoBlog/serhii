@@ -14,7 +14,9 @@ const { title, content, image, url, feed, icon } = defineProps<Props>()
 </script>
 
 <template>
-    <div class="flex items-center gap-5 bg-page-second rounded-lg px-6 py-2 md:py-4 space-y-1.5">
+    <div
+        class="flex items-center gap-5 bg-page-second rounded-lg px-6 py-2 md:py-4 space-y-1.5"
+    >
         <div v-if="image" class="flex items-center relative min-w-[60px]">
             <a :href="url ? url : 'javascript:'">
                 <img
@@ -26,7 +28,10 @@ const { title, content, image, url, feed, icon } = defineProps<Props>()
                 />
             </a>
 
-            <div v-if="icon" class="absolute -left-5 -top-3 rounded-full bg-page-second p-0.5">
+            <div
+                v-if="icon"
+                class="absolute -left-5 -top-3 rounded-full bg-page-second p-0.5"
+            >
                 <component :is="icon" class="w-8 h-8 fill-page-second" />
             </div>
         </div>

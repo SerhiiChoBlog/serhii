@@ -26,10 +26,11 @@ function fetchFeed(): void {
 
     loading.value = true
 
-    axios.get<Feed[]>(`/api/users/feed/${slug}`)
-        .then(resp => feed.value = resp.data)
+    axios
+        .get<Feed[]>(`/api/users/feed/${slug}`)
+        .then(resp => (feed.value = resp.data))
         .catch(handleServerError)
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 </script>
 
