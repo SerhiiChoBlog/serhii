@@ -40,7 +40,10 @@ function switchToSignUp() {
         <div>
             <form-label for="email" id="email">
                 Email
-                <tip :icon="true" content="We never share email addresses with anyone else" />
+                <tip
+                    :icon="true"
+                    content="We never share email addresses with anyone else"
+                />
             </form-label>
             <input-field
                 name="email"
@@ -48,7 +51,7 @@ function switchToSignUp() {
                 type="email"
                 placeholder="Enter your email"
                 v-model="formData.email"
-                @changed="v => formData.email = v"
+                @changed="v => (formData.email = v)"
                 :error-message="errors && errors.email ? errors.email[0] : null"
             />
         </div>
@@ -61,19 +64,13 @@ function switchToSignUp() {
                 type="password"
                 v-model="formData.password"
                 placeholder="Enter your password"
-                @changed="v => formData.password = v"
+                @changed="v => (formData.password = v)"
             />
         </div>
 
         <div class="flex gap-2 items-center">
-            <input
-                type="checkbox"
-                v-model="formData.remember"
-                id="remember-me"
-            />
-            <label for="remember-me" id="remember">
-                Keep me signed in
-            </label>
+            <input type="checkbox" v-model="formData.remember" id="remember-me" />
+            <label for="remember-me" id="remember"> Keep me signed in </label>
         </div>
 
         <div class="pt-4">

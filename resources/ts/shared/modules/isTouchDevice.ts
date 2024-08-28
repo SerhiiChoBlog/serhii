@@ -1,1 +1,1 @@
-export default () => ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
+export default () => 'ontouchstart' in window || navigator.maxTouchPoints > 0

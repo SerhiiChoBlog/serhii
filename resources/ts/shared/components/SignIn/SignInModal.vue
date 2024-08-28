@@ -9,7 +9,7 @@ import LoginForm from '@shared/components/SignIn/LoginForm.vue'
 const isOpen = ref<boolean>(false)
 const showRegisterForm = ref<boolean>(false)
 
-listenEvent(events.openLoginModal, () => isOpen.value = true)
+listenEvent(events.openLoginModal, () => (isOpen.value = true))
 </script>
 
 <template>
