@@ -40,7 +40,10 @@ function switchToSignUp() {
         <div>
             <form-label for="name" id="name">
                 Name
-                <tip :icon="true" content="The name is public and will be visible on your comments" />
+                <tip
+                    :icon="true"
+                    content="The name is public and will be visible on your comments"
+                />
             </form-label>
             <input-field
                 name="name"
@@ -48,7 +51,7 @@ function switchToSignUp() {
                 type="text"
                 placeholder="Enter your name"
                 v-model="formData.name"
-                @changed="v => formData.name = v"
+                @changed="v => (formData.name = v)"
                 :error-message="errors && errors.name ? errors.name[0] : null"
             />
         </div>
@@ -56,7 +59,10 @@ function switchToSignUp() {
         <div>
             <form-label for="email" id="email">
                 Email
-                <tip :icon="true" content="We never share email addresses with anyone else" />
+                <tip
+                    :icon="true"
+                    content="We never share email addresses with anyone else"
+                />
             </form-label>
             <input-field
                 name="email"
@@ -64,7 +70,7 @@ function switchToSignUp() {
                 type="email"
                 v-model="formData.email"
                 placeholder="Enter your email"
-                @changed="v => formData.email = v"
+                @changed="v => (formData.email = v)"
                 :error-message="errors && errors.email ? errors.email[0] : null"
             />
         </div>
@@ -77,8 +83,10 @@ function switchToSignUp() {
                 type="password"
                 placeholder="Enter your password"
                 v-model="formData.password"
-                @changed="v => formData.password = v"
-                :error-message="errors && errors.password ? errors.password[0] : null"
+                @changed="v => (formData.password = v)"
+                :error-message="
+                    errors && errors.password ? errors.password[0] : null
+                "
             />
         </div>
 

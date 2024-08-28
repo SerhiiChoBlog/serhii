@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import FirebaseSignInButton from '@/components/FirebaseSignInButton.vue'</script>
+import FirebaseSignInButton from '@/components/FirebaseSignInButton.vue'
+</script>
 
 <template>
     <div class="flex justify-center items-center gap-3 pt-7">
