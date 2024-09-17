@@ -13,9 +13,7 @@
     <x-hero class="bg-gray-700" navbar="text-white" id="main" />
 
     @auth('admin')
-
         <main id="admin-main"></main>
-
     @endauth
 
     <script type="text/javascript">
