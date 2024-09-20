@@ -80,7 +80,7 @@ function toggleSearch(): void {
                     />
 
                     <div
-                        class="inline-flex items-center gap-3 absolute top-1/2 right-3 -translate-y-1/2"
+                        class="inline-flex items-center gap-3 absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"
                     >
                         <div
                             v-if="!hideInput && !isTouchDevice()"
