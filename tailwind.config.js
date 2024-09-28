@@ -1,10 +1,10 @@
 module.exports = {
     content: [
-        "./app/View/**/*.php",
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.ts",
-        "./resources/**/*.vue",
+        './app/View/**/*.php',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.ts',
+        './resources/**/*.vue',
     ],
     darkMode: 'class',
     theme: {
@@ -14,16 +14,16 @@ module.exports = {
         },
         extend: {
             colors: {
-                'page': 'var(--color-page)',
+                page: 'var(--color-page)',
                 'page-second': 'var(--color-page-second)',
-                'border': 'var(--color-border)',
-                'font': 'var(--color-font)',
+                border: 'var(--color-border)',
+                font: 'var(--color-font)',
                 'font-second': 'var(--color-font-second)',
                 'font-second-hover': 'var(--color-font-second-hover)',
-                'link': 'var(--color-link)',
+                link: 'var(--color-link)',
                 'link-hover': 'var(--color-link-hover)',
                 'main-light': 'var(--color-main-light)',
-                'main': 'var(--color-main)',
+                main: 'var(--color-main)',
                 'main-hover': 'var(--color-main-hover)',
                 'main-dark': 'var(--color-main-dark)',
                 'inline-code': 'var(--color-inline-code)',
@@ -32,8 +32,8 @@ module.exports = {
                 blink: 'blink 800ms linear infinite',
             },
             backgroundImage: {
-                'home-hero': "url(/public/storage/hero.svg)",
-                'mac-buttons': "url(/public/storage/tools/mac-buttons.webp)",
+                'home-hero': 'url(/storage/hero.svg)',
+                'mac-buttons': 'url(/storage/tools/mac-buttons.webp)',
             },
             fontFamily: {
                 main: ['Main', 'arial'],
@@ -43,11 +43,9 @@ module.exports = {
             keyframes: {
                 blink: {
                     '50%': { opacity: 0 },
-                }
+                },
             },
         },
     },
-    plugins: [
-        require('@tailwindcss/typography'),
-    ],
+    plugins: [require('@tailwindcss/typography')],
 }

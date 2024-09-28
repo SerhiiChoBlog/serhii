@@ -15,7 +15,7 @@
     ]
   },
   "resources/css/admin/app.css": {
-    "file": "assets/app-61193d2c.css",
+    "file": "assets/app-1507ba5a.css",
     "isEntry": true,
     "src": "resources/css/admin/app.css"
   },
@@ -25,12 +25,12 @@
     "src": "resources/css/admin/font-awesome.css"
   },
   "resources/css/main/app.css": {
-    "file": "assets/app-9cbb7073.css",
+    "file": "assets/app-3cffdf24.css",
     "isEntry": true,
     "src": "resources/css/main/app.css"
   },
   "resources/css/user/app.css": {
-    "file": "assets/app-f867123f.css",
+    "file": "assets/app-c97291c3.css",
     "isEntry": true,
     "src": "resources/css/user/app.css"
   },
