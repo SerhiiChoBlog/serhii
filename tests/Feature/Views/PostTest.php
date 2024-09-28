@@ -28,6 +28,8 @@ class PostTest extends TestCase
     public function testAdminCanVisitPage(): void
     {
         $published_post = Post::factory()->published()->create();
+
+        /** @var User $user */
         $user = User::factory()->make();
 
         $this->actingAs($user, 'admin')
@@ -46,7 +48,10 @@ class PostTest extends TestCase
 
     public function testAdminCanSeeThePostIfItsNotPublished(): void
     {
+        /** @var User $user */
         $user = User::factory()->make();
+
+        /** @var Post $post */
         $post = Post::factory()->create();
 
         $this->actingAs($user, 'admin')
