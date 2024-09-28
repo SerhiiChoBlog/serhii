@@ -58,3 +58,11 @@ Route::prefix('subscriptions')->controller(SubscriptionController::class)->group
 });
 
 Route::get('theme/{to}', ThemeController::class);
+
+Route::get('defer', function () {
+    defer(function () {
+        info('Defer executed');
+    });
+
+    return 'Defer';
+});

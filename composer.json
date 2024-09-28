@@ -14,7 +14,7 @@
         "pusher/pusher-php-server": "^7.2.2",
         "spatie/laravel-sitemap": "^7.2.0",
         "stevebauman/location": "^7.2.0",
-        "laravel/framework": "v11.23.5",
+        "laravel/framework": "v11.25.0",
         "laravel/ui": "^4.2.1",
         "serhii/ago": "^3.0.3",
         "serhii/short-number": "^3.0.6"
