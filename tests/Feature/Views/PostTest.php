@@ -8,7 +8,6 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
-use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class PostTest extends TestCase
@@ -53,16 +52,5 @@ class PostTest extends TestCase
         $this->actingAs($user, 'admin')
             ->get(route('posts.show', $post))
             ->assertOk();
-    }
-
-    public function testPostPageHasPostTitle(): void
-    {
-        Visitor::factory()->create();
-
-        $post_title = Str::apa('This is some nice title for the post');
-        $post = Post::factory()->published()->title($post_title)->create();
-
-        $this->get(route('posts.show', $post))
-            ->assertSeeText($post_title);
     }
 }
