@@ -61,6 +61,7 @@ Route::get('theme/{to}', ThemeController::class);
 
 Route::get('defer', function () {
     defer(function () {
+        sleep(5);
         info('Defer executed');
     });
 
