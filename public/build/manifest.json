@@ -15,7 +15,7 @@
     ]
   },
   "resources/css/admin/app.css": {
-    "file": "assets/app-c0937091.css",
+    "file": "assets/app-61193d2c.css",
     "isEntry": true,
     "src": "resources/css/admin/app.css"
   },
@@ -25,12 +25,12 @@
     "src": "resources/css/admin/font-awesome.css"
   },
   "resources/css/main/app.css": {
-    "file": "assets/app-650d903f.css",
+    "file": "assets/app-9cbb7073.css",
     "isEntry": true,
     "src": "resources/css/main/app.css"
   },
   "resources/css/user/app.css": {
-    "file": "assets/app-7bcfbacf.css",
+    "file": "assets/app-f867123f.css",
     "isEntry": true,
     "src": "resources/css/user/app.css"
   },
@@ -63,7 +63,7 @@
     "src": "resources/fonts/fa-solid-900.woff2"
   },
   "resources/ts/admin/app.ts": {
-    "file": "assets/app-a7c730e9.js",
+    "file": "assets/app-f727c058.js",
     "imports": [
       "_Spinner-890daec7.js",
       "_index-da6baf7a.js"
@@ -79,7 +79,7 @@
     "css": [
       "assets/app-bea71dee.css"
     ],
-    "file": "assets/app-7b2c115a.js",
+    "file": "assets/app-19356dff.js",
     "imports": [
       "_Spinner-890daec7.js",
       "_SignInModal.vue_vue_type_script_setup_true_lang-329f8db6.js",
@@ -96,9 +96,5 @@
     ],
     "isEntry": true,
     "src": "resources/ts/user/app.ts"
-  },
-  "storage/app/public/hero.svg": {
-    "file": "assets/hero-c0cbd499.svg",
-    "src": "storage/app/public/hero.svg"
   }
 }
