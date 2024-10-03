@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router'
 
-type Props = {
+const { route, type, href } = defineProps<{
     route?: RouteLocationRaw
     type?: 'button' | 'submit' | 'reset'
     href?: string
-}
-
-const { route, type, href } = defineProps<Props>()
+}>()
 
 const classes =
     'inline-block uppercase text-white text-center text-sm px-8 py-3 rounded-full transition-all bg-main hover:bg-main-hover shadow-md hover:shadow-lg'

@@ -15,7 +15,7 @@ import BookItem from '@admin/components/Books/Book.vue'
 const books = ref<Book[]>([])
 const loading = ref<boolean>(true)
 
-onMounted(() => fetchBooks())
+onMounted(fetchBooks)
 
 const { updateBookField } = useUpdateBookField()
 
