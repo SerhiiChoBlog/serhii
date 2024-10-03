@@ -4,16 +4,12 @@ import type { Book } from '@shared/types/models'
 import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 
-type Props = {
-    book: Book
-}
-
 type Emits = {
     (e: 'field-updated', slug: string, field: UpdateBookField, value: string): void
 }
 
 const emit = defineEmits<Emits>()
-const { book } = defineProps<Props>()
+const { book } = defineProps<{ book: Book }>()
 
 function fieldUpdated(e: Event, fieldName: UpdateBookField): void {
     emit('field-updated', book.slug, fieldName, (e.target as HTMLInputElement).value)
