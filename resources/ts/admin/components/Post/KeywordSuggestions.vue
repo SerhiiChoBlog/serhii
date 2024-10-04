@@ -5,17 +5,11 @@ import axios from 'axios'
 import handleError from '@admin/modules/handleError'
 import FormInput from '@admin/components/Form/FormInput.vue'
 
-type Props = {
-    post: Post
-}
-
-type Emits = {
+const emit = defineEmits<{
     (e: 'changed'): void
-}
+}>()
 
-const emit = defineEmits<Emits>()
-
-const props = defineProps<Props>()
+const props = defineProps<{ post: Post }>()
 const searchQuery = ref('')
 const loading = ref<boolean>(false)
 

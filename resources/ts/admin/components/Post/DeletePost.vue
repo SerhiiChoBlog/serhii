@@ -7,32 +7,30 @@ import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 import showToast from '@shared/modules/showToast'
 
-type Props = {
-    post: Post
-}
-
-const { post } = defineProps<Props>()
+const { post } = defineProps<{ post: Post }>()
 const router = useRouter()
 const loading = ref(false)
 
 function deletePost(): void {
-    if (!confirm(`STEP 1/3. Are you sure you want to delete post "${post.title}"`))
+    if (!confirm(`STEP 1/3. Are you sure you want to delete post "${post.title}"`)) {
         return
+    }
 
-    if (
-        !confirm(
-            `STEP 2/3. You will not be able to restore this post. Are you sure you want to remove it forever?`,
-        )
-    )
+    const msg = `STEP 2/3. You will not be able to restore this post. Are you sure you want to remove it forever?`
+
+    if (!confirm(msg)) {
         return
+    }
 
-    if (!confirm(`STEP 3/3. Last confirmation. Are you sure?`)) return
+    if (!confirm(`STEP 3/3. Last confirmation. Are you sure?`)) {
+        return
+    }
 
     loading.value = true
 
     axios
         .delete(`/admin/ajax/posts/${post.id}`)
-        .then(resp => {
+        .then(() => {
             router.push({ name: 'posts' })
             showToast({ text: `The post "${post.title}" has been removed` })
         })
