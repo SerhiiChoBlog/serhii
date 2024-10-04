@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 
-type Props = {
+const props = defineProps<{
     length: number
     inputValue: string
-}
+}>()
 
-const props = defineProps<Props>()
 const currLength = ref(0)
 
 watch(props, () => {
