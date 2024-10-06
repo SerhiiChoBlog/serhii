@@ -8,16 +8,14 @@ import Tip from '@shared/components/Tip.vue'
 import SignInWith from '@shared/components/SignIn/SignInWith.vue'
 import QuestionLink from '@shared/components/SignIn/QuestionLink.vue'
 
-type Emits = {
+const emit = defineEmits<{
     (e: 'changed'): void
-}
+}>()
 
-type Props = {
+const { useAsSeparatePage = false } = defineProps<{
     useAsSeparatePage?: boolean
-}
+}>()
 
-const emit = defineEmits<Emits>()
-const { useAsSeparatePage = false } = defineProps<Props>()
 const { loading, formData, errors, login, redirectToReset } = useLogin()
 
 function switchToSignUp() {

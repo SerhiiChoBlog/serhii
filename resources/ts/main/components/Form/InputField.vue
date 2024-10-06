@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
 import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import ValidationMessage from '@/components/Form/ValidationMessage.vue'
 
@@ -13,7 +12,7 @@ type Props = {
     placeholder?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
     type: 'text',
     placeholder: '',
 })
@@ -22,25 +21,21 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
     <div class="relative">
         <input
-            :type="props.type"
-            :placeholder="props.placeholder"
+            :type="type"
+            :placeholder="placeholder"
             class="w-full px-4 py-3 border bg-page-second rounded-md focus:outline-none focus:ring-1 focus:ring-main"
-            @input="inputHandler"
             :class="{
-                'border-red-600/50': props.errorMessage,
-                'border-border': !props.errorMessage,
+                'border-red-600/50': errorMessage,
+                'border-border': !errorMessage,
             }"
-            :name="props.name"
+            :name="name"
             v-model="modelValue"
-            :id="props.id"
-            :ref="`ref-${props.name}`"
+            :id="id"
+            :ref="`ref-${name}`"
         />
 
-        <show-password-button
-            v-if="props.type === 'password'"
-            :input-id="props.id"
-        />
+        <show-password-button v-if="type === 'password'" :input-id="id" />
     </div>
 
-    <validation-message :message="props.errorMessage" />
+    <validation-message :message="errorMessage" />
 </template>
