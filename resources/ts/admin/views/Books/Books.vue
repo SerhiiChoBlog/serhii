@@ -10,7 +10,7 @@ import MainButton from '@admin/components/Buttons/MainButton.vue'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import DataTable from '@admin/components/DataTable/DataTable.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
-import BookItem from '@admin/components/Books/Book.vue'
+import BookItem from '@admin/components/Books/BookItem.vue'
 
 const books = ref<Book[]>([])
 const loading = ref<boolean>(true)
@@ -22,10 +22,11 @@ const { updateBookField } = useUpdateBookField()
 function fetchBooks(): void {
     loading.value = true
 
-    axios.get<Pagination<Book[]>>('/admin/ajax/books')
-        .then(resp => books.value = resp.data.data)
+    axios
+        .get<Pagination<Book[]>>('/admin/ajax/books')
+        .then(resp => (books.value = resp.data.data))
         .catch(handleError)
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 </script>
 
@@ -48,17 +49,20 @@ function fetchBooks(): void {
         <div class="mt-5">
             <Spinner v-if="loading" />
 
-            <h2
-                v-else-if="books.length === 0"
-                class="text-center text-xl mt-6"
-            >
+            <h2 v-else-if="books.length === 0" class="text-center text-xl mt-6">
                 There are not books yet
             </h2>
 
             <DataTable v-else>
                 <template #head>
                     <HeadDetail
-                        v-for="title in ['Image', 'Title', 'Author', 'Rate', 'Read at']"
+                        v-for="title in [
+                            'Image',
+                            'Title',
+                            'Author',
+                            'Rate',
+                            'Read at',
+                        ]"
                         :key="title"
                     >
                         {{ title }}
