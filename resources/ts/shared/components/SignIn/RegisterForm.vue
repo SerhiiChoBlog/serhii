@@ -8,16 +8,14 @@ import SignInWith from '@shared/components/SignIn/SignInWith.vue'
 import QuestionLink from '@shared/components/SignIn/QuestionLink.vue'
 import useRegister from '@/composables/useRegister'
 
-type Emits = {
+const emit = defineEmits<{
     (e: 'changed'): void
-}
+}>()
 
-type Props = {
+const { useAsSeparatePage = false } = defineProps<{
     useAsSeparatePage?: boolean
-}
+}>()
 
-const emit = defineEmits<Emits>()
-const { useAsSeparatePage = false } = defineProps<Props>()
 const { loading, formData, errors, register } = useRegister()
 
 function switchToSignUp() {

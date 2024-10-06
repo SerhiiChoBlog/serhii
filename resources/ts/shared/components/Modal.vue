@@ -9,11 +9,10 @@ type Props = {
     empty?: boolean
 }
 
-type Emits = {
+const emit = defineEmits<{
     (e: 'close'): void
-}
+}>()
 
-const emit = defineEmits<Emits>()
 const props = defineProps<Props>()
 const isOpen = ref<boolean>(props.opened)
 
@@ -36,11 +35,11 @@ onMounted(() => {
             <div
                 v-if="isOpen"
                 class="overflow-y-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto max-h-[calc(100vh-40px)] pt-10"
-                :style="{ maxWidth: props.maxWidth + 'px' }"
+                :style="{ maxWidth: maxWidth + 'px' }"
             >
                 <div
                     class="bg-page text-font shadow-xl rounded-lg h-full relative"
-                    :class="props.empty ? '' : 'md:p-10 p-5'"
+                    :class="empty ? '' : 'md:p-10 p-5'"
                 >
                     <button
                         @click="emit('close')"

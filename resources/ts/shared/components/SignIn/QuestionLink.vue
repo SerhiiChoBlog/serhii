@@ -1,26 +1,23 @@
 <script setup lang="ts">
-type Emits = {
+const emit = defineEmits<{
     (e: 'clicked'): void
-}
+}>()
 
-type Props = {
+defineProps<{
     question: string
     title: string
-}
-
-const emit = defineEmits<Emits>()
-const props = defineProps<Props>()
+}>()
 </script>
 
 <template>
     <span class="flex flex-col text-center">
-        <span class="text-sm text-font">{{ props.question }}</span>
+        <span class="text-sm text-font">{{ question }}</span>
 
         <button
             @click="emit('clicked')"
             class="text-sm text-main hover:underline uppercase"
         >
-            {{ props.title }}
+            {{ title }}
         </button>
     </span>
 </template>

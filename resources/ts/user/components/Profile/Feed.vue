@@ -8,12 +8,7 @@ import Spinner from '@shared/components/Icons/Spinner.vue'
 import CommentIcon from '@shared/components/Icons/CommentIcon.vue'
 import LikeIcon from '@shared/components/Icons/LikeIcon.vue'
 
-type Props = {
-    slug: string
-}
-
-const { slug } = defineProps<Props>()
-
+const { slug } = defineProps<{ slug: string }>()
 const feed = ref<Feed[]>([])
 const loading = ref<boolean>(false)
 
@@ -47,7 +42,7 @@ function fetchFeed(): void {
                 v-if="item.type === 'post-like'"
                 :feed="item"
                 :title="`likes the article “${item.post!.title}”`"
-                :content="item.post!.intro"
+                :content="item.post!.intro!"
                 :image="`/${item.post!.image_xs}`"
                 :url="`/posts/${item.post!.slug}`"
                 :icon="LikeIcon"

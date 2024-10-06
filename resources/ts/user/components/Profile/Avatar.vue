@@ -4,11 +4,7 @@ import SignedInMethodLogo from '@/components/SignedInMethodLogo.vue'
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 import UploadProfilePhoto from '@user/components/Profile/UploadProfilePhoto.vue'
 
-type Props = {
-    user: User
-}
-
-const { user } = defineProps<Props>()
+defineProps<{ user: User }>()
 </script>
 
 <template>

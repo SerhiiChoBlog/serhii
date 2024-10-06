@@ -1,9 +1,5 @@
 <script setup lang="ts">
-type Props = {
-    message?: string | null
-}
-
-const props = defineProps<Props>()
+defineProps<{ message?: string | null }>()
 </script>
 
 <template>
@@ -12,6 +8,6 @@ const props = defineProps<Props>()
         class="text-sm text-red-600 leading-4 block mt-1 ml-1"
         role="alert"
     >
-        {{ props.message }}
+        {{ message }}
     </span>
 </template>

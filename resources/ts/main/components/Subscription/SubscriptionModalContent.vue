@@ -7,11 +7,7 @@ import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
 import SubscriptionButton from '@/modules/Subscription/SubscriptionButton'
 import SubscriptionCache from '@/modules/Subscription/SubscriptionCache'
 
-type Props = {
-    tags: SubscriptionTagsModal
-}
-
-const props = defineProps<Props>()
+const props = defineProps<{ tags: SubscriptionTagsModal }>()
 const selectedTags = ref<Tag[]>([])
 
 const allTagsAreChosen = computed(() => {
@@ -101,7 +97,7 @@ function selectedTagsHaveTag(tag: Tag): boolean {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
             <button
                 type="button"
-                v-for="tag in props.tags.items"
+                v-for="tag in tags.items"
                 :key="tag.id"
                 class="flex items-center gap-7 border rounded-lg py-2 px-3 relative pointer outline outline-2 outline-transparent transition-all hover:outline-gray-400 dark:hover:outline-gray-600"
                 :class="

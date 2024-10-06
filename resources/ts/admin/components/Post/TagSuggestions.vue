@@ -4,16 +4,11 @@ import { ref, watch } from 'vue'
 import axios from 'axios'
 import handleError from '@admin/modules/handleError'
 
-type Props = {
-    value: string
-}
-
-type Emits = {
+const emit = defineEmits<{
     (e: 'addTag', tag: Tag): void
-}
+}>()
 
-const emit = defineEmits<Emits>()
-const props = defineProps<Props>()
+const props = defineProps<{ value: string }>()
 const suggestions = ref<Tag[]>([])
 
 watch(props, () => {

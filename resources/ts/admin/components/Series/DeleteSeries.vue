@@ -7,11 +7,7 @@ import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 import showToast from '@shared/modules/showToast'
 
-type Props = {
-    series: Series
-}
-
-const { series } = defineProps<Props>()
+const { series } = defineProps<{ series: Series }>()
 const router = useRouter()
 const loading = ref(false)
 

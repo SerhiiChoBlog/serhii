@@ -1,10 +1,8 @@
 <script setup lang="ts">
-type Props = {
+defineProps<{
     headline: string
     subHeadline: string
-}
-
-const { headline, subHeadline } = defineProps<Props>()
+}>()
 </script>
 
 <template>
