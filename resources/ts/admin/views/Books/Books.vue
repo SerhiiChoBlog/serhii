@@ -62,6 +62,7 @@ function fetchBooks(): void {
                             'Author',
                             'Rate',
                             'Read at',
+                            '',
                         ]"
                         :key="title"
                     >
@@ -74,6 +75,7 @@ function fetchBooks(): void {
                     :key="book.id"
                     :book="book"
                     @field-updated="updateBookField"
+                    @refresh="fetchBooks"
                 />
             </DataTable>
         </div>

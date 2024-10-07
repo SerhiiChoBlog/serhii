@@ -1,19 +1,41 @@
 <script setup lang="ts">
 import type { UpdateBookField } from '@admin/types'
 import type { Book } from '@shared/types/models'
+import { ref } from 'vue'
+import axios from 'axios'
+import showToast from '@shared/modules/showToast'
+import handleError from '@admin/modules/handleError'
 import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 
-type Emits = {
+const emit = defineEmits<{
     (e: 'field-updated', slug: string, field: UpdateBookField, value: string): void
-}
+    (e: 'refresh'): void
+}>()
 
-const emit = defineEmits<Emits>()
 const { book } = defineProps<{ book: Book }>()
+const loading = ref<boolean>(false)
 
 function fieldUpdated(e: Event, fieldName: UpdateBookField): void {
     const value = (e.target as HTMLInputElement).value
     emit('field-updated', book.slug, fieldName, value)
+}
+
+function deleteBook(): void {
+    if (!confirm('Are you sure you want to delete this book?')) {
+        return
+    }
+
+    loading.value = true
+
+    axios
+        .delete<string>(`/admin/ajax/books/${book.slug}`)
+        .then(resp => {
+            showToast({ text: resp.data })
+            emit('refresh')
+        })
+        .catch(handleError)
+        .finally(() => (loading.value = false))
 }
 </script>
 
@@ -57,6 +79,11 @@ function fieldUpdated(e: Event, fieldName: UpdateBookField): void {
                 pattern="\d{4}-\d{2}-\d{2}"
                 @blur="e => fieldUpdated(e, 'read_at')"
             />
+        </BodyDetail>
+        <BodyDetail>
+            <button @click="deleteBook" type="button">
+                <i class="fas fa-trash text-red-600 hover:text-red-700"></i>
+            </button>
         </BodyDetail>
     </BodyRow>
 </template>
