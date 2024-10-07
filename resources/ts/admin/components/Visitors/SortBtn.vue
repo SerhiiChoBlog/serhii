@@ -1,10 +1,8 @@
 <script setup lang="ts">
-type Emits = {
+const emit = defineEmits<{
     (e: 'order'): void
     (e: 'direction'): void
-}
-
-const emit = defineEmits<Emits>()
+}>()
 </script>
 
 <template>

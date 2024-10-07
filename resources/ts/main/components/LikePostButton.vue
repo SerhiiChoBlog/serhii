@@ -21,7 +21,7 @@ const likes = ref<number>(0)
 const loading = ref<boolean>(false)
 
 function likePost(): void {
-    if (!window.Auth) {
+    if (!Auth) {
         dispatchEvent(events.openLoginModal)
         return
     }
@@ -34,7 +34,7 @@ function likePost(): void {
 
     const params = {
         post_id: post.id,
-        secret: window.Auth.secret,
+        secret: Auth.secret,
     }
 
     axios
@@ -52,7 +52,7 @@ function fetchIsLiked(): void {
 
     const params = {
         post_id: post.id,
-        secret: window.Auth ? window.Auth.secret : null,
+        secret: Auth ? Auth.secret : null,
     }
 
     axios

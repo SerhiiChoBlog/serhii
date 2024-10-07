@@ -1,17 +1,12 @@
 <script setup lang="ts">
 import type { Testimonial } from '@shared/types'
 
-type Props = {
+const emit = defineEmits<{ (e: 'showFullContent'): void }>()
+
+defineProps<{
     testimonial: Testimonial
     showFull: boolean
-}
-
-type Emits = {
-    (e: 'showFullContent'): void
-}
-
-const emit = defineEmits<Emits>()
-const { testimonial, showFull } = defineProps<Props>()
+}>()
 </script>
 
 <template>

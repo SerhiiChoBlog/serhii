@@ -11,18 +11,13 @@ import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 
-type Props = {
-    post: Post
-}
-
-type Emits = {
+const emit = defineEmits<{
     (e: 'uploaded'): void
     (e: 'removed'): void
-}
+}>()
 
-const emit = defineEmits<Emits>()
-const { post } = defineProps<Props>()
-const loading = ref(false)
+const { post } = defineProps<{ post: Post }>()
+const loading = ref<boolean>(false)
 
 function submitImage(e: Event): void {
     loading.value = true

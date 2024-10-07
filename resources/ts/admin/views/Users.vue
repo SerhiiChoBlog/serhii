@@ -24,7 +24,8 @@ onMounted(() => {
 })
 
 function fetchUsers(url: string, refresh = true): void {
-    axios.get<{ users: Pagination<User[]>, total: number }>(url)
+    axios
+        .get<{ users: Pagination<User[]>; total: number }>(url)
         .then(resp => {
             const data = resp.data
 
@@ -32,11 +33,11 @@ function fetchUsers(url: string, refresh = true): void {
             totalUsers.value = data.total
 
             refresh
-                ? users.value = data.users.data
+                ? (users.value = data.users.data)
                 : users.value.push(...data.users.data)
         })
         .catch(handleError)
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 
 function loadMoreUsers(): void {
@@ -48,7 +49,9 @@ function loadMoreUsers(): void {
 
 <template>
     <div class="container max-w-7xl">
-        <PageTitle>Users <b v-if="totalUsers">{{ totalUsers }}</b></PageTitle>
+        <PageTitle
+            >Users <b v-if="totalUsers">{{ totalUsers }}</b></PageTitle
+        >
 
         <Spinner v-if="loading" />
 
@@ -91,15 +94,24 @@ function loadMoreUsers(): void {
                 </BodyDetail>
                 <BodyDetail>{{ user.name }}</BodyDetail>
                 <BodyDetail>{{ user.email }}</BodyDetail>
-                <BodyDetail :class="user.email_verified_at ? 'text-green-700' : 'text-red-700'">
+                <BodyDetail
+                    :class="
+                        user.email_verified_at ? 'text-green-700' : 'text-red-700'
+                    "
+                >
                     {{ user.email_verified_at ? 'Yes' : 'No' }}
                 </BodyDetail>
-                <BodyDetail class="font-black" :class="user.comments_count > 0 ? 'text-green-700' : 'text-red-700'">
+                <BodyDetail
+                    class="font-black"
+                    :class="
+                        user.comments_count && user.comments_count > 0
+                            ? 'text-green-700'
+                            : 'text-red-700'
+                    "
+                >
                     {{ user.comments_count }}
                 </BodyDetail>
-                <BodyDetail class="font-black">
-                    0
-                </BodyDetail>
+                <BodyDetail class="font-black"> 0 </BodyDetail>
                 <BodyDetail>
                     {{ moment(user.updated_at).format('D MMM YYYY H:mm') }}
                 </BodyDetail>
@@ -117,10 +129,6 @@ function loadMoreUsers(): void {
             </BodyRow>
         </DataTable>
 
-        <LoadMoreButton
-            v-if="nextPageUrl"
-            :nextPageUrl="nextPageUrl"
-            @clicked="loadMoreUsers"
-        />
+        <LoadMoreButton v-if="nextPageUrl" @clicked="loadMoreUsers" />
     </div>
 </template>

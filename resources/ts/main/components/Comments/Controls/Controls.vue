@@ -18,9 +18,9 @@ defineProps<{
     <div class="flex gap-2 items-center">
         <like-comment-button :comment @likedComment="emit('likedComment')" />
 
-        <span v-if="Auth && comment.user_id !== Auth.id">·</span>
+        <span v-if="$auth && comment.user_id !== $auth.id">·</span>
 
-        <control v-if="Auth && comment.user_id !== Auth.id" @click="emit('reply')">
+        <control v-if="$auth && comment.user_id !== $auth.id" @click="emit('reply')">
             <span v-if="reply">Cancel</span>
             <span v-else>Reply</span>
         </control>

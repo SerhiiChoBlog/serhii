@@ -1,14 +1,5 @@
 <script setup lang="ts">
-type Props = {
-    nextPageUrl: string
-}
-
-type Emits = {
-    (e: 'clicked'): void
-}
-
-const emit = defineEmits<Emits>()
-const props = defineProps<Props>()
+const emit = defineEmits<{ (e: 'clicked'): void }>()
 </script>
 
 <template>

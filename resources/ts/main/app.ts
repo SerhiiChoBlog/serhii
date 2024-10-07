@@ -2,6 +2,7 @@ import { onMounted } from 'vue'
 import { createApp } from 'vue/dist/vue.esm-bundler'
 import smoothLoader from 'smooth-loader'
 import insertTagsForHighlightJs from '@/modules/insertTagsForHighlightJs'
+import globalValues from '@/plugins/globalValues'
 import PageRefresher from '@/modules/PageRefresher'
 import ContactModal from '@/components/ContactModal.vue'
 import Navbar from '@/components/Navbar/Navbar.vue'
@@ -60,8 +61,6 @@ const app = createApp({
     },
 })
 
-app.config.globalProperties.Auth = window.Auth
-
-app.mount('#main')
+app.use(globalValues).mount('#main')
 
 smoothLoader('[data-src]')
