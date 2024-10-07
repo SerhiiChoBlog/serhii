@@ -7,18 +7,15 @@ import CommentsWrapper from '@/components/Comments/CommentsWrapper.vue'
 import CommentAvatar from '@/components/Comments/CommentAvatar.vue'
 import Controls from '@/components/Comments/Controls/Controls.vue'
 
-type Props = {
-    comment: CommentType
-    postId: number
-}
-
-type Emits = {
+const emit = defineEmits<{
     (e: 'posted'): void
     (e: 'likedComment'): void
-}
+}>()
 
-const emit = defineEmits<Emits>()
-const { comment, postId } = defineProps<Props>()
+const { comment, postId } = defineProps<{
+    comment: CommentType
+    postId: number
+}>()
 
 const reply = ref<boolean>(false)
 

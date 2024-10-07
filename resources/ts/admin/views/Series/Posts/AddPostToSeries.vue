@@ -5,11 +5,9 @@ import handleError from '@admin/modules/handleError'
 import axios from 'axios'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 
-type Emits = {
+const emit = defineEmits<{
     (e: 'postAdded', post: Post): void
-}
-
-const emit = defineEmits<Emits>()
+}>()
 
 const postSlug = ref<string>('')
 const post = ref<Post | null>(null)
@@ -26,7 +24,8 @@ function fetchPost(): void {
         postSlug.value = postSlug.value.split('/').pop() || ''
     }
 
-    axios.get<Post | null>(`/admin/ajax/posts/${postSlug.value}`)
+    axios
+        .get<Post | null>(`/admin/ajax/posts/${postSlug.value}`)
         .then(resp => {
             if (!resp.data) {
                 return
@@ -37,7 +36,7 @@ function fetchPost(): void {
             postSlug.value = ''
         })
         .catch(handleError)
-        .finally(() => loading.value = false)
+        .finally(() => (loading.value = false))
 }
 </script>
 
@@ -56,7 +55,10 @@ function fetchPost(): void {
             @blur="fetchPost"
         />
 
-        <i v-if="loading" class="fas fa-spinner animate-spin text-gray-400 text-2xl"></i>
+        <i
+            v-if="loading"
+            class="fas fa-spinner animate-spin text-gray-400 text-2xl"
+        ></i>
         <i v-else-if="post" class="fas fa-check text-green-500 text-2xl"></i>
         <i v-else class="fas fa-times text-red-500 text-2xl"></i>
 

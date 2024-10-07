@@ -25,7 +25,7 @@ function deleteSeries(): void {
 
     axios
         .delete(`/admin/ajax/series/${series.id}`)
-        .then(resp => {
+        .then(() => {
             router.push({ name: 'series' })
             showToast({ text: `The series "${series.title}" has been removed` })
         })

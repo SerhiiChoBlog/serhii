@@ -4,11 +4,8 @@ import { ref } from 'vue'
 import listenEvent from '@shared/modules/listenEvent'
 import { events } from '@shared/appConfig'
 
-type Emits = {
-    (e: 'clicked'): void
-}
+const emit = defineEmits<{ (e: 'clicked'): void }>()
 
-const emit = defineEmits<Emits>()
 const heading = ref<string>('All tags')
 
 listenEvent<string>(events.subscribeTagsButtonTitle, title => {

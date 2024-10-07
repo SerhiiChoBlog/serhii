@@ -5,17 +5,12 @@ import CommentButton from '@/components/Comments/CommentButton.vue'
 import useCachedComment from '@/composables/useCachedComment'
 import FirebaseSignInButton from '@/components/FirebaseSignInButton.vue'
 
-type Emits = {
-    (e: 'posted'): void
-}
+const emit = defineEmits<{ (e: 'posted'): void }>()
 
-type Props = {
+const { postId, commentId } = defineProps<{
     postId: number
     commentId?: number
-}
-
-const emit = defineEmits<Emits>()
-const { postId, commentId } = defineProps<Props>()
+}>()
 
 const { comment, postComment, isLoading, canCommentIn } = usePostComment(
     postId,
@@ -47,7 +42,7 @@ async function submitForm(): Promise<void> {
         <div>
             <div class="mb-2">
                 <textarea
-                    v-if="Auth"
+                    v-if="$auth"
                     v-model="comment"
                     :placeholder="placeholder"
                     class="p-3 bg-page focus:outline-none dark:bg-page-second rounded-lg border border-border w-full min-h-[90px]"
@@ -60,7 +55,7 @@ async function submitForm(): Promise<void> {
                 <p v-else class="text-xl py-3">Please, sign in to comment</p>
 
                 <span
-                    v-if="Auth"
+                    v-if="$auth"
                     class="text-xs lg:text-lg absolute right-1 bottom-4 lg:bottom-6 opacity-60"
                 >
                     Letters: {{ comment.length }}/1000
@@ -74,11 +69,11 @@ async function submitForm(): Promise<void> {
                     :class="{ 'opacity-50': isLoading || canCommentIn > 0 }"
                 >
                     <span v-if="isLoading">Processing...</span>
-                    <span v-else-if="!Auth">Sign in with email</span>
+                    <span v-else-if="!$auth">Sign in with email</span>
                     <span v-else>Comment</span>
                 </comment-button>
 
-                <div v-if="!Auth" class="inline-flex gap-4 items-center">
+                <div v-if="!$auth" class="inline-flex gap-4 items-center">
                     <firebase-sign-in-button service-name="google" />
                     <firebase-sign-in-button service-name="github" />
                 </div>

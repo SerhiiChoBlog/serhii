@@ -12,7 +12,7 @@ const classes =
 </script>
 
 <template>
-    <a v-if="href" :href="href" :class="classes" rel="noreferrer">
+    <a v-if="href" :href :class="classes" rel="noreferrer">
         <slot />
     </a>
 
@@ -20,7 +20,7 @@ const classes =
         <slot />
     </RouterLink>
 
-    <button v-else :type="type" :class="classes">
+    <button v-else :type :class="classes">
         <slot />
     </button>
 </template>

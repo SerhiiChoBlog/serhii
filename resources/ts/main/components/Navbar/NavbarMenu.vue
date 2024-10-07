@@ -58,7 +58,7 @@ function showLoginModal(): void {
             </div>
 
             <div class="min-w-fit mx-auto lg:m-0 text-center mt-5 relative">
-                <user-dropdown v-if="Auth">
+                <user-dropdown v-if="$auth">
                     <button
                         type="button"
                         class="flex items-center justify-center gap-4 bg-black/20 rounded-full pl-5 hover:bg-black/40 transition-colors group"
@@ -66,11 +66,11 @@ function showLoginModal(): void {
                         <div
                             class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[150px] text-lg py-1"
                         >
-                            {{ Auth.name }}
+                            {{ $auth.name }}
                         </div>
 
                         <img
-                            :src="`/storage/avatars/${Auth.avatar}`"
+                            :src="`/storage/avatars/${$auth.avatar}`"
                             alt="Profile picture"
                             width="200"
                             height="200"

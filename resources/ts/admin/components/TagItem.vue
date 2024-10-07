@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { Tag } from '@shared/types/models'
 
-type Emits = {
+defineProps<{ tag: Tag }>()
+
+const emit = defineEmits<{
     (e: 'deleteTag', id: number): void
     (e: 'updateTagId', id: number): void
-}
-
-defineProps<{ tag: Tag }>()
-const emit = defineEmits<Emits>()
+}>()
 </script>
 
 <template>

@@ -3,24 +3,21 @@ import type { Chapter as ChapterType } from '@shared/types'
 import { computed } from 'vue'
 import ChevronRightIcon from '@shared/components/Icons/ChevronRightIcon.vue'
 
-interface Props {
+const props = defineProps<{
     headers: NodeListOf<HTMLElement>
     chapter: ChapterType
-}
+}>()
 
-type Emits = {
+const emit = defineEmits<{
     (e: 'clicked', title: string): void
-}
-
-const { headers, chapter } = defineProps<Props>()
-const emit = defineEmits<Emits>()
+}>()
 
 const title = computed(() => {
-    return chapter.title.replace(/\d+\. ?/, '')
+    return props.chapter.title.replace(/\d+\. ?/, '')
 })
 
 const number = computed<string>(() => {
-    const match = /\d+\./.exec(chapter.title)
+    const match = /\d+\./.exec(props.chapter.title)
     return match && match[0] ? match[0].replace('.', '') : ''
 })
 </script>

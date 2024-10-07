@@ -16,12 +16,12 @@ const isLiked = computed(() =>
 )
 
 function toggleLike(): void {
-    if (!window.Auth) {
+    if (!Auth) {
         dispatchEvent(events.openLoginModal)
         return
     }
 
-    if (loading.value || window.Auth.id === props.comment.user_id) {
+    if (loading.value || Auth.id === props.comment.user_id) {
         return
     }
 
@@ -29,7 +29,7 @@ function toggleLike(): void {
 
     const params = {
         comment_id: props.comment.id,
-        secret: window.Auth.secret,
+        secret: Auth.secret,
     }
 
     axios
@@ -43,7 +43,7 @@ function toggleLike(): void {
 <template>
     <control
         @click="toggleLike"
-        :class="Auth && Auth.id === comment.user_id ? 'cursor-default' : 'group'"
+        :class="$auth && $auth.id === comment.user_id ? 'cursor-default' : 'group'"
     >
         <like-icon
             :fill="isLiked ? 'currentColor' : 'none'"

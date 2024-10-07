@@ -9,9 +9,7 @@ function redirectTo(url: string) {
 }
 
 const profileUrl =
-    window.Auth && window.Auth.slug === 'serhii-cho'
-        ? '/admin/dashboard'
-        : '/users/profile'
+    Auth && Auth.slug === 'serhii-cho' ? '/admin/dashboard' : '/users/profile'
 </script>
 
 <template>

@@ -2,22 +2,20 @@
 import LetterCounter from './LetterCounter.vue'
 import { ref } from 'vue'
 
-type Props = {
+const emit = defineEmits<{
+    (e: 'changed', value: string): void
+}>()
+
+const props = defineProps<{
     id: string
     placeholder: string
     value?: string
     name?: string
     length?: number
     classes?: string
-}
+}>()
 
-type Emits = {
-    (e: 'changed', value: string): void
-}
-
-const emit = defineEmits<Emits>()
-const { id, placeholder, length, value, classes, name } = defineProps<Props>()
-const inputValue = ref<string>(value || '')
+const inputValue = ref<string>(props.value || '')
 </script>
 
 <template>
@@ -28,20 +26,16 @@ const inputValue = ref<string>(value || '')
 
         <div class="inline-block relative w-full">
             <textarea
+                @keyup="emit('changed', inputValue)"
+                v-model="inputValue"
                 class="border border-border bg-page-second py-3 px-4 rounded-md w-full"
                 :class="classes"
-                :placeholder="placeholder"
-                v-model="inputValue"
-                :name="name"
-                :id="id"
-                @keyup="emit('changed', inputValue)"
+                :placeholder
+                :name
+                :id
             ></textarea>
 
-            <letter-counter
-                v-if="length"
-                :length="length"
-                :inputValue="inputValue"
-            />
+            <letter-counter v-if="length" :length :inputValue />
         </div>
     </div>
 </template>
