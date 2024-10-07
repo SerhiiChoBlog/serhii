@@ -28,6 +28,8 @@ export default defineConfig({
 
     build: {
         sourcemap: true,
+        manifest: true,
+        outDir: 'public/build',
     },
 
     server: {
