@@ -4,16 +4,8 @@ import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import useBlockVisitor from '@admin/composables/useBlockVisitor'
 
-type Props = {
-    visitor: Visitor
-}
-
-type Emits = {
-    (e: 'refreshVisitors'): void
-}
-
-const emit = defineEmits<Emits>()
-const props = defineProps<Props>()
+const emit = defineEmits<{ (e: 'refreshVisitors'): void }>()
+const props = defineProps<{ visitor: Visitor }>()
 const { blockVisitor } = useBlockVisitor()
 
 function blockVisitorHandler(): void {
@@ -30,16 +22,16 @@ function blockVisitorHandler(): void {
 
 <template>
     <BodyRow>
-        <BodyDetail>{{ props.visitor.id }}</BodyDetail>
+        <BodyDetail>{{ visitor.id }}</BodyDetail>
         <BodyDetail class="text-center">
-            <span v-if="props.visitor.is_robot">🤖</span>
+            <span v-if="visitor.is_robot">🤖</span>
             <span v-else>👦🏻</span>
         </BodyDetail>
-        <BodyDetail>{{ props.visitor.ip }}</BodyDetail>
+        <BodyDetail>{{ visitor.ip }}</BodyDetail>
         <BodyDetail>
             <img
-                v-if="props.visitor.code"
-                :src="`/storage/admin/flags/${props.visitor.code.toLowerCase()}.png`"
+                v-if="visitor.code"
+                :src="`/storage/admin/flags/${visitor.code.toLowerCase()}.png`"
                 width="80"
                 height="42"
                 class="w-9 h-5 rounded-sm shadow-sm border border-border"
@@ -51,12 +43,12 @@ function blockVisitorHandler(): void {
                 height="56"
             />
         </BodyDetail>
-        <BodyDetail>{{ props.visitor.country || '-' }}</BodyDetail>
-        <BodyDetail>{{ props.visitor.city || '-' }}</BodyDetail>
-        <BodyDetail>{{ props.visitor.post_views_count }}</BodyDetail>
+        <BodyDetail>{{ visitor.country || '-' }}</BodyDetail>
+        <BodyDetail>{{ visitor.city || '-' }}</BodyDetail>
+        <BodyDetail>{{ visitor.post_views_count }}</BodyDetail>
         <BodyDetail>
             <button @click="blockVisitorHandler" type="button">
-                <span v-if="props.visitor.is_blocked"
+                <span v-if="visitor.is_blocked"
                     ><i class="fas fa-check text-green-700"></i
                 ></span>
                 <span v-else><i class="fas fa-ban text-red-700"></i></span>
