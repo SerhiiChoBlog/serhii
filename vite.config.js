@@ -32,6 +32,12 @@ export default defineConfig({
 
     server: {
         host: 'localhost',
+        proxy: {
+            '/storage': {
+                target: 'http://localhost',
+                changeOrigin: true,
+            },
+        },
     },
 
     resolve: {
