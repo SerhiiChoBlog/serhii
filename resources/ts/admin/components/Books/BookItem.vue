@@ -12,7 +12,8 @@ const emit = defineEmits<Emits>()
 const { book } = defineProps<{ book: Book }>()
 
 function fieldUpdated(e: Event, fieldName: UpdateBookField): void {
-    emit('field-updated', book.slug, fieldName, (e.target as HTMLInputElement).value)
+    const value = (e.target as HTMLInputElement).value
+    emit('field-updated', book.slug, fieldName, value)
 }
 </script>
 
