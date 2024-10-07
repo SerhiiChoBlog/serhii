@@ -30,12 +30,16 @@ export default defineConfig({
         sourcemap: true,
     },
 
+    server: {
+        host: 'localhost',
+    },
+
     resolve: {
         alias: {
             '@': '/resources/ts/main',
             '@admin': '/resources/ts/admin',
             '@user': '/resources/ts/user',
             '@shared': '/resources/ts/shared',
-        }
+        },
     },
 })
