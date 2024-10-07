@@ -47,6 +47,15 @@ class BookController extends Controller
         ]);
     }
 
+    public function destroy(Book $book): string
+    {
+        Storage::disk('public')->delete("books/{$book->image}");
+
+        $book->delete();
+
+        return 'The book has been deleted';
+    }
+
     private function storeFile(?UploadedFile $file, StoreRequest $request): string
     {
         if (!$file) {
