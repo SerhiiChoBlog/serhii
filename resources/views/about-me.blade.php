@@ -152,7 +152,7 @@
         <x-about.section
             :isDark="true"
             header="Latest Books I've Read"
-            subheader="Latest self-development books that I've read. Novels and other books are not included."
+            subheader="The latest software-development books that I've read"
             class="print:hidden"
         >
             <x-section-detail />
