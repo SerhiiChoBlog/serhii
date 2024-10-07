@@ -7,21 +7,13 @@ import dispatchEvent from '@shared/modules/dispatchEvent'
 import LikeIcon from '@shared/components/Icons/LikeIcon.vue'
 import Control from '@/components/Comments/Controls/Control.vue'
 
-type Props = {
-    comment: Comment
-}
+const emit = defineEmits<{ (e: 'likedComment'): void }>()
+const props = defineProps<{ comment: Comment }>()
 
-type Emits = {
-    (e: 'likedComment'): void
-}
-
-const emit = defineEmits<Emits>()
-
-const props = defineProps<Props>()
+const loading = ref<boolean>(false)
 const isLiked = computed(() =>
     props.comment.likes ? props.comment.likes.length > 0 : false,
 )
-const loading = ref<boolean>(false)
 
 function toggleLike(): void {
     if (!window.Auth) {
@@ -51,9 +43,7 @@ function toggleLike(): void {
 <template>
     <control
         @click="toggleLike"
-        :class="
-            Auth && Auth.id === props.comment.user_id ? 'cursor-default' : 'group'
-        "
+        :class="Auth && Auth.id === comment.user_id ? 'cursor-default' : 'group'"
     >
         <like-icon
             :fill="isLiked ? 'currentColor' : 'none'"
@@ -64,10 +54,9 @@ function toggleLike(): void {
             class="w-5 h-5 translate-y-[1px] transition-colors group-hover:text-red-500"
         />
 
-        <span
-            >{{ props.comment.likes_count }} like{{
-                props.comment.likes_count === 1 ? '' : 's'
-            }}</span
-        >
+        <span>
+            {{ comment.likes_count }} like
+            {{ comment.likes_count === 1 ? '' : 's' }}
+        </span>
     </control>
 </template>

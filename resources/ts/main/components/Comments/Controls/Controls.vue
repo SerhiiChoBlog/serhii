@@ -3,41 +3,32 @@ import type { Comment } from '@shared/types/models'
 import LikeCommentButton from '@/components/Comments/LikeCommentButton.vue'
 import Control from '@/components/Comments/Controls/Control.vue'
 
-type Props = {
-    comment: Comment
-    reply: boolean
-}
-
-type Emits = {
+const emit = defineEmits<{
     (e: 'reply'): void
     (e: 'likedComment'): void
-}
+}>()
 
-const emit = defineEmits<Emits>()
-const props = defineProps<Props>()
+defineProps<{
+    comment: Comment
+    reply: boolean
+}>()
 </script>
 
 <template>
     <div class="flex gap-2 items-center">
-        <like-comment-button
-            :comment="props.comment"
-            @likedComment="emit('likedComment')"
-        />
+        <like-comment-button :comment @likedComment="emit('likedComment')" />
 
-        <span v-if="Auth && props.comment.user_id !== Auth.id">·</span>
+        <span v-if="Auth && comment.user_id !== Auth.id">·</span>
 
-        <control
-            v-if="Auth && props.comment.user_id !== Auth.id"
-            @click="emit('reply')"
-        >
-            <span v-if="props.reply">Cancel</span>
+        <control v-if="Auth && comment.user_id !== Auth.id" @click="emit('reply')">
+            <span v-if="reply">Cancel</span>
             <span v-else>Reply</span>
         </control>
 
         <span>·</span>
 
         <small class="text-gray-400">
-            {{ props.comment.pretty_created_at }}
+            {{ comment.pretty_created_at }}
         </small>
     </div>
 </template>

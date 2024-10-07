@@ -2,7 +2,11 @@
 import LetterCounter from './LetterCounter.vue'
 import { ref, watchEffect } from 'vue'
 
-type Props = {
+const emit = defineEmits<{
+    (e: 'changed', value: string): void
+}>()
+
+const props = defineProps<{
     id: string
     type: string
     placeholder?: string
@@ -12,14 +16,8 @@ type Props = {
     name?: string
     min?: number
     max?: number
-}
+}>()
 
-type Emits = {
-    (e: 'changed', value: string): void
-}
-
-const emit = defineEmits<Emits>()
-const props = defineProps<Props>()
 const inputValue = ref<string>('')
 
 watchEffect(() => {
@@ -29,30 +27,26 @@ watchEffect(() => {
 
 <template>
     <div class="inline-block w-full">
-        <label :for="props.id" class="font-bold text-sm mb-2 text-font-second block">
+        <label :for="id" class="font-bold text-sm mb-2 text-font-second block">
             <slot />
         </label>
 
         <div class="inline-block relative w-full">
             <input
-                :type="props.type"
+                :type
                 class="border border-border bg-page-second py-3 px-4 rounded-md w-full"
-                :class="props.classes"
-                :placeholder="props.placeholder"
+                :class="classes"
+                :placeholder="placeholder"
                 v-model="inputValue"
-                :name="props.name"
-                :id="props.id"
+                :name
+                :id
                 autocomplete="off"
                 @input="emit('changed', inputValue)"
-                :min="props.min"
-                :max="props.max"
+                :min
+                :max
             />
 
-            <letter-counter
-                v-if="props.length"
-                :length="props.length"
-                :inputValue="inputValue"
-            />
+            <letter-counter v-if="length" :length :inputValue />
 
             <slot name="input" />
         </div>

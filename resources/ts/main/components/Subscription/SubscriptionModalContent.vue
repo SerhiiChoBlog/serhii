@@ -66,7 +66,7 @@ function selectedTagsHaveTag(tag: Tag): boolean {
                     {{
                         allTagsAreChosen
                             ? 'everything'
-                            : `${selectedTags.length} out of ${props.tags.items.length}`
+                            : `${selectedTags.length} out of ${tags.items.length}`
                     }}
                 </b>
             </p>
