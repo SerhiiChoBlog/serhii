@@ -7,11 +7,7 @@ import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import LikeIcon from '@shared/components/Icons/LikeIcon.vue'
 
-type Props = {
-    post: Post
-}
-
-const { post } = defineProps<Props>()
+const { post } = defineProps<{ post: Post }>()
 
 onMounted(() => fetchIsLiked())
 
