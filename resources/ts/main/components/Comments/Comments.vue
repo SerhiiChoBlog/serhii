@@ -7,11 +7,7 @@ import CommentForm from '@/components/Comments/CommentForm.vue'
 import CommentsWrapper from '@/components/Comments/CommentsWrapper.vue'
 import CommentAvatar from '@/components/Comments/CommentAvatar.vue'
 
-type Props = {
-    postId: number
-}
-
-const { postId } = defineProps<Props>()
+const { postId } = defineProps<{ postId: number }>()
 const { comments, commentsLoading, fetchComments } = useComments(postId)
 
 const commentsCount = computed(() => {

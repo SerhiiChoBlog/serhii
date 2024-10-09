@@ -13,11 +13,10 @@ import PageRefresher from '@/modules/PageRefresher'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import Tip from '@shared/components/Tip.vue'
 
-type Props = {
+const { serviceName } = defineProps<{
     serviceName: 'google' | 'github'
-}
+}>()
 
-const { serviceName } = defineProps<Props>()
 const isLoading = ref<boolean>(false)
 
 function signIn(): void {

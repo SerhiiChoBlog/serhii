@@ -2,11 +2,7 @@
 import type { Book } from '@shared/types/models'
 import BookRate from '@/components/Books/BookRate.vue'
 
-type Props = {
-    book: Book
-}
-
-const { book } = defineProps<Props>()
+defineProps<{ book: Book }>()
 </script>
 
 <template>

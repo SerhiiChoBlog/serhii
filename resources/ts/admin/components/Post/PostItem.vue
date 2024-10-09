@@ -4,11 +4,7 @@ import IconButton from '@admin/components/Buttons/IconButton.vue'
 import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 
-type Props = {
-    post: Post
-}
-
-const { post } = defineProps<Props>()
+defineProps<{ post: Post }>()
 </script>
 
 <template>

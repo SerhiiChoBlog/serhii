@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import type { User } from '@shared/types/models'
 
-type Props = {
+defineProps<{
     method: User['sign_in_method']
-}
-
-const { method } = defineProps<Props>()
+}>()
 </script>
 
 <template>
