@@ -3,11 +3,8 @@ import { computed } from 'vue'
 import StarIcon from '@shared/components/Icons/StarIcon.vue'
 import Tip from '@shared/components/Tip.vue'
 
-type Props = {
-    rate: number
-}
+const { rate } = defineProps<{ rate: number }>()
 
-const { rate } = defineProps<Props>()
 const tipContent = computed(() => {
     let result = `Personal rate is ${rate}/5. `
 
