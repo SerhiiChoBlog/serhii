@@ -30,6 +30,8 @@ Realizing that modifying the style for [www.php.net](https://www.php.net) while 
 
 At that point, I decided to create a browser extension to let users experience an improved version of [www.php.net](https://www.php.net) without affecting other PHP websites on the same domain. An additional goal was to provide users with features such as code copying, code execution, and embedded PHP-related videos on the homepage.
 
+But, as the time passed, it became clear that the extension is getting the attention of the PHP developers. The feedback was overwhelmingly positive, and it was a motivation to continue working on the extension.
+
 As for the time of writing this article, I've achieved the following features:
 
 - Improves site styling
@@ -41,6 +43,12 @@ As for the time of writing this article, I've achieved the following features:
 - Provides quick access to www.php.net with a single click on the extension icon
 
 Looking ahead, I plan to introduce more features and enhance the existing ones. I welcome any suggestions and feedback from the community to help shape the extension's development.
+
+## Should You Use the PHP Revival Extension?
+
+If you're a PHP developer who uses the official PHP documentation regularly, the PHP Revival extension is a must-have. You can at least try it out and see if it's something you'd like to use. If now, you can always disable or remove the extension.
+
+If you like the extension but feel that something is missing or could be improved, please let me know in the comments below. I'm always open to suggestions and feedback. I'll do my best to implement the most requested features and improve the extension as long as it benefits the PHP community.
 
 ## Conclusion
 
