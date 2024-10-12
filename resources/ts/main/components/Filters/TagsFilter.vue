@@ -11,11 +11,7 @@ import showEverythingTag from '@/modules/showEverythingTag'
 import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
 import TagImage from './TagImage.vue'
 
-type Props = {
-    tag: Tag
-}
-
-const { tag } = defineProps<Props>()
+const { tag } = defineProps<{ tag: Tag }>()
 const tags = ref<Tag[]>([showEverythingTag])
 const selectedTag = ref<Tag>(tag)
 
