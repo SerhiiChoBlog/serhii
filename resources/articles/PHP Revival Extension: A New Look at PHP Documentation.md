@@ -1,18 +1,14 @@
 # PHP Revival Extension: A New Look at PHP Documentation
 
-While PHP keeps surprising developers with new language features, the official website at [www.php.net](https://www.php.net) has remained unchanged over the years. That's where the PHP Revival comes to the rescue.
-
 ## Introduction
 
-PHP is getting more and more attention in the web development landscape, with a growing community and constant improvements to the language. Frameworks like Laravel and Symfony have contributed to the increased popularity of PHP and attracted new developers to the language. **However, the official documentation at www.php.net has remained largely the same, with a dated look and feel that can be off-putting to new users.**
+As a software engineer focused on solving problems and building tools to make others' lives easier, I noticed that while PHP continues to evolve with new features, its official documentation site remains outdated. This disconnect inspired me to take action.
 
 Even developers who have worked with PHP for years wish to see an update to improve the overall user experience. **Why hasn't anyone tried to improve the documentation website** and make a contribution back to the PHP community? That's the question I was asking myself in July 2019.
 
 It seemed odd that there are so many talented developers who use PHP daily, but none of them have tackled the issue of the outdated documentation website, despite the importance of the language.
 
 What if they did? Perhaps they tried, but that's where my story begins.
-
-Note. I want to point out that I'm not a UI/UX expert, nor am I a JavaScript expert. I'm just a software engineer whose main task is to solve problems and build things to make the lives of others easier.
 
 ## Initial Attempt: Documentation Website Redesign
 
@@ -24,13 +20,13 @@ After several iterations, I came up with a new design that would improve the ove
 
 After 40 days of waiting for the PR to be reviewed, I received feedback. It stated that my style changes to www.php.net would affect sites like doc.php.net, news.php.net, people.php.net, etc. because they share the same CSS files.
 
-Realizing that modifying the style for [www.php.net](https://www.php.net) while maintaining compatibility with all the other sites wasn't feasible, I knew I needed a different approach to achieve my goal.
+Realizing that modifying the style for [www.php.net](https://www.php.net) while maintaining compatibility with all the other sites wasn't feasible, I sought an alternative solution.
 
 ## Customizing Documentation Experience
 
 At that point, I decided to create a browser [extension](https://php-revival.github.io/) to let users experience an improved version of [www.php.net](https://www.php.net) without impacting other PHP websites on the same domain. An additional goal was to provide users with features such as code copying, code execution, and embedded PHP-related videos on the homepage.
 
-But, as time passed, it became clear that the extension was getting the attention of the PHP developers. The feedback was overwhelmingly positive, and it was motivation to continue working on the extension.
+The extension was getting the attention, the feedback was overwhelmingly positive, and it was motivation to continue working on the extension.
 
 As for the time of writing this article, I've achieved the following features:
 
@@ -54,6 +50,12 @@ For everyone who is interested, I want to share some of the technical challenges
 
 **One of the technical challenges I faced was the ability to override some of the CSS styles on the official PHP documentation with the `!important` rule.** If you ever watched a CSS tutorial, you know that using `!important` is considered bad practice, but on [www.php.net](https://www.php.net) there are plenty of style rules that use `!important` flag.
 
+```css
+.example {
+    color: red !important;
+}
+```
+
 There are several ways to override CSS styles with the `!important` flag, but the most common are either using JavaScript to inject styles directly into the HTML or applying the `!important` flag in CSS. Since browser extension stylesheets have higher specificity than the website stylesheets, I decided to go with the second option, because it was easier to implement and maintain.
 
 Tip. Higher specificity in CSS means that the styles in your extension's stylesheet will take precedence over the website's existing styles, allowing you to effectively override them without needing complex workarounds. This is particularly beneficial in the context of browser extensions because it ensures that your custom styles will be applied consistently across the site, without being unintentionally overridden by the original site's CSS.
@@ -66,9 +68,39 @@ I'm still working on fully resolving this issue, but the best solution I've foun
 
 Tip. If you're working on a similar project, try using CSS to set elements' opacity to `0` while modifying them. This approach minimizes flickering and ensures the changes aren't visible to the user.
 
+```css
+.element {
+    opacity: 0;
+}
+```
+
+```javascript
+const el = document.querySelector('.element')
+
+if (!el) {
+    return
+}
+
+// Update the element
+
+el.style.opacity = '1'
+```
+
 ### Challenge 3: Handling Inconsistent HTML Structure
 
-// todo: here
+`www.php.net` has seen a lot of changes over the years, and as a result, the HTML structure of the pages can be inconsistent. This inconsistency occurs because different parts of the pages were created at various times by different contributors, each using their own rules and approaches.
+
+Trying to modify the DOM elements on such pages can be challenging because you can't rely on a consistent structure. Plus, I have to account for potential future updates to the site's HTML structure, which could break the extension if not handled carefully.
+
+To overcome this challenge, I target and parse specific sections of the page, remove them from the DOM, and reinsert them after making modifications. This way, I can ensure that the extension works consistently across all pages, regardless of the HTML structure. While this requires extra work, it ensures the extension functions reliably across all pages, regardless of the underlying HTML inconsistencies.
+
+I'm applying this technique to the right sidebar on the homepage because:
+
+![www.php.net home page screenshot](https://serhii.io/storage/posts/content/php-revival-extension-a-new-look-at-php-documentation-1728830269.png)
+
+It contains a lot of useful links that I want to keep, but I also want to rebuild it with a new design to get something like this:
+
+![www.php.net home page screenshot with PHP Revival extension](https://serhii.io/storage/posts/content/php-revival-extension-a-new-look-at-php-documentation-1728830430.png)
 
 ## Should You Use the PHP Revival Extension?
 
