@@ -26,6 +26,8 @@ Realizing that modifying the style for [www.php.net](https://www.php.net) while 
 
 At that point, I decided to create a browser [extension](https://php-revival.github.io/) to let users experience an improved version of [www.php.net](https://www.php.net) without impacting other PHP websites on the same domain. An additional goal was to provide users with features such as code copying, code execution, and embedded PHP-related videos on the homepage.
 
+![Maximize your PHP learning with our browser extension that enhances your experience on www.php.net](https://serhii.io/storage/posts/content/php-revival-extension-a-new-look-at-php-documentation-1728831993.png)
+
 The extension was getting the attention, the feedback was overwhelmingly positive, and it was motivation to continue working on the extension.
 
 As for the time of writing this article, I've achieved the following features:
@@ -39,6 +41,8 @@ As for the time of writing this article, I've achieved the following features:
 - Provides quick access to www.php.net with a single click on the extension icon
 
 Looking ahead, I plan to introduce more features and enhance the existing ones. I welcome any suggestions and feedback from the community to help shape the extension's development.
+
+> This works great, really improves the documentation by being able to run all the examples. Thank you! - **J Post**
 
 ## Behind the Code: Technical Challenges and Solutions
 
@@ -108,8 +112,14 @@ If you're a PHP developer who uses the official PHP documentation regularly, the
 
 If you like the extension but feel that something is missing or could be improved, please let me know in the comments below. I'm always open to suggestions and feedback. I'll do my best to implement the most requested features and improve the extension, as long as it benefits the PHP developers.
 
+> This looks AWESOME! Thanks! - **Alex Labanino**
+
 ## Conclusion
 
 Looking back at 2019, I couldn't have imagined that a small contribution to the community would lead to such an unexpected change in direction. I'm grateful for the support and feedback from the community, and I'm excited to continue working on the [PHP Revival](https://php-revival.github.io/) extension as long as it benefits everybody.
 
 I hope this article has inspired you to make a small contribution or any other community you're part of. Remember, every bit helps, and you never know where it might lead you.
+
+If you want to install the PHP Revival extension, just head over to the [official website]([PHP Revival](https://php-revival.github.io/) and you can install the extension from the Chrome Web Store or Firefox Add-ons.
+
+> AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME - **for prog**
