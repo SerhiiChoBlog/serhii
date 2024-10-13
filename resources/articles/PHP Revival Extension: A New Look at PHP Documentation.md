@@ -6,7 +6,7 @@ While PHP keeps surprising developers with new language features, the official w
 
 PHP is getting more and more attention in the web development landscape, with a growing community and constant improvements to the language. Frameworks like Laravel and Symfony have contributed to the increased popularity of PHP and attracted new developers to the language. **However, the official documentation at www.php.net has remained largely the same, with a dated look and feel that can be off-putting to new users.**
 
-Even developers who have worked with PHP for years wish to see an update to improve the overall user experience. **Why hasn’t anyone tried to improve the documentation website** and make a contribution back to the PHP community? That's the question I was asking myself in July 2019.
+Even developers who have worked with PHP for years wish to see an update to improve the overall user experience. **Why hasn't anyone tried to improve the documentation website** and make a contribution back to the PHP community? That's the question I was asking myself in July 2019.
 
 It seemed odd that there are so many talented developers who use PHP daily, but none of them have tackled the issue of the outdated documentation website, despite the importance of the language.
 
@@ -52,15 +52,23 @@ For everyone who is interested, I want to share some of the technical challenges
 
 ### Challenge 1: Override CSS Styles
 
-One of the technical challenges I faced was the ability to override some of the CSS styles on the official PHP documentation with the `!important` rule. If you ever watched a CSS tutorial, you know that using `!important` is considered bad practice, but on [www.php.net](https://www.php.net) there are plenty of style rules that use `!important` flag.
+**One of the technical challenges I faced was the ability to override some of the CSS styles on the official PHP documentation with the `!important` rule.** If you ever watched a CSS tutorial, you know that using `!important` is considered bad practice, but on [www.php.net](https://www.php.net) there are plenty of style rules that use `!important` flag.
 
 There are several ways to override CSS styles with the `!important` flag, but the most common are either using JavaScript to inject styles directly into the HTML or applying the `!important` flag in CSS. Since browser extension stylesheets have higher specificity than the website stylesheets, I decided to go with the second option, because it was easier to implement and maintain.
 
-Tip. Higher specificity in CSS means that the styles in your extension’s stylesheet will take precedence over the website’s existing styles, allowing you to effectively override them without needing complex workarounds. This is particularly beneficial in the context of browser extensions because it ensures that your custom styles will be applied consistently across the site, without being unintentionally overridden by the original site’s CSS.
+Tip. Higher specificity in CSS means that the styles in your extension's stylesheet will take precedence over the website's existing styles, allowing you to effectively override them without needing complex workarounds. This is particularly beneficial in the context of browser extensions because it ensures that your custom styles will be applied consistently across the site, without being unintentionally overridden by the original site's CSS.
 
 ### Challenge 2: Modify DOM Elements
 
-to be continued...
+**Another challenge was modifying DOM elements on specific pages without the user noticing.** Since my JavaScript executes after the DOM has fully loaded, any manipulation would briefly appear to the user, causing a flicker effect due to visible changes happening in real time.
+
+I'm still working on fully resolving this issue, but the best solution I've found so far is to hide the elements with CSS making the opacity `0`, and then show them when the modifications are done. This way, the user won't notice any flickering or changes on the page.
+
+Tip. If you're working on a similar project, try using CSS to set elements' opacity to `0` while modifying them. This approach minimizes flickering and ensures the changes aren't visible to the user.
+
+### Challenge 3: Handling Inconsistent HTML Structure
+
+// todo: here
 
 ## Should You Use the PHP Revival Extension?
 
@@ -70,6 +78,6 @@ If you like the extension but feel that something is missing or could be improve
 
 ## Conclusion
 
-Looking back at 2019, I couldn’t have imagined that a small contribution to the community would lead to such an unexpected change in direction. I'm grateful for the support and feedback from the community, and I'm excited to continue working on the [PHP Revival](https://php-revival.github.io/) extension as long as it benefits everybody.
+Looking back at 2019, I couldn't have imagined that a small contribution to the community would lead to such an unexpected change in direction. I'm grateful for the support and feedback from the community, and I'm excited to continue working on the [PHP Revival](https://php-revival.github.io/) extension as long as it benefits everybody.
 
 I hope this article has inspired you to make a small contribution or any other community you're part of. Remember, every bit helps, and you never know where it might lead you.
