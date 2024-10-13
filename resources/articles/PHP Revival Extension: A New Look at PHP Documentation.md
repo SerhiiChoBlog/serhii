@@ -26,7 +26,7 @@ Realizing that modifying the style for [www.php.net](https://www.php.net) while 
 
 At that point, I decided to create a browser [extension](https://php-revival.github.io/) to let users experience an improved version of [www.php.net](https://www.php.net) without impacting other PHP websites on the same domain. An additional goal was to provide users with features such as code copying, code execution, and embedded PHP-related videos on the homepage.
 
-![Maximize your PHP learning with our browser extension that enhances your experience on www.php.net](https://serhii.io/storage/posts/content/php-revival-extension-a-new-look-at-php-documentation-1728831993.png)
+![Maximize your PHP learning with our browser extension that enhances your experience on www.php.net](https://serhii.io/storage/posts/content/php-revival-extension-a-new-look-at-php-documentation-1728832143.png)
 
 The extension was getting the attention, the feedback was overwhelmingly positive, and it was motivation to continue working on the extension.
 
@@ -47,6 +47,8 @@ Looking ahead, I plan to introduce more features and enhance the existing ones. 
 ## Behind the Code: Technical Challenges and Solutions
 
 The PHP Revival extension is built using modern web technologies SASS, TypeScript, and Webpack. The extension is compatible with Chromium-based browsers like Brave, Edge and Chrome, and also supports Firefox.
+
+![Some browsers that support PHP Revival extension](https://serhii.io/storage/posts/content/php-revival-extension-a-new-look-at-php-documentation-1728832153.png)
 
 For everyone who is interested, I want to share some of the technical challenges I faced while developing the extension and how I overcame them.
 
