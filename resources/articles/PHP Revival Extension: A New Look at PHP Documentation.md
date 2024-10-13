@@ -44,6 +44,24 @@ As for the time of writing this article, I've achieved the following features:
 
 Looking ahead, I plan to introduce more features and enhance the existing ones. I welcome any suggestions and feedback from the community to help shape the extension's development.
 
+## Behind the Code: Technical Challenges and Solutions
+
+The PHP Revival extension is built using modern web technologies SASS, TypeScript, and Webpack. The extension is compatible with Chromium-based browsers like Brave, Edge and Chrome, and also supports Firefox.
+
+For everyone who is interested, I want to share some of the technical challenges I faced while developing the extension and how I overcame them.
+
+### Challenge 1: Override CSS Styles
+
+One of the technical challenges I faced was the ability to override some of the CSS styles on the official PHP documentation with the `!important` rule. If you ever watched a CSS tutorial, you know that using `!important` is considered bad practice, but on [www.php.net](https://www.php.net) there are plenty of style rules that use `!important` flag.
+
+There are several ways to override CSS styles with the `!important` flag, but the most common are either using JavaScript to inject styles directly into the HTML or applying the `!important` flag in CSS. Since browser extension stylesheets have higher specificity than the website stylesheets, I decided to go with the second option, because it was easier to implement and maintain.
+
+Tip. Higher specificity in CSS means that the styles in your extension’s stylesheet will take precedence over the website’s existing styles, allowing you to effectively override them without needing complex workarounds. This is particularly beneficial in the context of browser extensions because it ensures that your custom styles will be applied consistently across the site, without being unintentionally overridden by the original site’s CSS.
+
+### Challenge 2: Modify DOM Elements
+
+to be continued...
+
 ## Should You Use the PHP Revival Extension?
 
 If you're a PHP developer who uses the official PHP documentation regularly, the PHP Revival extension is a must-have. You can at least try it out and see if it's something you'd like to use. If not, you can always disable or remove the extension.
