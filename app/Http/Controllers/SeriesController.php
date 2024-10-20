@@ -35,7 +35,7 @@ class SeriesController extends Controller
         $series->loadCount('posts');
 
         $series->load(['posts' => function (BelongsToMany $q) {
-            $q->select('id', 'image_xs', 'image_sm', 'slug', 'is_published');
+            $q->select('id', 'title', 'image_xs', 'image_sm', 'slug', 'is_published');
         }]);
 
         return view('series.show', compact('series'));
