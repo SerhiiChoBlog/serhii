@@ -66,7 +66,7 @@
     "src": "resources/fonts/fa-solid-900.woff2"
   },
   "resources/ts/admin/app.ts": {
-    "file": "assets/app-Cui-vnJi.js",
+    "file": "assets/app-BwBrtMrW.js",
     "name": "app",
     "src": "resources/ts/admin/app.ts",
     "isEntry": true,
@@ -76,7 +76,7 @@
     ]
   },
   "resources/ts/main/app.ts": {
-    "file": "assets/app-NRJgNB8T.js",
+    "file": "assets/app-DwC70mrD.js",
     "name": "app",
     "src": "resources/ts/main/app.ts",
     "isEntry": true,
