@@ -19,7 +19,7 @@ export default (postTitle: string): SocialLink[] => {
         {
             href: `https://x.com/intent/tweet?text=${postTitle}&url=${url}`,
             title: 'x',
-            tip: 'Share to X (Twitter)',
+            tip: 'Share to X',
         },
         {
             href: `https://t.me/share/url?url=${url}&text=${postTitle}`,
