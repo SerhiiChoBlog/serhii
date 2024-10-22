@@ -8,12 +8,14 @@ use App\Models\Series;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 class SeriesController extends Controller
 {
     public function index(): View
     {
+        /** @var Collection<int, Series> */
         $series = Series::query()
             ->withCount('posts')
             ->with(['posts' => function (BelongsToMany $q) {
