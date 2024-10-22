@@ -24,8 +24,6 @@ class SearchWordThroughPosts extends Command
         $posts->each(function (Post $post) use ($word) {
             if ($post->content && str_contains($post->content, $word)) {
                 $this->info("The word '{$word}' was found in the post: {$post->slug}");
-            } else {
-                $this->info("The word '{$word}' was not found in the post: {$post->slug}");
             }
         });
 
