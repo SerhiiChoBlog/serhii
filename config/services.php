@@ -44,6 +44,8 @@ return [
             'https://api.github.com/users/smooth-loader/repos',
             'https://api.github.com/users/textwire/repos',
             'https://api.github.com/users/wp-pager/repos',
+            'https://api.github.com/users/timeago/repos',
+            'https://api.github.com/users/short-number/repos',
         ],
         'readme_url' => 'https://raw.githubusercontent.com/SerhiiCho/{repo}/master/README.md',
     ],
