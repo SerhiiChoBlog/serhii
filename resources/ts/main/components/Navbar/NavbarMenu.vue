@@ -11,11 +11,7 @@ import UserDropdown from '@/components/Navbar/UserDropdown.vue'
 import SlideUpTransition from '@shared/components/Transitions/SlideUpTransition.vue'
 import dispatchEvent from '@shared/modules/dispatchEvent'
 
-type Props = {
-    theme: Theme
-}
-
-const { theme } = defineProps<Props>()
+const { theme } = defineProps<{ theme: Theme }>()
 const isActive = ref(!screenSizeIs(['sm', 'md', 'lg']))
 
 listenEvent<boolean>(events.openMobileNavbar, isOpened => {
