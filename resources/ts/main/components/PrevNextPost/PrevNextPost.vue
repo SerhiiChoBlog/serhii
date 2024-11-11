@@ -6,16 +6,12 @@ import axios from 'axios'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import Btn from '@/components/PrevNextPost/Btn.vue'
 
-type Props = {
-    postId: number
-}
-
 onMounted(() => {
     loading.value = true
     fetchPrevNextPosts()
 })
 
-const { postId } = defineProps<Props>()
+const { postId } = defineProps<{ postId: number }>()
 const loading = ref(false)
 const prevPost = ref<Post | null>(null)
 const nextPost = ref<Post | null>(null)
