@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import { Post } from '@shared/types/models'
 
-type Props = {
-    post: Post
-}
-
-const { post } = defineProps<Props>()
+const { post } = defineProps<{ post: Post }>()
 </script>
 
 <template>
