@@ -6,11 +6,7 @@ import AppearTransition from '@shared/components/Transitions/AppearTransition.vu
 import useScroll from '@/composables/useScroll'
 import NavbarSearch from '@/components/Search/NavbarSearch.vue'
 
-type Props = {
-    theme: Theme
-}
-
-const { theme } = defineProps<Props>()
+const { theme } = defineProps<{ theme: Theme }>()
 const { isScrolledDown } = useScroll()
 </script>
 
