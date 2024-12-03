@@ -124,7 +124,7 @@ return [
             'title' => 'Multilingual',
             'content' => <<<TEXT
             In 2014, I've started learning English daily. Since then, English became my second language. In total,
-            I speak 3 languages, including Ukrainian and Russian, whereas Russian is my native language.
+            I speak 4 languages, including Russian, Chinese Mandarin and Ukrainian. I wish to use Chinese in my future work projects.
             TEXT,
         ],
         [
