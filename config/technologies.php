@@ -9,34 +9,33 @@ return [
             'image' => 'storage/tools/php.webp',
             'title' => 'PHP',
             'content' => <<<TEXT
-            PHP was my first programming language.
-            I've build tons of apps and several open-source packages throughout my career.
-            I'm always following the latest news in PHP world to stay updated.
-            Even though I'm slowly moving towards Go.
-            TEXT,
+        PHP was my first programming language and remains a key part of my career.
+        I've built numerous applications and open-source packages while staying up-to-date with the latest PHP advancements.
+        Recently, I've been gradually shifting focus to Go.
+        TEXT,
         ],
         [
             'image' => 'storage/tools/ts.webp',
             'title' => 'TypeScript',
             'content' => <<<TEXT
-            TypeScript is my go-to when I'm working with Vue, React or native JavaScript.
-            I've started applying it to all the new projects since 2019 because I needed a tool to reduce the number of bugs and typos in JavaScript apps.
+            TypeScript is my go-to language for modern front-end development with Vue, React, and native JavaScript.
+            Since 2019, I've used it to enhance project maintainability by reducing bugs and typos.
             TEXT,
         ],
         [
             'image' => 'storage/tools/go.webp',
             'title' => 'Go',
             'content' => <<<TEXT
-            I've been using Go since 2019 mostly for my personal projects.
-            One of them is the open-source package <a href="https://serhiicho.github.io/timeago-docs" class="underline" rel="noreffer" target="_blank">Timeago</a> for converting date time into human-readable format.
+            Since 2019, I've utilized Go for personal and open-source projects.
+            A notable project is <a href="https://serhiicho.github.io/timeago-docs" class="underline" rel="noreffer" target="_blank">Timeago</a>, a library that converts date-time into human-readable format.
             TEXT,
         ],
         [
             'image' => 'storage/tools/sql.webp',
             'title' => 'SQL',
             'content' => <<<TEXT
-            SQL is a must have language for building backend applications with SQL-databases.
-            I can write all the common CRUD operations that developers use on a daily basis, including joins and unions.
+            SQL is a fundamental part of my backend development process.
+            I write complex queries, CRUD operations, and optimize joins/unions to ensure efficient database interactions.
             TEXT,
         ],
     ],
@@ -45,22 +44,22 @@ return [
         [
             'image' => 'storage/tools/laravel.webp',
             'title' => 'Laravel',
-            'content' => "I like to use all the features of the framework along with the repository pattern and TDD. It helps to organize and structure code in a very simple and readable way.",
+            'content' => "I leverage Laravel's robust features alongside the repository pattern and TDD to create clean, maintainable, and well-structured applications.",
         ],
         [
             'image' => 'storage/tools/vue.webp',
             'title' => 'Vue',
-            'content' => "I've been using Vue along with the VueRouter and Vuex mostly for building Single Page Applications. I enjoy working with Vue 3, TypeScript and script setup.",
+            'content' => "I build SPAs with Vue 3, VueRouter, and Vuex. I particularly enjoy working with the Composition API, TypeScript, and script setup to create dynamic, efficient user interfaces.",
         ],
         [
             'image' => 'storage/tools/react.webp',
             'title' => 'React',
-            'content' => "React.js with TypeScript is another JavaScript framework that I'm using from time to time. Usually I'm reaching for it when I need a library that Vue doesn't have. One of those amazing libraries is react-pdf.",
+            'content' => "While Vue is my primary choice, I use React with TypeScript for specific needs, especially when third-party libraries like react-pdf offer unique solutions.",
         ],
         [
             'image' => 'storage/tools/wordpress.webp',
             'title' => 'WordPress',
-            'content' => "Mostly I'm building plugins for business sites, that need integration of payment systems like Mollie, Wayforpay and Bitpay, plugins for Megaplan CRM and Exact Online, web hooks and other functionalities.",
+            'content' => "My WordPress experience revolves around plugin development, integrating payment systems (Mollie, Wayforpay, Bitpay), CRM integrations (like Megaplan), and building custom API webhooks.",
         ],
     ],
 
@@ -69,28 +68,24 @@ return [
             'image' => 'storage/tools/docker.webp',
             'title' => 'Docker',
             'content' => <<<TEXT
-            My first Docker experience started in 2018. I was fortunate to start using it so early in my career.
-            It helped me to abstract my workspace from the operating system, and made it easy to work with different
-            technologies like Redis, MySQL, PostgreSQL, etc.
+            I started working with Docker in 2018, which allowed me to decouple my development environment from the OS.
+            Since then, I've used Docker to run services like Redis, MySQL, and PostgreSQL in a consistent, isolated environment.
             TEXT,
         ],
         [
             'image' => 'storage/tools/linux.webp',
             'title' => 'Linux',
             'content' => <<<TEXT
-            I feel free using Unix based operating system like Linux and macOS.
-            In my capacity a dozen terminal command which help me to quickly navigate, modify and interact with OS.
-            Including writing simple bash scripts, cron jobs, symbolic links, ssh, dpkg, vim and other helpful tools.
+            I'm proficient with Unix-based systems (Linux/macOS) and regularly use tools like SSH, symbolic links, cron jobs, bash scripts, and dpkg.
+            This enables me to manage environments, write scripts, and automate system tasks effectively.
             TEXT,
         ],
         [
             'image' => 'storage/tools/tailwind.webp',
             'title' => 'Tailwind CSS',
             'content' => <<<TEXT
-            Tailwind CSS is on my radar since the beginning of 2021.
-            That's when I've started applying it to almost all of my projects that needed CSS.
-            But almost all of my old projects I was either compiling CSS from SASS, either using frameworks like
-            Bootstrap, Materialize CSS, Bulma or Tailwind.
+            Tailwind CSS became part of my tech stack in 2021, and I now use it for most projects requiring modern, scalable UI design.
+            Previously, I relied on SASS, Bootstrap, Bulma, and Materialize, but Tailwind's utility-first approach has proven more efficient.
             TEXT,
         ],
     ],
@@ -98,29 +93,29 @@ return [
     'skills' => [
         [
             'image' => 'storage/tools/communicate.webp',
-            'title' => 'Communication',
+            'title' => 'Effective Communicator',
             'content' => <<<TEXT
-            I put communication skills on the first place because I think it's the most important personal skill
-            for a person working in a team.
-            I'm a very calm man, with my own principles and beliefs.
-            I never judge anyone and I feel blessed to work in this field and exchange knowledge.
+            I prioritize effective communication as it's the cornerstone of teamwork and collaboration.
+            My calm demeanor and strong principles allow me to exchange knowledge and ideas freely with colleagues and clients.
+            Would be awesome to work in a team with you!
             TEXT,
         ],
         [
             'image' => 'storage/tools/flags.webp',
-            'title' => 'Multilingual',
+            'title' => 'Polyglot Proficiency',
             'content' => <<<TEXT
-            In 2014, I've started learning English daily. Since then, English became my second language. In total,
-            I speak 4 languages, including Russian, Chinese Mandarin and Ukrainian. I wish to use Chinese in my future work projects.
+            Since 2014, I've been mastering English, which has become my second language.
+            I'm fluent in 4 languages: Russian, Ukrainian, English, and Chinese Mandarin.
+            My goal is to incorporate Chinese into my future development projects because it's a language of the future and a gateway to a vast market.
             TEXT,
         ],
         [
             'image' => 'storage/tools/type.webp',
-            'title' => 'Touch Typing',
+            'title' => 'Proficient in Touch Typing',
             'content' => <<<TEXT
-            We are coders, and we like to type countless number of symbols on the screen.
-            Fast touch typing helps me to be less focused on the typing but dive more into the problem.
-            I'm touch typing pretty confident on latin and cyrillic keyboards.
+            Touch typing allows me to focus on problem-solving rather than keystrokes.
+            I'm proficient with both Latin and Cyrillic keyboards, which helps me maintain productivity across languages.
+            While typing is not a skill that directly impacts development, it significantly boosts my efficiency.
             TEXT,
         ],
     ],
