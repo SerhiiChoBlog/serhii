@@ -34,61 +34,74 @@
                             <x-about.intro />
 
                             <p>
-                                I've worked with integration services like <strong>Megaplan CRM</strong>,
-                                <strong>Exact Online</strong>, payment systems like <strong>Mollie</strong>,
-                                <strong>Bitpay</strong> and <strong>WayForPay</strong>. I've built apps in <strong>Docker</strong>
-                                containers, SPAs with <strong>Vue</strong>, <strong>React</strong>, and websites with
-                                <strong>WordPress</strong> and <strong>Laravel</strong>.
+                                I have experience working with various integration services, including <strong>Megaplan CRM</strong>
+                                and <strong>Exact Online</strong>, as well as payment systems like <strong>Mollie</strong>,
+                                <strong>Bitpay</strong>, and <strong>WayForPay</strong>. My development experience includes building
+                                applications within <strong>Docker</strong> containers, creating SPAs using <strong>Vue</strong> and
+                                <strong>React</strong>, and developing websites with <strong>WordPress</strong> and <strong>Laravel</strong>.
                             </p>
 
                             <p>
-                                Likewise, I've done tons of
-                                different work for companies in <strong>business</strong> and <strong>e-commerce</strong>
-                                segment. Building programs and interfaces for generating different types of documents,
-                                programs for stuff management, communication with clients, chat bots and tons of web APIs.
-                            </p>
-
-                            <h2>My way of working</h2>
-
-                            <p>
-                                I hate slow web apps and sites. In web development, my priorities
-                                are <strong>code readability</strong> and <strong>performance</strong>. You can check my
-                                post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites" rel="noreferrer" target="_blank">"5 techniques that
-                                I use for building fast websites"</a> where I'm talking about it in details.
+                                In my free time, I actively contribute to open-source projects, many of which are available on my
+                                <a href="https://github.com/SerhiiCho" target="_blank">GitHub</a>. Notable projects include libraries
+                                like <a href="https://github.com/textwire/textwire" target="_blank">Textwire</a> and
+                                <a href="https://github.com/SerhiiCho/timeago" target="_blank">Timeago</a> for the Go (Golang) programming
+                                language. I also maintain and utilize several PHP libraries that play a significant role in my personal
+                                and professional projects.
                             </p>
 
                             <p>
-                                Websites that I'm working on are usually have the highest rate for the <strong>Lighthouse</strong>
-                                tests or <strong>PageSpeed Insights</strong>. I always try making a product as <strong>SEO</strong> friendly as
-                                possible on developer side.
+                                Additionally, I have worked on a variety of projects for companies in the
+                                <strong>business</strong> and <strong>e-commerce</strong> sectors. My experience includes developing
+                                tools for document generation, employee management systems, client communication platforms, chatbots,
+                                and a wide range of web APIs to streamline business operations.
+                            </p>
+
+                            <h2>My Way of Working</h2>
+
+                            <p>
+                                I strive to build web applications that are not only fast but also highly efficient. My development priorities
+                                center around <strong>code readability</strong> and <strong>performance</strong>. I firmly believe that clean,
+                                maintainable code leads to better products. If you're interested, you can read more about my approach in my
+                                post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites" rel="noreferrer" target="_blank">
+                                "5 Techniques That I Use for Building Fast Websites"</a>, where I explain these principles in detail.
                             </p>
 
                             <p>
-                                In general, the code should be tested to make sure that behavior of the program works
-                                as expected. The code should be clean and readable, so that others can read and
-                                understand it.
+                                Websites I develop consistently achieve top scores on tools like <strong>Lighthouse</strong> and
+                                <strong>PageSpeed Insights</strong>. My goal is to make every project as <strong>SEO-friendly</strong>
+                                as possible from a development standpoint, ensuring better search visibility and user experience.
                             </p>
 
                             <p>
-                                When I am working on a product, my life becomes this product. If the client who hires me wants me
-                                in his team, his product becomes the main focus of my life. This is why it's important to work on
-                                something miningful, something that you can be proud of. I'm always trying to do my best and make
-                                the product as good as possible. I'm always trying to find the best solution for the problem.
-                            </p>
-
-                            <h2>Blog</h2>
-
-                            <p>
-                                In my spare time, I enjoy writing articles for my
-                                <a href="/posts" rel="noreferrer" target="_blank" title="Link to a blog">blog</a>
-                                on programming related subjects and learn new things. I mostly share what I've learned along
-                                the way and things that can help other developers strengthen their skills.
+                                I believe that quality software should be <strong>tested</strong> to guarantee consistent, reliable functionality.
+                                Writing <strong>clean, readable code</strong> allows other developers to easily understand, maintain, and expand
+                                the project. This collaborative approach keeps the project future-proof and adaptable to changing needs.
                             </p>
 
                             <p>
-                                I'm <strong>not an expert</strong>, so I mostly share things that I do successfully or things
-                                that I've learned and spend some time on research. I like writing about things that impress
-                                me in <strong>software development</strong> or things that help me in problem solving.
+                                When I work on a project, I fully immerse myself in it. The client's product becomes my top priority, and I treat
+                                it as if it were my own. For me, it's crucial to work on something meaningful—something I can be proud of.
+                                I always aim for the best possible outcome, finding the most effective and efficient solution to every challenge
+                                that arises.
+                            </p>
+
+                            <h2>Sharing Knowledge</h2>
+
+                            <p>
+                                In my spare time, I enjoy sharing my knowledge and experiences through my
+                                <a href="/posts" rel="noreferrer" target="_blank" title="Link to the blog">blog</a>.
+                                I write about programming concepts, development techniques, and solutions to
+                                real-world challenges. My goal is to provide useful insights that help other
+                                developers strengthen their skills and overcome obstacles more effectively.
+                            </p>
+
+                            <p>
+                                I don't claim to be an expert, but I strive to document my learning journey.
+                                I share both successes and hard-earned lessons, often after spending significant
+                                time researching and solving complex problems. I find joy in writing about concepts
+                                in <strong>software development</strong> that surprise or inspire me, as well as
+                                creative solutions to technical challenges.
                             </p>
                         </div>
                     </div>
