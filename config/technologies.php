@@ -9,10 +9,10 @@ return [
             'image' => 'storage/tools/php.webp',
             'title' => 'PHP',
             'content' => <<<TEXT
-        PHP was my first programming language and remains a key part of my career.
-        I've built numerous applications and open-source packages while staying up-to-date with the latest PHP advancements.
-        Recently, I've been gradually shifting focus to Go.
-        TEXT,
+            PHP was my first programming language and remains a key part of my career.
+            I've built numerous applications and open-source packages while staying up-to-date with the latest PHP advancements.
+            Recently, I've been gradually shifting focus to Go.
+            TEXT,
         ],
         [
             'image' => 'storage/tools/ts.webp',
