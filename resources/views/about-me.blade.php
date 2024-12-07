@@ -16,7 +16,7 @@
                 <div class="bg-page print:translate-y-0 -translate-y-16 rounded-xl pt-8">
                     <div class="grid grid-cols-1 gap-x-6 lg:grid-cols-[25%_1fr]">
                         <div class="relative">
-                            <div class="print:w-full w-[250px] mx-auto rounded-lg print:initial sticky top-36 mb-6">
+                            <div class="print:w-full w-[250px] mx-auto rounded-lg print:initial sticky print:static top-36 mb-6">
                                 <img
                                     src="/storage/serhii-cho-min.webp"
                                     data-src="/storage/serhii-cho.webp"
