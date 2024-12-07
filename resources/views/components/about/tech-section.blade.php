@@ -9,12 +9,11 @@
                 <div>
                     <figure>
                         <img
-                            src="{{ asset($tech['image_xs']) }}"
                             data-src="{{ asset($tech['image']) }}"
                             alt="{{ $tech['title'] }}"
-                            class="max-w-[130px] print:max-w-[50px] mx-auto drop-shadow-md"
-                            width="130"
-                            height="130"
+                            class="w-auto h-[130px] print:h-auto print:max-w-[50px] mx-auto drop-shadow-md"
+                            width="200"
+                            height="200"
                         />
                     </figure>
                 </div>

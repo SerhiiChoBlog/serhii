@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
 
         Model::preventLazyLoading();
         Model::preventAccessingMissingAttributes();
+        Model::shouldBeStrict();
 
         Schema::defaultStringLength(191);
     }
