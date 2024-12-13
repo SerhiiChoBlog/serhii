@@ -44,3 +44,5 @@ If you don't want to use types and static analysis, that's perfectly fine. But i
 
 ### Key Takeaways: Mastering the PHP Type System
 ### Embracing Strong Typing as a Best Practice for PHP Development
+
+todo: use backtick operator for some example

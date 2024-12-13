@@ -18,38 +18,36 @@ class FooterMenu extends Component
 
     private function getMenuItems(): array
     {
-        $active_class = 'border-b-2 border-white';
-
         return [
             [
                 'href' => route('home'),
-                'class' => request()->is('/') ? $active_class : '',
                 'title' => 'Home',
+                'is_active' => request()->is('/'),
             ],
             [
                 'href' => route('posts.index'),
-                'class' => request()->is('posts') ? $active_class : '',
                 'title' => 'Blog',
+                'is_active' => request()->is('posts'),
             ],
             [
                 'href' => route('series.index'),
-                'class' => request()->is('series') ? $active_class : '',
                 'title' => 'Series',
+                'is_active' => request()->is('series'),
             ],
             [
                 'href' => route('projects.index'),
-                'class' => request()->is('projects') ? $active_class : '',
                 'title' => 'Open Source',
+                'is_active' => request()->is('projects'),
             ],
             [
                 'href' => route('about-me'),
-                'class' => request()->is('about-me') ? $active_class : '',
                 'title' => 'About',
+                'is_active' => request()->is('about-me'),
             ],
             [
                 'href' => route('subscribe'),
-                'class' => request()->is('subscribe') ? $active_class : '',
                 'title' => 'Subscribe',
+                'is_active' => request()->is('subscribe'),
             ],
         ];
     }
