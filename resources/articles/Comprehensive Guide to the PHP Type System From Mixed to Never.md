@@ -40,9 +40,11 @@ If you don't want to use types and static analysis, that's perfectly fine. But i
 ### Enhancing Type Safety with PHPStan and Psalm
 ### Leveraging Static Analysis Tools to Improve Code Quality
 
+## Are There More Types Coming to PHP?
+// todo: I hope not, not because I don't like types, but because I think PHP has enough types already. Plus, adding more types will make the language slower and more complex. I hope they focus more on improving the existing PHP codebase and improve performance and security. Even though PHP's code execution is faster than other brother languages like Python and Ruby, there is always room for improvement.
+
+// todo: give link on PHP Open Collective
+
 ## Conclusion
-
-### Key Takeaways: Mastering the PHP Type System
-### Embracing Strong Typing as a Best Practice for PHP Development
-
+// todo: Mastering the PHP Type System
 todo: use backtick operator for some example
