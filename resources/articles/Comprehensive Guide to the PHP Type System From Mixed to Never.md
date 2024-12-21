@@ -10,14 +10,34 @@ By the end of this guide, you'll have a solid understanding of PHP's type system
 
 By mastering PHP’s type system, you’ll not only write more robust and maintainable code but also strengthen your skills in crafting reliable software. Let's dive in!
 
-### The Shift to Strict Typing in PHP: Why Types Matter
-// todo
-
-- Type conversion pitfalls without strict types
+### Types are Optional in PHP
+Types (or type hints) in PHP are not mandatory. You can write PHP code without using types, and it will work just fine. We all have written PHP code without types at some point if you have been working with PHP for a while.
 
 There is nothing wrong with not using types in PHP, it all depends on the context and the project you are working on. Don't feel that you are doing something wrong if you are not using types in PHP. Everything discussed in this article is to help you understand the importance of types in PHP and how to work with them effectively.
 
 If you don't want to use types and static analysis, that's perfectly fine. But if you are working on a large project with a team of developers, using types and static analysis tools can help you catch bugs early, improve code quality, and make your codebase more maintainable.
+
+### The Shift to Strict Typing in PHP
+PHP has come a long way since its first release in June 1995, and now, it's the most used server-side language on the web.
+
+One of the most significant changes in PHP's evolution is the shift to strong typing. With the release of PHP 7 in December 2015, PHP introduced scalar type declarations and return type declarations. This was a significant step towards making PHP a more robust and reliable language.
+
+There are 2 ways you can go about using types in PHP: "coercive typing" and "strict typing". Coercive typing is the default behavior in PHP, where the type of a variable is automatically converted to the expected type. How it works is, if you pass a string to a function that expects an integer, PHP will automatically convert the string to an integer (which is not always a good thing).
+
+```php
+function add(int $a, int $b): int
+{
+    return $a + $b;
+}
+
+echo add('1', '2'); // Output: 3
+```
+
+```php
+<?php
+
+declare(strict_types=1);
+```
 
 ## Core PHP Types
 
