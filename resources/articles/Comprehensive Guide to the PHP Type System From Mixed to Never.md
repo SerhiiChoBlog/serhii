@@ -22,9 +22,12 @@ PHP has come a long way since its first release in June 1995, and now, it's the 
 
 One of the most significant changes in PHP's evolution is the shift to strong typing. With the release of PHP 7 in December 2015, PHP introduced scalar type declarations and return type declarations. This was a significant step towards making PHP a more robust and reliable language.
 
+#### Coercive Typing
 There are 2 ways you can go about using types in PHP: "coercive typing" and "strict typing". Coercive typing is the default behavior in PHP, where the type of a variable is automatically converted to the expected type. How it works is, if you pass a string to a function that expects an integer, PHP will automatically convert the string to an integer (which is not always a good thing).
 
 ```php
+<?php
+
 function add(int $a, int $b): int
 {
     return $a + $b;
@@ -33,11 +36,37 @@ function add(int $a, int $b): int
 echo add('1', '2'); // Output: 3
 ```
 
+It's a default behavior in PHP not because it's a preferred way of working with types, but because it's backward compatible with older versions of PHP. PHP's Core team doesn't want to break millions of existing PHP applications by changing the default behavior of type coercion.
+
+#### Strict Typing
+Strict typing, on the other hand, is a way to enforce types in PHP. When you enable strict typing, PHP will throw a TypeError if you pass the wrong type to a function or return an invalid type from a function. This is a more reliable way of working with types in PHP.
+
+All you need to do to enable strict typing in PHP is to add the following line at the beginning of your PHP file:
+
 ```php
 <?php
 
 declare(strict_types=1);
 ```
+
+And yes, you need to add this line at the beginning of every PHP file where you want to enable strict typing. It's not a global setting that you can enable in your php.ini file.
+
+If we take the example from above and enable strict typing, PHP will throw a TypeError because we are passing a string to a function that expects an integer:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+function add(int $a, int $b): int
+{
+    return $a + $b;
+}
+
+echo add('1', '2'); // Fatal error: Uncaught TypeError: add(): Argument #1 ($a) must be of type int, string given...
+```
+
+As a beginner, you might find strict typing a bit overwhelming, but trust me, it's a good practice to enable strict typing in your PHP projects. It will help you catch bugs early and improve code quality.
 
 ## Core PHP Types
 
