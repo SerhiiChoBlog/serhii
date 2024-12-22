@@ -71,7 +71,14 @@ echo add('1', '2'); // Fatal error: Uncaught TypeError: add(): Argument #1 ($a) 
 
 As a beginner, you might find strict typing a bit overwhelming, but trust me, it's a good practice to enable strict typing in your PHP projects. It will help you catch bugs early and improve code quality.
 
-// todo
+Don't mistake this for strict mode in JavaScript. They are not the same thing. In JavaScript, you enable strict mode like this:
+
+```javascript
+"use strict"
+age = 3.14 // This will cause an error because 'age' is not declared
+```
+
+I personally use strict types in all my PHP projects from the day I've discovered it. But, I must admin, it's not easy to force strict types in the existing codebase. Unless you have a good test coverage.
 
 ## Core PHP Types
 
