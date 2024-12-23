@@ -25,6 +25,8 @@ PHP has come a long way since its first release in June 1995, and now, it's the 
 
 One of the most significant changes in PHP's evolution is the shift to strong typing. With the release of PHP 7 in December 2015, PHP introduced scalar type declarations and return type declarations. This was a significant step towards making PHP a more robust and reliable language.
 
+Since PHP doesn't have a compile step, so types are checked at runtime. In most languages like Python, Java, and C#, types are checked at compile time, which means you can catch type errors before running your code. But in PHP, you can only catch type errors when you run your code. To fix that, we need to add static analysis tools to our workflow. We'll talk about that later in this guide in the <a href="#static-analysis-for-type-safety">Static Analysis for Type Safety</a> section.
+
 #### Coercive Typing
 There are 2 ways you can go about using types in PHP: “coercive typing” and “strict typing”. Coercive typing is the default behavior in PHP, where the type of variable is automatically converted to the expected type. How it works is, if you pass a string to a function that expects an integer, PHP will automatically convert the string to an integer (which is not always a good thing).
 
@@ -112,9 +114,6 @@ From what I've seen, it's very similar to PHPStan, almost identical in terms of 
 But, PHPStan was recommended by <a href="https://en.wikipedia.org/wiki/Rasmus_Lerdorf" target="_blank">Rasmus Lerdorf</a> himself in one of his talks, so I went for PHPStan from the beginning.
 
 ### Leveraging Static Analysis Tools to Improve Code Quality
-
-## Are There More Types Coming to PHP?
-// todo: I hope not, not because I don't like types, but because I think PHP has enough types already. Plus, adding more types will make the language slower and more complex. I hope they focus more on improving the existing PHP codebase and improving performance and security. Even though PHP's code execution is faster than other brother languages like Python and Ruby, there is always room for improvement.
 
 <p class="tip">
 If you want to help the PHP community, one way of doing it is by supporting it financially. You can sponsor PHP on <a href="https://opencollective.com/phpfoundation" target="_blank">Open Collective</a>. Your money will be used to fund the development of the PHP language.
