@@ -111,7 +111,7 @@ Psalm is another popular static analysis tool for PHP that focuses on type safet
 
 From what I've seen, it's very similar to PHPStan, almost identical in terms of features and functionality. Although, Psalm has a few extra features like SQL injection detection and other security-related checks that PHPStan doesn't have.
 
-But, PHPStan was recommended by <a href="https://en.wikipedia.org/wiki/Rasmus_Lerdorf" target="_blank">Rasmus Lerdorf</a> himself in one of his talks, so I went for PHPStan from the beginning.
+But, PHPStan was recommended by <a href="https://en.wikipedia.org/wiki/Rasmus_Lerdorf" target="_blank">Rasmus Lerdorf</a> himself in one of his talks, so I went for PHPStan from the beginning
 
 ### Leveraging Static Analysis Tools to Improve Code Quality
 
