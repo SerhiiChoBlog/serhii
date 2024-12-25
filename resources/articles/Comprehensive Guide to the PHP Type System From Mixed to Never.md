@@ -83,8 +83,28 @@ age = 3.14 // This will cause an error because 'age' is not declared
 I personally use strict types in all my PHP projects from the day I've discovered it. But, I must admin, it's not easy to force strict types in the existing codebase. Unless you have a good test coverage.
 
 ## Core PHP Types
+As for a non-compiled language, PHP has a rich set of core types that you can use as parameters, return, property, constant, and enum types. Let's explore each of them to understand how they work and when to use them.
 
-### An In-Depth Overview of PHP's Core Types
+Here is the list of core types in PHP:
+
+- `int`: Represents an integer value like `42` or `-42`.
+- `float`: Represents a floating-point number like `3.14` or `-3.14`.
+- `string`: Represents a sequence of characters like `'Hello, World!'`.
+- `bool`: Represents a boolean value like `true` or `false`.
+- `mixed`: Represents a value of any type.
+- `never`: Represents a value that never occurs.
+- `array`: Represents an array of values.
+- `object`: Represents an instance of a class.
+- `callable`: Represents a callable function or method.
+- `iterable`: Represents an iterable value like an array or an object that implements the `Traversable` interface.
+- `resource`: Represents a resource like a file handle or a database connection.
+- `null`: Represents a null value.
+- `void`: Represents a function that doesn't return a value.
+- `self`: Represents the current class.
+- `static`: Represents the class where the method is called.
+- `parent`: Represents the parent class.
+
+
 ### Understanding Parameter, Return, and Property Typing
 
 ## Type Errors in PHP
@@ -105,7 +125,6 @@ I personally use strict types in all my PHP projects from the day I've discovere
 ## Static Analysis for Type Safety
 
 ### Enhancing Type Safety with PHPStan and Psalm
-
 
 Psalm is another popular static analysis tool for PHP that focuses on type safety. As they describe it, Psalm is a free and open-source static analysis tool that helps you identify problems in your code, so you can sleep a little better.
 
