@@ -86,6 +86,7 @@ I personally use strict types in all my PHP projects from the day I've discovere
 As for a non-compiled language, PHP has a rich set of core types that you can use as parameters, return, property, constant, and enum types. Let's explore each of them to understand how they work and when to use them.
 
 Here is the list of core types in PHP:
+
 - `int`: Represents an integer value like `42` or `-42`.
 - `float`: Represents a floating-point number like `3.14` or `-3.14`.
 - `string`: Represents a sequence of characters like `'Hello, World!'`.
