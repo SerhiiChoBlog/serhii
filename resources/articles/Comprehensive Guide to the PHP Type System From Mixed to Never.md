@@ -104,7 +104,6 @@ Here is the list of core types in PHP:
 - `static`: Represents the class where the method is called.
 - `parent`: Represents the parent class.
 
-
 ### Understanding Parameter, Return, and Property Typing
 
 ## Type Errors in PHP
