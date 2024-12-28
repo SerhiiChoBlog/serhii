@@ -105,6 +105,7 @@ Here is the list of core types in PHP:
 - `parent`: Represents the parent class.
 
 ### Understanding Parameter, Return, and Property Typing
+
 ## Type Errors in PHP
 — Passing the wrong data type to a function with strict typing enabled.
 — Returning an invalid type from a function with a declared return type.
