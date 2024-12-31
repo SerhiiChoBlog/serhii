@@ -56,7 +56,7 @@ class BookController extends Controller
         return 'The book has been deleted';
     }
 
-    private function storeFile(?UploadedFile $file, StoreRequest $request): string
+    private function storeFile(UploadedFile|null $file, StoreRequest $request): string
     {
         if (!$file) {
             return Book::DEFAULT_IMAGE;
