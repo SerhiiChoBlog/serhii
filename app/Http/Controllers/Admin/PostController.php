@@ -58,7 +58,7 @@ class PostController extends Controller
         return $post->id;
     }
 
-    public function show(string $post_slug): ?Post
+    public function show(string $post_slug): Post|null
     {
         /** @var Post|null */
         return Post::query()
@@ -164,7 +164,7 @@ class PostController extends Controller
         event(new PostChanged(null));
     }
 
-    private function addNotesToContent(?string $content): ?string
+    private function addNotesToContent(string|null $content): string|null
     {
         if (!$content) {
             return null;
@@ -184,7 +184,7 @@ class PostController extends Controller
     /**
      * @param array<int, int> $tags
      */
-    private function attachTags(array $tags, ?int $tag_id, Post $post): void
+    private function attachTags(array $tags, int|null $tag_id, Post $post): void
     {
         $data = [];
 
@@ -195,7 +195,7 @@ class PostController extends Controller
         $post->tags()->attach($data);
     }
 
-    private function getPostSlug(string $title, ?Series $series): string
+    private function getPostSlug(string $title, Series|null $series): string
     {
         $slug = Str::slug($title);
         return $series ? "{$series->slug}-{$slug}" : $slug;
