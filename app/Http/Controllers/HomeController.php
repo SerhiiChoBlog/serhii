@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Cache;
 class HomeController extends Controller
 {
     /**
-     * @var Collection<int, int>
+     * @var Collection<int,int>
      */
     private Collection $exclude_ids;
 
