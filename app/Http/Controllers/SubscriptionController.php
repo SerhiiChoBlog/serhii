@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 
 class SubscriptionController extends Controller
 {
-    public function confirm(string $slug): View | RedirectResponse
+    public function confirm(string $slug): View|RedirectResponse
     {
         $subscription = Subscription::with('tags')->where('slug', $slug)->first();
 

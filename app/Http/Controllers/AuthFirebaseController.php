@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
 
 class AuthFirebaseController extends Controller
 {
-    public function signIn(FirebaseSignInRequest $request): User | string
+    public function signIn(FirebaseSignInRequest $request): User|string
     {
         /** @var User|null $user */
         $user = User::query()
@@ -59,10 +59,7 @@ class AuthFirebaseController extends Controller
         return $slug_service->handle();
     }
 
-    /**
-     * @return string|null
-     */
-    private function saveUserImage(?string $image_url, string $slug): ?string
+    private function saveUserImage(string|null $image_url, string $slug): string|null
     {
         if (!$image_url) {
             return null;
