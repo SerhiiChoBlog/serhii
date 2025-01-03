@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 class TagController extends Controller
 {
     /**
-     * @return Collection<int, Tag>
+     * @return Collection<int,Tag>
      */
     public function index(): Collection
     {
@@ -22,7 +22,7 @@ class TagController extends Controller
     }
 
     /**
-     * @return Collection<int, Tag>
+     * @return Collection<int,Tag>
      */
     public function subscription(): Collection
     {
@@ -38,9 +38,7 @@ class TagController extends Controller
     }
 
     /**
-     * @param string $word
-     *
-     * @return Collection<int, Tag>
+     * @return Collection<int,Tag>
      */
     public function search(string $word): Collection
     {

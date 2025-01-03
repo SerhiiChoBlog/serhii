@@ -23,7 +23,7 @@ use Illuminate\Validation\ValidationException;
 class CommentController extends Controller
 {
     /**
-     * @return Collection<int, Comment>
+     * @return Collection<int,Comment>
      */
     public function index(IndexRequest $request): Collection
     {

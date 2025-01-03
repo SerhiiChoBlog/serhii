@@ -11,7 +11,7 @@ use App\Services\SearchPostService;
 class SearchController extends Controller
 {
     /**
-     * @return array<int, CachablePost>
+     * @return array<int,CachablePost>
      */
     public function index(string $query): array
     {
