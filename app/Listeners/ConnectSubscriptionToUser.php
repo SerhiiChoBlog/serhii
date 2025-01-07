@@ -25,7 +25,7 @@ class ConnectSubscriptionToUser
             ->update(['user_id' => $user->id]);
     }
 
-    private function getUser(string $email): ?User
+    private function getUser(string $email): User|null
     {
         /** @var User|null */
         return User::query()
