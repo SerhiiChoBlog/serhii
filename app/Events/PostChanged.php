@@ -13,7 +13,7 @@ class PostChanged
     use Dispatchable;
     use SerializesModels;
 
-    public function __construct(public readonly ?Post $post)
+    public function __construct(public readonly Post|null $post)
     {
     }
 }
