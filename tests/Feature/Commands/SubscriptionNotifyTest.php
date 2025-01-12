@@ -24,7 +24,7 @@ class SubscriptionNotifyTest extends TestCase
         Notification::fake();
     }
 
-    private function finalNotificationMessage(Post $post, int $notified, ?int $skipped = 0): string
+    private function finalNotificationMessage(Post $post, int $notified, int|null $skipped = 0): string
     {
         return <<<TEXT
         - Notified: {$notified} subscribers;

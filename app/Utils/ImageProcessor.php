@@ -24,7 +24,7 @@ readonly class ImageProcessor
      *     lg: string,
      * }
      */
-    public function save(string $post_name, string $dir_name): ?array
+    public function save(string $post_name, string $dir_name): array|null
     {
         if ($this->photo === null) {
             return null;

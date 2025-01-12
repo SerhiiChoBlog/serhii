@@ -125,7 +125,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return hasMany<CommentLike>
+     * @return HasMany<CommentLike>
      */
     public function commentLikes(): HasMany
     {
@@ -148,7 +148,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Comment::class, 'comment_likes');
     }
 
-    public static function isAdmin(string $field, ?string $value): bool
+    public static function isAdmin(string $field, string|null $value): bool
     {
         if (!$value) {
             return false;
@@ -192,7 +192,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return 'slug';
     }
 
-    public static function getBySecret(?string $secret): ?self
+    public static function getBySecret(string|null $secret): ?self
     {
         if (!$secret) {
             return null;

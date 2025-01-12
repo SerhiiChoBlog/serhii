@@ -12,7 +12,7 @@ class MultiavatarAvatarGenerator implements AvatarGenerator
     {
     }
 
-    public function generate(): ?string
+    public function generate(): string|null
     {
         $multiavatar = new Multiavatar();
         $id = "serhii{$this->email}cho";

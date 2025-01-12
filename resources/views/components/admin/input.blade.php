@@ -4,7 +4,7 @@
 
     /**
      * @var HtmlString $slot
-     * @var ?string $message
+     * @var string|null $message
      * @var ComponentAttributeBag $attributes
      */
 

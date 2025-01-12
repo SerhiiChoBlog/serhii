@@ -15,7 +15,7 @@ class GlavatarAvatarGenerator implements AvatarGenerator
     {
     }
 
-    public function generate(): ?string
+    public function generate(): string|null
     {
         /** @var Response $response */
         $response = Http::get($this->getUrl());
