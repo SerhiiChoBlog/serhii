@@ -34,7 +34,7 @@ class StoreCommentService
         private readonly User $user,
         string $comment,
         private readonly int $post_id,
-        private ?int $comment_id,
+        private int|null $comment_id,
     ) {
         $this->comment = $this->modifyComment($comment);
         $this->is_admin = $this->user->hasRole(UserRole::ADMIN);
@@ -113,7 +113,7 @@ class StoreCommentService
         return true;
     }
 
-    private function getVisitorId(): ?int
+    private function getVisitorId(): int|null
     {
         $ip = request()->ip();
 

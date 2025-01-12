@@ -45,7 +45,7 @@ readonly class GenerateAvatarService
         return User::DEFAULT_IMAGE_NAME;
     }
 
-    private function getImage(AvatarGenerator $generator): ?string
+    private function getImage(AvatarGenerator $generator): string|null
     {
         return $generator->generate();
     }
