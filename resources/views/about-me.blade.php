@@ -10,6 +10,12 @@
         class="bg-gradient-to-r from-[#657ca1] via-[#445a7e] to-[#163249] text-white print:bg-none print:text-black"
     />
 
+    @dd([
+        'title' => 'Serhii Cho',
+        'subtitle' => 'Serhii Cho is a web developer and blogger who is writing about creating fast, robust, premium websites and applications',
+        'class' => 'bg-gradient-to-r from-[#657ca1] via-[#445a7e] to-[#163249] text-white print:bg-none print:text-black',
+    ])
+
     <div class="print:mt-0 mt-2 text-xl">
         <section class="text-[1.2rem] px-2 lg:px-6 py-8 print:p-0">
             <div class="container">

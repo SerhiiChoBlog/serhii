@@ -56,7 +56,7 @@ readonly class SubscriptionDemandService
         ]);
     }
 
-    private function getOldSubscription(): ?Subscription
+    private function getOldSubscription(): Subscription|null
     {
         /** @var Subscription|null */
         return Subscription::query()->where('email', $this->email)->first();
