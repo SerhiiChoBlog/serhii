@@ -47,7 +47,7 @@ readonly class SearchPostService
         return $result;
     }
 
-    private function matchingPost(CachablePost $post): ?CachablePost
+    private function matchingPost(CachablePost $post): CachablePost|null
     {
         $matches = str_contains(strtolower($post->title), $this->query)
             || $this->containsMatch($post->tags)

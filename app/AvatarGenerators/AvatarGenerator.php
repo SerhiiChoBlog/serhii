@@ -8,5 +8,5 @@ interface AvatarGenerator
 {
     public function __construct(string $email);
 
-    public function generate(): ?string;
+    public function generate(): string|null;
 }

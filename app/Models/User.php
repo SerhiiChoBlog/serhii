@@ -192,7 +192,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return 'slug';
     }
 
-    public static function getBySecret(string|null $secret): ?self
+    public static function getBySecret(string|null $secret): self|null
     {
         if (!$secret) {
             return null;

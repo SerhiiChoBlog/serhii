@@ -36,7 +36,7 @@ class GlobalVisitor
         return self::$instance;
     }
 
-    public function get(): ?Visitor
+    public function get(): Visitor|null
     {
         $ip = self::getIp();
 
@@ -64,7 +64,7 @@ class GlobalVisitor
     /**
      * @throws QueryException
      */
-    private static function getOrCreateVisitor(): ?Visitor
+    private static function getOrCreateVisitor(): Visitor|null
     {
         $ip = self::getIp();
 
@@ -100,7 +100,7 @@ class GlobalVisitor
         }
     }
 
-    private static function getVisitorPosition(string $ip): ?Position
+    private static function getVisitorPosition(string $ip): Position|null
     {
         try {
             $result = Location::get($ip);

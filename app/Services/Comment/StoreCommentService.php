@@ -82,7 +82,7 @@ class StoreCommentService
             ->exists();
     }
 
-    private function getParentComment(): ?Comment
+    private function getParentComment(): Comment|null
     {
         if (!$this->comment_id) {
             return null;
