@@ -11,7 +11,6 @@ return [
             'content' => <<<TEXT
             PHP was my first programming language and remains a key part of my career.
             I've built numerous applications and open-source packages while staying up-to-date with the latest PHP advancements.
-            Recently, I've been gradually shifting focus to Go.
             TEXT,
         ],
         [
@@ -20,7 +19,8 @@ return [
             'content' => <<<TEXT
             Go is my go-to language since 2019. I've utilized it for personal and open-source projects such as
             <a href="https://time-ago.github.io" class="underline" rel="noreffer" target="_blank">Timeago</a> date-time converter, and
-            <a href="https://textwire.github.io" class="underline" rel="noreffer" target="_blank">Textwire</a> templating language for Go.
+            <a href="https://textwire.github.io" class="underline" rel="noreffer" target="_blank">Textwire</a> templating language for
+            simplifying developer experience while building frontend with Go. It's a beautiful language that fits into my lifestyle.
             TEXT,
         ],
         [
