@@ -15,19 +15,20 @@ return [
             TEXT,
         ],
         [
-            'image' => 'storage/tools/ts.webp',
-            'title' => 'TypeScript',
-            'content' => <<<TEXT
-            TypeScript is my go-to language for modern front-end development with Vue, React, and native JavaScript.
-            Since 2019, I've used it to enhance project maintainability by reducing bugs and typos.
-            TEXT,
-        ],
-        [
             'image' => 'storage/tools/go.webp',
             'title' => 'Go',
             'content' => <<<TEXT
-            Since 2019, I've utilized Go for personal and open-source projects.
-            A notable project is <a href="https://serhiicho.github.io/timeago-docs" class="underline" rel="noreffer" target="_blank">Timeago</a>, a library that converts date-time into human-readable format.
+            Go is my go-to language since 2019. I've utilized it for personal and open-source projects such as
+            <a href="https://time-ago.github.io" class="underline" rel="noreffer" target="_blank">Timeago</a> date-time converter, and
+            <a href="https://textwire.github.io" class="underline" rel="noreffer" target="_blank">Textwire</a> templating language for Go.
+            TEXT,
+        ],
+        [
+            'image' => 'storage/tools/ts.webp',
+            'title' => 'TypeScript',
+            'content' => <<<TEXT
+            I TypeScript for front-end development with Vue, React, and native JavaScript.
+            Since 2019, I've used it to enhance project maintainability by reducing bugs and typos.
             TEXT,
         ],
         [
