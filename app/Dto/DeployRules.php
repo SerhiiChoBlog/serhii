@@ -10,6 +10,13 @@ class DeployRules
     public bool $composer;
     public bool $cache;
 
+    /**
+     * @param array{
+     *     migrate: bool,
+     *     composer: bool,
+     *     cache: bool,
+     * } $attributes
+     */
     public function __construct(array $attributes)
     {
         $this->migrate = $attributes['migrate'];

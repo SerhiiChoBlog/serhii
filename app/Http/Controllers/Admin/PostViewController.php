@@ -7,9 +7,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostView;
+use Illuminate\Support\Collection;
 
 class PostViewController extends Controller
 {
+    /**
+     * @return array{
+     *    unique: array<int, array<string, mixed>>,
+     *    daily: Collection<int, PostView>,
+     * }
+     */
     public function index(): array
     {
         $unique = [];
