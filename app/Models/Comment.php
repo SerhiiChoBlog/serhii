@@ -57,7 +57,7 @@ class Comment extends Model
     protected $appends = ['pretty_created_at'];
 
     /**
-     * @return BelongsTo<User, self>
+     * @return BelongsTo<User, $this>
      */
     public function user(): BelongsTo
     {
@@ -65,7 +65,7 @@ class Comment extends Model
     }
 
     /**
-     * @return BelongsTo<Visitor, self>
+     * @return BelongsTo<Visitor, $this>
      */
     public function visitor(): BelongsTo
     {
@@ -73,7 +73,7 @@ class Comment extends Model
     }
 
     /**
-     * @return HasMany<CommentLike>
+     * @return HasMany<CommentLike, $this>
      */
     public function likes(): HasMany
     {
@@ -81,7 +81,7 @@ class Comment extends Model
     }
 
     /**
-     * @return BelongsTo<Post, self>
+     * @return BelongsTo<Post, $this>
      */
     public function post(): BelongsTo
     {
@@ -89,7 +89,7 @@ class Comment extends Model
     }
 
     /**
-     * @return BelongsTo<self, self>
+     * @return BelongsTo<self, $this>
      */
     public function parent(): BelongsTo
     {
@@ -97,7 +97,7 @@ class Comment extends Model
     }
 
     /**
-     * @return HasMany<self>
+     * @return HasMany<self, $this>
      */
     public function comments(): HasMany
     {
@@ -105,7 +105,7 @@ class Comment extends Model
     }
 
     /**
-     * @return HasMany<Feed>
+     * @return HasMany<Feed, $this>
      */
     public function feed(): HasMany
     {

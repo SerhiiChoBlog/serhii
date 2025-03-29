@@ -35,7 +35,7 @@ class PostPublication extends Model
     ];
 
     /**
-     * @return BelongsTo<Post, self>
+     * @return BelongsTo<Post, $this>
      */
     public function post(): BelongsTo
     {

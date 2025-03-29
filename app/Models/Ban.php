@@ -27,7 +27,7 @@ class Ban extends Model
     protected $guarded = ['id'];
 
     /**
-     * @return BelongsTo<User, self>
+     * @return BelongsTo<User, $this>
      */
     public function user(): BelongsTo
     {

@@ -33,7 +33,7 @@ class Badge extends Model
     ];
 
     /**
-     * @return BelongsToMany<User>
+     * @return BelongsToMany<User, $this>
      */
     public function users(): BelongsToMany
     {

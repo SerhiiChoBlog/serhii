@@ -52,6 +52,9 @@ class Project extends Model
         'has_homepage' => 'boolean',
     ];
 
+    /**
+     * @return array<string, mixed>
+     */
     public static function getCachedProjects(): array
     {
         return Cache::remember(CacheKey::PROJECTS, Ttl::HOUR, static function () {

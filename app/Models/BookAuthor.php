@@ -27,7 +27,7 @@ class BookAuthor extends Model
     public $timestamps = false;
 
     /**
-     * @return HasMany<Book>
+     * @return HasMany<Book, $this>
      */
     public function books(): HasMany
     {

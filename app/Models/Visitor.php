@@ -39,7 +39,7 @@ class Visitor extends Model
     ];
 
     /**
-     * @return HasMany<PostView>
+     * @return HasMany<PostView, $this>
      */
     public function postViews(): HasMany
     {
@@ -47,7 +47,7 @@ class Visitor extends Model
     }
 
     /**
-     * @return HasMany<SocialShare>
+     * @return HasMany<SocialShare, $this>
      */
     public function socialShares(): HasMany
     {

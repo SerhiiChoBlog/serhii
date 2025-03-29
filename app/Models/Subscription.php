@@ -28,7 +28,7 @@ class Subscription extends Model
     use HasFactory;
 
     /**
-     * @var string[]
+     * @var array<int, string>
      */
     protected $guarded = ['id'];
 
@@ -36,7 +36,7 @@ class Subscription extends Model
      * @note If subscriber doesn't have any tags, it means
      * that the person subscribed to all the publications.
      *
-     * @return BelongsToMany<Tag>
+     * @return BelongsToMany<Tag, $this>
      */
     public function tags(): BelongsToMany
     {

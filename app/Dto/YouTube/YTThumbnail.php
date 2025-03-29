@@ -10,6 +10,9 @@ class YTThumbnail
     public int $width;
     public int $height;
 
+    /**
+     * @param YouTubeThumbnail $data
+     */
     public function __construct(array $data)
     {
         $this->url = $data['url'];

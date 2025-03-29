@@ -26,7 +26,7 @@ class Keyword extends Model
     public $timestamps = false;
 
     /**
-     * @return BelongsToMany<Post>
+     * @return BelongsToMany<Post, $this>
      */
     public function posts(): BelongsToMany
     {

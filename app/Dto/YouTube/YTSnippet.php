@@ -17,6 +17,9 @@ class YTSnippet
     public string $live_broadcast_content;
     public Carbon $publish_time;
 
+    /**
+     * @param YouTubeSnippet $data
+     */
     public function __construct(array $data)
     {
         $this->published_at = Carbon::make($data['publishedAt']) ?? Carbon::now();

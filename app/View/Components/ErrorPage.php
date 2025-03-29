@@ -27,6 +27,9 @@ class ErrorPage extends Component
         ]);
     }
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     private function getPosts(): array
     {
         return Cache::remember(CacheKey::ERROR_RANDOM_POSTS, Ttl::HOUR, static function () {
@@ -40,6 +43,9 @@ class ErrorPage extends Component
         });
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function getLinks(): array
     {
         return [

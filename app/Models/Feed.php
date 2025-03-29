@@ -51,7 +51,7 @@ class Feed extends Model
     ];
 
     /**
-     * @return BelongsTo<User, self>
+     * @return BelongsTo<User, $this>
      */
     public function user(): BelongsTo
     {
@@ -59,7 +59,7 @@ class Feed extends Model
     }
 
     /**
-     * @return BelongsTo<Comment, self>
+     * @return BelongsTo<Comment, $this>
      */
     public function comment(): BelongsTo
     {
@@ -67,7 +67,7 @@ class Feed extends Model
     }
 
     /**
-     * @return BelongsTo<Badge, self>
+     * @return BelongsTo<Badge, $this>
      */
     public function badge(): BelongsTo
     {
@@ -75,7 +75,7 @@ class Feed extends Model
     }
 
     /**
-     * @return BelongsTo<Post, self>
+     * @return BelongsTo<Post, $this>
      */
     public function post(): BelongsTo
     {

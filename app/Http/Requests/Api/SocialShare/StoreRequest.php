@@ -19,6 +19,9 @@ class StoreRequest extends FormRequest
         return true;
     }
 
+    /**
+     * @return array<string, string[]|Enum[]>
+     */
     public function rules(): array
     {
         return [

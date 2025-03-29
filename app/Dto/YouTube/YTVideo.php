@@ -11,6 +11,14 @@ class YTVideo
     public YTVideoId $id;
     public YTSnippet $snippet;
 
+    /**
+     * @param array{
+     *     kind: string,
+     *     etag: string,
+     *     id: YouTubeVideoID,
+     *     snippet: YouTubeSnippet,
+     * } $data
+     */
     public function __construct(array $data)
     {
         $this->kind = $data['kind'];

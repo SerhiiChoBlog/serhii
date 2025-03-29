@@ -16,6 +16,9 @@ class FooterMenu extends Component
         ]);
     }
 
+    /**
+     * @return array<int, array{href: string, title: string, is_active: bool}>
+     */
     private function getMenuItems(): array
     {
         return [

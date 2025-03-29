@@ -36,7 +36,7 @@ class SocialShare extends Model
     public $timestamps = false;
 
     /**
-     * @return BelongsTo<Post, self>
+     * @return BelongsTo<Post, $this>
      */
     public function post(): BelongsTo
     {
@@ -44,7 +44,7 @@ class SocialShare extends Model
     }
 
     /**
-     * @return BelongsTo<Visitor, self>
+     * @return BelongsTo<Visitor, $this>
      */
     public function visitor(): BelongsTo
     {

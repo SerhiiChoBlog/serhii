@@ -42,7 +42,7 @@ class Series extends Model
     protected $appends = ['read_time'];
 
     /**
-     * @return BelongsToMany<Post>
+     * @return BelongsToMany<Post, $this>
      */
     public function posts(): BelongsToMany
     {

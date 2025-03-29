@@ -12,7 +12,7 @@ use App\Http\Requests\Admin\Request;
 class StoreRequest extends Request
 {
     /**
-     * @return array<string, array<int, string>>
+     * @return array<string, string[]>
      */
     public function rules(): array
     {

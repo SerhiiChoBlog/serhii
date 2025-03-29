@@ -13,8 +13,7 @@ use App\Http\Requests\Admin\Request;
 class DestroyRequest extends Request
 {
     /**
-     *
-     * @return array<string, array<int, string>>
+     * @return array<string, string[]>
      */
     public function rules(): array
     {

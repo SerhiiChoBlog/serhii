@@ -72,7 +72,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * @return BelongsToMany<Role>
+     * @return BelongsToMany<Role, $this>
      */
     public function roles(): BelongsToMany
     {
@@ -80,7 +80,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return BelongsToMany<Badge>
+     * @return BelongsToMany<Badge, $this>
      */
     public function badges(): BelongsToMany
     {
@@ -88,7 +88,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return HasMany<Comment>
+     * @return HasMany<Comment, $this>
      */
     public function comments(): HasMany
     {
@@ -96,7 +96,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return HasMany<Feed>
+     * @return HasMany<Feed, $this>
      */
     public function feed(): HasMany
     {
@@ -109,7 +109,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return HasOne<Ban>
+     * @return HasOne<Ban, $this>
      */
     public function ban(): HasOne
     {
@@ -117,7 +117,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return HasMany<PostLike>
+     * @return HasMany<PostLike, $this>
      */
     public function postLikes(): HasMany
     {
@@ -125,7 +125,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return HasMany<CommentLike>
+     * @return HasMany<CommentLike, $this>
      */
     public function commentLikes(): HasMany
     {
@@ -133,7 +133,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return BelongsToMany<Post>
+     * @return BelongsToMany<Post, $this>
      */
     public function likedPosts(): BelongsToMany
     {
@@ -141,7 +141,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return BelongsToMany<Comment>
+     * @return BelongsToMany<Comment, $this>
      */
     public function likedComments(): BelongsToMany
     {
