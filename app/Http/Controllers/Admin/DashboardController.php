@@ -15,6 +15,9 @@ use App\Models\User;
 
 class DashboardController extends Controller
 {
+    /**
+     * @return array<int, array{title: string, value: mixed}>
+     */
     public function sections(): array
     {
         $subs = Subscription::query()->select(['id', 'confirmed_at'])->get();
@@ -36,8 +39,7 @@ class DashboardController extends Controller
                 'value' => sprintf("%s/%s", $subs->whereNotNull('confirmed_at')->count(), $subs->count()),
             ],
             [
-                'title' => 'Shares',
-                'value' => SocialShare::query()->count(),
+                'title' => 'Shares', 'value' => SocialShare::query()->count(),
             ],
             [
                 'title' => 'Posts',
@@ -58,6 +60,9 @@ class DashboardController extends Controller
         ];
     }
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public function goals(): array
     {
         $posts_this_week = Post::query()
