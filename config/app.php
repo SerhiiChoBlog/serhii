@@ -19,6 +19,6 @@ return [
     |
     */
 
-    'timezone' => 'Europe/Kiev',
+    'timezone' => 'Europe/Kyiv',
 
 ];
