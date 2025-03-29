@@ -30,12 +30,12 @@ class Tag extends Model
     public $timestamps = false;
 
     /**
-     * @var string[]
+     * @var array<int, string>
      */
     protected $guarded = ['id'];
 
     /**
-     * @return BelongsToMany<Post>
+     * @return BelongsToMany<Post, $this>
      */
     public function posts(): BelongsToMany
     {
@@ -43,7 +43,7 @@ class Tag extends Model
     }
 
     /**
-     * @return BelongsToMany<Subscription>
+     * @return BelongsToMany<Subscription, $this>
      */
     public function subscriptions(): BelongsToMany
     {

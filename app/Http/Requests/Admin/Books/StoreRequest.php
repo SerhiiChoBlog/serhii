@@ -17,7 +17,7 @@ use Illuminate\Http\UploadedFile;
 class StoreRequest extends Request
 {
     /**
-     * @return array<string, array<int, string>>
+     * @return array<string, string[]>
      */
     public function rules(): array
     {

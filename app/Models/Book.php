@@ -45,7 +45,7 @@ class Book extends Model
     }
 
     /**
-     * @return BelongsTo<BookAuthor, self>
+     * @return BelongsTo<BookAuthor, $this>
      */
     public function author(): BelongsTo
     {

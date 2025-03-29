@@ -10,6 +10,9 @@ class YTThumbnails
     public YTThumbnail $medium;
     public YTThumbnail $high;
 
+    /**
+     * @param YouTubeThumbnails $data
+     */
     public function __construct(array $data)
     {
         $this->default = new YTThumbnail($data['default']);

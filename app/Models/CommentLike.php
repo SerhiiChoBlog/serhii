@@ -36,7 +36,7 @@ class CommentLike extends Model
     ];
 
     /**
-     * @return BelongsTo<User, self>
+     * @return BelongsTo<User, $this>
      */
     public function user(): BelongsTo
     {
@@ -44,7 +44,7 @@ class CommentLike extends Model
     }
 
     /**
-     * @return BelongsTo<Comment, self>
+     * @return BelongsTo<Comment, $this>
      */
     public function comment(): BelongsTo
     {

@@ -77,7 +77,7 @@ class Post extends Model
     ];
 
     /**
-     * @return BelongsToMany<Tag>
+     * @return BelongsToMany<Tag, $this>
      */
     public function tags(): BelongsToMany
     {
@@ -88,7 +88,7 @@ class Post extends Model
     }
 
     /**
-     * @return BelongsToMany<Series>
+     * @return BelongsToMany<Series, $this>
      */
     public function series(): BelongsToMany
     {
@@ -98,7 +98,7 @@ class Post extends Model
     }
 
     /**
-     * @return HasMany<PostContentImage>
+     * @return HasMany<PostContentImage, $this>
      */
     public function images(): HasMany
     {
@@ -106,7 +106,7 @@ class Post extends Model
     }
 
     /**
-     * @return HasMany<SocialShare>
+     * @return HasMany<SocialShare, $this>
      */
     public function socialShares(): HasMany
     {
@@ -114,7 +114,7 @@ class Post extends Model
     }
 
     /**
-     * @return HasMany<PostLike>
+     * @return HasMany<PostLike, $this>
      */
     public function postLikes(): HasMany
     {
@@ -122,7 +122,7 @@ class Post extends Model
     }
 
     /**
-     * @return HasMany<PostView>
+     * @return HasMany<PostView, $this>
      */
     public function postViews(): HasMany
     {
@@ -130,7 +130,7 @@ class Post extends Model
     }
 
     /**
-     * @return HasMany<Comment>
+     * @return HasMany<Comment, $this>
      */
     public function comments(): HasMany
     {
@@ -138,7 +138,7 @@ class Post extends Model
     }
 
     /**
-     * @return HasOne<PostPublication>
+     * @return HasOne<PostPublication, $this>
      */
     public function postPublication(): HasOne
     {
@@ -146,7 +146,7 @@ class Post extends Model
     }
 
     /**
-     * @return HasOne<Video>
+     * @return HasOne<Video, $this>
      */
     public function video(): HasOne
     {
@@ -154,7 +154,7 @@ class Post extends Model
     }
 
     /**
-     * @return BelongsToMany<Keyword>
+     * @return BelongsToMany<Keyword, $this>
      */
     public function keywords(): BelongsToMany
     {

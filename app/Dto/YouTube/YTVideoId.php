@@ -9,6 +9,9 @@ class YTVideoId
     public string $kind;
     public string $video_id;
 
+    /**
+     * @param YouTubeVideoID $data
+     */
     public function __construct(array $data)
     {
         $this->kind = $data['kind'];

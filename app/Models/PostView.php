@@ -38,7 +38,7 @@ class PostView extends Model
     protected $guarded = ['id'];
 
     /**
-     * @return BelongsTo<Post, self>
+     * @return BelongsTo<Post, $this>
      */
     public function post(): BelongsTo
     {
@@ -46,7 +46,7 @@ class PostView extends Model
     }
 
     /**
-     * @return BelongsTo<Visitor, self>
+     * @return BelongsTo<Visitor, $this>
      */
     public function visitor(): BelongsTo
     {
