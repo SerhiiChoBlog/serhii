@@ -45,7 +45,7 @@
                                 In my free time, I actively contribute to open-source projects, many of which are available on my
                                 <a href="https://github.com/SerhiiCho" target="_blank">GitHub</a>. Notable projects include libraries
                                 like <a href="https://github.com/textwire/textwire" target="_blank">Textwire</a> and
-                                <a href="https://github.com/SerhiiCho/timeago" target="_blank">Timeago</a> for the Go (Golang) programming
+                                <a href="https://github.com/SerhiiCho/timeago" target="_blank">Timeago</a> for the Go programming
                                 language. I also maintain and utilize several PHP libraries that play a significant role in my personal
                                 and professional projects.
                             </p>
