@@ -37,7 +37,7 @@ class WorkProjectController extends Controller
                 title: 'Shobar',
                 subtitle: 'WordPress website with custom theme and plugins',
                 content: <<<HTML
-                <p>Shobar is a restaurant bar in Kharkiv, Ukraine with a unique atmosphere and delicious food. The website was created with WordPress CMS and a custom theme designed and developed by me. The website has a custom menu plugin that allows the administrator to manipulate the content for the whole website.</p>
+                <p>Shobar is a restaurant bar in Kharkiv, with a unique atmosphere and delicious food. The website was created with WordPress CMS and a custom theme designed and developed by me. The website has a custom menu plugin that allows the administrator to manipulate the content for the whole website.</p>
                 <p>🏆 The best part about this project is that it has a custom developed payment system using the Ukrainian payment system WayForPay and a custom developed delivery system including cart and checkout.</p>
                 HTML,
                 link: 'https://shobar.com.ua/',
