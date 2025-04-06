@@ -6,7 +6,7 @@ type Props = {
     user: User | null
 }
 
-const { user } = defineProps<Props>()
+defineProps<Props>()
 </script>
 
 <template>
