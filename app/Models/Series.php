@@ -39,6 +39,9 @@ class Series extends Model
 
     protected $table = 'series';
 
+    /**
+     * @var array<int, string>
+     */
     protected $appends = ['read_time'];
 
     /**
