@@ -28,6 +28,9 @@ class PostPublication extends Model
 
     public $timestamps = false;
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = [
         'created_at' => 'date:d.m.Y H:m',
         'people_notified' => 'int',
