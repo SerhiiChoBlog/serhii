@@ -28,6 +28,9 @@ class Badge extends Model
 
     public $timestamps = false;
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = [
         'name' => BadgeName::class,
     ];

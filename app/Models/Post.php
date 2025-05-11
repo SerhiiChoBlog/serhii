@@ -70,6 +70,9 @@ class Post extends Model
         'pretty_created_at',
     ];
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = [
         'slug' => 'string',
         'published_at' => 'datetime',

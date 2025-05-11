@@ -45,6 +45,9 @@ class Feed extends Model
 
     public $timestamps = false;
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = [
         'type' => FeedType::class,
         'date' => 'datetime',
