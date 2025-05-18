@@ -107,7 +107,6 @@ return [
             'content' => <<<TEXT
             Since 2014, I've been mastering English, which has become my second language.
             I'm fluent in 4 languages: Russian, Ukrainian, English, and Chinese Mandarin.
-            My goal is to incorporate Chinese into my future development projects because it's a language of the future and a gateway to a vast market.
             TEXT,
         ],
         [
