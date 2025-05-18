@@ -105,8 +105,9 @@ return [
             'image' => 'storage/tools/flags.webp',
             'title' => 'Polyglot Proficiency',
             'content' => <<<TEXT
-            Since 2014, I've been mastering English, which has become my second language.
-            I'm fluent in 4 languages: Russian, Ukrainian, English, and Chinese Mandarin.
+            Since 2014, I've been mastering English, which has become my second language at this point.
+            I'm fluent in 3 languages: Russian, English and Ukrainian.
+            I also know a little bit of Chinese Mandarin at a basic level.
             TEXT,
         ],
         [
