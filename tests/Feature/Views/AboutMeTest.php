@@ -19,6 +19,7 @@ class AboutMeTest extends TestCase
 
     public function testAdminCanVisitPage(): void
     {
+        /** @var User $user */
         $user = User::factory()->make();
 
         $this->actingAs($user, 'admin')
