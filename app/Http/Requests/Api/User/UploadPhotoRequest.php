@@ -22,7 +22,7 @@ class UploadPhotoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo' => ['required', 'image', 'min:8', 'max:5000'],
+            'photo' => ['required', 'image:allow_svg', 'min:8', 'max:5000'],
             'secret' => ['required', 'string'],
         ];
     }
