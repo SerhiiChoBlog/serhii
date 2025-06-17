@@ -2,5 +2,6 @@
     "cSpell.words": [
         "Korotchaeva",
         "multiavatar"
-    ]
+    ],
+    "intelephense.environment.phpVersion": "8.3.0"
 }
