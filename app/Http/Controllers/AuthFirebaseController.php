@@ -71,7 +71,7 @@ class AuthFirebaseController extends Controller
 
         $image_binary = Http::get($image_url)->body();
 
-        if (!$image_binary || !is_string($image_binary)) {
+        if (!$image_binary) {
             return null;
         }
 
