@@ -11,11 +11,11 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class BookController extends Controller
 {
     /**
-     * @return LengthAwarePaginator<Book>
+     * @return LengthAwarePaginator<int, Book>
      */
     public function __invoke(): LengthAwarePaginator
     {
-        /** @var LengthAwarePaginator<Book> */
+        /** @var LengthAwarePaginator<int, Book> */
         return Book::with('author')
             ->orderByDesc('read_at')
             ->paginate(20);

@@ -26,7 +26,7 @@ use JsonException;
 class PostController extends Controller
 {
     /**
-     * @return LengthAwarePaginator<Post>
+     * @return LengthAwarePaginator<int, Post>
      */
     public function index(): LengthAwarePaginator
     {

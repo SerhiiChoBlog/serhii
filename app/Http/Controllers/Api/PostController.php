@@ -18,9 +18,7 @@ use Illuminate\Support\Collection;
 class PostController extends Controller
 {
     /**
-     * @param IndexRequest $request
-     *
-     * @return Paginator<Post>
+     * @return Paginator<int, Post>
      */
     public function index(IndexRequest $request): Paginator
     {
