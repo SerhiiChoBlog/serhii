@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -52,11 +51,8 @@ class Book extends Model
         return $this->belongsTo(BookAuthor::class, 'book_author_id');
     }
 
-    /**
-     * @return Attribute<string, mixed>
-     */
-    public function prettyReadAt(): Attribute
+    public function getPrettyReadAtAttribute(): string
     {
-        return Attribute::get(fn () => TimeAgo::trans($this->read_at));
+        return TimeAgo::trans($this->read_at);
     }
 }
