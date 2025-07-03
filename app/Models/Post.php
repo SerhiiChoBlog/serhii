@@ -64,7 +64,7 @@ class Post extends Model
     protected $guarded = ['id'];
 
     /**
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $appends = [
         'pretty_created_at',
@@ -80,7 +80,7 @@ class Post extends Model
     ];
 
     /**
-     * @return BelongsToMany<Tag, $this>
+     * @return BelongsToMany<Tag, $this, PostTag>
      */
     public function tags(): BelongsToMany
     {

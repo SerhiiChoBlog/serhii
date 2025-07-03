@@ -76,8 +76,8 @@ class FetchGithubProjects extends Command
             $readme_url = str_replace('{repo}', $project['name'], (string) $readme_url);
             $has_homepage = $project['homepage'] !== '';
 
-            /** @var Project $result */
-            $result = [
+            /** @var array<string, mixed> */
+            return [
                 'name' => $project['name'],
                 'title' => Str::of($project['name'])->replace('-', ' ')->ucfirst(),
                 'url' => $has_homepage ? $project['homepage'] : $project['html_url'],
@@ -89,8 +89,6 @@ class FetchGithubProjects extends Command
                 'updated_at' => date('Y-m-d H:i:s', strtotime($project['pushed_at'])),
                 'created_at' => date('Y-m-d H:i:s', strtotime($project['created_at'])),
             ];
-
-            return $result;
         });
     }
 

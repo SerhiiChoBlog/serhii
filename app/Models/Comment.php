@@ -51,9 +51,6 @@ class Comment extends Model
         'created_at' => 'datetime',
     ];
 
-    /**
-     * @var array<int, string>
-     */
     protected $appends = ['pretty_created_at'];
 
     /**
