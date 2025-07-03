@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -40,7 +39,7 @@ class Series extends Model
     protected $table = 'series';
 
     /**
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $appends = ['read_time'];
 
@@ -54,11 +53,8 @@ class Series extends Model
             ->orderBy('part');
     }
 
-    /**
-     * @return Attribute<float|int|string, never>
-     */
-    public function readTime(): Attribute
+    public function getReadTimeAttribute(): int
     {
-        return Attribute::get(fn () => $this->posts()->sum('read_time'));
+        return (int) $this->posts()->sum('read_time');
     }
 }
