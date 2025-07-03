@@ -34,4 +34,13 @@ class SeriesTest extends TestCase
 
         $this->assertCount(2, $this->series->posts);
     }
+
+    public function testReadTimeDynamicProperty(): void
+    {
+        $post = Post::factory(2)->create(['read_time' => 2]);
+
+        $this->series->posts()->attach($post);
+
+        $this->assertSame(4, $this->series->read_time);
+    }
 }
