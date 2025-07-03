@@ -20,7 +20,7 @@ class SeriesController extends Controller
 
     /**
      * @return array{
-     *     series: LengthAwarePaginator<Series>,
+     *     series: LengthAwarePaginator<int, Series>,
      *     total: int,
      * }
      */

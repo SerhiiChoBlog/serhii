@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     /**
      * @return array{
-     *   users: LengthAwarePaginator<User>,
+     *   users: LengthAwarePaginator<int, User>,
      *   total: int,
      * }
      */
