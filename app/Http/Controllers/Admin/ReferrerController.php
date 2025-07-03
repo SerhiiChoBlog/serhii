@@ -11,10 +11,11 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 class ReferrerController extends Controller
 {
     /**
-     * @return LengthAwarePaginator<Referrer>
+     * @return LengthAwarePaginator<int, Referrer>
      */
     public function index(): LengthAwarePaginator
     {
+        /** @var LengthAwarePaginator<int, Referrer> */
         return Referrer::query()
             ->orderByDesc('hits')
             ->paginate(30);

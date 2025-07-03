@@ -17,11 +17,10 @@ use Intervention\Image\Facades\Image;
 class BookController extends Controller
 {
     /**
-     * @return LengthAwarePaginator<Book>
+     * @return LengthAwarePaginator<int, Book>
      */
     public function index(): LengthAwarePaginator
     {
-        /** @var LengthAwarePaginator<Book> */
         return Book::with('author')->orderByDesc('read_at')->paginate(20);
     }
 

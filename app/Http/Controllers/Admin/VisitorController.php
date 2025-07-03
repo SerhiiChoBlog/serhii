@@ -12,7 +12,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class VisitorController extends Controller
 {
     /**
-     * @return LengthAwarePaginator<Visitor>
+     * @return LengthAwarePaginator<int, Visitor>
      */
     public function index(IndexRequest $request): LengthAwarePaginator
     {

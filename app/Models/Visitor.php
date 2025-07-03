@@ -17,8 +17,8 @@ use Illuminate\Support\Collection;
  * @property string|null $country
  * @property string|null $city
  * @property string|null $code
- * @property Collection<SocialShare> $socialShares
- * @property Collection<PostView> $postViews
+ * @property Collection<int, SocialShare> $socialShares
+ * @property Collection<int, PostView> $postViews
  * @property boolean $is_blocked
  * @property boolean $is_robot
  */
