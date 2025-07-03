@@ -21,4 +21,14 @@ class BookTest extends TestCase
 
         $this->assertInstanceOf(BookAuthor::class, $book->author);
     }
+
+    public function testPrettyReadAtDynamicProperty(): void
+    {
+        $book = Book::factory()->create([
+            'book_author_id' => BookAuthor::factory(),
+            'read_at' => now()->subHour(),
+        ]);
+
+        $this->assertSame('1 hour ago', $book->pretty_read_at);
+    }
 }
