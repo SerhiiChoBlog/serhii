@@ -4,8 +4,7 @@
 @endphp
 
 <p>
-Welcome, my name is <strong class="inline-flex items-center gap-1">Sergey Chornenkyi
-<tip content="Serhii Cho is for short" :icon="true" /></strong>,
+Welcome, my name is <strong class="inline-flex items-center gap-1">Serhii Cho</strong>,
 a passionate full-stack developer with <strong class="inline-flex items-center gap-1">{{ $yearsExperience }} years
 <tip content="To be precise: {{ $fullExperience }}" :icon="true" /></strong>
 of experience building web applications and software solutions. Throughout my career, I've embraced challenging projects
