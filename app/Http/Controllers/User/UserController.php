@@ -48,9 +48,8 @@ class UserController extends Controller
 
         abort_if(!$user, 401);
 
-        // TODO: implement
-        // Auth::logout();
-        // $user->delete();
+        Auth::logout();
+        $user->delete();
 
         return back();
     }
