@@ -20,6 +20,7 @@ const profileUrl =
 
         <menu-items>
             <menu-item @click="redirectTo(profileUrl)">Profile</menu-item>
+            <menu-item @click="redirectTo('/users/settings')">Settings</menu-item>
             <menu-item @click="logout">Logout</menu-item>
         </menu-items>
     </Menu>

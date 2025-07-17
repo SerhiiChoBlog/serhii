@@ -1,7 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --host",
         "build": "vite build && mv public/build/.vite/manifest.json public/build/manifest.json"
     },
     "devDependencies": {
