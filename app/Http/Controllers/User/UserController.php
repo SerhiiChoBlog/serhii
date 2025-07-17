@@ -35,11 +35,9 @@ class UserController extends Controller
 
     public function settings(): View
     {
-        $user = user();
-
         abort_if(!$user, 401);
 
-        return view('users.settings', compact('user'));
+        return view('users.settings');
     }
 
     public function destroy(): RedirectResponse
