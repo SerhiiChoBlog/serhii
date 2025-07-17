@@ -30,4 +30,13 @@ class UserController extends Controller
 
         return view('users.show', compact('user'));
     }
+
+    public function settings(): View
+    {
+        $user = user();
+
+        abort_if(!$user, 401);
+
+        return view('users.settings', compact('user'));
+    }
 }
