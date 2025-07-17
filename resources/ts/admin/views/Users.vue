@@ -49,9 +49,9 @@ function loadMoreUsers(): void {
 
 <template>
     <div class="container max-w-7xl">
-        <PageTitle
-            >Users <b v-if="totalUsers">{{ totalUsers }}</b></PageTitle
-        >
+        <PageTitle>
+            Users <b v-if="totalUsers">{{ totalUsers }}</b>
+        </PageTitle>
 
         <Spinner v-if="loading" />
 
