@@ -64,7 +64,7 @@ window.addEventListener('scroll', () => {
             </template>
 
             <BodyRow v-for="(referrer, index) in referrers" :key="referrer.id">
-                <BodyDetail>{{ ++index }}</BodyDetail>
+                <BodyDetail>{{ index + 1 }}</BodyDetail>
                 <BodyDetail>{{ referrer.id }}</BodyDetail>
                 <BodyDetail>
                     <a :href="`https://${referrer.site}`" target="_blank" class="underline">
