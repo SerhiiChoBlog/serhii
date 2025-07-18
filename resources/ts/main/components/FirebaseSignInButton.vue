@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { User } from '@shared/types/models'
 import type { FirebaseSignUpRequest } from '@shared/types'
-import firebase from 'firebase/app'
 import { ref } from 'vue'
 import getFirebaseUser from '@/firebase/getFirebaseUser'
+import firebaseAuth from 'firebase/auth'
 import getGoogleProvider from '@/firebase/getGoogleProvider'
 import getGithubProvider from '@/firebase/getGithubProvider'
 import showToast from '@shared/modules/showToast'
@@ -26,7 +26,7 @@ function signIn(): void {
 
     isLoading.value = true
 
-    let provider: firebase.auth.AuthProvider | null = null
+    let provider: firebaseAuth.AuthProvider | null = null
 
     if (serviceName === 'github') {
         provider = getGithubProvider()
