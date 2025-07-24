@@ -55,8 +55,7 @@ function toggleLike(): void {
         />
 
         <span>
-            {{ comment.likes_count }} like
-            {{ comment.likes_count === 1 ? '' : 's' }}
+            {{ comment.likes_count }} like{{ comment.likes_count === 1 ? '' : 's' }}
         </span>
     </control>
 </template>
