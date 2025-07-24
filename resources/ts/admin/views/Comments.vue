@@ -58,20 +58,20 @@ function toggleApprovingComment(c: Comment): void {
                     </button>
                 </BodyDetail>
                 <BodyDetail>
-                    <a :href="`/posts/${comment.post.slug}`" target="_blank">
-                        {{ comment.post.title }}
+                    <a :href="`/posts/${comment.post?.slug}`" target="_blank">
+                        {{ comment.post?.title }}
                     </a>
                 </BodyDetail>
                 <BodyDetail>
-                    <a :href="`/@${comment.user.slug}`" rel="noreferrer" class="flex items-center gap-3">
+                    <a :href="`/@${comment.user?.slug}`" rel="noreferrer" class="flex items-center gap-3">
                         <img
                             class="inline-block w-10 h-10 rounded-full shadow-md"
-                            :src="`/storage/avatars/${comment.user.avatar}`"
-                            :alt="comment.user.name"
+                            :src="`/storage/avatars/${comment.user?.avatar}`"
+                            :alt="comment.user?.name"
                         />
 
                         <div>
-                            <h2>{{ comment.user.name }}</h2>
+                            <h2>{{ comment.user?.name }}</h2>
                             <h3>Visitor {{ comment.visitor_id || 'no' }}</h3>
                         </div>
                     </a>
@@ -90,7 +90,7 @@ function toggleApprovingComment(c: Comment): void {
                 </BodyDetail>
                 <BodyDetail>
                     <router-link
-                        :to="{ name: 'ban-user', params: { slug: comment.user.slug } }"
+                        :to="{ name: 'ban-user', params: { slug: comment.user?.slug } }"
                         class="transition-transform text-red-600 hover:scale-125"
                     >
                         <i class="fas fa-ban"></i>
