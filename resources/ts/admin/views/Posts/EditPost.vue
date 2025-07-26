@@ -248,7 +248,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
 
                     <div>
                         <div
-                            class="flex flex-col justify-center fixed right-[20px] top-20 z-[9999] space-y-2"
+                            class="flex flex-col justify-center fixed right-[20px] top-20 z-[9999] space-y-2 opacity-85"
                         >
                             <MainButton class="bg-green-500 hover:bg-green-600">
                                 <i
