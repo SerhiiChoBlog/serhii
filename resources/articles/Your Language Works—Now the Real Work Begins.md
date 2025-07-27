@@ -1,5 +1,5 @@
 ## Introduction
-**Are you currently working on a new programming language? Wondering how to make it more accessible to others? Wonder what to do next?** I hope you wrote documentation for it because without the documentation, not many people can use your language. Not only that, but users expect this documentation to be easily searchable and accessible. One `README.md` file on GitHub is not sufficient. Thankfully, tools like [VitePress](https://vitepress.dev/ "Link to the VitePress website") and [Docusaurus](https://docusaurus.io/ "Link to the VitePress website") make it relatively easy to write documentation websites.
+**Are you currently working on a new programming language? Wondering how to make it more accessible to others? Wonder what to do next?** I hope you wrote documentation for it because without the documentation, not many people can use your language. Not only that, but users expect this documentation to be easily searchable and accessible. One `README.md` file on GitHub is not sufficient. Thankfully, tools like [VitePress](https://vitepress.dev/ "Link to the VitePress website") and [Docusaurus](https://docusaurus.io/ "Link to the Docusaurus website") make it relatively easy to write documentation websites.
 
 ![VitePress and Docusaurus](https://serhii.io/storage/posts/content/your-language-works-now-the-real-work-begins-1753513711.png)
 
@@ -75,13 +75,41 @@ Parsing `@if(true) { @html('<span>Text</span>') }` is so much easier than parsin
 If you have something similar, you will have to deal with the same issues because there are not many resources online about this topic. But no matter how elegant your language design, it's worthless without documentation that makes it accessible. Let's discuss how to create docs that users will love.
 
 ## 2. Writing Documentation
-**I recommend writing documentation alongside your language—not after.** I find it to be a lot easier because you document structures first, and implement it afterward. Writing docs first forces you to clarify designs upfront—giving you a reference to guide implementation.
+**I recommend writing documentation alongside your language—not after.** I find it to be a lot easier because you document programming structures first and implement them afterward. Writing docs first forces you to clarify designs upfront—giving you a reference to guide implementation.
 
-**Documentation is crucial for adoption. It’s not just about explaining syntax; it’s about guiding users through your language's features, error handling, best practices, and common pitfalls.** For example, documenting how `@if` handles edge cases (like `@if(nil)`) before implementing it prevents messy surprises later.
+**Documentation is crucial for adoption. It’s not just about explaining syntax; it’s about guiding users through your language's features, error handling, best practices, and common pitfalls.**
 
-I'm not writing this to make myself look better than everybody else, I'm trying to stick with this philosophy myself, since I started writing Textwire. I wrote [documentation for Textwire](https://textwire.github.io/ "Link to Textwire documentaion") as I was building it, which helped me to keep track of what I was doing and why. It also made it easier to explain the language to others.
+For example, documenting how `@if` handles edge cases (like `@if(nil)`, `@if("")`, `@if([])`) before implementing it prevents messy surprises later.
 
-Even though I don't have thousands of users, I still have a few people who appreciate the documentation. It’s not perfect, but it’s a work in progress. I’m constantly updating it as I extend the Textwire language and add new features. 
+> Documentation is a love letter that you write to your future self.
+> ###### Damian Conway (a computer scientist)
+> ![Damian Conway](https://serhii.io/storage/posts/content/your-language-works-now-the-real-work-begins-1753606371.jpg)
 
-## TODO: NOTES
+**Effective documentation transcends syntax.** It provides:  
+- Best practices and idioms
+- Clear error handling guidance
+- Common pitfalls to avoid
+- A reference for the future self
+
+The [Textwire docs](https://textwire.github.io/ "Link to the Textwire documentation") have proven invaluable for both users and myself, serving as both reference and design compass during development.
+
+**I recommend using documentation generators like:**
+- [VitePress](https://vitepress.dev/ "Link to the VitePress website") (my choice for its simplicity)
+- [Docusaurus](https://docusaurus.io/ "Link to the Docusaurus website") (better for complex docs)
+
+![VitePress and Docusaurus](https://serhii.io/storage/posts/content/your-language-works-now-the-real-work-begins-1753614151.webp)
+
+Both generate static sites from Markdown, which is easy to read and write.
+
+**You can then upload your docs to GitHub Pages, which will give you a free subdomain.** For personal projects, GitHub Pages gives you `torvalds.github.io/linux`, but an organization account offers cleaner URLs like `linux.github.io`. As an option, you can attach your domain to it, which is not difficult to do, and there are plenty of resources online that explain how to do it.
+
+Note. Even basic docs put you ahead of most language projects because most projects have only a `README.md` file in their repo. For small projects (like [Tiny Logger](https://github.com/tiny-logger/tiny-logger "Link to GitHub repo tiny-logger")) this is enough, but for larger projects you should have a dedicated documentation website.
+
+But adoption requires more—starting with editor support. Let’s dive into syntax highlighting.
+
+## 3. Syntax Highlighting
+
+
+## TODO
 - Make a note that my use case was very different from what the usual language syntax is.
+- Remove ids from h2 and h6 headers from the converted article
