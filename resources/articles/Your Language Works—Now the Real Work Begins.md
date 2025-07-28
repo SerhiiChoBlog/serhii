@@ -108,7 +108,9 @@ Note. Even basic docs put you ahead of most language projects because most proje
 But adoption requires more—starting with editor support. Let’s dive into syntax highlighting.
 
 ## 3. Syntax Highlighting
+**Syntax highlighting isn’t just cosmetic—it’s essential for code comprehension and productivity.** It helps users quickly understand code structure, making it easier to spot errors and navigate complex files. Without syntax highlighting, your language feels like a wall of text—intimidating and difficult to read.
 
+You can still use any language without syntax highlighting; in fact, developers used many languages without syntax highlighting for years. Nowadays, **users expect syntax highlighting to be available for any language they use**. So how do you implement it? Let’s compare TextMate grammars (regex-based) versus Tree-sitter (AST-based).
 
 ## TODO
 - Make a note that my use case was very different from what the usual language syntax is.
