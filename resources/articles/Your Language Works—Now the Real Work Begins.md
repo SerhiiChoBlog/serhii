@@ -99,7 +99,7 @@ The [Textwire docs](https://textwire.github.io/ "Link to the Textwire documentat
 
 ![VitePress and Docusaurus](https://serhii.io/storage/posts/content/your-language-works-now-the-real-work-begins-1753614151.webp)
 
-Both generate static sites from Markdown, which is easy to read and write.
+Both generate static sites from Markdown, which is easy to read and write. Markdown keeps docs version-controllable and collaborative, allowing you to write in a familiar format. You can use any text editor to write Markdown, and it’s easy to convert to HTML.
 
 **You can then upload your docs to GitHub Pages, which will give you a free subdomain.** For personal projects, GitHub Pages gives you `torvalds.github.io/linux`, but an organization account offers cleaner URLs like `linux.github.io`. As an option, you can attach your domain to it, which is not difficult to do, and there are plenty of resources online that explain how to do it.
 
