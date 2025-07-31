@@ -1,9 +1,9 @@
 .project-content p code,
-.project-content ul li code,
-.project-content ol li code,
+.project-content ul li > code,
+.project-content ol li > code,
 .post-content p code,
-.post-content ul li code,
-.post-content ol li code {
+.post-content ul li > code,
+.post-content ol li > code {
     @apply bg-inline-code rounded-md px-1 mx-1 my-0 font-light text-sm text-font before:content-none after:content-none inline-block break-all;
 }
 
