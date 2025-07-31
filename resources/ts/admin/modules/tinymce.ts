@@ -31,6 +31,7 @@ export const tinymceConfig: EditorOptions = {
         { text: 'Go', value: 'go' },
         { text: 'Bash', value: 'bash' },
         { text: 'Java', value: 'java' },
+        { text: 'Lua', value: 'lua' },
         { text: 'Text', value: 'text' },
         { text: 'Ruby', value: 'ruby' },
         { text: 'CSS', value: 'css' },
