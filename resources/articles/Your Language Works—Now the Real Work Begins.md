@@ -1,4 +1,4 @@
-#s Introduction
+## Introduction
 **Are you currently working on a new programming language? Wondering how to make it more accessible to others? Wonder what to do next?** I hope you wrote documentation for it because without the documentation, not many people can use your language. Not only that, but users expect this documentation to be easily searchable and accessible. One `README.md` file on GitHub is not sufficient. Thankfully, tools like [VitePress](https://vitepress.dev/ "Link to the VitePress website") and [Docusaurus](https://docusaurus.io/ "Link to the Docusaurus website") make it relatively easy to write documentation websites.
 
 ![VitePress and Docusaurus](https://serhii.io/storage/posts/content/your-language-works-now-the-real-work-begins-1753513711.png)
@@ -31,16 +31,26 @@ I'm not going into small details on how to build your programming language; this
 
 Tip. I have an article, [Writing Your Own Lexer with Simple Steps](/posts/writing-your-own-lexer-with-simple-steps "Link to the article"), which is very popular on this platform. Check it out if you are interested in that.
 
-## Why Ecosystem is Important
-**An ecosystem is crucial for the success of your programming language.** It’s not just about writing code; it’s about creating a community and tools that make your language more accessible and usable. Without an ecosystem, your language is just a set of syntax rules—hard to learn and use.
+## Why Ecosystems Are Important
+**No language survives on syntax alone—it thrives through its ecosystem.** It’s not just about writing code; it’s about creating a community and tools that make your language more accessible and usable. Without an ecosystem, your language is just a set of syntax rules—challenging to learn and use.
 
-One of the good examples is success of PHP, which quickly took off because it had an ecosystem build around it. Rasmus Lerdorf, the creator of PHP, said in his talk at phpCE in 2018:
+A good example is PHP’s success, which took off thanks to a strong ecosystem built around it. Rasmus Lerdorf, the creator of PHP, said in his [talk at phpCE in 2018](https://youtu.be/SvEGwtgLtjA?si=2_TtH_uJp6LF3LoL&t=699 "Link to a YouTube video"):
 
 > I and we, later on when the project became bigger, we spent a lot of time on ecosystem and making sure that everything worked together and that we could scale up and also more importantly scale down and make it really really accessible to new users coming to the language.
 > ###### Rasmus Lerdorf (the creator of PHP)
 > ![Rasmus Lerdorf](https://serhii.io/storage/posts/content/how-to-make-your-software-developer-job-more-enjoyable-7.png)
 
+As he later emphasized in another talk, "The ecosystem is what made PHP successful at the time". Modern examples like Swift and .NET are more than just languages or runtimes, they are ecosystems with libraries, frameworks, and tools that make them more usable.
 
+**Technically revolutionary languages like ALGOL 68 still failed** because:
+
+- **No standard libraries** (required OS-specific implementations)
+- **Compiler disagreements** (split the tiny community)
+- **Almost no tooling** (no debuggers, package managers, or IDE support)
+
+Despite innovations like parallel processing, ALGOL 68’s fragmented tooling and lack of standard libraries made it impractical compared to rivals like C or Fortran.
+
+While we're focusing on the minimal viable ecosystem here, these lessons scale - whether you're building a niche Domain-Specific Language (DSL) or the next Rust.
 
 ## Writing a Language Is Tough
 Designing a programming language is inherently complex. There is a reason why people who work on programming languages are usually programmers with years of experience. **Building a programming language is an arduous and time-consuming task.** One overlooked challenge: error messages with proper line numbers. A bad parser error can frustrate users for years.
@@ -271,9 +281,14 @@ VSCode, surprisingly, was a lot easier to implement. The VSCode extension API is
 Anyway, let's look back at everything we've discussed and summarize the key points. Plus, I want to give you my conclusion on this topic.
 
 ## Conclusion
-I've started with writing a language and ended up with writing so many tools around it that it took more time than I expected. **Building a programming language is not just about writing code; it’s about creating an ecosystem that makes your language more usable and accessible.**
+What started as a language design challenge became **a lesson in ecosystem building**—where documentation, tooling, and editor support consumed far more time than the core interpreter.
 
-If you build a community around your language before building all the tools around it, you will have a better chance of success. The community will help you with feedback, bug reports, and feature requests. It will also help you to spread the word about your language and atttact more users.
+**What I've discovered throughout that time is that building a programming language is not just about writing code; it’s about creating an ecosystem that makes your language more usable and accessible.**
 
-**Resources:**
-- [Rasmus Lerdorf: PHP in 2018 – phpCE 2018](https://youtu.be/SvEGwtgLtjA?si=2_TtH_uJp6LF3LoL&t=699 "Link to a YouTube video")
+If you build a community around your language before building all the surrounding tools, you will have a better chance of success. The community will help you with feedback, bug reports, feature requests, spreading the word about your language, and attracting more users.
+
+If your language is great and people like it, they will help you with building the surrounding ecosystem. But if your language is for a small niche, you might not need a community at all. In that case, you can just build the tools yourself and use them for your projects.
+
+That's what I did with Textwire. I built the tools myself and used them for my projects. I didn't have a community, but I still managed to build a small ecosystem around my language. Likewise, I hope this article will help you to build your ecosystem around your language and make it more usable and accessible.
+
+This is your invitation. Whether you’re building for thousands or just your toolbox, remember: **the ecosystem is the product**. Now go make something that, at least, you will enjoy using.
