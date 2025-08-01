@@ -13,8 +13,9 @@ export default (userSlug: string) => {
     onMounted(fetchUser)
 
     function fetchUser(): void {
-        if (!userSlug)
+        if (!userSlug) {
             return
+        }
 
         loading.value = true
 
@@ -27,8 +28,9 @@ export default (userSlug: string) => {
     }
 
     function ban(): void {
-        if (!user.value)
+        if (!user.value) {
             return
+        }
 
         const msg = user.value.ban
             ? 'Are you sure you want to BAN this user?'
