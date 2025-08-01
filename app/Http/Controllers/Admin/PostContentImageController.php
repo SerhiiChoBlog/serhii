@@ -7,10 +7,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostContentImage;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use ZipArchive;
 
 class PostContentImageController extends Controller
 {
@@ -45,6 +48,40 @@ class PostContentImageController extends Controller
         $post->touch();
 
         return url("/storage/posts/content/{$image_name}");
+    }
+
+    public function export(Post $post): Response
+    {
+        $post->load('images');
+
+        $paths = $post->images->map(function (PostContentImage $image) {
+            return storage_path('/app' . $image->path);
+        });
+
+        $zip_path = public_path('post-images.zip');
+        $zip = new ZipArchive();
+
+        if (file_exists($zip_path)) {
+            unlink($zip_path);
+        }
+
+        if (!$zip->open($zip_path, ZipArchive::CREATE)) {
+            return response('', 500);
+        }
+
+        foreach ($paths as $path) {
+            $file_name = basename($path);
+
+            try {
+                $zip->addFile($path, $file_name);
+            } catch (Exception $e) {
+                return response("File {$path} cannot be added. Exception: {$e->getMessage()}", 500);
+            }
+        }
+
+        $zip->close();
+
+        return response($zip_path);
     }
 
     public function destroy(PostContentImage $image): void
