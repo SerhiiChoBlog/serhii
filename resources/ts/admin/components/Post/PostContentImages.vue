@@ -5,12 +5,13 @@ import axios from 'axios'
 import handleError from '@admin/modules/handleError'
 import copy from 'copy-to-clipboard'
 import showToast from '@shared/modules/showToast'
+import useExportPostImages from '@admin/composables/useExportPostImages'
+import useImportPostImages from '@admin/composables/useImportPostImages'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import DataTable from '@admin/components/DataTable/DataTable.vue'
 import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
-import useExportPostImages from '@admin/composables/useExportPostImages'
 import FileInput from '@admin/components/Form/FileInput.vue'
 
 const emit = defineEmits<{
@@ -20,6 +21,7 @@ const emit = defineEmits<{
 
 const { post } = defineProps<{ post: Post }>()
 const { downloadImages, exportLoading } = useExportPostImages(post.id)
+const { importImages, importLoading } = useImportPostImages(post.id)
 const loading = ref<boolean>(false)
 
 function submitImage(e: Event): void {
@@ -75,30 +77,18 @@ function deleteImage(id: number): void {
             <BodyRow v-if="post.images" v-for="image in post.images" :key="image.id">
                 <BodyDetail>
                     <a :href="image.uri" target="_blank" rel="noreferrer">
-                        <img
-                            :src="image.uri"
-                            alt="Post image"
-                            width="100"
-                            class="rounded-md shadow-sm"
-                        />
+                        <img :src="image.uri" alt="Post image" width="100" class="rounded-md shadow-sm" />
                     </a>
                 </BodyDetail>
 
                 <BodyDetail>
-                    <input
-                        type="text"
-                        :value="'https://serhii.io' + image.uri"
-                        class="border border-border bg-transparent text-font rounded-md p-2 w-full"
-                        disabled
-                    />
+                    <input type="text" :value="'https://serhii.io' + image.uri"
+                        class="border border-border bg-transparent text-font rounded-md p-2 w-full" disabled />
                 </BodyDetail>
 
                 <BodyDetail>
                     <form @submit.prevent="deleteImage(image.id)">
-                        <MainButton
-                            type="submit"
-                            class="bg-red-500 hover:bg-red-600"
-                        >
+                        <MainButton type="submit" class="bg-red-500 hover:bg-red-600">
                             <i class="fas fa-trash mr-2"></i>
                             Delete
                         </MainButton>
@@ -107,11 +97,7 @@ function deleteImage(id: number): void {
             </BodyRow>
         </DataTable>
 
-        <form
-            @submit.prevent="submitImage"
-            enctype="multipart/form-data"
-            class="mt-6 flex justify-between gap-3"
-        >
+        <form @submit.prevent="submitImage" enctype="multipart/form-data" class="mt-6 flex justify-between gap-3">
             <div>
                 <div class="inline-block mr-2">
                     <FileInput name="image" :required="true">
@@ -120,34 +106,24 @@ function deleteImage(id: number): void {
                 </div>
 
                 <MainButton class="ml-3" :disabled="loading">
+                    <i :class="loading ? 'fa-spinner animate-spin' : 'fa-upload'" class="fas mr-2"></i>
                     Upload
                 </MainButton>
             </div>
 
-            <div class="space-y-3">
-                <MainButton
-                    @click="downloadImages"
-                    class="ml-3 !bg-gray-500 hover:!bg-gray-600"
-                    :disabled="exportLoading"
-                >
-                    <i
-                        :class="
-                            exportLoading
-                                ? 'fa-spinner animate-spin'
-                                : 'fa-arrow-down'
-                        "
-                        class="fas mr-2"
-                    ></i>
+            <div class="flex flex-col lg:flex-row gap-5 items-center">
+                <MainButton @click="downloadImages" class="ml-3 !bg-gray-500 hover:!bg-gray-600"
+                    :disabled="exportLoading">
+                    <i :class="exportLoading
+                        ? 'fa-spinner animate-spin'
+                        : 'fa-arrow-down'
+                        " class="fas mr-2"></i>
                     Export Images
                 </MainButton>
 
-                <MainButton class="ml-3 !bg-gray-500 hover:!bg-gray-600">
-                    <i
-                        :class="loading ? 'fa-spinner animate-spin' : 'fa-arrow-up'"
-                        class="fas mr-2"
-                    ></i>
-                    Import Images
-                </MainButton>
+                <FileInput name="import-images" :required="true" accept=".zip" @chosen="importImages">
+                    {{ importLoading ? 'Importing images...' : 'Choose images archive...' }}
+                </FileInput>
             </div>
         </form>
     </div>
