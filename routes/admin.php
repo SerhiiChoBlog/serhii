@@ -31,6 +31,7 @@ Route::prefix('ajax')->name('admin.')->group(function () {
     Route::resource('post-publications', PostPublicationController::class)->only('index');
 
     Route::prefix('post-content-images')->controller(PostContentImageController::class)->group(function () {
+        Route::post('{post}/export', 'export');
         Route::post('{post}', 'store');
         Route::delete('{image}', 'destroy');
     });
