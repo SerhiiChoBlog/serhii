@@ -11,6 +11,7 @@ import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
 import useExportPostImages from '@admin/composables/useExportPostImages'
+import FileInput from '@admin/components/Form/FileInput.vue'
 
 const emit = defineEmits<{
     (e: 'uploaded'): void
@@ -113,23 +114,12 @@ function deleteImage(id: number): void {
         >
             <div>
                 <div class="inline-block mr-2">
-                    <label
-                        class="border-4 border-gray-500 text-font cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-700 transition-colors"
-                    >
-                        <input class="hidden" type="file" name="image" required />
-                        <span>
-                            {{
-                                loading ? 'Uploading image...' : 'Choose an image...'
-                            }}
-                        </span>
-                    </label>
+                    <FileInput name="image" :required="true">
+                        {{ loading ? 'Uploading image...' : 'Choose an image...' }}
+                    </FileInput>
                 </div>
 
                 <MainButton class="ml-3" :disabled="loading">
-                    <i
-                        :class="loading ? 'fa-spinner animate-spin' : 'fa-upload'"
-                        class="fas mr-2"
-                    ></i>
                     Upload
                 </MainButton>
             </div>
