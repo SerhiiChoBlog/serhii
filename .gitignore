@@ -33,3 +33,4 @@ package-lock.json
 composer.lock
 .DS_Store
 !.gitkeep
+post-images.zip

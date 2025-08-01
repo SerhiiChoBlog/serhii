@@ -10,6 +10,7 @@ import DataTable from '@admin/components/DataTable/DataTable.vue'
 import BodyDetail from '@admin/components/DataTable/BodyDetail.vue'
 import BodyRow from '@admin/components/DataTable/BodyRow.vue'
 import HeadDetail from '@admin/components/DataTable/HeadDetail.vue'
+import useExportPostImages from '@admin/composables/useExportPostImages'
 
 const emit = defineEmits<{
     (e: 'uploaded'): void
@@ -17,6 +18,7 @@ const emit = defineEmits<{
 }>()
 
 const { post } = defineProps<{ post: Post }>()
+const { downloadImages, exportLoading } = useExportPostImages(post.id)
 const loading = ref<boolean>(false)
 
 function submitImage(e: Event): void {
@@ -49,7 +51,7 @@ function deleteImage(id: number): void {
 
     axios
         .delete(`/admin/ajax/post-content-images/${id}`)
-        .then(resp => {
+        .then(_ => {
             showToast({ text: 'Image has been removed' })
             emit('removed')
         })
@@ -107,26 +109,56 @@ function deleteImage(id: number): void {
         <form
             @submit.prevent="submitImage"
             enctype="multipart/form-data"
-            class="mt-6"
+            class="mt-6 flex justify-between gap-3"
         >
-            <div class="inline-block mr-2">
-                <label
-                    class="border-4 border-gray-500 text-font cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-700 transition-colors"
-                >
-                    <input class="hidden" type="file" name="image" required />
-                    <span>{{
-                        loading ? 'Uploading image...' : 'Choose an image...'
-                    }}</span>
-                </label>
+            <div>
+                <div class="inline-block mr-2">
+                    <label
+                        class="border-4 border-gray-500 text-font cursor-pointer border-dashed px-5 py-3 min-w-[250px] uppercase block text-center hover:border-gray-700 transition-colors"
+                    >
+                        <input class="hidden" type="file" name="image" required />
+                        <span>
+                            {{
+                                loading ? 'Uploading image...' : 'Choose an image...'
+                            }}
+                        </span>
+                    </label>
+                </div>
+
+                <MainButton class="ml-3" :disabled="loading">
+                    <i
+                        :class="loading ? 'fa-spinner animate-spin' : 'fa-upload'"
+                        class="fas mr-2"
+                    ></i>
+                    Upload
+                </MainButton>
             </div>
 
-            <MainButton class="ml-3">
-                <i
-                    :class="loading ? 'fa-spinner animate-spin' : 'fa-upload'"
-                    class="fas mr-2"
-                ></i>
-                Upload
-            </MainButton>
+            <div class="space-y-3">
+                <MainButton
+                    @click="downloadImages"
+                    class="ml-3 !bg-gray-500 hover:!bg-gray-600"
+                    :disabled="exportLoading"
+                >
+                    <i
+                        :class="
+                            exportLoading
+                                ? 'fa-spinner animate-spin'
+                                : 'fa-arrow-down'
+                        "
+                        class="fas mr-2"
+                    ></i>
+                    Export Images
+                </MainButton>
+
+                <MainButton class="ml-3 !bg-gray-500 hover:!bg-gray-600">
+                    <i
+                        :class="loading ? 'fa-spinner animate-spin' : 'fa-arrow-up'"
+                        class="fas mr-2"
+                    ></i>
+                    Import Images
+                </MainButton>
+            </div>
         </form>
     </div>
 </template>
