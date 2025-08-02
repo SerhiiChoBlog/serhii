@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostContentImage;
 use Exception;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
@@ -49,6 +50,30 @@ class PostContentImageController extends Controller
 
         return url("/storage/posts/content/{$image_name}");
     }
+
+    public function import(Post $post, Request $request): Response
+    {
+        $request->validate(['file' => ['required', 'extensions:zip']]);
+
+        /** @var UploadedFile */
+        $zip_file = $request->file;
+        $zip = new ZipArchive();
+
+        $zip_file->move(storage_path(), 'temp.zip');
+        $local_zip_path = storage_path('temp.zip');
+        $zip->open($local_zip_path);
+
+        // TODO: attach files to a post
+        return;
+
+        $zip->extractTo(storage_path(''));
+        $zip->close();
+
+        unlink($local_zip_path);
+
+        return response('Images are imported!');
+    }
+
 
     public function export(Post $post): Response
     {
