@@ -14,6 +14,7 @@ export default (postId: number) => {
 
         try {
             const uri = `/admin/ajax/post-content-images/${postId}/import`
+
             const resp = await axios.postForm<string>(uri, formData)
 
             showToast({ text: resp.data })
