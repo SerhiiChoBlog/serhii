@@ -58,17 +58,22 @@ class PostContentImageController extends Controller
         $local_zip_path = storage_path('temp.zip');
         $zip->open($local_zip_path);
 
-        // TODO: attach files to a post
-        return;
+        try {
+            $temp_dir_path = $this->createTempDir();
+            $zip->extractTo($temp_dir_path);
 
-        $zip->extractTo(storage_path(''));
+            $this->attachFilesToPost($post, $temp_dir_path);
+        } catch (Exception $e) {
+            return response("Error: {$e->getMessage()}");
+        }
+
         $zip->close();
 
         unlink($local_zip_path);
+        rmdir($temp_dir_path);
 
         return response('Images are imported!');
     }
-
 
     public function export(Post $post): Response
     {
@@ -117,5 +122,43 @@ class PostContentImageController extends Controller
         $post_slug = Str::slug($post->title);
 
         return $series ? "{$series->slug}-{$post_slug}" : $post_slug;
+    }
+
+    private function createTempDir(): string
+    {
+        $path = storage_path(sprintf("temp-%s", time()));
+
+        if (file_exists($path)) {
+            throw new Exception("Directory already exists: {$path}");
+        }
+
+        $is_created = mkdir($path, 0755, true);
+
+        if (!$is_created) {
+            throw new Exception("Failed to create temporary directory: {$path}");
+        }
+
+        return $path;
+    }
+
+    private function attachFilesToPost(Post $post, string $temp_dir_path): void
+    {
+        $destination = storage_path('app/public/posts/content');
+        $file_names = array_filter(scandir($temp_dir_path), function (string $name) {
+            return !in_array($name, ['..', '.', '.gitkeep'], true);
+        });
+
+        foreach ($file_names as $name) {
+            $move_from = "{$temp_dir_path}/{$name}";
+            $move_to = "{$destination}/{$name}";
+
+            if (file_exists($move_to)) {
+                unlink($move_to);
+            }
+
+            rename($move_from, $move_to);
+
+            $post->createImage($name);
+        }
     }
 }
