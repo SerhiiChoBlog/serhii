@@ -164,6 +164,14 @@ class Post extends Model
         return $this->belongsToMany(Keyword::class);
     }
 
+    public function createImage(string $image_name): void
+    {
+        $this->images()->create([
+            'uri' => "/storage/posts/content/{$image_name}",
+            'path' => "/public/posts/content/{$image_name}",
+        ]);
+    }
+
     public static function calculateEstimatedReadingTime(string $content): int
     {
         $content = strip_tags($content);
