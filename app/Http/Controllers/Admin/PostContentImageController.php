@@ -40,12 +40,7 @@ class PostContentImageController extends Controller
         }
 
         $image->move($path, $image_name);
-
-        $post->images()->create([
-            'uri' => "/storage/posts/content/{$image_name}",
-            'path' => "/public/posts/content/{$image_name}",
-        ]);
-
+        $post->createImage($image_name);
         $post->touch();
 
         return url("/storage/posts/content/{$image_name}");
