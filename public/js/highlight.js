@@ -3,7 +3,7 @@
   (c) 2006-2025 Josh Goebel <hello@joshgoebel.com> and other contributors
   License: BSD-3-Clause
  */
-var hljs = function () {
+var hljs = function() {
     "use strict"; function e(t) {
         return t instanceof Map ? t.clear = t.delete = t.set = () => {
             throw Error("map is read-only")
@@ -1757,6 +1757,6 @@ var hljs = function () {
     })(); hljs.registerLanguage("yaml", e)
 })();
 
-document.querySelectorAll('pre code').forEach(function (block) {
+document.querySelectorAll('pre code').forEach(function(block) {
     hljs.highlightElement(block)
 })

@@ -24,11 +24,11 @@ function fetchGoals(): void {
 
     <Spinner v-if="loading" />
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
+    <div class="flex flex-col md:flex-row justify-center gap-10">
         <div
             v-for="goal in goals"
             :key="goal.title"
-            class="w-52 aspect-square border-4 border-dashed rounded-full flex items-center justify-center mx-auto"
+            class="w-52 aspect-square border-4 border-dashed rounded-full flex items-center justify-center"
             :class="goal.min >= goal.max ? 'border-green-500' : 'border-border'"
         >
             <div class="text-center">
