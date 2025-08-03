@@ -24,17 +24,13 @@ const { downloadImages, exportLoading } = useExportPostImages(post.id)
 const { importImages, importLoading } = useImportPostImages(post.id)
 const loading = ref<boolean>(false)
 
-function submitImage(e: Event): void {
+function submitImage(file: File): void {
     loading.value = true
 
-    const form = e.target! as HTMLFormElement
     const formData = new FormData()
-    const files = form.elements['image']!.files as FileList
     const params = { headers: { 'content-type': 'multipart/form-data' } }
 
-    if (files.length === 0) return
-
-    formData.append('image', files[0])
+    formData.append('image', file)
 
     axios
         .post<string>(`/admin/ajax/post-content-images/${post.id}`, formData, params)
@@ -97,18 +93,11 @@ function deleteImage(id: number): void {
             </BodyRow>
         </DataTable>
 
-        <form @submit.prevent="submitImage" enctype="multipart/form-data" class="mt-6 flex justify-between gap-3">
-            <div>
-                <div class="inline-block mr-2">
-                    <FileInput name="image" :required="true">
-                        {{ loading ? 'Uploading image...' : 'Choose an image...' }}
-                    </FileInput>
-                </div>
-
-                <MainButton class="ml-3" :disabled="loading">
-                    <i :class="loading ? 'fa-spinner animate-spin' : 'fa-upload'" class="fas mr-2"></i>
-                    Upload
-                </MainButton>
+        <div class="mt-6 flex justify-between gap-3">
+            <div class="inline-block mr-2">
+                <FileInput @chosen="submitImage" name="image" :required="true">
+                    {{ loading ? 'Uploading image...' : 'Choose a post image' }}
+                </FileInput>
             </div>
 
             <div class="flex flex-col lg:flex-row gap-5 items-center">
@@ -122,9 +111,9 @@ function deleteImage(id: number): void {
                 </MainButton>
 
                 <FileInput name="import-images" :required="true" accept=".zip" @chosen="importImages">
-                    {{ importLoading ? 'Importing images...' : 'Choose images archive...' }}
+                    {{ importLoading ? 'Importing images...' : 'Choose images archive' }}
                 </FileInput>
             </div>
-        </form>
+        </div>
     </div>
 </template>
