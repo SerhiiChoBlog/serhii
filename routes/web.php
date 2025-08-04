@@ -11,15 +11,8 @@ use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\User\UserController;
-use App\Jobs\NewCommentAdminEmail;
-use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-Route::get('test', function () {
-    $comment = Comment::query()->first();
-    NewCommentAdminEmail::dispatch($comment);
-});
 
 Route::redirect('/posts/boost-your-svelte-apps-performance', '/posts/lazy-loading-boost-your-svelte-apps-performance');
 Route::redirect('/posts/vue-component-wrapper-for-lazy-loading', '/posts/lazy-loading-vue-component-wrapper-for-lazy-loading');
