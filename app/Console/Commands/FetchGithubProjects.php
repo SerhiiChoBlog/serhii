@@ -67,12 +67,13 @@ class FetchGithubProjects extends Command
             return $carry;
         }, new Collection());
 
-        $mit_projects = $projects->filter(function ($project) {
+        $filtered_projects = $projects->filter(function ($project) {
             $license = $project['license']['key'] ?? null;
-            return $license === 'mit';
+            $is_docs = str_contains($project['name'], 'github.io');
+            return $license === 'mit' && !$is_docs;
         });
 
-        return $mit_projects->map(function ($project) use ($readme_url) {
+        return $filtered_projects->map(function ($project) use ($readme_url) {
             $readme_url = str_replace('{repo}', $project['name'], (string) $readme_url);
             $has_homepage = $project['homepage'] !== '';
 
