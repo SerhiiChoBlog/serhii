@@ -36,12 +36,12 @@ class Intro extends Component
             return "{$years} and a half";
         }
 
-        if (in_array($months, [8, 9, 10], true)) {
+        if (in_array($months, [8, 9], true)) {
             $years++;
             return "almost {$years}";
         }
 
-        if (in_array($months, [11, 12], true)) {
+        if (in_array($months, [10, 11, 12], true)) {
             $years++;
         }
 

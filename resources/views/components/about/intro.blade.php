@@ -1,6 +1,8 @@
 @php
-    /** @var string $fullExperience **/
-    /** @var string $yearsExperience **/
+    /**
+     * @var string $fullExperience
+     * @var string $yearsExperience
+     */
 @endphp
 
 <p>
