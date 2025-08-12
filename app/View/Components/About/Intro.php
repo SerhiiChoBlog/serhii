@@ -28,15 +28,15 @@ class Intro extends Component
         $months = (int) $this->date_diff->format('%m');
         $years = (int) $this->date_diff->format('%y');
 
-        if (in_array($months, [2, 3, 4], true)) {
+        if (in_array($months, [2, 3], true)) {
             return "{$years}+";
         }
 
-        if (in_array($months, [5, 6, 7], true)) {
+        if (in_array($months, [4, 5, 6], true)) {
             return "{$years} and a half";
         }
 
-        if (in_array($months, [8, 9], true)) {
+        if (in_array($months, [7, 8, 9], true)) {
             $years++;
             return "almost {$years}";
         }

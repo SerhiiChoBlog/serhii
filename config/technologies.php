@@ -66,27 +66,42 @@ return [
 
     'technologies' => [
         [
-            'image' => 'storage/tools/docker.webp',
-            'title' => 'Docker',
+            'image' => 'storage/tools/podman.webp',
+            'title' => 'Containers',
             'content' => <<<TEXT
-            I started working with Docker in 2018, which allowed me to decouple my development environment from the OS.
-            Since then, I've used Docker to run services like Redis, MySQL, and PostgreSQL in a consistent, isolated environment.
+            I began using containers in 2018 to isolate my development
+            environment from the underlying operating system, ensuring greater
+            consistency and portability. Since then, I've leveraged both Podman
+            and Docker to run services such as Redis, MySQL, and PostgreSQL in
+            secure, isolated containers. Podman has become my go-to choice for
+            daily use, as its daemonless architecture enhances system security
+            without compromising functionality.
             TEXT,
         ],
         [
             'image' => 'storage/tools/linux.webp',
             'title' => 'Linux',
             'content' => <<<TEXT
-            I'm proficient with Unix-based systems (Linux/macOS) and regularly use tools like SSH, symbolic links, cron jobs, bash scripts, and dpkg.
-            This enables me to manage environments, write scripts, and automate system tasks effectively.
+            For the past five years, I relied on Ubuntu as my primary desktop
+            OS, and I've since transitioned to Fedora as my daily driver,
+            enhancing my ability to manage environments, write scripts, and
+            automate system tasks with greater efficiency. As an avid follower
+            of Linux news, I continuously deepen my knowledge of Linux systems,
+            staying updated on the latest tools, features, and best practices
+            to optimize my workflow and tackle new challenges effectively.
             TEXT,
         ],
         [
             'image' => 'storage/tools/tailwind.webp',
             'title' => 'Tailwind CSS',
             'content' => <<<TEXT
-            Tailwind CSS became part of my tech stack in 2021, and I now use it for most projects requiring modern, scalable UI design.
-            Previously, I relied on SASS, Bootstrap, Bulma, and Materialize, but Tailwind's utility-first approach has proven more efficient.
+            I adopted Tailwind CSS in 2021 for building modern, scalable UIs,
+            replacing SASS, Bootstrap, Bulma, and Materialize. Its
+            utility-first approach is more efficient, and I actively follow
+            Tailwind updates to sharpen my skills. I love crafting modular
+            components with integrated CSS and JavaScript for clean,
+            maintainable code. I’m always excited to leverage Tailwind’s
+            evolving features to create sleek designs.
             TEXT,
         ],
     ],
@@ -97,7 +112,8 @@ return [
             'title' => 'Effective Communicator',
             'content' => <<<TEXT
             I prioritize effective communication as it's the cornerstone of teamwork and collaboration.
-            My calm demeanor and strong principles allow me to exchange knowledge and ideas freely with colleagues and clients.
+            My calm demeanor and strong principles allow me to exchange knowledge and ideas freely with colleagues
+            and clients.
             Would be awesome to work in a team with you!
             TEXT,
         ],
@@ -105,9 +121,10 @@ return [
             'image' => 'storage/tools/flags.webp',
             'title' => 'Speaking Multiple Languages',
             'content' => <<<TEXT
-            Since 2014, I've been mastering English, which has become my second language at this point.
-            I'm fluent in 3 languages: Russian, English and Ukrainian.
-            I can also read and speak a little bit of Chinese Mandarin at a basic level.
+            Since 2014, I've been mastering English, which has become my second
+            language at this point. I'm fluent in 3 languages: Russian, English
+            and Ukrainian. I can also read and speak a little bit of Chinese
+            Mandarin at a very basic level.
             TEXT,
         ],
         [
