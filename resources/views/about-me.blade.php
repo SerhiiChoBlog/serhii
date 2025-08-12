@@ -34,11 +34,17 @@
                             <x-about.intro />
 
                             <p>
-                                I have experience working with various integration services, including <strong>Megaplan CRM</strong>
-                                and <strong>Exact Online</strong>, as well as payment systems like <strong>Mollie</strong>,
-                                <strong>Bitpay</strong>, and <strong>WayForPay</strong>. My development experience includes building
-                                applications within <strong>Docker</strong> containers, creating SPAs using <strong>Vue</strong> and
-                                <strong>React</strong>, and developing websites with <strong>WordPress</strong> and <strong>Laravel</strong>.
+                                I worked with various integration services, including <strong>Megaplan CRM</strong> and
+                                <strong>Exact Online</strong>, as well as payment systems like <strong>Mollie</strong>,
+                                <strong>Bitpay</strong>, <strong>Portmone</strong>, and <strong>WayForPay</strong>. My development experience includes building
+                                applications within <strong>Podman</strong> containers, creating SPAs using <strong>Vue</strong> and
+                                <strong>React</strong>, and creating websites with things like <strong>WordPress</strong>,
+                                <strong>Laravel</strong>, and <strong>Go</strong>.
+                            </p>
+
+                            <p>
+                                I'm not fixed on a specific programming language or framework, instead I'm open to use
+                                whatever is needed to get the most optimal solution for a specific task.
                             </p>
 
                             <p>
@@ -65,12 +71,6 @@
                                 maintainable code leads to better products. If you're interested, you can read more about my approach in my
                                 post <a href="/posts/5-techniques-that-i-use-for-building-fast-websites" rel="noreferrer" target="_blank">
                                 "5 Techniques That I Use for Building Fast Websites"</a>, where I explain these principles in detail.
-                            </p>
-
-                            <p>
-                                Websites I develop consistently achieve top scores on tools like <strong>Lighthouse</strong> and
-                                <strong>PageSpeed Insights</strong>. My goal is to make every project as <strong>SEO-friendly</strong>
-                                as possible from a development standpoint, ensuring better search visibility and user experience.
                             </p>
 
                             <p>
