@@ -21,9 +21,9 @@ class VisitorFactory extends Factory
     {
         return [
             'ip' => $this->faker->ipv4,
-            'country' => 'Ukraine',
-            'city' => 'Kharkiv',
-            'code' => 'UA',
+            'country' => 'USA',
+            'city' => 'New York',
+            'code' => 'US',
         ];
     }
 }
