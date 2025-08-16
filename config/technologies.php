@@ -142,7 +142,7 @@ return [
             TEXT,
         ],
         [
-            'image' => 'storage/tools/flags.webp',
+            'image' => 'storage/tools/langs.webp',
             'title' => 'Speaking Multiple Languages',
             'content' => <<<TEXT
             Since 2014, I've been mastering English, which has become my second
