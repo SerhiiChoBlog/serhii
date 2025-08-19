@@ -132,13 +132,13 @@ return [
 
     'skills' => [
         [
-            'image' => 'storage/tools/communicate.webp',
-            'title' => 'Effective Communicator',
+            'image' => 'storage/tools/cybersecurity.webp',
+            'title' => 'Cybersecurity',
             'content' => <<<TEXT
-            I prioritize effective communication as it's the cornerstone of
-            teamwork and collaboration. My calm demeanor and strong principles
-            allow me to exchange knowledge and ideas freely with colleagues
-            and clients. Would be awesome to work in a team with you!
+            As a passionate hobbyist, I dive into cybersecurity and ethical
+            hacking, exploring how devices and networks communicate to uncover
+            ways to secure them. I’m fascinated by studying this side of the
+            world where I can learn how to protect systems and data.
             TEXT,
         ],
         [
