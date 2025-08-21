@@ -1,6 +1,17 @@
 # Moving From MacOS back to Linux as a Programmer
 
-## Introduction: Why I Ditched macOS for Linux
+## Introduction: The Journey to macOS
+In May 2022, I bought my first Apple device, a **16-inch, 16 GB RAM, 512 GB SSD, MacBook Pro 2021 with the M1 Pro chip**. I was always insterested in Apple products, seeing programmers and designers using them in their video vlogs and tutorials. Honestly, at this point, I can truly say that I was frastrated with my previous laptop, a **Dell Vostro 5590**, which was fast, but had a terrible screen and poor build quality.
+
+![Dell Vostro 5590](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755759832.webp)
+
+I was excited to join the Apple ecosystem, but little did I know that this would lead to a series of frustrations that would ultimately drive me back to Linux.
+
+If you haven't read my article [Moving From Linux to MacOS as a Programmer](https://serhii.io/posts/moving-from-linux-to-macos-as-a-programmer), I highly recommend checking it out to understand the context of my journey. In this article, I will talk about the route I took to return to Linux, the challenges I faced, and the reasons why I believe Linux is a better choice for hackers. And I purposefully use the term "hacker" here, you will understand why later in the article.
+
+
+## Why I Ditched macOS for Linux
+
 - Set the stage with a brief anecdote (e.g., the Stickies app frustration) to grab attention.
 - Outline the article’s purpose: sharing your journey as a programmer moving back to Linux and offering insights for others considering the switch.
 
@@ -47,10 +58,19 @@
 ### Privacy and Security for Paranoid Programmers
 - Expand on your notes about Linux’s transparency vs. Apple/Microsoft’s “black box.”
 - Highlight Fedora’s security features (e.g., SELinux) and hardware choice flexibility.
+- More interest in hacking with the machine
+
+Let's look at definition of a hacker in its original form:
+
+> A hacker is a person skilled in information technology who achieves goals and solves problems by non-standard means.
+> Wikipedia
+
+This definition will be important later in the article but for now, just keep it in mind.
 
 One of the most significant factors influencing my decision was the enhanced privacy and robust security offered by Fedora and Linux in general. Trusting a company like Apple or Microsoft is like relying on a black box with a back door for government surveillance.
 
 This was always something that I didn’t like about the Apple ecosystem. Conversely, Linux, being an open-source operating system, provides unmatched transparency and the ability to choose the hardware you want to use. Whether you want a ThinkPad, Dell, Framework Laptop, System 76, or to build your own custom PC, the Linux kernel supports a vast array of configurations. This allows users to avoid vendor lock-in and select components based on their specific privacy and performance requirements.
+
 ### Coding Faster on Linux
 - Discuss development speed gains (e.g., native container support, faster build times, customizable IDEs).
 - Share personal anecdotes (e.g., working faster on Linux despite initial Ctrl key struggles).
