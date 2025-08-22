@@ -12,6 +12,18 @@ It felt nice to join the Apple ecosystem, but little did I know that this would 
 For the full context on why I made the switch to macOS in the first place, I documented it in my article [Moving From Linux to MacOS as a Programmer](https://serhii.io/posts/moving-from-linux-to-macos-as-a-programmer), I highly recommend checking it out to understand the context of my journey. In this article, I will talk about the route I took to return to Linux, the challenges I faced, and the reasons why I believe Linux is a better choice for hackers. And I purposefully use the term "hacker" here, you will understand why later in the article.
 
 ## Why I Ditched macOS for Linux
+Switching back to Linux was an easy task, except for a few hiccups along the way. First, you need to know the machine to choose. This is a big one. It needs to be something to match the MacBook's build quality and performance. You can pretty much go with any laptop that can run Windows, but I would recommend buying a laptop that has good Linux support.
+
+There are a few options out there, here are some of them:
+- **Framework Laptop** - A modular laptop that you can easily upgrade and repair. Very famous in the Linux community. I would buy it if it wasn't US-only at that time.
+- **ThinkPad** - The ThinkPad series don't need introduction. They are known for their durability and excellent Linux support.
+- **System76** - A company that sells laptops and desktops with Linux pre-installed. They have a good reputation in the Linux community and offer great hardware options.
+- **Dell XPS** - Dell's XPS series is also known for its good Linux support. Dell is one of the few manufacturers that officially sell laptops with Linux pre-installed.
+- **Tuxedo Laptop** - A lesser-known brand that offers a variety of laptops with Linux pre-installed. They have a good selection of hardware options and are worth considering.
+
+I went with the **ThinkPad T14s Gen 5**. It has a great keyboard, solid build quality, and excellent Linux support. Plus, it's pretty light and portable, making it a great choice for a programmer on the go.
+
+![Lenovo ThinkPad T14s Gen 5](.)
 
 - Set the stage with a brief anecdote (e.g., the Stickies app frustration) to grab attention.
 - Outline the article’s purpose: sharing your journey as a programmer moving back to Linux and offering insights for others considering the switch.
