@@ -1,14 +1,15 @@
 # Moving From MacOS back to Linux as a Programmer
 
 ## Introduction: The Journey to macOS
-In May 2022, I bought my first Apple device, a **16-inch, 16 GB RAM, 512 GB SSD, MacBook Pro 2021 with the M1 Pro chip**. I was always insterested in Apple products, seeing programmers and designers using them in their video vlogs and tutorials. Honestly, at this point, I can truly say that I was frastrated with my previous laptop, a **Dell Vostro 5590**, which was fast, but had a terrible screen and poor build quality.
+In May 2022, I bought my first Apple device, a **16-inch, 16 GB RAM, 512 GB SSD, MacBook Pro 2021 with the M1 Pro chip**. I was always insterested in Apple products, seeing programmers and designers using them in their video vlogs and tutorials. Honestly, I was frastrated with my previous laptop, a **Dell Vostro 5590**, which was fast, had a terrible screen and poor build quality.
 
 ![Dell Vostro 5590](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755759832.webp)
 
-I was excited to join the Apple ecosystem, but little did I know that this would lead to a series of frustrations that would ultimately drive me back to Linux.
+You see those MacBook Pros on social media, and they look so sleek and nice, and I thought to myself, "This is the laptop I need to get my programming career to the next level." So, I took the plunge and bought one.
 
-If you haven't read my article [Moving From Linux to MacOS as a Programmer](https://serhii.io/posts/moving-from-linux-to-macos-as-a-programmer), I highly recommend checking it out to understand the context of my journey. In this article, I will talk about the route I took to return to Linux, the challenges I faced, and the reasons why I believe Linux is a better choice for hackers. And I purposefully use the term "hacker" here, you will understand why later in the article.
+It felt nice to join the Apple ecosystem, but little did I know that this would lead to a series of frustrations that would ultimately drive me back to Linux.
 
+For the full context on why I made the switch to macOS in the first place, I documented it in my article [Moving From Linux to MacOS as a Programmer](https://serhii.io/posts/moving-from-linux-to-macos-as-a-programmer), I highly recommend checking it out to understand the context of my journey. In this article, I will talk about the route I took to return to Linux, the challenges I faced, and the reasons why I believe Linux is a better choice for hackers. And I purposefully use the term "hacker" here, you will understand why later in the article.
 
 ## Why I Ditched macOS for Linux
 
@@ -47,10 +48,12 @@ If you haven't read my article [Moving From Linux to MacOS as a Programmer](http
 ### Adjusting to Linux Workflows
 - Discuss relearning habits (e.g., Ctrl vs. Cmd, cut/paste differences).
 - Offer tips for easing the transition (e.g., remapping keys, using tools like `xcopy` for familiar workflows).
+
 ### Hardware and Software Hurdles
 - Address hardware issues (e.g., ThinkPad T14s fingerprint scanner vs. MacBook Pro’s).
 - Discuss software availability, noting solutions like Flatpak, Snap, or Wine for macOS-specific apps.
 - Highlight community support (e.g., forums, X posts, or Linux Mint’s success for your mom).
+
 ### Gaming on Linux: A Surprising Win
 - Mention Steam Deck and Proton, emphasizing Linux’s gaming edge over macOS.
 
