@@ -80,14 +80,14 @@ I went as far as switching my mom from Windows to Linux Mint, and she's loving i
 
 ![Desktop Look of Linux Mint](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755948592.webp)
 
-She noticed a few differences at first, but she adapted quickly and now appreciates Linux's simplicity. She even uses the terminal to install apps from [Flathub](https://flathub.org) by copying commands from their site. If my mom, born in the '70s, can handle it, you and your parents can too!
+She noticed a few differences at first, but she adapted quickly and now appreciates Linux's simplicity. She even uses the terminal to install apps from [Flathub](https://flathub.org) by copying commands from their site. If my mom, born in the '70s, can handle it, you and your parents can too. This accessibility is built on a foundation of incredible flexibility.
 
 ### The Freedom of Customization
 If customization is your thing, Linux is the way to go. You can customize almost everything, from the desktop environment to the terminal emulator. You can choose your own window manager, your own file manager, or even distribution.
 
 You can delete unwanted apps, customize your workflow to match your needs. For example, I deleted all the keyboard shortcuts that I don't use and added my own for quick workspace switching and window management.
 
-macOS is very restrictive and closed in this regard. It wasn't designed to be customized or modified. You are stuck with what Apple gives you. If you don't like the way apple changed their UI in a new version of macOS, you are out of luck.
+macOS is very restrictive and closed in this regard. It wasn't designed to be customized or modified. Are you stuck with what Apple gives you. Want to change the fundamental way you navigate between windows or workspaces? Want to truly optimize your keyboard for coding efficiency? **On macOS, you're often fighting the OS. On Linux, you're collaborating with it.**
 
 ### Open-Source Power for Developers
 Linux gives you access to a vast array of open-source tools and libraries that can enhance your development workflow. You can easily install and manage packages using package managers. If you don't want to use the terminal, you can use GUI package managers like GNOME Software, KDE Discover, or Software Manager on Linux Mint.
@@ -96,16 +96,32 @@ Linux gives you access to a vast array of open-source tools and libraries that c
 
 If you are using macOS, do the math of how much money you spend on apps like Magnet, Alfred, and services like iCloud. On Linux, you can get similar functionality for free using open-source alternatives.
 
-The only big difference is that if you get something for free and it doesn't work as expected, you can't complain and ask for a refund. But you can always ask for help and create an issue on its corresponding Git hosting platform like GitHub, GitLab, or Bitbucket.
+The trade-off is a different kind of support. Instead of a refund, you get a community. You can report issues, contribute fixes, or even fork the project—options that simply don't exist in the walled garden of macOS.
 
 ### Linux for Modern Development
-- Highlight containers (e.g., Docker) and native Linux applications as key for programmers.
-- Mention gaming as a bonus (e.g., Steam Deck and Proton offering more games than macOS).
+Linux is the backbone of modern development. Containers, cloud computing, and DevOps practices are all built on Linux. If you want to stay relevant in the tech industry, learning Linux is a must.
+
+I was heavily using containers in my development workflow, and you think M1 Pro chip will handle Docker well? Think again. Docker on macOS is super slow compared to Linux.
+
+![Docker Desktop app on macOS](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755952640.webp)
+
+The ARM architecture support is still not perfect. Docker Desktop for Mac is also known to be unstable and buggy. It uses a virtual machine to run Linux containers, which adds overhead and slows down performance.
+
+As a bonus, you get much better gaming experiece on Linux compared to macOS. With the [Steam Deck](https://store.steampowered.com/steamdeck "Link to Steam Deck website") and [Proton](https://github.com/ValveSoftware/Proton "Link to Proton GitHub page"), you can play a lot more games on Linux than on macOS. Gaming on Linux is going to get even better in the future. [Valve](https://www.valvesoftware.com/ "Link to Valve website") is investing heavily in Linux gaming, and it's paying off. Thank you [Gabe Newell](https://en.wikipedia.org/wiki/Gabe_Newell "Link to Gabe Newell wikipedia page") for this!
+
+All this beautiful ecosystem is what led me to choose Linux as my primary OS, and I didn't want to go back to Ubuntu as well. Since I don't like Snaps, I went with Fedora which imbraces Flatpaks as a package format.
 
 ## Choosing Fedora: A Developer’s Ideal Linux
+Choosing a Linux distribution and desktop environment is the most important step. I remember talking hours with AI discussing differences between distros and desktop environments. It was the hardest part of the switch.
+
+My ThinkPad hadn't even arrived, and I was already paralyzed by choice. First, I considered going back to Ubuntu, but then, I was captivated by how awesome Linux Mint is and I decided to try it instead. Next day, I was sure that I would go for Debian. Then, I was thinking about Arch Linux, but I didn't want to have something too bleeding edge.
+
+Finally, after all that research and deliberation, I settled on Fedora.
+
 ### Why Fedora Over Ubuntu?
 - Explain your shift from Ubuntu to Fedora, focusing on Fedora’s strengths (e.g., cutting-edge packages, robust developer tools, stability).
 - Address past Ubuntu issues (e.g., outdated packages, bloat, or community concerns).
+- Podman, Flatpak
 
 ### Setting Up Fedora for Programming
 - Cover the installation process, emphasizing ease for programmers.
