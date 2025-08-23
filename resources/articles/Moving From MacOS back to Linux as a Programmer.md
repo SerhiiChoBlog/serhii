@@ -42,7 +42,7 @@ On Linux, with Deja Dup Backup Tool on GNOME, I can choose any directory on any 
 
 This is how it should be. Shout out to [Michael Terry](https://mterry.name/ "Link to Michael Terry's website") for maintaining this beautiful app.
 
-**I can sit here and list all the frustrations I had with macOS, like not being able to close apps by clicking on the red button, or slow and glitchy AirPods connectivity, or inconsistent copy-paste experience across devices.** But I think you get the point. Small frustrations add up, and eventually, they become unbearable.
+**I can sit here and list all the frustrations I had with macOS, like not being able to close apps by clicking on the red button, or slow and glitchy AirPods connectivity, or inconsistent copy-paste experience across devices, or buggy desktop  (workflow) switcher.** But I think you get the point. Small frustrations add up, and eventually, they become unbearable.
 
 The purpose of this article is not to bash macOS, but to share my journey as a programmer moving from Linux to macOS and back to Linux. If you considering the switch to macOS, I would recommend you to think twice. If you are already on macOS and feeling frustrated, know that you are not alone.
 
@@ -51,7 +51,7 @@ The purpose of this article is not to bash macOS, but to share my journey as a p
 These frustrations made the decision final. The only thing left was to find hardware worthy of replacing my MacBook—a machine that could deliver a premium Linux experience. This led me to the most important step: choosing my new Linux machine.
 
 ## Choosing My Linux Machine: The Return to Freedom
-Switching back to Linux was an easy task, except for a few hiccups along the way. First, you need to know the machine to choose. This is a big one. It needs to be something to match the MacBook's build quality and performance. You can pretty much go with any laptop that can run Windows, but I would recommend buying a laptop that has good Linux support.
+Finding the right hardware for my return to Linux was mostly straightforward, though it required careful research. First, you need to know the machine to choose. This is a big one. It needs to be something to match the MacBook's build quality and performance. You can pretty much go with any laptop that can run Windows, but I would recommend buying a laptop that has good Linux support.
 
 There are a few options out there, here are some of them:
 - **Framework Laptop** - A modular laptop that you can easily upgrade and repair. Very famous in the Linux community. I would buy it if it wasn't US-only at that time.
@@ -69,25 +69,35 @@ As for the specs, I went for this:
 - SSD: 1 TB
 - RAM: 32 GB
 
-I was choosing laptop carefully, reading all the specs multiple time so that I could digest everything. If you are choosing a machine for yourself right now, I highly recommend to be picky. Let's talk about the frustrations with macOS and what led me to switch back to Linux.
-
-
-## My macOS Experience: From Love to Frustration
-### The Initial Allure of macOS
-- Highlight what drew you to macOS (e.g., polished UI, ecosystem integration, developer tools like Xcode).
-- Tie in the programmer perspective (e.g., macOS’s appeal for iOS development).
-### Growing Discontent with macOS
-- Discuss frustrations like the Stickies app permissions issue and restrictive ecosystem (e.g., inability to delete apps, “Read and Write” permission errors).
-- Mention the “Liquid Glass” design and its criticism (include references to YouTube/X comments or screenshots, as noted).
-- Highlight ecosystem issues (e.g., unreliable AirPods connectivity, inconsistent copy-paste across devices).
+I was choosing a laptop carefully, reading all the specs multiple times so that I could digest everything. If you are choosing a machine for yourself right now, I highly recommend to be picky.
 
 ## Why Linux? Reclaiming Control as a Programmer
+For many of us programmers, Linux is something you grow up with. It's the OS that not only powers the majority of servers in the world but also offers great desktop environments.
+
+If you like animated and bautiful design, GNOME has you covered. If you want something more traditional, there's always MATE, Cinnamon, Budgie and KDE. If you want something lightweight, XFCE is a great choice.
+
+I went as far as switching my mom from Windows to Linux Mint, and she's loving it.
+
+![Desktop Look of Linux Mint](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755948592.webp)
+
+She noticed a few differences at first, but she adapted quickly and now appreciates Linux's simplicity. She even uses the terminal to install apps from [Flathub](https://flathub.org) by copying commands from their site. If my mom, born in the '70s, can handle it, you and your parents can too!
+
 ### The Freedom of Customization
-- Emphasize Linux’s flexibility (e.g., ability to delete unwanted apps, customize workflows).
-- Contrast with macOS’s restrictive policies, tying back to your Stickies anecdote.
+If customization is your thing, Linux is the way to go. You can customize almost everything, from the desktop environment to the terminal emulator. You can choose your own window manager, your own file manager, or even distribution.
+
+You can delete unwanted apps, customize your workflow to match your needs. For example, I deleted all the keyboard shortcuts that I don't use and added my own for quick workspace switching and window management.
+
+macOS is very restrictive and closed in this regard. It wasn't designed to be customized or modified. You are stuck with what Apple gives you. If you don't like the way apple changed their UI in a new version of macOS, you are out of luck.
+
 ### Open-Source Power for Developers
-- Discuss the open-source philosophy and its benefits for programmers (e.g., transparency, community-driven tools).
-- Mention Linux’s support for diverse hardware (e.g., ThinkPad, Framework Laptop, System 76) to avoid vendor lock-in.
+Linux gives you access to a vast array of open-source tools and libraries that can enhance your development workflow. You can easily install and manage packages using package managers. If you don't want to use the terminal, you can use GUI package managers like GNOME Software, KDE Discover, or Software Manager on Linux Mint.
+
+![GNOME Software program](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755950040.webp)
+
+If you are using macOS, do the math of how much money you spend on apps like Magnet, Alfred, and services like iCloud. On Linux, you can get similar functionality for free using open-source alternatives.
+
+The only big difference is that if you get something for free and it doesn't work as expected, you can't complain and ask for a refund. But you can always ask for help and create an issue on its corresponding Git hosting platform like GitHub, GitLab, or Bitbucket.
+
 ### Linux for Modern Development
 - Highlight containers (e.g., Docker) and native Linux applications as key for programmers.
 - Mention gaming as a bonus (e.g., Steam Deck and Proton offering more games than macOS).
@@ -96,6 +106,7 @@ I was choosing laptop carefully, reading all the specs multiple time so that I c
 ### Why Fedora Over Ubuntu?
 - Explain your shift from Ubuntu to Fedora, focusing on Fedora’s strengths (e.g., cutting-edge packages, robust developer tools, stability).
 - Address past Ubuntu issues (e.g., outdated packages, bloat, or community concerns).
+
 ### Setting Up Fedora for Programming
 - Cover the installation process, emphasizing ease for programmers.
 - List essential tools (e.g., GCC, VS Code, Docker, Git) and how you customized your environment (e.g., key bindings to ease the Cmd-to-Ctrl transition).
