@@ -12,6 +12,45 @@ It felt nice to join the Apple ecosystem, but little did I know that this would 
 For the full context on why I made the switch to macOS in the first place, I documented it in my article [Moving From Linux to MacOS as a Programmer](https://serhii.io/posts/moving-from-linux-to-macos-as-a-programmer), I highly recommend checking it out to understand the context of my journey. In this article, I will talk about the route I took to return to Linux, the challenges I faced, and the reasons why I believe Linux is a better choice for hackers. And I purposefully use the term "hacker" here, you will understand why later in the article.
 
 ## Why I Ditched macOS for Linux
+I'm pretty sure there are people who enjoy using macOS, and that's great. However, for me, the experience was far from ideal. A part of it was that you start missing the freedom and flexibility that Linux offers. If Mac is the only thing you ever used, you might be happy with it for the rest of your life.
+
+### Privacy Concerns
+My biggest issue with Apple is privacy. Even though, as for 2025, Apple doesn't have a bad reputation when it comes to user privacy, I still don't trust them. I can't shake the feeling that Apple, as a massive US corporation, has ties and obligations to government entities that could compromise user privacy. If government wants to access your data, they will find a way to do it.
+
+With Linux, I have full control over my data and who has access to it. I have a freedom to choose the flavor of Linux that suits my needs. If privacy is a concern for you, Linux is the way to go.
+
+### Small frustrations Adding Up
+Beyond the big philosophical issues, it was often the small, daily frustrations that chipped away at my enjoyment. They highlighted the lack of control and the "Apple knows best" mentality. There are apps that you can't get rid off, like Stickies as an example. Since it's a system app, you can't delete it. Why would you have Stickies as a system app? It doesn't make any sense to me. I tried to use it, but it looks ugly and I don't like it.
+
+![Stickies app on macOS](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755936541.webp)
+
+If you want to close the Finder app, you can't do it. It's always there with an indicator in the dock. From users' perspective, it feels odd that you can't close the app you don't use. And the reason why it's always running and you can't close it is that macOS is using this app to manage the desktop.
+
+![Finder on macOS](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755936457.webp)
+
+Why not separate the desktop management from the file manager? Apple didn't think about it that way. They are too focused on earning money and locking users into their ecosystem.
+
+There are many weird implementations on macOS that just doesn't make sense for me. Like a Time Machine app which backups your data to an external drive. Why this app needs the full disk to create a backup file? I don't know. Apple doesn't know eather.
+
+![Time Machine](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755936607.webp)
+
+I have an external **1 TB SSD drive** that I use for different things. I have a folder on it where I store my backups. If I want to create a backup of my macOS system, I need to give the Time Machine the whole disk, not just a single directory. Sure, you can partition the drive and give the Time Machine a partition, but why would I want to do that? I want to use the drive as a whole, not split it into partitions.
+
+On Linux, with Deja Dup Backup Tool on GNOME, I can choose any directory on any drive to store my backups. I don't need to give the app the whole disk.
+
+![Deja Dup Backup Tool on Linux](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755937018.webp)
+
+This is how it should be. Shout out to [Michael Terry](https://mterry.name/ "Link to Michael Terry's website") for maintaining this beautiful app.
+
+**I can sit here and list all the frustrations I had with macOS, like not being able to close apps by clicking on the red button, or slow and glitchy AirPods connectivity, or inconsistent copy-paste experience across devices.** But I think you get the point. Small frustrations add up, and eventually, they become unbearable.
+
+The purpose of this article is not to bash macOS, but to share my journey as a programmer moving from Linux to macOS and back to Linux. If you considering the switch to macOS, I would recommend you to think twice. If you are already on macOS and feeling frustrated, know that you are not alone.
+
+**If we all switch to Linux, the world will be a better place. Linux is the future, whether you like it or not. The power of people united is stronger than the power of corporations.** Maybe it sounds cringy, but that's just how I feel about it.
+
+These frustrations made the decision final. The only thing left was to find hardware worthy of replacing my MacBook—a machine that could deliver a premium Linux experience. This led me to the most important step: choosing my new Linux machine.
+
+## Choosing My Linux Machine: The Return to Freedom
 Switching back to Linux was an easy task, except for a few hiccups along the way. First, you need to know the machine to choose. This is a big one. It needs to be something to match the MacBook's build quality and performance. You can pretty much go with any laptop that can run Windows, but I would recommend buying a laptop that has good Linux support.
 
 There are a few options out there, here are some of them:
@@ -23,10 +62,15 @@ There are a few options out there, here are some of them:
 
 I went with the **ThinkPad T14s Gen 5**. It has a great keyboard, solid build quality, and excellent Linux support. Plus, it's pretty light and portable, making it a great choice for a programmer on the go.
 
-![Lenovo ThinkPad T14s Gen 5](.)
+![Lenovo ThinkPad T14s Gen 5](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755871852.webp)
 
-- Set the stage with a brief anecdote (e.g., the Stickies app frustration) to grab attention.
-- Outline the article’s purpose: sharing your journey as a programmer moving back to Linux and offering insights for others considering the switch.
+As for the specs, I went for this:
+- CPU: Intel i7 Ultra
+- SSD: 1 TB
+- RAM: 32 GB
+
+I was choosing laptop carefully, reading all the specs multiple time so that I could digest everything. If you are choosing a machine for yourself right now, I highly recommend to be picky. Let's talk about the frustrations with macOS and what led me to switch back to Linux.
+
 
 ## My macOS Experience: From Love to Frustration
 ### The Initial Allure of macOS
