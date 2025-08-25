@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Api\AboutMe\BookController;
 use App\Http\Controllers\Api\AboutMe\TestimonialController;
-use App\Http\Controllers\Api\AboutMe\WorkProjectController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\PostLikeController;
@@ -52,6 +51,5 @@ Route::get('users/feed/{user:slug}', FeedController::class);
 
 Route::prefix('about-me')->group(function () {
     Route::get('testimonials', TestimonialController::class);
-    Route::get('work-projects', WorkProjectController::class);
     Route::get('books', BookController::class);
 });
