@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use Dom\Text;
-
 return [
     'languages' => [
         [
@@ -126,40 +124,6 @@ return [
             components with integrated CSS and JavaScript for clean,
             maintainable code. I’m always excited to leverage Tailwind’s
             evolving features to create sleek designs.
-            TEXT,
-        ],
-    ],
-
-    'skills' => [
-        [
-            'image' => 'storage/tools/talk.webp',
-            'title' => 'Effective Communicator',
-            'content' => <<<TEXT
-            I prioritize effective communication as it's the cornerstone of
-            teamwork and collaboration. My calm demeanor and strong principles
-            allow me to exchange knowledge and ideas freely with colleagues
-            and clients. Would be awesome to work in a team with you!
-            TEXT,
-        ],
-        [
-            'image' => 'storage/tools/langs.webp',
-            'title' => 'Speaking Multiple Languages',
-            'content' => <<<TEXT
-            Since 2014, I've been mastering English, which has become my second
-            language at this point. I'm fluent in 3 languages: Russian, English
-            and Ukrainian. I can also read and speak a little bit of Chinese
-            Mandarin at a very basic level.
-            TEXT,
-        ],
-        [
-            'image' => 'storage/tools/type.webp',
-            'title' => 'Proficient in Touch Typing',
-            'content' => <<<TEXT
-            Touch typing allows me to focus on problem-solving rather than
-            keystrokes. I'm proficient with both Latin and Cyrillic keyboards,
-            which helps me maintain productivity across languages. While typing
-            is not a skill that directly impacts development, it significantly
-            boosts my efficiency.
             TEXT,
         ],
     ],

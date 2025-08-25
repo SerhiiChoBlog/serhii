@@ -147,14 +147,6 @@
 
         <x-about.section
             :isDark="true"
-            header="Personal Skills"
-            subheader="Skills that I've developed over the years that help me in my work."
-        >
-            <x-section-detail />
-            <x-about.tech-section :techs="config('technologies.skills')" />
-        </x-about.section>
-
-        <x-about.section
             header="Latest Projects"
             subheader="Latest projects that I've worked on. Some of them are not included due to NDA."
             class="min-h-[400px] print:hidden"
@@ -163,7 +155,7 @@
         </x-about.section>
 
         <x-about.section
-            :isDark="true"
+            :isDark="false"
             header="Latest Books I've Read"
             subheader="The latest software-development books that I've read"
             class="print:hidden"
@@ -176,7 +168,7 @@
         </x-about.section>
 
         <x-about.section
-            :isDark="false"
+            :isDark="true"
             header="Print this page"
             subheader="You can download this page as PDF file."
             class="print:hidden"

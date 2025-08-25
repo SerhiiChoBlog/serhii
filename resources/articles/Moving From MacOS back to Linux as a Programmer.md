@@ -120,8 +120,14 @@ Finally, after all that research and deliberation, I settled on Fedora.
 
 ### Why Fedora Over Ubuntu?
 - Explain your shift from Ubuntu to Fedora, focusing on Fedora’s strengths (e.g., cutting-edge packages, robust developer tools, stability).
-- Address past Ubuntu issues (e.g., outdated packages, bloat, or community concerns).
-- Podman, Flatpak
+Prior to buying myself a MacBook, I was using Ubuntu for around 5 years. I was pretty happy with it, but Canonical's direction with snaps is just irritating. They are pushing this stuff down users' throats, and I don't like it. I don't want to use snaps, and I don't want to let Amazon spy on me.
+
+Fedora, on the other hand, is very similar to Ubuntu, since both using GNOME as a desktop environment by default. While Fedora is backed by Red Hat and IBM, it has a strong community and is known for its commitment to open-source principles. Fedora tends to have more up-to-date packages, which is great for developers who want the latest tools and libraries.
+
+The other thing that attracted me to Fedora is attachment to tools like Podman for container management and [Flatpak](https://flathub.org/ "Link to Flathub repository") for application distribution. It happens that I love Podman and Flatpak, and Fedora embraces these technologies wholeheartedly.
+
+### Why GNOME?
+I'm not going to ramble a lot about why I chose GNOME because it all comes down to personal preference. I just want to say that I like the simplicity and extensibility of GNOME. By extensibility, I mean the ability to add GNOME extensions, which you can install from the [Extension Manager](https://flathub.org/apps/com.mattjakeman.ExtensionManager "Link to Flathub Extension Manager") or create your own with JavaScript.
 
 ### Setting Up Fedora for Programming
 - Cover the installation process, emphasizing ease for programmers.
