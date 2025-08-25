@@ -23,7 +23,6 @@ import RegisterForm from '@shared/components/SignIn/RegisterForm.vue'
 import ZoomedImage from '@/components/ZoomedImage/ZoomedImage.vue'
 import SignInModal from '@shared/components/SignIn/SignInModal.vue'
 import Testimonials from '@/components/Testimonials/Testimonials.vue'
-import WorkProjects from '@/components/WorkProjects/WorkProjects.vue'
 import BooksRead from '@/components/Books/BooksRead.vue'
 import PrevNextPost from '@/components/PrevNextPost/PrevNextPost.vue'
 
@@ -48,7 +47,6 @@ const app = createApp({
         RegisterForm,
         ZoomedImage,
         Testimonials,
-        WorkProjects,
         BooksRead,
         PrevNextPost,
     },
