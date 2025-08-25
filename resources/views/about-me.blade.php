@@ -147,15 +147,6 @@
 
         <x-about.section
             :isDark="true"
-            header="Latest Projects"
-            subheader="Latest projects that I've worked on. Some of them are not included due to NDA."
-            class="min-h-[400px] print:hidden"
-        >
-            <work-projects></work-projects>
-        </x-about.section>
-
-        <x-about.section
-            :isDark="false"
             header="Latest Books I've Read"
             subheader="The latest software-development books that I've read"
             class="print:hidden"
@@ -168,7 +159,7 @@
         </x-about.section>
 
         <x-about.section
-            :isDark="true"
+            :isDark="false"
             header="Print this page"
             subheader="You can download this page as PDF file."
             class="print:hidden"
