@@ -124,11 +124,3 @@ export type Testimonial = {
     link?: string | null
 }
 
-export type WorkProject = {
-    image_uri: string
-    title: string
-    subtitle: string
-    content: string
-    link: string
-    technologies: string[]
-}
