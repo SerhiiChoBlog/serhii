@@ -87,6 +87,12 @@ If customization is your thing, Linux is the way to go. You can customize almost
 
 Likewise, you can delete unwanted apps and customize your workflow to match your needs. For example, I deleted all the keyboard shortcuts that I don't use and added my own for quick workspace switching and window management.
 
+<blockquote>
+    <p>All the best people in life seem to like LINUX.</p>
+    <img src="https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756212307.webp" alt="Steve Wozniak" />
+    <h6>Steve Wozniak</h6>
+</blockquote>
+
 macOS is very restrictive and closed in this regard. It wasn't designed to be customized or modified. Are you stuck with what Apple gives you? Want to change the fundamental way you navigate between windows or workspaces? Want to truly optimize your keyboard for coding efficiency? **On macOS, you're often fighting the OS. On Linux, you're collaborating with it.**
 
 ### Open-Source Power for Developers
@@ -114,14 +120,14 @@ All this beautiful ecosystem is what led me to choose Linux as my primary OS, an
 ## Choosing Fedora: A Developer’s Ideal Linux
 Choosing a Linux distribution and desktop environment is the most important step. I remember talking hours with AI discussing differences between distros and desktop environments. It was the hardest part of the switch because there are so many of them.
 
-![Various Desktop Environments for Linux](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756197045.webp)
+![Various Desktop Environments for Linux](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756211386.webp)
 
 My ThinkPad hadn't even arrived, and I was already paralyzed by choice. First, I considered going back to Ubuntu, but then I was captivated by how awesome Linux Mint is, and I decided to try it instead. The next day, I wanted to go for Debian. Then, I was thinking about Arch Linux, but I would rather not have something too bleeding edge.
 
 Finally, after all that research and deliberation, I settled on Fedora.
 
 ### Why Fedora Over Ubuntu?
-- Explain your shift from Ubuntu to Fedora, focusing on Fedora’s strengths (e.g., cutting-edge packages, robust developer tools, stability).
+Explain your shift from Ubuntu to Fedora, focusing on Fedora’s strengths (e.g., cutting-edge packages, robust developer tools, stability).
 Before buying myself a MacBook, I was using Ubuntu for around 5 years. While I used and mostly enjoyed Ubuntu for five years before my MacBook, Canonical's aggressive push of Snaps was a primary reason I looked elsewhere. I dislike the forced integration and the performance overhead. **Fedora offers a refreshingly pure, upstream GNOME experience without such vendor lock-in, instead embracing open standards like Flatpak.**
 
 Fedora, on the other hand, is very similar to Ubuntu, since both use GNOME as a desktop environment by default. While Fedora is backed by Red Hat and IBM, it has a strong community and is known for its commitment to open-source principles. Fedora tends to have more up-to-date packages, which is great for developers who want the latest tools and libraries.
@@ -158,36 +164,25 @@ I wouldn't suggest that anyone remap keys to match their old Mac device, but if 
 - Discuss software availability, noting solutions like Flatpak, Snap, or Wine for macOS-specific apps.
 - Highlight community support (e.g., forums, X posts, or Linux Mint’s success for your mom).
 
-### Gaming on Linux: A Surprising Win
-- Mention Steam Deck and Proton, emphasizing Linux’s gaming edge over macOS.
-
-## The Payoff: Why Linux Boosts Productivity
-### Privacy and Security for Paranoid Programmers
+## Privacy and Security
 - Expand on your notes about Linux’s transparency vs. Apple/Microsoft’s “black box.”
 - Highlight Fedora’s security features (e.g., SELinux) and hardware choice flexibility.
 - More interest in hacking with the machine
 
 Let's look at the definition of a hacker in its original form:
 
-> A hacker is a person skilled in information technology who achieves goals and solves problems by non-standard means.
-> Wikipedia
-
-This definition will be important later in the article, but for now, just keep it in mind.
-
 One of the most significant factors influencing my decision was the enhanced privacy and robust security offered by Fedora and Linux in general. Trusting a company like Apple or Microsoft is like relying on a black box with a back door for government surveillance.
 
 This was always something that I didn’t like about the Apple ecosystem. Conversely, Linux, being an open-source operating system, provides unmatched transparency and the ability to choose the hardware you want to use. Whether you want a ThinkPad, Dell, Framework Laptop, System 76, or to build your own custom PC, the Linux kernel supports a vast array of configurations. This allows users to avoid vendor lock-in and select components based on their specific privacy and performance requirements.
 
-### Coding Faster on Linux
-- Discuss development speed gains (e.g., native container support, faster build times, customizable IDEs).
-- Share personal anecdotes (e.g., working faster on Linux despite initial Ctrl key struggles).
-
-## Conclusion: Was the Switch Worth It?
+## Conclusion
 ### Reflecting on the Journey
 - Summarize your experience, balancing challenges and rewards.
 - Tie back to your programmer identity (e.g., Linux’s alignment with coding freedom).
+
 ### Looking Ahead
 - Share your outlook on Linux’s future for developers (e.g., growing adoption, tools like Podman).
+
 ### Advice for Programmers Considering Linux
 - Offer practical tips (e.g., start with a VM, try distros like Fedora or Pop!_OS, join communities).
 - Encourage experimenting with Linux to escape proprietary ecosystems.
