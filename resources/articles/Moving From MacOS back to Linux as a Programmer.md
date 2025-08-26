@@ -1,7 +1,7 @@
-# Moving From MacOS back to Linux as a Programmer
+# Moving From macOS back to Linux as a Programmer
 
 ## Introduction: The Journey to macOS
-In May 2022, I bought my first Apple device, a **16-inch, 16 GB RAM, 512 GB SSD, MacBook Pro 2021 with the M1 Pro chip**. I was always insterested in Apple products, seeing programmers and designers using them in their video vlogs and tutorials. Honestly, I was frastrated with my previous laptop, a **Dell Vostro 5590**, which was fast, had a terrible screen and poor build quality.
+In May 2022, I bought my first Apple device, a **16-inch, 16 GB RAM, 512 GB SSD, MacBook Pro 2021 with the M1 Pro chip**. I was always interested in Apple products, seeing programmers and designers using them in their video vlogs and tutorials. Honestly, I was frustrated with my previous laptop, a **Dell Vostro 5590**, which was fast, had a terrible screen and poor build quality.
 
 ![Dell Vostro 5590](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755759832.webp)
 
@@ -9,7 +9,7 @@ You see those MacBook Pros on social media, and they look so sleek and nice, and
 
 It felt nice to join the Apple ecosystem, but little did I know that this would lead to a series of frustrations that would ultimately drive me back to Linux.
 
-For the full context on why I made the switch to macOS in the first place, I documented it in my article [Moving From Linux to MacOS as a Programmer](https://serhii.io/posts/moving-from-linux-to-macos-as-a-programmer), I highly recommend checking it out to understand the context of my journey. In this article, I will talk about the route I took to return to Linux, the challenges I faced, and the reasons why I believe Linux is a better choice for hackers. And I purposefully use the term "hacker" here, you will understand why later in the article.
+For the full context on why I made the switch to macOS in the first place, I documented it in my article [Moving From Linux to macOS as a Programmer](https://serhii.io/posts/moving-from-linux-to-macos-as-a-programmer), I highly recommend checking it out to understand the context of my journey. In this article, I will talk about the route I took to return to Linux, the challenges I faced, and the reasons why I believe Linux is a better choice for hackers. And I purposefully use the term "hacker" here, you will understand why later in the article.
 
 ## Why I Ditched macOS for Linux
 I'm pretty sure there are people who enjoy using macOS, and that's great. However, for me, the experience was far from ideal. A part of it was that you start missing the freedom and flexibility that Linux offers. If Mac is the only thing you ever used, you might be happy with it for the rest of your life.
@@ -20,7 +20,7 @@ My biggest issue with Apple is privacy. Even though, as for 2025, Apple doesn't 
 With Linux, I have full control over my data and who has access to it. I have a freedom to choose the flavor of Linux that suits my needs. If privacy is a concern for you, Linux is the way to go.
 
 ### Small frustrations Adding Up
-Beyond the big philosophical issues, it was often the small, daily frustrations that chipped away at my enjoyment. They highlighted the lack of control and the "Apple knows best" mentality. There are apps that you can't get rid off, like Stickies as an example. Since it's a system app, you can't delete it. Why would you have Stickies as a system app? It doesn't make any sense to me. I tried to use it, but it looks ugly and I don't like it.
+Beyond the big philosophical issues, it was often the small, daily frustrations that chipped away at my enjoyment. They highlighted the lack of control and the "Apple knows best" mentality. There are apps that you can't get rid of, like Stickies as an example. Since it's a system app, you can't delete it. Why would you have Stickies as a system app? It doesn't make any sense to me. I tried to use it, but it looks ugly, and I don't like it.
 
 ![Stickies app on macOS](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755936541.webp)
 
@@ -30,7 +30,7 @@ If you want to close the Finder app, you can't do it. It's always there with an 
 
 Why not separate the desktop management from the file manager? Apple didn't think about it that way. They are too focused on earning money and locking users into their ecosystem.
 
-There are many weird implementations on macOS that just doesn't make sense for me. Like a Time Machine app which backups your data to an external drive. Why this app needs the full disk to create a backup file? I don't know. Apple doesn't know eather.
+There are many weird implementations on macOS that just doesn't make sense for me. Like a Time Machine app which backups your data to an external drive. Why this app needs the full disk to create a backup file? I don't know. Apple doesn't know ether.
 
 ![Time Machine](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755936607.webp)
 
@@ -44,9 +44,9 @@ This is how it should be. Shout out to [Michael Terry](https://mterry.name/ "Lin
 
 **I can sit here and list all the frustrations I had with macOS, like not being able to close apps by clicking on the red button, or slow and glitchy AirPods connectivity, or inconsistent copy-paste experience across devices, or buggy desktop  (workflow) switcher.** But I think you get the point. Small frustrations add up, and eventually, they become unbearable.
 
-The purpose of this article is not to bash macOS, but to share my journey as a programmer moving from Linux to macOS and back to Linux. If you considering the switch to macOS, I would recommend you to think twice. If you are already on macOS and feeling frustrated, know that you are not alone.
+The purpose of this article is not to bash macOS, but to share my journey as a programmer moving from Linux to macOS and back to Linux. If you're considering the switch to macOS, I would recommend you to think twice. If you are already on macOS and feeling frustrated, know that you are not alone.
 
-**If we all switch to Linux, the world will be a better place. Linux is the future, whether you like it or not. The power of people united is stronger than the power of corporations.** Maybe it sounds cringy, but that's just how I feel about it.
+**When we all switch to Linux, the world will be a better place. Linux is the future, whether you like it or not. The power of people united is stronger than the power of corporations.** Maybe it sounds cringy, but that's just how I feel about it.
 
 These frustrations made the decision final. The only thing left was to find hardware worthy of replacing my MacBook—a machine that could deliver a premium Linux experience. This led me to the most important step: choosing my new Linux machine.
 
@@ -107,20 +107,22 @@ I was heavily using containers in my development workflow, and you think M1 Pro 
 
 The ARM architecture support is still not perfect. Docker Desktop for Mac is also known to be unstable and buggy. It uses a virtual machine to run Linux containers, which adds overhead and slows down performance.
 
-As a bonus, you get much better gaming experiece on Linux compared to macOS. With the [Steam Deck](https://store.steampowered.com/steamdeck "Link to Steam Deck website") and [Proton](https://github.com/ValveSoftware/Proton "Link to Proton GitHub page"), you can play a lot more games on Linux than on macOS. Gaming on Linux is going to get even better in the future. [Valve](https://www.valvesoftware.com/ "Link to Valve website") is investing heavily in Linux gaming, and it's paying off. Thank you [Gabe Newell](https://en.wikipedia.org/wiki/Gabe_Newell "Link to Gabe Newell wikipedia page") for this!
+As a bonus, you get much better gaming experiece on Linux compared to macOS. With the [Steam Deck](https://store.steampowered.com/steamdeck "Link to Steam Deck website") and [Proton](https://github.com/ValveSoftware/Proton "Link to Proton GitHub page"), you can play a lot more games on Linux than on macOS. Gaming on Linux is going to get even better in the future. [Valve](https://www.valvesoftware.com/ "Link to Valve website") is investing heavily in Linux gaming, and it's paying off. Thank you, [Gabe Newell](https://en.wikipedia.org/wiki/Gabe_Newell "Link to Gabe Newell wikipedia page") for this!
 
-All this beautiful ecosystem is what led me to choose Linux as my primary OS, and I didn't want to go back to Ubuntu as well. Since I don't like Snaps, I went with Fedora which imbraces Flatpaks as a package format.
+All this beautiful ecosystem is what led me to choose Linux as my primary OS, and I didn't want to go back to Ubuntu as well. Since I don't like Snaps, I went with Fedora which embraces Flatpaks as a package format.
 
 ## Choosing Fedora: A Developer’s Ideal Linux
-Choosing a Linux distribution and desktop environment is the most important step. I remember talking hours with AI discussing differences between distros and desktop environments. It was the hardest part of the switch.
+Choosing a Linux distribution and desktop environment is the most important step. I remember talking hours with AI discussing differences between distros and desktop environments. It was the hardest part of the switch because there are so many of them.
 
-My ThinkPad hadn't even arrived, and I was already paralyzed by choice. First, I considered going back to Ubuntu, but then, I was captivated by how awesome Linux Mint is and I decided to try it instead. Next day, I was sure that I would go for Debian. Then, I was thinking about Arch Linux, but I didn't want to have something too bleeding edge.
+![Various Desktop Environments for Linux](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756197045.webp)
+
+My ThinkPad hadn't even arrived, and I was already paralyzed by choice. First, I considered going back to Ubuntu, but then, I was captivated by how awesome Linux Mint is, and I decided to try it instead. Next day, I wanted to go for Debian. Then, I was thinking about Arch Linux, but I didn't want to have something too bleeding edge.
 
 Finally, after all that research and deliberation, I settled on Fedora.
 
 ### Why Fedora Over Ubuntu?
 - Explain your shift from Ubuntu to Fedora, focusing on Fedora’s strengths (e.g., cutting-edge packages, robust developer tools, stability).
-Prior to buying myself a MacBook, I was using Ubuntu for around 5 years. I was pretty happy with it, but Canonical's direction with snaps is just irritating. They are pushing this stuff down users' throats, and I don't like it. I don't want to use snaps, and I don't want to let Amazon spy on me.
+Prior to buying myself a MacBook, I was using Ubuntu for around 5 years. While I used and mostly enjoyed Ubuntu for five years before my MacBook, Canonical's aggressive push of Snaps was a primary reason I looked elsewhere. I dislike the forced integration and the performance overhead. **Fedora offers a refreshingly pure, upstream GNOME experience without such vendor lock-in, instead embracing open standards like Flatpak.**
 
 Fedora, on the other hand, is very similar to Ubuntu, since both using GNOME as a desktop environment by default. While Fedora is backed by Red Hat and IBM, it has a strong community and is known for its commitment to open-source principles. Fedora tends to have more up-to-date packages, which is great for developers who want the latest tools and libraries.
 
@@ -129,9 +131,11 @@ The other thing that attracted me to Fedora is attachment to tools like Podman f
 ### Why GNOME?
 I'm not going to ramble a lot about why I chose GNOME because it all comes down to personal preference. I just want to say that I like the simplicity and extensibility of GNOME. By extensibility, I mean the ability to add GNOME extensions, which you can install from the [Extension Manager](https://flathub.org/apps/com.mattjakeman.ExtensionManager "Link to Flathub Extension Manager") or create your own with JavaScript.
 
-### Setting Up Fedora for Programming
-- Cover the installation process, emphasizing ease for programmers.
-- List essential tools (e.g., GCC, VS Code, Docker, Git) and how you customized your environment (e.g., key bindings to ease the Cmd-to-Ctrl transition).
+![My GNOME Desktop look](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756197382.webp)
+
+I'm thoroughly happy with my current GNOME setup. Its clean design gets out of my way, and the extensibility allows me to tailor it perfectly to my workflow—a level of control that simply wasn't possible on macOS.
+
+It's easy to find any help online and overcome any challenges you might face.
 
 ## Overcoming Challenges in the Switch
 ### Adjusting to Linux Workflows
