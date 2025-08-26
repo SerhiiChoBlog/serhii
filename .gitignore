@@ -34,3 +34,4 @@ composer.lock
 .DS_Store
 !.gitkeep
 post-images.zip
+Session.vim
