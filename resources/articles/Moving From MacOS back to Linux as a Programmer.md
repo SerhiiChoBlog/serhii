@@ -138,9 +138,18 @@ I'm thoroughly happy with my current GNOME setup. Its clean design gets out of m
 It's easy to find any help online and overcome any challenges you might face.
 
 ## Overcoming Challenges in the Switch
+While the switch was ultimately straightforward thanks to my Linux background, I still faced a period of adjustment. It involved rewiring my brain to a new workflow and hunting down my essential tools on Flathub.
+
+But **any obstacle can be overcome if you want the freedom badly enough.**
+
 ### Adjusting to Linux Workflows
-- Discuss relearning habits (e.g., Ctrl vs. Cmd, cut/paste differences).
-- Offer tips for easing the transition (e.g., remapping keys, using tools like `xcopy` for familiar workflows).
+The biggest and most time-consuming difficulty was the habit of using the old Mac keybinds. As you know, Apple keyboards have a "Command" key while other keyboard manufacturers don't.
+
+Things like copying, pasting, and undoing changes are done through the "Command" key. Getting used to the same actions but with the "Ctrl" key was a 7-day journey. Of course, the more you do it, the easier it gets.
+
+To make this transition easier, you can remap things to the "Alt" key to make it act as "Command", but I didn't do it. I needed to embrace the pain since I would rather not use Linux as macOS or with an Apple mindset. I wanted to learn Linux on its own terms, not force it to be something it's not.
+
+I wouldn't suggest that anyone remap keys to match their old Mac device, but if you really want to do it, Linux will not be on your way.
 
 ### Hardware and Software Hurdles
 - Address hardware issues (e.g., ThinkPad T14s fingerprint scanner vs. MacBook Pro’s).
