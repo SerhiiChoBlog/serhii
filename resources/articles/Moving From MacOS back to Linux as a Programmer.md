@@ -190,19 +190,9 @@ Can you open a fresh document on macOS and start writing about something deeply 
 
 ![Open-source Logo](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756293985.webp)
 
-You can find plenty articles online about how to stay safe on Linux, but I would recommed to start with this:
+You can find plenty articles online about how to stay safe, but I haven't found any that allign with my privacy standarts. That's why I wrote my own article [Securing Your Digital Life: A Programmer's Action Plan](https://serhii.io/posts/securing-your-digital-life-a-programmers-action-plan). It will be the best article you've ever read in your entire life.
 
-- ✅ Don't use proprietary software (e.g., Google Chrome, Gmail, Google, etc.)
-- ✅ Use Flatpak packages when possible
-- ✅ Install [Flatseal](https://flathub.org/apps/com.github.tchx84.Flatseal "Link to Flathub") app and tweak permissions for each of your Flatpak app. There are 2 main things you need to look, "Share -> Network" setting and "Filesystem -> All system files". Make sure apps that doesn't need network access and system files access don't have that right
-- ✅ Download ISO images only from official websites and compare checksums before installing
-- ✅ Try not to use unofficial repositories. Unfortunately, sometimes you need them. For example, [Table Plus](https://tableplus.com/download/linux "Link to Table Plus download page") app is not available on Flathub or on official Fedora repositories.
-- ✅ Install only open-source apps and browser extensions
-- ✅ Use a password manager like [Proton Pass](https://proton.me/pass "Link to Proton Pass website") or [Bitwarden](https://bitwarden.com/ "Link to Bitwarden website")
-- ✅ Use file encryption tools like LUKS (Linux Unified Key Setup) to encrypt your SSD drive. Most Linux distros have it built-in into the installer. Just make sure to enable it during installation
-- ✅ Use strong passwords and enable 2FA (Two-Factor Authentication) wherever possible
-
-I can continue the list forever, but I think you get the point. Linux gives you the tools to stay safe and private, but it's up to you to use them. It doesn't matter how protected your house is if you leave the door wide open. It's much better than living in a protected house with a NSA agents inside.
+Linux gives you the tools to stay safe and private, but it's up to you to use them. It doesn't matter how protected your house is if you leave the door wide open. It's much better than living in a protected house with a NSA agents inside.
 
 ![A person holding a sign at a protest against mass surveillance with text 'HANDS OFF MY META-DATA'](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756291185.webp)
 
