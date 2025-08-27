@@ -122,22 +122,23 @@ Choosing a Linux distribution and desktop environment is the most important step
 
 ![Various Desktop Environments for Linux](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756211386.webp)
 
-My ThinkPad hadn't even arrived, and I was already paralyzed by choice. First, I considered going back to Ubuntu, but then I was captivated by how awesome Linux Mint is, and I decided to try it instead. The next day, I wanted to go for Debian. Then, I was thinking about Arch Linux, but I would rather not have something too bleeding edge.
+My ThinkPad hadn't even arrived, and I was already paralyzed by choice. First, I considered going back to Ubuntu, but then I was captivated by how awesome Linux Mint is, and I decided to try it instead. The next day, I was convinced Debian was the way to go. Then, I was thinking about Arch Linux, but I would rather not have something too bleeding edge.
 
-Finally, after all that research and deliberation, I settled on Fedora.
+Finally, after all that research and deliberation, I settled on Fedora 42.
 
 ### Why Fedora Over Ubuntu?
-Explain your shift from Ubuntu to Fedora, focusing on Fedora’s strengths (e.g., cutting-edge packages, robust developer tools, stability).
-Before buying myself a MacBook, I was using Ubuntu for around 5 years. While I used and mostly enjoyed Ubuntu for five years before my MacBook, Canonical's aggressive push of Snaps was a primary reason I looked elsewhere. I dislike the forced integration and the performance overhead. **Fedora offers a refreshingly pure, upstream GNOME experience without such vendor lock-in, instead embracing open standards like Flatpak.**
+Before buying myself a MacBook, I was using Ubuntu for around 5 years. While I used and mostly enjoyed Ubuntu before my MacBook, Canonical's aggressive push of Snaps was a primary reason I looked elsewhere. I dislike the forced integration and the performance overhead. **Fedora offers a refreshingly pure, upstream GNOME experience without such vendor lock-in, instead embracing open standards like Flatpak.**
+
+![Desktop look of my Linux Fedora 42 setup](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756278763.webp)
 
 Fedora, on the other hand, is very similar to Ubuntu, since both use GNOME as a desktop environment by default. While Fedora is backed by Red Hat and IBM, it has a strong community and is known for its commitment to open-source principles. Fedora tends to have more up-to-date packages, which is great for developers who want the latest tools and libraries.
 
-The other thing that attracted me to Fedora is attachment to tools like Podman for container management and [Flatpak](https://flathub.org/ "Link to Flathub repository") for application distribution. It happens that I love Podman and Flatpak, and Fedora embraces these technologies wholeheartedly.
+The other thing that attracted me to Fedora is its attachment to tools like Podman for container management and [Flatpak](https://flathub.org/ "Link to Flathub repository") for application distribution. It happens that I love Podman and Flatpak, and Fedora embraces these technologies wholeheartedly.
 
 ### Why GNOME?
-I'm not going to ramble a lot about why I chose GNOME because it all comes down to personal preference. I would just like to mention that I like the simplicity and extensibility of GNOME. By extensibility, I mean the ability to add GNOME extensions, which you can install from the [Extension Manager](https://flathub.org/apps/com.mattjakeman.ExtensionManager "Link to Flathub Extension Manager") or create your own with JavaScript.
+My choice of GNOME ultimately comes down to personal preference. I appreciate its simplicity and extensibility. By extensibility, I mean the ability to add GNOME extensions, which you can install from the [Extension Manager](https://flathub.org/apps/com.mattjakeman.ExtensionManager "Link to Flathub Extension Manager") or create your own with JavaScript.
 
-![My GNOME Desktop look](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756197382.webp)
+![My GNOME Desktop look](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756277549.webp)
 
 I'm thoroughly happy with my current GNOME setup. Its clean design gets out of my way, and the extensibility allows me to tailor it perfectly to my workflow—a level of control that simply wasn't possible on macOS.
 
@@ -158,11 +159,6 @@ Things like copying, pasting, and undoing changes are done through the "Command"
 To make this transition easier, you can remap things to the "Alt" key to make it act as "Command," but I didn't do it. I needed to embrace the pain since I would rather not use Linux as macOS or with an Apple mindset. I was eager to learn Linux on its terms, not force it to be something it's not.
 
 I wouldn't suggest that anyone remap keys to match their old Mac device, but if you really want to do it, Linux will not be on your way.
-
-### Hardware and Software Hurdles
-- Address hardware issues (e.g., ThinkPad T14s fingerprint scanner vs. MacBook Pro’s).
-- Discuss software availability, noting solutions like Flatpak, Snap, or Wine for macOS-specific apps.
-- Highlight community support (e.g., forums, X posts, or Linux Mint’s success for your mom).
 
 ## Privacy and Security
 - Expand on your notes about Linux’s transparency vs. Apple/Microsoft’s “black box.”
