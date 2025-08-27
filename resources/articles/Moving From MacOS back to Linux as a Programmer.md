@@ -161,19 +161,38 @@ To make this transition easier, you can remap things to the "Alt" key to make it
 I wouldn't suggest that anyone remap keys to match their old Mac device, but if you really want to do it, Linux will not be on your way. But, let's talk about the elephant in the room when it comes to Linux vs. macOS and Windows: privacy and security.
 
 ## Privacy and Security
-The biggest and the most significant factor influencing my decision was the enhanced privacy and robust security offered by Fedora and Linux in general. Trusting a company like Apple which is working with NSA to spy not only on the US citizens but also on the citizens of other countries.
+**The biggest and the most significant factor influencing my decision was the enhanced privacy and robust security offered by Linux in general.** Trusting a company like Apple which is working with NSA to spy not only on the US citizens but also on the citizens of other countries is a crazy move.
 
-It was showen in data leaks in 2013 by [Edward Snowden](https://en.wikipedia.org/wiki/Edward_Snowden "Link to Edward Snowden Wikipedia page") that Apple was working with NSA to provide backdoor access to user data. Whether you believe it or not, it's not relevant, because there are documents proving that Apple was working with NSA to spy on its users in the [PRISM program](https://en.wikipedia.org/wiki/PRISM "Link to a Wikipedia page").
+It was clear in data leaks in 2013 by [Edward Snowden](https://en.wikipedia.org/wiki/Edward_Snowden "Link to Edward Snowden Wikipedia page") that Apple was working with NSA to provide backdoor access to user data through the [PRISM program](https://en.wikipedia.org/wiki/PRISM "Link to a Wikipedia page").
 
 Can you open a fresh document on macOS and start writing about something deeply personal? Like your health issues, your inner thoughts about life, intimate relationships with your partner, conversations with your inner voice. Can you do it without the fear of being spied on? I can't. I don't trust Apple or any other big corporation with closed source code.
 
-Compare it to Linux, which is open-source and transparent. If you download your ISO files from the official websites and verify their checksums, you can be sure that you are getting the real deal.
+Compare it to Linux, which is open-source and transparent. No spyware, no bloatware, no hidden backdoors and no telemetry. You can find plenty articles online about how to stay safe on Linux, but I would recommed to start with this:
 
-- Expand on your notes about Linux’s transparency vs. Apple/Microsoft’s “black box.”
-- Highlight Fedora’s security features (e.g., SELinux) and hardware choice flexibility.
+- ✅ Don't use proprietary software (e.g., Google Chrome, Gmail, Google, etc.)
+- ✅ Use Flatpak packages when possible
+- ✅ Install [Flatseal](https://flathub.org/apps/com.github.tchx84.Flatseal "Link to Flathub") app and tweak permissions for each of your Flatpak app. There are 2 main things you need to look, "Share -> Network" setting and "Filesystem -> All system files". Make sure apps that doesn't need network access and system files access don't have that right
+- ✅ Download ISO images only from official websites and compare checksums before installing
+- ✅ Try not to use unofficial repositories. Unfortunately, sometimes you need them. For example, [Table Plus](https://tableplus.com/download/linux "Link to Table Plus download page") app is not available on Flathub or on official Fedora repositories.
+- ✅ Install only open-source apps and browser extensions
+- ✅ Use a password manager like [Proton Pass](https://proton.me/pass "Link to Proton Pass website") or [Bitwarden](https://bitwarden.com/ "Link to Bitwarden website")
+- ✅ Use file encryption tools like LUKS (Linux Unified Key Setup) to encrypt your SSD drive. Most Linux distros have it built-in into the installer. Just make sure to enable it during installation
+- ✅ Use strong passwords and enable 2FA (Two-Factor Authentication) wherever possible
+
+I can continue the list forever, but I think you get the point. Linux gives you the tools to stay safe and private, but it's up to you to use them. It doesn't matter how protected your house is if you leave the door wide open. It's much more better than living in a protected house with a NSA agents inside.
+
+![NSA is spying on people](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756291185.webp)
+
+I want to end this section with a quote from [Richard Stallman](https://en.wikipedia.org/wiki/Richard_Stallman "Link to Richard Stallman Wikipedia page"), the founder of the Free Software Foundation and the GNU Project:
+
+<blockquote>
+    <p>Free software is software that respects your freedom and the social solidarity of your community. So it's free as in freedom.</p>
+    <img src="https://serhii.io/storage/posts/content/10-ways-to-make-money-in-web-development-1664114567.jpg" alt="Richard Stallman" />
+    <h6>Richard Stallman</h6>
+</blockquote>
+
+## The Joy of Hacking with Linux
 - More interest in hacking with the machine
-
-This was always something that I didn’t like about the Apple ecosystem. Conversely, Linux, being an open-source operating system, provides unmatched transparency and the ability to choose the hardware you want to use. Whether you want a ThinkPad, Dell, Framework Laptop, System 76, or to build your own custom PC, the Linux kernel supports a vast array of configurations. This allows users to avoid vendor lock-in and select components based on their specific privacy and performance requirements.
 
 ## Conclusion
 ### Reflecting on the Journey
