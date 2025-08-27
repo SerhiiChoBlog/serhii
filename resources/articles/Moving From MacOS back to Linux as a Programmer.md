@@ -115,7 +115,7 @@ The ARM architecture support is still not perfect. Docker Desktop for Mac is als
 
 As a bonus, you get much better gaming experience on Linux compared to macOS. With the [Steam Deck](https://store.steampowered.com/steamdeck "Link to Steam Deck website") and [Proton](https://github.com/ValveSoftware/Proton "Link to Proton GitHub page"), you can play a lot more games on Linux than on macOS. Gaming on Linux is going to get even better in the future. [Valve](https://www.valvesoftware.com/ "Link to Valve website") is investing heavily in Linux gaming, and it's paying off. Thank you, [Gabe Newell](https://en.wikipedia.org/wiki/Gabe_Newell "Link to Gabe Newell Wikipedia page") for this!
 
-All this beautiful ecosystem is what led me to choose Linux as my primary OS, and I didn't want to go back to Ubuntu as well. Since I don't like Snaps, I went with Fedora, which embraces Flatpaks as a package format.
+**All this beautiful ecosystem is what led me to choose Linux as my primary OS.** Let's talk a little bit about the distribution choise that I've made.
 
 ## Choosing Fedora: A Developer’s Ideal Linux
 Choosing a Linux distribution and desktop environment is the most important step. I remember talking hours with AI discussing differences between distros and desktop environments. It was the hardest part of the switch because there are so many of them.
@@ -158,16 +158,20 @@ Things like copying, pasting, and undoing changes are done through the "Command"
 
 To make this transition easier, you can remap things to the "Alt" key to make it act as "Command," but I didn't do it. I needed to embrace the pain since I would rather not use Linux as macOS or with an Apple mindset. I was eager to learn Linux on its terms, not force it to be something it's not.
 
-I wouldn't suggest that anyone remap keys to match their old Mac device, but if you really want to do it, Linux will not be on your way.
+I wouldn't suggest that anyone remap keys to match their old Mac device, but if you really want to do it, Linux will not be on your way. But, let's talk about the elephant in the room when it comes to Linux vs. macOS and Windows: privacy and security.
 
 ## Privacy and Security
+The biggest and the most significant factor influencing my decision was the enhanced privacy and robust security offered by Fedora and Linux in general. Trusting a company like Apple which is working with NSA to spy not only on the US citizens but also on the citizens of other countries.
+
+It was showen in data leaks in 2013 by [Edward Snowden](https://en.wikipedia.org/wiki/Edward_Snowden "Link to Edward Snowden Wikipedia page") that Apple was working with NSA to provide backdoor access to user data. Whether you believe it or not, it's not relevant, because there are documents proving that Apple was working with NSA to spy on its users in the [PRISM program](https://en.wikipedia.org/wiki/PRISM "Link to a Wikipedia page").
+
+Can you open a fresh document on macOS and start writing about something deeply personal? Like your health issues, your inner thoughts about life, intimate relationships with your partner, conversations with your inner voice. Can you do it without the fear of being spied on? I can't. I don't trust Apple or any other big corporation with closed source code.
+
+Compare it to Linux, which is open-source and transparent. If you download your ISO files from the official websites and verify their checksums, you can be sure that you are getting the real deal.
+
 - Expand on your notes about Linux’s transparency vs. Apple/Microsoft’s “black box.”
 - Highlight Fedora’s security features (e.g., SELinux) and hardware choice flexibility.
 - More interest in hacking with the machine
-
-Let's look at the definition of a hacker in its original form:
-
-One of the most significant factors influencing my decision was the enhanced privacy and robust security offered by Fedora and Linux in general. Trusting a company like Apple or Microsoft is like relying on a black box with a back door for government surveillance.
 
 This was always something that I didn’t like about the Apple ecosystem. Conversely, Linux, being an open-source operating system, provides unmatched transparency and the ability to choose the hardware you want to use. Whether you want a ThinkPad, Dell, Framework Laptop, System 76, or to build your own custom PC, the Linux kernel supports a vast array of configurations. This allows users to avoid vendor lock-in and select components based on their specific privacy and performance requirements.
 
