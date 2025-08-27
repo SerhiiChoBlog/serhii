@@ -161,13 +161,21 @@ To make this transition easier, you can remap things to the "Alt" key to make it
 I wouldn't suggest that anyone remap keys to match their old Mac device, but if you really want to do it, Linux will not be on your way. But, let's talk about the elephant in the room when it comes to Linux vs. macOS and Windows: privacy and security.
 
 ## Privacy and Security
-**The biggest and the most significant factor influencing my decision was the enhanced privacy and robust security offered by Linux in general.** Trusting a company like Apple which is working with NSA to spy not only on the US citizens but also on the citizens of other countries is a crazy move.
+**The biggest and the most significant factor influencing my decision was the enhanced privacy and robust security offered by Linux in general.** Trusting a company like Apple—which was integrated into the NSA's PRISM program and remains subject to the same secretive laws and national security letters—feels, to me, like a crazy move. The framework for cooperation is still in place, making it impossible for me to trust that my data is truly private.
+
+![NSA is spying on us protest](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756293559.jpg)
 
 It was clear in data leaks in 2013 by [Edward Snowden](https://en.wikipedia.org/wiki/Edward_Snowden "Link to Edward Snowden Wikipedia page") that Apple was working with NSA to provide backdoor access to user data through the [PRISM program](https://en.wikipedia.org/wiki/PRISM "Link to a Wikipedia page").
 
+![NSA Logo surrounded by other logos, Facebook, Google, Apple, Yahoo, Skype](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756293717.jpg)
+
 Can you open a fresh document on macOS and start writing about something deeply personal? Like your health issues, your inner thoughts about life, intimate relationships with your partner, conversations with your inner voice. Can you do it without the fear of being spied on? I can't. I don't trust Apple or any other big corporation with closed source code.
 
-Compare it to Linux, which is open-source and transparent. No spyware, no bloatware, no hidden backdoors and no telemetry. You can find plenty articles online about how to stay safe on Linux, but I would recommed to start with this:
+**Compare it to Linux, which is open-source and transparent. No spyware, no bloatware, no hidden backdoors and no telemetry.**
+
+![Open-source Logo](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756293985.webp)
+
+You can find plenty articles online about how to stay safe on Linux, but I would recommed to start with this:
 
 - ✅ Don't use proprietary software (e.g., Google Chrome, Gmail, Google, etc.)
 - ✅ Use Flatpak packages when possible
@@ -179,9 +187,9 @@ Compare it to Linux, which is open-source and transparent. No spyware, no bloatw
 - ✅ Use file encryption tools like LUKS (Linux Unified Key Setup) to encrypt your SSD drive. Most Linux distros have it built-in into the installer. Just make sure to enable it during installation
 - ✅ Use strong passwords and enable 2FA (Two-Factor Authentication) wherever possible
 
-I can continue the list forever, but I think you get the point. Linux gives you the tools to stay safe and private, but it's up to you to use them. It doesn't matter how protected your house is if you leave the door wide open. It's much more better than living in a protected house with a NSA agents inside.
+I can continue the list forever, but I think you get the point. Linux gives you the tools to stay safe and private, but it's up to you to use them. It doesn't matter how protected your house is if you leave the door wide open. It's much better than living in a protected house with a NSA agents inside.
 
-![NSA is spying on people](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756291185.webp)
+![A person holding a sign at a protest against mass surveillance with text 'HANDS OFF MY META-DATA'](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756291185.webp)
 
 I want to end this section with a quote from [Richard Stallman](https://en.wikipedia.org/wiki/Richard_Stallman "Link to Richard Stallman Wikipedia page"), the founder of the Free Software Foundation and the GNU Project:
 
