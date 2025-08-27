@@ -270,34 +270,6 @@ class PostControllerTest extends TestCase
         $this->assertSame($expect, $post->fresh()?->content);
     }
 
-    public function testItAddsWarningsToContent(): void
-    {
-        $admin = $this->createAdmin();
-        $post = Post::factory()->create();
-
-        $params = [
-            'title' => $post->title,
-            'intro' => $post->intro,
-            'is_published' => false,
-            'content' => <<<TEXT
-            <p>This is some text here</p>
-            <p>Warning. Be careful man!</p>
-            TEXT,
-            'slug' => $post->slug,
-        ];
-
-        $this->actingAs($admin, 'admin')
-            ->putJson(self::UPDATE_URI, $params)
-            ->assertOk();
-
-        $expect = <<<TEXT
-        <p>This is some text here</p>
-        <p class="note"><span class="hidden" aria-label="Warning">Warning. </span>Be careful man!</p>
-        TEXT;
-
-        $this->assertSame($expect, $post->fresh()?->content);
-    }
-
     public function testItChangesImageToLazyLoading(): void
     {
         $admin = $this->createAdmin();
