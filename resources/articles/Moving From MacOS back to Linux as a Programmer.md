@@ -3,7 +3,10 @@
 ## Introduction: The Journey to macOS
 In May 2022, I bought my first Apple device, a **16-inch, 16 GB RAM, 512 GB SSD MacBook Pro 2021 with the M1 Pro chip**. I was always interested in Apple products, seeing programmers and designers using them in their video vlogs and tutorials. Honestly, I was frustrated with my previous laptop, a **Dell Vostro 5590**, which was fast but had a terrible screen and poor build quality.
 
-![Dell Vostro 5590](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755759832.webp)
+<figure class="image">
+    <img src="https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755759832.webp" alt="Dell Vostro 5590">
+    <figcaption>Dell Vostro 5590 that I had</figcaption>
+</figure>
 
 You see those MacBook Pros on social media, and they look so sleek and nice, and I thought to myself, "This is the laptop I need to get my programming career to the next level." So, I took the plunge and bought one.
 
@@ -22,11 +25,17 @@ With Linux, I have full control over my data and who has access to it. I have th
 ### Small frustrations Adding Up
 Beyond the big philosophical issues, it was often the small, daily frustrations that chipped away at my enjoyment. They highlighted the lack of control and the "Apple knows best" mentality. There are apps that you can't get rid of, like Stickies as an example. Since it's a system app, you can't delete it. Why would you have Stickies as a system app? It doesn't make any sense to me. I tried to use it, but it looks ugly, and I don't like it.
 
-![Stickies app on macOS](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755936541.webp)
+<figure class="image">
+    <img src="https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755936541.webp" alt="Stickies app on macOS">
+    <figcaption>Stickies app on macOS</figcaption>
+</figure>
 
 If you want to close the Finder app, you can't do it. It's always there with an indicator in the dock. From users' perspective, it feels odd that you can't close the app you don't use. And the reason it's always running and you can't close it is that macOS is using this app to manage the desktop.
 
-![Finder on macOS](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755936457.webp)
+<figure class="image">
+    <img src="https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755936457.webp" alt="Finder on macOS">
+    <figcaption>Finder app on macOS</figcaption>
+</figure>
 
 Why not separate the desktop management from the file manager? Apple didn't think about it that way. They are too focused on earning money and locking users into their ecosystem.
 
@@ -62,7 +71,10 @@ There are a few options out there; here are some of them:
 
 I went with the **ThinkPad T14s Gen 5**. It has a great keyboard, solid build quality, and exquisite Linux support. Plus, it's pretty light and portable, making it a great choice for a programmer on the go.
 
-![Lenovo ThinkPad T14s Gen 5](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755871852.webp)
+<figure class="image">
+    <img src="https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755871852.webp" alt="The photo of my Lenovo ThinkPad T14s Gen 5">
+    <figcaption>The photo of my Lenovo ThinkPad T14s Gen 5</figcaption>
+</figure>
 
 As for the specs, I went for this:
 - CPU: Intel i7 Ultra
@@ -78,7 +90,10 @@ If you like animated and beautiful design, GNOME has you covered. If you want so
 
 I went as far as switching my mom from Windows to Linux Mint, and she's loving it.
 
-![Desktop Look of Linux Mint](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755948592.webp)
+<figure class="image">
+    <img src="https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755948592.webp" alt="My mom's desktop look with Linux Mint">
+    <figcaption>A screenshot of my mom's desktop look with Linux Mint</figcaption>
+</figure>
 
 She noticed a few differences at first, but she adapted quickly and now appreciates Linux's simplicity. She even uses the terminal to install apps from [Flathub](https://flathub.org) by copying commands from their site. If my mom, born in the '70s, can handle it, you and your parents can too. This accessibility is built on a foundation of incredible flexibility.
 
@@ -98,7 +113,7 @@ macOS is very restrictive and closed in this regard. It wasn't designed to be cu
 ### Open-Source Power for Developers
 Linux provides you with access to a vast array of open-source tools and libraries that can enhance your development workflow. You can easily install and manage packages using package managers. If you don't want to use the terminal, you can use GUI package managers like GNOME Software, KDE Discover, or Software Manager on Linux Mint.
 
-![GNOME Software program](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755950040.webp)
+![GNOME Software program showing that there are no updates available](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1755950040.webp)
 
 If you are using macOS, do the math of how much money you spend on apps like Magnet, Alfred, and services like iCloud. On Linux, you can get similar functionality for free using open-source alternatives.
 
@@ -213,3 +228,4 @@ I want to end this section with a quote from [Richard Stallman](https://en.wikip
 ### Advice for Programmers Considering Linux
 - Offer practical tips (e.g., start with a VM, try distros like Fedora or Pop!_OS, join communities).
 - Encourage experimenting with Linux to escape proprietary ecosystems.
+
