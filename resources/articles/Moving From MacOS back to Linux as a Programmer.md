@@ -178,7 +178,7 @@ I wouldn't suggest that anyone remap keys to match their old Mac device, but if 
 ## Privacy and Security
 **The biggest and the most significant factor influencing my decision was the enhanced privacy and robust security offered by Linux in general.** Trusting a company like Apple—which was integrated into the NSA's PRISM program and remains subject to the same secretive laws and national security letters—feels, to me, like a crazy move. The framework for cooperation is still in place, making it impossible for me to trust that my data is truly private.
 
-![NSA is spying on us protest](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756293559.jpg)
+![People are walking on a protest with a poster 'HANDS OFF MY META-DATA'](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756293559.jpg)
 
 It was clear in data leaks in 2013 by [Edward Snowden](https://en.wikipedia.org/wiki/Edward_Snowden "Link to Edward Snowden Wikipedia page") that Apple was working with NSA to provide backdoor access to user data through the [PRISM program](https://en.wikipedia.org/wiki/PRISM "Link to a Wikipedia page").
 
@@ -190,9 +190,9 @@ Can you open a fresh document on macOS and start writing about something deeply 
 
 ![Open-source Logo](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756293985.webp)
 
-You can find plenty articles online about how to stay safe, but I haven't found any that allign with my privacy standarts. That's why I wrote my own article [Securing Your Digital Life: A Programmer's Action Plan](https://serhii.io/posts/securing-your-digital-life-a-programmers-action-plan). It will be the best article you've ever read in your entire life.
+Note. You can find plenty articles online about how to stay safe, but I haven't found any that align with my privacy standarts. That's why my next article is going to be **Securing Your Digital Life: A Programmer's Action Plan**. It will be the most useful article you will read in your entire life, believe that. I'm already working on it while you are reading this one.
 
-Linux gives you the tools to stay safe and private, but it's up to you to use them. It doesn't matter how protected your house is if you leave the door wide open. It's much better than living in a protected house with a NSA agents inside.
+Linux gives you the tools to stay safe and private, but it's up to you to use them. It doesn't matter how protected your house is if you leave the door wide open. It's much better than living in a protected house with NSA agents inside.
 
 ![A person holding a sign at a protest against mass surveillance with text 'HANDS OFF MY META-DATA'](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756291185.webp)
 
@@ -204,8 +204,16 @@ I want to end this section with a quote from [Richard Stallman](https://en.wikip
     <h6>Richard Stallman</h6>
 </blockquote>
 
-## The Joy of Hacking with Linux
-- More interest in hacking with the machine
+## The Joy of Tinkering with Linux
+Do you ever get that thrill from using your computer? That little rush of excitement when you open a Linux terminal and start typing commands? I know I can't be the only one who feels this way. There must be millions of us who love tinkering—not just with software, but with hardware too.
+
+Do you remember messing around with your old computers, routers, switches, ONTs, and other gadgets? I have such an admiration for people who build this stuff from scratch. I remember when I was a kid, I used to take apart things to see how they worked and then put them back together or try to build something new.
+
+![Disaccembling some electronic device with buttons](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756369164.webp)
+
+Returning to Linux brought back the pure joy of hacking. It inspired me to go beyond the surface, to learn the meaning behind essential abbreviations like **FTTH, DSL, LAN, WAN, ADSL, VDSL, ONU, DNS, TCP, and UDP**, and finally understand how the surrounding technology actually works.
+
+If you are a programmer and you still haven't switched to Linux, what are you waiting for? **Your computer is waiting to become a source of joy again.**
 
 ## Conclusion
 ### Reflecting on the Journey
