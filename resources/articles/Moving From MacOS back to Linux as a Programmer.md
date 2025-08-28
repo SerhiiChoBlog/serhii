@@ -220,18 +220,49 @@ Returning to Linux brought back the pure joy of hacking. It inspired me to go be
 If you are a programmer and you still haven't switched to Linux, what are you waiting for? **Your computer is waiting to become a source of joy again.**
 
 ## Conclusion
-Looking back at my experience with macOS, I realize that while it had its moments, it often rubbed me the wrong way. The lack of control, the privacy concerns, the giant corporation's influence on my digital life—all these factors made my mind to switch back to Linux.
+Looking back at my experience with macOS, I realize that while it had its moments, it often rubbed me the wrong way. The lack of control, the privacy concerns, the giant corporation's influence on my digital life—all these factors made my mind switch back to Linux.
 
-Not everything perfect with Linux
+Not everything is perfect with Linux, just like with any other OS. The longer you use it, the easier it gets. It's a skill, and like all skills, practice makes perfect. Linux gives you the freedom to learn, tinker, and grow—not just as a programmer, but as a hacker.
 
-### Reflecting on the Journey
-- Summarize your experience, balancing challenges and rewards.
-- Tie back to your programmer identity (e.g., Linux’s alignment with coding freedom).
+And I don't mean "hacker" in the negative sense twisted by the media. A true hacker is a curious tinkerer, an explorer, and a creator. It's about understanding the system, bending it to your will, and valuing the freedoms of privacy and control. It's about being able to look under the hood, and not just accept that something "just works"—but to know *why*.
+
+![A man unpluging the wire from a server station](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756374622.webp)
 
 ### Looking Ahead
-- Share your outlook on Linux’s future for developers (e.g., growing adoption, tools like Podman).
+The trajectory is clear: Linux is only going to get better and its adoption will continue to grow far beyond the server room. We are witnessing its rise on the desktop, in gaming, in business, and crucially, in the public sector around the world. This isn't a niche trend; it's a global shift towards sovereignty and security.
+
+The evidence is everywhere:
+
+- Since 2008, France's military police (Gendarmerie) have run [GendBuntu](https://en.wikipedia.org/wiki/GendBuntu) on tens of thousands of PCs.
+- In 2024, the German state of Schleswig-Holstein announced a full migration of 30,000 government workers from Windows to Linux.
+- By 2025, Denmark’s Ministry of Digital Affairs will have fully transitioned to Linux.
+- Nations are building their digital infrastructure on open source: India with [Maya OS](https://en.wikipedia.org/wiki/Maya_(operating_system)), Russia with [Astra Linux](https://en.wikipedia.org/wiki/Astra_Linux), China with [Kylin](https://en.wikipedia.org/wiki/Kylin_(operating_system)), and Turkey with [Pardus](https://en.wikipedia.org/wiki/Pardus_(operating_system)). This is a powerful testament to the security and reliability these systems provide.
+
+This movement isn't confined to governments. Private businesses are also making the switch, recognizing the long-term benefits. And this is where you come in. You can contribute to this movement directly by choosing Linux yourself. Every new user strengthens the community, drives development, and pushes the ecosystem forward.
+
+Your journey doesn't just change your computer; it's a vote for a freer, more open digital future.
 
 ### Advice for Programmers Considering Linux
-- Offer practical tips (e.g., start with a VM, try distros like Fedora or Pop!_OS, join communities).
-- Encourage experimenting with Linux to escape proprietary ecosystems.
+If you want to try Linux, start by running it in a virtual machine (VM) on your current OS. It's the safest way to get a feel for it. Just keep in mind that a VM won't give you the full experience—you'll miss out on native hardware compatibility and performance—but it's an excellent and risk-free first step.
 
+Don't reach for advanced distros like Arch or Gentoo right away. Start with something user-friendly and stable like **Fedora**, **Pop!_OS**, or **Linux Mint**. I, personally, don't recommend Ubuntu anymore due to its direction with Snap packages, but it remains a popular starting point and is still a far more programmable environment than Windows or macOS.
+
+Start escaping proprietary ecosystems. Look at the services you're paying for and see if there's a free, open-source alternative. You'll be surprised by the powerful options available:
+
+- [GIMP](https://www.gimp.org/) instead of Photoshop
+- [Blender](https://www.blender.org/download/) instead of Autodesk Maya
+- [LibreOffice](https://www.libreoffice.org/) instead of Microsoft Office
+- [Kdenlive](https://kdenlive.org/) instead of Final Cut Pro
+
+For nearly every proprietary app, a robust open-source alternative exists. The trade-off is often a different workflow for the sake of freedom and control, and package formats like **Flatpak** make these apps incredibly easy to find, install, and manage.
+
+The visual customization is a massive part of the appeal. You can make your desktop look like anything you want.
+
+<figure class="image">
+    <img src="https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756380737.webp" alt="Garuda Linux desktop look with open file manager and a welcome window">
+    <figcaption>Garuda Linux demonstrates a modern, flashy desktop style.</figcaption>
+</figure>
+
+If that's not your taste, you can choose something more traditional and Windows-like (Cinnamon) or immensely customizable (KDE Plasma). That's the beauty of Linux—you own your system, not the other way around. You decide how it looks and behaves, not a giant corporation. You become the master of your own digital destiny.
+
+Have you made the switch? Thinking about it? Leave a comment down below with your thoughts or questions.
