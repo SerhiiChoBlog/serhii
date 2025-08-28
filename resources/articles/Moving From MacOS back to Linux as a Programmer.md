@@ -12,6 +12,10 @@ You see those MacBook Pros on social media, and they look so sleek and nice, and
 
 It felt nice to join the Apple ecosystem, but little did I know that this would lead to a series of frustrations that would ultimately drive me back to Linux.
 
+Note. Throughout this article, every time when I mention Linux, I mean [GNU](https://www.gnu.org/)/[Linux](https://www.linux.org/pages/download). Linux is just a kernel, and GNU is a collection of tools on top of it that makes it a complete operating system. Often times, people forget to give the GNU project credit it deserves, so I want to make it clear that when I say Linux, I mean GNU/Linux.
+
+![GNU/Linux Logo on a green background](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756374185.webp)
+
 For the full context on why I made the switch to macOS in the first place, I documented it in my article Moving From Linux to macOS as a Programmer. I highly recommend checking it out to understand the context of my journey. In this article, I will elaborate on the route I took to return to Linux, the challenges I faced, and the reasons why I believe Linux is a better choice for hackers. And I purposefully use the term "hacker" here; you will understand why later in the article.
 
 ## Why I Ditched macOS for Linux
@@ -216,6 +220,10 @@ Returning to Linux brought back the pure joy of hacking. It inspired me to go be
 If you are a programmer and you still haven't switched to Linux, what are you waiting for? **Your computer is waiting to become a source of joy again.**
 
 ## Conclusion
+Looking back at my experience with macOS, I realize that while it had its moments, it often rubbed me the wrong way. The lack of control, the privacy concerns, the giant corporation's influence on my digital life—all these factors made my mind to switch back to Linux.
+
+Not everything perfect with Linux
+
 ### Reflecting on the Journey
 - Summarize your experience, balancing challenges and rewards.
 - Tie back to your programmer identity (e.g., Linux’s alignment with coding freedom).
