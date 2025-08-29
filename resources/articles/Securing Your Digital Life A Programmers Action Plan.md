@@ -1,9 +1,25 @@
 ## Introduction
-- It's not easy to be safe and private
+<blockquote>
+    <p>What I'm about to tell you is top secret. There's a powerful group of people out there that are secretly running the world. I'm talking about the guys, no one knows about the guys who are invisible. The top 1% of the top 1%. The guys that play God without permission. And now I think they're following me.</p>
+    <img src="https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1756472826.webp" alt="Elliot Alderson in a dark hoodie with a black background" />
+    <h6>Elliot Alderson (Mr. Robot series)</h6>
+</blockquote>
 
-You might think that my list is overkill, but that's what I do myself and I don't feel limited or restricted in any way. If you are okay with your digital life as it is, then you don't need to read further. Just remember that every time you Google something, you are giving away your privacy. Arguments like "I have nothing to hide" or "I don't care if they track me" are invalid. You might not care, but your data is valuable and can be used against you in the future. So, it's better to be safe than sorry.
+I've never started out my article with a quote, but this Elliot's dialog from the beginning of the first episode of Mr. Robot was the first thing that came into my head when I started writing it. **The surveillance and existential paranoia displayed in that great series, perfectly shows the similar situation we find ourselves in today.**
 
-Anyways, I'm not your privacy advisor, I'm just a tech who cares about this stuff. So, take my advice with a grain of salt and do your own research.
+Recent scandals involving British and other politicians pushing for ubiquitous monitoring, data collection, and mandatory face scans to confirm your age have highlighted the escalating trend towards government and corporate surveillance. This raises serious concerns about privacy and individual freedom in the digital age.
+
+Even though this article will not be political, it's difficult to ignore the increasing tension between individual privacy and governmental/corporate agendas. The greediness for more power over people and control over their digital footprints is evident, particularly with revelations from whistleblowers like Edward Snowden underscoring the vast extent of personal data collection by state actors like the National Security Agency (NSA).
+
+This ongoing war on privacy has led millions of people to start investigating how to reclaim their digital freedom. **DuckDuckGo search engine went from 1.64 million daily queries in 2013 (Snowden revelation) to over 100 million in 2024. It's a mind-blowing 6000% increase in daily searches.**
+
+ProtonMail founded their company after Snowden's leaks in 2013, and in 2025 they have over **70 million users**, illustrating a clear public mandate for privacy-focused digital services.
+
+Switching from Gmail to ProtonMail is a good first move, but it's like putting window bars on a single window when you have 10 of them. I don't consider myself a guru of privacy, but I have been pushing hard on it since 2020, and since then, I've changed digital footprints of my relatives and myself.
+
+And yes, **as tech professionals, it's our responsibility to teach and protect our relatives who are strangers to all that tech stuff.**
+
+Anyway, I'm not your privacy advisor; I'm just a tech who cares about this entire privacy stuff. So, take my advice with a grain of salt and do your own research if you want to delve deeper. But I'm going to walk you through a comprehensive action plan for securing your digital life, offering practical steps to enhance your digital life and those people you care about.
 
 ## Use Linux
 - Fedora, Linux Mint, Pop!_OS, Arch if you are bold, or any other popular Linux distro.
