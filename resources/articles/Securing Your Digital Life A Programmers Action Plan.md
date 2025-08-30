@@ -35,7 +35,12 @@ Anyway, I'm not your privacy advisor; I'm just a tech who cares about this stuff
 
 ## Use Linux
 - Fedora, Linux Mint, Pop!\_OS, Arch if you are bold, or any other popular Linux distro.
-The most fundamental 
+
+The most fundamental aspect of digital security begins with the underlying free and open-source, fully functional operating system. It’s like a foundation upon which all the other security measures are built. There are not many choices to choose from, to be honest. As of 2025, we have only FreeBSD and GNU/Linux.
+
+FreeBSD is a good choice; I have nothing against it; however, I’ve never used it myself and thus cannot recommend it or comment on it. I just know it has a robust, long-standing reputation for stability and security in server environments.
+
+**GNU/Linux, on the other hand, is a great choice** because it has a vast and active community, frequent security updates, and lots of different flavors. This diversity allows users to select a distribution tailored to their specific security needs and technical proficiency, ranging from user-friendly options to highly configurable systems like <a href="https://archlinux.org/" title="Link to Arch Linux website" target="_blank">Arch Linux</a>.
 
 ## Safe ISO File
 - It doesn't matter how safe your house if your back door is not locked. That's why it's important to follow basic security practices when it comes to downloading installation files like ISO.
