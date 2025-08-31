@@ -42,6 +42,8 @@ FreeBSD is a good choice; I have nothing against it; however, I’ve never used 
 
 **GNU/Linux, on the other hand, is a great choice** because it has a vast and active community, frequent security updates, and lots of different flavors. This diversity allows users to select a distribution tailored to their specific security needs and technical proficiency, ranging from user-friendly options to highly configurable systems like <a href="https://archlinux.org/" title="Link to Arch Linux website" target="_blank">Arch Linux</a>.
 
+Keep in mind that Linux is not a silver bullet. While it's a great alternative to Windos and macOS, it's not perfect. The biggest downside of Linux desktops is that they more buggy than something like macOS. It havily depends on which desktop environment or window manager you use.
+
 ## Safe ISO File
 - It doesn't matter how safe your house if your back door is not locked. That's why it's important to follow basic security practices when it comes to downloading installation files like ISO.
 - Download ISO images only from official websites and compare checksums before installing
