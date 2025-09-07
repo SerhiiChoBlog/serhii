@@ -76,7 +76,7 @@ If they match, then you can be confident that your downloaded ISO file is authen
 
 ![chrome, watsup, skype and google logos are spying behind the girl who is sitting with her laptop on a sofa in a cartoon style](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757248167.webp)
 
-If you installed a fresh Linux installation and are thinking of getting your favorite Google Chrome browser, be mindful that you are reintroducing the same issue that you had before. Running Google Chrome on Linux is like installing a surveillance camera with the default password `admin` into your secured house.
+If you installed a fresh Linux installation and are thinking of getting your favorite Google Chrome browser, be mindful that you are reintroducing the same issue that you had before. Running Google Chrome on Linux is like installing a surveillance camera with the default password `admin` into your secured house. The rule is simple: if it's not open source, it doesn't get root-level trust.
 
 And it applies to browser extensions, which can introduce huge security vulnerabilities. **Before installing a browser extension check if it’s open source and keep close attention to its requested permissions.** Unfortunately, there is no perfect way to check the checksum of the extension itself and compare it to the original version, we can only rely on Mozilla and Google to ensure the integrity of their extension marketplaces.
 
@@ -85,15 +85,15 @@ For every proprietary software application, there is typically a robust open-sou
 
 Here is a list of recommendations if you are looking for free alternatives:
 
-- **Email:** ProtonMail or Tutanota offer end-to-end encrypted email services with bunch of features
-- **Cloud Storage:** ProtonDrive and Nextcloud provide secure sturage. Nextcloud is a self-hosted solution
+- **Email:** ProtonMail or Tutanota offer end-to-end encrypted email services with a bunch of features
+- **Cloud Storage:** ProtonDrive and Nextcloud provide secure storage. Nextcloud is a self-hosted solution
 - **Daily Browser:** Firefox, Brave, Vivaldi and tons of others. If you like Chrome, just use Brave and you will not see any differences in terms of user interface
 - **Search Engine:** DuckDuckGo, Brave Search and Startpage are the best privacy-focused solutions
 - **Graphic Design:** GIMP is the best choice if you want to switch from Photoshop
 - **Office Suite:** LibreOffice is a comprehensive alternative to Microsoft Office, offering word processing, spreadsheets, and presentation tools that are compatible with common file formats.
-- **Code Editor:** Vim, Neovim, and Emacs are true open-source options for developers, but if you prefer a more modern UI, VS Code, while partially proprietary, still provides significant open-source components and a vast ecosystem of extensions. If you can avoid VS Code, that’s a huge advantage.
+- **Code Editor:** Vim, Neovim, and Emacs are true open-source options for developers, but if you prefer a more modern UI, VS Code, while partially proprietary, still provides significant open-source components and a vast ecosystem of extensions. If you can avoid VS Code (due to its Microsoft telemetry and proprietary elements), that’s a huge advantage. We will talk more about this later in the article.
 
-I can continue this list for a long time, but the core principle remains: prioritize open-source solutions to enhance security, transparency, and user control over your digital environment.
+I can continue this list for a long time, but the core principle remains: prioritize open-source solutions to enhance security, transparency, and user control over your digital environment. You can always search for alternatives and you will find help online.
 
 ## Secure Browsing
 ### Browser Extensions
