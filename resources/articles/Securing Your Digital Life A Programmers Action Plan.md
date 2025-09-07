@@ -64,8 +64,17 @@ sha256sum fedora-workstation-42.x86_64.iso
 If they match, then you can be confident that your downloaded ISO file is authentic and untampered with.
 
 ## No Proprietary Software
-- Don't use proprietary software (e.g., Google Chrome, Gmail, Google, etc.)
-- Install only open-source apps and browser extensions
+<blockquote>
+    <p>It's more than unsettling to realize there are large companies out there developing backdoors, exploits and trojans.</p>
+    <img src="https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757154012.webp" alt="Photo of Mikko Hyppönen in glasses" />
+    <h6>Mikko Hyppönen (computer security expert)</h6>
+</blockquote>
+
+**Proprietary software, by its nature, often operates as a black box, making it impossible for users to inspect its inner workings for vulnerabilities or malicious functionalities.** Processes that are constantly running on your machine can collect sensitive data and transmit it without explicit user consent. I do not consider myself a paranoid individual, but it is not a secret that companies like Microsoft, Apple, Facebook, and Google routinely collect vast amounts of user data. Especially Google, since their whole business model is to sell you targeted ads.
+
+![chrome, watsup, skype and google logos are spying behind the girl who is sitting with her laptop on a sofa in a cartoon style](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757248167.webp)
+
+If you installed a fresh Linux installation and are thinking of getting your favorite Google Chrome browser, be mindful that you are reintroducing the same issue that you had before. Running Google Chrome on Linux is like installing a surveillance camera with the default password `admin` into your secured house.
 
 ### Use Alternatives
 - Use alternatives like Proton Mail, Proton Drive, Proton Calendar, DuckDuckGo, Brave Browser, Firefox, LibreOffice, etc.
@@ -122,8 +131,3 @@ If they match, then you can be confident that your downloaded ISO file is authen
 ## Conclusion
 Securing your digital life is an ongoing process. Start with the fundamentals (strong passwords, encryption), then gradually replace tools and adopt more advanced practices (using Tor, avoiding big tech). Remember, the goal is to make it as difficult as possible for anyone to track you or access your data.
 
-<blockquote>
-    <p>It's more than unsettling to realize there are large companies out there developing backdoors, exploits and trojans.</p>
-    <img src="https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757154012.webp" alt="Photo of Mikko Hyppönen in glasses" />
-    <h6>Mikko Hyppönen (computer security expert)</h6>
-</blockquote>
