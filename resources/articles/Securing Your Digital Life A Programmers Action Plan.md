@@ -7,11 +7,11 @@
 
 I've never started an article with a quote, but this dialogue from Elliot Alderson was the first thing that came to my head when I started writing it. **The surveillance and existential paranoia displayed in that great series perfectly capture the digital landscape we navigate today.**
 
-Recent scandals involving British and other politicians pushing for ubiquitous monitoring, data collection, and mandatory face scans to confirm your age have highlighted the escalating trend towards government and corporate surveillance. This raises serious concerns about privacy and individual freedom in the digital age.
+Recent scandals involving British and other politicians pushing for widespread monitoring, data collection, and mandatory face scans to confirm your age have highlighted the escalating trend towards government and corporate surveillance. This raises serious concerns about privacy and individual freedom in the digital age.
 
 ![People are protesting. Holding banners with the sign: Stop watching all of us](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1756478455.jpg)
 
-Even though this article will not be political, it's difficult to ignore the increasing tension between individual privacy and governmental/corporate agendas. **The greediness for more power over people and control over their digital footprints is evident**, particularly with revelations from whistleblowers like Edward Snowden underscoring the vast extent of personal data collection by state actors like the National Security Agency (NSA).
+Even though this article will not be political, it's difficult to ignore the increasing tension between individual privacy and governmental/corporate agendas. **The greediness for more power over people and control over their digital footprints is evident**, particularly from whistleblowers like Edward Snowden, who revealed how much personal data governments the National Security Agency (NSA) collect.
 
 ![NSA logo surrounded by logos of Facebook, Yahoo, Skype, Apple, and Google](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756293717.jpg)
 
@@ -19,11 +19,11 @@ This ongoing war on privacy has led millions to investigate how to reclaim their
 
 ![Advertizing banner with the DuckDuckGo ad: Google tracks you. We don't](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1756478715.jpg)
 
-ProtonMail founded their company after Snowden's leaks in 2013, and in 2025 they have over **70 million users**, illustrating a clear and growing public mandate for privacy-focused digital services.
+<a href="https://proton.me/mail" title="Link to ProtonMail website" target="_blank">ProtonMail</a> founded their company after Snowden's leaks in 2013, and in 2025 they have over **70 million users**, illustrating a clear and growing public mandate for privacy-focused digital services.
 
-Switching from Gmail to ProtonMail is a good first move, but it's like putting window bars on a single window when you have 10 of them. I don't consider myself a guru of privacy, but I have been pushing hard on it since 2020, and since then, I've changed the digital footprints of my relatives and myself.
+Switching from Gmail to ProtonMail is a good first move, but it's like putting window bars on a single window when you have 10 of them. I don't consider myself a guru of privacy, but I have been pushing hard on privacy since January 2019, and since then, I've changed the digital footprints of my some of relatives and myself.
 
-And yes, **as tech professionals, this responsibility extends to teaching and protecting our relatives who are strangers to all that tech stuff.**
+And yes, **as tech professionals, this responsibility extends to teaching and protecting our relatives who are strangers to all that tech stuff.** Because while you understand what DNS is, for your parents, this abbreviation doesn't ring a bell.
 
 <blockquote>
     <p>You don't know how much you appreciate your privacy until you don't have it.</p>
@@ -34,19 +34,34 @@ And yes, **as tech professionals, this responsibility extends to teaching and pr
 Anyway, I'm not your privacy advisor; I'm just a tech who cares about this stuff. So, take my advice with a grain of salt and do your own research if you want to delve deeper. But I'm going to walk you through a comprehensive action plan for securing your digital life, offering practical steps to enhance your digital life and those people you care about. And we'll start with the first and most important step, your operating system.
 
 ## Use Linux
-- Fedora, Linux Mint, Pop!\_OS, Arch if you are bold, or any other popular Linux distro.
+The most fundamental aspect of digital security begins with the underlying free and open-source, fully functional operating system. It’s like a foundation upon which all the other security measures are built. In truth, the field of fully open-source operating systems is narrow. As of 2025, we have only FreeBSD and GNU/Linux.
 
-The most fundamental aspect of digital security begins with the underlying free and open-source, fully functional operating system. It’s like a foundation upon which all the other security measures are built. There are not many choices to choose from, to be honest. As of 2025, we have only FreeBSD and GNU/Linux.
+Tip. GNU/Linux is the full, proper name for the operating system most people refer to simply as "Linux." The term GNU/Linux is used to give credit to both projects and acknowledge their movement. However, throughout this article, I'm going to refer to GNU/Linux as just Linux, for simplicity.
 
 FreeBSD is a good choice; I have nothing against it; however, I’ve never used it myself and thus cannot recommend it or comment on it. I just know it has a robust, long-standing reputation for stability and security in server environments.
 
-**GNU/Linux, on the other hand, is a great choice** because it has a vast and active community, frequent security updates, and lots of different flavors. This diversity allows users to select a distribution tailored to their specific security needs and technical proficiency, ranging from user-friendly options to highly configurable systems like <a href="https://archlinux.org/" title="Link to Arch Linux website" target="_blank">Arch Linux</a>.
+**Linux, on the other hand, is a great choice** because it has a vast and active community, frequent security updates, and lots of different flavors. This diversity allows users to select a distribution tailored to their specific security needs and technical proficiency, ranging from user-friendly options to highly configurable systems like <a href="https://archlinux.org/" title="Link to Arch Linux website" target="_blank">Arch Linux</a>.
 
-Keep in mind that Linux is not a silver bullet. While it's a great alternative to Windos and macOS, it's not perfect. The biggest downside of Linux desktops is that they more buggy than something like macOS. It havily depends on which desktop environment or window manager you use.
+Keep in mind that Linux is not a silver bullet. While it's a great alternative to Windows and macOS, it's not perfect. A common downside of some Linux desktop environments is that they can be less polished and more buggy than the tightly integrated macOS.
+
+![A Steam Deck with Linux logo on the screen](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757157853.jpg)
+
+You can just start by running Linux on a virtual machine if you've never done it before. This approach allows for risk-free experimentation with various distributions and desktop environments, familiarizing oneself with the nuances of a Linux system without altering the primary operating system. Keep in mind that the experience with Linux inside a virtual machine is not as performant as running it natively, but it’s a good starting point.
 
 ## Safe ISO File
-- It doesn't matter how safe your house if your back door is not locked. That's why it's important to follow basic security practices when it comes to downloading installation files like ISO.
-- Download ISO images only from official websites and compare checksums before installing
+It doesn't matter how safe your house is if your back door is not locked. That's why it's important to follow basic security practices when it comes to downloading installation files like ISO (often called an ISO image).
+
+**ISO image is a complete snapshot of a disc, commonly used for operating system installations.** All you need to know about this file format is that it encapsulates a bootable environment. It means that this environment can be tinkered with. That's why we have such thing as checksums.
+
+To check the checksum of a file, you typically use command-line utility like `sha256sum` on Linux. This cryptographic hash function generates a unique string of characters for a given file, and if you change at least 1 byte in that target file, the resulting checksum will be drastically different. This allows you to know if the downloaded file has been modified or not.
+
+You run `sha256sum your-file` and compare the output to the published checksum provided by the official website.
+
+```bash
+# Navigate to your Downloads folder first, then run:
+sha256sum fedora-workstation-42.x86_64.iso
+```
+If they match, then you can be confident that your downloaded ISO file is authentic and untampered with.
 
 ## No Proprietary Software
 - Don't use proprietary software (e.g., Google Chrome, Gmail, Google, etc.)
@@ -106,3 +121,9 @@ Keep in mind that Linux is not a silver bullet. While it's a great alternative t
 
 ## Conclusion
 Securing your digital life is an ongoing process. Start with the fundamentals (strong passwords, encryption), then gradually replace tools and adopt more advanced practices (using Tor, avoiding big tech). Remember, the goal is to make it as difficult as possible for anyone to track you or access your data.
+
+<blockquote>
+    <p>It's more than unsettling to realize there are large companies out there developing backdoors, exploits and trojans.</p>
+    <img src="https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757154012.webp" alt="Photo of Mikko Hyppönen in glasses" />
+    <h6>Mikko Hyppönen (computer security expert)</h6>
+</blockquote>
