@@ -34,7 +34,9 @@ And yes, **as tech professionals, this responsibility extends to teaching and pr
 Anyway, I'm not your privacy advisor; I'm just a tech who cares about this stuff. So, take my advice with a grain of salt and do your own research if you want to delve deeper. But I'm going to walk you through a comprehensive action plan for securing your digital life, offering practical steps to enhance your digital life and those people you care about. And we'll start with the first and most important step, your operating system.
 
 ## Use Linux
-The most fundamental aspect of digital security begins with the underlying free and open-source, fully functional operating system. It’s like a foundation upon which all the other security measures are built. In truth, the field of fully open-source operating systems is narrow. As of 2025, we have only FreeBSD and GNU/Linux.
+The most fundamental aspect of digital security begins with the underlying free and open-source, fully functional operating system. It’s like a foundation upon which all the other security measures are built. If you skip this step and keep using Windows or macOS then all of the following steps in this article are pretty much don't make sense.
+
+In truth, the field of fully open-source operating systems is narrow. As of 2025, we have only FreeBSD and GNU/Linux.
 
 Tip. GNU/Linux is the full, proper name for the operating system most people refer to simply as "Linux." The term GNU/Linux is used to give credit to both projects and acknowledge their movement. However, throughout this article, I'm going to refer to GNU/Linux as just Linux, for simplicity.
 
@@ -76,8 +78,22 @@ If they match, then you can be confident that your downloaded ISO file is authen
 
 If you installed a fresh Linux installation and are thinking of getting your favorite Google Chrome browser, be mindful that you are reintroducing the same issue that you had before. Running Google Chrome on Linux is like installing a surveillance camera with the default password `admin` into your secured house.
 
+And it applies to browser extensions, which can introduce huge security vulnerabilities. **Before installing a browser extension check if it’s open source and keep close attention to its requested permissions.** Unfortunately, there is no perfect way to check the checksum of the extension itself and compare it to the original version, we can only rely on Mozilla and Google to ensure the integrity of their extension marketplaces.
+
 ### Use Alternatives
-- Use alternatives like Proton Mail, Proton Drive, Proton Calendar, DuckDuckGo, Brave Browser, Firefox, LibreOffice, etc.
+For every proprietary software application, there is typically a robust open-source alternative that offers similar or even the same functionality. There are exceptions, of course, but most of the time you can find pretty much anything, including flatpak applications.
+
+Here is a list of recommendations if you are looking for free alternatives:
+
+- **Email:** ProtonMail or Tutanota offer end-to-end encrypted email services with bunch of features
+- **Cloud Storage:** ProtonDrive and Nextcloud provide secure sturage. Nextcloud is a self-hosted solution
+- **Daily Browser:** Firefox, Brave, Vivaldi and tons of others. If you like Chrome, just use Brave and you will not see any differences in terms of user interface
+- **Search Engine:** DuckDuckGo, Brave Search and Startpage are the best privacy-focused solutions
+- **Graphic Design:** GIMP is the best choice if you want to switch from Photoshop
+- **Office Suite:** LibreOffice is a comprehensive alternative to Microsoft Office, offering word processing, spreadsheets, and presentation tools that are compatible with common file formats.
+- **Code Editor:** Vim, Neovim, and Emacs are true open-source options for developers, but if you prefer a more modern UI, VS Code, while partially proprietary, still provides significant open-source components and a vast ecosystem of extensions. If you can avoid VS Code, that’s a huge advantage.
+
+I can continue this list for a long time, but the core principle remains: prioritize open-source solutions to enhance security, transparency, and user control over your digital environment.
 
 ## Secure Browsing
 ### Browser Extensions
