@@ -96,11 +96,39 @@ Here is a list of recommendations if you are looking for free alternatives:
 I can continue this list for a long time, but the core principle remains: prioritize open-source solutions to enhance security, transparency, and user control over your digital environment. You can always search for alternatives and you will find help online.
 
 ## Secure Browsing
+Browsing is something we as tech professionals do constantly, whether for research, development, debugging, or just personal use. The personal use part is particularly important and requires extra vigilance.
+
+When I type a query in a search bar, I don’t want anyone to attach this search query to my identity, nor do I want my browsing habits or visited websites tracked and correlated with my personal data. I want to be able to save my browser tabs in private, encrypted storage so that even if someone gets access to my computer, they cannot see those saved tabs. That’s where browser extensions in combination with open-source philosophy shine.
+
 ### Browser Extensions
-- Suggest key extensions like uBlock Origin (not just an ad-blocker, a key privacy tool) and perhaps Privacy Badger.
+There are at least 3 browser extensions that you must have by default. These are:
+- <a href="https://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/" title="Link to Mozilla DuckDuckGo Privacy Essentials page" target="_blank">DuckDuckGo Privacy Essentials</a>: Only essential if you use DuckDuckGo as your default search engine. It enhances that specific experience.
+- <a href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/" title="Link to Mozilla uBlock Origin page" target="_blank">uBlock Origin</a>: Essential for everyone. The best content blocker period.
+- <a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/" title="Link to Mozilla Privacy Badger page" target="_blank">Privacy Badger</a>: A great supplement to block sneaky trackers that slip through.
+
+Note. DuckDuckGo Privacy Essentials extension only makes sense if you use DuckDuckGo as your primary search engine.
+
+I'm giving you Mozilla links because I recommend Firefox-based browsers for their stronger privacy stance. Plus, uBlock Origin's <a href="https://github.com/gorhill/uBlock/wiki/uBlock-Origin-works-best-on-Firefox" title="Link to the Wiki" target="_blank">maintainers also recommend</a> using it on Firefox. But if you need it for Chromium, just get the extension from the official <a href="https://ublockorigin.com/" title="Link to official uBlock Origin extension website" target="_blank">ublockorigin.com</a> website. If you use the Brave browser, you may not need uBlock Origin as it has a built-in blocker, though many still use it for finer control.
+
+![uBlock Origin additional information for different browsers](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757592362.webp)
+
+Before installing any new extension, make sure that it's open source and doesn't have a permission of accessing your data for all websites. Of course, those 3 extensions that I've listed above are the exeption from this rule because they cannot work without getting access to all the data for all the websites.
+
+### Tab Guardian
+This desire for private tab management is exactly why I developed the <a href="https://addons.mozilla.org/en-US/firefox/addon/tab-guardian/" title="Link to Mozilla Tab Guardian extension page" target="_blank">Tab Guardian</a> extension that is available for Chromium and Firefox-based browsers.
+
+![Tab Guardian extension banner with a sign 'See all of your saved tab groups at a glance on the main screen'](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757587311.png)
+
+I’m a bit biased towards this extension because I developed it specifically to address the critical need for encrypted and private tab management, ensuring that sensitive browsing data remains inaccessible even in the event of system compromise.
+
+It allows you to store and retrieve your browser tabs in a few clicks, but **the coolest feature of Tab Guardian is “Private groups”**, which allows you to create encrypted groups with a password to prevent anyone from accessing them.
 
 ### Use Tor for Maximum Privacy
-- For the ultimate level of anonymity in your browsing, the Tor network is the gold standard. It's a separate tool for specific, high-privacy needs.
+For the ultimate level of anonymity in your browsing, the Tor network is the gold standard. But keep in mind that it's a separate tool for specific, high-privacy needs. It doesn’t replace your daily browsers since Tor is significantly slower due to its multi-layered encryption and relay system.
+
+![Tor Browser home page that says 'Explore. Privately'](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757591016.webp)
+
+The other reason is that companies like Google and Meta actively discourage its use because if they don't know who you are, they cannot monetize your online activity. But honestly, **you shouldn’t use their services anyway if you care about your privacy.**
 
 ## The Security Fundamentals
 ### Use a Password Manager
@@ -136,6 +164,9 @@ I can continue this list for a long time, but the core principle remains: priori
 
 - It would have been nice to avoid GitHub, but any other Git hosting services are also backed by big tech companies. So, use whatever you are comfortable with.
 - Be Cautious with Scripts. Avoid piping `curl` directly to `bash` and always review scripts before executing them.
+- Don't use Docker, use Podman
+
+The secure thing is marketing crap-Docker containers are isolated in theory, but root access means if anything's hacked, you're done. Podman fixes it by never running a root daemon-containers stay in your namespace, no way to jump out unless you literally say privileged. So Podman isn't bulletproof, but it's like way secure than Docker. That's why big corps transitioning to Podman.
 
 ## Network Security
 - Use a VPN: Briefly explain its purpose (encrypts traffic from your ISP, hides your IP from the immediate website) and contrast it with Tor (VPN provides privacy from your local network, Tor provides anonymity from the destination). You could mention providers like Proton VPN or Mullvad that align with the privacy ethos.
@@ -146,4 +177,3 @@ I can continue this list for a long time, but the core principle remains: priori
 
 ## Conclusion
 Securing your digital life is an ongoing process. Start with the fundamentals (strong passwords, encryption), then gradually replace tools and adopt more advanced practices (using Tor, avoiding big tech). Remember, the goal is to make it as difficult as possible for anyone to track you or access your data.
-
