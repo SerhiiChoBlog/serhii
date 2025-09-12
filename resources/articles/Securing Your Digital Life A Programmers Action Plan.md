@@ -189,7 +189,11 @@ This is crucial, because your login password doesn’t matter and doesn’t prot
 Encryption isn’t just a feature—it’s your right. Enable it, and turn your hardware into a fortress.
 
 ### Use 2FA
-- Use strong passwords and enable 2FA (Two-Factor Authentication) wherever possible
+**2FA stands for two-factor authentication, an essential security measure that significantly enhances protection beyond a single password.** This method requires users to provide extra verification form, typically something like a fingerprint or an authentication app code.
+
+I always prefer an authentication app like Proton Auth or Authy, but a hardware-based security key, such as a YubiKey, offers even more protection. The only downside is that it requires a physical token, which can be lost or forgotten at home.
+
+![An authentication key laying on a laptop](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757691755.webp)
 
 ## Secure Software Management
 ### 1. Use Official Repos
