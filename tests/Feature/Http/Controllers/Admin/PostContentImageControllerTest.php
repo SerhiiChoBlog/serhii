@@ -6,7 +6,6 @@ namespace Tests\Feature\Http\Controllers\Admin;
 
 use App\Models\Post;
 use App\Models\PostContentImage;
-use App\Models\Series;
 use App\Models\Tag;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Http\UploadedFile;

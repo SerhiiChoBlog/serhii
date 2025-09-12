@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostContentImage;
 use Exception;
-use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
@@ -88,7 +87,7 @@ class PostContentImageController extends Controller
         $zip = new ZipArchive();
 
         if (file_exists($zip_path)) {
-           unlink($zip_path);
+            unlink($zip_path);
         }
 
         if (!$zip->open($zip_path, ZipArchive::CREATE)) {

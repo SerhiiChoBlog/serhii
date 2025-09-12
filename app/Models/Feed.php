@@ -136,6 +136,7 @@ class Feed extends Model
     protected function prettyDate(): Attribute
     {
         return Attribute::get(function (): string {
+            /** @phpstan-ignore-next-line */
             if ($this->date === null) {
                 return '';
             }
