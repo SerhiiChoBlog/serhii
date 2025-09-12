@@ -133,7 +133,7 @@ The other reason is that companies like Google and Meta actively discourage its 
 ## The Security Fundamentals
 Beyond your browser, true digital security is built on fundamentals. These tools don't just make you safer—they make your life easier. You might already use some, like a password manager, while others remain powerful, underutilized secrets.
 
-Let’s start from the most basic yet critical components that you need to have in your arsenal: **a robust password manager**.
+Let’s start with the most basic yet critical components that you need to have in your arsenal: **a robust password manager**.
 
 ### Use a Password Manager
 **A password manager is a software application that helps users create, store, and manage their passwords securely.** It typically requires a master password to access a vault where all other passwords are stored, making it easier to use unique and complex passwords for different accounts without needing to remember each one.
@@ -153,7 +153,41 @@ Lastly, go through your accounts and replace weak passwords with strong ones gen
 Once your passwords are secure, the next layer of defense is ensuring your data is unreadable even if your device is stolen—through encryption.
 
 ### Use Encryption
-- Use full-disk encryption tools like LUKS (Linux Unified Key Setup) to encrypt your SSD (Solid-State Drive). Most Linux distros have it built-in into the installer. Just make sure to enable it during installation
+Let's establish what encryption is and how it works. In simple words, **encryption is transforming information into a secure code to make this information unreadable.** For example, if I encrypt a string `monica bellucci is the greatest actress` with `aes-256-cbc` algorithm like this:
+
+```php
+<?php
+
+$text = 'Monica Bellucci is the greatest actress';
+$algo = 'aes-256-cbc';
+$passphrase = 'my-passphrase';
+
+$encrypted = openssl_encrypt($text, $algo, $passphrase);
+```
+
+In result, I'll get a string `evlzddicrdPO4LYbl6cgv6qBP/RtGdQEULGeAguIRl6ti/swTCRwQt9y8dDcQfSx`, which is complete gibberish to anyone without the passphrase `my-passphrase`. But when I decrypt this string back like this:
+
+```php
+<?php
+
+$algo = 'aes-256-cbc';
+$passphrase = 'my-passphrase';
+$encrypted = 'evlzddicrdPO4LYbl6cgv6qBP/RtGdQEULGeAguIRl6ti/swTCRwQt9y8dDcQfSx';
+
+$text = openssl_decrypt($encrypted, $algo, $passphrase);
+
+var_dump($text);
+```
+
+I'll get the `Monica Bellucci is the greatest actress` string back.
+
+Now, full-disk encryption is very similar, except that instead of encrypting file by file, it encrypts your whole disk partition. One of the most widely used Linux encryption tools is LUSK (Linux Unified Key Setup). **A partition is just a massive array of bits on your 0s and 1s.** LUKS grabs that entire chunk, encrypts it as-is with a strong cipher, and your passphrase unlocks the master key to make it readable again.
+
+![Scheme that shows how file gets encrypted and decrypted](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757678153.webp)
+
+**Most Linux distros have encryption built-in into the installer; just make sure to enable it during installation.** If you already installed Linux and do not use encryption, you need to backup your user data and reinstall your OS with full-disk encryption.
+
+This is crucial for safety because if you lose your laptop, all the data on your SSD will be easily accessible to anyone. Your login password doesn’t matter and doesn’t protect your SSD; your login password is just a gatekeeper to your user session, not your underlying data.
 
 ### Use 2FA
 - Use strong passwords and enable 2FA (Two-Factor Authentication) wherever possible
