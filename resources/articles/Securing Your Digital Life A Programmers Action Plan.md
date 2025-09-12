@@ -66,12 +66,6 @@ sha256sum fedora-workstation-42.x86_64.iso
 If they match, then you can be confident that your downloaded ISO file is authentic and untampered with.
 
 ## No Proprietary Software
-<blockquote>
-    <p>It's more than unsettling to realize there are large companies out there developing backdoors, exploits and trojans.</p>
-    <img src="https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757154012.webp" alt="Photo of Mikko Hyppönen in glasses" />
-    <h6>Mikko Hyppönen (computer security expert)</h6>
-</blockquote>
-
 **Proprietary software, by its nature, often operates as a black box, making it impossible for users to inspect its inner workings for vulnerabilities or malicious functionalities.** Processes that are constantly running on your machine can collect sensitive data and transmit it without explicit user consent. I do not consider myself a paranoid individual, but it is not a secret that companies like Microsoft, Apple, Facebook, and Google routinely collect vast amounts of user data. Especially Google, since their whole business model is to sell you targeted ads.
 
 ![chrome, watsup, skype and google logos are spying behind the girl who is sitting with her laptop on a sofa in a cartoon style](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757248167.webp)
@@ -153,7 +147,9 @@ Lastly, go through your accounts and replace weak passwords with strong ones gen
 Once your passwords are secure, the next layer of defense is ensuring your data is unreadable even if your device is stolen—through encryption.
 
 ### Use Encryption
-Let's establish what encryption is and how it works. In simple words, **encryption is transforming information into a secure code to make this information unreadable.** For example, if I encrypt a string `monica bellucci is the greatest actress` with `aes-256-cbc` algorithm like this:
+Imagine losing your laptop. Without encryption, every file, message, and credential becomes an open book. Encryption is your digital shield—it scrambles your data into unreadable code, ensuring even physical theft doesn’t compromise your privacy.
+
+While a password manager encrypts your secrets, the next step is to encrypt everything. **Encryption is the process of transforming information into a secure code to make this information unreadable.** For example, if I encrypt a string `Monica Bellucci is the greatest actress` with `aes-256-cbc` algorithm like this:
 
 ```php
 <?php
@@ -163,9 +159,11 @@ $algo = 'aes-256-cbc';
 $passphrase = 'my-passphrase';
 
 $encrypted = openssl_encrypt($text, $algo, $passphrase);
+
+// Result: string(64) "evlzddicrdPO4LYbl6cgv6qBP/RtGdQEULGeAguIRl6ti/swTCRwQt9y8dDcQfSx"
 ```
 
-In result, I'll get a string `evlzddicrdPO4LYbl6cgv6qBP/RtGdQEULGeAguIRl6ti/swTCRwQt9y8dDcQfSx`, which is complete gibberish to anyone without the passphrase `my-passphrase`. But when I decrypt this string back like this:
+In result, I'll get an encrypted string, which is complete gibberish to anyone without the passphrase `my-passphrase`. But when I decrypt this string back like this:
 
 ```php
 <?php
@@ -177,17 +175,18 @@ $encrypted = 'evlzddicrdPO4LYbl6cgv6qBP/RtGdQEULGeAguIRl6ti/swTCRwQt9y8dDcQfSx';
 $text = openssl_decrypt($encrypted, $algo, $passphrase);
 
 var_dump($text);
+
+// Result: string(39) "Monica Bellucci is the greatest actress"
 ```
-
-I'll get the `Monica Bellucci is the greatest actress` string back.
-
-Now, full-disk encryption is very similar, except that instead of encrypting file by file, it encrypts your whole disk partition. One of the most widely used Linux encryption tools is LUSK (Linux Unified Key Setup). **A partition is just a massive array of bits on your 0s and 1s.** LUKS grabs that entire chunk, encrypts it as-is with a strong cipher, and your passphrase unlocks the master key to make it readable again.
+Now, full-disk encryption is very similar, except that instead of encrypting file by file, it encrypts your whole disk partition. One of the most widely used Linux encryption tools is <a href="https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup" title="Link to Wikipedia page about LUKS" target="_blank">LUKS</a> (Linux Unified Key Setup). **A partition is essentially a massive sequence of 0s and 1s on your drive.** LUKS grabs that entire chunk, encrypts it as-is with a strong cipher, and your passphrase unlocks the master key to make it readable again. Your passphrase is the master key to unlock it all at boot time.
 
 ![Scheme that shows how file gets encrypted and decrypted](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757678153.webp)
 
 **Most Linux distros have encryption built-in into the installer; just make sure to enable it during installation.** If you already installed Linux and do not use encryption, you need to backup your user data and reinstall your OS with full-disk encryption.
 
-This is crucial for safety because if you lose your laptop, all the data on your SSD will be easily accessible to anyone. Your login password doesn’t matter and doesn’t protect your SSD; your login password is just a gatekeeper to your user session, not your underlying data.
+This is crucial, because your login password doesn’t matter and doesn’t protect your SSD; your login password is just a gatekeeper to your user session, not your underlying data. Without encryption, a thief can simply plug your SSD into another machine and read all your data directly. Encryption ensures they’ll only see gibberish.
+
+Encryption isn’t just a feature—it’s your right. Enable it, and turn your hardware into a fortress.
 
 ### Use 2FA
 - Use strong passwords and enable 2FA (Two-Factor Authentication) wherever possible
