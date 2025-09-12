@@ -24,7 +24,7 @@ use Illuminate\Support\Str;
  * @property string $name
  * @property string $secret
  * @property string $email
- * @property Carbon $email_verified_at
+ * @property Carbon|null $email_verified_at
  * @property string $password
  * @property int|null $comments_count
  * @property int|null $post_likes_count

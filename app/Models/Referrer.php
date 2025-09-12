@@ -31,6 +31,7 @@ class Referrer extends Model
     protected function prettyUpdatedAt(): Attribute
     {
         $get = function (): string {
+            /** @phpstan-ignore-next-line */
             if ($this->updated_at === null) {
                 return '';
             }

@@ -120,6 +120,7 @@ class Comment extends Model
     protected function prettyCreatedAt(): Attribute
     {
         return Attribute::get(function (): string {
+            /** @phpstan-ignore-next-line */
             if ($this->created_at === null) {
                 return '';
             }

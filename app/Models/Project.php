@@ -42,7 +42,6 @@ class Project extends Model
         'pretty_updated_at',
     ];
 
-
     /**
      * @var array<string, string>
      */
@@ -72,6 +71,7 @@ class Project extends Model
     protected function prettyUpdatedAt(): Attribute
     {
         return Attribute::get(function (): string {
+            /** @phpstan-ignore-next-line */
             if ($this->updated_at === null) {
                 return '';
             }
