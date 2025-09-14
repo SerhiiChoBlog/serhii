@@ -193,7 +193,8 @@ Encryption isn’t just a feature—it’s your right. Enable it, and turn your 
 
 I always prefer an authentication app like Proton Auth or Authy, but a hardware-based security key, such as a YubiKey, offers even more protection. The only downside is that it requires a physical token, which can be lost or forgotten at home.
 
-![An authentication key laying on a laptop](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757691755.webp)
+![An authentication key lying on a laptop](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757691755.webp)
+
 
 ## Secure Software Management
 ### 1. Use Official Repos
