@@ -189,12 +189,18 @@ This is crucial, because your login password doesn’t matter and doesn’t prot
 Encryption isn’t just a feature—it’s your right. Enable it, and turn your hardware into a fortress.
 
 ### Use 2FA
-**2FA stands for two-factor authentication, an essential security measure that significantly enhances protection beyond a single password.** This method requires users to provide extra verification form, typically something like a fingerprint or an authentication app code.
+A strong password is your first line of defense, but it can still be stolen in a data breach or through phishing. This is where **2FA (Two-Factor Authentication)** becomes essential. It adds a critical second layer of security by requiring two proofs of identity: something you know (your password) and something you have (a code from your phone or a physical key).
 
-I always prefer an authentication app like Proton Auth or Authy, but a hardware-based security key, such as a YubiKey, offers even more protection. The only downside is that it requires a physical token, which can be lost or forgotten at home.
+**Avoid SMS-based codes when possible,** as they can be intercepted through SIM-swapping attacks. Instead, use one of these more secure methods:
+
+- **Authentication Apps:** Generate codes offline on your device.
+- **Hardware Security Keys:** The gold standard. A physical device like a **YubiKey** that you plug into your USB port. This offers the strongest protection, though it requires carrying the key with you.
 
 ![An authentication key lying on a laptop](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757691755.webp)
 
+Note. I don't recommend **Authy** as an authentication app because it doesn't have a way to export your authentication accounts. If you decide to switch apps in the future, it will be very difficult to do. Use those which have import/export functionality like **Bitwarden Authenticator**, **Proton Auth**, **Authman**, etc.
+
+**Your action is simple: enable 2FA on every account that offers it,** especially your email, password manager, and social media accounts. This single step will block the vast majority of automated account takeover attempts.
 
 ## Secure Software Management
 ### 1. Use Official Repos
