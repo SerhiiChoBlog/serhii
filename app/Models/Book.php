@@ -38,6 +38,14 @@ class Book extends Model
         'pretty_read_at',
     ];
 
+    /**
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'book_author_id' => 'int',
+        'rate' => 'int',
+    ];
+
     public function getRouteKeyName(): string
     {
         return 'slug';
