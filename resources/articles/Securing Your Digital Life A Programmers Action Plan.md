@@ -149,18 +149,18 @@ Once your passwords are secure, the next layer of defense is ensuring your data 
 ### Use Encryption
 Imagine losing your laptop. Without encryption, every file, message, and credential becomes an open book. Encryption is your digital shield—it scrambles your data into unreadable code, ensuring even physical theft doesn’t compromise your privacy.
 
-While a password manager encrypts your secrets, the next step is to encrypt everything. **Encryption is the process of transforming information into a secure code to make this information unreadable.** For example, if I encrypt a string `Monica Bellucci is the greatest actress` with `aes-256-cbc` algorithm like this:
+While a password manager encrypts your secrets, the next step is to encrypt everything. **Encryption is the process of transforming information into a secure code to make this information unreadable.** For example, if I encrypt a string `Emma Stone is the greatest actress` with `aes-256-cbc` algorithm like this:
 
 ```php
 <?php
 
-$text = 'Monica Bellucci is the greatest actress';
+$text = 'Emma Stone is the greatest actress';
 $algo = 'aes-256-cbc';
 $passphrase = 'my-passphrase';
 
 $encrypted = openssl_encrypt($text, $algo, $passphrase);
 
-// Result: string(64) "evlzddicrdPO4LYbl6cgv6qBP/RtGdQEULGeAguIRl6ti/swTCRwQt9y8dDcQfSx"
+// Result: string(64) "j+7Si0X86xhS96RCZCSXYVQUyv6/irmmSTPMJYkep9You1+rj3bT4XX3FTR8xGKX"
 ```
 
 In result, I'll get an encrypted string, which is complete gibberish to anyone without the passphrase `my-passphrase`. But when I decrypt this string back like this:
@@ -170,13 +170,13 @@ In result, I'll get an encrypted string, which is complete gibberish to anyone w
 
 $algo = 'aes-256-cbc';
 $passphrase = 'my-passphrase';
-$encrypted = 'evlzddicrdPO4LYbl6cgv6qBP/RtGdQEULGeAguIRl6ti/swTCRwQt9y8dDcQfSx';
+$encrypted = 'j+7Si0X86xhS96RCZCSXYVQUyv6/irmmSTPMJYkep9You1+rj3bT4XX3FTR8xGKX';
 
 $text = openssl_decrypt($encrypted, $algo, $passphrase);
 
 var_dump($text);
 
-// Result: string(39) "Monica Bellucci is the greatest actress"
+// Result: string(39) "Emma Stone is the greatest actress"
 ```
 Now, full-disk encryption is very similar, except that instead of encrypting file by file, it encrypts your whole disk partition. One of the most widely used Linux encryption tools is <a href="https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup" title="Link to Wikipedia page about LUKS" target="_blank">LUKS</a> (Linux Unified Key Setup). **A partition is essentially a massive sequence of 0s and 1s on your drive.** LUKS grabs that entire chunk, encrypts it as-is with a strong cipher, and your passphrase unlocks the master key to make it readable again. Your passphrase is the master key to unlock it all at boot time.
 
