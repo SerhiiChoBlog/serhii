@@ -208,25 +208,38 @@ For programmers, **security isn’t just a best practice—it’s a core respons
 We’ve already talked about Linux and safe browsing, but I also want to talk about secure software management for Linux.
 
 ### 1. Use Official Repos
-- Try not to use unofficial repositories. Unfortunately, sometimes you need them. For example, <a href="https://tableplus.com/download/linux" title="Link to Table Plus download page" target="_blank">Table Plus</a> app is not available on Flathub or on official Fedora repositories. The good things is that there are good alternatives like <a href="https://flathub.org/en/apps/it.fabiodistasio.AntaresSQL" title="Link to Antares SQL app on Flathub" target="_blank">Antares SQL</a>, can just search for `sql` on Flathub to find them.
-- It’s not simply about choosing between official and unofficial repositories; it’s more about trusting the source.
-- Mention AppImage format. You can't autoupdate them
+Relying on official distribution repositories is a crucial step in preventing software supply chain attacks, which can compromise systems through malicious code injected into legitimate-looking packages. This approach is great but not always sufficient, since we might need to install a program from a third-party source. A good example for this is something like <a href="https://tableplus.com/download/linux" title="Link to Table Plus download page" target="_blank">Table Plus</a> that is not available on Flathub or on the official Fedora repositories.
+
+![TablePlus installation page for Linux](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758019838.webp)
+
+The good thing is that there are suitable alternatives like <a href="https://flathub.org/en/apps/it.fabiodistasio.AntaresSQL" title="Link to Antares SQL app on Flathub" target="_blank">Antares SQL</a> on Flathub, even though alternatives might not always offer the same feature set or user experience.
 
 ### 2. Use Flatpak Packages
-- Use Flatpak packages when possible
-- Explain why Flatpak is more secure
-- Compare to RPM and appimage (sandboxing is a killer feature. Isolates apps like a digital bunker. It uses Linux namespaces and cgroups like Podman and Docker)
-- Great option when possible, getting a lot of traction
-- I would also recommended to install <a href="https://flathub.org/apps/io.github.flattool.Warehouse" title="Link to Flathub store" target="_blank">Warehouse</a>
+Flatpak offers a sandboxed environment for applications, isolating them from the core operating system and mitigating potential security risks associated with third-party software.
 
-### 3. Use Flatseal App
-- Flatpak is like a firefewall for Flatpak
-- It's good in combination with Warehouse
-- No app is spying on you without your permission
-- Install <a href="https://flathub.org/apps/com.github.tchx84.Flatseal" title="Link to Flathub store" target="_blank">Flatseal</a> app and tweak permissions for each of your Flatpak app.
-- There are 2 main things you need to look, "Share -> Network" setting and "Filesystem -> All system files"f Make sure apps that doesn't need network access and system files access don't have that right
-- Make an Obsidian example
-- Flatseal 
+Package formats like Debian and RPM are traditional packaging systems that integrate software directly into the system, often leading to complex dependency management and a broader attack surface. Flatpak helps to mitigate these risks by sandboxing applications with control groups and namespaces, thereby limiting their access to system resources.
+
+Flatpak is getting a lot of traction in the Linux community, and when you start using it, you will appreciate it as well. Especially with a tool like <a href="https://flathub.org/apps/io.github.flattool.Warehouse" title="Link to Flathub store" target="_blank">Warehouse</a> app to manage them.
+
+![Warehouse app interface for managing Flapak packages](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758024928.webp)
+
+### 3. Use the Flatseal App
+Another crucial tool for managing Flatpak applications’ security is <a href="https://flathub.org/apps/com.github.tchx84.Flatseal" title="Link to Flathub store" target="_blank">Flatseal</a>. This graphical utility provides fine-grained control over Flatpak permissions, allowing users to modify access to various system resources and enhance the overall security.
+
+![Flatseal user interface](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758025376.webp)
+
+If you don’t want Obsidian to have access to the internet, you can just revoke the “Share → Network” permission using Flatseal. If you want to give your app access only to a specific directory on your system without giving the whole access, you can tweak it in the “Filesystem” section.
+
+![Filesystem setting in the Flatseal app](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758025603.webp)
+
+Tip. Always look at your installed Flatpak app in Flatseal before even opening it. Because if an application has access to your filesystem, it could potentially compromise sensitive data. Restricting permissions before you open the app can prevent unauthorized data access or malicious activities.
+
+"Filesystem," "Network," and "System Bus" are the most critical permissions to control, as they represent the primary avenues for data leakage and system intrusion.
+
+### 4. AppImages
+**AppImages are also another great option for distributing Linux applications, providing a portable and self-contained format that suits various Linux distros.** However, as for writing this article, AppImages still require manual updates, and features like seamless desktop integration (e.g., launching AppImages as native applications) are still a work in progress.
+
+But for me, it's still better to have an AppImage than having to install TablePlus with 30+ dependencies on my system. I like the encapsulation that AppImages and Flatpak provide. It gives me peace of mind, and I'm willing to tolerate a bit of manual management for the peace of mind that comes with dependency-free, encapsulated software.
 
 ## Development Workflow
 - Use VIM, Neovim, Emacs, or any other free and open-source code editor. Don't recommend IDEs like VSCode or JetBrains products, but if you must use VSCode, remember to disable telemetry in the settings because it's enabled by default. Add these 3 lines to your `settings.json` configuration file:
