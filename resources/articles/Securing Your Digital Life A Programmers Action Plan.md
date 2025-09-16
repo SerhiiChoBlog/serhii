@@ -198,20 +198,35 @@ A strong password is your first line of defense, but it can still be stolen in a
 
 ![An authentication key lying on a laptop](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757691755.webp)
 
-Note. I don't recommend **Authy** as an authentication app because it doesn't have a way to export your authentication accounts. If you decide to switch apps in the future, it will be very difficult to do. Use those which have import/export functionality like **Bitwarden Authenticator**, **Proton Auth**, **Authman**, etc.
+Note. I don't recommend apps like  **Authy** as an authentication app because they don't have a way to export your authentication accounts. If you decide to switch apps in the future, it will be very difficult to do. Use those which have import/export functionality like **Bitwarden Authenticator**, **Proton Auth**, **Authman**, etc.
 
 **Your action is simple: enable 2FA on every account that offers it,** especially your email, password manager, and social media accounts. This single step will block the vast majority of automated account takeover attempts.
 
 ## Secure Software Management
+For programmers, **security isn’t just a best practice—it’s a core responsibility**, especially if you work on critical infrastructure or financial systems. If your company decides which operating system and programs you are going to use, you are out of luck. Typically, you will just have to use what is provided, but you can still make sure your own personal environment is safe and secure.
+
+We’ve already talked about Linux and safe browsing, but I also want to talk about secure software management for Linux.
+
 ### 1. Use Official Repos
-- Try not to use unofficial repositories. Unfortunately, sometimes you need them. For example, <a href="https://tableplus.com/download/linux" title="Link to Table Plus download page" target="_blank">Table Plus</a> app is not available on Flathub or on official Fedora repositories.
+- Try not to use unofficial repositories. Unfortunately, sometimes you need them. For example, <a href="https://tableplus.com/download/linux" title="Link to Table Plus download page" target="_blank">Table Plus</a> app is not available on Flathub or on official Fedora repositories. The good things is that there are good alternatives like <a href="https://flathub.org/en/apps/it.fabiodistasio.AntaresSQL" title="Link to Antares SQL app on Flathub" target="_blank">Antares SQL</a>, can just search for `sql` on Flathub to find them.
+- It’s not simply about choosing between official and unofficial repositories; it’s more about trusting the source.
+- Mention AppImage format. You can't autoupdate them
 
 ### 2. Use Flatpak Packages
 - Use Flatpak packages when possible
+- Explain why Flatpak is more secure
+- Compare to RPM and appimage (sandboxing is a killer feature. Isolates apps like a digital bunker. It uses Linux namespaces and cgroups like Podman and Docker)
+- Great option when possible, getting a lot of traction
 - I would also recommended to install <a href="https://flathub.org/apps/io.github.flattool.Warehouse" title="Link to Flathub store" target="_blank">Warehouse</a>
 
 ### 3. Use Flatseal App
-- Install <a href="https://flathub.org/apps/com.github.tchx84.Flatseal" title="Link to Flathub store" target="_blank">Flatseal</a> app and tweak permissions for each of your Flatpak app. There are 2 main things you need to look, "Share -> Network" setting and "Filesystem -> All system files". Make sure apps that doesn't need network access and system files access don't have that right
+- Flatpak is like a firefewall for Flatpak
+- It's good in combination with Warehouse
+- No app is spying on you without your permission
+- Install <a href="https://flathub.org/apps/com.github.tchx84.Flatseal" title="Link to Flathub store" target="_blank">Flatseal</a> app and tweak permissions for each of your Flatpak app.
+- There are 2 main things you need to look, "Share -> Network" setting and "Filesystem -> All system files"f Make sure apps that doesn't need network access and system files access don't have that right
+- Make an Obsidian example
+- Flatseal 
 
 ## Development Workflow
 - Use VIM, Neovim, Emacs, or any other free and open-source code editor. Don't recommend IDEs like VSCode or JetBrains products, but if you must use VSCode, remember to disable telemetry in the settings because it's enabled by default. Add these 3 lines to your `settings.json` configuration file:
@@ -231,6 +246,8 @@ Note. I don't recommend **Authy** as an authentication app because it doesn't ha
 The secure thing is marketing crap-Docker containers are isolated in theory, but root access means if anything's hacked, you're done. Podman fixes it by never running a root daemon-containers stay in your namespace, no way to jump out unless you literally say privileged. So Podman isn't bulletproof, but it's like way secure than Docker. That's why big corps transitioning to Podman.
 
 ## Network Security
+Back when dial-up was king and mall Wi-Fi was a lifeline, we connected without thinking twice about who might be watching. Those public networks? Totally exposed. Now, a VPN would’ve been a game-changer, shielding your activity from prying eyes.
+
 - Use a VPN: Briefly explain its purpose (encrypts traffic from your ISP, hides your IP from the immediate website) and contrast it with Tor (VPN provides privacy from your local network, Tor provides anonymity from the destination). You could mention providers like Proton VPN or Mullvad that align with the privacy ethos.
 
 - Use a DNS-over-HTTPS (DoH) resolver: This prevents your ISP from seeing every website you query. This is a simple but powerful change. You could recommend a provider like cloudflare-dns.com or dns.nextdns.io.
