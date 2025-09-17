@@ -92,7 +92,7 @@ I can continue this list for a long time, but the core principle remains: priori
 ## Secure Browsing
 Browsing is something we as tech professionals do constantly, whether for research, development, debugging, or just personal use. The personal use part is particularly important and requires extra vigilance.
 
-When I type a query in a search bar, I don’t want anyone to attach this search query to my identity, nor do I want my browsing habits or visited websites tracked and correlated with my personal data. I want to be able to save my browser tabs in private, encrypted storage so that even if someone gets access to my computer, they cannot see those saved tabs. That’s where browser extensions in combination with open-source philosophy shine.
+When I type a query in a search bar, I don't want anyone to attach this search query to my identity, nor do I want my browsing habits or visited websites tracked and correlated with my personal data. I want to be able to save my browser tabs in private, encrypted storage so that even if someone gets access to my computer, they cannot see those saved tabs. That’s where browser extensions in combination with open-source philosophy shine.
 
 ### Browser Extensions
 There are at least 3 browser extensions that you must have by default. These are:
@@ -113,7 +113,7 @@ This desire for private tab management is exactly why I developed the <a href="h
 
 ![Tab Guardian extension banner with a sign 'See all of your saved tab groups at a glance on the main screen'](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757587311.png)
 
-I’m a bit biased towards this extension because I developed it specifically to address the critical need for encrypted and private tab management, ensuring that sensitive browsing data remains inaccessible even in the event of system compromise.
+I'm a bit biased towards this extension because I developed it specifically to address the critical need for encrypted and private tab management, ensuring that sensitive browsing data remains inaccessible even in the event of system compromise.
 
 It allows you to store and retrieve your browser tabs in a few clicks, but **the coolest feature of Tab Guardian is “Private groups”**, which allows you to create encrypted groups with a password to prevent anyone from accessing them.
 
@@ -136,7 +136,7 @@ Instead of trying to come up with a strong password that you can memorize, a pas
 
 Stop putting it off. If you've never used a password manager, your life is about to get infinitely easier. The principle of open source is also applicable here, since password managers are just applications. If there is nothing to hide, they should be open source.
 
-I’m not sponsored by any password manager, but I recommend <a href="https://proton.me/pass" title="Link to Proton Pass password manager" target="_blank">Proton Pass</a> and <a href="https://bitwarden.com/" title="Link to Bitwarden website" target="_blank">Bitwarden</a>. I’d love to recommend more, but I haven’t used others extensively. You can also explore offline options available on <a href="https://flathub.org" title="Link to Flathub" target="_blank">Flathub</a>—just search for “password manager” there. These are typically self-hosted or local-only options (like <a href="https://flathub.org/en/apps/org.keepassxc.KeePassXC" title="Link to KeePassXC on Flathub" target="_blank">KeePassXC</a>) that don't sync to a vendor's cloud, which is the trade-off for being offline.
+I'm not sponsored by any password manager, but I recommend <a href="https://proton.me/pass" title="Link to Proton Pass password manager" target="_blank">Proton Pass</a> and <a href="https://bitwarden.com/" title="Link to Bitwarden website" target="_blank">Bitwarden</a>. I’d love to recommend more, but I haven’t used others extensively. You can also explore offline options available on <a href="https://flathub.org" title="Link to Flathub" target="_blank">Flathub</a>—just search for “password manager” there. These are typically self-hosted or local-only options (like <a href="https://flathub.org/en/apps/org.keepassxc.KeePassXC" title="Link to KeePassXC on Flathub" target="_blank">KeePassXC</a>) that don't sync to a vendor's cloud, which is the trade-off for being offline.
 
 ![Metal lock with Bitwarden logo on it guarding a door](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757665744.webp)
 
@@ -228,7 +228,7 @@ Another crucial tool for managing Flatpak applications’ security is <a href="h
 
 ![Flatseal user interface](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758025376.webp)
 
-If you don’t want Obsidian to have access to the internet, you can just revoke the “Share → Network” permission using Flatseal. If you want to give your app access only to a specific directory on your system without giving the whole access, you can tweak it in the “Filesystem” section.
+If you don't want Obsidian to have access to the internet, you can just revoke the “Share → Network” permission using Flatseal. If you want to give your app access only to a specific directory on your system without giving the whole access, you can tweak it in the “Filesystem” section.
 
 ![Filesystem setting in the Flatseal app](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758025603.webp)
 
@@ -237,12 +237,22 @@ Tip. Always look at your installed Flatpak app in Flatseal before even opening i
 "Filesystem," "Network," and "System Bus" are the most critical permissions to control, as they represent the primary avenues for data leakage and system intrusion.
 
 ### 4. AppImages
-**AppImages are also another great option for distributing Linux applications, providing a portable and self-contained format that suits various Linux distros.** However, as for writing this article, AppImages still require manual updates, and features like seamless desktop integration (e.g., launching AppImages as native applications) are still a work in progress.
+**AppImages are also another great option for distributing Linux applications, providing a portable and self-contained format that suits various Linux distributions.** However, as for writing this article, AppImages still require manual updates, and features like seamless desktop integration (e.g., launching AppImages as native applications) are still a work in progress.
 
 But for me, it's still better to have an AppImage than having to install TablePlus with 30+ dependencies on my system. I like the encapsulation that AppImages and Flatpak provide. It gives me peace of mind, and I'm willing to tolerate a bit of manual management for the peace of mind that comes with dependency-free, encapsulated software.
 
 ## Development Workflow
-- Use VIM, Neovim, Emacs, or any other free and open-source code editor. Don't recommend IDEs like VSCode or JetBrains products, but if you must use VSCode, remember to disable telemetry in the settings because it's enabled by default. Add these 3 lines to your `settings.json` configuration file:
+A guide on securing your digital life would be incomplete without addressing your development environment. The tools you use to write code can become unexpected vectors for data leakage, making your editor and repository choices a critical part of your security posture.
+
+For developers working with sensitive or proprietary information, tools provided by large corporations like Microsoft present a unique consideration. Their history of participating in programs like <a href="https://en.wikipedia.org/wiki/PRISM" title="Link to Wikipedia page" target="_blank">PRISM</a> is a matter of public record, making it prudent to understand and limit their data collection.
+
+This isn't to say you must abandon GitHub or VS Code—but you should use them with awareness and configure them for maximum privacy.
+
+### Configuring Your Tools
+Here is my personal advice on how to keep using software development tools more secure:
+
+**For VS Code:**
+The VS Code editor collects significant telemetry by default. To disable it, add these lines to your `settings.json` if you don't have them yet:
 
 ```json
 {
@@ -252,7 +262,15 @@ But for me, it's still better to have an AppImage than having to install TablePl
 }
 ```
 
-- It would have been nice to avoid GitHub, but any other Git hosting services are also backed by big tech companies. So, use whatever you are comfortable with.
+**For GitHub:**
+Use SSH keys instead of password and disable Copilot on private projects to prevent your code snippets from being sent to and stored on Microsoft's servers for model training. It's not a big deal if you work on open-source, but if you work on a private project you might disable copilot to avoid any code leakage.
+
+**JetBrains IDEs:**
+JetBrains doesn't have a history of controversial data collection practices since their income stream relies on product sales rather than data monetization. From all the big tech companies out there, JetBrains has the most amount of respect from the developer community for their ethical approach to user data and privacy.
+
+If you use one of their products, you can disable telemetry in your settings if you like, but this step is largely optional due to their transparent data handling policies and clean record. **The only JetBrains-related IDE I recommend to disable telemetry on is Android Studio, since it’s proprietary software managed by Google instead of JetBrains**, posing a similar privacy concern as other Google products.
+
+### Podman and Scripts
 - Be Cautious with Scripts. Avoid piping `curl` directly to `bash` and always review scripts before executing them.
 - Don't use Docker, use Podman
 
