@@ -45,17 +45,7 @@ class ReferrerMiddleware
             }
         }
 
-        /** @var Referrer|null $old */
-        $old = Referrer::query()->where('site', $referer_site)->first();
-
-        if ($old) {
-            $old->increment('hits');
-        } else {
-            Referrer::query()->create([
-                'site' => $referer_site,
-                'hits' => 1,
-            ]);
-        }
+        Referrer::query()->incrementOrCreate(['site' => $referer_site], 'hits');
 
         return $next($request);
     }
