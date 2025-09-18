@@ -296,6 +296,7 @@ These are just a few; there are a lot more you can find. This is not to say AI a
 Another critical moment is to avoid piping `curl` directly to `bash` and always review scripts before executing them in your terminal. Here is a bad example that you should never do:
 
 ```bash
+# NEVER PIPE CURL INTO BASH
 curl https://example.com/some-script.sh | bash
 ```
 
@@ -313,16 +314,27 @@ vim script.sh
 bash script.sh
 ```
 
-```md
 Tip. Use `curl -sSf` for best practices. `-s` to hide the download noise, `-S` to show errors if anything goes wrong, and `-f` to totally fail if the server returns an error. This prevents running a broken or malicious script from a failed download.
-```
 
 This meticulous review process is particularly crucial for shell scripts, as they often execute with elevated privileges and can access sensitive system resources.
 
 ## Network Security
-Back when dial-up was king and mall Wi-Fi was a lifeline, we connected without thinking twice about who might be watching. Those public networks? Totally exposed. Now, a VPN would’ve been a game-changer, shielding your activity from prying eyes.
+Network security is another important area that demands extra attention, especially if you work remotely. Remote work is often done in coffee shops, libraries, or other public spaces, which can expose an individual to significant security risk.
 
-- Use a VPN: Briefly explain its purpose (encrypts traffic from your ISP, hides your IP from the immediate website) and contrast it with Tor (VPN provides privacy from your local network, Tor provides anonymity from the destination). You could mention providers like Proton VPN or Mullvad that align with the privacy ethos.
+Using things like a VPN, firewall, and custom DNS can help mitigate these risks by encrypting traffic and securing connections over untrusted networks. Let’s start with VPNs and discuss their benefits.
+
+### Virtual Private Network
+Back then, dial-up was slow, but it felt safe, even though your ISP (Internet Service Provider) could monitor all your traffic since HTTPS wasn’t widely adopted yet. Then Wi-Fi rolled into cafés and airports, and suddenly a stranger next to you could sniff everything: your URLs, your passwords, your credit card information. Most sites still used plain HTTP, no encryption. Spying was free. VPNs (Virtual Private Networks) weren't fancy; they were the only wall between you and anyone who cared to look.
+
+<blockquote>
+    <p>If you go to a coffee shop or at the airport, and you're using open wireless, I would use a VPN service that you could subscribe for 10 bucks a month. Everything is encrypted in an encryption tunnel, so a hacker cannot tamper with your connection.</p>
+    <img src="https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758197358.webp" alt="Kevin Mitnick in glasses, hacker and a computer security consultant" />
+    <h6>Kevin Mitnick (hacker, computer security consultant)</h6>
+</blockquote>
+
+Today, VPNs remain a critical component of privacy, especially in combination with TLS (Transport Layer Security). Always enable VPN when you are connected to a public network to obscure your traffic even when you use HTTPS. Because TLS doesn’t encrypt your header names and the destination IP, while a VPN encrypts all traffic between your device and the VPN server so that the attacker only sees that you are communicating with a VPN server.
+
+### Domain Name System
 
 - Use a DNS-over-HTTPS (DoH) resolver: This prevents your ISP from seeing every website you query. This is a simple but powerful change. You could recommend a provider like cloudflare-dns.com or dns.nextdns.io.
 
