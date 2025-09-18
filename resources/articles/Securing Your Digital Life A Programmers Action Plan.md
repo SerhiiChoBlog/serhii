@@ -48,7 +48,7 @@ Keep in mind that Linux is not a silver bullet. While it's a great alternative t
 
 ![A Steam Deck with Linux logo on the screen](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757157853.jpg)
 
-You can just start by running Linux on a virtual machine if you've never done it before. This approach allows for risk-free experimentation with various distributions and desktop environments, familiarizing oneself with the nuances of a Linux system without altering the primary operating system. Keep in mind that the experience with Linux inside a virtual machine is not as performant as running it natively, but it’s a good starting point.
+You can just start by running Linux on a virtual machine if you've never done it before. This approach allows for risk-free experimentation with various distributions and desktop environments, familiarizing oneself with the nuances of a Linux system without altering the primary operating system. Keep in mind that the experience with Linux inside a virtual machine is not as performant as running it natively, but it's a good starting point.
 
 ## Safe ISO File
 It doesn't matter how safe your house is if your back door is not locked. That's why it's important to follow basic security practices when it comes to downloading installation files like ISO (often called an ISO image).
@@ -72,7 +72,7 @@ If they match, then you can be confident that your downloaded ISO file is authen
 
 If you installed a fresh Linux installation and are thinking of getting your favorite Google Chrome browser, be mindful that you are reintroducing the same issue that you had before. Running Google Chrome on Linux is like installing a surveillance camera with the default password `admin` into your secured house. The rule is simple: if it's not open source, it doesn't get root-level trust.
 
-And it applies to browser extensions, which can introduce huge security vulnerabilities. **Before installing a browser extension check if it’s open source and keep close attention to its requested permissions.** Unfortunately, there is no perfect way to check the checksum of the extension itself and compare it to the original version, we can only rely on Mozilla and Google to ensure the integrity of their extension marketplaces.
+And it applies to browser extensions, which can introduce huge security vulnerabilities. **Before installing a browser extension check if it's open source and keep close attention to its requested permissions.** Unfortunately, there is no perfect way to check the checksum of the extension itself and compare it to the original version, we can only rely on Mozilla and Google to ensure the integrity of their extension marketplaces.
 
 ### Use Alternatives
 For every proprietary software application, there is typically a robust open-source alternative that offers similar or even the same functionality. There are exceptions, of course, but most of the time you can find pretty much anything, including flatpak applications.
@@ -186,7 +186,7 @@ Now, full-disk encryption is very similar, except that instead of encrypting fil
 
 This is crucial, because your login password doesn’t matter and doesn’t protect your SSD; your login password is just a gatekeeper to your user session, not your underlying data. Without encryption, a thief can simply plug your SSD into another machine and read all your data directly. Encryption ensures they’ll only see gibberish.
 
-Encryption isn’t just a feature—it’s your right. Enable it, and turn your hardware into a fortress.
+Encryption isn’t just a feature—it's your right. Enable it, and turn your hardware into a fortress.
 
 ### Use 2FA
 A strong password is your first line of defense, but it can still be stolen in a data breach or through phishing. This is where **2FA (Two-Factor Authentication)** becomes essential. It adds a critical second layer of security by requiring two proofs of identity: something you know (your password) and something you have (a code from your phone or a physical key).
@@ -203,7 +203,7 @@ Note. I don't recommend apps like  **Authy** as an authentication app because th
 **Your action is simple: enable 2FA on every account that offers it,** especially your email, password manager, and social media accounts. This single step will block the vast majority of automated account takeover attempts.
 
 ## Secure Software Management
-For programmers, **security isn’t just a best practice—it’s a core responsibility**, especially if you work on critical infrastructure or financial systems. If your company decides which operating system and programs you are going to use, you are out of luck. Typically, you will just have to use what is provided, but you can still make sure your own personal environment is safe and secure.
+For programmers, **security isn’t just a best practice—it's a core responsibility**, especially if you work on critical infrastructure or financial systems. If your company decides which operating system and programs you are going to use, you are out of luck. Typically, you will just have to use what is provided, but you can still make sure your own personal environment is safe and secure.
 
 We’ve already talked about Linux and safe browsing, but I also want to talk about secure software management for Linux.
 
@@ -268,7 +268,7 @@ Use SSH keys instead of password and disable Copilot on private projects to prev
 **JetBrains IDEs:**
 JetBrains doesn't have a history of controversial data collection practices since their income stream relies on product sales rather than data monetization. From all the big tech companies out there, JetBrains has the most amount of respect from the developer community for their ethical approach to user data and privacy.
 
-If you use one of their products, you can disable telemetry in your settings if you like, but this step is largely optional due to their transparent data handling policies and clean record. **The only JetBrains-related IDE I recommend to disable telemetry on is Android Studio, since it’s proprietary software managed by Google instead of JetBrains**, posing a similar privacy concern as other Google products.
+If you use one of their products, you can disable telemetry in your settings if you like, but this step is largely optional due to their transparent data handling policies and clean record. **The only JetBrains-related IDE I recommend to disable telemetry on is Android Studio, since it's proprietary software managed by Google instead of JetBrains**, posing a similar privacy concern as other Google products.
 
 ### Use Podman
 Since software development is heavily dependent on container technologies, we should understand their inherent security implications. Running Docker as root on your system exposes a significant attack surface.
@@ -363,7 +363,7 @@ If you use Debian-based distros like Ubuntu or Linux Mint, run this to check if 
 sudo ufw status
 ```
 
-If it’s not running, make sure you enable it with the enable command instead of status.
+If it's not running, make sure you enable it with the enable command instead of status.
 
 On a Fedora Workstation, you can check it by running:
 
@@ -383,4 +383,20 @@ sudo systemctl enable --now firewalld
 For other distros, you need to find it yourself since each distribution often implements its firewall management tools and configurations. For most users, the default firewall settings provide robust protection without impacting usability, making it a critical and effortless layer of defense.
 
 ## Conclusion
-Securing your digital life is an ongoing process. Start with the fundamentals (strong passwords, encryption), then gradually replace tools and adopt more advanced practices (using Tor, avoiding big tech). Remember, the goal is to make it as difficult as possible for anyone to track you or access your data.
+Securing your digital life is an ongoing process. Start with the fundamentals (strong passwords, encryption), then gradually replace tools and adopt more advanced practices (using Tor, avoiding big tech).
+
+Try Linux if you are still not using it and make sure the ISO file has the correct checksum. Start moving to a password manager and always enable full-disk encryption to protect your data.
+
+**Start using a VPN. Modern VPNs have minimal impact on performance, often with only a negligible speed reduction.** This minimalized performance overhead is a small price to pay for the significant enhancement in security and privacy, especially when traversing untrusted networks. You can disable it when you watch a movie or access content that might block the country your VPN is connected to.
+
+Changing DNS is not even a technical challenge; it's free and it takes a maximum of 7 minutes to set up. If you are not sure which DNS to use, just use Quad9 or Cloudflare. Avoid Google DNS and your ISP’s default DNS, as these can compromise your privacy.
+
+<blockquote>
+    <p>Privacy matters; privacy is what allows us to determine who we are and who we want to be.</p>
+    <img src="https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758213689.webp" alt="A photo of Edward Snowden" />
+    <h6>Edward Snowden</h6>
+</blockquote>
+
+If I could leave you with only a single piece of advice, it would be to **assume that every program you install is a potential threat to your system**. It's not being paranoid; it's being stoical and pragmatic. This mindset aligns with the <a href="https://en.wikipedia.org/wiki/Zero_trust_architecture" title="Link to the Wikipedia article about Zero Trust" target="_blank">Zero Trust</a> security model, which advocates for strict identity verification for every user and device.
+
+Remember, the goal is to make it as difficult as possible for anyone to track you or access your data. Take care and leave a comment down below with anything you want; just let me know that you were here 😉.
