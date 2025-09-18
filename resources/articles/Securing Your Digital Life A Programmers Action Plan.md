@@ -332,13 +332,55 @@ Back then, dial-up was slow, but it felt safe, even though your ISP (Internet Se
     <h6>Kevin Mitnick (hacker, computer security consultant)</h6>
 </blockquote>
 
-Today, VPNs remain a critical component of privacy, especially in combination with TLS (Transport Layer Security). Always enable VPN when you are connected to a public network to obscure your traffic even when you use HTTPS. Because TLS doesn’t encrypt your header names and the destination IP, while a VPN encrypts all traffic between your device and the VPN server so that the attacker only sees that you are communicating with a VPN server.
+Today, VPNs remain a critical component of privacy, especially in combination with TLS (Transport Layer Security). Always enable VPN when you are connected to a public network to obscure your traffic even when you use HTTPS. This is because TLS doesn’t encrypt all metadata while a VPN encrypts all traffic between your device and the VPN server so that the attacker only sees that you are communicating with a VPN server.
 
 ### Domain Name System
+The DNS (Domain Name System) is a foundational component of Internet communication, translating human-readable domain names into numerical IP addresses necessary for establishing connections. However, if you use the default (automatic) DNS settings, it means you use the DNS of your Internet provider, and it can monitor your browsing activities and potentially intercept your traffic, which is mostly the case.
 
-- Use a DNS-over-HTTPS (DoH) resolver: This prevents your ISP from seeing every website you query. This is a simple but powerful change. You could recommend a provider like cloudflare-dns.com or dns.nextdns.io.
+It can be clearly demonstrated with websites that are blocked in your country. Moreover, ISP DNS is trash for privacy and security because it never blocks malicious domains such as phishing sites, making users vulnerable to various cyber threats.
 
-- Consider a Firewall: Briefly mention application firewalls like ufw (Uncomplicated Firewall) to easily deny all incoming connections by default.
+Note. Phishing sites are fake websites that look real and are designed to trick you into sharing passwords, credit card information, or personal data. They often mimic banks, social media, or email logins, using similar URLs or designs. Clicking links from shady emails or texts can lead you there. This is where secure DNS providers like Cloudflare and Quad9 come in—they automatically block known phishing and malicious domains, protecting you from these threats.
+
+If you still rely on your ISP's default DNS, consider changing your DNS settings to point to a different free provider like Quad9 or Cloudflare. It’s super easy to do; you don’t need any special software. Depending on your OS and desktop environment, it will look different, but the concept is still the same.
+
+You just need to go into your WiFi settings and configure your current WiFi connection by disabling the automatic DNS setting. On my GNOME desktop environment, I find my WiFi connection `WWWmi` and changing automatic DNS to 2 IP addresses `9.9.9.9, 149.112.112.112` which you can find on the <a href="https://quad9.net/" title="Link to Quad9 official website" target="_blank">Quad9</a> website if you choose it as your DNS provider. For <a href="https://developers.cloudflare.com/1.1.1.1/ip-addresses/" title="Link to the official Cloudflare website" target="_blank">Cloudflare</a>, it will be `1.1.1.1, 1.0.0.1`.
+
+![Configuration window for WiFi connection for GNOME desktop environment](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758207136.webp)
+
+There are many other DNS providers that offer enhanced privacy features and malware blocking capabilities, but if you want the maximum level of privacy, you should consider using your own DNS server. However, it might be overkill for most of us. If you are into the hacking side of things, I recommend buying a Raspberry Pi and setting up a DNS server with firewall capabilities.
+
+![Raspberry Pi 5 in a case connected with USB cables connected](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758210608.webp)
+
+I can write a series of articles just about DNS because there are so many things I would love to talk about. However, I’m going to stop here and move to the firewall section.
+
+### Firewall
+A firewall acts as a critical barrier, controlling incoming and outgoing network traffic based on predetermined security rules, thereby preventing unauthorized access and mitigating various cyber threats. By default, a firewall is enabled on Windows 11, macOS, and many Linux distributions like Fedora Workstation, Ubuntu, Debian, etc.
+
+If you use Debian-based distros like Ubuntu or Linux Mint, run this to check if your firewall is enabled:
+
+```bash
+# ufw stands for Uncomplicated FireWall
+sudo ufw status
+```
+
+If it’s not running, make sure you enable it with the enable command instead of status.
+
+On a Fedora Workstation, you can check it by running:
+
+```bash
+sudo firewall-cmd --state
+# or, as an alternative, you can run this:
+sudo systemctl status firewalld
+```
+
+To enable it, you just run:
+
+```bash
+# The '--now' flag starts the service immediately
+sudo systemctl enable --now firewalld
+```
+
+For other distros, you need to find it yourself since each distribution often implements its firewall management tools and configurations. For most users, the default firewall settings provide robust protection without impacting usability, making it a critical and effortless layer of defense.
 
 ## Conclusion
 Securing your digital life is an ongoing process. Start with the fundamentals (strong passwords, encryption), then gradually replace tools and adopt more advanced practices (using Tor, avoiding big tech). Remember, the goal is to make it as difficult as possible for anyone to track you or access your data.
