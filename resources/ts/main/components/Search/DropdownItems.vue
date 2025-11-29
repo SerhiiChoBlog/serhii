@@ -19,7 +19,7 @@ function getAllKeywords(item: SearchSuggestion): string[] {
                 <a
                     :href="`/posts/${item.slug}`"
                     class="py-1.5 text-font px-3 flex items-center gap-4 hover:bg-page-second dark:hover:bg-border transition-colors"
-                    :class="{ '!bg-blue-200 dark:!bg-white/10': item.selected }"
+                    :class="{ 'bg-blue-200! dark:bg-white/10!': item.selected }"
                 >
                     <img
                         :src="`/${item.image_xs}`"
