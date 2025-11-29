@@ -68,7 +68,7 @@ function fetchSeries(): void {
                 <label for="series">Select series</label>
                 <select
                     name="series"
-                    class="block px-4 py-1 w-full max-w-[200px] border border-border rounded-md shadow-sm focus:outline-none sm:text-md dark:bg-page-second"
+                    class="block px-4 py-1 w-full max-w-[200px] border border-border rounded-md shadow-xs focus:outline-hidden sm:text-md dark:bg-page-second"
                     v-model="seriesId"
                 >
                     <option :value="null">No series</option>

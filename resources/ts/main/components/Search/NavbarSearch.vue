@@ -74,7 +74,7 @@ function toggleSearch(): void {
                         v-model="search.query"
                         @input="changedInput"
                         autocomplete="off"
-                        class="pl-7 w-full text-gray-400 rounded-full outline-none py-1 text-lg bg-transparent"
+                        class="pl-7 w-full text-gray-400 rounded-full outline-hidden py-1 text-lg bg-transparent"
                         :class="hideInput ? 'cursor-pointer' : 'pr-12'"
                         id="navbar-search-input"
                     />

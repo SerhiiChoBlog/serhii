@@ -45,7 +45,7 @@ async function submitForm(): Promise<void> {
                     v-if="$auth"
                     v-model="comment"
                     :placeholder="placeholder"
-                    class="p-3 bg-page focus:outline-none dark:bg-page-second rounded-lg border border-border w-full min-h-[90px]"
+                    class="p-3 bg-page focus:outline-hidden dark:bg-page-second rounded-lg border border-border w-full min-h-[90px]"
                     @blur="saveCommentToCache(comment)"
                     :disabled="canCommentIn > 0"
                     minlength="4"

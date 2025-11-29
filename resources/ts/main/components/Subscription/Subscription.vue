@@ -156,7 +156,7 @@ function allTagsSelected(): boolean {
                         </label>
 
                         <div
-                            class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 rounded-full shadow-sm"
+                            class="flex h-[45px] lg:h-[53px] bg-gray-600 p-1 rounded-full shadow-xs"
                         >
                             <choose-tags-button
                                 class="hidden md:inline-flex"
@@ -166,7 +166,7 @@ function allTagsSelected(): boolean {
                             <input
                                 type="email"
                                 id="subscription"
-                                class="px-6 h-full bg-transparent rounded-full w-full focus:outline-none text-white placeholder-gray-300"
+                                class="px-6 h-full bg-transparent rounded-full w-full focus:outline-hidden text-white placeholder-gray-300"
                                 placeholder="Your email address"
                                 v-model="modalForm.email"
                             />
@@ -208,16 +208,18 @@ function allTagsSelected(): boolean {
                         </div>
                     </form>
 
-                    <div class="mt-4 text-md lg:text-lg space-y-3">
+                    <div class="mt-4 text-md lg:text-lg flex flex-col gap-3">
                         <ul class="space-y-1">
                             <li
                                 v-for="(item, index) in advantages"
                                 :key="item"
                                 class="flex gap-2 items-center"
                             >
-                                <span v-if="index === 0" class="mx-1 text-xl"
-                                    >❤️</span
-                                >
+                                <span
+                                    v-if="index === 0"
+                                    class="mx-1 text-xl"
+                                >❤️</span>
+
                                 <check-icon
                                     v-else
                                     class="w-5 lg:w-7 h-5 lg:h-7 text-green-500"

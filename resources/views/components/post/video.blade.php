@@ -27,7 +27,7 @@
         />
 
         <div class="opacity-0 group-hover:opacity-100 duration-300 transition-opacity absolute top-0 left-0 right-0 bottom-0 bg-black/50 rounded-lg">
-            <span class="inline-block drop-shadow-sm px-3 py-2 text-center text-lg w-[80%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-bold bg-[#ff0100] rounded-xl">
+            <span class="inline-block drop-shadow-xs px-3 py-2 text-center text-lg w-[80%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-bold bg-[#ff0100] rounded-xl">
                 Watch on YouTube
             </span>
         </div>

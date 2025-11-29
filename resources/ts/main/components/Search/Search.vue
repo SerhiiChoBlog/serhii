@@ -29,7 +29,7 @@ const { search, input, changedInput } = useSearch()
                         v-model="search.query"
                         @blur="search.query = ''"
                         autocomplete="off"
-                        class="pl-12 pr-7 md:pl-14 py-3 text-sm md:text-xl w-full text-gray-500 rounded-full outline-none bg-page dark:bg-page-second"
+                        class="pl-12 pr-7 md:pl-14 py-3 text-sm md:text-xl w-full text-gray-500 rounded-full outline-hidden bg-page dark:bg-page-second"
                         id="search-input"
                     />
                 </form>

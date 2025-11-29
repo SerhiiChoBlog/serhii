@@ -12,7 +12,7 @@
     <input
         type="{{ $type ?? 'text' }}"
         placeholder="{{ $placeholder ?? '' }}"
-        class="w-full px-4 py-3 border bg-page-second rounded-md focus:outline-none focus:ring-1 focus:ring-main @error($name) border-red-600/50 @else border-border @enderror"
+        class="w-full px-4 py-3 border bg-page-second rounded-md focus:outline-hidden focus:ring-1 focus:ring-main @error($name) border-red-600/50 @else border-border @enderror"
         name="{{ $name }}"
         value="{{ $value ?? '' }}"
         id="{{ $id ?? '' }}"

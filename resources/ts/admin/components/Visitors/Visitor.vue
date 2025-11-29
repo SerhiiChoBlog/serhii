@@ -34,7 +34,7 @@ function blockVisitorHandler(): void {
                 :src="`/storage/admin/flags/${visitor.code.toLowerCase()}.png`"
                 width="80"
                 height="42"
-                class="w-9 h-5 rounded-sm shadow-sm border border-border"
+                class="w-9 h-5 rounded-xs shadow-xs border border-border"
             />
             <img
                 v-else
