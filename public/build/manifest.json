@@ -1,41 +1,47 @@
 {
-  "_SignInModal.vue_vue_type_script_setup_true_lang-DVQ54HZ-.js": {
-    "file": "assets/SignInModal.vue_vue_type_script_setup_true_lang-DVQ54HZ-.js",
+  "_SignInModal.vue_vue_type_script_setup_true_lang-wIRA2sdF.js": {
+    "file": "assets/SignInModal.vue_vue_type_script_setup_true_lang-wIRA2sdF.js",
     "name": "SignInModal.vue_vue_type_script_setup_true_lang",
     "imports": [
-      "_Spinner-BJBw4HOy.js"
+      "_Spinner-akt1kXKo.js"
     ]
   },
-  "_Spinner-BJBw4HOy.js": {
-    "file": "assets/Spinner-BJBw4HOy.js",
+  "_Spinner-akt1kXKo.js": {
+    "file": "assets/Spinner-akt1kXKo.js",
     "name": "Spinner"
   },
-  "_index-M4cvn2cO.js": {
-    "file": "assets/index-M4cvn2cO.js",
+  "_index-Duy2uQbd.js": {
+    "file": "assets/index-Duy2uQbd.js",
     "name": "index",
     "imports": [
-      "_Spinner-BJBw4HOy.js"
+      "_Spinner-akt1kXKo.js"
     ]
   },
   "resources/css/admin/app.css": {
-    "file": "assets/app-4FUGNq8n.css",
-    "src": "resources/css/admin/app.css",
-    "isEntry": true
+    "file": "assets/app-BkzWD2pH.css",
+    "src": "resources/css/admin/app.css"
   },
   "resources/css/admin/font-awesome.css": {
-    "file": "assets/font-awesome-wnfqxJvZ.css",
+    "file": "assets/font-awesome-BcmsL2LI.css",
     "src": "resources/css/admin/font-awesome.css",
-    "isEntry": true
+    "isEntry": true,
+    "name": "font-awesome",
+    "names": [
+      "font-awesome.css"
+    ]
   },
   "resources/css/main/app.css": {
-    "file": "assets/app-fEpcEFzZ.css",
-    "src": "resources/css/main/app.css",
-    "isEntry": true
+    "file": "assets/app-Bhqn-wKN.css",
+    "src": "resources/css/main/app.css"
   },
   "resources/css/user/app.css": {
-    "file": "assets/app-DfZwKE-r.css",
+    "file": "assets/app-Cu5hFtJv.css",
     "src": "resources/css/user/app.css",
-    "isEntry": true
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
   },
   "resources/fonts/JetBrainsMono-Regular.ttf": {
     "file": "assets/JetBrainsMono-Regular-B6tfaF3l.ttf",
@@ -66,34 +72,34 @@
     "src": "resources/fonts/fa-solid-900.woff2"
   },
   "resources/ts/admin/app.ts": {
-    "file": "assets/app-BLPE2d1O.js",
+    "file": "assets/app-DsE9Jsd0.js",
     "name": "app",
     "src": "resources/ts/admin/app.ts",
     "isEntry": true,
     "imports": [
-      "_Spinner-BJBw4HOy.js",
-      "_index-M4cvn2cO.js"
+      "_Spinner-akt1kXKo.js",
+      "_index-Duy2uQbd.js"
     ]
   },
   "resources/ts/main/app.ts": {
-    "file": "assets/app-DcqbLYmW.js",
+    "file": "assets/app-Dlfd09Hj.js",
     "name": "app",
     "src": "resources/ts/main/app.ts",
     "isEntry": true,
     "imports": [
-      "_Spinner-BJBw4HOy.js",
-      "_index-M4cvn2cO.js",
-      "_SignInModal.vue_vue_type_script_setup_true_lang-DVQ54HZ-.js"
+      "_Spinner-akt1kXKo.js",
+      "_index-Duy2uQbd.js",
+      "_SignInModal.vue_vue_type_script_setup_true_lang-wIRA2sdF.js"
     ]
   },
   "resources/ts/user/app.ts": {
-    "file": "assets/app-D9aDrI5J.js",
+    "file": "assets/app-CSjT1dVU.js",
     "name": "app",
     "src": "resources/ts/user/app.ts",
     "isEntry": true,
     "imports": [
-      "_Spinner-BJBw4HOy.js",
-      "_SignInModal.vue_vue_type_script_setup_true_lang-DVQ54HZ-.js"
+      "_Spinner-akt1kXKo.js",
+      "_SignInModal.vue_vue_type_script_setup_true_lang-wIRA2sdF.js"
     ]
   }
 }

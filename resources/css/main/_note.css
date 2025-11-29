@@ -1,6 +1,8 @@
+@import 'tailwindcss';
+
 .note,
 .tip {
-    @apply px-5 pb-5 pt-7 rounded-md leading-5 text-lg relative !font-main !mt-10;
+    @apply px-5 pb-5 pt-7 rounded-md leading-5 text-lg relative font-main! mt-10!;
 }
 
 .tip a,

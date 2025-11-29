@@ -23,7 +23,7 @@ withDefaults(defineProps<Props>(), {
         <input
             :type="type"
             :placeholder="placeholder"
-            class="w-full px-4 py-3 border bg-page-second rounded-md focus:outline-none focus:ring-1 focus:ring-main"
+            class="w-full px-4 py-3 border bg-page-second rounded-md focus:outline-hidden focus:ring-1 focus:ring-main"
             :class="{
                 'border-red-600/50': errorMessage,
                 'border-border': !errorMessage,

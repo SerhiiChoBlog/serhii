@@ -99,7 +99,7 @@ function selectedTagsHaveTag(tag: Tag): boolean {
                 type="button"
                 v-for="tag in tags.items"
                 :key="tag.id"
-                class="flex items-center gap-7 border rounded-lg py-2 px-3 relative pointer outline outline-2 outline-transparent transition-all hover:outline-gray-400 dark:hover:outline-gray-600"
+                class="flex items-center gap-7 border rounded-lg py-2 px-3 relative pointer outline-2 outline-transparent transition-all hover:outline-gray-400 dark:hover:outline-gray-600"
                 :class="
                     selectedTagsHaveTag(tag)
                         ? 'border-green-500 dark:border-green-900 bg-green-50 dark:bg-page-second'

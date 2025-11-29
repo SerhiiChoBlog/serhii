@@ -23,7 +23,7 @@ function addKeyword(): void {
             name: searchQuery.value,
             post_id: props.post.id,
         })
-        .then(resp => {
+        .then(_ => {
             searchQuery.value = ''
             emit('changed')
         })
@@ -49,7 +49,7 @@ function deleteKeyword(keyword: Keyword): void {
 
     axios
         .delete('/admin/ajax/keywords', params)
-        .then(resp => emit('changed'))
+        .then(_ => emit('changed'))
         .catch(handleError)
 }
 </script>
@@ -70,7 +70,7 @@ function deleteKeyword(keyword: Keyword): void {
             <template #input>
                 <div
                     v-if="loading"
-                    class="absolute bg-white inset-1 flex items-center pl-5 rounded-sm"
+                    class="absolute bg-white inset-1 flex items-center pl-5 rounded-xs"
                 >
                     <span>Loading... Please wait...</span>
                 </div>

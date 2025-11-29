@@ -47,7 +47,7 @@ function deleteBook(): void {
                 :alt="`Logo of ${book.title}`"
                 width="378"
                 height="300"
-                class="h-20 w-auto rounded-sm"
+                class="h-20 w-auto rounded-xs"
             />
         </BodyDetail>
         <BodyDetail>

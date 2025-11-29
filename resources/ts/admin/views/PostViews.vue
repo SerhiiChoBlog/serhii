@@ -76,7 +76,7 @@ function fetchViews(): void {
                     <button
                         :class="[
                           'w-full rounded-lg py-3 text-md font-medium leading-5',
-                          'ring-white ring-opacity-60 ring-offset-2 ring-offset-gray-400 focus:outline-none focus:ring-2',
+                          'ring-white ring-opacity-60 ring-offset-2 ring-offset-gray-400 focus:outline-hidden focus:ring-2',
                           selected ? 'bg-gray-600 shadow' : 'hover:bg-white/30 text-white',
                         ]"
                       >
@@ -102,13 +102,13 @@ function fetchViews(): void {
                             v-for="view in views.unique"
                             :key="view.post_id"
                             class="transition-colors duration-500"
-                            :class="{ '!bg-yellow-200 animate-pulse': lastNewView.post_id === view.post_id }"
+                            :class="{ 'bg-yellow-200! animate-pulse': lastNewView.post_id === view.post_id }"
                         >
                             <BodyDetail>
                                 <img
                                     :src="'/' + view.post.image_sm"
                                     :alt="view.post.title"
-                                    class="w-[80px] rounded-sm shadow-sm"
+                                    class="w-20 rounded-xs shadow-xs"
                                 />
                             </BodyDetail>
                             <BodyDetail>{{ view.amount }}</BodyDetail>
@@ -121,7 +121,7 @@ function fetchViews(): void {
                                             :src="`/storage/admin/flags/${lastNewView.country.toLowerCase()}.png`"
                                             :alt="lastNewView.country"
                                             width="20"
-                                            class="inline-block ml-1 rounded-sm shadow-sm"
+                                            class="inline-block ml-1 rounded-xs shadow-xs"
                                         >
 
                                         <span class="ml-1 text-xs font-bold">
@@ -149,7 +149,7 @@ function fetchViews(): void {
                             v-if="views.daily"
                             v-for="view in views.daily"
                             :key="view.amount"
-                            class="first:!bg-yellow-200 first:text-black"
+                            class="first:bg-yellow-200! first:text-black"
                         >
                             <BodyDetail>{{ view.date }}</BodyDetail>
                             <BodyDetail>{{ view.amount }}</BodyDetail>

@@ -73,7 +73,7 @@ function deleteImage(id: number): void {
             <BodyRow v-if="post.images" v-for="image in post.images" :key="image.id">
                 <BodyDetail>
                     <a :href="image.uri" target="_blank" rel="noreferrer">
-                        <img :src="image.uri" alt="Post image" width="100" class="rounded-md shadow-sm" />
+                        <img :src="image.uri" alt="Post image" width="100" class="rounded-md shadow-xs" />
                     </a>
                 </BodyDetail>
 
