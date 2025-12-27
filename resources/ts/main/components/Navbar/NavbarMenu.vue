@@ -57,7 +57,11 @@ function showLoginModal(): void {
                 <user-dropdown v-if="$auth">
                     <button
                         type="button"
-                        class="flex items-center justify-center gap-4 bg-black/20 rounded-full pl-5 hover:bg-black/40 transition-colors group"
+                        :class="[
+                            'cursor-pointer flex items-center justify-center',
+                            'gap-4 bg-black/20 rounded-full pl-5 hover:bg-black/40',
+                            'transition-colors group'
+                        ]"
                     >
                         <div
                             class="overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[150px] text-lg py-1"
@@ -79,7 +83,7 @@ function showLoginModal(): void {
                     v-else
                     @click="showLoginModal"
                     type="button"
-                    class="main-btn min-w-[140px]"
+                    class="main-btn min-w-[140px] cursor-pointer"
                 >
                     Sign in
                 </button>

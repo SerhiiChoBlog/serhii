@@ -72,7 +72,7 @@ function switchToSignUp() {
         </div>
 
         <div class="pt-4">
-            <form-button :loading="loading" type="submit">Sign in</form-button>
+            <form-button :loading type="submit">Sign in</form-button>
             <sign-in-with />
         </div>
     </form>
