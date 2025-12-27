@@ -47,6 +47,7 @@ class FetchGithubProjects extends Command
         $urls = config('services.github.projects_urls');
         $readme_url = Str::of(config('services.github.readme_url'));
 
+        /** @var \Illuminate\Http\Client\Response[] $responses */
         $responses = Http::pool(function (Pool $pool) use ($urls) {
             $result = [];
 
@@ -57,7 +58,7 @@ class FetchGithubProjects extends Command
             return $result;
         });
 
-        $projects = array_reduce($responses, function ($carry, $response) {
+        $projects = array_reduce($responses, function ($carry, $response): mixed {
             $projects = $response->json();
 
             if (is_array($projects)) {
