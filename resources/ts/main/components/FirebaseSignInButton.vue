@@ -77,8 +77,11 @@ function handleError(err: any): void {
     <button
         @click="signIn"
         type="button"
-        class="rounded-full w-8 h-8 transition-transform transform hover:scale-110 flex items-center"
         :disabled="isLoading"
+        :class="[
+            'cursor-pointer rounded-full w-8 h-8 transition-transform',
+            'transform hover:scale-110 flex items-center',
+        ]"
     >
         <spinner v-if="isLoading" class="w-8 h-8" />
 

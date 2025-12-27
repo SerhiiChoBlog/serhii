@@ -36,10 +36,8 @@ function getAllKeywords(item: SearchSuggestion): string[] {
                             class="flex flex-wrap gap-x-1 text-font-second opacity-70"
                         >
                             <div v-for="(tag, i) in getAllKeywords(item)" :key="tag">
-                                {{ tag
-                                }}<span v-if="i !== getAllKeywords(item).length - 1"
-                                    >,</span
-                                >
+                                {{ tag }}
+                                <span v-if="i !== getAllKeywords(item).length - 1">,</span>
                             </div>
                         </div>
                     </div>

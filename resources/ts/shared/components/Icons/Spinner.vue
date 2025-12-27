@@ -1,6 +1,6 @@
 <template>
     <svg
-        class="w-12 h-12 text-gray-200 animate-spin fill-main mx-auto"
+        class="size-10 text-gray-200 animate-spin fill-main mx-auto"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
