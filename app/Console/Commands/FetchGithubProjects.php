@@ -9,6 +9,7 @@ use App\Models\Project;
 use Illuminate\Console\Command;
 use Illuminate\Http\Client\Pool;
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -47,7 +48,7 @@ class FetchGithubProjects extends Command
         $urls = config('services.github.projects_urls');
         $readme_url = Str::of(config('services.github.readme_url'));
 
-        /** @var \Illuminate\Http\Client\Response[] $responses */
+        /** @var Response[] $responses */
         $responses = Http::pool(function (Pool $pool) use ($urls) {
             $result = [];
 
