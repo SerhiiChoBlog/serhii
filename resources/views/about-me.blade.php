@@ -27,7 +27,8 @@
 
                         <div class="about-me prose-xl prose-h2:mb-6 prose-h2:mt-0">
                             <p>
-                                I spent 5 years working at a company based in the Netherlands. After that, I worked as a freelancer on various projects.
+                                I spent several years working at a company based in the Netherlands. After that,
+                                I worked as a freelancer on various projects.
                             </p>
 
                             <p>
