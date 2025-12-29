@@ -15,16 +15,14 @@
             <div class="container">
                 <div class="bg-page print:translate-y-0 -translate-y-16 rounded-xl pt-8">
                     <div class="grid grid-cols-1 gap-x-6 lg:grid-cols-[25%_1fr]">
-                        <div class="relative">
-                            <div class="print:w-full w-[250px] mx-auto rounded-lg print:initial sticky print:static top-36 mb-6">
-                                <img
-                                    src="/storage/serhii-cho.webp"
-                                    alt="Serhii Cho"
-                                    class="my-auto rounded-lg mx-auto transition-all duration-500 shadow-lg"
-                                    width="250"
-                                    height="250"
-                                />
-                            </div>
+                        <div class="print:w-full w-[250px] mx-auto rounded-lg top-36 mb-6">
+                            <img
+                                src="/storage/serhii-cho.webp"
+                                alt="Serhii Cho"
+                                class="my-auto rounded-lg mx-auto transition-all duration-500 shadow-lg"
+                                width="250"
+                                height="250"
+                            />
                         </div>
 
                         <div class="about-me prose-xl prose-h2:mb-6 prose-h2:mt-0">
