@@ -48,7 +48,7 @@
                             I worked with various integration services, payment systems and bunch of other services that you
                             can find on my <a href="https://github.com/SerhiiCho" target="_blank">GitHub profile page</a>.
                             I'm not fixed on a specific programming language or framework, I'm open to use whatever is needed
-                            to get the job done. If you want to see my code, check out <a href="https://www.youtube.com/@serhiicho" target="_blank">these YouTube videos</a>
+                            to get the job done. If you want to see me code, check out <a href="https://www.youtube.com/@serhiicho" target="_blank">these YouTube videos</a>
                             that I post from time to time just for fun.
                             </p>
                         </div>
