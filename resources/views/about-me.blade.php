@@ -26,7 +26,6 @@
                         </div>
 
                         <div class="about-me prose-xl prose-h2:mb-6 prose-h2:mt-0">
-                            <h2>Experience</h2>
                             <x-about.intro />
                         </div>
                     </div>
