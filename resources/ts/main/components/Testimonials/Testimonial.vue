@@ -19,7 +19,7 @@ defineProps<{
             />
 
             <div>
-                <h3 class="font-bold text-xl text-gray-600">
+                <h3 class="font-bold text-xl text-gray-400">
                     <a
                         :href="testimonial.link ? testimonial.link : 'javascript:'"
                         target="_blank"
@@ -29,7 +29,7 @@ defineProps<{
                     </a>
                 </h3>
 
-                <h3 class="text-[.8em] leading-6 text-gray-500">
+                <h3 class="text-[.8em] leading-6 text-gray-300">
                     {{ testimonial.role }}
                 </h3>
             </div>
@@ -42,7 +42,7 @@ defineProps<{
                         ? testimonial.short
                         : testimonial.content
                 "
-                class="[&>p]:mb-5 [&>p:last-child]:mb-0 text-gray-500 leading-6 text-[.9em]"
+                class="[&>p]:mb-5 [&>p:last-child]:mb-0 text-gray-200 leading-6 text-[.9em]"
             ></p>
 
             <button
