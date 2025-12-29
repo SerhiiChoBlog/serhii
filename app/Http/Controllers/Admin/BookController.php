@@ -16,14 +16,6 @@ use Intervention\Image\Facades\Image;
 
 class BookController extends Controller
 {
-    /**
-     * @return LengthAwarePaginator<int, Book>
-     */
-    public function index(): LengthAwarePaginator
-    {
-        return Book::with('author')->orderByDesc('read_at')->paginate(20);
-    }
-
     public function store(StoreRequest $request): void
     {
         /** @var UploadedFile|null $file */
