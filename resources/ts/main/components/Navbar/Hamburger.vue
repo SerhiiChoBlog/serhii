@@ -18,7 +18,7 @@ function toggleNavbar(): void {
 <template>
     <a
         role="button"
-        class="block lg:hidden relative w-[3.25rem] h-[3.25rem] transition-transform duration-300 delay-300 z-20"
+        class="block lg:hidden relative size-13 transition-transform duration-300 delay-300 z-20 cursor-pointer"
         :class="isActive ? 'rotate-45' : ''"
         @click="toggleNavbar"
         aria-label="Show mobile menu"

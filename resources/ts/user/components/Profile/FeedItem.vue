@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Feed } from '@shared/types/models'
+import type { Component } from 'vue'
 
 defineProps<{
     title: string
@@ -7,7 +8,7 @@ defineProps<{
     image: string
     feed: Feed
     url?: string
-    icon?: string
+    icon?: Component
 }>()
 </script>
 

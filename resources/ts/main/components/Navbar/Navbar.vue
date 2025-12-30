@@ -54,7 +54,7 @@ const isHome = computed<boolean>(() => window.location.pathname === '/')
                     </div>
                 </div>
 
-                <navbar-menu :theme="theme" />
+                <navbar-menu :theme />
             </div>
         </nav>
     </appear-transition>

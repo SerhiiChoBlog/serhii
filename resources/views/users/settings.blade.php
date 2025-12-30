@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@push('title', "User Settings")
+@push('title', 'User Settings')
 
 @section('content')
     <div class="container">
