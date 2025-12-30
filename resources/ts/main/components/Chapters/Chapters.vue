@@ -219,7 +219,7 @@ function handleChapterClick(title: string): void {
         @click="showChapters = !showChapters"
     >
         <chevron-up-icon v-if="showChapters" class="w-6 h-6 inline-block" />
-        <chevron-down-icon v-else class="w-6 h-6 inline-block" />
+        <chevron-down-icon v-else class="size-6 inline-block" />
         <span class="tracking-wide">{{ currentChapter.title }}</span>
     </button>
 
