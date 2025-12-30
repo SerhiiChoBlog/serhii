@@ -10,9 +10,9 @@
     <!-- line right -->
     <div class="w-[100px] h-1 bg-page-second absolute top-[13px] right-[-123px]"></div>
     <!-- letter S -->
-    <strong class="absolute text-page-second text-2xl left-1/2 -translate-x-1/2">S</strong>
+    <strong class="absolute text-page-second text-2xl left-1/2 -translate-x-1/2 select-none">S</strong>
     <!-- word SERHII -->
-    <strong class="absolute text-page text-xl -left-24 top-8">SERHII</strong>
+    <strong class="absolute text-page text-xl -left-24 top-8 select-none">SERHII</strong>
     <!-- word CHO -->
-    <strong class="absolute text-page text-xl -right-20 top-8">CHO</strong>
+    <strong class="absolute text-page text-xl -right-20 top-8 select-none">CHO</strong>
 </div>
