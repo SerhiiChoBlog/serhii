@@ -18,7 +18,7 @@
     ]
   },
   "resources/css/admin/app.css": {
-    "file": "assets/app-tqj2R2SW.css",
+    "file": "assets/app-7tnc8lMN.css",
     "src": "resources/css/admin/app.css"
   },
   "resources/css/admin/font-awesome.css": {
@@ -31,7 +31,7 @@
     ]
   },
   "resources/css/main/app.css": {
-    "file": "assets/app-nOVNHEvH.css",
+    "file": "assets/app-C5SWgxkH.css",
     "src": "resources/css/main/app.css"
   },
   "resources/css/user/app.css": {
@@ -82,7 +82,7 @@
     ]
   },
   "resources/ts/main/app.ts": {
-    "file": "assets/app-De76RP5c.js",
+    "file": "assets/app-B2gvKffK.js",
     "name": "app",
     "src": "resources/ts/main/app.ts",
     "isEntry": true,
