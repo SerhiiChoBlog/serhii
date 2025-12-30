@@ -17,7 +17,7 @@ const { search } = defineProps<Props>()
     >
         <div>
             <div v-if="search.loading" class="py-8 flex items-center justify-center">
-                <reload-icon class="animate-spin w-6 h-6" />
+                <reload-icon class="animate-spin size-6" />
             </div>
 
             <div

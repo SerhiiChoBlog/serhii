@@ -13,7 +13,7 @@ const { search, input, changedInput } = useSearch()
         <div class="max-w-[85%] md:max-w-[600px] mx-auto">
             <label
                 for="search-input"
-                class="relative flex items-center justify-center mt-5 shadow-lg rounded-full bg-page mx-auto dark:border dark:border-gray-500"
+                class="relative flex items-center justify-center mt-5 shadow-lg rounded-full bg-page mx-auto dark:border dark:border-gray-600"
             >
                 <form @submit.prevent class="w-full m-0">
                     <search-icon
@@ -29,13 +29,13 @@ const { search, input, changedInput } = useSearch()
                         v-model="search.query"
                         @blur="search.query = ''"
                         autocomplete="off"
-                        class="pl-12 pr-7 md:pl-14 py-3 text-sm md:text-xl w-full text-gray-500 rounded-full outline-hidden bg-page dark:bg-page-second"
+                        class="pl-12 pr-7 md:pl-14 py-3 text-sm md:text-xl w-full text-font rounded-full outline-hidden bg-page dark:bg-page-second"
                         id="search-input"
                     />
                 </form>
 
                 <dropdown-transition>
-                    <dropdown v-if="search.query !== ''" :search="search" />
+                    <dropdown v-if="search.query !== ''" :search />
                 </dropdown-transition>
             </label>
         </div>
