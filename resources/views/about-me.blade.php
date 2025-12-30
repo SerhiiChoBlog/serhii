@@ -51,13 +51,6 @@
 
         <x-about.section :isDark="true" class="min-h-[500px]">
             <x-section-detail />
-
-            <lazy-loading>
-                <testimonials></testimonials>
-            </lazy-loading>
-        </x-about.section>
-
-        <x-about.section>
             <x-about.tech-section :techs="config('technologies.technologies')" />
         </x-about.section>
     </div>
