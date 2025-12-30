@@ -101,11 +101,7 @@ function toggleSearch(): void {
                 </form>
 
                 <dropdown-transition>
-                    <dropdown
-                        v-if="search.query !== ''"
-                        :search="search"
-                        class="dark"
-                    />
+                    <dropdown v-if="search.query !== ''" :search />
                 </dropdown-transition>
             </label>
         </div>
