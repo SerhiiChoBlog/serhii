@@ -3,7 +3,7 @@
   (c) 2006-2025 Josh Goebel <hello@joshgoebel.com> and other contributors
   License: BSD-3-Clause
  */
-var hljs = function() {
+var hljs = function () {
     "use strict"; function e(t) {
         return t instanceof Map ? t.clear = t.delete = t.set = () => {
             throw Error("map is read-only")
@@ -572,157 +572,6 @@ var hljs = function() {
         }
     })()
         ; hljs.registerLanguage("bash", e)
-})();/*! `c` grammar compiled for Highlight.js 11.11.1 */
-(() => {
-    var e = (() => {
-        "use strict"; return e => {
-            const t = e.regex, n = e.COMMENT("//", "$", {
-                contains: [{ begin: /\\\n/ }]
-            }), a = "decltype\\(auto\\)", s = "[a-zA-Z_]\\w*::", r = "(" + a + "|" + t.optional(s) + "[a-zA-Z_]\\w*" + t.optional("<[^<>]+>") + ")", i = {
-                className: "type", variants: [{ begin: "\\b[a-z\\d_]*_t\\b" }, {
-                    match: /\batomic_[a-z]{3,6}\b/
-                }]
-            }, l = {
-                className: "string", variants: [{
-                    begin: '(u8?|U|L)?"', end: '"', illegal: "\\n", contains: [e.BACKSLASH_ESCAPE]
-                }, {
-                    begin: "(u8?|U|L)?'(\\\\(x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4,8}|[0-7]{3}|\\S)|.)",
-                    end: "'", illegal: "."
-                }, e.END_SAME_AS_BEGIN({
-                    begin: /(?:u8?|U|L)?R"([^()\\ ]{0,16})\(/, end: /\)([^()\\ ]{0,16})"/
-                })]
-            }, o = {
-                className: "number", variants: [{ match: /\b(0b[01']+)/ }, {
-                    match: /(-?)\b([\d']+(\.[\d']*)?|\.[\d']+)((ll|LL|l|L)(u|U)?|(u|U)(ll|LL|l|L)?|f|F|b|B)/
-                }, {
-                    match: /(-?)\b(0[xX][a-fA-F0-9]+(?:'[a-fA-F0-9]+)*(?:\.[a-fA-F0-9]*(?:'[a-fA-F0-9]*)*)?(?:[pP][-+]?[0-9]+)?(l|L)?(u|U)?)/
-                }, { match: /(-?)\b\d+(?:'\d+)*(?:\.\d*(?:'\d*)*)?(?:[eE][-+]?\d+)?/ }], relevance: 0
-            }, c = {
-                className: "meta", begin: /#\s*[a-z]+\b/, end: /$/, keywords: {
-                    keyword: "if else elif endif define undef warning error line pragma _Pragma ifdef ifndef elifdef elifndef include"
-                }, contains: [{ begin: /\\\n/, relevance: 0 }, e.inherit(l, { className: "string" }), {
-                    className: "string", begin: /<.*?>/
-                }, n, e.C_BLOCK_COMMENT_MODE]
-            }, d = {
-                className: "title", begin: t.optional(s) + e.IDENT_RE, relevance: 0
-            }, _ = t.optional(s) + e.IDENT_RE + "\\s*\\(", u = {
-                keyword: ["asm", "auto", "break", "case", "continue", "default", "do", "else", "enum", "extern", "for", "fortran", "goto", "if", "inline", "register", "restrict", "return", "sizeof", "typeof", "typeof_unqual", "struct", "switch", "typedef", "union", "volatile", "while", "_Alignas", "_Alignof", "_Atomic", "_Generic", "_Noreturn", "_Static_assert", "_Thread_local", "alignas", "alignof", "noreturn", "static_assert", "thread_local", "_Pragma"],
-                type: ["float", "double", "signed", "unsigned", "int", "short", "long", "char", "void", "_Bool", "_BitInt", "_Complex", "_Imaginary", "_Decimal32", "_Decimal64", "_Decimal96", "_Decimal128", "_Decimal64x", "_Decimal128x", "_Float16", "_Float32", "_Float64", "_Float128", "_Float32x", "_Float64x", "_Float128x", "const", "static", "constexpr", "complex", "bool", "imaginary"],
-                literal: "true false NULL",
-                built_in: "std string wstring cin cout cerr clog stdin stdout stderr stringstream istringstream ostringstream auto_ptr deque list queue stack vector map set pair bitset multiset multimap unordered_set unordered_map unordered_multiset unordered_multimap priority_queue make_pair array shared_ptr abort terminate abs acos asin atan2 atan calloc ceil cosh cos exit exp fabs floor fmod fprintf fputs free frexp fscanf future isalnum isalpha iscntrl isdigit isgraph islower isprint ispunct isspace isupper isxdigit tolower toupper labs ldexp log10 log malloc realloc memchr memcmp memcpy memset modf pow printf putchar puts scanf sinh sin snprintf sprintf sqrt sscanf strcat strchr strcmp strcpy strcspn strlen strncat strncmp strncpy strpbrk strrchr strspn strstr tanh tan vfprintf vprintf vsprintf endl initializer_list unique_ptr"
-            }, m = [c, i, n, e.C_BLOCK_COMMENT_MODE, o, l], g = {
-                variants: [{ begin: /=/, end: /;/ }, {
-                    begin: /\(/, end: /\)/
-                }, { beginKeywords: "new throw return else", end: /;/ }],
-                keywords: u, contains: m.concat([{
-                    begin: /\(/, end: /\)/, keywords: u,
-                    contains: m.concat(["self"]), relevance: 0
-                }]), relevance: 0
-            }, p = {
-                begin: "(" + r + "[\\*&\\s]+)+" + _, returnBegin: !0, end: /[{;=]/, excludeEnd: !0,
-                keywords: u, illegal: /[^\w\s\*&:<>.]/, contains: [{ begin: a, keywords: u, relevance: 0 }, {
-                    begin: _, returnBegin: !0, contains: [e.inherit(d, { className: "title.function" })],
-                    relevance: 0
-                }, { relevance: 0, match: /,/ }, {
-                    className: "params", begin: /\(/, end: /\)/,
-                    keywords: u, relevance: 0, contains: [n, e.C_BLOCK_COMMENT_MODE, l, o, i, {
-                        begin: /\(/,
-                        end: /\)/, keywords: u, relevance: 0, contains: ["self", n, e.C_BLOCK_COMMENT_MODE, l, o, i]
-                    }]
-                }, i, n, e.C_BLOCK_COMMENT_MODE, c]
-            }; return {
-                name: "C", aliases: ["h"], keywords: u,
-                disableAutodetect: !0, illegal: "</", contains: [].concat(g, p, m, [c, {
-                    begin: e.IDENT_RE + "::", keywords: u
-                }, {
-                        className: "class",
-                        beginKeywords: "enum class struct union", end: /[{;:<>=]/, contains: [{
-                            beginKeywords: "final class struct"
-                        }, e.TITLE_MODE]
-                    }]), exports: {
-                        preprocessor: c,
-                        strings: l, keywords: u
-                    }
-            }
-        }
-    })(); hljs.registerLanguage("c", e)
-})();/*! `cpp` grammar compiled for Highlight.js 11.11.1 */
-(() => {
-    var e = (() => {
-        "use strict"; return e => {
-            const t = e.regex, a = e.COMMENT("//", "$", {
-                contains: [{ begin: /\\\n/ }]
-            }), n = "decltype\\(auto\\)", r = "[a-zA-Z_]\\w*::", i = "(?!struct)(" + n + "|" + t.optional(r) + "[a-zA-Z_]\\w*" + t.optional("<[^<>]+>") + ")", s = {
-                className: "type", begin: "\\b[a-z\\d_]*_t\\b"
-            }, c = {
-                className: "string", variants: [{
-                    begin: '(u8?|U|L)?"', end: '"', illegal: "\\n", contains: [e.BACKSLASH_ESCAPE]
-                }, {
-                    begin: "(u8?|U|L)?'(\\\\(x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4,8}|[0-7]{3}|\\S)|.)",
-                    end: "'", illegal: "."
-                }, e.END_SAME_AS_BEGIN({
-                    begin: /(?:u8?|U|L)?R"([^()\\ ]{0,16})\(/, end: /\)([^()\\ ]{0,16})"/
-                })]
-            }, o = {
-                className: "number", variants: [{
-                    begin: "[+-]?(?:(?:[0-9](?:'?[0-9])*\\.(?:[0-9](?:'?[0-9])*)?|\\.[0-9](?:'?[0-9])*)(?:[Ee][+-]?[0-9](?:'?[0-9])*)?|[0-9](?:'?[0-9])*[Ee][+-]?[0-9](?:'?[0-9])*|0[Xx](?:[0-9A-Fa-f](?:'?[0-9A-Fa-f])*(?:\\.(?:[0-9A-Fa-f](?:'?[0-9A-Fa-f])*)?)?|\\.[0-9A-Fa-f](?:'?[0-9A-Fa-f])*)[Pp][+-]?[0-9](?:'?[0-9])*)(?:[Ff](?:16|32|64|128)?|(BF|bf)16|[Ll]|)"
-                }, {
-                    begin: "[+-]?\\b(?:0[Bb][01](?:'?[01])*|0[Xx][0-9A-Fa-f](?:'?[0-9A-Fa-f])*|0(?:'?[0-7])*|[1-9](?:'?[0-9])*)(?:[Uu](?:LL?|ll?)|[Uu][Zz]?|(?:LL?|ll?)[Uu]?|[Zz][Uu]|)"
-                }], relevance: 0
-            }, l = {
-                className: "meta", begin: /#\s*[a-z]+\b/, end: /$/, keywords: {
-                    keyword: "if else elif endif define undef warning error line pragma _Pragma ifdef ifndef include"
-                }, contains: [{ begin: /\\\n/, relevance: 0 }, e.inherit(c, { className: "string" }), {
-                    className: "string", begin: /<.*?>/
-                }, a, e.C_BLOCK_COMMENT_MODE]
-            }, u = {
-                className: "title", begin: t.optional(r) + e.IDENT_RE, relevance: 0
-            }, d = t.optional(r) + e.IDENT_RE + "\\s*\\(", p = {
-                type: ["bool", "char", "char16_t", "char32_t", "char8_t", "double", "float", "int", "long", "short", "void", "wchar_t", "unsigned", "signed", "const", "static"],
-                keyword: ["alignas", "alignof", "and", "and_eq", "asm", "atomic_cancel", "atomic_commit", "atomic_noexcept", "auto", "bitand", "bitor", "break", "case", "catch", "class", "co_await", "co_return", "co_yield", "compl", "concept", "const_cast|10", "consteval", "constexpr", "constinit", "continue", "decltype", "default", "delete", "do", "dynamic_cast|10", "else", "enum", "explicit", "export", "extern", "false", "final", "for", "friend", "goto", "if", "import", "inline", "module", "mutable", "namespace", "new", "noexcept", "not", "not_eq", "nullptr", "operator", "or", "or_eq", "override", "private", "protected", "public", "reflexpr", "register", "reinterpret_cast|10", "requires", "return", "sizeof", "static_assert", "static_cast|10", "struct", "switch", "synchronized", "template", "this", "thread_local", "throw", "transaction_safe", "transaction_safe_dynamic", "true", "try", "typedef", "typeid", "typename", "union", "using", "virtual", "volatile", "while", "xor", "xor_eq"],
-                literal: ["NULL", "false", "nullopt", "nullptr", "true"], built_in: ["_Pragma"],
-                _type_hints: ["any", "auto_ptr", "barrier", "binary_semaphore", "bitset", "complex", "condition_variable", "condition_variable_any", "counting_semaphore", "deque", "false_type", "flat_map", "flat_set", "future", "imaginary", "initializer_list", "istringstream", "jthread", "latch", "lock_guard", "multimap", "multiset", "mutex", "optional", "ostringstream", "packaged_task", "pair", "promise", "priority_queue", "queue", "recursive_mutex", "recursive_timed_mutex", "scoped_lock", "set", "shared_future", "shared_lock", "shared_mutex", "shared_timed_mutex", "shared_ptr", "stack", "string_view", "stringstream", "timed_mutex", "thread", "true_type", "tuple", "unique_lock", "unique_ptr", "unordered_map", "unordered_multimap", "unordered_multiset", "unordered_set", "variant", "vector", "weak_ptr", "wstring", "wstring_view"]
-            }, _ = {
-                className: "function.dispatch", relevance: 0, keywords: {
-                    _hint: ["abort", "abs", "acos", "apply", "as_const", "asin", "atan", "atan2", "calloc", "ceil", "cerr", "cin", "clog", "cos", "cosh", "cout", "declval", "endl", "exchange", "exit", "exp", "fabs", "floor", "fmod", "forward", "fprintf", "fputs", "free", "frexp", "fscanf", "future", "invoke", "isalnum", "isalpha", "iscntrl", "isdigit", "isgraph", "islower", "isprint", "ispunct", "isspace", "isupper", "isxdigit", "labs", "launder", "ldexp", "log", "log10", "make_pair", "make_shared", "make_shared_for_overwrite", "make_tuple", "make_unique", "malloc", "memchr", "memcmp", "memcpy", "memset", "modf", "move", "pow", "printf", "putchar", "puts", "realloc", "scanf", "sin", "sinh", "snprintf", "sprintf", "sqrt", "sscanf", "std", "stderr", "stdin", "stdout", "strcat", "strchr", "strcmp", "strcpy", "strcspn", "strlen", "strncat", "strncmp", "strncpy", "strpbrk", "strrchr", "strspn", "strstr", "swap", "tan", "tanh", "terminate", "to_underlying", "tolower", "toupper", "vfprintf", "visit", "vprintf", "vsprintf"]
-                },
-                begin: t.concat(/\b/, /(?!decltype)/, /(?!if)/, /(?!for)/, /(?!switch)/, /(?!while)/, e.IDENT_RE, t.lookahead(/(<[^<>]+>|)\s*\(/))
-            }, m = [_, l, s, a, e.C_BLOCK_COMMENT_MODE, o, c], f = {
-                variants: [{ begin: /=/, end: /;/ }, {
-                    begin: /\(/, end: /\)/
-                }, { beginKeywords: "new throw return else", end: /;/ }],
-                keywords: p, contains: m.concat([{
-                    begin: /\(/, end: /\)/, keywords: p,
-                    contains: m.concat(["self"]), relevance: 0
-                }]), relevance: 0
-            }, g = {
-                className: "function",
-                begin: "(" + i + "[\\*&\\s]+)+" + d, returnBegin: !0, end: /[{;=]/, excludeEnd: !0,
-                keywords: p, illegal: /[^\w\s\*&:<>.]/, contains: [{ begin: n, keywords: p, relevance: 0 }, {
-                    begin: d, returnBegin: !0, contains: [u], relevance: 0
-                }, { begin: /::/, relevance: 0 }, {
-                    begin: /:/, endsWithParent: !0, contains: [c, o]
-                }, { relevance: 0, match: /,/ }, {
-                    className: "params", begin: /\(/, end: /\)/, keywords: p, relevance: 0,
-                    contains: [a, e.C_BLOCK_COMMENT_MODE, c, o, s, {
-                        begin: /\(/, end: /\)/, keywords: p,
-                        relevance: 0, contains: ["self", a, e.C_BLOCK_COMMENT_MODE, c, o, s]
-                    }]
-                }, s, a, e.C_BLOCK_COMMENT_MODE, l]
-            }; return {
-                name: "C++",
-                aliases: ["cc", "c++", "h++", "hpp", "hh", "hxx", "cxx"], keywords: p, illegal: "</",
-                classNameAliases: { "function.dispatch": "built_in" },
-                contains: [].concat(f, g, _, m, [l, {
-                    begin: "\\b(deque|list|queue|priority_queue|pair|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array|tuple|optional|variant|function|flat_map|flat_set)\\s*<(?!<)",
-                    end: ">", keywords: p, contains: ["self", s]
-                }, { begin: e.IDENT_RE + "::", keywords: p }, {
-                        match: [/\b(?:enum(?:\s+(?:class|struct))?|class|struct|union)/, /\s+/, /\w+/],
-                        className: { 1: "keyword", 3: "title.class" }
-                    }])
-            }
-        }
-    })(); hljs.registerLanguage("cpp", e)
 })();/*! `css` grammar compiled for Highlight.js 11.11.1 */
 (() => {
     var e = (() => {
@@ -787,29 +636,6 @@ var hljs = function() {
             }
     })()
         ; hljs.registerLanguage("css", e)
-})();/*! `diff` grammar compiled for Highlight.js 11.11.1 */
-(() => {
-    var e = (() => {
-        "use strict"; return e => {
-            const a = e.regex; return {
-                name: "Diff",
-                aliases: ["patch"], contains: [{
-                    className: "meta", relevance: 10,
-                    match: a.either(/^@@ +-\d+,\d+ +\+\d+,\d+ +@@/, /^\*\*\* +\d+,\d+ +\*\*\*\*$/, /^--- +\d+,\d+ +----$/)
-                }, {
-                    className: "comment", variants: [{
-                        begin: a.either(/Index: /, /^index/, /={3,}/, /^-{3}/, /^\*{3} /, /^\+{3}/, /^diff --git/),
-                        end: /$/
-                    }, { match: /^\*{15}$/ }]
-                }, { className: "addition", begin: /^\+/, end: /$/ }, {
-                    className: "deletion", begin: /^-/, end: /$/
-                }, {
-                    className: "addition", begin: /^!/,
-                    end: /$/
-                }]
-            }
-        }
-    })(); hljs.registerLanguage("diff", e)
 })();/*! `dockerfile` grammar compiled for Highlight.js 11.11.1 */
 (() => {
     var e = (() => {
@@ -861,75 +687,6 @@ var hljs = function() {
             }
         }
     })(); hljs.registerLanguage("go", e)
-})();/*! `haskell` grammar compiled for Highlight.js 11.11.1 */
-(() => {
-    var e = (() => {
-        "use strict"; return e => {
-            const n = "([0-9]_*)+", a = "([0-9a-fA-F]_*)+", i = "([!#$%&*+.\\/<=>?@\\\\^~-]|(?!([(),;\\[\\]`|{}]|[_:\"']))(\\p{S}|\\p{P}))", s = {
-                variants: [e.COMMENT("--+", "$"), e.COMMENT(/\{-/, /-\}/, { contains: ["self"] })]
-            }, l = {
-                className: "meta", begin: /\{-#/, end: /#-\}/
-            }, t = {
-                className: "meta", begin: "^#", end: "$"
-            }, c = { className: "type", begin: "\\b[A-Z][\\w']*", relevance: 0 }, r = {
-                begin: "\\(",
-                end: "\\)", illegal: '"', contains: [l, t, {
-                    className: "type",
-                    begin: "\\b[A-Z][\\w]*(\\((\\.\\.|,|\\w+)\\))?"
-                }, e.inherit(e.TITLE_MODE, {
-                    begin: "[_a-z][\\w']*"
-                }), s]
-            }, o = {
-                className: "number", relevance: 0, variants: [{
-                    match: `\\b(${n})(\\.(${n}))?([eE][+-]?(${n}))?\\b`
-                }, {
-                    match: `\\b0[xX]_*(${a})(\\.(${a}))?([pP][+-]?(${n}))?\\b`
-                }, {
-                    match: "\\b0[oO](([0-7]_*)+)\\b"
-                }, { match: "\\b0[bB](([01]_*)+)\\b" }]
-            }; return {
-                name: "Haskell", aliases: ["hs"],
-                keywords: "let in if then else case of where do module import hiding qualified type data newtype deriving class instance as default infix infixl infixr foreign export ccall stdcall cplusplus jvm dotnet safe unsafe family forall mdo proc rec",
-                unicodeRegex: !0, contains: [{
-                    beginKeywords: "module", end: "where",
-                    keywords: "module where", contains: [r, s], illegal: "\\W\\.|;"
-                }, {
-                    begin: "\\bimport\\b", end: "$", keywords: "import qualified as hiding",
-                    contains: [r, s], illegal: "\\W\\.|;"
-                }, {
-                    className: "class",
-                    begin: "^(\\s*)?(class|instance)\\b", end: "where",
-                    keywords: "class family instance where", contains: [c, r, s]
-                }, {
-                    className: "class",
-                    begin: "\\b(data|(new)?type)\\b", end: "$",
-                    keywords: "data family type newtype deriving", contains: [l, c, r, {
-                        begin: /\{/,
-                        end: /\}/, contains: r.contains
-                    }, s]
-                }, {
-                    beginKeywords: "default", end: "$",
-                    contains: [c, r, s]
-                }, {
-                    beginKeywords: "infix infixl infixr", end: "$",
-                    contains: [e.C_NUMBER_MODE, s]
-                }, {
-                    begin: "\\bforeign\\b", end: "$",
-                    keywords: "foreign import export ccall stdcall cplusplus jvm dotnet safe unsafe",
-                    contains: [c, e.QUOTE_STRING_MODE, s]
-                }, {
-                    className: "meta",
-                    begin: "#!\\/usr\\/bin\\/env runhaskell", end: "$"
-                }, l, t, {
-                    scope: "string",
-                    begin: /'(?=\\?.')/, end: /'/, contains: [{ scope: "char.escape", match: /\\./ }]
-                }, e.QUOTE_STRING_MODE, o, c, e.inherit(e.TITLE_MODE, { begin: "^[_a-z][\\w']*" }), {
-                    begin: `(?!-)${i}--+|--+(?!-)${i}`
-                }, s, { begin: "->|<-" }]
-            }
-        }
-    })()
-        ; hljs.registerLanguage("haskell", e)
 })();/*! `java` grammar compiled for Highlight.js 11.11.1 */
 (() => {
     var e = (() => {
@@ -1190,34 +947,6 @@ var hljs = function() {
             }
         }
     })(); hljs.registerLanguage("json", e)
-})();/*! `lua` grammar compiled for Highlight.js 11.11.1 */
-(() => {
-    var e = (() => {
-        "use strict"; return e => {
-            const t = "\\[=*\\[", a = "\\]=*\\]", n = {
-                begin: t, end: a, contains: ["self"]
-            }, o = [e.COMMENT("--(?!" + t + ")", "$"), e.COMMENT("--" + t, a, {
-                contains: [n], relevance: 10
-            })]; return {
-                name: "Lua", aliases: ["pluto"], keywords: {
-                    $pattern: e.UNDERSCORE_IDENT_RE, literal: "true false nil",
-                    keyword: "and break do else elseif end for goto if in local not or repeat return then until while",
-                    built_in: "_G _ENV _VERSION __index __newindex __mode __call __metatable __tostring __len __gc __add __sub __mul __div __mod __pow __concat __unm __eq __lt __le assert collectgarbage dofile error getfenv getmetatable ipairs load loadfile loadstring module next pairs pcall print rawequal rawget rawset require select setfenv setmetatable tonumber tostring type unpack xpcall arg self coroutine resume yield status wrap create running debug getupvalue debug sethook getmetatable gethook setmetatable setlocal traceback setfenv getinfo setupvalue getlocal getregistry getfenv io lines write close flush open output type read stderr stdin input stdout popen tmpfile math log max acos huge ldexp pi cos tanh pow deg tan cosh sinh random randomseed frexp ceil floor rad abs sqrt modf asin min mod fmod log10 atan2 exp sin atan os exit setlocale date getenv difftime remove time clock tmpname rename execute package preload loadlib loaded loaders cpath config path seeall string sub upper len gfind rep find match char dump gmatch reverse byte format gsub lower table setn insert getn foreachi maxn foreach concat sort remove"
-                }, contains: o.concat([{
-                    className: "function", beginKeywords: "function", end: "\\)",
-                    contains: [e.inherit(e.TITLE_MODE, {
-                        begin: "([_a-zA-Z]\\w*\\.)*([_a-zA-Z]\\w*:)?[_a-zA-Z]\\w*"
-                    }), {
-                        className: "params",
-                        begin: "\\(", endsWithParent: !0, contains: o
-                    }].concat(o)
-                }, e.C_NUMBER_MODE, e.APOS_STRING_MODE, e.QUOTE_STRING_MODE, {
-                    className: "string",
-                    begin: t, end: a, contains: [n], relevance: 5
-                }])
-            }
-        }
-    })(); hljs.registerLanguage("lua", e)
 })();/*! `markdown` grammar compiled for Highlight.js 11.11.1 */
 (() => {
     var e = (() => {
@@ -1628,6 +1357,202 @@ var hljs = function() {
         }
     })()
         ; hljs.registerLanguage("sql", e)
+})();/*! `typescript` grammar compiled for Highlight.js 11.11.1 */
+(() => {
+    var e = (() => {
+        "use strict"
+            ; const e = "[A-Za-z$_][0-9A-Za-z$_]*", n = ["as", "in", "of", "if", "for", "while", "finally", "var", "new", "function", "do", "return", "void", "else", "break", "catch", "instanceof", "with", "throw", "case", "default", "try", "switch", "continue", "typeof", "delete", "let", "yield", "const", "class", "debugger", "async", "await", "static", "import", "from", "export", "extends", "using"], a = ["true", "false", "null", "undefined", "NaN", "Infinity"], t = ["Object", "Function", "Boolean", "Symbol", "Math", "Date", "Number", "BigInt", "String", "RegExp", "Array", "Float32Array", "Float64Array", "Int8Array", "Uint8Array", "Uint8ClampedArray", "Int16Array", "Int32Array", "Uint16Array", "Uint32Array", "BigInt64Array", "BigUint64Array", "Set", "Map", "WeakSet", "WeakMap", "ArrayBuffer", "SharedArrayBuffer", "Atomics", "DataView", "JSON", "Promise", "Generator", "GeneratorFunction", "AsyncFunction", "Reflect", "Proxy", "Intl", "WebAssembly"], s = ["Error", "EvalError", "InternalError", "RangeError", "ReferenceError", "SyntaxError", "TypeError", "URIError"], c = ["setInterval", "setTimeout", "clearInterval", "clearTimeout", "require", "exports", "eval", "isFinite", "isNaN", "parseFloat", "parseInt", "decodeURI", "decodeURIComponent", "encodeURI", "encodeURIComponent", "escape", "unescape"], r = ["arguments", "this", "super", "console", "window", "document", "localStorage", "sessionStorage", "module", "global"], i = [].concat(c, t, s)
+            ; function o(o) {
+                const l = o.regex, d = e, b = {
+                    begin: /<[A-Za-z0-9\\._:-]+/,
+                    end: /\/[A-Za-z0-9\\._:-]+>|\/>/, isTrulyOpeningTag: (e, n) => {
+                        const a = e[0].length + e.index, t = e.input[a]
+                            ; if ("<" === t || "," === t) return void n.ignoreMatch(); let s
+                            ; ">" === t && (((e, { after: n }) => {
+                                const a = "</" + e[0].slice(1)
+                                    ; return -1 !== e.input.indexOf(a, n)
+                            })(e, { after: a }) || n.ignoreMatch())
+                            ; const c = e.input.substring(a)
+                            ; ((s = c.match(/^\s*=/)) || (s = c.match(/^\s+extends\s+/)) && 0 === s.index) && n.ignoreMatch()
+                    }
+                }, g = {
+                    $pattern: e, keyword: n, literal: a, built_in: i, "variable.language": r
+                }, u = "[0-9](_?[0-9])*", m = `\\.(${u})`, E = "0|[1-9](_?[0-9])*|0[0-7]*[89][0-9]*", A = {
+                    className: "number", variants: [{
+                        begin: `(\\b(${E})((${m})|\\.)?|(${m}))[eE][+-]?(${u})\\b`
+                    }, {
+                        begin: `\\b(${E})\\b((${m})\\b|\\.)?|(${m})\\b`
+                    }, {
+                        begin: "\\b(0|[1-9](_?[0-9])*)n\\b"
+                    }, {
+                        begin: "\\b0[xX][0-9a-fA-F](_?[0-9a-fA-F])*n?\\b"
+                    }, {
+                        begin: "\\b0[bB][0-1](_?[0-1])*n?\\b"
+                    }, { begin: "\\b0[oO][0-7](_?[0-7])*n?\\b" }, {
+                        begin: "\\b0[0-7]+n?\\b"
+                    }], relevance: 0
+                }, y = {
+                    className: "subst", begin: "\\$\\{",
+                    end: "\\}", keywords: g, contains: []
+                }, p = {
+                    begin: ".?html`", end: "", starts: {
+                        end: "`",
+                        returnEnd: !1, contains: [o.BACKSLASH_ESCAPE, y], subLanguage: "xml"
+                    }
+                }, N = {
+                    begin: ".?css`", end: "", starts: {
+                        end: "`", returnEnd: !1,
+                        contains: [o.BACKSLASH_ESCAPE, y], subLanguage: "css"
+                    }
+                }, f = {
+                    begin: ".?gql`", end: "",
+                    starts: {
+                        end: "`", returnEnd: !1, contains: [o.BACKSLASH_ESCAPE, y],
+                        subLanguage: "graphql"
+                    }
+                }, _ = {
+                    className: "string", begin: "`", end: "`",
+                    contains: [o.BACKSLASH_ESCAPE, y]
+                }, h = {
+                    className: "comment",
+                    variants: [o.COMMENT(/\/\*\*(?!\/)/, "\\*/", {
+                        relevance: 0, contains: [{
+                            begin: "(?=@[A-Za-z]+)", relevance: 0, contains: [{
+                                className: "doctag",
+                                begin: "@[A-Za-z]+"
+                            }, {
+                                className: "type", begin: "\\{", end: "\\}", excludeEnd: !0,
+                                excludeBegin: !0, relevance: 0
+                            }, {
+                                className: "variable", begin: d + "(?=\\s*(-)|$)",
+                                endsParent: !0, relevance: 0
+                            }, { begin: /(?=[^\n])\s/, relevance: 0 }]
+                        }]
+                    }), o.C_BLOCK_COMMENT_MODE, o.C_LINE_COMMENT_MODE]
+                }, S = [o.APOS_STRING_MODE, o.QUOTE_STRING_MODE, p, N, f, _, { match: /\$\d+/ }, A]
+                    ; y.contains = S.concat({
+                        begin: /\{/, end: /\}/, keywords: g, contains: ["self"].concat(S)
+                    }); const v = [].concat(h, y.contains), w = v.concat([{
+                        begin: /(\s*)\(/, end: /\)/,
+                        keywords: g, contains: ["self"].concat(v)
+                    }]), R = {
+                        className: "params", begin: /(\s*)\(/,
+                        end: /\)/, excludeBegin: !0, excludeEnd: !0, keywords: g, contains: w
+                    }, k = {
+                        variants: [{
+                            match: [/class/, /\s+/, d, /\s+/, /extends/, /\s+/, l.concat(d, "(", l.concat(/\./, d), ")*")],
+                            scope: { 1: "keyword", 3: "title.class", 5: "keyword", 7: "title.class.inherited" }
+                        }, {
+                            match: [/class/, /\s+/, d], scope: { 1: "keyword", 3: "title.class" }
+                        }]
+                    }, x = {
+                        relevance: 0,
+                        match: l.either(/\bJSON/, /\b[A-Z][a-z]+([A-Z][a-z]*|\d)*/, /\b[A-Z]{2,}([A-Z][a-z]+|\d)+([A-Z][a-z]*)*/, /\b[A-Z]{2,}[a-z]+([A-Z][a-z]+|\d)*([A-Z][a-z]*)*/),
+                        className: "title.class", keywords: { _: [...t, ...s] }
+                    }, O = {
+                        variants: [{
+                            match: [/function/, /\s+/, d, /(?=\s*\()/]
+                        }, { match: [/function/, /\s*(?=\()/] }],
+                        className: { 1: "keyword", 3: "title.function" }, label: "func.def", contains: [R],
+                        illegal: /%/
+                    }, I = {
+                        match: l.concat(/\b/, (C = [...c, "super", "import"].map((e => e + "\\s*\\(")),
+                            l.concat("(?!", C.join("|"), ")")), d, l.lookahead(/\s*\(/)),
+                        className: "title.function", relevance: 0
+                    }; var C; const T = {
+                        begin: l.concat(/\./, l.lookahead(l.concat(d, /(?![0-9A-Za-z$_(])/))), end: d,
+                        excludeBegin: !0, keywords: "prototype", className: "property", relevance: 0
+                    }, M = {
+                        match: [/get|set/, /\s+/, d, /(?=\()/], className: { 1: "keyword", 3: "title.function" },
+                        contains: [{ begin: /\(\)/ }, R]
+                    }, B = "(\\([^()]*(\\([^()]*(\\([^()]*\\)[^()]*)*\\)[^()]*)*\\)|" + o.UNDERSCORE_IDENT_RE + ")\\s*=>", $ = {
+                        match: [/const|var|let/, /\s+/, d, /\s*/, /=\s*/, /(async\s*)?/, l.lookahead(B)],
+                        keywords: "async", className: { 1: "keyword", 3: "title.function" }, contains: [R]
+                    }
+                    ; return {
+                        name: "JavaScript", aliases: ["js", "jsx", "mjs", "cjs"], keywords: g, exports: {
+                            PARAMS_CONTAINS: w, CLASS_REFERENCE: x
+                        }, illegal: /#(?![$_A-z])/,
+                        contains: [o.SHEBANG({ label: "shebang", binary: "node", relevance: 5 }), {
+                            label: "use_strict", className: "meta", relevance: 10,
+                            begin: /^\s*['"]use (strict|asm)['"]/
+                        }, o.APOS_STRING_MODE, o.QUOTE_STRING_MODE, p, N, f, _, h, { match: /\$\d+/ }, A, x, {
+                            scope: "attr", match: d + l.lookahead(":"), relevance: 0
+                        }, $, {
+                            begin: "(" + o.RE_STARTERS_RE + "|\\b(case|return|throw)\\b)\\s*",
+                            keywords: "return throw case", relevance: 0, contains: [h, o.REGEXP_MODE, {
+                                className: "function", begin: B, returnBegin: !0, end: "\\s*=>", contains: [{
+                                    className: "params", variants: [{ begin: o.UNDERSCORE_IDENT_RE, relevance: 0 }, {
+                                        className: null, begin: /\(\s*\)/, skip: !0
+                                    }, {
+                                        begin: /(\s*)\(/, end: /\)/,
+                                        excludeBegin: !0, excludeEnd: !0, keywords: g, contains: w
+                                    }]
+                                }]
+                            }, {
+                                    begin: /,/, relevance: 0
+                                }, { match: /\s+/, relevance: 0 }, {
+                                    variants: [{ begin: "<>", end: "</>" }, {
+                                        match: /<[A-Za-z0-9\\._:-]+\s*\/>/
+                                    }, {
+                                        begin: b.begin,
+                                        "on:begin": b.isTrulyOpeningTag, end: b.end
+                                    }], subLanguage: "xml", contains: [{
+                                        begin: b.begin, end: b.end, skip: !0, contains: ["self"]
+                                    }]
+                                }]
+                        }, O, {
+                            beginKeywords: "while if switch catch for"
+                        }, {
+                            begin: "\\b(?!function)" + o.UNDERSCORE_IDENT_RE + "\\([^()]*(\\([^()]*(\\([^()]*\\)[^()]*)*\\)[^()]*)*\\)\\s*\\{",
+                            returnBegin: !0, label: "func.def", contains: [R, o.inherit(o.TITLE_MODE, {
+                                begin: d,
+                                className: "title.function"
+                            })]
+                        }, { match: /\.\.\./, relevance: 0 }, T, {
+                            match: "\\$" + d,
+                            relevance: 0
+                        }, {
+                            match: [/\bconstructor(?=\s*\()/], className: { 1: "title.function" },
+                            contains: [R]
+                        }, I, {
+                            relevance: 0, match: /\b[A-Z][A-Z_0-9]+\b/,
+                            className: "variable.constant"
+                        }, k, M, { match: /\$[(.]/ }]
+                    }
+            } return t => {
+                const s = t.regex, c = o(t), l = e, d = ["any", "void", "number", "boolean", "string", "object", "never", "symbol", "bigint", "unknown"], b = {
+                    begin: [/namespace/, /\s+/, t.IDENT_RE], beginScope: { 1: "keyword", 3: "title.class" }
+                }, g = {
+                    beginKeywords: "interface", end: /\{/, excludeEnd: !0, keywords: {
+                        keyword: "interface extends", built_in: d
+                    }, contains: [c.exports.CLASS_REFERENCE]
+                }, u = {
+                    $pattern: e,
+                    keyword: n.concat(["type", "interface", "public", "private", "protected", "implements", "declare", "abstract", "readonly", "enum", "override", "satisfies"]),
+                    literal: a, built_in: i.concat(d), "variable.language": r
+                }, m = {
+                    className: "meta",
+                    begin: "@" + l
+                }, E = (e, n, a) => {
+                    const t = e.contains.findIndex((e => e.label === n))
+                        ; if (-1 === t) throw Error("can not find mode to replace"); e.contains.splice(t, 1, a)
+                }
+                    ; Object.assign(c.keywords, u), c.exports.PARAMS_CONTAINS.push(m)
+                    ; const A = c.contains.find((e => "attr" === e.scope)), y = Object.assign({}, A, {
+                        match: s.concat(l, s.lookahead(/\s*\?:/))
+                    })
+                    ; return c.exports.PARAMS_CONTAINS.push([c.exports.CLASS_REFERENCE, A, y]),
+                        c.contains = c.contains.concat([m, b, g, y]),
+                        E(c, "shebang", t.SHEBANG()), E(c, "use_strict", {
+                            className: "meta", relevance: 10,
+                            begin: /^\s*['"]use strict['"]/
+                        }), c.contains.find((e => "func.def" === e.label)).relevance = 0, Object.assign(c, {
+                            name: "TypeScript", aliases: ["ts", "tsx", "mts", "cts"]
+                        }), c
+            }
+    })()
+        ; hljs.registerLanguage("typescript", e)
 })();/*! `xml` grammar compiled for Highlight.js 11.11.1 */
 (() => {
     var e = (() => {
@@ -1757,6 +1682,6 @@ var hljs = function() {
     })(); hljs.registerLanguage("yaml", e)
 })();
 
-document.querySelectorAll('pre code').forEach(function(block) {
+document.querySelectorAll('pre code').forEach(function (block) {
     hljs.highlightElement(block)
 })
