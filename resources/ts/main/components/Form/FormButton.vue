@@ -18,7 +18,7 @@ const props = defineProps<Props>()
                 'cursor-not-allowed opacity-80 pointer-events-none': loading,
             }"
         >
-            <span v-if="!loading" class="flex items-center">
+            <span v-if="loading" class="flex items-center">
                 <spinner class="size-5!" /> Processing...
             </span>
 
