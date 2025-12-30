@@ -11,7 +11,7 @@
                         <img
                             data-src="{{ asset($tech['image']) }}"
                             alt="{{ $tech['title'] }}"
-                            class="w-auto h-[130px] print:h-auto print:max-w-[50px] mx-auto drop-shadow-md"
+                            class="w-auto h-[130px] print:h-auto print:max-w-[50px] mx-auto drop-shadow-md pointer-events-none select-none"
                             width="200"
                             height="200"
                         />
