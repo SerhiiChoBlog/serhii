@@ -14,7 +14,7 @@ const emit = defineEmits<{
         @click="emit('updateTagId', tag.id)"
         class="text-white py-1.5 px-3 rounded-lg font-light shadow-md text-xs border-2 border-transparent"
         :class="{
-            '!border-page outline outline-black dark:outline-white': tag.pivot
+            'border-page! outline outline-black dark:outline-white': tag.pivot
                 ? tag.pivot.is_main
                 : false,
         }"

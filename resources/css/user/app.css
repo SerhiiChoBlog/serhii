@@ -1,6 +1,0 @@
-@import '../shared/_fonts.css';
-@import "../shared/_variables.css";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

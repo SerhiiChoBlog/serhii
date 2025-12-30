@@ -12,7 +12,7 @@ const { content, icon = false, classes } = defineProps<Props>()
 
 <template>
     <div v-if="content" class="inline-flex">
-        <popper hover :content="content" class="!border-none !m-0">
+        <popper hover :content="content" class="border-none! m-0!">
             <div>
                 <svg
                     v-if="icon"
