@@ -10,7 +10,7 @@ use App\Models\PostView;
 readonly class MonthlyTopCalculatorService
 {
     /**
-     * @return list<Post>
+     * @return array<int, Post>
      */
     public function calculate(int $amount): array
     {
