@@ -1,4 +1,4 @@
-import type { Search, SearchSuggestion } from '@shared/types'
+import type { Search, SearchResult } from '@shared/types'
 import { onMounted, reactive, ref } from 'vue'
 import { debounce } from 'lodash'
 import axios from 'axios'
@@ -8,7 +8,7 @@ export default () => {
     const input = ref<HTMLInputElement | null>(null)
     const search = reactive<Search>({
         query: '',
-        posts: [],
+        results: [],
         loading: false,
         suggestionsIndex: -1,
     })
@@ -16,7 +16,7 @@ export default () => {
     onMounted(() => {
         window.addEventListener('keydown', (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
-                search.posts = []
+                search.results = []
                 search.query = ''
             }
         })
@@ -30,21 +30,21 @@ export default () => {
 
     const makeRequestToFetchItems = debounce<(q: string) => void>(q => {
         if (q === '') {
-            search.posts = []
+            search.results = []
             search.loading = false
             return
         }
 
         axios
-            .get<SearchSuggestion[]>(`/api/search/${q}`)
+            .get<SearchResult[]>(`/api/search/${q}`)
             .then(resp => {
-                const posts = resp.data
+                const results = resp.data
 
-                if (posts[0]) {
-                    posts[0].selected = true
+                if (results[0]) {
+                    results[0].selected = true
                 }
 
-                search.posts = posts
+                search.results = results
                 search.suggestionsIndex = 0
             })
             .catch(err => console.error(err))

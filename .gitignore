@@ -18,6 +18,7 @@
 /storage/app/public/series/xs/*
 /storage/app/public/books/*
 !/storage/app/public/books/default.jpg
+/storage/framework
 /vendor
 .env
 .env.backup

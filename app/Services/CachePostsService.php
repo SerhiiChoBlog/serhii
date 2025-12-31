@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Dto\CachablePost;
+use App\Dto\SearchResult;
 use App\Models\Keyword;
 use App\Models\Post;
 use App\Models\Tag;
@@ -13,7 +13,7 @@ use Illuminate\Support\Collection;
 readonly class CachePostsService
 {
     /**
-     * @return array<int, CachablePost>
+     * @return array<int, SearchResult>
      */
     public function get(): array
     {
@@ -26,13 +26,14 @@ readonly class CachePostsService
                 $title = $post->series->first()->title . ': ' . $title;
             }
 
-            return new CachablePost([
-                'id' => $post->id,
+            return new SearchResult([
                 'title' => $title,
-                'slug' => $post->slug,
-                'image_xs' => $post->image_xs,
-                'tags' => $post->tags->map(fn (Tag $t) => strtolower($t->name))->toArray(),
-                'keywords' => $post->keywords->map(fn (Keyword $k) => strtolower($k->name))->toArray(),
+                'url' => route('posts.show', $post->slug),
+                'image_url' => $post->image_xs,
+                'keywords' => [
+                    ...$post->keywords->map(fn (Keyword $k) => strtolower($k->name))->toArray(),
+                    ...$post->tags->map(fn (Tag $t) => strtolower($t->name))->toArray(),
+                ],
             ]);
         });
 
