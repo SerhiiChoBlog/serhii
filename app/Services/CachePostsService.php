@@ -26,15 +26,16 @@ readonly class CachePostsService
                 $title = $post->series->first()->title . ': ' . $title;
             }
 
-            return new SearchResult([
-                'title' => $title,
-                'url' => route('posts.show', $post->slug),
-                'image_url' => $post->image_xs,
-                'keywords' => [
+            return new SearchResult(
+                title: $title,
+                url: route('posts.show', $post->slug),
+                image_url: $post->image_xs,
+                label: 'post',
+                keywords: [
                     ...$post->keywords->map(fn (Keyword $k) => strtolower($k->name))->toArray(),
                     ...$post->tags->map(fn (Tag $t) => strtolower($t->name))->toArray(),
                 ],
-            ]);
+            );
         });
 
         return $cachable_posts->toArray();
