@@ -4,16 +4,16 @@ import NotFound from './NotFound.vue'
 import DropdownItems from './DropdownItems.vue'
 import ReloadIcon from '@shared/components/Icons/ReloadIcon.vue'
 
-interface Props {
-    search: Search
-}
-
-const { search } = defineProps<Props>()
+defineProps<{ search: Search }>()
 </script>
 
 <template>
     <div
-        class="bg-page dark:bg-page-second shadow-xl top-[calc(100%+9px)] absolute left-0 right-0 z-50 rounded-lg dark:border-2 dark:border-border min-h-[50px] max-h-[600px] overflow-y-auto"
+        :class="[
+            'bg-page dark:bg-page-second shadow-xl top-[calc(100%+9px)] absolute',
+            'left-0 right-0 z-50 rounded-lg dark:border-2 dark:border-border',
+            'min-h-12.5 max-h-150 overflow-y-auto',
+        ]"
     >
         <div>
             <div v-if="search.loading" class="py-8 flex items-center justify-center">
@@ -21,7 +21,7 @@ const { search } = defineProps<Props>()
             </div>
 
             <div
-                v-else-if="!search.loading && search.posts.length === 0"
+                v-else-if="!search.loading && search.results.length === 0"
                 class="py-8 flex items-center justify-center"
             >
                 <not-found />
@@ -29,8 +29,8 @@ const { search } = defineProps<Props>()
 
             <div v-else>
                 <dropdown-items
-                    v-if="search.posts.length > 0"
-                    :items="search.posts"
+                    v-if="search.results.length > 0"
+                    :items="search.results"
                 />
             </div>
         </div>

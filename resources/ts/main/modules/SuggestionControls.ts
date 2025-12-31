@@ -8,7 +8,7 @@ export default class {
         enter: 'Enter',
     }
 
-    constructor(private search: UnwrapNestedRefs<Search>) {}
+    constructor(private search: UnwrapNestedRefs<Search>) { }
 
     public handle(key: string): void {
         if (this.notNeededEvent(key) || this.suggestionsAreEmpty()) {
@@ -30,17 +30,17 @@ export default class {
     }
 
     private handleEnterKeyPress(): void {
-        let post = this.search.posts.find(post => post.selected)
+        let searchResult = this.search.results.find(post => post.selected)
 
-        if (!post) {
-            post = this.search.posts[0]
+        if (!searchResult) {
+            searchResult = this.search.results[0]
         }
 
-        if (!post) {
+        if (!searchResult) {
             return
         }
 
-        window.location.href = `/posts/${post.slug}`
+        window.location.href = searchResult.url
     }
 
     private notNeededEvent(key: string): boolean {
@@ -48,11 +48,11 @@ export default class {
     }
 
     private suggestionsAreEmpty(): boolean {
-        return this.search.posts.length === 0
+        return this.search.results.length === 0
     }
 
     private clearAllSelectedFlags(): void {
-        this.search.posts.map(post => {
+        this.search.results.map(post => {
             post.selected = false
             return post
         })
@@ -61,20 +61,20 @@ export default class {
     private movePostsUp(): void {
         this.search.suggestionsIndex -= 1
 
-        if (!this.search.posts[this.search.suggestionsIndex]) {
-            this.search.suggestionsIndex = this.search.posts.length - 1
+        if (!this.search.results[this.search.suggestionsIndex]) {
+            this.search.suggestionsIndex = this.search.results.length - 1
         }
 
-        this.search.posts[this.search.suggestionsIndex].selected = true
+        this.search.results[this.search.suggestionsIndex].selected = true
     }
 
     private movePostsDown(): void {
         this.search.suggestionsIndex += 1
 
-        if (!this.search.posts[this.search.suggestionsIndex]) {
+        if (!this.search.results[this.search.suggestionsIndex]) {
             this.search.suggestionsIndex = 0
         }
 
-        this.search.posts[this.search.suggestionsIndex].selected = true
+        this.search.results[this.search.suggestionsIndex].selected = true
     }
 }

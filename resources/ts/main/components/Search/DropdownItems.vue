@@ -1,28 +1,20 @@
 <script setup lang="ts">
-import type { SearchSuggestion } from '@shared/types'
+import type { SearchResult } from '@shared/types'
 
-interface Props {
-    items: SearchSuggestion[]
-}
-
-const { items } = defineProps<Props>()
-
-function getAllKeywords(item: SearchSuggestion): string[] {
-    return [...item.tags, ...item.keywords]
-}
+defineProps<{ items: SearchResult[] }>()
 </script>
 
 <template>
     <div class="flex-1">
         <ul class="text-md leading-5">
-            <li v-for="item in items" :key="item.slug" class="text-left">
+            <li v-for="item in items" :key="item.url" class="text-left">
                 <a
-                    :href="`/posts/${item.slug}`"
+                    :href="item.url"
                     class="py-1.5 text-font px-3 flex items-center gap-4 hover:bg-page-second dark:hover:bg-border transition-colors"
                     :class="{ 'bg-black/10 dark:bg-white/10!': item.selected }"
                 >
                     <img
-                        :src="`/${item.image_xs}`"
+                        :src="`/${item.image_url}`"
                         :alt="item.title"
                         width="90"
                         height="49"
@@ -35,9 +27,9 @@ function getAllKeywords(item: SearchSuggestion): string[] {
                         <div
                             class="flex flex-wrap gap-x-1 text-font-second opacity-70"
                         >
-                            <div v-for="(tag, i) in getAllKeywords(item)" :key="tag">
-                                {{ tag }}
-                                <span v-if="i !== getAllKeywords(item).length - 1">,</span>
+                            <div v-for="(keyword, i) in item.keywords" :key="item.url">
+                                {{ keyword }}
+                                <span v-if="i !== item.keywords.length - 1">,</span>
                             </div>
                         </div>
                     </div>

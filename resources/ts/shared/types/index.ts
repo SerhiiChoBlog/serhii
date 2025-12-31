@@ -30,19 +30,9 @@ export type SocialLink = {
     action?: () => void
 }
 
-export type SearchSuggestion = {
-    title: string
-    url: string
-    selected: boolean
-    slug: string
-    image_xs: string
-    tags: string[]
-    keywords: string[]
-}
-
 export type Search = {
     query: string
-    posts: SearchSuggestion[]
+    results: SearchResult[]
     loading: boolean
     suggestionsIndex: number
 }
@@ -124,3 +114,10 @@ export type Testimonial = {
     link?: string | null
 }
 
+export type SearchResult = {
+    title: string
+    url: string
+    image_url: string
+    keywords: string[]
+    selected: boolean
+}

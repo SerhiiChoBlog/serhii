@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\CacheKey;
-use App\Dto\CachablePost;
+use App\Dto\SearchResult;
 use Illuminate\Support\Facades\Cache;
 
 readonly class SearchPostService
@@ -15,7 +15,7 @@ readonly class SearchPostService
     }
 
     /**
-     * @return array<int, CachablePost>
+     * @return array<int, SearchResult>
      */
     public function search(): array
     {
@@ -28,9 +28,9 @@ readonly class SearchPostService
     }
 
     /**
-     * @param array<int, CachablePost> $posts
+     * @param array<int, SearchResult> $posts
      *
-     * @return array<int, CachablePost>
+     * @return array<int, SearchResult>
      */
     private function findInArray(array $posts): array
     {
@@ -47,10 +47,9 @@ readonly class SearchPostService
         return $result;
     }
 
-    private function matchingPost(CachablePost $post): CachablePost|null
+    private function matchingPost(SearchResult $post): SearchResult|null
     {
         $matches = str_contains(strtolower($post->title), $this->query)
-            || $this->containsMatch($post->tags)
             || $this->containsMatch($post->keywords);
 
         return $matches ? $post : null;
