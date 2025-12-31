@@ -38,7 +38,7 @@ use Illuminate\Support\Collection;
  * @property Collection<int, Series> $series
  * @property Collection<int, PostLike> $postLikes
  * @property Video|null $video
- * @property array<int, array<int, string>>|null $social
+ * @property array<int, list<string>>|null $social
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon $published_at
@@ -59,7 +59,7 @@ class Post extends Model
     ];
 
     /**
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $guarded = ['id'];
 

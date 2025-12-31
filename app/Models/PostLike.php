@@ -24,7 +24,7 @@ class PostLike extends Model
     public $timestamps = false;
 
     /**
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $guarded = ['id'];
 

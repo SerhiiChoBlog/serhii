@@ -11,7 +11,7 @@ enum BadgeName: string
     case LOVELY = 'lovely';
 
     /**
-     * @return array<int, self>
+     * @return list<self>
      */
     public static function all(): array
     {

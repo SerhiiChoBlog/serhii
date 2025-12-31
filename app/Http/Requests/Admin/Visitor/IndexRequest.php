@@ -14,7 +14,7 @@ use App\Http\Requests\Admin\Request;
 class IndexRequest extends Request
 {
     /**
-     * @return array<string, array<int, string>>
+     * @return array<string, list<string>>
      */
     public function rules(): array
     {

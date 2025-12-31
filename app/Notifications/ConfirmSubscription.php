@@ -21,7 +21,7 @@ class ConfirmSubscription extends Notification
     /**
      * Get the notification's delivery channels.
      *
-     * @return array<int, string>
+     * @return list<string>
      */
     public function via(): array
     {
