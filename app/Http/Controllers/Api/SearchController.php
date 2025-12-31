@@ -12,7 +12,7 @@ use App\Services\ExperienceCalculatorService;
 class SearchController extends Controller
 {
     /**
-     * @return list(SearchResult)
+     * @return list<SearchResult>
      */
     public function index(string $query): array
     {
