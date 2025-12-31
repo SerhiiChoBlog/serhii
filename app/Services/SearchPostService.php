@@ -56,7 +56,7 @@ readonly class SearchPostService
     }
 
     /**
-     * @param array<int, string> $items
+     * @param list<string> $items
      */
     private function containsMatch(array $items): bool
     {
