@@ -181,7 +181,7 @@ class PostController extends Controller
     }
 
     /**
-     * @param array<int, int> $tags
+     * @param list<int> $tags
      */
     private function attachTags(array $tags, int|null $tag_id, Post $post): void
     {

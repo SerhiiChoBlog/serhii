@@ -28,7 +28,7 @@ class Book extends Model
     public const DEFAULT_IMAGE = 'default.jpg';
 
     /**
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $guarded = ['id'];
 

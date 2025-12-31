@@ -6,8 +6,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Dto\SearchResult;
 use App\Http\Controllers\Controller;
-use App\Services\SearchPostService;
 use App\Services\ExperienceCalculatorService;
+use App\Services\SearchPostService;
 
 class SearchController extends Controller
 {
@@ -22,7 +22,7 @@ class SearchController extends Controller
         if (preg_match('/^exp$/i', $query)) {
             $exp = (new ExperienceCalculatorService())->toSearchResult();
             array_push($result, $exp);
-        } else if (preg_match('/^ser(h?|hi?|hii?)$/', $query)) {
+        } elseif (preg_match('/^ser(h?|hi?|hii?)$/', $query)) {
             array_push($result, new SearchResult(
                 title: 'Serhii Cho',
                 url: url('@serhii-cho'),

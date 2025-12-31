@@ -11,7 +11,7 @@ use JsonException;
  * @property string $title
  * @property string $intro
  * @property string $description
- * @property array<int, int> $posts
+ * @property list<int> $posts
  */
 class UpdateRequest extends Request
 {

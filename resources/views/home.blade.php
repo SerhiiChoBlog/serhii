@@ -3,8 +3,8 @@
     use Illuminate\Support\Collection;
 
     /**
-     * @var array<int, Post> $latest
-     * @var array<int, Post> $monthly_top
+     * @var list<Post> $latest
+     * @var list<Post> $monthly_top
      * @var Collection<int, Post> $posts
      * @var array<int, array<int ,mixed>> $latest_videos
      */

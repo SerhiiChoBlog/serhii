@@ -11,7 +11,7 @@ use Intervention\Image\Facades\Image;
 readonly class ImageProcessor
 {
     /**
-     * @param array<string, array<int, int>> $sizes
+     * @param array<string, list<int>> $sizes
      */
     public function __construct(private UploadedFile|null $photo, private array $sizes)
     {

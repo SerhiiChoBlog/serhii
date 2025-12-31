@@ -1,7 +1,7 @@
 @php
     /**
      * @var array<string, string> $links
-     * @var array<int, array<mixed>> $posts
+     * @var list<array<mixed>> $posts
      * @var array{id: int, slug: string, title: string, intro: string, image_sm: string, created_at: string, read_time: string} $post
      */
 @endphp
@@ -9,7 +9,7 @@
 @push('title', $code)
 @push('description', $header)
 
-<div class="bg-gradient-to-t from-[#593468] to-[#423263] text-white min-h-screen">
+<div class="bg-linear-to-t from-[#593468] to-[#423263] text-white min-h-screen">
     <div class="container py-8">
         <div class="flex flex-col lg:flex-row gap-4 lg:gap-10 items-center justify-center">
             <h1 class="text-8xl md:text-[10rem] font-main font-black leading-[120%]">

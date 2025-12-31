@@ -21,7 +21,7 @@ class Role extends Model
     public $timestamps = false;
 
     /**
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $guarded = ['id'];
 

@@ -28,7 +28,7 @@ class Subscription extends Model
     use HasFactory;
 
     /**
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $guarded = ['id'];
 

@@ -39,7 +39,7 @@ class Feed extends Model
     ];
 
     /**
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $guarded = ['id'];
 

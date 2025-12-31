@@ -55,7 +55,7 @@ class SitemapCommand extends Command
     }
 
     /**
-     * @return array<int, Url>
+     * @return list<Url>
      */
     private function posts(): array
     {
@@ -88,7 +88,7 @@ class SitemapCommand extends Command
     }
 
     /**
-     * @return array<int, Url>
+     * @return list<Url>
      */
     private function series(): array
     {
@@ -107,7 +107,7 @@ class SitemapCommand extends Command
     }
 
     /**
-     * @return array<int, Url>
+     * @return list<Url>
      */
     private function taggedPosts(): array
     {
@@ -124,7 +124,7 @@ class SitemapCommand extends Command
     }
 
     /**
-     * @return array<int, Url>
+     * @return list<Url>
      */
     private function pages(): array
     {

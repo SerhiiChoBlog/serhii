@@ -95,7 +95,7 @@ class SeriesController extends Controller
     }
 
     /**
-     * @param array<int, int> $posts
+     * @param list<int> $posts
      *
      * @return array<int, array{part: int}>
      */
