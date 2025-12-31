@@ -13,7 +13,7 @@ use Illuminate\Support\Collection;
 readonly class CachePostsService
 {
     /**
-     * @return list<SearchResult>
+     * @return array<int, SearchResult>
      */
     public function get(): array
     {
