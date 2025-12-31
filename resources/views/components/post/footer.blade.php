@@ -21,10 +21,6 @@
         <span>Thanks for your time!</span>
         <span class="mb-4">Please, share this post to support me</span>
 
-        <div class="mb-5 text-sm w-full">
-            <x-download-pdf-button />
-        </div>
-
         <share-post-buttons
             post-title="{{ $post['title'] }}"
             :post-id="{{ $post['id'] }}"
