@@ -7,7 +7,7 @@ namespace App\Dto;
 readonly class SearchResult
 {
     /**
-     * @param $list(string) $keywords
+     * @param list(string) $keywords
      */
     public function __construct(
         public string $title,
