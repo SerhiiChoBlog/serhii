@@ -10,20 +10,17 @@ use DateTime;
 
 class ExperienceCalculatorService
 {
-    /**
-     * @return list(SearchResult)
-     */
-    public function toSearchResult(): array
+    public function toSearchResult(): SearchResult
     {
         $diff = $this->getDateDiff()->format("%y years %m months");
 
-        return [new SearchResult(
-            title: "Years of experience",
+        return new SearchResult(
+            title: "Serhii Cho's Years of Experience",
             image_url: 'storage/search/experience.jpg',
             url: route('about-me'),
             keywords: [$diff],
             label: 'info',
-        )];
+        );
     }
 
     private function getDateDiff(): DateInterval
