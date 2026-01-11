@@ -17,7 +17,8 @@ class CanonicalTag
 
         $result = str_replace('http://', 'https://', $result);
         $result = str_replace('https://www.', 'https://', $result);
-        $result = str_replace('https://serhii.shobar.com.ua', 'https://serhii.io', $result);
+        $result = str_replace('https://serhii.shobar.com.ua', 'https://serhiicho.com', $result);
+        $result = str_replace('https://cho.shobar.com.ua', 'https://serhiicho.com', $result);
 
         return $result;
     }

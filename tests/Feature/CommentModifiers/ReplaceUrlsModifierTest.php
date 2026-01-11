@@ -48,24 +48,24 @@ class ReplaceUrlsModifierTest extends TestCase
                 'Some <a href="http://example.com" target="_blank">http://example.com</a> text <a href="https://example.com" target="_blank">https://example.com</a> with <a href="http://example.com" target="_blank">http://example.com</a> links <a href="https://example.com" target="_blank">https://example.com</a>',
             ],
             [
-                'https://serhii.io/about-me',
-                '<a href="https://serhii.io/about-me" target="_blank">https://serhii.io/about-me</a>',
+                'https://serhiicho.com/about-me',
+                '<a href="https://serhiicho.com/about-me" target="_blank">https://serhiicho.com/about-me</a>',
             ],
             [
-                'https://serhii.io/about-me.',
-                '<a href="https://serhii.io/about-me" target="_blank">https://serhii.io/about-me</a>.',
+                'https://serhiicho.com/about-me.',
+                '<a href="https://serhiicho.com/about-me" target="_blank">https://serhiicho.com/about-me</a>.',
             ],
             [
-                'Link: https://serhii.io/about-me. Thanks!',
-                'Link: <a href="https://serhii.io/about-me" target="_blank">https://serhii.io/about-me</a>. Thanks!',
+                'Link: https://serhiicho.com/about-me. Thanks!',
+                'Link: <a href="https://serhiicho.com/about-me" target="_blank">https://serhiicho.com/about-me</a>. Thanks!',
             ],
             [
-                'Link: https://serhii.io.',
-                'Link: <a href="https://serhii.io" target="_blank">https://serhii.io</a>.',
+                'Link: https://serhiicho.com.',
+                'Link: <a href="https://serhiicho.com" target="_blank">https://serhiicho.com</a>.',
             ],
             [
-                'Link: https://serhii.io',
-                'Link: <a href="https://serhii.io" target="_blank">https://serhii.io</a>',
+                'Link: https://serhiicho.com',
+                'Link: <a href="https://serhiicho.com" target="_blank">https://serhiicho.com</a>',
             ],
         ];
     }

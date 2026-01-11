@@ -18,7 +18,7 @@ In July 2019, I took it upon myself to start working on [pull request #289](http
 
 After several iterations, I came up with a new design that would improve the overall user experience. Below, is an image of the proposed changes:
 
-![https://serhii.io/storage/posts/content/php-revival-extension-a-new-look-at-php-documentation-1728463497.png](../../../storage/posts/content/php-revival-extension-a-new-look-at-php-documentation-1728463497.png)
+![https://serhiicho.com/storage/posts/content/php-revival-extension-a-new-look-at-php-documentation-1728463497.png](../../../storage/posts/content/php-revival-extension-a-new-look-at-php-documentation-1728463497.png)
 
 After 40 days of waiting for the PR to be reviewed, I received feedback. It stated that my style changes to [www.php.net](http://www.php.net "Link to PHP documentation") would affect sites like doc.php.net, news.php.net, people.php.net, etc. because they share the same CSS files.
 

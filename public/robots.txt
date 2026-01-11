@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Sitemap: https://serhii.io/sitemap.xml
+Sitemap: https://serhiicho.com/sitemap.xml
 Disallow: /subscriptions/*
 Disallow: /fo-verify.html
