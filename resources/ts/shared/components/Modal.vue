@@ -9,11 +9,9 @@ type Props = {
     empty?: boolean
 }
 
-const emit = defineEmits<{
-    (e: 'close'): void
-}>()
-
+const emit = defineEmits<{ (e: 'close'): void }>()
 const props = defineProps<Props>()
+
 const isOpen = ref<boolean>(props.opened)
 
 watch(props, (props: Props) => {
@@ -34,7 +32,11 @@ onMounted(() => {
         <aside v-show="isOpen" class="fixed inset-0 z-50 bg-black/80">
             <div
                 v-if="isOpen"
-                class="overflow-y-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1000px] mx-auto max-h-[calc(100vh-40px)] pt-10"
+                :class="[
+                    'overflow-y-auto absolute top-1/2 left-1/2 -translate-x-1/2',
+                    '-translate-y-1/2 w-full max-w-250 mx-auto pt-10',
+                    'max-h-[calc(100vh-40px)]',
+                ]"
                 :style="{ maxWidth: maxWidth + 'px' }"
             >
                 <div
@@ -44,8 +46,11 @@ onMounted(() => {
                     <button
                         @click="emit('close')"
                         type="button"
-                        class="absolute top-2 right-2 p-3 text-font-second hover:text-red-600 transition-colors z-10"
                         aria-label="Close contacts modal button"
+                        :class="[
+                            'absolute top-2 right-2 p-3 text-font-second',
+                            'hover:text-red-600 transition-colors z-10 cursor-pointer',
+                        ]"
                     >
                         <close-icon class="w-6 h-6" />
                     </button>
