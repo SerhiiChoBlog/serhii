@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @push('title', 'Information about Serhii Cho')
-@push('description', "Serhii Cho is a developer and blogger who is writing about enhancing your knowledge in creating fast and robust web apps")
+@push('description', 'Just another hacker summoning bugs while dabbling in all kinds of tech sorcery. I sprinkle open-source magic everywhere, and live inside Linux terminal')
 
 @section('content')
     <x-hero

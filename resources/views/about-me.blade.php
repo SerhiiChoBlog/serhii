@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 @push('title', 'Information about Serhii Cho')
-@push('description', "Serhii Cho is a developer and blogger who is writing about enhancing your knowledge in creating fast and robust web apps")
+@push('description', 'Just another hacker summoning bugs while dabbling in all kinds of tech sorcery. I sprinkle open-source magic everywhere, and live inside Linux terminal')
 
 @section('content')
     <x-hero
         mainTitle="Serhii Cho"
-        subtitle="Serhii Cho is a developer and blogger who is writing about<br />creating fast, robust, premium websites and applications"
+        subtitle="Just another hacker summoning bugs while dabbling in all kinds of tech sorcery.<br>I sprinkle open-source magic everywhere, and live inside Linux terminal."
         class="bg-linear-to-r from-[#657ca1] via-[#445a7e] to-[#163249] text-white"
     />
 
