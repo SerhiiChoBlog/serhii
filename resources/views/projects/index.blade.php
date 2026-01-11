@@ -5,13 +5,13 @@
 @extends('layouts.main')
 
 @push('title', 'Open-source projects')
-@push('description', "Serhii Cho is a maintainer of several open-source libraries which you can contribute to any of them on GitHub")
+@push('description', "I'm also a maintainer of several open-source libraries which you can contribute to any of them on GitHub")
 
 @section('content')
     <x-hero
         mainTitle="Open-source"
         subtitle="I'm the maintainer of several open-source libraries and browser extension.<br>You can contribute to any of them on GitHub, and I would gladly look into your pull request or issue."
-        class="bg-gradient-to-r from-[#51895c] via-[#4c5f7d] to-[#51895c] text-white"
+        class="bg-linear-to-r from-[#51895c] via-[#4c5f7d] to-[#51895c] text-white"
     />
 
     <div class="container my-6">
@@ -21,8 +21,12 @@
                 <article>
                     <a
                         href="{{ $project['has_homepage'] ? $project['url'] : "/projects/{$project['name']}" }}"
-                        class="bg-page-second p-7 h-full rounded-md shadow-md hover:shadow-lg transition-shadow relative flex flex-col justify-center min-h-[320px]"
                         title="Go to a project"
+                        @class([
+                            'bg-page-second p-7 h-full rounded-md shadow-md',
+                            'hover:shadow-lg transition-shadow relative flex',
+                            'flex-col justify-center min-h-80',
+                        ])
                         {{ $project['has_homepage'] ? 'target="_blank"' : '' }}
                     >
                         @isset($project['language'])
