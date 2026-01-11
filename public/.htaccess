@@ -1,4 +1,10 @@
 <IfModule mod_rewrite.c>
+    # DOMAIN REDIRECT - MUST BE FIRST
+    RewriteCond %{HTTP_HOST} ^(www\.)?serhii\.io$ [OR]
+    RewriteCond %{HTTP_HOST} ^(www\.)?cho\.shobar\.com\.ua$ [OR]
+    RewriteCond %{HTTP_HOST} ^(www\.)?serhii\.shobar\.com\.ua$
+    RewriteRule ^(.*)$ https://serhiicho.com/$1 [R=301,L]
+
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
