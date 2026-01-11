@@ -18,12 +18,12 @@
 @extends('layouts.main')
 
 @push('title', $title)
-@push('description', "You want to become a better web developer and create optimized, responsive and modern websites using the latest web technologies and best practices?")
+@push('description', "Writing about software development, systems, and the practical details that make things work")
 
 @section('content')
     <x-hero
         :mainTitle="$title"
-        subtitle="You want to become a better web developer and create optimized, responsive<br>and modern websites using the latest web technologies and best practices?"
+        subtitle="Writing about software development,<br>systems, and the practical details that make things work."
         class="{{ $series ? '' : 'bg-home-hero' }} bg-cover text-white relative"
         :style="$header_style"
     >
@@ -31,7 +31,7 @@
             <img
                 src="{{ asset("/storage/tags/$tag->name.webp") }}"
                 alt="The logo of {{ $tag->name }}"
-                class="absolute top-1/2 left-1/4 -translate-y-1/2 opacity-50 w-[160px] h-[160px]"
+                class="absolute top-1/2 left-1/4 -translate-y-1/2 opacity-50 w-40 h-40"
                 width="200"
                 height="200"
             />
@@ -40,7 +40,7 @@
 
     <div class="container">
         <div class="bg-page max-w-[1100px] mx-auto -translate-y-6 rounded-xl px-3 pt-3">
-            <div class="min-h-[40px]">
+            <div class="min-h-10">
                 <filters :current-tag="{{ $tag ?? 'null' }}"></filters>
             </div>
 
