@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 class ReferrerMiddleware
 {
     private const IGNORED_SITES = [
-        'serhii.io',
+        'serhiicho.io',
         'serhii.shobar.com.ua',
+        'cho.shobar.com.ua',
         'localhost',
     ];
 

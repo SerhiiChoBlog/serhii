@@ -78,7 +78,7 @@ function deleteImage(id: number): void {
                 </BodyDetail>
 
                 <BodyDetail>
-                    <input type="text" :value="'https://serhii.io' + image.uri"
+                    <input type="text" :value="'https://serhiicho.com' + image.uri"
                         class="border border-border bg-transparent text-font rounded-md p-2 w-full" disabled />
                 </BodyDetail>
 

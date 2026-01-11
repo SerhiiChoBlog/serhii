@@ -1,7 +1,7 @@
 ## Introduction
 <blockquote>
     <p>What I'm about to tell you is top secret. There's a powerful group of people out there that are secretly running the world. I'm talking about the guys, no one knows about the guys who are invisible. The top 1% of the top 1%. The guys that play God without permission. And now I think they're following me.</p>
-    <img src="https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1756472826.webp" alt="Elliot Alderson in a dark hoodie with a black background" />
+    <img src="https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1756472826.webp" alt="Elliot Alderson in a dark hoodie with a black background" />
     <h6>Elliot Alderson (Mr. Robot series)</h6>
 </blockquote>
 
@@ -9,15 +9,15 @@ I've never started an article with a quote, but this dialogue from Elliot Alders
 
 Recent scandals involving British and other politicians pushing for widespread monitoring, data collection, and mandatory face scans to confirm your age have highlighted the escalating trend towards government and corporate surveillance. This raises serious concerns about privacy and individual freedom in the digital age.
 
-![People are protesting. Holding banners with the sign: Stop watching all of us](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1756478455.jpg)
+![People are protesting. Holding banners with the sign: Stop watching all of us](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1756478455.jpg)
 
 Even though this article will not be political, it's difficult to ignore the increasing tension between individual privacy and governmental/corporate agendas. **The greediness for more power over people and control over their digital footprints is evident**, particularly from whistleblowers like Edward Snowden, who revealed how much personal data governments the National Security Agency (NSA) collect.
 
-![NSA logo surrounded by logos of Facebook, Yahoo, Skype, Apple, and Google](https://serhii.io/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756293717.jpg)
+![NSA logo surrounded by logos of Facebook, Yahoo, Skype, Apple, and Google](https://serhiicho.com/storage/posts/content/moving-from-macos-back-to-linux-as-a-programmer-1756293717.jpg)
 
 This ongoing war on privacy has led millions to investigate how to reclaim their digital freedom. **DuckDuckGo search engine went from 1.64 million daily queries in 2013 (Snowden revelation) to over 100 million in 2024. It's a mind-blowing 6000% increase in daily searches.**
 
-![Advertizing banner with the DuckDuckGo ad: Google tracks you. We don't](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1756478715.jpg)
+![Advertizing banner with the DuckDuckGo ad: Google tracks you. We don't](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1756478715.jpg)
 
 <a href="https://proton.me/mail" title="Link to ProtonMail website" target="_blank">ProtonMail</a> founded their company after Snowden's leaks in 2013, and in 2025 they have over **70 million users**, illustrating a clear and growing public mandate for privacy-focused digital services.
 
@@ -27,7 +27,7 @@ And yes, **as tech professionals, this responsibility extends to teaching and pr
 
 <blockquote>
     <p>You don't know how much you appreciate your privacy until you don't have it.</p>
-    <img src="https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1756479356.webp" alt="Photo of Morgan Freeman, actor and producer" />
+    <img src="https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1756479356.webp" alt="Photo of Morgan Freeman, actor and producer" />
     <h6>Morgan Freeman (actor, producer)</h6>
 </blockquote>
 
@@ -46,7 +46,7 @@ FreeBSD is a good choice; I have nothing against it; however, I’ve never used 
 
 Keep in mind that Linux is not a silver bullet. While it's a great alternative to Windows and macOS, it's not perfect. A common downside of some Linux desktop environments is that they can be less polished and more buggy than the tightly integrated macOS.
 
-![A Steam Deck with Linux logo on the screen](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757157853.jpg)
+![A Steam Deck with Linux logo on the screen](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757157853.jpg)
 
 You can just start by running Linux on a virtual machine if you've never done it before. This approach allows for risk-free experimentation with various distributions and desktop environments, familiarizing oneself with the nuances of a Linux system without altering the primary operating system. Keep in mind that the experience with Linux inside a virtual machine is not as performant as running it natively, but it's a good starting point.
 
@@ -68,7 +68,7 @@ If they match, then you can be confident that your downloaded ISO file is authen
 ## No Proprietary Software
 **Proprietary software, by its nature, often operates as a black box, making it impossible for users to inspect its inner workings for vulnerabilities or malicious functionalities.** Processes that are constantly running on your machine can collect sensitive data and transmit it without explicit user consent. I do not consider myself a paranoid individual, but it is not a secret that companies like Microsoft, Apple, Facebook, and Google routinely collect vast amounts of user data. Especially Google, since their whole business model is to sell you targeted ads.
 
-![chrome, watsup, skype and google logos are spying behind the girl who is sitting with her laptop on a sofa in a cartoon style](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757248167.webp)
+![chrome, watsup, skype and google logos are spying behind the girl who is sitting with her laptop on a sofa in a cartoon style](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757248167.webp)
 
 If you installed a fresh Linux installation and are thinking of getting your favorite Google Chrome browser, be mindful that you are reintroducing the same issue that you had before. Running Google Chrome on Linux is like installing a surveillance camera with the default password `admin` into your secured house. The rule is simple: if it's not open source, it doesn't get root-level trust.
 
@@ -104,14 +104,14 @@ Note. DuckDuckGo Privacy Essentials extension only makes sense if you use DuckDu
 
 I'm giving you Mozilla links because I recommend Firefox-based browsers for their stronger privacy stance. Plus, uBlock Origin's <a href="https://github.com/gorhill/uBlock/wiki/uBlock-Origin-works-best-on-Firefox" title="Link to the Wiki" target="_blank">maintainers also recommend</a> using it on Firefox. But if you need it for Chromium, just get the extension from the official <a href="https://ublockorigin.com/" title="Link to official uBlock Origin extension website" target="_blank">ublockorigin.com</a> website instead of Chrome Store. If you use the Brave browser, you may not need uBlock Origin as it has a built-in blocker, though many still use it for finer control.
 
-![uBlock Origin additional information for different browsers](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757592362.webp)
+![uBlock Origin additional information for different browsers](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757592362.webp)
 
 Before installing any new extension, make sure that it's open source and doesn't have a permission of accessing your data for all websites. Of course, those 3 extensions that I've listed above are the exeption from this rule because they cannot work without getting access to all the data for all the websites.
 
 ### Tab Guardian
 This desire for private tab management is exactly why I developed the <a href="https://addons.mozilla.org/en-US/firefox/addon/tab-guardian/" title="Link to Mozilla Tab Guardian extension page" target="_blank">Tab Guardian</a> extension that is available for Chromium and Firefox-based browsers.
 
-![Tab Guardian extension banner with a sign 'See all of your saved tab groups at a glance on the main screen'](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757587311.png)
+![Tab Guardian extension banner with a sign 'See all of your saved tab groups at a glance on the main screen'](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757587311.png)
 
 I'm a bit biased towards this extension because I developed it specifically to address the critical need for encrypted and private tab management, ensuring that sensitive browsing data remains inaccessible even in the event of system compromise.
 
@@ -120,7 +120,7 @@ It allows you to store and retrieve your browser tabs in a few clicks, but **the
 ### Use Tor for Maximum Privacy
 For the ultimate level of anonymity in your browsing, the Tor network is the gold standard. But keep in mind that it's a separate tool for specific, high-privacy needs. It doesn’t replace your daily browsers since Tor is significantly slower due to its multi-layered encryption and relay system.
 
-![Tor Browser home page that says 'Explore. Privately'](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757591016.webp)
+![Tor Browser home page that says 'Explore. Privately'](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757591016.webp)
 
 The other reason is that companies like Google and Meta actively discourage its use because if they don't know who you are, they cannot monetize your online activity. But honestly, **you shouldn’t use their services anyway if you care about your privacy.**
 
@@ -138,7 +138,7 @@ Stop putting it off. If you've never used a password manager, your life is about
 
 I'm not sponsored by any password manager, but I recommend <a href="https://proton.me/pass" title="Link to Proton Pass password manager" target="_blank">Proton Pass</a> and <a href="https://bitwarden.com/" title="Link to Bitwarden website" target="_blank">Bitwarden</a>. I’d love to recommend more, but I haven’t used others extensively. You can also explore offline options available on <a href="https://flathub.org" title="Link to Flathub" target="_blank">Flathub</a>—just search for “password manager” there. These are typically self-hosted or local-only options (like <a href="https://flathub.org/en/apps/org.keepassxc.KeePassXC" title="Link to KeePassXC on Flathub" target="_blank">KeePassXC</a>) that don't sync to a vendor's cloud, which is the trade-off for being offline.
 
-![Metal lock with Bitwarden logo on it guarding a door](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757665744.webp)
+![Metal lock with Bitwarden logo on it guarding a door](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757665744.webp)
 
 Disable password managers in your browser, in your phone, and remove any saved credentials from your physical notes. There has to be only a single place for your passwords, not a scattered collection across multiple locations.
 
@@ -180,7 +180,7 @@ var_dump($text);
 ```
 Now, full-disk encryption is very similar, except that instead of encrypting file by file, it encrypts your whole disk partition. One of the most widely used Linux encryption tools is <a href="https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup" title="Link to Wikipedia page about LUKS" target="_blank">LUKS</a> (Linux Unified Key Setup). **A partition is essentially a massive sequence of 0s and 1s on your drive.** LUKS grabs that entire chunk, encrypts it as-is with a strong cipher, and your passphrase unlocks the master key to make it readable again. Your passphrase is the master key to unlock it all at boot time.
 
-![Scheme that shows how file gets encrypted and decrypted](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757678153.webp)
+![Scheme that shows how file gets encrypted and decrypted](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757678153.webp)
 
 **Most Linux distros have encryption built-in into the installer; just make sure to enable it during installation.** If you already installed Linux and do not use encryption, you need to backup your user data and reinstall your OS with full-disk encryption.
 
@@ -196,7 +196,7 @@ A strong password is your first line of defense, but it can still be stolen in a
 - **Authentication Apps:** Generate codes offline on your device.
 - **Hardware Security Keys:** The gold standard. A physical device like a **YubiKey** that you plug into your USB port. This offers the strongest protection, though it requires carrying the key with you.
 
-![An authentication key lying on a laptop](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757691755.webp)
+![An authentication key lying on a laptop](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1757691755.webp)
 
 Note. I don't recommend apps like  **Authy** as an authentication app because they don't have a way to export your authentication accounts. If you decide to switch apps in the future, it will be very difficult to do. Use those which have import/export functionality like **Bitwarden Authenticator**, **Proton Auth**, **Authman**, etc.
 
@@ -210,7 +210,7 @@ We’ve already talked about Linux and safe browsing, but I also want to talk ab
 ### 1. Use Official Repos
 Relying on official distribution repositories is a crucial step in preventing software supply chain attacks, which can compromise systems through malicious code injected into legitimate-looking packages. This approach is great but not always sufficient, since we might need to install a program from a third-party source. A good example for this is something like <a href="https://tableplus.com/download/linux" title="Link to Table Plus download page" target="_blank">Table Plus</a> that is not available on Flathub or on the official Fedora repositories.
 
-![TablePlus installation page for Linux](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758019838.webp)
+![TablePlus installation page for Linux](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758019838.webp)
 
 The good thing is that there are suitable alternatives like <a href="https://flathub.org/en/apps/it.fabiodistasio.AntaresSQL" title="Link to Antares SQL app on Flathub" target="_blank">Antares SQL</a> on Flathub, even though alternatives might not always offer the same feature set or user experience.
 
@@ -221,16 +221,16 @@ Package formats like Debian and RPM are traditional packaging systems that integ
 
 Flatpak is getting a lot of traction in the Linux community, and when you start using it, you will appreciate it as well. Especially with a tool like <a href="https://flathub.org/apps/io.github.flattool.Warehouse" title="Link to Flathub store" target="_blank">Warehouse</a> app to manage them.
 
-![Warehouse app interface for managing Flapak packages](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758024928.webp)
+![Warehouse app interface for managing Flapak packages](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758024928.webp)
 
 ### 3. Use the Flatseal App
 Another crucial tool for managing Flatpak applications’ security is <a href="https://flathub.org/apps/com.github.tchx84.Flatseal" title="Link to Flathub store" target="_blank">Flatseal</a>. This graphical utility provides fine-grained control over Flatpak permissions, allowing users to modify access to various system resources and enhance the overall security.
 
-![Flatseal user interface](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758025376.webp)
+![Flatseal user interface](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758025376.webp)
 
 If you don't want Obsidian to have access to the internet, you can just revoke the “Share → Network” permission using Flatseal. If you want to give your app access only to a specific directory on your system without giving the whole access, you can tweak it in the “Filesystem” section.
 
-![Filesystem setting in the Flatseal app](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758025603.webp)
+![Filesystem setting in the Flatseal app](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758025603.webp)
 
 Tip. Always look at your installed Flatpak app in Flatseal before even opening it. Because if an application has access to your filesystem, it could potentially compromise sensitive data. Restricting permissions before you open the app can prevent unauthorized data access or malicious activities.
 
@@ -277,7 +277,7 @@ The “Docker is secure” or “Docker is safe” mentality is marketing crap. 
 
 **Podman addresses this by never running a root daemon.** Containers stay in your namespace; there's no way to jump out unless you literally give them privileges by running `podman run —privileged <image>`. Don't do that! Don't give your container a privileged access. It isn't bulletproof, but it's way more secure than Docker. That's why big corporations like Accenture, Red Hat, DHL and thousands more are using Podman.
 
-![Podman logo with 3 seal heads sticking out from the water](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758107516.webp)
+![Podman logo with 3 seal heads sticking out from the water](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758107516.webp)
 
 ### Check your Scripts
 As programmers, we often copy and paste code snippets from various online sources. If you have no clue what the code does, I highly recommend pasting it into a trusted AI assistant and asking it to break it down and explain.
@@ -328,7 +328,7 @@ Back then, dial-up was slow, but it felt safe, even though your ISP (Internet Se
 
 <blockquote>
     <p>If you go to a coffee shop or at the airport, and you're using open wireless, I would use a VPN service that you could subscribe for 10 bucks a month. Everything is encrypted in an encryption tunnel, so a hacker cannot tamper with your connection.</p>
-    <img src="https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758197358.webp" alt="Kevin Mitnick in glasses, hacker and a computer security consultant" />
+    <img src="https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758197358.webp" alt="Kevin Mitnick in glasses, hacker and a computer security consultant" />
     <h6>Kevin Mitnick (hacker, computer security consultant)</h6>
 </blockquote>
 
@@ -345,11 +345,11 @@ If you still rely on your ISP's default DNS, consider changing your DNS settings
 
 You just need to go into your WiFi settings and configure your current WiFi connection by disabling the automatic DNS setting. On my GNOME desktop environment, I find my WiFi connection `WWWmi` and changing automatic DNS to 2 IP addresses `9.9.9.9, 149.112.112.112` which you can find on the <a href="https://quad9.net/" title="Link to Quad9 official website" target="_blank">Quad9</a> website if you choose it as your DNS provider. For <a href="https://developers.cloudflare.com/1.1.1.1/ip-addresses/" title="Link to the official Cloudflare website" target="_blank">Cloudflare</a>, it will be `1.1.1.1, 1.0.0.1`.
 
-![Configuration window for WiFi connection for GNOME desktop environment](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758207136.webp)
+![Configuration window for WiFi connection for GNOME desktop environment](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758207136.webp)
 
 There are many other DNS providers that offer enhanced privacy features and malware blocking capabilities, but if you want the maximum level of privacy, you should consider using your own DNS server. However, it might be overkill for most of us. If you are into the hacking side of things, I recommend buying a Raspberry Pi and setting up a DNS server with firewall capabilities.
 
-![Raspberry Pi 5 in a case connected with USB cables connected](https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758210608.webp)
+![Raspberry Pi 5 in a case connected with USB cables connected](https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758210608.webp)
 
 I can write a series of articles just about DNS because there are so many things I would love to talk about. However, I’m going to stop here and move to the firewall section.
 
@@ -393,7 +393,7 @@ Changing DNS is not even a technical challenge; it's free and it takes a maximum
 
 <blockquote>
     <p>Privacy matters; privacy is what allows us to determine who we are and who we want to be.</p>
-    <img src="https://serhii.io/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758213689.webp" alt="A photo of Edward Snowden" />
+    <img src="https://serhiicho.com/storage/posts/content/securing-your-digital-life-a-programmers-action-plan-1758213689.webp" alt="A photo of Edward Snowden" />
     <h6>Edward Snowden</h6>
 </blockquote>
 

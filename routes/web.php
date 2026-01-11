@@ -14,13 +14,6 @@ use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/posts/boost-your-svelte-apps-performance', '/posts/lazy-loading-boost-your-svelte-apps-performance');
-Route::redirect('/posts/vue-component-wrapper-for-lazy-loading', '/posts/lazy-loading-vue-component-wrapper-for-lazy-loading');
-Route::redirect('/posts/intersection-observer-is-a-hidden-feature-of-javascript', '/posts/lazy-loading-intersection-observer-is-a-hidden-feature-of-javascript');
-Route::redirect('/posts/the-basics-of-programming', '/posts/understanding-computer-fundamentals-the-basics-of-programming');
-Route::redirect('/posts/computer-software', '/posts/understanding-computer-fundamentals-computer-software');
-Route::redirect('/posts/the-basics-of-computers', '/posts/understanding-computer-fundamentals-the-basics-of-computers');
-
 Auth::routes(['verify' => true]);
 
 Route::get('@{user:slug}', [UserController::class, 'show'])->name('users.show');

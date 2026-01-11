@@ -1,7 +1,7 @@
 ## Introduction
 **Are you currently working on a new programming language? Wondering how to make it more accessible to others? Wonder what to do next?** I hope you wrote documentation for it because without the documentation, not many people can use your language. Not only that, but users expect this documentation to be easily searchable and accessible. One `README.md` file on GitHub is not sufficient. Thankfully, tools like [VitePress](https://vitepress.dev/ "Link to the VitePress website") and [Docusaurus](https://docusaurus.io/ "Link to the Docusaurus website") make it relatively easy to write documentation websites.
 
-![VitePress and Docusaurus](https://serhii.io/storage/posts/content/your-language-works-now-the-real-work-begins-1753513711.png)
+![VitePress and Docusaurus](https://serhiicho.com/storage/posts/content/your-language-works-now-the-real-work-begins-1753513711.png)
 
 Language and docs are great, but now you need at least syntax highlighting to start. What should we use for that, TextMate grammar? Tree-sitter? It depends on the editor you want to support. VSCode because of its popularity and maybe something like Neovim or Emacs for 10x developers.
 
@@ -38,7 +38,7 @@ A good example is PHP’s success, which took off thanks to a strong ecosystem b
 
 > I and we, later on when the project became bigger, we spent a lot of time on ecosystem and making sure that everything worked together and that we could scale up and also more importantly scale down and make it really really accessible to new users coming to the language.
 > ###### Rasmus Lerdorf (the creator of PHP)
-> ![Rasmus Lerdorf](https://serhii.io/storage/posts/content/how-to-make-your-software-developer-job-more-enjoyable-7.png)
+> ![Rasmus Lerdorf](https://serhiicho.com/storage/posts/content/how-to-make-your-software-developer-job-more-enjoyable-7.png)
 
 As he later emphasized in another talk, "The ecosystem is what made PHP successful at the time". Modern examples like Swift and .NET are more than just languages or runtimes, they are ecosystems with libraries, frameworks, and tools that make them more usable.
 
@@ -117,7 +117,7 @@ For example, documenting how `@if` handles edge cases (like `@if(nil)`, `@if("")
 
 > Documentation is a love letter that you write to your future self.
 > ###### Damian Conway (a computer scientist)
-> ![Damian Conway](https://serhii.io/storage/posts/content/your-language-works-now-the-real-work-begins-1753606371.jpg)
+> ![Damian Conway](https://serhiicho.com/storage/posts/content/your-language-works-now-the-real-work-begins-1753606371.jpg)
 
 **Effective documentation transcends syntax.** It provides:  
 - Best practices and idioms
@@ -129,7 +129,7 @@ The [Textwire docs](https://textwire.github.io/ "Link to the Textwire documentat
 
 I recommend using documentation generators like [VitePress](https://vitepress.dev/ "Link to the VitePress website") and [Docusaurus](https://docusaurus.io/ "Link to the Docusaurus website"). Typically I reach for VitePress but Docusaurus is better for complex docs.
 
-![VitePress and Docusaurus](https://serhii.io/storage/posts/content/your-language-works-now-the-real-work-begins-1753614151.webp)
+![VitePress and Docusaurus](https://serhiicho.com/storage/posts/content/your-language-works-now-the-real-work-begins-1753614151.webp)
 
 Both generate static sites from Markdown, which is easy to read and write. Markdown keeps docs version-controllable and collaborative, allowing you to write in a familiar format. You can use any text editor to write Markdown, and it’s easy to convert to HTML.
 
@@ -234,14 +234,14 @@ While Go’s simplicity got me started, C/C++ offer finer control over memory an
 
 > The only way to learn a new programming language is by writing programs in it.
 > ###### Dennis Ritchie (a legendary computer scientist)
-> ![Dennis Ritchie, creator of C, at a computer](https://serhii.io/storage/posts/content/your-language-works-now-the-real-work-begins-1753806109.webp)
+> ![Dennis Ritchie, creator of C, at a computer](https://serhiicho.com/storage/posts/content/your-language-works-now-the-real-work-begins-1753806109.webp)
 
 Next, we’ll explore how these pieces fit into an editor plugin and what challenges you might face.
 
 ## 5. Editor's Support
 **Great editor support transforms your language from a curiosity to a tool people choose to use daily.** Users expect a seamless experience with features like syntax highlighting, autocompletion, and error checking. Without these, your language feels incomplete and unpolished.
 
-![The list of various VSCode Extensions](https://serhii.io/storage/posts/content/your-language-works-now-the-real-work-begins-1753868143.webp)
+![The list of various VSCode Extensions](https://serhiicho.com/storage/posts/content/your-language-works-now-the-real-work-begins-1753868143.webp)
 
 For Textwire, adding autocompletion and hover information for directives saves user time by giving them detailed documentation right in the editor.
 
