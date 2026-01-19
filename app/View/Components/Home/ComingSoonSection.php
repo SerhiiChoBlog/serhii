@@ -20,7 +20,7 @@ class ComingSoonSection extends Component
     }
 
     /**
-     * @return list<Post>
+     * @return array<int, Post>
      */
     private function getPosts(): array
     {

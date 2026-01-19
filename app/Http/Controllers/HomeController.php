@@ -46,7 +46,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return list<Post>
+     * @return array<int, Post>
      */
     private function getLatest(): array
     {
@@ -68,7 +68,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return list<Post>
+     * @return array<int, Post>
      */
     private function getMonthlyTop(): array
     {

@@ -15,7 +15,7 @@ readonly class SearchPostService
     }
 
     /**
-     * @return list<SearchResult>
+     * @return array<int, SearchResult>
      */
     public function search(): array
     {
@@ -28,9 +28,9 @@ readonly class SearchPostService
     }
 
     /**
-     * @param list<SearchResult> $posts
+     * @param array<int, SearchResult> $posts
      *
-     * @return list<SearchResult>
+     * @return array<int, SearchResult>
      */
     private function findInArray(array $posts): array
     {
@@ -56,7 +56,7 @@ readonly class SearchPostService
     }
 
     /**
-     * @param list<string> $items
+     * @param array<int, string> $items
      */
     private function containsMatch(array $items): bool
     {
