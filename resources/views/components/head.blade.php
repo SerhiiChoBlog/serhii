@@ -4,6 +4,7 @@
 <meta name="author" content="Serhii Cho">
 <meta name="description" content="@stack('description', "Serhii's blog is a great place to learn about web development. If you are eager to learn how to build optimized, responsive and modern web")">
 <meta property="og:locale" content="en_US">
+<meta name="darkreader-lock">
 {!! new \App\CanonicalTag() !!}
 
 <link

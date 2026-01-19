@@ -1,3 +1,4 @@
+# Only run this config if Apache rewrite module is enabled
 <IfModule mod_rewrite.c>
     # DOMAIN REDIRECT - MUST BE FIRST
     RewriteCond %{HTTP_HOST} ^(www\.)?serhii\.io$ [OR]
