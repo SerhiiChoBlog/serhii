@@ -33,7 +33,7 @@
 
                             <p>
                                 Today I mostly work on developer tools. This includes an interpreter called
-                                <a href="https://github.com/textwire/textwire" target="_blank">Textwire</a>,
+                                <a href="https://textwire.github.io/" target="_blank">Textwire</a>,
                                 libraries for Go, PHP, and TypeScript, editor and browser extensions, and
                                 tooling around LSP and Tree-sitter. Most of this work is open source and lives on
                                 <a href="https://github.com/SerhiiCho" target="_blank">GitHub</a>.
