@@ -39,9 +39,9 @@ export default [
                 title: 'Codepen',
             },
             {
-                img: '/storage/icons/bymeacoffee.webp',
-                href: 'https://www.buymeacoffee.com/serhiicho',
-                title: 'Buy me a coffee',
+                img: '/storage/icons/liberapay.png',
+                href: 'https://liberapay.com/SerhiiCho/',
+                title: 'Support my Work',
             },
         ],
     },
