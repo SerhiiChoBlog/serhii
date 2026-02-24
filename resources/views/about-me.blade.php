@@ -27,8 +27,8 @@
 
                         <div class="about-me prose-xl prose-h2:mb-6 prose-h2:mt-0">
                             <p>
-                                I spent several years working at a company based in the Netherlands. After that,
-                                I worked as a freelancer on various projects.
+                                I've started programming {{ $diff }} ago and spent 5 years working at a company based in the Netherlands.
+                                After that, I worked as a contractor on various projects.
                             </p>
 
                             <p>
@@ -49,9 +49,32 @@
             </div>
         </section>
 
-        <x-about.section :isDark="true" class="min-h-[500px]">
-            <x-section-detail />
-            <x-about.tech-section :techs="config('technologies.technologies')" />
-        </x-about.section>
+        <section class="relative bg-page-second py-10 px-5 $classes min-h-125">
+            <div class="container pt-8 lg:pt-16">
+                <x-section-detail />
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 print:grid-cols-2 gap-7">
+                    @foreach (config('technologies.technologies') as $tech)
+                        <div class="max-w-[420px] mx-auto">
+                            <div>
+                                <figure>
+                                    <img
+                                        data-src="{{ asset($tech['image']) }}"
+                                        alt="{{ $tech['title'] }}"
+                                        class="w-auto h-[130px] print:h-auto print:max-w-[50px] mx-auto drop-shadow-md pointer-events-none select-none"
+                                        width="200"
+                                        height="200"
+                                    />
+                                </figure>
+                            </div>
+                            <div class="p-3 text-center">
+                                <div class="text-2xl py-4">{{ $tech['title'] }}</div>
+                                <div class="text-lg font-light">{!! $tech['content'] !!}</div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
     </div>
 @endsection
