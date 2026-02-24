@@ -26,6 +26,6 @@ class AboutMeController extends Controller
             return $result->format("%y years");
         }
 
-        return $result->format("%y years %m months");
+        return $result->format("%y years and %m months");
     }
 }
