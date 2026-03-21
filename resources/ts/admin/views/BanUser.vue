@@ -3,7 +3,6 @@ import useBanUser from '@admin/composables/useBanUser'
 import Spinner from '@shared/components/Icons/Spinner.vue'
 import PageTitle from '@admin/components/PageTitle.vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
-import useDeleteUserComments from '@admin/composables/useDeleteUserComments'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -17,12 +16,6 @@ const {
     ban,
     fetchUser,
 } = useBanUser(userSlug)
-const { deleteComments } = useDeleteUserComments(userSlug)
-
-async function deleteAllComments(): Promise<void> {
-    await deleteComments()
-    fetchUser()
-}
 </script>
 
 <template>
@@ -47,7 +40,7 @@ async function deleteAllComments(): Promise<void> {
                     class="border border-border rounded-lg w-full p-2 bg-page"
                     minlength="5"
                     maxlength="190"
-                    :disabled="user.ban"
+                    :disabled="!!user.ban"
                 />
             </div>
 
