@@ -51,7 +51,7 @@ class PostLikeController extends Controller
         $user = User::getBySecret($request->secret);
 
         return [
-            'liked' => $user && $user->hasLikedPost((int)$request->post_id),
+            'liked' => $user && $user->hasLikedPost((int) $request->post_id),
             'likes' => $this->getPostLikes((int) $request->post_id),
         ];
     }
