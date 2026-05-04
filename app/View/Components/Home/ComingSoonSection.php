@@ -19,9 +19,6 @@ class ComingSoonSection extends Component
         ]);
     }
 
-    /**
-     * @return array<int, Post>
-     */
     private function getPosts(): array
     {
         return Cache::rememberForever(CacheKey::UPCOMING, function () {
