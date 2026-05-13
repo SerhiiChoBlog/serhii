@@ -43,6 +43,9 @@ class ErrorPage extends Component
         });
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function getLinks(): array
     {
         return [
