@@ -103,6 +103,10 @@ class StoreCommentService
         $spam_words = config('spam-words');
         $comment = mb_strtolower($this->comment);
 
+        if (!$spam_words) {
+            return false;
+        }
+
         // Check if comment contains spam words
         foreach ($spam_words as $word) {
             if (preg_match("/\b{$word}\b/", $comment)) {
