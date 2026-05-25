@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Http\Middleware\RedirectIfAuthenticated as CustomRedirectIfAuthenticated;
-use App\Http\Middleware\RedirectToMainUrl;
 use App\Http\Middleware\ReferrerMiddleware;
 use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 use Illuminate\Foundation\Application;
@@ -30,7 +29,6 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->web(
             append: [
-                RedirectToMainUrl::class,
                 ReferrerMiddleware::class,
             ],
             replace: [RedirectIfAuthenticated::class => CustomRedirectIfAuthenticated::class],
