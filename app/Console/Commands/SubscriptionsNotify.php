@@ -27,7 +27,7 @@ class SubscriptionsNotify extends Command
 
         if ($subs->isEmpty()) {
             $this->error('No subscriptions');
-            return 1;
+            return 0;
         }
 
         $last_post = $this->getLastPost();
@@ -36,7 +36,7 @@ class SubscriptionsNotify extends Command
 
         if ($this->hasPublicationWithThisPost($last_post->id)) {
             $this->warn("<fg=red>Subscribers were already notified with post:\n</><fg=blue>\"{$last_post->title}\"</>");
-            return 1;
+            return 0;
         }
 
         foreach ($subs as $sub) {
