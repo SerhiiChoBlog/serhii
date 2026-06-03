@@ -19,7 +19,7 @@ class HomeTest extends TestCase
 
     public function testAdminCanVisitPage(): void
     {
-        $user = User::factory()->make();
+        $user = User::factory()->makeOne();
 
         $this->actingAs($user, 'admin')
             ->get(route('home'))
