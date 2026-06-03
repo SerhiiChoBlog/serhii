@@ -43,7 +43,7 @@ class SubscriptionNotifyTest extends TestCase
 
         $this->artisan('subscriptions:notify')
             ->expectsOutput("Subscribers were already notified with post:\n\"{$post->title}\"")
-            ->assertFailed();
+            ->assertOk();
 
         Notification::assertNothingSent();
     }
@@ -123,7 +123,7 @@ class SubscriptionNotifyTest extends TestCase
 
         $this->artisan('subscriptions:notify')
             ->expectsOutput("No subscriptions")
-            ->assertFailed();
+            ->assertOk();
 
         $this->assertSame(0, PostPublication::query()->count());
 
