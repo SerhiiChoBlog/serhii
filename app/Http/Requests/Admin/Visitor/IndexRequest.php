@@ -9,7 +9,7 @@ use App\Http\Requests\Admin\Request;
 /**
  * @property string|null $search
  * @property string $order
- * @property string $direction
+ * @property 'asc'|'desc' $direction
  */
 class IndexRequest extends Request
 {
