@@ -2,7 +2,7 @@
 import type { Theme } from '@shared/types'
 import listenEvent from '@shared/modules/listenEvent'
 import screenSizeIs from '@/modules/screenSizeIs'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { events } from '@shared/appConfig'
 import navLinks from '@/modules/navLinks'
 import NavLink from '@/components/Navbar/NavLink.vue'
@@ -14,8 +14,16 @@ import dispatchEvent from '@shared/modules/dispatchEvent'
 const { theme } = defineProps<{ theme: Theme }>()
 const isActive = ref(false)
 
-onMounted(() => {
+function toggleNavbar(): void {
     isActive.value = !screenSizeIs(['sm', 'md', 'lg'])
+}
+
+onMounted(() => {
+    addEventListener('resize', toggleNavbar)
+})
+
+onUnmounted(() => {
+    removeEventListener('resize', toggleNavbar)
 })
 
 listenEvent<boolean>(events.openMobileNavbar, isOpened => {
