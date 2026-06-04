@@ -12,13 +12,14 @@ import SlideUpTransition from '@shared/components/Transitions/SlideUpTransition.
 import dispatchEvent from '@shared/modules/dispatchEvent'
 
 const { theme } = defineProps<{ theme: Theme }>()
-const isActive = ref(false)
+const isActive = ref(!screenSizeIs(['sm', 'md', 'lg']))
 
 function toggleNavbar(): void {
     isActive.value = !screenSizeIs(['sm', 'md', 'lg'])
 }
 
 onMounted(() => {
+    toggleNavbar()
     addEventListener('resize', toggleNavbar)
 })
 
