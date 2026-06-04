@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { Theme } from '@shared/types'
-import { ref } from 'vue'
 import listenEvent from '@shared/modules/listenEvent'
 import screenSizeIs from '@/modules/screenSizeIs'
+import { ref, onMounted } from 'vue'
 import { events } from '@shared/appConfig'
 import navLinks from '@/modules/navLinks'
 import NavLink from '@/components/Navbar/NavLink.vue'
@@ -12,7 +12,11 @@ import SlideUpTransition from '@shared/components/Transitions/SlideUpTransition.
 import dispatchEvent from '@shared/modules/dispatchEvent'
 
 const { theme } = defineProps<{ theme: Theme }>()
-const isActive = ref(!screenSizeIs(['sm', 'md', 'lg']))
+const isActive = ref(false)
+
+onMounted(() => {
+    isActive.value = !screenSizeIs(['sm', 'md', 'lg'])
+})
 
 listenEvent<boolean>(events.openMobileNavbar, isOpened => {
     isActive.value = isOpened
