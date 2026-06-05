@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 
 const { route, type, href } = defineProps<{
@@ -7,8 +8,8 @@ const { route, type, href } = defineProps<{
     href?: string
 }>()
 
-const classes =
-    'inline-block uppercase text-white text-center text-sm px-8 py-3 rounded-full transition-all bg-main hover:bg-main-hover shadow-md hover:shadow-lg'
+const classes: HTMLAttributes['class'] =
+    'cursor-pointer inline-block uppercase text-white text-center text-sm px-8 py-3 rounded-full transition-all bg-main hover:bg-main-hover shadow-md hover:shadow-lg'
 </script>
 
 <template>
