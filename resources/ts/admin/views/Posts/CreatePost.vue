@@ -49,11 +49,10 @@ function fetchSeries(): void {
                 <FormInput
                     type="text"
                     placeholder="Enter the title"
-                    :length="190"
                     id="title"
+                    :length="190"
                     @changed="(value: string) => (title = value)"
-                >
-                </FormInput>
+                />
 
                 <MainButton>
                     <i
@@ -68,7 +67,7 @@ function fetchSeries(): void {
                 <label for="series">Select series</label>
                 <select
                     name="series"
-                    class="block px-4 py-1 w-full max-w-[200px] border border-border rounded-md shadow-xs focus:outline-hidden sm:text-md dark:bg-page-second"
+                    class="block px-4 py-1 w-full max-w-50 border border-border rounded-md shadow-xs focus:outline-hidden sm:text-md dark:bg-page-second"
                     v-model="seriesId"
                 >
                     <option :value="null">No series</option>
