@@ -33,15 +33,15 @@ watchEffect(() => {
 
         <div class="inline-block relative w-full">
             <input
-                :type
+                v-model="inputValue"
+                @input="emit('changed', inputValue)"
                 class="border border-border bg-page-second py-3 px-4 rounded-md w-full"
+                autocomplete="off"
+                :type
                 :class="classes"
                 :placeholder="placeholder"
-                v-model="inputValue"
                 :name
                 :id
-                autocomplete="off"
-                @input="emit('changed', inputValue)"
                 :min
                 :max
             />
