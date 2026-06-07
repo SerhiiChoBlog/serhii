@@ -47,11 +47,11 @@ function fetchSeries(): void {
         <form @submit.prevent="createPost" class="mt-5">
             <div class="grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-5 max-w-3xl">
                 <FormInput
+                    @changed="(value: string) => (title = value)"
+                    :length="190"
                     type="text"
                     placeholder="Enter the title"
                     id="title"
-                    :length="190"
-                    @changed="(value: string) => (title = value)"
                 />
 
                 <MainButton>
@@ -66,9 +66,9 @@ function fetchSeries(): void {
             <div class="mt-5">
                 <label for="series">Select series</label>
                 <select
+                    v-model="seriesId"
                     name="series"
                     class="block px-4 py-1 w-full max-w-50 border border-border rounded-md shadow-xs focus:outline-hidden sm:text-md dark:bg-page-second"
-                    v-model="seriesId"
                 >
                     <option :value="null">No series</option>
                     <option v-for="s in series" :value="s.id">
