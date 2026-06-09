@@ -227,10 +227,10 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                         <FormTextarea
                             id="intro"
                             placeholder="Enter a short intro"
+                            name="intro"
                             classes="min-h-[70px]"
                             :value="post.intro || undefined"
                             :length="190"
-                            name="intro"
                         >
                             Short intro
                         </FormTextarea>
@@ -238,11 +238,11 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
 
                     <div class="mt-5">
                         <Editor
-                            :initialValue="post.content"
-                            tinymce-script-src="/js/tinymce/tinymce.min.js"
-                            :init="tinymceConfig"
-                            v-model="post!.content"
                             @keydown="savePostWithCorrectKeyBinds"
+                            tinymce-script-src="/js/tinymce/tinymce.min.js"
+                            v-model="post!.content"
+                            :initialValue="post.content"
+                            :init="tinymceConfig"
                         />
                     </div>
 
