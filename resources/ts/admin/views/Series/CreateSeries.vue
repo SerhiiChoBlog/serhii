@@ -37,27 +37,27 @@ function createSeries(): void {
         <form @submit.prevent="createSeries" class="mt-5">
             <div class="max-w-[700px] space-y-5">
                 <FormInput
+                    @changed="(v: string) => (formData.title = v)"
+                    :length="190"
                     type="text"
                     placeholder="Enter a title"
-                    :length="190"
                     id="title"
-                    @changed="(v: string) => (formData.title = v)"
                 >
                 </FormInput>
 
                 <FormInput
+                    @changed="(v: string) => (formData.intro = v)"
+                    :length="190"
                     type="text"
                     placeholder="Enter a short introduction"
-                    :length="190"
                     id="intro"
-                    @changed="(v: string) => (formData.intro = v)"
                 >
                 </FormInput>
 
                 <MainButton>
                     <i
-                        class="fas mr-2"
                         :class="loading ? 'fa-spinner animate-spin' : 'fa-plus'"
+                        class="fas mr-2"
                     ></i>
                     <span>Create series</span>
                 </MainButton>
