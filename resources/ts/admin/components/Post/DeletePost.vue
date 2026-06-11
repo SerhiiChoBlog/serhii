@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { Post } from '@shared/types/models'
+import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 import MainButton from '@admin/components/Buttons/MainButton.vue'
 import handleError from '@admin/modules/handleError'
 import axios from 'axios'
-import { useRouter } from 'vue-router'
-import { ref } from 'vue'
 import showToast from '@shared/modules/showToast'
 
 const { post } = defineProps<{ post: Post }>()
