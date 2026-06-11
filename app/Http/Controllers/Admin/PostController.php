@@ -151,8 +151,9 @@ class PostController extends Controller
             Cache::forget(CacheKey::RANDOM_POSTS);
             Cache::forget(CacheKey::HOME_POPULAR_POSTS);
             Cache::forget(CacheKey::LATEST_POSTS);
-            Cache::forget(CacheKey::UPCOMING);
         }
+
+        Cache::forget(CacheKey::UPCOMING);
 
         $post->images()->delete();
         $post->tags()->detach();
