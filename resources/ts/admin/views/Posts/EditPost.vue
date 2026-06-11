@@ -268,7 +268,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                             </MainButton>
                         </div>
 
-                        <DeletePost :post="post" />
+                        <DeletePost :post />
                     </div>
                 </form>
             </div>
