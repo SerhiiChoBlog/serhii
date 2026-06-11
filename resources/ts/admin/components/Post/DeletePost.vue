@@ -52,10 +52,10 @@ function deletePost(): void {
 
         <label class="checkbox">
             <input
+                :checked="post.is_published"
                 type="checkbox"
                 name="is-published"
                 class="ml-3 mr-1"
-                :checked="post.is_published"
             />
 
             <span>publish this post</span>
