@@ -25,7 +25,6 @@ export const tinymceConfig: EditorOptions = {
         { text: 'C', value: 'c' },
         { text: 'C++', value: 'cpp' },
         { text: 'CSS', value: 'css' },
-        { text: 'Diff', value: 'diff' },
         { text: 'Dockerfile', value: 'dockerfile' },
         { text: 'Go', value: 'go' },
         { text: 'Haskell', value: 'haskell' },
