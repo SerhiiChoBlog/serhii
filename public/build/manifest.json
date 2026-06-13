@@ -18,7 +18,7 @@
     ]
   },
   "resources/css/admin/app.css": {
-    "file": "assets/app-DE4iEBaq.css",
+    "file": "assets/app-Cor2_wXP.css",
     "src": "resources/css/admin/app.css",
     "isEntry": true,
     "name": "app",
@@ -36,7 +36,7 @@
     ]
   },
   "resources/css/main/app.css": {
-    "file": "assets/app-BgXUQA-m.css",
+    "file": "assets/app-JB_VhbSe.css",
     "src": "resources/css/main/app.css"
   },
   "resources/fonts/JetBrainsMono-Regular.ttf": {
@@ -68,7 +68,7 @@
     "src": "resources/fonts/fa-solid-900.woff2"
   },
   "resources/ts/admin/app.ts": {
-    "file": "assets/app-393kkb5-.js",
+    "file": "assets/app-DvvgysFC.js",
     "name": "app",
     "src": "resources/ts/admin/app.ts",
     "isEntry": true,
