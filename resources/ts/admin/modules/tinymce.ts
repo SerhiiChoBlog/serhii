@@ -40,6 +40,7 @@ export const tinymceConfig: EditorOptions = {
         { text: 'SQL', value: 'sql' },
         { text: 'TypeScript', value: 'typescript' },
         { text: 'Yaml', value: 'yaml' },
+        { text: 'HTML', value: 'html' },
         { text: 'HTML/XML', value: 'xml' },
     ],
 }
