@@ -15,7 +15,7 @@ function screenSize(screen: Size): boolean {
         case 'md':
             return window.innerWidth <= 768
         case 'lg':
-            return window.innerWidth <= 1024
+            return window.innerWidth <= 1023
         case 'xl':
             return window.innerWidth <= 1280
         default:
