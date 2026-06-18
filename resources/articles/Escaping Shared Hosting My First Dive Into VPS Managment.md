@@ -151,13 +151,11 @@ After you restart the server, Apache is now going to read `.htaccess` files and 
 
 ## Locking Down Your Permissions
 
-Another issue you might have could be related to your server not being able to modify files in specific directories. The best way to go about it is:
+Another common issue after migration is your web server failing to write to directories like cache or logs due to incorrect file permissions. The best way to go about it is:
 
-1. **Make your user own all the project files.** Even if the server gets hacked, they cannot modify anything.
-2. **Make the project owned by the www-data group.** Your server will be able to read all the files.
-3. **Make all the project directories executable.** On Linux, non-executable directories cannot be accessed.
-4. **Make all the project files owned by your user and read-only by the group.** Restrict the server from modifying any files in your project.
-5. **Allow the www-data group to modify specific directories.** Your server needs to have read and write permissions for specific directories like cache and logs.
+1. **Make your user own all the project files with the group having read-only access.** If the server gets hacked, the attacker (running as www-data) can't modify files because they're owned by your user, not www-data.
+2. **Make all the project directories executable.** On Linux, without execute permission, you cannot 'cd' into a directory, even if read permissions are set.
+3. **Allow the www-data group to modify specific directories.** Your server needs to have read and write permissions for specific directories like cache and logs.
 
 Here is the list of commands similar to what I was executing on my VPS:
 
@@ -181,19 +179,45 @@ sudo chmod -R 770 storage/logs storage/framework bootstrap/cache
 sudo chown -R www-data:www-data storage/logs storage/framework bootstrap/cache
 ```
 
-Your user needs to be a member of `www-data` group in order to at least read the files owned by the server. You can check which users are in `www-data` group, you can run:
+Here is a quick reference for what each permission number means
+
+| Number | Permission               | Symbolic |
+| ------ | ------------------------ | -------- |
+| **0**  | No permissions           | `---`    |
+| **1**  | Execute only             | `--x`    |
+| **2**  | Write only               | `-w-`    |
+| **3**  | Write and execute        | `-wx`    |
+| **4**  | Read only                | `r--`    |
+| **5**  | Read and execute         | `r-x`    |
+| **6**  | Read and write           | `rw-`    |
+| **7**  | Read, write, and execute | `rwx`    |
+
+So `750` means:
+
+- **Owner** = 7 (read, write, execute)
+- **Group** = 5 (read, execute)
+- **Others** = 0 (no access)
+
+Your user needs to be a member of `www-data` group in order to at least read the files owned by the server. To check which users are in `www-data` group, you can run:
 
 ```bash
 cat /etc/group | grep www-data
 ```
 
-If there are no users, you'll get somethign like this: `www-data:x:33:`. To add your user to the `www-data` group, you can run `usermod` command:
+If there are no users, you'll get something like `www-data:x:33:`.
+
+- **www-data** — The group name
+- **x** — An old placeholder for a group password (group passwords are rarely used nowadays, so this is mostly a leftover convention)
+- **33** — The group ID (GID)
+- **Empty field after the last colon** — No users are currently members of this group
+
+To add your user to the `www-data` group, you can run `usermod` command:
 
 ```bash
-sudo usermod -aG www-data your-username
+sudo usermod -aG www-data my-user
 ```
 
-The `-aG` flag in this case tells Linux to add the user to the group instead of replacing all existing groups.
+The `-aG` flag in this case tells Linux to add the user to the group instead of replacing all existing groups. That should lock things down securely. If you have a better way of doing it, please share it in the comments. I'm always open to learning new things. I'll update this article, and thank you in advance.
 
 ## Conclusion
 
