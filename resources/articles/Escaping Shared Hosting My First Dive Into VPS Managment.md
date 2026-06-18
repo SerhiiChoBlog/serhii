@@ -153,8 +153,8 @@ After you restart the server, Apache is now going to read `.htaccess` files and 
 
 Another issue you might have could be related to your server not being able to modify files in specific directories. The best way to go about it is:
 
-1. **Make your user own all the project files.** Even if server gets hacked, they cannot modify anything.
-2. **Make the project to be owned by www-data group.** Your server will be able to read all the files.
+1. **Make your user own all the project files.** Even if the server gets hacked, they cannot modify anything.
+2. **Make the project owned by the www-data group.** Your server will be able to read all the files.
 3. **Make all the project directories executable.** On Linux, non-executable directories cannot be accessed.
 4. **Make all the project files owned by your user and read-only by the group.** Restrict the server from modifying any files in your project.
 5. **Allow the www-data group to modify specific directories.** Your server needs to have read and write permissions for specific directories like cache and logs.
@@ -176,7 +176,24 @@ sudo find . -type f -exec chmod 740 {} +
 
 # Make specific directories writable by the server
 sudo chmod -R 770 storage/logs storage/framework bootstrap/cache
+
+# Make specific directories owned only by www-data user and group
+sudo chown -R www-data:www-data storage/logs storage/framework bootstrap/cache
 ```
+
+Your user needs to be a member of `www-data` group in order to at least read the files owned by the server. You can check which users are in `www-data` group, you can run:
+
+```bash
+cat /etc/group | grep www-data
+```
+
+If there are no users, you'll get somethign like this: `www-data:x:33:`. To add your user to the `www-data` group, you can run `usermod` command:
+
+```bash
+sudo usermod -aG www-data your-username
+```
+
+The `-aG` flag in this case tells Linux to add the user to the group instead of replacing all existing groups.
 
 ## Conclusion
 
