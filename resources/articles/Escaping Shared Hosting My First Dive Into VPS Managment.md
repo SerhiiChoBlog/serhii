@@ -169,16 +169,18 @@ sudo chown -R www-data:www-data storage bootstrap/cache</code></pre>
 
 Here is a quick reference for what each permission number means
 
-| Number | Permission               | Symbolic |
-| ------ | ------------------------ | -------- |
-| **0**  | No permissions           | `---`    |
-| **1**  | Execute only             | `--x`    |
-| **2**  | Write only               | `-w-`    |
-| **3**  | Write and execute        | `-wx`    |
-| **4**  | Read only                | `r--`    |
-| **5**  | Read and execute         | `r-x`    |
-| **6**  | Read and write           | `rw-`    |
-| **7**  | Read, write, and execute | `rwx`    |
+<pre class="language-plaintext"><code>┌──────────┬─────────────────────────┬──────────┐
+│ Number   │ Permission              │ Symbolic │
+├──────────┼─────────────────────────┼──────────┤
+│ 0        │ No permissions          │ ---      │
+│ 1        │ Execute only            │ --x      │
+│ 2        │ Write only              │ -w-      │
+│ 3        │ Write and execute       │ -wx      │
+│ 4        │ Read only               │ r--      │
+│ 5        │ Read and execute        │ r-x      │
+│ 6        │ Read and write          │ rw-      │
+│ 7        │ Read, write, and execute│ rwx      │
+└──────────┴─────────────────────────┴──────────┘</code></pre>
 
 So `750` means:
 
