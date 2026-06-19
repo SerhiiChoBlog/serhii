@@ -2,11 +2,25 @@
 
 In my nine-year programming career, I've never used a **virtual private server (VPS)** for any of my projects because shared hosting always did the job. I would probably still be using it if it wasn't for the constant price increase.
 
-I want to use this article to document my journey going from shared hosting to VPS to give other tech brothers and sisters information about what issues they might face and what they should expect.
+I want to use this article to document my journey going from shared hosting to VPS to help other developers know what to expect and where the pitfalls are.
 
-Yesterday, on May 25, 2026, I purchased a KVM1 plan VPS on Hostinger because it was the best solution for my personal tech blog in terms of money spent and value gained. I searched through a couple of other options, like DigitalOcean and others, and Hostinger was a perfect fit for me. And, cherry on top, it has a referral program where you can invite a friend and you both get additional discounts. That was precisely what I needed because **I had just such a friend who also wanted me to move his WordPress site from shared hosting**.
+On May 25, 2026, I purchased a KVM1 plan VPS on Hostinger because it was the best balance of price and performance for my personal tech blog. I searched through a couple of other options, like DigitalOcean and others, and Hostinger was a perfect fit for me.
 
-I'm not a professional sysadmin, but as a programmer who has worked in the field for nine years, I'll walk you through my experience moving from shared hosting to VPS. We'll start by talking about the conveniences and differences between both and then transition into the migration process. Let's start by addressing the elephant in the room: What makes VPS different from shared hosting?
+And, the cherry on top, it has a referral program where you can invite a friend and you both get additional discounts. That was precisely what I needed because **I had just such a friend who also wanted me to move his WordPress site from shared hosting**.
+
+I'm not a professional sysadmin, but as a programmer who has worked in the field for nine years, I'll walk you through my experience. We'll start with the conveniences and differences between the two, then move on to the migration itself. Let's start by addressing the elephant in the room: What makes VPS different from shared hosting?
+
+**Who this is for:**
+
+- You're a developer comfortable with the command line
+- You've used shared hosting but want more control
+- You're considering a VPS but don't know where to start
+
+**What you'll need:**
+
+- Basic Linux commands (`cd`, `ls`, `sudo`, `chmod`)
+- SSH client (like OpenSSH or PuTTY)
+- A project to migrate (optional but helpful)
 
 ## Difference Between VPS and Shared Hosting
 
@@ -16,7 +30,7 @@ VPS is like moving into your house where you have your walls and full control ov
 
 Note. Some providers offer shared vCPUs, meaning if someone is blasting music in their house, they're still going to impact neighbors. Others provide dedicated cores, where you're essentially in a soundproof room. **A vCPU, or virtual CPU, is a piece of a physical processor assigned to your virtual machine by a hypervisor.**
 
-Note. A hypervisor, sometimes called a virtual machine monitor, is software that controls communications with the CPU of the computer. Instead of speaking to the CPU directly, the hypervisor intercepts those signals and decides in which order they should be sent. Why do you need that, you might ask? The answer is when you have 2 or more operating systems talking to the same CPU at the same time. Basically, **a hypervisor is what makes it possible to share the same physical CPU with multiple computers.**
+Note. A hypervisor, sometimes called a virtual machine monitor, is software that controls communications with the CPU of the computer. Instead of talking to the CPU directly, the hypervisor intercepts those signals and queues them up in the right order. Why do you need that, you might ask? The answer is when you have 2 or more operating systems talking to the same CPU at the same time. Basically, **a hypervisor is what makes it possible to share the same physical CPU with multiple computers.**
 
 That's why it's better to have VPS than shared hosting if you want more freedom. With VPS, you can have any Linux distribution that you want with any software that you want. Shared hosting puts you in an existing distribution with other users already there. You cannot see them if you type `ls /home`. But they are there.
 
@@ -30,7 +44,7 @@ But at the same time, these interfaces prevented me from learning how to work wi
 
 ![phpMyAdmin panel example](/storage/posts/content/escaping-shared-hosting-my-first-dive-into-vps-managment-1780064529.png)
 
-While integrated panels are convenient, for programmers, they act as a barrier to learning. You'll never learn how to install a new PHP version with its extensions on a production server. Or how to set up Apache 2 with its mods.
+But for programmers, these panels get in the way of actually learning things. You'll never learn how to install a new PHP version with its extensions on a production server. Or how to set up Apache 2 with its mods.
 
 Because if you try to do any of those things on shared hosting, you'll quickly find out that you don't have root permissions. Remember our comparison with the dormitory room? You can do things inside your room, but everything outside of it doesn't belong to you. That brings us neatly to the next chapter.
 
@@ -48,17 +62,15 @@ One thing left: the migration itself.
 
 ## The Migration Process
 
-Migrating a project from shared hosting to VPS for nerds like me is not as difficult as one might assume. I'm sure it would be a struggle for non-tech people, but this article targets individuals with software development knowledge and basic system administration.
+Migrating from shared hosting to a VPS isn't rocket science. It would be a struggle for non-tech folks, but for developers like us, it's mostly about knowing where to start.
 
-It's not all sunshine and rainbows, though. I'll share the hidden pitfalls later in this article, because they also exist, but for now, let's focus on planning the actual move.
+It's not all sunshine and rainbows, though. I'll share the hidden pitfalls later, but for now, let's focus on planning the move.
 
-I'm going to assume that you will manage your VPS through the CLI instead of installing cPanel and other interfaces like phpMyAdmin to manage your system. There is nothing wrong with doing so. However, bypassing graphical interfaces encourages a deeper mastery of underlying system services.
+I'm going to assume that you will manage your VPS through the CLI instead of installing cPanel and other interfaces like phpMyAdmin to manage your system. There is nothing wrong with doing so. However, skipping the GUI is how you really learn what's going on.
 
 ### Planning
 
 The first real step in any migration is choosing the right hosting provider. I'm not going to compare any hosting providers because they change every year, but I've personally tried DigitalOcean, Hostinger, and a couple of local options, and I settled on Hostinger because DigitalOcean was pricier. It doesn't mean that you should also pick Hostinger. That's just my pick based on the price and the UI for managing my VPS.
-
-But if you also go for Hostinger like me, I have a link at the end of this article to help you save 20% on your first purchase. But promise that you decide on your hosting provider yourself rather than just blindly following my link. That's why I've moved it to the very bottom of the article instead of placing it right here for easy access.
 
 Regardless of your provider, try to find coupons and discounts for your desired plan. You can save a significant amount of money if you look for referral links and coupon codes. Many providers are glad to provide you discounts to make you sign up for their service.
 
@@ -86,9 +98,7 @@ In my case, I've just created an account on one of those services because some o
 
 I cannot elaborate on the transition to VPS without explaining the biggest issue that I had in this journey. While writing this article, I still don't know whose fault it was. It could have been me, my ISP, or the hosting provider, but I must share it with everyone. Let's discuss what the black hole is first.
 
-Wikipedia says that in networking, a black hole refers to a place in the network where incoming or outgoing traffic is discarded without informing the source that the data did not reach its intended recipient. To put it simply, it functions as a digital void where data packets enter but never exit, often leaving the sender unaware that a connection failure has occurred.
-
-Tip. As programmers, we usually think of the internet as requests and responses. But at a lower level, request and response are just bits (zeros and ones). 8 bits make up a byte, and a packet is simply a group of those bytes. Each packet contains a header and a payload (message). The header is holding information about a sender and receiver, and the payload is a small chunk of your request's content. It holds only a small chunk of your message because the size of a single packet is typically around 1,500 bytes. You can observe packets in real time using tools like Wireshark.
+In networking, a black hole is where packets go to die. They enter, but they never leave, and the sender never finds out. To put it simply, it functions as a digital void where data packets enter but never exit, often leaving the sender unaware that a connection failure has occurred.
 
 In your browser, it would look like an infinite page loading or a connection timeout because the network layer silently drops the traffic without transmitting an error signal to your router.
 
@@ -133,11 +143,11 @@ After solving the BGP routing issue and adding final configurations to the web s
     Require all granted
 &lt;/Directory&gt;</code></pre>
 
-After that change, we obviously must restart Apache by running:
+After that change, restart Apache:
 
 <pre class="language-bash"><code>sudo systemctl restart apache2</code></pre>
 
-After you restart the server, Apache is now going to read `.htaccess` files and apply those configurations on a fly instead of depending on the main configuration file. That should solve the 404 issue for Laravel and other frameworks that rely on `.htaccess` files.
+After the restart, Apache will read `.htaccess` files and apply those configurations on the fly instead of relying on the main config file. That should solve the 404 issue for Laravel and other frameworks that rely on `.htaccess` files.
 
 ## Locking Down Your Permissions
 
@@ -162,7 +172,7 @@ sudo find . -type d -exec chmod 750 {} +
 sudo find . -type f -exec chmod 740 {} +
 
 # Make specific directories writable by the server
-sudo chmod -R 770 storage bootstrap/cache
+sudo chmod -R 770 storage bootstrap/cache public/sitemap.xml
 
 # Make specific directories owned only by www-data user and group
 sudo chown -R www-data:www-data storage bootstrap/cache</code></pre>
@@ -207,9 +217,7 @@ The `-aG` flag in this case tells Linux to add the user to the group instead of 
 
 ## Ongoing Maintenance
 
-The migration is done, but the work isn't over. A VPS requires ongoing attention. Regularly check for software updates, monitor server logs for unusual activity, and consider setting up automated backups. Additionally, consider setting up a basic firewall and system monitoring.
-
-Initially, I wanted to discuss the ongoing maintenance here in this chapter, but after working on it, it grew beyond the scope of this article. So, I've decided to publish this article and work on "VPS Maintenance: The Independent Approach" which will cover everything in detail.
+The migration is done, but the work isn't over. A VPS requires ongoing attention. You'll want to keep an eye on updates, logs, and backups. A firewall wouldn't hurt either. But honestly, I'll save the details for the next article: "VPS Maintenance: The Independent Approach", which will cover everything in detail.
 
 I'll cover things like how to set up a firewall, how to create automatic backups, and system monitoring, where you'll be notified about your disk usage and site availability. If you are interested in this topic, consider <a href="/subscribe" title="Subscribe page" target="_blank">subscribing</a> if you don't want to miss it. You can unsubscribe anytime at the bottom of each email.
 
@@ -223,11 +231,6 @@ I'll cover things like how to set up a firewall, how to create automatic backups
 
 The rising price tag on my previous hosting pushed me to consider alternatives and eventually moving to a VPS. Was it a good personal decision? Absolutely! Messing with Linux and config files always excites me, and I can now do things that I couldn't do on shared hosting. I can install any software I want, have full control over my environment, and have significantly more compute power on the server.
 
-It's one of those cases where the price increase was a blessing because it pushed me to learn new things and gain more control over my project. If you are on the fence about moving to VPS, I would say go for it if you have the technical knowledge to manage it. It's a great learning experience and can be very rewarding.
+It's one of those cases where the price increase was a blessing because it pushed me to learn new things and gain more control over my project. If you're on the fence, go for it. It's challenging, but you'll learn a ton.
 
 And as a cherry on top, it led me to write this article to document my journey. Thanks for reading, thank you, Linux, and happy hosting to all of you.
-
-## Links
-
-- <a href="https://www.hostinger.com/cart?REFERRALCODE=LIJSERHIIVHW&referral_id=019e6331-8531-7077-8b1d-6abd8ad00273" title="My referral Hostinger link with the discount" target="_blank">My referral Hostinger link with the discount</a>
-- <a href="https://www.hostinger.com/cart?product=vps%3Avps_kvm_1&period=24&referral_type=cart_link&REFERRALCODE=LIJSERHIIVHW&referral_id=019e6338-64cf-73b8-b590-6a7b2e0860c6" title="Link to Hostinger KVM1 plan" target="_blank">KVM1 20% discount</a>
