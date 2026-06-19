@@ -64,7 +64,7 @@ Regardless of your provider, try to find coupons and discounts for your desired 
 
 ### Execution
 
-Once you select your preferred provider, it’s time to set up your VPS. Usually, you’ll pick such options as a distribution, storage capacity, and a server geolocation. Thereafter, you’ll need to setup an SSH connection with your VPS and come up with a password for the root user.
+Once you select your preferred provider, it’s time to set up your VPS. Usually, you’ll pick such options as a distribution, storage capacity, and a server geolocation. Thereafter, you’ll need to set up an SSH connection with your VPS and come up with a password for the root user.
 
 Once access is secured, you can create a user with sudo privileges and disable root SSH by changing one line in your `/etc/ssh/sshd_config` file.
 
@@ -80,7 +80,7 @@ You should also update your system and, depending on your workflow, install the 
 
 One of the things you need to keep in mind while making the move is the mail server. If you are using an external SMTP service like SendGrid, Brevo, or Mailgun, the transition remains relatively straightforward. However, hosting your own mail server introduces challenges regarding IP reputation.
 
-It’s not that difficult to setup a mail server on Linux, but to configure it so that your mail doesn’t go to a spam folder on most email providers is a different story. Basically, you can spend days and weeks configuring your own mail server, or you can just use an SMTP service.
+It’s not that difficult to set up a mail server on Linux, but to configure it so that your mail doesn’t go to a spam folder on most email providers is a different story. Basically, you can spend days and weeks configuring your own mail server, or you can just use an SMTP service.
 
 In my case, I’ve just created an account on one of those services because some of them are giving free daily emails, which is what I need.
 
@@ -96,7 +96,7 @@ In your browser, it would look like an infinite page loading or a connection tim
 
 When I tested to access my website with VPN enabled, it would work fine for some VPN servers, and some of them had the same issue. It wasn’t a DNS issue because I was also testing the SSH connection, which was connecting by IP address instead of domain.
 
-After making sure I’m not running any firewalls and my /etc/hosts.deny is empty, I’ve contacted the hosting provider and explained the issue. Their argument was that they are not blocking any IP addresses for my VPS, and my website works perfectly fine from their end.
+After making sure I’m not running any firewalls and my `/etc/hosts.deny` is empty, I’ve contacted the hosting provider and explained the issue. Their argument was that they are not blocking any IP addresses for my VPS, and my website works perfectly fine from their end.
 
 After searching for more information about what to do in these situations, I learned about a cool network diagnostic tool called **MTR (My Traceroute),** and it made me love Linux even more than before. This is a fantastic program that combines the functionality of ping and traceroute in a single tool. Since it shows the results live, we need to pass `--report` or `--report-wide` flag to print the output once instead of serving it live.
 
@@ -219,9 +219,17 @@ sudo usermod -aG www-data my-user
 
 The `-aG` flag in this case tells Linux to add the user to the group instead of replacing all existing groups. That should lock things down securely. If you have a better way of doing it, please share it in the comments. I'm always open to learning new things. I'll update this article, and thank you in advance.
 
+## Ongoing Maintenance
+
+The migration is done, but the work isn't over. A VPS requires ongoing attention. Regularly check for software updates, monitor server logs for unusual activity, and consider setting up automated backups. Additionally, consider setting up a basic firewall and system monitoring.
+
+Initially, I wanted to discuss the ongoing maintenance here in this chapter, but after working on it, it grew beyond the scope of this article. So, I've decided to publish this article and work on "VPS Maintenance: The Independent Approach" which will cover everything in detail.
+
+I'll cover things like how to set up a firewall, how to create automatic backups, and system monitoring, where you'll be notified about your disk usage and site availability. If you are interested in this topic, consider <a href="/subscribe" title="Subscribe page" target="_blank">subscribing</a> if you don't want to miss it. You can unsubscribe anytime at the bottom of each email.
+
 ## Conclusion
 
-A final verdict and a 'Who is this for?' summary to provide a practical takeaway for the reader.
+
 
 ## Links
 
