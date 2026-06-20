@@ -44,7 +44,7 @@ But at the same time, these interfaces prevented me from learning how to work wi
 
 ![phpMyAdmin panel example](/storage/posts/content/escaping-shared-hosting-my-first-dive-into-vps-managment-1780064529.png)
 
-But for programmers, these panels get in the way of actually learning things. You'll never learn how to install a new PHP version with its extensions on a production server. Or how to set up Apache 2 with its mods.
+Yet for programmers, these panels get in the way of actually learning things. You'll never learn how to install a new PHP version with its extensions on a production server. Or how to set up Apache 2 with its mods.
 
 Because if you try to do any of those things on shared hosting, you'll quickly find out that you don't have root permissions. Remember our comparison with the dormitory room? You can do things inside your room, but everything outside of it doesn't belong to you. That brings us neatly to the next chapter.
 
@@ -76,15 +76,96 @@ Regardless of your provider, try to find coupons and discounts for your desired 
 
 ### Execution
 
-Once you select your preferred provider, it's time to set up your VPS. Usually, you'll pick such options as a distribution, storage capacity, and a server geolocation. Thereafter, you'll need to set up an SSH connection with your VPS and come up with a password for the root user.
+Once you select your preferred provider, it's time to set up your VPS. Usually, you'll pick such options as a distribution, storage capacity, and a server geolocation. As a first step, you need to update and upgrade your system. I like to do it like this:
 
-Once access is secured, you can create a user with sudo privileges and disable root SSH by changing one line in your `/etc/ssh/sshd_config` file.
+<pre class="language-bash"><code>apt update && apt upgrade</code></pre>
 
-<pre class="language-plaintext"><code>PermitRootLogin no</code></pre>
+After upgrade is done, I like to run autoremove command to make sure there are no unused packages on the system.
+
+<pre class="language-bash"><code>apt autoremove</code></pre>
+
+Next, you'll need set up an SSH connection with your VPS, and come up with a password for the root user.
+
+Once access is secured, you can create a user with sudo privileges. Here are the steps:
+
+**1. Create a user with bash shell instead of sh:**
+
+<pre class="language-bash"><code>useradd -m -s /bin/bash my-user</code></pre>
+
+**2. Check if the user was added:**
+
+<pre class="language-bash"><code>getent my-user | grep my-user</code></pre>
+
+**3. Set a password for the user you just created:**
+
+<pre class="language-bash"><code>passwd my-user</code></pre>
+
+**4. Move authorized_keys from root to a new user:**
+
+<pre class="language-bash"><code>cp -r .ssh /home/my-user</code></pre>
+
+**5. Change permissions on .ssh directory for a user:**
+
+<pre class="language-bash"><code>cd /home/my-user && chown -R my-user:my-user .ssh</code></pre>
+
+**6. If you are using Debian, install sudo:**
+
+Debian distribution doesn't include sudo by default, you'll need to install it:
+
+<pre class="language-bash"><code>apt install sudo</code></pre>
+
+**7. Add your newly created user to the sudo group:**
+
+<pre class="language-bash"><code>usermod -aG sudo my-user</code></pre>
+
+**8. Check if the user was added to the sudo group:**
+
+<pre class="language-bash"><code>cat /etc/group | grep sudo</code></pre>
+
+The output should be something like `sudo:x:27:my-user`.
+
+- **sudo:** The group name
+- **x:** An old placeholder for a group password (group passwords are rarely used nowadays, so this is mostly a leftover convention)
+- **27:** The group ID (GID)
+- **my-user** The user in the group
+
+**9. Exit VPS and try to SSH into it as a user instead of root:**
+
+<pre class="language-bash"><code>ssh -t my-user@my-server-ip "cd /home/my-user && exec bash -l"</code></pre>
+
+I like this command because it allows me to SSH into a specific directory on a server instead of going into a home directory. Currently, I just have it as `/home/my-user` but you should change it to your project directory like `/var/www/html`.
+
+If everything works and we are able to SSH as a user, we should disable SSH as root and forbit a password login for a better security.
+
+**1. Go into SSH deamon configuration directory and list of the files there:**
+
+<pre class="language-bash"><code>cd /etc/ssh/sshd_config.d && ls -l</code></pre>
+
+In my case, I get this output:
+
+<pre class="language-plaintext"><code>total 8
+-rw------- 1 root root 27 Jun 20 06:22 50-cloud-init.conf
+-rw-r--r-- 1 root root 26 May 18 12:59 60-cloudimg-settings.conf
+</code></pre>
+
+Your output can be different. We need to create a new file in this directory with a prefix number higher then those that already exist. The higher the number the higher the priority for applying the configurations. In my case, the file `60-cloudimg-settings.conf` has number 60, I'll create a `100-custom.conf` file to make sure my file has priority.
+
+**2. Create a configuration file for SSH deamon:**
+
+<pre class="language-bash"><code>sudo touch 100-custom.conf</code></pre>
+
+**3. Open the file you've just created with your preffered editor and add these 2 lines:**
+
+<pre class="language-plaintext"><code>PermitRootLogin no
+PasswordAuthentication no</code></pre>
 
 The reason is that you don't want to execute commands as the root user directly, as this exposes your system to significant security risks. Additionally, it will lead to permissions issues where root files will not be accessible by a web server.
 
-You should also update your system and, depending on your workflow, install the required software. In my case, I've installed Apache 2 with the needed mods, MariaDB, and certbot for automatic SSL.
+**4. Restart SSH deamon to apply configuration:**
+
+<pre class="language-bash"><code>sudo systemctl restart ssh</code></pre>
+
+You should also install the required software. In my case, I've installed Apache 2 with the needed mods, MariaDB, and certbot for automatic SSL.
 
 ### Hidden Pitfalls
 
@@ -98,7 +179,7 @@ In my case, I've just created an account on one of those services because some o
 
 I cannot elaborate on the transition to VPS without explaining the biggest issue that I had in this journey. While writing this article, I still don't know whose fault it was. It could have been me, my ISP, or the hosting provider, but I must share it with everyone. Let's discuss what the black hole is first.
 
-In networking, a black hole is where packets go to die. They enter, but they never leave, and the sender never finds out. To put it simply, it functions as a digital void where data packets enter but never exit, often leaving the sender unaware that a connection failure has occurred.
+In networking, a black hole is where packets go to die. They enter but never leave, and the sender never finds out. To put it simply, it functions as a digital void where data packets enter but never exit, often leaving the sender unaware that a connection failure has occurred.
 
 In your browser, it would look like an infinite page loading or a connection timeout because the network layer silently drops the traffic without transmitting an error signal to your router.
 
@@ -202,14 +283,7 @@ Your user needs to be a member of `www-data` group in order to at least read the
 
 <pre class="language-bash"><code>cat /etc/group | grep www-data</code></pre>
 
-If there are no users, you'll get something like `www-data:x:33:`.
-
-- **www-data** — The group name
-- **x** — An old placeholder for a group password (group passwords are rarely used nowadays, so this is mostly a leftover convention)
-- **33** — The group ID (GID)
-- **Empty field after the last colon** — No users are currently members of this group
-
-To add your user to the `www-data` group, you can run `usermod` command:
+If there are no users, you'll get something like `www-data:x:33:`. To add your user to the `www-data` group, you can run `usermod` command:
 
 <pre class="language-bash"><code>sudo usermod -aG www-data my-user</code></pre>
 
@@ -217,7 +291,7 @@ The `-aG` flag in this case tells Linux to add the user to the group instead of 
 
 ## Ongoing Maintenance
 
-The migration is done, but the work isn't over. A VPS requires ongoing attention. You'll want to keep an eye on updates, logs, and backups. A firewall wouldn't hurt either. But honestly, I'll save the details for the next article: "VPS Maintenance: The Independent Approach", which will cover everything in detail.
+The migration is done, but the work isn't over. A VPS requires ongoing attention. You'll want to keep an eye on updates, logs, and backups. A firewall wouldn't hurt either. But honestly, I'll save the details for the next article, "VPS Maintenance: The Independent Approach", which will cover everything in detail.
 
 I'll cover things like how to set up a firewall, how to create automatic backups, and system monitoring, where you'll be notified about your disk usage and site availability. If you are interested in this topic, consider <a href="/subscribe" title="Subscribe page" target="_blank">subscribing</a> if you don't want to miss it. You can unsubscribe anytime at the bottom of each email.
 
@@ -229,7 +303,7 @@ I'll cover things like how to set up a firewall, how to create automatic backups
 
 ## Conclusion
 
-The rising price tag on my previous hosting pushed me to consider alternatives and eventually moving to a VPS. Was it a good personal decision? Absolutely! Messing with Linux and config files always excites me, and I can now do things that I couldn't do on shared hosting. I can install any software I want, have full control over my environment, and have significantly more compute power on the server.
+The rising price tag on my previous hosting pushed me to consider alternatives and eventually move to a VPS. Was it a good personal decision? Absolutely! Messing with Linux and config files always excites me, and I can now do things that I couldn't do on shared hosting. I can install any software I want, have full control over my environment, and have significantly more compute power on the server.
 
 It's one of those cases where the price increase was a blessing because it pushed me to learn new things and gain more control over my project. If you're on the fence, go for it. It's challenging, but you'll learn a ton.
 
