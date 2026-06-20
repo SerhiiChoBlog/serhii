@@ -1,6 +1,6 @@
 ## Introduction
 
-In my nine-year programming career, I've never used a **virtual private server (VPS)** for any of my projects because shared hosting always did the job. I would probably still be using it if it wasn't for the constant price increase.
+In my nine-year programming career, I've never used a **virtual private server (VPS)** for any of my projects because shared hosting always did the job. I would probably still be using it if it wasn't for the constant price increase.
 
 I want to use this article to document my journey going from shared hosting to VPS to help other developers know what to expect and where the pitfalls are.
 
@@ -80,11 +80,11 @@ Once you select your preferred provider, it's time to set up your VPS. Usually, 
 
 <pre class="language-bash"><code>apt update && apt upgrade</code></pre>
 
-After upgrade is done, I like to run autoremove command to make sure there are no unused packages on the system.
+After upgrade is done, I like to run the autoremove command to make sure there are no unused packages on the system.
 
 <pre class="language-bash"><code>apt autoremove</code></pre>
 
-Next, you'll need set up an SSH connection with your VPS, and come up with a password for the root user.
+Next, you'll need to set up an SSH connection with your VPS and come up with a password for the root user.
 
 Once access is secured, you can create a user with sudo privileges. Here are the steps:
 
@@ -104,7 +104,7 @@ Once access is secured, you can create a user with sudo privileges. Here are the
 
 <pre class="language-bash"><code>cp -r .ssh /home/my-user</code></pre>
 
-**5. Change permissions on .ssh directory for a user:**
+**5. Change permissions on the .ssh directory for a user:**
 
 <pre class="language-bash"><code>cd /home/my-user && chown -R my-user:my-user .ssh</code></pre>
 
@@ -135,9 +135,9 @@ The output should be something like `sudo:x:27:my-user`.
 
 I like this command because it allows me to SSH into a specific directory on a server instead of going into a home directory. Currently, I just have it as `/home/my-user` but you should change it to your project directory like `/var/www/html`.
 
-If everything works and we are able to SSH as a user, we should disable SSH as root and forbit a password login for a better security.
+If everything works and we can SSH as a user, we should disable SSH as root and forbit a password login for better security.
 
-**1. Go into SSH deamon configuration directory and list of the files there:**
+**1. Go into the SSH deamon configuration directory and list of the files there:**
 
 <pre class="language-bash"><code>cd /etc/ssh/sshd_config.d && ls -l</code></pre>
 
@@ -148,13 +148,13 @@ In my case, I get this output:
 -rw-r--r-- 1 root root 26 May 18 12:59 60-cloudimg-settings.conf
 </code></pre>
 
-Your output can be different. We need to create a new file in this directory with a prefix number higher then those that already exist. The higher the number the higher the priority for applying the configurations. In my case, the file `60-cloudimg-settings.conf` has number 60, I'll create a `100-custom.conf` file to make sure my file has priority.
+Your output can be different. We need to create a new file in this directory with a prefix number higher than those that already exist. The higher the number, the higher the priority for applying the configurations. In my case, the file `60-cloudimg-settings.conf` has number 60. I'll create a `100-my-user.conf` file to make sure my file has priority.
 
 **2. Create a configuration file for SSH deamon:**
 
-<pre class="language-bash"><code>sudo touch 100-custom.conf</code></pre>
+<pre class="language-bash"><code>sudo touch 100-my-user.conf</code></pre>
 
-**3. Open the file you've just created with your preffered editor and add these 2 lines:**
+**3. Open the file you've just created with your preferred editor and add these 2 lines:**
 
 <pre class="language-plaintext"><code>PermitRootLogin no
 PasswordAuthentication no</code></pre>
@@ -215,7 +215,7 @@ Anyway, I just wanted to mention this issue with my VPS because it had a signifi
 
 ## Web Server Issues
 
-After solving the BGP routing issue and adding final configurations to the web server, I needed to make sure everything works. I've noticed right away that my Laravel website was loading the main page perfectly fine, but as soon as I switched to any other page, it would give me a 404 (not found) error. If you are using Apache, like in my case, then it's oftentimes a path overrides issue. You need to go into your Apache configuration file in `/etc/apache2/apache2.conf` and change `AllowOverride` line to have value `All` for your project directory:
+After solving the BGP routing issue and adding final configurations to the web server, I needed to make sure everything works. I've noticed right away that my Laravel website was loading the main page perfectly fine, but as soon as I switched to any other page, it would give me a 404 (not found) error. If you are using Apache, like in my case, then it's oftentimes a path overrides issue. You need to go into your Apache configuration file in `/etc/apache2/apache2.conf` and change `AllowOverride` line to have value `All` for your project directory:
 
 <pre class="language-diff"><code>&lt;Directory /var/www/&gt;
     Options Indexes FollowSymLinks
@@ -296,7 +296,7 @@ The migration is done, but the work isn't over. A VPS requires ongoing attention
 I'll cover things like how to set up a firewall, how to create automatic backups, and system monitoring, where you'll be notified about your disk usage and site availability. If you are interested in this topic, consider <a href="/subscribe" title="Subscribe page" target="_blank">subscribing</a> if you don't want to miss it. You can unsubscribe anytime at the bottom of each email.
 
 <blockquote>
-    <p>Companies spend millions of dollars on firewalls and secure access devices, and it's money wasted because none of these measures address the weakest link in the security chain: the people who use, administer and operate computer systems</p>
+    <p>Companies spend millions of dollars on firewalls and secure access devices, and it's money wasted because none of these measures address the weakest link in the security chain: the people who use, administer, and operate computer systems</p>
     <img src="/storage/posts/content/escaping-shared-hosting-my-first-dive-into-vps-managment-1781855845.jpg" alt="Kevin Mitnick's photo" />
     <h6>Kevin Mitnick</h6>
 </blockquote>
