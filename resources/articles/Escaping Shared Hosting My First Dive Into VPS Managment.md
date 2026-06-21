@@ -4,7 +4,7 @@ In my nine-year programming career, I've never used a **virtual private server (
 
 I want to use this article to document my journey going from shared hosting to VPS to help other developers know what to expect and where the pitfalls are.
 
-On May 25, 2026, I purchased a KVM1 plan VPS on Hostinger because it was the best balance of price and performance for my personal tech blog. I searched through a couple of other options, like DigitalOcean and others, and Hostinger was a perfect fit for me.
+On May 25, 2026, I purchased a <a href="https://www.hostinger.com/cart?product=vps%3Avps_kvm_1&period=12&referral_type=cart_link&REFERRALCODE=LIJSERHIIVHW&referral_id=019ee862-9463-72f2-970e-9ee273680982" title="Link to KVM1 plan" target="_blank">KVM1</a> plan VPS on Hostinger because it was the best balance of price and performance for my personal tech blog. I searched through a couple of other options, like DigitalOcean and others, and Hostinger was a perfect fit for me.
 
 And, the cherry on top, it has a referral program where you can invite a friend and you both get additional discounts. That was precisely what I needed because **I had just such a friend who also wanted me to move his WordPress site from shared hosting**.
 
