@@ -62,21 +62,26 @@ class Visitor extends Model
             return;
         }
 
-        $today_post_view = $visitor
-            ->postViews()
-            ->where('post_id', $post_id)
-            ->whereDate('created_at', today())
-            ->first();
-
-        if ($today_post_view || auth('admin')->check()) {
+        if ($visitor->hasRecentPostView($post_id) || auth('admin')->check()) {
             return;
         }
 
-        if (app()->environment('production')) {
+        if (app()->isProduction()) {
             event(new NewPostView($post_id, $visitor->code ?? 'unknown'));
         }
 
         $visitor->postViews()->create(compact('post_id'));
+    }
+
+    private function hasRecentPostView(int $post_id): bool
+    {
+        $latest = $this
+            ->postViews()
+            ->where('post_id', $post_id)
+            ->latest('created_at')
+            ->first();
+
+        return $latest && $latest->created_at->gt(now()->subMinute());
     }
 
     /**
@@ -120,7 +125,7 @@ class Visitor extends Model
                 return false;
             }
 
-            return $ranges->contains(fn (array $range) => $long_ip >= $range[0] && $long_ip <= $range[1]);
+            return $ranges->contains(fn(array $range) => $long_ip >= $range[0] && $long_ip <= $range[1]);
         });
     }
 }
