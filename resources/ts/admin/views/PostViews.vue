@@ -101,8 +101,8 @@ function fetchViews(): void {
                             v-if="views.unique"
                             v-for="view in views.unique"
                             :key="view.post_id"
-                            class="transition-colors duration-500"
                             :class="{ 'bg-yellow-200! animate-pulse': lastNewView.post_id === view.post_id }"
+                            class="transition-colors duration-500"
                         >
                             <BodyDetail>
                                 <img
