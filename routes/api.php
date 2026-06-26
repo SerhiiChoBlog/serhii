@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Api\AboutMe\TestimonialController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\PostLikeController;
@@ -47,7 +46,3 @@ Route::controller(UserController::class)->prefix('users')->group(function () {
 });
 
 Route::get('users/feed/{user:slug}', FeedController::class);
-
-Route::prefix('about-me')->group(function () {
-    Route::get('testimonials', TestimonialController::class);
-});
