@@ -87,7 +87,7 @@ function handleError(err: any): void {
 
         <tip v-else :content="`Sign in with ${serviceName}`" class="inline-flex">
             <img
-                :src="`/storage/icons/${serviceName}.webp`"
+                :src="`/img/icons/${serviceName}.webp`"
                 :alt="`${serviceName} logo`"
                 width="100"
                 height="100"

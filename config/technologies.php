@@ -5,7 +5,7 @@ declare(strict_types=1);
 return [
     'technologies' => [
         [
-            'image' => 'storage/tools/podman.webp',
+            'image' => 'img/tools/podman.webp',
             'title' => 'Podman/Docker',
             'content' => <<<TEXT
             Using Docker and Podman since 2018 for isolated, reproducible dev
@@ -13,7 +13,7 @@ return [
             TEXT,
         ],
         [
-            'image' => 'storage/tools/linux.webp',
+            'image' => 'img/tools/linux.webp',
             'title' => 'GNU/Linux',
             'content' => <<<TEXT
             I used Ubuntu for several years before switching to Fedora, which
@@ -22,7 +22,7 @@ return [
             TEXT,
         ],
         [
-            'image' => 'storage/tools/networking.webp',
+            'image' => 'img/tools/networking.webp',
             'title' => 'Networking',
             'content' => <<<TEXT
             Since 2025, I’ve been learning networking, focusing on how

@@ -73,7 +73,7 @@ function fetchFeed(): void {
                 :feed="item"
                 :title="`received the “${item.badge!.name}” badge`"
                 :content="`Received the “${item.badge!.name}” badge because ${item.badge!.description}`"
-                :image="`/storage/badges/${item.badge!.icon}`"
+                :image="`/img/badges/${item.badge!.icon}`"
             />
         </div>
     </div>

@@ -22,7 +22,7 @@ class SearchController extends Controller
             array_push($result, new SearchResult(
                 title: 'Serhii Cho',
                 url: url('@serhii-cho'),
-                image_url: 'storage/search/serhii-cho.jpg',
+                image_url: 'img/search/serhii-cho.jpg',
                 keywords: ['Profile page'],
                 label: 'user',
             ));

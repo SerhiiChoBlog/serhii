@@ -23,7 +23,7 @@ defineProps<{ user: User }>()
             </div>
 
             <signed-in-method-logo
-                :src="`/storage/icons/${user.sign_in_method}.webp`"
+                :src="`/img/icons/${user.sign_in_method}.webp`"
                 :method="user.sign_in_method"
                 class="absolute bottom-0 right-5 w-14 h-14"
             />

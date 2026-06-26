@@ -49,26 +49,26 @@
 
     <article>
         <div
-            class="bg-gradient-to-r from-[#0f0f0f] to-[#383838] text-white print:!bg-none print:text-black"
+            class="bg-linear-to-r from-[#0f0f0f] to-[#383838] text-white print:bg-none print:text-black"
             @if ($series)
                 style="background: linear-gradient(90deg, {{ $series->color_from }} 0%, {{ $series->color_to }} 100%)"
             @endif
         >
-            <div class="min-h-[64px]">
+            <div class="min-h-16">
                 <navbar theme="{{ request()->cookie('theme', 'system') }}"></navbar>
             </div>
 
-            <div class="py-[2rem] px-[1.5rem] lg:py-[6rem] lg:px-[1.5rem] container">
+            <div class="py-8 px-6 lg:py-24 lg:px-6 container">
                 <div class="grid grid-cols-1 lg:grid-cols-2 relative gap-5">
                     <div class="flex items-left justify-center flex-col text-[.7rem] lg:text-[1rem]">
                         <h1
                             style="font-size: {{ $title_font_size }}"
-                            class="leading-[1] font-light text-center lg:text-left"
+                            class="leading-none font-light text-center lg:text-left"
                         >
                             {{ $post_title }}
                         </h1>
 
-                        <x-post.tags :tags="$post->tags" class="text-sm mt-5 !gap-3" />
+                        <x-post.tags :tags="$post->tags" class="text-sm mt-5 gap-3!" />
 
                         <div class="mt-4">
                             <x-post.details :post="$post" />
@@ -125,7 +125,7 @@
                     >
                         {!! $post->content !!}
 
-                        <small class="text-font-second opacity-90 inline-block leading-[1.5]">
+                        <small class="text-font-second opacity-90 inline-block leading-normal">
                             Keywords: {{ $post->keywords->implode('name', ', ') }}
                         </small>
                     </div>

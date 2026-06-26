@@ -218,7 +218,7 @@ function savePostWithCorrectKeyBinds(e: KeyboardEvent): void {
                         <div class="flex-1">
                             <FormImage
                                 :uri="post.image_lg"
-                                defaultUri="/storage/posts/placeholder.jpg"
+                                defaultUri="/img/posts/placeholder.jpg"
                             />
                         </div>
                     </div>

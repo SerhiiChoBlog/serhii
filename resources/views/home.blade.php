@@ -89,7 +89,7 @@
                 >
                     <div class="relative">
                         <img
-                            src="{{ asset('/storage/icons/youtube.webp') }}"
+                            src="{{ asset('img/icons/youtube.webp') }}"
                             alt="YouTube logo"
                             class="z-10 opacity-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60px]"
                             width="100"

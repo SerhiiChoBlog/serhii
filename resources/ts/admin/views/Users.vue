@@ -86,7 +86,7 @@ function loadMoreUsers(): void {
                 </BodyDetail>
                 <BodyDetail>
                     <img
-                        :src="`/storage/icons/${user.sign_in_method}.webp`"
+                        :src="`/img/icons/${user.sign_in_method}.webp`"
                         width="100"
                         height="100"
                         class="w-8 h-8 rounded-full"

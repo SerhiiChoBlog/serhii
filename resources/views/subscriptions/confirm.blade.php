@@ -10,12 +10,12 @@
 @push('description', "Your subscription has been confirmed and you've been added to the list")
 
 @section('content')
-    <x-hero class="bg-gradient-to-r from-gray-700 to-gray-600 text-white" />
+    <x-hero class="bg-linear-to-r from-gray-700 to-gray-600 text-white" />
 
     <div class="container py-10 lg:py-48 px-5 flex flex-col lg:flex-row gap-14 items-center">
         <div>
             <img
-                src="{{ asset('storage/subscription/letter.svg') }}"
+                src="{{ asset('img/subscription/letter.svg') }}"
                 alt="Letter"
                 width="200"
                 height="115"
@@ -49,7 +49,7 @@
                             class="flex items-center gap-3 bg-page-second px-4 py-2 rounded-md shadow-lg transition-shadow hover:shadow-xl"
                         >
                             <img
-                                src="{{ asset("/storage/tags/{$tag->name}.webp") }}"
+                                src="{{ asset("img/tags/{$tag->name}.webp") }}"
                                 alt="Logo of {{ $tag->name }}"
                                 width="200"
                                 height="200"

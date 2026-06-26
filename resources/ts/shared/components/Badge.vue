@@ -12,7 +12,7 @@ const { badge } = defineProps<Props>()
 <template>
     <Tip :content="badge.description">
         <img
-            :src="`/storage/badges/${badge.icon}`"
+            :src="`/img/badges/${badge.icon}`"
             :alt="`Badge for ${badge.name}`"
             width="270"
             height="270"

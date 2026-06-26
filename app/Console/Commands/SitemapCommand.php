@@ -118,7 +118,7 @@ class SitemapCommand extends Command
                 return Url::create(route('posts.index', ['tag' => $tag->name]))
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                     ->setPriority(.8)
-                    ->addImage(asset("/storage/tags/{$tag->name}.webp"), $tag->title);
+                    ->addImage(asset("img/tags/{$tag->name}.webp"), $tag->title);
             })
             ->toArray();
     }
@@ -158,7 +158,7 @@ class SitemapCommand extends Command
                 'change' => Url::CHANGE_FREQUENCY_MONTHLY,
                 'url' => route('about-me'),
                 'image' => [
-                    'url' => asset('storage/serhii-cho.webp'),
+                    'url' => asset('img/serhii-cho.webp'),
                     'title' => 'About Serhii Cho',
                 ],
             ],
