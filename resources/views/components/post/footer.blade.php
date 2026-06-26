@@ -9,7 +9,7 @@
         title="To about me page"
     >
         <img
-            data-src="{{ asset('storage/posts/thanks.webp') }}"
+            data-src="{{ asset('img/posts/thanks.webp') }}"
             alt="Serhii Cho's photo"
             class="rounded-full shadow-md print:shadow-none w-36"
             width="300"

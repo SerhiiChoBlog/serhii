@@ -19,7 +19,7 @@
             @foreach ($badges as $badge)
                 <tip content="{{ $badge->description }}" class="w-16">
                     <img
-                        src="/storage/badges/{{ $badge->icon }}"
+                        src="/img/badges/{{ $badge->icon }}"
                         alt="`Badge for {{ $badge->name }}`"
                         width="270"
                         height="270"

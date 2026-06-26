@@ -29,7 +29,7 @@
     >
         @if ($tag)
             <img
-                src="{{ asset("/storage/tags/$tag->name.webp") }}"
+                src="{{ asset("img/tags/$tag->name.webp") }}"
                 alt="The logo of {{ $tag->name }}"
                 class="absolute top-1/2 left-1/4 -translate-y-1/2 opacity-50 w-40 h-40"
                 width="200"

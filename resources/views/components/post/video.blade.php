@@ -19,7 +19,7 @@
         </div>
 
         <img
-            src="{{ asset('/storage/icons/youtube.webp') }}"
+            src="{{ asset('img/icons/youtube.webp') }}"
             alt="YouTube logo"
             class="transition-opacity group-hover:opacity-0 duration-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70px]"
             width="100"

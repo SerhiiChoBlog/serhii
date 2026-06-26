@@ -37,7 +37,7 @@ function saveShare(social: string): void {
         >
             <tip :content="link.tip" class="transition-opacity hover:opacity-80">
                 <img
-                    :src="`/storage/icons/${link.title}.webp`"
+                    :src="`/img/icons/${link.title}.webp`"
                     :alt="`Logo of the ${link.title}`"
                     width="27"
                     height="27"

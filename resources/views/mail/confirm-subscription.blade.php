@@ -25,7 +25,7 @@ use App\Models\Subscription
 <ul style="display: flex; flex-wrap: wrap; padding: 0;">
 @foreach ($subscription->tags as $tag)
 <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 7px; flex: 0 0 50%;">
-<img src="{{ asset("/storage/tags/{$tag->name}.webp") }}" width="20" height="20" style="border-radius: 3px;" />
+<img src="{{ asset("img/tags/{$tag->name}.webp") }}" width="20" height="20" style="border-radius: 3px;" />
 <span>{{ $tag->title }}</span>
 </li>
 @endforeach

@@ -135,7 +135,7 @@ function saveSeriesWithCorrectKeyBinds(e: KeyboardEvent): void {
                         >
                             <FormImage
                                 :uri="series.image_lg"
-                                defaultUri="/storage/series/placeholder.jpg"
+                                defaultUri="/img/series/placeholder.jpg"
                             />
                         </div>
                     </div>
@@ -151,7 +151,7 @@ function saveSeriesWithCorrectKeyBinds(e: KeyboardEvent): void {
                     </div>
 
                     <div>
-                        <div class="flex gap-2 fixed right-[20px] top-14 z-[9999] opacity-90">
+                        <div class="flex gap-2 fixed right-5 top-14 z-9999 opacity-90">
                             <MainButton class="bg-green-500 hover:bg-green-600">
                                 <i v-if="loading" class="fas fa-spinner animate-spin mr-2"></i>
                                 <i v-else class="fas fa-save mr-2"></i>

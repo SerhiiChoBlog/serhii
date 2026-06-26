@@ -17,7 +17,7 @@
                     <div class="grid grid-cols-1 gap-x-6 lg:grid-cols-[25%_1fr]">
                         <div class="w-[180px] mx-auto rounded-lg top-36 mb-6">
                             <img
-                                src="/storage/serhii-cho.webp"
+                                src="/img/serhii-cho.webp"
                                 alt="Serhii Cho"
                                 class="my-auto rounded-lg mx-auto transition-all duration-500 shadow-md pointer-events-none select-none"
                                 width="180"

@@ -66,7 +66,7 @@ function fetchPosts(): void {
                             :key="social"
                         >
                             <img
-                                :src="`/storage/icons/${social.toString()}.webp`"
+                                :src="`/img/icons/${social.toString()}.webp`"
                                 :alt="`social`"
                                 width="20"
                             />

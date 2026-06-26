@@ -4,12 +4,12 @@
 @push('description', "There is an error occurred while trying to subscribe to a mail list")
 
 @section('content')
-    <x-hero class="bg-gradient-to-r from-gray-700 to-gray-600 text-white" />
+    <x-hero class="bg-linear-to-r from-gray-700 to-gray-600 text-white" />
 
     <div class="container py-10 lg:py-48 px-5 flex flex-col lg:flex-row gap-14 items-center">
         <div>
             <img
-                src="{{ asset('storage/subscription/error.svg') }}"
+                src="{{ asset('img/subscription/error.svg') }}"
                 alt="Letter"
                 width="70"
                 height="170"

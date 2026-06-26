@@ -42,7 +42,8 @@ onMounted(() => {
         lastNewView.post_id = post_id
         lastNewView.country = country
 
-        new Audio('/storage/new-message.wav')
+
+        new Audio('/audio/new-message.wav')
             .play()
             .catch(err => console.error(err))
     })
@@ -118,7 +119,7 @@ function fetchViews(): void {
 
                                     <template v-if="lastNewView.country && lastNewView.post_id === view.post_id">
                                         <img
-                                            :src="`/storage/admin/flags/${lastNewView.country.toLowerCase()}.png`"
+                                            :src="`/img/admin/flags/${lastNewView.country.toLowerCase()}.png`"
                                             :alt="lastNewView.country"
                                             width="20"
                                             class="inline-block ml-1 rounded-xs shadow-xs"

@@ -13,7 +13,7 @@ const { tag } = defineProps<Props>()
     <tip :content="tag.title">
         <a :href="`/posts?tag=${tag.name}`" rel="noreferrer">
             <img
-                :src="`/storage/tags/${tag.name}.webp`"
+                :src="`/img/tags/${tag.name}.webp`"
                 :alt="`The ${tag.name} logo`"
                 class="w-[25px] h-[25px] drop-shadow-md transition-transform hover:scale-125 duration-300"
                 width="200"

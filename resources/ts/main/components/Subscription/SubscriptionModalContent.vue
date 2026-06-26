@@ -114,7 +114,7 @@ function selectedTagsHaveTag(tag: Tag): boolean {
                 />
 
                 <img
-                    :src="`/storage/tags/${tag.name}.webp`"
+                    :src="`/img/tags/${tag.name}.webp`"
                     :alt="`The logo of ${tag.name}`"
                     width="200"
                     height="200"

@@ -31,14 +31,14 @@ function blockVisitorHandler(): void {
         <BodyDetail>
             <img
                 v-if="visitor.code"
-                :src="`/storage/admin/flags/${visitor.code.toLowerCase()}.png`"
+                :src="`/img/admin/flags/${visitor.code.toLowerCase()}.png`"
                 width="80"
                 height="42"
                 class="w-9 h-5 rounded-xs shadow-xs border border-border"
             />
             <img
                 v-else
-                src="/storage/admin/flags/unknown.png"
+                src="/img/admin/flags/unknown.png"
                 width="80"
                 height="56"
             />

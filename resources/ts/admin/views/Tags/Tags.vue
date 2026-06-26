@@ -57,9 +57,9 @@ function fetchTags(): void {
 
                 <BodyRow v-for="tag in tags" :key="tag.id">
                     <BodyDetail>
-                        <div class="bg-white w-[28px] aspect-square flex items-center justify-center rounded-full">
+                        <div class="bg-white w-7 aspect-square flex items-center justify-center rounded-full">
                             <img
-                                :src="`/storage/tags/${tag.name}.webp`"
+                                :src="`/img/tags/${tag.name}.webp`"
                                 :alt="`Logo of ${tag.name}`"
                                 width="200"
                                 height="200"
@@ -74,7 +74,7 @@ function fetchTags(): void {
                         <input
                             type="text"
                             :value="tag.color"
-                            class="w-[80px] border border-border bg-transparent text-center rounded-md"
+                            class="w-20 border border-border bg-transparent text-center rounded-md"
                         >
                     </BodyDetail>
                     <BodyDetail class="min-w-[140px]">

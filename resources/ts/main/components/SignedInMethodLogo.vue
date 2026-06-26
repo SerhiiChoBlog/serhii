@@ -9,7 +9,7 @@ defineProps<{
 <template>
     <img
         v-if="method !== 'email'"
-        :src="`/storage/icons/${method}.webp`"
+        :src="`/img/icons/${method}.webp`"
         :alt="`${method}'s logo`"
         width="100"
         height="100"
