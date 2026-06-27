@@ -9,7 +9,6 @@ Here’s the list you wanted for macOS (June 2026):
 
 If you want I can help you expand each into a short paragraph for your article later.
 
-
 Here’s the Windows 11 list for June 2026 (KB5094126):
 
 - Boot failures after installing the KB5094126 update, sometimes requiring rollback or recovery media
@@ -17,7 +16,6 @@ Here’s the Windows 11 list for June 2026 (KB5094126):
 - Secure Boot errors, especially on HP business laptops and desktops, preventing normal startup
 - Broken OneDrive integration: sync failures, files stuck in “sync pending,” or placeholders not opening
 - LAN connectivity issues: Ethernet dropping randomly, no network after reboot, or very slow throughput after the update
-
 
 Here’s the list of your own bugs/glitches so far:
 
@@ -32,3 +30,5 @@ Apple basically sells an illusion of perfection. The whole brand is built on thi
 With Windows, people almost assume there will be quirks and rough edges. Bugs are part of the mental model of using a PC, so when something glitches, it’s annoying but not shocking. That lower baseline expectation makes Windows bugs feel less jarring than Apple bugs, even if the actual severity is similar.
 
 That contrast is important for your article: the same kind of bug is perceived very differently depending on whether the platform has been marketed as “perfect” or as “messy but flexible.”
+
+1. https://console.firebase.google.com/ link was broken and couldn't load.
