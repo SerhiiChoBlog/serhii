@@ -1,5 +1,7 @@
 services:
   nginx:
+    build:
+      context: .
     image: nginx
     ports:
       - 8080:80
@@ -7,13 +9,15 @@ services:
       - main
 
   php:
-      image: php
-      networks:
-        - main
-      depends_on:
-        - db
-      env_file:
-        - .env
+    build:
+      context: .
+    image: php
+    networks:
+      - main
+    depends_on:
+      - db
+    env_file:
+      - .env
 
   db:
     image: docker.io/mariadb:12.3

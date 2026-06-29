@@ -2,13 +2,13 @@ services:
   nginx:
     build:
       dockerfile: services/dev/nginx/Dockerfile
-      context: .
     volumes:
       - ./app:/var/www/html:z
+      - ./storage:/var/www/html/storage:z
 
   php:
     build:
       dockerfile: services/dev/php/Dockerfile
-      context: .
     volumes:
       - ./app:/var/www/html:z
+      - ./storage:/var/www/html/storage:z
