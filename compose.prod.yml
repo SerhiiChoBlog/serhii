@@ -1,49 +1,57 @@
 services:
-    nginx:
-        build: ./services/nginx
-        image: nginx
-        volumes:
-            - './services/nginx/app/storage:/app/storage:z'
-        networks:
-            - main
-        depends_on:
-            - db
+  nginx:
+    build:
+      dockerfile: services/nginx/Dockerfile
+      context: .
+    image: nginx
+    ports:
+      - 8080:80
+    volumes:
+      - ./app/storage:/var/www/html/storage:z
+    networks:
+      - main
 
-    php:
-        build: ./services/php
-        image: php
-        networks:
-            - main
-        depends_on:
-            - db
+  php:
+      build:
+        dockerfile: services/php/Dockerfile
+        context: .
+      image: php
+      volumes:
+        - ./app/storage:/var/www/html/storage:z
+      networks:
+        - main
+      depends_on:
+        - db
+      env_file:
+        - .env
 
-    db:
-        image: 'dhi/mariadb:12.3-debian'
-        ports:
-            - '${FORWARD_DB_PORT:-3300}:3306'
-        environment:
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ROOT_HOST: '%'
-            MYSQL_DATABASE: '${DB_DATABASE}'
-            MYSQL_USER: '${DB_USERNAME}'
-            MYSQL_PASSWORD: '${DB_PASSWORD}'
-        volumes:
-            - 'db:/var/lib/mysql'
-        networks:
-            - main
-        healthcheck:
-            test:
-                - CMD
-                - mysqladmin
-                - ping
-                - '-p${DB_PASSWORD}'
-            retries: 3
-            timeout: 5s
+  db:
+    image: docker.io/mariadb:12.3
+    ports:
+      - 3306:3306
+    environment:
+      MARIADB_ROOT_PASSWORD: "${DB_PASSWORD}"
+      MARIADB_ROOT_HOST: "%"
+      MARIADB_DATABASE: "${DB_DATABASE}"
+      MARIADB_USER: "${DB_USERNAME}"
+      MARIADB_PASSWORD: "${DB_PASSWORD}"
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - main
+    healthcheck:
+      test:
+        - CMD
+        - mysqladmin
+        - ping
+        - "-p${DB_PASSWORD}"
+      retries: 3
+      timeout: 5s
 
 networks:
-    main:
-        driver: bridge
+  main:
+    driver: bridge
 
 volumes:
-    db:
-        driver: local
+  db:
+    driver: local
