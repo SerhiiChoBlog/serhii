@@ -3,10 +3,10 @@ services:
     build:
       dockerfile: services/prod/nginx/Dockerfile
     volumes:
-      - ./storage:/var/www/html/storage:z
+      - ./app/storage:/var/www/html/storage:z
 
   php:
-      build:
-        dockerfile: services/prod/php/Dockerfile
-      volumes:
-        - ./storage:/var/www/html/storage:z
+    build:
+      dockerfile: services/prod/php/Dockerfile
+    volumes:
+      - ./app/storage:/var/www/html/storage:z
