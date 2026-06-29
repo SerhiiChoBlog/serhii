@@ -1,57 +1,14 @@
 services:
   nginx:
     build:
-      dockerfile: services/nginx/Dockerfile
+      dockerfile: services/nginx/Dockerfile.prod
       context: .
-    image: nginx
-    ports:
-      - 8080:80
     volumes:
       - ./app/storage:/var/www/html/storage:z
-    networks:
-      - main
 
   php:
       build:
-        dockerfile: services/php/Dockerfile
+        dockerfile: services/php/Dockerfile.prod
         context: .
-      image: php
       volumes:
         - ./app/storage:/var/www/html/storage:z
-      networks:
-        - main
-      depends_on:
-        - db
-      env_file:
-        - .env
-
-  db:
-    image: docker.io/mariadb:12.3
-    ports:
-      - 3306:3306
-    environment:
-      MARIADB_ROOT_PASSWORD: "${DB_PASSWORD}"
-      MARIADB_ROOT_HOST: "%"
-      MARIADB_DATABASE: "${DB_DATABASE}"
-      MARIADB_USER: "${DB_USERNAME}"
-      MARIADB_PASSWORD: "${DB_PASSWORD}"
-    volumes:
-      - db:/var/lib/mysql
-    networks:
-      - main
-    healthcheck:
-      test:
-        - CMD
-        - mysqladmin
-        - ping
-        - "-p${DB_PASSWORD}"
-      retries: 3
-      timeout: 5s
-
-networks:
-  main:
-    driver: bridge
-
-volumes:
-  db:
-    driver: local

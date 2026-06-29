@@ -1,0 +1,14 @@
+services:
+  nginx:
+    build:
+      dockerfile: services/nginx/Dockerfile.dev
+      context: .
+    volumes:
+      - ./app:/var/www/html:z
+
+  php:
+    build:
+      dockerfile: services/php/Dockerfile.dev
+      context: .
+    volumes:
+      - ./app:/var/www/html:z
