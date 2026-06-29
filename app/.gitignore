@@ -6,6 +6,4 @@
 /vendor/
 .env
 .phpunit.result.cache
-package-lock.json
-composer.lock
 post-images.zip
