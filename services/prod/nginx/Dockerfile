@@ -14,7 +14,7 @@ FROM docker.io/nginx:1.30-alpine3.23
 
 WORKDIR /var/www/html
 
-COPY services/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY services/prod/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY app .
 COPY --from=builder /var/www/html/public/build public/build
 
