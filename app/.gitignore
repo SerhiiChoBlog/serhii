@@ -2,11 +2,10 @@
 /public/hot
 /public/sitemap.xml
 /public/storage
-/storage
-/vendor
+/storage/
+/vendor/
 .env
 .phpunit.result.cache
 package-lock.json
 composer.lock
 post-images.zip
-!.gitkeep
