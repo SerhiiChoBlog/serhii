@@ -18,7 +18,7 @@
         mainTitle="Series of articles"
         subtitle="Collection of articles groped by specific topics.<br />Each series contains a number of articles on a specific topic."
         class="bg-linear-to-r from-[#1a1b1b] to-[#2f4343] text-white relative"
-        style="background: linear-gradient(90deg, {{ $series->first()->color_from }} 0%, {{ $series->first()->color_to }} 100%)"
+        style="background: linear-gradient(90deg, {{ $series->first()->color_from ?? 0 }} 0%, {{ $series->first()->color_to ?? 0 }} 100%)"
     />
 
     <div class="container">
