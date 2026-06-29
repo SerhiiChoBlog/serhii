@@ -1,3 +1,21 @@
 FROM docker.io/php:8.4-fpm-alpine
 
-RUN docker-php-ext-install pdo pdo_mysql
+WORKDIR /var/www/html
+
+RUN apk add --no-cache git curl-dev libzip-dev oniguruma-dev libxml2-dev && \
+    docker-php-ext-install pdo pdo_mysql bcmath curl mbstring xml zip opcache
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+COPY app/composer.* .
+
+RUN composer install --no-interaction --prefer-dist --no-progress --no-dev --no-scripts && \
+    composer clear-cache
+
+COPY app .
+
+RUN composer update --no-dev && composer clear-cache
+
+RUN chown -R www-data:www-data .
+
+CMD ["php-fpm"]
