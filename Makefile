@@ -2,6 +2,7 @@ RUNNER_DEV := podman-compose -f compose.yml -f compose.dev.yml
 RUNNER_PROD := podman-compose -f compose.yml -f compose.prod.yml
 
 # ----------------- up -----------------
+
 .PHONY := upp
 upp:
 	$(RUNNER_PROD) up
@@ -11,6 +12,7 @@ upd:
 	$(RUNNER_DEV) up
 
 # ---------------- down ----------------
+
 .PHONY := downp
 downp:
 	$(RUNNER_PROD) down
@@ -20,15 +22,13 @@ downd:
 	$(RUNNER_DEV) down
 
 # ---------------- stop ----------------
-.PHONY := stopp
-stopp:
-	$(RUNNER_PROD) stop
 
-.PHONY := stopd
-stopd:
-	$(RUNNER_DEV) stop
+.PHONY := stop
+stop:
+	podman-compose stop
 
 # ---------------- build ----------------
+
 .PHONY := buildp
 buildp:
 	$(RUNNER_PROD) build
@@ -38,6 +38,7 @@ buildd:
 	$(RUNNER_DEV) build
 
 # -------------- exec php --------------
+
 .PHONY := execphpp
 execphpp:
 	$(RUNNER_PROD) exec php sh
@@ -47,6 +48,7 @@ execphpd:
 	$(RUNNER_DEV) exec php sh
 
 # ------------- exec nginx -------------
+
 .PHONY := execnginxp
 execnginxp:
 	$(RUNNER_PROD) exec nginx sh
@@ -56,6 +58,7 @@ execnginxd:
 	$(RUNNER_DEV) exec nginx sh
 
 # -------------- exec db ---------------
+
 .PHONY := execdbp
 execdbp:
 	$(RUNNER_PROD) exec db sh
@@ -64,4 +67,10 @@ execdbp:
 execdbd:
 	$(RUNNER_DEV) exec db sh
 
-.DEFAULT_GOAL := execd
+# -------------- ps ---------------
+
+.PHONY := ps
+ps:
+	podman-compose ps
+
+.DEFAULT_GOAL := psd

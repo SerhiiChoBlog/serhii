@@ -2,16 +2,16 @@ services:
   nginx:
     build:
       context: .
-    image: nginx
     ports:
       - 8080:80
     networks:
       - main
+    depends_on:
+      - php
 
   php:
     build:
       context: .
-    image: php
     networks:
       - main
     depends_on:
