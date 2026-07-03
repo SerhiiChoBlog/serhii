@@ -2,11 +2,13 @@ services:
   nginx:
     build:
       dockerfile: services/dev/nginx/Dockerfile
+    image: nginx-dev
     volumes:
       - ./app:/var/www/html:z
 
   php:
     build:
       dockerfile: services/dev/php/Dockerfile
+    image: php-dev
     volumes:
       - ./app:/var/www/html:z
