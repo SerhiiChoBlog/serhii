@@ -11,4 +11,5 @@ services:
       dockerfile: services/prod/php/Dockerfile
     image: serhiicho/serhiicho:php-prod
     volumes:
+      - ./app/.env:/var/www/html/.env:z
       - ./app/storage:/var/www/html/storage:z

@@ -1,5 +1,5 @@
-RUNNER_DEV := podman-compose -f compose.yml -f compose.dev.yml
-RUNNER_PROD := podman-compose -f compose.yml -f compose.prod.yml
+RUNNER_DEV := podman-compose -f compose.yml -f compose.dev.yml --env=app/.env
+RUNNER_PROD := podman-compose -f compose.yml -f compose.prod.yml --env=app/.env
 
 # ----------------- up -----------------
 
