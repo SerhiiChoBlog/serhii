@@ -2,13 +2,13 @@ services:
   nginx:
     build:
       dockerfile: services/prod/nginx/Dockerfile
-    image: nginx-prod
+    image: serhiicho/serhiicho:nginx-prod
     volumes:
       - ./app/storage:/var/www/html/storage:z
 
   php:
     build:
       dockerfile: services/prod/php/Dockerfile
-    image: php-prod
+    image: serhiicho/serhiicho:php-prod
     volumes:
       - ./app/storage:/var/www/html/storage:z

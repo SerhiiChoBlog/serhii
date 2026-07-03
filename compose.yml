@@ -21,8 +21,6 @@ services:
 
   db:
     image: docker.io/mariadb:12.3
-    ports:
-      - 3306:3306
     environment:
       MARIADB_ROOT_PASSWORD: "${DB_PASSWORD}"
       MARIADB_ROOT_HOST: "%"
