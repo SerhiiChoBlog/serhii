@@ -5,6 +5,8 @@ WORKDIR /var/www/html
 RUN apk update && \
     apk add --no-cache \
         git \
+        vim \
+        bash \
         curl-dev \
         libzip-dev \
         oniguruma-dev \
@@ -18,7 +20,8 @@ RUN apk update && \
         curl \
         mbstring \
         xml \
-        zip
+        zip && \
+    echo "alias vi='vim'" >> /etc/profile
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/
 COPY services/dev/php/zzz-custom.ini /usr/local/etc/php/conf.d/
