@@ -20,9 +20,10 @@ COPY app .
 COPY --from=builder /var/www/html/public/build public/build
 
 RUN apk update && \
-    apk add --no-cache vim bash && \
+    apk add --no-cache vim bash shadow && \
     echo "alias vi='vim'" >> /etc/profile && \
-    adduser -D -u 82 www-data && \
-    chown -R www-data:www-data .
+    usermod -u 82 nginx && \
+    chown -R nginx:nginx . && \
+    ln -s /var/www/html/storage/app/public /var/www/html/public/storage
 
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
