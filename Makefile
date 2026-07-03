@@ -13,13 +13,9 @@ upd:
 
 # ---------------- down ----------------
 
-.PHONY := downp
-downp:
-	$(RUNNER_PROD) down
-
-.PHONY := downd
-downd:
-	$(RUNNER_DEV) down
+.PHONY := down
+down:
+	podman-compose down
 
 # ---------------- stop ----------------
 
