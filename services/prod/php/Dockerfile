@@ -2,8 +2,22 @@ FROM docker.io/php:8.4-fpm-alpine
 
 WORKDIR /var/www/html
 
-RUN apk add --no-cache git curl-dev libzip-dev oniguruma-dev libxml2-dev && \
-    docker-php-ext-install pdo pdo_mysql bcmath curl mbstring xml zip opcache
+RUN apk update && \
+    apk add --no-cache \
+        git \
+        curl-dev \
+        libzip-dev \
+        oniguruma-dev \
+        libxml2-dev && \
+    docker-php-ext-install \
+        pdo \
+        pdo_mysql \
+        bcmath \
+        curl \
+        mbstring \
+        xml \
+        zip \
+        opcache
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/
 COPY services/prod/php/zzz-custom.ini services/prod/php/zzz-opache.ini /usr/local/etc/php/conf.d/
