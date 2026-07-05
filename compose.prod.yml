@@ -3,6 +3,8 @@ services:
     build:
       dockerfile: services/prod/nginx/Dockerfile
     image: serhiicho/serhiicho:nginx-prod
+    ports:
+      - 80:80
     volumes:
       - ./app/storage:/var/www/html/storage:z
 
