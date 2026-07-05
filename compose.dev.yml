@@ -3,8 +3,6 @@ services:
     build:
       dockerfile: services/dev/nginx/Dockerfile
     image: nginx-dev
-    ports:
-      - 8080:80
     volumes:
       - ./app:/var/www/html:z
 

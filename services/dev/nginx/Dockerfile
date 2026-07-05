@@ -6,7 +6,7 @@ RUN apk update && \
     apk add bash vim && \
     echo "alias vi='vim'" >> /etc/profile
 
-COPY services/shared/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+COPY services/dev/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 
 RUN apk update && \
     apk add --no-cache vim bash shadow && \

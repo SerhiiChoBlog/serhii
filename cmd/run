@@ -1,8 +1,9 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
+set -euo pipefail
 
 if [[ "$1" != "dev" && "$1" != "prod" ]]; then
     echo "Error: must be 'dev' or 'prod'"
-    echo "Usage: ./run {dev|prod} [commands...]"
+    echo "Usage: ./cmd/run {dev|prod} [commands...]"
     exit 1
 fi
 
