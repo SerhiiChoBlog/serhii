@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+read -p "Enter destination IP: " ip
+read -p "Enter a username: " user
+
+./cmd/run build
+
+podman push serhiicho/serhiicho:nginx-prod
+podman push serhiicho/serhiicho:php-prod
+
+git push origin master
+
+# Deploy files
+transfer_files=(
+    compose.prod.yml
+    compose.yml
+    cmd/reload
+    cmd/run
+    cmd/start
+)
+
+scp "${transfer_files[@]}" "$user@$ip:/home/$user/serhiicho.com/"

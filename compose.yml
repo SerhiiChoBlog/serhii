@@ -2,6 +2,8 @@ services:
   nginx:
     build:
       context: .
+    ports:
+      - 80:80
     networks:
       - main
     depends_on:
