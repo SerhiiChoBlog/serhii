@@ -28,7 +28,7 @@ export default defineConfig({
     ],
 
     build: {
-        sourcemap: true,
+        sourcemap: false,
         manifest: true,
         outDir: 'public/build',
     },
@@ -38,6 +38,10 @@ export default defineConfig({
         port: 5173,
         hmr: {
             host: 'localhost',
+        },
+        forwardConsole: {
+            unhandledErrors: true,
+            logLevels: ['warn', 'error', 'debug', 'log', 'info'],
         },
         proxy: {
             '/storage': {
