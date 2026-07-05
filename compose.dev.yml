@@ -10,5 +10,7 @@ services:
     build:
       dockerfile: services/dev/php/Dockerfile
     image: php-dev
+    ports:
+      - 5173:5173
     volumes:
       - ./app:/var/www/html:z

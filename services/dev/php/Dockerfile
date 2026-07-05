@@ -26,6 +26,4 @@ RUN apk update && \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/
 COPY services/dev/php/zzz-custom.ini /usr/local/etc/php/conf.d/
 
-RUN chown -R www-data:www-data .
-
 CMD ["php-fpm"]

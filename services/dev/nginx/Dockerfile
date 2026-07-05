@@ -8,4 +8,9 @@ RUN apk update && \
 
 COPY services/dev/nginx/default.conf /etc/nginx/conf.d/default.conf
 
+RUN apk update && \
+    apk add --no-cache vim bash shadow && \
+    echo "alias vi='vim'" >> /etc/profile && \
+    usermod -u 82 nginx
+
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]

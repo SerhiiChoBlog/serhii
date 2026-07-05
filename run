@@ -6,8 +6,8 @@ if [[ "$1" != "dev" && "$1" != "prod" ]]; then
     exit 1
 fi
 
-# Change permissions to www-data if running ./run prod up
-if [[ "$1" == "prod" && "$2" == "up" ]] ;then
+# Change permissions for app/storage to www-data
+if [[ "$2" == "up" ]] ;then
     podman unshare chown -R 82:82 app/storage
 fi
 
