@@ -16,7 +16,7 @@
 
 @section('content')
     <x-hero
-        class="relative bg-home-hero bg-cover shadow-lg"
+        class="relative home-hero bg-cover shadow-lg"
         navbar="text-white"
     >
         <div>

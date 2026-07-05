@@ -8,7 +8,7 @@
         class="relative w-full h-screen"
         navbar="text-white"
     >
-        <div class="text-white bg-home-hero bg-cover flex items-center justify-center absolute top-0 left-0 w-full h-screen">
+        <div class="text-white home-hero bg-cover flex items-center justify-center absolute top-0 left-0 w-full h-screen">
             <subscription></subscription>
         </div>
     </x-hero>

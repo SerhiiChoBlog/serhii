@@ -24,7 +24,7 @@
     <x-hero
         :mainTitle="$title"
         subtitle="Writing about software development,<br>systems, and the practical details that make things work."
-        class="{{ $series ? '' : 'bg-home-hero' }} bg-cover text-white relative"
+        class="{{ $series ? '' : 'home-hero' }} bg-cover text-white relative"
         :style="$header_style"
     >
         @if ($tag)
