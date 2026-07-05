@@ -16,8 +16,6 @@ services:
       - main
     depends_on:
       - db
-    env_file:
-      - .env
 
   db:
     image: docker.io/mariadb:12.3
