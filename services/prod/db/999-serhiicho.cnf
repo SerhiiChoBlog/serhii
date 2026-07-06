@@ -1,4 +1,6 @@
 [mariadb]
+log_timestamps=SYSTEM
+
 # Give InnoDB 1GB. InnoDB buffer pool size in bytes. The primary value to
 # adjust on a database server with entirely/primarily InnoDB tables.
 innodb_buffer_pool_size = 1G
