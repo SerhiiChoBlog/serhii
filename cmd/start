@@ -2,4 +2,6 @@
 set -euo pipefail
 
 ./cmd/run prod up -d
-./cmd/run prod exec php bash -c 'php artisan storage:link && php artisan config:cache'
+./cmd/run prod exec php bash -c 'php artisan config:cache && \
+                                 php artisan view:cache && \
+                                 php artisan route:cache'

@@ -4,7 +4,7 @@ services:
       context: .
     ports:
       - 80:80
-      - 443:433
+      - 443:443
     restart: always
     networks:
       - main
@@ -34,11 +34,7 @@ services:
     networks:
       - main
     healthcheck:
-      test:
-        - CMD
-        - mysqladmin
-        - ping
-        - "-p${DB_PASSWORD}"
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       retries: 3
       timeout: 5s
 
