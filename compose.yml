@@ -4,6 +4,8 @@ services:
       context: .
     ports:
       - 80:80
+      - 443:433
+    restart: always
     networks:
       - main
     depends_on:
@@ -13,6 +15,7 @@ services:
     build:
       context: .
     networks:
+    restart: always
       - main
     depends_on:
       - db
@@ -27,6 +30,7 @@ services:
       MARIADB_PASSWORD: "${DB_PASSWORD}"
     volumes:
       - db:/var/lib/mysql
+    restart: always
     networks:
       - main
     healthcheck:
