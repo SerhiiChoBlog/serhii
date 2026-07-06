@@ -2,10 +2,10 @@
 set -euo pipefail
 
 read -p "Enter destination IP: " ip
-read -p "Enter a username: " user
 
 ./cmd/run build
 
+echo "Pusing images to Docker Hub..."
 podman push serhiicho/serhiicho:nginx-prod
 podman push serhiicho/serhiicho:php-prod
 
@@ -20,4 +20,5 @@ transfer_files=(
     cmd/start
 )
 
-scp "${transfer_files[@]}" "$user@$ip:/home/$user/serhiicho.com/"
+echo "Transfering several files to the VPS..."
+scp "${transfer_files[@]}" "serhii@$ip:/home/serhii/serhiicho.com/"
