@@ -3,7 +3,7 @@ set -euo pipefail
 
 read -p "Enter destination IP: " ip
 
-./cmd/run build
+./cmd/run prod build
 
 echo "Pusing images to Docker Hub..."
 podman push serhiicho/serhiicho:nginx-prod
@@ -21,4 +21,4 @@ transfer_files=(
 )
 
 echo "Transfering several files to the VPS..."
-scp "${transfer_files[@]}" "serhii@$ip:/home/serhii/serhiicho.com/"
+scp "${transfer_files[@]}" "serhii@$ip:/home/serhii/serhiicho.com/cmd/"
