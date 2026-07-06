@@ -14,8 +14,8 @@ services:
   php:
     build:
       context: .
-    networks:
     restart: always
+    networks:
       - main
     depends_on:
       - db

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-./run prod up -d
-./run prod exec php bash -c 'php artisan storage:link && php artisan config:cache'
+./cmd/run prod up -d
+./cmd/run prod exec php bash -c 'php artisan storage:link && php artisan config:cache'

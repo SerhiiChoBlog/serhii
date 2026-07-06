@@ -9,7 +9,7 @@ echo "Pusing images to Docker Hub..."
 podman push serhiicho/serhiicho:nginx-prod
 podman push serhiicho/serhiicho:php-prod
 
-git push origin master
+git push
 
 # Deploy files
 transfer_files=(
