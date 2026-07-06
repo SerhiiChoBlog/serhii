@@ -26,7 +26,8 @@ jobs:
           apt update && \
           apt install -y pipx && \
           pipx ensurepath && \
-          pipx install podman-compose
+          pipx install podman-compose && \
+          echo 'export PATH="/github/home/.local/bin:$PATH"' >> ~/.bashrc
 
       - name: Build a development container
         run: ./cmd/run dev build
