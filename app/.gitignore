@@ -2,6 +2,7 @@
 /public/hot
 /public/sitemap.xml
 /public/storage
+/public/build
 /storage/
 /vendor/
 .env
