@@ -29,7 +29,8 @@ services:
       MARIADB_USER: "${DB_USERNAME}"
       MARIADB_PASSWORD: "${DB_PASSWORD}"
     volumes:
-      - db:/var/lib/mysql
+      - db:/var/lib/mysql:z
+      - ./services/prod/db/999-serhiicho.cnf:/etc/mysql/mariadb.conf.d/999-serhiicho.cnf:ro,z
     restart: always
     networks:
       - main
