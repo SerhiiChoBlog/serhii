@@ -11,4 +11,19 @@ podman push serhiicho/serhiicho:php-prod
 
 git push
 
-./cmd/deploy-files
+echo "Transfering files to the VPS..."
+
+cmd_files=(
+    cmd/reload
+    cmd/run
+    cmd/start
+)
+
+scp "${cmd_files[@]}" "serhii@$ip:/home/serhii/serhiicho.com/cmd/"
+
+root_files=(
+    compose.prod.yml
+    compose.yml
+)
+
+scp "${root_files[@]}" "serhii@$ip:/home/serhii/serhiicho.com/"
