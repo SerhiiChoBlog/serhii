@@ -21,6 +21,12 @@ jobs:
       - name: Copy .env file
         run: cp app/.env.example app/.env
 
+      - name: Install podman-compose
+        run: |
+          sudo apt install pipx && \
+          pipx ensurepath && \
+          pipx install podman-compose
+
       - name: Build a development container
         run: ./cmd/run dev build
 
