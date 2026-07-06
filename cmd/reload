@@ -3,6 +3,7 @@ set -euo pipefail
 
 podman pull serhiicho/serhiicho:php-prod
 podman pull serhiicho/serhiicho:nginx-prod
+podman pull serhiicho/serhiicho:db-prod
 
 ./cmd/run prod down
 ./cmd/start

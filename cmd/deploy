@@ -8,6 +8,7 @@ read -p "Enter destination IP: " ip
 echo "Pusing images to Docker Hub..."
 podman push serhiicho/serhiicho:nginx-prod
 podman push serhiicho/serhiicho:php-prod
+podman push serhiicho/serhiicho:db-prod
 
 git push
 

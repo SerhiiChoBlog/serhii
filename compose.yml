@@ -21,16 +21,19 @@ services:
       - db
 
   db:
-    image: docker.io/mariadb:12.3
+    build:
+      context: .
+      dockerfile: services/prod/db/Dockerfile
+    image: serhiicho/serhiicho:db-prod
     environment:
       MARIADB_ROOT_PASSWORD: "${DB_PASSWORD}"
       MARIADB_ROOT_HOST: "%"
       MARIADB_DATABASE: "${DB_DATABASE}"
       MARIADB_USER: "${DB_USERNAME}"
       MARIADB_PASSWORD: "${DB_PASSWORD}"
+      TZ: Europe/Kyiv
     volumes:
       - db:/var/lib/mysql:z
-      - ./services/prod/db/999-serhiicho.cnf:/etc/mysql/mariadb.conf.d/999-serhiicho.cnf:ro,z
     restart: always
     networks:
       - main
