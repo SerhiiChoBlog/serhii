@@ -23,7 +23,8 @@ jobs:
 
       - name: Install podman-compose
         run: |
-          sudo apt install pipx && \
+          apt update && \
+          apt install -y pipx && \
           pipx ensurepath && \
           pipx install podman-compose
 
