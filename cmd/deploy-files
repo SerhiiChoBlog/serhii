@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "Transfering several files to the VPS..."
+
+transfer_files=(
+    compose.prod.yml
+    compose.yml
+    cmd/reload
+    cmd/run
+    cmd/start
+)
+
+scp "${transfer_files[@]}" "serhii@$ip:/home/serhii/serhiicho.com/cmd/"
