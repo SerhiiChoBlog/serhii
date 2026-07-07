@@ -1,0 +1,37 @@
+FROM docker.io/php:8.4-fpm-alpine
+
+WORKDIR /var/www/html
+
+RUN apk update && \
+    apk add --no-cache \
+        bash \
+        curl-dev \
+        git \
+        freetype-dev \
+        oniguruma-dev \
+        vim \
+        libxml2-dev \
+        libzip-dev \
+        libjpeg-turbo-dev \
+        libpng-dev \
+        nodejs=24.17.0-r0 \
+        npm  && \
+    # Install PHP extensions
+    docker-php-ext-configure \
+        gd --with-freetype --with-jpeg && \
+    docker-php-ext-install \
+        pdo \
+        pdo_mysql \
+        bcmath \
+        curl \
+        mbstring \
+        gd \
+        xml \
+        zip && \
+    # Other commands
+    echo "alias vi='vim'" >> /etc/profile
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/
+COPY services/dev/php/zzz-custom.ini /usr/local/etc/php/conf.d/
+
+CMD ["php-fpm"]

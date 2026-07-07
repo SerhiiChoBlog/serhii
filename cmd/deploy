@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ip="${1:-}"
+
+if [[ "$ip" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    ip="$1"
+elif [[ "$ip" == "--help" || "$ip" == "-h" ]]; then
+    printf "Usage: ./cmd/deploy [IP]...\n"
+    echo "Deploys files to VPS and builds podman images with Docker Hub deployment"
+else
+    read -p "Enter destination IP: " ip
+fi
+
+echo "🐧 Building for production..."
+./cmd/run prod build
+
+echo "🐧 Pushing images to Docker Hub..."
+podman push serhiicho/serhiicho:nginx-prod
+podman push serhiicho/serhiicho:php-prod
+podman push serhiicho/serhiicho:db-prod
+
+git push
+
+echo "🐧 Transfering files to the VPS..."
+
+cmd_files=(
+    cmd/restart
+    cmd/run
+    cmd/start
+    cmd/fetch
+)
+
+scp "${cmd_files[@]}" "serhii@$ip:/home/serhii/serhiicho.com/cmd/"
+
+root_files=(
+    compose.prod.yml
+    compose.yml
+)
+
+scp "${root_files[@]}" "serhii@$ip:/home/serhii/serhiicho.com/"

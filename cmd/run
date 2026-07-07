@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ "$1" != "dev" && "$1" != "prod" ]]; then
+    echo "Error: must be 'dev' or 'prod'"
+    echo "Usage: ./cmd/run {dev|prod} [commands...]"
+    exit 1
+fi
+
+podman-compose -f compose.yml -f "compose.${1}.yml" --env=app/.env "${@:2}"

@@ -1,0 +1,51 @@
+services:
+  nginx:
+    build:
+      context: .
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    networks:
+      - main
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: .
+    restart: always
+    networks:
+      - main
+    depends_on:
+      - db
+
+  db:
+    build:
+      context: .
+      dockerfile: services/prod/db/Dockerfile
+    image: serhiicho/serhiicho:db-prod
+    environment:
+      MARIADB_ROOT_PASSWORD: "${DB_PASSWORD}"
+      MARIADB_ROOT_HOST: "%"
+      MARIADB_DATABASE: "${DB_DATABASE}"
+      MARIADB_USER: "${DB_USERNAME}"
+      MARIADB_PASSWORD: "${DB_PASSWORD}"
+      TZ: Europe/Kyiv
+    volumes:
+      - db:/var/lib/mysql:z
+    restart: always
+    networks:
+      - main
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      retries: 3
+      timeout: 5s
+
+networks:
+  main:
+    driver: bridge
+
+volumes:
+  db:
+    driver: local
