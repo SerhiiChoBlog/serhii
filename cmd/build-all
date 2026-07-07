@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "🐧 Building for dev..."
+./cmd/run dev build
+
+echo "🐧 Building for prod..."
+./cmd/run prod build
