@@ -15,6 +15,9 @@ echo "🐧 Building a dev podman image..."
 echo "🐧 Installing composer dependencies..."
 ./cmd/run dev run --rm php bash -c "composer install -n && composer update -n"
 
+echo "🐧 Building assets..."
+./cmd/run dev run --rm php bash -c "npm i && npm run build"
+
 echo "🐧 Starting a dev container..."
 ./cmd/run dev down
 ./cmd/run dev up -d
