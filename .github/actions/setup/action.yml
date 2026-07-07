@@ -3,10 +3,6 @@ runs:
   using: 'composite'
   steps:
     - shell: 'bash'
-      name: 'Checkout code'
-      uses: 'actions/checkout@v6'
-
-    - shell: 'bash'
       name: 'Add executable'
       run: 'chmod -R +x cmd'
 
