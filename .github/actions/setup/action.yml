@@ -10,12 +10,9 @@ runs:
       name: Copy .env file
       run: "cp app/.env.example app/.env"
 
-    - shell: bash
-      name: Install podman
+    - name: Install podman
       run: |
         sudo apt update && \
         sudo apt install -y podman pipx && \
-        pipx ensurepath && \
-        pipx install podman-compose && \
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
-
+        sudo pipx ensurepath --global && \
+        sudo pipx install podman-compose --global
