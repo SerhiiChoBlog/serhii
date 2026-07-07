@@ -125,7 +125,7 @@ class Visitor extends Model
                 return false;
             }
 
-            return $ranges->contains(fn(array $range) => $long_ip >= $range[0] && $long_ip <= $range[1]);
+            return $ranges->contains(fn (array $range) => $long_ip >= $range[0] && $long_ip <= $range[1]);
         });
     }
 }

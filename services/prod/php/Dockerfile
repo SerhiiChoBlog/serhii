@@ -9,10 +9,15 @@ RUN apk update && \
         vim \
         bash \
         curl-dev \
+        freetype-dev \
+        libxml2-dev \
         libzip-dev \
-        oniguruma-dev \
-        libxml2-dev && \
+        libjpeg-turbo-dev \
+        libpng-dev \
+        oniguruma-dev && \
     # Install PHP extensions
+    docker-php-ext-configure \
+        gd --with-freetype --with-jpeg && \
     docker-php-ext-install \
         pdo \
         pdo_mysql \
@@ -21,6 +26,7 @@ RUN apk update && \
         mbstring \
         xml \
         zip \
+        gd \
         opcache && \
     # Other commands
     echo "alias vi='vim'" >> /etc/profile
@@ -30,15 +36,14 @@ COPY services/prod/php/zzz-custom.ini services/prod/php/zzz-opache.ini /usr/loca
 
 COPY app/composer.* .
 
-RUN composer install --no-interaction --prefer-dist --no-progress --no-dev --no-scripts && \
+RUN composer install -n --prefer-dist --no-progress --no-dev --no-scripts && \
     composer clear-cache
 
 COPY app .
 
-RUN composer update --no-dev && \
+RUN composer update -n --no-dev && \
     composer clear-cache && \
     chown -R www-data:www-data . && \
-    # Run php artisan commands here
     php artisan storage:link && \
     php artisan view:cache
 

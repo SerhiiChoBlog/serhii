@@ -12,16 +12,17 @@ else
     read -p "Enter destination IP: " ip
 fi
 
+echo "🐧 Building for production..."
 ./cmd/run prod build
 
-echo "Pusing images to Docker Hub..."
+echo "🐧 Pushing images to Docker Hub..."
 podman push serhiicho/serhiicho:nginx-prod
 podman push serhiicho/serhiicho:php-prod
 podman push serhiicho/serhiicho:db-prod
 
 git push
 
-echo "Transfering files to the VPS..."
+echo "🐧 Transfering files to the VPS..."
 
 cmd_files=(
     cmd/restart

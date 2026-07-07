@@ -13,24 +13,13 @@ jobs:
       - name: Checkout code
         uses: "actions/checkout@v6"
 
-      - name: Setup
-        uses: ./.github/actions/setup
+      - name: Install podman
+        run: |
+          sudo apt update && \
+          sudo apt install -y podman pipx && \
+          sudo pipx ensurepath --global && \
+          sudo pipx install podman-compose --global
 
-      - name: Build a development container
+      - name: Running tests
         shell: bash
-        run: "sudo ./cmd/run dev build"
-
-      - name: Install composer dependencies
-        shell: bash
-        run: "sudo ./cmd/run dev run --rm php composer install"
-
-      - name: Start a development container
-        shell: bash
-        run: "sudo ./cmd/run dev up -d"
-
-      - name: Run checks
-        shell: bash
-        run: "sudo ./cmd/run dev exec php bash -c 'php artisan key:generate && composer check'"
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
+        run: "sudo ./cmd/test"
