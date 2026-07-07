@@ -2,15 +2,16 @@ name: Setup Tool
 runs:
   using: composite
   steps:
-    - shell: bash
-      name: Add executable
+    - name: Add executable
+      shell: bash
       run: "chmod -R +x cmd"
 
-    - shell: bash
-      name: Copy .env file
+    - name: Copy .env file
+      shell: bash
       run: "cp app/.env.example app/.env"
 
     - name: Install podman
+      shell: bash
       run: |
         sudo apt update && \
         sudo apt install -y podman pipx && \
