@@ -1,37 +1,41 @@
-name: 'Main'
+name: Main
 
 on:
   push:
-    branches: ['master']
+    branches: [master]
   pull_request:
-    branches: ['master']
+    branches: [master]
 
 jobs:
   test:
-    runs-on: 'ubuntu-latest'
-    container: 'ubuntu:latest'
+    runs-on: ubuntu-latest
+    container: ubuntu:latest
 
     steps:
-      - name: 'Checkout code'
+      - name: Checkout code
         uses: 'actions/checkout@v6'
 
-      - name: 'Setup'
-        uses: './.github/actions/setup'
+      - name: Setup
+        uses: ./.github/actions/setup
 
-      - name: 'Build a development container'
+      - name: Build a development container
+        shell: bash
         run: './cmd/run dev build'
 
-      - name: 'Install composer dependencies'
+      - name: Install composer dependencies
+        shell: bash
         run: './cmd/run dev run --rm php composer install'
 
-      - name: 'Generate an app key'
+      - name: Generate an app key
         run: 'php artisan key:generate'
 
-      - name: 'Build a development container'
+      - name: Start a development container
+        shell: bash
         run: './cmd/run dev up -d'
 
-      - name: 'Run checks'
+      - name: Run checks
+        shell: bash
         run: './cmd/run dev composer check'
         env:
-          DB_CONNECTION: 'sqlite'
-          DB_DATABASE: 'database/database.sqlite'
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
