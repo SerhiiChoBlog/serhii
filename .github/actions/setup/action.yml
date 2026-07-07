@@ -1,0 +1,24 @@
+name: 'Setup Tool'
+runs:
+  using: 'composite'
+  steps:
+    - shell: 'bash'
+      name: 'Checkout code'
+      uses: 'actions/checkout@v6'
+
+    - shell: 'bash'
+      name: 'Add executable'
+      run: 'chmod -R +x cmd'
+
+    - shell: 'bash'
+      name: 'Copy .env file'
+      run: 'cp app/.env.example app/.env'
+
+    - shell: 'bash'
+      name: 'Install podman'
+      run: |
+        apt update && \
+        apt install -y podman pipx && \
+        pipx ensurepath && \
+        pipx install podman-compose && \
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
