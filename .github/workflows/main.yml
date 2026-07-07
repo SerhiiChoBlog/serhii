@@ -21,10 +21,10 @@ jobs:
       - name: Copy .env file
         run: cp app/.env.example app/.env
 
-      - name: Install podman-compose
+      - name: Install podman
         run: |
           apt update && \
-          apt install -y pipx && \
+          apt install -y podman pipx && \
           pipx ensurepath && \
           pipx install podman-compose && \
           echo "$HOME/.local/bin" >> $GITHUB_PATH
