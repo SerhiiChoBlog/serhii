@@ -15,9 +15,10 @@ git push
 echo "Transfering files to the VPS..."
 
 cmd_files=(
-    cmd/reload
+    cmd/restart
     cmd/run
     cmd/start
+    cmd/fetch
 )
 
 scp "${cmd_files[@]}" "serhii@$ip:/home/serhii/serhiicho.com/cmd/"
