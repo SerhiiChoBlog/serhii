@@ -19,8 +19,7 @@ class PostContentImageControllerTest extends TestCase
 
     public function testImportImagesAttachesThemToPost(): void
     {
-        /** @var Collection<int, Tag> $tags */
-        $tags = Tag::factory(3)->create();
+        Tag::factory(3)->create();
 
         /** @var Post $post */
         $post = Post::factory()->create();
@@ -43,7 +42,7 @@ class PostContentImageControllerTest extends TestCase
 
         $uri = "/admin/ajax/post-content-images/{$post->id}/import";
 
-        $resp = $this->actingAs($admin, 'admin')
+        $this->actingAs($admin, 'admin')
             ->postJson($uri, compact('file'))
             ->assertSuccessful()
             ->assertContent('Images are imported!');
