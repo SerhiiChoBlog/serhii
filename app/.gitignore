@@ -3,7 +3,6 @@
 /public/sitemap.xml
 /public/storage
 /public/build
-/storage/
 /vendor/
 .env
 .phpunit.result.cache
