@@ -7,13 +7,4 @@ if [[ "$1" != "dev" && "$1" != "prod" ]]; then
     exit 1
 fi
 
-# Change permissions for app/storage to www-data
-if [[ "$2" == "up" ]] ;then
-    podman unshare chown -R 82:82 app/storage
-
-    if [[ "$1" == "prod" ]] ;then
-        podman unshare chown -R 82:82 certs
-    fi
-fi
-
 podman-compose -f compose.yml -f "compose.${1}.yml" --env=app/.env "${@:2}"
