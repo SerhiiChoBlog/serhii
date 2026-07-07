@@ -28,13 +28,9 @@ jobs:
         shell: bash
         run: "sudo ./cmd/run dev up -d"
 
-      - name: Generate an app key
-        shell: bash
-        run: "sudo ./cmd/run dev exec php bash -c 'php artisan key:generate'"
-
       - name: Run checks
         shell: bash
-        run: "sudo ./cmd/run dev php bash -c 'composer check'"
+        run: "sudo ./cmd/run dev exec php bash -c 'php artisan key:generate && composer check'"
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
