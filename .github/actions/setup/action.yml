@@ -14,7 +14,7 @@ runs:
       name: Install podman
       run: |
         apt update && \
-        apt install -y podman pipx idmap slirp4netns && \
+        apt install -y podman pipx uidmap slirp4netns && \
         sysctl -w kernel.unprivileged_userns_clone=1 && \
         pipx ensurepath && \
         pipx install podman-compose && \
