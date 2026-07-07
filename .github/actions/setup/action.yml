@@ -4,11 +4,11 @@ runs:
   steps:
     - shell: bash
       name: Add executable
-      run: 'chmod -R +x cmd'
+      run: "chmod -R +x cmd"
 
     - shell: bash
       name: Copy .env file
-      run: 'cp app/.env.example app/.env'
+      run: "cp app/.env.example app/.env"
 
     - shell: bash
       name: Install podman
@@ -17,4 +17,6 @@ runs:
         apt install -y podman pipx && \
         pipx ensurepath && \
         pipx install podman-compose && \
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
+        echo "$HOME/.local/bin" >> $GITHUB_PATH && \
+        sudo sysctl -w kernel.unprivileged_userns_clone=1
+
