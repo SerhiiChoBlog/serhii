@@ -31,11 +31,11 @@ jobs:
 
       - name: Generate an app key
         shell: bash
-        run: "sudo ./cmd/run exec php bash -c 'php artisan key:generate'"
+        run: "sudo ./cmd/run dev exec php bash -c 'php artisan key:generate'"
 
       - name: Run checks
         shell: bash
-        run: "sudo ./cmd/run dev composer check"
+        run: "sudo ./cmd/run dev php back -c 'composer check'"
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
