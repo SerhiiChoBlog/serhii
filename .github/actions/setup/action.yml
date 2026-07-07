@@ -14,9 +14,10 @@ runs:
       name: Install podman
       run: |
         apt update && \
-        apt install -y podman pipx && \
+        apt install -y podman pipx idmap slirp4netns && \
+        sysctl -w kernel.unprivileged_userns_clone=1 && \
         pipx ensurepath && \
         pipx install podman-compose && \
         echo "$HOME/.local/bin" >> $GITHUB_PATH && \
-        sudo sysctl -w kernel.unprivileged_userns_clone=1
+        sysctl -w kernel.unprivileged_userns_clone=1
 
