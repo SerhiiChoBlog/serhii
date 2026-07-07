@@ -9,7 +9,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: "actions/checkout@v6"
@@ -35,7 +34,7 @@ jobs:
 
       - name: Run checks
         shell: bash
-        run: "sudo ./cmd/run dev php back -c 'composer check'"
+        run: "sudo ./cmd/run dev php bash -c 'composer check'"
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
