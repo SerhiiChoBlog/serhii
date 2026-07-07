@@ -19,23 +19,23 @@ jobs:
 
       - name: Build a development container
         shell: bash
-        run: "sudo ./cmd/run dev build"
+        run: "sudo -e ./cmd/run dev build"
 
       - name: Install composer dependencies
         shell: bash
-        run: "sudo ./cmd/run dev run --rm php composer install"
+        run: "sudo -e ./cmd/run dev run --rm php composer install"
 
       - name: Start a development container
         shell: bash
-        run: "sudo ./cmd/run dev up -d"
+        run: "sudo -e ./cmd/run dev up -d"
 
       - name: Generate an app key
         shell: bash
-        run: "sudo ./cmd/run exec php bash -c 'php artisan key:generate'"
+        run: "sudo -e ./cmd/run exec php bash -c 'php artisan key:generate'"
 
       - name: Run checks
         shell: bash
-        run: "sudo ./cmd/run dev composer check"
+        run: "sudo -e ./cmd/run dev composer check"
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
