@@ -1,0 +1,18 @@
+[mariadb]
+# Give InnoDB 1GB. InnoDB buffer pool size in bytes. The primary value to
+# adjust on a database server with entirely/primarily InnoDB tables.
+innodb_buffer_pool_size = 1G
+
+# Limit connections to prevent RAM spikes.
+# Default is usually 100-150. Unless we have massive traffic,
+# 75 is plenty and prevents memory exhaustion.
+max_connections = 75
+
+# Optimize for 1 CPU core
+innodb_read_io_threads = 2
+innodb_write_io_threads = 2
+
+# Disabling this saves ~100-200MB of RAM on low-memory VPS.
+# By default, it allocates a lot of memory for instrumentation we likely
+# won't use on a single-node VPS.
+performance_schema = OFF

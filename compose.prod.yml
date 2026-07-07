@@ -1,0 +1,16 @@
+services:
+  nginx:
+    build:
+      dockerfile: services/prod/nginx/Dockerfile
+    image: serhiicho/serhiicho:nginx-prod
+    volumes:
+      - ./app/storage:/var/www/html/storage:z
+      - ./certs:/etc/nginx/ssl/:ro,z
+
+  php:
+    build:
+      dockerfile: services/prod/php/Dockerfile
+    image: serhiicho/serhiicho:php-prod
+    volumes:
+      - ./app/.env:/var/www/html/.env:z
+      - ./app/storage:/var/www/html/storage:z

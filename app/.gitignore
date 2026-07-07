@@ -1,0 +1,9 @@
+/node_modules
+/public/hot
+/public/sitemap.xml
+/public/storage
+/public/build
+/vendor/
+.env
+.phpunit.result.cache
+post-images.zip
