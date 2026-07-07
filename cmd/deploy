@@ -24,14 +24,7 @@ git push
 
 echo "🐧 Transfering files to the VPS..."
 
-cmd_files=(
-    cmd/restart
-    cmd/run
-    cmd/start
-    cmd/fetch
-)
-
-scp "${cmd_files[@]}" "serhii@$ip:/home/serhii/serhiicho.com/cmd/"
+scp cmd/run cmd/prod/* "serhii@$ip:/home/serhii/serhiicho.com/cmd/"
 
 root_files=(
     compose.prod.yml
