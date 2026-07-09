@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+pass=$(awk -F= '$1 == "DB_PASSWORD" { print $2 }' /app/.env)
+file_name=$(date +'%Y-%m-%d %H:%M')
+file_path="/app/backups/$file_name.sql"
+
+mariadb-dump -u root -h db -p"$pass" serhii > "$file_path"
+
+printf "File has been saved to %s" "$file_path"
