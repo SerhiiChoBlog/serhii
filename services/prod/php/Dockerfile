@@ -47,4 +47,4 @@ RUN composer update -n --no-dev && \
     php artisan storage:link && \
     php artisan view:cache
 
-CMD ["php-fpm"]
+CMD [ "php-fpm" ]

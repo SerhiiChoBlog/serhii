@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 ./cmd/run prod up -d
 ./cmd/run prod exec php bash -c 'php artisan config:cache && \
