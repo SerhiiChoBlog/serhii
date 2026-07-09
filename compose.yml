@@ -24,7 +24,6 @@ services:
     build:
       context: .
       dockerfile: services/prod/db/Dockerfile
-    image: serhiicho/serhiicho:db-prod
     environment:
       MARIADB_ROOT_PASSWORD: "${DB_PASSWORD}"
       MARIADB_ROOT_HOST: "%"
