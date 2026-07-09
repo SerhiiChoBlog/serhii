@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+. cmd/config
+
 ip="${1:-}"
 
 if [[ "$ip" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
@@ -8,26 +10,23 @@ elif [[ "$ip" == "--help" || "$ip" == "-h" ]]; then
     printf "Usage: ./cmd/deploy [IP]...\n"
     echo "Deploys files to VPS and builds podman images with Docker Hub deployment"
 else
-    read -p "Enter destination IP: " ip
+    read -rp "Enter destination IP: " ip
 fi
 
 echo "🐧 Building for production..."
 ./cmd/run prod build
 
 echo "🐧 Pushing images to Docker Hub..."
-podman push serhiicho/serhiicho:nginx
-podman push serhiicho/serhiicho:php
-podman push serhiicho/serhiicho:db
+for image in "${PODMAN_IMAGES[@]}"; do
+    podman push "$image"
+done
 
 git push
 
 echo "🐧 Transfering files to the VPS..."
 
-scp cmd/run cmd/prod/* "serhii@$ip:/home/serhii/serhiicho.com/cmd/"
-
-root_files=(
-    compose.prod.yml
-    compose.yml
-)
-
-scp "${root_files[@]}" "serhii@$ip:/home/serhii/serhiicho.com/"
+for item in "${DEPLOY_FILES[@]}"; do
+    file=$(awk -F: '{ print $1 }' <<< "$item")
+    dest=$(awk -F: '{ print $2 }' <<< "$item")
+    scp $file "serhii@$ip:$dest"
+done

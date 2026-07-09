@@ -21,7 +21,7 @@ services:
   backup:
     build:
       dockerfile: services/prod/backup/Dockerfile
-    image: serhiicho/serhiicho:backup
+    image: docker.io/serhiicho/serhiicho:backup
     networks:
       - main
     stdin_open: true
