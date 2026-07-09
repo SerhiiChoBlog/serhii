@@ -1,0 +1,15 @@
+export PODMAN_IMAGES=(
+    docker.io/serhiicho/serhiicho:php
+    docker.io/serhiicho/serhiicho:nginx
+    docker.io/serhiicho/serhiicho:db
+    docker.io/serhiicho/serhiicho:backup
+)
+
+# file:destination
+export DEPLOY_FILES=(
+    compose.prod.yml:/home/serhii/serhiicho.com/
+    compose.yml:/home/serhii/serhiicho.com/
+    cmd/run:/home/serhii/serhiicho.com/cmd/
+    cmd/config:/home/serhii/serhiicho.com/cmd/
+    cmd/prod/*:/home/serhii/serhiicho.com/cmd/
+)

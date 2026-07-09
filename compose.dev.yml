@@ -3,7 +3,6 @@ services:
     build:
       dockerfile: services/dev/nginx/Dockerfile
     image: localhost/serhiicho/serhiicho:nginx
-    image: docker.io/serhiicho/serhiicho:php
     volumes:
       - ./app:/var/www/html:z
 

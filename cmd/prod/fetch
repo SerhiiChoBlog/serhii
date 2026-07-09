@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-podman pull serhiicho/serhiicho:php
-podman pull serhiicho/serhiicho:nginx
-podman pull serhiicho/serhiicho:db
+. cmd/config
 
-./cmd/restart
+for image in "${PODMAN_IMAGES[@]}"; do
+    podman pull "$image"
+done
+
+podman image prune -f
