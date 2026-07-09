@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 echo "🐧 Making sure .env file exists..."
 if [[ ! -f app/.env ]]; then

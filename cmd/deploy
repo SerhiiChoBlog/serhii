@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 ip="${1:-}"
 
@@ -16,9 +15,9 @@ echo "🐧 Building for production..."
 ./cmd/run prod build
 
 echo "🐧 Pushing images to Docker Hub..."
-podman push serhiicho/serhiicho:nginx-prod
-podman push serhiicho/serhiicho:php-prod
-podman push serhiicho/serhiicho:db-prod
+podman push serhiicho/serhiicho:nginx
+podman push serhiicho/serhiicho:php
+podman push serhiicho/serhiicho:db
 
 git push
 

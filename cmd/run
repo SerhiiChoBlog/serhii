@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 if [[ "$1" != "dev" && "$1" != "prod" ]]; then
     echo "Error: must be 'dev' or 'prod'"
