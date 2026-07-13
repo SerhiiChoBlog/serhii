@@ -5,8 +5,11 @@ WORKDIR /app
 RUN apk update && \
     apk add --no-cache \
         bash \
+        vim \
         tzdata \
-        mariadb-client
+        mariadb-client && \
+    echo "alias vi='vim'" >> ~/.bashrc && \
+    echo "alias ll='ls -hlaF'" >> ~/.bashrc
 
 COPY services/prod/backup/cron-script /app/
 

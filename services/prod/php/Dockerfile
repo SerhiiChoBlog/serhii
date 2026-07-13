@@ -29,7 +29,8 @@ RUN apk update && \
         gd \
         opcache && \
     # Other commands
-    echo "alias vi='vim'" >> /etc/profile
+    echo "alias vi='vim'" >> ~/.bashrc && \
+    echo "alias ll='ls -hlaF'" >> ~/.bashrc
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/
 COPY services/prod/php/zzz-custom.ini services/prod/php/zzz-opache.ini /usr/local/etc/php/conf.d/
