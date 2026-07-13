@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+podman unshare chown 82 app
+sudo chown -R :serhii app
+sudo find app/ -type f -exec chmod 660 {} +
+sudo find app/ -type d -exec chmod 770 {} +
