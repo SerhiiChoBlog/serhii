@@ -17,7 +17,7 @@ DEPLOY_FILES=(
     compose.prod.yml:/home/serhii/serhiicho.com/
     compose.yml:/home/serhii/serhiicho.com/
     cmd/run:/home/serhii/serhiicho.com/cmd/
-    cmd/config:/home/serhii/serhiicho.com/cmd/
+    cmd/config.sh:/home/serhii/serhiicho.com/cmd/
     cmd/prod/*:/home/serhii/serhiicho.com/cmd/
 )
 
@@ -29,7 +29,7 @@ in_array() {
 
 validate_services() {
     for service; do
-        if [[ "$service" == "" ]] && ! in_array "$service" "${SERVICES[@]}"; then
+        if ! in_array "$service" "${SERVICES[@]}"; then
             echo "❌ Invalid service: $service. Allowed: ${SERVICES[*]}"
             exit 1
         fi
