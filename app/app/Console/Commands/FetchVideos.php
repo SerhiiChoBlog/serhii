@@ -29,9 +29,13 @@ class FetchVideos extends Command
             $updated = $this->updateExistingVideos($yt_videos, $videos);
             $created = $this->createMissingVideos($yt_videos, $videos);
 
+            $removed = $this->removeLeftovers($yt_videos, $videos);
+
             Cache::forget(CacheKey::LAST_VIDEOS);
 
-            $this->info("Videos updated: {$updated}. Videos created: {$created}");
+            $this->info("Videos updated: {$updated}");
+            $this->info("Videos created: {$created}");
+            $this->info("Videos removed: {$removed}");
         } catch (FetchVideosHttpException $e) {
             $this->error($e->getMessage());
             Log::error($e->getMessage());
@@ -46,7 +50,7 @@ class FetchVideos extends Command
     {
         $url = config('services.youtube.url');
 
-        $response = Http::get($url, [
+        $response = Http::retry(3, 1000)->get($url, [
             'part' => 'snippet',
             'channelId' => 'UCL-MGuK7gMg_Rw63uBHdWbA',
             'order' => 'date',
@@ -56,12 +60,18 @@ class FetchVideos extends Command
         ]);
 
         if ($response->failed()) {
-            throw new FetchVideosHttpException('Cannot fetch videos from YouTube');
+            $body = $response->body();
+            $err = $body['error']['message'] ?? $body;
+            throw new FetchVideosHttpException("Cannot fetch videos from YouTube: {$err}");
         }
 
-        return $response
-            ->collect('items')
-            ->mapInto(YTVideo::class);
+        $items = $response->collect('items');
+
+        if ($items->isEmpty()) {
+            throw new FetchVideosHttpException("YouTube returned an empty list of videos.");
+        }
+
+        return $items->mapInto(YTVideo::class);
     }
 
     /**
@@ -112,19 +122,39 @@ class FetchVideos extends Command
         $video->id = $yt_video->id->video_id;
         $video->title = $yt_video->snippet->title;
         $video->description = $yt_video->snippet->description;
-        $video->image = "https://img.youtube.com/vi/{$yt_video->id->video_id}/mqdefault.jpg";
+        $video->image = $this->getFullImageURL($yt_video);
         $video->url = "https://www.youtube.com/watch?v={$yt_video->id->video_id}";
         $video->published_at = $yt_video->snippet->published_at;
 
         $video->save();
     }
 
-    public function videosHasNotChanged(Video $video, YTVideo $yt_video): bool
+    private function videosHasNotChanged(Video $video, YTVideo $yt_video): bool
     {
         $same_title = $video->title === $yt_video->snippet->title;
         $same_description = $video->description === $yt_video->snippet->description;
-        $same_image = $video->image === $yt_video->snippet->thumbnails->high->url;
+        $same_image = $video->image === $this->getFullImageURL($yt_video);
 
         return $same_title && $same_description && $same_image;
+    }
+
+    private function getFullImageURL(YTVideo $yt_video): string
+    {
+        return "https://img.youtube.com/vi/{$yt_video->id->video_id}/mqdefault.jpg";
+    }
+
+    /**
+     * @param Collection<int, YTVideo> $yt_videos
+     * @param Collection<int, Video> $videos
+     */
+    private function removeLeftovers(Collection $yt_videos, Collection $videos): int
+    {
+        $left_overs = $videos->filter(function (Video $v) use ($yt_videos) {
+            return !$yt_videos->contains(fn (YTVideo $yt) => $yt->id->video_id === $v->id);
+        });
+
+        $left_overs->each(fn(Video $v) => $v->delete());
+
+        return $left_overs->count();
     }
 }

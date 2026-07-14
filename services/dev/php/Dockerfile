@@ -29,7 +29,8 @@ RUN apk update && \
         xml \
         zip && \
     # Other commands
-    echo "alias vi='vim'" >> /etc/profile
+    echo "alias vi='vim'" >> ~/.bashrc && \
+    echo "alias ll='ls -hlaF'" >> ~/.bashrc
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/
 COPY services/dev/php/zzz-custom.ini /usr/local/etc/php/conf.d/
