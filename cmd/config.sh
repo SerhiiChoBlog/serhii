@@ -1,0 +1,37 @@
+SERVICES=(
+    php
+    nginx
+    db
+    backup
+)
+
+PODMAN_IMAGES=()
+
+for service in "${SERVICES[@]}"; do
+    PODMAN_IMAGES+=(docker.io/serhiicho/serhiicho:"$service")
+done
+
+# file:destination
+# shellcheck disable=SC2034
+DEPLOY_FILES=(
+    compose.prod.yml:/home/serhii/serhiicho.com/
+    compose.yml:/home/serhii/serhiicho.com/
+    cmd/run:/home/serhii/serhiicho.com/cmd/
+    cmd/config:/home/serhii/serhiicho.com/cmd/
+    cmd/prod/*:/home/serhii/serhiicho.com/cmd/
+)
+
+in_array() {
+    local search="$1"; shift
+    for item; do [[ "$item" == "$search" ]] && return 0; done
+    return 1
+}
+
+validate_services() {
+    for service; do
+        if [[ "$service" == "" ]] && ! in_array "$service" "${SERVICES[@]}"; then
+            echo "❌ Invalid service: $service. Allowed: ${SERVICES[*]}"
+            exit 1
+        fi
+    done
+}

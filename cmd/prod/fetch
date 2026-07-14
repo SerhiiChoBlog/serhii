@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-. cmd/config
+source cmd/config.sh
 
 for image in "${PODMAN_IMAGES[@]}"; do
+    echo "⌛ Pulling $image"
     podman pull "$image"
+    echo "✅ Done $image"
 done
 
 podman image prune -f

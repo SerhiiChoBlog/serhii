@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 
-./cmd/run prod down
-./cmd/start
+source cmd/config.sh
+
+validate_services "$@"
+
+./cmd/run prod down "$@"
+./cmd/start "$@"
