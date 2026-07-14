@@ -61,6 +61,7 @@ class FetchVideos extends Command
 
         if ($response->failed()) {
             $body = $response->body();
+            /** @phpstan-ignore-next-line */
             $err = $body['error']['message'] ?? $body;
             throw new FetchVideosHttpException("Cannot fetch videos from YouTube: {$err}");
         }
@@ -153,7 +154,7 @@ class FetchVideos extends Command
             return !$yt_videos->contains(fn (YTVideo $yt) => $yt->id->video_id === $v->id);
         });
 
-        $left_overs->each(fn(Video $v) => $v->delete());
+        $left_overs->each(fn (Video $v) => $v->delete());
 
         return $left_overs->count();
     }
