@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-./cmd/run prod up -d
-./cmd/run prod exec php bash -c 'php artisan config:cache && \
-                                 php artisan view:cache && \
-                                 php artisan route:cache'
+source cmd/config.sh
+
+validate_services "$@"
+
+./cmd/run prod up "$@" -d
+
+if [[ $# -eq 0 ]] || in_array php "$@"; then
+    cmds='php artisan config:cache; php artisan view:cache; php artisan route:cache'
+    ./cmd/run prod exec php bash -c "$cmds"
+fi

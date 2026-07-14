@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source cmd/config
+source cmd/config.sh
 
 echo "🐧 Building for production..."
 ./cmd/run prod build
