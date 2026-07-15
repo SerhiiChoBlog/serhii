@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-echo "🐧 Building for dev..."
-./cmd/run dev build
-
-echo "🐧 Building for prod..."
-./cmd/run prod build

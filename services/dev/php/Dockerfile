@@ -10,6 +10,7 @@ RUN apk update && \
         freetype-dev \
         oniguruma-dev \
         vim \
+        pecl \
         libxml2-dev \
         libzip-dev \
         libjpeg-turbo-dev \
@@ -28,6 +29,9 @@ RUN apk update && \
         gd \
         xml \
         zip && \
+    pecl install redis && \
+    docker-php-ext-enable \
+        redis && \
     # Other commands
     echo "alias vi='vim'" >> ~/.bashrc && \
     echo "alias ll='ls -hlaF'" >> ~/.bashrc
