@@ -20,6 +20,7 @@ services:
     networks:
       - nginx-php
       - db-php
+      - php-redis
     depends_on:
       - db
 
@@ -82,6 +83,7 @@ services:
     networks:
       - db-jobs
       - jobs-redis
+      - php-redis
     depends_on:
       - db
       - jobs
@@ -94,6 +96,8 @@ networks:
   db-backup:
     driver: bridge
   db-jobs:
+    driver: bridge
+  php-redis:
     driver: bridge
   jobs-redis:
     driver: bridge

@@ -1,8 +1,10 @@
 SERVICES=(
+    db
     php
     nginx
-    db
     backup
+    jobs
+    redis
 )
 
 PODMAN_IMAGES=()

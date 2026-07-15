@@ -9,7 +9,11 @@ RUN apk update && \
         vim \
         bash \
         curl-dev \
-        pecl \
+        autoconf \
+        g++ \
+        make \
+        linux-headers \
+        php84-pear \
         freetype-dev \
         supervisor \
         libxml2-dev \
