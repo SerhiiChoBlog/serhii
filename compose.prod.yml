@@ -17,6 +17,3 @@ services:
 
   db:
     image: docker.io/serhiicho/serhiicho:db
-    networks:
-      - db-backup
-      - db-jobs
