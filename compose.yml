@@ -8,7 +8,7 @@ services:
     restart: always
     env_file: .env
     networks:
-      - nginx-php
+      - php-nginx
     depends_on:
       - php
 
@@ -18,11 +18,12 @@ services:
     restart: always
     env_file: .env
     networks:
-      - nginx-php
+      - php-nginx
       - db-php
       - php-redis
     depends_on:
       - db
+      - redis
 
   db:
     build:
@@ -40,6 +41,7 @@ services:
     env_file: .env
     networks:
       - db-php
+      - db-backup
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       retries: 3
@@ -67,10 +69,9 @@ services:
     env_file: .env
     command: /usr/bin/supervisord -n
     networks:
-      - db-jobs
       - jobs-redis
     depends_on:
-      - php
+      - redis
 
   redis:
     build:
@@ -81,21 +82,17 @@ services:
     volumes:
       - redis:/data:z
     networks:
-      - db-jobs
       - jobs-redis
       - php-redis
     depends_on:
       - db
-      - jobs
 
 networks:
-  nginx-php:
+  php-nginx:
     driver: bridge
   db-php:
     driver: bridge
   db-backup:
-    driver: bridge
-  db-jobs:
     driver: bridge
   php-redis:
     driver: bridge
