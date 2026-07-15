@@ -10,7 +10,11 @@ RUN apk update && \
         freetype-dev \
         oniguruma-dev \
         vim \
-        pecl \
+        autoconf \
+        g++ \
+        make \
+        linux-headers \
+        php84-pear \
         libxml2-dev \
         libzip-dev \
         libjpeg-turbo-dev \
