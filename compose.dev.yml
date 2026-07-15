@@ -16,4 +16,5 @@ services:
       - ./app:/var/www/html:z
 
   db:
-    image: localhost/serhiicho/serhiicho:db
+    ports:
+      - 3300:3306
