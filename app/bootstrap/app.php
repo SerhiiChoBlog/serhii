@@ -18,9 +18,9 @@ return Application::configure(basePath: dirname(__DIR__))
         channels: __DIR__ . '/../routes/channels.php',
         health: '/up',
     )
-    ->withMIddleware(function (Middleware $middleware) {
+    ->withMiddleware(function (Middleware $middleware) {
         $middleware->encryptCookies(except: ['theme']);
-        $middleware->validateCsrfTokens(except: [
+        $middleware->preventRequestForgery(except: [
             '/admin/ajax/post-content-images/*',
             '/admin/ajax/posts/*',
         ]);
