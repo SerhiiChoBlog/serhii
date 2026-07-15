@@ -6,8 +6,9 @@ services:
       - 80:80
       - 443:443
     restart: always
+    env_file: .env
     networks:
-      - main
+      - nginx-php
     depends_on:
       - php
 
@@ -15,8 +16,10 @@ services:
     build:
       context: .
     restart: always
+    env_file: .env
     networks:
-      - main
+      - nginx-php
+      - db-php
     depends_on:
       - db
 
@@ -30,21 +33,73 @@ services:
       MARIADB_DATABASE: "${DB_DATABASE}"
       MARIADB_USER: "${DB_USERNAME}"
       MARIADB_PASSWORD: "${DB_PASSWORD}"
-      TZ: Europe/Kyiv
     volumes:
       - db:/var/lib/mysql:z
     restart: always
+    env_file: .env
     networks:
-      - main
+      - db-php
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       retries: 3
       timeout: 5s
 
+  backup:
+    build:
+      dockerfile: services/prod/backup/Dockerfile
+    image: docker.io/serhiicho/serhiicho:backup
+    restart: always
+    env_file: .env
+    networks:
+      - db-backup
+    volumes:
+      - ./backups:/app/backups:z
+      - ./app/.env:/app/.env:ro,z
+    depends_on:
+      - db
+
+  jobs:
+    build:
+      dockerfile: services/prod/php/Dockerfile
+    image: docker.io/serhiicho/serhiicho:jobs
+    restart: always
+    env_file: .env
+    command: /usr/bin/supervisord -n
+    networks:
+      - db-jobs
+      - jobs-redis
+    depends_on:
+      - php
+
+  redis:
+    build:
+      dockerfile: services/prod/redis/Dockerfile
+    image: docker.io/serhiicho/serhiicho:redis
+    restart: always
+    env_file: .env
+    volumes:
+      - redis:/data:z
+    networks:
+      - db-jobs
+      - jobs-redis
+    depends_on:
+      - db
+      - jobs
+
 networks:
-  main:
+  nginx-php:
+    driver: bridge
+  db-php:
+    driver: bridge
+  db-backup:
+    driver: bridge
+  db-jobs:
+    driver: bridge
+  jobs-redis:
     driver: bridge
 
 volumes:
   db:
+    driver: local
+  redis:
     driver: local
