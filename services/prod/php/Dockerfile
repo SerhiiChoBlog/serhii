@@ -33,13 +33,15 @@ RUN apk update && \
         xml \
         zip \
         gd \
+        pcntl \
         opcache && \
     pecl install redis && \
     docker-php-ext-enable \
         redis && \
     # Other commands
     echo "alias vi='vim'" >> ~/.bashrc && \
-    echo "alias ll='ls -hlaF'" >> ~/.bashrc
+    echo "alias ll='ls -hlaF'" >> ~/.bashrc && \
+    apk del autoconf g++ make linux-headers
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/
 COPY services/prod/php/zzz-custom.ini services/prod/php/zzz-opache.ini /usr/local/etc/php/conf.d/

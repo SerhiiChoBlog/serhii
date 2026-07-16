@@ -14,3 +14,9 @@ services:
     volumes:
       - ./app/.env:/var/www/html/.env:z
       - ./app/storage:/var/www/html/storage:z
+
+  jobs:
+    image: docker.io/serhiicho/serhiicho:php
+
+  horizon:
+    image: docker.io/serhiicho/serhiicho:php

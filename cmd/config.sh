@@ -3,7 +3,6 @@ SERVICES=(
     php
     nginx
     backup
-    jobs
     redis
 )
 
