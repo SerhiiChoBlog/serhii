@@ -6,7 +6,8 @@ services:
     restart: always
     env_file: .env
     networks:
-      - php-nginx
+      - nginx-net
+      - php-net
     depends_on:
       - php
 
@@ -14,10 +15,9 @@ services:
     restart: always
     env_file: .env
     networks:
-      - php-nginx
-      - db-php
-      - php-redis
-      - php-horizon-redis
+      - php-net
+      - db-net
+      - redis-net
     depends_on:
       - db
       - redis
@@ -37,8 +37,7 @@ services:
     restart: always
     env_file: .env
     networks:
-      - db-php
-      - db-backup
+      - db-net
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       retries: 3
@@ -51,7 +50,8 @@ services:
     restart: always
     env_file: .env
     networks:
-      - db-backup
+      - backup-net
+      - db-net
     volumes:
       - ./backups:/app/backups:z
       - ./app/.env:/app/.env:ro,z
@@ -63,7 +63,8 @@ services:
     env_file: .env
     command: /usr/bin/supervisord -n
     networks:
-      - jobs-redis
+      - jobs-net
+      - redis-net
     depends_on:
       - redis
 
@@ -74,40 +75,47 @@ services:
     restart: always
     env_file: .env
     volumes:
-      - redis:/data:z
+      - redis-vol:/data:z
     networks:
-      - jobs-redis
-      - php-redis
-      - php-horizon-redis
-    depends_on:
-      - db
+      - redis-net
 
   horizon:
     restart: always
     env_file: .env
     command: php artisan horizon
     networks:
-      - php-horizon-redis
+      - horizon-net
+      - redis-net
     depends_on:
-      - php
       - redis
 
+  # scheduler:
+  #   restart: always
+  #   env_file: .env
+  #   command: bash
+  #   networks:
+  #     - scheduler-net
+
 networks:
-  php-nginx:
+  php-net:
     driver: bridge
-  db-php:
+  nginx-net:
     driver: bridge
-  db-backup:
+  db-net:
     driver: bridge
-  php-redis:
+  backup-net:
     driver: bridge
-  jobs-redis:
+  redis-net:
     driver: bridge
-  php-horizon-redis:
+  jobs-net:
     driver: bridge
+  horizon-net:
+    driver: bridge
+  # scheduler-net:
+  #   driver: bridge
 
 volumes:
   db:
     driver: local
-  redis:
+  redis-vol:
     driver: local
