@@ -13,6 +13,7 @@ RUN apk update && \
         autoconf \
         g++ \
         make \
+        supervisor \
         linux-headers \
         php84-pear \
         libxml2-dev \
@@ -32,6 +33,7 @@ RUN apk update && \
         mbstring \
         gd \
         xml \
+        pcntl \
         zip && \
     pecl install redis && \
     docker-php-ext-enable \
@@ -42,5 +44,6 @@ RUN apk update && \
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/
 COPY services/dev/php/zzz-custom.ini /usr/local/etc/php/conf.d/
+COPY services/prod/jobs/supervisord.conf /etc/
 
 CMD ["php-fpm"]
