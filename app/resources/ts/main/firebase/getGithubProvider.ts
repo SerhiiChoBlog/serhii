@@ -1,7 +1,7 @@
-import firebase from '@/firebase'
+import { GithubAuthProvider } from 'firebase/auth'
 
-export default (): firebase.auth.GithubAuthProvider => {
-    const provider = new firebase.auth.GithubAuthProvider()
+export default (): GithubAuthProvider => {
+    const provider = new GithubAuthProvider()
 
     provider.addScope('read:user')
     provider.addScope('user:email')

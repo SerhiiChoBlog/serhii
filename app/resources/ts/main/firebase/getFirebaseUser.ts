@@ -1,23 +1,17 @@
 import type { FirebaseSignUpRequest } from '@shared/types'
 import type { User } from '@shared/types/models'
-import firebase from '@/firebase'
 import showToast from '@shared/modules/showToast'
+import { AuthProvider, signInWithPopup } from 'firebase/auth'
+import { auth } from '@/firebase'
 
-export default (
+export async function getFirebaseUser(
     onSuccess: (params: FirebaseSignUpRequest) => void,
     onError: (err: any) => void,
-    provider: firebase.auth.AuthProvider,
+    provider: AuthProvider,
     serviceName: User['sign_in_method'],
-) => {
-    firebase
-        .auth()
-        .signInWithPopup(provider)
-        .then(resp => handleResponse(resp))
-        .catch(err => onError(err))
-
-    async function handleResponse(
-        resp: firebase.auth.UserCredential,
-    ): Promise<void> {
+) {
+    try {
+        const resp = await signInWithPopup(auth, provider)
         const user = resp.user || null
 
         if (!user || !user.email) {
@@ -27,6 +21,7 @@ export default (
         }
 
         if (!user.displayName) {
+            // @ts-ignore
             user.displayName = user.email.split('@')[0]
         }
 
@@ -48,5 +43,7 @@ export default (
         }
 
         onSuccess(params)
+    } catch (err) {
+        onError(err)
     }
 }

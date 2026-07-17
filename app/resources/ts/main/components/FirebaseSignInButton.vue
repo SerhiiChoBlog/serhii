@@ -2,7 +2,7 @@
 import type { User } from '@shared/types/models'
 import type { FirebaseSignUpRequest } from '@shared/types'
 import { ref } from 'vue'
-import getFirebaseUser from '@/firebase/getFirebaseUser'
+import { getFirebaseUser } from '@/firebase/getFirebaseUser'
 import firebaseAuth from 'firebase/auth'
 import getGoogleProvider from '@/firebase/getGoogleProvider'
 import getGithubProvider from '@/firebase/getGithubProvider'
