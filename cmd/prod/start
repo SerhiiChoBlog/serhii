@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source cmd/config.sh
+source cmd/config
 
 validate_services "$@"
 
