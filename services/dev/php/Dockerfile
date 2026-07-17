@@ -38,9 +38,12 @@ RUN apk update && \
     pecl install redis && \
     docker-php-ext-enable \
         redis && \
-    # Other commands
+    # Aliases
     echo "alias vi='vim'" >> ~/.bashrc && \
-    echo "alias ll='ls -hlaF'" >> ~/.bashrc
+    echo "alias ll='ls -hlaF'" >> ~/.bashrc && \
+    # Install supercronic for Cron Jobs
+    wget -qO /usr/local/bin/supercronic https://github.com/aptible/supercronic/releases/latest/download/supercronic-linux-amd64 && \
+    chmod +x /usr/local/bin/supercronic
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/
 COPY services/dev/php/zzz-custom.ini /usr/local/etc/php/conf.d/
