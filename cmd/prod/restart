@@ -2,6 +2,8 @@
 
 source cmd/config
 
+./cmd/fetch
+
 validate_services "$@"
 
 ./cmd/run prod down "$@"
