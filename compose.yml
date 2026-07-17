@@ -1,28 +1,30 @@
 services:
   nginx:
-    build:
-      context: .
     ports:
       - 80:80
       - 443:443
     restart: always
+    env_file: .env
     networks:
-      - main
+      - nginx-net
+      - php-net
     depends_on:
       - php
 
   php:
-    build:
-      context: .
     restart: always
+    env_file: .env
     networks:
-      - main
+      - php-net
+      - db-net
+      - redis-net
     depends_on:
       - db
+      - redis
 
   db:
+    image: docker.io/serhiicho/serhiicho:db
     build:
-      context: .
       dockerfile: services/prod/db/Dockerfile
     environment:
       MARIADB_ROOT_PASSWORD: "${DB_PASSWORD}"
@@ -30,21 +32,93 @@ services:
       MARIADB_DATABASE: "${DB_DATABASE}"
       MARIADB_USER: "${DB_USERNAME}"
       MARIADB_PASSWORD: "${DB_PASSWORD}"
-      TZ: Europe/Kyiv
     volumes:
       - db:/var/lib/mysql:z
     restart: always
+    env_file: .env
     networks:
-      - main
+      - db-net
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       retries: 3
       timeout: 5s
 
+  backup:
+    build:
+      dockerfile: services/prod/backup/Dockerfile
+    image: docker.io/serhiicho/serhiicho:backup
+    restart: always
+    env_file: .env
+    networks:
+      - backup-net
+      - db-net
+    volumes:
+      - ./backups:/app/backups:z
+      - ./app/.env:/app/.env:ro,z
+    depends_on:
+      - db
+
+  jobs:
+    restart: always
+    env_file: .env
+    command: /usr/bin/supervisord -n
+    networks:
+      - jobs-net
+      - redis-net
+    depends_on:
+      - redis
+
+  redis:
+    build:
+      dockerfile: services/prod/redis/Dockerfile
+    image: docker.io/serhiicho/serhiicho:redis
+    restart: always
+    env_file: .env
+    volumes:
+      - redis-vol:/data:z
+    networks:
+      - redis-net
+
+  horizon:
+    restart: always
+    env_file: .env
+    command: php artisan horizon
+    networks:
+      - horizon-net
+      - redis-net
+    depends_on:
+      - redis
+
+  scheduler:
+    restart: always
+    env_file: .env
+    command: supercronic /var/www/html/crontab
+    stdin_open: true
+    networks:
+      - scheduler-net
+      - redis-net
+      - db-net
+
 networks:
-  main:
+  php-net:
+    driver: bridge
+  nginx-net:
+    driver: bridge
+  db-net:
+    driver: bridge
+  backup-net:
+    driver: bridge
+  redis-net:
+    driver: bridge
+  jobs-net:
+    driver: bridge
+  horizon-net:
+    driver: bridge
+  scheduler-net:
     driver: bridge
 
 volumes:
   db:
+    driver: local
+  redis-vol:
     driver: local

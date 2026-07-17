@@ -9,7 +9,13 @@ RUN apk update && \
         vim \
         bash \
         curl-dev \
+        autoconf \
+        g++ \
+        make \
+        linux-headers \
+        php84-pear \
         freetype-dev \
+        supervisor \
         libxml2-dev \
         libzip-dev \
         libjpeg-turbo-dev \
@@ -27,14 +33,19 @@ RUN apk update && \
         xml \
         zip \
         gd \
+        pcntl \
         opcache && \
+    pecl install redis && \
+    docker-php-ext-enable \
+        redis && \
     # Other commands
     echo "alias vi='vim'" >> ~/.bashrc && \
-    echo "alias ll='ls -hlaF'" >> ~/.bashrc
+    echo "alias ll='ls -hlaF'" >> ~/.bashrc && \
+    apk del autoconf g++ make linux-headers
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/
 COPY services/prod/php/zzz-custom.ini services/prod/php/zzz-opache.ini /usr/local/etc/php/conf.d/
-
+COPY services/prod/jobs/supervisord.conf /etc/
 COPY app/composer.* .
 
 RUN composer install -n --prefer-dist --no-progress --no-dev --no-scripts && \
@@ -46,6 +57,9 @@ RUN composer update -n --no-dev && \
     composer clear-cache && \
     chown -R www-data:www-data . && \
     php artisan storage:link && \
-    php artisan view:cache
+    php artisan view:cache && \
+    # Install supercronic for Cron Jobs
+    wget -qO /usr/local/bin/supercronic https://github.com/aptible/supercronic/releases/latest/download/supercronic-linux-amd64 && \
+    chmod +x /usr/local/bin/supercronic
 
 CMD [ "php-fpm" ]

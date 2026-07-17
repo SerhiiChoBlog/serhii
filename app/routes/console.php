@@ -18,11 +18,5 @@ Schedule::command(DetectRobotsVisitors::class)->dailyAt('00:03');
 Schedule::command(DeleteRobotViews::class)->dailyAt('00:04');
 Schedule::command(TopPostLastMonth::class)->dailyAt('00:05');
 Schedule::command(SitemapCommand::class)->dailyAt('00:06');
-
-Schedule::command('queue:work --tries=2 --stop-when-empty -n')
-    ->everyMinute()
-    ->withoutOverlapping();
-
 Schedule::command('queue:retry all')->daily();
-
 Schedule::command('cache:clear')->monthlyOn(1, '00:07');

@@ -10,6 +10,12 @@ RUN apk update && \
         freetype-dev \
         oniguruma-dev \
         vim \
+        autoconf \
+        g++ \
+        make \
+        supervisor \
+        linux-headers \
+        php84-pear \
         libxml2-dev \
         libzip-dev \
         libjpeg-turbo-dev \
@@ -27,12 +33,20 @@ RUN apk update && \
         mbstring \
         gd \
         xml \
+        pcntl \
         zip && \
-    # Other commands
+    pecl install redis && \
+    docker-php-ext-enable \
+        redis && \
+    # Aliases
     echo "alias vi='vim'" >> ~/.bashrc && \
-    echo "alias ll='ls -hlaF'" >> ~/.bashrc
+    echo "alias ll='ls -hlaF'" >> ~/.bashrc && \
+    # Install supercronic for Cron Jobs
+    wget -qO /usr/local/bin/supercronic https://github.com/aptible/supercronic/releases/latest/download/supercronic-linux-amd64 && \
+    chmod +x /usr/local/bin/supercronic
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/
 COPY services/dev/php/zzz-custom.ini /usr/local/etc/php/conf.d/
+COPY services/prod/jobs/supervisord.conf /etc/
 
 CMD ["php-fpm"]

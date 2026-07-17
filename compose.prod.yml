@@ -15,21 +15,11 @@ services:
       - ./app/.env:/var/www/html/.env:z
       - ./app/storage:/var/www/html/storage:z
 
-  db:
-    image: docker.io/serhiicho/serhiicho:db
+  jobs:
+    image: docker.io/serhiicho/serhiicho:php
 
-  backup:
-    build:
-      dockerfile: services/prod/backup/Dockerfile
-    image: docker.io/serhiicho/serhiicho:backup
-    networks:
-      - main
-    stdin_open: true
-    tty: true
-    volumes:
-      - ./backups:/app/backups:z
-      - ./app/.env:/app/.env:ro,z
-    depends_on:
-      - db
-    environment:
-      TZ: Europe/Kyiv
+  horizon:
+    image: docker.io/serhiicho/serhiicho:php
+
+  scheduler:
+    image: docker.io/serhiicho/serhiicho:php

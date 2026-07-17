@@ -7,3 +7,4 @@
 .env
 .phpunit.result.cache
 post-images.zip
+supervisord.*

@@ -1,8 +1,11 @@
+#!/usr/bin/env bash
+
 SERVICES=(
+    db
     php
     nginx
-    db
     backup
+    redis
 )
 
 PODMAN_IMAGES=()
@@ -17,7 +20,7 @@ DEPLOY_FILES=(
     compose.prod.yml:/home/serhii/serhiicho.com/
     compose.yml:/home/serhii/serhiicho.com/
     cmd/run:/home/serhii/serhiicho.com/cmd/
-    cmd/config.sh:/home/serhii/serhiicho.com/cmd/
+    cmd/config:/home/serhii/serhiicho.com/cmd/
     cmd/prod/*:/home/serhii/serhiicho.com/cmd/
 )
 
