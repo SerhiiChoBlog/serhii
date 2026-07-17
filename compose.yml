@@ -89,12 +89,15 @@ services:
     depends_on:
       - redis
 
-  # scheduler:
-  #   restart: always
-  #   env_file: .env
-  #   command: bash
-  #   networks:
-  #     - scheduler-net
+  scheduler:
+    restart: always
+    env_file: .env
+    command: supercronic /var/www/html/crontab
+    stdin_open: true
+    networks:
+      - scheduler-net
+      - redis-net
+      - db-net
 
 networks:
   php-net:
@@ -111,8 +114,8 @@ networks:
     driver: bridge
   horizon-net:
     driver: bridge
-  # scheduler-net:
-  #   driver: bridge
+  scheduler-net:
+    driver: bridge
 
 volumes:
   db:

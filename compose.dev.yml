@@ -28,3 +28,8 @@ services:
     image: localhost/serhiicho/serhiicho:php
     volumes:
       - ./app:/var/www/html:z
+
+  scheduler:
+    image: localhost/serhiicho/serhiicho:php
+    volumes:
+      - ./app:/var/www/html:z

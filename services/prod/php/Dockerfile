@@ -57,6 +57,9 @@ RUN composer update -n --no-dev && \
     composer clear-cache && \
     chown -R www-data:www-data . && \
     php artisan storage:link && \
-    php artisan view:cache
+    php artisan view:cache && \
+    # Install supercronic for Cron Jobs
+    wget -qO /usr/local/bin/supercronic https://github.com/aptible/supercronic/releases/latest/download/supercronic-linux-amd64 && \
+    chmod +x /usr/local/bin/supercronic
 
 CMD [ "php-fpm" ]
