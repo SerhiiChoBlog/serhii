@@ -19,4 +19,4 @@ RUN wget -qO /usr/local/bin/supercronic https://github.com/aptible/supercronic/r
 
 RUN echo "0 0,12 * * * /app/cron-script" > /app/crontab
 
-CMD ["supercronic", "/app/crontab"]
+CMD [ "supercronic", "/app/crontab" ]

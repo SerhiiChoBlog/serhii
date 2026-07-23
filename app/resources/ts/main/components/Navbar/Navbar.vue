@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Theme } from '@shared/types'
-import { computed } from 'vue'
 import useScroll from '@/composables/useScroll'
 import NavbarSearch from '@/components/Search/NavbarSearch.vue'
 import Hamburger from '@/components/Navbar/Hamburger.vue'
@@ -9,7 +8,6 @@ import AppearTransition from '@shared/components/Transitions/AppearTransition.vu
 
 const { theme } = defineProps<{ theme: Theme }>()
 const { isScrolledDown } = useScroll()
-const isHome = computed<boolean>(() => window.location.pathname === '/')
 </script>
 
 <template>
@@ -27,15 +25,7 @@ const isHome = computed<boolean>(() => window.location.pathname === '/')
                 <div
                     class="flex flex-[min-content] items-center justify-between gap-x-1 w-full"
                 >
-                    <div
-                        v-if="isHome"
-                        class="print:hidden text-lg transition-opacity hover:opacity-80 text-lato drop-shadow-[1px_1px_0_rgba(0,0,0,.4)]"
-                    >
-                        <span class="tracking-wider text-white">{S} SERHII</span>
-                    </div>
-
                     <a
-                        v-else
                         tabindex="0"
                         href="/"
                         class="print:hidden text-lg transition-opacity hover:opacity-80 text-lato drop-shadow-[1px_1px_0_rgba(0,0,0,.4)]"
@@ -43,6 +33,12 @@ const isHome = computed<boolean>(() => window.location.pathname === '/')
                         rel="noreferrer"
                     >
                         <span class="tracking-wider text-white">{S} SERHII</span>
+                        <div
+                            class="text-sm absolute left-25 top-1 min-w-32 text-amber-100 border border-amber-100 px-2 text-center rounded-md"
+                            style="corner-shape: scoop;"
+                        >
+                            Open for projects
+                        </div>
                     </a>
 
                     <div class="flex items-center">
