@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-pass=$(awk -F= '$1 == "DB_PASSWORD" { print $2 }' /app/.env)
-file_name=$(date +'%Y-%m-%d_%H:%M')
+pass="$(awk -F= '$1 == "DB_PASSWORD" { print $2 }' /app/.env)"
+file_name="$(date +'%Y-%m-%d_%H:%M')"
 file_path="/app/backups/$file_name.sql"
 
 mariadb-dump -u root -h db -p"$pass" serhii > "$file_path"
