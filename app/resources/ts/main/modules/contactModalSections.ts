@@ -7,6 +7,11 @@ export default [
         `,
         links: [
             {
+                img: '/img/icons/mastodon.webp',
+                href: 'https://mastodon.social/@SerhiiCho',
+                title: 'Mastondon',
+            },
+            {
                 img: '/img/icons/x.webp',
                 href: 'https://x.com/SerhiiCho',
                 title: 'X (Twitter)',
