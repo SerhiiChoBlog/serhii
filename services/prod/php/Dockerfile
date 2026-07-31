@@ -1,3 +1,15 @@
+FROM docker.io/node:24-alpine AS frontend
+
+WORKDIR /var/www/html
+
+COPY app/package*.json ./
+RUN npm ci
+
+COPY app ./
+RUN npm run build
+
+# -----------------------------------
+
 FROM docker.io/php:8.4-fpm-alpine
 
 WORKDIR /var/www/html
@@ -52,6 +64,7 @@ RUN composer install -n --prefer-dist --no-progress --no-dev --no-scripts && \
     composer clear-cache
 
 COPY app .
+COPY --from=frontend /var/www/html/public/build public/build
 
 RUN composer update -n --no-dev && \
     composer clear-cache && \
