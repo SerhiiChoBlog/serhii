@@ -14,6 +14,12 @@ const loading = ref<boolean>(false)
 
 onMounted(() => fetchFeed())
 
+function getAvatar(item: Feed): string {
+    return item.comment!.user!.avatar
+        ? `/storage/avatars/${item.comment!.user!.avatar}`
+        : `/img/avatars/${item.comment!.user!.avatar}`
+}
+
 function fetchFeed(): void {
     if (loading.value) {
         return
@@ -53,7 +59,7 @@ function fetchFeed(): void {
                 :feed="item"
                 :title="`likes the comment of ${item.comment!.user!.name}`"
                 :content="item.comment!.comment"
-                :image="`/storage/avatars/${item.comment!.user!.avatar}`"
+                :image="getAvatar(item)"
                 :url="`/@${item.comment!.user!.slug}`"
                 :icon="LikeIcon"
             />

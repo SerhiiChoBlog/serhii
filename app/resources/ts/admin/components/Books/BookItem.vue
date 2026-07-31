@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { UpdateBookField } from '@admin/types'
 import type { Book } from '@shared/types/models'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import axios from 'axios'
 import showToast from '@shared/modules/showToast'
 import handleError from '@admin/modules/handleError'
@@ -15,6 +15,12 @@ const emit = defineEmits<{
 
 const { book } = defineProps<{ book: Book }>()
 const loading = ref<boolean>(false)
+
+const img = computed<string>(() => {
+    return book.image.includes('default')
+        ? `/img/books/${book.image}`
+        : `/storage/books/${book.image}`
+})
 
 function fieldUpdated(e: Event, fieldName: UpdateBookField): void {
     const value = (e.target as HTMLInputElement).value
@@ -43,7 +49,7 @@ function deleteBook(): void {
     <BodyRow>
         <BodyDetail class="w-28">
             <img
-                :src="`/storage/books/${book.image}`"
+                :src="img"
                 :alt="`Logo of ${book.title}`"
                 width="378"
                 height="300"
