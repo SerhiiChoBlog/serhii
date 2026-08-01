@@ -17,6 +17,6 @@ COPY services/prod/backup/cron-script /app/
 RUN wget -qO /usr/local/bin/supercronic https://github.com/aptible/supercronic/releases/latest/download/supercronic-linux-amd64 && \
     chmod +x /usr/local/bin/supercronic
 
-RUN echo "0 10,15,20 * * * /app/cron-script" > /app/crontab
+RUN echo "0 8,15,22 * * * /app/cron-script" > /app/crontab
 
 CMD [ "supercronic", "/app/crontab" ]
