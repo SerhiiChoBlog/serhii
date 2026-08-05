@@ -7,14 +7,19 @@ export default (postTitle: string): SocialLink[] => {
 
     return [
         {
-            href: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
-            title: 'linkedin',
-            tip: 'Share to LinkedIn',
+            href: `https://mastodon.social/share?text=${postTitle} ${url}`,
+            title: 'mastodon',
+            tip: 'Share to Mastodon',
         },
         {
             href: `https://www.reddit.com/submit?url=${url}&title=${postTitle}`,
             title: 'reddit',
             tip: 'Share to Reddit',
+        },
+        {
+            href: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+            title: 'linkedin',
+            tip: 'Share to LinkedIn',
         },
         {
             href: `https://x.com/intent/tweet?text=${postTitle}&url=${url}`,

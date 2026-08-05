@@ -2,6 +2,7 @@ import type { Tag, User } from './models'
 
 export type SocialName =
     | 'twitter'
+    | 'mastodon'
     | 'x'
     | 'linkedin'
     | 'reddit'
