@@ -1,4 +1,5 @@
 .git
+.env
 .github
 .vscode
 app/node_modules
