@@ -20,7 +20,7 @@ RUN apk update && \
         libzip-dev \
         libjpeg-turbo-dev \
         libpng-dev \
-        nodejs=24.17.0-r0 \
+        nodejs \
         npm  && \
     # Install PHP extensions
     docker-php-ext-configure \
