@@ -11,11 +11,6 @@ export default [
                 href: 'https://mastodon.social/@SerhiiCho',
                 title: 'Mastondon',
             },
-            {
-                img: '/img/icons/x.webp',
-                href: 'https://x.com/SerhiiCho',
-                title: 'X (Twitter)',
-            },
         ],
     },
     {
@@ -55,6 +50,11 @@ export default [
         content:
             "There are also libraries and packages that I've contributed to the open-source community.",
         links: [
+            {
+                img: '/img/icons/codeberg.webp',
+                href: 'https://codeberg.org/SerhiiCho',
+                title: 'Codeberg',
+            },
             {
                 img: '/img/icons/github.webp',
                 href: 'https://github.com/SerhiiCho',
