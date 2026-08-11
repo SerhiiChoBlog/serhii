@@ -15,9 +15,10 @@ jobs:
 
       - name: Install podman
         run: |
-          apt update && \
-          apt install -y podman pipx && \
-          pipx --global ensurepath && \
+          apt update
+          apt install -y podman pipx
+          python3 -m pip install --user --upgrade pipx
+          pipx ensurepath --global
           pipx install podman-compose --global
 
       - name: Running tests
