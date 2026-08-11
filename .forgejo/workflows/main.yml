@@ -17,7 +17,7 @@ jobs:
         run: |
           apt update && \
           apt install -y podman pipx && \
-          pipx ensurepath --global && \
+          pipx --global ensurepath && \
           pipx install podman-compose --global
 
       - name: Running tests
