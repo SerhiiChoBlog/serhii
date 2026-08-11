@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  test:
+  testing:
     runs-on: burn
     steps:
       - name: Checkout code
@@ -16,7 +16,7 @@ jobs:
       - name: Install podman
         run: |
           apt update
-          apt install -y podman
+          apt install -y podman python3-pip
           pip3 install --break-system-packages podman-compose
 
       - name: Running tests
