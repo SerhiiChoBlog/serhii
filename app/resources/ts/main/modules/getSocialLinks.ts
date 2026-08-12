@@ -17,16 +17,6 @@ export default (postTitle: string): SocialLink[] => {
             tip: 'Share to Reddit',
         },
         {
-            href: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
-            title: 'linkedin',
-            tip: 'Share to LinkedIn',
-        },
-        {
-            href: `https://x.com/intent/tweet?text=${postTitle}&url=${url}`,
-            title: 'x',
-            tip: 'Share to X',
-        },
-        {
             href: `https://t.me/share/url?url=${url}&text=${postTitle}`,
             title: 'telegram',
             tip: 'Share to Telegram',
