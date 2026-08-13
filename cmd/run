@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-env_err_msg=$(cat << 'EOF'
-Error: check your app/.env file, it must contain APP_ENV variable
-with 1 of 2 values: 'local' or 'production'
-EOF
-)
+if [[ "$1" == "dev" || "$1" == "prod" ]]; then
+    podman-compose -f compose.yml -f "compose.${1}.yml" --env=app/.env "${@:2}"
+    exit 0
+fi
 
 target_env=$(grep 'APP_ENV=' app/.env | awk -F= '{ print $2 }')
 file_env=
@@ -14,7 +13,10 @@ if [[ "$target_env" == "local" ]]; then
 elif [[ "$target_env" == "production" ]]; then
     file_env=prod
 else
-    echo "$env_err_msg"
+    cat << 'EOF'
+Error: check your app/.env file, it must contain APP_ENV variable
+with 1 of 2 values: 'local' or 'production'
+EOF
     exit 1
 fi
 
