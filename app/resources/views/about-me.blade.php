@@ -49,7 +49,7 @@
             </div>
         </section>
 
-        <section class="relative bg-page-second py-10 px-5 $classes min-h-125">
+        <section class="relative bg-page-second py-10 px-5 min-h-125">
             <div class="container pt-8 lg:pt-16">
                 <x-section-detail />
 
@@ -73,6 +73,25 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container py-8 lg:py-16">
+                <div class="flex flex-col lg:flex-row justify-center items-center gap-6 max-w-[900px] mx-auto">
+                    <img class="w-40" src="img/qr.png" alt="Bitcoin wallet qr code" />
+
+                    <div class="flex flex-col gap-1">
+                        <h2 class="ml-1 text-xl lg:text-3xl">Support my work with Bitcoin</h2>
+                        <p class="ml-1 text-[.9rem] lg:text-xl">
+                            The best way to support me is to star one of my repositories on <a class="text-link hover:text-link-hover underline" href="https://codeberg.org/SerhiiCho" target="_blank" title="Link to Codeberg account">Codeberg</a>.
+                            <br>You can also send me some Bitcoin on my crypto adress:
+                        </p>
+                        <div>
+                            <code class="break-all text-sm lg:text-xl bg-inline-code px-2 rounded-sm">bc1qfjrma259z5mhtcaauwk0lpjt3mw2nlgtv8cr2w</code>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
