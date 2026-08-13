@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
 
-if [[ "$1" != "dev" && "$1" != "prod" ]]; then
-    echo "Error: must be 'dev' or 'prod'"
-    echo "Usage: ./cmd/run {dev|prod} [commands...]"
+env_err_msg=$(cat << 'EOF'
+Error: check your app/.env file, it must contain APP_ENV variable
+with 1 of 2 values: 'local' or 'production'
+EOF
+)
+
+target_env=$(grep 'APP_ENV=' app/.env | awk -F= '{ print $2 }')
+file_env=
+
+if [[ "$target_env" == "local" ]]; then
+    file_env=dev
+elif [[ "$target_env" == "production" ]]; then
+    file_env=prod
+else
+    echo "$env_err_msg"
     exit 1
 fi
 
-podman-compose -f compose.yml -f "compose.${1}.yml" --env=app/.env "${@:2}"
+podman-compose -f compose.yml -f "compose.${file_env}.yml" --env=app/.env "${@:1}"
