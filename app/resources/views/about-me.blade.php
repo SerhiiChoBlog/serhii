@@ -79,9 +79,9 @@
 
         <section class="container py-8 lg:py-16">
             <div class="flex flex-col gap-1">
-                <h2 class="text-center ml-1 text-xl lg:text-3xl">Show Your Support</h2>
+                <h2 class="text-center ml-1 text-xl lg:text-3xl">☕ Show Your Support</h2>
                 <p class="text-center ml-1 text-[.9rem] lg:text-xl">
-                    You can support me by giving a star one of my repositories on <a class="text-link hover:text-link-hover underline" href="https://codeberg.org/SerhiiCho" target="_blank" title="Link to Codeberg account">Codeberg</a>,
+                    You can support me by giving a star one of my repositories on <a class="text-link hover:text-link-hover underline" href="https://codeberg.org/SerhiiCho?tab=activity" target="_blank" title="Link to Codeberg account">Codeberg</a>,
                     or send me a couple of bucks for a cup of coffee:
                 </p>
 

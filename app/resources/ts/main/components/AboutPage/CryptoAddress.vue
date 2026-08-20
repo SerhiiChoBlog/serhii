@@ -12,7 +12,8 @@ const show = ref<boolean>(false)
 </script>
 
 <template>
-    <div class="flex gap-3 items-center">{{ name }}
+    <div class="flex gap-3 items-center">
+        {{ name }}
         <code
             @click="show = true"
             :class="[
