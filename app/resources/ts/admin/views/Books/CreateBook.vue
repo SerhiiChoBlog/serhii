@@ -124,8 +124,8 @@ function saveBook(): void {
 
                         <div class="w-auto md:w-[376px]">
                             <FormImage
-                                uri="storage/books/default.jpg"
-                                defaultUri="/storage/books/default.jpg"
+                                uri="img/books/default.jpg"
+                                defaultUri="/img/books/default.jpg"
                             />
                         </div>
                     </div>

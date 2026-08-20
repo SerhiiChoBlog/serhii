@@ -6,7 +6,8 @@ namespace App\Utils;
 
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\Alignment;
+use Intervention\Image\Laravel\Facades\Image;
 
 readonly class ProfilePhotoProcessor
 {
@@ -19,8 +20,8 @@ readonly class ProfilePhotoProcessor
         $path = storage_path("app/public/avatars");
         $name = sprintf('%s-%d.%s', $this->user->slug, time(), $this->photo->getClientOriginalExtension());
 
-        Image::make($this->photo)
-            ->fit(400, 400, fn ($c) => $c->upsize())
+        Image::decode($this->photo)
+            ->contain(400, 400, alignment: Alignment::CENTER)
             ->save("{$path}/{$name}");
 
         $this->deleteOldPhoto();

@@ -12,7 +12,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\Laravel\Facades\Image;
 
 class BookController extends Controller
 {
@@ -64,8 +64,9 @@ class BookController extends Controller
         $ext = $file->getClientOriginalExtension();
         $name = Str::slug($request->title) . ".{$ext}";
 
-        /** @var UploadedFile $image */
-        $image = Image::make($file)->resize(null, 500, fn ($c) => $c->aspectRatio())->encode($ext);
+        $image = Image::decode($file)
+            ->resize(width: null, height: 500)
+            ->encodeUsingFileExtension($ext, quality: 90);
 
         Storage::disk('public')->put("books/{$name}", $image);
 

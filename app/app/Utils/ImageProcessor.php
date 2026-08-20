@@ -6,7 +6,8 @@ namespace App\Utils;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\Alignment;
+use Intervention\Image\Laravel\Facades\Image;
 
 readonly class ImageProcessor
 {
@@ -35,8 +36,8 @@ readonly class ImageProcessor
         $name = Str::slug($post_name) . ".{$ext}";
 
         foreach ($this->sizes as $size => $d) {
-            Image::make($this->photo)
-                ->fit($d[0], $d[1], fn ($c) => $c->upsize())
+            Image::decode($this->photo)
+                ->cover($d[0], $d[1], Alignment::TOP)
                 ->save("{$path}/{$size}/{$name}");
         }
 

@@ -10,7 +10,7 @@ use App\Models\Series;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\Laravel\Facades\Image;
 use Tests\TestCase;
 
 class SeriesControllerTest extends TestCase
