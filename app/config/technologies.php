@@ -6,7 +6,7 @@ return [
     'technologies' => [
         [
             'image' => 'img/tools/podman.webp',
-            'title' => 'Podman/Docker',
+            'title' => 'Podman',
             'content' => <<<TEXT
             Using Docker and Podman since 2018 for isolated, reproducible dev
             environments; Podman is my default.

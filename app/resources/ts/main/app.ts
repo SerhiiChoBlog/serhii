@@ -23,6 +23,7 @@ import RegisterForm from '@shared/components/SignIn/RegisterForm.vue'
 import ZoomedImage from '@/components/ZoomedImage/ZoomedImage.vue'
 import SignInModal from '@shared/components/SignIn/SignInModal.vue'
 import PrevNextPost from '@/components/PrevNextPost/PrevNextPost.vue'
+import CryptoAddresses from '@/components/AboutPage/CryptoAddresses.vue'
 
 const app = createApp({
     components: {
@@ -45,6 +46,7 @@ const app = createApp({
         RegisterForm,
         ZoomedImage,
         PrevNextPost,
+        CryptoAddresses,
     },
 
     setup() {
