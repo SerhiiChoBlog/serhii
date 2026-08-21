@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
 if [[ "$1" == "dev" || "$1" == "prod" ]]; then
     podman-compose -f compose.yml -f "compose.${1}.yml" --env=app/.env "${@:2}"
     exit 0
