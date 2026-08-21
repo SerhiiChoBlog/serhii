@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
 echo "🐧 Making sure .env file exists..."
 if [[ ! -f .env ]]; then
     cp .env.example .env
