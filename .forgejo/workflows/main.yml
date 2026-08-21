@@ -15,8 +15,7 @@ jobs:
     container:
       image: node:lts
       volumes:
-        # Use the path AS IT EXISTS INSIDE THE RUNNER CONTAINER
-        - /run/sockets/podman-runner.sock:/run/sockets/podman-runner.sock
+        - /run/user/1000/podman/podman.sock:/run/sockets/podman-runner.sock
 
     steps:
       - name: Checkout code
