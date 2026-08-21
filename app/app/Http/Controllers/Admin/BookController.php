@@ -68,6 +68,7 @@ class BookController extends Controller
             ->resize(width: null, height: 500)
             ->encodeUsingFileExtension($ext, quality: 90);
 
+        /** @phpstan-ignore-next-line */
         Storage::disk('public')->put("books/{$name}", $image);
 
         return $name;

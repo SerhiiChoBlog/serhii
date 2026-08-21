@@ -10,7 +10,9 @@ use App\Models\Series;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
+use Intervention\Image\Interfaces\ImageInterface;
 use Intervention\Image\Laravel\Facades\Image;
+use Mockery;
 use Tests\TestCase;
 
 class SeriesControllerTest extends TestCase
@@ -210,9 +212,13 @@ class SeriesControllerTest extends TestCase
 
     public function testSeriesCanBeUpdatedWithImage(): void
     {
-        Image::shouldReceive('make', 'fit', 'save')
+        $image_mock = Mockery::mock(ImageInterface::class);
+        $image_mock->shouldReceive('cover')->times(3)->andReturnSelf();
+        $image_mock->shouldReceive('save')->times(3);
+
+        Image::shouldReceive('decode')
             ->times(3)
-            ->andReturnSelf();
+            ->andReturn($image_mock);
 
         /** @var Series $series */
         $series = Series::factory()->create();
@@ -234,7 +240,7 @@ class SeriesControllerTest extends TestCase
 
     public function testNotProvidingImageFileWillKeepSeriesImagesUntouched(): void
     {
-        Image::shouldReceive('make', 'fit', 'save')->times(0);
+        Image::shouldReceive('decode')->times(0);
 
         $admin = $this->createAdmin();
 
