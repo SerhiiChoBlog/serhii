@@ -23,4 +23,7 @@ jobs:
 
       - name: Running tests
         shell: bash
+        env:
+          CONTAINER_HOST: "unix:///run/sockets/podman-runner.sock"
+          DOCKER_HOST: "unix:///run/sockets/podman-runner.sock"
         run: ./cmd/test
