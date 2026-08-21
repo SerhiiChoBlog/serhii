@@ -12,12 +12,6 @@ jobs:
     runs-on: burn
     name: Run app checks
 
-    # this block is required to mount the host socket into the temporary job container
-    container:
-      image: node:lts
-      volumes:
-        - /run/user/1000/podman/podman.sock:/run/sockets/podman-runner.sock
-
     steps:
       - name: Checkout code
         uses: "actions/checkout@v6"
@@ -27,6 +21,13 @@ jobs:
           apt update
           apt install -y podman python3-pip
           pip3 install --break-system-packages podman-compose
+
+      - name: Debug Socket
+        run: |
+          echo "Checking mounted volumes..."
+          ls -la /run/sockets/ || echo "Directory /run/sockets/ does not exist!"
+          echo "Checking host path directly (if permitted)..."
+          ls -la /run/user/1000/podman/ || echo "Host path not accessible"
 
       - name: Running tests
         shell: bash
