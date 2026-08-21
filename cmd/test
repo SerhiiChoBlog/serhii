@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 echo "🐧 Making sure .env file exists..."
+if [[ ! -f .env ]]; then
+    cp .env.example .env
+fi
+
+echo "🐧 Making sure app/.env file exists..."
 if [[ ! -f app/.env ]]; then
     cp app/.env.example app/.env
 fi
