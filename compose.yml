@@ -10,6 +10,8 @@ services:
       - php-net
     depends_on:
       - php
+    links:
+      - php
 
   php:
     restart: always
@@ -19,6 +21,9 @@ services:
       - db-net
       - redis-net
     depends_on:
+      - db
+      - redis
+    links:
       - db
       - redis
 
@@ -57,6 +62,8 @@ services:
       - ./app/.env:/app/.env:ro,z
     depends_on:
       - db
+    links:
+      - db
 
   jobs:
     restart: always
@@ -66,6 +73,8 @@ services:
       - jobs-net
       - redis-net
     depends_on:
+      - redis
+    links:
       - redis
 
   redis:
@@ -88,6 +97,8 @@ services:
       - redis-net
     depends_on:
       - redis
+    links:
+      - redis
 
   scheduler:
     restart: always
@@ -98,6 +109,9 @@ services:
       - scheduler-net
       - redis-net
       - db-net
+    links:
+      - redis
+      - db
 
 networks:
   php-net:
