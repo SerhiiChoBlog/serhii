@@ -16,6 +16,9 @@ jobs:
       - name: Checkout code
         uses: "actions/checkout@v6"
 
+      - name: Pre-pull helper images
+        run: podman pull docker.io/library/composer:2
+
       - name: Install podman
         run: |
           apt-get update

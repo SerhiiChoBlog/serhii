@@ -1,5 +1,6 @@
 FROM docker.io/php:8.4-fpm-alpine
 
+ARG TARGETARCH
 WORKDIR /var/www/html
 
 RUN apk update && \
@@ -42,7 +43,7 @@ RUN apk update && \
     echo "alias vi='vim'" >> ~/.bashrc && \
     echo "alias ll='ls -hlaF'" >> ~/.bashrc && \
     # Install supercronic for Cron Jobs
-    wget -qO /usr/local/bin/supercronic https://github.com/aptible/supercronic/releases/latest/download/supercronic-linux-amd64 && \
+    wget -qO /usr/local/bin/supercronic https://github.com/aptible/supercronic/releases/latest/download/supercronic-linux-${TARGETARCH} && \
     chmod +x /usr/local/bin/supercronic
 
 COPY --from=docker.io/library/composer:2 /usr/bin/composer /usr/bin/
