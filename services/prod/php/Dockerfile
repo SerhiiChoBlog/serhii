@@ -55,7 +55,7 @@ RUN apk update && \
     echo "alias ll='ls -hlaF'" >> ~/.bashrc && \
     apk del autoconf g++ make linux-headers
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/
+COPY --from=docker.io/library/composer:2 /usr/bin/composer /usr/bin/
 COPY services/prod/php/zzz-custom.ini services/prod/php/zzz-opache.ini /usr/local/etc/php/conf.d/
 COPY services/prod/jobs/supervisord.conf /etc/
 COPY app/composer.* .
