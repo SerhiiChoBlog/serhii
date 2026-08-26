@@ -22,6 +22,12 @@ jobs:
           apt-get install -y podman python3-pip
           pip3 install --break-system-packages podman-compose
 
+      - name: Debug engine
+        run: |
+          echo "DOCKER_HOST=$DOCKER_HOST"
+          ls -l /run/sockets/podman-runner.sock || true
+          podman version
+
       - name: Running tests
         shell: bash
         run: ./cmd/test
