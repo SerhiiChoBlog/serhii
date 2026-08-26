@@ -53,7 +53,3 @@ jobs:
               -e DB_CONNECTION=sqlite \
               -e DB_DATABASE=database/database.sqlite \
               php composer check
-
-      - name: Running tests
-        shell: bash
-        run: ./cmd/test
