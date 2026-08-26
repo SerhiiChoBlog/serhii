@@ -45,7 +45,7 @@ RUN apk update && \
     wget -qO /usr/local/bin/supercronic https://github.com/aptible/supercronic/releases/latest/download/supercronic-linux-amd64 && \
     chmod +x /usr/local/bin/supercronic
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/
+COPY --from=docker.io/library/composer:2 /usr/bin/composer /usr/bin/
 COPY services/dev/php/zzz-custom.ini /usr/local/etc/php/conf.d/
 COPY services/prod/jobs/supervisord.conf /etc/
 
