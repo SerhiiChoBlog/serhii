@@ -43,9 +43,6 @@ if [[ ! -f "$db_file" ]]; then
         php php artisan migrate
 fi
 
-echo "🐧 Migrate database..."
-./cmd/run dev exec php php artisan migrate
-
 echo "🐧 Running checks..."
 ./cmd/run dev exec \
     -e DB_CONNECTION=sqlite \
