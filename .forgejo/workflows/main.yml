@@ -24,9 +24,10 @@ jobs:
 
       - name: Debug engine
         run: |
-          echo "DOCKER_HOST=$DOCKER_HOST"
-          ls -l /run/sockets/podman-runner.sock || true
-          podman version
+          whoami; id
+          ls -ln /run/sockets/podman-runner.sock
+          podman --url=unix:///run/sockets/podman-runner.sock info --format '{{.Host.Arch}} {{.Version.Version}}' || true
+          podman info --format '{{.Host.RemoteClient.Version}}' 2>&1 | head -3 || true
 
       - name: Running tests
         shell: bash
