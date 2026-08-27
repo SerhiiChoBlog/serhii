@@ -9,15 +9,12 @@ on:
 
 jobs:
   testing:
-    runs-on: burn
+    runs-on: debian13-podman
     name: Run app checks
 
     steps:
       - name: Checkout code
         uses: "actions/checkout@v6"
-
-      - name: Pre-pull helper images
-        run: podman pull docker.io/library/composer:2
 
       - name: Create .env files
         run: |
