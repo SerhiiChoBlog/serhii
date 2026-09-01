@@ -7,9 +7,7 @@ namespace App\Console\Commands;
 use App\CacheKey;
 use App\Models\Project;
 use Illuminate\Console\Command;
-use Illuminate\Http\Client\Pool;
 use Illuminate\Http\Client\RequestException;
-use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -22,10 +20,38 @@ class FetchGithubProjects extends Command
     protected $signature = 'projects:fetch';
     protected $description = 'Fetches github projects and saves them into a database projects table';
 
+    private const EXCLUDE_ACCOUNTS = [
+        'SerhiiCho',
+        'SerhiiChoBlog',
+        'SerhiiChoGames',
+        'lab-zero',
+        'act',
+    ];
+
+    private const EXCLUDE_REPOS = [
+        'pages',
+        'smooth-loader-vue',
+    ];
+
     public function handle(): void
     {
+        $projects = collect();
+
         try {
-            $projects = $this->fetchProjects();
+            for ($page = 1; $page < 10; $page++) {
+                $this->info("Fething page {$page}...");
+                $result = $this->fetchProjects($page);
+
+                if ($result->count() === 0) {
+                    $this->info("Page {$page} is empty! Stopping...");
+                    $this->info("================================================");
+                    break;
+                }
+
+                $projects = $projects->merge($result->toArray());
+                $this->info("Found {$result->count()} projects on page {$page}");
+                $this->info("================================================");
+            }
 
             Project::query()->truncate();
             Project::query()->insert($projects->toArray());
@@ -43,53 +69,36 @@ class FetchGithubProjects extends Command
      * @return Collection<int, Project>
      * @throws RequestException
      */
-    private function fetchProjects(): Collection
+    private function fetchProjects(int $page): Collection
     {
-        $urls = config('services.github.projects_urls');
-        $readme_url = Str::of(config('services.github.readme_url'));
+        $url = config('services.codeberg.repos_url') . "&page={$page}";
+        $readme_url = config('services.codeberg.readme_url');
 
-        /** @var Response[] $responses */
-        $responses = Http::pool(function (Pool $pool) use ($urls) {
-            $result = [];
-
-            foreach ($urls as $url) {
-                $result[] = $pool->retry(3)->get($url);
-            }
-
-            return $result;
-        });
-
-        $projects = array_reduce($responses, function ($carry, $response): mixed {
-            $projects = $response->json();
-
-            if (is_array($projects)) {
-                return $carry->merge($projects);
-            }
-
-            return $carry;
-        }, new Collection());
+        $response = Http::retry(3)->get($url);
+        $projects = $response->collect();
 
         $filtered_projects = $projects->filter(function ($project) {
-            $license = $project['license']['key'] ?? null;
             $is_docs = str_contains($project['name'], 'github.io');
-            return $license === 'mit' && !$is_docs;
+            $exclude_accounts = !in_array($project['owner']['login'], self::EXCLUDE_ACCOUNTS);
+            $exclude_repos = !in_array($project['name'], self::EXCLUDE_REPOS);
+            return !$is_docs && $exclude_accounts && $exclude_repos;
         });
 
         return $filtered_projects->map(function ($project) use ($readme_url) {
-            $readme_url = str_replace('{repo}', $project['name'], (string) $readme_url);
-            $has_homepage = $project['homepage'] !== '';
+            $has_homepage = str_contains($project['website'], '.codeberg.page');
+            $readme_url = str_replace('{full-repo-name}', $project['full_name'], $readme_url);
 
             /** @var array<string, mixed> */
             return [
                 'name' => $project['name'],
                 'title' => Str::of($project['name'])->replace('-', ' ')->ucfirst(),
-                'url' => $has_homepage ? $project['homepage'] : $project['html_url'],
+                'url' => $has_homepage ? $project['website'] : $project['html_url'],
                 'description' => $project['description'],
                 'language' => $project['language'],
                 'has_homepage' => $has_homepage,
                 'content' => $has_homepage ? '' : $this->getContent($readme_url),
-                'stars' => (int) $project['stargazers_count'],
-                'updated_at' => date('Y-m-d H:i:s', strtotime($project['pushed_at'])),
+                'stars' => (int) $project['stars_count'],
+                'updated_at' => date('Y-m-d H:i:s', strtotime($project['updated_at'])),
                 'created_at' => date('Y-m-d H:i:s', strtotime($project['created_at'])),
             ];
         });

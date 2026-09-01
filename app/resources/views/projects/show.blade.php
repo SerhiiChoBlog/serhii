@@ -23,18 +23,18 @@
                 target="_blank"
                 class="bg-gradient bg-linear-to-br from-gray-200 via-white to-gray-200 text-black px-7 py-3 rounded-full inline-flex mt-5 hover:scale-105 transition-transform shadow-md mx-auto items-center"
                 aria-label="{{ $project->title }}"
-                title="Link to GitHub repo '{{ $project->title }}'"
+                title="Link to Codeberg repo '{{ $project->title }}'"
             >
                 <div>
                     <img
-                        src="{{ asset('img/icons/github.webp') }}"
+                        src="{{ asset('img/icons/codeberg.webp') }}"
                         width="20"
                         height="20"
-                        alt="Github logo"
+                        alt="Codeberg logo"
                     />
                 </div>
 
-                <span class="ml-2">Open on Github</span>
+                <span class="ml-2">Open on Codeberg</span>
             </a>
         </div>
     </x-hero>
