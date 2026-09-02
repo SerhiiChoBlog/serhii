@@ -39,7 +39,7 @@ class FetchGithubProjects extends Command
 
         try {
             for ($page = 1; $page < 10; $page++) {
-                $this->info("Fething page {$page}...");
+                $this->info("Fetching page {$page}...");
                 $result = $this->fetchProjects($page);
 
                 if ($result->count() === 0) {
@@ -84,12 +84,14 @@ class FetchGithubProjects extends Command
             return !$is_docs && $exclude_accounts && $exclude_repos;
         });
 
-        return $filtered_projects->map(function ($project) use ($readme_url) {
+        /** @var Collection<int, Project> $result */
+        $result = collect();
+
+        foreach ($filtered_projects as $project) {
             $has_homepage = str_contains($project['website'], '.codeberg.page');
             $readme_url = str_replace('{full-repo-name}', $project['full_name'], $readme_url);
 
-            /** @var array<string, mixed> */
-            return [
+            $result->push(new Project([
                 'name' => $project['name'],
                 'title' => Str::of($project['name'])->replace('-', ' ')->ucfirst(),
                 'url' => $has_homepage ? $project['website'] : $project['html_url'],
@@ -100,8 +102,10 @@ class FetchGithubProjects extends Command
                 'stars' => (int) $project['stars_count'],
                 'updated_at' => date('Y-m-d H:i:s', strtotime($project['updated_at'])),
                 'created_at' => date('Y-m-d H:i:s', strtotime($project['created_at'])),
-            ];
-        });
+            ]));
+        }
+
+        return $result;
     }
 
     private function getContent(string $readme_url): string
