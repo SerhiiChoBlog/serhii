@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Console\Commands\DeleteRobotViews;
 use App\Console\Commands\DetectRobotsVisitors;
-use App\Console\Commands\FetchGithubProjects;
+use App\Console\Commands\FetchProjects;
 use App\Console\Commands\FetchVideos;
 use App\Console\Commands\SitemapCommand;
 use App\Console\Commands\SubscriptionsNotify;
@@ -12,7 +12,7 @@ use App\Console\Commands\TopPostLastMonth;
 use Illuminate\Support\Facades\Schedule;
 
 Schedule::command(SubscriptionsNotify::class)->hourly();
-Schedule::command(FetchGithubProjects::class)->dailyAt('00:01');
+Schedule::command(FetchProjects::class)->dailyAt('00:01');
 Schedule::command(FetchVideos::class)->dailyAt('00:02');
 Schedule::command(DetectRobotsVisitors::class)->dailyAt('00:03');
 Schedule::command(DeleteRobotViews::class)->dailyAt('00:04');

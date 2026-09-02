@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Parsedown;
 
-class FetchGithubProjects extends Command
+class FetchProjects extends Command
 {
     protected $signature = 'projects:fetch';
-    protected $description = 'Fetches github projects and saves them into a database projects table';
+    protected $description = 'Fetches projects and saves them into a database projects table';
 
     private const EXCLUDE_ACCOUNTS = [
         'SerhiiCho',
@@ -72,7 +72,6 @@ class FetchGithubProjects extends Command
     private function fetchProjects(int $page): Collection
     {
         $url = config('services.codeberg.repos_url') . "&page={$page}";
-        $readme_url = config('services.codeberg.readme_url');
 
         $response = Http::retry(3)->get($url);
         $projects = $response->collect();
@@ -89,7 +88,7 @@ class FetchGithubProjects extends Command
 
         foreach ($filtered_projects as $project) {
             $has_homepage = str_contains($project['website'], '.codeberg.page');
-            $readme_url = str_replace('{full-repo-name}', $project['full_name'], $readme_url);
+            $readme_url = str_replace('{full-repo-name}', $project['full_name'], config('services.codeberg.readme_url'));
 
             $result->push([
                 'name' => $project['name'],
