@@ -66,7 +66,7 @@ class FetchGithubProjects extends Command
     }
 
     /**
-     * @return Collection<int, Project>
+     * @return Collection<int, array<string, mixed>>
      * @throws RequestException
      */
     private function fetchProjects(int $page): Collection
@@ -84,14 +84,14 @@ class FetchGithubProjects extends Command
             return !$is_docs && $exclude_accounts && $exclude_repos;
         });
 
-        /** @var Collection<int, Project> $result */
+        /** @var Collection<int, array<string, mixed>> $result */
         $result = collect();
 
         foreach ($filtered_projects as $project) {
             $has_homepage = str_contains($project['website'], '.codeberg.page');
             $readme_url = str_replace('{full-repo-name}', $project['full_name'], $readme_url);
 
-            $result->push(new Project([
+            $result->push([
                 'name' => $project['name'],
                 'title' => Str::of($project['name'])->replace('-', ' ')->ucfirst(),
                 'url' => $has_homepage ? $project['website'] : $project['html_url'],
@@ -102,7 +102,7 @@ class FetchGithubProjects extends Command
                 'stars' => (int) $project['stars_count'],
                 'updated_at' => date('Y-m-d H:i:s', strtotime($project['updated_at'])),
                 'created_at' => date('Y-m-d H:i:s', strtotime($project['created_at'])),
-            ]));
+            ]);
         }
 
         return $result;
