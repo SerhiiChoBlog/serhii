@@ -59,6 +59,17 @@ jobs:
       - name: Checkout code
         uses: "actions/checkout@v6"
 
+      - name: Set up QEMU for amd64 cross-build
+        run: |
+          sudo apt update && sudo apt install -y qemu-user-static binfmt-support || true
+          sudo mkdir -p /proc/sys/fs/binfmt_misc || true
+          sudo mount -t binfmt_misc binfmt_misc /proc/sys/fs/binfmt_misc 2>/dev/null || sudo mount -t binfmt_misc none /proc/sys/fs/binfmt_misc 2>/dev/null || true
+          sudo systemctl restart systemd-binfmt 2>/dev/null || true
+          podman run --privileged --rm tonistiigi/binfmt --install all || sudo podman run --privileged --rm tonistiigi/binfmt --install all || true
+          ls /proc/sys/fs/binfmt_misc/ || true
+          cat /proc/sys/fs/binfmt_misc/status || true
+          podman run --rm --platform linux/amd64 docker.io/library/alpine uname -m || true
+
       - name: Build production image
         run: ./cmd/run prod build
 
