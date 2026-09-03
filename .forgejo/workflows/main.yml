@@ -52,37 +52,15 @@ jobs:
   #             php composer check
 
   deploy:
-    runs-on: debian13-podman
+    runs-on: codeberg-medium
     name: Deploy
 
     steps:
       - name: Checkout code
         uses: "actions/checkout@v6"
 
-      - name: Check QEMU / binfmt_misc
-        run: |
-          echo "=== runner: $(whoami) ==="; cat /etc/os-release | head -5
-          echo "=== filesystems ==="; cat /proc/filesystems | grep -i binfmt || echo "no binfmt in /proc/filesystems - host kernel missing CONFIG_BINFMT_MISC"
-          echo "=== binfmt_misc ==="; ls -la /proc/sys/fs/binfmt_misc/ 2>&1 || echo "no binfmt_misc mount - must be fixed on Orange Pi HOST (not in runner)"
-          cat /proc/sys/fs/binfmt_misc/status 2>&1 || true
-          podman run --rm --platform linux/amd64 docker.io/library/alpine uname -m 2>&1 && echo "qemu OK" || echo "qemu FAILED - amd64 build will fail"
-
-      - name: Build production image (amd64 with fallback to native)
-        run: |
-          set -e
-          if ./cmd/run prod build; then
-            echo "amd64 build succeeded"
-          else
-            echo "::warning::amd64 cross-build failed - host Orange Pi missing binfmt_misc. Fix on HOST via SSH:"
-            echo "  modprobe binfmt_misc || echo 'kernel missing CONFIG_BINFMT_MISC'"
-            echo "  mount -t binfmt_misc none /proc/sys/fs/binfmt_misc"
-            echo "  apt install -y qemu-user-static binfmt-support && podman run --privileged --rm docker.io/tonistiigi/binfmt --install all"
-            echo "=== fallback: building native arch without platform constraint ==="
-            cp compose.prod.yml compose.prod.yml.bak
-            sed -i '/platform:/d' compose.prod.yml; sed -i '/platforms:/d' compose.prod.yml
-            cat compose.prod.yml
-            ./cmd/run prod build
-          fi
+      - name: Build production image
+        run: ./cmd/run prod build
 
       - name: Authenticate on DockerHub
         run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | podman login -u serhiicho --password-stdin docker.io
