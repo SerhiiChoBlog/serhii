@@ -3,7 +3,7 @@ FROM docker.io/node:24-alpine AS builder
 WORKDIR /var/www/html
 
 COPY app/package*.json ./
-RUN npm ci
+RUN npm install
 
 COPY app ./
 RUN npm run build
