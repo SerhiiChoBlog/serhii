@@ -2,7 +2,9 @@ services:
   nginx:
     build:
       dockerfile: services/prod/nginx/Dockerfile
+      platforms: [linux/amd64]
     image: docker.io/serhiicho/serhiicho:nginx
+    platform: linux/amd64
     volumes:
       - ./app/storage:/var/www/html/storage:z
       - ./certs:/etc/nginx/ssl/:ro,z
@@ -10,7 +12,9 @@ services:
   php:
     build:
       dockerfile: services/prod/php/Dockerfile
+      platforms: [linux/amd64]
     image: docker.io/serhiicho/serhiicho:php
+    platform: linux/amd64
     volumes:
       - ./app/.env:/var/www/html/.env:z
       - ./app/storage:/var/www/html/storage:z

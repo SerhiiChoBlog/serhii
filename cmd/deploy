@@ -2,15 +2,10 @@
 
 source cmd/config
 
-echo "🐧 Building for production..."
-./cmd/run prod build
-
 echo "🐧 Pushing images to Docker Hub..."
 for image in "${PODMAN_IMAGES[@]}"; do
     podman push "$image"
 done
-
-git push
 
 echo "🐧 Transfering files to the VPS..."
 
