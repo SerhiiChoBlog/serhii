@@ -23,7 +23,7 @@ services:
       - redis
 
   db:
-    image: registry.serhiicho.com:db
+    image: registry.serhiicho.com/serhiicho:db
     build:
       dockerfile: services/prod/db/Dockerfile
     environment:
@@ -46,7 +46,7 @@ services:
   backup:
     build:
       dockerfile: services/prod/backup/Dockerfile
-    image: registry.serhiicho.com:backup
+    image: registry.serhiicho.com/serhiicho:backup
     restart: always
     env_file: .env
     networks:
@@ -71,7 +71,7 @@ services:
   redis:
     build:
       dockerfile: services/prod/redis/Dockerfile
-    image: registry.serhiicho.com:redis
+    image: registry.serhiicho.com/serhiicho:redis
     restart: always
     env_file: .env
     volumes:
