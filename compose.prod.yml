@@ -3,7 +3,7 @@ services:
     build:
       dockerfile: services/prod/nginx/Dockerfile
       platforms: [linux/amd64]
-    image: docker.io/serhiicho/serhiicho:nginx
+    image: registry.serhiicho.com:nginx
     platform: linux/amd64
     volumes:
       - ./app/storage:/var/www/html/storage:z
@@ -13,17 +13,17 @@ services:
     build:
       dockerfile: services/prod/php/Dockerfile
       platforms: [linux/amd64]
-    image: docker.io/serhiicho/serhiicho:php
+    image: registry.serhiicho.com:php
     platform: linux/amd64
     volumes:
       - ./app/.env:/var/www/html/.env:z
       - ./app/storage:/var/www/html/storage:z
 
   jobs:
-    image: docker.io/serhiicho/serhiicho:php
+    image: registry.serhiicho.com:php
 
   horizon:
-    image: docker.io/serhiicho/serhiicho:php
+    image: registry.serhiicho.com:php
 
   scheduler:
-    image: docker.io/serhiicho/serhiicho:php
+    image: registry.serhiicho.com:php
