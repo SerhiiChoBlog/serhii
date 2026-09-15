@@ -11,7 +11,7 @@ SERVICES=(
 PODMAN_IMAGES=()
 
 for service in "${SERVICES[@]}"; do
-    PODMAN_IMAGES+=(registry.serhiicho.com/serhiicho:"$service")
+    PODMAN_IMAGES+=(docker.io/serhiicho/serhiicho:"$service")
 done
 
 # file:destination
