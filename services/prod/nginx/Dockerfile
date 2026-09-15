@@ -26,5 +26,3 @@ RUN apk update && \
     usermod -u 82 nginx && \
     chown -R nginx:nginx . && \
     ln -s /var/www/html/storage/app/public /var/www/html/public/storage
-
-CMD [ "/usr/sbin/nginx", "-g", "daemon off;" ]
