@@ -8,6 +8,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -18,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
             Limit::perSecond(100),
             Limit::perMinute(1000),
         ]);
+
+        if($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
 
         Model::preventLazyLoading();
         Model::preventAccessingMissingAttributes();
