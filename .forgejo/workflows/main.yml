@@ -21,32 +21,22 @@ jobs:
           cp .env.example .env
           cp app/.env.example app/.env
 
-      - name: Build dev podman image
-        run: ./cmd/run dev build
+      - name: Build production podman image
+        run: ./cmd/run prod build
 
-      - name: Install composer dependencies
-        run: ./cmd/run dev run --rm php bash -c "composer install -n && composer update -n"
+      - name: Deploying
+        run: ./cmd/deploy
 
-      - name: Build assets with NPM
-        run: ./cmd/run dev run --rm php bash -c "npm i && npm run build"
+  deploy:
+    runs-on: debian13-podman
+    name: Deploy
 
-      - name: Start development containers
-        run: ./cmd/run dev up -d
+    steps:
+      - name: Checkout code
+        uses: "actions/checkout@v6"
 
-      - name: Generate app key for Laravel
-        run: ./cmd/run dev exec php php artisan key:generate
-
-      - name: Migrate database
+      - name: Create .env files
         run: |
-          touch "app/database/database.sqlite"
-          ./cmd/run dev exec \
-              -e DB_CONNECTION=sqlite \
-              -e DB_DATABASE=database/database.sqlite \
-              php php artisan migrate
+          cp .env.example .env
+          cp app/.env.example app/.env
 
-      - name: Run checks and tests
-        run: |
-          ./cmd/run dev exec \
-              -e DB_CONNECTION=sqlite \
-              -e DB_DATABASE=database/database.sqlite \
-              php composer check
