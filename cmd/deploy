@@ -7,8 +7,6 @@ for image in "${PODMAN_IMAGES[@]}"; do
     podman push "$image"
 done
 
-git push
-
 echo "🐧 Transfering files to the VPS..."
 
 for item in "${DEPLOY_FILES[@]}"; do
