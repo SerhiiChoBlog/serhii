@@ -75,5 +75,5 @@ jobs:
           for item in "${DEPLOY_FILES[@]}"; do
               file=$(awk -F: '{ print $1 }' <<< "$item")
               dest=$(awk -F: '{ print $2 }' <<< "$item")
-              scp -i /root/.ssh/key $file "serhii@${{ secrets.SERHII_VPS_IP }}:$dest"
+              scp -o StrictHostKeyChecking=no -i /root/.ssh/key $file "serhii@${{ secrets.SERHII_VPS_IP }}:$dest"
           done
