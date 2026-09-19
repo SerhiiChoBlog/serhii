@@ -72,22 +72,22 @@ jobs:
           ssh-keyscan -H "${{ secrets.SERHII_VPS_IP }}" >> ~/.ssh/known_hosts
           echo "✅ SSH key verified!"
 
-      - name: Deploy to VPS
-        run: |
-          source cmd/config
-          echo "⌛ Transfering files to the VPS..."
-
-          for item in "${DEPLOY_FILES[@]}"; do
-              file=$(awk -F: '{ print $1 }' <<< "$item")
-              dest=$(awk -F: '{ print $2 }' <<< "$item")
-              scp -i /root/.ssh/key $file "serhii@${{ secrets.SERHII_VPS_IP }}:$dest"
-          done
-
-          echo "✅ Files are transfered!"
+      # - name: Deploy to VPS
+      #   run: |
+      #     source cmd/config
+      #     echo "⌛ Transfering files to the VPS..."
+      #
+      #     for item in "${DEPLOY_FILES[@]}"; do
+      #         file=$(awk -F: '{ print $1 }' <<< "$item")
+      #         dest=$(awk -F: '{ print $2 }' <<< "$item")
+      #         scp -i /root/.ssh/key $file "serhii@${{ secrets.SERHII_VPS_IP }}:$dest"
+      #     done
+      #
+      #     echo "✅ Files are transfered!"
 
       - name: Get services names to restart
         run: |
-          services_raw="$(git log -1 --pretty=%B | grep -oP "\{restart:(.*)}" | sed "s/{restart://" | sed "s/}//")"
+          services_raw="$(git log -1 --pretty=%B | grep -oP "\{restart:(.*)}" | sed "s/{restart://" | sed "s/}//" || true)"
 
           if [[ "$services_raw" == "" ]]; then
               echo "No services to restart found. Exiting..."
