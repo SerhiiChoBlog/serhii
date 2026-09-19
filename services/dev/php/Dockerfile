@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM docker.io/php:8.4-fpm-alpine
 
 ARG TARGETARCH
@@ -26,7 +27,7 @@ RUN apk update && \
     # Install PHP extensions
     docker-php-ext-configure \
         gd --with-freetype --with-jpeg && \
-    docker-php-ext-install \
+    docker-php-ext-install -j$(nproc) \
         pdo \
         pdo_mysql \
         bcmath \
@@ -36,7 +37,7 @@ RUN apk update && \
         xml \
         pcntl \
         zip && \
-    pecl install redis && \
+    pecl MAKEFLAGS="-j$(nproc)" install redis && \
     docker-php-ext-enable \
         redis && \
     # Aliases

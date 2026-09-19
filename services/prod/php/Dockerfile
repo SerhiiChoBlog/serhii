@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM docker.io/node:24-alpine AS frontend
 
 WORKDIR /var/www/html
@@ -36,7 +37,7 @@ RUN apk update && \
     # Install PHP extensions
     docker-php-ext-configure \
         gd --with-freetype --with-jpeg && \
-    docker-php-ext-install \
+    docker-php-ext-install -j$(nproc) \
         pdo \
         pdo_mysql \
         bcmath \
