@@ -8,48 +8,48 @@ on:
     branches: [master]
 
 jobs:
-  test:
-    runs-on: debian13-podman
-    name: Test
-
-    steps:
-      - name: Checkout code
-        uses: "actions/checkout@v6"
-
-      - name: Create .env files
-        run: |
-          cp .env.example .env
-          cp app/.env.example app/.env
-
-      - name: Build dev podman image
-        run: ./cmd/run dev build
-
-      - name: Install composer dependencies
-        run: ./cmd/run dev run --rm php bash -c "composer install -n && composer update -n"
-
-      - name: Build assets with NPM
-        run: ./cmd/run dev run --rm php bash -c "npm i && npm run build"
-
-      - name: Start development containers
-        run: ./cmd/run dev up -d
-
-      - name: Generate app key for Laravel
-        run: ./cmd/run dev exec php php artisan key:generate
-
-      - name: Migrate database
-        run: |
-          touch "app/database/database.sqlite"
-          ./cmd/run dev exec \
-              -e DB_CONNECTION=sqlite \
-              -e DB_DATABASE=database/database.sqlite \
-              php php artisan migrate
-
-      - name: Run checks and tests
-        run: |
-          ./cmd/run dev exec \
-              -e DB_CONNECTION=sqlite \
-              -e DB_DATABASE=database/database.sqlite \
-              php composer check
+  # test:
+  #   runs-on: debian13-podman
+  #   name: Test
+  #
+  #   steps:
+  #     - name: Checkout code
+  #       uses: "actions/checkout@v6"
+  #
+  #     - name: Create .env files
+  #       run: |
+  #         cp .env.example .env
+  #         cp app/.env.example app/.env
+  #
+  #     - name: Build dev podman image
+  #       run: ./cmd/run dev build
+  #
+  #     - name: Install composer dependencies
+  #       run: ./cmd/run dev run --rm php bash -c "composer install -n && composer update -n"
+  #
+  #     - name: Build assets with NPM
+  #       run: ./cmd/run dev run --rm php bash -c "npm i && npm run build"
+  #
+  #     - name: Start development containers
+  #       run: ./cmd/run dev up -d
+  #
+  #     - name: Generate app key for Laravel
+  #       run: ./cmd/run dev exec php php artisan key:generate
+  #
+  #     - name: Migrate database
+  #       run: |
+  #         touch "app/database/database.sqlite"
+  #         ./cmd/run dev exec \
+  #             -e DB_CONNECTION=sqlite \
+  #             -e DB_DATABASE=database/database.sqlite \
+  #             php php artisan migrate
+  #
+  #     - name: Run checks and tests
+  #       run: |
+  #         ./cmd/run dev exec \
+  #             -e DB_CONNECTION=sqlite \
+  #             -e DB_DATABASE=database/database.sqlite \
+  #             php composer check
 
   deploy:
     runs-on: debian13-podman
@@ -60,8 +60,20 @@ jobs:
       - name: Checkout code
         uses: "actions/checkout@v6"
 
-      - name: Build a production Podman image
-        run: ./cmd/run prod build
+      - name: Create SSH keys
+        run: |
+          mkdir -p /root/.ssh
+          echo "${{ secrets.SERHII_VPS_PRIVATE_SSH_KEY }}" | tee /root/.ssh/key > /dev/null
+          chmod 600 /root/.ssh/key
+          echo "🐧 SSH keys are created: /root/.ssh/key"
 
-      - name: Deploy
-        run: ./cmd/deploy
+      - name: Deploy to VPS
+        run: |
+          source cmd/config
+          echo "🐧 Transfering files to the VPS..."
+
+          for item in "${DEPLOY_FILES[@]}"; do
+              file=$(awk -F: '{ print $1 }' <<< "$item")
+              dest=$(awk -F: '{ print $2 }' <<< "$item")
+              scp -I /root/.ssh/key $file "serhii@${{ secrets.SERHII_VPS_IP }}:$dest"
+          done

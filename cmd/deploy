@@ -2,16 +2,12 @@
 
 source cmd/config
 
+echo "🐧 Building for production..."
+./cmd/run prod build
+
 echo "🐧 Pushing images to Image Registry..."
 for image in "${PODMAN_IMAGES[@]}"; do
     podman push "$image"
 done
 
-echo "🐧 Transfering files to the VPS..."
-
-for item in "${DEPLOY_FILES[@]}"; do
-    file=$(awk -F: '{ print $1 }' <<< "$item")
-    dest=$(awk -F: '{ print $2 }' <<< "$item")
-    # shellcheck disable=SC2086
-    scp $file "serhii:$dest"
-done
+git push
