@@ -55,6 +55,7 @@ jobs:
     runs-on: debian13-podman
     name: Deploy
     # needs: test
+    # test
 
     steps:
       - name: Checkout code
