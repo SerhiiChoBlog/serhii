@@ -37,9 +37,8 @@ RUN apk update && \
         xml \
         pcntl \
         zip && \
-    pecl MAKEFLAGS="-j$(nproc)" install redis && \
-    docker-php-ext-enable \
-        redis && \
+    MAKEFLAGS="-j$(nproc)" pecl install redis && \
+    docker-php-ext-enable redis && \
     # Aliases
     echo "alias vi='vim'" >> ~/.bashrc && \
     echo "alias ll='ls -hlaF'" >> ~/.bashrc && \
