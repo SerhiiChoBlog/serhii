@@ -88,15 +88,14 @@ jobs:
       - name: Get services names to restart
         run: |
           services_raw="$(git log -1 --pretty=%B | grep -oP "\{restart:(.*)}" | sed "s/{restart://" | sed "s/}//" || true)"
+
           if [[ "$services_raw" == "" ]]; then
               echo "No services to restart found. Exiting..."
               exit 0
           fi
 
           IFS=',' read -r -a SERVICES <<< "$services_raw"
-
-      - name: Debug
-        run: echo "${SERVICES[@]}"
+          echo "${SERVICES[@]}"
 
       # - name: Pull changes on VPS
       #   run: |
