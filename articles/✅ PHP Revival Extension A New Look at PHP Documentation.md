@@ -26,13 +26,13 @@ Realizing that modifying the style for [www.php.net](https://www.php.net) while 
 
 ## Customizing the Documentation Experience
 
-At that point, I decided to create a browser [extension](https://php-revival.github.io/ "Link to the PHP Revival landing page") to let users experience an improved version of `www.php.net` without impacting other PHP websites on the same domain. An additional goal was to provide users with features such as code copying, code execution, and embedded PHP-related videos on the homepage.
+At that point, I decided to create a browser [extension](https://php-revival.serhiicho.com/ "Link to the PHP Revival landing page") to let users experience an improved version of `www.php.net` without impacting other PHP websites on the same domain. An additional goal was to provide users with features such as code copying, code execution, and embedded PHP-related videos on the homepage.
 
 ![Maximize your PHP learning with our browser extension that enhances your experience on www.php.net](../../../storage/posts/content/php-revival-extension-a-new-look-at-php-documentation-1728832143.png)
 
 The extension was getting attention, the feedback was overwhelmingly positive, and it was motivation to continue working on it.
 
-PHP Revival is a browser extension that enhances the official PHP documentation website. It improves the syntax highlighting to code examples, enables code copying, allows PHP code evaluation, and provides quick access to PHP-related links and videos.
+PHP Revival is a browser extension that enhances the official PHP documentation website. It improves the syntax highlighting for code examples, enables code copying, allows PHP code evaluation, and provides quick access to PHP-related links and videos.
 
 Here are some features of PHP Revival:
 
@@ -50,7 +50,7 @@ Looking ahead, I plan to introduce more features and enhance the existing ones. 
 >
 > ###### J Post
 >
-> <img src="https://php-revival.github.io/assets/J%20Post-8hISC9Z6.jpeg" alt="J Post" />
+> <img src="https://php-revival.serhiicho.com/assets/J%20Post-8hISC9Z6.jpeg" alt="J Post" />
 
 ## Behind the Code: Technical Challenges and Solutions
 
@@ -126,18 +126,18 @@ If you like the extension but feel that something is missing or could be improve
 >
 > ###### Alex Labanino
 >
-> <img src="https://php-revival.github.io/assets/Alex%20Labanino-Cte-ydIb.png" alt="Alex Labanino" />
+> <img src="https://php-revival.serhiicho.com/assets/Alex%20Labanino-Cte-ydIb.png" alt="Alex Labanino" />
 
 ## Conclusion
 
-Looking back at 2019, I couldn't have imagined that a small contribution to the community would lead to such an unexpected change in direction. I'm grateful for the support and feedback from the community, and I'm excited to continue working on the [PHP Revival](https://php-revival.github.io/ "Link to the PHP Revival landing page") extension as long as it benefits everybody.
+Looking back at 2019, I couldn't have imagined that a small contribution to the community would lead to such an unexpected change in direction. I'm grateful for the support and feedback from the community, and I'm excited to continue working on the [PHP Revival](https://php-revival.serhiicho.com/ "Link to the PHP Revival landing page") extension as long as it benefits everybody.
 
 I hope this article has inspired you to make a small contribution to any other community you're part of. Remember, every bit helps, and you never know where it might lead you.
 
-If you want to install the PHP Revival extension, just head over to the [official website](https://php-revival.github.io/ "Link to the PHP Revival landing page"), and you can install the extension from the Chrome Web Store or Firefox Add-ons.
+If you want to install the PHP Revival extension, just head over to the [official website](https://php-revival.serhiicho.com/ "Link to the PHP Revival landing page"), and you can install the extension from the Chrome Web Store or Firefox Add-ons.
 
 > AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME AWESOME
 >
 > ###### for prog
 >
-> <img src="https://php-revival.github.io/assets/for%20prog-BFfddD2_.jpeg" alt="for prog" />
+> <img src="https://php-revival.serhiicho.com/assets/for%20prog-BFfddD2_.jpeg" alt="for prog" />
