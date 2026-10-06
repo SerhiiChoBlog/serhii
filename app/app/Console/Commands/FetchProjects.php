@@ -77,10 +77,9 @@ class FetchProjects extends Command
         $projects = $response->collect();
 
         $filtered_projects = $projects->filter(function ($project) {
-            $is_docs = str_contains($project['name'], 'github.io');
             $exclude_accounts = !in_array($project['owner']['login'], self::EXCLUDE_ACCOUNTS);
             $exclude_repos = !in_array($project['name'], self::EXCLUDE_REPOS);
-            return !$is_docs && $exclude_accounts && $exclude_repos;
+            return $exclude_accounts && $exclude_repos;
         });
 
         /** @var Collection<int, array<string, mixed>> $result */
