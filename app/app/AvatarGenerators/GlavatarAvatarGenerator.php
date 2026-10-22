@@ -29,7 +29,10 @@ class GlavatarAvatarGenerator implements AvatarGenerator
 
     public function getUrl(): string
     {
-        $hash = md5(strtolower($this->email));
+        $hash = $this->email
+            |> strtolower(...)
+            |> md5(...);
+
         return self::URL . "{$hash}?s=200&d=404";
     }
 }
