@@ -5,12 +5,4 @@ source cmd/config
 echo "🐧 Building for production..."
 
 ./cmd/run prod build
-
-echo "🐧 Pushing images to Image Registry..."
-
-for image in "${PODMAN_IMAGES[@]}"; do
-    echo "🐧 Pusing image: $image"
-    podman push "$image"
-done
-
-git push
+./cmd/push

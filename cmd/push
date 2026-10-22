@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+source cmd/config
+
+echo "🐧 Pushing images to Image Registry..."
+
+for image in "${PODMAN_IMAGES[@]}"; do
+    echo "🐧 Pusing image: $image"
+    podman push "$image"
+done
+
+git push
