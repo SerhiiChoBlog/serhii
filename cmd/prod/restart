@@ -8,3 +8,5 @@ validate_services "$@"
 
 ./cmd/run prod down "$@"
 ./cmd/start "$@"
+
+./cmd/run prod ps
