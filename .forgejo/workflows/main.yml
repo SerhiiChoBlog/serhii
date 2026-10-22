@@ -55,6 +55,7 @@ jobs:
     runs-on: debian13-podman
     name: Deploy
     needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
 
     steps:
       - name: Checkout code
@@ -87,14 +88,21 @@ jobs:
 
       - name: Pull changes on VPS
         run: |
-          services_raw="$(git log -1 --pretty=%B | grep -oP "\{restart:(.*)}" | sed "s/{restart://" | sed "s/}//" || true)"
+          services_raw="$(git log -1 --pretty=%B | grep -oP '\{restart:\K[^}]+' || true)"
+
+          remote() {
+              ssh -i /root/.ssh/key "serhii@${{ secrets.SERHII_VPS_IP }}" \
+                  "export PATH=\$PATH:/home/serhii/.local/bin && cd ~/serhiicho.com && $*"
+          }
 
           if [[ "$services_raw" == "" ]]; then
-              echo "No services to restart found. Exiting..."
+              echo "No services to restart found. Restarting all..."
+              remote ./cmd/restart
               exit 0
           fi
 
-          IFS=',' read -r -a services <<< "$services_raw"
+          services_csv="$(tr -d ' ' <<< "$services_raw")"
+          IFS=',' read -r -a services <<< "$services_csv"
 
           echo "Restarting ${services[*]} services..."
-          ssh -i /root/.ssh/key serhii@${{ secrets.SERHII_VPS_IP }} "export PATH=$PATH:/home/serhii/.local/bin && cd ~/serhiicho.com && ./cmd/restart ${services[@]}"
+          remote ./cmd/restart "${services[@]}"
