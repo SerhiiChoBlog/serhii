@@ -18,8 +18,10 @@ services:
       - db-net
       - redis-net
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
 
   db:
     image: registry.serhiicho.com/serhiicho:db
@@ -39,8 +41,10 @@ services:
       - db-net
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
-      retries: 3
+      interval: 5s
       timeout: 5s
+      retries: 12
+      start_period: 20s
 
   backup:
     build:
@@ -86,7 +90,10 @@ services:
       - horizon-net
       - redis-net
     depends_on:
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
 
   scheduler:
     restart: always
@@ -97,6 +104,11 @@ services:
       - scheduler-net
       - redis-net
       - db-net
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
 
 networks:
   php-net:
