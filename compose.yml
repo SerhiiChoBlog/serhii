@@ -18,10 +18,8 @@ services:
       - db-net
       - redis-net
     depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_started
+      - db
+      - redis
 
   db:
     image: registry.serhiicho.com/serhiicho:db
@@ -90,10 +88,7 @@ services:
       - horizon-net
       - redis-net
     depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_started
+      - redis
 
   scheduler:
     restart: always
@@ -104,11 +99,6 @@ services:
       - scheduler-net
       - redis-net
       - db-net
-    depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_started
 
 networks:
   php-net:
