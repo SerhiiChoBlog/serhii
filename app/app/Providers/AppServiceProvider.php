@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
             Limit::perMinute(1000),
         ]);
 
-        if($this->app->environment('production')) {
+        if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }
 

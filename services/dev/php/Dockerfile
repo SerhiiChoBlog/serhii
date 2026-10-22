@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM docker.io/php:8.4-fpm-alpine
+FROM docker.io/php:8.5-fpm-alpine
 
 ARG TARGETARCH
 WORKDIR /var/www/html

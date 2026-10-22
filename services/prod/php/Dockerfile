@@ -11,7 +11,7 @@ RUN npm run build
 
 # -----------------------------------
 
-FROM docker.io/php:8.4-fpm-alpine
+FROM docker.io/php:8.5-fpm-alpine
 
 WORKDIR /var/www/html
 

@@ -2,6 +2,8 @@ services:
   nginx:
     build:
       dockerfile: services/dev/nginx/Dockerfile
+    ports:
+      - 80:80
     image: localhost/serhiicho/serhiicho:nginx
     volumes:
       - ./app:/var/www/html:z
