@@ -26,7 +26,7 @@ RUN apk update && \
         g++ \
         make \
         linux-headers \
-        php84-pear \
+        php85-pear \
         freetype-dev \
         supervisor \
         libxml2-dev \
@@ -46,8 +46,7 @@ RUN apk update && \
         xml \
         zip \
         gd \
-        pcntl \
-        opcache && \
+        pcntl && \
     MAKEFLAGS="-j$(nproc)" pecl install redis && \
     docker-php-ext-enable redis && \
     # Other commands

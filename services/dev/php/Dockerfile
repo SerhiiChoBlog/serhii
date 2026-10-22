@@ -17,7 +17,7 @@ RUN apk update && \
         make \
         supervisor \
         linux-headers \
-        php84-pear \
+        php85-pear \
         libxml2-dev \
         libzip-dev \
         libjpeg-turbo-dev \
