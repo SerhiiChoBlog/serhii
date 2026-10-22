@@ -9,7 +9,6 @@ parameters:
 		- ./*/*/FileToBeExcluded.php
 	ignoreErrors:
 		- '/Class App\\Models\\.* uses generic trait Illuminate\\Database\\Eloquent\\Factories\\HasFactory but does not specify its types: TFactory/'
-		- '/Parameter #1 \$relations of method Illuminate\\Database\\Eloquent\\Builder<.*>::with\(\) expects array<array\|\(Closure\(Illuminate\\Database\\Eloquent\\Relations\\Relation<.*>\): mixed\)\|string>\|string, .* given\./'
 	typeAliases:
 		YouTubeThumbnail: 'array{ url: string, width: int, height: int }'
 		YouTubeSnippet: 'array{ publishedAt: string, channelId: string, title: string, description: string, thumbnails: YouTubeThumbnails, channelTitle: string, liveBroadcastContent: string, publishTime: string }'
