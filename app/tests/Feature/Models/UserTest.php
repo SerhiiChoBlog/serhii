@@ -142,4 +142,17 @@ class UserTest extends TestCase
         $this->assertInstanceOf(Feed::class, $this->user->feed->first());
         $this->assertSame($feed->id, $this->user->feed->first()->id);
     }
+
+    public function testUserArrayDoesNotExposeSecret(): void
+    {
+        $this->assertArrayNotHasKey('secret', $this->user->toArray());
+    }
+
+    public function testLayoutDoesNotExposeUserSecret(): void
+    {
+        $this->actingAs($this->user, 'user')
+            ->get('/')
+            ->assertOk()
+            ->assertDontSee($this->user->secret);
+    }
 }

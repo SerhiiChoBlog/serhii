@@ -7,7 +7,6 @@ namespace App\Http\Requests\Comment;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @property string $secret
  * @property int $comment_id
  */
 class LikeRequest extends FormRequest
@@ -23,7 +22,6 @@ class LikeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'secret' => ['required', 'string'],
             'comment_id' => ['required', 'integer'],
         ];
     }

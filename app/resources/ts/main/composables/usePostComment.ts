@@ -31,7 +31,6 @@ export default (postId: number, commentId?: number) => {
         const params = {
             comment: comment.value,
             comment_id: commentId || null,
-            secret: Auth.secret,
             post_id: postId,
         }
 

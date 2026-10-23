@@ -61,6 +61,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
+        'secret',
     ];
 
     /**
@@ -190,16 +191,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getRouteKeyName(): string
     {
         return 'slug';
-    }
-
-    public static function getBySecret(string|null $secret): self|null
-    {
-        if (!$secret) {
-            return null;
-        }
-
-        /** @var self|null */
-        return self::query()->where('secret', $secret)->first();
     }
 
     public function likePost(int $post_id): PostLike

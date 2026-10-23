@@ -29,7 +29,7 @@ class CommentController extends Controller
     {
         /** @var Post $post */
         $post = Post::query()->findOrFail($request->post_id);
-        $user = User::getBySecret($request->secret);
+        $user = user();
 
         $with = ['user:' . User::POST_COMMENT_FIELDS];
 
@@ -64,9 +64,9 @@ class CommentController extends Controller
      */
     public function store(StoreRequest $r): array
     {
-        $user = User::getBySecret($r->secret);
+        $user = user();
 
-        abort_if(!$user, 403, 'Invalid secret');
+        abort_if(!$user, 401);
 
         $service = new StoreCommentService($user, $r->comment, $r->post_id, $r->comment_id);
 
@@ -75,9 +75,9 @@ class CommentController extends Controller
 
     public function like(LikeRequest $r): void
     {
-        $user = User::getBySecret($r->secret);
+        $user = user();
 
-        abort_if(!$user, 403, 'Invalid secret');
+        abort_if(!$user, 401);
 
         /** @var Comment $comment */
         $comment = Comment::query()->findOrFail($r->comment_id);

@@ -33,7 +33,6 @@ class PostLikeControllerTest extends TestCase
         $this->actingAs($this->user, 'user')
             ->postJson(self::STORE_LIKE_URI, [
                 'post_id' => $this->post->id,
-                'secret' => $this->user->secret,
             ])
             ->assertOk()
             ->assertJson(['liked' => true, 'likes' => 1]);
@@ -54,7 +53,6 @@ class PostLikeControllerTest extends TestCase
         $this->actingAs($this->user, 'user')
             ->postJson(self::STORE_LIKE_URI, [
                 'post_id' => $this->post->id,
-                'secret' => $this->user->secret,
             ])
             ->assertOk()
             ->assertJson(['liked' => true, 'likes' => 1]);
@@ -70,7 +68,6 @@ class PostLikeControllerTest extends TestCase
         $this->actingAs($this->user, 'user')
             ->postJson(self::STORE_LIKE_URI, [
                 'post_id' => 999,
-                'secret' => $this->user->secret,
             ])
             ->assertStatus(422)
             ->assertJsonValidationErrors(['post_id']);
@@ -85,7 +82,6 @@ class PostLikeControllerTest extends TestCase
 
         $query = http_build_query([
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
         ]);
 
         $this->actingAs($this->user, 'user')
@@ -100,7 +96,6 @@ class PostLikeControllerTest extends TestCase
 
         $query = http_build_query([
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
         ]);
 
         $this->actingAs($this->user, 'user')
@@ -117,7 +112,6 @@ class PostLikeControllerTest extends TestCase
         $this->actingAs($this->user, 'user')
             ->postJson(self::STORE_LIKE_URI, [
                 'post_id' => $this->post->id,
-                'secret' => $this->user->secret,
             ]);
 
         $this->assertDatabaseHas('feed', [
@@ -126,4 +120,5 @@ class PostLikeControllerTest extends TestCase
             'type' => FeedType::POST_LIKE,
         ]);
     }
+
 }

@@ -29,7 +29,6 @@ function toggleLike(): void {
 
     const params = {
         comment_id: props.comment.id,
-        secret: Auth.secret,
     }
 
     axios

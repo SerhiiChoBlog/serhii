@@ -20,6 +20,16 @@ class ReplaceUrlsModifierTest extends TestCase
         $this->assertSame($expect, $modifier->modify());
     }
 
+    public function testEscapesQuotesInUrls(): void
+    {
+        $input = 'https://example.com/"onmouseover="alert(1)';
+        $expect = '<a href="https://example.com/&quot;onmouseover=&quot;alert(1)" target="_blank">https://example.com/&quot;onmouseover=&quot;alert(1)</a>';
+
+        $modifier = new ReplaceUrlsModifier($input);
+
+        $this->assertSame($expect, $modifier->modify());
+    }
+
     public static function providerForTestReplacesUrlsWithHtmlLinks(): array
     {
         return [

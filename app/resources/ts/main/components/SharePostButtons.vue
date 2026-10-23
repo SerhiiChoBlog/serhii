@@ -14,7 +14,6 @@ const links = getSocialLinks(postTitle)
 function saveShare(social: string): void {
     const params = {
         social,
-        secret: Auth ? Auth.secret : null,
     }
 
     axios

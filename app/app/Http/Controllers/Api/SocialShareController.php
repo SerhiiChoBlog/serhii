@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\SocialShare\StoreRequest;
 use App\Models\Post;
-use App\Models\User;
 use App\Utils\GlobalVisitor;
 use Illuminate\Support\Facades\Log;
 use Throwable;
@@ -29,7 +29,8 @@ class SocialShareController extends Controller
             return;
         }
 
-        $is_admin = $request->secret && User::isAdmin('secret', $request->secret);
+        $user = user();
+        $is_admin = $user?->hasRole(UserRole::ADMIN) ?? false;
 
         if (!$visitor || $is_admin) {
             return;
@@ -46,7 +47,7 @@ class SocialShareController extends Controller
 
         $post->socialShares()->create([
             'visitor_id' => $visitor->id,
-            'user_id' => User::getBySecret($request->secret)?->id,
+            'user_id' => $user?->id,
             'social' => $request->social,
         ]);
     }

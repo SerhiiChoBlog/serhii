@@ -38,6 +38,7 @@ class CommentControllerTest extends TestCase
         Queue::fake();
         $this->user = $this->createUser();
         $this->post = Post::factory()->create();
+        $this->actingAs($this->user, 'user');
     }
 
     public function testGettingCommentsResponseHasSuccessfulStatus(): void
@@ -112,7 +113,7 @@ class CommentControllerTest extends TestCase
             'comment_id' => $comment->id,
         ]);
 
-        $url = self::GET_COMMENTS_URI . "?post_id={$this->post->id}&secret={$this->user->secret}";
+        $url = self::GET_COMMENTS_URI . "?post_id={$this->post->id}";
 
         $likes = $this->getJson($url)
             ->json('0.likes');
@@ -154,7 +155,6 @@ class CommentControllerTest extends TestCase
 
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => $text,
         ])
             ->assertOk();
@@ -179,9 +179,10 @@ class CommentControllerTest extends TestCase
         // User 2 replies to User 1's comment
         $text = 'I agree with you! He is a great writer!';
 
+        $this->actingAs($user2, 'user');
+
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $user2->secret,
             'comment' => $text,
             'comment_id' => $comment->id,
         ])
@@ -216,9 +217,10 @@ class CommentControllerTest extends TestCase
         // User 3 replies to User 2's reply
         $text = 'I agree with you both!';
 
+        $this->actingAs($user3, 'user');
+
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $user3->secret,
             'comment' => $text,
             'comment_id' => $reply->id,
         ])
@@ -236,7 +238,6 @@ class CommentControllerTest extends TestCase
     {
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => 'Hi!',
         ]);
 
@@ -247,7 +248,6 @@ class CommentControllerTest extends TestCase
     {
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => Str::random(1001),
         ]);
 
@@ -258,7 +258,6 @@ class CommentControllerTest extends TestCase
     {
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => 'dude',
         ]);
 
@@ -271,7 +270,6 @@ class CommentControllerTest extends TestCase
     {
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => Str::random(1000),
         ]);
 
@@ -293,7 +291,6 @@ class CommentControllerTest extends TestCase
         // Try to create the second comment
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => $text,
         ]);
 
@@ -317,7 +314,6 @@ class CommentControllerTest extends TestCase
         // Create the second comment
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => $text,
         ]);
 
@@ -330,9 +326,10 @@ class CommentControllerTest extends TestCase
     {
         $admin = $this->createAdmin();
 
+        $this->actingAs($admin, 'admin');
+
         $fields = [
             'post_id' => $this->post->id,
-            'secret' => $admin->secret,
             'comment' => 'Thank you for your comment',
         ];
 
@@ -354,7 +351,6 @@ class CommentControllerTest extends TestCase
 
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => $text,
         ]);
 
@@ -368,9 +364,10 @@ class CommentControllerTest extends TestCase
     {
         $admin = $this->createAdmin();
 
+        $this->actingAs($admin, 'admin');
+
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $admin->secret,
             'comment' => 'Awesome post! Thank you!',
         ]);
 
@@ -385,7 +382,6 @@ class CommentControllerTest extends TestCase
     {
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => $text,
         ]);
 
@@ -415,7 +411,6 @@ class CommentControllerTest extends TestCase
     {
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => $text,
         ]);
 
@@ -443,7 +438,6 @@ class CommentControllerTest extends TestCase
     {
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => 'Thank you for your comment!',
         ]);
 
@@ -454,7 +448,6 @@ class CommentControllerTest extends TestCase
     {
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => 'Thank you for your stupid blog post!',
         ]);
 
@@ -465,7 +458,6 @@ class CommentControllerTest extends TestCase
     {
         $resp = $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => 'Спасибо за ваш пост!',
         ]);
 
@@ -476,9 +468,10 @@ class CommentControllerTest extends TestCase
     {
         $user = User::factory()->unverified()->create();
 
+        $this->actingAs($user, 'user');
+
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $user->secret,
             'comment' => 'Hello! Thank you for your post!',
         ]);
 
@@ -489,7 +482,6 @@ class CommentControllerTest extends TestCase
     {
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => 'Hello! Thank you for your post!',
         ]);
 
@@ -500,9 +492,10 @@ class CommentControllerTest extends TestCase
     {
         $admin = $this->createAdmin();
 
+        $this->actingAs($admin, 'admin');
+
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $admin->secret,
             'comment' => 'Hello! Thank you for your post!',
         ]);
 
@@ -515,7 +508,6 @@ class CommentControllerTest extends TestCase
 
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => 'Hello! Thank you for your post!',
         ]);
 
@@ -527,7 +519,6 @@ class CommentControllerTest extends TestCase
         $this->actingAs($this->user, 'user')
             ->postJson(self::POST_COMMENT_URI, [
                 'post_id' => 999,
-                'secret' => $this->user->secret,
                 'comment' => 'Hello! Thank you for your post!',
             ])
             ->assertStatus(422)
@@ -545,7 +536,6 @@ class CommentControllerTest extends TestCase
         $this->actingAs($this->user, 'user')
             ->postJson(self::LIKE_COMMENT_URI, [
                 'comment_id' => $comment->id,
-                'secret' => $this->user->secret,
             ])
             ->assertOk();
 
@@ -568,7 +558,6 @@ class CommentControllerTest extends TestCase
         $this->actingAs($this->user, 'user')
             ->postJson(self::LIKE_COMMENT_URI, [
                 'comment_id' => $comment->id,
-                'secret' => $this->user->secret,
             ]);
 
         $this->assertDatabaseEmpty('comment_likes');
@@ -585,7 +574,6 @@ class CommentControllerTest extends TestCase
         $this->actingAs($this->user, 'user')
             ->postJson(self::LIKE_COMMENT_URI, [
                 'comment_id' => $comment->id,
-                'secret' => $this->user->secret,
             ]);
 
         $this->assertDatabaseHas('feed', [
@@ -616,7 +604,6 @@ class CommentControllerTest extends TestCase
         $this->actingAs($this->user, 'user')
             ->postJson(self::LIKE_COMMENT_URI, [
                 'comment_id' => $comment->id,
-                'secret' => $this->user->secret,
             ]);
 
         $this->assertDatabaseEmpty('feed');
@@ -626,7 +613,6 @@ class CommentControllerTest extends TestCase
     {
         $this->postJson(self::POST_COMMENT_URI, [
             'post_id' => $this->post->id,
-            'secret' => $this->user->secret,
             'comment' => 'This is some comment here in this field',
         ]);
 
@@ -636,5 +622,44 @@ class CommentControllerTest extends TestCase
             'comment_id' => 1,
             'type' => FeedType::COMMENT,
         ]);
+    }
+
+    public function testCommentHtmlIsSanitizedBeforeSaving(): void
+    {
+        $payload = '<a href="javascript:alert(window.Auth.secret)" onmouseover="alert(1)" style="display:block;padding:200px">hi</a>';
+
+        $this->actingAs($this->user, 'user')
+            ->postJson(self::POST_COMMENT_URI, [
+                'post_id' => $this->post->id,
+                'comment' => $payload,
+            ])
+            ->assertOk();
+
+        $this->assertDatabaseHas('comments', [
+            'user_id' => $this->user->id,
+            'post_id' => $this->post->id,
+            'comment' => '<a>hi</a>',
+            'is_approved' => true,
+        ]);
+    }
+
+    public function testFetchedCommentsAreSanitized(): void
+    {
+        $payload = '<a href="javascript:alert(window.Auth.secret)" onmouseover="alert(1)" style="display:block;padding:200px">hi</a>';
+
+        Comment::factory()->create([
+            'user_id' => $this->user->id,
+            'post_id' => $this->post->id,
+            'comment' => $payload,
+        ]);
+
+        $url = self::GET_COMMENTS_URI . "?post_id={$this->post->id}";
+
+        $comment = $this->getJson($url)->json('0.comment');
+
+        $this->assertIsString($comment);
+        $this->assertStringNotContainsString('javascript:', $comment);
+        $this->assertStringNotContainsString('onmouseover', $comment);
+        $this->assertStringNotContainsString('style=', $comment);
     }
 }

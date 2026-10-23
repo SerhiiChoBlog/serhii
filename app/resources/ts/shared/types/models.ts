@@ -155,7 +155,6 @@ export type User = {
     slug: string
     roles?: Role[]
     name: string
-    secret: string
     sign_in_method: 'email' | 'google' | 'github'
     comments_count?: number
     email: string

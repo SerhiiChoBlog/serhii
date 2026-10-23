@@ -30,7 +30,6 @@ function likePost(): void {
 
     const params = {
         post_id: post.id,
-        secret: Auth.secret,
     }
 
     axios
@@ -48,7 +47,6 @@ function fetchIsLiked(): void {
 
     const params = {
         post_id: post.id,
-        secret: Auth ? Auth.secret : null,
     }
 
     axios

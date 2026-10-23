@@ -10,7 +10,6 @@ use Illuminate\Validation\Rules\Enum;
 
 /**
  * @property string $social
- * @property string $secret
  */
 class StoreRequest extends FormRequest
 {
@@ -26,7 +25,6 @@ class StoreRequest extends FormRequest
     {
         return [
             'social' => ['required', 'string', new Enum(SocialName::class)],
-            'secret' => ['nullable', 'string'],
         ];
     }
 }

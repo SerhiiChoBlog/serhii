@@ -6,9 +6,6 @@ namespace App\Http\Requests\Api\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * @property string $secret
- */
 class UploadPhotoRequest extends FormRequest
 {
     public function authorize(): bool
@@ -23,7 +20,6 @@ class UploadPhotoRequest extends FormRequest
     {
         return [
             'photo' => ['required', 'image:allow_svg', 'min:8', 'max:5000'],
-            'secret' => ['required', 'string'],
         ];
     }
 }

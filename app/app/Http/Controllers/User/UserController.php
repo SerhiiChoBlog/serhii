@@ -28,7 +28,6 @@ class UserController extends Controller
     {
         $user->loadCount('comments', 'postLikes');
         $user->load('badges', 'ban');
-        $user->makeHidden('secret');
 
         return view('users.show', compact('user'));
     }

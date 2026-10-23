@@ -32,7 +32,9 @@ readonly class ReplacePostUrlsModifier implements CommentModifier
 
         foreach ($posts as $post) {
             $links[] = route('posts.show', $post->slug);
-            $replacements[] = "<a href=\"/posts/{$post->slug}\">{$post->title}</a>";
+            $title = e($post->title);
+            $slug = e($post->slug);
+            $replacements[] = "<a href=\"/posts/{$slug}\">{$title}</a>";
         }
 
         return str_replace($links, $replacements, $this->comment);

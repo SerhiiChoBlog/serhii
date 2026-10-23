@@ -5,9 +5,13 @@ declare(strict_types=1);
 use App\Http\Middleware\RedirectIfAuthenticated as CustomRedirectIfAuthenticated;
 use App\Http\Middleware\ReferrerMiddleware;
 use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
+use Illuminate\Session\Middleware\StartSession;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withProviders()
@@ -25,7 +29,15 @@ return Application::configure(basePath: dirname(__DIR__))
             '/admin/ajax/posts/*',
         ]);
 
-        $middleware->api('throttle:api');
+        $middleware->api(
+            prepend: [
+                EncryptCookies::class,
+                AddQueuedCookiesToResponse::class,
+                StartSession::class,
+                PreventRequestForgery::class,
+            ],
+            append: ['throttle:api'],
+        );
 
         $middleware->web(
             append: [

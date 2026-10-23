@@ -8,7 +8,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property string $post_id
- * @property string $secret
  */
 class IsLikedRequest extends FormRequest
 {
@@ -24,7 +23,6 @@ class IsLikedRequest extends FormRequest
     {
         return [
             'post_id' => ['required', 'numeric', 'exists:posts,id'],
-            'secret' => ['nullable', 'string'],
         ];
     }
 }

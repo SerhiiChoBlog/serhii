@@ -17,7 +17,6 @@ export default (postId: number) => {
             .get<CommentType[]>(`/api/comments`, {
                 params: {
                     post_id: postId,
-                    secret: Auth ? Auth.secret : null,
                 },
             })
             .then(resp => (comments.value = resp.data))

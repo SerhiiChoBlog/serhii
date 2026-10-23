@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\User\UploadPhotoRequest;
-use App\Models\User;
 use App\Utils\ProfilePhotoProcessor;
 use Illuminate\Http\UploadedFile;
 
@@ -14,7 +13,7 @@ class UserController extends Controller
 {
     public function uploadPhoto(UploadPhotoRequest $request): void
     {
-        $user = User::getBySecret($request->secret);
+        $user = user();
 
         abort_if(!$user, 401);
 

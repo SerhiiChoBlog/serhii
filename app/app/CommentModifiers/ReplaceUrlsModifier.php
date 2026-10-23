@@ -16,9 +16,12 @@ readonly class ReplaceUrlsModifier implements CommentModifier
     public function modify(): string
     {
         // replace all urls with html links
-        $comment = preg_replace(
+        $comment = preg_replace_callback(
             '/(https?:\/\/[^\s]*[^\s.,])/i',
-            '<a href="$1" target="_blank">$1</a>',
+            static function (array $matches): string {
+                $url = htmlspecialchars($matches[1], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+                return "<a href=\"{$url}\" target=\"_blank\">{$url}</a>";
+            },
             $this->comment,
         );
 

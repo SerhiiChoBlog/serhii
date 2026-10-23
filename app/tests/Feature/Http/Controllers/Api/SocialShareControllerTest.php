@@ -46,9 +46,10 @@ class SocialShareControllerTest extends TestCase
     {
         $user = $this->createUser();
 
+        $this->actingAs($user, 'user');
+
         $params = [
             'social' => SocialName::LINKEDIN->value,
-            'secret' => $user->secret,
         ];
 
         $this->postJson($this->uri, $params, [
@@ -93,9 +94,10 @@ class SocialShareControllerTest extends TestCase
     {
         $admin = $this->createAdmin();
 
+        $this->actingAs($admin, 'admin');
+
         $params = [
             'social' => SocialName::LINKEDIN,
-            'secret' => $admin->secret,
         ];
 
         $this->postJson($this->uri, $params, [

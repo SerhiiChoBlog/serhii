@@ -32,7 +32,6 @@ function uploadPhoto(photo: File) {
 
     const formData = new FormData()
     formData.append('photo', photo)
-    formData.append('secret', Auth.secret)
 
     axios
         .post('/api/users/upload-photo', formData)

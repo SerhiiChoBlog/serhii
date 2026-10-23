@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\PostLike\IsLikedRequest;
 use App\Http\Requests\Api\PostLike\StoreRequest;
 use App\Models\PostLike;
-use App\Models\User;
 use Symfony\Component\HttpFoundation\Response as ResponseStatus;
 
 class PostLikeController extends Controller
@@ -19,7 +18,7 @@ class PostLikeController extends Controller
      */
     public function store(StoreRequest $request): array
     {
-        $user = User::getBySecret($request->secret);
+        $user = user();
 
         abort_if(!$user, ResponseStatus::HTTP_UNAUTHORIZED);
 
@@ -48,7 +47,7 @@ class PostLikeController extends Controller
      */
     public function isLiked(IsLikedRequest $request): array
     {
-        $user = User::getBySecret($request->secret);
+        $user = user();
 
         return [
             'liked' => $user && $user->hasLikedPost((int) $request->post_id),

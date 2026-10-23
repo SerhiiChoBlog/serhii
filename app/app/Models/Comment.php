@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\FeedType;
+use App\Services\Comment\CommentSanitizer;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -112,6 +113,16 @@ class Comment extends Model
     public function deleteFeedItem(FeedType $type, int $user_id): void
     {
         $this->feed()->where('type', $type)->where('user_id', $user_id)->delete();
+    }
+
+    /**
+     * @return Attribute<string, mixed>
+     */
+    protected function comment(): Attribute
+    {
+        return Attribute::get(
+            fn (string $value): string => (new CommentSanitizer())->sanitize($value),
+        );
     }
 
     /**

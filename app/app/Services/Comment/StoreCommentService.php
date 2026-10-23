@@ -7,7 +7,7 @@ namespace App\Services\Comment;
 use App\CommentModifiers\NewLineModifier;
 use App\CommentModifiers\ReplacePostUrlsModifier;
 use App\CommentModifiers\ReplaceUrlsModifier;
-use App\CommentModifiers\StripTagsModifier;
+use App\CommentModifiers\SanitizeHtmlModifier;
 use App\Enums\UserRole;
 use App\Events\CommentApproved;
 use App\Jobs\NewCommentAdminEmail;
@@ -25,9 +25,9 @@ class StoreCommentService
 
     private const COMMENT_MODIFIERS = [
         ReplacePostUrlsModifier::class,
-        StripTagsModifier::class,
         ReplaceUrlsModifier::class,
         NewLineModifier::class,
+        SanitizeHtmlModifier::class,
     ];
 
     public function __construct(
@@ -173,7 +173,7 @@ class StoreCommentService
 
         if ($this->user->email_verified_at === null) {
             $msg = 'Only verified users can post comments. Please check your email for a verification link.';
-            throw ValidationException::withMessages(['secret' => $msg]);
+            throw ValidationException::withMessages(['comment' => $msg]);
         }
 
         if ($this->user->ban()->exists()) {

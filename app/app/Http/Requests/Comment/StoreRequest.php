@@ -8,7 +8,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property int $post_id
- * @property string $secret
  * @property string $comment
  * @property int|null $comment_id
  */
@@ -26,7 +25,6 @@ class StoreRequest extends FormRequest
     {
         return [
             'post_id' => ['required', 'integer', 'exists:posts,id'],
-            'secret' => ['required', 'string'],
             'comment' => ['required', 'string', 'min:4', 'max:1000', 'not_regex:/[А-ЯЁа-яё]+/iu'],
             'comment_id' => ['nullable', 'integer'],
         ];
