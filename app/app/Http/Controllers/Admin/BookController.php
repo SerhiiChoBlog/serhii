@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Books\StoreRequest;
 use App\Http\Requests\Admin\Books\UpdateFieldRequest;
 use App\Models\Book;
+use App\Utils\ImageExtension;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Storage;
@@ -61,7 +62,8 @@ class BookController extends Controller
             return Book::DEFAULT_IMAGE;
         }
 
-        $ext = $file->getClientOriginalExtension();
+        $mimeType = $file->getMimeType();
+        $ext = ImageExtension::fromMimeType($mimeType);
         $name = Str::slug($request->title) . ".{$ext}";
 
         $image = Image::decode($file)

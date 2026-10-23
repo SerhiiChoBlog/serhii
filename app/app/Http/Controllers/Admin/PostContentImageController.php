@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostContentImage;
+use App\Utils\ImageExtension;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -19,24 +20,19 @@ class PostContentImageController extends Controller
 {
     public function store(Post $post, Request $request): string
     {
+        $request->validate(['image' => ['required', 'image']]);
+
         $post->load('series:id,slug');
 
-        /** @var UploadedFile|null $image */
+        /** @var UploadedFile $image */
         $image = $request->file('image');
 
-        if (!$image) {
-            return '';
-        }
+        // Derive extension from MIME type, not client filename
+        $extension = ImageExtension::fromMimeType($image->getMimeType());
 
         $slug = $this->getImageSlug($post);
         $path = storage_path('app/public/posts/content');
-        $original_name = $image->getClientOriginalName();
-
-        if (str_starts_with($original_name, $slug)) {
-            $image_name = $original_name;
-        } else {
-            $image_name = sprintf("%s-%s.%s", $slug, time(), $image->getClientOriginalExtension());
-        }
+        $image_name = sprintf('%s-%s.%s', $slug, time(), $extension);
 
         $image->move($path, $image_name);
         $post->createImage($image_name);
@@ -149,6 +145,12 @@ class PostContentImageController extends Controller
 
         foreach ($file_names as $name) {
             $move_from = "{$temp_dir_path}/{$name}";
+
+            if (!$this->isImageFile($move_from)) {
+                @unlink($move_from);
+                continue;
+            }
+
             $move_to = "{$destination}/{$name}";
 
             if (file_exists($move_to)) {
@@ -159,5 +161,21 @@ class PostContentImageController extends Controller
 
             $post->createImage($name);
         }
+    }
+
+    private function isImageFile(string $path): bool
+    {
+        if (!is_file($path)) {
+            return false;
+        }
+
+        $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+        $images = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp'];
+
+        if (!in_array($extension, $images, true)) {
+            return false;
+        }
+
+        return @getimagesize($path) !== false;
     }
 }

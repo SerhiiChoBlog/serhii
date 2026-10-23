@@ -32,7 +32,8 @@ readonly class ImageProcessor
         }
 
         $path = storage_path("app/public/{$dir_name}");
-        $ext = $this->photo->getClientOriginalExtension();
+        $mimeType = $this->photo->getMimeType();
+        $ext = ImageExtension::fromMimeType($mimeType);
         $name = Str::slug($post_name) . ".{$ext}";
 
         foreach ($this->sizes as $size => $d) {

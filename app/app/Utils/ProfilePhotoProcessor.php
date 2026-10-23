@@ -18,7 +18,8 @@ readonly class ProfilePhotoProcessor
     public function save(): string
     {
         $path = storage_path("app/public/avatars");
-        $name = sprintf('%s-%d.%s', $this->user->slug, time(), $this->photo->getClientOriginalExtension());
+        $extension = ImageExtension::fromMimeType($this->photo->getMimeType());
+        $name = sprintf('%s-%d.%s', $this->user->slug, time(), $extension);
 
         Image::decode($this->photo)
             ->contain(400, 400, alignment: Alignment::CENTER)
