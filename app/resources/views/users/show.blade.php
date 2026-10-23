@@ -15,7 +15,7 @@
     <div class="container">
         <div class="grid grid-cols-1 md:grid-cols-[300px_auto] gap-8 md:gap-12 mx-auto">
             <div>
-                <avatar :user="{{ $user }}">
+                <avatar :user="{{ $user->makeHidden(['email', 'email_verified_at']) }}">
                     <div class="h-[250px]"></div>
                 </avatar>
 
