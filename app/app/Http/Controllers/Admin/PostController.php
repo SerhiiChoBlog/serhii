@@ -131,15 +131,7 @@ class PostController extends Controller
 
         $post->update($data->toArray());
 
-        if ($first_publish) {
-            Artisan::call(SitemapCommand::class);
-        }
-
-        Cache::forget(CacheKey::UPCOMING);
-
-        if ($first_publish || $first_unpublish) {
-            event(new PostChanged($post));
-        }
+        $this->handlePublicationChange($post, $first_publish, $first_unpublish);
 
         return $this->edit($post);
     }
@@ -166,6 +158,19 @@ class PostController extends Controller
         $post->delete();
 
         event(new PostChanged(null));
+    }
+
+    private function handlePublicationChange(Post $post, bool $first_publish, bool $first_unpublish): void
+    {
+        if ($first_publish) {
+            Artisan::call(SitemapCommand::class);
+        }
+
+        Cache::forget(CacheKey::UPCOMING);
+
+        if ($first_publish || $first_unpublish) {
+            event(new PostChanged($post));
+        }
     }
 
     private function addNotesToContent(string|null $content): string|null
