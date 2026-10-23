@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Http\Controllers\Admin;
 
+use App\CacheKey;
 use App\Models\Post;
 use App\Models\Series;
 use App\Models\Tag;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Intervention\Image\Interfaces\ImageInterface;
 use Intervention\Image\Laravel\Facades\Image;
 use Mockery;
@@ -120,6 +122,86 @@ class PostControllerTest extends TestCase
             ->assertOk();
 
         $this->assertDatabaseHas('posts', $params);
+    }
+
+    public function testUpdatingPublishedPostTitleDoesNotChangeSlug(): void
+    {
+        $admin = $this->createAdmin();
+
+        /** @var Post $post */
+        $post = Post::factory()->published()->create([
+            'title' => 'Old title',
+            'slug' => 'old-title',
+        ]);
+
+        $params = [
+            'title' => 'New title is here',
+            'intro' => $post->intro,
+            'is-published' => true,
+            'content' => $post->content,
+            'slug' => 'new-slug',
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->putJson(self::UPDATE_URI, $params)
+            ->assertOk();
+
+        $fresh = $post->fresh();
+
+        $this->assertSame('New title is here', $fresh?->title);
+        $this->assertSame('old-title', $fresh?->slug);
+    }
+
+    public function testFirstPublishUpdatesSlugFromTitle(): void
+    {
+        $admin = $this->createAdmin();
+
+        /** @var Post $post */
+        $post = Post::factory()->create([
+            'title' => 'Draft title',
+            'slug' => 'draft-title',
+        ]);
+
+        $params = [
+            'title' => 'Published title',
+            'intro' => $post->intro,
+            'is-published' => true,
+            'content' => $post->content,
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->putJson(self::UPDATE_URI, $params)
+            ->assertOk();
+
+        $this->assertSame('published-title', $post->fresh()?->slug);
+    }
+
+    public function testUpdatingPublishedPostClearsSearchAndLatestCache(): void
+    {
+        $admin = $this->createAdmin();
+
+        /** @var Post $post */
+        $post = Post::factory()->published()->create();
+
+        Cache::put(CacheKey::POSTS_SEARCH, ['cached'], 99999);
+        Cache::put(CacheKey::LATEST_POSTS, ['cached'], 99999);
+
+        $this->assertTrue(Cache::has(CacheKey::POSTS_SEARCH));
+        $this->assertTrue(Cache::has(CacheKey::LATEST_POSTS));
+
+        $params = [
+            'title' => 'Changed title',
+            'intro' => $post->intro,
+            'is-published' => true,
+            'content' => $post->content,
+        ];
+
+        $this->actingAs($admin, 'admin')
+            ->putJson(self::UPDATE_URI, $params)
+            ->assertOk();
+
+        $this->assertFalse(Cache::has(CacheKey::POSTS_SEARCH));
+        $this->assertFalse(Cache::has(CacheKey::LATEST_POSTS));
     }
 
     public function testProvidingImageFileWillSaveThemToStorage(): void

@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Http\Controllers\Admin;
 
+use App\CacheKey;
 use App\Models\Keyword;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Illuminate\Support\Facades\Cache;
 use Tests\TestCase;
 
 class KeywordControllerTest extends TestCase
@@ -31,10 +33,10 @@ class KeywordControllerTest extends TestCase
         $post = Post::factory()->create();
 
         $this->actingAs($this->admin, 'admin')
-            ->postJson(self::STORE_URI, ['name' => 'andrew', 'post_id' => $post->id])
+            ->postJson(self::STORE_URI, ['name' => 'skirk', 'post_id' => $post->id])
             ->assertOk();
 
-        $this->assertDatabaseHas('keywords', ['name' => 'andrew']);
+        $this->assertDatabaseHas('keywords', ['name' => 'skirk']);
     }
 
     public function testDoesntCreateKeywordWhenItAlreadyExist(): void
@@ -87,6 +89,46 @@ class KeywordControllerTest extends TestCase
             ->assertOk();
 
         $this->assertDatabaseCount('keyword_post', 1);
+    }
+
+    public function testAddingKeywordClearsSearchCache(): void
+    {
+        /** @var Post $post */
+        $post = Post::factory()->create();
+
+        Cache::put(CacheKey::POSTS_SEARCH, ['cached'], 99999);
+
+        $this->assertTrue(Cache::has(CacheKey::POSTS_SEARCH));
+
+        $this->actingAs($this->admin, 'admin')
+            ->postJson(self::STORE_URI, ['name' => 'barbara', 'post_id' => $post->id])
+            ->assertOk();
+
+        $this->assertFalse(Cache::has(CacheKey::POSTS_SEARCH));
+    }
+
+    public function testDeletingKeywordClearsSearchCache(): void
+    {
+        /** @var Post $post */
+        $post = Post::factory()->create();
+
+        /** @var Keyword $keyword */
+        $keyword = Keyword::factory()->create(['name' => 'anna']);
+
+        $post->keywords()->attach($keyword);
+
+        Cache::put(CacheKey::POSTS_SEARCH, ['cached'], 99999);
+
+        $this->assertTrue(Cache::has(CacheKey::POSTS_SEARCH));
+
+        $this->actingAs($this->admin, 'admin')
+            ->deleteJson(self::DELETE_URI, [
+                'keyword_id' => $keyword->id,
+                'post_id' => $post->id,
+            ])
+            ->assertOk();
+
+        $this->assertFalse(Cache::has(CacheKey::POSTS_SEARCH));
     }
 
     public function testDeletingKeywordDeletesPostConnection(): void

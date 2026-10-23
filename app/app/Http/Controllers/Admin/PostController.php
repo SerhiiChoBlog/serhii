@@ -93,7 +93,7 @@ class PostController extends Controller
             $this->attachTags($request->tags, $request->tag_id, $post);
         }
 
-        $data = $request->collect()->forget(['_method', 'is-published', 'tag_id']);
+        $data = $request->collect()->forget(['_method', 'is-published', 'tag_id', 'slug']);
 
         /** @var UploadedFile|null $image */
         $image = $request->file('image');
@@ -118,7 +118,6 @@ class PostController extends Controller
             $content = LazyLoadingParser::makeImagesLazy($content);
         }
 
-        $data->put('slug', $this->getPostSlug($request->title, $post->series->first()));
         $data->put('read_time', Post::calculateEstimatedReadingTime($content ?? ''));
         $data->put('content', $content);
 
@@ -127,11 +126,12 @@ class PostController extends Controller
 
         if ($first_publish) {
             $data->put('created_at', now());
+            $data->put('slug', $this->getPostSlug($request->title, $post->series->first()));
         }
 
         $post->update($data->toArray());
 
-        $this->handlePublicationChange($post, $first_publish, $first_unpublish);
+        $this->handlePostUpdate($post, $first_publish, $first_unpublish);
 
         return $this->edit($post);
     }
@@ -160,7 +160,7 @@ class PostController extends Controller
         event(new PostChanged(null));
     }
 
-    private function handlePublicationChange(Post $post, bool $first_publish, bool $first_unpublish): void
+    private function handlePostUpdate(Post $post, bool $first_publish, bool $first_unpublish): void
     {
         if ($first_publish) {
             Artisan::call(SitemapCommand::class);
@@ -168,7 +168,7 @@ class PostController extends Controller
 
         Cache::forget(CacheKey::UPCOMING);
 
-        if ($first_publish || $first_unpublish) {
+        if ($post->is_published || $first_unpublish) {
             event(new PostChanged($post));
         }
     }

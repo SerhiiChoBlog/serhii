@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
+use App\CacheKey;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Keyword\DestroyRequest;
 use App\Http\Requests\Admin\Keyword\StoreRequest;
 use App\Models\Keyword;
 use App\Models\Post;
+use Illuminate\Support\Facades\Cache;
 
 class KeywordController extends Controller
 {
@@ -33,6 +35,8 @@ class KeywordController extends Controller
         }
 
         $keyword->posts()->attach($request->post_id);
+
+        Cache::forget(CacheKey::POSTS_SEARCH);
     }
 
     public function destroy(DestroyRequest $request): void
@@ -40,5 +44,7 @@ class KeywordController extends Controller
         /** @var Post $post */
         $post = Post::query()->findOrFail($request->post_id);
         $post->keywords()->detach($request->keyword_id);
+
+        Cache::forget(CacheKey::POSTS_SEARCH);
     }
 }
