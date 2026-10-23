@@ -1,10 +1,8 @@
 .git
-.env
-.github
+.forgejo
 .vscode
 app/node_modules
 app/vendor
-app/.env
 app/public/hot
 app/public/build
-.forgejo
+**/.env

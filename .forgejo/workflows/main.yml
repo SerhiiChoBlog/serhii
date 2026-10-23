@@ -54,7 +54,7 @@ jobs:
   deploy:
     runs-on: debian13-podman
     name: Deploy
-    #needs: test
+    needs: test
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
 
     steps:
