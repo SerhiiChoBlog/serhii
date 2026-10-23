@@ -28,7 +28,6 @@ RUN apk update && \
         linux-headers \
         php85-pear \
         freetype-dev \
-        supervisor \
         libxml2-dev \
         libzip-dev \
         libjpeg-turbo-dev \
@@ -56,7 +55,6 @@ RUN apk update && \
 
 COPY --from=docker.io/library/composer:2 /usr/bin/composer /usr/bin/
 COPY services/prod/php/zzz-custom.ini services/prod/php/zzz-opache.ini /usr/local/etc/php/conf.d/
-COPY services/prod/jobs/supervisord.conf /etc/
 COPY app/composer.* .
 
 RUN composer install -n --prefer-dist --no-progress --no-dev --no-scripts && \

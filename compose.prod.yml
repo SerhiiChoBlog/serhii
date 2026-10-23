@@ -19,17 +19,14 @@ services:
       - ./app/.env:/var/www/html/.env:z
       - ./app/storage:/var/www/html/storage:z
 
-  jobs:
-    image: registry.serhiicho.com/serhiicho:php
-    volumes:
-      - ./app/.env:/var/www/html/.env:z
-
   horizon:
     image: registry.serhiicho.com/serhiicho:php
     volumes:
       - ./app/.env:/var/www/html/.env:z
+      - ./app/storage:/var/www/html/storage:z
 
   scheduler:
     image: registry.serhiicho.com/serhiicho:php
     volumes:
       - ./app/.env:/var/www/html/.env:z
+      - ./app/storage:/var/www/html/storage:z

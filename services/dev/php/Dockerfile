@@ -15,7 +15,6 @@ RUN apk update && \
         autoconf \
         g++ \
         make \
-        supervisor \
         linux-headers \
         php85-pear \
         libxml2-dev \
@@ -48,6 +47,5 @@ RUN apk update && \
 
 COPY --from=docker.io/library/composer:2 /usr/bin/composer /usr/bin/
 COPY services/dev/php/zzz-custom.ini /usr/local/etc/php/conf.d/
-COPY services/prod/jobs/supervisord.conf /etc/
 
 CMD ["php-fpm"]

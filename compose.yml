@@ -59,17 +59,6 @@ services:
     depends_on:
       - db
 
-  jobs:
-    restart: always
-    env_file: .env
-    command: /usr/bin/supervisord -n
-    networks:
-      - jobs-net
-      - redis-net
-      - db-net
-    depends_on:
-      - redis
-
   redis:
     build:
       dockerfile: services/prod/redis/Dockerfile
@@ -88,7 +77,9 @@ services:
     networks:
       - horizon-net
       - redis-net
+      - db-net
     depends_on:
+      - db
       - redis
 
   scheduler:
@@ -100,6 +91,9 @@ services:
       - scheduler-net
       - redis-net
       - db-net
+    depends_on:
+      - db
+      - redis
 
 networks:
   php-net:
@@ -111,8 +105,6 @@ networks:
   backup-net:
     driver: bridge
   redis-net:
-    driver: bridge
-  jobs-net:
     driver: bridge
   horizon-net:
     driver: bridge

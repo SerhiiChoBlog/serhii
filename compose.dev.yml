@@ -21,11 +21,6 @@ services:
     ports:
       - 3300:3306
 
-  jobs:
-    image: localhost/serhiicho/serhiicho:php
-    volumes:
-      - ./app:/var/www/html:z
-
   horizon:
     image: localhost/serhiicho/serhiicho:php
     volumes:
