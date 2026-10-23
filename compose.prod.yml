@@ -21,9 +21,15 @@ services:
 
   jobs:
     image: registry.serhiicho.com/serhiicho:php
+    volumes:
+      - ./app/.env:/var/www/html/.env:z
 
   horizon:
     image: registry.serhiicho.com/serhiicho:php
+    volumes:
+      - ./app/.env:/var/www/html/.env:z
 
   scheduler:
     image: registry.serhiicho.com/serhiicho:php
+    volumes:
+      - ./app/.env:/var/www/html/.env:z

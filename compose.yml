@@ -66,6 +66,7 @@ services:
     networks:
       - jobs-net
       - redis-net
+      - db-net
     depends_on:
       - redis
 
