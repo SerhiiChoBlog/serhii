@@ -17,7 +17,6 @@
             <div>
                 <avatar :user="{{ $user->makeHidden(['email', 'email_verified_at']) }}">
                     <div class="h-[250px]"></div>
-
                 </avatar>
 
                 <div class="mt-7 text-center md:text-left">
