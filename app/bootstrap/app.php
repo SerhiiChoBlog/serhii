@@ -24,10 +24,6 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->encryptCookies(except: ['theme']);
-        $middleware->preventRequestForgery(except: [
-            '/admin/ajax/post-content-images/*',
-            '/admin/ajax/posts/*',
-        ]);
 
         $middleware->api(
             prepend: [
