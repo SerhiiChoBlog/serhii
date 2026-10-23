@@ -20,8 +20,11 @@ readonly class ProfilePhotoProcessor
     public function save(): string
     {
         $extension = ImageExtension::fromMimeType($this->photo->getMimeType());
-        $name = Str::random(20) . ".{$extension}";
         $disk = Storage::disk('public');
+
+        do {
+            $name = Str::random(20) . ".{$extension}";
+        } while ($disk->exists("avatars/{$name}"));
 
         $disk->makeDirectory('avatars');
 
