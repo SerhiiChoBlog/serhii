@@ -127,6 +127,11 @@ class PostController extends Controller
 
         if ($first_publish) {
             $data->put('created_at', now());
+        }
+
+        $post->update($data->toArray());
+
+        if ($first_publish) {
             Artisan::call(SitemapCommand::class);
         }
 
@@ -135,8 +140,6 @@ class PostController extends Controller
         if ($first_publish || $first_unpublish) {
             event(new PostChanged($post));
         }
-
-        $post->update($data->toArray());
 
         return $this->edit($post);
     }
