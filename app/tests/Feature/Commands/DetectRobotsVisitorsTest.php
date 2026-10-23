@@ -16,7 +16,14 @@ class DetectRobotsVisitorsTest extends TestCase
 
     public function testRunningCommandMarksVisitorsAsRobots(): void
     {
-        $people = Visitor::factory()->count(3)->create();
+        $people = Visitor::factory()
+            ->count(3)
+            ->sequence(
+                ['ip' => '192.0.2.1'],
+                ['ip' => '198.51.100.1'],
+                ['ip' => '203.0.113.1'],
+            )
+            ->create();
 
         $visitor1 = Visitor::factory()->create(['ip' => '64.233.160.0']);
         $visitor2 = Visitor::factory()->create(['ip' => '64.233.160.1']);
