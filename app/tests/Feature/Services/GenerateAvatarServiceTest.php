@@ -6,6 +6,7 @@ namespace Tests\Feature\Services;
 
 use App\AvatarGenerators\GlavatarAvatarGenerator;
 use App\Services\GenerateAvatarService;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
@@ -32,7 +33,10 @@ class GenerateAvatarServiceTest extends TestCase
         $service = new GenerateAvatarService('1990serzhil@gmail.com', $user_slug);
         $image_name = $service->handle();
 
-        Storage::disk('public')->assertExists("avatars/{$image_name}");
+        /** @var FilesystemAdapter $disk */
+        $disk = Storage::disk('public');
+
+        $disk->assertExists("avatars/{$image_name}");
 
         $this->assertStringContainsString('.jpg', $image_name);
         $this->assertStringContainsString($user_slug, $image_name);
@@ -45,7 +49,10 @@ class GenerateAvatarServiceTest extends TestCase
         $service = new GenerateAvatarService('ai1dsfj8lakfj9slkf0flk@ijsalkjdfkl.com', $user_slug);
         $image_name = $service->handle();
 
-        Storage::disk('public')->assertExists("avatars/{$image_name}");
+        /** @var FilesystemAdapter $disk */
+        $disk = Storage::disk('public');
+
+        $disk->assertExists("avatars/{$image_name}");
 
         $this->assertStringContainsString('.svg', $image_name);
         $this->assertStringContainsString($user_slug, $image_name);

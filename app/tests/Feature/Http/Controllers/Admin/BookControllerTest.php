@@ -7,6 +7,7 @@ namespace Tests\Feature\Http\Controllers\Admin;
 use App\Models\Book;
 use App\Models\BookAuthor;
 use App\Models\User;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -95,6 +96,9 @@ class BookControllerTest extends TestCase
     {
         Storage::fake('public');
 
+        /** @var FilesystemAdapter $disk */
+        $disk = Storage::disk('public');
+
         $file = UploadedFile::fake()->image('image.jpg', 100, 200);
 
         $attrs = [
@@ -108,7 +112,7 @@ class BookControllerTest extends TestCase
             ->post(self::BOOK_STORE_URI, $attrs)
             ->assertOk();
 
-        Storage::disk('public')->assertExists('books/new-title.jpg');
+        $disk->assertExists('books/new-title.jpg');
     }
 
     public function testBookCanBeCreatedWithRateValue(): void

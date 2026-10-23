@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Console\Commands;
 
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
@@ -16,9 +17,12 @@ class SitemapCommandTest extends TestCase
     {
         Storage::fake('public');
 
+        /** @var FilesystemAdapter $disk */
+        $disk = Storage::disk('public');
+
         $this->artisan('make:sitemap')->assertSuccessful();
 
-        Storage::disk('public')->assertExists('sitemap.xml');
+        $disk->assertExists('sitemap.xml');
     }
 
     public function testSitemapIsServedFromPublicStorage(): void

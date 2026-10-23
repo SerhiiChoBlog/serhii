@@ -7,6 +7,7 @@ namespace Tests\Feature\Http\Controllers\Admin;
 use App\Models\Post;
 use App\Models\PostContentImage;
 use App\Models\Tag;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -123,6 +124,9 @@ class PostContentImageControllerTest extends TestCase
     {
         Storage::fake('public');
 
+        /** @var FilesystemAdapter $disk */
+        $disk = Storage::disk('public');
+
         /** @var Post $post */
         $post = Post::factory()->create();
         $admin = $this->createAdmin();
@@ -143,7 +147,7 @@ class PostContentImageControllerTest extends TestCase
             ->assertOk();
 
         $this->assertSame(url('storage/post-images.zip'), $response->getContent());
-        Storage::disk('public')->assertExists('post-images.zip');
+        $disk->assertExists('post-images.zip');
 
         @unlink($source_path);
     }
