@@ -72,8 +72,6 @@ class GlobalVisitor
             return null;
         }
 
-        $position = self::getVisitorPosition($ip);
-
         /** @var Visitor|null $visitor */
         $visitor = Visitor::query()->where('ip', $ip)->first();
 
@@ -85,6 +83,8 @@ class GlobalVisitor
         if ($visitor) {
             return $visitor;
         }
+
+        $position = self::getVisitorPosition($ip);
 
         try {
             /** @var Visitor */

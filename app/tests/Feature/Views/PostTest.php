@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class PostTest extends TestCase
@@ -23,6 +24,21 @@ class PostTest extends TestCase
         $this->get(route('posts.show', $published_post))
             ->assertOk()
             ->assertViewIs('posts.show');
+    }
+
+    public function testKnownVisitorDoesNotSendRequestToGeolocationApi(): void
+    {
+        Http::fake();
+
+        $published_post = Post::factory()->published()->create();
+
+        Visitor::factory()->create(['ip' => '8.8.8.8']);
+
+        $this->withServerVariables(['REMOTE_ADDR' => '8.8.8.8'])
+            ->get(route('posts.show', $published_post))
+            ->assertOk();
+
+        Http::assertNothingSent();
     }
 
     public function testAdminCanVisitPage(): void
