@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
+set -e
+
 source cmd/config
+
+./cmd/run up -d
+./cmd/run exec php composer check
 
 echo "🐧 Building for production..."
 
