@@ -13,3 +13,7 @@ Use `./cmd/run` script for working with Podman. Instead of using long podman com
 - TypeScript
 - Vitepress
 - MariaDB
+
+## Rules
+
+- If you create a data provider for a test, call it `providerFor<test-name>` where `<test-name>` is the name of the test that uses it. For example, if your test is called `testFunc`, provider should be `providerForFunc`.
