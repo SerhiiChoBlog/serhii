@@ -15,7 +15,6 @@ import Subscription from '@/components/Subscription/Subscription.vue'
 import ShowPasswordButton from '@/components/ShowPasswordButton.vue'
 import Comments from '@/components/Comments/Comments.vue'
 import LazyLoading from '@shared/components/LazyLoading.vue'
-import FirebaseSignInButton from '@/components/FirebaseSignInButton.vue'
 import RelatedPosts from '@/components/RelatedPosts/RelatedPosts.vue'
 import LikePostButton from '@/components/LikePostButton.vue'
 import LoginForm from '@shared/components/SignIn/LoginForm.vue'
@@ -38,7 +37,6 @@ const app = createApp({
         ShowPasswordButton,
         Comments,
         LazyLoading,
-        FirebaseSignInButton,
         RelatedPosts,
         LikePostButton,
         SignInModal,

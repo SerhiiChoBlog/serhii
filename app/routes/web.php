@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\AboutMeController;
-use App\Http\Controllers\AuthFirebaseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
@@ -17,8 +16,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['verify' => true]);
 
 Route::get('@{user:slug}', [UserController::class, 'show'])->name('users.show');
-
-Route::post('firebase-sign-in', [AuthFirebaseController::class, 'signIn']);
 
 Route::redirect('about', 'about-me');
 Route::redirect('blog', 'posts');

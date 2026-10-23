@@ -5,7 +5,6 @@ import InputField from '@/components/Form/InputField.vue'
 import FormLabel from '@/components/Form/FormLabel.vue'
 import FormButton from '@/components/Form/FormButton.vue'
 import Tip from '@shared/components/Tip.vue'
-import SignInWith from '@shared/components/SignIn/SignInWith.vue'
 import QuestionLink from '@shared/components/SignIn/QuestionLink.vue'
 
 const emit = defineEmits<{
@@ -73,7 +72,6 @@ function switchToSignUp() {
 
         <div class="pt-4">
             <form-button :loading type="submit">Sign in</form-button>
-            <sign-in-with />
         </div>
     </form>
 

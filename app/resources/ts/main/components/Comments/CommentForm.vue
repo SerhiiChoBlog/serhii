@@ -3,7 +3,6 @@ import { computed, onMounted } from 'vue'
 import usePostComment from '@/composables/usePostComment'
 import CommentButton from '@/components/Comments/CommentButton.vue'
 import useCachedComment from '@/composables/useCachedComment'
-import FirebaseSignInButton from '@/components/FirebaseSignInButton.vue'
 
 const emit = defineEmits<{ (e: 'posted'): void }>()
 
@@ -72,11 +71,6 @@ async function submitForm(): Promise<void> {
                     <span v-else-if="!$auth">Sign in with email</span>
                     <span v-else>Comment</span>
                 </comment-button>
-
-                <div v-if="!$auth" class="inline-flex gap-4 items-center">
-                    <firebase-sign-in-button service-name="google" />
-                    <firebase-sign-in-button service-name="github" />
-                </div>
             </div>
         </div>
     </form>

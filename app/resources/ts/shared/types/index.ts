@@ -1,4 +1,4 @@
-import type { Tag, User } from './models'
+import type { Tag } from './models'
 
 export type SocialName =
     | 'twitter'
@@ -105,12 +105,4 @@ export type SubscriptionTagsModal = {
 export type SubscriptionDemandResponse = {
     message: string
     success: boolean
-}
-
-export type FirebaseSignUpRequest = {
-    token: string
-    email: string
-    name: string
-    photo_url: string | null
-    sign_in_method: User['sign_in_method']
 }
