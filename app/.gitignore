@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/sitemap.xml
+/storage/app/public/sitemap.xml
 /public/storage
 /public/build
 /vendor/

@@ -10,6 +10,7 @@ use App\Models\Series;
 use App\Models\Tag;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 
@@ -20,7 +21,7 @@ class SitemapCommand extends Command
 
     public function handle(): int
     {
-        $path = public_path('sitemap.xml');
+        $path = Storage::disk('public')->path('sitemap.xml');
 
         $result = Sitemap::create()
             ->add($this->pages())

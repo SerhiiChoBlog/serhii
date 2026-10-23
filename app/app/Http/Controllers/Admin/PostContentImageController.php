@@ -79,7 +79,7 @@ class PostContentImageController extends Controller
         });
 
         $zip_name = 'post-images.zip';
-        $zip_path = public_path($zip_name);
+        $zip_path = Storage::disk('public')->path($zip_name);
         $zip = new ZipArchive();
 
         if (file_exists($zip_path)) {
@@ -102,7 +102,7 @@ class PostContentImageController extends Controller
 
         $zip->close();
 
-        return response(url($zip_name));
+        return response(url("storage/{$zip_name}"));
     }
 
     public function destroy(PostContentImage $image): void

@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\User\UserController;
@@ -48,3 +49,4 @@ Route::prefix('subscriptions')->controller(SubscriptionController::class)->group
 });
 
 Route::get('theme/{to}', ThemeController::class);
+Route::get('sitemap.xml', SitemapController::class);

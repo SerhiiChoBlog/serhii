@@ -119,6 +119,35 @@ class PostContentImageControllerTest extends TestCase
         $this->assertCount(0, $post->images);
     }
 
+    public function testExportWritesZipToPublicStorage(): void
+    {
+        Storage::fake('public');
+
+        /** @var Post $post */
+        $post = Post::factory()->create();
+        $admin = $this->createAdmin();
+
+        $source_dir = storage_path('app/public/posts/content');
+
+        if (!is_dir($source_dir)) {
+            mkdir($source_dir, 0755, true);
+        }
+
+        $source_path = "{$source_dir}/export-me.jpg";
+        file_put_contents($source_path, 'fake-image-content');
+
+        $post->createImage('export-me.jpg');
+
+        $response = $this->actingAs($admin, 'admin')
+            ->post("/admin/ajax/post-content-images/{$post->id}/export")
+            ->assertOk();
+
+        $this->assertSame(url('storage/post-images.zip'), $response->getContent());
+        Storage::disk('public')->assertExists('post-images.zip');
+
+        @unlink($source_path);
+    }
+
     public function testImportOnlyAttachesImageFiles(): void
     {
         Tag::factory(3)->create();
