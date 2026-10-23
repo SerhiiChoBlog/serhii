@@ -6,40 +6,38 @@ namespace App\Utils;
 
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\Alignment;
 use Intervention\Image\Laravel\Facades\Image;
 
 readonly class ProfilePhotoProcessor
 {
-    public function __construct(private UploadedFile $photo, private User $user)
+    public function __construct(private UploadedFile $photo)
     {
     }
 
     public function save(): string
     {
-        $path = storage_path("app/public/avatars");
         $extension = ImageExtension::fromMimeType($this->photo->getMimeType());
-        $name = sprintf('%s-%d.%s', $this->user->slug, time(), $extension);
+        $name = Str::random(20) . ".{$extension}";
+        $disk = Storage::disk('public');
+
+        $disk->makeDirectory('avatars');
 
         Image::decode($this->photo)
             ->contain(400, 400, alignment: Alignment::CENTER)
-            ->save("{$path}/{$name}");
-
-        $this->deleteOldPhoto();
+            ->save($disk->path("avatars/{$name}"));
 
         return $name;
     }
 
-    private function deleteOldPhoto(): void
+    public function deletePhoto(string $name): void
     {
-        if ($this->user->avatar === User::DEFAULT_IMAGE_NAME) {
+        if ($name === User::DEFAULT_IMAGE_NAME) {
             return;
         }
 
-        $path = storage_path("app/public/avatars/{$this->user->avatar}");
-
-        if (file_exists($path)) {
-            unlink($path);
-        }
+        Storage::disk('public')->delete("avatars/{$name}");
     }
 }

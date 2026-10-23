@@ -20,9 +20,13 @@ class UserController extends Controller
         /** @var UploadedFile $photo */
         $photo = $request->file('photo');
 
-        $image_processor = new ProfilePhotoProcessor($photo, $user);
+        $old_avatar = $user->avatar;
+
+        $image_processor = new ProfilePhotoProcessor($photo);
         $avatar = $image_processor->save();
 
         $user->update(compact('avatar'));
+
+        $image_processor->deletePhoto($old_avatar);
     }
 }
