@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Views;
 
+use App\Enums\SignInMethod;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
@@ -16,8 +17,8 @@ class SetNewPasswordTest extends TestCase
 
     public function testGuestCanSetNewPassword(): void
     {
-        /** @var User $user */
         $user = $this->createUser();
+
         $token = $this->app->make('auth.password.broker')->createToken($user);
         $new_password = 'new_password';
 
@@ -36,8 +37,8 @@ class SetNewPasswordTest extends TestCase
 
     public function testUserCanSetNewPassword(): void
     {
-        /** @var User $user */
         $user = $this->createUser();
+
         $token = $this->app->make('auth.password.broker')->createToken($user);
         $new_password = 'some_new_password';
 
@@ -55,10 +56,31 @@ class SetNewPasswordTest extends TestCase
         $this->assertTrue(Hash::check($new_password, $user->fresh()->password));
     }
 
-    public function testUserCannotSetNewPasswordWithInvalidToken(): void
+    public function testSettingNewPasswordSetsSignInMethodToEmail(): void
     {
         /** @var User $user */
+        $user = User::factory()->create(['sign_in_method' => SignInMethod::GOOGLE]);
+
+        $token = $this->app->make('auth.password.broker')->createToken($user);
+        $new_password = 'new_password';
+
+        $form_data = [
+            'token' => $token,
+            'email' => $user->email,
+            'password' => $new_password,
+            'password_confirmation' => $new_password,
+        ];
+
+        $this->post(route('password.update'), $form_data)
+            ->assertRedirect(RouteServiceProvider::USER_HOME);
+
+        $this->assertSame(SignInMethod::EMAIL, $user->fresh()->sign_in_method);
+    }
+
+    public function testUserCannotSetNewPasswordWithInvalidToken(): void
+    {
         $user = $this->createUser();
+
         $new_password = 'some_new_password';
 
         $form_data = [
@@ -77,7 +99,6 @@ class SetNewPasswordTest extends TestCase
 
     public function testUserCannotSetNewPasswordWithEmailOfTheOtherUser(): void
     {
-        /** @var User $other_user */
         $other_user = $this->createUser();
 
         /** @var User $user */
