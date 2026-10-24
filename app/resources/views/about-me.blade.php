@@ -34,14 +34,11 @@
                             <p>
                                 Today I mostly work on developer tools. This includes a templating engine for Go called
                                 <a href="https://textwire.serhiicho.com/" target="_blank">Textwire</a>,
-                                libraries for Go, PHP, and TypeScript, editor and browser extensions, and
-                                tooling around LSP and Tree-sitter. All of this work is open source and lives on
-                                <a href="https://codeberg.org/SerhiiCho" target="_blank">Codeberg</a>.
-                            </p>
-
-                            <p>
-                                Sometimes I post coding videos on
-                                <a href="https://www.youtube.com/@serhiicho" target="_blank">YouTube</a>.
+                                libraries for Go, PHP, JavaScript, browser extensions like
+                                <a href="https://codeberg.org/tab-guardian/tab-guardian" target="_blank">Tab Guardian</a>
+                                and <a href="https://php-revival.serhiicho.com/" target="_blank">PHP Revival</a>
+                                and tooling around LSP and Tree-sitter. All of this work is open source and lives on
+                                <a href="https://codeberg.org/SerhiiCho?tab=activity" target="_blank">Codeberg</a>.
                             </p>
                         </div>
                     </div>
