@@ -166,6 +166,7 @@ class SubscriptionNotifyTest extends TestCase
         $publication = PostPublication::query()->first();
 
         $this->assertSame(0, $publication->people_notified);
+        $this->assertSame(1, $publication->people_skipped);
 
         Notification::assertSentTimes(PostPublished::class, 0);
     }

@@ -41,6 +41,7 @@ class SubscriptionsNotify extends Command
 
         foreach ($subs as $sub) {
             if ($this->subscriberIsNotSubscribedToTags($sub, $last_post)) {
+                ++$info['people_skipped'];
                 continue;
             }
 
