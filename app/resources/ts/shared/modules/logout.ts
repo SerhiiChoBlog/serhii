@@ -16,13 +16,7 @@ export default async (): Promise<void> => {
     if (wantsToStay || !window.Auth) return
 
     try {
-        await axios.post(
-            '/logout',
-            { email: window.Auth.email },
-            {
-                headers: { 'Content-Type': 'application/json' },
-            },
-        )
+        await axios.post('/logout')
     } catch (err) {
         console.error(err)
     }

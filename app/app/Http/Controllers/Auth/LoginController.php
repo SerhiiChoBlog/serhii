@@ -24,6 +24,14 @@ class LoginController extends Controller
 
     protected function guard(): Guard
     {
+        if (Auth::guard('admin')->check()) {
+            return Auth::guard('admin');
+        }
+
+        if (Auth::guard('user')->check()) {
+            return Auth::guard('user');
+        }
+
         $is_admin = User::isAdmin('email', request('email'));
 
         return Auth::guard($is_admin ? 'admin' : 'user');

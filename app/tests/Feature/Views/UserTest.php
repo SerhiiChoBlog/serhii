@@ -37,6 +37,16 @@ class UserTest extends TestCase
         $this->get(RouteServiceProvider::USER_HOME)->assertRedirectToRoute('login');
     }
 
+    public function testProfilePageDoesNotExposeEmail(): void
+    {
+        $user = $this->createUser();
+
+        $this->get(route('users.show', $user->slug))
+            ->assertOk()
+            ->assertDontSee($user->email)
+            ->assertDontSee('email_verified_at');
+    }
+
     public function testCanHaveLikes(): void
     {
         $user = $this->createUser();

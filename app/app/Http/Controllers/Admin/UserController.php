@@ -22,7 +22,8 @@ class UserController extends Controller
             ->withCount('comments')
             ->with('ban')
             ->orderByDesc('created_at')
-            ->paginate(20);
+            ->paginate(20)
+            ->through(fn (User $user): User => $user->makeVisible(['email', 'email_verified_at']));
 
         return [
             'users' => $users,
@@ -34,6 +35,6 @@ class UserController extends Controller
     {
         $user->loadCount('comments');
         $user->load('ban');
-        return $user;
+        return $user->makeVisible(['email', 'email_verified_at']);
     }
 }
