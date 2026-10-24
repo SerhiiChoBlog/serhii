@@ -39,6 +39,7 @@
                                 and <a href="https://php-revival.serhiicho.com/" target="_blank">PHP Revival</a>
                                 and tooling around LSP and Tree-sitter. All of this work is open source and lives on
                                 <a href="https://codeberg.org/SerhiiCho?tab=activity" target="_blank">Codeberg</a>.
+                                Or you can check them out here on <a href="/projects">Projects</a> page.
                             </p>
                         </div>
                     </div>
