@@ -16,7 +16,7 @@ class ReplacePostUrlsModifierTest extends TestCase
     public function testReplacesPostLinkWithHtmlLink(): void
     {
         /** @var Post $post */
-        $post = Post::factory()->create();
+        $post = Post::factory()->published()->create();
         $post_url = route('posts.show', $post);
 
         $comment = "You need to read {$post_url} article!";
@@ -30,11 +30,11 @@ class ReplacePostUrlsModifierTest extends TestCase
     public function testReplacesMultiplePostLinks(): void
     {
         /** @var Post $post */
-        $post = Post::factory()->create();
+        $post = Post::factory()->published()->create();
         $post_url = route('posts.show', $post);
 
         /** @var Post $post2 */
-        $post2 = Post::factory()->create();
+        $post2 = Post::factory()->published()->create();
         $post2_url = route('posts.show', $post2);
 
         $comment = "You need to read {$post_url} and {$post2_url} articles!";
@@ -58,7 +58,7 @@ class ReplacePostUrlsModifierTest extends TestCase
     public function testReplacesPostLinksWhenPostUrlIsNearSomeWord(): void
     {
         /** @var Post $post */
-        $post = Post::factory()->create();
+        $post = Post::factory()->published()->create();
         $post_url = route('posts.show', $post);
 
         $comment = "You need to read {$post_url}article!";
@@ -67,6 +67,33 @@ class ReplacePostUrlsModifierTest extends TestCase
         $modifier = new ReplacePostUrlsModifier($comment);
 
         $this->assertSame($expect, $modifier->modify());
+    }
+
+    public function testReplacesLongerPostLinkWhenItsSlugStartsWithAnotherPostSlug(): void
+    {
+        Post::factory()->published()->create(['slug' => 'php', 'title' => 'PHP']);
+
+        /** @var Post $post */
+        $post = Post::factory()->published()->create(['slug' => 'php-types', 'title' => 'PHP Types']);
+
+        $comment = 'You need to read ' . route('posts.show', $post->slug) . ' article!';
+        $expect = 'You need to read <a href="/posts/php-types">PHP Types</a> article!';
+
+        $modifier = new ReplacePostUrlsModifier($comment);
+
+        $this->assertSame($expect, $modifier->modify());
+    }
+
+    public function testDoesNotReplaceLinkToUnpublishedPost(): void
+    {
+        /** @var Post $post */
+        $post = Post::factory()->create();
+
+        $comment = 'You need to read ' . route('posts.show', $post->slug) . ' article!';
+
+        $modifier = new ReplacePostUrlsModifier($comment);
+
+        $this->assertSame($comment, $modifier->modify());
     }
 
     public function testModifierDoesntDoAnythingWhenNoLinksInComment(): void

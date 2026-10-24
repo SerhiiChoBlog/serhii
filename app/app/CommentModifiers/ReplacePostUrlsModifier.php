@@ -25,18 +25,32 @@ readonly class ReplacePostUrlsModifier implements CommentModifier
         }
 
         /** @var Collection<int, Post> $posts */
-        $posts = Post::query()->select('title', 'slug')->get('slug');
+        $posts = Post::query()
+            ->select('title', 'slug')
+            ->where('is_published', true)
+            ->get()
+            ->sortByDesc(fn (Post $post): int => strlen($post->slug))
+            ->values();
 
-        $links = [];
-        $replacements = [];
-
-        foreach ($posts as $post) {
-            $links[] = route('posts.show', $post->slug);
-            $title = e($post->title);
-            $slug = e($post->slug);
-            $replacements[] = "<a href=\"/posts/{$slug}\">{$title}</a>";
+        if ($posts->isEmpty()) {
+            return $this->comment;
         }
 
-        return str_replace($links, $replacements, $this->comment);
+        /** @var Collection<string, string> $titles */
+        $titles = $posts->pluck('title', 'slug');
+
+        $slugs = $titles->keys()
+            ->map(fn (string $slug): string => preg_quote($slug, '#'))
+            ->implode('|');
+
+        $pattern = '#' . preg_quote($app_url, '#') . '/posts/(' . $slugs . ')#';
+
+        return preg_replace_callback($pattern, function (array $matches) use ($titles): string {
+            $slug = $matches[1];
+            $title = e($titles->get($slug));
+            $href = e($slug);
+
+            return "<a href=\"/posts/{$href}\">{$title}</a>";
+        }, $this->comment) ?? $this->comment;
     }
 }
