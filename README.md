@@ -1,5 +1,7 @@
 # Serhii Cho Blog
 
+[![Main](https://github.com/SerhiiChoBlog/serhii/actions/workflows/main.yml/badge.svg)](https://github.com/SerhiiChoBlog/serhii/actions/workflows/main.yml)
+
 This is a tech blog written in latest PHP, Laravel, TailwindCss, TypeScript and Vue. It uses static analysis like PHPStan and CS Fixer to ensure code quality. It also uses Podman for development and production.
 
 ## Podman

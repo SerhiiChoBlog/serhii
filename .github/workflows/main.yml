@@ -20,6 +20,11 @@ jobs:
           cp .env.example .env
           cp app/.env.example app/.env
 
+      - name: Install podman-compose
+        run: |
+          sudo apt update
+          sudo apt install -y podman-compose
+
       - name: Build dev podman image
         run: ./cmd/run dev build
 
