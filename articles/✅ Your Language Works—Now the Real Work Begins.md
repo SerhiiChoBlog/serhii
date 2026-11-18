@@ -13,14 +13,14 @@ Imagine you've just created a revolutionary new programming language, but withou
 
 The ecosystem is precisely what I’ve been spending the past 6 months building, which includes:
 
-* [VSCode extension](https://codeberg.org/textwire/vscode-textwire "Link to Textwire VSCode extension on Codeberg")
-* [Neovim plugin](https://codeberg.org/textwire/textwire.nvim "Link to Textwire.nvim plugin on Codeberg")
-* [Tree-sitter parser](https://codeberg.org/textwire/tree-sitter-textwire "Link to Textwire Tree-sitter parser on Codeberg")
-* [Language Server Protocol](https://codeberg.org/textwire/lsp "Link to Textwire LSP on Codeberg")
-* [A documentation website](https://codeberg.org/textwire/pages "Link to Textwire docs on Codeberg")
-* [The language itself](https://codeberg.org/textwire/textwire "Link to Textwire repo on Codeberg")
+* [VSCode extension](https://github.com/textwire/vscode-textwire "Link to Textwire VSCode extension on GitHub")
+* [Neovim plugin](https://github.com/textwire/textwire.nvim "Link to Textwire.nvim plugin on GitHub")
+* [Tree-sitter parser](https://github.com/textwire/tree-sitter-textwire "Link to Textwire Tree-sitter parser on GitHub")
+* [Language Server Protocol](https://github.com/textwire/lsp "Link to Textwire LSP on GitHub")
+* [A documentation website](https://textwire.serhiicho.com "Link to Textwire docs on GitHub")
+* [The language itself](https://github.com/textwire/textwire "Link to Textwire repo on GitHub")
 
-I'll go through some challenges and learnings I experienced after building [Textwire](https://github.com/textwire "Link to Textwire Codeberg"), a template language for writing HTML templates in Go. Here is what I've learned...
+I'll go through some challenges and learnings I experienced after building [Textwire](https://github.com/textwire "Link to Textwire GitHub"), a template language for writing HTML templates in Go. Here is what I've learned...
 
 ## This Article is For
 Planning to build a programming language or a program with custom syntax? If that's the case, then you are at the right place. This article will be good information for your next project because I was exactly in your shoes. **I'll share practical advice on building an ecosystem around your language, including pitfalls I've encountered.**
@@ -84,7 +84,7 @@ Note. Sometimes developers use the word "interpreter" interchangeably with "eval
 
 These components are fundamental in transforming human-readable code into machine-executable instructions. **The tokenizer breaks down the source code into a stream of tokens, which are then parsed to form an AST. The AST will be fed into the evaluator, which executes the code or generates low-level code.**
 
-If your language (like [Textwire](https://github.com/textwire "Link to Textwire Codeberg")) is a combination of multiple syntaxes, it will be more complex. In my case, I had Textwire embedded into HTML, which meant I could just treat all HTML code as a string and parse it as such.
+If your language (like [Textwire](https://github.com/textwire "Link to Textwire GitHub")) is a combination of multiple syntaxes, it will be more complex. In my case, I had Textwire embedded into HTML, which meant I could just treat all HTML code as a string and parse it as such.
 
 80% of all the complexity that I had to deal with was the fact that Textwire is tied to HTML. Handling ambiguous syntax like `<span @if>Text</span>` required custom parsing rules. The code example below is just HTML, there is no Textwire syntax in it:
 
@@ -133,9 +133,9 @@ I recommend using documentation generators like [VitePress](https://vitepress.de
 
 Both generate static sites from Markdown, which is easy to read and write. Markdown keeps docs version-controllable and collaborative, allowing you to write in a familiar format. You can use any text editor to write Markdown, and it’s easy to convert to HTML.
 
-**You can then upload your docs to GitHub or Codeberg Pages, which will give you a free subdomain.** For personal projects, pages gives you `torvalds.github.io/linux`, but an organization account offers cleaner URLs like `linux.github.io` and `linux.codeberg.page`. As an option, you can attach your domain to it, which is not difficult to do, and there are plenty of resources online that explain how to do it.
+**You can then upload your docs to GitHub Pages, which will give you a free subdomain.** For personal projects, pages gives you `torvalds.github.io/linux`, but an organization account offers cleaner URLs like `linux.github.io` and `linux.github.org`. As an option, you can attach your domain to it, which is not difficult to do, and there are plenty of resources online that explain how to do it.
 
-Note. Even basic docs put you ahead of most language projects because most projects have only a `README.md` file in their repo. For small projects (like [Tiny Logger](https://codeberg.org/tiny-logger/tiny-logger "Link to Codeberg repo tiny-logger")) this is enough, but for larger projects you should have a dedicated documentation website.
+Note. Even basic docs put you ahead of most language projects because most projects have only a `README.md` file in their repo. For small projects (like [Tiny Logger](https://github.com/tiny-logger/tiny-logger "Link to GitHub repo tiny-logger")) this is enough, but for larger projects you should have a dedicated documentation website.
 
 But adoption requires more—starting with editor support. Let’s dive into syntax highlighting.
 
@@ -147,7 +147,7 @@ You can still use any language without syntax highlighting; in fact, developers 
 ### TextMate Grammars
 **TextMate grammars use regular expressions to identify syntax patterns and are defined in a single JSON file.** They're supported across editors like VSCode and Sublime. It's pretty straightforward to write a TextMate grammar if you know regular expression.
 
-Tip. What I found useful for me was to see how other languages implement TextMate and Tree-sitter grammars. You can find many examples on Codeberg. I suggest looking on languages that are similar to yours, as they will give you a good starting point. In my case, I looked at how PHP highlighting is implemented because it also has HTML embedded into it.
+Tip. What I found useful for me was to see how other languages implement TextMate and Tree-sitter grammars. You can find many examples on GitHub. I suggest looking on languages that are similar to yours, as they will give you a good starting point. In my case, I looked at how PHP highlighting is implemented because it also has HTML embedded into it.
 
 Here is a simple example of a `tmLanguage.json` file that you use for TextMate grammar, which supports syntax highlighting only for integers and floats:
 
@@ -247,7 +247,7 @@ For Textwire, adding autocompletion and hover information for directives saves u
 
 Note. For small projects, basic support (like a VSCode syntax extension) may suffice. But ambitious languages demand full editor integration to shine. In my case, the language is indeed small, but I wanted to go all the way and build an ecosystem around it for the sake of learning and experience.
 
-In my case, I went for 2 editors and built the [VSCode extension](https://codeberg.org/textwire/vscode-textwire "Link to Textwire VSCode extension on Codeberg") and the [Neovim plugin](https://github.com/textwire/textwire.nvim "Link to Textwire.nvim plugin on Codeberg").
+In my case, I went for 2 editors and built the [VSCode extension](https://github.com/textwire/vscode-textwire "Link to Textwire VSCode extension on GitHub") and the [Neovim plugin](https://github.com/textwire/textwire.nvim "Link to Textwire.nvim plugin on GitHub").
 
 You might think that if you build a VSCode extension then a Neovim plugin will be easier, but it's not. Those projects are entirely different; Neovim uses Lua for plugins, while VSCode uses TypeScript. The only thing that is similar is the LSP, which is used by both editors.
 

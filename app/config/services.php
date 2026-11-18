@@ -37,10 +37,23 @@ return [
         'url' => 'https://youtube.googleapis.com/youtube/v3/search',
     ],
 
-    'codeberg' => [
-        'token' => env('CODEBERG_ACCESS_KEY'),
-        'repos_url' => 'https://codeberg.org/api/v1/user/repos?token=' . env('CODEBERG_ACCESS_KEY'),
-        'readme_url' => 'https://codeberg.org/{full-repo-name}/raw/branch/master/README.md',
+    'github' => [
+        'projects_urls' => [
+            'https://api.github.com/users/SerhiiCho/repos',
+            'https://api.github.com/users/php-revival/repos',
+            'https://api.github.com/users/smooth-loader/repos',
+            'https://api.github.com/users/textwire/repos',
+            'https://api.github.com/users/wp-pager/repos',
+            'https://api.github.com/users/timeago/repos',
+            'https://api.github.com/users/short-number/repos',
+            'https://api.github.com/users/tiny-logger/repos',
+            'https://api.github.com/users/goodbye-html/repos',
+            'https://api.github.com/users/php-ago/repos',
+            'https://api.github.com/users/time-ago/repos',
+            'https://api.github.com/users/tab-guardian/repos',
+            'https://api.github.com/users/resin-counter/repos',
+        ],
+        'readme_url' => 'https://raw.githubusercontent.com/SerhiiCho/{repo}/master/README.md',
     ],
 
 ];

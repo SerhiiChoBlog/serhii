@@ -51,14 +51,14 @@ export default [
             "There are also libraries and packages that I've contributed to the open-source community.",
         links: [
             {
-                img: '/img/icons/codeberg.webp',
-                href: 'https://codeberg.org/SerhiiCho',
-                title: 'Codeberg',
-            },
-            {
                 img: '/img/icons/github.webp',
                 href: 'https://github.com/SerhiiCho',
                 title: 'GitHub',
+            },
+            {
+                img: '/img/icons/codeberg.webp',
+                href: 'https://codeberg.org/SerhiiCho',
+                title: 'Codeberg',
             },
             {
                 img: '/img/icons/packagist.webp',

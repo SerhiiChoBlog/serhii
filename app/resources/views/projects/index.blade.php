@@ -5,12 +5,12 @@
 @extends('layouts.main')
 
 @push('title', 'Open-source projects')
-@push('description', "I'm also a maintainer of several open-source libraries which you can contribute to any of them on Codeberg")
+@push('description', "I'm also a maintainer of several open-source libraries which you can contribute to any of them on GitHub")
 
 @section('content')
     <x-hero
         mainTitle="Open-source"
-        subtitle="I'm the maintainer of several open-source libraries and browser extension.<br>You can contribute to any of them on Codeberg, and I would gladly look into your pull request or issue."
+        subtitle="I'm the maintainer of several open-source libraries and browser extension.<br>You can contribute to any of them on GitHub, and I would gladly look into your pull request or issue."
         class="bg-linear-to-r from-[#51895c] via-[#4c5f7d] to-[#51895c] text-white"
     />
 

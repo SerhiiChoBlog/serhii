@@ -35,10 +35,10 @@
                                 Today I mostly work on developer tools. This includes a templating engine for Go called
                                 <a href="https://textwire.serhiicho.com/" target="_blank">Textwire</a>,
                                 libraries for Go, PHP, JavaScript, browser extensions like
-                                <a href="https://codeberg.org/tab-guardian/tab-guardian" target="_blank">Tab Guardian</a>
+                                <a href="https://github.com/tab-guardian/tab-guardian" target="_blank">Tab Guardian</a>
                                 and <a href="https://php-revival.serhiicho.com/" target="_blank">PHP Revival</a>
                                 and tooling around LSP and Tree-sitter. All of this work is open source and lives on
-                                <a href="https://codeberg.org/SerhiiCho?tab=activity" target="_blank">Codeberg</a>.
+                                <a href="https://github.com/SerhiiCho" target="_blank">GitHub</a>.
                                 Or you can check them out here on <a href="/projects">Projects</a> page.
                             </p>
                         </div>
@@ -79,7 +79,7 @@
             <div class="flex flex-col gap-1">
                 <h2 class="text-center ml-1 text-xl lg:text-3xl">☕ Show Your Support</h2>
                 <p class="text-center ml-1 text-[.9rem] lg:text-xl">
-                    You can support me by giving a star on one of my repositories on <a class="text-link hover:text-link-hover underline" href="https://codeberg.org/SerhiiCho?tab=activity" target="_blank" title="Link to Codeberg account">Codeberg</a>,
+                    You can support me by giving a star on one of my repositories on <a class="text-link hover:text-link-hover underline" href="https://github.com/SerhiiCho" target="_blank" title="Link to GitHub account">GitHub</a>,
                     or send me a couple of bucks for a cup of coffee:
                 </p>
 
