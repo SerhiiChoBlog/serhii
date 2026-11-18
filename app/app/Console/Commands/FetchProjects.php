@@ -107,4 +107,3 @@ class FetchProjects extends Command
         }
     }
 }
-
