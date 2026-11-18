@@ -25,6 +25,9 @@ jobs:
           sudo apt update
           sudo apt install -y podman-compose
 
+      - name: Allow rootless podman to bind port 80
+        run: sudo sysctl -w net.ipv4.ip_unprivileged_port_start=80
+
       - name: Build dev podman image
         run: ./cmd/run dev build
 
