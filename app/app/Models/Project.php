@@ -52,11 +52,12 @@ class Project extends Model
     ];
 
     /**
-     * @return array<string, mixed>
+     * @return list<array<string, mixed>>
      */
     public static function getCachedProjects(): array
     {
         return Cache::remember(CacheKey::PROJECTS, Ttl::HOUR, static function () {
+            /** @var list<array<string, mixed>> */
             return self::query()
                 ->select('title', 'language', 'description', 'name', 'stars', 'has_homepage', 'url', 'updated_at')
                 ->orderByDesc('updated_at')

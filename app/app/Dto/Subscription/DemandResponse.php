@@ -7,10 +7,7 @@ namespace App\Dto\Subscription;
 use Illuminate\Contracts\Support\Arrayable;
 
 /**
- * @implements Arrayable<int, array{
- *     success: bool,
- *     message: string,
- * }>
+ * @implements Arrayable<string, bool|string>
  */
 class DemandResponse implements Arrayable
 {
